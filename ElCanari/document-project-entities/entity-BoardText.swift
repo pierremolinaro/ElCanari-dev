@@ -116,14 +116,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -133,14 +139,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   Atomic property: mFontSize
@@ -150,14 +162,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mFontSize : Double {
+  final func reset_mFontSize_toDefaultValue () {
+    self.mFontSize = 4
+  }
+
+  //····················································································································
+
+  final var mFontSize : Double {
     get { return self.mFontSize_property.propval }
     set { self.mFontSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFontSize_property_selection : EBSelection <Double> { return self.mFontSize_property.prop }
+  final var mFontSize_property_selection : EBSelection <Double> { return self.mFontSize_property.prop }
 
   //····················································································································
   //   Atomic property: mLayer
@@ -167,14 +185,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mLayer : BoardTextLayer {
+  final func reset_mLayer_toDefaultValue () {
+    self.mLayer = BoardTextLayer.legendFront
+  }
+
+  //····················································································································
+
+  final var mLayer : BoardTextLayer {
     get { return self.mLayer_property.propval }
     set { self.mLayer_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLayer_property_selection : EBSelection <BoardTextLayer> { return self.mLayer_property.prop }
+  final var mLayer_property_selection : EBSelection <BoardTextLayer> { return self.mLayer_property.prop }
 
   //····················································································································
   //   Atomic property: mText
@@ -184,14 +208,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mText : String {
+  final func reset_mText_toDefaultValue () {
+    self.mText = ""
+  }
+
+  //····················································································································
+
+  final var mText : String {
     get { return self.mText_property.propval }
     set { self.mText_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mText_property_selection : EBSelection <String> { return self.mText_property.prop }
+  final var mText_property_selection : EBSelection <String> { return self.mText_property.prop }
 
   //····················································································································
   //   Atomic property: mHorizontalAlignment
@@ -201,14 +231,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mHorizontalAlignment : HorizontalAlignment {
+  final func reset_mHorizontalAlignment_toDefaultValue () {
+    self.mHorizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var mHorizontalAlignment : HorizontalAlignment {
     get { return self.mHorizontalAlignment_property.propval }
     set { self.mHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
+  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: mVerticalAlignment
@@ -218,14 +254,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mVerticalAlignment : BoardTextVerticalAlignment {
+  final func reset_mVerticalAlignment_toDefaultValue () {
+    self.mVerticalAlignment = BoardTextVerticalAlignment.base
+  }
+
+  //····················································································································
+
+  final var mVerticalAlignment : BoardTextVerticalAlignment {
     get { return self.mVerticalAlignment_property.propval }
     set { self.mVerticalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> { return self.mVerticalAlignment_property.prop }
+  final var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> { return self.mVerticalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: mRotation
@@ -235,14 +277,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mRotation : Int {
+  final func reset_mRotation_toDefaultValue () {
+    self.mRotation = 0
+  }
+
+  //····················································································································
+
+  final var mRotation : Int {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
+  final var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
 
   //····················································································································
   //   Atomic property: mWeight
@@ -252,14 +300,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mWeight : Double {
+  final func reset_mWeight_toDefaultValue () {
+    self.mWeight = 1
+  }
+
+  //····················································································································
+
+  final var mWeight : Double {
     get { return self.mWeight_property.propval }
     set { self.mWeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWeight_property_selection : EBSelection <Double> { return self.mWeight_property.prop }
+  final var mWeight_property_selection : EBSelection <Double> { return self.mWeight_property.prop }
 
   //····················································································································
   //   Atomic property: mOblique
@@ -269,14 +323,20 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  var mOblique : Bool {
+  final func reset_mOblique_toDefaultValue () {
+    self.mOblique = false
+  }
+
+  //····················································································································
+
+  final var mOblique : Bool {
     get { return self.mOblique_property.propval }
     set { self.mOblique_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mOblique_property_selection : EBSelection <Bool> { return self.mOblique_property.prop }
+  final var mOblique_property_selection : EBSelection <Bool> { return self.mOblique_property.prop }
 
   //····················································································································
   //   To one property: mFont
@@ -814,25 +874,25 @@ class BoardText : BoardObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- Atomic property: mFontSize
-    self.mFontSize_property.storeIn (dictionary: ioDictionary, forKey:"mFontSize")
+    self.mFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mFontSize")
   //--- Atomic property: mLayer
-    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey:"mLayer")
+    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
   //--- Atomic property: mText
-    self.mText_property.storeIn (dictionary: ioDictionary, forKey:"mText")
+    self.mText_property.storeIn (dictionary: ioDictionary, forKey: "mText")
   //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mHorizontalAlignment")
+    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
   //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mVerticalAlignment")
+    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
   //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
   //--- Atomic property: mWeight
-    self.mWeight_property.storeIn (dictionary: ioDictionary, forKey:"mWeight")
+    self.mWeight_property.storeIn (dictionary: ioDictionary, forKey: "mWeight")
   //--- Atomic property: mOblique
-    self.mOblique_property.storeIn (dictionary: ioDictionary, forKey:"mOblique")
+    self.mOblique_property.storeIn (dictionary: ioDictionary, forKey: "mOblique")
   }
 
   //····················································································································
@@ -862,25 +922,25 @@ class BoardText : BoardObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mFontSize
-    self.mFontSize_property.readFrom (dictionary: inDictionary, forKey:"mFontSize")
+    self.mFontSize_property.readFrom (dictionary: inDictionary, forKey: "mFontSize")
   //--- Atomic property: mLayer
-    self.mLayer_property.readFrom (dictionary: inDictionary, forKey:"mLayer")
+    self.mLayer_property.readFrom (dictionary: inDictionary, forKey: "mLayer")
   //--- Atomic property: mText
-    self.mText_property.readFrom (dictionary: inDictionary, forKey:"mText")
+    self.mText_property.readFrom (dictionary: inDictionary, forKey: "mText")
   //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mHorizontalAlignment")
+    self.mHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mHorizontalAlignment")
   //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mVerticalAlignment")
+    self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mVerticalAlignment")
   //--- Atomic property: mRotation
-    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+    self.mRotation_property.readFrom (dictionary: inDictionary, forKey: "mRotation")
   //--- Atomic property: mWeight
-    self.mWeight_property.readFrom (dictionary: inDictionary, forKey:"mWeight")
+    self.mWeight_property.readFrom (dictionary: inDictionary, forKey: "mWeight")
   //--- Atomic property: mOblique
-    self.mOblique_property.readFrom (dictionary: inDictionary, forKey:"mOblique")
+    self.mOblique_property.readFrom (dictionary: inDictionary, forKey: "mOblique")
   }
 
 

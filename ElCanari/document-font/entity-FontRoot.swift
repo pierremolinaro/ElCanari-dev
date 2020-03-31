@@ -102,14 +102,20 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  var comments : String {
+  final func reset_comments_toDefaultValue () {
+    self.comments = ""
+  }
+
+  //····················································································································
+
+  final var comments : String {
     get { return self.comments_property.propval }
     set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: nominalSize
@@ -119,14 +125,20 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  var nominalSize : Int {
+  final func reset_nominalSize_toDefaultValue () {
+    self.nominalSize = 14
+  }
+
+  //····················································································································
+
+  final var nominalSize : Int {
     get { return self.nominalSize_property.propval }
     set { self.nominalSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var nominalSize_property_selection : EBSelection <Int> { return self.nominalSize_property.prop }
+  final var nominalSize_property_selection : EBSelection <Int> { return self.nominalSize_property.prop }
 
   //····················································································································
   //   Atomic property: selectedTab
@@ -136,14 +148,20 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedTab : Int {
+  final func reset_selectedTab_toDefaultValue () {
+    self.selectedTab = 0
+  }
+
+  //····················································································································
+
+  final var selectedTab : Int {
     get { return self.selectedTab_property.propval }
     set { self.selectedTab_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
+  final var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -153,14 +171,20 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedInspector : Int {
+  final func reset_selectedInspector_toDefaultValue () {
+    self.selectedInspector = 0
+  }
+
+  //····················································································································
+
+  final var selectedInspector : Int {
     get { return self.selectedInspector_property.propval }
     set { self.selectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
+  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: currentCharacterCodePoint
@@ -170,19 +194,25 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  var currentCharacterCodePoint : Int {
+  final func reset_currentCharacterCodePoint_toDefaultValue () {
+    self.currentCharacterCodePoint = 32
+  }
+
+  //····················································································································
+
+  final var currentCharacterCodePoint : Int {
     get { return self.currentCharacterCodePoint_property.propval }
     set { self.currentCharacterCodePoint_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var currentCharacterCodePoint_property_selection : EBSelection <Int> { return self.currentCharacterCodePoint_property.prop }
+  final var currentCharacterCodePoint_property_selection : EBSelection <Int> { return self.currentCharacterCodePoint_property.prop }
 
   //····················································································································
 
-  func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow:NSWindow?) -> Bool {
-    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet:inWindow)
+  final func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow : NSWindow?) -> Bool {
+    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet: inWindow)
   }
 
   //····················································································································
@@ -755,15 +785,15 @@ class FontRoot : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
   //--- Atomic property: nominalSize
-    self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey:"nominalSize")
+    self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
   //--- Atomic property: selectedTab
-    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey:"selectedTab")
+    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
+    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
   //--- Atomic property: currentCharacterCodePoint
-    self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey:"currentCharacterCodePoint")
+    self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey: "currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
     customStore_FontCharacter_characters (self.characters_property.propval, intoDictionary: ioDictionary)
   }
@@ -791,15 +821,15 @@ class FontRoot : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.comments_property.readFrom (dictionary: inDictionary, forKey: "comments")
   //--- Atomic property: nominalSize
-    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
+    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey: "nominalSize")
   //--- Atomic property: selectedTab
-    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey: "selectedTab")
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey: "selectedInspector")
   //--- Atomic property: currentCharacterCodePoint
-    self.currentCharacterCodePoint_property.readFrom (dictionary: inDictionary, forKey:"currentCharacterCodePoint")
+    self.currentCharacterCodePoint_property.readFrom (dictionary: inDictionary, forKey: "currentCharacterCodePoint")
   }
 
 

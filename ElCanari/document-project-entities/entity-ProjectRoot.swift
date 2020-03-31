@@ -830,14 +830,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mArtworkName : String {
+  final func reset_mArtworkName_toDefaultValue () {
+    self.mArtworkName = ""
+  }
+
+  //····················································································································
+
+  final var mArtworkName : String {
     get { return self.mArtworkName_property.propval }
     set { self.mArtworkName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
+  final var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
 
   //····················································································································
   //   Atomic property: mArtworkVersion
@@ -847,14 +853,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mArtworkVersion : Int {
+  final func reset_mArtworkVersion_toDefaultValue () {
+    self.mArtworkVersion = 0
+  }
+
+  //····················································································································
+
+  final var mArtworkVersion : Int {
     get { return self.mArtworkVersion_property.propval }
     set { self.mArtworkVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
+  final var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mPDFBoardBackgroundColor
@@ -864,14 +876,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mPDFBoardBackgroundColor : NSColor {
+  final func reset_mPDFBoardBackgroundColor_toDefaultValue () {
+    self.mPDFBoardBackgroundColor = NSColor.lightGray
+  }
+
+  //····················································································································
+
+  final var mPDFBoardBackgroundColor : NSColor {
     get { return self.mPDFBoardBackgroundColor_property.propval }
     set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
+  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
 
   //····················································································································
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
@@ -881,14 +899,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mCheckClearanceBetweenPadsOfSameNet : Bool {
+  final func reset_mCheckClearanceBetweenPadsOfSameNet_toDefaultValue () {
+    self.mCheckClearanceBetweenPadsOfSameNet = true
+  }
+
+  //····················································································································
+
+  final var mCheckClearanceBetweenPadsOfSameNet : Bool {
     get { return self.mCheckClearanceBetweenPadsOfSameNet_property.propval }
     set { self.mCheckClearanceBetweenPadsOfSameNet_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool> { return self.mCheckClearanceBetweenPadsOfSameNet_property.prop }
+  final var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool> { return self.mCheckClearanceBetweenPadsOfSameNet_property.prop }
 
   //····················································································································
   //   Atomic property: mLastERCCheckingIsSuccess
@@ -898,14 +922,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mLastERCCheckingIsSuccess : Bool {
+  final func reset_mLastERCCheckingIsSuccess_toDefaultValue () {
+    self.mLastERCCheckingIsSuccess = false
+  }
+
+  //····················································································································
+
+  final var mLastERCCheckingIsSuccess : Bool {
     get { return self.mLastERCCheckingIsSuccess_property.propval }
     set { self.mLastERCCheckingIsSuccess_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool> { return self.mLastERCCheckingIsSuccess_property.prop }
+  final var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool> { return self.mLastERCCheckingIsSuccess_property.prop }
 
   //····················································································································
   //   Atomic property: mLastERCCheckingSignature
@@ -915,14 +945,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mLastERCCheckingSignature : UInt32 {
+  final func reset_mLastERCCheckingSignature_toDefaultValue () {
+    self.mLastERCCheckingSignature = 1
+  }
+
+  //····················································································································
+
+  final var mLastERCCheckingSignature : UInt32 {
     get { return self.mLastERCCheckingSignature_property.propval }
     set { self.mLastERCCheckingSignature_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLastERCCheckingSignature_property_selection : EBSelection <UInt32> { return self.mLastERCCheckingSignature_property.prop }
+  final var mLastERCCheckingSignature_property_selection : EBSelection <UInt32> { return self.mLastERCCheckingSignature_property.prop }
 
   //····················································································································
   //   Atomic property: mAutoRouterPreferredDirections
@@ -932,14 +968,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mAutoRouterPreferredDirections : AutorouterPreferredDirections {
+  final func reset_mAutoRouterPreferredDirections_toDefaultValue () {
+    self.mAutoRouterPreferredDirections = AutorouterPreferredDirections.vFrontHback
+  }
+
+  //····················································································································
+
+  final var mAutoRouterPreferredDirections : AutorouterPreferredDirections {
     get { return self.mAutoRouterPreferredDirections_property.propval }
     set { self.mAutoRouterPreferredDirections_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections> { return self.mAutoRouterPreferredDirections_property.prop }
+  final var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections> { return self.mAutoRouterPreferredDirections_property.prop }
 
   //····················································································································
   //   Atomic property: mAutorouterSnapAngle
@@ -949,14 +991,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mAutorouterSnapAngle : AutorouterSnapAngle {
+  final func reset_mAutorouterSnapAngle_toDefaultValue () {
+    self.mAutorouterSnapAngle = AutorouterSnapAngle.octolinear
+  }
+
+  //····················································································································
+
+  final var mAutorouterSnapAngle : AutorouterSnapAngle {
     get { return self.mAutorouterSnapAngle_property.propval }
     set { self.mAutorouterSnapAngle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.prop }
+  final var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.prop }
 
   //····················································································································
   //   Atomic property: mRouteDirection
@@ -966,14 +1014,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRouteDirection : RouteDirection {
+  final func reset_mRouteDirection_toDefaultValue () {
+    self.mRouteDirection = RouteDirection.from
+  }
+
+  //····················································································································
+
+  final var mRouteDirection : RouteDirection {
     get { return self.mRouteDirection_property.propval }
     set { self.mRouteDirection_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRouteDirection_property_selection : EBSelection <RouteDirection> { return self.mRouteDirection_property.prop }
+  final var mRouteDirection_property_selection : EBSelection <RouteDirection> { return self.mRouteDirection_property.prop }
 
   //····················································································································
   //   Atomic property: mRouteOrigin
@@ -983,14 +1037,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRouteOrigin : RouteOrigin {
+  final func reset_mRouteOrigin_toDefaultValue () {
+    self.mRouteOrigin = RouteOrigin.center
+  }
+
+  //····················································································································
+
+  final var mRouteOrigin : RouteOrigin {
     get { return self.mRouteOrigin_property.propval }
     set { self.mRouteOrigin_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRouteOrigin_property_selection : EBSelection <RouteOrigin> { return self.mRouteOrigin_property.prop }
+  final var mRouteOrigin_property_selection : EBSelection <RouteOrigin> { return self.mRouteOrigin_property.prop }
 
   //····················································································································
   //   Atomic property: mTrackLengthUnit
@@ -1000,14 +1060,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mTrackLengthUnit : Int {
+  final func reset_mTrackLengthUnit_toDefaultValue () {
+    self.mTrackLengthUnit = 90000000
+  }
+
+  //····················································································································
+
+  final var mTrackLengthUnit : Int {
     get { return self.mTrackLengthUnit_property.propval }
     set { self.mTrackLengthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTrackLengthUnit_property_selection : EBSelection <Int> { return self.mTrackLengthUnit_property.prop }
+  final var mTrackLengthUnit_property_selection : EBSelection <Int> { return self.mTrackLengthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mLayoutClearance
@@ -1017,14 +1083,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mLayoutClearance : Int {
+  final func reset_mLayoutClearance_toDefaultValue () {
+    self.mLayoutClearance = 45720
+  }
+
+  //····················································································································
+
+  final var mLayoutClearance : Int {
     get { return self.mLayoutClearance_property.propval }
     set { self.mLayoutClearance_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLayoutClearance_property_selection : EBSelection <Int> { return self.mLayoutClearance_property.prop }
+  final var mLayoutClearance_property_selection : EBSelection <Int> { return self.mLayoutClearance_property.prop }
 
   //····················································································································
   //   Atomic property: mLayoutClearanceUnit
@@ -1034,14 +1106,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mLayoutClearanceUnit : Int {
+  final func reset_mLayoutClearanceUnit_toDefaultValue () {
+    self.mLayoutClearanceUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mLayoutClearanceUnit : Int {
     get { return self.mLayoutClearanceUnit_property.propval }
     set { self.mLayoutClearanceUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLayoutClearanceUnit_property_selection : EBSelection <Int> { return self.mLayoutClearanceUnit_property.prop }
+  final var mLayoutClearanceUnit_property_selection : EBSelection <Int> { return self.mLayoutClearanceUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardSelectedInspector
@@ -1051,14 +1129,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardSelectedInspector : Int {
+  final func reset_mBoardSelectedInspector_toDefaultValue () {
+    self.mBoardSelectedInspector = 1
+  }
+
+  //····················································································································
+
+  final var mBoardSelectedInspector : Int {
     get { return self.mBoardSelectedInspector_property.propval }
     set { self.mBoardSelectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardSelectedInspector_property.prop }
+  final var mBoardSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardSelectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardHorizontalFlip
@@ -1068,14 +1152,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardHorizontalFlip : Bool {
+  final func reset_mBoardHorizontalFlip_toDefaultValue () {
+    self.mBoardHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mBoardHorizontalFlip : Bool {
     get { return self.mBoardHorizontalFlip_property.propval }
     set { self.mBoardHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardHorizontalFlip_property.prop }
+  final var mBoardHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardVerticalFlip
@@ -1085,14 +1175,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardVerticalFlip : Bool {
+  final func reset_mBoardVerticalFlip_toDefaultValue () {
+    self.mBoardVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mBoardVerticalFlip : Bool {
     get { return self.mBoardVerticalFlip_property.propval }
     set { self.mBoardVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardVerticalFlip_property.prop }
+  final var mBoardVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardGridStyle
@@ -1102,14 +1198,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardGridStyle : GridStyle {
+  final func reset_mBoardGridStyle_toDefaultValue () {
+    self.mBoardGridStyle = GridStyle.line
+  }
+
+  //····················································································································
+
+  final var mBoardGridStyle : GridStyle {
     get { return self.mBoardGridStyle_property.propval }
     set { self.mBoardGridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardGridStyle_property.prop }
+  final var mBoardGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardGridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardGridDisplayFactor
@@ -1119,14 +1221,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardGridDisplayFactor : Int {
+  final func reset_mBoardGridDisplayFactor_toDefaultValue () {
+    self.mBoardGridDisplayFactor = 4
+  }
+
+  //····················································································································
+
+  final var mBoardGridDisplayFactor : Int {
     get { return self.mBoardGridDisplayFactor_property.propval }
     set { self.mBoardGridDisplayFactor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardGridDisplayFactor_property.prop }
+  final var mBoardGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardGridDisplayFactor_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardZoom
@@ -1136,14 +1244,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardZoom : Int {
+  final func reset_mBoardZoom_toDefaultValue () {
+    self.mBoardZoom = 200
+  }
+
+  //····················································································································
+
+  final var mBoardZoom : Int {
     get { return self.mBoardZoom_property.propval }
     set { self.mBoardZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardZoom_property_selection : EBSelection <Int> { return self.mBoardZoom_property.prop }
+  final var mBoardZoom_property_selection : EBSelection <Int> { return self.mBoardZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardGridStep
@@ -1153,14 +1267,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardGridStep : Int {
+  final func reset_mBoardGridStep_toDefaultValue () {
+    self.mBoardGridStep = 57150
+  }
+
+  //····················································································································
+
+  final var mBoardGridStep : Int {
     get { return self.mBoardGridStep_property.propval }
     set { self.mBoardGridStep_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardGridStep_property_selection : EBSelection <Int> { return self.mBoardGridStep_property.prop }
+  final var mBoardGridStep_property_selection : EBSelection <Int> { return self.mBoardGridStep_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardGridStepUnit
@@ -1170,14 +1290,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardGridStepUnit : Int {
+  final func reset_mBoardGridStepUnit_toDefaultValue () {
+    self.mBoardGridStepUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mBoardGridStepUnit : Int {
     get { return self.mBoardGridStepUnit_property.propval }
     set { self.mBoardGridStepUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardGridStepUnit_property.prop }
+  final var mBoardGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardGridStepUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mErrorOrWarningIssueSize
@@ -1187,14 +1313,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mErrorOrWarningIssueSize : Double {
+  final func reset_mErrorOrWarningIssueSize_toDefaultValue () {
+    self.mErrorOrWarningIssueSize = 6
+  }
+
+  //····················································································································
+
+  final var mErrorOrWarningIssueSize : Double {
     get { return self.mErrorOrWarningIssueSize_property.propval }
     set { self.mErrorOrWarningIssueSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mErrorOrWarningIssueSize_property_selection : EBSelection <Double> { return self.mErrorOrWarningIssueSize_property.prop }
+  final var mErrorOrWarningIssueSize_property_selection : EBSelection <Double> { return self.mErrorOrWarningIssueSize_property.prop }
 
   //····················································································································
   //   Atomic property: mControlKeyHiliteDiameter
@@ -1204,14 +1336,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mControlKeyHiliteDiameter : Double {
+  final func reset_mControlKeyHiliteDiameter_toDefaultValue () {
+    self.mControlKeyHiliteDiameter = 100
+  }
+
+  //····················································································································
+
+  final var mControlKeyHiliteDiameter : Double {
     get { return self.mControlKeyHiliteDiameter_property.propval }
     set { self.mControlKeyHiliteDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
+  final var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -1221,14 +1359,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsWidth : Int {
+  final func reset_mBoardLimitsWidth_toDefaultValue () {
+    self.mBoardLimitsWidth = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsWidth : Int {
     get { return self.mBoardLimitsWidth_property.propval }
     set { self.mBoardLimitsWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsWidth_property_selection : EBSelection <Int> { return self.mBoardLimitsWidth_property.prop }
+  final var mBoardLimitsWidth_property_selection : EBSelection <Int> { return self.mBoardLimitsWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidthUnit
@@ -1238,14 +1382,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsWidthUnit : Int {
+  final func reset_mBoardLimitsWidthUnit_toDefaultValue () {
+    self.mBoardLimitsWidthUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsWidthUnit : Int {
     get { return self.mBoardLimitsWidthUnit_property.propval }
     set { self.mBoardLimitsWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsWidthUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsWidthUnit_property.prop }
+  final var mBoardLimitsWidthUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardClearance
@@ -1255,14 +1405,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardClearance : Int {
+  final func reset_mBoardClearance_toDefaultValue () {
+    self.mBoardClearance = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardClearance : Int {
     get { return self.mBoardClearance_property.propval }
     set { self.mBoardClearance_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardClearance_property_selection : EBSelection <Int> { return self.mBoardClearance_property.prop }
+  final var mBoardClearance_property_selection : EBSelection <Int> { return self.mBoardClearance_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardClearanceUnit
@@ -1272,14 +1428,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardClearanceUnit : Int {
+  final func reset_mBoardClearanceUnit_toDefaultValue () {
+    self.mBoardClearanceUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardClearanceUnit : Int {
     get { return self.mBoardClearanceUnit_property.propval }
     set { self.mBoardClearanceUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardClearanceUnit_property_selection : EBSelection <Int> { return self.mBoardClearanceUnit_property.prop }
+  final var mBoardClearanceUnit_property_selection : EBSelection <Int> { return self.mBoardClearanceUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsSelectedInspector
@@ -1289,14 +1451,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsSelectedInspector : Int {
+  final func reset_mBoardLimitsSelectedInspector_toDefaultValue () {
+    self.mBoardLimitsSelectedInspector = 1
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsSelectedInspector : Int {
     get { return self.mBoardLimitsSelectedInspector_property.propval }
     set { self.mBoardLimitsSelectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardLimitsSelectedInspector_property.prop }
+  final var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardLimitsSelectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsHorizontalFlip
@@ -1306,14 +1474,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsHorizontalFlip : Bool {
+  final func reset_mBoardLimitsHorizontalFlip_toDefaultValue () {
+    self.mBoardLimitsHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsHorizontalFlip : Bool {
     get { return self.mBoardLimitsHorizontalFlip_property.propval }
     set { self.mBoardLimitsHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsHorizontalFlip_property.prop }
+  final var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsVerticalFlip
@@ -1323,14 +1497,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsVerticalFlip : Bool {
+  final func reset_mBoardLimitsVerticalFlip_toDefaultValue () {
+    self.mBoardLimitsVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsVerticalFlip : Bool {
     get { return self.mBoardLimitsVerticalFlip_property.propval }
     set { self.mBoardLimitsVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsVerticalFlip_property.prop }
+  final var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStyle
@@ -1340,14 +1520,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsGridStyle : GridStyle {
+  final func reset_mBoardLimitsGridStyle_toDefaultValue () {
+    self.mBoardLimitsGridStyle = GridStyle.line
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsGridStyle : GridStyle {
     get { return self.mBoardLimitsGridStyle_property.propval }
     set { self.mBoardLimitsGridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardLimitsGridStyle_property.prop }
+  final var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardLimitsGridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridDisplayFactor
@@ -1357,14 +1543,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsGridDisplayFactor : Int {
+  final func reset_mBoardLimitsGridDisplayFactor_toDefaultValue () {
+    self.mBoardLimitsGridDisplayFactor = 5
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsGridDisplayFactor : Int {
     get { return self.mBoardLimitsGridDisplayFactor_property.propval }
     set { self.mBoardLimitsGridDisplayFactor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardLimitsGridDisplayFactor_property.prop }
+  final var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardLimitsGridDisplayFactor_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsZoom
@@ -1374,14 +1566,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsZoom : Int {
+  final func reset_mBoardLimitsZoom_toDefaultValue () {
+    self.mBoardLimitsZoom = 200
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsZoom : Int {
     get { return self.mBoardLimitsZoom_property.propval }
     set { self.mBoardLimitsZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsZoom_property_selection : EBSelection <Int> { return self.mBoardLimitsZoom_property.prop }
+  final var mBoardLimitsZoom_property_selection : EBSelection <Int> { return self.mBoardLimitsZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStep
@@ -1391,14 +1589,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsGridStep : Int {
+  final func reset_mBoardLimitsGridStep_toDefaultValue () {
+    self.mBoardLimitsGridStep = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsGridStep : Int {
     get { return self.mBoardLimitsGridStep_property.propval }
     set { self.mBoardLimitsGridStep_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsGridStep_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStep_property.prop }
+  final var mBoardLimitsGridStep_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStep_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStepUnit
@@ -1408,14 +1612,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsGridStepUnit : Int {
+  final func reset_mBoardLimitsGridStepUnit_toDefaultValue () {
+    self.mBoardLimitsGridStepUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsGridStepUnit : Int {
     get { return self.mBoardLimitsGridStepUnit_property.propval }
     set { self.mBoardLimitsGridStepUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStepUnit_property.prop }
+  final var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStepUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsBoundingBoxUnit
@@ -1425,14 +1635,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardLimitsBoundingBoxUnit : Int {
+  final func reset_mBoardLimitsBoundingBoxUnit_toDefaultValue () {
+    self.mBoardLimitsBoundingBoxUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardLimitsBoundingBoxUnit : Int {
     get { return self.mBoardLimitsBoundingBoxUnit_property.propval }
     set { self.mBoardLimitsBoundingBoxUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsBoundingBoxUnit_property.prop }
+  final var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsBoundingBoxUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardPointsBoundingBoxUnit
@@ -1442,14 +1658,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardPointsBoundingBoxUnit : Int {
+  final func reset_mBoardPointsBoundingBoxUnit_toDefaultValue () {
+    self.mBoardPointsBoundingBoxUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardPointsBoundingBoxUnit : Int {
     get { return self.mBoardPointsBoundingBoxUnit_property.propval }
     set { self.mBoardPointsBoundingBoxUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardPointsBoundingBoxUnit_property.prop }
+  final var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardPointsBoundingBoxUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardSelectedCurveDisplayUnit
@@ -1459,14 +1681,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardSelectedCurveDisplayUnit : Int {
+  final func reset_mBoardSelectedCurveDisplayUnit_toDefaultValue () {
+    self.mBoardSelectedCurveDisplayUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardSelectedCurveDisplayUnit : Int {
     get { return self.mBoardSelectedCurveDisplayUnit_property.propval }
     set { self.mBoardSelectedCurveDisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.prop }
+  final var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardShape
@@ -1476,14 +1704,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mBoardShape : BoardShape {
+  final func reset_mBoardShape_toDefaultValue () {
+    self.mBoardShape = BoardShape.rectangular
+  }
+
+  //····················································································································
+
+  final var mBoardShape : BoardShape {
     get { return self.mBoardShape_property.propval }
     set { self.mBoardShape_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBoardShape_property_selection : EBSelection <BoardShape> { return self.mBoardShape_property.prop }
+  final var mBoardShape_property_selection : EBSelection <BoardShape> { return self.mBoardShape_property.prop }
 
   //····················································································································
   //   Atomic property: mRectangularBoardWidth
@@ -1493,14 +1727,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRectangularBoardWidth : Int {
+  final func reset_mRectangularBoardWidth_toDefaultValue () {
+    self.mRectangularBoardWidth = 9000000
+  }
+
+  //····················································································································
+
+  final var mRectangularBoardWidth : Int {
     get { return self.mRectangularBoardWidth_property.propval }
     set { self.mRectangularBoardWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRectangularBoardWidth_property_selection : EBSelection <Int> { return self.mRectangularBoardWidth_property.prop }
+  final var mRectangularBoardWidth_property_selection : EBSelection <Int> { return self.mRectangularBoardWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mRectangularBoardWidthUnit
@@ -1510,14 +1750,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRectangularBoardWidthUnit : Int {
+  final func reset_mRectangularBoardWidthUnit_toDefaultValue () {
+    self.mRectangularBoardWidthUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mRectangularBoardWidthUnit : Int {
     get { return self.mRectangularBoardWidthUnit_property.propval }
     set { self.mRectangularBoardWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRectangularBoardWidthUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardWidthUnit_property.prop }
+  final var mRectangularBoardWidthUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mRectangularBoardHeight
@@ -1527,14 +1773,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRectangularBoardHeight : Int {
+  final func reset_mRectangularBoardHeight_toDefaultValue () {
+    self.mRectangularBoardHeight = 9000000
+  }
+
+  //····················································································································
+
+  final var mRectangularBoardHeight : Int {
     get { return self.mRectangularBoardHeight_property.propval }
     set { self.mRectangularBoardHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRectangularBoardHeight_property_selection : EBSelection <Int> { return self.mRectangularBoardHeight_property.prop }
+  final var mRectangularBoardHeight_property_selection : EBSelection <Int> { return self.mRectangularBoardHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mRectangularBoardHeightUnit
@@ -1544,14 +1796,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRectangularBoardHeightUnit : Int {
+  final func reset_mRectangularBoardHeightUnit_toDefaultValue () {
+    self.mRectangularBoardHeightUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mRectangularBoardHeightUnit : Int {
     get { return self.mRectangularBoardHeightUnit_property.propval }
     set { self.mRectangularBoardHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRectangularBoardHeightUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardHeightUnit_property.prop }
+  final var mRectangularBoardHeightUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardHeightUnit_property.prop }
 
   //····················································································································
   //   To many property: mSheets
@@ -1580,14 +1838,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mDefaultNetClassName : String {
+  final func reset_mDefaultNetClassName_toDefaultValue () {
+    self.mDefaultNetClassName = ""
+  }
+
+  //····················································································································
+
+  final var mDefaultNetClassName : String {
     get { return self.mDefaultNetClassName_property.propval }
     set { self.mDefaultNetClassName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDefaultNetClassName_property_selection : EBSelection <String> { return self.mDefaultNetClassName_property.prop }
+  final var mDefaultNetClassName_property_selection : EBSelection <String> { return self.mDefaultNetClassName_property.prop }
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -1597,14 +1861,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSelectedPageIndex : Int {
+  final func reset_mSelectedPageIndex_toDefaultValue () {
+    self.mSelectedPageIndex = 0
+  }
+
+  //····················································································································
+
+  final var mSelectedPageIndex : Int {
     get { return self.mSelectedPageIndex_property.propval }
     set { self.mSelectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
+  final var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: mSelectedSchematicInspector
@@ -1614,14 +1884,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSelectedSchematicInspector : Int {
+  final func reset_mSelectedSchematicInspector_toDefaultValue () {
+    self.mSelectedSchematicInspector = 0
+  }
+
+  //····················································································································
+
+  final var mSelectedSchematicInspector : Int {
     get { return self.mSelectedSchematicInspector_property.propval }
     set { self.mSelectedSchematicInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedSchematicInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicInspector_property.prop }
+  final var mSelectedSchematicInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicInspector_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicTitle
@@ -1631,14 +1907,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicTitle : String {
+  final func reset_mSchematicTitle_toDefaultValue () {
+    self.mSchematicTitle = ""
+  }
+
+  //····················································································································
+
+  final var mSchematicTitle : String {
     get { return self.mSchematicTitle_property.propval }
     set { self.mSchematicTitle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicTitle_property_selection : EBSelection <String> { return self.mSchematicTitle_property.prop }
+  final var mSchematicTitle_property_selection : EBSelection <String> { return self.mSchematicTitle_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicVersion
@@ -1648,14 +1930,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicVersion : String {
+  final func reset_mSchematicVersion_toDefaultValue () {
+    self.mSchematicVersion = ""
+  }
+
+  //····················································································································
+
+  final var mSchematicVersion : String {
     get { return self.mSchematicVersion_property.propval }
     set { self.mSchematicVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicVersion_property_selection : EBSelection <String> { return self.mSchematicVersion_property.prop }
+  final var mSchematicVersion_property_selection : EBSelection <String> { return self.mSchematicVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicDate
@@ -1665,14 +1953,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicDate : Date {
+  final func reset_mSchematicDate_toDefaultValue () {
+    self.mSchematicDate = Date ()
+  }
+
+  //····················································································································
+
+  final var mSchematicDate : Date {
     get { return self.mSchematicDate_property.propval }
     set { self.mSchematicDate_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicDate_property_selection : EBSelection <Date> { return self.mSchematicDate_property.prop }
+  final var mSchematicDate_property_selection : EBSelection <Date> { return self.mSchematicDate_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicHorizontalFlip
@@ -1682,14 +1976,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicHorizontalFlip : Bool {
+  final func reset_mSchematicHorizontalFlip_toDefaultValue () {
+    self.mSchematicHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mSchematicHorizontalFlip : Bool {
     get { return self.mSchematicHorizontalFlip_property.propval }
     set { self.mSchematicHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSchematicHorizontalFlip_property.prop }
+  final var mSchematicHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSchematicHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicVerticalFlip
@@ -1699,14 +1999,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicVerticalFlip : Bool {
+  final func reset_mSchematicVerticalFlip_toDefaultValue () {
+    self.mSchematicVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mSchematicVerticalFlip : Bool {
     get { return self.mSchematicVerticalFlip_property.propval }
     set { self.mSchematicVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicVerticalFlip_property_selection : EBSelection <Bool> { return self.mSchematicVerticalFlip_property.prop }
+  final var mSchematicVerticalFlip_property_selection : EBSelection <Bool> { return self.mSchematicVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicZoom
@@ -1716,14 +2022,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicZoom : Int {
+  final func reset_mSchematicZoom_toDefaultValue () {
+    self.mSchematicZoom = 100
+  }
+
+  //····················································································································
+
+  final var mSchematicZoom : Int {
     get { return self.mSchematicZoom_property.propval }
     set { self.mSchematicZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicZoom_property_selection : EBSelection <Int> { return self.mSchematicZoom_property.prop }
+  final var mSchematicZoom_property_selection : EBSelection <Int> { return self.mSchematicZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicGridStyle
@@ -1733,14 +2045,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicGridStyle : GridStyle {
+  final func reset_mSchematicGridStyle_toDefaultValue () {
+    self.mSchematicGridStyle = GridStyle.line
+  }
+
+  //····················································································································
+
+  final var mSchematicGridStyle : GridStyle {
     get { return self.mSchematicGridStyle_property.propval }
     set { self.mSchematicGridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicGridStyle_property_selection : EBSelection <GridStyle> { return self.mSchematicGridStyle_property.prop }
+  final var mSchematicGridStyle_property_selection : EBSelection <GridStyle> { return self.mSchematicGridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicGridDisplayFactor
@@ -1750,14 +2068,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicGridDisplayFactor : Int {
+  final func reset_mSchematicGridDisplayFactor_toDefaultValue () {
+    self.mSchematicGridDisplayFactor = 4
+  }
+
+  //····················································································································
+
+  final var mSchematicGridDisplayFactor : Int {
     get { return self.mSchematicGridDisplayFactor_property.propval }
     set { self.mSchematicGridDisplayFactor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicGridDisplayFactor_property.prop }
+  final var mSchematicGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicGridDisplayFactor_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicCustomWidth
@@ -1767,14 +2091,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicCustomWidth : Int {
+  final func reset_mSchematicCustomWidth_toDefaultValue () {
+    self.mSchematicCustomWidth = 27000000
+  }
+
+  //····················································································································
+
+  final var mSchematicCustomWidth : Int {
     get { return self.mSchematicCustomWidth_property.propval }
     set { self.mSchematicCustomWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicCustomWidth_property_selection : EBSelection <Int> { return self.mSchematicCustomWidth_property.prop }
+  final var mSchematicCustomWidth_property_selection : EBSelection <Int> { return self.mSchematicCustomWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicCustomWidthUnit
@@ -1784,14 +2114,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicCustomWidthUnit : Int {
+  final func reset_mSchematicCustomWidthUnit_toDefaultValue () {
+    self.mSchematicCustomWidthUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mSchematicCustomWidthUnit : Int {
     get { return self.mSchematicCustomWidthUnit_property.propval }
     set { self.mSchematicCustomWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicCustomWidthUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomWidthUnit_property.prop }
+  final var mSchematicCustomWidthUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicCustomHeight
@@ -1801,14 +2137,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicCustomHeight : Int {
+  final func reset_mSchematicCustomHeight_toDefaultValue () {
+    self.mSchematicCustomHeight = 27000000
+  }
+
+  //····················································································································
+
+  final var mSchematicCustomHeight : Int {
     get { return self.mSchematicCustomHeight_property.propval }
     set { self.mSchematicCustomHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicCustomHeight_property_selection : EBSelection <Int> { return self.mSchematicCustomHeight_property.prop }
+  final var mSchematicCustomHeight_property_selection : EBSelection <Int> { return self.mSchematicCustomHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicCustomHeightUnit
@@ -1818,14 +2160,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicCustomHeightUnit : Int {
+  final func reset_mSchematicCustomHeightUnit_toDefaultValue () {
+    self.mSchematicCustomHeightUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mSchematicCustomHeightUnit : Int {
     get { return self.mSchematicCustomHeightUnit_property.propval }
     set { self.mSchematicCustomHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicCustomHeightUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomHeightUnit_property.prop }
+  final var mSchematicCustomHeightUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomHeightUnit_property.prop }
 
   //····················································································································
   //   To many property: mNetClasses
@@ -1892,14 +2240,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSchematicSheetOrientation : SchematicSheetOrientation {
+  final func reset_mSchematicSheetOrientation_toDefaultValue () {
+    self.mSchematicSheetOrientation = SchematicSheetOrientation.a4Horizontal
+  }
+
+  //····················································································································
+
+  final var mSchematicSheetOrientation : SchematicSheetOrientation {
     get { return self.mSchematicSheetOrientation_property.propval }
     set { self.mSchematicSheetOrientation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
+  final var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
 
   //····················································································································
   //   To many property: mBorderCurves
@@ -1947,14 +2301,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRastnetDisplay : RastnetDisplay {
+  final func reset_mRastnetDisplay_toDefaultValue () {
+    self.mRastnetDisplay = RastnetDisplay.allNets
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplay : RastnetDisplay {
     get { return self.mRastnetDisplay_property.propval }
     set { self.mRastnetDisplay_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay> { return self.mRastnetDisplay_property.prop }
+  final var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay> { return self.mRastnetDisplay_property.prop }
 
   //····················································································································
   //   Atomic property: mRastnetDisplayedNetName
@@ -1964,14 +2324,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRastnetDisplayedNetName : String {
+  final func reset_mRastnetDisplayedNetName_toDefaultValue () {
+    self.mRastnetDisplayedNetName = ""
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplayedNetName : String {
     get { return self.mRastnetDisplayedNetName_property.propval }
     set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRastnetDisplayedNetName_property_selection : EBSelection <String> { return self.mRastnetDisplayedNetName_property.prop }
+  final var mRastnetDisplayedNetName_property_selection : EBSelection <String> { return self.mRastnetDisplayedNetName_property.prop }
 
   //····················································································································
   //   Atomic property: mRastnetDisplayedComponentName
@@ -1981,14 +2347,20 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mRastnetDisplayedComponentName : String {
+  final func reset_mRastnetDisplayedComponentName_toDefaultValue () {
+    self.mRastnetDisplayedComponentName = ""
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplayedComponentName : String {
     get { return self.mRastnetDisplayedComponentName_property.propval }
     set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRastnetDisplayedComponentName_property_selection : EBSelection <String> { return self.mRastnetDisplayedComponentName_property.prop }
+  final var mRastnetDisplayedComponentName_property_selection : EBSelection <String> { return self.mRastnetDisplayedComponentName_property.prop }
 
   //····················································································································
   //   To many property: mComponents
@@ -6240,91 +6612,91 @@ class ProjectRoot : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mArtworkName
-    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
+    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkVersion")
+    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
   //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey:"mPDFBoardBackgroundColor")
+    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
   //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
-    self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNet")
+    self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey: "mCheckClearanceBetweenPadsOfSameNet")
   //--- Atomic property: mLastERCCheckingIsSuccess
-    self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey:"mLastERCCheckingIsSuccess")
+    self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
-    self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey:"mLastERCCheckingSignature")
+    self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
   //--- Atomic property: mAutoRouterPreferredDirections
-    self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
+    self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey: "mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
-    self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey:"mAutorouterSnapAngle")
+    self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterSnapAngle")
   //--- Atomic property: mRouteDirection
-    self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey:"mRouteDirection")
+    self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey: "mRouteDirection")
   //--- Atomic property: mRouteOrigin
-    self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey:"mRouteOrigin")
+    self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey: "mRouteOrigin")
   //--- Atomic property: mTrackLengthUnit
-    self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mTrackLengthUnit")
+    self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
-    self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey:"mLayoutClearance")
+    self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearance")
   //--- Atomic property: mLayoutClearanceUnit
-    self.mLayoutClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"mLayoutClearanceUnit")
+    self.mLayoutClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearanceUnit")
   //--- Atomic property: mBoardSelectedInspector
-    self.mBoardSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"mBoardSelectedInspector")
+    self.mBoardSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedInspector")
   //--- Atomic property: mBoardHorizontalFlip
-    self.mBoardHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mBoardHorizontalFlip")
+    self.mBoardHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardHorizontalFlip")
   //--- Atomic property: mBoardVerticalFlip
-    self.mBoardVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mBoardVerticalFlip")
+    self.mBoardVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardVerticalFlip")
   //--- Atomic property: mBoardGridStyle
-    self.mBoardGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mBoardGridStyle")
+    self.mBoardGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStyle")
   //--- Atomic property: mBoardGridDisplayFactor
-    self.mBoardGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mBoardGridDisplayFactor")
+    self.mBoardGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridDisplayFactor")
   //--- Atomic property: mBoardZoom
-    self.mBoardZoom_property.storeIn (dictionary: ioDictionary, forKey:"mBoardZoom")
+    self.mBoardZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardZoom")
   //--- Atomic property: mBoardGridStep
-    self.mBoardGridStep_property.storeIn (dictionary: ioDictionary, forKey:"mBoardGridStep")
+    self.mBoardGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStep")
   //--- Atomic property: mBoardGridStepUnit
-    self.mBoardGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardGridStepUnit")
+    self.mBoardGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStepUnit")
   //--- Atomic property: mErrorOrWarningIssueSize
-    self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey:"mErrorOrWarningIssueSize")
+    self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey: "mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
-    self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mControlKeyHiliteDiameter")
+    self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mControlKeyHiliteDiameter")
   //--- Atomic property: mBoardLimitsWidth
-    self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
+    self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
-    self.mBoardLimitsWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidthUnit")
+    self.mBoardLimitsWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidthUnit")
   //--- Atomic property: mBoardClearance
-    self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey:"mBoardClearance")
+    self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearance")
   //--- Atomic property: mBoardClearanceUnit
-    self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardClearanceUnit")
+    self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearanceUnit")
   //--- Atomic property: mBoardLimitsSelectedInspector
-    self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsSelectedInspector")
+    self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsSelectedInspector")
   //--- Atomic property: mBoardLimitsHorizontalFlip
-    self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsHorizontalFlip")
+    self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsHorizontalFlip")
   //--- Atomic property: mBoardLimitsVerticalFlip
-    self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsVerticalFlip")
+    self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsVerticalFlip")
   //--- Atomic property: mBoardLimitsGridStyle
-    self.mBoardLimitsGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStyle")
+    self.mBoardLimitsGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStyle")
   //--- Atomic property: mBoardLimitsGridDisplayFactor
-    self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridDisplayFactor")
+    self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridDisplayFactor")
   //--- Atomic property: mBoardLimitsZoom
-    self.mBoardLimitsZoom_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsZoom")
+    self.mBoardLimitsZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsZoom")
   //--- Atomic property: mBoardLimitsGridStep
-    self.mBoardLimitsGridStep_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStep")
+    self.mBoardLimitsGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStep")
   //--- Atomic property: mBoardLimitsGridStepUnit
-    self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStepUnit")
+    self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStepUnit")
   //--- Atomic property: mBoardLimitsBoundingBoxUnit
-    self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
+    self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsBoundingBoxUnit")
   //--- Atomic property: mBoardPointsBoundingBoxUnit
-    self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardPointsBoundingBoxUnit")
+    self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
-    self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardSelectedCurveDisplayUnit")
+    self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
   //--- Atomic property: mBoardShape
-    self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey:"mBoardShape")
+    self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey: "mBoardShape")
   //--- Atomic property: mRectangularBoardWidth
-    self.mRectangularBoardWidth_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardWidth")
+    self.mRectangularBoardWidth_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidth")
   //--- Atomic property: mRectangularBoardWidthUnit
-    self.mRectangularBoardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardWidthUnit")
+    self.mRectangularBoardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidthUnit")
   //--- Atomic property: mRectangularBoardHeight
-    self.mRectangularBoardHeight_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardHeight")
+    self.mRectangularBoardHeight_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeight")
   //--- Atomic property: mRectangularBoardHeightUnit
-    self.mRectangularBoardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardHeightUnit")
+    self.mRectangularBoardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeightUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -6332,35 +6704,35 @@ class ProjectRoot : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mDefaultNetClassName
-    self.mDefaultNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultNetClassName")
+    self.mDefaultNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultNetClassName")
   //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
+    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector
-    self.mSelectedSchematicInspector_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedSchematicInspector")
+    self.mSelectedSchematicInspector_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSchematicInspector")
   //--- Atomic property: mSchematicTitle
-    self.mSchematicTitle_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicTitle")
+    self.mSchematicTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicTitle")
   //--- Atomic property: mSchematicVersion
-    self.mSchematicVersion_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicVersion")
+    self.mSchematicVersion_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVersion")
   //--- Atomic property: mSchematicDate
-    self.mSchematicDate_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicDate")
+    self.mSchematicDate_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicDate")
   //--- Atomic property: mSchematicHorizontalFlip
-    self.mSchematicHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicHorizontalFlip")
+    self.mSchematicHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicHorizontalFlip")
   //--- Atomic property: mSchematicVerticalFlip
-    self.mSchematicVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicVerticalFlip")
+    self.mSchematicVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVerticalFlip")
   //--- Atomic property: mSchematicZoom
-    self.mSchematicZoom_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicZoom")
+    self.mSchematicZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicZoom")
   //--- Atomic property: mSchematicGridStyle
-    self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicGridStyle")
+    self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridStyle")
   //--- Atomic property: mSchematicGridDisplayFactor
-    self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicGridDisplayFactor")
+    self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridDisplayFactor")
   //--- Atomic property: mSchematicCustomWidth
-    self.mSchematicCustomWidth_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomWidth")
+    self.mSchematicCustomWidth_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidth")
   //--- Atomic property: mSchematicCustomWidthUnit
-    self.mSchematicCustomWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomWidthUnit")
+    self.mSchematicCustomWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidthUnit")
   //--- Atomic property: mSchematicCustomHeight
-    self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomHeight")
+    self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeight")
   //--- Atomic property: mSchematicCustomHeightUnit
-    self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomHeightUnit")
+    self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeightUnit")
   //--- To many property: mNetClasses
     self.store (
       managedObjectArray: self.mNetClasses_property.propval,
@@ -6380,7 +6752,7 @@ class ProjectRoot : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicSheetOrientation")
+    self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
   //--- To many property: mBorderCurves
     self.store (
       managedObjectArray: self.mBorderCurves_property.propval,
@@ -6394,11 +6766,11 @@ class ProjectRoot : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplay")
+    self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
   //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplayedNetName")
+    self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
   //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplayedComponentName")
+    self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval,
@@ -6495,129 +6867,129 @@ class ProjectRoot : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mArtworkName
-    self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
+    self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey:"mArtworkVersion")
+    self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey: "mArtworkVersion")
   //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey:"mPDFBoardBackgroundColor")
+    self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey: "mPDFBoardBackgroundColor")
   //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
-    self.mCheckClearanceBetweenPadsOfSameNet_property.readFrom (dictionary: inDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNet")
+    self.mCheckClearanceBetweenPadsOfSameNet_property.readFrom (dictionary: inDictionary, forKey: "mCheckClearanceBetweenPadsOfSameNet")
   //--- Atomic property: mLastERCCheckingIsSuccess
-    self.mLastERCCheckingIsSuccess_property.readFrom (dictionary: inDictionary, forKey:"mLastERCCheckingIsSuccess")
+    self.mLastERCCheckingIsSuccess_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
-    self.mLastERCCheckingSignature_property.readFrom (dictionary: inDictionary, forKey:"mLastERCCheckingSignature")
+    self.mLastERCCheckingSignature_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingSignature")
   //--- Atomic property: mAutoRouterPreferredDirections
-    self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
+    self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey: "mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
-    self.mAutorouterSnapAngle_property.readFrom (dictionary: inDictionary, forKey:"mAutorouterSnapAngle")
+    self.mAutorouterSnapAngle_property.readFrom (dictionary: inDictionary, forKey: "mAutorouterSnapAngle")
   //--- Atomic property: mRouteDirection
-    self.mRouteDirection_property.readFrom (dictionary: inDictionary, forKey:"mRouteDirection")
+    self.mRouteDirection_property.readFrom (dictionary: inDictionary, forKey: "mRouteDirection")
   //--- Atomic property: mRouteOrigin
-    self.mRouteOrigin_property.readFrom (dictionary: inDictionary, forKey:"mRouteOrigin")
+    self.mRouteOrigin_property.readFrom (dictionary: inDictionary, forKey: "mRouteOrigin")
   //--- Atomic property: mTrackLengthUnit
-    self.mTrackLengthUnit_property.readFrom (dictionary: inDictionary, forKey:"mTrackLengthUnit")
+    self.mTrackLengthUnit_property.readFrom (dictionary: inDictionary, forKey: "mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
-    self.mLayoutClearance_property.readFrom (dictionary: inDictionary, forKey:"mLayoutClearance")
+    self.mLayoutClearance_property.readFrom (dictionary: inDictionary, forKey: "mLayoutClearance")
   //--- Atomic property: mLayoutClearanceUnit
-    self.mLayoutClearanceUnit_property.readFrom (dictionary: inDictionary, forKey:"mLayoutClearanceUnit")
+    self.mLayoutClearanceUnit_property.readFrom (dictionary: inDictionary, forKey: "mLayoutClearanceUnit")
   //--- Atomic property: mBoardSelectedInspector
-    self.mBoardSelectedInspector_property.readFrom (dictionary: inDictionary, forKey:"mBoardSelectedInspector")
+    self.mBoardSelectedInspector_property.readFrom (dictionary: inDictionary, forKey: "mBoardSelectedInspector")
   //--- Atomic property: mBoardHorizontalFlip
-    self.mBoardHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mBoardHorizontalFlip")
+    self.mBoardHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mBoardHorizontalFlip")
   //--- Atomic property: mBoardVerticalFlip
-    self.mBoardVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mBoardVerticalFlip")
+    self.mBoardVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mBoardVerticalFlip")
   //--- Atomic property: mBoardGridStyle
-    self.mBoardGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mBoardGridStyle")
+    self.mBoardGridStyle_property.readFrom (dictionary: inDictionary, forKey: "mBoardGridStyle")
   //--- Atomic property: mBoardGridDisplayFactor
-    self.mBoardGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mBoardGridDisplayFactor")
+    self.mBoardGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey: "mBoardGridDisplayFactor")
   //--- Atomic property: mBoardZoom
-    self.mBoardZoom_property.readFrom (dictionary: inDictionary, forKey:"mBoardZoom")
+    self.mBoardZoom_property.readFrom (dictionary: inDictionary, forKey: "mBoardZoom")
   //--- Atomic property: mBoardGridStep
-    self.mBoardGridStep_property.readFrom (dictionary: inDictionary, forKey:"mBoardGridStep")
+    self.mBoardGridStep_property.readFrom (dictionary: inDictionary, forKey: "mBoardGridStep")
   //--- Atomic property: mBoardGridStepUnit
-    self.mBoardGridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardGridStepUnit")
+    self.mBoardGridStepUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardGridStepUnit")
   //--- Atomic property: mErrorOrWarningIssueSize
-    self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey:"mErrorOrWarningIssueSize")
+    self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey: "mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
-    self.mControlKeyHiliteDiameter_property.readFrom (dictionary: inDictionary, forKey:"mControlKeyHiliteDiameter")
+    self.mControlKeyHiliteDiameter_property.readFrom (dictionary: inDictionary, forKey: "mControlKeyHiliteDiameter")
   //--- Atomic property: mBoardLimitsWidth
-    self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
+    self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
-    self.mBoardLimitsWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidthUnit")
+    self.mBoardLimitsWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsWidthUnit")
   //--- Atomic property: mBoardClearance
-    self.mBoardClearance_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearance")
+    self.mBoardClearance_property.readFrom (dictionary: inDictionary, forKey: "mBoardClearance")
   //--- Atomic property: mBoardClearanceUnit
-    self.mBoardClearanceUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearanceUnit")
+    self.mBoardClearanceUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardClearanceUnit")
   //--- Atomic property: mBoardLimitsSelectedInspector
-    self.mBoardLimitsSelectedInspector_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsSelectedInspector")
+    self.mBoardLimitsSelectedInspector_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsSelectedInspector")
   //--- Atomic property: mBoardLimitsHorizontalFlip
-    self.mBoardLimitsHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsHorizontalFlip")
+    self.mBoardLimitsHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsHorizontalFlip")
   //--- Atomic property: mBoardLimitsVerticalFlip
-    self.mBoardLimitsVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsVerticalFlip")
+    self.mBoardLimitsVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsVerticalFlip")
   //--- Atomic property: mBoardLimitsGridStyle
-    self.mBoardLimitsGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStyle")
+    self.mBoardLimitsGridStyle_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsGridStyle")
   //--- Atomic property: mBoardLimitsGridDisplayFactor
-    self.mBoardLimitsGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridDisplayFactor")
+    self.mBoardLimitsGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsGridDisplayFactor")
   //--- Atomic property: mBoardLimitsZoom
-    self.mBoardLimitsZoom_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsZoom")
+    self.mBoardLimitsZoom_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsZoom")
   //--- Atomic property: mBoardLimitsGridStep
-    self.mBoardLimitsGridStep_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStep")
+    self.mBoardLimitsGridStep_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsGridStep")
   //--- Atomic property: mBoardLimitsGridStepUnit
-    self.mBoardLimitsGridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStepUnit")
+    self.mBoardLimitsGridStepUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsGridStepUnit")
   //--- Atomic property: mBoardLimitsBoundingBoxUnit
-    self.mBoardLimitsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
+    self.mBoardLimitsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsBoundingBoxUnit")
   //--- Atomic property: mBoardPointsBoundingBoxUnit
-    self.mBoardPointsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardPointsBoundingBoxUnit")
+    self.mBoardPointsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
-    self.mBoardSelectedCurveDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardSelectedCurveDisplayUnit")
+    self.mBoardSelectedCurveDisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
   //--- Atomic property: mBoardShape
-    self.mBoardShape_property.readFrom (dictionary: inDictionary, forKey:"mBoardShape")
+    self.mBoardShape_property.readFrom (dictionary: inDictionary, forKey: "mBoardShape")
   //--- Atomic property: mRectangularBoardWidth
-    self.mRectangularBoardWidth_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardWidth")
+    self.mRectangularBoardWidth_property.readFrom (dictionary: inDictionary, forKey: "mRectangularBoardWidth")
   //--- Atomic property: mRectangularBoardWidthUnit
-    self.mRectangularBoardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardWidthUnit")
+    self.mRectangularBoardWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mRectangularBoardWidthUnit")
   //--- Atomic property: mRectangularBoardHeight
-    self.mRectangularBoardHeight_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardHeight")
+    self.mRectangularBoardHeight_property.readFrom (dictionary: inDictionary, forKey: "mRectangularBoardHeight")
   //--- Atomic property: mRectangularBoardHeightUnit
-    self.mRectangularBoardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardHeightUnit")
+    self.mRectangularBoardHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "mRectangularBoardHeightUnit")
   //--- Atomic property: mDefaultNetClassName
-    self.mDefaultNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mDefaultNetClassName")
+    self.mDefaultNetClassName_property.readFrom (dictionary: inDictionary, forKey: "mDefaultNetClassName")
   //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
+    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector
-    self.mSelectedSchematicInspector_property.readFrom (dictionary: inDictionary, forKey:"mSelectedSchematicInspector")
+    self.mSelectedSchematicInspector_property.readFrom (dictionary: inDictionary, forKey: "mSelectedSchematicInspector")
   //--- Atomic property: mSchematicTitle
-    self.mSchematicTitle_property.readFrom (dictionary: inDictionary, forKey:"mSchematicTitle")
+    self.mSchematicTitle_property.readFrom (dictionary: inDictionary, forKey: "mSchematicTitle")
   //--- Atomic property: mSchematicVersion
-    self.mSchematicVersion_property.readFrom (dictionary: inDictionary, forKey:"mSchematicVersion")
+    self.mSchematicVersion_property.readFrom (dictionary: inDictionary, forKey: "mSchematicVersion")
   //--- Atomic property: mSchematicDate
-    self.mSchematicDate_property.readFrom (dictionary: inDictionary, forKey:"mSchematicDate")
+    self.mSchematicDate_property.readFrom (dictionary: inDictionary, forKey: "mSchematicDate")
   //--- Atomic property: mSchematicHorizontalFlip
-    self.mSchematicHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSchematicHorizontalFlip")
+    self.mSchematicHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mSchematicHorizontalFlip")
   //--- Atomic property: mSchematicVerticalFlip
-    self.mSchematicVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSchematicVerticalFlip")
+    self.mSchematicVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mSchematicVerticalFlip")
   //--- Atomic property: mSchematicZoom
-    self.mSchematicZoom_property.readFrom (dictionary: inDictionary, forKey:"mSchematicZoom")
+    self.mSchematicZoom_property.readFrom (dictionary: inDictionary, forKey: "mSchematicZoom")
   //--- Atomic property: mSchematicGridStyle
-    self.mSchematicGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mSchematicGridStyle")
+    self.mSchematicGridStyle_property.readFrom (dictionary: inDictionary, forKey: "mSchematicGridStyle")
   //--- Atomic property: mSchematicGridDisplayFactor
-    self.mSchematicGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mSchematicGridDisplayFactor")
+    self.mSchematicGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey: "mSchematicGridDisplayFactor")
   //--- Atomic property: mSchematicCustomWidth
-    self.mSchematicCustomWidth_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomWidth")
+    self.mSchematicCustomWidth_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomWidth")
   //--- Atomic property: mSchematicCustomWidthUnit
-    self.mSchematicCustomWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomWidthUnit")
+    self.mSchematicCustomWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomWidthUnit")
   //--- Atomic property: mSchematicCustomHeight
-    self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomHeight")
+    self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeight")
   //--- Atomic property: mSchematicCustomHeightUnit
-    self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomHeightUnit")
+    self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeightUnit")
   //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey:"mSchematicSheetOrientation")
+    self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
   //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplay")
+    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplay")
   //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedNetName")
+    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedNetName")
   //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedComponentName")
+    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedComponentName")
   }
 
 

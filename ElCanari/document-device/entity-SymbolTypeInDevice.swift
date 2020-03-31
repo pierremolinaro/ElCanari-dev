@@ -100,14 +100,20 @@ class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mTypeName : String {
+  final func reset_mTypeName_toDefaultValue () {
+    self.mTypeName = ""
+  }
+
+  //····················································································································
+
+  final var mTypeName : String {
     get { return self.mTypeName_property.propval }
     set { self.mTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTypeName_property_selection : EBSelection <String> { return self.mTypeName_property.prop }
+  final var mTypeName_property_selection : EBSelection <String> { return self.mTypeName_property.prop }
 
   //····················································································································
   //   Atomic property: mVersion
@@ -117,14 +123,20 @@ class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mVersion : Int {
+  final func reset_mVersion_toDefaultValue () {
+    self.mVersion = 0
+  }
+
+  //····················································································································
+
+  final var mVersion : Int {
     get { return self.mVersion_property.propval }
     set { self.mVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
+  final var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mFileData
@@ -134,14 +146,20 @@ class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mFileData : Data {
+  final func reset_mFileData_toDefaultValue () {
+    self.mFileData = Data ()
+  }
+
+  //····················································································································
+
+  final var mFileData : Data {
     get { return self.mFileData_property.propval }
     set { self.mFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
+  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -151,14 +169,20 @@ class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mStrokeBezierPath : NSBezierPath {
+  final func reset_mStrokeBezierPath_toDefaultValue () {
+    self.mStrokeBezierPath = NSBezierPath ()
+  }
+
+  //····················································································································
+
+  final var mStrokeBezierPath : NSBezierPath {
     get { return self.mStrokeBezierPath_property.propval }
     set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
   //   Atomic property: mFilledBezierPath
@@ -168,14 +192,20 @@ class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mFilledBezierPath : NSBezierPath {
+  final func reset_mFilledBezierPath_toDefaultValue () {
+    self.mFilledBezierPath = NSBezierPath ()
+  }
+
+  //····················································································································
+
+  final var mFilledBezierPath : NSBezierPath {
     get { return self.mFilledBezierPath_property.propval }
     set { self.mFilledBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
+  final var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
 
   //····················································································································
   //   To many property: mPinTypes
@@ -602,15 +632,15 @@ class SymbolTypeInDevice : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mTypeName
-    self.mTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mTypeName")
+    self.mTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mTypeName")
   //--- Atomic property: mVersion
-    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey:"mVersion")
+    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
   //--- Atomic property: mFileData
-    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey:"mFileData")
+    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
+    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
   //--- To many property: mPinTypes
     self.store (
       managedObjectArray: self.mPinTypes_property.propval,
@@ -647,15 +677,15 @@ class SymbolTypeInDevice : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mTypeName
-    self.mTypeName_property.readFrom (dictionary: inDictionary, forKey:"mTypeName")
+    self.mTypeName_property.readFrom (dictionary: inDictionary, forKey: "mTypeName")
   //--- Atomic property: mVersion
-    self.mVersion_property.readFrom (dictionary: inDictionary, forKey:"mVersion")
+    self.mVersion_property.readFrom (dictionary: inDictionary, forKey: "mVersion")
   //--- Atomic property: mFileData
-    self.mFileData_property.readFrom (dictionary: inDictionary, forKey:"mFileData")
+    self.mFileData_property.readFrom (dictionary: inDictionary, forKey: "mFileData")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mFilledBezierPath")
+    self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mFilledBezierPath")
   }
 
 

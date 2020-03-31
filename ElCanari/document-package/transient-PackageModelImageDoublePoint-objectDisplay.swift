@@ -18,17 +18,16 @@ func transient_PackageModelImageDoublePoint_objectDisplay (
        _ self_mFirstX : Int,                               
        _ self_mFirstY : Int,                               
        _ self_mFirstColor : NSColor,                       
-       _ self_mRoot_mFirstModelPointCircleRadius : Int?,   
        _ self_mSecondDx : Int,                             
        _ self_mSecondDy : Int,                             
        _ self_mSecondColor : NSColor,                      
-       _ self_mRoot_mSecondModelPointCircleRadius : Int?,  
+       _ self_mRoot_mModelPointsCircleRadius : Int?,       
        _ self_mRoot_mPointsAreLocked : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
-  let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mFirstModelPointCircleRadius ?? 10)
-  let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mSecondModelPointCircleRadius ?? 10)
+  let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
+  let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
   let firstX = canariUnitToCocoa (self_mFirstX)
   let firstY = canariUnitToCocoa (self_mFirstY)
   let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))

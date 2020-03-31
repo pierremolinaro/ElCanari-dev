@@ -39,14 +39,20 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: padDiameter
@@ -56,14 +62,20 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  var padDiameter : Int {
+  final func reset_padDiameter_toDefaultValue () {
+    self.padDiameter = 0
+  }
+
+  //····················································································································
+
+  final var padDiameter : Int {
     get { return self.padDiameter_property.propval }
     set { self.padDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padDiameter_property_selection : EBSelection <Int> { return self.padDiameter_property.prop }
+  final var padDiameter_property_selection : EBSelection <Int> { return self.padDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -73,14 +85,20 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //    init
@@ -196,11 +214,11 @@ class BoardModelVia : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: padDiameter
-    self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey:"padDiameter")
+    self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -219,11 +237,11 @@ class BoardModelVia : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: padDiameter
-    self.padDiameter_property.readFrom (dictionary: inDictionary, forKey:"padDiameter")
+    self.padDiameter_property.readFrom (dictionary: inDictionary, forKey: "padDiameter")
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   }
 
 

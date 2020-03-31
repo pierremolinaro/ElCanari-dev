@@ -137,14 +137,20 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  var mSide : TrackSide {
+  final func reset_mSide_toDefaultValue () {
+    self.mSide = TrackSide.front
+  }
+
+  //····················································································································
+
+  final var mSide : TrackSide {
     get { return self.mSide_property.propval }
     set { self.mSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.prop }
+  final var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.prop }
 
   //····················································································································
   //   Atomic property: mDefaultTrackWidthUnit
@@ -154,14 +160,20 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  var mDefaultTrackWidthUnit : Int {
+  final func reset_mDefaultTrackWidthUnit_toDefaultValue () {
+    self.mDefaultTrackWidthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mDefaultTrackWidthUnit : Int {
     get { return self.mDefaultTrackWidthUnit_property.propval }
     set { self.mDefaultTrackWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> { return self.mDefaultTrackWidthUnit_property.prop }
+  final var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> { return self.mDefaultTrackWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mCustomTrackWidth
@@ -171,14 +183,20 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  var mCustomTrackWidth : Int {
+  final func reset_mCustomTrackWidth_toDefaultValue () {
+    self.mCustomTrackWidth = 45720
+  }
+
+  //····················································································································
+
+  final var mCustomTrackWidth : Int {
     get { return self.mCustomTrackWidth_property.propval }
     set { self.mCustomTrackWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCustomTrackWidth_property_selection : EBSelection <Int> { return self.mCustomTrackWidth_property.prop }
+  final var mCustomTrackWidth_property_selection : EBSelection <Int> { return self.mCustomTrackWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mCustomTrackWidthUnit
@@ -188,14 +206,20 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  var mCustomTrackWidthUnit : Int {
+  final func reset_mCustomTrackWidthUnit_toDefaultValue () {
+    self.mCustomTrackWidthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mCustomTrackWidthUnit : Int {
     get { return self.mCustomTrackWidthUnit_property.propval }
     set { self.mCustomTrackWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCustomTrackWidthUnit_property_selection : EBSelection <Int> { return self.mCustomTrackWidthUnit_property.prop }
+  final var mCustomTrackWidthUnit_property_selection : EBSelection <Int> { return self.mCustomTrackWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mUsesCustomTrackWidth
@@ -205,14 +229,20 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  var mUsesCustomTrackWidth : Bool {
+  final func reset_mUsesCustomTrackWidth_toDefaultValue () {
+    self.mUsesCustomTrackWidth = false
+  }
+
+  //····················································································································
+
+  final var mUsesCustomTrackWidth : Bool {
     get { return self.mUsesCustomTrackWidth_property.propval }
     set { self.mUsesCustomTrackWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.prop }
+  final var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mIsPreservedByAutoRouter
@@ -222,14 +252,20 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  var mIsPreservedByAutoRouter : Bool {
+  final func reset_mIsPreservedByAutoRouter_toDefaultValue () {
+    self.mIsPreservedByAutoRouter = false
+  }
+
+  //····················································································································
+
+  final var mIsPreservedByAutoRouter : Bool {
     get { return self.mIsPreservedByAutoRouter_property.propval }
     set { self.mIsPreservedByAutoRouter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.prop }
+  final var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.prop }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -1108,17 +1144,17 @@ class BoardTrack : BoardObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSide
-    self.mSide_property.storeIn (dictionary: ioDictionary, forKey:"mSide")
+    self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
   //--- Atomic property: mDefaultTrackWidthUnit
-    self.mDefaultTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultTrackWidthUnit")
+    self.mDefaultTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultTrackWidthUnit")
   //--- Atomic property: mCustomTrackWidth
-    self.mCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mCustomTrackWidth")
+    self.mCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidth")
   //--- Atomic property: mCustomTrackWidthUnit
-    self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomTrackWidthUnit")
+    self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidthUnit")
   //--- Atomic property: mUsesCustomTrackWidth
-    self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomTrackWidth")
+    self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomTrackWidth")
   //--- Atomic property: mIsPreservedByAutoRouter
-    self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey:"mIsPreservedByAutoRouter")
+    self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey: "mIsPreservedByAutoRouter")
   }
 
   //····················································································································
@@ -1170,17 +1206,17 @@ class BoardTrack : BoardObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSide
-    self.mSide_property.readFrom (dictionary: inDictionary, forKey:"mSide")
+    self.mSide_property.readFrom (dictionary: inDictionary, forKey: "mSide")
   //--- Atomic property: mDefaultTrackWidthUnit
-    self.mDefaultTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mDefaultTrackWidthUnit")
+    self.mDefaultTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mDefaultTrackWidthUnit")
   //--- Atomic property: mCustomTrackWidth
-    self.mCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mCustomTrackWidth")
+    self.mCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey: "mCustomTrackWidth")
   //--- Atomic property: mCustomTrackWidthUnit
-    self.mCustomTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomTrackWidthUnit")
+    self.mCustomTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mCustomTrackWidthUnit")
   //--- Atomic property: mUsesCustomTrackWidth
-    self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomTrackWidth")
+    self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey: "mUsesCustomTrackWidth")
   //--- Atomic property: mIsPreservedByAutoRouter
-    self.mIsPreservedByAutoRouter_property.readFrom (dictionary: inDictionary, forKey:"mIsPreservedByAutoRouter")
+    self.mIsPreservedByAutoRouter_property.readFrom (dictionary: inDictionary, forKey: "mIsPreservedByAutoRouter")
   }
 
 

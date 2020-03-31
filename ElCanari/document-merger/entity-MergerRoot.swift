@@ -301,14 +301,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedPageIndex : Int {
+  final func reset_selectedPageIndex_toDefaultValue () {
+    self.selectedPageIndex = 0
+  }
+
+  //····················································································································
+
+  final var selectedPageIndex : Int {
     get { return self.selectedPageIndex_property.propval }
     set { self.selectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
+  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -318,14 +324,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var zoom : Int {
+  final func reset_zoom_toDefaultValue () {
+    self.zoom = 100
+  }
+
+  //····················································································································
+
+  final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   Atomic property: automaticBoardSize
@@ -335,14 +347,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var automaticBoardSize : Bool {
+  final func reset_automaticBoardSize_toDefaultValue () {
+    self.automaticBoardSize = true
+  }
+
+  //····················································································································
+
+  final var automaticBoardSize : Bool {
     get { return self.automaticBoardSize_property.propval }
     set { self.automaticBoardSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var automaticBoardSize_property_selection : EBSelection <Bool> { return self.automaticBoardSize_property.prop }
+  final var automaticBoardSize_property_selection : EBSelection <Bool> { return self.automaticBoardSize_property.prop }
 
   //····················································································································
   //   Atomic property: boardManualWidth
@@ -352,14 +370,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var boardManualWidth : Int {
+  final func reset_boardManualWidth_toDefaultValue () {
+    self.boardManualWidth = 9000000
+  }
+
+  //····················································································································
+
+  final var boardManualWidth : Int {
     get { return self.boardManualWidth_property.propval }
     set { self.boardManualWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardManualWidth_property_selection : EBSelection <Int> { return self.boardManualWidth_property.prop }
+  final var boardManualWidth_property_selection : EBSelection <Int> { return self.boardManualWidth_property.prop }
 
   //····················································································································
   //   Atomic property: boardManualHeight
@@ -369,14 +393,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var boardManualHeight : Int {
+  final func reset_boardManualHeight_toDefaultValue () {
+    self.boardManualHeight = 9000000
+  }
+
+  //····················································································································
+
+  final var boardManualHeight : Int {
     get { return self.boardManualHeight_property.propval }
     set { self.boardManualHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardManualHeight_property_selection : EBSelection <Int> { return self.boardManualHeight_property.prop }
+  final var boardManualHeight_property_selection : EBSelection <Int> { return self.boardManualHeight_property.prop }
 
   //····················································································································
   //   Atomic property: boardWidthUnit
@@ -386,14 +416,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var boardWidthUnit : Int {
+  final func reset_boardWidthUnit_toDefaultValue () {
+    self.boardWidthUnit = 90000
+  }
+
+  //····················································································································
+
+  final var boardWidthUnit : Int {
     get { return self.boardWidthUnit_property.propval }
     set { self.boardWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardWidthUnit_property_selection : EBSelection <Int> { return self.boardWidthUnit_property.prop }
+  final var boardWidthUnit_property_selection : EBSelection <Int> { return self.boardWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: boardHeightUnit
@@ -403,14 +439,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var boardHeightUnit : Int {
+  final func reset_boardHeightUnit_toDefaultValue () {
+    self.boardHeightUnit = 90000
+  }
+
+  //····················································································································
+
+  final var boardHeightUnit : Int {
     get { return self.boardHeightUnit_property.propval }
     set { self.boardHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardHeightUnit_property_selection : EBSelection <Int> { return self.boardHeightUnit_property.prop }
+  final var boardHeightUnit_property_selection : EBSelection <Int> { return self.boardHeightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: overlapingArrangment
@@ -420,14 +462,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var overlapingArrangment : Bool {
+  final func reset_overlapingArrangment_toDefaultValue () {
+    self.overlapingArrangment = false
+  }
+
+  //····················································································································
+
+  final var overlapingArrangment : Bool {
     get { return self.overlapingArrangment_property.propval }
     set { self.overlapingArrangment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var overlapingArrangment_property_selection : EBSelection <Bool> { return self.overlapingArrangment_property.prop }
+  final var overlapingArrangment_property_selection : EBSelection <Bool> { return self.overlapingArrangment_property.prop }
 
   //····················································································································
   //   Atomic property: selectedBoardXUnit
@@ -437,14 +485,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedBoardXUnit : Int {
+  final func reset_selectedBoardXUnit_toDefaultValue () {
+    self.selectedBoardXUnit = 90000
+  }
+
+  //····················································································································
+
+  final var selectedBoardXUnit : Int {
     get { return self.selectedBoardXUnit_property.propval }
     set { self.selectedBoardXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedBoardXUnit_property_selection : EBSelection <Int> { return self.selectedBoardXUnit_property.prop }
+  final var selectedBoardXUnit_property_selection : EBSelection <Int> { return self.selectedBoardXUnit_property.prop }
 
   //····················································································································
   //   Atomic property: selectedBoardYUnit
@@ -454,14 +508,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedBoardYUnit : Int {
+  final func reset_selectedBoardYUnit_toDefaultValue () {
+    self.selectedBoardYUnit = 90000
+  }
+
+  //····················································································································
+
+  final var selectedBoardYUnit : Int {
     get { return self.selectedBoardYUnit_property.propval }
     set { self.selectedBoardYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedBoardYUnit_property_selection : EBSelection <Int> { return self.selectedBoardYUnit_property.prop }
+  final var selectedBoardYUnit_property_selection : EBSelection <Int> { return self.selectedBoardYUnit_property.prop }
 
   //····················································································································
   //   Atomic property: boardLimitWidth
@@ -471,14 +531,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var boardLimitWidth : Int {
+  final func reset_boardLimitWidth_toDefaultValue () {
+    self.boardLimitWidth = 90000
+  }
+
+  //····················································································································
+
+  final var boardLimitWidth : Int {
     get { return self.boardLimitWidth_property.propval }
     set { self.boardLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardLimitWidth_property_selection : EBSelection <Int> { return self.boardLimitWidth_property.prop }
+  final var boardLimitWidth_property_selection : EBSelection <Int> { return self.boardLimitWidth_property.prop }
 
   //····················································································································
   //   Atomic property: boardLimitWidthUnit
@@ -488,14 +554,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var boardLimitWidthUnit : Int {
+  final func reset_boardLimitWidthUnit_toDefaultValue () {
+    self.boardLimitWidthUnit = 90000
+  }
+
+  //····················································································································
+
+  final var boardLimitWidthUnit : Int {
     get { return self.boardLimitWidthUnit_property.propval }
     set { self.boardLimitWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardLimitWidthUnit_property_selection : EBSelection <Int> { return self.boardLimitWidthUnit_property.prop }
+  final var boardLimitWidthUnit_property_selection : EBSelection <Int> { return self.boardLimitWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: arrowMagnitude
@@ -505,14 +577,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var arrowMagnitude : Int {
+  final func reset_arrowMagnitude_toDefaultValue () {
+    self.arrowMagnitude = 900000
+  }
+
+  //····················································································································
+
+  final var arrowMagnitude : Int {
     get { return self.arrowMagnitude_property.propval }
     set { self.arrowMagnitude_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var arrowMagnitude_property_selection : EBSelection <Int> { return self.arrowMagnitude_property.prop }
+  final var arrowMagnitude_property_selection : EBSelection <Int> { return self.arrowMagnitude_property.prop }
 
   //····················································································································
   //   Atomic property: arrowMagnitudeUnit
@@ -522,14 +600,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var arrowMagnitudeUnit : Int {
+  final func reset_arrowMagnitudeUnit_toDefaultValue () {
+    self.arrowMagnitudeUnit = 90000
+  }
+
+  //····················································································································
+
+  final var arrowMagnitudeUnit : Int {
     get { return self.arrowMagnitudeUnit_property.propval }
     set { self.arrowMagnitudeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var arrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.arrowMagnitudeUnit_property.prop }
+  final var arrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.arrowMagnitudeUnit_property.prop }
 
   //····················································································································
   //   Atomic property: shiftArrowMagnitude
@@ -539,14 +623,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var shiftArrowMagnitude : Int {
+  final func reset_shiftArrowMagnitude_toDefaultValue () {
+    self.shiftArrowMagnitude = 3600000
+  }
+
+  //····················································································································
+
+  final var shiftArrowMagnitude : Int {
     get { return self.shiftArrowMagnitude_property.propval }
     set { self.shiftArrowMagnitude_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var shiftArrowMagnitude_property_selection : EBSelection <Int> { return self.shiftArrowMagnitude_property.prop }
+  final var shiftArrowMagnitude_property_selection : EBSelection <Int> { return self.shiftArrowMagnitude_property.prop }
 
   //····················································································································
   //   Atomic property: shiftArrowMagnitudeUnit
@@ -556,14 +646,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var shiftArrowMagnitudeUnit : Int {
+  final func reset_shiftArrowMagnitudeUnit_toDefaultValue () {
+    self.shiftArrowMagnitudeUnit = 90000
+  }
+
+  //····················································································································
+
+  final var shiftArrowMagnitudeUnit : Int {
     get { return self.shiftArrowMagnitudeUnit_property.propval }
     set { self.shiftArrowMagnitudeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.shiftArrowMagnitudeUnit_property.prop }
+  final var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.shiftArrowMagnitudeUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mPDFBoardBackgroundColor
@@ -573,14 +669,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var mPDFBoardBackgroundColor : NSColor {
+  final func reset_mPDFBoardBackgroundColor_toDefaultValue () {
+    self.mPDFBoardBackgroundColor = NSColor.lightGray
+  }
+
+  //····················································································································
+
+  final var mPDFBoardBackgroundColor : NSColor {
     get { return self.mPDFBoardBackgroundColor_property.propval }
     set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
+  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
 
   //····················································································································
   //   Atomic property: mArtworkName
@@ -590,14 +692,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var mArtworkName : String {
+  final func reset_mArtworkName_toDefaultValue () {
+    self.mArtworkName = ""
+  }
+
+  //····················································································································
+
+  final var mArtworkName : String {
     get { return self.mArtworkName_property.propval }
     set { self.mArtworkName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
+  final var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
 
   //····················································································································
   //   Atomic property: mArtworkVersion
@@ -607,14 +715,20 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var mArtworkVersion : Int {
+  final func reset_mArtworkVersion_toDefaultValue () {
+    self.mArtworkVersion = 0
+  }
+
+  //····················································································································
+
+  final var mArtworkVersion : Int {
     get { return self.mArtworkVersion_property.propval }
     set { self.mArtworkVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
+  final var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
 
   //····················································································································
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
@@ -1943,43 +2057,43 @@ class MergerRoot : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
+    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
   //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
   //--- Atomic property: automaticBoardSize
-    self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey:"automaticBoardSize")
+    self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
   //--- Atomic property: boardManualWidth
-    self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey:"boardManualWidth")
+    self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
   //--- Atomic property: boardManualHeight
-    self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey:"boardManualHeight")
+    self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
   //--- Atomic property: boardWidthUnit
-    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"boardWidthUnit")
+    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
   //--- Atomic property: boardHeightUnit
-    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"boardHeightUnit")
+    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
   //--- Atomic property: overlapingArrangment
-    self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey:"overlapingArrangment")
+    self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
   //--- Atomic property: selectedBoardXUnit
-    self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey:"selectedBoardXUnit")
+    self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
   //--- Atomic property: selectedBoardYUnit
-    self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey:"selectedBoardYUnit")
+    self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
   //--- Atomic property: boardLimitWidth
-    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey:"boardLimitWidth")
+    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
   //--- Atomic property: boardLimitWidthUnit
-    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"boardLimitWidthUnit")
+    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
   //--- Atomic property: arrowMagnitude
-    self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey:"arrowMagnitude")
+    self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
   //--- Atomic property: arrowMagnitudeUnit
-    self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"arrowMagnitudeUnit")
+    self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
   //--- Atomic property: shiftArrowMagnitude
-    self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitude")
+    self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
   //--- Atomic property: shiftArrowMagnitudeUnit
-    self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitudeUnit")
+    self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
   //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey:"mPDFBoardBackgroundColor")
+    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
   //--- Atomic property: mArtworkName
-    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
+    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkVersion")
+    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
   //--- To one property: mArtwork
     self.store (managedObject:self.mArtwork_property.propval,
       relationshipName: "mArtwork",
@@ -2025,43 +2139,43 @@ class MergerRoot : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
   //--- Atomic property: zoom
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
   //--- Atomic property: automaticBoardSize
-    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey:"automaticBoardSize")
+    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey: "automaticBoardSize")
   //--- Atomic property: boardManualWidth
-    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey:"boardManualWidth")
+    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey: "boardManualWidth")
   //--- Atomic property: boardManualHeight
-    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey:"boardManualHeight")
+    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey: "boardManualHeight")
   //--- Atomic property: boardWidthUnit
-    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
+    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "boardWidthUnit")
   //--- Atomic property: boardHeightUnit
-    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
+    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "boardHeightUnit")
   //--- Atomic property: overlapingArrangment
-    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
+    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey: "overlapingArrangment")
   //--- Atomic property: selectedBoardXUnit
-    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardXUnit")
+    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey: "selectedBoardXUnit")
   //--- Atomic property: selectedBoardYUnit
-    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
+    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey: "selectedBoardYUnit")
   //--- Atomic property: boardLimitWidth
-    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
+    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey: "boardLimitWidth")
   //--- Atomic property: boardLimitWidthUnit
-    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
+    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "boardLimitWidthUnit")
   //--- Atomic property: arrowMagnitude
-    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitude")
+    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey: "arrowMagnitude")
   //--- Atomic property: arrowMagnitudeUnit
-    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitudeUnit")
+    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey: "arrowMagnitudeUnit")
   //--- Atomic property: shiftArrowMagnitude
-    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
+    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey: "shiftArrowMagnitude")
   //--- Atomic property: shiftArrowMagnitudeUnit
-    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
+    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey: "shiftArrowMagnitudeUnit")
   //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey:"mPDFBoardBackgroundColor")
+    self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey: "mPDFBoardBackgroundColor")
   //--- Atomic property: mArtworkName
-    self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
+    self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey:"mArtworkVersion")
+    self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey: "mArtworkVersion")
   }
 
 

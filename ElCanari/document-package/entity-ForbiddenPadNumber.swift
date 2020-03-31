@@ -25,14 +25,20 @@ class ForbiddenPadNumber : EBManagedObject,
 
   //····················································································································
 
-  var padNumber : Int {
+  final func reset_padNumber_toDefaultValue () {
+    self.padNumber = 0
+  }
+
+  //····················································································································
+
+  final var padNumber : Int {
     get { return self.padNumber_property.propval }
     set { self.padNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.prop }
+  final var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.prop }
 
   //····················································································································
   //    init
@@ -124,7 +130,7 @@ class ForbiddenPadNumber : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: padNumber
-    self.padNumber_property.storeIn (dictionary: ioDictionary, forKey:"padNumber")
+    self.padNumber_property.storeIn (dictionary: ioDictionary, forKey: "padNumber")
   }
 
   //····················································································································
@@ -143,7 +149,7 @@ class ForbiddenPadNumber : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: padNumber
-    self.padNumber_property.readFrom (dictionary: inDictionary, forKey:"padNumber")
+    self.padNumber_property.readFrom (dictionary: inDictionary, forKey: "padNumber")
   }
 
 

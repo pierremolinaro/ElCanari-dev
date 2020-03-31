@@ -180,14 +180,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var warningMessageColor : NSColor {
+  final var warningMessageColor : NSColor {
     get { return self.warningMessageColor_property.propval }
     set { self.warningMessageColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var warningMessageColor_property_selection : EBSelection <NSColor> { return self.warningMessageColor_property.prop }
+  final var warningMessageColor_property_selection : EBSelection <NSColor> { return self.warningMessageColor_property.prop }
 
   //····················································································································
   //   Atomic property: successMessageColor
@@ -197,14 +197,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var successMessageColor : NSColor {
+  final var successMessageColor : NSColor {
     get { return self.successMessageColor_property.propval }
     set { self.successMessageColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var successMessageColor_property_selection : EBSelection <NSColor> { return self.successMessageColor_property.prop }
+  final var successMessageColor_property_selection : EBSelection <NSColor> { return self.successMessageColor_property.prop }
 
   //····················································································································
   //   Atomic property: selectionHiliteColor
@@ -214,14 +214,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var selectionHiliteColor : NSColor {
+  final var selectionHiliteColor : NSColor {
     get { return self.selectionHiliteColor_property.propval }
     set { self.selectionHiliteColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectionHiliteColor_property_selection : EBSelection <NSColor> { return self.selectionHiliteColor_property.prop }
+  final var selectionHiliteColor_property_selection : EBSelection <NSColor> { return self.selectionHiliteColor_property.prop }
 
   //····················································································································
   //   Atomic property: symbolColor
@@ -231,14 +231,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolColor : NSColor {
+  final var symbolColor : NSColor {
     get { return self.symbolColor_property.propval }
     set { self.symbolColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolColor_property_selection : EBSelection <NSColor> { return self.symbolColor_property.prop }
+  final var symbolColor_property_selection : EBSelection <NSColor> { return self.symbolColor_property.prop }
 
   //····················································································································
   //   Atomic property: crossColorOfSymbolGrid
@@ -248,14 +248,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var crossColorOfSymbolGrid : NSColor {
+  final var crossColorOfSymbolGrid : NSColor {
     get { return self.crossColorOfSymbolGrid_property.propval }
     set { self.crossColorOfSymbolGrid_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var crossColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return self.crossColorOfSymbolGrid_property.prop }
+  final var crossColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return self.crossColorOfSymbolGrid_property.prop }
 
   //····················································································································
   //   Atomic property: lineColorOfSymbolGrid
@@ -265,14 +265,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var lineColorOfSymbolGrid : NSColor {
+  final var lineColorOfSymbolGrid : NSColor {
     get { return self.lineColorOfSymbolGrid_property.propval }
     set { self.lineColorOfSymbolGrid_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return self.lineColorOfSymbolGrid_property.prop }
+  final var lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return self.lineColorOfSymbolGrid_property.prop }
 
   //····················································································································
   //   Atomic property: symbolBackgroundColor
@@ -282,14 +282,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolBackgroundColor : NSColor {
+  final var symbolBackgroundColor : NSColor {
     get { return self.symbolBackgroundColor_property.propval }
     set { self.symbolBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolBackgroundColor_property_selection : EBSelection <NSColor> { return self.symbolBackgroundColor_property.prop }
+  final var symbolBackgroundColor_property_selection : EBSelection <NSColor> { return self.symbolBackgroundColor_property.prop }
 
   //····················································································································
   //   Atomic property: symbolDrawingWidthMultipliedByTen
@@ -299,14 +299,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolDrawingWidthMultipliedByTen : Int {
+  final var symbolDrawingWidthMultipliedByTen : Int {
     get { return self.symbolDrawingWidthMultipliedByTen_property.propval }
     set { self.symbolDrawingWidthMultipliedByTen_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return self.symbolDrawingWidthMultipliedByTen_property.prop }
+  final var symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return self.symbolDrawingWidthMultipliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: crossColorOfPackageGrid
@@ -316,14 +316,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var crossColorOfPackageGrid : NSColor {
+  final var crossColorOfPackageGrid : NSColor {
     get { return self.crossColorOfPackageGrid_property.propval }
     set { self.crossColorOfPackageGrid_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var crossColorOfPackageGrid_property_selection : EBSelection <NSColor> { return self.crossColorOfPackageGrid_property.prop }
+  final var crossColorOfPackageGrid_property_selection : EBSelection <NSColor> { return self.crossColorOfPackageGrid_property.prop }
 
   //····················································································································
   //   Atomic property: lineColorOfPackageGrid
@@ -333,14 +333,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var lineColorOfPackageGrid : NSColor {
+  final var lineColorOfPackageGrid : NSColor {
     get { return self.lineColorOfPackageGrid_property.propval }
     set { self.lineColorOfPackageGrid_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var lineColorOfPackageGrid_property_selection : EBSelection <NSColor> { return self.lineColorOfPackageGrid_property.prop }
+  final var lineColorOfPackageGrid_property_selection : EBSelection <NSColor> { return self.lineColorOfPackageGrid_property.prop }
 
   //····················································································································
   //   Atomic property: packageBackgroundColor
@@ -350,14 +350,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageBackgroundColor : NSColor {
+  final var packageBackgroundColor : NSColor {
     get { return self.packageBackgroundColor_property.propval }
     set { self.packageBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageBackgroundColor_property_selection : EBSelection <NSColor> { return self.packageBackgroundColor_property.prop }
+  final var packageBackgroundColor_property_selection : EBSelection <NSColor> { return self.packageBackgroundColor_property.prop }
 
   //····················································································································
   //   Atomic property: packageColor
@@ -367,14 +367,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageColor : NSColor {
+  final var packageColor : NSColor {
     get { return self.packageColor_property.propval }
     set { self.packageColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageColor_property_selection : EBSelection <NSColor> { return self.packageColor_property.prop }
+  final var packageColor_property_selection : EBSelection <NSColor> { return self.packageColor_property.prop }
 
   //····················································································································
   //   Atomic property: frontSidePadColor
@@ -384,14 +384,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var frontSidePadColor : NSColor {
+  final var frontSidePadColor : NSColor {
     get { return self.frontSidePadColor_property.propval }
     set { self.frontSidePadColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var frontSidePadColor_property_selection : EBSelection <NSColor> { return self.frontSidePadColor_property.prop }
+  final var frontSidePadColor_property_selection : EBSelection <NSColor> { return self.frontSidePadColor_property.prop }
 
   //····················································································································
   //   Atomic property: backSidePadColor
@@ -401,14 +401,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var backSidePadColor : NSColor {
+  final var backSidePadColor : NSColor {
     get { return self.backSidePadColor_property.propval }
     set { self.backSidePadColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var backSidePadColor_property_selection : EBSelection <NSColor> { return self.backSidePadColor_property.prop }
+  final var backSidePadColor_property_selection : EBSelection <NSColor> { return self.backSidePadColor_property.prop }
 
   //····················································································································
   //   Atomic property: displayPackageBackSidePads
@@ -418,14 +418,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayPackageBackSidePads : Bool {
+  final var displayPackageBackSidePads : Bool {
     get { return self.displayPackageBackSidePads_property.propval }
     set { self.displayPackageBackSidePads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayPackageBackSidePads_property_selection : EBSelection <Bool> { return self.displayPackageBackSidePads_property.prop }
+  final var displayPackageBackSidePads_property_selection : EBSelection <Bool> { return self.displayPackageBackSidePads_property.prop }
 
   //····················································································································
   //   Atomic property: padNumberColor
@@ -435,14 +435,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var padNumberColor : NSColor {
+  final var padNumberColor : NSColor {
     get { return self.padNumberColor_property.propval }
     set { self.padNumberColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumberColor_property_selection : EBSelection <NSColor> { return self.padNumberColor_property.prop }
+  final var padNumberColor_property_selection : EBSelection <NSColor> { return self.padNumberColor_property.prop }
 
   //····················································································································
   //   Atomic property: padNumberFont
@@ -452,14 +452,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var padNumberFont : NSFont {
+  final var padNumberFont : NSFont {
     get { return self.padNumberFont_property.propval }
     set { self.padNumberFont_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumberFont_property_selection : EBSelection <NSFont> { return self.padNumberFont_property.prop }
+  final var padNumberFont_property_selection : EBSelection <NSFont> { return self.padNumberFont_property.prop }
 
   //····················································································································
   //   Atomic property: showPadNumber
@@ -469,14 +469,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var showPadNumber : Bool {
+  final var showPadNumber : Bool {
     get { return self.showPadNumber_property.propval }
     set { self.showPadNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var showPadNumber_property_selection : EBSelection <Bool> { return self.showPadNumber_property.prop }
+  final var showPadNumber_property_selection : EBSelection <Bool> { return self.showPadNumber_property.prop }
 
   //····················································································································
   //   Atomic property: packageGuideColor
@@ -486,14 +486,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageGuideColor : NSColor {
+  final var packageGuideColor : NSColor {
     get { return self.packageGuideColor_property.propval }
     set { self.packageGuideColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageGuideColor_property_selection : EBSelection <NSColor> { return self.packageGuideColor_property.prop }
+  final var packageGuideColor_property_selection : EBSelection <NSColor> { return self.packageGuideColor_property.prop }
 
   //····················································································································
   //   Atomic property: packageDimensionColor
@@ -503,14 +503,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageDimensionColor : NSColor {
+  final var packageDimensionColor : NSColor {
     get { return self.packageDimensionColor_property.propval }
     set { self.packageDimensionColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageDimensionColor_property_selection : EBSelection <NSColor> { return self.packageDimensionColor_property.prop }
+  final var packageDimensionColor_property_selection : EBSelection <NSColor> { return self.packageDimensionColor_property.prop }
 
   //····················································································································
   //   Atomic property: dimensionFont
@@ -520,14 +520,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var dimensionFont : NSFont {
+  final var dimensionFont : NSFont {
     get { return self.dimensionFont_property.propval }
     set { self.dimensionFont_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var dimensionFont_property_selection : EBSelection <NSFont> { return self.dimensionFont_property.prop }
+  final var dimensionFont_property_selection : EBSelection <NSFont> { return self.dimensionFont_property.prop }
 
   //····················································································································
   //   Atomic property: padZoneColor
@@ -537,14 +537,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var padZoneColor : NSColor {
+  final var padZoneColor : NSColor {
     get { return self.padZoneColor_property.propval }
     set { self.padZoneColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padZoneColor_property_selection : EBSelection <NSColor> { return self.padZoneColor_property.prop }
+  final var padZoneColor_property_selection : EBSelection <NSColor> { return self.padZoneColor_property.prop }
 
   //····················································································································
   //   Atomic property: padZoneFont
@@ -554,14 +554,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var padZoneFont : NSFont {
+  final var padZoneFont : NSFont {
     get { return self.padZoneFont_property.propval }
     set { self.padZoneFont_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padZoneFont_property_selection : EBSelection <NSFont> { return self.padZoneFont_property.prop }
+  final var padZoneFont_property_selection : EBSelection <NSFont> { return self.padZoneFont_property.prop }
 
   //····················································································································
   //   Atomic property: packageDrawingWidthMultipliedByTen
@@ -571,14 +571,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageDrawingWidthMultipliedByTen : Int {
+  final var packageDrawingWidthMultipliedByTen : Int {
     get { return self.packageDrawingWidthMultipliedByTen_property.propval }
     set { self.packageDrawingWidthMultipliedByTen_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return self.packageDrawingWidthMultipliedByTen_property.prop }
+  final var packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return self.packageDrawingWidthMultipliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolAndPackageGridDotColorForDevice
@@ -588,14 +588,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mSymbolAndPackageGridDotColorForDevice : NSColor {
+  final var mSymbolAndPackageGridDotColorForDevice : NSColor {
     get { return self.mSymbolAndPackageGridDotColorForDevice_property.propval }
     set { self.mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolAndPackageGridDotColorForDevice_property.prop }
+  final var mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolAndPackageGridDotColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolAndPackageGridLineColorForDevice
@@ -605,14 +605,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mSymbolAndPackageGridLineColorForDevice : NSColor {
+  final var mSymbolAndPackageGridLineColorForDevice : NSColor {
     get { return self.mSymbolAndPackageGridLineColorForDevice_property.propval }
     set { self.mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolAndPackageGridLineColorForDevice_property.prop }
+  final var mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolAndPackageGridLineColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolAndPackageBackgroundColorForDevice
@@ -622,14 +622,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mSymbolAndPackageBackgroundColorForDevice : NSColor {
+  final var mSymbolAndPackageBackgroundColorForDevice : NSColor {
     get { return self.mSymbolAndPackageBackgroundColorForDevice_property.propval }
     set { self.mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolAndPackageBackgroundColorForDevice_property.prop }
+  final var mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolAndPackageBackgroundColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageColorForDevice
@@ -639,14 +639,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mPackageColorForDevice : NSColor {
+  final var mPackageColorForDevice : NSColor {
     get { return self.mPackageColorForDevice_property.propval }
     set { self.mPackageColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageColorForDevice_property_selection : EBSelection <NSColor> { return self.mPackageColorForDevice_property.prop }
+  final var mPackageColorForDevice_property_selection : EBSelection <NSColor> { return self.mPackageColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mFrontSidePadColorForDevice
@@ -656,14 +656,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mFrontSidePadColorForDevice : NSColor {
+  final var mFrontSidePadColorForDevice : NSColor {
     get { return self.mFrontSidePadColorForDevice_property.propval }
     set { self.mFrontSidePadColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFrontSidePadColorForDevice_property_selection : EBSelection <NSColor> { return self.mFrontSidePadColorForDevice_property.prop }
+  final var mFrontSidePadColorForDevice_property_selection : EBSelection <NSColor> { return self.mFrontSidePadColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mBottomSidePadColorForDevice
@@ -673,14 +673,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mBottomSidePadColorForDevice : NSColor {
+  final var mBottomSidePadColorForDevice : NSColor {
     get { return self.mBottomSidePadColorForDevice_property.propval }
     set { self.mBottomSidePadColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> { return self.mBottomSidePadColorForDevice_property.prop }
+  final var mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> { return self.mBottomSidePadColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mPadNumberColorForDevice
@@ -690,14 +690,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mPadNumberColorForDevice : NSColor {
+  final var mPadNumberColorForDevice : NSColor {
     get { return self.mPadNumberColorForDevice_property.propval }
     set { self.mPadNumberColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadNumberColorForDevice_property_selection : EBSelection <NSColor> { return self.mPadNumberColorForDevice_property.prop }
+  final var mPadNumberColorForDevice_property_selection : EBSelection <NSColor> { return self.mPadNumberColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageNameFontForDevice
@@ -707,14 +707,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mPackageNameFontForDevice : NSFont {
+  final var mPackageNameFontForDevice : NSFont {
     get { return self.mPackageNameFontForDevice_property.propval }
     set { self.mPackageNameFontForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageNameFontForDevice_property_selection : EBSelection <NSFont> { return self.mPackageNameFontForDevice_property.prop }
+  final var mPackageNameFontForDevice_property_selection : EBSelection <NSFont> { return self.mPackageNameFontForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mPadNumberFontForDevice
@@ -724,14 +724,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mPadNumberFontForDevice : NSFont {
+  final var mPadNumberFontForDevice : NSFont {
     get { return self.mPadNumberFontForDevice_property.propval }
     set { self.mPadNumberFontForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadNumberFontForDevice_property_selection : EBSelection <NSFont> { return self.mPadNumberFontForDevice_property.prop }
+  final var mPadNumberFontForDevice_property_selection : EBSelection <NSFont> { return self.mPadNumberFontForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolColorForDevice
@@ -741,14 +741,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mSymbolColorForDevice : NSColor {
+  final var mSymbolColorForDevice : NSColor {
     get { return self.mSymbolColorForDevice_property.propval }
     set { self.mSymbolColorForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolColorForDevice_property.prop }
+  final var mSymbolColorForDevice_property_selection : EBSelection <NSColor> { return self.mSymbolColorForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolNameFontForDevice
@@ -758,14 +758,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mSymbolNameFontForDevice : NSFont {
+  final var mSymbolNameFontForDevice : NSFont {
     get { return self.mSymbolNameFontForDevice_property.propval }
     set { self.mSymbolNameFontForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> { return self.mSymbolNameFontForDevice_property.prop }
+  final var mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> { return self.mSymbolNameFontForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: mPinNameFontForDevice
@@ -775,14 +775,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mPinNameFontForDevice : NSFont {
+  final var mPinNameFontForDevice : NSFont {
     get { return self.mPinNameFontForDevice_property.propval }
     set { self.mPinNameFontForDevice_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinNameFontForDevice_property_selection : EBSelection <NSFont> { return self.mPinNameFontForDevice_property.prop }
+  final var mPinNameFontForDevice_property_selection : EBSelection <NSFont> { return self.mPinNameFontForDevice_property.prop }
 
   //····················································································································
   //   Atomic property: symbolDrawingWidthForDeviceMultipliedByTen
@@ -792,14 +792,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolDrawingWidthForDeviceMultipliedByTen : Int {
+  final var symbolDrawingWidthForDeviceMultipliedByTen : Int {
     get { return self.symbolDrawingWidthForDeviceMultipliedByTen_property.propval }
     set { self.symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop }
+  final var symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: packageDrawingWidthForDeviceMultipliedByTen
@@ -809,14 +809,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageDrawingWidthForDeviceMultipliedByTen : Int {
+  final var packageDrawingWidthForDeviceMultipliedByTen : Int {
     get { return self.packageDrawingWidthForDeviceMultipliedByTen_property.propval }
     set { self.packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop }
+  final var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: schematicBackColor
@@ -826,14 +826,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var schematicBackColor : NSColor {
+  final var schematicBackColor : NSColor {
     get { return self.schematicBackColor_property.propval }
     set { self.schematicBackColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var schematicBackColor_property_selection : EBSelection <NSColor> { return self.schematicBackColor_property.prop }
+  final var schematicBackColor_property_selection : EBSelection <NSColor> { return self.schematicBackColor_property.prop }
 
   //····················································································································
   //   Atomic property: dotColorGridForSchematic
@@ -843,14 +843,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var dotColorGridForSchematic : NSColor {
+  final var dotColorGridForSchematic : NSColor {
     get { return self.dotColorGridForSchematic_property.propval }
     set { self.dotColorGridForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var dotColorGridForSchematic_property_selection : EBSelection <NSColor> { return self.dotColorGridForSchematic_property.prop }
+  final var dotColorGridForSchematic_property_selection : EBSelection <NSColor> { return self.dotColorGridForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: lineColorGridForSchematic
@@ -860,14 +860,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var lineColorGridForSchematic : NSColor {
+  final var lineColorGridForSchematic : NSColor {
     get { return self.lineColorGridForSchematic_property.propval }
     set { self.lineColorGridForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var lineColorGridForSchematic_property_selection : EBSelection <NSColor> { return self.lineColorGridForSchematic_property.prop }
+  final var lineColorGridForSchematic_property_selection : EBSelection <NSColor> { return self.lineColorGridForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: symbolColorForUnplacedComponentsForSchematic
@@ -877,14 +877,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolColorForUnplacedComponentsForSchematic : NSColor {
+  final var symbolColorForUnplacedComponentsForSchematic : NSColor {
     get { return self.symbolColorForUnplacedComponentsForSchematic_property.propval }
     set { self.symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> { return self.symbolColorForUnplacedComponentsForSchematic_property.prop }
+  final var symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> { return self.symbolColorForUnplacedComponentsForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: symbolColorForSchematic
@@ -894,14 +894,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolColorForSchematic : NSColor {
+  final var symbolColorForSchematic : NSColor {
     get { return self.symbolColorForSchematic_property.propval }
     set { self.symbolColorForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolColorForSchematic_property_selection : EBSelection <NSColor> { return self.symbolColorForSchematic_property.prop }
+  final var symbolColorForSchematic_property_selection : EBSelection <NSColor> { return self.symbolColorForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: pinNameFontForSchematic
@@ -911,14 +911,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var pinNameFontForSchematic : NSFont {
+  final var pinNameFontForSchematic : NSFont {
     get { return self.pinNameFontForSchematic_property.propval }
     set { self.pinNameFontForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pinNameFontForSchematic_property_selection : EBSelection <NSFont> { return self.pinNameFontForSchematic_property.prop }
+  final var pinNameFontForSchematic_property_selection : EBSelection <NSFont> { return self.pinNameFontForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: pinNameColorForSchematic
@@ -928,14 +928,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var pinNameColorForSchematic : NSColor {
+  final var pinNameColorForSchematic : NSColor {
     get { return self.pinNameColorForSchematic_property.propval }
     set { self.pinNameColorForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pinNameColorForSchematic_property_selection : EBSelection <NSColor> { return self.pinNameColorForSchematic_property.prop }
+  final var pinNameColorForSchematic_property_selection : EBSelection <NSColor> { return self.pinNameColorForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: pinNumberFontForSchematic
@@ -945,14 +945,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var pinNumberFontForSchematic : NSFont {
+  final var pinNumberFontForSchematic : NSFont {
     get { return self.pinNumberFontForSchematic_property.propval }
     set { self.pinNumberFontForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pinNumberFontForSchematic_property_selection : EBSelection <NSFont> { return self.pinNumberFontForSchematic_property.prop }
+  final var pinNumberFontForSchematic_property_selection : EBSelection <NSFont> { return self.pinNumberFontForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: pinNumberColorForSchematic
@@ -962,14 +962,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var pinNumberColorForSchematic : NSColor {
+  final var pinNumberColorForSchematic : NSColor {
     get { return self.pinNumberColorForSchematic_property.propval }
     set { self.pinNumberColorForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pinNumberColorForSchematic_property_selection : EBSelection <NSColor> { return self.pinNumberColorForSchematic_property.prop }
+  final var pinNumberColorForSchematic_property_selection : EBSelection <NSColor> { return self.pinNumberColorForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: connectionColorForSchematic
@@ -979,14 +979,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var connectionColorForSchematic : NSColor {
+  final var connectionColorForSchematic : NSColor {
     get { return self.connectionColorForSchematic_property.propval }
     set { self.connectionColorForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var connectionColorForSchematic_property_selection : EBSelection <NSColor> { return self.connectionColorForSchematic_property.prop }
+  final var connectionColorForSchematic_property_selection : EBSelection <NSColor> { return self.connectionColorForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: symbolDrawingWidthMultipliedByTenForSchematic
@@ -996,14 +996,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var symbolDrawingWidthMultipliedByTenForSchematic : Int {
+  final var symbolDrawingWidthMultipliedByTenForSchematic : Int {
     get { return self.symbolDrawingWidthMultipliedByTenForSchematic_property.propval }
     set { self.symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> { return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop }
+  final var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> { return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: crossColorGridForBoard
@@ -1013,14 +1013,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var crossColorGridForBoard : NSColor {
+  final var crossColorGridForBoard : NSColor {
     get { return self.crossColorGridForBoard_property.propval }
     set { self.crossColorGridForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var crossColorGridForBoard_property_selection : EBSelection <NSColor> { return self.crossColorGridForBoard_property.prop }
+  final var crossColorGridForBoard_property_selection : EBSelection <NSColor> { return self.crossColorGridForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: lineColorGridForBoard
@@ -1030,14 +1030,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var lineColorGridForBoard : NSColor {
+  final var lineColorGridForBoard : NSColor {
     get { return self.lineColorGridForBoard_property.propval }
     set { self.lineColorGridForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var lineColorGridForBoard_property_selection : EBSelection <NSColor> { return self.lineColorGridForBoard_property.prop }
+  final var lineColorGridForBoard_property_selection : EBSelection <NSColor> { return self.lineColorGridForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: boardBackgroundColorForBoard
@@ -1047,14 +1047,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var boardBackgroundColorForBoard : NSColor {
+  final var boardBackgroundColorForBoard : NSColor {
     get { return self.boardBackgroundColorForBoard_property.propval }
     set { self.boardBackgroundColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.boardBackgroundColorForBoard_property.prop }
+  final var boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.boardBackgroundColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: errorBackgroundColorForBoard
@@ -1064,14 +1064,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var errorBackgroundColorForBoard : NSColor {
+  final var errorBackgroundColorForBoard : NSColor {
     get { return self.errorBackgroundColorForBoard_property.propval }
     set { self.errorBackgroundColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.errorBackgroundColorForBoard_property.prop }
+  final var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.errorBackgroundColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: drawErrorBackgroundForBoard
@@ -1081,14 +1081,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var drawErrorBackgroundForBoard : Bool {
+  final var drawErrorBackgroundForBoard : Bool {
     get { return self.drawErrorBackgroundForBoard_property.propval }
     set { self.drawErrorBackgroundForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> { return self.drawErrorBackgroundForBoard_property.prop }
+  final var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> { return self.drawErrorBackgroundForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: warningBackgroundColorForBoard
@@ -1098,14 +1098,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var warningBackgroundColorForBoard : NSColor {
+  final var warningBackgroundColorForBoard : NSColor {
     get { return self.warningBackgroundColorForBoard_property.propval }
     set { self.warningBackgroundColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.warningBackgroundColorForBoard_property.prop }
+  final var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.warningBackgroundColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: drawWarningBackgroundForBoard
@@ -1115,14 +1115,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var drawWarningBackgroundForBoard : Bool {
+  final var drawWarningBackgroundForBoard : Bool {
     get { return self.drawWarningBackgroundForBoard_property.propval }
     set { self.drawWarningBackgroundForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawWarningBackgroundForBoard_property_selection : EBSelection <Bool> { return self.drawWarningBackgroundForBoard_property.prop }
+  final var drawWarningBackgroundForBoard_property_selection : EBSelection <Bool> { return self.drawWarningBackgroundForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: boardLimitsColorForBoard
@@ -1132,14 +1132,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var boardLimitsColorForBoard : NSColor {
+  final var boardLimitsColorForBoard : NSColor {
     get { return self.boardLimitsColorForBoard_property.propval }
     set { self.boardLimitsColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardLimitsColorForBoard_property_selection : EBSelection <NSColor> { return self.boardLimitsColorForBoard_property.prop }
+  final var boardLimitsColorForBoard_property_selection : EBSelection <NSColor> { return self.boardLimitsColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: boardClearanceColorForBoard
@@ -1149,14 +1149,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var boardClearanceColorForBoard : NSColor {
+  final var boardClearanceColorForBoard : NSColor {
     get { return self.boardClearanceColorForBoard_property.propval }
     set { self.boardClearanceColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> { return self.boardClearanceColorForBoard_property.prop }
+  final var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> { return self.boardClearanceColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayFrontRestrictRectangles
@@ -1166,14 +1166,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayFrontRestrictRectangles : Bool {
+  final var displayFrontRestrictRectangles : Bool {
     get { return self.displayFrontRestrictRectangles_property.propval }
     set { self.displayFrontRestrictRectangles_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayFrontRestrictRectangles_property_selection : EBSelection <Bool> { return self.displayFrontRestrictRectangles_property.prop }
+  final var displayFrontRestrictRectangles_property_selection : EBSelection <Bool> { return self.displayFrontRestrictRectangles_property.prop }
 
   //····················································································································
   //   Atomic property: frontSideRestrictRectangleColorForBoard
@@ -1183,14 +1183,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var frontSideRestrictRectangleColorForBoard : NSColor {
+  final var frontSideRestrictRectangleColorForBoard : NSColor {
     get { return self.frontSideRestrictRectangleColorForBoard_property.propval }
     set { self.frontSideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var frontSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideRestrictRectangleColorForBoard_property.prop }
+  final var frontSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideRestrictRectangleColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayBackRestrictRectangles
@@ -1200,14 +1200,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayBackRestrictRectangles : Bool {
+  final var displayBackRestrictRectangles : Bool {
     get { return self.displayBackRestrictRectangles_property.propval }
     set { self.displayBackRestrictRectangles_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayBackRestrictRectangles_property_selection : EBSelection <Bool> { return self.displayBackRestrictRectangles_property.prop }
+  final var displayBackRestrictRectangles_property_selection : EBSelection <Bool> { return self.displayBackRestrictRectangles_property.prop }
 
   //····················································································································
   //   Atomic property: backSideRestrictRectangleColorForBoard
@@ -1217,14 +1217,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var backSideRestrictRectangleColorForBoard : NSColor {
+  final var backSideRestrictRectangleColorForBoard : NSColor {
     get { return self.backSideRestrictRectangleColorForBoard_property.propval }
     set { self.backSideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var backSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideRestrictRectangleColorForBoard_property.prop }
+  final var backSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideRestrictRectangleColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayFrontLegendForBoard
@@ -1234,14 +1234,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayFrontLegendForBoard : Bool {
+  final var displayFrontLegendForBoard : Bool {
     get { return self.displayFrontLegendForBoard_property.propval }
     set { self.displayFrontLegendForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayFrontLegendForBoard_property_selection : EBSelection <Bool> { return self.displayFrontLegendForBoard_property.prop }
+  final var displayFrontLegendForBoard_property_selection : EBSelection <Bool> { return self.displayFrontLegendForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: frontSideLegendColorForBoard
@@ -1251,14 +1251,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var frontSideLegendColorForBoard : NSColor {
+  final var frontSideLegendColorForBoard : NSColor {
     get { return self.frontSideLegendColorForBoard_property.propval }
     set { self.frontSideLegendColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var frontSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideLegendColorForBoard_property.prop }
+  final var frontSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideLegendColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayFrontLayoutForBoard
@@ -1268,14 +1268,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayFrontLayoutForBoard : Bool {
+  final var displayFrontLayoutForBoard : Bool {
     get { return self.displayFrontLayoutForBoard_property.propval }
     set { self.displayFrontLayoutForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayFrontLayoutForBoard_property_selection : EBSelection <Bool> { return self.displayFrontLayoutForBoard_property.prop }
+  final var displayFrontLayoutForBoard_property_selection : EBSelection <Bool> { return self.displayFrontLayoutForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: frontSideLayoutColorForBoard
@@ -1285,14 +1285,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var frontSideLayoutColorForBoard : NSColor {
+  final var frontSideLayoutColorForBoard : NSColor {
     get { return self.frontSideLayoutColorForBoard_property.propval }
     set { self.frontSideLayoutColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var frontSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideLayoutColorForBoard_property.prop }
+  final var frontSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideLayoutColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayBackLayoutForBoard
@@ -1302,14 +1302,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayBackLayoutForBoard : Bool {
+  final var displayBackLayoutForBoard : Bool {
     get { return self.displayBackLayoutForBoard_property.propval }
     set { self.displayBackLayoutForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayBackLayoutForBoard_property_selection : EBSelection <Bool> { return self.displayBackLayoutForBoard_property.prop }
+  final var displayBackLayoutForBoard_property_selection : EBSelection <Bool> { return self.displayBackLayoutForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: backSideLayoutColorForBoard
@@ -1319,14 +1319,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var backSideLayoutColorForBoard : NSColor {
+  final var backSideLayoutColorForBoard : NSColor {
     get { return self.backSideLayoutColorForBoard_property.propval }
     set { self.backSideLayoutColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var backSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLayoutColorForBoard_property.prop }
+  final var backSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLayoutColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayBackLegendForBoard
@@ -1336,14 +1336,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayBackLegendForBoard : Bool {
+  final var displayBackLegendForBoard : Bool {
     get { return self.displayBackLegendForBoard_property.propval }
     set { self.displayBackLegendForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayBackLegendForBoard_property_selection : EBSelection <Bool> { return self.displayBackLegendForBoard_property.prop }
+  final var displayBackLegendForBoard_property_selection : EBSelection <Bool> { return self.displayBackLegendForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: backSideLegendColorForBoard
@@ -1353,14 +1353,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var backSideLegendColorForBoard : NSColor {
+  final var backSideLegendColorForBoard : NSColor {
     get { return self.backSideLegendColorForBoard_property.propval }
     set { self.backSideLegendColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var backSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLegendColorForBoard_property.prop }
+  final var backSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLegendColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayFrontPadsForBoard
@@ -1370,14 +1370,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayFrontPadsForBoard : Bool {
+  final var displayFrontPadsForBoard : Bool {
     get { return self.displayFrontPadsForBoard_property.propval }
     set { self.displayFrontPadsForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayFrontPadsForBoard_property_selection : EBSelection <Bool> { return self.displayFrontPadsForBoard_property.prop }
+  final var displayFrontPadsForBoard_property_selection : EBSelection <Bool> { return self.displayFrontPadsForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: frontSidePadColorForBoard
@@ -1387,14 +1387,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var frontSidePadColorForBoard : NSColor {
+  final var frontSidePadColorForBoard : NSColor {
     get { return self.frontSidePadColorForBoard_property.propval }
     set { self.frontSidePadColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var frontSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSidePadColorForBoard_property.prop }
+  final var frontSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSidePadColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayBackPadsForBoard
@@ -1404,14 +1404,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayBackPadsForBoard : Bool {
+  final var displayBackPadsForBoard : Bool {
     get { return self.displayBackPadsForBoard_property.propval }
     set { self.displayBackPadsForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayBackPadsForBoard_property_selection : EBSelection <Bool> { return self.displayBackPadsForBoard_property.prop }
+  final var displayBackPadsForBoard_property_selection : EBSelection <Bool> { return self.displayBackPadsForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: backSidePadColorForBoard
@@ -1421,14 +1421,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var backSidePadColorForBoard : NSColor {
+  final var backSidePadColorForBoard : NSColor {
     get { return self.backSidePadColorForBoard_property.propval }
     set { self.backSidePadColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var backSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.backSidePadColorForBoard_property.prop }
+  final var backSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.backSidePadColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: displayPadNumbersForBoard
@@ -1438,14 +1438,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayPadNumbersForBoard : Bool {
+  final var displayPadNumbersForBoard : Bool {
     get { return self.displayPadNumbersForBoard_property.propval }
     set { self.displayPadNumbersForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayPadNumbersForBoard_property_selection : EBSelection <Bool> { return self.displayPadNumbersForBoard_property.prop }
+  final var displayPadNumbersForBoard_property_selection : EBSelection <Bool> { return self.displayPadNumbersForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: padNumberFontForBoard
@@ -1455,14 +1455,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var padNumberFontForBoard : NSFont {
+  final var padNumberFontForBoard : NSFont {
     get { return self.padNumberFontForBoard_property.propval }
     set { self.padNumberFontForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumberFontForBoard_property_selection : EBSelection <NSFont> { return self.padNumberFontForBoard_property.prop }
+  final var padNumberFontForBoard_property_selection : EBSelection <NSFont> { return self.padNumberFontForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: padNumberColorForBoard
@@ -1472,14 +1472,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var padNumberColorForBoard : NSColor {
+  final var padNumberColorForBoard : NSColor {
     get { return self.padNumberColorForBoard_property.propval }
     set { self.padNumberColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumberColorForBoard_property_selection : EBSelection <NSColor> { return self.padNumberColorForBoard_property.prop }
+  final var padNumberColorForBoard_property_selection : EBSelection <NSColor> { return self.padNumberColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: packageDrawingWidthMultpliedByTenForBoard
@@ -1489,14 +1489,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var packageDrawingWidthMultpliedByTenForBoard : Int {
+  final var packageDrawingWidthMultpliedByTenForBoard : Int {
     get { return self.packageDrawingWidthMultpliedByTenForBoard_property.propval }
     set { self.packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> { return self.packageDrawingWidthMultpliedByTenForBoard_property.prop }
+  final var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> { return self.packageDrawingWidthMultpliedByTenForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: showGerberDrawingFlow
@@ -1506,14 +1506,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var showGerberDrawingFlow : Bool {
+  final var showGerberDrawingFlow : Bool {
     get { return self.showGerberDrawingFlow_property.propval }
     set { self.showGerberDrawingFlow_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var showGerberDrawingFlow_property_selection : EBSelection <Bool> { return self.showGerberDrawingFlow_property.prop }
+  final var showGerberDrawingFlow_property_selection : EBSelection <Bool> { return self.showGerberDrawingFlow_property.prop }
 
   //····················································································································
   //   Atomic property: showGerberDrawingIndexes
@@ -1523,14 +1523,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var showGerberDrawingIndexes : Bool {
+  final var showGerberDrawingIndexes : Bool {
     get { return self.showGerberDrawingIndexes_property.propval }
     set { self.showGerberDrawingIndexes_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var showGerberDrawingIndexes_property_selection : EBSelection <Bool> { return self.showGerberDrawingIndexes_property.prop }
+  final var showGerberDrawingIndexes_property_selection : EBSelection <Bool> { return self.showGerberDrawingIndexes_property.prop }
 
   //····················································································································
   //   Atomic property: fontEditionTransparency
@@ -1540,14 +1540,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var fontEditionTransparency : Double {
+  final var fontEditionTransparency : Double {
     get { return self.fontEditionTransparency_property.propval }
     set { self.fontEditionTransparency_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var fontEditionTransparency_property_selection : EBSelection <Double> { return self.fontEditionTransparency_property.prop }
+  final var fontEditionTransparency_property_selection : EBSelection <Double> { return self.fontEditionTransparency_property.prop }
 
   //····················································································································
   //   Atomic property: checkForSystemLibraryAtStartUp
@@ -1557,14 +1557,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var checkForSystemLibraryAtStartUp : Bool {
+  final var checkForSystemLibraryAtStartUp : Bool {
     get { return self.checkForSystemLibraryAtStartUp_property.propval }
     set { self.checkForSystemLibraryAtStartUp_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> { return self.checkForSystemLibraryAtStartUp_property.prop }
+  final var checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> { return self.checkForSystemLibraryAtStartUp_property.prop }
 
   //····················································································································
   //   Atomic property: systemLibraryCheckTimeInterval
@@ -1574,14 +1574,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var systemLibraryCheckTimeInterval : Int {
+  final var systemLibraryCheckTimeInterval : Int {
     get { return self.systemLibraryCheckTimeInterval_property.propval }
     set { self.systemLibraryCheckTimeInterval_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> { return self.systemLibraryCheckTimeInterval_property.prop }
+  final var systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> { return self.systemLibraryCheckTimeInterval_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewHorizontalFlip
@@ -1591,14 +1591,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewHorizontalFlip : Bool {
+  final var mergerModelViewHorizontalFlip : Bool {
     get { return self.mergerModelViewHorizontalFlip_property.propval }
     set { self.mergerModelViewHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> { return self.mergerModelViewHorizontalFlip_property.prop }
+  final var mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> { return self.mergerModelViewHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewVerticalFlip
@@ -1608,14 +1608,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewVerticalFlip : Bool {
+  final var mergerModelViewVerticalFlip : Bool {
     get { return self.mergerModelViewVerticalFlip_property.propval }
     set { self.mergerModelViewVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> { return self.mergerModelViewVerticalFlip_property.prop }
+  final var mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> { return self.mergerModelViewVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayHoles
@@ -1625,14 +1625,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayHoles : Bool {
+  final var mergerModelViewDisplayHoles : Bool {
     get { return self.mergerModelViewDisplayHoles_property.propval }
     set { self.mergerModelViewDisplayHoles_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayHoles_property.prop }
+  final var mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayHoles_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayVias
@@ -1642,14 +1642,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayVias : Bool {
+  final var mergerModelViewDisplayVias : Bool {
     get { return self.mergerModelViewDisplayVias_property.propval }
     set { self.mergerModelViewDisplayVias_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayVias_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayVias_property.prop }
+  final var mergerModelViewDisplayVias_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayVias_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontPads
@@ -1659,14 +1659,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontPads : Bool {
+  final var mergerModelViewDisplayFrontPads : Bool {
     get { return self.mergerModelViewDisplayFrontPads_property.propval }
     set { self.mergerModelViewDisplayFrontPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontPads_property.prop }
+  final var mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontPads_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayInternalBoardsLimits
@@ -1676,14 +1676,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayInternalBoardsLimits : Bool {
+  final var mergerModelViewDisplayInternalBoardsLimits : Bool {
     get { return self.mergerModelViewDisplayInternalBoardsLimits_property.propval }
     set { self.mergerModelViewDisplayInternalBoardsLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayInternalBoardsLimits_property.prop }
+  final var mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayInternalBoardsLimits_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBoardLimits
@@ -1693,14 +1693,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBoardLimits : Bool {
+  final var mergerModelViewDisplayBoardLimits : Bool {
     get { return self.mergerModelViewDisplayBoardLimits_property.propval }
     set { self.mergerModelViewDisplayBoardLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBoardLimits_property.prop }
+  final var mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBoardLimits_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontComponentNames
@@ -1710,14 +1710,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontComponentNames : Bool {
+  final var mergerModelViewDisplayFrontComponentNames : Bool {
     get { return self.mergerModelViewDisplayFrontComponentNames_property.propval }
     set { self.mergerModelViewDisplayFrontComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontComponentNames_property.prop }
+  final var mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontComponentNames_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontComponentValues
@@ -1727,14 +1727,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontComponentValues : Bool {
+  final var mergerModelViewDisplayFrontComponentValues : Bool {
     get { return self.mergerModelViewDisplayFrontComponentValues_property.propval }
     set { self.mergerModelViewDisplayFrontComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontComponentValues_property.prop }
+  final var mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontComponentValues_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontPackages
@@ -1744,14 +1744,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontPackages : Bool {
+  final var mergerModelViewDisplayFrontPackages : Bool {
     get { return self.mergerModelViewDisplayFrontPackages_property.propval }
     set { self.mergerModelViewDisplayFrontPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontPackages_property.prop }
+  final var mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontLegendTexts
@@ -1761,14 +1761,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontLegendTexts : Bool {
+  final var mergerModelViewDisplayFrontLegendTexts : Bool {
     get { return self.mergerModelViewDisplayFrontLegendTexts_property.propval }
     set { self.mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontLegendTexts_property.prop }
+  final var mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontLegendTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontTracks
@@ -1778,14 +1778,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontTracks : Bool {
+  final var mergerModelViewDisplayFrontTracks : Bool {
     get { return self.mergerModelViewDisplayFrontTracks_property.propval }
     set { self.mergerModelViewDisplayFrontTracks_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontTracks_property.prop }
+  final var mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontTracks_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontLayoutTexts
@@ -1795,14 +1795,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontLayoutTexts : Bool {
+  final var mergerModelViewDisplayFrontLayoutTexts : Bool {
     get { return self.mergerModelViewDisplayFrontLayoutTexts_property.propval }
     set { self.mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontLayoutTexts_property.prop }
+  final var mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontLayoutTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackPads
@@ -1812,14 +1812,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackPads : Bool {
+  final var mergerModelViewDisplayBackPads : Bool {
     get { return self.mergerModelViewDisplayBackPads_property.propval }
     set { self.mergerModelViewDisplayBackPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackPads_property.prop }
+  final var mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackPads_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackComponentNames
@@ -1829,14 +1829,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackComponentNames : Bool {
+  final var mergerModelViewDisplayBackComponentNames : Bool {
     get { return self.mergerModelViewDisplayBackComponentNames_property.propval }
     set { self.mergerModelViewDisplayBackComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackComponentNames_property.prop }
+  final var mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackComponentNames_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackComponentValues
@@ -1846,14 +1846,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackComponentValues : Bool {
+  final var mergerModelViewDisplayBackComponentValues : Bool {
     get { return self.mergerModelViewDisplayBackComponentValues_property.propval }
     set { self.mergerModelViewDisplayBackComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackComponentValues_property.prop }
+  final var mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackComponentValues_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackLegendTexts
@@ -1863,14 +1863,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackLegendTexts : Bool {
+  final var mergerModelViewDisplayBackLegendTexts : Bool {
     get { return self.mergerModelViewDisplayBackLegendTexts_property.propval }
     set { self.mergerModelViewDisplayBackLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackLegendTexts_property.prop }
+  final var mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackLegendTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackPackages
@@ -1880,14 +1880,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackPackages : Bool {
+  final var mergerModelViewDisplayBackPackages : Bool {
     get { return self.mergerModelViewDisplayBackPackages_property.propval }
     set { self.mergerModelViewDisplayBackPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackPackages_property.prop }
+  final var mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackTracks
@@ -1897,14 +1897,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackTracks : Bool {
+  final var mergerModelViewDisplayBackTracks : Bool {
     get { return self.mergerModelViewDisplayBackTracks_property.propval }
     set { self.mergerModelViewDisplayBackTracks_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackTracks_property.prop }
+  final var mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackTracks_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackLayoutTexts
@@ -1914,14 +1914,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackLayoutTexts : Bool {
+  final var mergerModelViewDisplayBackLayoutTexts : Bool {
     get { return self.mergerModelViewDisplayBackLayoutTexts_property.propval }
     set { self.mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackLayoutTexts_property.prop }
+  final var mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackLayoutTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayFrontLegendLines
@@ -1931,14 +1931,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontLegendLines : Bool {
+  final var mergerModelViewDisplayFrontLegendLines : Bool {
     get { return self.mergerModelViewDisplayFrontLegendLines_property.propval }
     set { self.mergerModelViewDisplayFrontLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontLegendLines_property.prop }
+  final var mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayFrontLegendLines_property.prop }
 
   //····················································································································
   //   Atomic property: mergerModelViewDisplayBackLegendLines
@@ -1948,14 +1948,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerModelViewDisplayBackLegendLines : Bool {
+  final var mergerModelViewDisplayBackLegendLines : Bool {
     get { return self.mergerModelViewDisplayBackLegendLines_property.propval }
     set { self.mergerModelViewDisplayBackLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackLegendLines_property.prop }
+  final var mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return self.mergerModelViewDisplayBackLegendLines_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewHorizontalFlip
@@ -1965,14 +1965,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewHorizontalFlip : Bool {
+  final var mergerBoardViewHorizontalFlip : Bool {
     get { return self.mergerBoardViewHorizontalFlip_property.propval }
     set { self.mergerBoardViewHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> { return self.mergerBoardViewHorizontalFlip_property.prop }
+  final var mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> { return self.mergerBoardViewHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewVerticalFlip
@@ -1982,14 +1982,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewVerticalFlip : Bool {
+  final var mergerBoardViewVerticalFlip : Bool {
     get { return self.mergerBoardViewVerticalFlip_property.propval }
     set { self.mergerBoardViewVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> { return self.mergerBoardViewVerticalFlip_property.prop }
+  final var mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> { return self.mergerBoardViewVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayHoles
@@ -1999,14 +1999,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayHoles : Bool {
+  final var mergerBoardViewDisplayHoles : Bool {
     get { return self.mergerBoardViewDisplayHoles_property.propval }
     set { self.mergerBoardViewDisplayHoles_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayHoles_property.prop }
+  final var mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayHoles_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayVias
@@ -2016,14 +2016,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayVias : Bool {
+  final var mergerBoardViewDisplayVias : Bool {
     get { return self.mergerBoardViewDisplayVias_property.propval }
     set { self.mergerBoardViewDisplayVias_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayVias_property.prop }
+  final var mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayVias_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontPads
@@ -2033,14 +2033,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontPads : Bool {
+  final var mergerBoardViewDisplayFrontPads : Bool {
     get { return self.mergerBoardViewDisplayFrontPads_property.propval }
     set { self.mergerBoardViewDisplayFrontPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontPads_property.prop }
+  final var mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontPads_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayInternalBoardsLimits
@@ -2050,14 +2050,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayInternalBoardsLimits : Bool {
+  final var mergerBoardViewDisplayInternalBoardsLimits : Bool {
     get { return self.mergerBoardViewDisplayInternalBoardsLimits_property.propval }
     set { self.mergerBoardViewDisplayInternalBoardsLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayInternalBoardsLimits_property.prop }
+  final var mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayInternalBoardsLimits_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBoardLimits
@@ -2067,14 +2067,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBoardLimits : Bool {
+  final var mergerBoardViewDisplayBoardLimits : Bool {
     get { return self.mergerBoardViewDisplayBoardLimits_property.propval }
     set { self.mergerBoardViewDisplayBoardLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBoardLimits_property.prop }
+  final var mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBoardLimits_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontComponentNames
@@ -2084,14 +2084,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontComponentNames : Bool {
+  final var mergerBoardViewDisplayFrontComponentNames : Bool {
     get { return self.mergerBoardViewDisplayFrontComponentNames_property.propval }
     set { self.mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontComponentNames_property.prop }
+  final var mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontComponentNames_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontComponentValues
@@ -2101,14 +2101,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontComponentValues : Bool {
+  final var mergerBoardViewDisplayFrontComponentValues : Bool {
     get { return self.mergerBoardViewDisplayFrontComponentValues_property.propval }
     set { self.mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontComponentValues_property.prop }
+  final var mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontComponentValues_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontPackages
@@ -2118,14 +2118,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontPackages : Bool {
+  final var mergerBoardViewDisplayFrontPackages : Bool {
     get { return self.mergerBoardViewDisplayFrontPackages_property.propval }
     set { self.mergerBoardViewDisplayFrontPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontPackages_property.prop }
+  final var mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontLegendTexts
@@ -2135,14 +2135,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontLegendTexts : Bool {
+  final var mergerBoardViewDisplayFrontLegendTexts : Bool {
     get { return self.mergerBoardViewDisplayFrontLegendTexts_property.propval }
     set { self.mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontLegendTexts_property.prop }
+  final var mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontLegendTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontTracks
@@ -2152,14 +2152,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontTracks : Bool {
+  final var mergerBoardViewDisplayFrontTracks : Bool {
     get { return self.mergerBoardViewDisplayFrontTracks_property.propval }
     set { self.mergerBoardViewDisplayFrontTracks_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontTracks_property.prop }
+  final var mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontTracks_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontLayoutTexts
@@ -2169,14 +2169,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontLayoutTexts : Bool {
+  final var mergerBoardViewDisplayFrontLayoutTexts : Bool {
     get { return self.mergerBoardViewDisplayFrontLayoutTexts_property.propval }
     set { self.mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop }
+  final var mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackPads
@@ -2186,14 +2186,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackPads : Bool {
+  final var mergerBoardViewDisplayBackPads : Bool {
     get { return self.mergerBoardViewDisplayBackPads_property.propval }
     set { self.mergerBoardViewDisplayBackPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackPads_property.prop }
+  final var mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackPads_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackComponentNames
@@ -2203,14 +2203,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackComponentNames : Bool {
+  final var mergerBoardViewDisplayBackComponentNames : Bool {
     get { return self.mergerBoardViewDisplayBackComponentNames_property.propval }
     set { self.mergerBoardViewDisplayBackComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackComponentNames_property.prop }
+  final var mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackComponentNames_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackComponentValues
@@ -2220,14 +2220,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackComponentValues : Bool {
+  final var mergerBoardViewDisplayBackComponentValues : Bool {
     get { return self.mergerBoardViewDisplayBackComponentValues_property.propval }
     set { self.mergerBoardViewDisplayBackComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackComponentValues_property.prop }
+  final var mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackComponentValues_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackLegendTexts
@@ -2237,14 +2237,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackLegendTexts : Bool {
+  final var mergerBoardViewDisplayBackLegendTexts : Bool {
     get { return self.mergerBoardViewDisplayBackLegendTexts_property.propval }
     set { self.mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackLegendTexts_property.prop }
+  final var mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackLegendTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackPackages
@@ -2254,14 +2254,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackPackages : Bool {
+  final var mergerBoardViewDisplayBackPackages : Bool {
     get { return self.mergerBoardViewDisplayBackPackages_property.propval }
     set { self.mergerBoardViewDisplayBackPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackPackages_property.prop }
+  final var mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackTracks
@@ -2271,14 +2271,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackTracks : Bool {
+  final var mergerBoardViewDisplayBackTracks : Bool {
     get { return self.mergerBoardViewDisplayBackTracks_property.propval }
     set { self.mergerBoardViewDisplayBackTracks_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackTracks_property.prop }
+  final var mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackTracks_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackLayoutTexts
@@ -2288,14 +2288,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackLayoutTexts : Bool {
+  final var mergerBoardViewDisplayBackLayoutTexts : Bool {
     get { return self.mergerBoardViewDisplayBackLayoutTexts_property.propval }
     set { self.mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackLayoutTexts_property.prop }
+  final var mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackLayoutTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayFrontLegendLines
@@ -2305,14 +2305,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontLegendLines : Bool {
+  final var mergerBoardViewDisplayFrontLegendLines : Bool {
     get { return self.mergerBoardViewDisplayFrontLegendLines_property.propval }
     set { self.mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontLegendLines_property.prop }
+  final var mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayFrontLegendLines_property.prop }
 
   //····················································································································
   //   Atomic property: mergerBoardViewDisplayBackLegendLines
@@ -2322,14 +2322,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackLegendLines : Bool {
+  final var mergerBoardViewDisplayBackLegendLines : Bool {
     get { return self.mergerBoardViewDisplayBackLegendLines_property.propval }
     set { self.mergerBoardViewDisplayBackLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackLegendLines_property.prop }
+  final var mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return self.mergerBoardViewDisplayBackLegendLines_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorHoles
@@ -2339,14 +2339,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorHoles : NSColor {
+  final var mergerColorHoles : NSColor {
     get { return self.mergerColorHoles_property.propval }
     set { self.mergerColorHoles_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorHoles_property_selection : EBSelection <NSColor> { return self.mergerColorHoles_property.prop }
+  final var mergerColorHoles_property_selection : EBSelection <NSColor> { return self.mergerColorHoles_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorVias
@@ -2356,14 +2356,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorVias : NSColor {
+  final var mergerColorVias : NSColor {
     get { return self.mergerColorVias_property.propval }
     set { self.mergerColorVias_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorVias_property_selection : EBSelection <NSColor> { return self.mergerColorVias_property.prop }
+  final var mergerColorVias_property_selection : EBSelection <NSColor> { return self.mergerColorVias_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontPads
@@ -2373,14 +2373,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontPads : NSColor {
+  final var mergerColorFrontPads : NSColor {
     get { return self.mergerColorFrontPads_property.propval }
     set { self.mergerColorFrontPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontPads_property_selection : EBSelection <NSColor> { return self.mergerColorFrontPads_property.prop }
+  final var mergerColorFrontPads_property_selection : EBSelection <NSColor> { return self.mergerColorFrontPads_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBoardLimits
@@ -2390,14 +2390,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBoardLimits : NSColor {
+  final var mergerColorBoardLimits : NSColor {
     get { return self.mergerColorBoardLimits_property.propval }
     set { self.mergerColorBoardLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBoardLimits_property_selection : EBSelection <NSColor> { return self.mergerColorBoardLimits_property.prop }
+  final var mergerColorBoardLimits_property_selection : EBSelection <NSColor> { return self.mergerColorBoardLimits_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorInternalBoardsLimits
@@ -2407,14 +2407,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorInternalBoardsLimits : NSColor {
+  final var mergerColorInternalBoardsLimits : NSColor {
     get { return self.mergerColorInternalBoardsLimits_property.propval }
     set { self.mergerColorInternalBoardsLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> { return self.mergerColorInternalBoardsLimits_property.prop }
+  final var mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> { return self.mergerColorInternalBoardsLimits_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontComponentNames
@@ -2424,14 +2424,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontComponentNames : NSColor {
+  final var mergerColorFrontComponentNames : NSColor {
     get { return self.mergerColorFrontComponentNames_property.propval }
     set { self.mergerColorFrontComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> { return self.mergerColorFrontComponentNames_property.prop }
+  final var mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> { return self.mergerColorFrontComponentNames_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontComponentValues
@@ -2441,14 +2441,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontComponentValues : NSColor {
+  final var mergerColorFrontComponentValues : NSColor {
     get { return self.mergerColorFrontComponentValues_property.propval }
     set { self.mergerColorFrontComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> { return self.mergerColorFrontComponentValues_property.prop }
+  final var mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> { return self.mergerColorFrontComponentValues_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontPackages
@@ -2458,14 +2458,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontPackages : NSColor {
+  final var mergerColorFrontPackages : NSColor {
     get { return self.mergerColorFrontPackages_property.propval }
     set { self.mergerColorFrontPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontPackages_property_selection : EBSelection <NSColor> { return self.mergerColorFrontPackages_property.prop }
+  final var mergerColorFrontPackages_property_selection : EBSelection <NSColor> { return self.mergerColorFrontPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontLegendTexts
@@ -2475,14 +2475,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontLegendTexts : NSColor {
+  final var mergerColorFrontLegendTexts : NSColor {
     get { return self.mergerColorFrontLegendTexts_property.propval }
     set { self.mergerColorFrontLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> { return self.mergerColorFrontLegendTexts_property.prop }
+  final var mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> { return self.mergerColorFrontLegendTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontTracks
@@ -2492,14 +2492,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontTracks : NSColor {
+  final var mergerColorFrontTracks : NSColor {
     get { return self.mergerColorFrontTracks_property.propval }
     set { self.mergerColorFrontTracks_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontTracks_property_selection : EBSelection <NSColor> { return self.mergerColorFrontTracks_property.prop }
+  final var mergerColorFrontTracks_property_selection : EBSelection <NSColor> { return self.mergerColorFrontTracks_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontLayoutTexts
@@ -2509,14 +2509,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontLayoutTexts : NSColor {
+  final var mergerColorFrontLayoutTexts : NSColor {
     get { return self.mergerColorFrontLayoutTexts_property.propval }
     set { self.mergerColorFrontLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> { return self.mergerColorFrontLayoutTexts_property.prop }
+  final var mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> { return self.mergerColorFrontLayoutTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackPads
@@ -2526,14 +2526,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackPads : NSColor {
+  final var mergerColorBackPads : NSColor {
     get { return self.mergerColorBackPads_property.propval }
     set { self.mergerColorBackPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackPads_property_selection : EBSelection <NSColor> { return self.mergerColorBackPads_property.prop }
+  final var mergerColorBackPads_property_selection : EBSelection <NSColor> { return self.mergerColorBackPads_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackComponentNames
@@ -2543,14 +2543,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackComponentNames : NSColor {
+  final var mergerColorBackComponentNames : NSColor {
     get { return self.mergerColorBackComponentNames_property.propval }
     set { self.mergerColorBackComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackComponentNames_property_selection : EBSelection <NSColor> { return self.mergerColorBackComponentNames_property.prop }
+  final var mergerColorBackComponentNames_property_selection : EBSelection <NSColor> { return self.mergerColorBackComponentNames_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackComponentValues
@@ -2560,14 +2560,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackComponentValues : NSColor {
+  final var mergerColorBackComponentValues : NSColor {
     get { return self.mergerColorBackComponentValues_property.propval }
     set { self.mergerColorBackComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackComponentValues_property_selection : EBSelection <NSColor> { return self.mergerColorBackComponentValues_property.prop }
+  final var mergerColorBackComponentValues_property_selection : EBSelection <NSColor> { return self.mergerColorBackComponentValues_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackLegendTexts
@@ -2577,14 +2577,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackLegendTexts : NSColor {
+  final var mergerColorBackLegendTexts : NSColor {
     get { return self.mergerColorBackLegendTexts_property.propval }
     set { self.mergerColorBackLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> { return self.mergerColorBackLegendTexts_property.prop }
+  final var mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> { return self.mergerColorBackLegendTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackPackages
@@ -2594,14 +2594,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackPackages : NSColor {
+  final var mergerColorBackPackages : NSColor {
     get { return self.mergerColorBackPackages_property.propval }
     set { self.mergerColorBackPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackPackages_property_selection : EBSelection <NSColor> { return self.mergerColorBackPackages_property.prop }
+  final var mergerColorBackPackages_property_selection : EBSelection <NSColor> { return self.mergerColorBackPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackTracks
@@ -2611,14 +2611,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackTracks : NSColor {
+  final var mergerColorBackTracks : NSColor {
     get { return self.mergerColorBackTracks_property.propval }
     set { self.mergerColorBackTracks_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackTracks_property_selection : EBSelection <NSColor> { return self.mergerColorBackTracks_property.prop }
+  final var mergerColorBackTracks_property_selection : EBSelection <NSColor> { return self.mergerColorBackTracks_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackLayoutTexts
@@ -2628,14 +2628,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackLayoutTexts : NSColor {
+  final var mergerColorBackLayoutTexts : NSColor {
     get { return self.mergerColorBackLayoutTexts_property.propval }
     set { self.mergerColorBackLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> { return self.mergerColorBackLayoutTexts_property.prop }
+  final var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> { return self.mergerColorBackLayoutTexts_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorFrontLegendLines
@@ -2645,14 +2645,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorFrontLegendLines : NSColor {
+  final var mergerColorFrontLegendLines : NSColor {
     get { return self.mergerColorFrontLegendLines_property.propval }
     set { self.mergerColorFrontLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> { return self.mergerColorFrontLegendLines_property.prop }
+  final var mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> { return self.mergerColorFrontLegendLines_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackLegendLines
@@ -2662,14 +2662,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackLegendLines : NSColor {
+  final var mergerColorBackLegendLines : NSColor {
     get { return self.mergerColorBackLegendLines_property.propval }
     set { self.mergerColorBackLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackLegendLines_property_selection : EBSelection <NSColor> { return self.mergerColorBackLegendLines_property.prop }
+  final var mergerColorBackLegendLines_property_selection : EBSelection <NSColor> { return self.mergerColorBackLegendLines_property.prop }
 
   //····················································································································
   //   Atomic property: mergerColorBackground
@@ -2679,14 +2679,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mergerColorBackground : NSColor {
+  final var mergerColorBackground : NSColor {
     get { return self.mergerColorBackground_property.propval }
     set { self.mergerColorBackground_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mergerColorBackground_property_selection : EBSelection <NSColor> { return self.mergerColorBackground_property.prop }
+  final var mergerColorBackground_property_selection : EBSelection <NSColor> { return self.mergerColorBackground_property.prop }
 
   //····················································································································
   //   Atomic property: errorMessageColor
@@ -2696,14 +2696,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var errorMessageColor : NSColor {
+  final var errorMessageColor : NSColor {
     get { return self.errorMessageColor_property.propval }
     set { self.errorMessageColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var errorMessageColor_property_selection : EBSelection <NSColor> { return self.errorMessageColor_property.prop }
+  final var errorMessageColor_property_selection : EBSelection <NSColor> { return self.errorMessageColor_property.prop }
 
   //····················································································································
   //   Atomic property: hiliteWidthMultipliedByTen
@@ -2713,14 +2713,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var hiliteWidthMultipliedByTen : Int {
+  final var hiliteWidthMultipliedByTen : Int {
     get { return self.hiliteWidthMultipliedByTen_property.propval }
     set { self.hiliteWidthMultipliedByTen_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> { return self.hiliteWidthMultipliedByTen_property.prop }
+  final var hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> { return self.hiliteWidthMultipliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: usesUserLibrary
@@ -2730,14 +2730,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var usesUserLibrary : Bool {
+  final var usesUserLibrary : Bool {
     get { return self.usesUserLibrary_property.propval }
     set { self.usesUserLibrary_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var usesUserLibrary_property_selection : EBSelection <Bool> { return self.usesUserLibrary_property.prop }
+  final var usesUserLibrary_property_selection : EBSelection <Bool> { return self.usesUserLibrary_property.prop }
 
   //····················································································································
   //   To many property: additionnalLibraryArray
@@ -2766,14 +2766,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var pinNameFont : NSFont {
+  final var pinNameFont : NSFont {
     get { return self.pinNameFont_property.propval }
     set { self.pinNameFont_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pinNameFont_property_selection : EBSelection <NSFont> { return self.pinNameFont_property.prop }
+  final var pinNameFont_property_selection : EBSelection <NSFont> { return self.pinNameFont_property.prop }
 
   //····················································································································
   //   Atomic property: displayPackageFrontSidePads
@@ -2783,14 +2783,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var displayPackageFrontSidePads : Bool {
+  final var displayPackageFrontSidePads : Bool {
     get { return self.displayPackageFrontSidePads_property.propval }
     set { self.displayPackageFrontSidePads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return self.displayPackageFrontSidePads_property.prop }
+  final var displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return self.displayPackageFrontSidePads_property.prop }
 
   //····················································································································
   //   Atomic property: sampleString
@@ -2800,14 +2800,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var sampleString : String {
+  final var sampleString : String {
     get { return self.sampleString_property.propval }
     set { self.sampleString_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var sampleString_property_selection : EBSelection <String> { return self.sampleString_property.prop }
+  final var sampleString_property_selection : EBSelection <String> { return self.sampleString_property.prop }
 
   //····················································································································
   //   Atomic property: sampleStringSize
@@ -2817,14 +2817,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var sampleStringSize : Double {
+  final var sampleStringSize : Double {
     get { return self.sampleStringSize_property.propval }
     set { self.sampleStringSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var sampleStringSize_property_selection : EBSelection <Double> { return self.sampleStringSize_property.prop }
+  final var sampleStringSize_property_selection : EBSelection <Double> { return self.sampleStringSize_property.prop }
 
   //····················································································································
   //   Atomic property: mLastSystemLibraryCheckTime
@@ -2834,14 +2834,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-  var mLastSystemLibraryCheckTime : Date {
+  final var mLastSystemLibraryCheckTime : Date {
     get { return self.mLastSystemLibraryCheckTime_property.propval }
     set { self.mLastSystemLibraryCheckTime_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> { return self.mLastSystemLibraryCheckTime_property.prop }
+  final var mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> { return self.mLastSystemLibraryCheckTime_property.prop }
 
   //····················································································································
   //   Array controller: additionnalLibraryArrayController

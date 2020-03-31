@@ -60,14 +60,20 @@ class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mOrientation : QuadrantRotation {
+  final func reset_mOrientation_toDefaultValue () {
+    self.mOrientation = QuadrantRotation.rotation0
+  }
+
+  //····················································································································
+
+  final var mOrientation : QuadrantRotation {
     get { return self.mOrientation_property.propval }
     set { self.mOrientation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.prop }
+  final var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.prop }
 
   //····················································································································
   //   To one property: mPoint
@@ -460,7 +466,7 @@ class LabelInSchematic : SchematicObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mOrientation
-    self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mOrientation")
+    self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mOrientation")
   }
 
   //····················································································································
@@ -490,7 +496,7 @@ class LabelInSchematic : SchematicObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mOrientation
-    self.mOrientation_property.readFrom (dictionary: inDictionary, forKey:"mOrientation")
+    self.mOrientation_property.readFrom (dictionary: inDictionary, forKey: "mOrientation")
   }
 
 

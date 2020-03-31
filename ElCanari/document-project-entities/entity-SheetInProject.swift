@@ -98,14 +98,20 @@ class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  var mSheetTitle : String {
+  final func reset_mSheetTitle_toDefaultValue () {
+    self.mSheetTitle = ""
+  }
+
+  //····················································································································
+
+  final var mSheetTitle : String {
     get { return self.mSheetTitle_property.propval }
     set { self.mSheetTitle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.prop }
+  final var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.prop }
 
   //····················································································································
   //   To one property: mRoot
@@ -576,7 +582,7 @@ class SheetInProject : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey:"mSheetTitle")
+    self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSheetTitle")
   }
 
   //····················································································································
@@ -618,7 +624,7 @@ class SheetInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.readFrom (dictionary: inDictionary, forKey:"mSheetTitle")
+    self.mSheetTitle_property.readFrom (dictionary: inDictionary, forKey: "mSheetTitle")
   }
 
 

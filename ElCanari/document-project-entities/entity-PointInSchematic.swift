@@ -123,14 +123,20 @@ class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  var mSymbolPinName : String {
+  final func reset_mSymbolPinName_toDefaultValue () {
+    self.mSymbolPinName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolPinName : String {
     get { return self.mSymbolPinName_property.propval }
     set { self.mSymbolPinName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolPinName_property_selection : EBSelection <String> { return self.mSymbolPinName_property.prop }
+  final var mSymbolPinName_property_selection : EBSelection <String> { return self.mSymbolPinName_property.prop }
 
   //····················································································································
   //   To many property: mLabels
@@ -159,14 +165,20 @@ class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -176,14 +188,20 @@ class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To many property: mWiresP2s
@@ -1325,7 +1343,7 @@ class PointInSchematic : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSymbolPinName
-    self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolPinName")
+    self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolPinName")
   //--- To many property: mLabels
     self.store (
       managedObjectArray: self.mLabels_property.propval,
@@ -1333,9 +1351,9 @@ class PointInSchematic : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mWiresP2s
     self.store (
       managedObjectArray: self.mWiresP2s_property.propval,
@@ -1432,11 +1450,11 @@ class PointInSchematic : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolPinName
-    self.mSymbolPinName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolPinName")
+    self.mSymbolPinName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolPinName")
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   }
 
 

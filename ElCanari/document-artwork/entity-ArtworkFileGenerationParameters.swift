@@ -179,14 +179,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawBoardLimits : Bool {
+  final func reset_drawBoardLimits_toDefaultValue () {
+    self.drawBoardLimits = false
+  }
+
+  //····················································································································
+
+  final var drawBoardLimits : Bool {
     get { return self.drawBoardLimits_property.propval }
     set { self.drawBoardLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawBoardLimits_property_selection : EBSelection <Bool> { return self.drawBoardLimits_property.prop }
+  final var drawBoardLimits_property_selection : EBSelection <Bool> { return self.drawBoardLimits_property.prop }
 
   //····················································································································
   //   Atomic property: drawInternalBoardLimits
@@ -196,14 +202,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawInternalBoardLimits : Bool {
+  final func reset_drawInternalBoardLimits_toDefaultValue () {
+    self.drawInternalBoardLimits = false
+  }
+
+  //····················································································································
+
+  final var drawInternalBoardLimits : Bool {
     get { return self.drawInternalBoardLimits_property.propval }
     set { self.drawInternalBoardLimits_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawInternalBoardLimits_property_selection : EBSelection <Bool> { return self.drawInternalBoardLimits_property.prop }
+  final var drawInternalBoardLimits_property_selection : EBSelection <Bool> { return self.drawInternalBoardLimits_property.prop }
 
   //····················································································································
   //   Atomic property: drawComponentNamesTopSide
@@ -213,14 +225,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawComponentNamesTopSide : Bool {
+  final func reset_drawComponentNamesTopSide_toDefaultValue () {
+    self.drawComponentNamesTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawComponentNamesTopSide : Bool {
     get { return self.drawComponentNamesTopSide_property.propval }
     set { self.drawComponentNamesTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawComponentNamesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesTopSide_property.prop }
+  final var drawComponentNamesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawComponentNamesBottomSide
@@ -230,14 +248,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawComponentNamesBottomSide : Bool {
+  final func reset_drawComponentNamesBottomSide_toDefaultValue () {
+    self.drawComponentNamesBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawComponentNamesBottomSide : Bool {
     get { return self.drawComponentNamesBottomSide_property.propval }
     set { self.drawComponentNamesBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesBottomSide_property.prop }
+  final var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawComponentValuesTopSide
@@ -247,14 +271,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawComponentValuesTopSide : Bool {
+  final func reset_drawComponentValuesTopSide_toDefaultValue () {
+    self.drawComponentValuesTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawComponentValuesTopSide : Bool {
     get { return self.drawComponentValuesTopSide_property.propval }
     set { self.drawComponentValuesTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawComponentValuesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesTopSide_property.prop }
+  final var drawComponentValuesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawComponentValuesBottomSide
@@ -264,14 +294,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawComponentValuesBottomSide : Bool {
+  final func reset_drawComponentValuesBottomSide_toDefaultValue () {
+    self.drawComponentValuesBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawComponentValuesBottomSide : Bool {
     get { return self.drawComponentValuesBottomSide_property.propval }
     set { self.drawComponentValuesBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesBottomSide_property.prop }
+  final var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawPackageLegendTopSide
@@ -281,14 +317,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawPackageLegendTopSide : Bool {
+  final func reset_drawPackageLegendTopSide_toDefaultValue () {
+    self.drawPackageLegendTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawPackageLegendTopSide : Bool {
     get { return self.drawPackageLegendTopSide_property.propval }
     set { self.drawPackageLegendTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawPackageLegendTopSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendTopSide_property.prop }
+  final var drawPackageLegendTopSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawPackageLegendBottomSide
@@ -298,14 +340,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawPackageLegendBottomSide : Bool {
+  final func reset_drawPackageLegendBottomSide_toDefaultValue () {
+    self.drawPackageLegendBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawPackageLegendBottomSide : Bool {
     get { return self.drawPackageLegendBottomSide_property.propval }
     set { self.drawPackageLegendBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendBottomSide_property.prop }
+  final var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawPadHolesInPDF
@@ -315,14 +363,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawPadHolesInPDF : Bool {
+  final func reset_drawPadHolesInPDF_toDefaultValue () {
+    self.drawPadHolesInPDF = false
+  }
+
+  //····················································································································
+
+  final var drawPadHolesInPDF : Bool {
     get { return self.drawPadHolesInPDF_property.propval }
     set { self.drawPadHolesInPDF_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawPadHolesInPDF_property_selection : EBSelection <Bool> { return self.drawPadHolesInPDF_property.prop }
+  final var drawPadHolesInPDF_property_selection : EBSelection <Bool> { return self.drawPadHolesInPDF_property.prop }
 
   //····················································································································
   //   Atomic property: drawPadsTopSide
@@ -332,14 +386,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawPadsTopSide : Bool {
+  final func reset_drawPadsTopSide_toDefaultValue () {
+    self.drawPadsTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawPadsTopSide : Bool {
     get { return self.drawPadsTopSide_property.propval }
     set { self.drawPadsTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawPadsTopSide_property_selection : EBSelection <Bool> { return self.drawPadsTopSide_property.prop }
+  final var drawPadsTopSide_property_selection : EBSelection <Bool> { return self.drawPadsTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawPadsBottomSide
@@ -349,14 +409,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawPadsBottomSide : Bool {
+  final func reset_drawPadsBottomSide_toDefaultValue () {
+    self.drawPadsBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawPadsBottomSide : Bool {
     get { return self.drawPadsBottomSide_property.propval }
     set { self.drawPadsBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawPadsBottomSide_property_selection : EBSelection <Bool> { return self.drawPadsBottomSide_property.prop }
+  final var drawPadsBottomSide_property_selection : EBSelection <Bool> { return self.drawPadsBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawTextsLayoutTopSide
@@ -366,14 +432,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawTextsLayoutTopSide : Bool {
+  final func reset_drawTextsLayoutTopSide_toDefaultValue () {
+    self.drawTextsLayoutTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawTextsLayoutTopSide : Bool {
     get { return self.drawTextsLayoutTopSide_property.propval }
     set { self.drawTextsLayoutTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutTopSide_property.prop }
+  final var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawTextsLayoutBottomSide
@@ -383,14 +455,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawTextsLayoutBottomSide : Bool {
+  final func reset_drawTextsLayoutBottomSide_toDefaultValue () {
+    self.drawTextsLayoutBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawTextsLayoutBottomSide : Bool {
     get { return self.drawTextsLayoutBottomSide_property.propval }
     set { self.drawTextsLayoutBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutBottomSide_property.prop }
+  final var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawTextsLegendTopSide
@@ -400,14 +478,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawTextsLegendTopSide : Bool {
+  final func reset_drawTextsLegendTopSide_toDefaultValue () {
+    self.drawTextsLegendTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawTextsLegendTopSide : Bool {
     get { return self.drawTextsLegendTopSide_property.propval }
     set { self.drawTextsLegendTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawTextsLegendTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendTopSide_property.prop }
+  final var drawTextsLegendTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawTextsLegendBottomSide
@@ -417,14 +501,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawTextsLegendBottomSide : Bool {
+  final func reset_drawTextsLegendBottomSide_toDefaultValue () {
+    self.drawTextsLegendBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawTextsLegendBottomSide : Bool {
     get { return self.drawTextsLegendBottomSide_property.propval }
     set { self.drawTextsLegendBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendBottomSide_property.prop }
+  final var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawTracksTopSide
@@ -434,14 +524,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawTracksTopSide : Bool {
+  final func reset_drawTracksTopSide_toDefaultValue () {
+    self.drawTracksTopSide = false
+  }
+
+  //····················································································································
+
+  final var drawTracksTopSide : Bool {
     get { return self.drawTracksTopSide_property.propval }
     set { self.drawTracksTopSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawTracksTopSide_property_selection : EBSelection <Bool> { return self.drawTracksTopSide_property.prop }
+  final var drawTracksTopSide_property_selection : EBSelection <Bool> { return self.drawTracksTopSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawTracksBottomSide
@@ -451,14 +547,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawTracksBottomSide : Bool {
+  final func reset_drawTracksBottomSide_toDefaultValue () {
+    self.drawTracksBottomSide = false
+  }
+
+  //····················································································································
+
+  final var drawTracksBottomSide : Bool {
     get { return self.drawTracksBottomSide_property.propval }
     set { self.drawTracksBottomSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawTracksBottomSide_property_selection : EBSelection <Bool> { return self.drawTracksBottomSide_property.prop }
+  final var drawTracksBottomSide_property_selection : EBSelection <Bool> { return self.drawTracksBottomSide_property.prop }
 
   //····················································································································
   //   Atomic property: drawVias
@@ -468,14 +570,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var drawVias : Bool {
+  final func reset_drawVias_toDefaultValue () {
+    self.drawVias = false
+  }
+
+  //····················································································································
+
+  final var drawVias : Bool {
     get { return self.drawVias_property.propval }
     set { self.drawVias_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawVias_property_selection : EBSelection <Bool> { return self.drawVias_property.prop }
+  final var drawVias_property_selection : EBSelection <Bool> { return self.drawVias_property.prop }
 
   //····················································································································
   //   Atomic property: fileExtension
@@ -485,14 +593,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var fileExtension : String {
+  final func reset_fileExtension_toDefaultValue () {
+    self.fileExtension = "?"
+  }
+
+  //····················································································································
+
+  final var fileExtension : String {
     get { return self.fileExtension_property.propval }
     set { self.fileExtension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var fileExtension_property_selection : EBSelection <String> { return self.fileExtension_property.prop }
+  final var fileExtension_property_selection : EBSelection <String> { return self.fileExtension_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalMirror
@@ -502,14 +616,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var horizontalMirror : Bool {
+  final func reset_horizontalMirror_toDefaultValue () {
+    self.horizontalMirror = false
+  }
+
+  //····················································································································
+
+  final var horizontalMirror : Bool {
     get { return self.horizontalMirror_property.propval }
     set { self.horizontalMirror_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalMirror_property_selection : EBSelection <Bool> { return self.horizontalMirror_property.prop }
+  final var horizontalMirror_property_selection : EBSelection <Bool> { return self.horizontalMirror_property.prop }
 
   //····················································································································
   //   Atomic property: name
@@ -519,14 +639,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var name : String {
+  final func reset_name_toDefaultValue () {
+    self.name = "Unnamed"
+  }
+
+  //····················································································································
+
+  final var name : String {
     get { return self.name_property.propval }
     set { self.name_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var name_property_selection : EBSelection <String> { return self.name_property.prop }
+  final var name_property_selection : EBSelection <String> { return self.name_property.prop }
 
   //····················································································································
   //   Atomic property: measurementUnitForPadHoleInPDF
@@ -536,14 +662,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var measurementUnitForPadHoleInPDF : Int {
+  final func reset_measurementUnitForPadHoleInPDF_toDefaultValue () {
+    self.measurementUnitForPadHoleInPDF = 90000
+  }
+
+  //····················································································································
+
+  final var measurementUnitForPadHoleInPDF : Int {
     get { return self.measurementUnitForPadHoleInPDF_property.propval }
     set { self.measurementUnitForPadHoleInPDF_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> { return self.measurementUnitForPadHoleInPDF_property.prop }
+  final var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> { return self.measurementUnitForPadHoleInPDF_property.prop }
 
   //····················································································································
   //   Atomic property: padHoleDiameterInPDF
@@ -553,14 +685,20 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  var padHoleDiameterInPDF : Int {
+  final func reset_padHoleDiameterInPDF_toDefaultValue () {
+    self.padHoleDiameterInPDF = 90000
+  }
+
+  //····················································································································
+
+  final var padHoleDiameterInPDF : Int {
     get { return self.padHoleDiameterInPDF_property.propval }
     set { self.padHoleDiameterInPDF_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padHoleDiameterInPDF_property_selection : EBSelection <Int> { return self.padHoleDiameterInPDF_property.prop }
+  final var padHoleDiameterInPDF_property_selection : EBSelection <Int> { return self.padHoleDiameterInPDF_property.prop }
 
   //····················································································································
   //    init
@@ -982,51 +1120,51 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: drawBoardLimits
-    self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey:"drawBoardLimits")
+    self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
   //--- Atomic property: drawInternalBoardLimits
-    self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey:"drawInternalBoardLimits")
+    self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
   //--- Atomic property: drawComponentNamesTopSide
-    self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentNamesTopSide")
+    self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
   //--- Atomic property: drawComponentNamesBottomSide
-    self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentNamesBottomSide")
+    self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
   //--- Atomic property: drawComponentValuesTopSide
-    self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentValuesTopSide")
+    self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
   //--- Atomic property: drawComponentValuesBottomSide
-    self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentValuesBottomSide")
+    self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
   //--- Atomic property: drawPackageLegendTopSide
-    self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPackageLegendTopSide")
+    self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
   //--- Atomic property: drawPackageLegendBottomSide
-    self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPackageLegendBottomSide")
+    self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
   //--- Atomic property: drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey:"drawPadHolesInPDF")
+    self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
   //--- Atomic property: drawPadsTopSide
-    self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPadsTopSide")
+    self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
   //--- Atomic property: drawPadsBottomSide
-    self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPadsBottomSide")
+    self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
   //--- Atomic property: drawTextsLayoutTopSide
-    self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLayoutTopSide")
+    self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
   //--- Atomic property: drawTextsLayoutBottomSide
-    self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLayoutBottomSide")
+    self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
   //--- Atomic property: drawTextsLegendTopSide
-    self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLegendTopSide")
+    self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
   //--- Atomic property: drawTextsLegendBottomSide
-    self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLegendBottomSide")
+    self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
   //--- Atomic property: drawTracksTopSide
-    self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTracksTopSide")
+    self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
   //--- Atomic property: drawTracksBottomSide
-    self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTracksBottomSide")
+    self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
   //--- Atomic property: drawVias
-    self.drawVias_property.storeIn (dictionary: ioDictionary, forKey:"drawVias")
+    self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
   //--- Atomic property: fileExtension
-    self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey:"fileExtension")
+    self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
   //--- Atomic property: horizontalMirror
-    self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey:"horizontalMirror")
+    self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
   //--- Atomic property: name
-    self.name_property.storeIn (dictionary: ioDictionary, forKey:"name")
+    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
   //--- Atomic property: measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey:"measurementUnitForPadHoleInPDF")
+    self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
   //--- Atomic property: padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey:"padHoleDiameterInPDF")
+    self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
   }
 
   //····················································································································
@@ -1045,51 +1183,51 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: drawBoardLimits
-    self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
+    self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey: "drawBoardLimits")
   //--- Atomic property: drawInternalBoardLimits
-    self.drawInternalBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawInternalBoardLimits")
+    self.drawInternalBoardLimits_property.readFrom (dictionary: inDictionary, forKey: "drawInternalBoardLimits")
   //--- Atomic property: drawComponentNamesTopSide
-    self.drawComponentNamesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesTopSide")
+    self.drawComponentNamesTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawComponentNamesTopSide")
   //--- Atomic property: drawComponentNamesBottomSide
-    self.drawComponentNamesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesBottomSide")
+    self.drawComponentNamesBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawComponentNamesBottomSide")
   //--- Atomic property: drawComponentValuesTopSide
-    self.drawComponentValuesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesTopSide")
+    self.drawComponentValuesTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawComponentValuesTopSide")
   //--- Atomic property: drawComponentValuesBottomSide
-    self.drawComponentValuesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesBottomSide")
+    self.drawComponentValuesBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawComponentValuesBottomSide")
   //--- Atomic property: drawPackageLegendTopSide
-    self.drawPackageLegendTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendTopSide")
+    self.drawPackageLegendTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawPackageLegendTopSide")
   //--- Atomic property: drawPackageLegendBottomSide
-    self.drawPackageLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendBottomSide")
+    self.drawPackageLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawPackageLegendBottomSide")
   //--- Atomic property: drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.readFrom (dictionary: inDictionary, forKey:"drawPadHolesInPDF")
+    self.drawPadHolesInPDF_property.readFrom (dictionary: inDictionary, forKey: "drawPadHolesInPDF")
   //--- Atomic property: drawPadsTopSide
-    self.drawPadsTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawPadsTopSide")
+    self.drawPadsTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawPadsTopSide")
   //--- Atomic property: drawPadsBottomSide
-    self.drawPadsBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawPadsBottomSide")
+    self.drawPadsBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawPadsBottomSide")
   //--- Atomic property: drawTextsLayoutTopSide
-    self.drawTextsLayoutTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutTopSide")
+    self.drawTextsLayoutTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawTextsLayoutTopSide")
   //--- Atomic property: drawTextsLayoutBottomSide
-    self.drawTextsLayoutBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutBottomSide")
+    self.drawTextsLayoutBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawTextsLayoutBottomSide")
   //--- Atomic property: drawTextsLegendTopSide
-    self.drawTextsLegendTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendTopSide")
+    self.drawTextsLegendTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawTextsLegendTopSide")
   //--- Atomic property: drawTextsLegendBottomSide
-    self.drawTextsLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendBottomSide")
+    self.drawTextsLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawTextsLegendBottomSide")
   //--- Atomic property: drawTracksTopSide
-    self.drawTracksTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTracksTopSide")
+    self.drawTracksTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawTracksTopSide")
   //--- Atomic property: drawTracksBottomSide
-    self.drawTracksBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTracksBottomSide")
+    self.drawTracksBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawTracksBottomSide")
   //--- Atomic property: drawVias
-    self.drawVias_property.readFrom (dictionary: inDictionary, forKey:"drawVias")
+    self.drawVias_property.readFrom (dictionary: inDictionary, forKey: "drawVias")
   //--- Atomic property: fileExtension
-    self.fileExtension_property.readFrom (dictionary: inDictionary, forKey:"fileExtension")
+    self.fileExtension_property.readFrom (dictionary: inDictionary, forKey: "fileExtension")
   //--- Atomic property: horizontalMirror
-    self.horizontalMirror_property.readFrom (dictionary: inDictionary, forKey:"horizontalMirror")
+    self.horizontalMirror_property.readFrom (dictionary: inDictionary, forKey: "horizontalMirror")
   //--- Atomic property: name
-    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+    self.name_property.readFrom (dictionary: inDictionary, forKey: "name")
   //--- Atomic property: measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
+    self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey: "measurementUnitForPadHoleInPDF")
   //--- Atomic property: padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
+    self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey: "padHoleDiameterInPDF")
   }
 
 

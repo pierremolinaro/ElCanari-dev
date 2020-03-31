@@ -151,18 +151,18 @@
             </toolbar>
             <point key="canvasLocation" x="147" y="291"/>
         </window>
-        <customView wantsLayer="YES" id="881" userLabel="Page : symbol" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="881" userLabel="Page : symbol" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8l-pn-xAQ" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8l-pn-xAQ" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="405" height="387"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="894" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="894" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="405" height="387"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" wantsLayer="YES" ambiguous="YES" id="xCD-Dw-CrS">
+                            <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="xCD-Dw-CrS">
                                 <rect key="frame" x="1" y="1" width="388" height="370"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

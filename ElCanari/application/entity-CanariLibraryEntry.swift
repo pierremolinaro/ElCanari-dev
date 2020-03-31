@@ -53,14 +53,20 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  var mPath : String {
+  final func reset_mPath_toDefaultValue () {
+    self.mPath = "Hello"
+  }
+
+  //····················································································································
+
+  final var mPath : String {
     get { return self.mPath_property.propval }
     set { self.mPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPath_property_selection : EBSelection <String> { return self.mPath_property.prop }
+  final var mPath_property_selection : EBSelection <String> { return self.mPath_property.prop }
 
   //····················································································································
   //   Atomic property: mUses
@@ -70,14 +76,20 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  var mUses : Bool {
+  final func reset_mUses_toDefaultValue () {
+    self.mUses = true
+  }
+
+  //····················································································································
+
+  final var mUses : Bool {
     get { return self.mUses_property.propval }
     set { self.mUses_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUses_property_selection : EBSelection <Bool> { return self.mUses_property.prop }
+  final var mUses_property_selection : EBSelection <Bool> { return self.mUses_property.prop }
 
   //····················································································································
   //   Atomic property: mLibraryRepositoryURL
@@ -87,14 +99,20 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  var mLibraryRepositoryURL : String {
+  final func reset_mLibraryRepositoryURL_toDefaultValue () {
+    self.mLibraryRepositoryURL = ""
+  }
+
+  //····················································································································
+
+  final var mLibraryRepositoryURL : String {
     get { return self.mLibraryRepositoryURL_property.propval }
     set { self.mLibraryRepositoryURL_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLibraryRepositoryURL_property_selection : EBSelection <String> { return self.mLibraryRepositoryURL_property.prop }
+  final var mLibraryRepositoryURL_property_selection : EBSelection <String> { return self.mLibraryRepositoryURL_property.prop }
 
   //····················································································································
   //   Atomic property: mUserAndPasswordTag
@@ -104,14 +122,20 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  var mUserAndPasswordTag : String {
+  final func reset_mUserAndPasswordTag_toDefaultValue () {
+    self.mUserAndPasswordTag = ""
+  }
+
+  //····················································································································
+
+  final var mUserAndPasswordTag : String {
     get { return self.mUserAndPasswordTag_property.propval }
     set { self.mUserAndPasswordTag_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUserAndPasswordTag_property_selection : EBSelection <String> { return self.mUserAndPasswordTag_property.prop }
+  final var mUserAndPasswordTag_property_selection : EBSelection <String> { return self.mUserAndPasswordTag_property.prop }
 
   //····················································································································
   //   Transient property: mStatusImage
@@ -296,13 +320,13 @@ class CanariLibraryEntry : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mPath
-    self.mPath_property.storeIn (dictionary: ioDictionary, forKey:"mPath")
+    self.mPath_property.storeIn (dictionary: ioDictionary, forKey: "mPath")
   //--- Atomic property: mUses
-    self.mUses_property.storeIn (dictionary: ioDictionary, forKey:"mUses")
+    self.mUses_property.storeIn (dictionary: ioDictionary, forKey: "mUses")
   //--- Atomic property: mLibraryRepositoryURL
-    self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey:"mLibraryRepositoryURL")
+    self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey: "mLibraryRepositoryURL")
   //--- Atomic property: mUserAndPasswordTag
-    self.mUserAndPasswordTag_property.storeIn (dictionary: ioDictionary, forKey:"mUserAndPasswordTag")
+    self.mUserAndPasswordTag_property.storeIn (dictionary: ioDictionary, forKey: "mUserAndPasswordTag")
   }
 
   //····················································································································
@@ -321,13 +345,13 @@ class CanariLibraryEntry : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPath
-    self.mPath_property.readFrom (dictionary: inDictionary, forKey:"mPath")
+    self.mPath_property.readFrom (dictionary: inDictionary, forKey: "mPath")
   //--- Atomic property: mUses
-    self.mUses_property.readFrom (dictionary: inDictionary, forKey:"mUses")
+    self.mUses_property.readFrom (dictionary: inDictionary, forKey: "mUses")
   //--- Atomic property: mLibraryRepositoryURL
-    self.mLibraryRepositoryURL_property.readFrom (dictionary: inDictionary, forKey:"mLibraryRepositoryURL")
+    self.mLibraryRepositoryURL_property.readFrom (dictionary: inDictionary, forKey: "mLibraryRepositoryURL")
   //--- Atomic property: mUserAndPasswordTag
-    self.mUserAndPasswordTag_property.readFrom (dictionary: inDictionary, forKey:"mUserAndPasswordTag")
+    self.mUserAndPasswordTag_property.readFrom (dictionary: inDictionary, forKey: "mUserAndPasswordTag")
   }
 
 

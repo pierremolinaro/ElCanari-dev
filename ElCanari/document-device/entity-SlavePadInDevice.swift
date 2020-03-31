@@ -95,14 +95,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mCenterX : Int {
+  final func reset_mCenterX_toDefaultValue () {
+    self.mCenterX = 0
+  }
+
+  //····················································································································
+
+  final var mCenterX : Int {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
+  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
 
   //····················································································································
   //   Atomic property: mCenterY
@@ -112,14 +118,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mCenterY : Int {
+  final func reset_mCenterY_toDefaultValue () {
+    self.mCenterY = 0
+  }
+
+  //····················································································································
+
+  final var mCenterY : Int {
     get { return self.mCenterY_property.propval }
     set { self.mCenterY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
+  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -129,14 +141,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mWidth : Int {
+  final func reset_mWidth_toDefaultValue () {
+    self.mWidth = 114300
+  }
+
+  //····················································································································
+
+  final var mWidth : Int {
     get { return self.mWidth_property.propval }
     set { self.mWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -146,14 +164,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mHeight : Int {
+  final func reset_mHeight_toDefaultValue () {
+    self.mHeight = 228600
+  }
+
+  //····················································································································
+
+  final var mHeight : Int {
     get { return self.mHeight_property.propval }
     set { self.mHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
+  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mHoleWidth
@@ -163,14 +187,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mHoleWidth : Int {
+  final func reset_mHoleWidth_toDefaultValue () {
+    self.mHoleWidth = 57150
+  }
+
+  //····················································································································
+
+  final var mHoleWidth : Int {
     get { return self.mHoleWidth_property.propval }
     set { self.mHoleWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.prop }
+  final var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mHoleHeight
@@ -180,14 +210,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mHoleHeight : Int {
+  final func reset_mHoleHeight_toDefaultValue () {
+    self.mHoleHeight = 57150
+  }
+
+  //····················································································································
+
+  final var mHoleHeight : Int {
     get { return self.mHoleHeight_property.propval }
     set { self.mHoleHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.prop }
+  final var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mShape
@@ -197,14 +233,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mShape : PadShape {
+  final func reset_mShape_toDefaultValue () {
+    self.mShape = PadShape.octo
+  }
+
+  //····················································································································
+
+  final var mShape : PadShape {
     get { return self.mShape_property.propval }
     set { self.mShape_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.prop }
+  final var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.prop }
 
   //····················································································································
   //   Atomic property: mStyle
@@ -214,14 +256,20 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mStyle : SlavePadStyle {
+  final func reset_mStyle_toDefaultValue () {
+    self.mStyle = SlavePadStyle.traversing
+  }
+
+  //····················································································································
+
+  final var mStyle : SlavePadStyle {
     get { return self.mStyle_property.propval }
     set { self.mStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStyle_property_selection : EBSelection <SlavePadStyle> { return self.mStyle_property.prop }
+  final var mStyle_property_selection : EBSelection <SlavePadStyle> { return self.mStyle_property.prop }
 
   //····················································································································
   //   To one property: mMasterPad
@@ -689,21 +737,21 @@ class SlavePadInDevice : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mCenterX
-    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey:"mCenterX")
+    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
   //--- Atomic property: mCenterY
-    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey:"mCenterY")
+    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
   //--- Atomic property: mWidth
-    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
+    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
   //--- Atomic property: mHeight
-    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHeight")
+    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
   //--- Atomic property: mHoleWidth
-    self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey:"mHoleWidth")
+    self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey: "mHoleWidth")
   //--- Atomic property: mHoleHeight
-    self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHoleHeight")
+    self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHoleHeight")
   //--- Atomic property: mShape
-    self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
+    self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
   //--- Atomic property: mStyle
-    self.mStyle_property.storeIn (dictionary: ioDictionary, forKey:"mStyle")
+    self.mStyle_property.storeIn (dictionary: ioDictionary, forKey: "mStyle")
   }
 
   //····················································································································
@@ -733,21 +781,21 @@ class SlavePadInDevice : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
-    self.mCenterX_property.readFrom (dictionary: inDictionary, forKey:"mCenterX")
+    self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")
   //--- Atomic property: mCenterY
-    self.mCenterY_property.readFrom (dictionary: inDictionary, forKey:"mCenterY")
+    self.mCenterY_property.readFrom (dictionary: inDictionary, forKey: "mCenterY")
   //--- Atomic property: mWidth
-    self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
+    self.mWidth_property.readFrom (dictionary: inDictionary, forKey: "mWidth")
   //--- Atomic property: mHeight
-    self.mHeight_property.readFrom (dictionary: inDictionary, forKey:"mHeight")
+    self.mHeight_property.readFrom (dictionary: inDictionary, forKey: "mHeight")
   //--- Atomic property: mHoleWidth
-    self.mHoleWidth_property.readFrom (dictionary: inDictionary, forKey:"mHoleWidth")
+    self.mHoleWidth_property.readFrom (dictionary: inDictionary, forKey: "mHoleWidth")
   //--- Atomic property: mHoleHeight
-    self.mHoleHeight_property.readFrom (dictionary: inDictionary, forKey:"mHoleHeight")
+    self.mHoleHeight_property.readFrom (dictionary: inDictionary, forKey: "mHoleHeight")
   //--- Atomic property: mShape
-    self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
+    self.mShape_property.readFrom (dictionary: inDictionary, forKey: "mShape")
   //--- Atomic property: mStyle
-    self.mStyle_property.readFrom (dictionary: inDictionary, forKey:"mStyle")
+    self.mStyle_property.readFrom (dictionary: inDictionary, forKey: "mStyle")
   }
 
 

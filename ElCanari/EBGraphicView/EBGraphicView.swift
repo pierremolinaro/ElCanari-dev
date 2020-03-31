@@ -44,13 +44,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   override func awakeFromNib () {
     super.awakeFromNib ()
-    var view : NSView? = self
-    var allViewsRequireLayer = true
-    while (view != nil) && allViewsRequireLayer {
-      allViewsRequireLayer = self.wantsLayer
-      view = view?.superview
-    }
-    if !allViewsRequireLayer {
+    if !self.wantsLayer {
       presentErrorWindow (#file, #line, "EBGraphicView requires layer")
     }
   }

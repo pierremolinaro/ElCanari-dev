@@ -382,14 +382,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var name : String {
+  final func reset_name_toDefaultValue () {
+    self.name = ""
+  }
+
+  //····················································································································
+
+  final var name : String {
     get { return self.name_property.propval }
     set { self.name_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var name_property_selection : EBSelection <String> { return self.name_property.prop }
+  final var name_property_selection : EBSelection <String> { return self.name_property.prop }
 
   //····················································································································
   //   Atomic property: modelWidth
@@ -399,14 +405,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var modelWidth : Int {
+  final func reset_modelWidth_toDefaultValue () {
+    self.modelWidth = 0
+  }
+
+  //····················································································································
+
+  final var modelWidth : Int {
     get { return self.modelWidth_property.propval }
     set { self.modelWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelWidth_property_selection : EBSelection <Int> { return self.modelWidth_property.prop }
+  final var modelWidth_property_selection : EBSelection <Int> { return self.modelWidth_property.prop }
 
   //····················································································································
   //   Atomic property: modelWidthUnit
@@ -416,14 +428,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var modelWidthUnit : Int {
+  final func reset_modelWidthUnit_toDefaultValue () {
+    self.modelWidthUnit = 0
+  }
+
+  //····················································································································
+
+  final var modelWidthUnit : Int {
     get { return self.modelWidthUnit_property.propval }
     set { self.modelWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelWidthUnit_property_selection : EBSelection <Int> { return self.modelWidthUnit_property.prop }
+  final var modelWidthUnit_property_selection : EBSelection <Int> { return self.modelWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: modelHeight
@@ -433,14 +451,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var modelHeight : Int {
+  final func reset_modelHeight_toDefaultValue () {
+    self.modelHeight = 0
+  }
+
+  //····················································································································
+
+  final var modelHeight : Int {
     get { return self.modelHeight_property.propval }
     set { self.modelHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelHeight_property_selection : EBSelection <Int> { return self.modelHeight_property.prop }
+  final var modelHeight_property_selection : EBSelection <Int> { return self.modelHeight_property.prop }
 
   //····················································································································
   //   Atomic property: modelHeightUnit
@@ -450,14 +474,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var modelHeightUnit : Int {
+  final func reset_modelHeightUnit_toDefaultValue () {
+    self.modelHeightUnit = 0
+  }
+
+  //····················································································································
+
+  final var modelHeightUnit : Int {
     get { return self.modelHeightUnit_property.propval }
     set { self.modelHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelHeightUnit_property_selection : EBSelection <Int> { return self.modelHeightUnit_property.prop }
+  final var modelHeightUnit_property_selection : EBSelection <Int> { return self.modelHeightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -467,14 +497,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var zoom : Int {
+  final func reset_zoom_toDefaultValue () {
+    self.zoom = 0
+  }
+
+  //····················································································································
+
+  final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   To many property: frontLegendLines
@@ -693,14 +729,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var modelLimitWidth : Int {
+  final func reset_modelLimitWidth_toDefaultValue () {
+    self.modelLimitWidth = 0
+  }
+
+  //····················································································································
+
+  final var modelLimitWidth : Int {
     get { return self.modelLimitWidth_property.propval }
     set { self.modelLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelLimitWidth_property_selection : EBSelection <Int> { return self.modelLimitWidth_property.prop }
+  final var modelLimitWidth_property_selection : EBSelection <Int> { return self.modelLimitWidth_property.prop }
 
   //····················································································································
   //   Atomic property: modelLimitWidthUnit
@@ -710,14 +752,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var modelLimitWidthUnit : Int {
+  final func reset_modelLimitWidthUnit_toDefaultValue () {
+    self.modelLimitWidthUnit = 0
+  }
+
+  //····················································································································
+
+  final var modelLimitWidthUnit : Int {
     get { return self.modelLimitWidthUnit_property.propval }
     set { self.modelLimitWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelLimitWidthUnit_property_selection : EBSelection <Int> { return self.modelLimitWidthUnit_property.prop }
+  final var modelLimitWidthUnit_property_selection : EBSelection <Int> { return self.modelLimitWidthUnit_property.prop }
 
   //····················································································································
   //   To many property: backComponentNames
@@ -879,14 +927,20 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  var artworkName : String {
+  final func reset_artworkName_toDefaultValue () {
+    self.artworkName = ""
+  }
+
+  //····················································································································
+
+  final var artworkName : String {
     get { return self.artworkName_property.propval }
     set { self.artworkName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
+  final var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
 
   //····················································································································
   //   To many property: myInstances
@@ -4278,17 +4332,17 @@ class BoardModel : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: name
-    self.name_property.storeIn (dictionary: ioDictionary, forKey:"name")
+    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
   //--- Atomic property: modelWidth
-    self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey:"modelWidth")
+    self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
   //--- Atomic property: modelWidthUnit
-    self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelWidthUnit")
+    self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
   //--- Atomic property: modelHeight
-    self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey:"modelHeight")
+    self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
   //--- Atomic property: modelHeightUnit
-    self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelHeightUnit")
+    self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
   //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
   //--- To many property: frontLegendLines
     self.store (
       managedObjectArray: self.frontLegendLines_property.propval,
@@ -4356,9 +4410,9 @@ class BoardModel : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: modelLimitWidth
-    self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey:"modelLimitWidth")
+    self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
   //--- Atomic property: modelLimitWidthUnit
-    self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelLimitWidthUnit")
+    self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
   //--- To many property: backComponentNames
     self.store (
       managedObjectArray: self.backComponentNames_property.propval,
@@ -4408,7 +4462,7 @@ class BoardModel : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: artworkName
-    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
+    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
   //--- To many property: myInstances
     self.store (
       managedObjectArray: self.myInstances_property.propval,
@@ -4553,23 +4607,23 @@ class BoardModel : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: name
-    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+    self.name_property.readFrom (dictionary: inDictionary, forKey: "name")
   //--- Atomic property: modelWidth
-    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
+    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey: "modelWidth")
   //--- Atomic property: modelWidthUnit
-    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
+    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "modelWidthUnit")
   //--- Atomic property: modelHeight
-    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
+    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey: "modelHeight")
   //--- Atomic property: modelHeightUnit
-    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
+    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "modelHeightUnit")
   //--- Atomic property: zoom
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
   //--- Atomic property: modelLimitWidth
-    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
+    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey: "modelLimitWidth")
   //--- Atomic property: modelLimitWidthUnit
-    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
+    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "modelLimitWidthUnit")
   //--- Atomic property: artworkName
-    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+    self.artworkName_property.readFrom (dictionary: inDictionary, forKey: "artworkName")
   }
 
 

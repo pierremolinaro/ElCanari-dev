@@ -60,14 +60,20 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  var x1 : Int {
+  final func reset_x1_toDefaultValue () {
+    self.x1 = 2
+  }
+
+  //····················································································································
+
+  final var x1 : Int {
     get { return self.x1_property.propval }
     set { self.x1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //   Atomic property: y1
@@ -77,14 +83,20 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  var y1 : Int {
+  final func reset_y1_toDefaultValue () {
+    self.y1 = 1
+  }
+
+  //····················································································································
+
+  final var y1 : Int {
     get { return self.y1_property.propval }
     set { self.y1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
 
   //····················································································································
   //   Atomic property: x2
@@ -94,14 +106,20 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  var x2 : Int {
+  final func reset_x2_toDefaultValue () {
+    self.x2 = 9
+  }
+
+  //····················································································································
+
+  final var x2 : Int {
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
 
   //····················································································································
   //   Atomic property: y2
@@ -111,14 +129,20 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  var y2 : Int {
+  final func reset_y2_toDefaultValue () {
+    self.y2 = 8
+  }
+
+  //····················································································································
+
+  final var y2 : Int {
     get { return self.y2_property.propval }
     set { self.y2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
 
   //····················································································································
   //    init
@@ -335,13 +359,13 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
   //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
   //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
   }
 
   //····················································································································
@@ -360,13 +384,13 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x1
-    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
   //--- Atomic property: y1
-    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
   //--- Atomic property: x2
-    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.x2_property.readFrom (dictionary: inDictionary, forKey: "x2")
   //--- Atomic property: y2
-    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.y2_property.readFrom (dictionary: inDictionary, forKey: "y2")
   }
 
 

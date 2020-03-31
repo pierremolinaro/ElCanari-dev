@@ -93,14 +93,20 @@ class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNetName : String {
+  final func reset_mNetName_toDefaultValue () {
+    self.mNetName = ""
+  }
+
+  //····················································································································
+
+  final var mNetName : String {
     get { return self.mNetName_property.propval }
     set { self.mNetName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetName_property_selection : EBSelection <String> { return self.mNetName_property.prop }
+  final var mNetName_property_selection : EBSelection <String> { return self.mNetName_property.prop }
 
   //····················································································································
   //   To many property: mTracks
@@ -688,7 +694,7 @@ class NetInProject : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mNetName
-    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey:"mNetName")
+    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey: "mNetName")
   //--- To many property: mTracks
     self.store (
       managedObjectArray: self.mTracks_property.propval,
@@ -736,7 +742,7 @@ class NetInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNetName
-    self.mNetName_property.readFrom (dictionary: inDictionary, forKey:"mNetName")
+    self.mNetName_property.readFrom (dictionary: inDictionary, forKey: "mNetName")
   }
 
 

@@ -116,14 +116,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPinName : String {
+  final func reset_mPinName_toDefaultValue () {
+    self.mPinName = ""
+  }
+
+  //····················································································································
+
+  final var mPinName : String {
     get { return self.mPinName_property.propval }
     set { self.mPinName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinName_property_selection : EBSelection <String> { return self.mPinName_property.prop }
+  final var mPinName_property_selection : EBSelection <String> { return self.mPinName_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -133,14 +139,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mSymbolInstanceName : String {
+  final func reset_mSymbolInstanceName_toDefaultValue () {
+    self.mSymbolInstanceName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolInstanceName : String {
     get { return self.mSymbolInstanceName_property.propval }
     set { self.mSymbolInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
+  final var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolTypeName
@@ -150,14 +162,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mSymbolTypeName : String {
+  final func reset_mSymbolTypeName_toDefaultValue () {
+    self.mSymbolTypeName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolTypeName : String {
     get { return self.mSymbolTypeName_property.propval }
     set { self.mSymbolTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
+  final var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
 
   //····················································································································
   //   Atomic property: mPinX
@@ -167,14 +185,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPinX : Int {
+  final func reset_mPinX_toDefaultValue () {
+    self.mPinX = 0
+  }
+
+  //····················································································································
+
+  final var mPinX : Int {
     get { return self.mPinX_property.propval }
     set { self.mPinX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinX_property_selection : EBSelection <Int> { return self.mPinX_property.prop }
+  final var mPinX_property_selection : EBSelection <Int> { return self.mPinX_property.prop }
 
   //····················································································································
   //   Atomic property: mPinY
@@ -184,14 +208,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPinY : Int {
+  final func reset_mPinY_toDefaultValue () {
+    self.mPinY = 0
+  }
+
+  //····················································································································
+
+  final var mPinY : Int {
     get { return self.mPinY_property.propval }
     set { self.mPinY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinY_property_selection : EBSelection <Int> { return self.mPinY_property.prop }
+  final var mPinY_property_selection : EBSelection <Int> { return self.mPinY_property.prop }
 
   //····················································································································
   //   Atomic property: mXName
@@ -201,14 +231,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mXName : Int {
+  final func reset_mXName_toDefaultValue () {
+    self.mXName = 0
+  }
+
+  //····················································································································
+
+  final var mXName : Int {
     get { return self.mXName_property.propval }
     set { self.mXName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mXName_property_selection : EBSelection <Int> { return self.mXName_property.prop }
+  final var mXName_property_selection : EBSelection <Int> { return self.mXName_property.prop }
 
   //····················································································································
   //   Atomic property: mYName
@@ -218,14 +254,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mYName : Int {
+  final func reset_mYName_toDefaultValue () {
+    self.mYName = 0
+  }
+
+  //····················································································································
+
+  final var mYName : Int {
     get { return self.mYName_property.propval }
     set { self.mYName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mYName_property_selection : EBSelection <Int> { return self.mYName_property.prop }
+  final var mYName_property_selection : EBSelection <Int> { return self.mYName_property.prop }
 
   //····················································································································
   //   Atomic property: mNameHorizontalAlignment
@@ -235,14 +277,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNameHorizontalAlignment : HorizontalAlignment {
+  final func reset_mNameHorizontalAlignment_toDefaultValue () {
+    self.mNameHorizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var mNameHorizontalAlignment : HorizontalAlignment {
     get { return self.mNameHorizontalAlignment_property.propval }
     set { self.mNameHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNameHorizontalAlignment_property.prop }
+  final var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNameHorizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: mPinNameIsDisplayedInSchematic
@@ -252,14 +300,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematic : Bool {
+  final func reset_mPinNameIsDisplayedInSchematic_toDefaultValue () {
+    self.mPinNameIsDisplayedInSchematic = true
+  }
+
+  //····················································································································
+
+  final var mPinNameIsDisplayedInSchematic : Bool {
     get { return self.mPinNameIsDisplayedInSchematic_property.propval }
     set { self.mPinNameIsDisplayedInSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool> { return self.mPinNameIsDisplayedInSchematic_property.prop }
+  final var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool> { return self.mPinNameIsDisplayedInSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: mXNumber
@@ -269,14 +323,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mXNumber : Int {
+  final func reset_mXNumber_toDefaultValue () {
+    self.mXNumber = 0
+  }
+
+  //····················································································································
+
+  final var mXNumber : Int {
     get { return self.mXNumber_property.propval }
     set { self.mXNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mXNumber_property_selection : EBSelection <Int> { return self.mXNumber_property.prop }
+  final var mXNumber_property_selection : EBSelection <Int> { return self.mXNumber_property.prop }
 
   //····················································································································
   //   Atomic property: mYNumber
@@ -286,14 +346,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mYNumber : Int {
+  final func reset_mYNumber_toDefaultValue () {
+    self.mYNumber = 0
+  }
+
+  //····················································································································
+
+  final var mYNumber : Int {
     get { return self.mYNumber_property.propval }
     set { self.mYNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mYNumber_property_selection : EBSelection <Int> { return self.mYNumber_property.prop }
+  final var mYNumber_property_selection : EBSelection <Int> { return self.mYNumber_property.prop }
 
   //····················································································································
   //   Atomic property: mNumberHorizontalAlignment
@@ -303,14 +369,20 @@ class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNumberHorizontalAlignment : HorizontalAlignment {
+  final func reset_mNumberHorizontalAlignment_toDefaultValue () {
+    self.mNumberHorizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var mNumberHorizontalAlignment : HorizontalAlignment {
     get { return self.mNumberHorizontalAlignment_property.propval }
     set { self.mNumberHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNumberHorizontalAlignment_property.prop }
+  final var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNumberHorizontalAlignment_property.prop }
 
   //····················································································································
   //   Transient property: pinQualifiedName
@@ -687,29 +759,29 @@ class DevicePinInProject : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mPinName
-    self.mPinName_property.storeIn (dictionary: ioDictionary, forKey:"mPinName")
+    self.mPinName_property.storeIn (dictionary: ioDictionary, forKey: "mPinName")
   //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
+    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
+    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
   //--- Atomic property: mPinX
-    self.mPinX_property.storeIn (dictionary: ioDictionary, forKey:"mPinX")
+    self.mPinX_property.storeIn (dictionary: ioDictionary, forKey: "mPinX")
   //--- Atomic property: mPinY
-    self.mPinY_property.storeIn (dictionary: ioDictionary, forKey:"mPinY")
+    self.mPinY_property.storeIn (dictionary: ioDictionary, forKey: "mPinY")
   //--- Atomic property: mXName
-    self.mXName_property.storeIn (dictionary: ioDictionary, forKey:"mXName")
+    self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
   //--- Atomic property: mYName
-    self.mYName_property.storeIn (dictionary: ioDictionary, forKey:"mYName")
+    self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
   //--- Atomic property: mNameHorizontalAlignment
-    self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNameHorizontalAlignment")
+    self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNameHorizontalAlignment")
   //--- Atomic property: mPinNameIsDisplayedInSchematic
-    self.mPinNameIsDisplayedInSchematic_property.storeIn (dictionary: ioDictionary, forKey:"mPinNameIsDisplayedInSchematic")
+    self.mPinNameIsDisplayedInSchematic_property.storeIn (dictionary: ioDictionary, forKey: "mPinNameIsDisplayedInSchematic")
   //--- Atomic property: mXNumber
-    self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey:"mXNumber")
+    self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey: "mXNumber")
   //--- Atomic property: mYNumber
-    self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey:"mYNumber")
+    self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey: "mYNumber")
   //--- Atomic property: mNumberHorizontalAlignment
-    self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNumberHorizontalAlignment")
+    self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNumberHorizontalAlignment")
   }
 
   //····················································································································
@@ -728,29 +800,29 @@ class DevicePinInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPinName
-    self.mPinName_property.readFrom (dictionary: inDictionary, forKey:"mPinName")
+    self.mPinName_property.readFrom (dictionary: inDictionary, forKey: "mPinName")
   //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
+    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
+    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolTypeName")
   //--- Atomic property: mPinX
-    self.mPinX_property.readFrom (dictionary: inDictionary, forKey:"mPinX")
+    self.mPinX_property.readFrom (dictionary: inDictionary, forKey: "mPinX")
   //--- Atomic property: mPinY
-    self.mPinY_property.readFrom (dictionary: inDictionary, forKey:"mPinY")
+    self.mPinY_property.readFrom (dictionary: inDictionary, forKey: "mPinY")
   //--- Atomic property: mXName
-    self.mXName_property.readFrom (dictionary: inDictionary, forKey:"mXName")
+    self.mXName_property.readFrom (dictionary: inDictionary, forKey: "mXName")
   //--- Atomic property: mYName
-    self.mYName_property.readFrom (dictionary: inDictionary, forKey:"mYName")
+    self.mYName_property.readFrom (dictionary: inDictionary, forKey: "mYName")
   //--- Atomic property: mNameHorizontalAlignment
-    self.mNameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNameHorizontalAlignment")
+    self.mNameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mNameHorizontalAlignment")
   //--- Atomic property: mPinNameIsDisplayedInSchematic
-    self.mPinNameIsDisplayedInSchematic_property.readFrom (dictionary: inDictionary, forKey:"mPinNameIsDisplayedInSchematic")
+    self.mPinNameIsDisplayedInSchematic_property.readFrom (dictionary: inDictionary, forKey: "mPinNameIsDisplayedInSchematic")
   //--- Atomic property: mXNumber
-    self.mXNumber_property.readFrom (dictionary: inDictionary, forKey:"mXNumber")
+    self.mXNumber_property.readFrom (dictionary: inDictionary, forKey: "mXNumber")
   //--- Atomic property: mYNumber
-    self.mYNumber_property.readFrom (dictionary: inDictionary, forKey:"mYNumber")
+    self.mYNumber_property.readFrom (dictionary: inDictionary, forKey: "mYNumber")
   //--- Atomic property: mNumberHorizontalAlignment
-    self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNumberHorizontalAlignment")
+    self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mNumberHorizontalAlignment")
   }
 
 

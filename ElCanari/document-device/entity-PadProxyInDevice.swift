@@ -53,14 +53,20 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mPinInstanceName : String {
+  final func reset_mPinInstanceName_toDefaultValue () {
+    self.mPinInstanceName = ""
+  }
+
+  //····················································································································
+
+  final var mPinInstanceName : String {
     get { return self.mPinInstanceName_property.propval }
     set { self.mPinInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinInstanceName_property_selection : EBSelection <String> { return self.mPinInstanceName_property.prop }
+  final var mPinInstanceName_property_selection : EBSelection <String> { return self.mPinInstanceName_property.prop }
 
   //····················································································································
   //   Atomic property: mPadName
@@ -70,14 +76,20 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mPadName : String {
+  final func reset_mPadName_toDefaultValue () {
+    self.mPadName = ""
+  }
+
+  //····················································································································
+
+  final var mPadName : String {
     get { return self.mPadName_property.propval }
     set { self.mPadName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
+  final var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
 
   //····················································································································
   //   Atomic property: mIsNC
@@ -87,14 +99,20 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mIsNC : Bool {
+  final func reset_mIsNC_toDefaultValue () {
+    self.mIsNC = false
+  }
+
+  //····················································································································
+
+  final var mIsNC : Bool {
     get { return self.mIsNC_property.propval }
     set { self.mIsNC_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.prop }
+  final var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.prop }
 
   //····················································································································
   //   To one property: mPinInstance
@@ -382,11 +400,11 @@ class PadProxyInDevice : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mPinInstanceName
-    self.mPinInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mPinInstanceName")
+    self.mPinInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mPinInstanceName")
   //--- Atomic property: mPadName
-    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey:"mPadName")
+    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey: "mPadName")
   //--- Atomic property: mIsNC
-    self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey:"mIsNC")
+    self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey: "mIsNC")
   //--- To one property: mPinInstance // Opposite is toOne mPadProxy
     self.store (managedObject:self.mPinInstance_property.propval,
       relationshipName: "mPinInstance",
@@ -420,11 +438,11 @@ class PadProxyInDevice : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPinInstanceName
-    self.mPinInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mPinInstanceName")
+    self.mPinInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mPinInstanceName")
   //--- Atomic property: mPadName
-    self.mPadName_property.readFrom (dictionary: inDictionary, forKey:"mPadName")
+    self.mPadName_property.readFrom (dictionary: inDictionary, forKey: "mPadName")
   //--- Atomic property: mIsNC
-    self.mIsNC_property.readFrom (dictionary: inDictionary, forKey:"mIsNC")
+    self.mIsNC_property.readFrom (dictionary: inDictionary, forKey: "mIsNC")
   }
 
 

@@ -74,14 +74,20 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  var codePoint : Int {
+  final func reset_codePoint_toDefaultValue () {
+    self.codePoint = 0
+  }
+
+  //····················································································································
+
+  final var codePoint : Int {
     get { return self.codePoint_property.propval }
     set { self.codePoint_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var codePoint_property_selection : EBSelection <Int> { return self.codePoint_property.prop }
+  final var codePoint_property_selection : EBSelection <Int> { return self.codePoint_property.prop }
 
   //····················································································································
   //   Atomic property: advance
@@ -91,14 +97,20 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  var advance : Int {
+  final func reset_advance_toDefaultValue () {
+    self.advance = 0
+  }
+
+  //····················································································································
+
+  final var advance : Int {
     get { return self.advance_property.propval }
     set { self.advance_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var advance_property_selection : EBSelection <Int> { return self.advance_property.prop }
+  final var advance_property_selection : EBSelection <Int> { return self.advance_property.prop }
 
   //····················································································································
   //   Atomic property: mWarnsWhenNoSegment
@@ -108,14 +120,20 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  var mWarnsWhenNoSegment : Bool {
+  final func reset_mWarnsWhenNoSegment_toDefaultValue () {
+    self.mWarnsWhenNoSegment = true
+  }
+
+  //····················································································································
+
+  final var mWarnsWhenNoSegment : Bool {
     get { return self.mWarnsWhenNoSegment_property.propval }
     set { self.mWarnsWhenNoSegment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> { return self.mWarnsWhenNoSegment_property.prop }
+  final var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> { return self.mWarnsWhenNoSegment_property.prop }
 
   //····················································································································
   //   Atomic property: mWarnsWhenAdvanceIsZero
@@ -125,14 +143,20 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  var mWarnsWhenAdvanceIsZero : Bool {
+  final func reset_mWarnsWhenAdvanceIsZero_toDefaultValue () {
+    self.mWarnsWhenAdvanceIsZero = true
+  }
+
+  //····················································································································
+
+  final var mWarnsWhenAdvanceIsZero : Bool {
     get { return self.mWarnsWhenAdvanceIsZero_property.propval }
     set { self.mWarnsWhenAdvanceIsZero_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> { return self.mWarnsWhenAdvanceIsZero_property.prop }
+  final var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> { return self.mWarnsWhenAdvanceIsZero_property.prop }
 
   //····················································································································
   //   To many property: segments
@@ -539,13 +563,13 @@ class FontCharacter : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: codePoint
-    self.codePoint_property.storeIn (dictionary: ioDictionary, forKey:"codePoint")
+    self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
   //--- Atomic property: advance
-    self.advance_property.storeIn (dictionary: ioDictionary, forKey:"advance")
+    self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
   //--- Atomic property: mWarnsWhenNoSegment
-    self.mWarnsWhenNoSegment_property.storeIn (dictionary: ioDictionary, forKey:"mWarnsWhenNoSegment")
+    self.mWarnsWhenNoSegment_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenNoSegment")
   //--- Atomic property: mWarnsWhenAdvanceIsZero
-    self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey:"mWarnsWhenAdvanceIsZero")
+    self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenAdvanceIsZero")
   //--- To many property: segments
     self.store (
       managedObjectArray: self.segments_property.propval,
@@ -576,13 +600,13 @@ class FontCharacter : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: codePoint
-    self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
+    self.codePoint_property.readFrom (dictionary: inDictionary, forKey: "codePoint")
   //--- Atomic property: advance
-    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
+    self.advance_property.readFrom (dictionary: inDictionary, forKey: "advance")
   //--- Atomic property: mWarnsWhenNoSegment
-    self.mWarnsWhenNoSegment_property.readFrom (dictionary: inDictionary, forKey:"mWarnsWhenNoSegment")
+    self.mWarnsWhenNoSegment_property.readFrom (dictionary: inDictionary, forKey: "mWarnsWhenNoSegment")
   //--- Atomic property: mWarnsWhenAdvanceIsZero
-    self.mWarnsWhenAdvanceIsZero_property.readFrom (dictionary: inDictionary, forKey:"mWarnsWhenAdvanceIsZero")
+    self.mWarnsWhenAdvanceIsZero_property.readFrom (dictionary: inDictionary, forKey: "mWarnsWhenAdvanceIsZero")
   }
 
 

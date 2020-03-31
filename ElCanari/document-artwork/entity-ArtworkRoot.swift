@@ -102,14 +102,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedTab : Int {
+  final func reset_selectedTab_toDefaultValue () {
+    self.selectedTab = 0
+  }
+
+  //····················································································································
+
+  final var selectedTab : Int {
     get { return self.selectedTab_property.propval }
     set { self.selectedTab_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
+  final var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
 
   //····················································································································
   //   Atomic property: comments
@@ -119,14 +125,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var comments : String {
+  final func reset_comments_toDefaultValue () {
+    self.comments = ""
+  }
+
+  //····················································································································
+
+  final var comments : String {
     get { return self.comments_property.propval }
     set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: minPPTPTTTWdisplayUnit
@@ -136,14 +148,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minPPTPTTTWdisplayUnit : Int {
+  final func reset_minPPTPTTTWdisplayUnit_toDefaultValue () {
+    self.minPPTPTTTWdisplayUnit = 90
+  }
+
+  //····················································································································
+
+  final var minPPTPTTTWdisplayUnit : Int {
     get { return self.minPPTPTTTWdisplayUnit_property.propval }
     set { self.minPPTPTTTWdisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.prop }
+  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minPPTPTTTW
@@ -153,14 +171,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minPPTPTTTW : Int {
+  final func reset_minPPTPTTTW_toDefaultValue () {
+    self.minPPTPTTTW = 18000
+  }
+
+  //····················································································································
+
+  final var minPPTPTTTW : Int {
     get { return self.minPPTPTTTW_property.propval }
     set { self.minPPTPTTTW_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.prop }
+  final var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForOARdisplayUnit
@@ -170,14 +194,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForOARdisplayUnit : Int {
+  final func reset_minValueForOARdisplayUnit_toDefaultValue () {
+    self.minValueForOARdisplayUnit = 90
+  }
+
+  //····················································································································
+
+  final var minValueForOARdisplayUnit : Int {
     get { return self.minValueForOARdisplayUnit_property.propval }
     set { self.minValueForOARdisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.prop }
+  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForOARinEBUnit
@@ -187,14 +217,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForOARinEBUnit : Int {
+  final func reset_minValueForOARinEBUnit_toDefaultValue () {
+    self.minValueForOARinEBUnit = 18000
+  }
+
+  //····················································································································
+
+  final var minValueForOARinEBUnit : Int {
     get { return self.minValueForOARinEBUnit_property.propval }
     set { self.minValueForOARinEBUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.prop }
+  final var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForPHDdisplayUnit
@@ -204,14 +240,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForPHDdisplayUnit : Int {
+  final func reset_minValueForPHDdisplayUnit_toDefaultValue () {
+    self.minValueForPHDdisplayUnit = 90
+  }
+
+  //····················································································································
+
+  final var minValueForPHDdisplayUnit : Int {
     get { return self.minValueForPHDdisplayUnit_property.propval }
     set { self.minValueForPHDdisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.prop }
+  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForPHDinEBUnit
@@ -221,14 +263,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForPHDinEBUnit : Int {
+  final func reset_minValueForPHDinEBUnit_toDefaultValue () {
+    self.minValueForPHDinEBUnit = 18000
+  }
+
+  //····················································································································
+
+  final var minValueForPHDinEBUnit : Int {
     get { return self.minValueForPHDinEBUnit_property.propval }
     set { self.minValueForPHDinEBUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.prop }
+  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForBoardLimitWidthDisplayUnit
@@ -238,14 +286,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForBoardLimitWidthDisplayUnit : Int {
+  final func reset_minValueForBoardLimitWidthDisplayUnit_toDefaultValue () {
+    self.minValueForBoardLimitWidthDisplayUnit = 90000
+  }
+
+  //····················································································································
+
+  final var minValueForBoardLimitWidthDisplayUnit : Int {
     get { return self.minValueForBoardLimitWidthDisplayUnit_property.propval }
     set { self.minValueForBoardLimitWidthDisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.prop }
+  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForBoardLimitWidth
@@ -255,14 +309,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForBoardLimitWidth : Int {
+  final func reset_minValueForBoardLimitWidth_toDefaultValue () {
+    self.minValueForBoardLimitWidth = 90000
+  }
+
+  //····················································································································
+
+  final var minValueForBoardLimitWidth : Int {
     get { return self.minValueForBoardLimitWidth_property.propval }
     set { self.minValueForBoardLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.prop }
+  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.prop }
 
   //····················································································································
   //   Atomic property: drillDataFileExtension
@@ -272,14 +332,20 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  var drillDataFileExtension : String {
+  final func reset_drillDataFileExtension_toDefaultValue () {
+    self.drillDataFileExtension = "drf"
+  }
+
+  //····················································································································
+
+  final var drillDataFileExtension : String {
     get { return self.drillDataFileExtension_property.propval }
     set { self.drillDataFileExtension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.prop }
+  final var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.prop }
 
   //····················································································································
   //   To many property: fileGenerationParameterArray
@@ -607,27 +673,27 @@ class ArtworkRoot : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: selectedTab
-    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey:"selectedTab")
+    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
   //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
   //--- Atomic property: minPPTPTTTWdisplayUnit
-    self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minPPTPTTTWdisplayUnit")
+    self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
   //--- Atomic property: minPPTPTTTW
-    self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey:"minPPTPTTTW")
+    self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTW")
   //--- Atomic property: minValueForOARdisplayUnit
-    self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForOARdisplayUnit")
+    self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
   //--- Atomic property: minValueForOARinEBUnit
-    self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForOARinEBUnit")
+    self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
   //--- Atomic property: minValueForPHDdisplayUnit
-    self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForPHDdisplayUnit")
+    self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
   //--- Atomic property: minValueForPHDinEBUnit
-    self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForPHDinEBUnit")
+    self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
   //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
-    self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
+    self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
   //--- Atomic property: minValueForBoardLimitWidth
-    self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey:"minValueForBoardLimitWidth")
+    self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
   //--- Atomic property: drillDataFileExtension
-    self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey:"drillDataFileExtension")
+    self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
   //--- To many property: fileGenerationParameterArray
     self.store (
       managedObjectArray: self.fileGenerationParameterArray_property.propval,
@@ -658,27 +724,27 @@ class ArtworkRoot : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedTab
-    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey: "selectedTab")
   //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.comments_property.readFrom (dictionary: inDictionary, forKey: "comments")
   //--- Atomic property: minPPTPTTTWdisplayUnit
-    self.minPPTPTTTWdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTWdisplayUnit")
+    self.minPPTPTTTWdisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "minPPTPTTTWdisplayUnit")
   //--- Atomic property: minPPTPTTTW
-    self.minPPTPTTTW_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTW")
+    self.minPPTPTTTW_property.readFrom (dictionary: inDictionary, forKey: "minPPTPTTTW")
   //--- Atomic property: minValueForOARdisplayUnit
-    self.minValueForOARdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
+    self.minValueForOARdisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "minValueForOARdisplayUnit")
   //--- Atomic property: minValueForOARinEBUnit
-    self.minValueForOARinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
+    self.minValueForOARinEBUnit_property.readFrom (dictionary: inDictionary, forKey: "minValueForOARinEBUnit")
   //--- Atomic property: minValueForPHDdisplayUnit
-    self.minValueForPHDdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
+    self.minValueForPHDdisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "minValueForPHDdisplayUnit")
   //--- Atomic property: minValueForPHDinEBUnit
-    self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
+    self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey: "minValueForPHDinEBUnit")
   //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
-    self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
+    self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
   //--- Atomic property: minValueForBoardLimitWidth
-    self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
+    self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey: "minValueForBoardLimitWidth")
   //--- Atomic property: drillDataFileExtension
-    self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
+    self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey: "drillDataFileExtension")
   }
 
 

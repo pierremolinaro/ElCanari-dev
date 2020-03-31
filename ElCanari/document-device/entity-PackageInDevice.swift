@@ -109,14 +109,20 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mFileData : Data {
+  final func reset_mFileData_toDefaultValue () {
+    self.mFileData = Data ()
+  }
+
+  //····················································································································
+
+  final var mFileData : Data {
     get { return self.mFileData_property.propval }
     set { self.mFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
+  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
 
   //····················································································································
   //   Atomic property: mName
@@ -126,14 +132,20 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mName : String {
+  final func reset_mName_toDefaultValue () {
+    self.mName = ""
+  }
+
+  //····················································································································
+
+  final var mName : String {
     get { return self.mName_property.propval }
     set { self.mName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
+  final var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
 
   //····················································································································
   //   Atomic property: mVersion
@@ -143,14 +155,20 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mVersion : Int {
+  final func reset_mVersion_toDefaultValue () {
+    self.mVersion = 0
+  }
+
+  //····················································································································
+
+  final var mVersion : Int {
     get { return self.mVersion_property.propval }
     set { self.mVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
+  final var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -160,14 +178,20 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mStrokeBezierPath : NSBezierPath {
+  final func reset_mStrokeBezierPath_toDefaultValue () {
+    self.mStrokeBezierPath = NSBezierPath ()
+  }
+
+  //····················································································································
+
+  final var mStrokeBezierPath : NSBezierPath {
     get { return self.mStrokeBezierPath_property.propval }
     set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -177,14 +201,20 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -194,14 +224,20 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To many property: mMasterPads
@@ -859,17 +895,17 @@ class PackageInDevice : EBGraphicManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mFileData
-    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey:"mFileData")
+    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
   //--- Atomic property: mName
-    self.mName_property.storeIn (dictionary: ioDictionary, forKey:"mName")
+    self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
   //--- Atomic property: mVersion
-    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey:"mVersion")
+    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mMasterPads
     self.store (
       managedObjectArray: self.mMasterPads_property.propval,
@@ -911,17 +947,17 @@ class PackageInDevice : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFileData
-    self.mFileData_property.readFrom (dictionary: inDictionary, forKey:"mFileData")
+    self.mFileData_property.readFrom (dictionary: inDictionary, forKey: "mFileData")
   //--- Atomic property: mName
-    self.mName_property.readFrom (dictionary: inDictionary, forKey:"mName")
+    self.mName_property.readFrom (dictionary: inDictionary, forKey: "mName")
   //--- Atomic property: mVersion
-    self.mVersion_property.readFrom (dictionary: inDictionary, forKey:"mVersion")
+    self.mVersion_property.readFrom (dictionary: inDictionary, forKey: "mVersion")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   }
 
 

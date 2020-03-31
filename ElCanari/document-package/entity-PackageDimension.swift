@@ -137,14 +137,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var y1 : Int {
+  final func reset_y1_toDefaultValue () {
+    self.y1 = 0
+  }
+
+  //····················································································································
+
+  final var y1 : Int {
     get { return self.y1_property.propval }
     set { self.y1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
 
   //····················································································································
   //   Atomic property: x2
@@ -154,14 +160,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var x2 : Int {
+  final func reset_x2_toDefaultValue () {
+    self.x2 = 685800
+  }
+
+  //····················································································································
+
+  final var x2 : Int {
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
 
   //····················································································································
   //   Atomic property: y2
@@ -171,14 +183,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var y2 : Int {
+  final func reset_y2_toDefaultValue () {
+    self.y2 = 0
+  }
+
+  //····················································································································
+
+  final var y2 : Int {
     get { return self.y2_property.propval }
     set { self.y2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
 
   //····················································································································
   //   Atomic property: xDimension
@@ -188,14 +206,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var xDimension : Int {
+  final func reset_xDimension_toDefaultValue () {
+    self.xDimension = 0
+  }
+
+  //····················································································································
+
+  final var xDimension : Int {
     get { return self.xDimension_property.propval }
     set { self.xDimension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xDimension_property_selection : EBSelection <Int> { return self.xDimension_property.prop }
+  final var xDimension_property_selection : EBSelection <Int> { return self.xDimension_property.prop }
 
   //····················································································································
   //   Atomic property: yDimension
@@ -205,14 +229,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var yDimension : Int {
+  final func reset_yDimension_toDefaultValue () {
+    self.yDimension = 0
+  }
+
+  //····················································································································
+
+  final var yDimension : Int {
     get { return self.yDimension_property.propval }
     set { self.yDimension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yDimension_property_selection : EBSelection <Int> { return self.yDimension_property.prop }
+  final var yDimension_property_selection : EBSelection <Int> { return self.yDimension_property.prop }
 
   //····················································································································
   //   Atomic property: x1Unit
@@ -222,14 +252,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var x1Unit : Int {
+  final func reset_x1Unit_toDefaultValue () {
+    self.x1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var x1Unit : Int {
     get { return self.x1Unit_property.propval }
     set { self.x1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
+  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -239,14 +275,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var y1Unit : Int {
+  final func reset_y1Unit_toDefaultValue () {
+    self.y1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var y1Unit : Int {
     get { return self.y1Unit_property.propval }
     set { self.y1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
+  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: x2Unit
@@ -256,14 +298,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var x2Unit : Int {
+  final func reset_x2Unit_toDefaultValue () {
+    self.x2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var x2Unit : Int {
     get { return self.x2Unit_property.propval }
     set { self.x2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
+  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -273,14 +321,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var y2Unit : Int {
+  final func reset_y2Unit_toDefaultValue () {
+    self.y2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var y2Unit : Int {
     get { return self.y2Unit_property.propval }
     set { self.y2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
+  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: xDimensionUnit
@@ -290,14 +344,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var xDimensionUnit : Int {
+  final func reset_xDimensionUnit_toDefaultValue () {
+    self.xDimensionUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xDimensionUnit : Int {
     get { return self.xDimensionUnit_property.propval }
     set { self.xDimensionUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xDimensionUnit_property_selection : EBSelection <Int> { return self.xDimensionUnit_property.prop }
+  final var xDimensionUnit_property_selection : EBSelection <Int> { return self.xDimensionUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yDimensionUnit
@@ -307,14 +367,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var yDimensionUnit : Int {
+  final func reset_yDimensionUnit_toDefaultValue () {
+    self.yDimensionUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yDimensionUnit : Int {
     get { return self.yDimensionUnit_property.propval }
     set { self.yDimensionUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yDimensionUnit_property_selection : EBSelection <Int> { return self.yDimensionUnit_property.prop }
+  final var yDimensionUnit_property_selection : EBSelection <Int> { return self.yDimensionUnit_property.prop }
 
   //····················································································································
   //   Atomic property: distanceUnit
@@ -324,14 +390,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var distanceUnit : Int {
+  final func reset_distanceUnit_toDefaultValue () {
+    self.distanceUnit = 2286
+  }
+
+  //····················································································································
+
+  final var distanceUnit : Int {
     get { return self.distanceUnit_property.propval }
     set { self.distanceUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.prop }
+  final var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.prop }
 
   //····················································································································
   //   Atomic property: x1
@@ -341,14 +413,20 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  var x1 : Int {
+  final func reset_x1_toDefaultValue () {
+    self.x1 = 0
+  }
+
+  //····················································································································
+
+  final var x1 : Int {
     get { return self.x1_property.propval }
     set { self.x1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //   Transient property: distanceInCanariUnit
@@ -848,31 +926,31 @@ class PackageDimension : PackageObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
   //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
   //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
   //--- Atomic property: xDimension
-    self.xDimension_property.storeIn (dictionary: ioDictionary, forKey:"xDimension")
+    self.xDimension_property.storeIn (dictionary: ioDictionary, forKey: "xDimension")
   //--- Atomic property: yDimension
-    self.yDimension_property.storeIn (dictionary: ioDictionary, forKey:"yDimension")
+    self.yDimension_property.storeIn (dictionary: ioDictionary, forKey: "yDimension")
   //--- Atomic property: x1Unit
-    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey:"x1Unit")
+    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
   //--- Atomic property: y1Unit
-    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey:"y1Unit")
+    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
   //--- Atomic property: x2Unit
-    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey:"x2Unit")
+    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
   //--- Atomic property: y2Unit
-    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey:"y2Unit")
+    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
   //--- Atomic property: xDimensionUnit
-    self.xDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey:"xDimensionUnit")
+    self.xDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey: "xDimensionUnit")
   //--- Atomic property: yDimensionUnit
-    self.yDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey:"yDimensionUnit")
+    self.yDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey: "yDimensionUnit")
   //--- Atomic property: distanceUnit
-    self.distanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"distanceUnit")
+    self.distanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "distanceUnit")
   //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -891,31 +969,31 @@ class PackageDimension : PackageObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y1
-    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
   //--- Atomic property: x2
-    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.x2_property.readFrom (dictionary: inDictionary, forKey: "x2")
   //--- Atomic property: y2
-    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.y2_property.readFrom (dictionary: inDictionary, forKey: "y2")
   //--- Atomic property: xDimension
-    self.xDimension_property.readFrom (dictionary: inDictionary, forKey:"xDimension")
+    self.xDimension_property.readFrom (dictionary: inDictionary, forKey: "xDimension")
   //--- Atomic property: yDimension
-    self.yDimension_property.readFrom (dictionary: inDictionary, forKey:"yDimension")
+    self.yDimension_property.readFrom (dictionary: inDictionary, forKey: "yDimension")
   //--- Atomic property: x1Unit
-    self.x1Unit_property.readFrom (dictionary: inDictionary, forKey:"x1Unit")
+    self.x1Unit_property.readFrom (dictionary: inDictionary, forKey: "x1Unit")
   //--- Atomic property: y1Unit
-    self.y1Unit_property.readFrom (dictionary: inDictionary, forKey:"y1Unit")
+    self.y1Unit_property.readFrom (dictionary: inDictionary, forKey: "y1Unit")
   //--- Atomic property: x2Unit
-    self.x2Unit_property.readFrom (dictionary: inDictionary, forKey:"x2Unit")
+    self.x2Unit_property.readFrom (dictionary: inDictionary, forKey: "x2Unit")
   //--- Atomic property: y2Unit
-    self.y2Unit_property.readFrom (dictionary: inDictionary, forKey:"y2Unit")
+    self.y2Unit_property.readFrom (dictionary: inDictionary, forKey: "y2Unit")
   //--- Atomic property: xDimensionUnit
-    self.xDimensionUnit_property.readFrom (dictionary: inDictionary, forKey:"xDimensionUnit")
+    self.xDimensionUnit_property.readFrom (dictionary: inDictionary, forKey: "xDimensionUnit")
   //--- Atomic property: yDimensionUnit
-    self.yDimensionUnit_property.readFrom (dictionary: inDictionary, forKey:"yDimensionUnit")
+    self.yDimensionUnit_property.readFrom (dictionary: inDictionary, forKey: "yDimensionUnit")
   //--- Atomic property: distanceUnit
-    self.distanceUnit_property.readFrom (dictionary: inDictionary, forKey:"distanceUnit")
+    self.distanceUnit_property.readFrom (dictionary: inDictionary, forKey: "distanceUnit")
   //--- Atomic property: x1
-    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
   }
 
 

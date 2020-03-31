@@ -102,14 +102,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -119,14 +125,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var width : Int {
+  final func reset_width_toDefaultValue () {
+    self.width = 685800
+  }
+
+  //····················································································································
+
+  final var width : Int {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -136,14 +148,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var height : Int {
+  final func reset_height_toDefaultValue () {
+    self.height = 685800
+  }
+
+  //····················································································································
+
+  final var height : Int {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: xUnit
@@ -153,14 +171,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var xUnit : Int {
+  final func reset_xUnit_toDefaultValue () {
+    self.xUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xUnit : Int {
     get { return self.xUnit_property.propval }
     set { self.xUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.prop }
+  final var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yUnit
@@ -170,14 +194,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var yUnit : Int {
+  final func reset_yUnit_toDefaultValue () {
+    self.yUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yUnit : Int {
     get { return self.yUnit_property.propval }
     set { self.yUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.prop }
+  final var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.prop }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -187,14 +217,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var widthUnit : Int {
+  final func reset_widthUnit_toDefaultValue () {
+    self.widthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var widthUnit : Int {
     get { return self.widthUnit_property.propval }
     set { self.widthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
+  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -204,14 +240,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var heightUnit : Int {
+  final func reset_heightUnit_toDefaultValue () {
+    self.heightUnit = 2286
+  }
+
+  //····················································································································
+
+  final var heightUnit : Int {
     get { return self.heightUnit_property.propval }
     set { self.heightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
+  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -221,14 +263,20 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Transient property: strokeBezierPath
@@ -608,21 +656,21 @@ class PackageOval : PackageObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
+    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
+    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
   //--- Atomic property: xUnit
-    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey:"xUnit")
+    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
   //--- Atomic property: yUnit
-    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey:"yUnit")
+    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
   //--- Atomic property: widthUnit
-    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey:"widthUnit")
+    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
   //--- Atomic property: heightUnit
-    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey:"heightUnit")
+    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -641,21 +689,21 @@ class PackageOval : PackageObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
+    self.width_property.readFrom (dictionary: inDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
+    self.height_property.readFrom (dictionary: inDictionary, forKey: "height")
   //--- Atomic property: xUnit
-    self.xUnit_property.readFrom (dictionary: inDictionary, forKey:"xUnit")
+    self.xUnit_property.readFrom (dictionary: inDictionary, forKey: "xUnit")
   //--- Atomic property: yUnit
-    self.yUnit_property.readFrom (dictionary: inDictionary, forKey:"yUnit")
+    self.yUnit_property.readFrom (dictionary: inDictionary, forKey: "yUnit")
   //--- Atomic property: widthUnit
-    self.widthUnit_property.readFrom (dictionary: inDictionary, forKey:"widthUnit")
+    self.widthUnit_property.readFrom (dictionary: inDictionary, forKey: "widthUnit")
   //--- Atomic property: heightUnit
-    self.heightUnit_property.readFrom (dictionary: inDictionary, forKey:"heightUnit")
+    self.heightUnit_property.readFrom (dictionary: inDictionary, forKey: "heightUnit")
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   }
 
 

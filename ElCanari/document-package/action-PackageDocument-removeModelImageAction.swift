@@ -14,11 +14,12 @@ extension PackageDocument {
   @objc func removeModelImageAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     self.rootObject.mModelImageData = Data ()
-    self.rootObject.mModelImageFirstPointXOnLock = 0
-    self.rootObject.mModelImageFirstPointYOnLock = 0
-    self.rootObject.mModelImageScale = 1.0
-    self.rootObject.mModelImageRotationInRadians = 0.0
-    self.rootObject.mPointsAreLocked = false
+    self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
+    self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()
+    self.rootObject.reset_mModelImageScale_toDefaultValue ()
+    self.rootObject.reset_mModelImageRotationInRadians_toDefaultValue ()
+    self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
+    self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
     self.rootObject.mModelImageDoublePoint = nil
     self.rootObject.mModelImageObjects = []
 //--- END OF USER ZONE 2

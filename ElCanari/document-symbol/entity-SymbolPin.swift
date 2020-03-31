@@ -123,14 +123,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var yPin : Int {
+  final func reset_yPin_toDefaultValue () {
+    self.yPin = 0
+  }
+
+  //····················································································································
+
+  final var yPin : Int {
     get { return self.yPin_property.propval }
     set { self.yPin_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yPin_property_selection : EBSelection <Int> { return self.yPin_property.prop }
+  final var yPin_property_selection : EBSelection <Int> { return self.yPin_property.prop }
 
   //····················································································································
   //   Atomic property: xName
@@ -140,14 +146,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var xName : Int {
+  final func reset_xName_toDefaultValue () {
+    self.xName = 0
+  }
+
+  //····················································································································
+
+  final var xName : Int {
     get { return self.xName_property.propval }
     set { self.xName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xName_property_selection : EBSelection <Int> { return self.xName_property.prop }
+  final var xName_property_selection : EBSelection <Int> { return self.xName_property.prop }
 
   //····················································································································
   //   Atomic property: yName
@@ -157,14 +169,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var yName : Int {
+  final func reset_yName_toDefaultValue () {
+    self.yName = 228600
+  }
+
+  //····················································································································
+
+  final var yName : Int {
     get { return self.yName_property.propval }
     set { self.yName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yName_property_selection : EBSelection <Int> { return self.yName_property.prop }
+  final var yName_property_selection : EBSelection <Int> { return self.yName_property.prop }
 
   //····················································································································
   //   Atomic property: xNumber
@@ -174,14 +192,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var xNumber : Int {
+  final func reset_xNumber_toDefaultValue () {
+    self.xNumber = 0
+  }
+
+  //····················································································································
+
+  final var xNumber : Int {
     get { return self.xNumber_property.propval }
     set { self.xNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xNumber_property_selection : EBSelection <Int> { return self.xNumber_property.prop }
+  final var xNumber_property_selection : EBSelection <Int> { return self.xNumber_property.prop }
 
   //····················································································································
   //   Atomic property: yNumber
@@ -191,14 +215,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var yNumber : Int {
+  final func reset_yNumber_toDefaultValue () {
+    self.yNumber = -228600
+  }
+
+  //····················································································································
+
+  final var yNumber : Int {
     get { return self.yNumber_property.propval }
     set { self.yNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yNumber_property_selection : EBSelection <Int> { return self.yNumber_property.prop }
+  final var yNumber_property_selection : EBSelection <Int> { return self.yNumber_property.prop }
 
   //····················································································································
   //   Atomic property: name
@@ -208,14 +238,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var name : String {
+  final func reset_name_toDefaultValue () {
+    self.name = ""
+  }
+
+  //····················································································································
+
+  final var name : String {
     get { return self.name_property.propval }
     set { self.name_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var name_property_selection : EBSelection <String> { return self.name_property.prop }
+  final var name_property_selection : EBSelection <String> { return self.name_property.prop }
 
   //····················································································································
   //   Atomic property: nameHorizontalAlignment
@@ -225,14 +261,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var nameHorizontalAlignment : HorizontalAlignment {
+  final func reset_nameHorizontalAlignment_toDefaultValue () {
+    self.nameHorizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var nameHorizontalAlignment : HorizontalAlignment {
     get { return self.nameHorizontalAlignment_property.propval }
     set { self.nameHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.nameHorizontalAlignment_property.prop }
+  final var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.nameHorizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: numberHorizontalAlignment
@@ -242,14 +284,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var numberHorizontalAlignment : HorizontalAlignment {
+  final func reset_numberHorizontalAlignment_toDefaultValue () {
+    self.numberHorizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var numberHorizontalAlignment : HorizontalAlignment {
     get { return self.numberHorizontalAlignment_property.propval }
     set { self.numberHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.numberHorizontalAlignment_property.prop }
+  final var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.numberHorizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: pinNameIsDisplayedInSchematics
@@ -259,14 +307,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var pinNameIsDisplayedInSchematics : Bool {
+  final func reset_pinNameIsDisplayedInSchematics_toDefaultValue () {
+    self.pinNameIsDisplayedInSchematics = true
+  }
+
+  //····················································································································
+
+  final var pinNameIsDisplayedInSchematics : Bool {
     get { return self.pinNameIsDisplayedInSchematics_property.propval }
     set { self.pinNameIsDisplayedInSchematics_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.pinNameIsDisplayedInSchematics_property.prop }
+  final var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.pinNameIsDisplayedInSchematics_property.prop }
 
   //····················································································································
   //   Atomic property: xPin
@@ -276,14 +330,20 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  var xPin : Int {
+  final func reset_xPin_toDefaultValue () {
+    self.xPin = 0
+  }
+
+  //····················································································································
+
+  final var xPin : Int {
     get { return self.xPin_property.propval }
     set { self.xPin_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xPin_property_selection : EBSelection <Int> { return self.xPin_property.prop }
+  final var xPin_property_selection : EBSelection <Int> { return self.xPin_property.prop }
 
   //····················································································································
   //   Transient property: filledBezierPath
@@ -798,25 +858,25 @@ class SymbolPin : SymbolObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: yPin
-    self.yPin_property.storeIn (dictionary: ioDictionary, forKey:"yPin")
+    self.yPin_property.storeIn (dictionary: ioDictionary, forKey: "yPin")
   //--- Atomic property: xName
-    self.xName_property.storeIn (dictionary: ioDictionary, forKey:"xName")
+    self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
   //--- Atomic property: yName
-    self.yName_property.storeIn (dictionary: ioDictionary, forKey:"yName")
+    self.yName_property.storeIn (dictionary: ioDictionary, forKey: "yName")
   //--- Atomic property: xNumber
-    self.xNumber_property.storeIn (dictionary: ioDictionary, forKey:"xNumber")
+    self.xNumber_property.storeIn (dictionary: ioDictionary, forKey: "xNumber")
   //--- Atomic property: yNumber
-    self.yNumber_property.storeIn (dictionary: ioDictionary, forKey:"yNumber")
+    self.yNumber_property.storeIn (dictionary: ioDictionary, forKey: "yNumber")
   //--- Atomic property: name
-    self.name_property.storeIn (dictionary: ioDictionary, forKey:"name")
+    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
   //--- Atomic property: nameHorizontalAlignment
-    self.nameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"nameHorizontalAlignment")
+    self.nameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "nameHorizontalAlignment")
   //--- Atomic property: numberHorizontalAlignment
-    self.numberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"numberHorizontalAlignment")
+    self.numberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "numberHorizontalAlignment")
   //--- Atomic property: pinNameIsDisplayedInSchematics
-    self.pinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey:"pinNameIsDisplayedInSchematics")
+    self.pinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey: "pinNameIsDisplayedInSchematics")
   //--- Atomic property: xPin
-    self.xPin_property.storeIn (dictionary: ioDictionary, forKey:"xPin")
+    self.xPin_property.storeIn (dictionary: ioDictionary, forKey: "xPin")
   }
 
   //····················································································································
@@ -835,25 +895,25 @@ class SymbolPin : SymbolObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: yPin
-    self.yPin_property.readFrom (dictionary: inDictionary, forKey:"yPin")
+    self.yPin_property.readFrom (dictionary: inDictionary, forKey: "yPin")
   //--- Atomic property: xName
-    self.xName_property.readFrom (dictionary: inDictionary, forKey:"xName")
+    self.xName_property.readFrom (dictionary: inDictionary, forKey: "xName")
   //--- Atomic property: yName
-    self.yName_property.readFrom (dictionary: inDictionary, forKey:"yName")
+    self.yName_property.readFrom (dictionary: inDictionary, forKey: "yName")
   //--- Atomic property: xNumber
-    self.xNumber_property.readFrom (dictionary: inDictionary, forKey:"xNumber")
+    self.xNumber_property.readFrom (dictionary: inDictionary, forKey: "xNumber")
   //--- Atomic property: yNumber
-    self.yNumber_property.readFrom (dictionary: inDictionary, forKey:"yNumber")
+    self.yNumber_property.readFrom (dictionary: inDictionary, forKey: "yNumber")
   //--- Atomic property: name
-    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+    self.name_property.readFrom (dictionary: inDictionary, forKey: "name")
   //--- Atomic property: nameHorizontalAlignment
-    self.nameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"nameHorizontalAlignment")
+    self.nameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "nameHorizontalAlignment")
   //--- Atomic property: numberHorizontalAlignment
-    self.numberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"numberHorizontalAlignment")
+    self.numberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "numberHorizontalAlignment")
   //--- Atomic property: pinNameIsDisplayedInSchematics
-    self.pinNameIsDisplayedInSchematics_property.readFrom (dictionary: inDictionary, forKey:"pinNameIsDisplayedInSchematics")
+    self.pinNameIsDisplayedInSchematics_property.readFrom (dictionary: inDictionary, forKey: "pinNameIsDisplayedInSchematics")
   //--- Atomic property: xPin
-    self.xPin_property.readFrom (dictionary: inDictionary, forKey:"xPin")
+    self.xPin_property.readFrom (dictionary: inDictionary, forKey: "xPin")
   }
 
 

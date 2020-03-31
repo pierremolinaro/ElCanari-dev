@@ -81,14 +81,20 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -98,14 +104,20 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  var mWidth : Int {
+  final func reset_mWidth_toDefaultValue () {
+    self.mWidth = 2286000
+  }
+
+  //····················································································································
+
+  final var mWidth : Int {
     get { return self.mWidth_property.propval }
     set { self.mWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -115,14 +127,20 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  var mHeight : Int {
+  final func reset_mHeight_toDefaultValue () {
+    self.mHeight = 2286000
+  }
+
+  //····················································································································
+
+  final var mHeight : Int {
     get { return self.mHeight_property.propval }
     set { self.mHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
+  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mIsInFrontLayer
@@ -132,14 +150,20 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  var mIsInFrontLayer : Bool {
+  final func reset_mIsInFrontLayer_toDefaultValue () {
+    self.mIsInFrontLayer = true
+  }
+
+  //····················································································································
+
+  final var mIsInFrontLayer : Bool {
     get { return self.mIsInFrontLayer_property.propval }
     set { self.mIsInFrontLayer_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mIsInFrontLayer_property_selection : EBSelection <Bool> { return self.mIsInFrontLayer_property.prop }
+  final var mIsInFrontLayer_property_selection : EBSelection <Bool> { return self.mIsInFrontLayer_property.prop }
 
   //····················································································································
   //   Atomic property: mIsInBackLayer
@@ -149,14 +173,20 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  var mIsInBackLayer : Bool {
+  final func reset_mIsInBackLayer_toDefaultValue () {
+    self.mIsInBackLayer = true
+  }
+
+  //····················································································································
+
+  final var mIsInBackLayer : Bool {
     get { return self.mIsInBackLayer_property.propval }
     set { self.mIsInBackLayer_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mIsInBackLayer_property_selection : EBSelection <Bool> { return self.mIsInBackLayer_property.prop }
+  final var mIsInBackLayer_property_selection : EBSelection <Bool> { return self.mIsInBackLayer_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -166,14 +196,20 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //    init
@@ -481,17 +517,17 @@ class BoardRestrictRectangle : BoardObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- Atomic property: mWidth
-    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
+    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
   //--- Atomic property: mHeight
-    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHeight")
+    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
   //--- Atomic property: mIsInFrontLayer
-    self.mIsInFrontLayer_property.storeIn (dictionary: ioDictionary, forKey:"mIsInFrontLayer")
+    self.mIsInFrontLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInFrontLayer")
   //--- Atomic property: mIsInBackLayer
-    self.mIsInBackLayer_property.storeIn (dictionary: ioDictionary, forKey:"mIsInBackLayer")
+    self.mIsInBackLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInBackLayer")
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   }
 
   //····················································································································
@@ -510,17 +546,17 @@ class BoardRestrictRectangle : BoardObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mWidth
-    self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
+    self.mWidth_property.readFrom (dictionary: inDictionary, forKey: "mWidth")
   //--- Atomic property: mHeight
-    self.mHeight_property.readFrom (dictionary: inDictionary, forKey:"mHeight")
+    self.mHeight_property.readFrom (dictionary: inDictionary, forKey: "mHeight")
   //--- Atomic property: mIsInFrontLayer
-    self.mIsInFrontLayer_property.readFrom (dictionary: inDictionary, forKey:"mIsInFrontLayer")
+    self.mIsInFrontLayer_property.readFrom (dictionary: inDictionary, forKey: "mIsInFrontLayer")
   //--- Atomic property: mIsInBackLayer
-    self.mIsInBackLayer_property.readFrom (dictionary: inDictionary, forKey:"mIsInBackLayer")
+    self.mIsInBackLayer_property.readFrom (dictionary: inDictionary, forKey: "mIsInBackLayer")
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   }
 
 

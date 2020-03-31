@@ -74,14 +74,20 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Atomic property: y
@@ -91,14 +97,20 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: instanceRotation
@@ -108,14 +120,20 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  var instanceRotation : QuadrantRotation {
+  final func reset_instanceRotation_toDefaultValue () {
+    self.instanceRotation = QuadrantRotation.rotation0
+  }
+
+  //····················································································································
+
+  final var instanceRotation : QuadrantRotation {
     get { return self.instanceRotation_property.propval }
     set { self.instanceRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var instanceRotation_property_selection : EBSelection <QuadrantRotation> { return self.instanceRotation_property.prop }
+  final var instanceRotation_property_selection : EBSelection <QuadrantRotation> { return self.instanceRotation_property.prop }
 
   //····················································································································
   //   To one property: myModel
@@ -592,11 +610,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: instanceRotation
-    self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey:"instanceRotation")
+    self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
   }
 
   //····················································································································
@@ -637,11 +655,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: instanceRotation
-    self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
+    self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey: "instanceRotation")
   }
 
 

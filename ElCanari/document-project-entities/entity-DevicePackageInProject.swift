@@ -58,14 +58,20 @@ class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPackageName : String {
+  final func reset_mPackageName_toDefaultValue () {
+    self.mPackageName = ""
+  }
+
+  //····················································································································
+
+  final var mPackageName : String {
     get { return self.mPackageName_property.propval }
     set { self.mPackageName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
+  final var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -75,14 +81,20 @@ class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  var mStrokeBezierPath : NSBezierPath {
+  final func reset_mStrokeBezierPath_toDefaultValue () {
+    self.mStrokeBezierPath = NSBezierPath ()
+  }
+
+  //····················································································································
+
+  final var mStrokeBezierPath : NSBezierPath {
     get { return self.mStrokeBezierPath_property.propval }
     set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
   //   Transient property: packagePadDictionary
@@ -257,9 +269,9 @@ class DevicePackageInProject : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mPackageName
-    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey:"mPackageName")
+    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey: "mPackageName")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
   }
 
   //····················································································································
@@ -284,9 +296,9 @@ class DevicePackageInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPackageName
-    self.mPackageName_property.readFrom (dictionary: inDictionary, forKey:"mPackageName")
+    self.mPackageName_property.readFrom (dictionary: inDictionary, forKey: "mPackageName")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
   }
 
 

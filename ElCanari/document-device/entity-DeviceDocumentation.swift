@@ -39,14 +39,20 @@ class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  var mFileName : String {
+  final func reset_mFileName_toDefaultValue () {
+    self.mFileName = ""
+  }
+
+  //····················································································································
+
+  final var mFileName : String {
     get { return self.mFileName_property.propval }
     set { self.mFileName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileName_property_selection : EBSelection <String> { return self.mFileName_property.prop }
+  final var mFileName_property_selection : EBSelection <String> { return self.mFileName_property.prop }
 
   //····················································································································
   //   Atomic property: mFileData
@@ -56,14 +62,20 @@ class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  var mFileData : Data {
+  final func reset_mFileData_toDefaultValue () {
+    self.mFileData = Data ()
+  }
+
+  //····················································································································
+
+  final var mFileData : Data {
     get { return self.mFileData_property.propval }
     set { self.mFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
+  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
 
   //····················································································································
   //   Transient property: fileSize
@@ -224,9 +236,9 @@ class DeviceDocumentation : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mFileName
-    self.mFileName_property.storeIn (dictionary: ioDictionary, forKey:"mFileName")
+    self.mFileName_property.storeIn (dictionary: ioDictionary, forKey: "mFileName")
   //--- Atomic property: mFileData
-    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey:"mFileData")
+    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
   }
 
   //····················································································································
@@ -245,9 +257,9 @@ class DeviceDocumentation : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFileName
-    self.mFileName_property.readFrom (dictionary: inDictionary, forKey:"mFileName")
+    self.mFileName_property.readFrom (dictionary: inDictionary, forKey: "mFileName")
   //--- Atomic property: mFileData
-    self.mFileData_property.readFrom (dictionary: inDictionary, forKey:"mFileData")
+    self.mFileData_property.readFrom (dictionary: inDictionary, forKey: "mFileData")
   }
 
 

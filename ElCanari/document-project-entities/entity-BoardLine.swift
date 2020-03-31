@@ -109,14 +109,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mWidthUnit : Int {
+  final func reset_mWidthUnit_toDefaultValue () {
+    self.mWidthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mWidthUnit : Int {
     get { return self.mWidthUnit_property.propval }
     set { self.mWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWidthUnit_property_selection : EBSelection <Int> { return self.mWidthUnit_property.prop }
+  final var mWidthUnit_property_selection : EBSelection <Int> { return self.mWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mX1
@@ -126,14 +132,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mX1 : Int {
+  final func reset_mX1_toDefaultValue () {
+    self.mX1 = 0
+  }
+
+  //····················································································································
+
+  final var mX1 : Int {
     get { return self.mX1_property.propval }
     set { self.mX1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX1_property_selection : EBSelection <Int> { return self.mX1_property.prop }
+  final var mX1_property_selection : EBSelection <Int> { return self.mX1_property.prop }
 
   //····················································································································
   //   Atomic property: mX1Unit
@@ -143,14 +155,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mX1Unit : Int {
+  final func reset_mX1Unit_toDefaultValue () {
+    self.mX1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var mX1Unit : Int {
     get { return self.mX1Unit_property.propval }
     set { self.mX1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX1Unit_property_selection : EBSelection <Int> { return self.mX1Unit_property.prop }
+  final var mX1Unit_property_selection : EBSelection <Int> { return self.mX1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: mY1
@@ -160,14 +178,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mY1 : Int {
+  final func reset_mY1_toDefaultValue () {
+    self.mY1 = 0
+  }
+
+  //····················································································································
+
+  final var mY1 : Int {
     get { return self.mY1_property.propval }
     set { self.mY1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY1_property_selection : EBSelection <Int> { return self.mY1_property.prop }
+  final var mY1_property_selection : EBSelection <Int> { return self.mY1_property.prop }
 
   //····················································································································
   //   Atomic property: mY1Unit
@@ -177,14 +201,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mY1Unit : Int {
+  final func reset_mY1Unit_toDefaultValue () {
+    self.mY1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var mY1Unit : Int {
     get { return self.mY1Unit_property.propval }
     set { self.mY1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY1Unit_property_selection : EBSelection <Int> { return self.mY1Unit_property.prop }
+  final var mY1Unit_property_selection : EBSelection <Int> { return self.mY1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: mX2
@@ -194,14 +224,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mX2 : Int {
+  final func reset_mX2_toDefaultValue () {
+    self.mX2 = 457200
+  }
+
+  //····················································································································
+
+  final var mX2 : Int {
     get { return self.mX2_property.propval }
     set { self.mX2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX2_property_selection : EBSelection <Int> { return self.mX2_property.prop }
+  final var mX2_property_selection : EBSelection <Int> { return self.mX2_property.prop }
 
   //····················································································································
   //   Atomic property: mX2Unit
@@ -211,14 +247,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mX2Unit : Int {
+  final func reset_mX2Unit_toDefaultValue () {
+    self.mX2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var mX2Unit : Int {
     get { return self.mX2Unit_property.propval }
     set { self.mX2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX2Unit_property_selection : EBSelection <Int> { return self.mX2Unit_property.prop }
+  final var mX2Unit_property_selection : EBSelection <Int> { return self.mX2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: mY2
@@ -228,14 +270,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mY2 : Int {
+  final func reset_mY2_toDefaultValue () {
+    self.mY2 = 457200
+  }
+
+  //····················································································································
+
+  final var mY2 : Int {
     get { return self.mY2_property.propval }
     set { self.mY2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY2_property_selection : EBSelection <Int> { return self.mY2_property.prop }
+  final var mY2_property_selection : EBSelection <Int> { return self.mY2_property.prop }
 
   //····················································································································
   //   Atomic property: mY2Unit
@@ -245,14 +293,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mY2Unit : Int {
+  final func reset_mY2Unit_toDefaultValue () {
+    self.mY2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var mY2Unit : Int {
     get { return self.mY2Unit_property.propval }
     set { self.mY2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY2Unit_property_selection : EBSelection <Int> { return self.mY2Unit_property.prop }
+  final var mY2Unit_property_selection : EBSelection <Int> { return self.mY2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: mLayer
@@ -262,14 +316,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mLayer : BoardLineLayer {
+  final func reset_mLayer_toDefaultValue () {
+    self.mLayer = BoardLineLayer.legendFront
+  }
+
+  //····················································································································
+
+  final var mLayer : BoardLineLayer {
     get { return self.mLayer_property.propval }
     set { self.mLayer_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLayer_property_selection : EBSelection <BoardLineLayer> { return self.mLayer_property.prop }
+  final var mLayer_property_selection : EBSelection <BoardLineLayer> { return self.mLayer_property.prop }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -279,14 +339,20 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  var mWidth : Int {
+  final func reset_mWidth_toDefaultValue () {
+    self.mWidth = 57150
+  }
+
+  //····················································································································
+
+  final var mWidth : Int {
     get { return self.mWidth_property.propval }
     set { self.mWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
 
   //····················································································································
   //    init
@@ -607,27 +673,27 @@ class BoardLine : BoardObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mWidthUnit
-    self.mWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mWidthUnit")
+    self.mWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mWidthUnit")
   //--- Atomic property: mX1
-    self.mX1_property.storeIn (dictionary: ioDictionary, forKey:"mX1")
+    self.mX1_property.storeIn (dictionary: ioDictionary, forKey: "mX1")
   //--- Atomic property: mX1Unit
-    self.mX1Unit_property.storeIn (dictionary: ioDictionary, forKey:"mX1Unit")
+    self.mX1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX1Unit")
   //--- Atomic property: mY1
-    self.mY1_property.storeIn (dictionary: ioDictionary, forKey:"mY1")
+    self.mY1_property.storeIn (dictionary: ioDictionary, forKey: "mY1")
   //--- Atomic property: mY1Unit
-    self.mY1Unit_property.storeIn (dictionary: ioDictionary, forKey:"mY1Unit")
+    self.mY1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY1Unit")
   //--- Atomic property: mX2
-    self.mX2_property.storeIn (dictionary: ioDictionary, forKey:"mX2")
+    self.mX2_property.storeIn (dictionary: ioDictionary, forKey: "mX2")
   //--- Atomic property: mX2Unit
-    self.mX2Unit_property.storeIn (dictionary: ioDictionary, forKey:"mX2Unit")
+    self.mX2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX2Unit")
   //--- Atomic property: mY2
-    self.mY2_property.storeIn (dictionary: ioDictionary, forKey:"mY2")
+    self.mY2_property.storeIn (dictionary: ioDictionary, forKey: "mY2")
   //--- Atomic property: mY2Unit
-    self.mY2Unit_property.storeIn (dictionary: ioDictionary, forKey:"mY2Unit")
+    self.mY2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY2Unit")
   //--- Atomic property: mLayer
-    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey:"mLayer")
+    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
   //--- Atomic property: mWidth
-    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
+    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
   }
 
   //····················································································································
@@ -646,27 +712,27 @@ class BoardLine : BoardObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mWidthUnit
-    self.mWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mWidthUnit")
+    self.mWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mWidthUnit")
   //--- Atomic property: mX1
-    self.mX1_property.readFrom (dictionary: inDictionary, forKey:"mX1")
+    self.mX1_property.readFrom (dictionary: inDictionary, forKey: "mX1")
   //--- Atomic property: mX1Unit
-    self.mX1Unit_property.readFrom (dictionary: inDictionary, forKey:"mX1Unit")
+    self.mX1Unit_property.readFrom (dictionary: inDictionary, forKey: "mX1Unit")
   //--- Atomic property: mY1
-    self.mY1_property.readFrom (dictionary: inDictionary, forKey:"mY1")
+    self.mY1_property.readFrom (dictionary: inDictionary, forKey: "mY1")
   //--- Atomic property: mY1Unit
-    self.mY1Unit_property.readFrom (dictionary: inDictionary, forKey:"mY1Unit")
+    self.mY1Unit_property.readFrom (dictionary: inDictionary, forKey: "mY1Unit")
   //--- Atomic property: mX2
-    self.mX2_property.readFrom (dictionary: inDictionary, forKey:"mX2")
+    self.mX2_property.readFrom (dictionary: inDictionary, forKey: "mX2")
   //--- Atomic property: mX2Unit
-    self.mX2Unit_property.readFrom (dictionary: inDictionary, forKey:"mX2Unit")
+    self.mX2Unit_property.readFrom (dictionary: inDictionary, forKey: "mX2Unit")
   //--- Atomic property: mY2
-    self.mY2_property.readFrom (dictionary: inDictionary, forKey:"mY2")
+    self.mY2_property.readFrom (dictionary: inDictionary, forKey: "mY2")
   //--- Atomic property: mY2Unit
-    self.mY2Unit_property.readFrom (dictionary: inDictionary, forKey:"mY2Unit")
+    self.mY2Unit_property.readFrom (dictionary: inDictionary, forKey: "mY2Unit")
   //--- Atomic property: mLayer
-    self.mLayer_property.readFrom (dictionary: inDictionary, forKey:"mLayer")
+    self.mLayer_property.readFrom (dictionary: inDictionary, forKey: "mLayer")
   //--- Atomic property: mWidth
-    self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
+    self.mWidth_property.readFrom (dictionary: inDictionary, forKey: "mWidth")
   }
 
 

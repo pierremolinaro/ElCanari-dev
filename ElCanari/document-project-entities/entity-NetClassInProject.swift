@@ -151,14 +151,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNetClassName : String {
+  final func reset_mNetClassName_toDefaultValue () {
+    self.mNetClassName = "Default"
+  }
+
+  //····················································································································
+
+  final var mNetClassName : String {
     get { return self.mNetClassName_property.propval }
     set { self.mNetClassName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetClassName_property_selection : EBSelection <String> { return self.mNetClassName_property.prop }
+  final var mNetClassName_property_selection : EBSelection <String> { return self.mNetClassName_property.prop }
 
   //····················································································································
   //   Atomic property: mNetClassColor
@@ -168,14 +174,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNetClassColor : NSColor {
+  final func reset_mNetClassColor_toDefaultValue () {
+    self.mNetClassColor = NSColor.blue
+  }
+
+  //····················································································································
+
+  final var mNetClassColor : NSColor {
     get { return self.mNetClassColor_property.propval }
     set { self.mNetClassColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
+  final var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
 
   //····················································································································
   //   Atomic property: mTrackWidth
@@ -185,14 +197,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mTrackWidth : Int {
+  final func reset_mTrackWidth_toDefaultValue () {
+    self.mTrackWidth = 45720
+  }
+
+  //····················································································································
+
+  final var mTrackWidth : Int {
     get { return self.mTrackWidth_property.propval }
     set { self.mTrackWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTrackWidth_property_selection : EBSelection <Int> { return self.mTrackWidth_property.prop }
+  final var mTrackWidth_property_selection : EBSelection <Int> { return self.mTrackWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mTrackWidthUnit
@@ -202,14 +220,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mTrackWidthUnit : Int {
+  final func reset_mTrackWidthUnit_toDefaultValue () {
+    self.mTrackWidthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mTrackWidthUnit : Int {
     get { return self.mTrackWidthUnit_property.propval }
     set { self.mTrackWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTrackWidthUnit_property_selection : EBSelection <Int> { return self.mTrackWidthUnit_property.prop }
+  final var mTrackWidthUnit_property_selection : EBSelection <Int> { return self.mTrackWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mViaHoleDiameter
@@ -219,14 +243,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mViaHoleDiameter : Int {
+  final func reset_mViaHoleDiameter_toDefaultValue () {
+    self.mViaHoleDiameter = 45720
+  }
+
+  //····················································································································
+
+  final var mViaHoleDiameter : Int {
     get { return self.mViaHoleDiameter_property.propval }
     set { self.mViaHoleDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mViaHoleDiameter_property_selection : EBSelection <Int> { return self.mViaHoleDiameter_property.prop }
+  final var mViaHoleDiameter_property_selection : EBSelection <Int> { return self.mViaHoleDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mViaHoleDiameterUnit
@@ -236,14 +266,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mViaHoleDiameterUnit : Int {
+  final func reset_mViaHoleDiameterUnit_toDefaultValue () {
+    self.mViaHoleDiameterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mViaHoleDiameterUnit : Int {
     get { return self.mViaHoleDiameterUnit_property.propval }
     set { self.mViaHoleDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mViaHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mViaHoleDiameterUnit_property.prop }
+  final var mViaHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mViaHoleDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mViaPadDiameter
@@ -253,14 +289,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mViaPadDiameter : Int {
+  final func reset_mViaPadDiameter_toDefaultValue () {
+    self.mViaPadDiameter = 91440
+  }
+
+  //····················································································································
+
+  final var mViaPadDiameter : Int {
     get { return self.mViaPadDiameter_property.propval }
     set { self.mViaPadDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mViaPadDiameter_property_selection : EBSelection <Int> { return self.mViaPadDiameter_property.prop }
+  final var mViaPadDiameter_property_selection : EBSelection <Int> { return self.mViaPadDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mViaPadDiameterUnit
@@ -270,14 +312,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mViaPadDiameterUnit : Int {
+  final func reset_mViaPadDiameterUnit_toDefaultValue () {
+    self.mViaPadDiameterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mViaPadDiameterUnit : Int {
     get { return self.mViaPadDiameterUnit_property.propval }
     set { self.mViaPadDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mViaPadDiameterUnit_property_selection : EBSelection <Int> { return self.mViaPadDiameterUnit_property.prop }
+  final var mViaPadDiameterUnit_property_selection : EBSelection <Int> { return self.mViaPadDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mAllowTracksOnFrontSide
@@ -287,14 +335,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mAllowTracksOnFrontSide : Bool {
+  final func reset_mAllowTracksOnFrontSide_toDefaultValue () {
+    self.mAllowTracksOnFrontSide = true
+  }
+
+  //····················································································································
+
+  final var mAllowTracksOnFrontSide : Bool {
     get { return self.mAllowTracksOnFrontSide_property.propval }
     set { self.mAllowTracksOnFrontSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnFrontSide_property.prop }
+  final var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnFrontSide_property.prop }
 
   //····················································································································
   //   Atomic property: mAllowTracksOnBackSide
@@ -304,14 +358,20 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  var mAllowTracksOnBackSide : Bool {
+  final func reset_mAllowTracksOnBackSide_toDefaultValue () {
+    self.mAllowTracksOnBackSide = true
+  }
+
+  //····················································································································
+
+  final var mAllowTracksOnBackSide : Bool {
     get { return self.mAllowTracksOnBackSide_property.propval }
     set { self.mAllowTracksOnBackSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mAllowTracksOnBackSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnBackSide_property.prop }
+  final var mAllowTracksOnBackSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnBackSide_property.prop }
 
   //····················································································································
   //   To many property: mNets
@@ -1064,25 +1124,25 @@ class NetClassInProject : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mNetClassName
-    self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassName")
+    self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassName")
   //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassColor")
+    self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassColor")
   //--- Atomic property: mTrackWidth
-    self.mTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mTrackWidth")
+    self.mTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidth")
   //--- Atomic property: mTrackWidthUnit
-    self.mTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mTrackWidthUnit")
+    self.mTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidthUnit")
   //--- Atomic property: mViaHoleDiameter
-    self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mViaHoleDiameter")
+    self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameter")
   //--- Atomic property: mViaHoleDiameterUnit
-    self.mViaHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mViaHoleDiameterUnit")
+    self.mViaHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameterUnit")
   //--- Atomic property: mViaPadDiameter
-    self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mViaPadDiameter")
+    self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameter")
   //--- Atomic property: mViaPadDiameterUnit
-    self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mViaPadDiameterUnit")
+    self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameterUnit")
   //--- Atomic property: mAllowTracksOnFrontSide
-    self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey:"mAllowTracksOnFrontSide")
+    self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnFrontSide")
   //--- Atomic property: mAllowTracksOnBackSide
-    self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey:"mAllowTracksOnBackSide")
+    self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnBackSide")
   //--- To many property: mNets
     self.store (
       managedObjectArray: self.mNets_property.propval,
@@ -1113,25 +1173,25 @@ class NetClassInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNetClassName
-    self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mNetClassName")
+    self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey: "mNetClassName")
   //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.readFrom (dictionary: inDictionary, forKey:"mNetClassColor")
+    self.mNetClassColor_property.readFrom (dictionary: inDictionary, forKey: "mNetClassColor")
   //--- Atomic property: mTrackWidth
-    self.mTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mTrackWidth")
+    self.mTrackWidth_property.readFrom (dictionary: inDictionary, forKey: "mTrackWidth")
   //--- Atomic property: mTrackWidthUnit
-    self.mTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mTrackWidthUnit")
+    self.mTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mTrackWidthUnit")
   //--- Atomic property: mViaHoleDiameter
-    self.mViaHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mViaHoleDiameter")
+    self.mViaHoleDiameter_property.readFrom (dictionary: inDictionary, forKey: "mViaHoleDiameter")
   //--- Atomic property: mViaHoleDiameterUnit
-    self.mViaHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mViaHoleDiameterUnit")
+    self.mViaHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mViaHoleDiameterUnit")
   //--- Atomic property: mViaPadDiameter
-    self.mViaPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mViaPadDiameter")
+    self.mViaPadDiameter_property.readFrom (dictionary: inDictionary, forKey: "mViaPadDiameter")
   //--- Atomic property: mViaPadDiameterUnit
-    self.mViaPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mViaPadDiameterUnit")
+    self.mViaPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mViaPadDiameterUnit")
   //--- Atomic property: mAllowTracksOnFrontSide
-    self.mAllowTracksOnFrontSide_property.readFrom (dictionary: inDictionary, forKey:"mAllowTracksOnFrontSide")
+    self.mAllowTracksOnFrontSide_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnFrontSide")
   //--- Atomic property: mAllowTracksOnBackSide
-    self.mAllowTracksOnBackSide_property.readFrom (dictionary: inDictionary, forKey:"mAllowTracksOnBackSide")
+    self.mAllowTracksOnBackSide_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnBackSide")
   }
 
 

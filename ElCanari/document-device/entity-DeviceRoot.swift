@@ -193,14 +193,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mSelectedPageIndex : Int {
+  final func reset_mSelectedPageIndex_toDefaultValue () {
+    self.mSelectedPageIndex = 0
+  }
+
+  //····················································································································
+
+  final var mSelectedPageIndex : Int {
     get { return self.mSelectedPageIndex_property.propval }
     set { self.mSelectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
+  final var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: mTitle
@@ -210,14 +216,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mTitle : String {
+  final func reset_mTitle_toDefaultValue () {
+    self.mTitle = ""
+  }
+
+  //····················································································································
+
+  final var mTitle : String {
     get { return self.mTitle_property.propval }
     set { self.mTitle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTitle_property_selection : EBSelection <String> { return self.mTitle_property.prop }
+  final var mTitle_property_selection : EBSelection <String> { return self.mTitle_property.prop }
 
   //····················································································································
   //   Atomic property: mImageData
@@ -227,14 +239,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mImageData : Data {
+  final func reset_mImageData_toDefaultValue () {
+    self.mImageData = Data ()
+  }
+
+  //····················································································································
+
+  final var mImageData : Data {
     get { return self.mImageData_property.propval }
     set { self.mImageData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mImageData_property_selection : EBSelection <Data> { return self.mImageData_property.prop }
+  final var mImageData_property_selection : EBSelection <Data> { return self.mImageData_property.prop }
 
   //····················································································································
   //   Atomic property: mPrefix
@@ -244,14 +262,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mPrefix : String {
+  final func reset_mPrefix_toDefaultValue () {
+    self.mPrefix = ""
+  }
+
+  //····················································································································
+
+  final var mPrefix : String {
     get { return self.mPrefix_property.propval }
     set { self.mPrefix_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.prop }
+  final var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.prop }
 
   //····················································································································
   //   Atomic property: mComments
@@ -261,14 +285,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mComments : String {
+  final func reset_mComments_toDefaultValue () {
+    self.mComments = ""
+  }
+
+  //····················································································································
+
+  final var mComments : String {
     get { return self.mComments_property.propval }
     set { self.mComments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mComments_property_selection : EBSelection <String> { return self.mComments_property.prop }
+  final var mComments_property_selection : EBSelection <String> { return self.mComments_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageDisplayZoom
@@ -278,14 +308,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mPackageDisplayZoom : Int {
+  final func reset_mPackageDisplayZoom_toDefaultValue () {
+    self.mPackageDisplayZoom = 400
+  }
+
+  //····················································································································
+
+  final var mPackageDisplayZoom : Int {
     get { return self.mPackageDisplayZoom_property.propval }
     set { self.mPackageDisplayZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageDisplayZoom_property_selection : EBSelection <Int> { return self.mPackageDisplayZoom_property.prop }
+  final var mPackageDisplayZoom_property_selection : EBSelection <Int> { return self.mPackageDisplayZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageDisplayHorizontalFlip
@@ -295,14 +331,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mPackageDisplayHorizontalFlip : Bool {
+  final func reset_mPackageDisplayHorizontalFlip_toDefaultValue () {
+    self.mPackageDisplayHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mPackageDisplayHorizontalFlip : Bool {
     get { return self.mPackageDisplayHorizontalFlip_property.propval }
     set { self.mPackageDisplayHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageDisplayHorizontalFlip_property_selection : EBSelection <Bool> { return self.mPackageDisplayHorizontalFlip_property.prop }
+  final var mPackageDisplayHorizontalFlip_property_selection : EBSelection <Bool> { return self.mPackageDisplayHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageDisplayVerticalFlip
@@ -312,14 +354,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mPackageDisplayVerticalFlip : Bool {
+  final func reset_mPackageDisplayVerticalFlip_toDefaultValue () {
+    self.mPackageDisplayVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mPackageDisplayVerticalFlip : Bool {
     get { return self.mPackageDisplayVerticalFlip_property.propval }
     set { self.mPackageDisplayVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageDisplayVerticalFlip_property_selection : EBSelection <Bool> { return self.mPackageDisplayVerticalFlip_property.prop }
+  final var mPackageDisplayVerticalFlip_property_selection : EBSelection <Bool> { return self.mPackageDisplayVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackages
@@ -329,14 +377,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mShowPackages : Bool {
+  final func reset_mShowPackages_toDefaultValue () {
+    self.mShowPackages = true
+  }
+
+  //····················································································································
+
+  final var mShowPackages : Bool {
     get { return self.mShowPackages_property.propval }
     set { self.mShowPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackages_property_selection : EBSelection <Bool> { return self.mShowPackages_property.prop }
+  final var mShowPackages_property_selection : EBSelection <Bool> { return self.mShowPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackagePadNumbers
@@ -346,14 +400,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mShowPackagePadNumbers : Bool {
+  final func reset_mShowPackagePadNumbers_toDefaultValue () {
+    self.mShowPackagePadNumbers = true
+  }
+
+  //····················································································································
+
+  final var mShowPackagePadNumbers : Bool {
     get { return self.mShowPackagePadNumbers_property.propval }
     set { self.mShowPackagePadNumbers_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackagePadNumbers_property_selection : EBSelection <Bool> { return self.mShowPackagePadNumbers_property.prop }
+  final var mShowPackagePadNumbers_property_selection : EBSelection <Bool> { return self.mShowPackagePadNumbers_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackageFrontPads
@@ -363,14 +423,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mShowPackageFrontPads : Bool {
+  final func reset_mShowPackageFrontPads_toDefaultValue () {
+    self.mShowPackageFrontPads = true
+  }
+
+  //····················································································································
+
+  final var mShowPackageFrontPads : Bool {
     get { return self.mShowPackageFrontPads_property.propval }
     set { self.mShowPackageFrontPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackageFrontPads_property_selection : EBSelection <Bool> { return self.mShowPackageFrontPads_property.prop }
+  final var mShowPackageFrontPads_property_selection : EBSelection <Bool> { return self.mShowPackageFrontPads_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackageBackPads
@@ -380,14 +446,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mShowPackageBackPads : Bool {
+  final func reset_mShowPackageBackPads_toDefaultValue () {
+    self.mShowPackageBackPads = true
+  }
+
+  //····················································································································
+
+  final var mShowPackageBackPads : Bool {
     get { return self.mShowPackageBackPads_property.propval }
     set { self.mShowPackageBackPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackageBackPads_property_selection : EBSelection <Bool> { return self.mShowPackageBackPads_property.prop }
+  final var mShowPackageBackPads_property_selection : EBSelection <Bool> { return self.mShowPackageBackPads_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolDisplayZoom
@@ -397,14 +469,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mSymbolDisplayZoom : Int {
+  final func reset_mSymbolDisplayZoom_toDefaultValue () {
+    self.mSymbolDisplayZoom = 400
+  }
+
+  //····················································································································
+
+  final var mSymbolDisplayZoom : Int {
     get { return self.mSymbolDisplayZoom_property.propval }
     set { self.mSymbolDisplayZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolDisplayZoom_property_selection : EBSelection <Int> { return self.mSymbolDisplayZoom_property.prop }
+  final var mSymbolDisplayZoom_property_selection : EBSelection <Int> { return self.mSymbolDisplayZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolDisplayHorizontalFlip
@@ -414,14 +492,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mSymbolDisplayHorizontalFlip : Bool {
+  final func reset_mSymbolDisplayHorizontalFlip_toDefaultValue () {
+    self.mSymbolDisplayHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mSymbolDisplayHorizontalFlip : Bool {
     get { return self.mSymbolDisplayHorizontalFlip_property.propval }
     set { self.mSymbolDisplayHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSymbolDisplayHorizontalFlip_property.prop }
+  final var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSymbolDisplayHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolDisplayVerticalFlip
@@ -431,14 +515,20 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mSymbolDisplayVerticalFlip : Bool {
+  final func reset_mSymbolDisplayVerticalFlip_toDefaultValue () {
+    self.mSymbolDisplayVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mSymbolDisplayVerticalFlip : Bool {
     get { return self.mSymbolDisplayVerticalFlip_property.propval }
     set { self.mSymbolDisplayVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool> { return self.mSymbolDisplayVerticalFlip_property.prop }
+  final var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool> { return self.mSymbolDisplayVerticalFlip_property.prop }
 
   //····················································································································
   //   To many property: mDocs
@@ -1476,35 +1566,35 @@ class DeviceRoot : EBGraphicManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
+    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
   //--- Atomic property: mTitle
-    self.mTitle_property.storeIn (dictionary: ioDictionary, forKey:"mTitle")
+    self.mTitle_property.storeIn (dictionary: ioDictionary, forKey: "mTitle")
   //--- Atomic property: mImageData
-    self.mImageData_property.storeIn (dictionary: ioDictionary, forKey:"mImageData")
+    self.mImageData_property.storeIn (dictionary: ioDictionary, forKey: "mImageData")
   //--- Atomic property: mPrefix
-    self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey:"mPrefix")
+    self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey: "mPrefix")
   //--- Atomic property: mComments
-    self.mComments_property.storeIn (dictionary: ioDictionary, forKey:"mComments")
+    self.mComments_property.storeIn (dictionary: ioDictionary, forKey: "mComments")
   //--- Atomic property: mPackageDisplayZoom
-    self.mPackageDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey:"mPackageDisplayZoom")
+    self.mPackageDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey: "mPackageDisplayZoom")
   //--- Atomic property: mPackageDisplayHorizontalFlip
-    self.mPackageDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mPackageDisplayHorizontalFlip")
+    self.mPackageDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mPackageDisplayHorizontalFlip")
   //--- Atomic property: mPackageDisplayVerticalFlip
-    self.mPackageDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mPackageDisplayVerticalFlip")
+    self.mPackageDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mPackageDisplayVerticalFlip")
   //--- Atomic property: mShowPackages
-    self.mShowPackages_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackages")
+    self.mShowPackages_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackages")
   //--- Atomic property: mShowPackagePadNumbers
-    self.mShowPackagePadNumbers_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackagePadNumbers")
+    self.mShowPackagePadNumbers_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackagePadNumbers")
   //--- Atomic property: mShowPackageFrontPads
-    self.mShowPackageFrontPads_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackageFrontPads")
+    self.mShowPackageFrontPads_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackageFrontPads")
   //--- Atomic property: mShowPackageBackPads
-    self.mShowPackageBackPads_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackageBackPads")
+    self.mShowPackageBackPads_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackageBackPads")
   //--- Atomic property: mSymbolDisplayZoom
-    self.mSymbolDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolDisplayZoom")
+    self.mSymbolDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayZoom")
   //--- Atomic property: mSymbolDisplayHorizontalFlip
-    self.mSymbolDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolDisplayHorizontalFlip")
+    self.mSymbolDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayHorizontalFlip")
   //--- Atomic property: mSymbolDisplayVerticalFlip
-    self.mSymbolDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolDisplayVerticalFlip")
+    self.mSymbolDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayVerticalFlip")
   //--- To many property: mDocs
     self.store (
       managedObjectArray: self.mDocs_property.propval,
@@ -1583,35 +1673,35 @@ class DeviceRoot : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
+    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedPageIndex")
   //--- Atomic property: mTitle
-    self.mTitle_property.readFrom (dictionary: inDictionary, forKey:"mTitle")
+    self.mTitle_property.readFrom (dictionary: inDictionary, forKey: "mTitle")
   //--- Atomic property: mImageData
-    self.mImageData_property.readFrom (dictionary: inDictionary, forKey:"mImageData")
+    self.mImageData_property.readFrom (dictionary: inDictionary, forKey: "mImageData")
   //--- Atomic property: mPrefix
-    self.mPrefix_property.readFrom (dictionary: inDictionary, forKey:"mPrefix")
+    self.mPrefix_property.readFrom (dictionary: inDictionary, forKey: "mPrefix")
   //--- Atomic property: mComments
-    self.mComments_property.readFrom (dictionary: inDictionary, forKey:"mComments")
+    self.mComments_property.readFrom (dictionary: inDictionary, forKey: "mComments")
   //--- Atomic property: mPackageDisplayZoom
-    self.mPackageDisplayZoom_property.readFrom (dictionary: inDictionary, forKey:"mPackageDisplayZoom")
+    self.mPackageDisplayZoom_property.readFrom (dictionary: inDictionary, forKey: "mPackageDisplayZoom")
   //--- Atomic property: mPackageDisplayHorizontalFlip
-    self.mPackageDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mPackageDisplayHorizontalFlip")
+    self.mPackageDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mPackageDisplayHorizontalFlip")
   //--- Atomic property: mPackageDisplayVerticalFlip
-    self.mPackageDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mPackageDisplayVerticalFlip")
+    self.mPackageDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mPackageDisplayVerticalFlip")
   //--- Atomic property: mShowPackages
-    self.mShowPackages_property.readFrom (dictionary: inDictionary, forKey:"mShowPackages")
+    self.mShowPackages_property.readFrom (dictionary: inDictionary, forKey: "mShowPackages")
   //--- Atomic property: mShowPackagePadNumbers
-    self.mShowPackagePadNumbers_property.readFrom (dictionary: inDictionary, forKey:"mShowPackagePadNumbers")
+    self.mShowPackagePadNumbers_property.readFrom (dictionary: inDictionary, forKey: "mShowPackagePadNumbers")
   //--- Atomic property: mShowPackageFrontPads
-    self.mShowPackageFrontPads_property.readFrom (dictionary: inDictionary, forKey:"mShowPackageFrontPads")
+    self.mShowPackageFrontPads_property.readFrom (dictionary: inDictionary, forKey: "mShowPackageFrontPads")
   //--- Atomic property: mShowPackageBackPads
-    self.mShowPackageBackPads_property.readFrom (dictionary: inDictionary, forKey:"mShowPackageBackPads")
+    self.mShowPackageBackPads_property.readFrom (dictionary: inDictionary, forKey: "mShowPackageBackPads")
   //--- Atomic property: mSymbolDisplayZoom
-    self.mSymbolDisplayZoom_property.readFrom (dictionary: inDictionary, forKey:"mSymbolDisplayZoom")
+    self.mSymbolDisplayZoom_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayZoom")
   //--- Atomic property: mSymbolDisplayHorizontalFlip
-    self.mSymbolDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSymbolDisplayHorizontalFlip")
+    self.mSymbolDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayHorizontalFlip")
   //--- Atomic property: mSymbolDisplayVerticalFlip
-    self.mSymbolDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSymbolDisplayVerticalFlip")
+    self.mSymbolDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayVerticalFlip")
   }
 
 

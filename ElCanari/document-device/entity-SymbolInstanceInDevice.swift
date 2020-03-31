@@ -93,14 +93,20 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mInstanceName : String {
+  final func reset_mInstanceName_toDefaultValue () {
+    self.mInstanceName = ""
+  }
+
+  //····················································································································
+
+  final var mInstanceName : String {
     get { return self.mInstanceName_property.propval }
     set { self.mInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mInstanceName_property_selection : EBSelection <String> { return self.mInstanceName_property.prop }
+  final var mInstanceName_property_selection : EBSelection <String> { return self.mInstanceName_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -110,14 +116,20 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -127,14 +139,20 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To one property: mType
@@ -613,11 +631,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mInstanceName
-    self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mInstanceName")
+    self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mInstanceName")
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   }
 
   //····················································································································
@@ -653,11 +671,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mInstanceName
-    self.mInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mInstanceName")
+    self.mInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mInstanceName")
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   }
 
 

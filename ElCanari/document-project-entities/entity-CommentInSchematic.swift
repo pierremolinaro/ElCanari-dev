@@ -81,14 +81,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mColor : NSColor {
+  final func reset_mColor_toDefaultValue () {
+    self.mColor = NSColor.black
+  }
+
+  //····················································································································
+
+  final var mColor : NSColor {
     get { return self.mColor_property.propval }
     set { self.mColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.prop }
+  final var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.prop }
 
   //····················································································································
   //   Atomic property: mSize
@@ -98,14 +104,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mSize : Double {
+  final func reset_mSize_toDefaultValue () {
+    self.mSize = 11
+  }
+
+  //····················································································································
+
+  final var mSize : Double {
     get { return self.mSize_property.propval }
     set { self.mSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSize_property_selection : EBSelection <Double> { return self.mSize_property.prop }
+  final var mSize_property_selection : EBSelection <Double> { return self.mSize_property.prop }
 
   //····················································································································
   //   Atomic property: mHorizontalAlignment
@@ -115,14 +127,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mHorizontalAlignment : HorizontalAlignment {
+  final func reset_mHorizontalAlignment_toDefaultValue () {
+    self.mHorizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var mHorizontalAlignment : HorizontalAlignment {
     get { return self.mHorizontalAlignment_property.propval }
     set { self.mHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
+  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: mVerticalAlignment
@@ -132,14 +150,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mVerticalAlignment : VerticalAlignment {
+  final func reset_mVerticalAlignment_toDefaultValue () {
+    self.mVerticalAlignment = VerticalAlignment.center
+  }
+
+  //····················································································································
+
+  final var mVerticalAlignment : VerticalAlignment {
     get { return self.mVerticalAlignment_property.propval }
     set { self.mVerticalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> { return self.mVerticalAlignment_property.prop }
+  final var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> { return self.mVerticalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -149,14 +173,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -166,14 +196,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   Atomic property: mComment
@@ -183,14 +219,20 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mComment : String {
+  final func reset_mComment_toDefaultValue () {
+    self.mComment = ""
+  }
+
+  //····················································································································
+
+  final var mComment : String {
     get { return self.mComment_property.propval }
     set { self.mComment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mComment_property_selection : EBSelection <String> { return self.mComment_property.prop }
+  final var mComment_property_selection : EBSelection <String> { return self.mComment_property.prop }
 
   //····················································································································
   //    init
@@ -459,19 +501,19 @@ class CommentInSchematic : SchematicObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mColor
-    self.mColor_property.storeIn (dictionary: ioDictionary, forKey:"mColor")
+    self.mColor_property.storeIn (dictionary: ioDictionary, forKey: "mColor")
   //--- Atomic property: mSize
-    self.mSize_property.storeIn (dictionary: ioDictionary, forKey:"mSize")
+    self.mSize_property.storeIn (dictionary: ioDictionary, forKey: "mSize")
   //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mHorizontalAlignment")
+    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
   //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mVerticalAlignment")
+    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- Atomic property: mComment
-    self.mComment_property.storeIn (dictionary: ioDictionary, forKey:"mComment")
+    self.mComment_property.storeIn (dictionary: ioDictionary, forKey: "mComment")
   }
 
   //····················································································································
@@ -490,19 +532,19 @@ class CommentInSchematic : SchematicObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mColor
-    self.mColor_property.readFrom (dictionary: inDictionary, forKey:"mColor")
+    self.mColor_property.readFrom (dictionary: inDictionary, forKey: "mColor")
   //--- Atomic property: mSize
-    self.mSize_property.readFrom (dictionary: inDictionary, forKey:"mSize")
+    self.mSize_property.readFrom (dictionary: inDictionary, forKey: "mSize")
   //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mHorizontalAlignment")
+    self.mHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mHorizontalAlignment")
   //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mVerticalAlignment")
+    self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mVerticalAlignment")
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mComment
-    self.mComment_property.readFrom (dictionary: inDictionary, forKey:"mComment")
+    self.mComment_property.readFrom (dictionary: inDictionary, forKey: "mComment")
   }
 
 

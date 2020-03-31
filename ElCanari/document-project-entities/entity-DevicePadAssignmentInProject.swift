@@ -39,14 +39,20 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPadName : String {
+  final func reset_mPadName_toDefaultValue () {
+    self.mPadName = ""
+  }
+
+  //····················································································································
+
+  final var mPadName : String {
     get { return self.mPadName_property.propval }
     set { self.mPadName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
+  final var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
 
   //····················································································································
   //   To one property: mPin
@@ -304,7 +310,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mPadName
-    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey:"mPadName")
+    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey: "mPadName")
   //--- To one property: mPin
     self.store (managedObject:self.mPin_property.propval,
       relationshipName: "mPin",
@@ -338,7 +344,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPadName
-    self.mPadName_property.readFrom (dictionary: inDictionary, forKey:"mPadName")
+    self.mPadName_property.readFrom (dictionary: inDictionary, forKey: "mPadName")
   }
 
 

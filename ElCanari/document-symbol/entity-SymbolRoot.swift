@@ -102,14 +102,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedInspector : Int {
+  final func reset_selectedInspector_toDefaultValue () {
+    self.selectedInspector = 0
+  }
+
+  //····················································································································
+
+  final var selectedInspector : Int {
     get { return self.selectedInspector_property.propval }
     set { self.selectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
+  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: comments
@@ -119,14 +125,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var comments : String {
+  final func reset_comments_toDefaultValue () {
+    self.comments = ""
+  }
+
+  //····················································································································
+
+  final var comments : String {
     get { return self.comments_property.propval }
     set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalFlip
@@ -136,14 +148,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var horizontalFlip : Bool {
+  final func reset_horizontalFlip_toDefaultValue () {
+    self.horizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var horizontalFlip : Bool {
     get { return self.horizontalFlip_property.propval }
     set { self.horizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
+  final var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: verticalFlip
@@ -153,14 +171,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var verticalFlip : Bool {
+  final func reset_verticalFlip_toDefaultValue () {
+    self.verticalFlip = false
+  }
+
+  //····················································································································
+
+  final var verticalFlip : Bool {
     get { return self.verticalFlip_property.propval }
     set { self.verticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
+  final var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -170,14 +194,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var gridStyle : GridStyle {
+  final func reset_gridStyle_toDefaultValue () {
+    self.gridStyle = GridStyle.line
+  }
+
+  //····················································································································
+
+  final var gridStyle : GridStyle {
     get { return self.gridStyle_property.propval }
     set { self.gridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
+  final var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: gridDisplay
@@ -187,14 +217,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var gridDisplay : Int {
+  final func reset_gridDisplay_toDefaultValue () {
+    self.gridDisplay = 4
+  }
+
+  //····················································································································
+
+  final var gridDisplay : Int {
     get { return self.gridDisplay_property.propval }
     set { self.gridDisplay_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridDisplay_property_selection : EBSelection <Int> { return self.gridDisplay_property.prop }
+  final var gridDisplay_property_selection : EBSelection <Int> { return self.gridDisplay_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -204,14 +240,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var zoom : Int {
+  final func reset_zoom_toDefaultValue () {
+    self.zoom = 600
+  }
+
+  //····················································································································
+
+  final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   Atomic property: xPlacardUnit
@@ -221,14 +263,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var xPlacardUnit : Int {
+  final func reset_xPlacardUnit_toDefaultValue () {
+    self.xPlacardUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xPlacardUnit : Int {
     get { return self.xPlacardUnit_property.propval }
     set { self.xPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
+  final var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yPlacardUnit
@@ -238,14 +286,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var yPlacardUnit : Int {
+  final func reset_yPlacardUnit_toDefaultValue () {
+    self.yPlacardUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yPlacardUnit : Int {
     get { return self.yPlacardUnit_property.propval }
     set { self.yPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
+  final var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
 
   //····················································································································
   //   To many property: symbolObjects
@@ -292,14 +346,20 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedPageIndex : Int {
+  final func reset_selectedPageIndex_toDefaultValue () {
+    self.selectedPageIndex = 0
+  }
+
+  //····················································································································
+
+  final var selectedPageIndex : Int {
     get { return self.selectedPageIndex_property.propval }
     set { self.selectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
+  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
 
   //····················································································································
   //   Transient property: issues
@@ -650,23 +710,23 @@ class SymbolRoot : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
+    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
   //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
   //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"horizontalFlip")
+    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
   //--- Atomic property: verticalFlip
-    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"verticalFlip")
+    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
   //--- Atomic property: gridStyle
-    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
+    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
   //--- Atomic property: gridDisplay
-    self.gridDisplay_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplay")
+    self.gridDisplay_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplay")
   //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
   //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"xPlacardUnit")
+    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
   //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"yPlacardUnit")
+    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: symbolObjects
     self.store (
       managedObjectArray: self.symbolObjects_property.propval,
@@ -674,7 +734,7 @@ class SymbolRoot : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
+    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
   }
 
   //····················································································································
@@ -699,25 +759,25 @@ class SymbolRoot : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey: "selectedInspector")
   //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.comments_property.readFrom (dictionary: inDictionary, forKey: "comments")
   //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
+    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "horizontalFlip")
   //--- Atomic property: verticalFlip
-    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
+    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey: "verticalFlip")
   //--- Atomic property: gridStyle
-    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
+    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey: "gridStyle")
   //--- Atomic property: gridDisplay
-    self.gridDisplay_property.readFrom (dictionary: inDictionary, forKey:"gridDisplay")
+    self.gridDisplay_property.readFrom (dictionary: inDictionary, forKey: "gridDisplay")
   //--- Atomic property: zoom
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
   //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
+    self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "xPlacardUnit")
   //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"yPlacardUnit")
+    self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "yPlacardUnit")
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
   }
 
 

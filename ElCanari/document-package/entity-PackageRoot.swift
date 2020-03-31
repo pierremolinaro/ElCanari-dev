@@ -204,14 +204,8 @@ protocol PackageRoot_mDimensionUnitSecondModelPointDy : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mFirstModelPointCircleRadius : class {
-  var mFirstModelPointCircleRadius : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackageRoot_mSecondModelPointCircleRadius : class {
-  var mSecondModelPointCircleRadius : Int { get }
+protocol PackageRoot_mModelPointsCircleRadius : class {
+  var mModelPointsCircleRadius : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -390,8 +384,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mDimensionUnitFirstModelPointY,
          PackageRoot_mDimensionUnitSecondModelPointDx,
          PackageRoot_mDimensionUnitSecondModelPointDy,
-         PackageRoot_mFirstModelPointCircleRadius,
-         PackageRoot_mSecondModelPointCircleRadius,
+         PackageRoot_mModelPointsCircleRadius,
          PackageRoot_mPointsAreLocked,
          PackageRoot_knobSizeMultpliedByTen,
          PackageRoot_padNumbering,
@@ -424,14 +417,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var selectedPageIndex : Int {
+  final func reset_selectedPageIndex_toDefaultValue () {
+    self.selectedPageIndex = 1
+  }
+
+  //····················································································································
+
+  final var selectedPageIndex : Int {
     get { return self.selectedPageIndex_property.propval }
     set { self.selectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
+  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -441,14 +440,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var selectedInspector : Int {
+  final func reset_selectedInspector_toDefaultValue () {
+    self.selectedInspector = 0
+  }
+
+  //····················································································································
+
+  final var selectedInspector : Int {
     get { return self.selectedInspector_property.propval }
     set { self.selectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
+  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: comments
@@ -458,14 +463,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var comments : String {
+  final func reset_comments_toDefaultValue () {
+    self.comments = ""
+  }
+
+  //····················································································································
+
+  final var comments : String {
     get { return self.comments_property.propval }
     set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: program
@@ -475,14 +486,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var program : String {
+  final func reset_program_toDefaultValue () {
+    self.program = ""
+  }
+
+  //····················································································································
+
+  final var program : String {
     get { return self.program_property.propval }
     set { self.program_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var program_property_selection : EBSelection <String> { return self.program_property.prop }
+  final var program_property_selection : EBSelection <String> { return self.program_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalFlip
@@ -492,14 +509,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var horizontalFlip : Bool {
+  final func reset_horizontalFlip_toDefaultValue () {
+    self.horizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var horizontalFlip : Bool {
     get { return self.horizontalFlip_property.propval }
     set { self.horizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
+  final var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: verticalFlip
@@ -509,14 +532,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var verticalFlip : Bool {
+  final func reset_verticalFlip_toDefaultValue () {
+    self.verticalFlip = false
+  }
+
+  //····················································································································
+
+  final var verticalFlip : Bool {
     get { return self.verticalFlip_property.propval }
     set { self.verticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
+  final var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -526,14 +555,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var gridStyle : GridStyle {
+  final func reset_gridStyle_toDefaultValue () {
+    self.gridStyle = GridStyle.line
+  }
+
+  //····················································································································
+
+  final var gridStyle : GridStyle {
     get { return self.gridStyle_property.propval }
     set { self.gridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
+  final var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: gridStep
@@ -543,14 +578,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var gridStep : Int {
+  final func reset_gridStep_toDefaultValue () {
+    self.gridStep = 57150
+  }
+
+  //····················································································································
+
+  final var gridStep : Int {
     get { return self.gridStep_property.propval }
     set { self.gridStep_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStep_property_selection : EBSelection <Int> { return self.gridStep_property.prop }
+  final var gridStep_property_selection : EBSelection <Int> { return self.gridStep_property.prop }
 
   //····················································································································
   //   Atomic property: gridStepUnit
@@ -560,14 +601,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var gridStepUnit : Int {
+  final func reset_gridStepUnit_toDefaultValue () {
+    self.gridStepUnit = 2286
+  }
+
+  //····················································································································
+
+  final var gridStepUnit : Int {
     get { return self.gridStepUnit_property.propval }
     set { self.gridStepUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStepUnit_property_selection : EBSelection <Int> { return self.gridStepUnit_property.prop }
+  final var gridStepUnit_property_selection : EBSelection <Int> { return self.gridStepUnit_property.prop }
 
   //····················································································································
   //   Atomic property: gridDisplayFactor
@@ -577,14 +624,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var gridDisplayFactor : Int {
+  final func reset_gridDisplayFactor_toDefaultValue () {
+    self.gridDisplayFactor = 4
+  }
+
+  //····················································································································
+
+  final var gridDisplayFactor : Int {
     get { return self.gridDisplayFactor_property.propval }
     set { self.gridDisplayFactor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridDisplayFactor_property_selection : EBSelection <Int> { return self.gridDisplayFactor_property.prop }
+  final var gridDisplayFactor_property_selection : EBSelection <Int> { return self.gridDisplayFactor_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -594,14 +647,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var zoom : Int {
+  final func reset_zoom_toDefaultValue () {
+    self.zoom = 600
+  }
+
+  //····················································································································
+
+  final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageOpacity
@@ -611,14 +670,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageOpacity : Double {
+  final func reset_mModelImageOpacity_toDefaultValue () {
+    self.mModelImageOpacity = 1
+  }
+
+  //····················································································································
+
+  final var mModelImageOpacity : Double {
     get { return self.mModelImageOpacity_property.propval }
     set { self.mModelImageOpacity_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageOpacity_property_selection : EBSelection <Double> { return self.mModelImageOpacity_property.prop }
+  final var mModelImageOpacity_property_selection : EBSelection <Double> { return self.mModelImageOpacity_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageHorizontalFlip
@@ -628,14 +693,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageHorizontalFlip : Bool {
+  final func reset_mModelImagePageHorizontalFlip_toDefaultValue () {
+    self.mModelImagePageHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mModelImagePageHorizontalFlip : Bool {
     get { return self.mModelImagePageHorizontalFlip_property.propval }
     set { self.mModelImagePageHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageHorizontalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageHorizontalFlip_property.prop }
+  final var mModelImagePageHorizontalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageVerticalFlip
@@ -645,14 +716,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageVerticalFlip : Bool {
+  final func reset_mModelImagePageVerticalFlip_toDefaultValue () {
+    self.mModelImagePageVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mModelImagePageVerticalFlip : Bool {
     get { return self.mModelImagePageVerticalFlip_property.propval }
     set { self.mModelImagePageVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageVerticalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageVerticalFlip_property.prop }
+  final var mModelImagePageVerticalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridStyle
@@ -662,14 +739,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageGridStyle : GridStyle {
+  final func reset_mModelImagePageGridStyle_toDefaultValue () {
+    self.mModelImagePageGridStyle = GridStyle.noGrid
+  }
+
+  //····················································································································
+
+  final var mModelImagePageGridStyle : GridStyle {
     get { return self.mModelImagePageGridStyle_property.propval }
     set { self.mModelImagePageGridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageGridStyle_property_selection : EBSelection <GridStyle> { return self.mModelImagePageGridStyle_property.prop }
+  final var mModelImagePageGridStyle_property_selection : EBSelection <GridStyle> { return self.mModelImagePageGridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridStep
@@ -679,14 +762,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageGridStep : Int {
+  final func reset_mModelImagePageGridStep_toDefaultValue () {
+    self.mModelImagePageGridStep = 2286
+  }
+
+  //····················································································································
+
+  final var mModelImagePageGridStep : Int {
     get { return self.mModelImagePageGridStep_property.propval }
     set { self.mModelImagePageGridStep_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageGridStep_property_selection : EBSelection <Int> { return self.mModelImagePageGridStep_property.prop }
+  final var mModelImagePageGridStep_property_selection : EBSelection <Int> { return self.mModelImagePageGridStep_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridStepUnit
@@ -696,14 +785,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageGridStepUnit : Int {
+  final func reset_mModelImagePageGridStepUnit_toDefaultValue () {
+    self.mModelImagePageGridStepUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mModelImagePageGridStepUnit : Int {
     get { return self.mModelImagePageGridStepUnit_property.propval }
     set { self.mModelImagePageGridStepUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageGridStepUnit_property_selection : EBSelection <Int> { return self.mModelImagePageGridStepUnit_property.prop }
+  final var mModelImagePageGridStepUnit_property_selection : EBSelection <Int> { return self.mModelImagePageGridStepUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridDisplayFactor
@@ -713,14 +808,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageGridDisplayFactor : Int {
+  final func reset_mModelImagePageGridDisplayFactor_toDefaultValue () {
+    self.mModelImagePageGridDisplayFactor = 100
+  }
+
+  //····················································································································
+
+  final var mModelImagePageGridDisplayFactor : Int {
     get { return self.mModelImagePageGridDisplayFactor_property.propval }
     set { self.mModelImagePageGridDisplayFactor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageGridDisplayFactor_property_selection : EBSelection <Int> { return self.mModelImagePageGridDisplayFactor_property.prop }
+  final var mModelImagePageGridDisplayFactor_property_selection : EBSelection <Int> { return self.mModelImagePageGridDisplayFactor_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageZoom
@@ -730,14 +831,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageZoom : Int {
+  final func reset_mModelImagePageZoom_toDefaultValue () {
+    self.mModelImagePageZoom = 200
+  }
+
+  //····················································································································
+
+  final var mModelImagePageZoom : Int {
     get { return self.mModelImagePageZoom_property.propval }
     set { self.mModelImagePageZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageZoom_property_selection : EBSelection <Int> { return self.mModelImagePageZoom_property.prop }
+  final var mModelImagePageZoom_property_selection : EBSelection <Int> { return self.mModelImagePageZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageXPlacardUnit
@@ -747,14 +854,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageXPlacardUnit : Int {
+  final func reset_mModelImagePageXPlacardUnit_toDefaultValue () {
+    self.mModelImagePageXPlacardUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mModelImagePageXPlacardUnit : Int {
     get { return self.mModelImagePageXPlacardUnit_property.propval }
     set { self.mModelImagePageXPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageXPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageXPlacardUnit_property.prop }
+  final var mModelImagePageXPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageXPlacardUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageYPlacardUnit
@@ -764,14 +877,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePageYPlacardUnit : Int {
+  final func reset_mModelImagePageYPlacardUnit_toDefaultValue () {
+    self.mModelImagePageYPlacardUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mModelImagePageYPlacardUnit : Int {
     get { return self.mModelImagePageYPlacardUnit_property.propval }
     set { self.mModelImagePageYPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.prop }
+  final var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageSecondPointXUnit
@@ -781,14 +900,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageSecondPointXUnit : Int {
+  final func reset_mModelImageSecondPointXUnit_toDefaultValue () {
+    self.mModelImageSecondPointXUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mModelImageSecondPointXUnit : Int {
     get { return self.mModelImageSecondPointXUnit_property.propval }
     set { self.mModelImageSecondPointXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageSecondPointXUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointXUnit_property.prop }
+  final var mModelImageSecondPointXUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointXUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePSecondointYUnit
@@ -798,14 +923,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePSecondointYUnit : Int {
+  final func reset_mModelImagePSecondointYUnit_toDefaultValue () {
+    self.mModelImagePSecondointYUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mModelImagePSecondointYUnit : Int {
     get { return self.mModelImagePSecondointYUnit_property.propval }
     set { self.mModelImagePSecondointYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePSecondointYUnit_property_selection : EBSelection <Int> { return self.mModelImagePSecondointYUnit_property.prop }
+  final var mModelImagePSecondointYUnit_property_selection : EBSelection <Int> { return self.mModelImagePSecondointYUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageFirstPointXOnLock
@@ -815,14 +946,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageFirstPointXOnLock : Int {
+  final func reset_mModelImageFirstPointXOnLock_toDefaultValue () {
+    self.mModelImageFirstPointXOnLock = 0
+  }
+
+  //····················································································································
+
+  final var mModelImageFirstPointXOnLock : Int {
     get { return self.mModelImageFirstPointXOnLock_property.propval }
     set { self.mModelImageFirstPointXOnLock_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageFirstPointXOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointXOnLock_property.prop }
+  final var mModelImageFirstPointXOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointXOnLock_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageFirstPointYOnLock
@@ -832,14 +969,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageFirstPointYOnLock : Int {
+  final func reset_mModelImageFirstPointYOnLock_toDefaultValue () {
+    self.mModelImageFirstPointYOnLock = 0
+  }
+
+  //····················································································································
+
+  final var mModelImageFirstPointYOnLock : Int {
     get { return self.mModelImageFirstPointYOnLock_property.propval }
     set { self.mModelImageFirstPointYOnLock_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageFirstPointYOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointYOnLock_property.prop }
+  final var mModelImageFirstPointYOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointYOnLock_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePointsDxOnLock
@@ -849,14 +992,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePointsDxOnLock : Int {
+  final func reset_mModelImagePointsDxOnLock_toDefaultValue () {
+    self.mModelImagePointsDxOnLock = 0
+  }
+
+  //····················································································································
+
+  final var mModelImagePointsDxOnLock : Int {
     get { return self.mModelImagePointsDxOnLock_property.propval }
     set { self.mModelImagePointsDxOnLock_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePointsDxOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDxOnLock_property.prop }
+  final var mModelImagePointsDxOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDxOnLock_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePointsDyOnLock
@@ -866,14 +1015,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImagePointsDyOnLock : Int {
+  final func reset_mModelImagePointsDyOnLock_toDefaultValue () {
+    self.mModelImagePointsDyOnLock = 0
+  }
+
+  //····················································································································
+
+  final var mModelImagePointsDyOnLock : Int {
     get { return self.mModelImagePointsDyOnLock_property.propval }
     set { self.mModelImagePointsDyOnLock_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePointsDyOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDyOnLock_property.prop }
+  final var mModelImagePointsDyOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDyOnLock_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageScale
@@ -883,14 +1038,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageScale : Double {
+  final func reset_mModelImageScale_toDefaultValue () {
+    self.mModelImageScale = 1
+  }
+
+  //····················································································································
+
+  final var mModelImageScale : Double {
     get { return self.mModelImageScale_property.propval }
     set { self.mModelImageScale_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageScale_property_selection : EBSelection <Double> { return self.mModelImageScale_property.prop }
+  final var mModelImageScale_property_selection : EBSelection <Double> { return self.mModelImageScale_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageRotationInRadians
@@ -900,14 +1061,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageRotationInRadians : Double {
+  final func reset_mModelImageRotationInRadians_toDefaultValue () {
+    self.mModelImageRotationInRadians = 0
+  }
+
+  //····················································································································
+
+  final var mModelImageRotationInRadians : Double {
     get { return self.mModelImageRotationInRadians_property.propval }
     set { self.mModelImageRotationInRadians_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageRotationInRadians_property_selection : EBSelection <Double> { return self.mModelImageRotationInRadians_property.prop }
+  final var mModelImageRotationInRadians_property_selection : EBSelection <Double> { return self.mModelImageRotationInRadians_property.prop }
 
   //····················································································································
   //   Atomic property: mDimensionUnitFirstModelPointX
@@ -917,14 +1084,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mDimensionUnitFirstModelPointX : Int {
+  final func reset_mDimensionUnitFirstModelPointX_toDefaultValue () {
+    self.mDimensionUnitFirstModelPointX = 2286
+  }
+
+  //····················································································································
+
+  final var mDimensionUnitFirstModelPointX : Int {
     get { return self.mDimensionUnitFirstModelPointX_property.propval }
     set { self.mDimensionUnitFirstModelPointX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDimensionUnitFirstModelPointX_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointX_property.prop }
+  final var mDimensionUnitFirstModelPointX_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointX_property.prop }
 
   //····················································································································
   //   Atomic property: mDimensionUnitFirstModelPointY
@@ -934,14 +1107,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mDimensionUnitFirstModelPointY : Int {
+  final func reset_mDimensionUnitFirstModelPointY_toDefaultValue () {
+    self.mDimensionUnitFirstModelPointY = 2286
+  }
+
+  //····················································································································
+
+  final var mDimensionUnitFirstModelPointY : Int {
     get { return self.mDimensionUnitFirstModelPointY_property.propval }
     set { self.mDimensionUnitFirstModelPointY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDimensionUnitFirstModelPointY_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointY_property.prop }
+  final var mDimensionUnitFirstModelPointY_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointY_property.prop }
 
   //····················································································································
   //   Atomic property: mDimensionUnitSecondModelPointDx
@@ -951,14 +1130,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mDimensionUnitSecondModelPointDx : Int {
+  final func reset_mDimensionUnitSecondModelPointDx_toDefaultValue () {
+    self.mDimensionUnitSecondModelPointDx = 2286
+  }
+
+  //····················································································································
+
+  final var mDimensionUnitSecondModelPointDx : Int {
     get { return self.mDimensionUnitSecondModelPointDx_property.propval }
     set { self.mDimensionUnitSecondModelPointDx_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDimensionUnitSecondModelPointDx_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDx_property.prop }
+  final var mDimensionUnitSecondModelPointDx_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDx_property.prop }
 
   //····················································································································
   //   Atomic property: mDimensionUnitSecondModelPointDy
@@ -968,48 +1153,43 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mDimensionUnitSecondModelPointDy : Int {
+  final func reset_mDimensionUnitSecondModelPointDy_toDefaultValue () {
+    self.mDimensionUnitSecondModelPointDy = 2286
+  }
+
+  //····················································································································
+
+  final var mDimensionUnitSecondModelPointDy : Int {
     get { return self.mDimensionUnitSecondModelPointDy_property.propval }
     set { self.mDimensionUnitSecondModelPointDy_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDimensionUnitSecondModelPointDy_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDy_property.prop }
+  final var mDimensionUnitSecondModelPointDy_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDy_property.prop }
 
   //····················································································································
-  //   Atomic property: mFirstModelPointCircleRadius
+  //   Atomic property: mModelPointsCircleRadius
   //····················································································································
 
-  let mFirstModelPointCircleRadius_property = EBStoredProperty_Int (defaultValue: 10)
+  let mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10)
 
   //····················································································································
 
-  var mFirstModelPointCircleRadius : Int {
-    get { return self.mFirstModelPointCircleRadius_property.propval }
-    set { self.mFirstModelPointCircleRadius_property.setProp (newValue) }
+  final func reset_mModelPointsCircleRadius_toDefaultValue () {
+    self.mModelPointsCircleRadius = 10
   }
 
   //····················································································································
 
-  var mFirstModelPointCircleRadius_property_selection : EBSelection <Int> { return self.mFirstModelPointCircleRadius_property.prop }
-
-  //····················································································································
-  //   Atomic property: mSecondModelPointCircleRadius
-  //····················································································································
-
-  let mSecondModelPointCircleRadius_property = EBStoredProperty_Int (defaultValue: 10)
-
-  //····················································································································
-
-  var mSecondModelPointCircleRadius : Int {
-    get { return self.mSecondModelPointCircleRadius_property.propval }
-    set { self.mSecondModelPointCircleRadius_property.setProp (newValue) }
+  final var mModelPointsCircleRadius : Int {
+    get { return self.mModelPointsCircleRadius_property.propval }
+    set { self.mModelPointsCircleRadius_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSecondModelPointCircleRadius_property_selection : EBSelection <Int> { return self.mSecondModelPointCircleRadius_property.prop }
+  final var mModelPointsCircleRadius_property_selection : EBSelection <Int> { return self.mModelPointsCircleRadius_property.prop }
 
   //····················································································································
   //   Atomic property: mPointsAreLocked
@@ -1019,14 +1199,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mPointsAreLocked : Bool {
+  final func reset_mPointsAreLocked_toDefaultValue () {
+    self.mPointsAreLocked = false
+  }
+
+  //····················································································································
+
+  final var mPointsAreLocked : Bool {
     get { return self.mPointsAreLocked_property.propval }
     set { self.mPointsAreLocked_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPointsAreLocked_property_selection : EBSelection <Bool> { return self.mPointsAreLocked_property.prop }
+  final var mPointsAreLocked_property_selection : EBSelection <Bool> { return self.mPointsAreLocked_property.prop }
 
   //····················································································································
   //   Atomic property: knobSizeMultpliedByTen
@@ -1036,14 +1222,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var knobSizeMultpliedByTen : Int {
+  final func reset_knobSizeMultpliedByTen_toDefaultValue () {
+    self.knobSizeMultpliedByTen = 20
+  }
+
+  //····················································································································
+
+  final var knobSizeMultpliedByTen : Int {
     get { return self.knobSizeMultpliedByTen_property.propval }
     set { self.knobSizeMultpliedByTen_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var knobSizeMultpliedByTen_property_selection : EBSelection <Int> { return self.knobSizeMultpliedByTen_property.prop }
+  final var knobSizeMultpliedByTen_property_selection : EBSelection <Int> { return self.knobSizeMultpliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: padNumbering
@@ -1053,14 +1245,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var padNumbering : PadNumbering {
+  final func reset_padNumbering_toDefaultValue () {
+    self.padNumbering = PadNumbering.noNumbering
+  }
+
+  //····················································································································
+
+  final var padNumbering : PadNumbering {
     get { return self.padNumbering_property.propval }
     set { self.padNumbering_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumbering_property_selection : EBSelection <PadNumbering> { return self.padNumbering_property.prop }
+  final var padNumbering_property_selection : EBSelection <PadNumbering> { return self.padNumbering_property.prop }
 
   //····················································································································
   //   Atomic property: counterClockNumberingStartAngle
@@ -1070,14 +1268,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var counterClockNumberingStartAngle : Int {
+  final func reset_counterClockNumberingStartAngle_toDefaultValue () {
+    self.counterClockNumberingStartAngle = 90
+  }
+
+  //····················································································································
+
+  final var counterClockNumberingStartAngle : Int {
     get { return self.counterClockNumberingStartAngle_property.propval }
     set { self.counterClockNumberingStartAngle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var counterClockNumberingStartAngle_property_selection : EBSelection <Int> { return self.counterClockNumberingStartAngle_property.prop }
+  final var counterClockNumberingStartAngle_property_selection : EBSelection <Int> { return self.counterClockNumberingStartAngle_property.prop }
 
   //····················································································································
   //   Atomic property: xPlacardUnit
@@ -1087,14 +1291,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var xPlacardUnit : Int {
+  final func reset_xPlacardUnit_toDefaultValue () {
+    self.xPlacardUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xPlacardUnit : Int {
     get { return self.xPlacardUnit_property.propval }
     set { self.xPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
+  final var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yPlacardUnit
@@ -1104,14 +1314,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var yPlacardUnit : Int {
+  final func reset_yPlacardUnit_toDefaultValue () {
+    self.yPlacardUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yPlacardUnit : Int {
     get { return self.yPlacardUnit_property.propval }
     set { self.yPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
+  final var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
 
   //····················································································································
   //   To many property: packageObjects
@@ -1213,14 +1429,20 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageData : Data {
+  final func reset_mModelImageData_toDefaultValue () {
+    self.mModelImageData = Data ()
+  }
+
+  //····················································································································
+
+  final var mModelImageData : Data {
     get { return self.mModelImageData_property.propval }
     set { self.mModelImageData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageData_property_selection : EBSelection <Data> { return self.mModelImageData_property.prop }
+  final var mModelImageData_property_selection : EBSelection <Data> { return self.mModelImageData_property.prop }
 
   //····················································································································
   //   Atomic proxy property: mModelImageFirstPointX
@@ -1726,10 +1948,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.mDimensionUnitSecondModelPointDx_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDimensionUnitSecondModelPointDy
     self.mDimensionUnitSecondModelPointDy_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFirstModelPointCircleRadius
-    self.mFirstModelPointCircleRadius_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSecondModelPointCircleRadius
-    self.mSecondModelPointCircleRadius_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelPointsCircleRadius
+    self.mModelPointsCircleRadius_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: knobSizeMultpliedByTen
@@ -2467,20 +2687,12 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.mDimensionUnitSecondModelPointDy_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mFirstModelPointCircleRadius",
-      idx: self.mFirstModelPointCircleRadius_property.ebObjectIndex,
+      "mModelPointsCircleRadius",
+      idx: self.mModelPointsCircleRadius_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mFirstModelPointCircleRadius_property.mObserverExplorer,
-      valueExplorer: &self.mFirstModelPointCircleRadius_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSecondModelPointCircleRadius",
-      idx: self.mSecondModelPointCircleRadius_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSecondModelPointCircleRadius_property.mObserverExplorer,
-      valueExplorer: &self.mSecondModelPointCircleRadius_property.mValueExplorer
+      observerExplorer: &self.mModelPointsCircleRadius_property.mObserverExplorer,
+      valueExplorer: &self.mModelPointsCircleRadius_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPointsAreLocked",
@@ -2765,12 +2977,9 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: mDimensionUnitSecondModelPointDy
     self.mDimensionUnitSecondModelPointDy_property.mObserverExplorer = nil
     self.mDimensionUnitSecondModelPointDy_property.mValueExplorer = nil
-  //--- Atomic property: mFirstModelPointCircleRadius
-    self.mFirstModelPointCircleRadius_property.mObserverExplorer = nil
-    self.mFirstModelPointCircleRadius_property.mValueExplorer = nil
-  //--- Atomic property: mSecondModelPointCircleRadius
-    self.mSecondModelPointCircleRadius_property.mObserverExplorer = nil
-    self.mSecondModelPointCircleRadius_property.mValueExplorer = nil
+  //--- Atomic property: mModelPointsCircleRadius
+    self.mModelPointsCircleRadius_property.mObserverExplorer = nil
+    self.mModelPointsCircleRadius_property.mValueExplorer = nil
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.mObserverExplorer = nil
     self.mPointsAreLocked_property.mValueExplorer = nil
@@ -2843,87 +3052,85 @@ class PackageRoot : EBGraphicManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
+    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
+    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
   //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
   //--- Atomic property: program
-    self.program_property.storeIn (dictionary: ioDictionary, forKey:"program")
+    self.program_property.storeIn (dictionary: ioDictionary, forKey: "program")
   //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"horizontalFlip")
+    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
   //--- Atomic property: verticalFlip
-    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"verticalFlip")
+    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
   //--- Atomic property: gridStyle
-    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
+    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
   //--- Atomic property: gridStep
-    self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
+    self.gridStep_property.storeIn (dictionary: ioDictionary, forKey: "gridStep")
   //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"gridStepUnit")
+    self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "gridStepUnit")
   //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplayFactor")
+    self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplayFactor")
   //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
   //--- Atomic property: mModelImageOpacity
-    self.mModelImageOpacity_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageOpacity")
+    self.mModelImageOpacity_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageOpacity")
   //--- Atomic property: mModelImagePageHorizontalFlip
-    self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageHorizontalFlip")
+    self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageHorizontalFlip")
   //--- Atomic property: mModelImagePageVerticalFlip
-    self.mModelImagePageVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageVerticalFlip")
+    self.mModelImagePageVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageVerticalFlip")
   //--- Atomic property: mModelImagePageGridStyle
-    self.mModelImagePageGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageGridStyle")
+    self.mModelImagePageGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStyle")
   //--- Atomic property: mModelImagePageGridStep
-    self.mModelImagePageGridStep_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageGridStep")
+    self.mModelImagePageGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStep")
   //--- Atomic property: mModelImagePageGridStepUnit
-    self.mModelImagePageGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageGridStepUnit")
+    self.mModelImagePageGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStepUnit")
   //--- Atomic property: mModelImagePageGridDisplayFactor
-    self.mModelImagePageGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageGridDisplayFactor")
+    self.mModelImagePageGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridDisplayFactor")
   //--- Atomic property: mModelImagePageZoom
-    self.mModelImagePageZoom_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageZoom")
+    self.mModelImagePageZoom_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageZoom")
   //--- Atomic property: mModelImagePageXPlacardUnit
-    self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageXPlacardUnit")
+    self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
-    self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageYPlacardUnit")
+    self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageYPlacardUnit")
   //--- Atomic property: mModelImageSecondPointXUnit
-    self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageSecondPointXUnit")
+    self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointXUnit")
   //--- Atomic property: mModelImagePSecondointYUnit
-    self.mModelImagePSecondointYUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePSecondointYUnit")
+    self.mModelImagePSecondointYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePSecondointYUnit")
   //--- Atomic property: mModelImageFirstPointXOnLock
-    self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageFirstPointXOnLock")
+    self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointXOnLock")
   //--- Atomic property: mModelImageFirstPointYOnLock
-    self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageFirstPointYOnLock")
+    self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointYOnLock")
   //--- Atomic property: mModelImagePointsDxOnLock
-    self.mModelImagePointsDxOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDxOnLock")
+    self.mModelImagePointsDxOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDxOnLock")
   //--- Atomic property: mModelImagePointsDyOnLock
-    self.mModelImagePointsDyOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDyOnLock")
+    self.mModelImagePointsDyOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDyOnLock")
   //--- Atomic property: mModelImageScale
-    self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageScale")
+    self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageScale")
   //--- Atomic property: mModelImageRotationInRadians
-    self.mModelImageRotationInRadians_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageRotationInRadians")
+    self.mModelImageRotationInRadians_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageRotationInRadians")
   //--- Atomic property: mDimensionUnitFirstModelPointX
-    self.mDimensionUnitFirstModelPointX_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitFirstModelPointX")
+    self.mDimensionUnitFirstModelPointX_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointX")
   //--- Atomic property: mDimensionUnitFirstModelPointY
-    self.mDimensionUnitFirstModelPointY_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitFirstModelPointY")
+    self.mDimensionUnitFirstModelPointY_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointY")
   //--- Atomic property: mDimensionUnitSecondModelPointDx
-    self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitSecondModelPointDx")
+    self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDx")
   //--- Atomic property: mDimensionUnitSecondModelPointDy
-    self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitSecondModelPointDy")
-  //--- Atomic property: mFirstModelPointCircleRadius
-    self.mFirstModelPointCircleRadius_property.storeIn (dictionary: ioDictionary, forKey:"mFirstModelPointCircleRadius")
-  //--- Atomic property: mSecondModelPointCircleRadius
-    self.mSecondModelPointCircleRadius_property.storeIn (dictionary: ioDictionary, forKey:"mSecondModelPointCircleRadius")
+    self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDy")
+  //--- Atomic property: mModelPointsCircleRadius
+    self.mModelPointsCircleRadius_property.storeIn (dictionary: ioDictionary, forKey: "mModelPointsCircleRadius")
   //--- Atomic property: mPointsAreLocked
-    self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey:"mPointsAreLocked")
+    self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey: "mPointsAreLocked")
   //--- Atomic property: knobSizeMultpliedByTen
-    self.knobSizeMultpliedByTen_property.storeIn (dictionary: ioDictionary, forKey:"knobSizeMultpliedByTen")
+    self.knobSizeMultpliedByTen_property.storeIn (dictionary: ioDictionary, forKey: "knobSizeMultpliedByTen")
   //--- Atomic property: padNumbering
-    self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey:"padNumbering")
+    self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey: "padNumbering")
   //--- Atomic property: counterClockNumberingStartAngle
-    self.counterClockNumberingStartAngle_property.storeIn (dictionary: ioDictionary, forKey:"counterClockNumberingStartAngle")
+    self.counterClockNumberingStartAngle_property.storeIn (dictionary: ioDictionary, forKey: "counterClockNumberingStartAngle")
   //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"xPlacardUnit")
+    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
   //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"yPlacardUnit")
+    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: packageObjects
     self.store (
       managedObjectArray: self.packageObjects_property.propval,
@@ -2937,7 +3144,7 @@ class PackageRoot : EBGraphicManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mModelImageData
-    self.mModelImageData_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageData")
+    self.mModelImageData_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageData")
   //--- To one property: mModelImageDoublePoint
     self.store (managedObject:self.mModelImageDoublePoint_property.propval,
       relationshipName: "mModelImageDoublePoint",
@@ -2983,89 +3190,87 @@ class PackageRoot : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey: "selectedInspector")
   //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.comments_property.readFrom (dictionary: inDictionary, forKey: "comments")
   //--- Atomic property: program
-    self.program_property.readFrom (dictionary: inDictionary, forKey:"program")
+    self.program_property.readFrom (dictionary: inDictionary, forKey: "program")
   //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
+    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "horizontalFlip")
   //--- Atomic property: verticalFlip
-    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
+    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey: "verticalFlip")
   //--- Atomic property: gridStyle
-    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
+    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey: "gridStyle")
   //--- Atomic property: gridStep
-    self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
+    self.gridStep_property.readFrom (dictionary: inDictionary, forKey: "gridStep")
   //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"gridStepUnit")
+    self.gridStepUnit_property.readFrom (dictionary: inDictionary, forKey: "gridStepUnit")
   //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"gridDisplayFactor")
+    self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey: "gridDisplayFactor")
   //--- Atomic property: zoom
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
   //--- Atomic property: mModelImageOpacity
-    self.mModelImageOpacity_property.readFrom (dictionary: inDictionary, forKey:"mModelImageOpacity")
+    self.mModelImageOpacity_property.readFrom (dictionary: inDictionary, forKey: "mModelImageOpacity")
   //--- Atomic property: mModelImagePageHorizontalFlip
-    self.mModelImagePageHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageHorizontalFlip")
+    self.mModelImagePageHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageHorizontalFlip")
   //--- Atomic property: mModelImagePageVerticalFlip
-    self.mModelImagePageVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageVerticalFlip")
+    self.mModelImagePageVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageVerticalFlip")
   //--- Atomic property: mModelImagePageGridStyle
-    self.mModelImagePageGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageGridStyle")
+    self.mModelImagePageGridStyle_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageGridStyle")
   //--- Atomic property: mModelImagePageGridStep
-    self.mModelImagePageGridStep_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageGridStep")
+    self.mModelImagePageGridStep_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageGridStep")
   //--- Atomic property: mModelImagePageGridStepUnit
-    self.mModelImagePageGridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageGridStepUnit")
+    self.mModelImagePageGridStepUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageGridStepUnit")
   //--- Atomic property: mModelImagePageGridDisplayFactor
-    self.mModelImagePageGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageGridDisplayFactor")
+    self.mModelImagePageGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageGridDisplayFactor")
   //--- Atomic property: mModelImagePageZoom
-    self.mModelImagePageZoom_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageZoom")
+    self.mModelImagePageZoom_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageZoom")
   //--- Atomic property: mModelImagePageXPlacardUnit
-    self.mModelImagePageXPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageXPlacardUnit")
+    self.mModelImagePageXPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
-    self.mModelImagePageYPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageYPlacardUnit")
+    self.mModelImagePageYPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageYPlacardUnit")
   //--- Atomic property: mModelImageSecondPointXUnit
-    self.mModelImageSecondPointXUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImageSecondPointXUnit")
+    self.mModelImageSecondPointXUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImageSecondPointXUnit")
   //--- Atomic property: mModelImagePSecondointYUnit
-    self.mModelImagePSecondointYUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePSecondointYUnit")
+    self.mModelImagePSecondointYUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePSecondointYUnit")
   //--- Atomic property: mModelImageFirstPointXOnLock
-    self.mModelImageFirstPointXOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImageFirstPointXOnLock")
+    self.mModelImageFirstPointXOnLock_property.readFrom (dictionary: inDictionary, forKey: "mModelImageFirstPointXOnLock")
   //--- Atomic property: mModelImageFirstPointYOnLock
-    self.mModelImageFirstPointYOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImageFirstPointYOnLock")
+    self.mModelImageFirstPointYOnLock_property.readFrom (dictionary: inDictionary, forKey: "mModelImageFirstPointYOnLock")
   //--- Atomic property: mModelImagePointsDxOnLock
-    self.mModelImagePointsDxOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDxOnLock")
+    self.mModelImagePointsDxOnLock_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePointsDxOnLock")
   //--- Atomic property: mModelImagePointsDyOnLock
-    self.mModelImagePointsDyOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDyOnLock")
+    self.mModelImagePointsDyOnLock_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePointsDyOnLock")
   //--- Atomic property: mModelImageScale
-    self.mModelImageScale_property.readFrom (dictionary: inDictionary, forKey:"mModelImageScale")
+    self.mModelImageScale_property.readFrom (dictionary: inDictionary, forKey: "mModelImageScale")
   //--- Atomic property: mModelImageRotationInRadians
-    self.mModelImageRotationInRadians_property.readFrom (dictionary: inDictionary, forKey:"mModelImageRotationInRadians")
+    self.mModelImageRotationInRadians_property.readFrom (dictionary: inDictionary, forKey: "mModelImageRotationInRadians")
   //--- Atomic property: mDimensionUnitFirstModelPointX
-    self.mDimensionUnitFirstModelPointX_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitFirstModelPointX")
+    self.mDimensionUnitFirstModelPointX_property.readFrom (dictionary: inDictionary, forKey: "mDimensionUnitFirstModelPointX")
   //--- Atomic property: mDimensionUnitFirstModelPointY
-    self.mDimensionUnitFirstModelPointY_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitFirstModelPointY")
+    self.mDimensionUnitFirstModelPointY_property.readFrom (dictionary: inDictionary, forKey: "mDimensionUnitFirstModelPointY")
   //--- Atomic property: mDimensionUnitSecondModelPointDx
-    self.mDimensionUnitSecondModelPointDx_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitSecondModelPointDx")
+    self.mDimensionUnitSecondModelPointDx_property.readFrom (dictionary: inDictionary, forKey: "mDimensionUnitSecondModelPointDx")
   //--- Atomic property: mDimensionUnitSecondModelPointDy
-    self.mDimensionUnitSecondModelPointDy_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitSecondModelPointDy")
-  //--- Atomic property: mFirstModelPointCircleRadius
-    self.mFirstModelPointCircleRadius_property.readFrom (dictionary: inDictionary, forKey:"mFirstModelPointCircleRadius")
-  //--- Atomic property: mSecondModelPointCircleRadius
-    self.mSecondModelPointCircleRadius_property.readFrom (dictionary: inDictionary, forKey:"mSecondModelPointCircleRadius")
+    self.mDimensionUnitSecondModelPointDy_property.readFrom (dictionary: inDictionary, forKey: "mDimensionUnitSecondModelPointDy")
+  //--- Atomic property: mModelPointsCircleRadius
+    self.mModelPointsCircleRadius_property.readFrom (dictionary: inDictionary, forKey: "mModelPointsCircleRadius")
   //--- Atomic property: mPointsAreLocked
-    self.mPointsAreLocked_property.readFrom (dictionary: inDictionary, forKey:"mPointsAreLocked")
+    self.mPointsAreLocked_property.readFrom (dictionary: inDictionary, forKey: "mPointsAreLocked")
   //--- Atomic property: knobSizeMultpliedByTen
-    self.knobSizeMultpliedByTen_property.readFrom (dictionary: inDictionary, forKey:"knobSizeMultpliedByTen")
+    self.knobSizeMultpliedByTen_property.readFrom (dictionary: inDictionary, forKey: "knobSizeMultpliedByTen")
   //--- Atomic property: padNumbering
-    self.padNumbering_property.readFrom (dictionary: inDictionary, forKey:"padNumbering")
+    self.padNumbering_property.readFrom (dictionary: inDictionary, forKey: "padNumbering")
   //--- Atomic property: counterClockNumberingStartAngle
-    self.counterClockNumberingStartAngle_property.readFrom (dictionary: inDictionary, forKey:"counterClockNumberingStartAngle")
+    self.counterClockNumberingStartAngle_property.readFrom (dictionary: inDictionary, forKey: "counterClockNumberingStartAngle")
   //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
+    self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "xPlacardUnit")
   //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"yPlacardUnit")
+    self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "yPlacardUnit")
   //--- Atomic property: mModelImageData
-    self.mModelImageData_property.readFrom (dictionary: inDictionary, forKey:"mModelImageData")
+    self.mModelImageData_property.readFrom (dictionary: inDictionary, forKey: "mModelImageData")
   }
 
 
@@ -3109,8 +3314,7 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "mDimensionUnitFirstModelPointY\n"
     ioString += "mDimensionUnitSecondModelPointDx\n"
     ioString += "mDimensionUnitSecondModelPointDy\n"
-    ioString += "mFirstModelPointCircleRadius\n"
-    ioString += "mSecondModelPointCircleRadius\n"
+    ioString += "mModelPointsCircleRadius\n"
     ioString += "mPointsAreLocked\n"
     ioString += "knobSizeMultpliedByTen\n"
     ioString += "padNumbering\n"
@@ -3201,9 +3405,7 @@ class PackageRoot : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mDimensionUnitSecondModelPointDy.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mFirstModelPointCircleRadius.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mSecondModelPointCircleRadius.appendPropertyValueTo (&ioData)
+    self.mModelPointsCircleRadius.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mPointsAreLocked.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

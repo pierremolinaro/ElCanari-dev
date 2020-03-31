@@ -284,14 +284,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -301,14 +307,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   Atomic property: mRotation
@@ -318,14 +330,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mRotation : Int {
+  final func reset_mRotation_toDefaultValue () {
+    self.mRotation = 0
+  }
+
+  //····················································································································
+
+  final var mRotation : Int {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
+  final var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
 
   //····················································································································
   //   Atomic property: mSide
@@ -335,14 +353,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mSide : ComponentSide {
+  final func reset_mSide_toDefaultValue () {
+    self.mSide = ComponentSide.front
+  }
+
+  //····················································································································
+
+  final var mSide : ComponentSide {
     get { return self.mSide_property.propval }
     set { self.mSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSide_property_selection : EBSelection <ComponentSide> { return self.mSide_property.prop }
+  final var mSide_property_selection : EBSelection <ComponentSide> { return self.mSide_property.prop }
 
   //····················································································································
   //   To many property: mConnectors
@@ -390,14 +414,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mNameIsVisibleInBoard : Bool {
+  final func reset_mNameIsVisibleInBoard_toDefaultValue () {
+    self.mNameIsVisibleInBoard = true
+  }
+
+  //····················································································································
+
+  final var mNameIsVisibleInBoard : Bool {
     get { return self.mNameIsVisibleInBoard_property.propval }
     set { self.mNameIsVisibleInBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNameIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mNameIsVisibleInBoard_property.prop }
+  final var mNameIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mNameIsVisibleInBoard_property.prop }
 
   //····················································································································
   //   Atomic property: mXName
@@ -407,14 +437,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mXName : Int {
+  final func reset_mXName_toDefaultValue () {
+    self.mXName = 0
+  }
+
+  //····················································································································
+
+  final var mXName : Int {
     get { return self.mXName_property.propval }
     set { self.mXName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mXName_property_selection : EBSelection <Int> { return self.mXName_property.prop }
+  final var mXName_property_selection : EBSelection <Int> { return self.mXName_property.prop }
 
   //····················································································································
   //   Atomic property: mYName
@@ -424,14 +460,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mYName : Int {
+  final func reset_mYName_toDefaultValue () {
+    self.mYName = 685800
+  }
+
+  //····················································································································
+
+  final var mYName : Int {
     get { return self.mYName_property.propval }
     set { self.mYName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mYName_property_selection : EBSelection <Int> { return self.mYName_property.prop }
+  final var mYName_property_selection : EBSelection <Int> { return self.mYName_property.prop }
 
   //····················································································································
   //   Atomic property: mNameFontSize
@@ -441,14 +483,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mNameFontSize : Double {
+  final func reset_mNameFontSize_toDefaultValue () {
+    self.mNameFontSize = 4
+  }
+
+  //····················································································································
+
+  final var mNameFontSize : Double {
     get { return self.mNameFontSize_property.propval }
     set { self.mNameFontSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNameFontSize_property_selection : EBSelection <Double> { return self.mNameFontSize_property.prop }
+  final var mNameFontSize_property_selection : EBSelection <Double> { return self.mNameFontSize_property.prop }
 
   //····················································································································
   //   Atomic property: mNameRotation
@@ -458,14 +506,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mNameRotation : Int {
+  final func reset_mNameRotation_toDefaultValue () {
+    self.mNameRotation = 0
+  }
+
+  //····················································································································
+
+  final var mNameRotation : Int {
     get { return self.mNameRotation_property.propval }
     set { self.mNameRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNameRotation_property_selection : EBSelection <Int> { return self.mNameRotation_property.prop }
+  final var mNameRotation_property_selection : EBSelection <Int> { return self.mNameRotation_property.prop }
 
   //····················································································································
   //   Atomic property: mValueIsVisibleInBoard
@@ -475,14 +529,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mValueIsVisibleInBoard : Bool {
+  final func reset_mValueIsVisibleInBoard_toDefaultValue () {
+    self.mValueIsVisibleInBoard = true
+  }
+
+  //····················································································································
+
+  final var mValueIsVisibleInBoard : Bool {
     get { return self.mValueIsVisibleInBoard_property.propval }
     set { self.mValueIsVisibleInBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mValueIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mValueIsVisibleInBoard_property.prop }
+  final var mValueIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mValueIsVisibleInBoard_property.prop }
 
   //····················································································································
   //   Atomic property: mXValue
@@ -492,14 +552,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mXValue : Int {
+  final func reset_mXValue_toDefaultValue () {
+    self.mXValue = 0
+  }
+
+  //····················································································································
+
+  final var mXValue : Int {
     get { return self.mXValue_property.propval }
     set { self.mXValue_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mXValue_property_selection : EBSelection <Int> { return self.mXValue_property.prop }
+  final var mXValue_property_selection : EBSelection <Int> { return self.mXValue_property.prop }
 
   //····················································································································
   //   Atomic property: mYValue
@@ -509,14 +575,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mYValue : Int {
+  final func reset_mYValue_toDefaultValue () {
+    self.mYValue = -685800
+  }
+
+  //····················································································································
+
+  final var mYValue : Int {
     get { return self.mYValue_property.propval }
     set { self.mYValue_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mYValue_property_selection : EBSelection <Int> { return self.mYValue_property.prop }
+  final var mYValue_property_selection : EBSelection <Int> { return self.mYValue_property.prop }
 
   //····················································································································
   //   Atomic property: mValueFontSize
@@ -526,14 +598,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mValueFontSize : Double {
+  final func reset_mValueFontSize_toDefaultValue () {
+    self.mValueFontSize = 4
+  }
+
+  //····················································································································
+
+  final var mValueFontSize : Double {
     get { return self.mValueFontSize_property.propval }
     set { self.mValueFontSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mValueFontSize_property_selection : EBSelection <Double> { return self.mValueFontSize_property.prop }
+  final var mValueFontSize_property_selection : EBSelection <Double> { return self.mValueFontSize_property.prop }
 
   //····················································································································
   //   Atomic property: mValueRotation
@@ -543,14 +621,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mValueRotation : Int {
+  final func reset_mValueRotation_toDefaultValue () {
+    self.mValueRotation = 0
+  }
+
+  //····················································································································
+
+  final var mValueRotation : Int {
     get { return self.mValueRotation_property.propval }
     set { self.mValueRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mValueRotation_property_selection : EBSelection <Int> { return self.mValueRotation_property.prop }
+  final var mValueRotation_property_selection : EBSelection <Int> { return self.mValueRotation_property.prop }
 
   //····················································································································
   //   Atomic property: mComponentValue
@@ -560,14 +644,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mComponentValue : String {
+  final func reset_mComponentValue_toDefaultValue () {
+    self.mComponentValue = ""
+  }
+
+  //····················································································································
+
+  final var mComponentValue : String {
     get { return self.mComponentValue_property.propval }
     set { self.mComponentValue_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
+  final var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -577,14 +667,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mNamePrefix : String {
+  final func reset_mNamePrefix_toDefaultValue () {
+    self.mNamePrefix = ""
+  }
+
+  //····················································································································
+
+  final var mNamePrefix : String {
     get { return self.mNamePrefix_property.propval }
     set { self.mNamePrefix_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNamePrefix_property_selection : EBSelection <String> { return self.mNamePrefix_property.prop }
+  final var mNamePrefix_property_selection : EBSelection <String> { return self.mNamePrefix_property.prop }
 
   //····················································································································
   //   Atomic property: mNameIndex
@@ -594,14 +690,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mNameIndex : Int {
+  final func reset_mNameIndex_toDefaultValue () {
+    self.mNameIndex = 0
+  }
+
+  //····················································································································
+
+  final var mNameIndex : Int {
     get { return self.mNameIndex_property.propval }
     set { self.mNameIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNameIndex_property_selection : EBSelection <Int> { return self.mNameIndex_property.prop }
+  final var mNameIndex_property_selection : EBSelection <Int> { return self.mNameIndex_property.prop }
 
   //····················································································································
   //   Atomic property: mXUnit
@@ -611,14 +713,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mXUnit : Int {
+  final func reset_mXUnit_toDefaultValue () {
+    self.mXUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mXUnit : Int {
     get { return self.mXUnit_property.propval }
     set { self.mXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mXUnit_property_selection : EBSelection <Int> { return self.mXUnit_property.prop }
+  final var mXUnit_property_selection : EBSelection <Int> { return self.mXUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mYUnit
@@ -628,14 +736,20 @@ class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mYUnit : Int {
+  final func reset_mYUnit_toDefaultValue () {
+    self.mYUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mYUnit : Int {
     get { return self.mYUnit_property.propval }
     set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mYUnit_property_selection : EBSelection <Int> { return self.mYUnit_property.prop }
+  final var mYUnit_property_selection : EBSelection <Int> { return self.mYUnit_property.prop }
 
   //····················································································································
   //   Array controller: componentAvailablePackagesController
@@ -2394,13 +2508,13 @@ class ComponentInProject : BoardObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
   //--- Atomic property: mSide
-    self.mSide_property.storeIn (dictionary: ioDictionary, forKey:"mSide")
+    self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
   //--- To many property: mConnectors
     self.store (
       managedObjectArray: self.mConnectors_property.propval,
@@ -2414,35 +2528,35 @@ class ComponentInProject : BoardObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mNameIsVisibleInBoard
-    self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey:"mNameIsVisibleInBoard")
+    self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mNameIsVisibleInBoard")
   //--- Atomic property: mXName
-    self.mXName_property.storeIn (dictionary: ioDictionary, forKey:"mXName")
+    self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
   //--- Atomic property: mYName
-    self.mYName_property.storeIn (dictionary: ioDictionary, forKey:"mYName")
+    self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
   //--- Atomic property: mNameFontSize
-    self.mNameFontSize_property.storeIn (dictionary: ioDictionary, forKey:"mNameFontSize")
+    self.mNameFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mNameFontSize")
   //--- Atomic property: mNameRotation
-    self.mNameRotation_property.storeIn (dictionary: ioDictionary, forKey:"mNameRotation")
+    self.mNameRotation_property.storeIn (dictionary: ioDictionary, forKey: "mNameRotation")
   //--- Atomic property: mValueIsVisibleInBoard
-    self.mValueIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey:"mValueIsVisibleInBoard")
+    self.mValueIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mValueIsVisibleInBoard")
   //--- Atomic property: mXValue
-    self.mXValue_property.storeIn (dictionary: ioDictionary, forKey:"mXValue")
+    self.mXValue_property.storeIn (dictionary: ioDictionary, forKey: "mXValue")
   //--- Atomic property: mYValue
-    self.mYValue_property.storeIn (dictionary: ioDictionary, forKey:"mYValue")
+    self.mYValue_property.storeIn (dictionary: ioDictionary, forKey: "mYValue")
   //--- Atomic property: mValueFontSize
-    self.mValueFontSize_property.storeIn (dictionary: ioDictionary, forKey:"mValueFontSize")
+    self.mValueFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mValueFontSize")
   //--- Atomic property: mValueRotation
-    self.mValueRotation_property.storeIn (dictionary: ioDictionary, forKey:"mValueRotation")
+    self.mValueRotation_property.storeIn (dictionary: ioDictionary, forKey: "mValueRotation")
   //--- Atomic property: mComponentValue
-    self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mComponentValue")
+    self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mComponentValue")
   //--- Atomic property: mNamePrefix
-    self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey:"mNamePrefix")
+    self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey: "mNamePrefix")
   //--- Atomic property: mNameIndex
-    self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey:"mNameIndex")
+    self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey: "mNameIndex")
   //--- Atomic property: mXUnit
-    self.mXUnit_property.storeIn (dictionary: ioDictionary, forKey:"mXUnit")
+    self.mXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mXUnit")
   //--- Atomic property: mYUnit
-    self.mYUnit_property.storeIn (dictionary: ioDictionary, forKey:"mYUnit")
+    self.mYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mYUnit")
   //--- To one property: mSelectedPackage
     self.store (managedObject:self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",
@@ -2521,43 +2635,43 @@ class ComponentInProject : BoardObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mRotation
-    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+    self.mRotation_property.readFrom (dictionary: inDictionary, forKey: "mRotation")
   //--- Atomic property: mSide
-    self.mSide_property.readFrom (dictionary: inDictionary, forKey:"mSide")
+    self.mSide_property.readFrom (dictionary: inDictionary, forKey: "mSide")
   //--- Atomic property: mNameIsVisibleInBoard
-    self.mNameIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey:"mNameIsVisibleInBoard")
+    self.mNameIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey: "mNameIsVisibleInBoard")
   //--- Atomic property: mXName
-    self.mXName_property.readFrom (dictionary: inDictionary, forKey:"mXName")
+    self.mXName_property.readFrom (dictionary: inDictionary, forKey: "mXName")
   //--- Atomic property: mYName
-    self.mYName_property.readFrom (dictionary: inDictionary, forKey:"mYName")
+    self.mYName_property.readFrom (dictionary: inDictionary, forKey: "mYName")
   //--- Atomic property: mNameFontSize
-    self.mNameFontSize_property.readFrom (dictionary: inDictionary, forKey:"mNameFontSize")
+    self.mNameFontSize_property.readFrom (dictionary: inDictionary, forKey: "mNameFontSize")
   //--- Atomic property: mNameRotation
-    self.mNameRotation_property.readFrom (dictionary: inDictionary, forKey:"mNameRotation")
+    self.mNameRotation_property.readFrom (dictionary: inDictionary, forKey: "mNameRotation")
   //--- Atomic property: mValueIsVisibleInBoard
-    self.mValueIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey:"mValueIsVisibleInBoard")
+    self.mValueIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey: "mValueIsVisibleInBoard")
   //--- Atomic property: mXValue
-    self.mXValue_property.readFrom (dictionary: inDictionary, forKey:"mXValue")
+    self.mXValue_property.readFrom (dictionary: inDictionary, forKey: "mXValue")
   //--- Atomic property: mYValue
-    self.mYValue_property.readFrom (dictionary: inDictionary, forKey:"mYValue")
+    self.mYValue_property.readFrom (dictionary: inDictionary, forKey: "mYValue")
   //--- Atomic property: mValueFontSize
-    self.mValueFontSize_property.readFrom (dictionary: inDictionary, forKey:"mValueFontSize")
+    self.mValueFontSize_property.readFrom (dictionary: inDictionary, forKey: "mValueFontSize")
   //--- Atomic property: mValueRotation
-    self.mValueRotation_property.readFrom (dictionary: inDictionary, forKey:"mValueRotation")
+    self.mValueRotation_property.readFrom (dictionary: inDictionary, forKey: "mValueRotation")
   //--- Atomic property: mComponentValue
-    self.mComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mComponentValue")
+    self.mComponentValue_property.readFrom (dictionary: inDictionary, forKey: "mComponentValue")
   //--- Atomic property: mNamePrefix
-    self.mNamePrefix_property.readFrom (dictionary: inDictionary, forKey:"mNamePrefix")
+    self.mNamePrefix_property.readFrom (dictionary: inDictionary, forKey: "mNamePrefix")
   //--- Atomic property: mNameIndex
-    self.mNameIndex_property.readFrom (dictionary: inDictionary, forKey:"mNameIndex")
+    self.mNameIndex_property.readFrom (dictionary: inDictionary, forKey: "mNameIndex")
   //--- Atomic property: mXUnit
-    self.mXUnit_property.readFrom (dictionary: inDictionary, forKey:"mXUnit")
+    self.mXUnit_property.readFrom (dictionary: inDictionary, forKey: "mXUnit")
   //--- Atomic property: mYUnit
-    self.mYUnit_property.readFrom (dictionary: inDictionary, forKey:"mYUnit")
+    self.mYUnit_property.readFrom (dictionary: inDictionary, forKey: "mYUnit")
   }
 
 

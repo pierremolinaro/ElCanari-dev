@@ -274,7 +274,7 @@ AAAAAAEGA
             </toolbar>
             <point key="canvasLocation" x="1582" y="-205"/>
         </window>
-        <customView wantsLayer="YES" id="67F-em-F8g" userLabel="Page : Models" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="67F-em-F8g" userLabel="Page : Models" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -344,14 +344,14 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-iN-81O" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-iN-81O" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="260" y="0.0" width="440" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tch-UL-HLT" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tch-UL-HLT" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="440" height="500"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" wantsLayer="YES" ambiguous="YES" id="PpI-BL-fb0">
+                            <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="PpI-BL-fb0">
                                 <rect key="frame" x="1" y="1" width="423" height="483"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -553,18 +553,18 @@ AAAAAAEGA
             </subviews>
             <point key="canvasLocation" x="381" y="-730"/>
         </customView>
-        <customView wantsLayer="YES" id="r18-cj-dWP" userLabel="Page : Board" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="r18-cj-dWP" userLabel="Page : Board" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="700" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-fz-Fjn" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-fz-Fjn" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="260" y="0.0" width="440" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView wantsLayer="YES" focusRingType="none" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="100" verticalLineScroll="10" verticalPageScroll="100" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6R-Ak-MaY" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <scrollView focusRingType="none" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="100" verticalLineScroll="10" verticalPageScroll="100" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6R-Ak-MaY" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="440" height="667"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" wantsLayer="YES" focusRingType="none" ambiguous="YES" id="nFP-mw-Omh">
+                            <clipView key="contentView" focusRingType="none" ambiguous="YES" drawsBackground="NO" id="nFP-mw-Omh">
                                 <rect key="frame" x="1" y="1" width="423" height="650"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -702,7 +702,7 @@ AAAAAAEGA
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <tabViewItems>
                                             <tabViewItem label="Minima" identifier="" id="IpE-Fv-iNL">
-                                                <view key="view" id="0Dy-HR-wb4">
+                                                <view key="view" ambiguous="YES" id="0Dy-HR-wb4">
                                                     <rect key="frame" x="10" y="29" width="837" height="479"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -1183,7 +1183,7 @@ TW: Track Width</string>
                                                 </view>
                                             </tabViewItem>
                                             <tabViewItem label="Infos" identifier="" id="Ofv-eg-AAs">
-                                                <view key="view" ambiguous="YES" id="ddG-pj-xTX">
+                                                <view key="view" id="ddG-pj-xTX">
                                                     <rect key="frame" x="10" y="25" width="837" height="483"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -1201,7 +1201,7 @@ TW: Track Width</string>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="GIb-CY-dgv">
                                                                 <rect key="frame" x="1" y="1" width="710" height="396"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="NFC-gP-IoM" customClass="EBTextObserverView" customModule="ElCanari" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="710" height="396"/>

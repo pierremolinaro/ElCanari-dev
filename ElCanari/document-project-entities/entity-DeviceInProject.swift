@@ -102,14 +102,20 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  var mDeviceName : String {
+  final func reset_mDeviceName_toDefaultValue () {
+    self.mDeviceName = ""
+  }
+
+  //····················································································································
+
+  final var mDeviceName : String {
     get { return self.mDeviceName_property.propval }
     set { self.mDeviceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDeviceName_property_selection : EBSelection <String> { return self.mDeviceName_property.prop }
+  final var mDeviceName_property_selection : EBSelection <String> { return self.mDeviceName_property.prop }
 
   //····················································································································
   //   Atomic property: mPrefix
@@ -119,14 +125,20 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPrefix : String {
+  final func reset_mPrefix_toDefaultValue () {
+    self.mPrefix = ""
+  }
+
+  //····················································································································
+
+  final var mPrefix : String {
     get { return self.mPrefix_property.propval }
     set { self.mPrefix_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.prop }
+  final var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.prop }
 
   //····················································································································
   //   Atomic property: mDeviceVersion
@@ -136,14 +148,20 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  var mDeviceVersion : Int {
+  final func reset_mDeviceVersion_toDefaultValue () {
+    self.mDeviceVersion = 0
+  }
+
+  //····················································································································
+
+  final var mDeviceVersion : Int {
     get { return self.mDeviceVersion_property.propval }
     set { self.mDeviceVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDeviceVersion_property_selection : EBSelection <Int> { return self.mDeviceVersion_property.prop }
+  final var mDeviceVersion_property_selection : EBSelection <Int> { return self.mDeviceVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mDeviceFileData
@@ -153,14 +171,20 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  var mDeviceFileData : Data {
+  final func reset_mDeviceFileData_toDefaultValue () {
+    self.mDeviceFileData = Data ()
+  }
+
+  //····················································································································
+
+  final var mDeviceFileData : Data {
     get { return self.mDeviceFileData_property.propval }
     set { self.mDeviceFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDeviceFileData_property_selection : EBSelection <Data> { return self.mDeviceFileData_property.prop }
+  final var mDeviceFileData_property_selection : EBSelection <Data> { return self.mDeviceFileData_property.prop }
 
   //····················································································································
   //   To many property: mPackages
@@ -862,13 +886,13 @@ class DeviceInProject : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mDeviceName
-    self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceName")
+    self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceName")
   //--- Atomic property: mPrefix
-    self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey:"mPrefix")
+    self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey: "mPrefix")
   //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceVersion")
+    self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceVersion")
   //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceFileData")
+    self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceFileData")
   //--- To many property: mPackages
     self.store (
       managedObjectArray: self.mPackages_property.propval,
@@ -935,13 +959,13 @@ class DeviceInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mDeviceName
-    self.mDeviceName_property.readFrom (dictionary: inDictionary, forKey:"mDeviceName")
+    self.mDeviceName_property.readFrom (dictionary: inDictionary, forKey: "mDeviceName")
   //--- Atomic property: mPrefix
-    self.mPrefix_property.readFrom (dictionary: inDictionary, forKey:"mPrefix")
+    self.mPrefix_property.readFrom (dictionary: inDictionary, forKey: "mPrefix")
   //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.readFrom (dictionary: inDictionary, forKey:"mDeviceVersion")
+    self.mDeviceVersion_property.readFrom (dictionary: inDictionary, forKey: "mDeviceVersion")
   //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.readFrom (dictionary: inDictionary, forKey:"mDeviceFileData")
+    self.mDeviceFileData_property.readFrom (dictionary: inDictionary, forKey: "mDeviceFileData")
   }
 
 

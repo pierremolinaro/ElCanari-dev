@@ -158,14 +158,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var y1 : Int {
+  final func reset_y1_toDefaultValue () {
+    self.y1 = 685800
+  }
+
+  //····················································································································
+
+  final var y1 : Int {
     get { return self.y1_property.propval }
     set { self.y1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
 
   //····················································································································
   //   Atomic property: x2
@@ -175,14 +181,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var x2 : Int {
+  final func reset_x2_toDefaultValue () {
+    self.x2 = 0
+  }
+
+  //····················································································································
+
+  final var x2 : Int {
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
 
   //····················································································································
   //   Atomic property: y2
@@ -192,14 +204,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var y2 : Int {
+  final func reset_y2_toDefaultValue () {
+    self.y2 = 0
+  }
+
+  //····················································································································
+
+  final var y2 : Int {
     get { return self.y2_property.propval }
     set { self.y2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
 
   //····················································································································
   //   Atomic property: cpx1
@@ -209,14 +227,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpx1 : Int {
+  final func reset_cpx1_toDefaultValue () {
+    self.cpx1 = 685800
+  }
+
+  //····················································································································
+
+  final var cpx1 : Int {
     get { return self.cpx1_property.propval }
     set { self.cpx1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpx1_property_selection : EBSelection <Int> { return self.cpx1_property.prop }
+  final var cpx1_property_selection : EBSelection <Int> { return self.cpx1_property.prop }
 
   //····················································································································
   //   Atomic property: cpy1
@@ -226,14 +250,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpy1 : Int {
+  final func reset_cpy1_toDefaultValue () {
+    self.cpy1 = 685800
+  }
+
+  //····················································································································
+
+  final var cpy1 : Int {
     get { return self.cpy1_property.propval }
     set { self.cpy1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpy1_property_selection : EBSelection <Int> { return self.cpy1_property.prop }
+  final var cpy1_property_selection : EBSelection <Int> { return self.cpy1_property.prop }
 
   //····················································································································
   //   Atomic property: cpx2
@@ -243,14 +273,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpx2 : Int {
+  final func reset_cpx2_toDefaultValue () {
+    self.cpx2 = 685800
+  }
+
+  //····················································································································
+
+  final var cpx2 : Int {
     get { return self.cpx2_property.propval }
     set { self.cpx2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpx2_property_selection : EBSelection <Int> { return self.cpx2_property.prop }
+  final var cpx2_property_selection : EBSelection <Int> { return self.cpx2_property.prop }
 
   //····················································································································
   //   Atomic property: cpy2
@@ -260,14 +296,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpy2 : Int {
+  final func reset_cpy2_toDefaultValue () {
+    self.cpy2 = 0
+  }
+
+  //····················································································································
+
+  final var cpy2 : Int {
     get { return self.cpy2_property.propval }
     set { self.cpy2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpy2_property_selection : EBSelection <Int> { return self.cpy2_property.prop }
+  final var cpy2_property_selection : EBSelection <Int> { return self.cpy2_property.prop }
 
   //····················································································································
   //   Atomic property: x1Unit
@@ -277,14 +319,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var x1Unit : Int {
+  final func reset_x1Unit_toDefaultValue () {
+    self.x1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var x1Unit : Int {
     get { return self.x1Unit_property.propval }
     set { self.x1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
+  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -294,14 +342,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var y1Unit : Int {
+  final func reset_y1Unit_toDefaultValue () {
+    self.y1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var y1Unit : Int {
     get { return self.y1Unit_property.propval }
     set { self.y1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
+  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: x2Unit
@@ -311,14 +365,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var x2Unit : Int {
+  final func reset_x2Unit_toDefaultValue () {
+    self.x2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var x2Unit : Int {
     get { return self.x2Unit_property.propval }
     set { self.x2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
+  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -328,14 +388,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var y2Unit : Int {
+  final func reset_y2Unit_toDefaultValue () {
+    self.y2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var y2Unit : Int {
     get { return self.y2Unit_property.propval }
     set { self.y2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
+  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: cpx1Unit
@@ -345,14 +411,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpx1Unit : Int {
+  final func reset_cpx1Unit_toDefaultValue () {
+    self.cpx1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var cpx1Unit : Int {
     get { return self.cpx1Unit_property.propval }
     set { self.cpx1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpx1Unit_property_selection : EBSelection <Int> { return self.cpx1Unit_property.prop }
+  final var cpx1Unit_property_selection : EBSelection <Int> { return self.cpx1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: cpy1Unit
@@ -362,14 +434,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpy1Unit : Int {
+  final func reset_cpy1Unit_toDefaultValue () {
+    self.cpy1Unit = 2286
+  }
+
+  //····················································································································
+
+  final var cpy1Unit : Int {
     get { return self.cpy1Unit_property.propval }
     set { self.cpy1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpy1Unit_property_selection : EBSelection <Int> { return self.cpy1Unit_property.prop }
+  final var cpy1Unit_property_selection : EBSelection <Int> { return self.cpy1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: cpx2Unit
@@ -379,14 +457,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpx2Unit : Int {
+  final func reset_cpx2Unit_toDefaultValue () {
+    self.cpx2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var cpx2Unit : Int {
     get { return self.cpx2Unit_property.propval }
     set { self.cpx2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpx2Unit_property_selection : EBSelection <Int> { return self.cpx2Unit_property.prop }
+  final var cpx2Unit_property_selection : EBSelection <Int> { return self.cpx2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: cpy2Unit
@@ -396,14 +480,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var cpy2Unit : Int {
+  final func reset_cpy2Unit_toDefaultValue () {
+    self.cpy2Unit = 2286
+  }
+
+  //····················································································································
+
+  final var cpy2Unit : Int {
     get { return self.cpy2Unit_property.propval }
     set { self.cpy2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var cpy2Unit_property_selection : EBSelection <Int> { return self.cpy2Unit_property.prop }
+  final var cpy2Unit_property_selection : EBSelection <Int> { return self.cpy2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: x1
@@ -413,14 +503,20 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  var x1 : Int {
+  final func reset_x1_toDefaultValue () {
+    self.x1 = 0
+  }
+
+  //····················································································································
+
+  final var x1 : Int {
     get { return self.x1_property.propval }
     set { self.x1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //   Transient property: strokeBezierPath
@@ -956,37 +1052,37 @@ class PackageBezier : PackageObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
   //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
   //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
   //--- Atomic property: cpx1
-    self.cpx1_property.storeIn (dictionary: ioDictionary, forKey:"cpx1")
+    self.cpx1_property.storeIn (dictionary: ioDictionary, forKey: "cpx1")
   //--- Atomic property: cpy1
-    self.cpy1_property.storeIn (dictionary: ioDictionary, forKey:"cpy1")
+    self.cpy1_property.storeIn (dictionary: ioDictionary, forKey: "cpy1")
   //--- Atomic property: cpx2
-    self.cpx2_property.storeIn (dictionary: ioDictionary, forKey:"cpx2")
+    self.cpx2_property.storeIn (dictionary: ioDictionary, forKey: "cpx2")
   //--- Atomic property: cpy2
-    self.cpy2_property.storeIn (dictionary: ioDictionary, forKey:"cpy2")
+    self.cpy2_property.storeIn (dictionary: ioDictionary, forKey: "cpy2")
   //--- Atomic property: x1Unit
-    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey:"x1Unit")
+    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
   //--- Atomic property: y1Unit
-    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey:"y1Unit")
+    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
   //--- Atomic property: x2Unit
-    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey:"x2Unit")
+    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
   //--- Atomic property: y2Unit
-    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey:"y2Unit")
+    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
   //--- Atomic property: cpx1Unit
-    self.cpx1Unit_property.storeIn (dictionary: ioDictionary, forKey:"cpx1Unit")
+    self.cpx1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx1Unit")
   //--- Atomic property: cpy1Unit
-    self.cpy1Unit_property.storeIn (dictionary: ioDictionary, forKey:"cpy1Unit")
+    self.cpy1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy1Unit")
   //--- Atomic property: cpx2Unit
-    self.cpx2Unit_property.storeIn (dictionary: ioDictionary, forKey:"cpx2Unit")
+    self.cpx2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx2Unit")
   //--- Atomic property: cpy2Unit
-    self.cpy2Unit_property.storeIn (dictionary: ioDictionary, forKey:"cpy2Unit")
+    self.cpy2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy2Unit")
   //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -1005,37 +1101,37 @@ class PackageBezier : PackageObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y1
-    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
   //--- Atomic property: x2
-    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.x2_property.readFrom (dictionary: inDictionary, forKey: "x2")
   //--- Atomic property: y2
-    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.y2_property.readFrom (dictionary: inDictionary, forKey: "y2")
   //--- Atomic property: cpx1
-    self.cpx1_property.readFrom (dictionary: inDictionary, forKey:"cpx1")
+    self.cpx1_property.readFrom (dictionary: inDictionary, forKey: "cpx1")
   //--- Atomic property: cpy1
-    self.cpy1_property.readFrom (dictionary: inDictionary, forKey:"cpy1")
+    self.cpy1_property.readFrom (dictionary: inDictionary, forKey: "cpy1")
   //--- Atomic property: cpx2
-    self.cpx2_property.readFrom (dictionary: inDictionary, forKey:"cpx2")
+    self.cpx2_property.readFrom (dictionary: inDictionary, forKey: "cpx2")
   //--- Atomic property: cpy2
-    self.cpy2_property.readFrom (dictionary: inDictionary, forKey:"cpy2")
+    self.cpy2_property.readFrom (dictionary: inDictionary, forKey: "cpy2")
   //--- Atomic property: x1Unit
-    self.x1Unit_property.readFrom (dictionary: inDictionary, forKey:"x1Unit")
+    self.x1Unit_property.readFrom (dictionary: inDictionary, forKey: "x1Unit")
   //--- Atomic property: y1Unit
-    self.y1Unit_property.readFrom (dictionary: inDictionary, forKey:"y1Unit")
+    self.y1Unit_property.readFrom (dictionary: inDictionary, forKey: "y1Unit")
   //--- Atomic property: x2Unit
-    self.x2Unit_property.readFrom (dictionary: inDictionary, forKey:"x2Unit")
+    self.x2Unit_property.readFrom (dictionary: inDictionary, forKey: "x2Unit")
   //--- Atomic property: y2Unit
-    self.y2Unit_property.readFrom (dictionary: inDictionary, forKey:"y2Unit")
+    self.y2Unit_property.readFrom (dictionary: inDictionary, forKey: "y2Unit")
   //--- Atomic property: cpx1Unit
-    self.cpx1Unit_property.readFrom (dictionary: inDictionary, forKey:"cpx1Unit")
+    self.cpx1Unit_property.readFrom (dictionary: inDictionary, forKey: "cpx1Unit")
   //--- Atomic property: cpy1Unit
-    self.cpy1Unit_property.readFrom (dictionary: inDictionary, forKey:"cpy1Unit")
+    self.cpy1Unit_property.readFrom (dictionary: inDictionary, forKey: "cpy1Unit")
   //--- Atomic property: cpx2Unit
-    self.cpx2Unit_property.readFrom (dictionary: inDictionary, forKey:"cpx2Unit")
+    self.cpx2Unit_property.readFrom (dictionary: inDictionary, forKey: "cpx2Unit")
   //--- Atomic property: cpy2Unit
-    self.cpy2Unit_property.readFrom (dictionary: inDictionary, forKey:"cpy2Unit")
+    self.cpy2Unit_property.readFrom (dictionary: inDictionary, forKey: "cpy2Unit")
   //--- Atomic property: x1
-    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
   }
 
 

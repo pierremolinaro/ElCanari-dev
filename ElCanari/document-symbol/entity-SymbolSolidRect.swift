@@ -74,14 +74,20 @@ class SymbolSolidRect : SymbolObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -91,14 +97,20 @@ class SymbolSolidRect : SymbolObject,
 
   //····················································································································
 
-  var width : Int {
+  final func reset_width_toDefaultValue () {
+    self.width = 685800
+  }
+
+  //····················································································································
+
+  final var width : Int {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -108,14 +120,20 @@ class SymbolSolidRect : SymbolObject,
 
   //····················································································································
 
-  var height : Int {
+  final func reset_height_toDefaultValue () {
+    self.height = 685800
+  }
+
+  //····················································································································
+
+  final var height : Int {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -125,14 +143,20 @@ class SymbolSolidRect : SymbolObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Transient property: filledBezierPath
@@ -458,13 +482,13 @@ class SymbolSolidRect : SymbolObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
+    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
+    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -483,13 +507,13 @@ class SymbolSolidRect : SymbolObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
+    self.width_property.readFrom (dictionary: inDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
+    self.height_property.readFrom (dictionary: inDictionary, forKey: "height")
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   }
 
 

@@ -60,14 +60,20 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -77,14 +83,20 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  var width : Int {
+  final func reset_width_toDefaultValue () {
+    self.width = 0
+  }
+
+  //····················································································································
+
+  final var width : Int {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -94,14 +106,20 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  var height : Int {
+  final func reset_height_toDefaultValue () {
+    self.height = 0
+  }
+
+  //····················································································································
+
+  final var height : Int {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: shape
@@ -111,14 +129,20 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  var shape : PadShape {
+  final func reset_shape_toDefaultValue () {
+    self.shape = PadShape.rect
+  }
+
+  //····················································································································
+
+  final var shape : PadShape {
     get { return self.shape_property.propval }
     set { self.shape_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var shape_property_selection : EBSelection <PadShape> { return self.shape_property.prop }
+  final var shape_property_selection : EBSelection <PadShape> { return self.shape_property.prop }
 
   //····················································································································
   //   Atomic property: rotation
@@ -128,14 +152,20 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  var rotation : Int {
+  final func reset_rotation_toDefaultValue () {
+    self.rotation = 0
+  }
+
+  //····················································································································
+
+  final var rotation : Int {
     get { return self.rotation_property.propval }
     set { self.rotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var rotation_property_selection : EBSelection <Int> { return self.rotation_property.prop }
+  final var rotation_property_selection : EBSelection <Int> { return self.rotation_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -145,14 +175,20 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //    init
@@ -307,17 +343,17 @@ class BoardModelPad : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
+    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
+    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
   //--- Atomic property: shape
-    self.shape_property.storeIn (dictionary: ioDictionary, forKey:"shape")
+    self.shape_property.storeIn (dictionary: ioDictionary, forKey: "shape")
   //--- Atomic property: rotation
-    self.rotation_property.storeIn (dictionary: ioDictionary, forKey:"rotation")
+    self.rotation_property.storeIn (dictionary: ioDictionary, forKey: "rotation")
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -336,17 +372,17 @@ class BoardModelPad : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
+    self.width_property.readFrom (dictionary: inDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
+    self.height_property.readFrom (dictionary: inDictionary, forKey: "height")
   //--- Atomic property: shape
-    self.shape_property.readFrom (dictionary: inDictionary, forKey:"shape")
+    self.shape_property.readFrom (dictionary: inDictionary, forKey: "shape")
   //--- Atomic property: rotation
-    self.rotation_property.readFrom (dictionary: inDictionary, forKey:"rotation")
+    self.rotation_property.readFrom (dictionary: inDictionary, forKey: "rotation")
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   }
 
 

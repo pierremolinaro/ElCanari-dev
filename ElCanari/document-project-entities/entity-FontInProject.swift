@@ -86,14 +86,20 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNominalSize : Int {
+  final func reset_mNominalSize_toDefaultValue () {
+    self.mNominalSize = 0
+  }
+
+  //····················································································································
+
+  final var mNominalSize : Int {
     get { return self.mNominalSize_property.propval }
     set { self.mNominalSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNominalSize_property_selection : EBSelection <Int> { return self.mNominalSize_property.prop }
+  final var mNominalSize_property_selection : EBSelection <Int> { return self.mNominalSize_property.prop }
 
   //····················································································································
   //   Atomic property: mFontName
@@ -103,14 +109,20 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  var mFontName : String {
+  final func reset_mFontName_toDefaultValue () {
+    self.mFontName = ""
+  }
+
+  //····················································································································
+
+  final var mFontName : String {
     get { return self.mFontName_property.propval }
     set { self.mFontName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
+  final var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
 
   //····················································································································
   //   Atomic property: mFontVersion
@@ -120,14 +132,20 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  var mFontVersion : Int {
+  final func reset_mFontVersion_toDefaultValue () {
+    self.mFontVersion = 0
+  }
+
+  //····················································································································
+
+  final var mFontVersion : Int {
     get { return self.mFontVersion_property.propval }
     set { self.mFontVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.prop }
+  final var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mDescriptiveString
@@ -137,14 +155,20 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  var mDescriptiveString : String {
+  final func reset_mDescriptiveString_toDefaultValue () {
+    self.mDescriptiveString = ""
+  }
+
+  //····················································································································
+
+  final var mDescriptiveString : String {
     get { return self.mDescriptiveString_property.propval }
     set { self.mDescriptiveString_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
+  final var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
 
   //····················································································································
   //   To many property: mComponentNames
@@ -542,13 +566,13 @@ class FontInProject : EBManagedObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mNominalSize
-    self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey:"mNominalSize")
+    self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey: "mNominalSize")
   //--- Atomic property: mFontName
-    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
+    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey: "mFontName")
   //--- Atomic property: mFontVersion
-    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
+    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey: "mFontVersion")
   //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey:"mDescriptiveString")
+    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey: "mDescriptiveString")
   //--- To many property: mComponentNames
     self.store (
       managedObjectArray: self.mComponentNames_property.propval,
@@ -597,13 +621,13 @@ class FontInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNominalSize
-    self.mNominalSize_property.readFrom (dictionary: inDictionary, forKey:"mNominalSize")
+    self.mNominalSize_property.readFrom (dictionary: inDictionary, forKey: "mNominalSize")
   //--- Atomic property: mFontName
-    self.mFontName_property.readFrom (dictionary: inDictionary, forKey:"mFontName")
+    self.mFontName_property.readFrom (dictionary: inDictionary, forKey: "mFontName")
   //--- Atomic property: mFontVersion
-    self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey:"mFontVersion")
+    self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey: "mFontVersion")
   //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.readFrom (dictionary: inDictionary, forKey:"mDescriptiveString")
+    self.mDescriptiveString_property.readFrom (dictionary: inDictionary, forKey: "mDescriptiveString")
   }
 
 

@@ -39,14 +39,20 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   //····················································································································
 
-  var mSymbolTypeName : String {
+  final func reset_mSymbolTypeName_toDefaultValue () {
+    self.mSymbolTypeName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolTypeName : String {
     get { return self.mSymbolTypeName_property.propval }
     set { self.mSymbolTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
+  final var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -56,14 +62,20 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   //····················································································································
 
-  var mStrokeBezierPath : NSBezierPath {
+  final func reset_mStrokeBezierPath_toDefaultValue () {
+    self.mStrokeBezierPath = NSBezierPath ()
+  }
+
+  //····················································································································
+
+  final var mStrokeBezierPath : NSBezierPath {
     get { return self.mStrokeBezierPath_property.propval }
     set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
   //   Atomic property: mFilledBezierPath
@@ -73,14 +85,20 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   //····················································································································
 
-  var mFilledBezierPath : NSBezierPath {
+  final func reset_mFilledBezierPath_toDefaultValue () {
+    self.mFilledBezierPath = NSBezierPath ()
+  }
+
+  //····················································································································
+
+  final var mFilledBezierPath : NSBezierPath {
     get { return self.mFilledBezierPath_property.propval }
     set { self.mFilledBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
+  final var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
 
   //····················································································································
   //    init
@@ -196,11 +214,11 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
+    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
+    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
   }
 
   //····················································································································
@@ -219,11 +237,11 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
+    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolTypeName")
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
+    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mFilledBezierPath")
+    self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mFilledBezierPath")
   }
 
 

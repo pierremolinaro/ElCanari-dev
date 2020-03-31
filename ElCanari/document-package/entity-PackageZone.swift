@@ -165,14 +165,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Atomic property: y
@@ -182,14 +188,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -199,14 +211,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var width : Int {
+  final func reset_width_toDefaultValue () {
+    self.width = 457200
+  }
+
+  //····················································································································
+
+  final var width : Int {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -216,14 +234,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var height : Int {
+  final func reset_height_toDefaultValue () {
+    self.height = 457200
+  }
+
+  //····················································································································
+
+  final var height : Int {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: xUnit
@@ -233,14 +257,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var xUnit : Int {
+  final func reset_xUnit_toDefaultValue () {
+    self.xUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xUnit : Int {
     get { return self.xUnit_property.propval }
     set { self.xUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.prop }
+  final var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yUnit
@@ -250,14 +280,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var yUnit : Int {
+  final func reset_yUnit_toDefaultValue () {
+    self.yUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yUnit : Int {
     get { return self.yUnit_property.propval }
     set { self.yUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.prop }
+  final var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.prop }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -267,14 +303,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var widthUnit : Int {
+  final func reset_widthUnit_toDefaultValue () {
+    self.widthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var widthUnit : Int {
     get { return self.widthUnit_property.propval }
     set { self.widthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
+  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -284,14 +326,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var heightUnit : Int {
+  final func reset_heightUnit_toDefaultValue () {
+    self.heightUnit = 2286
+  }
+
+  //····················································································································
+
+  final var heightUnit : Int {
     get { return self.heightUnit_property.propval }
     set { self.heightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
+  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: zoneName
@@ -301,14 +349,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var zoneName : String {
+  final func reset_zoneName_toDefaultValue () {
+    self.zoneName = ""
+  }
+
+  //····················································································································
+
+  final var zoneName : String {
     get { return self.zoneName_property.propval }
     set { self.zoneName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoneName_property_selection : EBSelection <String> { return self.zoneName_property.prop }
+  final var zoneName_property_selection : EBSelection <String> { return self.zoneName_property.prop }
 
   //····················································································································
   //   Atomic property: displayZoneName
@@ -318,14 +372,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var displayZoneName : Bool {
+  final func reset_displayZoneName_toDefaultValue () {
+    self.displayZoneName = true
+  }
+
+  //····················································································································
+
+  final var displayZoneName : Bool {
     get { return self.displayZoneName_property.propval }
     set { self.displayZoneName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayZoneName_property_selection : EBSelection <Bool> { return self.displayZoneName_property.prop }
+  final var displayZoneName_property_selection : EBSelection <Bool> { return self.displayZoneName_property.prop }
 
   //····················································································································
   //   Atomic property: xName
@@ -335,14 +395,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var xName : Int {
+  final func reset_xName_toDefaultValue () {
+    self.xName = 228600
+  }
+
+  //····················································································································
+
+  final var xName : Int {
     get { return self.xName_property.propval }
     set { self.xName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xName_property_selection : EBSelection <Int> { return self.xName_property.prop }
+  final var xName_property_selection : EBSelection <Int> { return self.xName_property.prop }
 
   //····················································································································
   //   Atomic property: yName
@@ -352,14 +418,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var yName : Int {
+  final func reset_yName_toDefaultValue () {
+    self.yName = 228600
+  }
+
+  //····················································································································
+
+  final var yName : Int {
     get { return self.yName_property.propval }
     set { self.yName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yName_property_selection : EBSelection <Int> { return self.yName_property.prop }
+  final var yName_property_selection : EBSelection <Int> { return self.yName_property.prop }
 
   //····················································································································
   //   Atomic property: xNameUnit
@@ -369,14 +441,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var xNameUnit : Int {
+  final func reset_xNameUnit_toDefaultValue () {
+    self.xNameUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xNameUnit : Int {
     get { return self.xNameUnit_property.propval }
     set { self.xNameUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xNameUnit_property_selection : EBSelection <Int> { return self.xNameUnit_property.prop }
+  final var xNameUnit_property_selection : EBSelection <Int> { return self.xNameUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yNameUnit
@@ -386,14 +464,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var yNameUnit : Int {
+  final func reset_yNameUnit_toDefaultValue () {
+    self.yNameUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yNameUnit : Int {
     get { return self.yNameUnit_property.propval }
     set { self.yNameUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yNameUnit_property_selection : EBSelection <Int> { return self.yNameUnit_property.prop }
+  final var yNameUnit_property_selection : EBSelection <Int> { return self.yNameUnit_property.prop }
 
   //····················································································································
   //   Atomic property: zoneNumbering
@@ -403,14 +487,20 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  var zoneNumbering : PadNumbering {
+  final func reset_zoneNumbering_toDefaultValue () {
+    self.zoneNumbering = PadNumbering.noNumbering
+  }
+
+  //····················································································································
+
+  final var zoneNumbering : PadNumbering {
     get { return self.zoneNumbering_property.propval }
     set { self.zoneNumbering_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoneNumbering_property_selection : EBSelection <PadNumbering> { return self.zoneNumbering_property.prop }
+  final var zoneNumbering_property_selection : EBSelection <PadNumbering> { return self.zoneNumbering_property.prop }
 
   //····················································································································
   //   To many property: forbiddenPadNumbers
@@ -1079,35 +1169,35 @@ class PackageZone : PackageObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
+    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
+    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
   //--- Atomic property: xUnit
-    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey:"xUnit")
+    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
   //--- Atomic property: yUnit
-    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey:"yUnit")
+    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
   //--- Atomic property: widthUnit
-    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey:"widthUnit")
+    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
   //--- Atomic property: heightUnit
-    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey:"heightUnit")
+    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
   //--- Atomic property: zoneName
-    self.zoneName_property.storeIn (dictionary: ioDictionary, forKey:"zoneName")
+    self.zoneName_property.storeIn (dictionary: ioDictionary, forKey: "zoneName")
   //--- Atomic property: displayZoneName
-    self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey:"displayZoneName")
+    self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneName")
   //--- Atomic property: xName
-    self.xName_property.storeIn (dictionary: ioDictionary, forKey:"xName")
+    self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
   //--- Atomic property: yName
-    self.yName_property.storeIn (dictionary: ioDictionary, forKey:"yName")
+    self.yName_property.storeIn (dictionary: ioDictionary, forKey: "yName")
   //--- Atomic property: xNameUnit
-    self.xNameUnit_property.storeIn (dictionary: ioDictionary, forKey:"xNameUnit")
+    self.xNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "xNameUnit")
   //--- Atomic property: yNameUnit
-    self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey:"yNameUnit")
+    self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "yNameUnit")
   //--- Atomic property: zoneNumbering
-    self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey:"zoneNumbering")
+    self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey: "zoneNumbering")
   //--- To many property: forbiddenPadNumbers
     self.store (
       managedObjectArray: self.forbiddenPadNumbers_property.propval,
@@ -1138,35 +1228,35 @@ class PackageZone : PackageObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
+    self.width_property.readFrom (dictionary: inDictionary, forKey: "width")
   //--- Atomic property: height
-    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
+    self.height_property.readFrom (dictionary: inDictionary, forKey: "height")
   //--- Atomic property: xUnit
-    self.xUnit_property.readFrom (dictionary: inDictionary, forKey:"xUnit")
+    self.xUnit_property.readFrom (dictionary: inDictionary, forKey: "xUnit")
   //--- Atomic property: yUnit
-    self.yUnit_property.readFrom (dictionary: inDictionary, forKey:"yUnit")
+    self.yUnit_property.readFrom (dictionary: inDictionary, forKey: "yUnit")
   //--- Atomic property: widthUnit
-    self.widthUnit_property.readFrom (dictionary: inDictionary, forKey:"widthUnit")
+    self.widthUnit_property.readFrom (dictionary: inDictionary, forKey: "widthUnit")
   //--- Atomic property: heightUnit
-    self.heightUnit_property.readFrom (dictionary: inDictionary, forKey:"heightUnit")
+    self.heightUnit_property.readFrom (dictionary: inDictionary, forKey: "heightUnit")
   //--- Atomic property: zoneName
-    self.zoneName_property.readFrom (dictionary: inDictionary, forKey:"zoneName")
+    self.zoneName_property.readFrom (dictionary: inDictionary, forKey: "zoneName")
   //--- Atomic property: displayZoneName
-    self.displayZoneName_property.readFrom (dictionary: inDictionary, forKey:"displayZoneName")
+    self.displayZoneName_property.readFrom (dictionary: inDictionary, forKey: "displayZoneName")
   //--- Atomic property: xName
-    self.xName_property.readFrom (dictionary: inDictionary, forKey:"xName")
+    self.xName_property.readFrom (dictionary: inDictionary, forKey: "xName")
   //--- Atomic property: yName
-    self.yName_property.readFrom (dictionary: inDictionary, forKey:"yName")
+    self.yName_property.readFrom (dictionary: inDictionary, forKey: "yName")
   //--- Atomic property: xNameUnit
-    self.xNameUnit_property.readFrom (dictionary: inDictionary, forKey:"xNameUnit")
+    self.xNameUnit_property.readFrom (dictionary: inDictionary, forKey: "xNameUnit")
   //--- Atomic property: yNameUnit
-    self.yNameUnit_property.readFrom (dictionary: inDictionary, forKey:"yNameUnit")
+    self.yNameUnit_property.readFrom (dictionary: inDictionary, forKey: "yNameUnit")
   //--- Atomic property: zoneNumbering
-    self.zoneNumbering_property.readFrom (dictionary: inDictionary, forKey:"zoneNumbering")
+    self.zoneNumbering_property.readFrom (dictionary: inDictionary, forKey: "zoneNumbering")
   }
 
 

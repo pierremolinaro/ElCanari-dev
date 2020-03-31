@@ -84,7 +84,6 @@
                 <outlet property="mDisplayInspectorView" destination="sHH-7k-fUn" id="yy0-9n-4ni"/>
                 <outlet property="mDisplayTopSidePadSwitch" destination="Gom-0a-3Ut" id="ZFw-12-idQ"/>
                 <outlet property="mDisplayZoneNameSwitch" destination="obU-Tt-UAm" id="0wB-by-pns"/>
-                <outlet property="mFirstModelPointCircleRadiusSlider" destination="Uf5-9i-dAI" id="3zn-yN-fnT"/>
                 <outlet property="mGridDisplayPopUpButton" destination="vjx-yN-SDQ" id="zJt-ul-QIg"/>
                 <outlet property="mGridStyle" destination="1tS-aK-Csg" id="l9a-Nm-2d2"/>
                 <outlet property="mGridTextField" destination="Tf2-wd-zhH" id="MIU-zf-3vl"/>
@@ -140,6 +139,7 @@
                 <outlet property="mModelImageSecondPointYTextField" destination="KE8-09-wPC" id="Kkh-Df-sOF"/>
                 <outlet property="mModelImageSizeTextField" destination="Om9-bO-FIz" id="hP8-dG-j0X"/>
                 <outlet property="mModelImageView" destination="LMg-aa-bds" id="lQu-2e-62X"/>
+                <outlet property="mModelPointsCircleRadiusSlider" destination="Dvr-Ad-tf8" id="Sba-dK-iD4"/>
                 <outlet property="mOvalHeightTextField" destination="1708" id="dYV-7F-px1"/>
                 <outlet property="mOvalHeightUnitPopUp" destination="1699" id="mda-b5-C6B"/>
                 <outlet property="mOvalInspectorView" destination="1610" id="87V-bg-bH4"/>
@@ -191,7 +191,6 @@
                 <outlet property="mResetModelImagePointsMenuItem" destination="CNi-Mh-r7s" id="QwZ-tb-f40"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
                 <outlet property="mRunProgramButton" destination="2515" id="RyF-Iw-kFF"/>
-                <outlet property="mSecondModelPointCircleRadiusSlider" destination="31z-wQ-cmt" id="mU6-nJ-w4S"/>
                 <outlet property="mSegmentInspectorView" destination="3015" id="Uuj-Fr-Dyh"/>
                 <outlet property="mSegmentLengthTextField" destination="kWJ-ig-bvl" id="JjM-17-9DU"/>
                 <outlet property="mSegmentLengthUnitPopUp" destination="ZG8-kT-g4P" id="Iuj-Yc-R9q"/>
@@ -2312,18 +2311,18 @@ Gw
             </subviews>
             <point key="canvasLocation" x="-332" y="482"/>
         </customView>
-        <customView wantsLayer="YES" id="2460" userLabel="Page : Package" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="2460" userLabel="Page : Package" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-ub-L1B" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-ub-L1B" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" wantsLayer="YES" ambiguous="YES" id="PuU-Cb-ahz">
+                            <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="PuU-Cb-ahz">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -5790,18 +5789,18 @@ DQ
             </subviews>
             <point key="canvasLocation" x="-706" y="-403"/>
         </customView>
-        <customView wantsLayer="YES" id="ezG-Ne-F9h" userLabel="Page : Model Image" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="ezG-Ne-F9h" userLabel="Page : Model Image" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-oO-DML" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-oO-DML" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="0.10000000000000001" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="0.10000000000000001" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" wantsLayer="YES" ambiguous="YES" id="a7R-xu-Y3w">
+                            <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="a7R-xu-Y3w">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -6102,7 +6101,7 @@ AAAAAAEGA
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="58" translatesAutoresizingMaskIntoConstraints="NO" id="y1g-TE-YQS">
-                    <rect key="frame" x="41" y="265" width="41" height="28"/>
+                    <rect key="frame" x="18" y="265" width="64" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" title="Green Point" id="3CH-ko-oIz">
                         <font key="font" metaFont="smallSystem"/>
@@ -6149,7 +6148,7 @@ AAAAAAEGA
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="58" translatesAutoresizingMaskIntoConstraints="NO" id="oUj-kG-IHn">
-                    <rect key="frame" x="41" y="159" width="41" height="28"/>
+                    <rect key="frame" x="18" y="159" width="64" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" title="Brown Point" id="zn9-xj-bfv">
                         <font key="font" metaFont="smallSystem"/>
@@ -6302,7 +6301,7 @@ AAAAAAEGA
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nQ-y5-F6v" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="15" y="109" width="189" height="27"/>
+                    <rect key="frame" x="15" y="90" width="189" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Lock Points to Model Image" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lLp-Ej-Bve">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6310,7 +6309,7 @@ AAAAAAEGA
                     </buttonCell>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQ8-Gy-NoX" customClass="EBImageObserverView" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="207" y="110" width="27" height="27"/>
+                    <rect key="frame" x="207" y="91" width="27" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Oxw-5C-NP2"/>
                 </imageView>
@@ -6323,16 +6322,20 @@ AAAAAAEGA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf5-9i-dAI" customClass="EBSlider" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="19" y="249" width="18" height="45"/>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dvr-Ad-tf8" customClass="EBSlider" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="88" y="121" width="146" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" controlSize="small" alignment="left" minValue="1" maxValue="41" doubleValue="11" tickMarkPosition="right" numberOfTickMarks="10" sliderType="linear" id="4am-u5-g5i"/>
+                    <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="1" maxValue="61" doubleValue="21" tickMarkPosition="below" numberOfTickMarks="19" allowsTickMarkValuesOnly="YES" sliderType="linear" id="JHv-4U-8u3"/>
                 </slider>
-                <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="31z-wQ-cmt" customClass="EBSlider" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="17" y="142" width="18" height="45"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="68" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qde-Tc-JCp">
+                    <rect key="frame" x="14" y="123" width="68" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" controlSize="small" alignment="left" minValue="1" maxValue="41" doubleValue="11" tickMarkPosition="right" numberOfTickMarks="10" sliderType="linear" id="DZY-Di-SYh"/>
-                </slider>
+                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Point Sizes" id="dKs-tT-Dqg">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-54" y="26.5"/>
         </customView>

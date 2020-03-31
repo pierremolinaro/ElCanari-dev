@@ -151,14 +151,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -168,14 +174,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   Atomic property: mCPX1
@@ -185,14 +197,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mCPX1 : Int {
+  final func reset_mCPX1_toDefaultValue () {
+    self.mCPX1 = 0
+  }
+
+  //····················································································································
+
+  final var mCPX1 : Int {
     get { return self.mCPX1_property.propval }
     set { self.mCPX1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCPX1_property_selection : EBSelection <Int> { return self.mCPX1_property.prop }
+  final var mCPX1_property_selection : EBSelection <Int> { return self.mCPX1_property.prop }
 
   //····················································································································
   //   Atomic property: mCPY1
@@ -202,14 +220,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mCPY1 : Int {
+  final func reset_mCPY1_toDefaultValue () {
+    self.mCPY1 = 0
+  }
+
+  //····················································································································
+
+  final var mCPY1 : Int {
     get { return self.mCPY1_property.propval }
     set { self.mCPY1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCPY1_property_selection : EBSelection <Int> { return self.mCPY1_property.prop }
+  final var mCPY1_property_selection : EBSelection <Int> { return self.mCPY1_property.prop }
 
   //····················································································································
   //   Atomic property: mCPX2
@@ -219,14 +243,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mCPX2 : Int {
+  final func reset_mCPX2_toDefaultValue () {
+    self.mCPX2 = 0
+  }
+
+  //····················································································································
+
+  final var mCPX2 : Int {
     get { return self.mCPX2_property.propval }
     set { self.mCPX2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCPX2_property_selection : EBSelection <Int> { return self.mCPX2_property.prop }
+  final var mCPX2_property_selection : EBSelection <Int> { return self.mCPX2_property.prop }
 
   //····················································································································
   //   Atomic property: mCPY2
@@ -236,14 +266,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mCPY2 : Int {
+  final func reset_mCPY2_toDefaultValue () {
+    self.mCPY2 = 0
+  }
+
+  //····················································································································
+
+  final var mCPY2 : Int {
     get { return self.mCPY2_property.propval }
     set { self.mCPY2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCPY2_property_selection : EBSelection <Int> { return self.mCPY2_property.prop }
+  final var mCPY2_property_selection : EBSelection <Int> { return self.mCPY2_property.prop }
 
   //····················································································································
   //   Atomic property: mShape
@@ -253,14 +289,20 @@ class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mShape : BorderCurveShape {
+  final func reset_mShape_toDefaultValue () {
+    self.mShape = BorderCurveShape.line
+  }
+
+  //····················································································································
+
+  final var mShape : BorderCurveShape {
     get { return self.mShape_property.propval }
     set { self.mShape_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShape_property_selection : EBSelection <BorderCurveShape> { return self.mShape_property.prop }
+  final var mShape_property_selection : EBSelection <BorderCurveShape> { return self.mShape_property.prop }
 
   //····················································································································
   //   To one property: mRoot
@@ -1300,19 +1342,19 @@ class BorderCurve : EBGraphicManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- Atomic property: mCPX1
-    self.mCPX1_property.storeIn (dictionary: ioDictionary, forKey:"mCPX1")
+    self.mCPX1_property.storeIn (dictionary: ioDictionary, forKey: "mCPX1")
   //--- Atomic property: mCPY1
-    self.mCPY1_property.storeIn (dictionary: ioDictionary, forKey:"mCPY1")
+    self.mCPY1_property.storeIn (dictionary: ioDictionary, forKey: "mCPY1")
   //--- Atomic property: mCPX2
-    self.mCPX2_property.storeIn (dictionary: ioDictionary, forKey:"mCPX2")
+    self.mCPX2_property.storeIn (dictionary: ioDictionary, forKey: "mCPX2")
   //--- Atomic property: mCPY2
-    self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey:"mCPY2")
+    self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey: "mCPY2")
   //--- Atomic property: mShape
-    self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
+    self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
   //--- To one property: mNext // Opposite is toOne mPrevious
     self.store (managedObject:self.mNext_property.propval,
       relationshipName: "mNext",
@@ -1372,19 +1414,19 @@ class BorderCurve : EBGraphicManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mCPX1
-    self.mCPX1_property.readFrom (dictionary: inDictionary, forKey:"mCPX1")
+    self.mCPX1_property.readFrom (dictionary: inDictionary, forKey: "mCPX1")
   //--- Atomic property: mCPY1
-    self.mCPY1_property.readFrom (dictionary: inDictionary, forKey:"mCPY1")
+    self.mCPY1_property.readFrom (dictionary: inDictionary, forKey: "mCPY1")
   //--- Atomic property: mCPX2
-    self.mCPX2_property.readFrom (dictionary: inDictionary, forKey:"mCPX2")
+    self.mCPX2_property.readFrom (dictionary: inDictionary, forKey: "mCPX2")
   //--- Atomic property: mCPY2
-    self.mCPY2_property.readFrom (dictionary: inDictionary, forKey:"mCPY2")
+    self.mCPY2_property.readFrom (dictionary: inDictionary, forKey: "mCPY2")
   //--- Atomic property: mShape
-    self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
+    self.mShape_property.readFrom (dictionary: inDictionary, forKey: "mShape")
   }
 
 

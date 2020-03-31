@@ -214,14 +214,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mComponentPadName : String {
+  final func reset_mComponentPadName_toDefaultValue () {
+    self.mComponentPadName = ""
+  }
+
+  //····················································································································
+
+  final var mComponentPadName : String {
     get { return self.mComponentPadName_property.propval }
     set { self.mComponentPadName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mComponentPadName_property_selection : EBSelection <String> { return self.mComponentPadName_property.prop }
+  final var mComponentPadName_property_selection : EBSelection <String> { return self.mComponentPadName_property.prop }
 
   //····················································································································
   //   Atomic property: mPadIndex
@@ -231,14 +237,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mPadIndex : Int {
+  final func reset_mPadIndex_toDefaultValue () {
+    self.mPadIndex = 0
+  }
+
+  //····················································································································
+
+  final var mPadIndex : Int {
     get { return self.mPadIndex_property.propval }
     set { self.mPadIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadIndex_property_selection : EBSelection <Int> { return self.mPadIndex_property.prop }
+  final var mPadIndex_property_selection : EBSelection <Int> { return self.mPadIndex_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -248,14 +260,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mX : Int {
+  final func reset_mX_toDefaultValue () {
+    self.mX = 0
+  }
+
+  //····················································································································
+
+  final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -265,14 +283,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mY : Int {
+  final func reset_mY_toDefaultValue () {
+    self.mY = 0
+  }
+
+  //····················································································································
+
+  final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To many property: mTracksP2
@@ -301,14 +325,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mDefaultHoleDiameterUnit : Int {
+  final func reset_mDefaultHoleDiameterUnit_toDefaultValue () {
+    self.mDefaultHoleDiameterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mDefaultHoleDiameterUnit : Int {
     get { return self.mDefaultHoleDiameterUnit_property.propval }
     set { self.mDefaultHoleDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultHoleDiameterUnit_property.prop }
+  final var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultHoleDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mCustomHoleDiameter
@@ -318,14 +348,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mCustomHoleDiameter : Int {
+  final func reset_mCustomHoleDiameter_toDefaultValue () {
+    self.mCustomHoleDiameter = 45720
+  }
+
+  //····················································································································
+
+  final var mCustomHoleDiameter : Int {
     get { return self.mCustomHoleDiameter_property.propval }
     set { self.mCustomHoleDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCustomHoleDiameter_property_selection : EBSelection <Int> { return self.mCustomHoleDiameter_property.prop }
+  final var mCustomHoleDiameter_property_selection : EBSelection <Int> { return self.mCustomHoleDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mCustomHoleDiameterUnit
@@ -335,14 +371,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mCustomHoleDiameterUnit : Int {
+  final func reset_mCustomHoleDiameterUnit_toDefaultValue () {
+    self.mCustomHoleDiameterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mCustomHoleDiameterUnit : Int {
     get { return self.mCustomHoleDiameterUnit_property.propval }
     set { self.mCustomHoleDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomHoleDiameterUnit_property.prop }
+  final var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomHoleDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mUsesCustomHoleDiameter
@@ -352,14 +394,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mUsesCustomHoleDiameter : Bool {
+  final func reset_mUsesCustomHoleDiameter_toDefaultValue () {
+    self.mUsesCustomHoleDiameter = false
+  }
+
+  //····················································································································
+
+  final var mUsesCustomHoleDiameter : Bool {
     get { return self.mUsesCustomHoleDiameter_property.propval }
     set { self.mUsesCustomHoleDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomHoleDiameter_property.prop }
+  final var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomHoleDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mDefaultPadDiameterUnit
@@ -369,14 +417,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mDefaultPadDiameterUnit : Int {
+  final func reset_mDefaultPadDiameterUnit_toDefaultValue () {
+    self.mDefaultPadDiameterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mDefaultPadDiameterUnit : Int {
     get { return self.mDefaultPadDiameterUnit_property.propval }
     set { self.mDefaultPadDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultPadDiameterUnit_property.prop }
+  final var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultPadDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mCustomPadDiameter
@@ -386,14 +440,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mCustomPadDiameter : Int {
+  final func reset_mCustomPadDiameter_toDefaultValue () {
+    self.mCustomPadDiameter = 91440
+  }
+
+  //····················································································································
+
+  final var mCustomPadDiameter : Int {
     get { return self.mCustomPadDiameter_property.propval }
     set { self.mCustomPadDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCustomPadDiameter_property_selection : EBSelection <Int> { return self.mCustomPadDiameter_property.prop }
+  final var mCustomPadDiameter_property_selection : EBSelection <Int> { return self.mCustomPadDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mCustomPadDiameterUnit
@@ -403,14 +463,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mCustomPadDiameterUnit : Int {
+  final func reset_mCustomPadDiameterUnit_toDefaultValue () {
+    self.mCustomPadDiameterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mCustomPadDiameterUnit : Int {
     get { return self.mCustomPadDiameterUnit_property.propval }
     set { self.mCustomPadDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCustomPadDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomPadDiameterUnit_property.prop }
+  final var mCustomPadDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomPadDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mUsesCustomPadDiameter
@@ -420,14 +486,20 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mUsesCustomPadDiameter : Bool {
+  final func reset_mUsesCustomPadDiameter_toDefaultValue () {
+    self.mUsesCustomPadDiameter = false
+  }
+
+  //····················································································································
+
+  final var mUsesCustomPadDiameter : Bool {
     get { return self.mUsesCustomPadDiameter_property.propval }
     set { self.mUsesCustomPadDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomPadDiameter_property.prop }
+  final var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomPadDiameter_property.prop }
 
   //····················································································································
   //   To many property: mTracksP1
@@ -1611,13 +1683,13 @@ class BoardConnector : BoardObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mComponentPadName
-    self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey:"mComponentPadName")
+    self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey: "mComponentPadName")
   //--- Atomic property: mPadIndex
-    self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey:"mPadIndex")
+    self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey: "mPadIndex")
   //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mTracksP2
     self.store (
       managedObjectArray: self.mTracksP2_property.propval,
@@ -1625,21 +1697,21 @@ class BoardConnector : BoardObject,
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mDefaultHoleDiameterUnit
-    self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultHoleDiameterUnit")
+    self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultHoleDiameterUnit")
   //--- Atomic property: mCustomHoleDiameter
-    self.mCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mCustomHoleDiameter")
+    self.mCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameter")
   //--- Atomic property: mCustomHoleDiameterUnit
-    self.mCustomHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomHoleDiameterUnit")
+    self.mCustomHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameterUnit")
   //--- Atomic property: mUsesCustomHoleDiameter
-    self.mUsesCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomHoleDiameter")
+    self.mUsesCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomHoleDiameter")
   //--- Atomic property: mDefaultPadDiameterUnit
-    self.mDefaultPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultPadDiameterUnit")
+    self.mDefaultPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultPadDiameterUnit")
   //--- Atomic property: mCustomPadDiameter
-    self.mCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mCustomPadDiameter")
+    self.mCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameter")
   //--- Atomic property: mCustomPadDiameterUnit
-    self.mCustomPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomPadDiameterUnit")
+    self.mCustomPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameterUnit")
   //--- Atomic property: mUsesCustomPadDiameter
-    self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomPadDiameter")
+    self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomPadDiameter")
   //--- To many property: mTracksP1
     self.store (
       managedObjectArray: self.mTracksP1_property.propval,
@@ -1687,29 +1759,29 @@ class BoardConnector : BoardObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mComponentPadName
-    self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey:"mComponentPadName")
+    self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey: "mComponentPadName")
   //--- Atomic property: mPadIndex
-    self.mPadIndex_property.readFrom (dictionary: inDictionary, forKey:"mPadIndex")
+    self.mPadIndex_property.readFrom (dictionary: inDictionary, forKey: "mPadIndex")
   //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+    self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+    self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mDefaultHoleDiameterUnit
-    self.mDefaultHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mDefaultHoleDiameterUnit")
+    self.mDefaultHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mDefaultHoleDiameterUnit")
   //--- Atomic property: mCustomHoleDiameter
-    self.mCustomHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mCustomHoleDiameter")
+    self.mCustomHoleDiameter_property.readFrom (dictionary: inDictionary, forKey: "mCustomHoleDiameter")
   //--- Atomic property: mCustomHoleDiameterUnit
-    self.mCustomHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomHoleDiameterUnit")
+    self.mCustomHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mCustomHoleDiameterUnit")
   //--- Atomic property: mUsesCustomHoleDiameter
-    self.mUsesCustomHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomHoleDiameter")
+    self.mUsesCustomHoleDiameter_property.readFrom (dictionary: inDictionary, forKey: "mUsesCustomHoleDiameter")
   //--- Atomic property: mDefaultPadDiameterUnit
-    self.mDefaultPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mDefaultPadDiameterUnit")
+    self.mDefaultPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mDefaultPadDiameterUnit")
   //--- Atomic property: mCustomPadDiameter
-    self.mCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mCustomPadDiameter")
+    self.mCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey: "mCustomPadDiameter")
   //--- Atomic property: mCustomPadDiameterUnit
-    self.mCustomPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomPadDiameterUnit")
+    self.mCustomPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mCustomPadDiameterUnit")
   //--- Atomic property: mUsesCustomPadDiameter
-    self.mUsesCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomPadDiameter")
+    self.mUsesCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey: "mUsesCustomPadDiameter")
   }
 
 

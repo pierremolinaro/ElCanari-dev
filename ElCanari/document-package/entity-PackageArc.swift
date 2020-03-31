@@ -137,14 +137,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var yCenter : Int {
+  final func reset_yCenter_toDefaultValue () {
+    self.yCenter = 342900
+  }
+
+  //····················································································································
+
+  final var yCenter : Int {
     get { return self.yCenter_property.propval }
     set { self.yCenter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.prop }
+  final var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.prop }
 
   //····················································································································
   //   Atomic property: radius
@@ -154,14 +160,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var radius : Int {
+  final func reset_radius_toDefaultValue () {
+    self.radius = 342900
+  }
+
+  //····················································································································
+
+  final var radius : Int {
     get { return self.radius_property.propval }
     set { self.radius_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var radius_property_selection : EBSelection <Int> { return self.radius_property.prop }
+  final var radius_property_selection : EBSelection <Int> { return self.radius_property.prop }
 
   //····················································································································
   //   Atomic property: startAngle
@@ -171,14 +183,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var startAngle : Int {
+  final func reset_startAngle_toDefaultValue () {
+    self.startAngle = 45000
+  }
+
+  //····················································································································
+
+  final var startAngle : Int {
     get { return self.startAngle_property.propval }
     set { self.startAngle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var startAngle_property_selection : EBSelection <Int> { return self.startAngle_property.prop }
+  final var startAngle_property_selection : EBSelection <Int> { return self.startAngle_property.prop }
 
   //····················································································································
   //   Atomic property: arcAngle
@@ -188,14 +206,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var arcAngle : Int {
+  final func reset_arcAngle_toDefaultValue () {
+    self.arcAngle = 270000
+  }
+
+  //····················································································································
+
+  final var arcAngle : Int {
     get { return self.arcAngle_property.propval }
     set { self.arcAngle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var arcAngle_property_selection : EBSelection <Int> { return self.arcAngle_property.prop }
+  final var arcAngle_property_selection : EBSelection <Int> { return self.arcAngle_property.prop }
 
   //····················································································································
   //   Atomic property: startTangent
@@ -205,14 +229,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var startTangent : Int {
+  final func reset_startTangent_toDefaultValue () {
+    self.startTangent = 0
+  }
+
+  //····················································································································
+
+  final var startTangent : Int {
     get { return self.startTangent_property.propval }
     set { self.startTangent_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var startTangent_property_selection : EBSelection <Int> { return self.startTangent_property.prop }
+  final var startTangent_property_selection : EBSelection <Int> { return self.startTangent_property.prop }
 
   //····················································································································
   //   Atomic property: endTangent
@@ -222,14 +252,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var endTangent : Int {
+  final func reset_endTangent_toDefaultValue () {
+    self.endTangent = 0
+  }
+
+  //····················································································································
+
+  final var endTangent : Int {
     get { return self.endTangent_property.propval }
     set { self.endTangent_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var endTangent_property_selection : EBSelection <Int> { return self.endTangent_property.prop }
+  final var endTangent_property_selection : EBSelection <Int> { return self.endTangent_property.prop }
 
   //····················································································································
   //   Atomic property: pathIsClosed
@@ -239,14 +275,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var pathIsClosed : Bool {
+  final func reset_pathIsClosed_toDefaultValue () {
+    self.pathIsClosed = false
+  }
+
+  //····················································································································
+
+  final var pathIsClosed : Bool {
     get { return self.pathIsClosed_property.propval }
     set { self.pathIsClosed_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pathIsClosed_property_selection : EBSelection <Bool> { return self.pathIsClosed_property.prop }
+  final var pathIsClosed_property_selection : EBSelection <Bool> { return self.pathIsClosed_property.prop }
 
   //····················································································································
   //   Atomic property: xCenterUnit
@@ -256,14 +298,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var xCenterUnit : Int {
+  final func reset_xCenterUnit_toDefaultValue () {
+    self.xCenterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var xCenterUnit : Int {
     get { return self.xCenterUnit_property.propval }
     set { self.xCenterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.prop }
+  final var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yCenterUnit
@@ -273,14 +321,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var yCenterUnit : Int {
+  final func reset_yCenterUnit_toDefaultValue () {
+    self.yCenterUnit = 2286
+  }
+
+  //····················································································································
+
+  final var yCenterUnit : Int {
     get { return self.yCenterUnit_property.propval }
     set { self.yCenterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.prop }
+  final var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: radiusUnit
@@ -290,14 +344,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var radiusUnit : Int {
+  final func reset_radiusUnit_toDefaultValue () {
+    self.radiusUnit = 2286
+  }
+
+  //····················································································································
+
+  final var radiusUnit : Int {
     get { return self.radiusUnit_property.propval }
     set { self.radiusUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var radiusUnit_property_selection : EBSelection <Int> { return self.radiusUnit_property.prop }
+  final var radiusUnit_property_selection : EBSelection <Int> { return self.radiusUnit_property.prop }
 
   //····················································································································
   //   Atomic property: startTangentUnit
@@ -307,14 +367,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var startTangentUnit : Int {
+  final func reset_startTangentUnit_toDefaultValue () {
+    self.startTangentUnit = 2286
+  }
+
+  //····················································································································
+
+  final var startTangentUnit : Int {
     get { return self.startTangentUnit_property.propval }
     set { self.startTangentUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var startTangentUnit_property_selection : EBSelection <Int> { return self.startTangentUnit_property.prop }
+  final var startTangentUnit_property_selection : EBSelection <Int> { return self.startTangentUnit_property.prop }
 
   //····················································································································
   //   Atomic property: endTangentUnit
@@ -324,14 +390,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var endTangentUnit : Int {
+  final func reset_endTangentUnit_toDefaultValue () {
+    self.endTangentUnit = 2286
+  }
+
+  //····················································································································
+
+  final var endTangentUnit : Int {
     get { return self.endTangentUnit_property.propval }
     set { self.endTangentUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var endTangentUnit_property_selection : EBSelection <Int> { return self.endTangentUnit_property.prop }
+  final var endTangentUnit_property_selection : EBSelection <Int> { return self.endTangentUnit_property.prop }
 
   //····················································································································
   //   Atomic property: xCenter
@@ -341,14 +413,20 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  var xCenter : Int {
+  final func reset_xCenter_toDefaultValue () {
+    self.xCenter = 342900
+  }
+
+  //····················································································································
+
+  final var xCenter : Int {
     get { return self.xCenter_property.propval }
     set { self.xCenter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.prop }
+  final var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.prop }
 
   //····················································································································
   //   Transient property: strokeBezierPath
@@ -833,31 +911,31 @@ class PackageArc : PackageObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: yCenter
-    self.yCenter_property.storeIn (dictionary: ioDictionary, forKey:"yCenter")
+    self.yCenter_property.storeIn (dictionary: ioDictionary, forKey: "yCenter")
   //--- Atomic property: radius
-    self.radius_property.storeIn (dictionary: ioDictionary, forKey:"radius")
+    self.radius_property.storeIn (dictionary: ioDictionary, forKey: "radius")
   //--- Atomic property: startAngle
-    self.startAngle_property.storeIn (dictionary: ioDictionary, forKey:"startAngle")
+    self.startAngle_property.storeIn (dictionary: ioDictionary, forKey: "startAngle")
   //--- Atomic property: arcAngle
-    self.arcAngle_property.storeIn (dictionary: ioDictionary, forKey:"arcAngle")
+    self.arcAngle_property.storeIn (dictionary: ioDictionary, forKey: "arcAngle")
   //--- Atomic property: startTangent
-    self.startTangent_property.storeIn (dictionary: ioDictionary, forKey:"startTangent")
+    self.startTangent_property.storeIn (dictionary: ioDictionary, forKey: "startTangent")
   //--- Atomic property: endTangent
-    self.endTangent_property.storeIn (dictionary: ioDictionary, forKey:"endTangent")
+    self.endTangent_property.storeIn (dictionary: ioDictionary, forKey: "endTangent")
   //--- Atomic property: pathIsClosed
-    self.pathIsClosed_property.storeIn (dictionary: ioDictionary, forKey:"pathIsClosed")
+    self.pathIsClosed_property.storeIn (dictionary: ioDictionary, forKey: "pathIsClosed")
   //--- Atomic property: xCenterUnit
-    self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey:"xCenterUnit")
+    self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "xCenterUnit")
   //--- Atomic property: yCenterUnit
-    self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey:"yCenterUnit")
+    self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "yCenterUnit")
   //--- Atomic property: radiusUnit
-    self.radiusUnit_property.storeIn (dictionary: ioDictionary, forKey:"radiusUnit")
+    self.radiusUnit_property.storeIn (dictionary: ioDictionary, forKey: "radiusUnit")
   //--- Atomic property: startTangentUnit
-    self.startTangentUnit_property.storeIn (dictionary: ioDictionary, forKey:"startTangentUnit")
+    self.startTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "startTangentUnit")
   //--- Atomic property: endTangentUnit
-    self.endTangentUnit_property.storeIn (dictionary: ioDictionary, forKey:"endTangentUnit")
+    self.endTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "endTangentUnit")
   //--- Atomic property: xCenter
-    self.xCenter_property.storeIn (dictionary: ioDictionary, forKey:"xCenter")
+    self.xCenter_property.storeIn (dictionary: ioDictionary, forKey: "xCenter")
   }
 
   //····················································································································
@@ -876,31 +954,31 @@ class PackageArc : PackageObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: yCenter
-    self.yCenter_property.readFrom (dictionary: inDictionary, forKey:"yCenter")
+    self.yCenter_property.readFrom (dictionary: inDictionary, forKey: "yCenter")
   //--- Atomic property: radius
-    self.radius_property.readFrom (dictionary: inDictionary, forKey:"radius")
+    self.radius_property.readFrom (dictionary: inDictionary, forKey: "radius")
   //--- Atomic property: startAngle
-    self.startAngle_property.readFrom (dictionary: inDictionary, forKey:"startAngle")
+    self.startAngle_property.readFrom (dictionary: inDictionary, forKey: "startAngle")
   //--- Atomic property: arcAngle
-    self.arcAngle_property.readFrom (dictionary: inDictionary, forKey:"arcAngle")
+    self.arcAngle_property.readFrom (dictionary: inDictionary, forKey: "arcAngle")
   //--- Atomic property: startTangent
-    self.startTangent_property.readFrom (dictionary: inDictionary, forKey:"startTangent")
+    self.startTangent_property.readFrom (dictionary: inDictionary, forKey: "startTangent")
   //--- Atomic property: endTangent
-    self.endTangent_property.readFrom (dictionary: inDictionary, forKey:"endTangent")
+    self.endTangent_property.readFrom (dictionary: inDictionary, forKey: "endTangent")
   //--- Atomic property: pathIsClosed
-    self.pathIsClosed_property.readFrom (dictionary: inDictionary, forKey:"pathIsClosed")
+    self.pathIsClosed_property.readFrom (dictionary: inDictionary, forKey: "pathIsClosed")
   //--- Atomic property: xCenterUnit
-    self.xCenterUnit_property.readFrom (dictionary: inDictionary, forKey:"xCenterUnit")
+    self.xCenterUnit_property.readFrom (dictionary: inDictionary, forKey: "xCenterUnit")
   //--- Atomic property: yCenterUnit
-    self.yCenterUnit_property.readFrom (dictionary: inDictionary, forKey:"yCenterUnit")
+    self.yCenterUnit_property.readFrom (dictionary: inDictionary, forKey: "yCenterUnit")
   //--- Atomic property: radiusUnit
-    self.radiusUnit_property.readFrom (dictionary: inDictionary, forKey:"radiusUnit")
+    self.radiusUnit_property.readFrom (dictionary: inDictionary, forKey: "radiusUnit")
   //--- Atomic property: startTangentUnit
-    self.startTangentUnit_property.readFrom (dictionary: inDictionary, forKey:"startTangentUnit")
+    self.startTangentUnit_property.readFrom (dictionary: inDictionary, forKey: "startTangentUnit")
   //--- Atomic property: endTangentUnit
-    self.endTangentUnit_property.readFrom (dictionary: inDictionary, forKey:"endTangentUnit")
+    self.endTangentUnit_property.readFrom (dictionary: inDictionary, forKey: "endTangentUnit")
   //--- Atomic property: xCenter
-    self.xCenter_property.readFrom (dictionary: inDictionary, forKey:"xCenter")
+    self.xCenter_property.readFrom (dictionary: inDictionary, forKey: "xCenter")
   }
 
 

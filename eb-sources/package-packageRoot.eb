@@ -80,8 +80,7 @@ graphic entity PackageRoot {
   property Int mDimensionUnitSecondModelPointDx default 2_286 ;
   property Int mDimensionUnitSecondModelPointDy default 2_286 ;
  
-  property Int mFirstModelPointCircleRadius default 10 ;
-  property Int mSecondModelPointCircleRadius default 10 ;
+  property Int mModelPointsCircleRadius default 10 ;
 
   toOne PackageModelImageDoublePoint mModelImageDoublePoint ;
   property proxy Int mModelImageFirstPointX : mModelImageDoublePoint.mFirstX ;
@@ -526,14 +525,14 @@ graphic entity PackageModelImageDoublePoint {
   property NSColor mSecondColor default brown ;
 
   transient EBShape objectDisplay dependsFrom
-     self.mFirstX, self.mFirstY, self.mFirstColor, self.mRoot.one.mFirstModelPointCircleRadius,
-     self.mSecondDx, self.mSecondDy, self.mSecondColor, self.mRoot.one.mSecondModelPointCircleRadius,
+     self.mFirstX, self.mFirstY, self.mFirstColor,
+     self.mSecondDx, self.mSecondDy, self.mSecondColor, self.mRoot.one.mModelPointsCircleRadius,
      self.mRoot.one.mPointsAreLocked
   ;
 
   transient EBShape selectionDisplay dependsFrom
-     self.mFirstX, self.mFirstY, self.mRoot.one.mFirstModelPointCircleRadius,
-     self.mSecondDx, self.mSecondDy, self.mRoot.one.mSecondModelPointCircleRadius
+     self.mFirstX, self.mFirstY,
+     self.mSecondDx, self.mSecondDy, self.mRoot.one.mModelPointsCircleRadius
   ;
 }
 

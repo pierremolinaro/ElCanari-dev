@@ -151,14 +151,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mCenterX : Int {
+  final func reset_mCenterX_toDefaultValue () {
+    self.mCenterX = 0
+  }
+
+  //····················································································································
+
+  final var mCenterX : Int {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
+  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
 
   //····················································································································
   //   Atomic property: mCenterY
@@ -168,14 +174,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mCenterY : Int {
+  final func reset_mCenterY_toDefaultValue () {
+    self.mCenterY = 0
+  }
+
+  //····················································································································
+
+  final var mCenterY : Int {
     get { return self.mCenterY_property.propval }
     set { self.mCenterY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
+  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
 
   //····················································································································
   //   Atomic property: mRotation
@@ -185,14 +197,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mRotation : QuadrantRotation {
+  final func reset_mRotation_toDefaultValue () {
+    self.mRotation = QuadrantRotation.rotation0
+  }
+
+  //····················································································································
+
+  final var mRotation : QuadrantRotation {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
+  final var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
 
   //····················································································································
   //   Atomic property: mMirror
@@ -202,14 +220,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mMirror : Bool {
+  final func reset_mMirror_toDefaultValue () {
+    self.mMirror = false
+  }
+
+  //····················································································································
+
+  final var mMirror : Bool {
     get { return self.mMirror_property.propval }
     set { self.mMirror_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mMirror_property_selection : EBSelection <Bool> { return self.mMirror_property.prop }
+  final var mMirror_property_selection : EBSelection <Bool> { return self.mMirror_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -219,14 +243,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mSymbolInstanceName : String {
+  final func reset_mSymbolInstanceName_toDefaultValue () {
+    self.mSymbolInstanceName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolInstanceName : String {
     get { return self.mSymbolInstanceName_property.propval }
     set { self.mSymbolInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
+  final var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolTypeName
@@ -236,14 +266,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mSymbolTypeName : String {
+  final func reset_mSymbolTypeName_toDefaultValue () {
+    self.mSymbolTypeName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolTypeName : String {
     get { return self.mSymbolTypeName_property.propval }
     set { self.mSymbolTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
+  final var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
 
   //····················································································································
   //   Atomic property: mDisplayComponentNameOffsetX
@@ -253,14 +289,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mDisplayComponentNameOffsetX : Int {
+  final func reset_mDisplayComponentNameOffsetX_toDefaultValue () {
+    self.mDisplayComponentNameOffsetX = 0
+  }
+
+  //····················································································································
+
+  final var mDisplayComponentNameOffsetX : Int {
     get { return self.mDisplayComponentNameOffsetX_property.propval }
     set { self.mDisplayComponentNameOffsetX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetX_property.prop }
+  final var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetX_property.prop }
 
   //····················································································································
   //   Atomic property: mDisplayComponentNameOffsetY
@@ -270,14 +312,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mDisplayComponentNameOffsetY : Int {
+  final func reset_mDisplayComponentNameOffsetY_toDefaultValue () {
+    self.mDisplayComponentNameOffsetY = 457200
+  }
+
+  //····················································································································
+
+  final var mDisplayComponentNameOffsetY : Int {
     get { return self.mDisplayComponentNameOffsetY_property.propval }
     set { self.mDisplayComponentNameOffsetY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetY_property.prop }
+  final var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetY_property.prop }
 
   //····················································································································
   //   Atomic property: mDisplayComponentValue
@@ -287,14 +335,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mDisplayComponentValue : Bool {
+  final func reset_mDisplayComponentValue_toDefaultValue () {
+    self.mDisplayComponentValue = true
+  }
+
+  //····················································································································
+
+  final var mDisplayComponentValue : Bool {
     get { return self.mDisplayComponentValue_property.propval }
     set { self.mDisplayComponentValue_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDisplayComponentValue_property_selection : EBSelection <Bool> { return self.mDisplayComponentValue_property.prop }
+  final var mDisplayComponentValue_property_selection : EBSelection <Bool> { return self.mDisplayComponentValue_property.prop }
 
   //····················································································································
   //   Atomic property: mDisplayComponentValueOffsetX
@@ -304,14 +358,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mDisplayComponentValueOffsetX : Int {
+  final func reset_mDisplayComponentValueOffsetX_toDefaultValue () {
+    self.mDisplayComponentValueOffsetX = 0
+  }
+
+  //····················································································································
+
+  final var mDisplayComponentValueOffsetX : Int {
     get { return self.mDisplayComponentValueOffsetX_property.propval }
     set { self.mDisplayComponentValueOffsetX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetX_property.prop }
+  final var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetX_property.prop }
 
   //····················································································································
   //   Atomic property: mDisplayComponentValueOffsetY
@@ -321,14 +381,20 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mDisplayComponentValueOffsetY : Int {
+  final func reset_mDisplayComponentValueOffsetY_toDefaultValue () {
+    self.mDisplayComponentValueOffsetY = -457200
+  }
+
+  //····················································································································
+
+  final var mDisplayComponentValueOffsetY : Int {
     get { return self.mDisplayComponentValueOffsetY_property.propval }
     set { self.mDisplayComponentValueOffsetY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
+  final var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
 
   //····················································································································
   //   To many property: mPoints
@@ -1103,27 +1169,27 @@ class ComponentSymbolInProject : SchematicObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mCenterX
-    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey:"mCenterX")
+    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
   //--- Atomic property: mCenterY
-    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey:"mCenterY")
+    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
   //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
   //--- Atomic property: mMirror
-    self.mMirror_property.storeIn (dictionary: ioDictionary, forKey:"mMirror")
+    self.mMirror_property.storeIn (dictionary: ioDictionary, forKey: "mMirror")
   //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
+    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
+    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
   //--- Atomic property: mDisplayComponentNameOffsetX
-    self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentNameOffsetX")
+    self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetX")
   //--- Atomic property: mDisplayComponentNameOffsetY
-    self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentNameOffsetY")
+    self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetY")
   //--- Atomic property: mDisplayComponentValue
-    self.mDisplayComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValue")
+    self.mDisplayComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValue")
   //--- Atomic property: mDisplayComponentValueOffsetX
-    self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValueOffsetX")
+    self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetX")
   //--- Atomic property: mDisplayComponentValueOffsetY
-    self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValueOffsetY")
+    self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetY")
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval,
@@ -1165,27 +1231,27 @@ class ComponentSymbolInProject : SchematicObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
-    self.mCenterX_property.readFrom (dictionary: inDictionary, forKey:"mCenterX")
+    self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")
   //--- Atomic property: mCenterY
-    self.mCenterY_property.readFrom (dictionary: inDictionary, forKey:"mCenterY")
+    self.mCenterY_property.readFrom (dictionary: inDictionary, forKey: "mCenterY")
   //--- Atomic property: mRotation
-    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+    self.mRotation_property.readFrom (dictionary: inDictionary, forKey: "mRotation")
   //--- Atomic property: mMirror
-    self.mMirror_property.readFrom (dictionary: inDictionary, forKey:"mMirror")
+    self.mMirror_property.readFrom (dictionary: inDictionary, forKey: "mMirror")
   //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
+    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
+    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolTypeName")
   //--- Atomic property: mDisplayComponentNameOffsetX
-    self.mDisplayComponentNameOffsetX_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentNameOffsetX")
+    self.mDisplayComponentNameOffsetX_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentNameOffsetX")
   //--- Atomic property: mDisplayComponentNameOffsetY
-    self.mDisplayComponentNameOffsetY_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentNameOffsetY")
+    self.mDisplayComponentNameOffsetY_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentNameOffsetY")
   //--- Atomic property: mDisplayComponentValue
-    self.mDisplayComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValue")
+    self.mDisplayComponentValue_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentValue")
   //--- Atomic property: mDisplayComponentValueOffsetX
-    self.mDisplayComponentValueOffsetX_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValueOffsetX")
+    self.mDisplayComponentValueOffsetX_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentValueOffsetX")
   //--- Atomic property: mDisplayComponentValueOffsetY
-    self.mDisplayComponentValueOffsetY_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValueOffsetY")
+    self.mDisplayComponentValueOffsetY_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentValueOffsetY")
   }
 
 

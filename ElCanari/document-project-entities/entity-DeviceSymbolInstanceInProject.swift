@@ -53,14 +53,20 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  var mSymbolInstanceName : String {
+  final func reset_mSymbolInstanceName_toDefaultValue () {
+    self.mSymbolInstanceName = ""
+  }
+
+  //····················································································································
+
+  final var mSymbolInstanceName : String {
     get { return self.mSymbolInstanceName_property.propval }
     set { self.mSymbolInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
+  final var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
 
   //····················································································································
   //   To one property: mSymbolType
@@ -423,7 +429,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
+    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
   //--- To one property: mSymbolType
     self.store (managedObject:self.mSymbolType_property.propval,
       relationshipName: "mSymbolType",
@@ -457,7 +463,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
+    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolInstanceName")
   }
 
 

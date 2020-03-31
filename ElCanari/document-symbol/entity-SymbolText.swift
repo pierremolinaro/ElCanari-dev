@@ -67,14 +67,20 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  var y : Int {
+  final func reset_y_toDefaultValue () {
+    self.y = 0
+  }
+
+  //····················································································································
+
+  final var y : Int {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: text
@@ -84,14 +90,20 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  var text : String {
+  final func reset_text_toDefaultValue () {
+    self.text = "text"
+  }
+
+  //····················································································································
+
+  final var text : String {
     get { return self.text_property.propval }
     set { self.text_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var text_property_selection : EBSelection <String> { return self.text_property.prop }
+  final var text_property_selection : EBSelection <String> { return self.text_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalAlignment
@@ -101,14 +113,20 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  var horizontalAlignment : HorizontalAlignment {
+  final func reset_horizontalAlignment_toDefaultValue () {
+    self.horizontalAlignment = HorizontalAlignment.center
+  }
+
+  //····················································································································
+
+  final var horizontalAlignment : HorizontalAlignment {
     get { return self.horizontalAlignment_property.propval }
     set { self.horizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.horizontalAlignment_property.prop }
+  final var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.horizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -118,14 +136,20 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  var x : Int {
+  final func reset_x_toDefaultValue () {
+    self.x = 0
+  }
+
+  //····················································································································
+
+  final var x : Int {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //    init
@@ -388,13 +412,13 @@ class SymbolText : SymbolObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
   //--- Atomic property: text
-    self.text_property.storeIn (dictionary: ioDictionary, forKey:"text")
+    self.text_property.storeIn (dictionary: ioDictionary, forKey: "text")
   //--- Atomic property: horizontalAlignment
-    self.horizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"horizontalAlignment")
+    self.horizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "horizontalAlignment")
   //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -413,13 +437,13 @@ class SymbolText : SymbolObject,
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: text
-    self.text_property.readFrom (dictionary: inDictionary, forKey:"text")
+    self.text_property.readFrom (dictionary: inDictionary, forKey: "text")
   //--- Atomic property: horizontalAlignment
-    self.horizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"horizontalAlignment")
+    self.horizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "horizontalAlignment")
   //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+    self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
   }
 
 
