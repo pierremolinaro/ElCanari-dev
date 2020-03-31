@@ -878,7 +878,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
 //    Stand alone Array: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter {
+final class StandAloneArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter {
 
   //····················································································································
 

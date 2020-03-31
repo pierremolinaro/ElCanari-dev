@@ -994,7 +994,7 @@ class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureObserve
 //    Stand alone Array: SymbolOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval {
+final class StandAloneArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval {
 
   //····················································································································
 

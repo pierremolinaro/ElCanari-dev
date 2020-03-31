@@ -1525,7 +1525,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
 //    Stand alone Array: PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
+final class StandAloneArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
 
   //····················································································································
 

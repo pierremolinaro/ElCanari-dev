@@ -1347,7 +1347,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
 //    Stand alone Array: PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
+final class StandAloneArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 
   //····················································································································
 

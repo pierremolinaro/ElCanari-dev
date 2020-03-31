@@ -817,7 +817,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
 //    Stand alone Array: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject {
+final class StandAloneArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject {
 
   //····················································································································
 

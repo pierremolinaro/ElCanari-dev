@@ -994,7 +994,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
 //    Stand alone Array: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
+final class StandAloneArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 
   //····················································································································
 

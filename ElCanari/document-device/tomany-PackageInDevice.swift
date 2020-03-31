@@ -1286,7 +1286,7 @@ class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignat
 //    Stand alone Array: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
+final class StandAloneArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
 
   //····················································································································
 

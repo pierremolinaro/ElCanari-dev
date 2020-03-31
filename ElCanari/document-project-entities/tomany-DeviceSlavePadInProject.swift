@@ -1056,7 +1056,7 @@ class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInP
 //    Stand alone Array: DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInProject {
+final class StandAloneArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInProject {
 
   //····················································································································
 

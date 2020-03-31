@@ -702,7 +702,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
 //    Stand alone Array: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
+final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
 
   //····················································································································
 

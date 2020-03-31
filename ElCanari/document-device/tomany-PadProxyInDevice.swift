@@ -819,7 +819,7 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
 //    Stand alone Array: PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice {
+final class StandAloneArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice {
 
   //····················································································································
 

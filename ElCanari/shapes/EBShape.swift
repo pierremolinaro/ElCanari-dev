@@ -291,7 +291,7 @@ struct EBShape : Hashable {
 //    EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class EBShapeObject : Hashable {
+fileprivate final class EBShapeObject : Hashable {
 
   //····················································································································
   //  Properties

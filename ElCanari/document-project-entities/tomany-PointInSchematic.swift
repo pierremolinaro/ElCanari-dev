@@ -1399,7 +1399,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
 //    Stand alone Array: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic {
+final class StandAloneArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic {
 
   //····················································································································
 

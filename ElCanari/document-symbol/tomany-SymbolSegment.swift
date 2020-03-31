@@ -994,7 +994,7 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
 //    Stand alone Array: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment {
+final class StandAloneArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment {
 
   //····················································································································
 

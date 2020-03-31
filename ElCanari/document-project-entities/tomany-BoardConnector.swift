@@ -2162,7 +2162,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
 //    Stand alone Array: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
+final class StandAloneArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
 
   //····················································································································
 

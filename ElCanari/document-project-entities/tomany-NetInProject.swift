@@ -991,7 +991,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
 //    Stand alone Array: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
+final class StandAloneArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
 
   //····················································································································
 

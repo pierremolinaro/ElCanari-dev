@@ -19,7 +19,7 @@ extension NSView : HiddenEBProtocol {
 //   MultipleBindingController_hidden
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MultipleBindingController_hidden : EBOutletEvent {
+final class MultipleBindingController_hidden : EBOutletEvent {
 
   private let mGetPropertyValueCallBack : () -> EBSelection <Bool>
   private let mOutlet : HiddenEBProtocol?
@@ -60,7 +60,7 @@ protocol EnabledMultipleBindingProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MultipleBindingController_enabled : EBOutletEvent {
+final class MultipleBindingController_enabled : EBOutletEvent {
 
   private let mGetPropertyValueCallBack : () -> EBSelection <Bool>
   private let mOutlet : EnabledMultipleBindingProtocol?
@@ -74,16 +74,6 @@ class MultipleBindingController_enabled : EBOutletEvent {
     super.init ()
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
-
-  //····················································································································
-
-//  init (computeFunction inGetPropertyValueCallBack : @escaping () -> EBSelection <Bool>,
-//        outlet inMenuItem : EBMenuItem?) {
-//    mGetPropertyValueCallBack = inGetPropertyValueCallBack
-//    mOutlet = inMenuItem
-//    super.init ()
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-//  }
 
   //····················································································································
 

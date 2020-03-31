@@ -8,7 +8,7 @@ import Cocoa
 //   EBPreferencesClassProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBPreferencesClassProperty <T : ClassPropertyProtocol> : EBStoredClassProperty <T> {
+final class EBPreferencesClassProperty <T : ClassPropertyProtocol> : EBStoredClassProperty <T> {
 
  //····················································································································
 

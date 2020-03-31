@@ -7423,7 +7423,7 @@ class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObser
 //    Stand alone Array: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
+final class StandAloneArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
   //····················································································································
 

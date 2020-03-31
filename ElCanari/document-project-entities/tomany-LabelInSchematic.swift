@@ -875,7 +875,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
 //    Stand alone Array: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
+final class StandAloneArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
 
   //····················································································································
 

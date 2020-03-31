@@ -936,7 +936,7 @@ class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserve
 //    Stand alone Array: SymbolText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
+final class StandAloneArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
 
   //····················································································································
 

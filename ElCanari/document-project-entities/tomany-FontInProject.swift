@@ -936,7 +936,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
 //    Stand alone Array: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
+final class StandAloneArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 
   //····················································································································
 

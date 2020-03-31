@@ -1518,7 +1518,7 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
 //    Stand alone Array: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack {
+final class StandAloneArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack {
 
   //····················································································································
 

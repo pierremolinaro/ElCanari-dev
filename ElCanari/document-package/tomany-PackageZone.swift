@@ -1759,7 +1759,7 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
 //    Stand alone Array: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
+final class StandAloneArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 
   //····················································································································
 

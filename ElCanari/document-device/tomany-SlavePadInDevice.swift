@@ -1172,7 +1172,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
 //    Stand alone Array: SlavePadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
+final class StandAloneArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
 
   //····················································································································
 

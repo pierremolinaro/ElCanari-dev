@@ -585,7 +585,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
 //    Stand alone Array: ForbiddenPadNumber
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber {
+final class StandAloneArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber {
 
   //····················································································································
 

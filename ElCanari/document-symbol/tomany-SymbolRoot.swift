@@ -1232,7 +1232,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
 //    Stand alone Array: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
+final class StandAloneArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 
   //····················································································································
 

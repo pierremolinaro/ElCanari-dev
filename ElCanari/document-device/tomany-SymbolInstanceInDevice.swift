@@ -993,7 +993,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
 //    Stand alone Array: SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice {
+final class StandAloneArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice {
 
   //····················································································································
 

@@ -2166,7 +2166,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
 //    Stand alone Array: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackagePad : ReadWriteArrayOf_PackagePad {
+final class StandAloneArrayOf_PackagePad : ReadWriteArrayOf_PackagePad {
 
   //····················································································································
 

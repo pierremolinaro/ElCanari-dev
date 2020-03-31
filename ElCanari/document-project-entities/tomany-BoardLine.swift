@@ -1291,7 +1291,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
 //    Stand alone Array: BoardLine
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardLine : ReadWriteArrayOf_BoardLine {
+final class StandAloneArrayOf_BoardLine : ReadWriteArrayOf_BoardLine {
 
   //····················································································································
 

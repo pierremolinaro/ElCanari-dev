@@ -1055,7 +1055,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
 //    Stand alone Array: CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic {
+final class StandAloneArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic {
 
   //····················································································································
 

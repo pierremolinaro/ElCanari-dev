@@ -1991,7 +1991,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
 //    Stand alone Array: DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
+final class StandAloneArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 
   //····················································································································
 

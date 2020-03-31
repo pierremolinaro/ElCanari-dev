@@ -1054,7 +1054,7 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
 //    Stand alone Array: BoardRestrictRectangle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRectangle {
+final class StandAloneArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRectangle {
 
   //····················································································································
 

@@ -1230,7 +1230,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
 //    Stand alone Array: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
+final class StandAloneArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 
   //····················································································································
 

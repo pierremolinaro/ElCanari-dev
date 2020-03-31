@@ -1406,7 +1406,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
 //    Stand alone Array: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
+final class StandAloneArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
 
   //····················································································································
 

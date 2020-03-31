@@ -880,7 +880,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
 //    Stand alone Array: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
+final class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 
   //····················································································································
 

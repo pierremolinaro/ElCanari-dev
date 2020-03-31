@@ -1174,7 +1174,7 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
 //    Stand alone Array: SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevice {
+final class StandAloneArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevice {
 
   //····················································································································
 

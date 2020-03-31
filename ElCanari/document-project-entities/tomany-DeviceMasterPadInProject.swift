@@ -1115,7 +1115,7 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
 //    Stand alone Array: DeviceMasterPadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject {
+final class StandAloneArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject {
 
   //····················································································································
 

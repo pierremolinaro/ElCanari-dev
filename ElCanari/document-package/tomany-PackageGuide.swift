@@ -1172,7 +1172,7 @@ class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignatureObs
 //    Stand alone Array: PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
+final class StandAloneArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
 
   //····················································································································
 

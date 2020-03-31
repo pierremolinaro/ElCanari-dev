@@ -1638,7 +1638,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
 //    Stand alone Array: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject {
+final class StandAloneArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject {
 
   //····················································································································
 

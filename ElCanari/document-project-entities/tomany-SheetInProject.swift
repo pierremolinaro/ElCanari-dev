@@ -875,7 +875,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
 //    Stand alone Array: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
+final class StandAloneArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 
   //····················································································································
 

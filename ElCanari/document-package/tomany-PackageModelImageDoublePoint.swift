@@ -996,7 +996,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
 //    Stand alone Array: PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModelImageDoublePoint {
+final class StandAloneArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModelImageDoublePoint {
 
   //····················································································································
 

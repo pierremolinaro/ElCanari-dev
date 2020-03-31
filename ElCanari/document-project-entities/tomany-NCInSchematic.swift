@@ -701,7 +701,7 @@ class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureO
 //    Stand alone Array: NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
+final class StandAloneArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
 
   //····················································································································
 

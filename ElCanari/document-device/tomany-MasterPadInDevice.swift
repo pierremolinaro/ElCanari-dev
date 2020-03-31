@@ -1231,7 +1231,7 @@ class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSi
 //    Stand alone Array: MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice {
+final class StandAloneArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice {
 
   //····················································································································
 

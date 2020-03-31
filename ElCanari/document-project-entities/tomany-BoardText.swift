@@ -1348,7 +1348,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
 //    Stand alone Array: BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardText : ReadWriteArrayOf_BoardText {
+final class StandAloneArrayOf_BoardText : ReadWriteArrayOf_BoardText {
 
   //····················································································································
 

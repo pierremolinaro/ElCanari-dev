@@ -1702,7 +1702,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
 //    Stand alone Array: PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
+final class StandAloneArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 

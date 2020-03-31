@@ -758,7 +758,7 @@ class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureO
 //    Stand alone Array: PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageObject : ReadWriteArrayOf_PackageObject {
+final class StandAloneArrayOf_PackageObject : ReadWriteArrayOf_PackageObject {
 
   //····················································································································
 

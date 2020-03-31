@@ -1230,7 +1230,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
 //    Stand alone Array: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve {
+final class StandAloneArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve {
 
   //····················································································································
 

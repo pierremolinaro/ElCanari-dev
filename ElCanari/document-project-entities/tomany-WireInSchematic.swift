@@ -816,7 +816,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
 //    Stand alone Array: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
+final class StandAloneArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
 
   //····················································································································
 

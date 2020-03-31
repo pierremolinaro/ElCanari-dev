@@ -1053,7 +1053,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
 //    Stand alone Array: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice {
+final class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice {
 
   //····················································································································
 

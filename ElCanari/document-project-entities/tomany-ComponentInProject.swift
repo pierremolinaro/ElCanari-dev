@@ -2808,7 +2808,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
 //    Stand alone Array: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject {
+final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject {
 
   //····················································································································
 

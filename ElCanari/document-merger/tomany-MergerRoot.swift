@@ -2624,7 +2624,7 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
 //    Stand alone Array: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
+final class StandAloneArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 
   //····················································································································
 

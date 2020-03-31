@@ -3869,7 +3869,7 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
 //    Stand alone Array: PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot {
+final class StandAloneArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot {
 
   //····················································································································
 

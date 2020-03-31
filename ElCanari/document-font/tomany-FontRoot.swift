@@ -1227,7 +1227,7 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
 //    Stand alone Array: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
+final class StandAloneArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 

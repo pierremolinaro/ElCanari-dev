@@ -821,7 +821,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
 //    Stand alone Array: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
+final class StandAloneArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 
   //····················································································································
 

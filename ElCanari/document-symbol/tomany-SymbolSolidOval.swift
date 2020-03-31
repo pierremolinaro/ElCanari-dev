@@ -994,7 +994,7 @@ class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignat
 //    Stand alone Array: SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval {
+final class StandAloneArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval {
 
   //····················································································································
 

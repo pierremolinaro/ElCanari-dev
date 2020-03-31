@@ -701,7 +701,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
 //    Stand alone Array: DevicePadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject {
+final class StandAloneArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject {
 
   //····················································································································
 

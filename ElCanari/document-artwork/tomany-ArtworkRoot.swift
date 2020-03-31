@@ -1233,7 +1233,7 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
 //    Stand alone Array: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
+final class StandAloneArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
 
   //····················································································································
 

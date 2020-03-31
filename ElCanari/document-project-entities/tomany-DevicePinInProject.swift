@@ -1350,7 +1350,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
 //    Stand alone Array: DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject {
+final class StandAloneArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject {
 
   //····················································································································
 

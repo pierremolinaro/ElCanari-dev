@@ -1875,7 +1875,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
 //    Stand alone Array: PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
+final class StandAloneArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
 
   //····················································································································
 

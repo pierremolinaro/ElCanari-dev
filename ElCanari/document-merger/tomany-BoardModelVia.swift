@@ -703,7 +703,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
 //    Stand alone Array: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
+final class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 
   //····················································································································
 

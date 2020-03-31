@@ -1525,7 +1525,7 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
 //    Stand alone Array: PackageArc
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
+final class StandAloneArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
 
   //····················································································································
 

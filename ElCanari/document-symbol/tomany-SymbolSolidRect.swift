@@ -994,7 +994,7 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
 //    Stand alone Array: SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StandAloneArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect {
+final class StandAloneArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect {
 
   //····················································································································
 
