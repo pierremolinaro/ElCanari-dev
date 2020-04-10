@@ -113,10 +113,17 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
-    if let pboard = inSender?.draggingPasteboard, let tiffData = NSImage (pasteboard: pboard)?.tiffRepresentation {
-      self.mImageDataController?.setModel (tiffData)
+    if let pboard = inSender?.draggingPasteboard {
+      if let pdfData = pboard.data (forType: .pdf) {
+        self.mImageDataController?.setModel (pdfData)
+      }else if let pngData = pboard.data (forType: .png) {
+        self.mImageDataController?.setModel (pngData)
+      }else if let tiffData = pboard.data (forType: .tiff) {
+        self.mImageDataController?.setModel (tiffData)
+      }else if let tiffData = NSImage (pasteboard: pboard)?.tiffRepresentation {
+        self.mImageDataController?.setModel (tiffData)
+      }
     }
- //     self.image = NSImage (pasteboard: pboard)
   }
 
   //····················································································································

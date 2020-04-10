@@ -13,8 +13,8 @@ import Cocoa
 extension PackageDocument {
   @objc func loadModelImageFromPasteboardAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
-      self.rootObject.mModelImageData = tiffData
+    func buildFrom (data inData : Data) {
+      self.rootObject.mModelImageData = inData
       self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
       self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()
       self.rootObject.reset_mModelImageScale_toDefaultValue ()
@@ -26,6 +26,17 @@ extension PackageDocument {
       let pp = PackageModelImageDoublePoint (self.ebUndoManager)
       self.rootObject.mModelImageDoublePoint = pp
       self.rootObject.mModelImageObjects = [pp]
+    }
+
+    // NSLog ("\(NSPasteboard.general.types ?? [])")
+    if let pdfData = NSPasteboard.general.data (forType: .pdf) {
+      buildFrom (data: pdfData)
+    }else if let data = NSPasteboard.general.data (forType: .png) {
+      buildFrom (data: data)
+    }else if let data = NSPasteboard.general.data (forType: .tiff) {
+      buildFrom (data: data)
+    }else if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
+      buildFrom (data: tiffData)
     }else if let window = self.windowForSheet {
       __NSBeep ()
       let alert = NSAlert ()
