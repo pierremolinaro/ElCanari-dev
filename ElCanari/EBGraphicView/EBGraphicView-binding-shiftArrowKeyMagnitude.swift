@@ -12,7 +12,7 @@ extension EBGraphicView {
 
  //····················································································································
 
-  func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_Int, file:String, line:Int) {
+  final func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_Int, file:String, line:Int) {
     self.mShiftArrowKeyMagnitudeController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
  //····················································································································
 
-  func unbind_shiftArrowKeyMagnitude () {
+  final func unbind_shiftArrowKeyMagnitude () {
     self.mShiftArrowKeyMagnitudeController?.unregister ()
     self.mShiftArrowKeyMagnitudeController = nil
   }
 
   //····················································································································
 
-  private func updateShiftArrowKeyMagnitude (from model : EBReadOnlyProperty_Int) {
+  final private func updateShiftArrowKeyMagnitude (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty :
       break

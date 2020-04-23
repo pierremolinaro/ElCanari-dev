@@ -10,7 +10,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func applyZoom () {
+  final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
       if self.mZoomPropertyCache == 0 {
         let box = self.objectsAndIssueBoundingBox
@@ -27,7 +27,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  var actualScale : CGFloat {
+  final var actualScale : CGFloat {
     var result : CGFloat = 1.0
     if let scrollView = self.enclosingScrollView {
       result = scrollView.magnification
@@ -39,7 +39,7 @@ extension EBGraphicView {
   // https://stackoverflow.com/questions/34124676/magnify-nsscrollview-at-cursor-location
   //····················································································································
 
-  internal func addEndLiveMagnificationObserver () {
+  final internal func addEndLiveMagnificationObserver () {
     if let scrollView = self.enclosingScrollView {
       let nc = NotificationCenter.default
       nc.addObserver (
@@ -53,7 +53,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc internal func didEndLiveScroll (_ inNotification : Notification) {
+  @objc final internal func didEndLiveScroll (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
     self.mZoomController?.updateModel (self, newZoom)
   }
@@ -62,7 +62,7 @@ extension EBGraphicView {
   //  Live Resize
   //····················································································································
 
-  internal func scrollViewIsLiveResizing () {
+  final internal func scrollViewIsLiveResizing () {
     if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
       let box = self.objectsAndIssueBoundingBox
       if !box.isEmpty {

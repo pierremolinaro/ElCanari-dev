@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_gridStep (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+  final func bind_gridStep (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mGridStepController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStep (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_gridStep () {
+  final func unbind_gridStep () {
     self.mGridStepController?.unregister ()
     self.mGridStepController = nil
   }
 
   //····················································································································
 
-  private func updateGridStep (from model : EBReadOnlyProperty_Int) {
+  final private func updateGridStep (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty, .multiple :
       self.mGridStepInCanariUnit = milsToCanariUnit (25)

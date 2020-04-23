@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
+  final func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
     self.mGridLineColorController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateLineColor (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_gridLineColor () {
+  final func unbind_gridLineColor () {
     self.mGridLineColorController?.unregister ()
     self.mGridLineColorController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  final private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
     switch model.prop {
     case .empty, .multiple :
       self.mGridLineColor = .black

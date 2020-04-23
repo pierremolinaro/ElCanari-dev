@@ -11,7 +11,7 @@ private let RING_COLOR = NSColor (calibratedRed: 130.0 / 255.0, green: 171.0 / 2
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBFocusRingView : NSView, EBUserClassNameProtocol {
+final class EBFocusRingView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
   // MARK: -

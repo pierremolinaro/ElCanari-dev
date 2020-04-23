@@ -18,7 +18,7 @@ extension EBGraphicView {
   // MARK: -
   //····················································································································
 
-  override func draw (_ inDirtyRect : NSRect) {
+  final override func draw (_ inDirtyRect : NSRect) {
     self.mBackColor.setFill ()
     NSBezierPath.fill (inDirtyRect)
     if let ciImage = self.mBackgroundImage {
@@ -46,7 +46,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func drawGrid (_ inDirtyRect : NSRect) {
+  final fileprivate func drawGrid (_ inDirtyRect : NSRect) {
     let r = inDirtyRect
     let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
     let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
@@ -99,7 +99,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func drawIssue (_ inDirtyRect : NSRect) {
+  final fileprivate func drawIssue (_ inDirtyRect : NSRect) {
     if !self.mIssueBezierPathes.isEmpty {
       switch self.mIssueKind {
       case .error :
@@ -130,7 +130,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func drawGuideBezierPath (_ inDirtyRect : NSRect) {
+  final fileprivate func drawGuideBezierPath (_ inDirtyRect : NSRect) {
     if let bp = self.mGuideBezierPath, !bp.isEmpty {
       NSColor.orange.setStroke ()
       bp.stroke ()
@@ -139,7 +139,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func drawControlKeyHiliteCircle (_ inDirtyRect : NSRect) {
+  final fileprivate func drawControlKeyHiliteCircle (_ inDirtyRect : NSRect) {
     if let r = self.mControlKeyHiliteRectangle, !r.isEmpty, r.intersects (inDirtyRect) {
       let bp = NSBezierPath (ovalIn: r)
       bp.lineWidth = 1.0 / self.actualScale
@@ -152,7 +152,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func drawSelectionRectangle (_ inDirtyRect : NSRect) {
+  final fileprivate func drawSelectionRectangle (_ inDirtyRect : NSRect) {
     if let r = self.mSelectionRectangle, !r.isEmpty, r.intersects (inDirtyRect) {
       NSColor.lightGray.withAlphaComponent (0.2).setFill ()
       NSBezierPath.fill (r)
@@ -169,7 +169,7 @@ extension EBGraphicView {
   // MARK: -
   //····················································································································
 
-  internal func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
+  final internal func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
     if inOldShape != inNewShape {
       self.setNeedsDisplay (inNewShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
       self.setNeedsDisplay (inOldShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
@@ -178,7 +178,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func noteInvalidRectangles (old inOldShapes : [EBShape], new inNewShapes : [EBShape]) {
+  final internal func noteInvalidRectangles (old inOldShapes : [EBShape], new inNewShapes : [EBShape]) {
     let minCount = min (inOldShapes.count, inNewShapes.count)
     var idx = 0
     while idx < minCount {
@@ -200,7 +200,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func scrollToVisibleObjectsOrToZero () {
+  final func scrollToVisibleObjectsOrToZero () {
     let box = self.objectsAndIssueBoundingBox
     if box.isEmpty {
       self.scroll (NSPoint ())

@@ -12,7 +12,7 @@ extension  EBGraphicView {
 
   //····················································································································
 
-  func bind_gridCrossColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
+  final func bind_gridCrossColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
     self.mGridCrossColorController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridColor (from: model) }
@@ -21,14 +21,14 @@ extension  EBGraphicView {
 
   //····················································································································
 
-  func unbind_gridCrossColor () {
+  final func unbind_gridCrossColor () {
     self.mGridCrossColorController?.unregister ()
     self.mGridCrossColorController = nil
   }
 
   //····················································································································
 
-  private func updateGridColor (from model : EBReadOnlyProperty_NSColor) {
+  final private func updateGridColor (from model : EBReadOnlyProperty_NSColor) {
     switch model.prop {
     case .empty, .multiple  :
       self.mGridCrossColor = .black

@@ -69,23 +69,23 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  override var isFlipped : Bool { return false }
+  final override var isFlipped : Bool { return false }
 
   //····················································································································
 
-  override var isOpaque : Bool { return true }
+  final override var isOpaque : Bool { return true }
 
   //····················································································································
 
-  internal var mTrackingArea : NSTrackingArea? = nil
+  final internal var mTrackingArea : NSTrackingArea? = nil
 
   //····················································································································
 
-  internal var mZoomPropertyCache = 0 // Used in EBGraphicView-magnify-and-zoom.swift
+  final internal var mZoomPropertyCache = 0 // Used in EBGraphicView-magnify-and-zoom.swift
 
   //····················································································································
 
-  var mDrawFrameIssue = true
+  final var mDrawFrameIssue = true
 
   //····················································································································
   // MARK: -
@@ -99,18 +99,18 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
-  internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
-  internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
-  internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
-  internal var mOptionClickOperationInProgress = false
+  final internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
+  final internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
+  final internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
+  final internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
+  final internal var mOptionClickOperationInProgress = false
 
   //····················································································································
 
-  func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
-                                continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
-                                abort inAbortCallback : @escaping () -> Void,
-                                stop inStopCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool) {
+  final func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
+                                      continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
+                                      abort inAbortCallback : @escaping () -> Void,
+                                      stop inStopCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool) {
     self.mStartOptionMouseDownCallback = inStartCallback
     self.mContinueOptionMouseDraggedCallback = inContinueCallback
     self.mAbortOptionMouseOperationCallback = inAbortCallback
@@ -121,11 +121,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mMouseMovedCallback : Optional < (_ inMouseLocation : NSPoint) -> Void> = nil
+  final internal var mMouseMovedCallback : Optional < (_ inMouseLocation : NSPoint) -> Void> = nil
 
   //····················································································································
 
-  func setMouseMovedCallback (_ inCallback : @escaping (_ inMouseLocation : NSPoint) -> Void) {
+  final func setMouseMovedCallback (_ inCallback : @escaping (_ inMouseLocation : NSPoint) -> Void) {
     self.mMouseMovedCallback = inCallback
   }
 
@@ -133,11 +133,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mMouseExitCallback : Optional < () -> Void> = nil
+  final internal var mMouseExitCallback : Optional < () -> Void> = nil
 
   //····················································································································
 
-  func setMouseExitCallback (_ inCallback : @escaping () -> Void) {
+  final func setMouseExitCallback (_ inCallback : @escaping () -> Void) {
     self.mMouseExitCallback = inCallback
   }
 
@@ -145,11 +145,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
+  final internal var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
 
   //····················································································································
 
-  func setKeyDownCallback (_ inCallback : @escaping (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void) {
+  final func setKeyDownCallback (_ inCallback : @escaping (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void) {
     self.mKeyDownCallback = inCallback
   }
 
@@ -157,15 +157,15 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-   private weak var mViewController : EBGraphicViewControllerProtocol? = nil // SOULD BE WEAK
+   final private weak var mViewController : EBGraphicViewControllerProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-   var viewController : EBGraphicViewControllerProtocol? { return self.mViewController }
+  final var viewController : EBGraphicViewControllerProtocol? { return self.mViewController }
 
   //····················································································································
 
-  func set (controller inController : EBGraphicViewControllerProtocol?) {
+  final func set (controller inController : EBGraphicViewControllerProtocol?) {
     self.mViewController = inController
   }
 
@@ -173,7 +173,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mSelectionRectangle : NSRect? = nil {
+  final internal var mSelectionRectangle : NSRect? = nil {
     didSet {
       if let oldSelectionRectangle = oldValue {
         self.setNeedsDisplay (oldSelectionRectangle.insetBy (dx: -1.0, dy: -1.0))
@@ -188,7 +188,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mControlKeyHiliteRectangle : NSRect? = nil {
+  final internal var mControlKeyHiliteRectangle : NSRect? = nil {
     didSet {
       if self.mControlKeyHiliteRectangle != oldValue {
         if let oldRect = oldValue {
@@ -233,13 +233,13 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  internal var mOverObjectsDisplayController : EBSimpleController? = nil
+  final internal var mOverObjectsDisplayController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mGuideBezierPath : NSBezierPath? = nil {
+  final internal var mGuideBezierPath : NSBezierPath? = nil {
     willSet {
       self.invalidateGuideBezierPath ()
     }
@@ -252,11 +252,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  private var mControlKeyHilitedDiameter : CGFloat = 0.0
+  final private var mControlKeyHilitedDiameter : CGFloat = 0.0
 
   //····················································································································
 
-  var controlKeyHilitedDiameter : CGFloat { return self.mControlKeyHilitedDiameter }
+  final var controlKeyHilitedDiameter : CGFloat { return self.mControlKeyHilitedDiameter }
 
   //····················································································································
 
@@ -268,41 +268,41 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  private var mArrowKeyMagnitude : Int = milsToCanariUnit (25)
+  final private var mArrowKeyMagnitude : Int = milsToCanariUnit (25)
 
   //····················································································································
 
-  var arrowKeyMagnitude : Int { return self.mArrowKeyMagnitude }
+  final var arrowKeyMagnitude : Int { return self.mArrowKeyMagnitude }
 
   //····················································································································
 
-  func set (arrowKeyMagnitude : Int) {
+  final func set (arrowKeyMagnitude : Int) {
     self.mArrowKeyMagnitude = arrowKeyMagnitude
   }
 
   //····················································································································
 
-  internal var mArrowKeyMagnitudeController : EBSimpleController? = nil
+  final internal var mArrowKeyMagnitudeController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  private var mShiftArrowKeyMagnitude : Int = milsToCanariUnit (100)
+  final private var mShiftArrowKeyMagnitude : Int = milsToCanariUnit (100)
 
   //····················································································································
 
-  var shiftArrowKeyMagnitude : Int { return self.mShiftArrowKeyMagnitude }
+  final var shiftArrowKeyMagnitude : Int { return self.mShiftArrowKeyMagnitude }
 
  //····················································································································
 
-  func set (shiftArrowKeyMagnitude : Int) {
+  final func set (shiftArrowKeyMagnitude : Int) {
     self.mShiftArrowKeyMagnitude = shiftArrowKeyMagnitude
   }
 
  //····················································································································
 
-  internal var mShiftArrowKeyMagnitudeController : EBSimpleController? = nil
+  final internal var mShiftArrowKeyMagnitudeController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -319,13 +319,13 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  internal var mBackColorController : EBSimpleController? = nil
+  final internal var mBackColorController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  private var mObjectDisplayArray = [EBShape] () {
+  final private var mObjectDisplayArray = [EBShape] () {
     didSet {
       if self.mObjectDisplayArray != oldValue {
         self.noteInvalidRectangles (old: oldValue, new: self.mObjectDisplayArray)
@@ -337,17 +337,17 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  var objectDisplayArray : [EBShape] { return mObjectDisplayArray }
+  final var objectDisplayArray : [EBShape] { return mObjectDisplayArray }
 
   //····················································································································
 
-  func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
+  final func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
     self.mObjectDisplayArray = inObjectDisplayArray
   }
 
   //····················································································································
 
-  var objectsAndIssueBoundingBox : NSRect {
+  final var objectsAndIssueBoundingBox : NSRect {
     var r = NSRect.null
     for shape in self.mObjectDisplayArray {
       r = r.union (shape.boundingBox)
@@ -363,46 +363,46 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  fileprivate var mMouseGridInCanariUnit : Int = 1 // No grid for mouse
+  final fileprivate var mMouseGridInCanariUnit : Int = 1 // No grid for mouse
 
   //····················································································································
 
-  var mouseGridInCanariUnit : Int { return mMouseGridInCanariUnit }
+  final var mouseGridInCanariUnit : Int { return mMouseGridInCanariUnit }
 
   //····················································································································
 
-  func set (mouseGridInCanariUnit : Int) {
+  final func set (mouseGridInCanariUnit : Int) {
     self.mMouseGridInCanariUnit = mouseGridInCanariUnit
   }
 
   //····················································································································
 
-  internal var mMouseGridController : EBSimpleController? = nil
+  final internal var mMouseGridController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mLastMouseDraggedLocation : CanariPoint? = nil
-  internal var mUnalignedMouseDownLocation : NSPoint? = nil
-  internal var mSelectionRectangleOrigin : NSPoint? = nil
-  internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
-  internal var mPerformEndUndoGroupingOnMouseUp = false
-  var mDraggingObjectsIsAlignedOnArrowKeyMagnitude = false
+  final internal var mLastMouseDraggedLocation : CanariPoint? = nil
+  final internal var mUnalignedMouseDownLocation : NSPoint? = nil
+  final internal var mSelectionRectangleOrigin : NSPoint? = nil
+  final internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
+  final internal var mPerformEndUndoGroupingOnMouseUp = false
+  final var mDraggingObjectsIsAlignedOnArrowKeyMagnitude = false
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  private var mPasteboardType : NSPasteboard.PasteboardType? = nil
+  final private var mPasteboardType : NSPasteboard.PasteboardType? = nil
 
   //····················································································································
 
-  var pasteboardType : NSPasteboard.PasteboardType? { return self.mPasteboardType }
+  final var pasteboardType : NSPasteboard.PasteboardType? { return self.mPasteboardType }
 
   //····················································································································
 
-  func register (pasteboardType inPasteboardType : NSPasteboard.PasteboardType?) {
+  final func register (pasteboardType inPasteboardType : NSPasteboard.PasteboardType?) {
     self.mPasteboardType = inPasteboardType
   }
 
@@ -411,15 +411,15 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //   Selection Layer
   //····················································································································
 
-  private var mSelectionShapes = [EBShape] ()
+  final private var mSelectionShapes = [EBShape] ()
 
   //····················································································································
 
-  var selectionShapes : [EBShape] { return self.mSelectionShapes }
+  final var selectionShapes : [EBShape] { return self.mSelectionShapes }
 
   //····················································································································
 
-  var selectionShapeBoundingBox : NSRect {
+  final var selectionShapeBoundingBox : NSRect {
     var r = NSRect.null
     for shape in self.mSelectionShapes {
       r = r.union (shape.boundingBox)
@@ -429,7 +429,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  func updateSelectionShape (_ inShapes : [EBShape]) {
+  final func updateSelectionShape (_ inShapes : [EBShape]) {
     if self.mSelectionShapes != inShapes {
 //      Swift.print ("updateSelectionShape Change")
       for shape in self.mSelectionShapes {
@@ -454,7 +454,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //  MARK: -
   //····················································································································
 
-  internal func updateViewFrameAndBounds () {
+  final private var mNextUpdateDate = Date ()
+
+  final internal func updateViewFrameAndBounds () {
     var newBounds = NSRect () // For including point (0, 0)
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
     newBounds = newBounds.union (self.mMinimumRectangle)
@@ -469,6 +471,12 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
       self.bounds = newBounds
       self.setNeedsDisplay (self.frame)
       self.applyZoom ()
+      let now = Date ()
+      if self.mNextUpdateDate > now {
+        let delay = self.mNextUpdateDate.timeIntervalSince (now)
+        usleep (UInt32 (delay * 1_000_000.0))
+      }
+      self.mNextUpdateDate = Date (timeIntervalSinceNow: 0.1)
     }
   }
 
@@ -476,51 +484,51 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //  MARK: -
   //····················································································································
 
-  internal var mZoomPopUpButton : NSPopUpButton? = nil
-  internal var mXPlacard : NSTextField? = nil
-  internal var mYPlacard : NSTextField? = nil
+  final internal var mZoomPopUpButton : NSPopUpButton? = nil
+  final internal var mXPlacard : NSTextField? = nil
+  final internal var mYPlacard : NSTextField? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mXPlacardUnit = 2286 // mils
+  final internal var mXPlacardUnit = 2286 // mils
 
   //····················································································································
 
-  func set (XPlacardUnit inUnit : Int) {
+  final func set (XPlacardUnit inUnit : Int) {
      self.mXPlacardUnit = inUnit
   }
 
   //····················································································································
 
-  internal var mXPlacardUnitController : EBSimpleController? = nil
+  final internal var mXPlacardUnitController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mYPlacardUnit = 2286 // mils
+  final internal var mYPlacardUnit = 2286 // mils
 
   //····················································································································
 
-  func set (YPlacardUnit inUnit : Int) {
+  final func set (YPlacardUnit inUnit : Int) {
      self.mYPlacardUnit = inUnit
   }
 
   //····················································································································
 
-  internal var mYPlacardUnitController : EBSimpleController? = nil
+  final internal var mYPlacardUnitController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  private var mMinimumRectangle = NSRect ()
+  final private var mMinimumRectangle = NSRect ()
 
   //····················································································································
 
-  func set (minimumRectangle inRect : NSRect) {
+  final func set (minimumRectangle inRect : NSRect) {
     if self.mMinimumRectangle != inRect {
       self.mMinimumRectangle = inRect
       self.updateViewFrameAndBounds ()
@@ -531,20 +539,20 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mIssueBezierPathes = [EBBezierPath] ()
-  internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
+  final internal var mIssueBezierPathes = [EBBezierPath] ()
+  final internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom? = nil
+  final internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mControlKeyHiliteDiameterController : EBSimpleController? = nil
+  final internal var mControlKeyHiliteDiameterController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -579,7 +587,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  fileprivate func flip (horizontal inHorizontalFlip : Bool, vertical inVerticalFlip : Bool) {
+  final fileprivate func flip (horizontal inHorizontalFlip : Bool, vertical inVerticalFlip : Bool) {
      if let clipView = self.superview as? NSClipView {
        let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0
        let toggleVerticalFlip   : CGFloat = (inVerticalFlip   != self.mVerticalFlip)   ? -1.0 : 1.0
@@ -666,7 +674,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  var mGridCrossColor : NSColor = .black {
+  final var mGridCrossColor : NSColor = .black {
     didSet {
       if (self.mGridCrossColor != oldValue) && (self.mGridStyle == .cross)  {
         self.needsDisplay = true
@@ -676,23 +684,23 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  internal var mGridCrossColorController : EBSimpleController? = nil
+  final internal var mGridCrossColorController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  var mPopulateContextualMenuClosure : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
+  final var mPopulateContextualMenuClosure : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  override var acceptsFirstResponder : Bool { return true }
+  final override var acceptsFirstResponder : Bool { return true }
 
   //····················································································································
 
-  private var mIsFirstResponder = false {
+  final private var mIsFirstResponder = false {
     didSet {
        if self.mIsFirstResponder != oldValue, let scrollView = self.superview?.superview as? EBScrollView {
          scrollView.setFocusRing (self.mIsFirstResponder)
@@ -702,14 +710,14 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  override func becomeFirstResponder () -> Bool {
+  final override func becomeFirstResponder () -> Bool {
     self.mIsFirstResponder = true
     return true
   }
 
   //····················································································································
 
-  override func resignFirstResponder () -> Bool {
+  final override func resignFirstResponder () -> Bool {
     self.mIsFirstResponder = false
     return true
   }
@@ -718,17 +726,17 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  var mBackgroundImage : CIImage? = nil
-  var mBackgroundImageDataController : EBSimpleController? = nil
+  final var mBackgroundImage : CIImage? = nil
+  final var mBackgroundImageDataController : EBSimpleController? = nil
 
-  var mBackgroundImageOpacity : CGFloat = 1.0
-  var mBackgroundImageOpacityController : EBSimpleController? = nil
+  final var mBackgroundImageOpacity : CGFloat = 1.0
+  final var mBackgroundImageOpacityController : EBSimpleController? = nil
 
-  var mBackgroundImageAffineTransform = NSAffineTransform ()
+  final var mBackgroundImageAffineTransform = NSAffineTransform ()
 
   //····················································································································
 
-  func set (backgroundImageAffineTransform inAffineTransform : NSAffineTransform) {
+  final func set (backgroundImageAffineTransform inAffineTransform : NSAffineTransform) {
     self.mBackgroundImageAffineTransform = inAffineTransform
     self.updateViewFrameAndBounds ()
     self.needsDisplay = true

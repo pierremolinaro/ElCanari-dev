@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+  @objc final func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (EBGraphicView.selectAll(_:)) {
@@ -51,99 +51,99 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc func cut (_ : Any?) {
+  @objc final func cut (_ : Any?) {
     let translation = CanariPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
     self.viewController?.cutSelectedObjectsIntoPasteboard (self.pasteboardType, pasteOffset: translation)
   }
 
   //····················································································································
 
-  @objc func copy (_ : Any?) {
+  @objc final func copy (_ : Any?) {
     let translation = CanariPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
     self.viewController?.copySelectedObjectsIntoPasteboard (self.pasteboardType, pasteOffset: translation)
   }
 
   //····················································································································
 
-  @objc func paste (_ : Any?) {
+  @objc final func paste (_ : Any?) {
     self.viewController?.pasteFromPasteboard (self.pasteboardType)
   }
 
   //····················································································································
 
-  @objc func delete (_ : Any?) {
+  @objc final func delete (_ : Any?) {
     self.deleteSelection ()
   }
 
   //····················································································································
 
-  internal func deleteSelection () {
+  internal final func deleteSelection () {
     self.viewController?.deleteSelectedObjects ()
   }
 
   //····················································································································
 
-  override func selectAll (_ : Any?) {
+  override final func selectAll (_ : Any?) {
     self.viewController?.selectAllObjects ()
   }
 
   //····················································································································
 
-  @objc func bringForward () {
+  @objc final func bringForward () {
     self.viewController?.bringForward ()
   }
 
   //····················································································································
 
-  @objc func bringToFront (_ : Any?) {
+  @objc final func bringToFront (_ : Any?) {
     self.viewController?.bringToFront ()
   }
 
   //····················································································································
 
-  @objc func bringForward (_ : Any?) {
+  @objc final func bringForward (_ : Any?) {
     self.viewController?.bringForward ()
   }
 
   //····················································································································
 
-  @objc func sendToBack (_ : Any?) {
+  @objc final func sendToBack (_ : Any?) {
     self.viewController?.sendToBack ()
   }
 
   //····················································································································
 
-  @objc func sendBackward (_ : Any?) {
+  @objc final func sendBackward (_ : Any?) {
     self.viewController?.sendBackward ()
   }
 
   //····················································································································
 
-  @objc func snapToGrid (_ : Any?) {
+  @objc final func snapToGrid (_ : Any?) {
     self.viewController?.snapToGrid (self.arrowKeyMagnitude)
   }
 
   //····················································································································
 
-  @objc func flipHorizontally (_ : Any?) {
+  @objc final func flipHorizontally (_ : Any?) {
     self.viewController?.flipHorizontally ()
   }
 
   //····················································································································
 
-  @objc func flipVertically (_ : Any?) {
+  @objc final func flipVertically (_ : Any?) {
     self.viewController?.flipVertically ()
   }
 
   //····················································································································
 
-  @objc func rotate90Clockwise (_ : Any?) {
+  @objc final func rotate90Clockwise (_ : Any?) {
     self.viewController?.rotate90Clockwise ()
   }
 
   //····················································································································
 
-  @objc func rotate90CounterClockwise (_ : Any?) {
+  @objc final func rotate90CounterClockwise (_ : Any?) {
     self.viewController?.rotate90CounterClockwise ()
   }
 

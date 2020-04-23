@@ -5749,7 +5749,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -8504,9 +8504,9 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 			};
 			name = Debug;
 		};
@@ -8533,6 +8533,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Release;

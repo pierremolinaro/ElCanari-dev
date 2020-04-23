@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_backgroundImageData (_ model : EBReadOnlyProperty_Data, file : String, line : Int) {
+  final func bind_backgroundImageData (_ model : EBReadOnlyProperty_Data, file : String, line : Int) {
     self.mBackgroundImageDataController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackgroundImageData (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_backgroundImageData () {
+  final func unbind_backgroundImageData () {
     self.mBackgroundImageDataController?.unregister ()
     self.mBackgroundImageDataController = nil
   }
 
   //····················································································································
 
-  private func updateBackgroundImageData (from model : EBReadOnlyProperty_Data) {
+  final private func updateBackgroundImageData (from model : EBReadOnlyProperty_Data) {
     if self.mBackgroundImage != nil {
       self.mBackgroundImage = nil
       self.updateViewFrameAndBounds ()
@@ -50,7 +50,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
+  final func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
     self.mBackgroundImageOpacityController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackgroundImageOpacity (from: model) }
@@ -59,14 +59,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_backgroundImageOpacity () {
+  final func unbind_backgroundImageOpacity () {
     self.mBackgroundImageOpacityController?.unregister ()
     self.mBackgroundImageOpacityController = nil
   }
 
   //····················································································································
 
-  private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
+  final private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
     switch model.prop {
     case .empty :
       break

@@ -13,7 +13,7 @@ import Cocoa
 // https://stackoverflow.com/questions/24343216/drag-and-drop-in-swift-issues-with-registering-for-dragged-types/39330243
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
+fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
   var result = [NSPasteboard.PasteboardType] ()
   for s in NSImage.imageTypes {
     // NSLog ("\(s)")
@@ -24,11 +24,6 @@ func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://stackoverflow.com/questions/44537356/swift-4-nsfilenamespboardtype-not-available-what-to-use-instead-for-registerfo
-
-//extension NSPasteboard.PasteboardType {
-//  static let fileURL =  NSPasteboard.PasteboardType ("public.file-url")
-//}
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {

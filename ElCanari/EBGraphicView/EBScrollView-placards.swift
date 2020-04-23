@@ -12,7 +12,7 @@ extension EBScrollView {
   // MARK: -
   //····················································································································
 
-  func addPlacard (_ inPlacardView : NSView) {
+  final func addPlacard (_ inPlacardView : NSView) {
     if !self.mPlacardArray.contains (inPlacardView) {
       self.mPlacardArray.append (inPlacardView)
       self.addSubview (inPlacardView)
@@ -23,7 +23,7 @@ extension EBScrollView {
   // MARK: -
   //····················································································································
 
-  override func tile () { // tile is called during live resizing
+  final override func tile () { // tile is called during live resizing
     super.tile ()
     self.updatePlacardsLocation ()
     if let graphicView = self.documentView as? EBGraphicView {
@@ -36,7 +36,7 @@ extension EBScrollView {
 
   //····················································································································
 
-  private final func updatePlacardsLocation () {
+  final private func updatePlacardsLocation () {
     if let horizScroller = self.horizontalScroller, self.mPlacardArray.count > 0 {
       var horizScrollerFrame : NSRect = horizScroller.frame
       for placard in self.mPlacardArray {

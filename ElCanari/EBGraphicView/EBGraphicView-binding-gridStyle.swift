@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file : String, line : Int) {
+  final func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file : String, line : Int) {
     self.mGridStyleController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStyle (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_gridStyle () {
+  final func unbind_gridStyle () {
     mGridStyleController?.unregister ()
     mGridStyleController = nil
   }
 
   //····················································································································
 
-  private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
+  final private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
     switch model.prop {
     case .empty, .multiple :
       self.mGridStyle = .noGrid

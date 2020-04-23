@@ -27,41 +27,40 @@ extension EBScrollView {
   // ⑥  Finally, if performDragOperation: returned YES, concludeDragOperation: is sent.
   //····················································································································
 
-  override func draggingEntered (_ sender: NSDraggingInfo) -> NSDragOperation {
+  final override func draggingEntered (_ sender: NSDraggingInfo) -> NSDragOperation {
     return self.document?.draggingEntered (sender, self) ?? .generic
   }
 
   //····················································································································
 
-  override func draggingUpdated (_ sender: NSDraggingInfo) -> NSDragOperation {
+  final override func draggingUpdated (_ sender: NSDraggingInfo) -> NSDragOperation {
     return self.document?.draggingUpdated (sender, self) ?? .generic
   }
 
   //····················································································································
 
-  override func draggingExited (_ sender: NSDraggingInfo?) {
+  final override func draggingExited (_ sender: NSDraggingInfo?) {
     self.document?.draggingExited (sender, self)
   }
 
   //····················································································································
 
-  override func prepareForDragOperation (_ sender: NSDraggingInfo) -> Bool {
+  final override func prepareForDragOperation (_ sender: NSDraggingInfo) -> Bool {
     return self.document?.prepareForDragOperation (sender, self) ?? false
   }
 
   //····················································································································
 
-  override func performDragOperation (_ sender: NSDraggingInfo) -> Bool {
+  final override func performDragOperation (_ sender: NSDraggingInfo) -> Bool {
     return self.document?.performDragOperation (sender, self) ?? false
   }
 
   //····················································································································
 
-  override func concludeDragOperation (_ sender: NSDraggingInfo?) {
+  final override func concludeDragOperation (_ sender: NSDraggingInfo?) {
     self.document?.concludeDragOperation (sender, self)
   }
 
-  //····················································································································
   //····················································································································
 
 }

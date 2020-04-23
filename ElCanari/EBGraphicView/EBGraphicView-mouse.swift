@@ -10,7 +10,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func flagsChanged (with inEvent : NSEvent) {
+  final override func flagsChanged (with inEvent : NSEvent) {
     let d = self.controlKeyHilitedDiameter
     if NSEvent.modifierFlags.contains (.control) && (d > 0.0) {
       let locationInView = self.convert (inEvent.locationInWindow, from: nil)
@@ -33,7 +33,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func mouseMoved (with inEvent : NSEvent) {
+  final override func mouseMoved (with inEvent : NSEvent) {
     super.mouseMoved (with: inEvent)
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
@@ -57,7 +57,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func mouseExited (with inEvent : NSEvent) {
+  final override func mouseExited (with inEvent : NSEvent) {
     super.mouseExited (with: inEvent)
     self.clearXYplacards ()
     self.mMouseExitCallback? ()
@@ -66,7 +66,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func mouseDown (with inEvent : NSEvent) {
+  final override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       self.mUnalignedMouseDownLocation = unalignedMouseDownLocation
@@ -126,7 +126,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func updateKnobSelection () {
+  final func updateKnobSelection () {
     if let unalignedMouseDownLocation = self.mUnalignedMouseDownLocation {
       let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: unalignedMouseDownLocation)
       if let objectIndex = possibleObjectIndex, let knobIndex = possibleKnobIndex {
@@ -137,7 +137,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func mouseDragged (with inEvent : NSEvent) {
+  final override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
@@ -168,7 +168,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func handleSelectionRectangle (from inSelectionRectangleOrigin : NSPoint,
+  final fileprivate func handleSelectionRectangle (from inSelectionRectangleOrigin : NSPoint,
                                              to inMouseDraggedLocation : NSPoint) {
     let xMin = min (inSelectionRectangleOrigin.x, inMouseDraggedLocation.x)
     let yMin = min (inSelectionRectangleOrigin.y, inMouseDraggedLocation.y)
@@ -187,7 +187,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func drag (knob knobIndex : Int,
+  final fileprivate func drag (knob knobIndex : Int,
                          objectIndex : Int,
                          _ inProposedTranslation: CanariPoint,
                          _ inLastMouseDraggedLocation : CanariPoint) {
@@ -215,7 +215,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func dragSelection (_ proposedTranslation: CanariPoint, _ lastMouseDraggedLocation : CanariPoint) {
+  final fileprivate func dragSelection (_ proposedTranslation: CanariPoint, _ lastMouseDraggedLocation : CanariPoint) {
     var dx = proposedTranslation.x
     var dy = proposedTranslation.y
     for object in self.viewController?.selectedGraphicObjectSet ?? [] {
@@ -239,7 +239,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func mouseUp (with inEvent : NSEvent) {
+  final override func mouseUp (with inEvent : NSEvent) {
     super.mouseUp (with: inEvent)
     var accepts = true
     if self.mOptionClickOperationInProgress {
@@ -263,7 +263,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func indexOfFrontmostObject (at inLocation : NSPoint) -> (Int?, Int?) {
+  final internal func indexOfFrontmostObject (at inLocation : NSPoint) -> (Int?, Int?) {
     var possibleObjectIndex : Int? = nil
     var possibleKnobIndex : Int? = nil
     var idx = self.selectionShapes.count
@@ -286,7 +286,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
+  final internal func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
     var result = Set <Int> ()
     var idx = 0
     for object in self.objectDisplayArray {

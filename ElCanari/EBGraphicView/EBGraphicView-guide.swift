@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func invalidateGuideBezierPath () {
+  final internal func invalidateGuideBezierPath () {
     if let bp = self.mGuideBezierPath, !bp.isEmpty {
       let r = bp.bounds.insetBy (dx: -bp.lineWidth / 2.0 - 0.5, dy: -bp.lineWidth / 2.0 - 0.5)
       self.setNeedsDisplay (r)
@@ -21,7 +21,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func guideFor (objectIndexes inIndexSet : Set <Int>) {
+  final internal func guideFor (objectIndexes inIndexSet : Set <Int>) {
     let alignmentPointSetArray = self.viewController?.alignmentPointSetArray () ?? []
     let bp = NSBezierPath ()
     for index in inIndexSet {
@@ -67,7 +67,7 @@ extension EBGraphicView {
 
   //····················································································································  //····················································································································
 
-  internal func guideFor (possibleObjectIndex inPossibleIndex : Int?) {
+  final internal func guideFor (possibleObjectIndex inPossibleIndex : Int?) {
     if let idx = inPossibleIndex {
       self.guideFor (objectIndexes: [idx])
     }else{

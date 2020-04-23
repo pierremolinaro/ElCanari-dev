@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func updateOutlet (_ zoom : EBReadOnlyProperty_Int) {
+  final fileprivate func updateOutlet (_ zoom : EBReadOnlyProperty_Int) {
     switch zoom.prop {
     case .empty, .multiple :
       self.mZoomPropertyCache = 100
@@ -24,13 +24,13 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_zoom (_ zoom : EBReadWriteProperty_Int, file : String, line : Int) {
+  final func bind_zoom (_ zoom : EBReadWriteProperty_Int, file : String, line : Int) {
     self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom: zoom, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_zoom () {
+  final func unbind_zoom () {
     self.mZoomController?.unregister ()
     self.mZoomController = nil
   }

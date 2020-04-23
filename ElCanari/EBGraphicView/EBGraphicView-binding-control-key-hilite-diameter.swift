@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  fileprivate func updateOutlet (_ controlKeyHiliteDiameter : EBReadOnlyProperty_Double) {
+  final fileprivate func updateOutlet (_ controlKeyHiliteDiameter : EBReadOnlyProperty_Double) {
     switch controlKeyHiliteDiameter.prop {
     case .empty, .multiple :
       self.set (controlKeyHiliteDiameter: 0.0)
@@ -23,7 +23,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_controlKeyHiliteDiameter (_ controlKeyHiliteDiameter : EBReadOnlyProperty_Double, file : String, line : Int) {
+  final func bind_controlKeyHiliteDiameter (_ controlKeyHiliteDiameter : EBReadOnlyProperty_Double, file : String, line : Int) {
     self.mControlKeyHiliteDiameterController = EBSimpleController (
       observedObjects: [controlKeyHiliteDiameter],
       callBack: { self.updateOutlet (controlKeyHiliteDiameter) }
@@ -32,7 +32,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_controlKeyHiliteDiameter () {
+  final func unbind_controlKeyHiliteDiameter () {
     self.mControlKeyHiliteDiameterController?.unregister ()
     self.mControlKeyHiliteDiameterController = nil
   }

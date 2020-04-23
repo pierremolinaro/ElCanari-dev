@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+  final func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
     self.mHorizontalFlipController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateHorizontalFlip (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_horizontalFlip () {
+  final func unbind_horizontalFlip () {
     self.mHorizontalFlipController?.unregister ()
     self.mHorizontalFlipController = nil
   }
 
   //····················································································································
 
-  private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
+  final private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
     var horizontalFlip = false
     switch model.prop {
     case .empty, .multiple :

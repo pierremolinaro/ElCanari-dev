@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
+  final func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
     self.mBackColorController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackColor (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_backColor () {
+  final func unbind_backColor () {
     mBackColorController?.unregister ()
     mBackColorController = nil
   }
 
   //····················································································································
 
-  private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
+  final private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
     switch model.prop {
     case .empty :
       break

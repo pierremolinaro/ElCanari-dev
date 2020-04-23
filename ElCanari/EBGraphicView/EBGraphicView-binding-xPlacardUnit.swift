@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_xPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+  final func bind_xPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mXPlacardUnitController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateXPlacardUnit (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_xPlacardUnit () {
+  final func unbind_xPlacardUnit () {
     self.mXPlacardUnitController?.unregister ()
     self.mXPlacardUnitController = nil
   }
 
   //····················································································································
 
-  private func updateXPlacardUnit (from model : EBReadOnlyProperty_Int) {
+  final private func updateXPlacardUnit (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty, .multiple :
       self.set (XPlacardUnit: 2286) // mils

@@ -20,7 +20,7 @@ extension EBGraphicView {
   // MARK: -
   //····················································································································
 
-  internal func defineToolTips () {
+  final internal func defineToolTips () {
     self.removeAllToolTips ()
     for shape in self.objectDisplayArray {
       shape.installToolTips (toView: self)

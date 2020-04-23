@@ -10,7 +10,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func keyDown (with inEvent : NSEvent) {
+  final override func keyDown (with inEvent : NSEvent) {
     let amount : Int = inEvent.modifierFlags.contains (.shift)
       ? self.shiftArrowKeyMagnitude
       : self.arrowKeyMagnitude
@@ -49,7 +49,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  private func wantsToTranslateSelection (byX inDx : Int, byY inDy : Int) -> Bool {
+  final private func wantsToTranslateSelection (byX inDx : Int, byY inDy : Int) -> Bool {
     var accepted = true
     for object in self.viewController?.selectedGraphicObjectSet ?? [] {
       if !object.acceptToTranslate (xBy: inDx, yBy: inDy) {

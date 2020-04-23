@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func bind_verticalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+  final func bind_verticalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
     self.mVerticalFlipController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateVerticalFlip (from: model) }
@@ -21,14 +21,14 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func unbind_verticalFlip () {
+  final func unbind_verticalFlip () {
     self.mVerticalFlipController?.unregister ()
     self.mVerticalFlipController = nil
   }
 
   //····················································································································
 
-  private func updateVerticalFlip (from model : EBReadOnlyProperty_Bool) {
+  final private func updateVerticalFlip (from model : EBReadOnlyProperty_Bool) {
     switch model.prop {
     case .empty :
       self.setVerticalFlip (false)

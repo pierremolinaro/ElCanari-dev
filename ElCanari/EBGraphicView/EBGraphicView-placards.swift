@@ -10,7 +10,7 @@ extension EBGraphicView {
 
  //····················································································································
 
-  fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inScrollView : NSScrollView) {
+  final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inScrollView : NSScrollView) {
     if let zoomPopUpButton = self.mZoomPopUpButton {
       let minMagnification = inScrollView.minMagnification
       let maxMagnification = inScrollView.maxMagnification
@@ -25,7 +25,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc fileprivate func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
+  @objc final fileprivate func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
     let actualZoom = inSender.tag
     self.mZoomController?.updateModel (self, actualZoom)
     self.mZoomPropertyCache = actualZoom
@@ -34,7 +34,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func installPlacards () {
+  final internal func installPlacards () {
     if let scrollView = self.enclosingScrollView as? EBScrollView {
       self.installZoomPopUpButton (scrollView)
       self.installXYplacards (scrollView)
@@ -44,7 +44,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func installZoomPopUpButton (_ inScrollView : EBScrollView) {
+  final internal func installZoomPopUpButton (_ inScrollView : EBScrollView) {
     if self.mZoomPopUpButton == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
       let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
@@ -93,7 +93,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  private func installXYplacards (_ inScrollView : EBScrollView) {
+  final private func installXYplacards (_ inScrollView : EBScrollView) {
     if self.mXPlacard == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
       let xPlacard = NSTextField (frame: r)
@@ -122,7 +122,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func updateXYplacards (_ inLocationInView : NSPoint) {
+  final internal func updateXYplacards (_ inLocationInView : NSPoint) {
     let x = stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
     let y = stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
     self.mXPlacard?.stringValue = "X = " + x
@@ -131,7 +131,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal func clearXYplacards () {
+  final internal func clearXYplacards () {
     self.mXPlacard?.stringValue = ""
     self.mYPlacard?.stringValue = ""
   }
@@ -140,7 +140,7 @@ extension EBGraphicView {
   // Live scrolling notification is used for updating XY placards
   //····················································································································
 
-  private func installLiveScrollingNotification () {
+  final private func installLiveScrollingNotification () {
     if let scrollView = self.enclosingScrollView {
       let nc = NotificationCenter.default
       nc.addObserver (
@@ -154,7 +154,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc private func performLiveScrolling (_ inNotification : Notification) {
+  @objc final private func performLiveScrolling (_ inNotification : Notification) {
     if let myWindow = self.window {
       let mouseLocationInScreen = NSEvent.mouseLocation
     //--- Note: NSWindow.convertPoint (fromScreen:) is available from 10.12

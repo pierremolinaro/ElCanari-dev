@@ -798,7 +798,7 @@ fileprivate final class EBShapeElement : Hashable {
     case .outside (_) :
       ()
     }
-    return r //.insetBy (dx: -1.0, dy: -1.0)
+    return r
   }
 
   //····················································································································
