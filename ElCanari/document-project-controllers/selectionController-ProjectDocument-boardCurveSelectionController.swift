@@ -75,6 +75,26 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //····················································································································
 
   //····················································································································
+  //   Selection observable property: mNextX
+  //····················································································································
+
+  var mNextX_property = EBPropertyProxy_Int ()
+
+  var mNextX_property_selection : EBSelection <Int> {
+    return self.mNextX_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mNextY
+  //····················································································································
+
+  var mNextY_property = EBPropertyProxy_Int ()
+
+  var mNextY_property_selection : EBSelection <Int> {
+    return self.mNextY_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: mPrevious
   //····················································································································
 
@@ -168,6 +188,8 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     self.bind_property_mCPX2 (model: model)
     self.bind_property_mCPY1 (model: model)
     self.bind_property_mCPY2 (model: model)
+    self.bind_property_mNextX (model: model)
+    self.bind_property_mNextY (model: model)
     self.bind_property_mShape (model: model)
     self.bind_property_mX (model: model)
     self.bind_property_mY (model: model)
@@ -208,6 +230,16 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     self.mCPY2_property.mWriteModelFunction = nil 
     self.mCPY2_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mCPY2 (self.mCPY2_property)
+  //--- mNextX
+    self.mNextX_property.mReadModelFunction = nil 
+    self.mNextX_property.mWriteModelFunction = nil 
+    self.mNextX_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mNextX (self.mNextX_property)
+  //--- mNextY
+    self.mNextY_property.mReadModelFunction = nil 
+    self.mNextY_property.mWriteModelFunction = nil 
+    self.mNextY_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mNextY (self.mNextY_property)
   //--- mShape
     self.mShape_property.mReadModelFunction = nil 
     self.mShape_property.mWriteModelFunction = nil 
@@ -306,6 +338,22 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       view: view,
       observerExplorer: &self.mCPY2_property.mObserverExplorer,
       valueExplorer: &self.mCPY2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNextX",
+      idx: self.mNextX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNextX_property.mObserverExplorer,
+      valueExplorer: &self.mNextX_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNextY",
+      idx: self.mNextY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNextY_property.mObserverExplorer,
+      valueExplorer: &self.mNextY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mShape",
@@ -730,6 +778,146 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
         case .single (let v) :
           for object in v {
             let result = object.mCPY2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_mNextX (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_mNextX (self.mNextX_property)
+    self.mNextX_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mNextX_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNextX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mNextX_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mNextX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mNextX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_mNextY (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_mNextY (self.mNextY_property)
+    self.mNextY_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mNextY_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNextY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mNextY_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mNextY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mNextY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

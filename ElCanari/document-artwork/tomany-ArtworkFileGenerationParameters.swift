@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawBoardLimits.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -147,7 +147,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawInternalBoardLimits.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -261,7 +261,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -375,7 +375,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -432,7 +432,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -489,7 +489,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -546,7 +546,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPadHolesInPDF.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -603,7 +603,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPadsTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -660,7 +660,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPadsBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -717,7 +717,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -774,7 +774,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -831,7 +831,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -888,7 +888,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -945,7 +945,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksTopSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1002,7 +1002,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksBottomSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1059,7 +1059,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_drawVias (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawVias.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1116,7 +1116,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_fileExtension (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_fileExtension.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1173,7 +1173,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_horizontalMirror.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1230,7 +1230,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_name.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1287,7 +1287,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1344,7 +1344,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padHoleDiameterInPDF.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1732,7 +1732,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

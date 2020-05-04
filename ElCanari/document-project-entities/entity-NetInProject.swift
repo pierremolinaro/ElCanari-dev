@@ -131,7 +131,7 @@ class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-   let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false)
+  let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false)
 
   //····················································································································
 

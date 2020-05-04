@@ -62,7 +62,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_mFirstX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFirstX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -75,7 +75,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_mFirstX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFirstX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -132,7 +132,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFirstY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -145,7 +145,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFirstY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -202,7 +202,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFirstColor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -215,7 +215,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFirstColor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -272,7 +272,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSecondDx.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -285,7 +285,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSecondDx.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -342,7 +342,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSecondDy.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -355,7 +355,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSecondDy.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -412,7 +412,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSecondColor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -425,7 +425,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSecondColor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -482,7 +482,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -495,7 +495,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -551,7 +551,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -564,7 +564,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

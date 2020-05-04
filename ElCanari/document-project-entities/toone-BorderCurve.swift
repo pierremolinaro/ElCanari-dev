@@ -72,7 +72,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -85,7 +85,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -142,7 +142,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -155,7 +155,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -212,7 +212,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPX1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -225,7 +225,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPX1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -282,7 +282,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPY1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -295,7 +295,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPY1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -352,7 +352,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPX2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -365,7 +365,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPX2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -422,7 +422,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPY2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -435,7 +435,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPY2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -492,7 +492,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -505,7 +505,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShape.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -530,6 +530,146 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShape_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNextX' proxy property
+  //····················································································································
+
+  private var mObserversOf_mNextX = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNextX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNextX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNextX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNextX.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mNextX_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNextX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNextX.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mNextX_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNextX_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNextX.apply { (_ observer : EBEvent) in
+        managedObject.mNextX_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNextX_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mNextX.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNextX_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNextY' proxy property
+  //····················································································································
+
+  private var mObserversOf_mNextY = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNextY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNextY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNextY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNextY.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mNextY_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNextY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNextY.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mNextY_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNextY_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNextY.apply { (_ observer : EBEvent) in
+        managedObject.mNextY_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNextY_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mNextY.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNextY_property.removeEBObserver (observer)
       }
     }
   }
@@ -562,7 +702,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_p2Xstring.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -575,7 +715,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_p2Xstring.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -631,7 +771,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_p2Ystring.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -644,7 +784,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_p2Ystring.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -700,7 +840,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -713,7 +853,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -769,7 +909,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -782,7 +922,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -838,7 +978,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_isLine (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isLine.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -851,7 +991,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_isLine (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isLine.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -907,7 +1047,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -920,7 +1060,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

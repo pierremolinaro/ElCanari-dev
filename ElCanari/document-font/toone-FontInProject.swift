@@ -60,7 +60,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNominalSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -73,7 +73,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNominalSize.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -130,7 +130,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -143,7 +143,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -200,7 +200,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontVersion.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -213,7 +213,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontVersion.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -270,7 +270,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -283,7 +283,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -340,7 +340,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -353,7 +353,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_versionString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -409,7 +409,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -422,7 +422,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sizeString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -478,7 +478,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -491,7 +491,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

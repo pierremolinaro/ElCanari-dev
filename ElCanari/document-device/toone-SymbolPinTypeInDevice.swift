@@ -68,7 +68,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mPinX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -81,7 +81,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mPinX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -138,7 +138,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mPinY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -151,7 +151,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mPinY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -208,7 +208,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -221,7 +221,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mXName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -278,7 +278,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -291,7 +291,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mYName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -348,7 +348,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -361,7 +361,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -418,7 +418,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameHorizontalAlignment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -431,7 +431,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNameHorizontalAlignment.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -488,7 +488,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinNameIsDisplayedInSchematics.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -501,7 +501,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinNameIsDisplayedInSchematics.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -558,7 +558,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXNumber.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -571,7 +571,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mXNumber.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -628,7 +628,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mYNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYNumber.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -641,7 +641,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mYNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mYNumber.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -698,7 +698,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNumberHorizontalAlignment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -711,7 +711,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNumberHorizontalAlignment.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -768,7 +768,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func addEBObserverOf_nameShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_nameShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -781,7 +781,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   final func removeEBObserverOf_nameShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_nameShape.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

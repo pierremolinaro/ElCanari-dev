@@ -52,7 +52,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -65,7 +65,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -122,7 +122,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -135,7 +135,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileData.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -192,7 +192,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -205,7 +205,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_fileSize.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

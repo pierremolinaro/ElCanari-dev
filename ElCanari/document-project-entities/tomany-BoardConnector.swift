@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mComponentPadName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -157,7 +157,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPadIndex.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -214,7 +214,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -328,7 +328,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDefaultHoleDiameterUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -385,7 +385,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -442,7 +442,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameterUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -499,7 +499,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mUsesCustomHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -556,7 +556,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDefaultPadDiameterUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -613,7 +613,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -670,7 +670,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameterUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -727,7 +727,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mUsesCustomPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -784,7 +784,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_location (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_location.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -840,7 +840,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameFromComponentPad.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -896,7 +896,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -952,7 +952,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_side (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_side.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1008,7 +1008,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isVia.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1064,7 +1064,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1120,7 +1120,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaDefaultHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1176,7 +1176,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaDefaultPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1232,7 +1232,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameFromTracks.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1288,7 +1288,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1344,7 +1344,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedToComponent.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1400,7 +1400,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_actualHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1456,7 +1456,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_actualPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1512,7 +1512,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1568,7 +1568,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1624,7 +1624,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2011,7 +2011,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

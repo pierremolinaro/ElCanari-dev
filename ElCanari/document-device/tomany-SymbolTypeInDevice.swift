@@ -62,7 +62,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mTypeName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mVersion.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileData.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFilledBezierPath.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_versionString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -403,7 +403,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_instanceCount.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -459,7 +459,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_documentSizeString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -515,7 +515,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func removeEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinNameShape.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -902,7 +902,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

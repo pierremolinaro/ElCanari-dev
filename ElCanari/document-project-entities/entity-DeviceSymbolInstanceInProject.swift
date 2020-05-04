@@ -72,7 +72,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To one property: mSymbolType
   //····················································································································
 
-   let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false)
+  let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false)
 
   //····················································································································
 

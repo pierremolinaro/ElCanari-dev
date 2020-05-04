@@ -62,7 +62,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -75,7 +75,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -132,7 +132,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -145,7 +145,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -202,7 +202,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -215,7 +215,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -272,7 +272,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -285,7 +285,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -342,7 +342,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -355,7 +355,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -411,7 +411,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -424,7 +424,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -480,7 +480,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -493,7 +493,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -549,7 +549,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -562,7 +562,7 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

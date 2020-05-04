@@ -74,7 +74,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolPinName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -188,7 +188,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -245,7 +245,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_location (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_location.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -301,7 +301,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -413,7 +413,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasNet.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_canMove.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -525,7 +525,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_wireColor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolRotation.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -637,7 +637,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolNameNetName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -693,7 +693,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isConnected.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -749,7 +749,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_status (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_status.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -805,7 +805,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -861,7 +861,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func removeEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netInfoForPoint.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1248,7 +1248,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

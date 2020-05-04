@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNominalSize.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontVersion.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_versionString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sizeString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -785,7 +785,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

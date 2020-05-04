@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -169,7 +169,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connexionErrors.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -724,7 +724,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

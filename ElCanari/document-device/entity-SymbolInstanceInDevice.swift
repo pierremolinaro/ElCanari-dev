@@ -158,7 +158,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To one property: mType
   //····················································································································
 
-   let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false)
+  let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false)
 
   //····················································································································
 

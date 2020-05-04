@@ -79,7 +79,7 @@ class LabelInSchematic : SchematicObject,
   //   To one property: mPoint
   //····················································································································
 
-   let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
+  let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 

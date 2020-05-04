@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_codePoint.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_advance.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_segmentArrayForDrawing.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_gerberCode.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -843,7 +843,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

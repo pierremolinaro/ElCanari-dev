@@ -94,7 +94,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSelectedPageIndex.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -151,7 +151,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mTitle (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mTitle.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mImageData (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mImageData.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -265,7 +265,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mPrefix (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPrefix.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mComments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mComments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -379,7 +379,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayZoom.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayHorizontalFlip.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -493,7 +493,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayVerticalFlip.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -550,7 +550,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShowPackages.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -607,7 +607,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShowPackagePadNumbers.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -664,7 +664,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShowPackageFrontPads.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -721,7 +721,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShowPackageBackPads.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -778,7 +778,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayZoom.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -835,7 +835,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayHorizontalFlip.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -892,7 +892,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayVerticalFlip.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -949,7 +949,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_imageIsValid.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1005,7 +1005,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inconsistentPackagePadNameSetsMessage.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1061,7 +1061,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inconsistentSymbolNameSetMessage.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1117,7 +1117,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1173,7 +1173,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_packagePadNameSetsAreConsistent.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1229,7 +1229,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolNameAreConsistent.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1285,7 +1285,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolTypeNames.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1341,7 +1341,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_unconnectedPads.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1397,7 +1397,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_assignedPadProxies (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_assignedPadProxies.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1453,7 +1453,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1840,7 +1840,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

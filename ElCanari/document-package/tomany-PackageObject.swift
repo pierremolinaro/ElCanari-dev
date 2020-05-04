@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -220,7 +220,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   final func removeEBObserverOf_knobSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_knobSize.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -607,7 +607,7 @@ class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

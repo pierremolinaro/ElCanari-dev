@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -414,7 +414,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_lengthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_lengthUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -641,7 +641,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -697,7 +697,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -753,7 +753,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -809,7 +809,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   final func removeEBObserverOf_lengthInCanariUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_lengthInCanariUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1196,7 +1196,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

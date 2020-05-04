@@ -62,7 +62,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_codePoint.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -75,7 +75,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_codePoint.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -132,7 +132,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_advance (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_advance.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -145,7 +145,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_advance.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -202,7 +202,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -215,7 +215,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -272,7 +272,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -285,7 +285,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -342,7 +342,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_segmentArrayForDrawing.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -355,7 +355,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_segmentArrayForDrawing.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -411,7 +411,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gerberCode.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -424,7 +424,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_gerberCode.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -480,7 +480,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -493,7 +493,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -549,7 +549,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -562,7 +562,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

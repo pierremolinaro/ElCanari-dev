@@ -56,7 +56,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -69,7 +69,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func removeEBObserverOf_pinName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -125,7 +125,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -138,7 +138,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -194,7 +194,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -207,7 +207,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func removeEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -263,7 +263,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -276,7 +276,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isConnected.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -332,7 +332,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_numberShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -345,7 +345,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final func removeEBObserverOf_numberShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_numberShape.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

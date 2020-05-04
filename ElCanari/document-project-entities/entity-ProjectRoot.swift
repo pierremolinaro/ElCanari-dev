@@ -2852,7 +2852,7 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mSelectedSheet
   //····················································································································
 
-   let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -3051,7 +3051,7 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-   let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+  let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 

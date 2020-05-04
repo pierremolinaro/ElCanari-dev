@@ -62,7 +62,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -75,7 +75,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNetName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -132,7 +132,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -145,7 +145,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -201,7 +201,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassTrackWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -214,7 +214,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassTrackWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -270,7 +270,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -283,7 +283,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassViaHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -339,7 +339,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -352,7 +352,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassViaPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -408,7 +408,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_wireColor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -421,7 +421,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_wireColor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -477,7 +477,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netSchematicPointsInfo.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -490,7 +490,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netSchematicPointsInfo.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -546,7 +546,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func addEBObserverOf_trackCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackCount.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -559,7 +559,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final func removeEBObserverOf_trackCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_trackCount.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

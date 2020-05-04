@@ -66,7 +66,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -79,7 +79,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCenterX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -136,7 +136,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -149,7 +149,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCenterY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -206,7 +206,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -219,7 +219,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -276,7 +276,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -289,7 +289,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHeight.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -346,7 +346,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -359,7 +359,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -416,7 +416,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -429,7 +429,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -486,7 +486,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -499,7 +499,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShape.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -556,7 +556,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStyle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -569,7 +569,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mStyle (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mStyle.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -626,7 +626,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_mName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -639,7 +639,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_mName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -696,7 +696,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -709,7 +709,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

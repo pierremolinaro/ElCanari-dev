@@ -1698,7 +1698,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   To one property: mModelImageDoublePoint
   //····················································································································
 
-   let mModelImageDoublePoint_property = StoredObject_PackageModelImageDoublePoint (usedForSignature: false)
+  let mModelImageDoublePoint_property = StoredObject_PackageModelImageDoublePoint (usedForSignature: false)
 
   //····················································································································
 

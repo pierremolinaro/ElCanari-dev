@@ -524,7 +524,7 @@ class BoardConnector : BoardObject,
   //   To one property: mComponent
   //····················································································································
 
-   let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
+  let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 

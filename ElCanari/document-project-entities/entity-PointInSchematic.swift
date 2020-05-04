@@ -245,7 +245,7 @@ class PointInSchematic : EBManagedObject,
   //   To one property: mSymbol
   //····················································································································
 
-   let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false)
+  let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -283,7 +283,7 @@ class PointInSchematic : EBManagedObject,
   //   To one property: mNet
   //····················································································································
 
-   let mNet_property = StoredObject_NetInProject (usedForSignature: false)
+  let mNet_property = StoredObject_NetInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -321,7 +321,7 @@ class PointInSchematic : EBManagedObject,
   //   To one property: mNC
   //····················································································································
 
-   let mNC_property = StoredObject_NCInSchematic (usedForSignature: false)
+  let mNC_property = StoredObject_NCInSchematic (usedForSignature: false)
 
   //····················································································································
 
@@ -520,7 +520,7 @@ class PointInSchematic : EBManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-   let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
 
   //····················································································································
 

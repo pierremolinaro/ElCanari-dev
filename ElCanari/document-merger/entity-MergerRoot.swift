@@ -1159,7 +1159,7 @@ class MergerRoot : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-   let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+  let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 

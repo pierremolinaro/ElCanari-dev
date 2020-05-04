@@ -62,7 +62,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCenterX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCenterY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHeight.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShape.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -461,7 +461,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_mStyle (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mStyle.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -905,7 +905,7 @@ class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInP
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

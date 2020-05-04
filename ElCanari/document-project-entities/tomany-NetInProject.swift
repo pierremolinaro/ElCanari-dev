@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNetName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -173,7 +173,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassTrackWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassViaHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -285,7 +285,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassViaPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_wireColor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -397,7 +397,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netSchematicPointsInfo.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -453,7 +453,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func removeEBObserverOf_trackCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_trackCount.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -840,7 +840,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

@@ -84,7 +84,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetClassName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -97,7 +97,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNetClassName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -154,7 +154,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetClassColor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNetClassColor.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mTrackWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTrackWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -237,7 +237,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mTrackWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mTrackWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -294,7 +294,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTrackWidthUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -307,7 +307,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mTrackWidthUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -364,7 +364,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -377,7 +377,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -434,7 +434,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -447,7 +447,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -504,7 +504,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -517,7 +517,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -574,7 +574,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -587,7 +587,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -644,7 +644,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mAllowTracksOnFrontSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -657,7 +657,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mAllowTracksOnFrontSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -714,7 +714,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mAllowTracksOnBackSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -727,7 +727,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mAllowTracksOnBackSide.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -784,7 +784,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_trackWidthString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackWidthString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -797,7 +797,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_trackWidthString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_trackWidthString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -853,7 +853,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -866,7 +866,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaHoleDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -922,7 +922,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -935,7 +935,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaPadDiameter.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -991,7 +991,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_allowTracksOnFrontSideString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1004,7 +1004,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_allowTracksOnFrontSideString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1060,7 +1060,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_allowTracksOnBackSideString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1073,7 +1073,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_allowTracksOnBackSideString.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1129,7 +1129,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1142,7 +1142,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_canRemove.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1198,7 +1198,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netUsage.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1211,7 +1211,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_netUsage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netUsage.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1267,7 +1267,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netsDescription.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1280,7 +1280,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_netsDescription (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netsDescription.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1336,7 +1336,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netWarningCount.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1349,7 +1349,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   final func removeEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netWarningCount.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

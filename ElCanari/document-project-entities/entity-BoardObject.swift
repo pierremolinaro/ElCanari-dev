@@ -84,7 +84,7 @@ class BoardObject : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
+  let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
 
   //····················································································································
 

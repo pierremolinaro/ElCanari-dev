@@ -558,8 +558,14 @@ document ProjectDocument root ProjectRoot {
   ;
 
   outlet EBTextObserverField mBoardCurveX2TextField $valueObserver #boardCurveSelectionController.p2Xstring ;
+  outlet CanariDimensionTextField mBoardCurvePointX2TextField
+     $dimensionAndUnit #boardCurveSelectionController.mNextX, root.mBoardSelectedCurveDisplayUnit
+  ;
 
   outlet EBTextObserverField mBoardCurveY2TextField $valueObserver #boardCurveSelectionController.p2Ystring ;
+  outlet CanariDimensionTextField mBoardCurvePointY2TextField
+     $dimensionAndUnit #boardCurveSelectionController.mNextY, root.mBoardSelectedCurveDisplayUnit
+  ;
 
   outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardCurveSelectionController.mShape ;
 

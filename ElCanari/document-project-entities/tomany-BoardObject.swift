@@ -64,7 +64,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isPlacedInBoard.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isVia.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -232,7 +232,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_trackLength (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_trackLength.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_componentName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -568,7 +568,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_errorOrWarningIssueSize.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -955,7 +955,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

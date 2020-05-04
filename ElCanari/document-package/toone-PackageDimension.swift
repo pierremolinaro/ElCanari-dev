@@ -80,7 +80,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -93,7 +93,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -150,7 +150,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -163,7 +163,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -220,7 +220,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -233,7 +233,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -290,7 +290,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_xDimension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xDimension.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -303,7 +303,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_xDimension (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_xDimension.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -360,7 +360,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_yDimension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yDimension.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -373,7 +373,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_yDimension (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_yDimension.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -430,7 +430,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -443,7 +443,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -500,7 +500,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -513,7 +513,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -570,7 +570,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -583,7 +583,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -640,7 +640,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -653,7 +653,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2Unit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -710,7 +710,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xDimensionUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -723,7 +723,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_xDimensionUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -780,7 +780,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yDimensionUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -793,7 +793,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_yDimensionUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -850,7 +850,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_distanceUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -863,7 +863,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_distanceUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -920,7 +920,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -933,7 +933,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -990,7 +990,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_distanceInCanariUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1003,7 +1003,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_distanceInCanariUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1059,7 +1059,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1072,7 +1072,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1128,7 +1128,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1141,7 +1141,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1197,7 +1197,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1210,7 +1210,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :

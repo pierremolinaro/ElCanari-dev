@@ -791,7 +791,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mDevice
   //····················································································································
 
-   let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false)
+  let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -852,7 +852,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mSelectedPackage
   //····················································································································
 
-   let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false)
+  let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1028,7 +1028,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mNameFont
   //····················································································································
 
-   let mNameFont_property = StoredObject_FontInProject (usedForSignature: false)
+  let mNameFont_property = StoredObject_FontInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1066,7 +1066,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mValueFont
   //····················································································································
 
-   let mValueFont_property = StoredObject_FontInProject (usedForSignature: false)
+  let mValueFont_property = StoredObject_FontInProject (usedForSignature: false)
 
   //····················································································································
 

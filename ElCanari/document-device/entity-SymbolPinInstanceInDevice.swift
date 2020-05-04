@@ -49,7 +49,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mSymbolInstance
   //····················································································································
 
-   let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice (usedForSignature: false)
+  let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice (usedForSignature: false)
 
   //····················································································································
 
@@ -87,7 +87,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mType
   //····················································································································
 
-   let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false)
+  let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false)
 
   //····················································································································
 
@@ -125,7 +125,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mPadProxy
   //····················································································································
 
-   let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false)
+  let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false)
 
   //····················································································································
 

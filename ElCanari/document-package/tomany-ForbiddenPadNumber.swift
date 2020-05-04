@@ -46,7 +46,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padNumber.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -434,7 +434,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

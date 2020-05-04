@@ -56,7 +56,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-   let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
 
   //····················································································································
 

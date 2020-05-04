@@ -262,7 +262,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false)
+  let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false)
 
   //····················································································································
 

@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_name.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelWidthUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -319,7 +319,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelHeight.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -376,7 +376,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelHeightUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -433,7 +433,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_zoom.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -490,7 +490,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelLimitWidth.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -547,7 +547,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelLimitWidthUnit.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -604,7 +604,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_artworkName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -661,7 +661,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendLinesSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -717,7 +717,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendLinesSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -773,7 +773,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -829,7 +829,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendTextsSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -885,7 +885,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -941,7 +941,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLayoutTextsSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -997,7 +997,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1053,7 +1053,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendTextsSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1109,7 +1109,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1165,7 +1165,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLayoutTextsSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1221,7 +1221,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1277,7 +1277,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1333,7 +1333,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1389,7 +1389,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drillSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1445,7 +1445,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_holesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1501,7 +1501,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_viaShapes (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaShapes.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1557,7 +1557,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viasBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1613,7 +1613,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPadArray.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1669,7 +1669,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPadsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1725,7 +1725,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPadArray.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1781,7 +1781,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPadsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1837,7 +1837,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_boardLimits (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_boardLimits.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1893,7 +1893,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_boardLimitsBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1949,7 +1949,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentNameSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2005,7 +2005,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2061,7 +2061,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentNameSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2117,7 +2117,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2173,7 +2173,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentValueSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2229,7 +2229,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2285,7 +2285,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentValueSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2341,7 +2341,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2397,7 +2397,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backTrackSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2453,7 +2453,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backTracksBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2509,7 +2509,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontTrackSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2565,7 +2565,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontTracksBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2621,7 +2621,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPackagesSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2677,7 +2677,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPackagesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2733,7 +2733,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPackagesSegments.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2789,7 +2789,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPackagesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2845,7 +2845,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_instanceCount.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2901,7 +2901,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2957,7 +2957,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_imageForModel.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -3013,7 +3013,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   final func removeEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_imageForInstances.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -3400,7 +3400,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

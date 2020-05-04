@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -227,7 +227,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -340,7 +340,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -727,7 +727,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

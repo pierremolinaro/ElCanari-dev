@@ -597,7 +597,7 @@ class PackagePad : PackageObject,
   //   To one property: zone
   //····················································································································
 
-   let zone_property = StoredObject_PackageZone (usedForSignature: false)
+  let zone_property = StoredObject_PackageZone (usedForSignature: false)
 
   //····················································································································
 

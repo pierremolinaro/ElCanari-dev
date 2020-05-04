@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mFontSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontSize.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mLayer (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mLayer.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mText (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mText.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -414,7 +414,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mVerticalAlignment.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mRotation.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mWeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWeight.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_mOblique (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mOblique.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -698,7 +698,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -754,7 +754,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_fontName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_fontName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -810,7 +810,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1197,7 +1197,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

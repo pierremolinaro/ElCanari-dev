@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasNet.remove (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -665,7 +665,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :

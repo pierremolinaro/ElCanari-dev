@@ -275,7 +275,7 @@ class SlavePadInDevice : EBManagedObject,
   //   To one property: mMasterPad
   //····················································································································
 
-   let mMasterPad_property = StoredObject_MasterPadInDevice (usedForSignature: false)
+  let mMasterPad_property = StoredObject_MasterPadInDevice (usedForSignature: false)
 
   //····················································································································
 

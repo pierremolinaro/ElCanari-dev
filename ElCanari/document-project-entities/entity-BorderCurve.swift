@@ -48,6 +48,18 @@ protocol BorderCurve_mShape : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BorderCurve_mNextX : class {
+  var mNextX : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BorderCurve_mNextY : class {
+  var mNextY : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BorderCurve_p2Xstring : class {
   var p2Xstring : String? { get }
 }
@@ -94,6 +106,8 @@ class BorderCurve : EBGraphicManagedObject,
          BorderCurve_mCPX2,
          BorderCurve_mCPY2,
          BorderCurve_mShape,
+         BorderCurve_mNextX,
+         BorderCurve_mNextY,
          BorderCurve_p2Xstring,
          BorderCurve_p2Ystring,
          BorderCurve_descriptor,
@@ -263,10 +277,66 @@ class BorderCurve : EBGraphicManagedObject,
   final var mShape_property_selection : EBSelection <BorderCurveShape> { return self.mShape_property.prop }
 
   //····················································································································
+  //   Atomic proxy property: mNextX
+  //····················································································································
+
+  let mNextX_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var mNextX : Int? {
+    get {
+      switch self.mNextX_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.mNextX_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mNextX_property_selection : EBSelection <Int> { return self.mNextX_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: mNextY
+  //····················································································································
+
+  let mNextY_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var mNextY : Int? {
+    get {
+      switch self.mNextY_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.mNextY_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mNextY_property_selection : EBSelection <Int> { return self.mNextY_property.prop }
+
+  //····················································································································
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
+  let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
 
   //····················································································································
 
@@ -304,7 +374,7 @@ class BorderCurve : EBGraphicManagedObject,
   //   To one property: mNext
   //····················································································································
 
-   let mNext_property = StoredObject_BorderCurve (usedForSignature: false)
+  let mNext_property = StoredObject_BorderCurve (usedForSignature: false)
 
   //····················································································································
 
@@ -342,7 +412,7 @@ class BorderCurve : EBGraphicManagedObject,
   //   To one property: mPrevious
   //····················································································································
 
-   let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false)
+  let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false)
 
   //····················································································································
 
@@ -494,6 +564,36 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShape
     self.mShape_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic proxy property: mNextX
+    self.mNextX_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mNext {
+        return .single (object.mX)
+      }else{
+        return .empty
+      }
+    }
+    self.mNextX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mNext?.mX = inValue
+    }
+    self.mNextX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mNext?.mX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mNext_property.addEBObserverOf_mX (self.mNextX_property)
+  //--- Atomic proxy property: mNextY
+    self.mNextY_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mNext {
+        return .single (object.mY)
+      }else{
+        return .empty
+      }
+    }
+    self.mNextY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mNext?.mY = inValue
+    }
+    self.mNextY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mNext?.mY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mNext_property.addEBObserverOf_mY (self.mNextY_property)
   //--- To one property: mRoot (has opposite to many relationship: mBorderCurves)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -711,6 +811,16 @@ class BorderCurve : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Atomic proxy property: mNextX
+    self.mNextX_property.mReadModelFunction = nil
+    self.mNextX_property.mWriteModelFunction = nil
+    self.mNextX_property.mValidateAndWriteModelFunction = nil
+    self.mNext_property.removeEBObserverOf_mX (self.mNextX_property)
+  //--- Atomic proxy property: mNextY
+    self.mNextY_property.mReadModelFunction = nil
+    self.mNextY_property.mWriteModelFunction = nil
+    self.mNextY_property.mValidateAndWriteModelFunction = nil
+    self.mNext_property.removeEBObserverOf_mY (self.mNextY_property)
     self.mNext_property.removeEBObserverOf_mX (self.p2Xstring_property)
     self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
     self.mNext_property.removeEBObserverOf_mY (self.p2Ystring_property)
@@ -917,6 +1027,12 @@ class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: mShape
     self.mShape_property.mObserverExplorer = nil
     self.mShape_property.mValueExplorer = nil
+  //--- Atomic proxy property: mNextX
+    self.mNextX_property.mObserverExplorer = nil
+    self.mNextX_property.mValueExplorer = nil
+  //--- Atomic proxy property: mNextY
+    self.mNextY_property.mObserverExplorer = nil
+    self.mNextY_property.mValueExplorer = nil
   //--- To one property: mRoot
     self.mRoot_property.mObserverExplorer = nil
     self.mRoot_property.mValueExplorer = nil

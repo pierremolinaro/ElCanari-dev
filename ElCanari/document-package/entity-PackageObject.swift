@@ -65,7 +65,7 @@ class PackageObject : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
+  let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
 
   //····················································································································
 

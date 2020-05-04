@@ -342,7 +342,7 @@ class BoardText : BoardObject,
   //   To one property: mFont
   //····················································································································
 
-   let mFont_property = StoredObject_FontInProject (usedForSignature: false)
+  let mFont_property = StoredObject_FontInProject (usedForSignature: false)
 
   //····················································································································
 
