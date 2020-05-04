@@ -72,30 +72,6 @@ protocol BorderCurve_p2Ystring : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_cp1Xstring : class {
-  var cp1Xstring : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BorderCurve_cp1Ystring : class {
-  var cp1Ystring : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BorderCurve_cp2Xstring : class {
-  var cp2Xstring : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BorderCurve_cp2Ystring : class {
-  var cp2Ystring : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BorderCurve_descriptor : class {
   var descriptor : BorderCurveDescriptor? { get }
 }
@@ -134,10 +110,6 @@ class BorderCurve : EBGraphicManagedObject,
          BorderCurve_p1Ystring,
          BorderCurve_p2Xstring,
          BorderCurve_p2Ystring,
-         BorderCurve_cp1Xstring,
-         BorderCurve_cp1Ystring,
-         BorderCurve_cp2Xstring,
-         BorderCurve_cp2Ystring,
          BorderCurve_descriptor,
          BorderCurve_objectDisplay,
          BorderCurve_isLine,
@@ -511,98 +483,6 @@ class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: cp1Xstring
-  //····················································································································
-
-  let cp1Xstring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var cp1Xstring_property_selection : EBSelection <String> {
-    return self.cp1Xstring_property.prop
-  }
-
-  //····················································································································
-
-  var cp1Xstring : String? {
-    switch self.cp1Xstring_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: cp1Ystring
-  //····················································································································
-
-  let cp1Ystring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var cp1Ystring_property_selection : EBSelection <String> {
-    return self.cp1Ystring_property.prop
-  }
-
-  //····················································································································
-
-  var cp1Ystring : String? {
-    switch self.cp1Ystring_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: cp2Xstring
-  //····················································································································
-
-  let cp2Xstring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var cp2Xstring_property_selection : EBSelection <String> {
-    return self.cp2Xstring_property.prop
-  }
-
-  //····················································································································
-
-  var cp2Xstring : String? {
-    switch self.cp2Xstring_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: cp2Ystring
-  //····················································································································
-
-  let cp2Ystring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var cp2Ystring_property_selection : EBSelection <String> {
-    return self.cp2Ystring_property.prop
-  }
-
-  //····················································································································
-
-  var cp2Ystring : String? {
-    switch self.cp2Ystring_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: descriptor
   //····················································································································
 
@@ -788,102 +668,6 @@ class BorderCurve : EBGraphicManagedObject,
     }
     self.mNext_property.addEBObserverOf_mY (self.p2Ystring_property)
     self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Ystring_property)
-  //--- Atomic property: cp1Xstring
-    self.cp1Xstring_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mCPX1_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mCPX1_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BorderCurve_cp1Xstring (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mCPX1_property.addEBObserver (self.cp1Xstring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Xstring_property)
-  //--- Atomic property: cp1Ystring
-    self.cp1Ystring_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mCPY1_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mCPY1_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BorderCurve_cp1Ystring (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mCPY1_property.addEBObserver (self.cp1Ystring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Ystring_property)
-  //--- Atomic property: cp2Xstring
-    self.cp2Xstring_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mCPX2_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mCPX2_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BorderCurve_cp2Xstring (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mCPX2_property.addEBObserver (self.cp2Xstring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Xstring_property)
-  //--- Atomic property: cp2Ystring
-    self.cp2Ystring_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mCPY2_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mCPY2_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BorderCurve_cp2Ystring (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mCPY2_property.addEBObserver (self.cp2Ystring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Ystring_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1043,14 +827,6 @@ class BorderCurve : EBGraphicManagedObject,
     self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
     self.mNext_property.removeEBObserverOf_mY (self.p2Ystring_property)
     self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Ystring_property)
-    self.mCPX1_property.removeEBObserver (self.cp1Xstring_property)
-    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Xstring_property)
-    self.mCPY1_property.removeEBObserver (self.cp1Ystring_property)
-    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Ystring_property)
-    self.mCPX2_property.removeEBObserver (self.cp2Xstring_property)
-    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Xstring_property)
-    self.mCPY2_property.removeEBObserver (self.cp2Ystring_property)
-    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Ystring_property)
     self.mX_property.removeEBObserver (self.descriptor_property)
     self.mY_property.removeEBObserver (self.descriptor_property)
     self.mNext_property.removeEBObserverOf_mX (self.descriptor_property)
@@ -1184,38 +960,6 @@ class BorderCurve : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.p2Ystring_property.mObserverExplorer,
       valueExplorer: &self.p2Ystring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cp1Xstring",
-      idx: self.cp1Xstring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cp1Xstring_property.mObserverExplorer,
-      valueExplorer: &self.cp1Xstring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cp1Ystring",
-      idx: self.cp1Ystring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cp1Ystring_property.mObserverExplorer,
-      valueExplorer: &self.cp1Ystring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cp2Xstring",
-      idx: self.cp2Xstring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cp2Xstring_property.mObserverExplorer,
-      valueExplorer: &self.cp2Xstring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cp2Ystring",
-      idx: self.cp2Ystring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cp2Ystring_property.mObserverExplorer,
-      valueExplorer: &self.cp2Ystring_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "descriptor",

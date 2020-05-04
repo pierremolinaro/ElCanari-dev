@@ -11,46 +11,6 @@ import Cocoa
 final class SelectionController_ProjectDocument_boardCurveSelectionController : EBObject {
 
   //····················································································································
-  //   Selection observable property: cp1Xstring
-  //····················································································································
-
-  var cp1Xstring_property = EBTransientProperty_String ()
-
-  var cp1Xstring_property_selection : EBSelection <String> {
-    return self.cp1Xstring_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: cp1Ystring
-  //····················································································································
-
-  var cp1Ystring_property = EBTransientProperty_String ()
-
-  var cp1Ystring_property_selection : EBSelection <String> {
-    return self.cp1Ystring_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: cp2Xstring
-  //····················································································································
-
-  var cp2Xstring_property = EBTransientProperty_String ()
-
-  var cp2Xstring_property_selection : EBSelection <String> {
-    return self.cp2Xstring_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: cp2Ystring
-  //····················································································································
-
-  var cp2Ystring_property = EBTransientProperty_String ()
-
-  var cp2Ystring_property_selection : EBSelection <String> {
-    return self.cp2Ystring_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: descriptor
   //····················································································································
 
@@ -222,10 +182,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   func bind_selection (model : ReadOnlyArrayOf_BorderCurve, file:String, line:Int) {
     self.mModel = model
-    self.bind_property_cp1Xstring (model: model)
-    self.bind_property_cp1Ystring (model: model)
-    self.bind_property_cp2Xstring (model: model)
-    self.bind_property_cp2Ystring (model: model)
     self.bind_property_descriptor (model: model)
     self.bind_property_isLine (model: model)
     self.bind_property_mCPX1 (model: model)
@@ -248,18 +204,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //····················································································································
 
   func unbind_selection () {
-  //--- cp1Xstring
-    self.cp1Xstring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_cp1Xstring (self.cp1Xstring_property)
-  //--- cp1Ystring
-    self.cp1Ystring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_cp1Ystring (self.cp1Ystring_property)
-  //--- cp2Xstring
-    self.cp2Xstring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_cp2Xstring (self.cp2Xstring_property)
-  //--- cp2Ystring
-    self.cp2Ystring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_cp2Ystring (self.cp2Ystring_property)
   //--- descriptor
     self.descriptor_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_descriptor (self.descriptor_property)
@@ -464,166 +408,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     closeButton!.target = nil
     mExplorerWindow?.orderOut (nil)
     mExplorerWindow = nil
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cp1Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp1Xstring (self.cp1Xstring_property)
-    self.cp1Xstring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cp1Xstring_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cp1Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp1Ystring (self.cp1Ystring_property)
-    self.cp1Ystring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cp1Ystring_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cp2Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp2Xstring (self.cp2Xstring_property)
-    self.cp2Xstring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cp2Xstring_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cp2Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp2Ystring (self.cp2Ystring_property)
-    self.cp2Ystring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cp2Ystring_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
   }
 
   //···················································································································*

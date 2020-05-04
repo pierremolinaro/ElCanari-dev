@@ -45,11 +45,6 @@ graphic entity BorderCurve {
   transient String p1Ystring dependsFrom self.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
   transient String p2Xstring dependsFrom self.mNext.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
   transient String p2Ystring dependsFrom self.mNext.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  
-  transient String cp1Xstring dependsFrom self.mCPX1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String cp1Ystring dependsFrom self.mCPY1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String cp2Xstring dependsFrom self.mCPX2, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String cp2Ystring dependsFrom self.mCPY2, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

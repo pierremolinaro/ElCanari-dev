@@ -53,6 +53,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mBoardLimitsBoundingBoxUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardPointsBoundingBoxUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSelectedCurveDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mBoardLimitControlPointsDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardShape_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRectangularBoardWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRectangularBoardWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -161,6 +162,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mBoardLimitsBoundingBoxUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardPointsBoundingBoxUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSelectedCurveDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mBoardLimitControlPointsDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardShape_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRectangularBoardWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRectangularBoardWidthUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -2394,6 +2396,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardLimitControlPointsDisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardLimitControlPointsDisplayUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardLimitControlPointsDisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardLimitControlPointsDisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardLimitControlPointsDisplayUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardLimitControlPointsDisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBEvent) in
+        managedObject.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardLimitControlPointsDisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardLimitControlPointsDisplayUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -7528,6 +7587,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mBoardLimitsBoundingBoxUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardPointsBoundingBoxUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitControlPointsDisplayUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardShape (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRectangularBoardWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRectangularBoardWidthUnit (self.mObserverForWritingPreferences)

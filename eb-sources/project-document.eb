@@ -554,10 +554,23 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardCurveSelectionController.mShape ;
 
-  outlet EBTextObserverField mBoardCurveCPX1TextField $valueObserver #boardCurveSelectionController.cp1Xstring ;
-  outlet EBTextObserverField mBoardCurveCPY1TextField $valueObserver #boardCurveSelectionController.cp1Ystring ;
-  outlet EBTextObserverField mBoardCurveCPX2TextField $valueObserver #boardCurveSelectionController.cp2Xstring ;
-  outlet EBTextObserverField mBoardCurveCPY2TextField $valueObserver #boardCurveSelectionController.cp2Ystring ;
+  outlet EBPopUpButton mBoardCurveControlPointsUnitPopUp $selectedTag root.mBoardLimitControlPointsDisplayUnit ;
+
+  outlet CanariDimensionTextField mBoardCurveControlPointX1TextField
+     $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
+  ;
+
+  outlet CanariDimensionTextField mBoardCurveControlPointY1TextField
+     $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
+  ;
+
+  outlet CanariDimensionTextField mBoardCurveControlPointX2TextField
+     $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
+  ;
+
+  outlet CanariDimensionTextField mBoardCurveControlPointY2TextField
+     $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
+  ;
 
   outlet NSView mLimitCurveBezierControlPointsView $hidden #boardCurveSelectionController.isLine ;
   

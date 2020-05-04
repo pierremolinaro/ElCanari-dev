@@ -111,6 +111,7 @@ entity ProjectRoot {
   property Int mBoardLimitsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardPointsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardSelectedCurveDisplayUnit default 90_000 ; // mm
+  property Int mBoardLimitControlPointsDisplayUnit default 90_000 ; // mm
 
   transient Int boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor

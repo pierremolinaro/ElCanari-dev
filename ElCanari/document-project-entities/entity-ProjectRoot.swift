@@ -234,6 +234,12 @@ protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mBoardLimitControlPointsDisplayUnit : class {
+  var mBoardLimitControlPointsDisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardShape : class {
   var mBoardShape : BoardShape { get }
 }
@@ -743,6 +749,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardLimitsBoundingBoxUnit,
          ProjectRoot_mBoardPointsBoundingBoxUnit,
          ProjectRoot_mBoardSelectedCurveDisplayUnit,
+         ProjectRoot_mBoardLimitControlPointsDisplayUnit,
          ProjectRoot_mBoardShape,
          ProjectRoot_mRectangularBoardWidth,
          ProjectRoot_mRectangularBoardWidthUnit,
@@ -1695,6 +1702,29 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitControlPointsDisplayUnit
+  //····················································································································
+
+  let mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  final func reset_mBoardLimitControlPointsDisplayUnit_toDefaultValue () {
+    self.mBoardLimitControlPointsDisplayUnit = 90000
+  }
+
+  //····················································································································
+
+  final var mBoardLimitControlPointsDisplayUnit : Int {
+    get { return self.mBoardLimitControlPointsDisplayUnit_property.propval }
+    set { self.mBoardLimitControlPointsDisplayUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mBoardLimitControlPointsDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardLimitControlPointsDisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardShape
@@ -3902,6 +3932,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitControlPointsDisplayUnit
+    self.mBoardLimitControlPointsDisplayUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardShape
     self.mBoardShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mRectangularBoardWidth
@@ -5722,6 +5754,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mBoardLimitControlPointsDisplayUnit",
+      idx: self.mBoardLimitControlPointsDisplayUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardShape",
       idx: self.mBoardShape_property.ebObjectIndex,
       y: &y,
@@ -6445,6 +6485,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer = nil
     self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitControlPointsDisplayUnit
+    self.mBoardLimitControlPointsDisplayUnit_property.mObserverExplorer = nil
+    self.mBoardLimitControlPointsDisplayUnit_property.mValueExplorer = nil
   //--- Atomic property: mBoardShape
     self.mBoardShape_property.mObserverExplorer = nil
     self.mBoardShape_property.mValueExplorer = nil
@@ -6687,6 +6730,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
+  //--- Atomic property: mBoardLimitControlPointsDisplayUnit
+    self.mBoardLimitControlPointsDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitControlPointsDisplayUnit")
   //--- Atomic property: mBoardShape
     self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey: "mBoardShape")
   //--- Atomic property: mRectangularBoardWidth
@@ -6942,6 +6987,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
+  //--- Atomic property: mBoardLimitControlPointsDisplayUnit
+    self.mBoardLimitControlPointsDisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitControlPointsDisplayUnit")
   //--- Atomic property: mBoardShape
     self.mBoardShape_property.readFrom (dictionary: inDictionary, forKey: "mBoardShape")
   //--- Atomic property: mRectangularBoardWidth
@@ -7038,6 +7085,7 @@ class ProjectRoot : EBManagedObject,
     ioString += "mBoardLimitsBoundingBoxUnit\n"
     ioString += "mBoardPointsBoundingBoxUnit\n"
     ioString += "mBoardSelectedCurveDisplayUnit\n"
+    ioString += "mBoardLimitControlPointsDisplayUnit\n"
     ioString += "mBoardShape\n"
     ioString += "mRectangularBoardWidth\n"
     ioString += "mRectangularBoardWidthUnit\n"
@@ -7157,6 +7205,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardSelectedCurveDisplayUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitControlPointsDisplayUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardShape.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

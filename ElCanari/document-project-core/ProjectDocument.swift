@@ -693,10 +693,11 @@ import Cocoa
   @IBOutlet var mBoardComponentValueFontPopUpButton : CanariBoardComponentValueFontPopUpButton? = nil
   @IBOutlet var mBoardComponentValueTextField : EBTextField? = nil
   @IBOutlet var mBoardConnectorInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mBoardCurveCPX1TextField : EBTextObserverField? = nil
-  @IBOutlet var mBoardCurveCPX2TextField : EBTextObserverField? = nil
-  @IBOutlet var mBoardCurveCPY1TextField : EBTextObserverField? = nil
-  @IBOutlet var mBoardCurveCPY2TextField : EBTextObserverField? = nil
+  @IBOutlet var mBoardCurveControlPointX1TextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardCurveControlPointX2TextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardCurveControlPointY1TextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardCurveControlPointY2TextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardCurveControlPointsUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardCurveX1TextField : EBTextObserverField? = nil
   @IBOutlet var mBoardCurveX2TextField : EBTextObserverField? = nil
   @IBOutlet var mBoardCurveY1TextField : EBTextObserverField? = nil
@@ -1272,10 +1273,11 @@ import Cocoa
     checkOutletConnection (self.mBoardComponentValueFontPopUpButton, "mBoardComponentValueFontPopUpButton", CanariBoardComponentValueFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentValueTextField, "mBoardComponentValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mBoardConnectorInspectorView, "mBoardConnectorInspectorView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mBoardCurveCPY2TextField, "mBoardCurveCPY2TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveControlPointX1TextField, "mBoardCurveControlPointX1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveControlPointX2TextField, "mBoardCurveControlPointX2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveControlPointY1TextField, "mBoardCurveControlPointY1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveControlPointY2TextField, "mBoardCurveControlPointY2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveControlPointsUnitPopUp, "mBoardCurveControlPointsUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardCurveX1TextField, "mBoardCurveX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveX2TextField, "mBoardCurveX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveY1TextField, "mBoardCurveY1TextField", EBTextObserverField.self, #file, #line)
@@ -2437,10 +2439,11 @@ import Cocoa
     self.mBoardCurveX2TextField?.bind_valueObserver (self.boardCurveSelectionController.p2Xstring_property, file: #file, line: #line)
     self.mBoardCurveY2TextField?.bind_valueObserver (self.boardCurveSelectionController.p2Ystring_property, file: #file, line: #line)
     self.mSelectedLimitShapePopUpButton?.bind_selectedIndex (self.boardCurveSelectionController.mShape_property, file: #file, line: #line)
-    self.mBoardCurveCPX1TextField?.bind_valueObserver (self.boardCurveSelectionController.cp1Xstring_property, file: #file, line: #line)
-    self.mBoardCurveCPY1TextField?.bind_valueObserver (self.boardCurveSelectionController.cp1Ystring_property, file: #file, line: #line)
-    self.mBoardCurveCPX2TextField?.bind_valueObserver (self.boardCurveSelectionController.cp2Xstring_property, file: #file, line: #line)
-    self.mBoardCurveCPY2TextField?.bind_valueObserver (self.boardCurveSelectionController.cp2Ystring_property, file: #file, line: #line)
+    self.mBoardCurveControlPointsUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitControlPointsDisplayUnit_property, file: #file, line: #line)
+    self.mBoardCurveControlPointX1TextField?.bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property, file: #file, line: #line)
+    self.mBoardCurveControlPointY1TextField?.bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property, file: #file, line: #line)
+    self.mBoardCurveControlPointX2TextField?.bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property, file: #file, line: #line)
+    self.mBoardCurveControlPointY2TextField?.bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property, file: #file, line: #line)
     self.mBoardLimitsHorizontalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
     self.mBoardLimitsVerticalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
     self.mBoardLimitsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
@@ -3398,10 +3401,11 @@ import Cocoa
     self.mBoardCurveX2TextField?.unbind_valueObserver ()
     self.mBoardCurveY2TextField?.unbind_valueObserver ()
     self.mSelectedLimitShapePopUpButton?.unbind_selectedIndex ()
-    self.mBoardCurveCPX1TextField?.unbind_valueObserver ()
-    self.mBoardCurveCPY1TextField?.unbind_valueObserver ()
-    self.mBoardCurveCPX2TextField?.unbind_valueObserver ()
-    self.mBoardCurveCPY2TextField?.unbind_valueObserver ()
+    self.mBoardCurveControlPointsUnitPopUp?.unbind_selectedTag ()
+    self.mBoardCurveControlPointX1TextField?.unbind_dimensionAndUnit ()
+    self.mBoardCurveControlPointY1TextField?.unbind_dimensionAndUnit ()
+    self.mBoardCurveControlPointX2TextField?.unbind_dimensionAndUnit ()
+    self.mBoardCurveControlPointY2TextField?.unbind_dimensionAndUnit ()
     self.mBoardLimitsHorizontalFlipSwitch?.unbind_value ()
     self.mBoardLimitsVerticalFlipSwitch?.unbind_value ()
     self.mBoardLimitsGridStylePopUpButton?.unbind_selectedIndex ()
@@ -3868,10 +3872,11 @@ import Cocoa
     self.mBoardComponentValueFontPopUpButton?.ebCleanUp ()
     self.mBoardComponentValueTextField?.ebCleanUp ()
     self.mBoardConnectorInspectorView?.ebCleanUp ()
-    self.mBoardCurveCPX1TextField?.ebCleanUp ()
-    self.mBoardCurveCPX2TextField?.ebCleanUp ()
-    self.mBoardCurveCPY1TextField?.ebCleanUp ()
-    self.mBoardCurveCPY2TextField?.ebCleanUp ()
+    self.mBoardCurveControlPointX1TextField?.ebCleanUp ()
+    self.mBoardCurveControlPointX2TextField?.ebCleanUp ()
+    self.mBoardCurveControlPointY1TextField?.ebCleanUp ()
+    self.mBoardCurveControlPointY2TextField?.ebCleanUp ()
+    self.mBoardCurveControlPointsUnitPopUp?.ebCleanUp ()
     self.mBoardCurveX1TextField?.ebCleanUp ()
     self.mBoardCurveX2TextField?.ebCleanUp ()
     self.mBoardCurveY1TextField?.ebCleanUp ()
@@ -4280,10 +4285,11 @@ import Cocoa
     self.mBoardComponentValueFontPopUpButton = nil
     self.mBoardComponentValueTextField = nil
     self.mBoardConnectorInspectorView = nil
-    self.mBoardCurveCPX1TextField = nil
-    self.mBoardCurveCPX2TextField = nil
-    self.mBoardCurveCPY1TextField = nil
-    self.mBoardCurveCPY2TextField = nil
+    self.mBoardCurveControlPointX1TextField = nil
+    self.mBoardCurveControlPointX2TextField = nil
+    self.mBoardCurveControlPointY1TextField = nil
+    self.mBoardCurveControlPointY2TextField = nil
+    self.mBoardCurveControlPointsUnitPopUp = nil
     self.mBoardCurveX1TextField = nil
     self.mBoardCurveX2TextField = nil
     self.mBoardCurveY1TextField = nil
