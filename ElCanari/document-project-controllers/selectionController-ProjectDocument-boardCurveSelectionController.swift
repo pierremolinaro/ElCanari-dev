@@ -123,26 +123,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   }
 
   //····················································································································
-  //   Selection observable property: p1Xstring
-  //····················································································································
-
-  var p1Xstring_property = EBTransientProperty_String ()
-
-  var p1Xstring_property_selection : EBSelection <String> {
-    return self.p1Xstring_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: p1Ystring
-  //····················································································································
-
-  var p1Ystring_property = EBTransientProperty_String ()
-
-  var p1Ystring_property_selection : EBSelection <String> {
-    return self.p1Ystring_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: p2Xstring
   //····················································································································
 
@@ -192,8 +172,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     self.bind_property_mX (model: model)
     self.bind_property_mY (model: model)
     self.bind_property_objectDisplay (model: model)
-    self.bind_property_p1Xstring (model: model)
-    self.bind_property_p1Ystring (model: model)
     self.bind_property_p2Xstring (model: model)
     self.bind_property_p2Ystring (model: model)
     self.bind_property_selectionDisplay (model: model)
@@ -248,12 +226,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- p1Xstring
-    self.p1Xstring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_p1Xstring (self.p1Xstring_property)
-  //--- p1Ystring
-    self.p1Ystring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_p1Ystring (self.p1Ystring_property)
   //--- p2Xstring
     self.p2Xstring_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_p2Xstring (self.p2Xstring_property)
@@ -996,86 +968,6 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_p1Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p1Xstring (self.p1Xstring_property)
-    self.p1Xstring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.p1Xstring_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_p1Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p1Ystring (self.p1Ystring_property)
-    self.p1Ystring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.p1Ystring_property_selection {
             case .empty :
               return .empty
             case .multiple :

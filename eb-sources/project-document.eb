@@ -547,9 +547,18 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mSelectedBoardLimitInspectorView ;
   outlet EBPopUpButton mSelectedLimitDisplayUnitPopUp $selectedTag root.mBoardSelectedCurveDisplayUnit ;
 
-  outlet EBTextObserverField mBoardCurveX1TextField $valueObserver #boardCurveSelectionController.p1Xstring ;
-  outlet EBTextObserverField mBoardCurveY1TextField $valueObserver #boardCurveSelectionController.p1Ystring ;
+//  outlet EBTextObserverField mBoardCurveX1TextField $valueObserver #boardCurveSelectionController.p1Xstring ;
+  outlet CanariDimensionTextField mBoardCurvePointX1TextField
+     $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
+  ;
+
+ // outlet EBTextObserverField mBoardCurveY1TextField $valueObserver #boardCurveSelectionController.p1Ystring ;
+  outlet CanariDimensionTextField mBoardCurvePointY1TextField
+     $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
+  ;
+
   outlet EBTextObserverField mBoardCurveX2TextField $valueObserver #boardCurveSelectionController.p2Xstring ;
+
   outlet EBTextObserverField mBoardCurveY2TextField $valueObserver #boardCurveSelectionController.p2Ystring ;
 
   outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardCurveSelectionController.mShape ;

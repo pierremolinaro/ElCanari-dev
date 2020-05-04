@@ -48,18 +48,6 @@ protocol BorderCurve_mShape : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_p1Xstring : class {
-  var p1Xstring : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BorderCurve_p1Ystring : class {
-  var p1Ystring : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BorderCurve_p2Xstring : class {
   var p2Xstring : String? { get }
 }
@@ -106,8 +94,6 @@ class BorderCurve : EBGraphicManagedObject,
          BorderCurve_mCPX2,
          BorderCurve_mCPY2,
          BorderCurve_mShape,
-         BorderCurve_p1Xstring,
-         BorderCurve_p1Ystring,
          BorderCurve_p2Xstring,
          BorderCurve_p2Ystring,
          BorderCurve_descriptor,
@@ -391,52 +377,6 @@ class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: p1Xstring
-  //····················································································································
-
-  let p1Xstring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var p1Xstring_property_selection : EBSelection <String> {
-    return self.p1Xstring_property.prop
-  }
-
-  //····················································································································
-
-  var p1Xstring : String? {
-    switch self.p1Xstring_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: p1Ystring
-  //····················································································································
-
-  let p1Ystring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var p1Ystring_property_selection : EBSelection <String> {
-    return self.p1Ystring_property.prop
-  }
-
-  //····················································································································
-
-  var p1Ystring : String? {
-    switch self.p1Ystring_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: p2Xstring
   //····················································································································
 
@@ -572,54 +512,6 @@ class BorderCurve : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNext_property.setProp (me) } },
       resetter: { inObject in inObject.mNext_property.setProp (nil) }
     )
-  //--- Atomic property: p1Xstring
-    self.p1Xstring_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BorderCurve_p1Xstring (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mX_property.addEBObserver (self.p1Xstring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Xstring_property)
-  //--- Atomic property: p1Ystring
-    self.p1Ystring_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mY_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BorderCurve_p1Ystring (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mY_property.addEBObserver (self.p1Ystring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Ystring_property)
   //--- Atomic property: p2Xstring
     self.p2Xstring_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -819,10 +711,6 @@ class BorderCurve : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mX_property.removeEBObserver (self.p1Xstring_property)
-    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Xstring_property)
-    self.mY_property.removeEBObserver (self.p1Ystring_property)
-    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Ystring_property)
     self.mNext_property.removeEBObserverOf_mX (self.p2Xstring_property)
     self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
     self.mNext_property.removeEBObserverOf_mY (self.p2Ystring_property)
@@ -929,22 +817,6 @@ class BorderCurve : EBGraphicManagedObject,
       valueExplorer: &self.mShape_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "p1Xstring",
-      idx: self.p1Xstring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p1Xstring_property.mObserverExplorer,
-      valueExplorer: &self.p1Xstring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "p1Ystring",
-      idx: self.p1Ystring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p1Ystring_property.mObserverExplorer,
-      valueExplorer: &self.p1Ystring_property.mValueExplorer
-    )
     createEntryForPropertyNamed (
       "p2Xstring",
       idx: self.p2Xstring_property.ebObjectIndex,

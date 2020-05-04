@@ -22,8 +22,6 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPY2_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_p1Xstring_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_p1Ystring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_p2Xstring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_p2Ystring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
@@ -38,8 +36,6 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPY2_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_p1Xstring_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_p1Ystring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_p2Xstring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_p2Ystring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
@@ -443,118 +439,6 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'p1Xstring' transient property
-  //····················································································································
-
-  private var mObserversOf_p1Xstring = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_p1Xstring (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_p1Xstring.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.p1Xstring_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_p1Xstring (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_p1Xstring.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.p1Xstring_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_p1Xstring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p1Xstring.apply { (_ observer : EBEvent) in
-        managedObject.p1Xstring_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_p1Xstring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p1Xstring.apply { (_ observer : EBEvent) in
-        managedObject.p1Xstring_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'p1Ystring' transient property
-  //····················································································································
-
-  private var mObserversOf_p1Ystring = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_p1Ystring (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_p1Ystring.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.p1Ystring_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_p1Ystring (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_p1Ystring.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.p1Ystring_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_p1Ystring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p1Ystring.apply { (_ observer : EBEvent) in
-        managedObject.p1Ystring_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_p1Ystring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p1Ystring.apply { (_ observer : EBEvent) in
-        managedObject.p1Ystring_property.removeEBObserver (observer)
       }
     }
   }
