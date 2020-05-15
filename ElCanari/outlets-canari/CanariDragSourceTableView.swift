@@ -136,7 +136,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //-- Sort
     if self.sortDescriptors.count == 1 {
       let sortDescriptor = self.sortDescriptors [0]
-      if !sortDescriptor.ascending {
+      if sortDescriptor.ascending {
         self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedAscending } )
       }else{
         self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedDescending } )
