@@ -25,14 +25,14 @@ extension CustomizedProjectDocument {
       let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
       let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
     //--- Connect
-      self.mConnectSchematicHotKeyTextField?.textColor = self.color (self.canConnect (points: points))
+      self.mConnectSchematicHotKeyTextField?.textColor = self.color (self.canConnect (points: points, wires: wires))
       self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
     //--- Disconnect
       self.mDisconnectSchematicHotKeyTextField?.textColor = self.color (self.canDisconnect (points: points))
       self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (self.canDisconnectAllSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
     //--- Add Point to wire
-      let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
       self.mAddWirePointSchematicHotKeyTextField?.textColor = self.color (self.canCreateWirePoint (wires: wires))
     //--- Remove Point from wire
       self.mRemoveWirePointSchematicHotKeyTextField?.textColor = self.color (self.canRemovePointFromWire (points: points))
@@ -94,7 +94,8 @@ extension CustomizedProjectDocument {
         }
       case UnicodeScalar ("C"), UnicodeScalar ("c") :
         let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
-        if self.canConnect (points: points) {
+        let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
+        if self.canConnect (points: points, wires: wires) {
           self.connectInSchematic (points: points)
         }
       case UnicodeScalar ("D"), UnicodeScalar ("d") :

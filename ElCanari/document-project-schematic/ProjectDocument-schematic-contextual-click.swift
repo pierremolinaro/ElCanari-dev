@@ -26,7 +26,7 @@ extension CustomizedProjectDocument {
       self.appendNCToAllUnconnectedSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
       self.appendCreateNCItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
-      self.appendCreateConnectItemTo (menu: menu, points: points)
+      self.appendCreateConnectItemTo (menu: menu, points: points, wires: wires)
     //--- Add Point to wire ?
       self.appendCreateWirePointItemTo (menu : menu, canariAlignedMouseDownLocation, wires: wires)
     //--- Add Remove point from wire ?
@@ -313,7 +313,8 @@ extension CustomizedProjectDocument {
   // Connect
   //····················································································································
 
-  internal func canConnect (points inPoints : [PointInSchematic]) -> Bool {
+  internal func canConnect (points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) -> Bool {
+    // Swift.print ("inPoints \(inPoints.count) inWires \(inWires.count)")
     var canConnect = false
     if inPoints.count > 1 {
       var hasNC = false
@@ -327,18 +328,35 @@ extension CustomizedProjectDocument {
         }
       }
       canConnect = !hasNC && (pinCount <= 1)
+    }else if (inPoints.count == 1) && (inWires.count > 0) {
+      canConnect = inPoints [0].mNC == nil
     }
     return canConnect
   }
 
   //····················································································································
 
-  private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
-    if self.canConnect (points: inPoints) {
+  private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) {
+    if self.canConnect (points: inPoints, wires: inWires) {
+      var netSet = Set <NetInProject> ()
+      for p in inPoints {
+        if let net = p.mNet {
+          netSet.insert (net)
+        }
+      }
+      for w in inWires {
+        if let net = w.mP1?.mNet {
+          netSet.insert (net)
+        }
+      }
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
-      let menuItem = NSMenuItem (title: "Connect…", action: #selector (CustomizedProjectDocument.connectAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (
+        title: (netSet.count > 1) ? "Connect…" : "Connect",
+        action: #selector (CustomizedProjectDocument.connectAction (_:)),
+        keyEquivalent: ""
+      )
       menuItem.target = self
       menuItem.representedObject = inPoints
       menu.addItem (menuItem)
