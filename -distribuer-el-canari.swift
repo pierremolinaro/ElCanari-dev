@@ -37,7 +37,8 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Schematic: new can connect directly a pin and to a wire"
+  "Schematic: new can connect directly a pin and to a wire",
+  "All graphic views: Shift Click handles a selection rectangle"
 ]
 
 //--------------------------------------------------------------------------------------------------

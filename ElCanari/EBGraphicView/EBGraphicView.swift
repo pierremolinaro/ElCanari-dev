@@ -104,6 +104,8 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
   final internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
   final internal var mOptionClickOperationInProgress = false
+  final internal var mShiftClickOperationInProgress = false
+  final internal var mSelectionOnShiftClick = Set <Int> ()
 
   //····················································································································
 

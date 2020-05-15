@@ -81,11 +81,17 @@ extension EBGraphicView {
         }
       }else if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
         self.ebStartDragging (with: inEvent, dragType: pbType)
-      }else if self.pasteboardType == nil, inEvent.modifierFlags.contains (.option) {
+      }else if self.pasteboardType == nil, inEvent.modifierFlags.contains (.option) && !inEvent.modifierFlags.contains (.shift) {
         self.mPerformEndUndoGroupingOnMouseUp = true
         self.viewController?.ebUndoManager?.beginUndoGrouping ()
         self.mStartOptionMouseDownCallback? (unalignedMouseDownLocation)
         self.mOptionClickOperationInProgress = true
+      }else if !inEvent.modifierFlags.contains (.option) && inEvent.modifierFlags.contains (.shift) {
+        self.mShiftClickOperationInProgress = true
+        if let selectedIndexesSet = self.viewController?.selectedIndexesSet {
+          self.mSelectionOnShiftClick = selectedIndexesSet
+        }
+        self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint
       }else{
       //--- Find index of object under mouse down
         let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: unalignedMouseDownLocation)
@@ -142,11 +148,13 @@ extension EBGraphicView {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
-    let mouseDraggedCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
-    if self.mOptionClickOperationInProgress {
+    let mouseDraggedCocoaLocation = self.convert (inEvent.locationInWindow, from: nil)
+    if self.mShiftClickOperationInProgress, let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
+      self.handleSelectionOnMouseDragged (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
+    }else if self.mOptionClickOperationInProgress {
       self.mContinueOptionMouseDraggedCallback? (unalignedLocationInView)
     }else if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
-      self.handleSelectionRectangle (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
+      self.handleSelectionOnMouseDragged (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
     }else if let lastMouseDraggedLocation = self.mLastMouseDraggedLocation {
       let mouseDraggedCanariLocation = mouseDraggedCocoaLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
       var proposedTranslation = CanariPoint (
@@ -168,8 +176,8 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final fileprivate func handleSelectionRectangle (from inSelectionRectangleOrigin : NSPoint,
-                                             to inMouseDraggedLocation : NSPoint) {
+  final fileprivate func handleSelectionOnMouseDragged (from inSelectionRectangleOrigin : NSPoint,
+                                                        to inMouseDraggedLocation : NSPoint) {
     let xMin = min (inSelectionRectangleOrigin.x, inMouseDraggedLocation.x)
     let yMin = min (inSelectionRectangleOrigin.y, inMouseDraggedLocation.y)
     let xMax = max (inSelectionRectangleOrigin.x, inMouseDraggedLocation.x)
@@ -177,20 +185,21 @@ extension EBGraphicView {
     if (xMax > xMin) && (yMax > yMin) {
       let r = NSRect (x: xMin, y: yMin, width: xMax - xMin, height: yMax - yMin)
       self.mSelectionRectangle = r
-      let indexSet = self.indexesOfObjects (intersecting: r)
-      self.viewController?.setSelection (objectsWithIndexes: Array (indexSet))
+      let indexSet : Set <Int> = self.indexesOfObjects (intersecting: r)
+      let newSelection = indexSet.symmetricDifference (self.mSelectionOnShiftClick)
+      self.viewController?.setSelection (objectsWithIndexes: Array (newSelection))
     }else{
       self.mSelectionRectangle = nil
-      self.viewController?.setSelection (objectsWithIndexes: [])
+      self.viewController?.setSelection (objectsWithIndexes: Array (self.mSelectionOnShiftClick))
     }
   }
 
   //····················································································································
 
   final fileprivate func drag (knob knobIndex : Int,
-                         objectIndex : Int,
-                         _ inProposedTranslation: CanariPoint,
-                         _ inLastMouseDraggedLocation : CanariPoint) {
+                               objectIndex : Int,
+                               _ inProposedTranslation: CanariPoint,
+                               _ inLastMouseDraggedLocation : CanariPoint) {
     let objects = self.viewController?.graphicObjectArray ?? []
     let p = objects [objectIndex].canMove (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y)
     if (p.x != 0) || (p.y != 0) {
@@ -242,6 +251,10 @@ extension EBGraphicView {
   final override func mouseUp (with inEvent : NSEvent) {
     super.mouseUp (with: inEvent)
     var accepts = true
+    if self.mShiftClickOperationInProgress {
+      self.mShiftClickOperationInProgress = false
+      self.mSelectionOnShiftClick.removeAll ()
+    }
     if self.mOptionClickOperationInProgress {
       let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
       accepts = self.mStopOptionMouseUpCallback? (unalignedLocationInView) ?? true
