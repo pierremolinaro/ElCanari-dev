@@ -28,17 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.1.10"
+let VERSION_CANARI = "1.1.11"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Schematic: correct sorting of symbols to insert",
-  "Schematic: create a wire from an existing subnet does not change anymore the net name"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Schematic: new can connect directly a pin and to a wire",
-  "All graphic views: Shift Click handles a selection rectangle"
+  "Board: the board can be printed"
 ]
 
 //--------------------------------------------------------------------------------------------------

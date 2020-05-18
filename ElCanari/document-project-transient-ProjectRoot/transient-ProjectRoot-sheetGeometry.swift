@@ -19,12 +19,12 @@ func transient_ProjectRoot_sheetGeometry (
        _ self_mSchematicCustomHeight : Int
 ) -> SchematicSheetGeometry {
 //--- START OF USER ZONE 2
-  let A4MinSize = cocoaToCanariUnit (SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT)
-  let A4MaxSize = cocoaToCanariUnit (SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT)
-  let leftMargin = cocoaToCanariUnit (SCHEMATIC_LEFT_MARGIN_COCOA_UNIT)
-  let rightMargin = cocoaToCanariUnit (SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT)
-  let topMargin = cocoaToCanariUnit (SCHEMATIC_TOP_MARGIN_COCOA_UNIT)
-  let bottomMargin = cocoaToCanariUnit (SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT)
+  let A4MinSize = cocoaToCanariUnit (PAPER_A4_MIN_SIZE_COCOA_UNIT)
+  let A4MaxSize = cocoaToCanariUnit (PAPER_A4_MAX_SIZE_COCOA_UNIT)
+  let leftMargin = cocoaToCanariUnit (PAPER_LEFT_MARGIN_COCOA_UNIT)
+  let rightMargin = cocoaToCanariUnit (PAPER_RIGHT_MARGIN_COCOA_UNIT)
+  let topMargin = cocoaToCanariUnit (PAPER_TOP_MARGIN_COCOA_UNIT)
+  let bottomMargin = cocoaToCanariUnit (PAPER_BOTTOM_MARGIN_COCOA_UNIT)
   switch self_mSchematicSheetOrientation {
   case .a4Horizontal :
     let width = A4MaxSize - leftMargin - rightMargin - cocoaToCanariUnit (2.0)

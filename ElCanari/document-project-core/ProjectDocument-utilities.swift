@@ -160,8 +160,8 @@ struct SchematicSheetGeometry : Hashable {
   //····················································································································
 
   func locationString (_ inPoint : CanariPoint) -> String {
-    let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
-    let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
+    let gutterWidth = cocoaToCanariUnit (PAPER_GUTTER_WIDTH_COCOA_UNIT)
+    let gutterHeight = cocoaToCanariUnit (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
     var column = 0
     if inPoint.x >= gutterWidth {
       column = (inPoint.x - gutterWidth) * self.horizontalDivisions / (self.size.width - 2 * gutterWidth)
