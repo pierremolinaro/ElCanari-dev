@@ -30,6 +30,12 @@ protocol ComponentInProject_mSide : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_mDisplayLegend : class {
+  var mDisplayLegend : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_mNameIsVisibleInBoard : class {
   var mNameIsVisibleInBoard : Bool { get }
 }
@@ -241,6 +247,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mY,
          ComponentInProject_mRotation,
          ComponentInProject_mSide,
+         ComponentInProject_mDisplayLegend,
          ComponentInProject_mNameIsVisibleInBoard,
          ComponentInProject_mXName,
          ComponentInProject_mYName,
@@ -367,6 +374,29 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   final var mSide_property_selection : EBSelection <ComponentSide> { return self.mSide_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayLegend
+  //····················································································································
+
+  let mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  final func reset_mDisplayLegend_toDefaultValue () {
+    self.mDisplayLegend = true
+  }
+
+  //····················································································································
+
+  final var mDisplayLegend : Bool {
+    get { return self.mDisplayLegend_property.propval }
+    set { self.mDisplayLegend_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mDisplayLegend_property_selection : EBSelection <Bool> { return self.mDisplayLegend_property.prop }
 
   //····················································································································
   //   To many property: mConnectors
@@ -1304,6 +1334,8 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayLegend
+    self.mDisplayLegend_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.ebUndoManager = self.ebUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1751,6 +1783,7 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mRotation_property_selection.kind ()
         kind &= unwSelf.mSide_property_selection.kind ()
         kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.mDisplayLegend_property_selection.kind ()
         kind &= unwSelf.mNameIsVisibleInBoard_property_selection.kind ()
         kind &= unwSelf.mXName_property_selection.kind ()
         kind &= unwSelf.mYName_property_selection.kind ()
@@ -1773,9 +1806,9 @@ class ComponentInProject : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.packagePadDictionary_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20)) :
-            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mDisplayLegend_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.packagePadDictionary_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21)) :
+            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21))
           default :
             return .empty
           }
@@ -1789,6 +1822,7 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.strokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayLegend_property.addEBObserver (self.selectionDisplay_property)
     self.mNameIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mXName_property.addEBObserver (self.selectionDisplay_property)
     self.mYName_property.addEBObserver (self.selectionDisplay_property)
@@ -1844,6 +1878,7 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mSide_property_selection.kind ()
         kind &= unwSelf.packagePadDictionary_property_selection.kind ()
         kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.mDisplayLegend_property_selection.kind ()
         kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection.kind ()
@@ -1878,9 +1913,9 @@ class ComponentInProject : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.packagePadDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, g_Preferences!.displayFrontPadsForBoard_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, g_Preferences!.displayBackPadsForBoard_property_selection, g_Preferences!.displayFrontLegendForBoard_property_selection, g_Preferences!.displayBackLegendForBoard_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, g_Preferences!.displayPadNumbersForBoard_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection, unwSelf.mDevice_property.pinPadAssignments_property_selection, unwSelf.padNetDictionary_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33)) :
-            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.packagePadDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mDisplayLegend_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, g_Preferences!.displayFrontPadsForBoard_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, g_Preferences!.displayBackPadsForBoard_property_selection, g_Preferences!.displayFrontLegendForBoard_property_selection, g_Preferences!.displayBackLegendForBoard_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, g_Preferences!.displayPadNumbersForBoard_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection, unwSelf.mDevice_property.pinPadAssignments_property_selection, unwSelf.padNetDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34)) :
+            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34))
           default :
             return .empty
           }
@@ -1895,6 +1930,7 @@ class ComponentInProject : BoardObject,
     self.mSide_property.addEBObserver (self.objectDisplay_property)
     self.packagePadDictionary_property.addEBObserver (self.objectDisplay_property)
     self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayLegend_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -1972,6 +2008,7 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
     self.mSide_property.removeEBObserver (self.selectionDisplay_property)
     self.strokeBezierPath_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayLegend_property.removeEBObserver (self.selectionDisplay_property)
     self.mNameIsVisibleInBoard_property.removeEBObserver (self.selectionDisplay_property)
     self.mXName_property.removeEBObserver (self.selectionDisplay_property)
     self.mYName_property.removeEBObserver (self.selectionDisplay_property)
@@ -1999,6 +2036,7 @@ class ComponentInProject : BoardObject,
     self.mSide_property.removeEBObserver (self.objectDisplay_property)
     self.packagePadDictionary_property.removeEBObserver (self.objectDisplay_property)
     self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayLegend_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -2072,6 +2110,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.mSide_property.mObserverExplorer,
       valueExplorer: &self.mSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayLegend",
+      idx: self.mDisplayLegend_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayLegend_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNameIsVisibleInBoard",
@@ -2410,6 +2456,9 @@ class ComponentInProject : BoardObject,
   //--- Atomic property: mSide
     self.mSide_property.mObserverExplorer = nil
     self.mSide_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayLegend
+    self.mDisplayLegend_property.mObserverExplorer = nil
+    self.mDisplayLegend_property.mValueExplorer = nil
   //--- To many property: mConnectors
     self.mConnectors_property.mValueExplorer = nil
   //--- To many property: mSymbols
@@ -2515,6 +2564,8 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
   //--- Atomic property: mSide
     self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
+  //--- Atomic property: mDisplayLegend
+    self.mDisplayLegend_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayLegend")
   //--- To many property: mConnectors
     self.store (
       managedObjectArray: self.mConnectors_property.propval,
@@ -2642,6 +2693,8 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.readFrom (dictionary: inDictionary, forKey: "mRotation")
   //--- Atomic property: mSide
     self.mSide_property.readFrom (dictionary: inDictionary, forKey: "mSide")
+  //--- Atomic property: mDisplayLegend
+    self.mDisplayLegend_property.readFrom (dictionary: inDictionary, forKey: "mDisplayLegend")
   //--- Atomic property: mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey: "mNameIsVisibleInBoard")
   //--- Atomic property: mXName
@@ -2686,6 +2739,7 @@ class ComponentInProject : BoardObject,
     ioString += "mY\n"
     ioString += "mRotation\n"
     ioString += "mSide\n"
+    ioString += "mDisplayLegend\n"
     ioString += "mNameIsVisibleInBoard\n"
     ioString += "mXName\n"
     ioString += "mYName\n"
@@ -2725,6 +2779,8 @@ class ComponentInProject : BoardObject,
     self.mRotation.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDisplayLegend.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mNameIsVisibleInBoard.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

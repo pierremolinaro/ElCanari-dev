@@ -19,6 +19,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
     inOldValue?.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
     inOldValue?.mSide_property.removeEBObserversFrom (&self.mObserversOf_mSide) // Stored property
+    inOldValue?.mDisplayLegend_property.removeEBObserversFrom (&self.mObserversOf_mDisplayLegend) // Stored property
     inOldValue?.mNameIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
     inOldValue?.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
     inOldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
@@ -58,6 +59,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
     self.mInternalValue?.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
     self.mInternalValue?.mSide_property.addEBObserversFrom (&self.mObserversOf_mSide) // Stored property
+    self.mInternalValue?.mDisplayLegend_property.addEBObserversFrom (&self.mObserversOf_mDisplayLegend) // Stored property
     self.mInternalValue?.mNameIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
     self.mInternalValue?.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
     self.mInternalValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
@@ -370,6 +372,76 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayLegend' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayLegend = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayLegend_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayLegend_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayLegend (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayLegend.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayLegend_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayLegend (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayLegend.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayLegend_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayLegend_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayLegend.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayLegend_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayLegend_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mDisplayLegend.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayLegend_property.removeEBObserver (observer)
       }
     }
   }

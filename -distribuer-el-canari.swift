@@ -36,7 +36,8 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Board: the board can be printed"
+  "Board: the board can be printed",
+  "Board: added a switch for controlling component legend display"
 ]
 
 //--------------------------------------------------------------------------------------------------

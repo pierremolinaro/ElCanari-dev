@@ -19,6 +19,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSide_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDisplayLegend_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mNameIsVisibleInBoard_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mXName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mYName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -59,6 +60,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSide_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDisplayLegend_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mNameIsVisibleInBoard_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mXName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mYName_toElementsOfSet (inAddedSet) // Stored property
@@ -320,6 +322,63 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayLegend' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayLegend = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayLegend (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayLegend.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayLegend_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayLegend (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayLegend.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayLegend_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayLegend_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayLegend.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayLegend_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayLegend_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mDisplayLegend.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayLegend_property.removeEBObserver (observer)
       }
     }
   }
@@ -2879,6 +2938,7 @@ final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInPro
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSide (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mDisplayLegend (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mNameIsVisibleInBoard (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mXName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mYName (self.mObserverForWritingPreferences)

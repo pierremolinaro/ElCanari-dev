@@ -51,6 +51,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: mDisplayLegend
+  //····················································································································
+
+  let mDisplayLegend_property = EBPropertyProxy_Bool ()
+
+  var mDisplayLegend_property_selection : EBSelection <Bool> {
+    return self.mDisplayLegend_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: mNameIsVisibleInBoard
   //····················································································································
 
@@ -420,6 +430,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_mY ()
     self.bind_property_mRotation ()
     self.bind_property_mSide ()
+    self.bind_property_mDisplayLegend ()
     self.bind_property_mNameIsVisibleInBoard ()
     self.bind_property_mXName ()
     self.bind_property_mYName ()
@@ -482,6 +493,11 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.mSide_property.mWriteModelFunction = nil 
     self.mSide_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSide (self.mSide_property)
+  //--- mDisplayLegend
+    self.mDisplayLegend_property.mReadModelFunction = nil 
+    self.mDisplayLegend_property.mWriteModelFunction = nil 
+    self.mDisplayLegend_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mDisplayLegend (self.mDisplayLegend_property)
   //--- mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.mReadModelFunction = nil 
     self.mNameIsVisibleInBoard_property.mWriteModelFunction = nil 
@@ -684,6 +700,14 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       view: view,
       observerExplorer: &self.mSide_property.mObserverExplorer,
       valueExplorer: &self.mSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayLegend",
+      idx: self.mDisplayLegend_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayLegend_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNameIsVisibleInBoard",
@@ -1122,6 +1146,75 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
         case .single (let v) :
           for object in v {
             let result = object.mSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mDisplayLegend () {
+    self.selectedArray_property.addEBObserverOf_mDisplayLegend (self.mDisplayLegend_property)
+    self.mDisplayLegend_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mDisplayLegend_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDisplayLegend_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mDisplayLegend_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mDisplayLegend_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mDisplayLegend_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

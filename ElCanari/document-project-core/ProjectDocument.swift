@@ -838,6 +838,7 @@ import Cocoa
   @IBOutlet var mDisplayFrontPadsSwitch : EBSwitch? = nil
   @IBOutlet var mDisplayFrontRestrictRectanglesColorWell : EBColorWell? = nil
   @IBOutlet var mDisplayFrontRestrictRectanglesSwitch : EBSwitch? = nil
+  @IBOutlet var mDisplayLegendSwitch : EBSwitch? = nil
   @IBOutlet var mDisplayPadNumbersColorWell : EBColorWell? = nil
   @IBOutlet var mDisplayPadNumbersSwitch : EBSwitch? = nil
   @IBOutlet var mDrawBoardLimitsSwitch : CanariObserverSwitch? = nil
@@ -1420,6 +1421,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayFrontPadsSwitch, "mDisplayFrontPadsSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontRestrictRectanglesColorWell, "mDisplayFrontRestrictRectanglesColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontRestrictRectanglesSwitch, "mDisplayFrontRestrictRectanglesSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayLegendSwitch, "mDisplayLegendSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersColorWell, "mDisplayPadNumbersColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawBoardLimitsSwitch, "mDrawBoardLimitsSwitch", CanariObserverSwitch.self, #file, #line)
@@ -2558,6 +2560,7 @@ import Cocoa
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
+    self.mDisplayLegendSwitch?.bind_value (self.componentInBoardSelectionController.mDisplayLegend_property, file: #file, line: #line)
     self.mComponentInBoardCenterXPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
     self.mComponentInBoardCenterXTextField?.bind_dimensionAndUnit (self.componentInBoardSelectionController.mX_property, self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
     self.mComponentInBoardCenterYPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
@@ -3522,6 +3525,7 @@ import Cocoa
     self.mBoardTextRotationSlider?.unbind_angle ()
     self.mBoardTextWeightTextField?.unbind_value ()
     self.mBoardTextObliqueSwitch?.unbind_value ()
+    self.mDisplayLegendSwitch?.unbind_value ()
     self.mComponentInBoardCenterXPopUp?.unbind_selectedTag ()
     self.mComponentInBoardCenterXTextField?.unbind_dimensionAndUnit ()
     self.mComponentInBoardCenterYPopUp?.unbind_selectedTag ()
@@ -4025,6 +4029,7 @@ import Cocoa
     self.mDisplayFrontPadsSwitch?.ebCleanUp ()
     self.mDisplayFrontRestrictRectanglesColorWell?.ebCleanUp ()
     self.mDisplayFrontRestrictRectanglesSwitch?.ebCleanUp ()
+    self.mDisplayLegendSwitch?.ebCleanUp ()
     self.mDisplayPadNumbersColorWell?.ebCleanUp ()
     self.mDisplayPadNumbersSwitch?.ebCleanUp ()
     self.mDrawBoardLimitsSwitch?.ebCleanUp ()
@@ -4440,6 +4445,7 @@ import Cocoa
     self.mDisplayFrontPadsSwitch = nil
     self.mDisplayFrontRestrictRectanglesColorWell = nil
     self.mDisplayFrontRestrictRectanglesSwitch = nil
+    self.mDisplayLegendSwitch = nil
     self.mDisplayPadNumbersColorWell = nil
     self.mDisplayPadNumbersSwitch = nil
     self.mDrawBoardLimitsSwitch = nil

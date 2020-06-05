@@ -20,6 +20,7 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mSide : ComponentSide,             
        _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_strokeBezierPath : EBBezierPath,   
+       _ self_mDisplayLegend : Bool,             
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_backSideLegendColorForBoard : NSColor,
        _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int,
@@ -61,22 +62,24 @@ func transient_ComponentInProject_objectDisplay (
         }
         var rotatedShape = EBShape ()
       //--- Legend
-        let color : NSColor
-        let display : Bool
-        switch self_mSide {
-        case .front :
-          color = prefs_frontSideLegendColorForBoard
-          display = prefs_displayFrontLegendForBoard
-        case .back  :
-          color = prefs_backSideLegendColorForBoard
-          display = prefs_displayBackLegendForBoard
-        }
-        if display {
-          var strokeBezierPath = self_strokeBezierPath
-          strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
-          strokeBezierPath.lineCapStyle = .round
-          strokeBezierPath.lineJoinStyle = .round
-          rotatedShape.add (stroke: [strokeBezierPath], color)
+        if self_mDisplayLegend {
+          let color : NSColor
+          let display : Bool
+          switch self_mSide {
+          case .front :
+            color = prefs_frontSideLegendColorForBoard
+            display = prefs_displayFrontLegendForBoard
+          case .back  :
+            color = prefs_backSideLegendColorForBoard
+            display = prefs_displayBackLegendForBoard
+          }
+          if display {
+            var strokeBezierPath = self_strokeBezierPath
+            strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+            strokeBezierPath.lineCapStyle = .round
+            strokeBezierPath.lineJoinStyle = .round
+            rotatedShape.add (stroke: [strokeBezierPath], color)
+          }
         }
       //---
         let padRect = self_packagePadDictionary.padsRect
