@@ -17,12 +17,17 @@ func transient_ProjectRoot_boardStatusMessage (
        _ self_boardIssues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
+        var statusMessage = [String] ()
         var errorCount = 0
         var warningCount = 0
         for issue in self_boardIssues {
           switch issue.kind {
-          case .error : errorCount += 1
-          case .warning : warningCount += 1
+          case .error :
+            errorCount += 1
+            statusMessage.append ("Error: \(issue.message)")
+          case .warning :
+            warningCount += 1
+            statusMessage.append ("Warning: \(issue.message)")
           }
         }
         var a = [String] ()
@@ -39,7 +44,7 @@ func transient_ProjectRoot_boardStatusMessage (
         if a.isEmpty {
           a.append ("Ok.")
         }
-        return a.joined (separator: "\n")
+        return (a + statusMessage).joined (separator: "\n")
 //--- END OF USER ZONE 2
 }
 

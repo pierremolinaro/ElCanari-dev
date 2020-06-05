@@ -175,15 +175,18 @@ extension CustomizedProjectDocument {
 
   private func findOrAddConnector (at inP : CanariPoint,
                                    _ inSide : TrackSide,
+                                   _ inTrackWidthInCanariUnit : Int,
                                    _ inViaArray : [BoardConnector],
                                    _ ioConnectorArray : inout [BoardConnector],
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
+    let distance = Double (inTrackWidthInCanariUnit) / 3.0
+    let squareOfDistance = distance * distance
     for via in inViaArray {
       let p = via.location!
       let dx = Double (inP.x - p.x)
       let dy = Double (inP.y - p.y)
       let dSquare = dx * dx + dy * dy
-      let found = dSquare <= (2286.0 * 2286.0 * 2.0)
+      let found = dSquare <= squareOfDistance
       if found {
         return via
       }
@@ -201,7 +204,7 @@ extension CustomizedProjectDocument {
         let dx = Double (inP.x - p.x)
         let dy = Double (inP.y - p.y)
         let dSquare = dx * dx + dy * dy
-        let found = dSquare <= (2286.0 * 2286.0 * 2.0)
+        let found = dSquare <= squareOfDistance
         if found {
           return connector
         }
@@ -238,18 +241,22 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Write tracks
-    inTextField.stringValue = "Adding Tracks and Vias…"
+    inTextField.stringValue = "Add Tracks and Vias…"
     inProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     for t in routedTracksArray {
      let track = BoardTrack (self.ebUndoManager)
-      track.mConnectorP1 = findOrAddConnector (at: t.p1, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
-      track.mConnectorP2 = findOrAddConnector (at: t.p2, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
-      track.mSide = t.side
-      track.mUsesCustomTrackWidth = true
-      track.mCustomTrackWidth = t.width
-      track.mIsPreservedByAutoRouter = t.preservedByRouter
-      addedObjectArray.append (track)
+      let p1 = findOrAddConnector (at: t.p1, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      let p2 = findOrAddConnector (at: t.p2, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      if p1 != p2 {
+        track.mConnectorP1 = p1
+        track.mConnectorP2 = p2
+        track.mSide = t.side
+        track.mUsesCustomTrackWidth = true
+        track.mCustomTrackWidth = t.width
+        track.mIsPreservedByAutoRouter = t.preservedByRouter
+        addedObjectArray.append (track)
+      }
     }
   //--- Add objects
     let allGraphicObjects = self.rootObject.mBoardObjects + addedObjectArray
@@ -266,7 +273,6 @@ extension CustomizedProjectDocument {
     inProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     for object in self.rootObject.mBoardObjects {
-  //    inProgressIndicator.doubleValue += 1.0
       if let pad = object as? BoardConnector, let component = pad.mComponent {
         let padNetDictionary = component.padNetDictionary!
         if let netName = padNetDictionary [pad.mComponentPadName] {

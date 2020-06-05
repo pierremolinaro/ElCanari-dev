@@ -31,6 +31,7 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.1.11"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
+  "On SES file importing, zero length tracks are removed"
 ]
 let CHANGES : [String] = [
 ]
