@@ -55,6 +55,8 @@
 		CF00846921C4363E003627E9 /* transient-PackageRoot-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */; };
 		CF01070D21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */; };
 		CF01070E21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */; };
+		CF012693248BDA22008CC8DA /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
+		CF012694248BDA22008CC8DA /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
 		CF0432BF22B649A70016EDE0 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */; };
 		CF0432C022B649A70016EDE0 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */; };
 		CF0432C122B649A70016EDE0 /* toone-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BC22B649A60016EDE0 /* toone-BoardText.swift */; };
@@ -1623,8 +1625,6 @@
 		CFAA053622F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */; };
 		CFAA74191B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */; };
 		CFAA741D1B46AE1100327BAE /* CanariViewWithKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA741C1B46AE1100327BAE /* CanariViewWithKeyView.swift */; };
-		CFAA756222E77D68002F7F36 /* freerouter-pm.app in Resources */ = {isa = PBXBuildFile; fileRef = CFAA756122E77D68002F7F36 /* freerouter-pm.app */; };
-		CFAA756322E77D68002F7F36 /* freerouter-pm.app in Resources */ = {isa = PBXBuildFile; fileRef = CFAA756122E77D68002F7F36 /* freerouter-pm.app */; };
 		CFAA756522E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */; };
 		CFAA756622E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */; };
 		CFAB36A523786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */; };
@@ -2591,6 +2591,7 @@
 		CF00846021C4363E003627E9 /* transient-PackageDocument-statusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageDocument-statusImage.swift"; sourceTree = "<group>"; };
 		CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-noIssue.swift"; sourceTree = "<group>"; };
 		CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PackageDocument-mPackageSegmentSelectionController.swift"; sourceTree = "<group>"; };
+		CF012692248BDA22008CC8DA /* Freerouting.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Freerouting.app; sourceTree = "<group>"; };
 		CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardText.swift"; sourceTree = "<group>"; };
 		CF0432BC22B649A60016EDE0 /* toone-BoardText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-BoardText.swift"; sourceTree = "<group>"; };
 		CF0432BD22B649A70016EDE0 /* tomany-BoardText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-BoardText.swift"; sourceTree = "<group>"; };
@@ -3335,7 +3336,6 @@
 		CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-generate-product-pdf-files.swift"; sourceTree = "<group>"; };
 		CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkFileGenerationParameters.swift"; sourceTree = "<group>"; };
 		CFAA741C1B46AE1100327BAE /* CanariViewWithKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariViewWithKeyView.swift; sourceTree = "<group>"; };
-		CFAA756122E77D68002F7F36 /* freerouter-pm.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = "freerouter-pm.app"; sourceTree = "<group>"; };
 		CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-launchFreeRouterAction.swift"; sourceTree = "<group>"; };
 		CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageObject-knobSize.swift"; sourceTree = "<group>"; };
 		CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-schematic-option-click.swift"; sourceTree = "<group>"; };
@@ -4841,7 +4841,7 @@
 		CFAA756022E77D31002F7F36 /* Plugin — Free Router */ = {
 			isa = PBXGroup;
 			children = (
-				CFAA756122E77D68002F7F36 /* freerouter-pm.app */,
+				CF012692248BDA22008CC8DA /* Freerouting.app */,
 			);
 			name = "Plugin — Free Router";
 			path = "ElCanari/free-router-application";
@@ -5776,7 +5776,6 @@
 				CFEDE6281B4678C100036ACF /* ArtworkDocument.xib in Resources */,
 				CF6173091B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff in Resources */,
 				CF6172BE1B3C4CD600F3CA82 /* A4vertical.pdf in Resources */,
-				CFAA756222E77D68002F7F36 /* freerouter-pm.app in Resources */,
 				CF6172F51B3C4CD600F3CA82 /* schematic.pdf in Resources */,
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
 				CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */,
@@ -5808,6 +5807,7 @@
 				CF76EF302205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */,
 				CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */,
+				CF012693248BDA22008CC8DA /* Freerouting.app in Resources */,
 				CF21549322B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */,
 				CFCD1F6621A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
@@ -5845,7 +5845,6 @@
 				CF5C4C6D219F04D600EAC52A /* ArtworkDocument.xib in Resources */,
 				CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */,
 				CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */,
-				CFAA756322E77D68002F7F36 /* freerouter-pm.app in Resources */,
 				CF5C4C72219F04D600EAC52A /* schematic.pdf in Resources */,
 				CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */,
 				CF5C4C74219F04D600EAC52A /* canari_merger.icns in Resources */,
@@ -5877,6 +5876,7 @@
 				CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,
+				CF012694248BDA22008CC8DA /* Freerouting.app in Resources */,
 				CF21549422B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */,
 				CFCD1F6721A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
