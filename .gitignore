@@ -4,6 +4,12 @@
 ## Other files
 *.pyc
 
+## Freerouting
+freerouting/jdk14/*
+freerouting/Freerouting-*.app
+freerouting/Freerouting-*.dmg
+freerouting/Freerouting-*.pkg
+
 ## Xcode files
 */project.xcworkspace/**
 */xcuserdata/**
