@@ -28,12 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.1.11"
+let VERSION_CANARI = "1.2.0"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
   "On SES file importing, zero length tracks are removed"
 ]
 let CHANGES : [String] = [
+  "New Autorouter from https://github.com/freerouting/freerouting"
 ]
 let NEWS : [String] = [
   "Board: the board can be printed",

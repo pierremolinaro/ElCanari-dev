@@ -179,8 +179,8 @@ extension CustomizedProjectDocument {
                                    _ inViaArray : [BoardConnector],
                                    _ ioConnectorArray : inout [BoardConnector],
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
-    let distance = Double (inTrackWidthInCanariUnit) / 3.0
-    let squareOfDistance = distance * distance
+    let squareOfDistance = 90.0 * 90.0 * 16.0 // Distance: 4 µm
+//    let squareOfDistance = 2_286.0 * 2_286.0  // Distance: 1 mil
     for via in inViaArray {
       let p = via.location!
       let dx = Double (inP.x - p.x)

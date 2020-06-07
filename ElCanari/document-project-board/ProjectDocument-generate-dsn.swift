@@ -66,10 +66,13 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func dsnContents (_ inExportTracks : Bool) -> String {
+  //--- Selecting DSN Unit
+    let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
+    let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)
   //--- Border
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
-    let signalPolygonVertices = self.buildSignalPolygon ()
+    let signalPolygonVertices = self.buildSignalPolygon (converter)
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForDSNExport] ()
     for object in self.rootObject.mBoardObjects {
@@ -94,8 +97,8 @@ extension CustomizedProjectDocument {
       }
       let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
-        trackWidthInMM: canariUnitToMillimeter (netClass.mTrackWidth),
-        viaPadDiameterInMM: canariUnitToMillimeter (netClass.mViaPadDiameter),
+        trackWidthInMM: converter.dsnUnitFromCanariUnit (netClass.mTrackWidth),
+        viaPadDiameterInMM: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter),
         netNames: netNames,
         allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
         allowTracksOnBackSide: netClass.mAllowTracksOnBackSide
@@ -115,7 +118,8 @@ extension CustomizedProjectDocument {
           component.mSelectedPackage!,
           &packageDictionary,
           &packageArrayForRouting,
-          &padTypeArrayForRouting
+          &padTypeArrayForRouting,
+          converter
         )
       //--- Build net list
         var padNetArray = [PadNetDescriptorForDSNExport] ()
@@ -133,30 +137,30 @@ extension CustomizedProjectDocument {
           placed: component.mRoot != nil,
           originX: component.mX,
           originY: component.mY,
-          rotation: CGFloat (component.mRotation) / 1000.0,
+          rotation: Double (component.mRotation) / 1000.0,
           side: component.mSide,
           netList: padNetArray.sorted { $0.padString < $1.padString }
         )
         componentArrayForRouting.append (cfr)
       }
     }
-    let clearanceInMM = canariUnitToMillimeter (self.rootObject.mLayoutClearance)
   //--- Generate
     var s = ""
     s += "(pcb routing_problem\n"
     s += "  (parser\n"
     s += "    (string_quote \")\n"
     s += "    (space_in_quoted_tokens on)\n"
+    s += "    (host_cad \"ElCanari\")\n"
     s += "  )\n"
-    s += "  (resolution mm 1000)\n"
+    s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (structure\n"
-    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices)
+    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
     s += "    (control (via_at_smd off))\n"
-    addRuleClearance (&s, clearanceInMM: clearanceInMM)
+    addRuleClearance (&s, clearanceInDSNUnit: clearanceInDSNUnit)
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections)
-    addRestrictRectangles (&s, restrictRectangles)
+    addRestrictRectangles (&s, restrictRectangles, converter)
     s += "  )\n"
     addComponentsPlacement (
       &s,
@@ -164,12 +168,13 @@ extension CustomizedProjectDocument {
       packageArrayForRouting,
       self.rootObject.mRouteDirection,
       self.rootObject.mRouteOrigin,
-      boardBoundBox
+      boardBoundBox,
+      converter
     )
     s += "  (library\n"
     addDeviceLibrary (&s, packageArrayForRouting)
     addViaPadStackLibrary (&s, netClasses)
-    addComponentPadStackLibrary (&s, padTypeArrayForRouting)
+    addComponentPadStackLibrary (&s, padTypeArrayForRouting, converter)
     s += "  )\n"
     s += "  (network\n"
     addNetwork (&s, componentArrayForRouting)
@@ -177,7 +182,7 @@ extension CustomizedProjectDocument {
     addNetClasses (&s, netClasses)
     s += "  )\n"
     if inExportTracks {
-      self.exportTracksAndVias (&s)
+      self.exportTracksAndVias (&s, converter)
     }
     s += ")\n"
     return s
@@ -185,7 +190,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  private func buildSignalPolygon () -> EBLinePath { // Points in millimeters
+  private func buildSignalPolygon (_ inConverter : CanariUnitToDSNUnitConverter) -> EBLinePath { // Points in DSN Unit
     switch self.rootObject.mBoardShape {
     case .bezierPathes :
       var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
@@ -196,16 +201,16 @@ extension CustomizedProjectDocument {
       var clearanceBP = EBBezierPath ()
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
-      clearanceBP.move (to: p.millimeterPoint)
+      clearanceBP.move (to: inConverter.dsnPointFromCanariPoint (p))
       var loop = true
       while loop {
         switch descriptor.shape {
         case .line :
-          clearanceBP.line (to: descriptor.p2.millimeterPoint)
+          clearanceBP.line (to: inConverter.dsnPointFromCanariPoint (descriptor.p2))
         case .bezier :
-          let cp1 = descriptor.cp1.millimeterPoint
-          let cp2 = descriptor.cp2.millimeterPoint
-          clearanceBP.curve (to: descriptor.p2.millimeterPoint, controlPoint1: cp1, controlPoint2: cp2)
+          let cp1 = inConverter.dsnPointFromCanariPoint (descriptor.cp1)
+          let cp2 = inConverter.dsnPointFromCanariPoint (descriptor.cp2)
+          clearanceBP.curve (to: inConverter.dsnPointFromCanariPoint (descriptor.p2), controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
@@ -219,13 +224,15 @@ extension CustomizedProjectDocument {
         width: self.rootObject.mRectangularBoardWidth - 2 * d,
         height: self.rootObject.mRectangularBoardHeight - 2 * d
       )
-      return EBBezierPath (rect: r.millimeterRect).pointsByFlattening (withFlatness: 0.1) [0]
+   //   return EBBezierPath (rect: r.millimeterRect).pointsByFlattening (withFlatness: 0.1) [0]
+      return EBBezierPath (rect: inConverter.dsnRectFromCanariRect (r)).pointsByFlattening (withFlatness: 0.1) [0]
     }
   }
 
   //····················································································································
 
-  private func exportTracksAndVias (_ ioString : inout String) {
+  private func exportTracksAndVias (_ ioString : inout String,
+                                    _ inConverter : CanariUnitToDSNUnitConverter) {
     ioString += "  (wiring\n"
   //--- Export tracks
     for object in self.rootObject.mBoardObjects {
@@ -236,9 +243,9 @@ extension CustomizedProjectDocument {
         case .back : side = SOLDER_SIDE
         }
         let optionalNetName = track.mNet?.mNetName
-        let widthMM = canariUnitToMillimeter (track.actualTrackWidth!)
-        let p1 = track.mConnectorP1!.location!.millimeterPoint
-        let p2 = track.mConnectorP2!.location!.millimeterPoint
+        let widthMM = inConverter.dsnUnitFromCanariUnit (track.actualTrackWidth!)
+        let p1 = inConverter.dsnPointFromCanariPoint (track.mConnectorP1!.location!)
+        let p2 = inConverter.dsnPointFromCanariPoint (track.mConnectorP2!.location!)
         ioString += "    (wire\n"
         if let netName = optionalNetName {
           ioString += "      (net \"\(netName)\")\n"
@@ -254,7 +261,7 @@ extension CustomizedProjectDocument {
   //--- Export via
     for object in self.rootObject.mBoardObjects {
       if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
-        let p = via.location!.millimeterPoint
+        let p = inConverter.dsnPointFromCanariPoint (via.location!)
         let netName = via.netNameFromTracks!
         ioString += "    (via \"viaForClassDefault\" \(p.x) \(p.y)\n"
         ioString += "      (net \"\(netName)\")\n"
@@ -272,11 +279,78 @@ extension CustomizedProjectDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum DSNUnit { case millimeter, micrometer}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct CanariUnitToDSNUnitConverter {
+
+  //····················································································································
+
+  let unit : DSNUnit
+
+  //····················································································································
+
+  var unitString : String {
+    switch unit {
+    case .millimeter :
+      return "mm"
+    case .micrometer :
+      return "um"
+    }
+  }
+
+  //····················································································································
+
+  var resolution : Int {
+    switch unit {
+    case .millimeter :
+      return 1000
+    case .micrometer :
+      return 10
+    }
+  }
+
+  //····················································································································
+
+  func dsnUnitFromCanariUnit (_ inValue : Int ) -> Double {
+    switch unit {
+    case .millimeter :
+      return Double (inValue) / Double (ONE_MILLIMETER_IN_CANARI_UNIT)
+    case .micrometer :
+      return 1000.0 * Double (inValue) / Double (ONE_MILLIMETER_IN_CANARI_UNIT)
+    }
+  }
+
+  //····················································································································
+
+  func dsnPointFromCanariPoint (_ inP : CanariPoint) -> NSPoint {
+    return NSPoint (x: self.dsnUnitFromCanariUnit (inP.x), y: self.dsnUnitFromCanariUnit (inP.y))
+  }
+
+  //····················································································································
+
+  func dsnRectFromCanariRect (_ inP : CanariRect) -> NSRect {
+    return NSRect (
+      x: self.dsnUnitFromCanariUnit (inP.origin.x),
+      y: self.dsnUnitFromCanariUnit (inP.origin.y),
+      width: self.dsnUnitFromCanariUnit (inP.size.width),
+      height: self.dsnUnitFromCanariUnit (inP.size.height)
+    )
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 fileprivate func indexForPackage (_ inDevice : DeviceInProject,
                                   _ inSelectedPackage : DevicePackageInProject,
                                   _ ioPackageDictionary : inout [PackageDictionaryKeyForDSNExport : Int],
                                   _ ioPackageArrayForRouting : inout [PackageTypeForDSNExport],
-                                  _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport]) -> Int {
+                                  _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport],
+                                  _ inConverter : CanariUnitToDSNUnitConverter) -> Int {
   let key = PackageDictionaryKeyForDSNExport (device: inDevice, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx
@@ -301,8 +375,8 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
       let psr = PadInstanceForDSNExport (
         name: masterPad.name,
         masterPad: masterPadForRouting,
-        centerXmm: canariUnitToMillimeter (masterPad.center.x - deviceCenter.x),
-        centerYmm: canariUnitToMillimeter (masterPad.center.y - deviceCenter.y)
+        centerX: inConverter.dsnUnitFromCanariUnit (masterPad.center.x - deviceCenter.x),
+        centerY: inConverter.dsnUnitFromCanariUnit (masterPad.center.y - deviceCenter.y)
       )
       padArrayForRouting.append (psr)
     //--- Enter slave pads
@@ -326,8 +400,8 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
         let pir = PadInstanceForDSNExport (
           name: masterPad.name, // + ":\(slavePadIndex)",
           masterPad: slavePadForRouting,
-          centerXmm: canariUnitToMillimeter (slavePad.center.x - deviceCenter.x),
-          centerYmm: canariUnitToMillimeter (slavePad.center.y - deviceCenter.y)
+          centerX: inConverter.dsnUnitFromCanariUnit (slavePad.center.x - deviceCenter.x),
+          centerY: inConverter.dsnUnitFromCanariUnit (slavePad.center.y - deviceCenter.y)
         )
         padArrayForRouting.append (pir)
       }
@@ -388,8 +462,8 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
 
 fileprivate struct NetClassForDSNExport {
   let name : String
-  let trackWidthInMM : CGFloat
-  let viaPadDiameterInMM : CGFloat
+  let trackWidthInMM : Double
+  let viaPadDiameterInMM : Double
   let netNames : [String]
   let allowTracksOnFrontSide : Bool
   let allowTracksOnBackSide : Bool
@@ -411,7 +485,7 @@ fileprivate struct ComponentForDSNExport {
   let placed : Bool
   let originX : Int
   let originY : Int
-  let rotation : CGFloat
+  let rotation : Double
   let side : ComponentSide
   let netList : [PadNetDescriptorForDSNExport]
 }
@@ -428,8 +502,8 @@ fileprivate struct PackageTypeForDSNExport {
 fileprivate struct PadInstanceForDSNExport {
   let name : String
   let masterPad : PadTypeForDSNExport
-  let centerXmm : CGFloat // In mm
-  let centerYmm : CGFloat // In mm
+  let centerX : Double // In DSN Unit
+  let centerY : Double // In DSN Unit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -444,9 +518,10 @@ fileprivate struct PadTypeForDSNExport {
 
   //····················································································································
 
-  func padStringFor (side inSide : String) -> String {
-    let halfWidth = canariUnitToMillimeter (self.canariWidth) / 2.0
-    let halfHeight = canariUnitToMillimeter (self.canariHeight) / 2.0
+  func padStringFor (side inSide : String,
+                     _ inConverter : CanariUnitToDSNUnitConverter) -> String {
+    let halfWidth = inConverter.dsnUnitFromCanariUnit (self.canariWidth) / 2.0
+    let halfHeight = inConverter.dsnUnitFromCanariUnit (self.canariHeight) / 2.0
     let shapeString : String
     switch self.shape {
     case .rect :
@@ -456,7 +531,7 @@ fileprivate struct PadTypeForDSNExport {
         shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
       }else{ // Oblong: generate an octogon
         //shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
-        let s2 : CGFloat = sqrt (2.0)
+        let s2 : Double = sqrt (2.0)
         let w = halfWidth * 2.0
         let h = halfHeight * 2.0
         let x = -halfWidth
@@ -480,7 +555,7 @@ fileprivate struct PadTypeForDSNExport {
         shapeString = s
       }
     case .octo :
-      let s2 : CGFloat = sqrt (2.0)
+      let s2 : Double = sqrt (2.0)
       let w = halfWidth * 2.0
       let h = halfHeight * 2.0
       let x = -halfWidth
@@ -549,14 +624,15 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
-                                              _ inPadTypeArrayForRouting : [PadTypeForDSNExport]) {
+                                              _ inPadTypeArrayForRouting : [PadTypeForDSNExport],
+                                              _ inConverter : CanariUnitToDSNUnitConverter) {
   for pad in inPadTypeArrayForRouting {
     ioString += "    (padstack \"\(pad.name)\"\n"
     if pad.onComponentSide {
-      ioString += "      (shape \(pad.padStringFor (side: COMPONENT_SIDE)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: COMPONENT_SIDE, inConverter)))\n"
     }
     if pad.onOppositeSide {
-      ioString += "      (shape \(pad.padStringFor (side: SOLDER_SIDE)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: SOLDER_SIDE, inConverter)))\n"
     }
     ioString += "    )\n"
   }
@@ -569,7 +645,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
   for package in inPackageArrayForRouting {
     ioString += "    (image \"\(package.typeName)\"\n"
     for pad in package.padArray {
-      ioString += "      (pin \(pad.masterPad.name) \(pad.name) \(pad.centerXmm) \(pad.centerYmm))\n"
+      ioString += "      (pin \(pad.masterPad.name) \(pad.name) \(pad.centerX) \(pad.centerY))\n"
     }
     ioString += "    )\n"
   }
@@ -579,11 +655,12 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
-                                   _ inSignalPolygonVertices : EBLinePath) { // In millimeters
-  let bbLeft = canariUnitToMillimeter (inBoardBoundBox.origin.x)
-  let bbBottom = canariUnitToMillimeter (inBoardBoundBox.origin.y)
-  let bbRight = bbLeft + canariUnitToMillimeter (inBoardBoundBox.size.width)
-  let bbTop = bbBottom + canariUnitToMillimeter (inBoardBoundBox.size.height)
+                                   _ inSignalPolygonVertices : EBLinePath, // In DSN Unit
+                                   _ inConverter : CanariUnitToDSNUnitConverter) {
+  let bbLeft = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.x)
+  let bbBottom = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.y)
+  let bbRight = bbLeft + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.width)
+  let bbTop = bbBottom + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.height)
   ioString += "    (boundary\n"
   ioString += "      (rect pcb \(bbLeft) \(bbBottom) \(bbRight) \(bbTop))\n"
   ioString += "    )\n"
@@ -701,7 +778,7 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addRuleClearance (_ ioString : inout String, clearanceInMM inClearance : CGFloat) {
+fileprivate func addRuleClearance (_ ioString : inout String, clearanceInDSNUnit inClearance : Double) {
   ioString += "    (rule (clearance \(inClearance)))\n"
 }
 
@@ -726,7 +803,8 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
                                          _ inPackageArrayForRouting : [PackageTypeForDSNExport],
                                          _ inRouteDirection : RouteDirection,
                                          _ inRouteOrigin : RouteOrigin,
-                                         _ inBoardRect : CanariRect) {
+                                         _ inBoardRect : CanariRect,
+                                         _ inConverter : CanariUnitToDSNUnitConverter) {
 //--- Sort components
 
   let origin : CanariPoint
@@ -760,8 +838,8 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
 //--- Write components
   ioString += "  (placement\n"
   for component in components {
-    let x = canariUnitToMillimeter (component.originX)
-    let y = canariUnitToMillimeter (component.originY)
+    let x = inConverter.dsnUnitFromCanariUnit (component.originX)
+    let y = inConverter.dsnUnitFromCanariUnit (component.originY)
     let side : String
     switch component.side {
     case .back : side = "back"
@@ -784,12 +862,13 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addRestrictRectangles (_ ioString : inout String,
-                                        _ inRestrictRectangles : [RestrictRectangleForDSNExport]) {
+                                        _ inRestrictRectangles : [RestrictRectangleForDSNExport],
+                                        _ inConverter : CanariUnitToDSNUnitConverter) {
   for rr in inRestrictRectangles {
-    let left = canariUnitToMillimeter (rr.rect.left)
-    let bottom = canariUnitToMillimeter (rr.rect.bottom)
-    let right = left + canariUnitToMillimeter (rr.rect.width)
-    let top = bottom + canariUnitToMillimeter (rr.rect.height)
+    let left = inConverter.dsnUnitFromCanariUnit (rr.rect.left)
+    let bottom = inConverter.dsnUnitFromCanariUnit (rr.rect.bottom)
+    let right = left + inConverter.dsnUnitFromCanariUnit (rr.rect.width)
+    let top = bottom + inConverter.dsnUnitFromCanariUnit (rr.rect.height)
     if rr.frontSide {
       ioString += "    (keepout\n"
       ioString += "      (rect \(COMPONENT_SIDE) \(left) \(bottom) \(right) \(top))\n"
