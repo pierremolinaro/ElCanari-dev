@@ -46,7 +46,7 @@ extension CustomizedProjectDocument {
     }
     savePanel.allowedFileTypes = ["dsn"]
     savePanel.allowsOtherFileTypes = false
-    savePanel.nameFieldStringValue = "design.dsn"
+    savePanel.nameFieldStringValue = self.rootObject.mDSNFileProposedName
     savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
       savePanel.orderOut (nil)
       if inResponse == .OK, let url = savePanel.url {
@@ -58,8 +58,9 @@ extension CustomizedProjectDocument {
         }catch (let error) {
           self.windowForSheet!.presentError (error)
         }
+        savePanel.directoryURL = savedDirectoryURL
+        self.rootObject.mDSNFileProposedName = savePanel.nameFieldStringValue
       }
-      savePanel.directoryURL = savedDirectoryURL
     }
   }
 
@@ -87,6 +88,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Net classes
+    var maxTrackWithInDSNUnit : Double = 0.0
     var netClasses = [NetClassForDSNExport] ()
     for netClass in self.rootObject.mNetClasses {
       var netNames = [String] ()
@@ -95,10 +97,12 @@ extension CustomizedProjectDocument {
           netNames.append (net.mNetName)
         }
       }
+      let trackWidth = converter.dsnUnitFromCanariUnit (netClass.mTrackWidth)
+      maxTrackWithInDSNUnit = max (maxTrackWithInDSNUnit, trackWidth)
       let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
-        trackWidthInMM: converter.dsnUnitFromCanariUnit (netClass.mTrackWidth),
-        viaPadDiameterInMM: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter),
+        trackWidthInDSNUnit: trackWidth,
+        viaPadDiameterInDSNUnit: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter),
         netNames: netNames,
         allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
         allowTracksOnBackSide: netClass.mAllowTracksOnBackSide
@@ -146,20 +150,21 @@ extension CustomizedProjectDocument {
     }
   //--- Generate
     var s = ""
-    s += "(pcb routing_problem\n"
+    s += "(pcb \"\(self.documentFilePath ?? "")\"\n"
     s += "  (parser\n"
     s += "    (string_quote \")\n"
     s += "    (space_in_quoted_tokens on)\n"
     s += "    (host_cad \"ElCanari\")\n"
+    s += "    (host_version \"\(ElCanariApplicationVersionString ())\")\n"
     s += "  )\n"
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (structure\n"
     addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
+    autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
     s += "    (control (via_at_smd off))\n"
-    addRuleClearance (&s, clearanceInDSNUnit: clearanceInDSNUnit)
-    autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections)
+    addDefaultRule (&s, maxWidthInDSNUnit: maxTrackWithInDSNUnit, clearanceInDSNUnit: clearanceInDSNUnit)
     addRestrictRectangles (&s, restrictRectangles, converter)
     s += "  )\n"
     addComponentsPlacement (
@@ -224,7 +229,6 @@ extension CustomizedProjectDocument {
         width: self.rootObject.mRectangularBoardWidth - 2 * d,
         height: self.rootObject.mRectangularBoardHeight - 2 * d
       )
-   //   return EBBezierPath (rect: r.millimeterRect).pointsByFlattening (withFlatness: 0.1) [0]
       return EBBezierPath (rect: inConverter.dsnRectFromCanariRect (r)).pointsByFlattening (withFlatness: 0.1) [0]
     }
   }
@@ -305,7 +309,7 @@ struct CanariUnitToDSNUnitConverter {
   var resolution : Int {
     switch unit {
     case .millimeter :
-      return 1000
+      return 10000
     case .micrometer :
       return 10
     }
@@ -462,8 +466,8 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
 
 fileprivate struct NetClassForDSNExport {
   let name : String
-  let trackWidthInMM : Double
-  let viaPadDiameterInMM : Double
+  let trackWidthInDSNUnit : Double
+  let viaPadDiameterInDSNUnit : Double
   let netNames : [String]
   let allowTracksOnFrontSide : Bool
   let allowTracksOnBackSide : Bool
@@ -528,7 +532,7 @@ fileprivate struct PadTypeForDSNExport {
       shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
     case .round :
       if halfWidth == halfHeight { // Circular pad
-        shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
+        shapeString = "(circle \(inSide) \(halfWidth * 2.0))"
       }else{ // Oblong: generate an octogon
         //shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
         let s2 : Double = sqrt (2.0)
@@ -615,8 +619,8 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
                                         _ inNetClasses : [NetClassForDSNExport]) {
   for netClass in inNetClasses {
     ioString += "    (padstack \"viaForClass\(netClass.name)\"\n"
-    ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInMM) 0 0))\n"
-    ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInMM) 0 0))\n"
+    ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+    ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
     ioString += "    )\n"
   }
 }
@@ -657,15 +661,15 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
                                    _ inSignalPolygonVertices : EBLinePath, // In DSN Unit
                                    _ inConverter : CanariUnitToDSNUnitConverter) {
-  let bbLeft = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.x)
-  let bbBottom = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.y)
-  let bbRight = bbLeft + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.width)
-  let bbTop = bbBottom + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.height)
+//  let bbLeft = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.x)
+//  let bbBottom = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.y)
+//  let bbRight = bbLeft + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.width)
+//  let bbTop = bbBottom + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.height)
+//  ioString += "    (boundary\n"
+//  ioString += "      (rect pcb \(bbLeft) \(bbBottom) \(bbRight) \(bbTop))\n"
+//  ioString += "    )\n"
   ioString += "    (boundary\n"
-  ioString += "      (rect pcb \(bbLeft) \(bbBottom) \(bbRight) \(bbTop))\n"
-  ioString += "    )\n"
-  ioString += "    (boundary\n"
-  ioString += "      (polygon signal 0\n"
+  ioString += "      (path pcb 0\n"
   ioString += "        \(inSignalPolygonVertices.origin.x) \(inSignalPolygonVertices.origin.y)\n"
   for p in inSignalPolygonVertices.lines {
     ioString += "        \(p.x) \(p.y)\n"
@@ -718,13 +722,13 @@ fileprivate func autorouteSettings (_ ioString : inout String,
   ioString += "        (active on)\n"
   ioString += "        (prefered_direction \(frontPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
-  ioString += "        (against_prefered_direction_trace_costs 2.7)\n"
+  ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
   ioString += "      )\n"
   ioString += "      (layer_rule \(SOLDER_SIDE)\n"
   ioString += "        (active on)\n"
   ioString += "        (prefered_direction \(backPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
-  ioString += "        (against_prefered_direction_trace_costs 2.7)\n"
+  ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
   ioString += "      )\n"
   ioString += "    )\n"
 }
@@ -760,7 +764,7 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
     ioString += "      (clearance_class default)\n"
     ioString += "      (via_rule \"viaRuleForClass\(netClass.name)\")\n"
     ioString += "      (rule\n"
-    ioString += "        (width \(netClass.trackWidthInMM))\n"
+    ioString += "        (width \(netClass.trackWidthInDSNUnit))\n"
     ioString += "      )\n"
     ioString += "      (circuit\n"
     ioString += "        (use_layer"
@@ -778,8 +782,13 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addRuleClearance (_ ioString : inout String, clearanceInDSNUnit inClearance : Double) {
-  ioString += "    (rule (clearance \(inClearance)))\n"
+fileprivate func addDefaultRule (_ ioString : inout String,
+                                 maxWidthInDSNUnit inTrackMaxWidth : Double,
+                                 clearanceInDSNUnit inClearance : Double) {
+  ioString += "    (rule\n"
+  ioString += "      (width \(inTrackMaxWidth))\n" // Required !!!!
+  ioString += "      (clearance \(inClearance))\n"
+  ioString += "    )\n"
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

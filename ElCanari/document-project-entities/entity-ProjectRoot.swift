@@ -144,6 +144,12 @@ protocol ProjectRoot_mControlKeyHiliteDiameter : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mDSNFileProposedName : class {
+  var mDSNFileProposedName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -734,6 +740,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardGridStepUnit,
          ProjectRoot_mErrorOrWarningIssueSize,
          ProjectRoot_mControlKeyHiliteDiameter,
+         ProjectRoot_mDSNFileProposedName,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardClearance,
@@ -1357,6 +1364,29 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDSNFileProposedName
+  //····················································································································
+
+  let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "des.dsn")
+
+  //····················································································································
+
+  final func reset_mDSNFileProposedName_toDefaultValue () {
+    self.mDSNFileProposedName = "des.dsn"
+  }
+
+  //····················································································································
+
+  final var mDSNFileProposedName : String {
+    get { return self.mDSNFileProposedName_property.propval }
+    set { self.mDSNFileProposedName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mDSNFileProposedName_property_selection : EBSelection <String> { return self.mDSNFileProposedName_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -3902,6 +3932,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDSNFileProposedName
+    self.mDSNFileProposedName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -5634,6 +5666,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mControlKeyHiliteDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mDSNFileProposedName",
+      idx: self.mDSNFileProposedName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDSNFileProposedName_property.mObserverExplorer,
+      valueExplorer: &self.mDSNFileProposedName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardLimitsWidth",
       idx: self.mBoardLimitsWidth_property.ebObjectIndex,
       y: &y,
@@ -6440,6 +6480,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.mObserverExplorer = nil
     self.mControlKeyHiliteDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mDSNFileProposedName
+    self.mDSNFileProposedName_property.mObserverExplorer = nil
+    self.mDSNFileProposedName_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -6700,6 +6743,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey: "mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mControlKeyHiliteDiameter")
+  //--- Atomic property: mDSNFileProposedName
+    self.mDSNFileProposedName_property.storeIn (dictionary: ioDictionary, forKey: "mDSNFileProposedName")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -6957,6 +7002,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey: "mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.readFrom (dictionary: inDictionary, forKey: "mControlKeyHiliteDiameter")
+  //--- Atomic property: mDSNFileProposedName
+    self.mDSNFileProposedName_property.readFrom (dictionary: inDictionary, forKey: "mDSNFileProposedName")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey: "mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -7070,6 +7117,7 @@ class ProjectRoot : EBManagedObject,
     ioString += "mBoardGridStepUnit\n"
     ioString += "mErrorOrWarningIssueSize\n"
     ioString += "mControlKeyHiliteDiameter\n"
+    ioString += "mDSNFileProposedName\n"
     ioString += "mBoardLimitsWidth\n"
     ioString += "mBoardLimitsWidthUnit\n"
     ioString += "mBoardClearance\n"
@@ -7175,6 +7223,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mControlKeyHiliteDiameter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDSNFileProposedName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardLimitsWidth.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

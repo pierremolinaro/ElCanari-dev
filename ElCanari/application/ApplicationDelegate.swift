@@ -115,3 +115,12 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//  ELCANARI VERSION
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func ElCanariApplicationVersionString () -> String {
+  let appVersion = Bundle.main.infoDictionary? ["CFBundleShortVersionString"] as? String
+  return appVersion ?? "Unknown"
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

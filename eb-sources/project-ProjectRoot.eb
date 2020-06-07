@@ -90,6 +90,8 @@ entity ProjectRoot {
   property String mRastnetDisplayedNetName default "" ;
   property String mRastnetDisplayedComponentName default "" ;
 
+  property String mDSNFileProposedName default "des.dsn" ;
+ 
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;
 

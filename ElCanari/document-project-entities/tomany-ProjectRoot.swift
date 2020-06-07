@@ -38,6 +38,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mBoardGridStepUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDSNFileProposedName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardClearance_fromElementsOfSet (inRemovedSet) // Stored property
@@ -147,6 +148,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mBoardGridStepUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDSNFileProposedName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardClearance_toElementsOfSet (inAddedSet) // Stored property
@@ -1541,6 +1543,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDSNFileProposedName' stored property
+  //····················································································································
+
+  private var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDSNFileProposedName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDSNFileProposedName.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDSNFileProposedName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDSNFileProposedName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDSNFileProposedName.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDSNFileProposedName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDSNFileProposedName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBEvent) in
+        managedObject.mDSNFileProposedName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDSNFileProposedName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDSNFileProposedName_property.removeEBObserver (observer)
       }
     }
   }
@@ -7572,6 +7631,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mBoardGridStepUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mControlKeyHiliteDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mDSNFileProposedName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardClearance (self.mObserverForWritingPreferences)

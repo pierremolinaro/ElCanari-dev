@@ -111,27 +111,32 @@ runCommand ([
   "--type", "execute",
   FREE_ROUTING_NAME + ".app"
 ])
-runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".dmg"])
-runCommand ([
-  JPKG_HOME + "/bin/jpackage",
-  "--input", FREEROUTING_DIR + "/build/dist/",
-  "--name", "Freerouting",
-  "--main-jar", "freerouting-executable.jar",
-  "--type", "dmg",
-  "--runtime-image", "jdk14/runtime",
-  "--app-version", APP_VERSION,
-  "--license-file", "../LICENSE"
-])
-runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".pkg"])
-runCommand ([
-  JPKG_HOME + "/bin/jpackage",
-  "--input", FREEROUTING_DIR + "/build/dist/",
-  "--name", "Freerouting",
-  "--main-jar", "freerouting-executable.jar",
-  "--type", "pkg",
-  "--runtime-image", "jdk14/runtime",
-  "--app-version", APP_VERSION,
-  "--license-file", "../LICENSE"
-])
+# runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".dmg"])
+# runCommand ([
+#   JPKG_HOME + "/bin/jpackage",
+#   "--input", FREEROUTING_DIR + "/build/dist/",
+#   "--name", "Freerouting",
+#   "--main-jar", "freerouting-executable.jar",
+#   "--type", "dmg",
+#   "--runtime-image", "jdk14/runtime",
+#   "--app-version", APP_VERSION,
+#   "--license-file", "../LICENSE"
+# ])
+# runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".pkg"])
+# runCommand ([
+#   JPKG_HOME + "/bin/jpackage",
+#   "--input", FREEROUTING_DIR + "/build/dist/",
+#   "--name", "Freerouting",
+#   "--main-jar", "freerouting-executable.jar",
+#   "--type", "pkg",
+#   "--runtime-image", "jdk14/runtime",
+#   "--app-version", APP_VERSION,
+#   "--license-file", "../LICENSE"
+# ])
+#--- Copy application in ElCanari resource directory
+ELCANARI_FREEROUTING_RESOURCE_DIR = scriptDir + "/../ElCanari/free-router-application"
+runCommand (["rm", "-rf", ELCANARI_FREEROUTING_RESOURCE_DIR + "/Freerouting.app"])
+runCommand (["cp", "-r", FREE_ROUTING_NAME + ".app", ELCANARI_FREEROUTING_RESOURCE_DIR])
+runCommand (["mv", ELCANARI_FREEROUTING_RESOURCE_DIR + "/" + FREE_ROUTING_NAME + ".app", ELCANARI_FREEROUTING_RESOURCE_DIR + "/Freerouting.app"])
 
 #------------------------------------------------------------------------------

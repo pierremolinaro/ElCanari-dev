@@ -3911,12 +3911,12 @@
 				CFCD1F5E21A1CBB200A8297B /* document — symbol */,
 				CFDDD4D321BB14FF007D2F14 /* EBGraphicView */,
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
+				CFAA756022E77D31002F7F36 /* Free Router Embedded Application */,
 				CF61725D1B3C4B8A00F3CA82 /* Generic */,
 				CF61726E1B3C4CB600F3CA82 /* Images */,
 				CFB1FDA92359A57300135A00 /* layout-constraints */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
 				CF6172681B3C4BE000F3CA82 /* Outlets Easy Bindings */,
-				CFAA756022E77D31002F7F36 /* Plugin — Free Router */,
 				CF747FB01B3C3D8D00140C49 /* Products */,
 				CFD1B75221B2E90400F6F9EA /* Shapes */,
 				CFDBEFF71BEA126C001CEA4B /* Sparkle */,
@@ -4838,12 +4838,12 @@
 			path = "ElCanari/document-device";
 			sourceTree = "<group>";
 		};
-		CFAA756022E77D31002F7F36 /* Plugin — Free Router */ = {
+		CFAA756022E77D31002F7F36 /* Free Router Embedded Application */ = {
 			isa = PBXGroup;
 			children = (
 				CF012692248BDA22008CC8DA /* Freerouting.app */,
 			);
-			name = "Plugin — Free Router";
+			name = "Free Router Embedded Application";
 			path = "ElCanari/free-router-application";
 			sourceTree = "<group>";
 		};
