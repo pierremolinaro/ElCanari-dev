@@ -436,7 +436,7 @@ struct MasterPadDescriptor : Hashable {
       var af = AffineTransform ()
       af.translate (x: center.x, y: center.y)
       af.prepend (padNumberAF)
-      ioShape.add (EBShape (text: self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
+      ioShape.add (EBShape (text: self.name, NSPoint (), textAttributes, .center, .center, knobIndex: nil).transformed (by: af))
     }
   //--- Tool tip
     ioShape.addToolTip (rPad, inPadNetDictionary [self.name] ?? "No net")
@@ -530,7 +530,7 @@ struct SlavePadDescriptor : Hashable {
       var af = AffineTransform ()
       af.translate (x: center.x, y: center.y)
       af.prepend (padNumberAF)
-      ioShape.add (EBShape (text: name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
+      ioShape.add (EBShape (text: name, NSPoint (), textAttributes, .center, .center, knobIndex: nil).transformed (by: af))
     }
   }
 

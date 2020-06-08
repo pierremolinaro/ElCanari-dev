@@ -18,15 +18,16 @@ extension EBGraphicView {
       for character in characters.unicodeScalars {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
-          if self.mPerformEndUndoGroupingOnMouseUp {
-            self.mPerformEndUndoGroupingOnMouseUp = false
-            self.viewController?.ebUndoManager?.endUndoGrouping ()
-          }
-          if self.mOptionClickOperationInProgress {
-            self.mOptionClickOperationInProgress = false
-            self.mAbortOptionMouseOperationCallback? ()
-            self.viewController?.ebUndoManager?.undo ()
-          }
+          self.mMouseDownBehaviour.abortOperation (self)
+//          if self.mPerformEndUndoGroupingOnMouseUp {
+//            self.mPerformEndUndoGroupingOnMouseUp = false
+//            self.viewController?.ebUndoManager?.endUndoGrouping ()
+//          }
+//          if self.mOptionClickOperationInProgress {
+//            self.mOptionClickOperationInProgress = false
+//            self.mAbortOptionMouseOperationCallback? ()
+//            self.viewController?.ebUndoManager?.undo ()
+//          }
         case NSEvent.SpecialKey.upArrow.unicodeScalar :
           _ = self.wantsToTranslateSelection (byX: 0, byY: amount)
         case NSEvent.SpecialKey.downArrow.unicodeScalar :
@@ -38,7 +39,6 @@ extension EBGraphicView {
         case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
           self.deleteSelection ()
         default :  // Note: inEvent.locationInWindow undefined on non-mouse event
-       //   let mouseDownLocation = self.convert (inEvent.locationInWindow, from: nil)
           let mouseDownLocation = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
           self.mKeyDownCallback? (mouseDownLocation, character)
           break

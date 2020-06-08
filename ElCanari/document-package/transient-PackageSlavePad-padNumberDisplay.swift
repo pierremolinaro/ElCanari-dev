@@ -30,7 +30,8 @@ func transient_PackageSlavePad_padNumberDisplay (
         CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint,
         textAttributes,
         .center,
-        .center
+        .center,
+        knobIndex: nil
       )
 //--- END OF USER ZONE 2
 }

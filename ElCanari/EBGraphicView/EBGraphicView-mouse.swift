@@ -13,15 +13,13 @@ extension EBGraphicView {
   final override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-//      self.mUnalignedMouseDownLocation = unalignedMouseDownLocation
       let canariUnalignedMouseDownLocation = unalignedMouseDownLocation.canariPoint
-//      let alignedLastMouseDraggedLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: self.mouseGridInCanariUnit)
       self.mMouseMovedCallback? (unalignedMouseDownLocation)
-  //    self.mLastMouseDraggedLocation = alignedLastMouseDraggedLocation
       let modifierFlags = inEvent.modifierFlags
       let modifierFlagsContainsControl = modifierFlags.contains (.control)
       let modifierFlagsContainsShift = modifierFlags.contains (.shift)
       let modifierFlagsContainsOption = modifierFlags.contains (.option)
+      let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocation)
       switch (modifierFlagsContainsControl, modifierFlagsContainsShift, modifierFlagsContainsOption) {
       case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
         if let theMenu = self.mPopulateContextualMenuClosure? (canariUnalignedMouseDownLocation) {
@@ -31,22 +29,12 @@ extension EBGraphicView {
         if let pbType = self.pasteboardType {
           self.ebStartDragging (with: inEvent, dragType: pbType)
         }else{
-
+          self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocation, self, viewController)
         }
       case (false, true, false) : // Shif Key
-        let (possibleObjectIndex, _) = self.indexOfFrontObject (at: unalignedMouseDownLocation)
         self.guideFor (possibleObjectIndex: possibleObjectIndex)
-        if let objectIndex = possibleObjectIndex {
-          self.mMouseDownBehaviour = ShiftMouseDownOnObjectBehaviour (
-            unalignedMouseDownLocation,
-            objectIndex: objectIndex,
-            viewController
-          )
-        }else{
-          self.mMouseDownBehaviour = ShiftMouseDownOutsideAnyObjectBehaviour (unalignedMouseDownLocation, viewController)
-        }
-      case (false, false, false) : // No Option Key
-        let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocation)
+        self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocation, possibleObjectIndex, viewController)
+      case (false, false, false) : // No Modifier Key
         self.guideFor (possibleObjectIndex: possibleObjectIndex)
         if let objectIndex = possibleObjectIndex {
           self.mMouseDownBehaviour = MouseDownOnObjectBehaviour (
@@ -126,9 +114,8 @@ extension EBGraphicView {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
- //   let mouseDraggedCocoaLocation = self.convert (inEvent.locationInWindow, from: nil)
 
-    self.mMouseDownBehaviour.onMouseDragged (unalignedLocationInView, self)
+    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, inEvent.modifierFlags, self)
 
 
 //    if self.mShiftClickOperationInProgress, let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
@@ -160,61 +147,12 @@ extension EBGraphicView {
 
     final override func mouseUp (with inEvent : NSEvent) {
       super.mouseUp (with: inEvent)
-//      var accepts = true
-//      if self.mShiftClickOperationInProgress {
-//        self.mShiftClickOperationInProgress = false
-//        self.mSelectionOnShiftClick.removeAll ()
-//      }
-//      if self.mOptionClickOperationInProgress {
-//        let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-//        accepts = self.mStopOptionMouseUpCallback? (unalignedLocationInView) ?? true
-//        self.mOptionClickOperationInProgress = false
-//      }
-//      if self.mPerformEndUndoGroupingOnMouseUp {
-//        self.mPerformEndUndoGroupingOnMouseUp = false
-//        self.viewController?.ebUndoManager?.endUndoGrouping ()
-//      }
-//      if !accepts {
-//        self.viewController?.ebUndoManager?.undo ()
-//      }
- //     self.mLastMouseDraggedLocation = nil
-  //self.mSelectionRectangleOrigin = nil
+      let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
       self.mSelectionRectangle = nil
-    //  self.mPossibleKnob = nil
       self.mGuideBezierPath = nil
+      self.mMouseDownBehaviour.onMouseUp (unalignedLocationInView, self)
       self.mMouseDownBehaviour = DefaultMouseDownBehaviour ()
     }
-
-  //····················································································································
-
-//  final fileprivate func handleSelectionOnMouseDragged (from inSelectionRectangleOrigin : NSPoint,
-//                                                        to inMouseDraggedLocation : NSPoint) {
-//    let xMin = min (inSelectionRectangleOrigin.x, inMouseDraggedLocation.x)
-//    let yMin = min (inSelectionRectangleOrigin.y, inMouseDraggedLocation.y)
-//    let xMax = max (inSelectionRectangleOrigin.x, inMouseDraggedLocation.x)
-//    let yMax = max (inSelectionRectangleOrigin.y, inMouseDraggedLocation.y)
-//    if (xMax > xMin) && (yMax > yMin) {
-//      let r = NSRect (x: xMin, y: yMin, width: xMax - xMin, height: yMax - yMin)
-//      self.mSelectionRectangle = r
-//      let indexSet : Set <Int> = self.indexesOfObjects (intersecting: r)
-//      let newSelection = indexSet.symmetricDifference (self.mSelectionOnShiftClick)
-//      self.viewController?.setSelection (objectsWithIndexes: Array (newSelection))
-//    }else{
-//      self.mSelectionRectangle = nil
-//      self.viewController?.setSelection (objectsWithIndexes: Array (self.mSelectionOnShiftClick))
-//    }
-//  }
-
-  //····················································································································
-
-//  final func updateKnobSelection () {
-//    if let unalignedMouseDownLocation = self.mUnalignedMouseDownLocation {
-//      let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocation)
-//      if let objectIndex = possibleObjectIndex, let knobIndex = possibleKnobIndex {
-//        self.mPossibleKnob = (objectIndex, knobIndex)
-//      }
-//    }
- // }
 
   //····················································································································
 
@@ -266,8 +204,6 @@ extension EBGraphicView {
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
         object.translate (xBy: dx, yBy: dy, userSet: userSet)
       }
-//      let mouseDraggedLocation = CanariPoint (x: dx + lastMouseDraggedLocation.x, y: dy + lastMouseDraggedLocation.y)
- //     mLastMouseDraggedLocation = mouseDraggedLocation
     }
   }
 
@@ -312,13 +248,13 @@ extension EBGraphicView {
   //····················································································································
 
   final override func flagsChanged (with inEvent : NSEvent) {
+    let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     let d = self.controlKeyHilitedDiameter
     if NSEvent.modifierFlags.contains (.control) && (d > 0.0) {
-      let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-      if self.frame.contains (locationInView) {
+      if self.frame.contains (unalignedLocationInView) {
         let r = NSRect (
-          x: locationInView.x - d / 2.0,
-          y: locationInView.y - d / 2.0,
+          x: unalignedLocationInView.x - d / 2.0,
+          y: unalignedLocationInView.y - d / 2.0,
           width: d,
           height: d
         )
@@ -329,6 +265,7 @@ extension EBGraphicView {
     }else{
       self.mControlKeyHiliteRectangle = nil
     }
+    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, NSEvent.modifierFlags, self)
     super.flagsChanged (with: inEvent)
   }
 

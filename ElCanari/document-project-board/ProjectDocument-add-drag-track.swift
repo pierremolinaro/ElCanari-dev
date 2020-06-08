@@ -95,9 +95,13 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint) {
+  internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
+                                                           _ inModifierFlags : NSEvent.ModifierFlags) {
      if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2 {
-       let canariUnalignedMousePoint = inUnalignedMousePoint.canariPoint
+       var canariUnalignedMousePoint = inUnalignedMousePoint.canariPoint
+       if inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
+         canariUnalignedMousePoint.quadrantAligned(from: CanariPoint (x: p1.mX, y: p1.mY))
+       }
        connector2.mX = canariUnalignedMousePoint.x
        connector2.mY = canariUnalignedMousePoint.y
     }

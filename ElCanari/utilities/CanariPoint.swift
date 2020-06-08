@@ -130,6 +130,40 @@ struct CanariPoint : Equatable, Hashable {
 
  //····················································································································
 
+ mutating func quadrantAligned (from inOriginPoint : CanariPoint) {
+   let angle = NSPoint.angleInDegrees (self.cocoaPoint, inOriginPoint.cocoaPoint)
+   let dx = self.x - inOriginPoint.x
+   let dy = self.y - inOriginPoint.y
+   if angle < (0.0 + 22.5) {
+     self.y = inOriginPoint.y
+   }else if angle < (0.0 + 45.0) {
+     self.y = inOriginPoint.y + dx
+   }else if angle < (0.0 + 67.5) {
+     self.x = inOriginPoint.x + dy
+   }else if angle < (90.0 + 22.5) {
+     self.x = inOriginPoint.x
+   }else if angle < (90.0 + 45.0) {
+     self.x = inOriginPoint.x - dy
+   }else if angle < (90.0 + 67.5) {
+     self.y = inOriginPoint.y - dx
+   }else if angle < (180.0 + 22.5) {
+     self.y = inOriginPoint.y
+   }else if angle < (180.0 + 45.0) {
+     self.y = inOriginPoint.y + dx
+   }else if angle < (180.0 + 67.5) {
+     self.x = inOriginPoint.x + dy
+   }else if angle < (270.0 + 22.5) {
+     self.x = inOriginPoint.x
+   }else if angle < (270.0 + 45.0) {
+     self.x = inOriginPoint.x - dy
+   }else if angle < (270.0 + 67.5) {
+     self.y = inOriginPoint.y - dx
+   }else{
+     self.y = inOriginPoint.y
+   }
+ }
+
+ //····················································································································
 
 }
 

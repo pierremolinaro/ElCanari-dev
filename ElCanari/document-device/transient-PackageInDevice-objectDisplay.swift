@@ -63,7 +63,7 @@ func transient_PackageInDevice_objectDisplay (
       let nameTextAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
       ]
-      let nameShapeSize = EBShape (text: self_mName, NSPoint (), nameTextAttributes, .center, .above).boundingBox.size
+      let nameShapeSize = EBShape (text: self_mName, NSPoint (), nameTextAttributes, .center, .above, knobIndex: nil).boundingBox.size
       if nameShapeSize.width > r.width {
         r = r.insetBy (dx: (r.width - nameShapeSize.width) / 2.0, dy: 0.0)
       }

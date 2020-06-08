@@ -38,7 +38,6 @@ extension EBGraphicView {
   final override func mouseExited (with inEvent : NSEvent) {
     super.mouseExited (with: inEvent)
     self.clearXYplacards ()
-    self.mMouseDownBehaviour.onMouseUp ()
     self.mMouseExitCallback? ()
     self.mControlKeyHiliteRectangle = nil
   }

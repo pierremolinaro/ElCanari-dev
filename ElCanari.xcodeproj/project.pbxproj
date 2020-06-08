@@ -2539,8 +2539,8 @@
 		CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
 		CFFF32B8248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF32B7248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift */; };
 		CFFF32B9248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF32B7248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift */; };
-		CFFF32BB248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift */; };
-		CFFF32BC248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift */; };
+		CFFF32BB248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift */; };
+		CFFF32BC248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift */; };
 		CFFF522721AEFE4E00E7D041 /* StatusImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */; };
 		CFFF522821AEFE4E00E7D041 /* StatusImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */; };
 /* End PBXBuildFile section */
@@ -3842,7 +3842,7 @@
 		CFFD810D2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariOrientationSegmentedControl.swift; sourceTree = "<group>"; };
 		CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPadRenumberingPullDownButton.swift; sourceTree = "<group>"; };
 		CFFF32B7248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-mouse-down-behaviours.swift"; sourceTree = "<group>"; };
-		CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-mouse-moved.swift"; sourceTree = "<group>"; };
+		CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-mouse-moved-exited.swift"; sourceTree = "<group>"; };
 		CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusImageNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -5181,7 +5181,7 @@
 				CFDDD4D721BB1529007D2F14 /* EBGraphicView-magnify-and-zoom.swift */,
 				CF1D9C7D21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift */,
 				CFFF32B7248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift */,
-				CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift */,
+				CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift */,
 				CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */,
 				CF3EA65921C291DD0059392B /* EBGraphicView-move-to-superview.swift */,
 				CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-placards.swift */,
@@ -6379,7 +6379,7 @@
 				CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */,
 				CFBAFCE41DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_devices.swift in Sources */,
 				CFEB7CF2233A298D0060A97A /* transient-SchematicObject-isPlacedInSchematic.swift in Sources */,
-				CFFF32BB248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift in Sources */,
+				CFFF32BB248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift in Sources */,
 				CFB1DB3D2282D31F005F9811 /* entity-DeviceSymbolInstanceInProject.swift in Sources */,
 				CF4B3AC321D50F0A001217C6 /* action-PackageDocument-loadFromDesignAction.swift in Sources */,
 				CFA43053229AEB96000AA8C8 /* tomany-NetInProject.swift in Sources */,
@@ -7590,7 +7590,7 @@
 				CF4EC73C2284A07B00902FBB /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CFEB7B4D233A25EC0060A97A /* transient-ComponentInProject-padNetDictionary.swift in Sources */,
 				CF07780C23521A4E00F56EAB /* EBAbstractEnumProperty.swift in Sources */,
-				CFFF32BC248E27BD0008EC34 /* EBGraphicView-mouse-moved.swift in Sources */,
+				CFFF32BC248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift in Sources */,
 				CFB1DB162282D31F005F9811 /* entity-DevicePinInProject.swift in Sources */,
 				CF5C4D0D219F04D600EAC52A /* action-MergerDocument-addBoardModelAction.swift in Sources */,
 				CFEB7CF3233A298D0060A97A /* transient-SchematicObject-isPlacedInSchematic.swift in Sources */,

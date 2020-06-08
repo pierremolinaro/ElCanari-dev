@@ -30,7 +30,8 @@ func transient_MasterPadInDevice_padNumberDisplay (
         CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint,
         textAttributes,
         .center,
-        .center
+        .center,
+        knobIndex: nil
       )
 //--- END OF USER ZONE 2
 }

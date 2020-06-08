@@ -202,14 +202,14 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //--- Option click for creating wire
      self.mSchematicsView?.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
-       continue: { [weak self] (inUnalignedMouseLocation) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
+       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
        abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
   //--- Option click for creating track
      self.mBoardView?.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
-       continue: { [weak self] (inUnalignedMouseLocation) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
+       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
        abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )

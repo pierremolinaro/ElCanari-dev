@@ -102,17 +102,14 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final internal var mMouseDownBehaviour = DefaultMouseDownBehaviour ()
 
   final internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
-  final internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
+  final internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
   final internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
   final internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
-  final internal var mOptionClickOperationInProgress = false
-  final internal var mShiftClickOperationInProgress = false
-  final internal var mSelectionOnShiftClick = Set <Int> ()
 
   //····················································································································
 
   final func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
-                                      continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
+                                      continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void,
                                       abort inAbortCallback : @escaping () -> Void,
                                       stop inStopCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool) {
     self.mStartOptionMouseDownCallback = inStartCallback

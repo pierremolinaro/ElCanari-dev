@@ -59,7 +59,7 @@ struct EBShape : Hashable {
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
-        knobIndex inKnobIndex : Int? = nil) {
+        knobIndex inKnobIndex : Int?) {
     self.mSharedObject = EBShapeObject ()
     self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
   }
