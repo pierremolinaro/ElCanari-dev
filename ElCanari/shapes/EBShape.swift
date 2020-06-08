@@ -58,9 +58,10 @@ struct EBShape : Hashable {
         _ inOrigin : NSPoint,
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
-        _ inVerticalAlignment : EBTextVerticalAlignment) {
+        _ inVerticalAlignment : EBTextVerticalAlignment,
+        knobIndex inKnobIndex : Int? = nil) {
     self.mSharedObject = EBShapeObject ()
-    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
+    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
   }
 
   //····················································································································
@@ -133,13 +134,14 @@ struct EBShape : Hashable {
                      _ inOrigin : NSPoint,
                      _ inTextAttributes : [NSAttributedString.Key : Any],
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                     _ inVerticalAlignment : EBTextVerticalAlignment) {
+                     _ inVerticalAlignment : EBTextVerticalAlignment,
+                     _ inKnobIndex : Int? = nil) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
       self.mSharedObject = EBShapeObject (self.mSharedObject!)
     }
-    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
+    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
   }
 
   //····················································································································
@@ -426,7 +428,7 @@ fileprivate final class EBShapeObject : Hashable {
     bp.lineWidth = 0.0 // Thinnest line
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
-    self.add (stroke: [bp], frameColor, knobIndex: nil, clip: .none)
+    self.add (stroke: [bp], frameColor, knobIndex: inKnobIndex, clip: .none)
   }
 
   //····················································································································
@@ -435,7 +437,8 @@ fileprivate final class EBShapeObject : Hashable {
             _ inOrigin : NSPoint,
             _ inTextAttributes : [NSAttributedString.Key : Any],
             _ inHorizontalAlignment : EBTextHorizontalAlignment,
-            _ inVerticalAlignment : EBTextVerticalAlignment) {
+            _ inVerticalAlignment : EBTextVerticalAlignment,
+            _ inKnobIndex : Int?) {
     if inString != "" {
     //--- Forecolor
       let textColor : NSColor
@@ -455,17 +458,17 @@ fileprivate final class EBShapeObject : Hashable {
     //--- Append background ?
       if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
-        let e = EBShapeElement ([bp], .fill, backColor, nil, .none)
+        let e = EBShapeElement ([bp], .fill, backColor, inKnobIndex, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
       }else{
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
-        let e = EBShapeElement ([bp], .fill, nil, nil, .none)
+        let e = EBShapeElement ([bp], .fill, nil, inKnobIndex, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
      }
     //--- Append text
-      let e = EBShapeElement ([filledBezierPath], .fill, textColor, nil, .none)
+      let e = EBShapeElement ([filledBezierPath], .fill, textColor, inKnobIndex, .none)
       self.mElements.append (e)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
@@ -508,7 +511,7 @@ fileprivate final class EBShapeObject : Hashable {
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
     }
   //--- Append text
-    let e = EBShapeElement ([filledBezierPath], .fill, inForeColor, nil, .none)
+    let e = EBShapeElement ([filledBezierPath], .fill, inForeColor, inKnobIndex, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   }
@@ -552,13 +555,13 @@ fileprivate final class EBShapeObject : Hashable {
   }
 
   //····················································································································
-  //   Contains point
+  //   intersects
   //····················································································································
 
-  func contains (point inPoint : NSPoint) -> Bool {
-    if self.mCachedBoundingBox.contains (inPoint) {
+  func intersects (rect inRect : NSRect) -> Bool {
+    if self.mCachedBoundingBox.intersects (inRect) {
       for element in self.mElements {
-        if element.contains (point: inPoint) {
+        if element.intersects (rect: inRect) {
           return true
         }
       }
@@ -567,13 +570,13 @@ fileprivate final class EBShapeObject : Hashable {
   }
 
   //····················································································································
-  //   intersects
+  //   Contains point
   //····················································································································
 
-  func intersects (rect inRect : NSRect) -> Bool {
-    if self.mCachedBoundingBox.intersects (inRect) {
+  func contains (point inPoint : NSPoint) -> Bool {
+    if self.mCachedBoundingBox.contains (inPoint) {
       for element in self.mElements {
-        if element.intersects (rect: inRect) {
+        if element.contains (point: inPoint) {
           return true
         }
       }
@@ -693,7 +696,7 @@ fileprivate final class EBShapeElement : Hashable {
   init (_ inPathes : [EBBezierPath],
         _ inKind : EBPathKind,
         _ inColor : NSColor?,
-        _ inKnobIndex : Int? = nil,
+        _ inKnobIndex : Int?,
         _ inClipRule : EBClipRule) {
     mPathes = inPathes
     mKind = inKind
@@ -826,6 +829,21 @@ fileprivate final class EBShapeElement : Hashable {
   }
 
   //····················································································································
+  //   Knob Index
+  //····················································································································
+
+  func knobIndex (at inPoint : NSPoint) -> Int? {
+    if let idx = self.mKnobIndex {
+      for path in self.mPathes.reversed () {
+        if path.contains (inPoint) {
+          return idx
+        }
+      }
+    }
+    return nil
+  }
+
+  //····················································································································
   //   intersects
   //····················································································································
 
@@ -847,19 +865,6 @@ fileprivate final class EBShapeElement : Hashable {
       }
     }
     return false
-  }
-
-  //····················································································································
-  //   Knob Index
-  //····················································································································
-
-  func knobIndex (at inPoint : NSPoint) -> Int? {
-    for path in self.mPathes.reversed () {
-      if let idx = self.mKnobIndex, path.contains (inPoint) {
-        return idx
-      }
-    }
-    return nil
   }
 
   //····················································································································

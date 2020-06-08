@@ -20,7 +20,7 @@ extension EBGraphicView : NSDraggingSource {
   final internal func ebStartDragging (with inEvent : NSEvent, dragType : NSPasteboard.PasteboardType) {
   //--- Find object under mouse
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    let (possibleObjectIndex, _) = self.indexOfFrontmostObject (at: mouseDownLocation)
+    let (possibleObjectIndex, _) = self.indexOfFrontObject (at: mouseDownLocation)
     if let objectIndex = possibleObjectIndex {
     //--- Build dragged object set
       var draggedObjectSet = Set <EBGraphicManagedObject> ()

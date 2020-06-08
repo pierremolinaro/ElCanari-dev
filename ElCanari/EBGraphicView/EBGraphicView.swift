@@ -99,6 +99,8 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
+  final internal var mMouseDownBehaviour = DefaultMouseDownBehaviour ()
+
   final internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
   final internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
   final internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
@@ -385,10 +387,10 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mLastMouseDraggedLocation : CanariPoint? = nil
-  final internal var mUnalignedMouseDownLocation : NSPoint? = nil
-  final internal var mSelectionRectangleOrigin : NSPoint? = nil
-  final internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
+//  final internal var mLastMouseDraggedLocation : CanariPoint? = nil
+//  final internal var mUnalignedMouseDownLocation : NSPoint? = nil
+//  final internal var mSelectionRectangleOrigin : NSPoint? = nil
+//  final internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
   final internal var mPerformEndUndoGroupingOnMouseUp = false
   final var mDraggingObjectsIsAlignedOnArrowKeyMagnitude = false
 
@@ -447,7 +449,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
           self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
         }
       }
-      self.updateKnobSelection ()
+//      self.updateKnobSelection ()
       self.updateViewFrameAndBounds ()
     }
   }
