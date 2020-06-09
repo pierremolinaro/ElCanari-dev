@@ -34,7 +34,9 @@ let BUGFIXES : [String] = [
   "On SES file importing, zero length tracks are removed"
 ]
 let CHANGES : [String] = [
-  "New Autorouter from https://github.com/freerouting/freerouting"
+  "Mac OS Minimum:  10.11 (El Capitan)",
+  "New Autorouter from https://github.com/freerouting/freerouting",
+  "New Mouse Down Management in graphic views"
 ]
 let NEWS : [String] = [
   "Board: the board can be printed",
