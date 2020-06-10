@@ -45,7 +45,7 @@ func transient_NCInSchematic_selectionDisplay (
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont,
         ]
-        let textShape = EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment, knobIndex: nil)
+        let textShape = EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
       //--- Add line
         var frameBP = EBBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
         var line = EBBezierPath ()

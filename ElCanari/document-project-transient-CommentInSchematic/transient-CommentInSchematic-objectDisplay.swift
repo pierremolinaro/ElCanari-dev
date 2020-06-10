@@ -36,8 +36,7 @@ func transient_CommentInSchematic_objectDisplay (
           p,
           textAttributes,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
-          self_mVerticalAlignment.ebTextShapeVerticalAlignment,
-          knobIndex: nil
+          self_mVerticalAlignment.ebTextShapeVerticalAlignment
         )
 //--- END OF USER ZONE 2
 }

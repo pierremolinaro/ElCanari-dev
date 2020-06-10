@@ -11,7 +11,7 @@ extension EBGraphicView : NSDraggingSource {
   //····················································································································
 
   final func draggingSession (_ session: NSDraggingSession,
-                        sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+                              sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
     return .generic
   }
 
@@ -41,8 +41,8 @@ extension EBGraphicView : NSDraggingSource {
   //····················································································································
 
   final fileprivate func performStartDragging (draggedObjectSet : Set <EBGraphicManagedObject>,
-                                         event inEvent : NSEvent,
-                                         dragType : NSPasteboard.PasteboardType) {
+                                               event inEvent : NSEvent,
+                                               dragType : NSPasteboard.PasteboardType) {
   //--- Build dragging item
     let pasteboardItem = NSPasteboardItem ()
     let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)

@@ -255,7 +255,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  private func computeSelectionShape () {
+  func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
     for object in self.objectArray {
       if !self.selectedArray_property.propset.contains (object) {

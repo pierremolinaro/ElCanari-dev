@@ -17,6 +17,8 @@ protocol EBGraphicViewControllerProtocol : class {
 
 //--- Selection operations
 
+  func computeSelectionShape ()
+  
   var selectedGraphicObjectSet : Set <EBGraphicManagedObject> { get }
 
   var selectedIndexesSet : Set <Int> { get }

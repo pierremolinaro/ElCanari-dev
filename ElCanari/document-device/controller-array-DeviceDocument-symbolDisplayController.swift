@@ -255,7 +255,7 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
 
   //····················································································································
 
-  private func computeSelectionShape () {
+  func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
     for object in self.objectArray {
       if !self.selectedArray_property.propset.contains (object) {

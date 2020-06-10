@@ -45,7 +45,7 @@ func transient_NCInSchematic_objectDisplay (
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont,
         ]
-        return EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment, knobIndex: nil)
+        return EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
 //--- END OF USER ZONE 2
 }
 

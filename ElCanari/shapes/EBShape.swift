@@ -58,10 +58,9 @@ struct EBShape : Hashable {
         _ inOrigin : NSPoint,
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
-        _ inVerticalAlignment : EBTextVerticalAlignment,
-        knobIndex inKnobIndex : Int?) {
+        _ inVerticalAlignment : EBTextVerticalAlignment) {
     self.mSharedObject = EBShapeObject ()
-    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
+    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
 
   //····················································································································
@@ -134,14 +133,13 @@ struct EBShape : Hashable {
                      _ inOrigin : NSPoint,
                      _ inTextAttributes : [NSAttributedString.Key : Any],
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                     _ inVerticalAlignment : EBTextVerticalAlignment,
-                     _ inKnobIndex : Int? = nil) {
+                     _ inVerticalAlignment : EBTextVerticalAlignment) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
       self.mSharedObject = EBShapeObject (self.mSharedObject!)
     }
-    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
+    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
 
   //····················································································································
@@ -437,8 +435,7 @@ fileprivate final class EBShapeObject : Hashable {
             _ inOrigin : NSPoint,
             _ inTextAttributes : [NSAttributedString.Key : Any],
             _ inHorizontalAlignment : EBTextHorizontalAlignment,
-            _ inVerticalAlignment : EBTextVerticalAlignment,
-            _ inKnobIndex : Int?) {
+            _ inVerticalAlignment : EBTextVerticalAlignment) {
     if inString != "" {
     //--- Forecolor
       let textColor : NSColor
@@ -458,17 +455,17 @@ fileprivate final class EBShapeObject : Hashable {
     //--- Append background ?
       if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
-        let e = EBShapeElement ([bp], .fill, backColor, inKnobIndex, .none)
+        let e = EBShapeElement ([bp], .fill, backColor, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
       }else{
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
-        let e = EBShapeElement ([bp], .fill, nil, inKnobIndex, .none)
+        let e = EBShapeElement ([bp], .fill, nil, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
      }
     //--- Append text
-      let e = EBShapeElement ([filledBezierPath], .fill, textColor, inKnobIndex, .none)
+      let e = EBShapeElement ([filledBezierPath], .fill, textColor, nil, .none)
       self.mElements.append (e)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }

@@ -31,8 +31,7 @@ func transient_PackagePad_padNumberDisplay (
         CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint,
         textAttributes,
         .center,
-        .center,
-        knobIndex: nil
+        .center
       )
     }else{
       return EBShape ()

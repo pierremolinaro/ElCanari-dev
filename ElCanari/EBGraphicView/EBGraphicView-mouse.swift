@@ -156,7 +156,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func drag (knob inPossibleKnobIndex : Int?,
+  final func drag (possibleKnob inPossibleKnobIndex : Int?,
                    objectIndex : Int,
                    _ inProposedTranslation: CanariPoint,
                    _ inLastMouseDraggedLocation : CanariPoint) {
@@ -164,10 +164,6 @@ extension EBGraphicView {
     if let knobIndex = inPossibleKnobIndex { // Mode knob
       let p = objects [objectIndex].canMove (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y)
       if (p.x != 0) || (p.y != 0) {
-        if !self.mPerformEndUndoGroupingOnMouseUp {
-          self.mPerformEndUndoGroupingOnMouseUp = true
-          self.viewController?.ebUndoManager?.beginUndoGrouping ()
-        }
         let mouseDraggedLocation = CanariPoint (
           x: p.x + inLastMouseDraggedLocation.x,
           y: p.y + inLastMouseDraggedLocation.y
@@ -196,10 +192,6 @@ extension EBGraphicView {
       dy = p.y
     }
     if (dx != 0) || (dy != 0) {
-      if !self.mPerformEndUndoGroupingOnMouseUp {
-        self.mPerformEndUndoGroupingOnMouseUp = true
-        self.viewController?.ebUndoManager?.beginUndoGrouping ()
-      }
       let userSet = OCObjectSet ()
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
         object.translate (xBy: dx, yBy: dy, userSet: userSet)
@@ -209,18 +201,26 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?) {
+  final internal func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?){
     var possibleObjectIndex : Int? = nil
     var possibleKnobIndex : Int? = nil
-    let objects = self.objectDisplayArray
-    var idx = objects.count
+    let selectedObjects = self.selectionShapes
+    var idx = selectedObjects.count
     while (idx > 0) && (possibleObjectIndex == nil) {
       idx -= 1
-      possibleKnobIndex = objects [idx].knobIndex (at: inLocation)
+      possibleKnobIndex = selectedObjects [idx].knobIndex (at: inLocation)
       if possibleKnobIndex != nil {
         possibleObjectIndex = idx
       }
     }
+    idx = selectedObjects.count
+    while (idx > 0) && (possibleObjectIndex == nil) {
+      idx -= 1
+      if selectedObjects [idx].contains (point: inLocation) {
+        possibleObjectIndex = idx
+      }
+    }
+    let objects = self.objectDisplayArray
     idx = objects.count
     while (idx > 0) && (possibleObjectIndex == nil) {
       idx -= 1
@@ -229,6 +229,17 @@ extension EBGraphicView {
       }
     }
     return (possibleObjectIndex, possibleKnobIndex)
+  }
+
+  //····················································································································
+
+  final internal func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : NSPoint) -> Int? {
+    let selectedObjects = self.selectionShapes
+    if inObjectIndex < selectedObjects.count {
+      return selectedObjects [inObjectIndex].knobIndex (at: inLocation)
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

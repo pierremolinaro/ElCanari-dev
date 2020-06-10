@@ -50,8 +50,7 @@ func transient_ComponentSymbolInProject_objectDisplay (
             componentNameCenter.cocoaPoint,
             componentNameTextAttributes,
             .center,
-            .center,
-            knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
+            .center
           )
           shape.add (componentNameShape)
         }
@@ -67,8 +66,7 @@ func transient_ComponentSymbolInProject_objectDisplay (
             componentValueCenter.cocoaPoint,
             componentValueTextAttributes,
             .center,
-            .center,
-            knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
+            .center
           )
           shape.add (componentValueShape)
         }

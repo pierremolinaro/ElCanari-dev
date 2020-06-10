@@ -66,8 +66,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
                   NSPoint (),
                   pinNameAttributes,
                   self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
-                  self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
-                  knobIndex: nil
+                  self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
                 )
                 pinTextShape.add (pinNameTextShape.transformed (by: trText))
               }
@@ -88,8 +87,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
                 NSPoint (),
                 pinNameAttributes,
                 self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
-                self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
-                knobIndex: nil
+                self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
               )
               pinTextShape.add (pinNumberTextShape.transformed (by: trText))
             //--- Pin location
