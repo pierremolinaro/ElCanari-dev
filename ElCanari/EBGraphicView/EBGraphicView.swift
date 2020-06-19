@@ -99,7 +99,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mMouseDownBehaviour = DefaultMouseDownBehaviour ()
+  final internal var mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
 
   //····················································································································
   // MARK: -

@@ -24,16 +24,6 @@ func transient_WireInSchematic_objectDisplay (
         let p2 = self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
         var shape = EBShape ()
       //---
-//        do{
-//          var bp = EBBezierPath ()
-//          bp.move (to: p1.cocoaPoint)
-//          bp.line (to: p2.cocoaPoint)
-//          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0 + 1.0
-//          bp.lineCapStyle = .round
-//          bp.lineJoinStyle = .round
-//          shape.add (stroke: [bp], .white))
-//        }
-      //---
         do{
           var bp = EBBezierPath ()
           bp.move (to: p1.cocoaPoint)

@@ -10,8 +10,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let WIRE_P1_KNOB = 0
-let WIRE_P2_KNOB = 1
+let WIRE_CENTER_KNOB = 0
+let WIRE_P1_KNOB = 1
+let WIRE_P2_KNOB = 2
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION WireInSchematic
@@ -45,7 +46,9 @@ extension WireInSchematic {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
+    if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
+      return OCCanariPoint (x: inDx, y: inDy)
+    }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
       if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
         return OCCanariPoint (x: 0, y: 0)
       }else{
@@ -65,7 +68,12 @@ extension WireInSchematic {
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
-    if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil {
+    if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
+      p1.mX += inDx
+      p1.mY += inDy
+      p2.mX += inDx
+      p2.mY += inDy
+    }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil {
       point.mX += inDx
       point.mY += inDy
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil {

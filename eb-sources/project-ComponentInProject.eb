@@ -47,7 +47,8 @@ graphic entity ComponentInProject : BoardObject {
  
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide,
-    self.packagePadDictionary, self.strokeBezierPath,
+    self.packagePadDictionary, self.padNetDictionary,
+    self.strokeBezierPath,
     self.mDisplayLegend,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
@@ -66,8 +67,7 @@ graphic entity ComponentInProject : BoardObject {
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue,
     self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue,
-    self.mDevice.one.pinPadAssignments,
-    self.padNetDictionary
+    self.mDevice.one.pinPadAssignments
   ;
 
   transient ThreeStringArray pinPadAssignments dependsFrom self.mDevice.one.pinPadAssignments ;
@@ -76,7 +76,8 @@ graphic entity ComponentInProject : BoardObject {
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.mDisplayLegend,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,
-    self.mNameRotation, self.componentName, self.packagePadDictionary,
+    self.mNameRotation, self.componentName,
+    self.packagePadDictionary, self.padNetDictionary,
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue,
     prefs.hiliteWidthMultipliedByTen

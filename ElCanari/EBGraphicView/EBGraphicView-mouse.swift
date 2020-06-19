@@ -51,60 +51,6 @@ extension EBGraphicView {
         super.mouseDown (with: inEvent)
       }
     }
-
-//      if modifierFlagsContainsControl, !modifierFlagsContainsShift, !modifierFlagsContainsOption { // Ctrl Key On, no shift
-//        if let theMenu = self.mPopulateContextualMenuClosure? (canariUnalignedMouseDownLocation) {
-//          NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
-//        }
-//      }else if let pbType = self.pasteboardType, modifierFlagsContainsOption {
-//        self.ebStartDragging (with: inEvent, dragType: pbType)
-//      }else if self.pasteboardType == nil, modifierFlagsContainsOption && !modifierFlagsContainsShift {
-//        self.mPerformEndUndoGroupingOnMouseUp = true
-//        self.viewController?.ebUndoManager?.beginUndoGrouping ()
-//        self.mStartOptionMouseDownCallback? (unalignedMouseDownLocation)
-//        self.mOptionClickOperationInProgress = true
-//      }else if !modifierFlagsContainsOption && modifierFlagsContainsShift {
-//        self.mShiftClickOperationInProgress = true
-//        if let selectedIndexesSet = self.viewController?.selectedIndexesSet {
-//          self.mSelectionOnShiftClick = selectedIndexesSet
-//        }
-//        self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint
-//      }else{
-//      //--- Find index of object under mouse down
-//        let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocation)
-//        self.guideFor (possibleObjectIndex: possibleObjectIndex)
-//        let controlKey = inEvent.modifierFlags.contains (.control)
-//        if !controlKey {
-//          let shiftKey = inEvent.modifierFlags.contains (.shift)
-//          let commandKey = inEvent.modifierFlags.contains (.command)
-//          if shiftKey { // Shift key extends selection
-//            if let objectIndex = possibleObjectIndex {
-//              viewController.addToSelection (objectsWithIndex: [objectIndex])
-//            }
-//          }else if commandKey { // Command key toggles selection of object under click
-//            if let objectIndex = possibleObjectIndex {
-//              if viewController.selectedIndexesSet.contains (objectIndex) {
-//                viewController.removeFromSelection (objectWithIndex: objectIndex)
-//              }else{
-//                viewController.addToSelection (objectsWithIndex: [objectIndex])
-//              }
-//            }
-//          }else if let objectIndex = possibleObjectIndex {
-//            if let knobIndex = possibleKnobIndex {
-//              self.mPossibleKnob = (objectIndex, knobIndex)
-//            }
-//            if !viewController.selectedIndexesSet.contains (objectIndex) {
-//              viewController.setSelection (objectsWithIndexes: [objectIndex])
-//            }
-//          }else{ // Click outside an object : clear selection
-//            viewController.clearSelection ()
-//            self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint
-//          }
-//        }
-//      }
-//    }else{
-//      super.mouseDown (with: inEvent)
-//    }
   }
 
   //····················································································································
@@ -116,31 +62,6 @@ extension EBGraphicView {
     self.updateXYplacards (locationOnGridInView)
 
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, inEvent.modifierFlags, self)
-
-
-//    if self.mShiftClickOperationInProgress, let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
-//      self.handleSelectionOnMouseDragged (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
-//    }else if self.mOptionClickOperationInProgress {
-//      self.mContinueOptionMouseDraggedCallback? (unalignedLocationInView)
-//    }else if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
-//      self.handleSelectionOnMouseDragged (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
-//    }else if let lastMouseDraggedLocation = self.mLastMouseDraggedLocation {
-//      let mouseDraggedCanariLocation = mouseDraggedCocoaLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
-//      var proposedTranslation = CanariPoint (
-//        x: mouseDraggedCanariLocation.x - lastMouseDraggedLocation.x,
-//        y: mouseDraggedCanariLocation.y - lastMouseDraggedLocation.y
-//      )
-//      if self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude {
-//        proposedTranslation = proposedTranslation.point (alignedOnGrid: self.mouseGridInCanariUnit)
-//      }
-//      if let (objectIndex, knobIndex) = self.mPossibleKnob {
-//        self.guideFor (objectIndexes: [objectIndex])
-//        self.drag (knob: knobIndex, objectIndex: objectIndex, proposedTranslation, lastMouseDraggedLocation)
-//      }else{
-//        self.guideFor (objectIndexes: self.viewController?.selectedIndexesSet ?? Set ())
-//        self.dragSelection (proposedTranslation, lastMouseDraggedLocation)
-//      }
-//    }
   }
 
     //····················································································································
@@ -151,7 +72,7 @@ extension EBGraphicView {
       self.mSelectionRectangle = nil
       self.mGuideBezierPath = nil
       self.mMouseDownBehaviour.onMouseUp (unalignedLocationInView, self)
-      self.mMouseDownBehaviour = DefaultMouseDownBehaviour ()
+      self.mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
     }
 
   //····················································································································

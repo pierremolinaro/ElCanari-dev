@@ -28,6 +28,7 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mNameRotation : Int,                  
        _ self_componentName : String,               
        _ self_packagePadDictionary : PackageMasterPadDictionary,
+       _ self_padNetDictionary : PadNetDictionary,  
        _ self_mValueIsVisibleInBoard : Bool,        
        _ self_mXValue : Int,                        
        _ self_mYValue : Int,                        
@@ -52,6 +53,24 @@ func transient_ComponentInProject_selectionDisplay (
         strokeBezierPath.lineCapStyle = .round
         strokeBezierPath.lineJoinStyle = .round
         rotatedShape.add (stroke: [strokeBezierPath], .cyan)
+      }
+      do{
+        var padNumberAffineTransform = AffineTransform ()
+        if self_mSide == .back {
+          padNumberAffineTransform.scale (x: -1.0, y: 1.0)
+        }
+        padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
+        for (_, padDescriptor) in self_packagePadDictionary {
+          padDescriptor.accumulatePadBezierPathes (
+            into: &rotatedShape,
+            side: self_mSide,
+            padDisplayAttributes: nil,
+            padNumberAF: padNumberAffineTransform,
+            frontPadColor: .cyan,
+            backPadColor: .cyan,
+            padNetDictionary: self_padNetDictionary
+          )
+        }
       }
     //--- Knobs
       var rotatedKnobs = EBShape ()

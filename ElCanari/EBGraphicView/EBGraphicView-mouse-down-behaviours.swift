@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class DefaultMouseDownBehaviour {
+class DefaultBehaviourOnMouseDown {
 
   //····················································································································
 
@@ -31,7 +31,7 @@ class DefaultMouseDownBehaviour {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MouseDownOutsideAnyObjectBehaviour : DefaultMouseDownBehaviour { // Mouse down without any modifier, outside any object
+final class MouseDownOutsideAnyObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse down without any modifier, outside any object
 
   //····················································································································
 
@@ -61,7 +61,7 @@ final class MouseDownOutsideAnyObjectBehaviour : DefaultMouseDownBehaviour { // 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MouseDownOnObjectBehaviour : DefaultMouseDownBehaviour { // Mouse down without any modifier, on an object
+final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse down without any modifier, on an object
 
   //····················································································································
 
@@ -102,7 +102,12 @@ final class MouseDownOnObjectBehaviour : DefaultMouseDownBehaviour { // Mouse do
       proposedTranslation = proposedTranslation.point (alignedOnGrid: inGraphicView.mouseGridInCanariUnit)
     }
     inGraphicView.guideFor (objectIndexes: [self.mObjectIndex])
-    inGraphicView.drag (possibleKnob: self.mPossibleKnobIndex, objectIndex: self.mObjectIndex, proposedTranslation, self.mLastMouseDraggedAlignedLocation)
+    inGraphicView.drag (
+      possibleKnob: inModifierFlags.contains(.command) ? nil : self.mPossibleKnobIndex,
+      objectIndex: self.mObjectIndex,
+      proposedTranslation,
+      self.mLastMouseDraggedAlignedLocation
+    )
     self.mLastMouseDraggedAlignedLocation = mouseDraggedCanariAlignedLocation
   }
 
@@ -119,7 +124,7 @@ final class MouseDownOnObjectBehaviour : DefaultMouseDownBehaviour { // Mouse do
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ShiftMouseDownBehaviour : DefaultMouseDownBehaviour { // Mouse down without only shift modifier
+final class ShiftMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse down without only shift modifier
 
   //····················································································································
 
@@ -155,7 +160,7 @@ final class ShiftMouseDownBehaviour : DefaultMouseDownBehaviour { // Mouse down 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class OptionMouseDownBehaviour : DefaultMouseDownBehaviour { // Mouse down without only option modifier
+final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse down without only option modifier
 
   //····················································································································
 

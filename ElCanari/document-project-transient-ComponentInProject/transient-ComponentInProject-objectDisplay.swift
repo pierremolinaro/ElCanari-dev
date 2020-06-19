@@ -19,6 +19,7 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mRotation : Int,                   
        _ self_mSide : ComponentSide,             
        _ self_packagePadDictionary : PackageMasterPadDictionary,
+       _ self_padNetDictionary : PadNetDictionary,
        _ self_strokeBezierPath : EBBezierPath,   
        _ self_mDisplayLegend : Bool,             
        _ prefs_frontSideLegendColorForBoard : NSColor,
@@ -47,8 +48,7 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mValueFontSize : Double,           
        _ self_mValueRotation : Int,              
        _ self_mComponentValue : String,          
-       _ self_mDevice_pinPadAssignments : ThreeStringArray?,
-       _ self_padNetDictionary : PadNetDictionary
+       _ self_mDevice_pinPadAssignments : ThreeStringArray?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let padDisplayAttributes : [NSAttributedString.Key : Any]?

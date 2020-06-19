@@ -31,10 +31,14 @@ func transient_WireInSchematic_selectionDisplay (
         bp.lineJoinStyle = .round
         var shape = EBShape ()
         shape.add (stroke: [bp], .cyan)
-      //--- Knob at P1 ?
-        if self_mP1_canMove ?? false {
-          shape.add (knobAt:  p1, knobIndex: WIRE_P1_KNOB, .circ, SCHEMATIC_KNOB_SIZE)
+      //--- Knob at center ?
+        if (self_mP1_canMove ?? false) && (self_mP2_canMove ?? false) {
+          shape.add (knobAt: NSPoint.center (p1, p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
+      //--- Knob at P1 ?
+          if self_mP1_canMove ?? false {
+            shape.add (knobAt:  p1, knobIndex: WIRE_P1_KNOB, .circ, SCHEMATIC_KNOB_SIZE)
+          }
       //--- Knob at P2 ?
         if self_mP2_canMove ?? false {
           shape.add (knobAt:  p2, knobIndex: WIRE_P2_KNOB, .circ, SCHEMATIC_KNOB_SIZE)

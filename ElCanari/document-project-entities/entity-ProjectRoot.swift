@@ -1369,12 +1369,12 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mDSNFileProposedName
   //····················································································································
 
-  let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "des.dsn")
+  let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn")
 
   //····················································································································
 
   final func reset_mDSNFileProposedName_toDefaultValue () {
-    self.mDSNFileProposedName = "des.dsn"
+    self.mDSNFileProposedName = "design.dsn"
   }
 
   //····················································································································
