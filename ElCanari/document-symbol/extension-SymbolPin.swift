@@ -85,43 +85,43 @@ extension SymbolPin {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    var dx = inDx
-    var dy = inDy
-    if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-      if (self.xPin + dx) < 0 {
-        dx = -self.xPin
-      }
-      if (self.yPin + dy) < 0 {
-        dy = -self.yPin
-      }
-      if (self.xName + dx) < 0 {
-        dx = -self.xName
-      }
-      if (self.yName + dy) < 0 {
-        dy = -self.yName
-      }
-      if (self.xNumber + dx) < 0 {
-        dx = -self.xNumber
-      }
-      if (self.yNumber + dy) < 0 {
-        dy = -self.yNumber
-      }
-    }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      if (self.xName + dx) < 0 {
-        dx = -self.xName
-      }
-      if (self.yName + dy) < 0 {
-        dy = -self.yName
-      }
-    }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-      if (self.xNumber + dx) < 0 {
-        dx = -self.xNumber
-      }
-      if (self.yNumber + dy) < 0 {
-        dy = -self.yNumber
-      }
-    }
-    return OCCanariPoint (x: dx, y: dy)
+//    var dx = inDx
+//    var dy = inDy
+//    if inKnobIndex == SYMBOL_PIN_ENDPOINT {
+////      if (self.xPin + dx) < 0 {
+//        dx = -self.xPin
+////      }
+////      if (self.yPin + dy) < 0 {
+//        dy = -self.yPin
+////      }
+////      if (self.xName + dx) < 0 {
+//        dx = -self.xName
+////      }
+////      if (self.yName + dy) < 0 {
+//        dy = -self.yName
+////      }
+////      if (self.xNumber + dx) < 0 {
+//        dx = -self.xNumber
+////      }
+////      if (self.yNumber + dy) < 0 {
+//        dy = -self.yNumber
+////      }
+//    }else if inKnobIndex == SYMBOL_PIN_LABEL {
+////      if (self.xName + dx) < 0 {
+//        dx = -self.xName
+////      }
+////      if (self.yName + dy) < 0 {
+//        dy = -self.yName
+////      }
+//    }else if inKnobIndex == SYMBOL_PIN_NUMBER {
+////      if (self.xNumber + dx) < 0 {
+//        dx = -self.xNumber
+////      }
+////      if (self.yNumber + dy) < 0 {
+//        dy = -self.yNumber
+////      }
+//    }
+    return OCCanariPoint (x: inDx, y: inDy)
  }
 
   //····················································································································

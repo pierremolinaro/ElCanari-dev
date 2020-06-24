@@ -388,7 +388,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final var mDraggingObjectsIsAlignedOnArrowKeyMagnitude = false
+  // final var mDraggingObjectsIsAlignedOnArrowKeyMagnitude = false
 
   //····················································································································
   // MARK: -

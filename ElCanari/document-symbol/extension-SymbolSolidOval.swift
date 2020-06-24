@@ -53,9 +53,9 @@ extension SymbolSolidOval {
     var dx = inDx
     var dy = inDy
     if inKnobIndex == SYMBOL_SOLID_OVAL_LEFT {
-      if (self.x + dx) < 0 {
-        dx = -self.x
-      }
+    //  if (self.x + dx) < 0 {
+   //     dx = -self.x
+  //    }
       if (self.width - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
         dx = SYMBOL_GRID_IN_CANARI_UNIT - self.width
       }
@@ -64,9 +64,9 @@ extension SymbolSolidOval {
         dx = -(SYMBOL_GRID_IN_CANARI_UNIT - self.width)
       }
     }else if inKnobIndex == SYMBOL_SOLID_OVAL_BOTTOM {
-      if (self.y + dy) < 0 {
-        dy = -self.y
-      }
+//      if (self.y + dy) < 0 {
+  //      dy = -self.y
+ //     }
       if (self.height - dy) < SYMBOL_GRID_IN_CANARI_UNIT {
         dy = SYMBOL_GRID_IN_CANARI_UNIT - self.height
       }

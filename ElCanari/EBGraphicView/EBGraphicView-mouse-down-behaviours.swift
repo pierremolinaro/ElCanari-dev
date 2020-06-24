@@ -94,13 +94,15 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
                                                              _ inModifierFlags : NSEvent.ModifierFlags,
                                                              _ inGraphicView : EBGraphicView) {
     let mouseDraggedCanariAlignedLocation = inMouseDraggedUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mouseGridInCanariUnit)
-    var proposedTranslation = CanariPoint (
+    let proposedTranslation = CanariPoint (
       x: mouseDraggedCanariAlignedLocation.x - self.mLastMouseDraggedAlignedLocation.x,
       y: mouseDraggedCanariAlignedLocation.y - self.mLastMouseDraggedAlignedLocation.y
     )
-    if inGraphicView.mDraggingObjectsIsAlignedOnArrowKeyMagnitude {
-      proposedTranslation = proposedTranslation.point (alignedOnGrid: inGraphicView.mouseGridInCanariUnit)
-    }
+//    if inGraphicView.mDraggingObjectsIsAlignedOnArrowKeyMagnitude {
+//      Swift.print ("\(proposedTranslation.x) \(proposedTranslation.y) inGraphicView.shiftArrowKeyMagnitude \(inGraphicView.shiftArrowKeyMagnitude)")
+// //     proposedTranslation = proposedTranslation.point (alignedOnGrid: inGraphicView.shiftArrowKeyMagnitude)
+//      Swift.print ("\(proposedTranslation.x) \(proposedTranslation.y)")
+//    }
     inGraphicView.guideFor (objectIndexes: [self.mObjectIndex])
     inGraphicView.drag (
       possibleKnob: inModifierFlags.contains(.command) ? nil : self.mPossibleKnobIndex,

@@ -43,15 +43,15 @@ extension SymbolText {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    var dx = inDx
-    var dy = inDy
-    if (self.x + dx) < 0 {
-      dx = -self.x
-    }
-    if (self.y + dy) < 0 {
-      dy = -self.y
-    }
-    return OCCanariPoint (x: dx, y: dy)
+//    var dx = inDx
+//    var dy = inDy
+// //   if (self.x + dx) < 0 {
+//      dx = -self.x
+////    }
+////    if (self.y + dy) < 0 {
+//      dy = -self.y
+////    }
+    return OCCanariPoint (x: inDx, y: inDy)
  }
 
   //····················································································································
