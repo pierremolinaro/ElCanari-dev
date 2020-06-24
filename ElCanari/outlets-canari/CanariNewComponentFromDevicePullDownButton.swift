@@ -82,7 +82,7 @@ class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNam
   //---
     self.removeAllItems ()
     self.addItem (withTitle: "Embedded Library")
-    for deviceName in array {
+    for deviceName in array.sorted () {
       self.addItem (withTitle: deviceName)
       let menuItem = self.lastItem!
       menuItem.target = self
