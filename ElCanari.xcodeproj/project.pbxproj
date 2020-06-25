@@ -419,6 +419,8 @@
 		CF3D745121A8026D004F6C43 /* enum-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */; };
 		CF3D745321A802F9004F6C43 /* extension-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */; };
 		CF3D745421A802F9004F6C43 /* extension-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */; };
+		CF3D9FD924A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */; };
+		CF3D9FDA24A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */; };
 		CF3DEFB91BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEFB81BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift */; };
 		CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */; };
 		CF3E658A21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */; };
@@ -2795,6 +2797,7 @@
 		CF3CF2072232A39800B6D0AC /* action-DeviceDocument-updateSymbolsAndPackagesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-updateSymbolsAndPackagesAction.swift"; sourceTree = "<group>"; };
 		CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-HorizontalAlignment.swift"; sourceTree = "<group>"; };
 		CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-HorizontalAlignment.swift"; sourceTree = "<group>"; };
+		CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceInProject-deviceComponentCountString.swift"; sourceTree = "<group>"; };
 		CF3DEFB81BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-FontDocument-addSegmentAction.swift"; sourceTree = "<group>"; };
 		CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-importArtworkButtonTitle.swift"; sourceTree = "<group>"; };
 		CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-issue.swift"; sourceTree = "<group>"; };
@@ -5366,6 +5369,7 @@
 			children = (
 				CFEB7B7A233A26320060A97A /* transient-DeviceInProject-canExport.swift */,
 				CFEB7B7D233A26320060A97A /* transient-DeviceInProject-canRemove.swift */,
+				CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */,
 				CFEB7B79233A26310060A97A /* transient-DeviceInProject-deviceSymbolDictionary.swift */,
 				CFEB7B76233A26310060A97A /* transient-DeviceInProject-packageNames.swift */,
 				CFEB7B78233A26310060A97A /* transient-DeviceInProject-pinPadAssignments.swift */,
@@ -6734,6 +6738,7 @@
 				CF8386902423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
 				CF39C4F022A0605A00EE75CD /* controller-popup-net-class-from-selected-wires.swift in Sources */,
 				CFEAAD732231827C00F69A12 /* action-DeviceDocument-updateSelectedSymbols.swift in Sources */,
+				CF3D9FD924A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */,
 				CFEB7BEE233A28130060A97A /* transient-NetClassInProject-netsDescription.swift in Sources */,
 				CF71F9251B3EA3DF00FB5049 /* EBDoubleField.swift in Sources */,
 				CFEB7CA7233A28860060A97A /* transient-ProjectRoot-boarderViewBackground.swift in Sources */,
@@ -7945,6 +7950,7 @@
 				CF8386912423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
 				CFEAAD742231827C00F69A12 /* action-DeviceDocument-updateSelectedSymbols.swift in Sources */,
 				CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */,
+				CF3D9FDA24A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */,
 				CF5C4D58219F04D600EAC52A /* ArtworkDocument-customized.swift in Sources */,
 				CFEB7BEF233A28130060A97A /* transient-NetClassInProject-netsDescription.swift in Sources */,
 				CFC5BB602232D5AE00E03849 /* transient-DeviceRoot-unconnectedPins.swift in Sources */,

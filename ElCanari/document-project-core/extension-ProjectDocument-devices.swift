@@ -207,7 +207,17 @@ extension ProjectDocument {
       result += "\n  - the candidate device has no '\(p)' symbol type"
     }
     for p in unknownSymbols {
-      result += "\n  - the candidate device has unknown '\(p)' symbol type"
+      result += "\n  - the candidate device has unknown '\(p)' symbol type (available: "
+      var first = true
+      for symbol in candidateSymbolTypeSet {
+        if first {
+          first = false
+        }else{
+          result += ", "
+        }
+        result += "'\(symbol)'"
+      }
+      result += ")"
     }
     if result == "" {
       for symbolTypeName in currentSymbolTypeSet {

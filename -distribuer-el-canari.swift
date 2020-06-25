@@ -28,20 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.2.0"
+let VERSION_CANARI = "1.2.1"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "On SES file importing, zero length tracks are removed"
+  "Symbol edition was broken in release 1.2.0"
 ]
-let CHANGES : [String] = [
-  "Mac OS Minimum:  10.11 (El Capitan)",
-  "New Autorouter from https://github.com/freerouting/freerouting",
-  "New Mouse Down Management in graphic views"
-]
-let NEWS : [String] = [
-  "Board: the board can be printed",
-  "Board: added a switch for controlling component legend display"
-]
+let CHANGES : [String] = []
+let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR

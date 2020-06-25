@@ -23,6 +23,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     inOldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
     inOldValue?.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport) // Transient property
     inOldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+    inOldValue?.deviceComponentCountString_property.removeEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
     inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     inOldValue?.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
     inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
@@ -36,6 +37,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     self.mInternalValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
     self.mInternalValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport) // Transient property
     self.mInternalValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+    self.mInternalValue?.deviceComponentCountString_property.addEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
     self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     self.mInternalValue?.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
     self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
@@ -594,6 +596,75 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     for managedObject in inSet {
       self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
         managedObject.packageNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'deviceComponentCountString' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  var deviceComponentCountString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.deviceComponentCountString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceComponentCountString.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.deviceComponentCountString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceComponentCountString.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.deviceComponentCountString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceComponentCountString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceComponentCountString.apply { (_ observer : EBEvent) in
+        managedObject.deviceComponentCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceComponentCountString.apply { (_ observer : EBEvent) in
+        managedObject.deviceComponentCountString_property.removeEBObserver (observer)
       }
     }
   }

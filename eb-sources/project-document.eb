@@ -208,11 +208,12 @@ document ProjectDocument root ProjectRoot {
     $enabled #projectDeviceController.selectedArray.count > 0
   ;
 
+
   tableViewController #projectDeviceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mDevices {
-     column "name" EBTextObserverField $valueObserver self.mDeviceName
-     column "version" EBTextObserverField $valueObserver self.versionString
-     column "size" EBTextObserverField $valueObserver self.sizeString
-     column "componentCount" EBIntObserverField $valueObserver self.mComponents.count {autoFormatter:yes}
+     column "name" sort mDeviceName EBTextObserverField $valueObserver self.mDeviceName
+     column "version" sort versionString EBTextObserverField $valueObserver self.versionString
+     column "size" sort sizeString EBTextObserverField $valueObserver self.sizeString
+     column "componentCount" sort deviceComponentCountString EBTextObserverField $valueObserver self.deviceComponentCountString
   }
   outlet EBTableView mDeviceLibraryTableView $tableValue #projectDeviceController ;
 

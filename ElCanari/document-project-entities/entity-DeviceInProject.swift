@@ -54,6 +54,12 @@ protocol DeviceInProject_packageNames : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceInProject_deviceComponentCountString : class {
+  var deviceComponentCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceInProject_canRemove : class {
   var canRemove : Bool? { get }
 }
@@ -89,6 +95,7 @@ class DeviceInProject : EBManagedObject,
          DeviceInProject_sizeString,
          DeviceInProject_canExport,
          DeviceInProject_packageNames,
+         DeviceInProject_deviceComponentCountString,
          DeviceInProject_canRemove,
          DeviceInProject_symbolAndTypesNames,
          DeviceInProject_pinPadAssignments,
@@ -355,6 +362,29 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: deviceComponentCountString
+  //····················································································································
+
+  let deviceComponentCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var deviceComponentCountString_property_selection : EBSelection <String> {
+    return self.deviceComponentCountString_property.prop
+  }
+
+  //····················································································································
+
+  var deviceComponentCountString : String? {
+    switch self.deviceComponentCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemove
   //····················································································································
 
@@ -566,6 +596,28 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
+  //--- Atomic property: deviceComponentCountString
+    self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponents_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponents_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceInProject_deviceComponentCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserver (self.deviceComponentCountString_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -677,6 +729,7 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
+    self.mComponents_property.removeEBObserver (self.deviceComponentCountString_property)
     self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
     self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
@@ -762,6 +815,14 @@ class DeviceInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.packageNames_property.mObserverExplorer,
       valueExplorer: &self.packageNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "deviceComponentCountString",
+      idx: self.deviceComponentCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.deviceComponentCountString_property.mObserverExplorer,
+      valueExplorer: &self.deviceComponentCountString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "canRemove",

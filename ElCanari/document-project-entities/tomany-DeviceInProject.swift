@@ -23,6 +23,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_canExport_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_packageNames_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
@@ -36,6 +37,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_canExport_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_packageNames_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_deviceComponentCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
@@ -490,6 +492,62 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     for managedObject in inSet {
       self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
         managedObject.packageNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'deviceComponentCountString' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceComponentCountString.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceComponentCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceComponentCountString.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceComponentCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceComponentCountString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceComponentCountString.apply { (_ observer : EBEvent) in
+        managedObject.deviceComponentCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceComponentCountString.apply { (_ observer : EBEvent) in
+        managedObject.deviceComponentCountString_property.removeEBObserver (observer)
       }
     }
   }

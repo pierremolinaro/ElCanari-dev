@@ -13,6 +13,7 @@ entity DeviceInProject {
   toMany ComponentInProject mComponents inverse toOne mDevice ;
   toMany DevicePadAssignmentInProject mPadAssignments ;
 
+  transient String deviceComponentCountString dependsFrom self.mComponents.count ;
   transient String versionString dependsFrom self.mDeviceVersion ;
   transient String sizeString dependsFrom self.mDeviceFileData ;
   transient Bool canExport dependsFrom self.mDeviceFileData ;

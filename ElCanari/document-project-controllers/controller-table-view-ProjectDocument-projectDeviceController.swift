@@ -62,6 +62,10 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
   func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
     self.mSortDescriptorArray = []    
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "version", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "size", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "componentCount", ascending: true))
     for tableView in self.mTableViewArray {
       for sortDescriptor in self.mSortDescriptorArray {
         if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
@@ -75,10 +79,18 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: nil,
+      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
+        inModel.addEBObserverOf_deviceComponentCountString (observer)
+        inModel.addEBObserverOf_mDeviceName (observer)
+        inModel.addEBObserverOf_sizeString (observer)
+        inModel.addEBObserverOf_versionString (observer)
       },
       removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_deviceComponentCountString (observer)
+        inModel.removeEBObserverOf_mDeviceName (observer)
+        inModel.removeEBObserverOf_sizeString (observer)
+        inModel.removeEBObserverOf_versionString (observer)
       }
     )
     inModel.attachClient (self)
@@ -164,6 +176,35 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
 
   func setSelection (_ inObjects : [DeviceInProject]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
+  }
+
+  //····················································································································
+
+  func isOrderedBefore (_ left : DeviceInProject, _ right : DeviceInProject) -> Bool {
+    var order = ComparisonResult.orderedSame
+    for sortDescriptor in self.mSortDescriptorArray {
+      if sortDescriptor.key == "name" {
+        order = compare_String_properties (left.mDeviceName_property, right.mDeviceName_property)
+      }else if sortDescriptor.key == "version" {
+        order = compare_String_properties (left.versionString_property, right.versionString_property)
+      }else if sortDescriptor.key == "size" {
+        order = compare_String_properties (left.sizeString_property, right.sizeString_property)
+      }else if sortDescriptor.key == "componentCount" {
+        order = compare_String_properties (left.deviceComponentCountString_property, right.deviceComponentCountString_property)
+      }
+      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
+      if !sortDescriptor.ascending {
+        switch order {
+        case .orderedAscending : order = .orderedDescending
+        case .orderedSame : ()
+        case .orderedDescending : order = .orderedAscending
+        }
+      }
+      if order != .orderedSame {
+        break // Exit from for
+      }
+    }
+    return order == .orderedAscending
   }
 
   //····················································································································
@@ -351,12 +392,12 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "componentCount", let cell = result as? EBIntObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "componentCount", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mComponents_property.count_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.deviceComponentCountString_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
