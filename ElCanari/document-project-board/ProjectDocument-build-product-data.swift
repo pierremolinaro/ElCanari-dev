@@ -205,14 +205,14 @@ extension ProjectDocument {
     var backPackageLegends = PathApertureDictionary () // Aperture, path
     let aperture = CGFloat (g_Preferences!.packageDrawingWidthMultpliedByTenForBoard) / 10.0
     for object in self.rootObject.mBoardObjects {
-      if let component = object as? ComponentInProject {
+      if let component = object as? ComponentInProject, component.mDisplayLegend {
         let strokeBezierPath = component.strokeBezierPath!
         if !strokeBezierPath.isEmpty {
           let pathArray = strokeBezierPath.pointsByFlattening (withFlatness: 0.1)
           let af = component.packageToComponentAffineTransform ()
           var transformedPathArray = [EBLinePath] ()
           for path in pathArray {
-            transformedPathArray.append (path.transformed(by: af))
+            transformedPathArray.append (path.transformed (by: af))
           }
           switch component.mSide {
           case .back :
