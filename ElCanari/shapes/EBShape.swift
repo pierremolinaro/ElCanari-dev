@@ -72,6 +72,7 @@ struct EBShape : Hashable {
         backColor inBackColor : NSColor,
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
+        _ inKnobKind : EBKnobKind,
         knobIndex inKnobIndex : Int) {
     self.mSharedObject = EBShapeObject ()
     self.mSharedObject?.add (
@@ -82,6 +83,7 @@ struct EBShape : Hashable {
       backColor: inBackColor,
       inHorizontalAlignment,
       inVerticalAlignment,
+      inKnobKind,
       knobIndex: inKnobIndex
     )
   }
@@ -151,6 +153,7 @@ struct EBShape : Hashable {
                      backColor inBackColor : NSColor,
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
                      _ inVerticalAlignment : EBTextVerticalAlignment,
+                    _ inKnobKind : EBKnobKind,
                     knobIndex inKnobIndex : Int) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
@@ -165,6 +168,7 @@ struct EBShape : Hashable {
       backColor: inBackColor,
       inHorizontalAlignment,
       inVerticalAlignment,
+      inKnobKind,
       knobIndex: inKnobIndex
     )
   }
@@ -482,6 +486,7 @@ fileprivate final class EBShapeObject : Hashable {
             backColor inBackColor : NSColor,
             _ inHorizontalAlignment : EBTextHorizontalAlignment,
             _ inVerticalAlignment : EBTextVerticalAlignment,
+            _ inKnobKind : EBKnobKind,
             knobIndex inKnobIndex : Int) {
     let string = (inString == "") ? " " : inString
     let textAttributes : [NSAttributedString.Key : Any] = [
@@ -497,15 +502,36 @@ fileprivate final class EBShapeObject : Hashable {
     )
   //--- Append background
     do{
-      var bp = EBBezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
-      bp.lineWidth = 0.5
-      bp.lineJoinStyle = .round
-      bp.lineCapStyle = .round
-      let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
-      self.mElements.append (e1)
-      let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
-      self.mElements.append (e2)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+      switch inKnobKind {
+      case .circ :
+        var bp = EBBezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
+        self.mElements.append (e1)
+        let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
+        self.mElements.append (e2)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+      case .rect :
+        var bp = EBBezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
+        self.mElements.append (e1)
+        let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
+        self.mElements.append (e2)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+      case .transparentCircle :
+        var bp = EBBezierPath (rect: filledBezierPath.bounds)
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        let e1 = EBShapeElement ([bp], .fill, .clear, inKnobIndex, .none)
+        self.mElements.append (e1)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e1.boundingBox)
+      }
     }
   //--- Append text
     let e = EBShapeElement ([filledBezierPath], .fill, inForeColor, inKnobIndex, .none)

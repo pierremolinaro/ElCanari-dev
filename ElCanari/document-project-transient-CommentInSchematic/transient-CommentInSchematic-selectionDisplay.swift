@@ -36,6 +36,7 @@ func transient_CommentInSchematic_selectionDisplay (
           backColor: prefs_schematicBackColor,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
           self_mVerticalAlignment.ebTextShapeVerticalAlignment,
+          .rect,
           knobIndex: 0
         )
         shape.add (knobAt: p, knobIndex: 0, .rect, SCHEMATIC_KNOB_SIZE)

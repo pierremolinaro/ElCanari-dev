@@ -69,6 +69,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             backColor: prefs_schematicBackColor,
             .center,
             .center,
+            .circ,
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
           )
           shape.add (componentValueShape)
@@ -83,6 +84,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             backColor: prefs_schematicBackColor,
             .center,
             .center,
+            .circ,
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
           )
         }

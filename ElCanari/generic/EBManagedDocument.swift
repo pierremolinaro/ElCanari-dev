@@ -336,6 +336,26 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       let newSize = NSSize (width: windowWidth, height: windowHeight)
       var windowFrame : NSRect = unwrappedWindowForSheet.frame
       windowFrame.size = newSize
+      if let visibleFrame = unwrappedWindowForSheet.screen?.visibleFrame {
+        if windowFrame.size.width > visibleFrame.size.width {
+          windowFrame.size.width = visibleFrame.size.width
+        }
+        if windowFrame.size.height > visibleFrame.size.height {
+          windowFrame.size.height = visibleFrame.size.height
+        }
+        if windowFrame.origin.x < visibleFrame.origin.x {
+          windowFrame.origin.x = visibleFrame.origin.x
+        }
+        if windowFrame.origin.y < visibleFrame.origin.y {
+          windowFrame.origin.y = visibleFrame.origin.y
+        }
+        if windowFrame.maxX > visibleFrame.maxX {
+          windowFrame.origin.x -= windowFrame.maxX - visibleFrame.maxX
+        }
+        if windowFrame.maxY > visibleFrame.maxY {
+          windowFrame.origin.y -= windowFrame.maxY - visibleFrame.maxY
+        }
+      }
       unwrappedWindowForSheet.setFrame (windowFrame, display: true)
     }
     flushOutletEvents ()

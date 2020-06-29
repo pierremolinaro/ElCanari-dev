@@ -40,9 +40,47 @@ func transient_LabelInSchematic_selectionDisplay (
         //---
           shape.add (stroke: [bp.transformed (by: af)], .cyan)
           shape.add (knobAt:  p, knobIndex: 0, .rect, SCHEMATIC_KNOB_SIZE)
+        //--- Net name
+          let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
+          let horizontalAlignment : EBTextHorizontalAlignment
+          let verticalAlignment : EBTextVerticalAlignment
+          switch self_mOrientation {
+          case .rotation0 :
+            horizontalAlignment = .onTheRight
+            verticalAlignment = .center
+          case .rotation90 :
+            horizontalAlignment = .center
+            verticalAlignment = .above
+          case .rotation180 :
+            horizontalAlignment = .onTheLeft
+            verticalAlignment = .center
+          case .rotation270 :
+            horizontalAlignment = .center
+            verticalAlignment = .below
+          }
+          shape.add (
+            textKnob: self_netName,
+            labelOrigin,
+            prefs_pinNameFont,
+            foreColor: .black,
+            backColor: .white,
+            horizontalAlignment,
+            verticalAlignment,
+            .rect,
+            knobIndex: 0
+          )
         }
         return shape
 //--- END OF USER ZONE 2
 }
+
+//mutating func add (textKnob inString : String,
+//                   _ inOrigin : NSPoint,
+//                   _ inFont : NSFont,
+//                   foreColor inForeColor : NSColor,
+//                   backColor inBackColor : NSColor,
+//                   _ inHorizontalAlignment : EBTextHorizontalAlignment,
+//                   _ inVerticalAlignment : EBTextVerticalAlignment,
+//                  knobIndex inKnobIndex : Int) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

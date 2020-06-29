@@ -54,6 +54,7 @@ func transient_PackageDimension_selectionDisplay (
     backColor: prefs_packageBackgroundColor,
     .center,
     .center,
+    .circ,
     knobIndex: PACKAGE_DIMENSION_TEXT
   )
 //---
