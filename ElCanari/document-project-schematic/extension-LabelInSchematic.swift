@@ -9,6 +9,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let LABEL_IN_SCHEMATICS_TRANSLATION_KNOB = 0 ;
+let LABEL_IN_SCHEMATICS_ROTATION_KNOB = 1 ;
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -36,8 +41,25 @@ extension LabelInSchematic {
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
     if let point = self.mPoint, point.mSymbol == nil {
-      point.mX += inDx
-      point.mY += inDy
+      if inKnobIndex == LABEL_IN_SCHEMATICS_TRANSLATION_KNOB {
+        point.mX += inDx
+        point.mY += inDy
+      }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
+        let newKnobLocation = CanariPoint (x: inNewX, y: inNewY)
+        let p = CanariPoint (x: point.mX, y: point.mY)
+        let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
+        if angleInDegrees <= 45.0 {
+          self.mOrientation = .rotation0
+        }else if angleInDegrees <= 135.0 {
+          self.mOrientation = .rotation90
+        }else if angleInDegrees <= 225.0 {
+          self.mOrientation = .rotation180
+        }else if angleInDegrees <= 315.0 {
+          self.mOrientation = .rotation270
+        }else{
+          self.mOrientation = .rotation0
+        }
+      }
     }
   }
 
