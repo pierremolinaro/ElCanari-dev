@@ -702,6 +702,12 @@ protocol ProjectRoot_placedComponentNameArray : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_schematicHasErrorOrWarning : class {
+  var schematicHasErrorOrWarning : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_schematicStatusMessage : class {
   var schematicStatusMessage : String? { get }
 }
@@ -833,6 +839,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_unplacedPackages,
          ProjectRoot_componentsPlacedInBoard,
          ProjectRoot_placedComponentNameArray,
+         ProjectRoot_schematicHasErrorOrWarning,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
 
@@ -3829,6 +3836,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: schematicHasErrorOrWarning
+  //····················································································································
+
+  let schematicHasErrorOrWarning_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var schematicHasErrorOrWarning_property_selection : EBSelection <Bool> {
+    return self.schematicHasErrorOrWarning_property.prop
+  }
+
+  //····················································································································
+
+  var schematicHasErrorOrWarning : Bool? {
+    switch self.schematicHasErrorOrWarning_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: schematicStatusMessage
   //····················································································································
 
@@ -5231,6 +5261,34 @@ class ProjectRoot : EBManagedObject,
     }
     self.mComponents_property.addEBObserverOf_componentName (self.placedComponentNameArray_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property)
+  //--- Atomic property: schematicHasErrorOrWarning
+    self.schematicHasErrorOrWarning_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
+        kind &= unwSelf.netWarningCount_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.netWarningCount_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_schematicHasErrorOrWarning (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbols_property.addEBObserver (self.schematicHasErrorOrWarning_property)
+    self.netWarningCount_property.addEBObserver (self.schematicHasErrorOrWarning_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicHasErrorOrWarning_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicHasErrorOrWarning_property)
   //--- Atomic property: schematicStatusMessage
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5459,6 +5517,10 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
     self.mComponents_property.removeEBObserverOf_componentName (self.placedComponentNameArray_property)
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property)
+    self.unplacedSymbols_property.removeEBObserver (self.schematicHasErrorOrWarning_property)
+    self.netWarningCount_property.removeEBObserver (self.schematicHasErrorOrWarning_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicHasErrorOrWarning_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicHasErrorOrWarning_property)
     self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
     self.netWarningCount_property.removeEBObserver (self.schematicStatusMessage_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
@@ -6321,6 +6383,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.placedComponentNameArray_property.mObserverExplorer,
       valueExplorer: &self.placedComponentNameArray_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "schematicHasErrorOrWarning",
+      idx: self.schematicHasErrorOrWarning_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.schematicHasErrorOrWarning_property.mObserverExplorer,
+      valueExplorer: &self.schematicHasErrorOrWarning_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "schematicStatusMessage",

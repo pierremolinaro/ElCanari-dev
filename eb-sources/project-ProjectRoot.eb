@@ -234,6 +234,13 @@ entity ProjectRoot {
   
   transient String connexionErrorString dependsFrom self.mSheets.all.connexionErrors ;
 
+  transient Bool schematicHasErrorOrWarning dependsFrom
+     self.unplacedSymbols,
+     self.netWarningCount,
+     self.mSheets.all.connexionWarnings,
+     self.mSheets.all.connexionErrors
+   ;
+
   transient String schematicStatusMessage dependsFrom
      self.unplacedSymbols,
      self.netWarningCount,

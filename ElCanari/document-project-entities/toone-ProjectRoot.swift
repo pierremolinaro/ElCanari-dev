@@ -120,6 +120,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.unplacedPackages_property.removeEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     inOldValue?.componentsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentsPlacedInBoard) // Transient property
     inOldValue?.placedComponentNameArray_property.removeEBObserversFrom (&self.mObserversOf_placedComponentNameArray) // Transient property
+    inOldValue?.schematicHasErrorOrWarning_property.removeEBObserversFrom (&self.mObserversOf_schematicHasErrorOrWarning) // Transient property
     inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
     inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   //--- Add observers to added objects
@@ -228,6 +229,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     self.mInternalValue?.componentsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentsPlacedInBoard) // Transient property
     self.mInternalValue?.placedComponentNameArray_property.addEBObserversFrom (&self.mObserversOf_placedComponentNameArray) // Transient property
+    self.mInternalValue?.schematicHasErrorOrWarning_property.addEBObserversFrom (&self.mObserversOf_schematicHasErrorOrWarning) // Transient property
     self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
     self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   }
@@ -8307,6 +8309,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBEvent) in
         managedObject.placedComponentNameArray_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'schematicHasErrorOrWarning' transient property
+  //····················································································································
+
+  private var mObserversOf_schematicHasErrorOrWarning = EBWeakEventSet ()
+
+  //····················································································································
+
+  var schematicHasErrorOrWarning_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.schematicHasErrorOrWarning_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_schematicHasErrorOrWarning (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_schematicHasErrorOrWarning.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.schematicHasErrorOrWarning_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_schematicHasErrorOrWarning (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_schematicHasErrorOrWarning.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.schematicHasErrorOrWarning_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_schematicHasErrorOrWarning_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBEvent) in
+        managedObject.schematicHasErrorOrWarning_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_schematicHasErrorOrWarning_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBEvent) in
+        managedObject.schematicHasErrorOrWarning_property.removeEBObserver (observer)
       }
     }
   }

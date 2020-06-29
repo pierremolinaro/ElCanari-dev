@@ -55,14 +55,10 @@ extension ProjectDocument {
     self.checkVersusArtwork (&issues)
     if let artwork = self.rootObject.mArtwork {
       var padNetDictionary = [SideAndNetName : [PadGeometryForERC]] ()
-//      var frontPadNetDictionary = [String : [PadGeometryForERC]] ()
-//      var backPadNetDictionary = [String : [PadGeometryForERC]] ()
-//      self.checkPadInsulation (&issues, &frontPadNetDictionary, &backPadNetDictionary, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkPadInsulation (&issues, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
       self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkNetConnectivity (&issues, netConnectorsDictionary)
-//      self.checkTrackInsulation (&issues, frontPadNetDictionary, backPadNetDictionary, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
     }
   //--- Update status
@@ -239,8 +235,6 @@ extension ProjectDocument {
   //····················································································································
 
   fileprivate func checkPadInsulation (_ ioIssues : inout [CanariIssue],
-//                                       _ ioFrontPadNetDictionary : inout [String : [PadGeometryForERC]],
-//                                       _ ioBackPadNetDictionary : inout [String : [PadGeometryForERC]],
                                        _ ioPadNetDictionary : inout [SideAndNetName : [PadGeometryForERC]],
                                        artworkClearance inArtworkClearance : Int) {
     for component in self.rootObject.mComponents {
@@ -296,11 +290,9 @@ extension ProjectDocument {
             case .front :
               let key = SideAndNetName (side: .front, netName: netName)
               ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
-//              ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
             case .back :
               let key = SideAndNetName (side: .back, netName: netName)
               ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
-//              ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
             }
           }
           if !oppositeSidePadGeometry.isEmpty {
@@ -309,11 +301,9 @@ extension ProjectDocument {
             case .front :
               let key = SideAndNetName (side: .back, netName: netName)
               ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
-//              ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
             case .back :
               let key = SideAndNetName (side: .front, netName: netName)
               ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
-//              ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
             }
           }
           if !innerLayersPadGeometry.isEmpty {
@@ -358,52 +348,6 @@ extension ProjectDocument {
     }else{
       self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
     }
-  //--- Check insulation (old)
-//    var frontPadsArray = [(String, [PadGeometryForERC])] ()
-//    for (netName, pads) in ioFrontPadNetDictionary {
-//      frontPadsArray.append ((netName, pads))
-//    }
-//    var backPadsArray = [(String, [PadGeometryForERC])] ()
-//    for (netName, pads) in ioBackPadNetDictionary {
-//      backPadsArray.append ((netName, pads))
-//    }
-//    self.mERCLogTextView?.appendMessageString ("Pad insulation (old)… ")
-//    collisionCount = 0
-//    if frontPadsArray.count > 0 {
-//      for idx in 0 ..< frontPadsArray.count {
-//        let netNameX = frontPadsArray [idx].0
-//        let frontPadX = frontPadsArray [idx].1
-//        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
-//          self.checkPadInsulation (inArray: frontPadX, "front", &ioIssues, &collisionCount)
-//        }
-//        for idy in idx+1 ..< frontPadsArray.count {
-//          let frontPadY = frontPadsArray [idy].1
-//          self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), "front", &ioIssues, &collisionCount)
-//        }
-//      }
-//    }
-//    if backPadsArray.count > 0 {
-//      for idx in 0 ..< backPadsArray.count {
-//        let netNameX = backPadsArray [idx].0
-//        let frontPadX = backPadsArray [idx].1
-//        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
-//          self.checkPadInsulation (inArray: frontPadX, "back", &ioIssues, &collisionCount)
-//        }
-//        for idy in 0 ..< backPadsArray.count {
-//          if idy != idx {
-//            let frontPadY = backPadsArray [idy].1
-//            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), "back", &ioIssues, &collisionCount)
-//          }
-//        }
-//      }
-//    }
-//    if collisionCount == 0 {
-//      self.mERCLogTextView?.appendSuccessString ("ok\n")
-//    }else if collisionCount == 1 {
-//      self.mERCLogTextView?.appendErrorString ("1 error\n")
-//    }else{
-//      self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
-//    }
   }
 
   //····················································································································
@@ -587,7 +531,6 @@ extension ProjectDocument {
     self.mERCLogTextView?.appendMessageString ("Net connection… ")
     var connectivityErrorCount = 0
     for (netName, padConnectors) in inNetConnectorsDictionary {
-      //Swift.print ("net '\(netName)' : \(connectors.count) connectors")
       var connectorExploreArray = [padConnectors [0].0]
       var connectorExploredSet = Set (connectorExploreArray)
       var exploredTrackSet = Set <BoardTrack> ()
@@ -634,18 +577,13 @@ extension ProjectDocument {
   //····················································································································
 
   private func checkTrackInsulation (_ ioIssues : inout [CanariIssue],
-//                                     _ inFrontPadNetDictionary : [String : [PadGeometryForERC]],
-//                                     _ inBackPadNetDictionary  : [String : [PadGeometryForERC]],
                                      _ inPadNetDictionary : [SideAndNetName : [PadGeometryForERC]],
                                      artworkClearance inArtworkClearance : Int) {
     let clearance = canariUnitToCocoa (inArtworkClearance)
   //--- Track inventory
     var trackSideNetDictionary = [SideAndNetName : [GeometricOblong]] ()
     var restrictRectangles = [TrackSide : [GeometricRect]] ()
-//    var frontTrackNetDictionary = [String : [GeometricOblong]] ()
-//    var backTrackNetDictionary = [String : [GeometricOblong]] ()
-//    var frontSideRestrictRectangles = [GeometricRect] ()
-//    var backSideRestrictRectangles = [GeometricRect] ()
+
     var viaDictionary = [String : [GeometricCircle]] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
@@ -656,26 +594,13 @@ extension ProjectDocument {
         let s = GeometricOblong (from: p1, to: p2, width: w)
         let key = SideAndNetName (side: track.mSide, netName: netName)
         trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + [s]
-//        switch track.mSide {
-//        case .front :
-//          frontTrackNetDictionary [netName] = (frontTrackNetDictionary [netName] ?? []) + [s]
-//        case .back :
-//          backTrackNetDictionary [netName] = (backTrackNetDictionary [netName] ?? []) + [s]
-//        }
       }else if let via = object as? BoardConnector {
         var isVia = via.mComponent == nil
         if isVia {
-//          var hasFrontSideTrack = false
-//          var hasBackSideTrack = false
           var layerSet = Set <TrackSide> ()
           for track in via.mTracksP1 + via.mTracksP2 {
             layerSet.insert (track.mSide)
-//            switch track.mSide {
-//            case .back  : hasBackSideTrack  = true
-//            case .front : hasFrontSideTrack = true
-//            }
           }
-//          isVia = hasFrontSideTrack && hasBackSideTrack
           isVia = layerSet.count > 1
         }
         if isVia {
@@ -690,11 +615,9 @@ extension ProjectDocument {
         let r = GeometricRect (rect: canariRect.cocoaRect)
         if restrictRect.mIsInFrontLayer {
           restrictRectangles [.front] = (restrictRectangles [.front] ?? []) + [r]
-//          frontSideRestrictRectangles.append (r)
         }
         if restrictRect.mIsInBackLayer {
           restrictRectangles [.back] = (restrictRectangles [.back] ?? []) + [r]
-//          backSideRestrictRectangles.append (r)
         }
       }else if let text = object as? BoardText {
         switch text.mLayer {
@@ -702,12 +625,10 @@ extension ProjectDocument {
           ()
         case .layoutFront :
           let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
-//          frontTrackNetDictionary [""] = (frontTrackNetDictionary [""] ?? []) + oblongs
           let key = SideAndNetName (side: .front, netName: "")
           trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + oblongs
         case .layoutBack :
           let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
-//          backTrackNetDictionary [""] = (backTrackNetDictionary [""] ?? []) + oblongs
           let key = SideAndNetName (side: .back, netName: "")
           trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + oblongs
         }
@@ -731,52 +652,29 @@ extension ProjectDocument {
         layout [side] = (layout [side] ?? []) + [(tracks, pads, vias)]
       }
     }
-//    var allNetNames = Set (frontTrackNetDictionary.keys)
-//    allNetNames.formUnion (backTrackNetDictionary.keys)
-//    allNetNames.formUnion (inFrontPadNetDictionary.keys)
-//    allNetNames.formUnion (inBackPadNetDictionary.keys)
-//    var frontLayout = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
-//    var backLayout  = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
-//    for netName in Array (allNetNames).sorted () {
-//      frontLayout.append ((frontTrackNetDictionary [netName] ?? [], inFrontPadNetDictionary [netName] ?? [], viaDictionary [netName] ?? []))
-//      backLayout.append ((backTrackNetDictionary [netName] ?? [], inBackPadNetDictionary [netName] ?? [], viaDictionary [netName] ?? []))
-//    }
   //--- Insulation tests
     for side in TrackSide.allCases {
       self.checkTrackTrackInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
     }
-//    self.checkTrackTrackInsulation (&ioIssues, "Front", frontLayout)
-//    self.checkTrackTrackInsulation (&ioIssues, "Back", backLayout)
     for side in TrackSide.allCases {
       self.checkTrackPadInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
     }
-//    self.checkTrackPadInsulation (&ioIssues, "Front", frontLayout)
-//    self.checkTrackPadInsulation (&ioIssues, "Back", backLayout)
     for side in TrackSide.allCases {
       self.checkPadRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
     }
-//    self.checkPadRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
-//    self.checkPadRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+
     for side in TrackSide.allCases {
       self.checkTrackRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
     }
-//    self.checkTrackRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
-//    self.checkTrackRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
     for side in TrackSide.allCases {
       self.checkPadViaInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
     }
-//    self.checkPadViaInsulation (&ioIssues, "Front", frontLayout)
-//    self.checkPadViaInsulation (&ioIssues, "Back", backLayout)
     for side in TrackSide.allCases {
       self.checkTrackViaInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
     }
-//    self.checkTrackViaInsulation (&ioIssues, "Front", frontLayout)
-//    self.checkTrackViaInsulation (&ioIssues, "Back", backLayout)
     for side in TrackSide.allCases {
       self.checkViaRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
     }
-//    self.checkViaRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
-//    self.checkViaRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
     self.checkViaViaInsulation (&ioIssues, viaDictionary)
   }
 

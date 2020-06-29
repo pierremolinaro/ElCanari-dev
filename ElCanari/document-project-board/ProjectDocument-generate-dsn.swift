@@ -24,6 +24,23 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction internal func performGenerateDSNFileAction (_ inUnusedSender : Any?) {
+    if let b = self.rootObject.schematicHasErrorOrWarning, !b {
+      self.performGenerateDSNFile ()
+    }else if let window = self.windowForSheet {
+      let alert = NSAlert ()
+      alert.messageText = "Schematic has warning(s) and/or error(s). Continue?"
+      alert.addButton (withTitle: "Cancel")
+      alert.addButton (withTitle: "Continue")
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { if $0 == .alertSecondButtonReturn { self.performGenerateDSNFile () } }
+      )
+    }
+  }
+
+  //····················································································································
+
+  internal func performGenerateDSNFile () {
     var hasTrack = false
     for object in self.rootObject.mBoardObjects {
       if object is BoardTrack {

@@ -41,7 +41,6 @@ extension SheetInProject {
     if !symbolInfo.filledBezierPath.isEmpty {
       cocoaRect = cocoaRect.union (symbolInfo.filledBezierPath.bounds)
     }
-   // let symbolPinRect = CanariRect (points: symbolPinLocationArray)
     let relativeLocation = cocoaRect.relativeLocation (of: inPoint.location!.cocoaPoint)
     switch relativeLocation {
     case .above :
