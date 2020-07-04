@@ -28,13 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.2.1"
+let VERSION_CANARI = "1.2.2"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "Symbol edition was broken in release 1.2.0"
-]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = []
-let NEWS : [String] = []
+let NEWS : [String] = [
+  "Export DSN dialog if schematic has warning or error"
+]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR

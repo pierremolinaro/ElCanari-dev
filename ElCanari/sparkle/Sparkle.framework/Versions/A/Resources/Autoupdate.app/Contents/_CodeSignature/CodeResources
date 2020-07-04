@@ -307,10 +307,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			m93UAGlWG1VExsGEVOlzraeDVJU=
+			l83be2L4QWdF+9aGGionW8fJ3mI=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"034b541bc0ce637d7c6cbab430b6ae5bf60b18d2" or cdhash H"9bddd40069561b5544c6c18454e973ada7835495"</string>
+			<string>cdhash H"76e6c5ec7f970ac4171b4da783e82f1a66e9008d" or cdhash H"97cddb7b62f8416745fbd6861a2a275bc7c9de62"</string>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>

@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/Autoupdate</key>
 		<data>
-		5y0GuAJnqQGaZwa1ZFJFmjv/kcU=
+		Y0Fxy1YyUMrbR92D7MX3M0u26ns=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/MacOS/fileop</key>
 		<data>
-		avkb6Tg4QLKYpmzZ6Re443E1Lsc=
+		kd875N+pxOj629NQNLzNs+ZBJnc=
 		</data>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
 		<data>
@@ -318,7 +318,7 @@
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/_CodeSignature/CodeResources</key>
 		<data>
-		hJU8+OcP90jEOKOwukBr8O69j7w=
+		bY25s0CxDdpPUjh2IkcEndg3sMc=
 		</data>
 		<key>Resources/DarkAqua.css</key>
 		<data>
@@ -326,7 +326,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		FcaJWh4GlAbLilVFN39FnMGCZjU=
+		un8L4C3zlHfrCP1+qdtrsU+uHUQ=
 		</data>
 		<key>Resources/SUModelTranslation.plist</key>
 		<data>
@@ -1672,22 +1672,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5y0GuAJnqQGaZwa1ZFJFmjv/kcU=
+			Y0Fxy1YyUMrbR92D7MX3M0u26ns=
 			</data>
 			<key>hash2</key>
 			<data>
-			G3T7ewvJhbpZWG1YsYs4KU+ON/kBCCqVQqkgQ7rJH5A=
+			UxBDXxIDllZ+ofDxiiyQPyJg9/VBzaT4z5iXji+YtLY=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/MacOS/fileop</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			avkb6Tg4QLKYpmzZ6Re443E1Lsc=
+			kd875N+pxOj629NQNLzNs+ZBJnc=
 			</data>
 			<key>hash2</key>
 			<data>
-			ad6uMw/E+PkHWrq2KfATyxPEttn+TcNlEj4ATmFEDPY=
+			ZPTpaY9Le7q+6pMOzOxHLnFZsA1Sl9fhmWhJLFArpV4=
 			</data>
 		</dict>
 		<key>Resources/Autoupdate.app/Contents/PkgInfo</key>
@@ -2143,11 +2143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hJU8+OcP90jEOKOwukBr8O69j7w=
+			bY25s0CxDdpPUjh2IkcEndg3sMc=
 			</data>
 			<key>hash2</key>
 			<data>
-			A3YNvkAp2jm0jj6vFfI1Vkv+v5qIbvf6nM267YddEW4=
+			1k5GnqzPqMTLJT0t6kcCtMrfswmTqS3vlZyIDKlcwFo=
 			</data>
 		</dict>
 		<key>Resources/DarkAqua.css</key>
@@ -2165,11 +2165,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FcaJWh4GlAbLilVFN39FnMGCZjU=
+			un8L4C3zlHfrCP1+qdtrsU+uHUQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			erViMEuBOBVHmWoZtghmdWrXzQMPabSQpwAr329HIHs=
+			0LX5vglqmxviOHMUnsQF/02e2TlaULdPqD22i3yH3tA=
 			</data>
 		</dict>
 		<key>Resources/SUModelTranslation.plist</key>
