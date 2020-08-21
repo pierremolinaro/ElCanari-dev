@@ -37,6 +37,30 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  Key down
+  //····················································································································
+
+  override func keyDown (with event: NSEvent) {
+    if let s = event.charactersIgnoringModifiers?.uppercased () {
+      let unicodeScalars = s.unicodeScalars
+      let unicodeChar = unicodeScalars [unicodeScalars.startIndex].value
+      switch Int (unicodeChar) {
+      case NSEvent.SpecialKey.carriageReturn.rawValue, NSEvent.SpecialKey.enter.rawValue :
+        super.keyDown (with: event)
+      default :
+        var idx = 0
+        for item in self.itemArray {
+          if item.title.uppercased ().starts (with: s) {
+            self.selectItem (at: idx)
+            break ;
+          }
+          idx += 1
+        }
+      }
+    }
+  }
+
+  //····················································································································
   //  selectedTag binding
   //····················································································································
 
@@ -150,7 +174,7 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
   init (object : EBAbstractEnumProperty, outlet : EBPopUpButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateIndex (object) } )
+    super.init (observedObjects: [object], callBack: { outlet.updateIndex (object) } )
   }
 
   //····················································································································
@@ -160,6 +184,7 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

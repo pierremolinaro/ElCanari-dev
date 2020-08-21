@@ -115,6 +115,12 @@ extension String {
 
   //····················································································································
 
+  static func numericUppercasedCompare (_ inLeft : String,  _ inRight : String) -> Bool {
+    return numericCompare (inLeft.uppercased (), true, inRight.uppercased ())
+  }
+
+  //····················································································································
+
   func capitalizingFirstLetter () -> String {
     return self.prefix (1).capitalized + self.dropFirst ()
   }

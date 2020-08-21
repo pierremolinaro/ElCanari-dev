@@ -31,9 +31,11 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.2.2"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = []
+let CHANGES : [String] = [
+  "Uses Sparkle 1.23.0 34-g962878b84"
+]
 let NEWS : [String] = [
-  "Export DSN dialog if schematic has warning or error"
+  "Display dialog on Export DSN if schematic has warning or error"
 ]
 
 //--------------------------------------------------------------------------------------------------
