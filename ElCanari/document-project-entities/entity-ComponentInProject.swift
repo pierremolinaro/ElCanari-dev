@@ -1849,15 +1849,16 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
+        kind &= unwSelf.mComponentValue_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.componentName_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_ComponentInProject_unplacedSymbols (v0, v1, v2, v3, v4))
+          switch (unwSelf.componentName_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mComponentValue_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_ComponentInProject_unplacedSymbols (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -1871,6 +1872,7 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+    self.mComponentValue_property.addEBObserver (self.unplacedSymbols_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2033,6 +2035,7 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+    self.mComponentValue_property.removeEBObserver (self.unplacedSymbols_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.mRotation_property.removeEBObserver (self.objectDisplay_property)

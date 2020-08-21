@@ -21,7 +21,7 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
     super.init (frame: frame)
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
@@ -174,7 +174,7 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
   init (object : EBAbstractEnumProperty, outlet : EBPopUpButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateIndex (object) } )
+    super.init (observedObjects:[object], callBack: { outlet.updateIndex (object) } )
   }
 
   //····················································································································
@@ -184,7 +184,6 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
   }
 
   //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

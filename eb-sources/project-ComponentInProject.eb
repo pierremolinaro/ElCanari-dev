@@ -91,7 +91,8 @@ graphic entity ComponentInProject : BoardObject {
     self.mSymbols,
     self.mSymbols.all.symbolInSchematic,
     self.mSymbols.all.mSymbolInstanceName,
-    self.mSymbols.all.mSymbolTypeName
+    self.mSymbols.all.mSymbolTypeName,
+    self.mComponentValue
   ;
 
   transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;

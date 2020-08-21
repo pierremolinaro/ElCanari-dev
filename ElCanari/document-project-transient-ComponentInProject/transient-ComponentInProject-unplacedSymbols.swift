@@ -18,7 +18,8 @@ func transient_ComponentInProject_unplacedSymbols (
        _ self_mSymbols : [EBManagedObject_alloc_index_protocol],
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],
        _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
-       _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName]
+       _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName],
+       _ self_mComponentValue : String
 ) -> StringTagArray {
 //--- START OF USER ZONE 2
         var result = StringTagArray ()
@@ -33,7 +34,11 @@ func transient_ComponentInProject_unplacedSymbols (
             if symbolInstanceName != "" {
               name += ":" + symbolInstanceName
             }
-            name += " (" + symbolTypeName + ")"
+            name += " (" + symbolTypeName
+            if self_mComponentValue != "" {
+              name += ", " + self_mComponentValue
+            }
+            name += ")"
             result.append (StringTag (string: name, tag: ebObjectIndex))
           }
           idx += 1

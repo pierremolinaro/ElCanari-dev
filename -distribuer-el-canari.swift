@@ -32,7 +32,9 @@ let VERSION_CANARI = "1.2.2"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Uses Sparkle 1.23.0 34-g962878b84"
+  "Uses Sparkle 1.23.0 34-g962878b84",
+  "In schematics, unplaced symbols table view names component value (if any)",
+  "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net"
 ]
 let NEWS : [String] = [
   "Display dialog on Export DSN if schematic has warning or error"

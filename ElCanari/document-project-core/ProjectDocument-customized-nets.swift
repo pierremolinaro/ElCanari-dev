@@ -268,7 +268,7 @@ extension CustomizedProjectDocument {
           nets.append (net)
         }
       }
-      nets.sort { String.numericUppercasedCompare ($0.mNetName, $1.mNetName) }
+      nets.sort { String.numeriCaseInsensitiveCompare ($0.mNetName, $1.mNetName) }
       for net in nets {
         popup.addItem (withTitle: net.mNetName)
         popup.lastItem?.representedObject = net
