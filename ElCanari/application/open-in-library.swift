@@ -272,7 +272,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
   //····················································································································
 
   @objc private func searchFieldAction (_ inUnusedSender : Any?) {
-    let filter = self.mSearchField!.stringValue
+    let filter = self.mSearchField!.stringValue.uppercased ()
   //--- Save selected item information
     let optionalSelectedItem : OpenInLibraryDialogItem?
     if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
@@ -286,7 +286,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
     }else{
       self.mTableViewFilteredDataSource = []
       for entry in self.mTableViewDataSource {
-        if entry.mPartName.contains (filter) {
+        if entry.mPartName.uppercased ().contains (filter) {
           self.mTableViewFilteredDataSource.append (entry)
         }
       }
