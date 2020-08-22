@@ -5,11 +5,11 @@
 //  Created by Pierre Molinaro on 21/06/2018.
 //
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 extension MergerDocument {
 
@@ -410,7 +410,7 @@ extension MergerDocument {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Double {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -425,7 +425,7 @@ fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : Strin
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -440,7 +440,7 @@ fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, 
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -453,7 +453,7 @@ fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : St
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> String {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -468,7 +468,7 @@ fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : Strin
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func dictArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [NSDictionary] {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -483,7 +483,7 @@ fileprivate func dictArray (fromDict inDictionary : NSDictionary, key inKey : St
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -499,7 +499,7 @@ fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : 
 }
 
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
   let object : Any? = inDictionary.value (forKey: inKey)
@@ -512,7 +512,7 @@ fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key 
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func array3int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
@@ -537,7 +537,7 @@ fileprivate func array3int (fromString inString : String, _ errorArray : inout [
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func array4int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
@@ -562,7 +562,7 @@ fileprivate func array4int (fromString inString : String, _ errorArray : inout [
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func array5int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
@@ -587,4 +587,4 @@ fileprivate func array5int (fromString inString : String, _ errorArray : inout [
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------

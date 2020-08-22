@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 24/07/2019.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 extension CustomizedProjectDocument {
 
@@ -309,7 +309,7 @@ extension CustomizedProjectDocument {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate struct RoutedTrackForSESImporting {
   let p1 : CanariPoint
@@ -319,7 +319,7 @@ fileprivate struct RoutedTrackForSESImporting {
   let preservedByRouter : Bool
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate struct NetClassSESImporting {
   let name : String
@@ -328,7 +328,7 @@ fileprivate struct NetClassSESImporting {
   let viaPadDiameter : Int
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func enterSegments (_ inScanner : Scanner,
                                 _ inSide : TrackSide,
@@ -393,7 +393,7 @@ fileprivate func enterSegments (_ inScanner : Scanner,
   return ok
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                 _ inRoutedViaArray : [BoardConnector],
@@ -412,7 +412,7 @@ fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedT
   return pointSet
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                              _ inRoutedViaArray : [BoardConnector],
@@ -441,7 +441,7 @@ fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArr
   return trackArray
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func handleTeesAndCrossesFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                        _ inRoutedViaArray : [BoardConnector]) -> [RoutedTrackForSESImporting] { // Array of PMClassForConnectorInBoardEntity
@@ -452,4 +452,4 @@ fileprivate func handleTeesAndCrossesFromRoutedTracks (_ inRoutedTracksArray : [
   return trackArray2
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
