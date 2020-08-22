@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DeviceInProject_deviceSymbolDictionary (
        _ self_mPadAssignments_descriptor : [DevicePadAssignmentInProject_descriptor],

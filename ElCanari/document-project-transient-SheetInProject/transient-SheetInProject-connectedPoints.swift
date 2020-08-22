@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_SheetInProject_connectedPoints (
        _ self_mPoints_connectedPoints : [PointInSchematic_connectedPoints]

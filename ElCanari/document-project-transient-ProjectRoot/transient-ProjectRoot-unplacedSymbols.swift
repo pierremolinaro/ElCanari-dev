@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectRoot_unplacedSymbols (
        _ self_mComponents_unplacedSymbols : [ComponentInProject_unplacedSymbols]

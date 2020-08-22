@@ -61,7 +61,7 @@ private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : ino
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectDocument_rastnetShape (
        _ root_mRastnetDisplay : RastnetDisplay,

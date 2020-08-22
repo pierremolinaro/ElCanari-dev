@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectRoot_connexionWarningString (
        _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings]

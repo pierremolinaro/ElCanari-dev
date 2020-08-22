@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectRoot_componentsPlacedInBoard (
        _ self_mComponents_mNamePrefix : [ComponentInProject_mNamePrefix],

@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectDocument_selectedDeviceSymbols (
        _ self_projectDeviceController_selectedArray_all_deviceSymbolDictionary : [DeviceInProject_deviceSymbolDictionary]

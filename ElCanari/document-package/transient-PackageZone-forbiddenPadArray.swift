@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_PackageZone_forbiddenPadArray (
        _ self_forbiddenPadNumbers_padNumber : [ForbiddenPadNumber_padNumber]

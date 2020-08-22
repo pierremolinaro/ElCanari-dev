@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DeviceDocument_assignmentInhibitionMessage (
        _ root_inconsistentPackagePadNameSetsMessage : String,

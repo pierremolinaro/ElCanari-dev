@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_BoardConnector_side (
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,

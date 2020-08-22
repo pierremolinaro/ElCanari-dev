@@ -104,7 +104,7 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_NetClassInProject_netsDescription (
        _ self_mNets : [EBManagedObject_alloc_index_protocol],

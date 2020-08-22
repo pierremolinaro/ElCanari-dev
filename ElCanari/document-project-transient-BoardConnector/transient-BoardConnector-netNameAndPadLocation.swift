@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_BoardConnector_netNameAndPadLocation (
        _ self_mComponent_padNetDictionary : PadNetDictionary?,

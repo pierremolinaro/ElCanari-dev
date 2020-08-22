@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DeviceInProject_packageNames (
        _ self_mPackages_mPackageName : [DevicePackageInProject_mPackageName]

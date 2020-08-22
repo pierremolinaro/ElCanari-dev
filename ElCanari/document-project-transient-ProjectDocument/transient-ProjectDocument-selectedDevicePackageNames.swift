@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectDocument_selectedDevicePackageNames (
        _ self_projectDeviceController_selectedArray_all_packageNames : [DeviceInProject_packageNames]

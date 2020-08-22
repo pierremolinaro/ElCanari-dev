@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectRoot_signatureForERCChecking (
        _ self_mBoardObjects_signatureForERCChecking : [BoardObject_signatureForERCChecking],

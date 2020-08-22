@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ComponentInProject_deviceSymbolDictionary (
        _ self_mDevice_deviceSymbolDictionary : DeviceSymbolDictionary?

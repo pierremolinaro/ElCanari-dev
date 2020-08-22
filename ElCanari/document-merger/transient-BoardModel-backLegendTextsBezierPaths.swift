@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_BoardModel_backLegendTextsBezierPaths (
        _ self_backLegendTextsSegments : MergerSegmentArray

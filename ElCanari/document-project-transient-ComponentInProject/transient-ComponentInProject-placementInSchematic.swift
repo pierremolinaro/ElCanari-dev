@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ComponentInProject_placementInSchematic (
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic]

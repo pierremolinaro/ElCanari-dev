@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DevicePackageInProject_packagePadDictionary (
        _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]

@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DeviceRoot_packagePadNameSetsAreConsistent (
        _ self_mPackages_padNameSet : [PackageInDevice_padNameSet]

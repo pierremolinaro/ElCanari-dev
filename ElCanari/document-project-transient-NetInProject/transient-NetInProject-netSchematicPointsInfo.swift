@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_NetInProject_netSchematicPointsInfo (
        _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]

@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_PackageInDevice_objectDisplay (
        _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],

@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_SymbolTypeInDevice_pinNameShape (
        _ self_mPinTypes_nameShape : [SymbolPinTypeInDevice_nameShape]

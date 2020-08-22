@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_BoardConnector_viaDefaultPadDiameter (
        _ self_mTracksP1_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter],

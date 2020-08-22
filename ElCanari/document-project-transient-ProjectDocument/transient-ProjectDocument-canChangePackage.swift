@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectDocument_canChangePackage (
        _ self_componentController_selectedArray_all_availablePackages : [ComponentInProject_availablePackages]

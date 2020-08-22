@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_FontCharacter_gerberCodeInstructionCountMessage (
        _ self_gerberCode : CharacterGerberCodeClass

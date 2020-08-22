@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
        _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?,   

@@ -11,7 +11,7 @@ import Cocoa
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
 
 func transient_DeviceRoot_unconnectedPins (
        _ self_mSymbolInstances_unconnectedPins : [SymbolInstanceInDevice_unconnectedPins]
