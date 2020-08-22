@@ -33,13 +33,14 @@ let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
   "Uses Sparkle 1.23.0 34-g962878b84",
-  "In schematics, unplaced symbols table view names component value (if any)",
-  "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
   "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering"
 ]
 let NEWS : [String] = [
   "Display dialog on Export DSN if schematic has warning or error",
-  "Menu \"File\" > \"Open Artwork in Library…\" is implemented"
+  "Menu \"File\" > \"Open Artwork in Library…\" is implemented",
+  "In schematics, unplaced symbols table view names component value (if any)",
+  "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
+  "In schematics, selecting a symbol displays a rotation knob"
 ]
 
 //--------------------------------------------------------------------------------------------------

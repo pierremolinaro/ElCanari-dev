@@ -65,7 +65,8 @@ graphic entity ComponentSymbolInProject : SchematicObject {
     self.mDisplayComponentValue,
     self.mDisplayComponentValueOffsetX,
     self.mDisplayComponentValueOffsetY,
-    self.symbolInfo
+    self.symbolInfo,
+    self.mRotation
   ;
 }
 

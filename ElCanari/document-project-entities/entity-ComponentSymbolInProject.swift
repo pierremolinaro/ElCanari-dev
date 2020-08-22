@@ -816,15 +816,16 @@ class ComponentSymbolInProject : SchematicObject,
         kind &= unwSelf.mDisplayComponentValueOffsetX_property_selection.kind ()
         kind &= unwSelf.mDisplayComponentValueOffsetY_property_selection.kind ()
         kind &= unwSelf.symbolInfo_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (g_Preferences!.pinNameFont_property_selection, g_Preferences!.schematicBackColor_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (g_Preferences!.pinNameFont_property_selection, g_Preferences!.schematicBackColor_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, unwSelf.mRotation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -841,6 +842,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.addEBObserver (self.selectionDisplay_property)
     self.mDisplayComponentValueOffsetY_property.addEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
+    self.mRotation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -913,6 +915,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.selectionDisplay_property)
     self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
+    self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
     self.isPlacedInSchematic_property.removeEBObserver (self.symbolInSchematic_property)
   //--- Unregister properties for handling signature
   }

@@ -21,7 +21,8 @@ func transient_ComponentSymbolInProject_selectionDisplay (
        _ self_mDisplayComponentValue : Bool,              
        _ self_mDisplayComponentValueOffsetX : Int,        
        _ self_mDisplayComponentValueOffsetY : Int,        
-       _ self_symbolInfo : ComponentSymbolInfo
+       _ self_symbolInfo : ComponentSymbolInfo,           
+       _ self_mRotation : QuadrantRotation
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
@@ -88,6 +89,27 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
           )
         }
+      //--- symbol rotation knob
+        let symbolRotationInRadians = CGFloat (self_mRotation.rawValue) * .pi / 2.0
+      //--- Line from center to rotation knob
+        let d = milsToCocoaUnit (200.0)
+        let rotationKnobCenter = NSPoint (
+          x: canariUnitToCocoa (self_symbolInfo.center.x) + d * cos (symbolRotationInRadians),
+          y: canariUnitToCocoa (self_symbolInfo.center.y) + d * sin (symbolRotationInRadians)
+        )
+        var bp = EBBezierPath ()
+        bp.move (to: symbolCenter)
+        bp.line (to: rotationKnobCenter)
+        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        shape.add (stroke: [bp], .cyan)
+        shape.add (
+          knobAt: rotationKnobCenter,
+          knobIndex: SYMBOL_IN_SCHEMATICS_ROTATION_KNOB,
+          .circ,
+          SCHEMATIC_KNOB_SIZE
+        )
       //---
         return shape
 //--- END OF USER ZONE 2

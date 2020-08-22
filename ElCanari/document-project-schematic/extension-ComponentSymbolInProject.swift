@@ -13,6 +13,7 @@ import Cocoa
 let SYMBOL_IN_SCHEMATICS_CENTER_KNOB = 0
 let SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB = 1
 let SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB = 2
+let SYMBOL_IN_SCHEMATICS_ROTATION_KNOB = 3
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION PackageSegment
@@ -47,6 +48,21 @@ extension ComponentSymbolInProject {
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB {
       self.mDisplayComponentValueOffsetX += inDx
       self.mDisplayComponentValueOffsetY += inDy
+    }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
+      let newKnobLocation = CanariPoint (x: inNewX, y: inNewY)
+      let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
+      let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
+      if angleInDegrees <= 45.0 {
+        self.mRotation = .rotation0
+      }else if angleInDegrees <= 135.0 {
+        self.mRotation = .rotation90
+      }else if angleInDegrees <= 225.0 {
+        self.mRotation = .rotation180
+      }else if angleInDegrees <= 315.0 {
+        self.mRotation = .rotation270
+      }else{
+        self.mRotation = .rotation0
+      }
     }
   }
 
