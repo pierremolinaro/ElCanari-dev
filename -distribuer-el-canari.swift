@@ -38,7 +38,8 @@ let CHANGES : [String] = [
   "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering"
 ]
 let NEWS : [String] = [
-  "Display dialog on Export DSN if schematic has warning or error"
+  "Display dialog on Export DSN if schematic has warning or error",
+  "Menu \"File\" > \"Open Artwork in Library…\" is implemented"
 ]
 
 //--------------------------------------------------------------------------------------------------

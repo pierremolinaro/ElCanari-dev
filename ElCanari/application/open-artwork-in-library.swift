@@ -32,7 +32,7 @@ class OpenArtworkInLibrary : OpenInLibrary {
   //   Dialog
   //····················································································································
 
-  @objc @IBAction func openFontInLibrary (_ inSender : Any?) {
+  @IBAction func openArtworkInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Artwork in Library")
   }
 

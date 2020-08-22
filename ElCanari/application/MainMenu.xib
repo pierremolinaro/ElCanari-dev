@@ -237,7 +237,11 @@
                                                 <action selector="openFontInLibrary:" target="kOJ-WV-yuh" id="wFa-Lr-d1Y"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Artwork…" id="1327"/>
+                                        <menuItem title="Artwork…" id="1327">
+                                            <connections>
+                                                <action selector="openArtworkInLibrary:" target="T2t-gT-gsg" id="5aN-Hw-nbO"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -2218,7 +2222,7 @@ Gw
         <window title="Library Update" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PMPerformLibaryUpdateWindow" animationBehavior="default" id="6227" userLabel="Window : Update Dialog" customClass="EBWindow" customModule="ElCanari" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <rect key="contentRect" x="37" y="899" width="800" height="395"/>
-            <rect key="screenRect" x="-289" y="900" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="667" height="200"/>
             <view key="contentView" id="6228">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="395"/>
