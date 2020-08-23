@@ -14,6 +14,16 @@ extension SymbolPin {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if (inKnobIndex == SYMBOL_PIN_LABEL) || (inKnobIndex == SYMBOL_PIN_NUMBER) {
+      return upDownRightLeftCursor ()
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
 //    var acceptedX = inDx
 //    do{

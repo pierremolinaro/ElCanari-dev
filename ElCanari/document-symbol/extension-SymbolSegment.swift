@@ -13,6 +13,12 @@ extension SymbolSegment {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    return upDownRightLeftCursor ()
+  }
+
+  //····················································································································
+
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
 //    var acceptedX = inDx
 //    do{

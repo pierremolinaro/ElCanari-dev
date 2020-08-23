@@ -31,6 +31,16 @@ extension EBGraphicView {
       )
       self.mControlKeyHiliteRectangle = r
     }
+  //--- Set cursor
+    let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: locationInView)
+    var cursor = NSCursor.arrow
+    if let objectIndex = possibleObjectIndex,
+       let knobIndex = possibleKnobIndex,
+       let object = self.viewController?.graphicObjectArray [objectIndex],
+       let newCursor = object.cursorForKnob (knob: knobIndex) {
+         cursor = newCursor
+    }
+    cursor.set ()
   }
 
   //····················································································································

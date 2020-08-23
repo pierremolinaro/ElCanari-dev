@@ -1,5 +1,6 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
-{\fonttbl\f0\fnil\fcharset0 Cambria;\f1\fnil\fcharset0 Menlo-Regular;}
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Cambria-Bold;\f1\fnil\fcharset0 Cambria;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Cambria-Italic;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
@@ -16,7 +17,7 @@
 
 \f0\b\fs48 \cf0 Comment fonctionne une librairie ElCanari\
 
-\b0\fs36 \
+\f1\b0\fs36 \
 ElCanari peut prendre en charge un nombre quelconque de d\'e9p\'f4ts contenant chacun une librairie. Il impl\'e9mente une gestion de version rudimentaire.\
 \
 Le d\'e9p\'f4t doit \'eatre accessible :\
@@ -27,120 +28,119 @@ Le d\'e9p\'f4t doit \'eatre accessible :\
 \cf0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 
-\b\fs48 \cf0 Structure d'un d\'e9p\'f4t\
+\f0\b\fs48 \cf0 Structure d'un d\'e9p\'f4t\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 
-\b0\fs36 \cf0 \
+\f1\b0\fs36 \cf0 \
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f1\fs32 \cf0 \'97*\'97 lastCommit.txt\
--|\'97*\'97 commits\
+\f2\fs32 \cf0 -*- lastCommit.txt\
+-|-*- commits\
 -|-|- commit-1.plist\
 -|-|- commit-2.plist\
 -|-|- ...\
--|\'97*\'97 contents\
+-|-*- contents\
 -|-|- contents-1.plist\
 -|-|- contents-2.plist\
 -|-|- ...\
--|\'97*\'97 files\
+-|-*- files\
 -|-|-*- 1\
 -|-|-|- ...\
 -|-|-*- 2\
 -|-|-|- ...\
 
-\f0\fs36 \
+\f1\fs36 \
 Le fichier 
-\f1\fs32 lastCommit.txt
-\f0\fs36  contient le num\'e9ro du dernier commit, sous la forme d'une cha\'eene de caract\'e8res.\
+\f2\fs32 lastCommit.txt
+\f1\fs36  contient le num\'e9ro du dernier commit, sous la forme d'une cha\'eene de caract\'e8res.\
 \
 Le r\'e9pertoire 
-\f1 commits
-\f0  contient la description de chaque commit. Un fichier par commit (
-\f1\fs32 commit-1.plist
-\f0\fs36 , \'85). Ce fichier est un dictionnaire :\
+\f2 commits
+\f1  contient la description de chaque commit. Un fichier par commit (
+\f2\fs32 commit-1.plist
+\f1\fs36 , \'85). Ce fichier est un dictionnaire :\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls2\ilvl0\cf0 {\listtext	\uc0\u8226 	}cl\'e9 
-\f1\fs32 "date"
-\f0\fs36  : la date du commit (type Swift 
-\f1\fs32 Date
-\f0\fs36 ) ;\
+\f2\fs32 "date"
+\f1\fs36  : la date du commit (type Swift 
+\f2\fs32 Date
+\f1\fs36 ) ;\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls3\ilvl0\cf0 {\listtext	\uc0\u8226 	}cl\'e9 
-\f1\fs32 "message"
-\f0\fs36  : le message associ\'e9 au commit (type Swift 
-\f1\fs32 String
-\f0\fs36 ).\
+\f2\fs32 "message"
+\f1\fs36  : le message associ\'e9 au commit (type Swift 
+\f2\fs32 String
+\f1\fs36 ).\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 \
 Le r\'e9pertoire 
-\f1 contents
-\f0  contient la description de tous les fichiers associ\'e9 \'e0 un commit. Un fichier par commit (
-\f1 contents-1.plist
-\f0 , \'85). Ce fichier est un tableau de dictionnaires :\
+\f2 contents
+\f1  contient la description de tous les fichiers associ\'e9 \'e0 un commit. Un fichier par commit (
+\f2 contents-1.plist
+\f1 , \'85). Ce fichier est un tableau de dictionnaires :\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls4\ilvl0\cf0 {\listtext	\uc0\u8226 	}cl\'e9 
-\f1\fs32 "path"
-\f0\fs36  : le chemin relatif du fichier (type Swift 
-\f1\fs32 String
-\f0\fs36 ) ;\
+\f2\fs32 "path"
+\f1\fs36  : le chemin relatif du fichier (type Swift 
+\f2\fs32 String
+\f1\fs36 ) ;\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls5\ilvl0\cf0 {\listtext	\uc0\u8226 	}cl\'e9 
-\f1\fs32 "commit"
-\f0\fs36  : le commit qui a d\'e9fini la version la plus r\'e9cente du fichier (type Swift 
-\f1\fs32 Int
-\f0\fs36 )  ;\
+\f2\fs32 "commit"
+\f1\fs36  : le commit qui a d\'e9fini la version la plus r\'e9cente du fichier (type Swift 
+\f2\fs32 Int
+\f1\fs36 )  ;\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls6\ilvl0\cf0 {\listtext	\uc0\u8226 	}cl\'e9 
-\f1\fs32 "length"
-\f0\fs36  : la longueur du fichier (type Swift 
-\f1\fs32 Int
-\f0\fs36 )  ;\
+\f2\fs32 "length"
+\f1\fs36  : la longueur du fichier (type Swift 
+\f2\fs32 Int
+\f1\fs36 )  ;\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls7\ilvl0\cf0 {\listtext	\uc0\u8226 	}cl\'e9 
-\f1\fs32 "sha"
-\f0\fs36  : le 
-\i sha
-\i0  du fichier (type Swift 
-\f1\fs32 String
-\f0\fs36 ).\
+\f2\fs32 "sha"
+\f1\fs36  : le 
+\f3\i sha
+\f1\i0  du fichier (type Swift 
+\f2\fs32 String
+\f1\fs36 ).\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 \
 Le r\'e9pertoire 
-\f1 files
-\f0  contient les fichiers d\'e9fini par un commit. Un r\'e9pertoire par commit.\
+\f2 files
+\f1  contient les fichiers d\'e9fini par un commit. Un r\'e9pertoire par commit.\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 Le chemin relatif du fichier est :\
+Le chemin relatif du fichier est :\
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls8\ilvl0\cf0 {\listtext	\uc0\u8226 	}le chemin relatif dans le r\'e9pertoire local ;\
 {\listtext	\uc0\u8226 	}le chemin relatif dans le sous r\'e9pertoire du r\'e9pertoire 
-\f1 files
-\f0 .\
+\f2 files
+\f1 .\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 \cf0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 
-\b\fs48 \cf0 Exemple\
+\f0\b\fs48 \cf0 Exemple\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 
-\b0\fs36 \cf0 \
+\f1\b0\fs36 \cf0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 Deux commits, le fichier 
-\f1\fs32 a/b/truc.txt
-\f0\fs36  a \'e9t\'e9 d\'e9fini par le premier commit, le fichier 
-\f1\fs32 c/d/toto.x
-\f0\fs36  a \'e9t\'e9 d\'e9fini par le second. La structure de l'arborescence des fichiers du d\'e9p\'f4t est :\
+\f2\fs32 a/b/truc.txt
+\f1\fs36  a \'e9t\'e9 d\'e9fini par le premier commit, le fichier 
+\f2\fs32 c/d/toto.x
+\f1\fs36  a \'e9t\'e9 d\'e9fini par le second. La structure de l'arborescence des fichiers du d\'e9p\'f4t est :\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f1\fs32 \cf0 \'97*\'97 lastCommit.txt\
--|\'97*\'97 commits\
+\f2\fs32 \cf0 -*- lastCommit.txt\
+-|-*- commits\
 -| |- commit-1.plist\
 -| |- commit-2.plist\
--|\'97*\'97 contents\
+-|-*- contents\
 -| |- contents-1.plist\
 -| |- contents-2.plist\
--|\'97*\'97 files\
+-|-*- files\
 -| |-*- 1\
 -| | |-*- a\
 -| | | |-*- b\
@@ -151,67 +151,66 @@ Le r\'e9pertoire
 -| | | | |- toto.x\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0\fs36 \cf0 \
+\f1\fs36 \cf0 \
 Le fichier 
-\f1\fs32 lastCommit.txt
-\f0\fs36  contient la cha\'eene 
-\f1\fs32 "2"
-\f0\fs36 .\
+\f2\fs32 lastCommit.txt
+\f1\fs36  contient la cha\'eene 
+\f2\fs32 "2"
+\f1\fs36 .\
 \
 Le  fichier 
-\f1\fs32 contents-1.plist
-\f0\fs36  est un tableau \'e0 un \'e9l\'e9ment (les champs  longueur et  sha ne sont pas indiqu\'e9s) : \
+\f2\fs32 contents-1.plist
+\f1\fs36  est un tableau \'e0 un \'e9l\'e9ment (les champs  longueur et  sha ne sont pas indiqu\'e9s) : \
 		- 
-\f1\fs32 "path"
-\f0\fs36  -> 
-\f1\fs32 "a/b/truc.txt"
-\f0\fs36 , 
-\f1\fs32 "commit"
-\f0\fs36  -> 
-\f1\fs32 1
-\f0\fs36 \
+\f2\fs32 "path"
+\f1\fs36  -> 
+\f2\fs32 "a/b/truc.txt"
+\f1\fs36 , 
+\f2\fs32 "commit"
+\f1\fs36  -> 
+\f2\fs32 1
+\f1\fs36 \
 \
 Le  fichier 
-\f1\fs32 contents-2.plist
-\f0\fs36  est un tableau \'e0 deux \'e9l\'e9ments (les champs  longueur et  sha ne sont pas indiqu\'e9s) : \
+\f2\fs32 contents-2.plist
+\f1\fs36  est un tableau \'e0 deux \'e9l\'e9ments (les champs  longueur et  sha ne sont pas indiqu\'e9s) : \
 		- 
-\f1\fs32 "path"
-\f0\fs36  -> 
-\f1\fs32 "a/b/truc.txt"
-\f0\fs36 , 
-\f1\fs32 "commit"
-\f0\fs36  -> 
-\f1\fs32 1
-\f0\fs36 \
+\f2\fs32 "path"
+\f1\fs36  -> 
+\f2\fs32 "a/b/truc.txt"
+\f1\fs36 , 
+\f2\fs32 "commit"
+\f1\fs36  -> 
+\f2\fs32 1
+\f1\fs36 \
 		- 
-\f1\fs32 "path"
-\f0\fs36  -> 
-\f1\fs32 "c/d/toto.x"
-\f0\fs36 , 
-\f1\fs32 "commit"
-\f0\fs36  -> 
-\f1\fs32 2
-\f0\fs36 \
+\f2\fs32 "path"
+\f1\fs36  -> 
+\f2\fs32 "c/d/toto.x"
+\f1\fs36 , 
+\f2\fs32 "commit"
+\f1\fs36  -> 
+\f2\fs32 2
+\f1\fs36 \
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 \cf0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 
-\b\fs48 \cf0 Contenu initial\
+\f0\b\fs48 \cf0 Contenu initial\
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural\partightenfactor0
 
-\b0\fs36 \cf0 \
+\f1\b0\fs36 \cf0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 Le d\'e9p\'f4t ne contient qu'un seul fichier, 
-\f1\fs32 lastCommit.txt
-\f0\fs36 , dont le contenu et la cha\'eene 
-\f1\fs32 "0"
-\f0\fs36 . \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 \
+\f2\fs32 lastCommit.txt
+\f1\fs36 , dont le contenu et la cha\'eene 
+\f2\fs32 "0"
+\f1\fs36 . \
+\
 \
 \
 \
 \pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f1 \cf0 \
+\f2 \cf0 \
 }

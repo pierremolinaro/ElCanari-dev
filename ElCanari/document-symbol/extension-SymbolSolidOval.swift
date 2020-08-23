@@ -15,6 +15,16 @@ extension SymbolSolidOval {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if (inKnobIndex == SYMBOL_OVAL_BOTTOM) || (inKnobIndex == SYMBOL_OVAL_TOP) {
+      return NSCursor.resizeUpDown
+    }else{
+      return NSCursor.resizeLeftRight
+    }
+  }
+
+  //····················································································································
+
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
 //    var acceptedX = inDx
 //    let newX = self.x + acceptedX

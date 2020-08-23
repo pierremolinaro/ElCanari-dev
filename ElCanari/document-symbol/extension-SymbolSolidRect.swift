@@ -15,6 +15,16 @@ extension SymbolSolidRect {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if (inKnobIndex == SYMBOL_OVAL_BOTTOM) || (inKnobIndex == SYMBOL_OVAL_TOP) {
+      return NSCursor.resizeUpDown
+    }else{
+      return NSCursor.resizeLeftRight
+    }
+  }
+
+  //····················································································································
+
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
 //    var acceptedX = inDx
 //    let newX = self.x + acceptedX
@@ -53,9 +63,6 @@ extension SymbolSolidRect {
     var dx = inDx
     var dy = inDy
     if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
-   //   if (self.x + dx) < 0 {
-  //      dx = -self.x
-  //    }
       if (self.width - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
         dx = SYMBOL_GRID_IN_CANARI_UNIT - self.width
       }
@@ -64,9 +71,6 @@ extension SymbolSolidRect {
         dx = -(SYMBOL_GRID_IN_CANARI_UNIT - self.width)
       }
     }else if inKnobIndex == SYMBOL_SOLID_RECT_BOTTOM {
-  //    if (self.y + dy) < 0 {
-  //      dy = -self.y
- //     }
       if (self.height - dy) < SYMBOL_GRID_IN_CANARI_UNIT {
         dy = SYMBOL_GRID_IN_CANARI_UNIT - self.height
       }

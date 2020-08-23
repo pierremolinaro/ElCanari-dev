@@ -57,6 +57,16 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
+  //  Cursor
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+  @objc dynamic func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    return nil // Uses default cursor
+  }
+
+  //····················································································································
   //  Translation
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //  Only types that can be represented in Objective-C are accepted
