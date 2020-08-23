@@ -932,6 +932,8 @@
 		CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
 		CF644E1422E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */; };
 		CF644E1522E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */; };
+		CF6471FE24F2796500452009 /* upDownRightLeftCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */; };
+		CF6471FF24F2796500452009 /* upDownRightLeftCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */; };
 		CF64AFA4225B78C100E40C83 /* extension-ProjectDocument-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */; };
 		CF64AFA5225B78C100E40C83 /* extension-ProjectDocument-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */; };
 		CF64AFA6225B78C100E40C83 /* extension-ProjectDocument-fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */; };
@@ -1636,8 +1638,6 @@
 		CFACBA241BEA157D0074F5B7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; };
 		CFAEAED022A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */; };
 		CFAEAED122A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */; };
-		CFAFA54024F26EF7002D48BE /* upDownRightLeftCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CFAFA53F24F26EF7002D48BE /* upDownRightLeftCursor.tiff */; };
-		CFAFA54124F26EF7002D48BE /* upDownRightLeftCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CFAFA53F24F26EF7002D48BE /* upDownRightLeftCursor.tiff */; };
 		CFAFA54324F26F2C002D48BE /* ElCanariCursors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */; };
 		CFAFA54424F26F2C002D48BE /* ElCanariCursors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */; };
 		CFB0D1E71B46FBC000006BD2 /* CanariDimensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0D1E61B46FBC000006BD2 /* CanariDimensionTextField.swift */; };
@@ -2976,6 +2976,7 @@
 		CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-imageForModel.swift"; sourceTree = "<group>"; };
 		CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterPreferredDirections.swift"; sourceTree = "<group>"; };
 		CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterSnapAngle.swift"; sourceTree = "<group>"; };
+		CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upDownRightLeftCursor.png; sourceTree = "<group>"; };
 		CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-devices.swift"; sourceTree = "<group>"; };
 		CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-fonts.swift"; sourceTree = "<group>"; };
 		CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-components.swift"; sourceTree = "<group>"; };
@@ -3353,7 +3354,6 @@
 		CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-launchFreeRouterAction.swift"; sourceTree = "<group>"; };
 		CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageObject-knobSize.swift"; sourceTree = "<group>"; };
 		CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-schematic-option-click.swift"; sourceTree = "<group>"; };
-		CFAFA53F24F26EF7002D48BE /* upDownRightLeftCursor.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = upDownRightLeftCursor.tiff; sourceTree = "<group>"; };
 		CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElCanariCursors.swift; sourceTree = "<group>"; };
 		CFB0D1E61B46FBC000006BD2 /* CanariDimensionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariDimensionTextField.swift; sourceTree = "<group>"; };
 		CFB0F5EB1BDBC9F700939954 /* EBProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBProgressIndicator.swift; sourceTree = "<group>"; };
@@ -4869,7 +4869,7 @@
 		CFAFA53E24F26EB9002D48BE /* Cursors */ = {
 			isa = PBXGroup;
 			children = (
-				CFAFA53F24F26EF7002D48BE /* upDownRightLeftCursor.tiff */,
+				CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */,
 				CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */,
 			);
 			name = Cursors;
@@ -5830,6 +5830,7 @@
 				CFB438BE2430EE0300163B86 /* model-image-dil16.png in Resources */,
 				CF7034C42353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF6172E01B3C4CD600F3CA82 /* library.png in Resources */,
+				CF6471FE24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
 				CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */,
 				CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */,
 				CF6172D81B3C4CD600F3CA82 /* font.png in Resources */,
@@ -5846,7 +5847,6 @@
 				CFCD1F6621A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
 				CF6172D31B3C4CD600F3CA82 /* device.pdf in Resources */,
 				CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */,
-				CFAFA54024F26EF7002D48BE /* upDownRightLeftCursor.tiff in Resources */,
 				CF6173021B3C4CD600F3CA82 /* unbind_all.png in Resources */,
 				CF6172BD1B3C4CD600F3CA82 /* A4horizontal.pdf in Resources */,
 				CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */,
@@ -5900,6 +5900,7 @@
 				CFB438BF2430EE0300163B86 /* model-image-dil16.png in Resources */,
 				CF7034C52353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF5C4C8C219F04D600EAC52A /* library.png in Resources */,
+				CF6471FF24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
 				CF5C4C8F219F04D600EAC52A /* canari_artwork.icns in Resources */,
 				CF5C4C95219F04D600EAC52A /* MainMenu.xib in Resources */,
 				CF5C4C96219F04D600EAC52A /* font.png in Resources */,
@@ -5916,7 +5917,6 @@
 				CFCD1F6721A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
 				CF5C4CA3219F04D600EAC52A /* device.pdf in Resources */,
 				CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */,
-				CFAFA54124F26EF7002D48BE /* upDownRightLeftCursor.tiff in Resources */,
 				CF5C4CA6219F04D600EAC52A /* unbind_all.png in Resources */,
 				CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */,
 				CF5C4CA8219F04D600EAC52A /* symbolAnd.pdf in Resources */,
@@ -8485,6 +8485,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
+				STRIP_PNG_TEXT = NO;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -8529,7 +8530,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_ENABLE_ASM_KEYWORD = NO;
@@ -8630,6 +8631,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
+				STRIP_PNG_TEXT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -8651,7 +8653,6 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -8668,7 +8669,6 @@
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_PNG_TEXT = YES;
-				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
