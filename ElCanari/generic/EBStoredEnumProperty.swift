@@ -146,6 +146,14 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   }
 
   //····················································································································
+
+//   func setUpAtomicPropertyText (_ inPossibleData : Data?) {
+//     if let data = inPossibleData {
+//       self.setProp (T.convertFromTextualData (data))
+//     }
+//   }
+
+  //····················································································································
   //    SIGNATURE
   //····················································································································
 

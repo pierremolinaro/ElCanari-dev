@@ -623,7 +623,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: myModel
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -701,6 +701,32 @@ class MergerBoardInstance : EBGraphicManagedObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+      self.x = value
+    }
+    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+      self.y = value
+    }
+    if let stringData = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromStringData (stringData) {
+      self.instanceRotation = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["myModel"], let objectIndex = stringData.base62EncodedInt () {
+      self.myModel = inObjectArray [objectIndex] as? BoardModel
+    }
+    if let stringData = inDictionary ["myRoot"], let objectIndex = stringData.base62EncodedInt () {
+      self.myRoot = inObjectArray [objectIndex] as? MergerRoot
+    }
   //--- To many relationships
   }
 

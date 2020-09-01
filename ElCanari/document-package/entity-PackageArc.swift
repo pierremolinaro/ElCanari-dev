@@ -944,7 +944,7 @@ class PackageArc : PackageObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -1039,6 +1039,56 @@ class PackageArc : PackageObject,
     ioData.append (ascii: .lineFeed)
     self.xCenter.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["yCenter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yCenter = value
+    }
+    if let stringData = inDictionary ["radius"], let value = Int.unarchiveFromStringData (stringData) {
+      self.radius = value
+    }
+    if let stringData = inDictionary ["startAngle"], let value = Int.unarchiveFromStringData (stringData) {
+      self.startAngle = value
+    }
+    if let stringData = inDictionary ["arcAngle"], let value = Int.unarchiveFromStringData (stringData) {
+      self.arcAngle = value
+    }
+    if let stringData = inDictionary ["startTangent"], let value = Int.unarchiveFromStringData (stringData) {
+      self.startTangent = value
+    }
+    if let stringData = inDictionary ["endTangent"], let value = Int.unarchiveFromStringData (stringData) {
+      self.endTangent = value
+    }
+    if let stringData = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.pathIsClosed = value
+    }
+    if let stringData = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xCenterUnit = value
+    }
+    if let stringData = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yCenterUnit = value
+    }
+    if let stringData = inDictionary ["radiusUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.radiusUnit = value
+    }
+    if let stringData = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.startTangentUnit = value
+    }
+    if let stringData = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.endTangentUnit = value
+    }
+    if let stringData = inDictionary ["xCenter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xCenter = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

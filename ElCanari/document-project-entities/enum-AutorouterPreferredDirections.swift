@@ -61,9 +61,13 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> AutorouterPreferredDirections {
     var result = AutorouterPreferredDirections.vFrontHback
@@ -71,6 +75,16 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> AutorouterPreferredDirections? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = AutorouterPreferredDirections (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

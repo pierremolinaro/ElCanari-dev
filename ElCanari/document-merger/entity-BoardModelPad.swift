@@ -362,7 +362,7 @@ class BoardModelPad : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -422,6 +422,35 @@ class BoardModelPad : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.x.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+      self.y = value
+    }
+    if let stringData = inDictionary ["width"], let value = Int.unarchiveFromStringData (stringData) {
+      self.width = value
+    }
+    if let stringData = inDictionary ["height"], let value = Int.unarchiveFromStringData (stringData) {
+      self.height = value
+    }
+    if let stringData = inDictionary ["shape"], let value = PadShape.unarchiveFromStringData (stringData) {
+      self.shape = value
+    }
+    if let stringData = inDictionary ["rotation"], let value = Int.unarchiveFromStringData (stringData) {
+      self.rotation = value
+    }
+    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+      self.x = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

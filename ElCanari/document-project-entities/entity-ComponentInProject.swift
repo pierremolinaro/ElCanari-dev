@@ -2626,7 +2626,7 @@ class ComponentInProject : BoardObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mConnectors
     self.mConnectors_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mConnectors",
@@ -2897,6 +2897,109 @@ class ComponentInProject : BoardObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX = value
+    }
+    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY = value
+    }
+    if let stringData = inDictionary ["mRotation"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mRotation = value
+    }
+    if let stringData = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromStringData (stringData) {
+      self.mSide = value
+    }
+    if let stringData = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mDisplayLegend = value
+    }
+    if let stringData = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mNameIsVisibleInBoard = value
+    }
+    if let stringData = inDictionary ["mXName"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mXName = value
+    }
+    if let stringData = inDictionary ["mYName"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mYName = value
+    }
+    if let stringData = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mNameFontSize = value
+    }
+    if let stringData = inDictionary ["mNameRotation"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mNameRotation = value
+    }
+    if let stringData = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mValueIsVisibleInBoard = value
+    }
+    if let stringData = inDictionary ["mXValue"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mXValue = value
+    }
+    if let stringData = inDictionary ["mYValue"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mYValue = value
+    }
+    if let stringData = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mValueFontSize = value
+    }
+    if let stringData = inDictionary ["mValueRotation"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mValueRotation = value
+    }
+    if let stringData = inDictionary ["mComponentValue"], let value = String.unarchiveFromStringData (stringData) {
+      self.mComponentValue = value
+    }
+    if let stringData = inDictionary ["mNamePrefix"], let value = String.unarchiveFromStringData (stringData) {
+      self.mNamePrefix = value
+    }
+    if let stringData = inDictionary ["mNameIndex"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mNameIndex = value
+    }
+    if let stringData = inDictionary ["mXUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mXUnit = value
+    }
+    if let stringData = inDictionary ["mYUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mYUnit = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mDevice"], let objectIndex = stringData.base62EncodedInt () {
+      self.mDevice = inObjectArray [objectIndex] as? DeviceInProject
+    }
+    if let stringData = inDictionary ["mSelectedPackage"], let objectIndex = stringData.base62EncodedInt () {
+      self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject
+    }
+    if let stringData = inDictionary ["mNameFont"], let objectIndex = stringData.base62EncodedInt () {
+      self.mNameFont = inObjectArray [objectIndex] as? FontInProject
+    }
+    if let stringData = inDictionary ["mValueFont"], let objectIndex = stringData.base62EncodedInt () {
+      self.mValueFont = inObjectArray [objectIndex] as? FontInProject
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mConnectors"], stringData.count > 0 {
+      var relationshipArray = [BoardConnector] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardConnector)
+      }
+      //self.mConnectors = []
+      self.mConnectors = relationshipArray
+    }
+    if let stringData = inDictionary ["mSymbols"], stringData.count > 0 {
+      var relationshipArray = [ComponentSymbolInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
+      }
+      //self.mSymbols = []
+      self.mSymbols = relationshipArray
     }
   }
 

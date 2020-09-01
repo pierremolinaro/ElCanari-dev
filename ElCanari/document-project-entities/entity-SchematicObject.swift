@@ -375,7 +375,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mSheet
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -422,6 +422,20 @@ class SchematicObject : EBGraphicManagedObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+  //--- To one relationships
+    if let stringData = inDictionary ["mSheet"], let objectIndex = stringData.base62EncodedInt () {
+      self.mSheet = inObjectArray [objectIndex] as? SheetInProject
+    }
   //--- To many relationships
   }
 

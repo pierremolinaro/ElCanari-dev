@@ -1,6 +1,6 @@
 Modifications par rapport à la version 1.4.4
 ---------------------------------------------
-1 : le autorouteur ne démarre pas (bug #31 sur https://github.com/freerouting/freerouting)
+1 : l'autorouteur ne démarre pas (bug #31 sur https://github.com/freerouting/freerouting)
 Solution:
 
 Ajouter result.set_stop_pass_no (99999) dans AutorouterSettings.java:

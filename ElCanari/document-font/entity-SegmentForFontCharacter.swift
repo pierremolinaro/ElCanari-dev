@@ -374,7 +374,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -424,6 +424,29 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
     self.y2.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["x1"], let value = Int.unarchiveFromStringData (stringData) {
+      self.x1 = value
+    }
+    if let stringData = inDictionary ["y1"], let value = Int.unarchiveFromStringData (stringData) {
+      self.y1 = value
+    }
+    if let stringData = inDictionary ["x2"], let value = Int.unarchiveFromStringData (stringData) {
+      self.x2 = value
+    }
+    if let stringData = inDictionary ["y2"], let value = Int.unarchiveFromStringData (stringData) {
+      self.y2 = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

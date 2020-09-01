@@ -280,7 +280,7 @@ class DevicePackageInProject : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mMasterPads
     self.mMasterPads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mMasterPads",
@@ -359,6 +359,33 @@ class DevicePackageInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mPackageName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mPackageName = value
+    }
+    if let stringData = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+      self.mStrokeBezierPath = value
+    }
+  //--- To one relationships
+  //--- To many relationships
+    if let stringData = inDictionary ["mMasterPads"], stringData.count > 0 {
+      var relationshipArray = [DeviceMasterPadInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
+      }
+      //self.mMasterPads = []
+      self.mMasterPads = relationshipArray
     }
   }
 

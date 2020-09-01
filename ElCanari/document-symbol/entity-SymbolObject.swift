@@ -160,7 +160,7 @@ class SymbolObject : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -189,6 +189,17 @@ class SymbolObject : EBGraphicManagedObject,
 
   override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
+  //--- Atomic properties
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
   //--- Atomic properties
   //--- To one relationships
   //--- To many relationships

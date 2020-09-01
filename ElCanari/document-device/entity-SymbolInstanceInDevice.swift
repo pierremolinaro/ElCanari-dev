@@ -644,7 +644,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPinInstances
     self.mPinInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPinInstances",
@@ -744,6 +744,39 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mInstanceName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mInstanceName = value
+    }
+    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX = value
+    }
+    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mType"], let objectIndex = stringData.base62EncodedInt () {
+      self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mPinInstances"], stringData.count > 0 {
+      var relationshipArray = [SymbolPinInstanceInDevice] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
+      }
+      //self.mPinInstances = []
+      self.mPinInstances = relationshipArray
     }
   }
 

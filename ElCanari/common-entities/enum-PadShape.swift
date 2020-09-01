@@ -64,9 +64,13 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> PadShape {
     var result = PadShape.rect
@@ -74,6 +78,16 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> PadShape? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = PadShape (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

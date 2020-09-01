@@ -479,7 +479,7 @@ class WireInSchematic : SchematicObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mP1
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -542,6 +542,23 @@ class WireInSchematic : SchematicObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+  //--- To one relationships
+    if let stringData = inDictionary ["mP1"], let objectIndex = stringData.base62EncodedInt () {
+      self.mP1 = inObjectArray [objectIndex] as? PointInSchematic
+    }
+    if let stringData = inDictionary ["mP2"], let objectIndex = stringData.base62EncodedInt () {
+      self.mP2 = inObjectArray [objectIndex] as? PointInSchematic
+    }
   //--- To many relationships
   }
 

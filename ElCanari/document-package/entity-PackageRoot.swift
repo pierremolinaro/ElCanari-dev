@@ -3157,7 +3157,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: packageObjects
     self.packageObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "packageObjects",
@@ -3489,98 +3489,162 @@ class PackageRoot : EBGraphicManagedObject,
       }
       ioData.append (ascii: .lineFeed)
     }
-    do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.packagePads {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
-      }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
-      }
-      ioData.append (ascii: .lineFeed)
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedPageIndex = value
     }
-    do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.packageSlavePads {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
-      }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
-      }
-      ioData.append (ascii: .lineFeed)
+    if let stringData = inDictionary ["selectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedInspector = value
     }
-    do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.packageZones {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
+    if let stringData = inDictionary ["comments"], let value = String.unarchiveFromStringData (stringData) {
+      self.comments = value
+    }
+    if let stringData = inDictionary ["program"], let value = String.unarchiveFromStringData (stringData) {
+      self.program = value
+    }
+    if let stringData = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.horizontalFlip = value
+    }
+    if let stringData = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.verticalFlip = value
+    }
+    if let stringData = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+      self.gridStyle = value
+    }
+    if let stringData = inDictionary ["gridStep"], let value = Int.unarchiveFromStringData (stringData) {
+      self.gridStep = value
+    }
+    if let stringData = inDictionary ["gridStepUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.gridStepUnit = value
+    }
+    if let stringData = inDictionary ["gridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+      self.gridDisplayFactor = value
+    }
+    if let stringData = inDictionary ["zoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.zoom = value
+    }
+    if let stringData = inDictionary ["mModelImageOpacity"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mModelImageOpacity = value
+    }
+    if let stringData = inDictionary ["mModelImagePageHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mModelImagePageHorizontalFlip = value
+    }
+    if let stringData = inDictionary ["mModelImagePageVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mModelImagePageVerticalFlip = value
+    }
+    if let stringData = inDictionary ["mModelImagePageGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+      self.mModelImagePageGridStyle = value
+    }
+    if let stringData = inDictionary ["mModelImagePageGridStep"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePageGridStep = value
+    }
+    if let stringData = inDictionary ["mModelImagePageGridStepUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePageGridStepUnit = value
+    }
+    if let stringData = inDictionary ["mModelImagePageGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePageGridDisplayFactor = value
+    }
+    if let stringData = inDictionary ["mModelImagePageZoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePageZoom = value
+    }
+    if let stringData = inDictionary ["mModelImagePageXPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePageXPlacardUnit = value
+    }
+    if let stringData = inDictionary ["mModelImagePageYPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePageYPlacardUnit = value
+    }
+    if let stringData = inDictionary ["mModelImageSecondPointXUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImageSecondPointXUnit = value
+    }
+    if let stringData = inDictionary ["mModelImagePSecondointYUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePSecondointYUnit = value
+    }
+    if let stringData = inDictionary ["mModelImageFirstPointXOnLock"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImageFirstPointXOnLock = value
+    }
+    if let stringData = inDictionary ["mModelImageFirstPointYOnLock"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImageFirstPointYOnLock = value
+    }
+    if let stringData = inDictionary ["mModelImagePointsDxOnLock"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePointsDxOnLock = value
+    }
+    if let stringData = inDictionary ["mModelImagePointsDyOnLock"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelImagePointsDyOnLock = value
+    }
+    if let stringData = inDictionary ["mModelImageScale"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mModelImageScale = value
+    }
+    if let stringData = inDictionary ["mModelImageRotationInRadians"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mModelImageRotationInRadians = value
+    }
+    if let stringData = inDictionary ["mDimensionUnitFirstModelPointX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDimensionUnitFirstModelPointX = value
+    }
+    if let stringData = inDictionary ["mDimensionUnitFirstModelPointY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDimensionUnitFirstModelPointY = value
+    }
+    if let stringData = inDictionary ["mDimensionUnitSecondModelPointDx"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDimensionUnitSecondModelPointDx = value
+    }
+    if let stringData = inDictionary ["mDimensionUnitSecondModelPointDy"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDimensionUnitSecondModelPointDy = value
+    }
+    if let stringData = inDictionary ["mModelPointsCircleRadius"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mModelPointsCircleRadius = value
+    }
+    if let stringData = inDictionary ["mPointsAreLocked"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mPointsAreLocked = value
+    }
+    if let stringData = inDictionary ["knobSizeMultpliedByTen"], let value = Int.unarchiveFromStringData (stringData) {
+      self.knobSizeMultpliedByTen = value
+    }
+    if let stringData = inDictionary ["padNumbering"], let value = PadNumbering.unarchiveFromStringData (stringData) {
+      self.padNumbering = value
+    }
+    if let stringData = inDictionary ["counterClockNumberingStartAngle"], let value = Int.unarchiveFromStringData (stringData) {
+      self.counterClockNumberingStartAngle = value
+    }
+    if let stringData = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xPlacardUnit = value
+    }
+    if let stringData = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yPlacardUnit = value
+    }
+    if let stringData = inDictionary ["mModelImageData"], let value = Data.unarchiveFromStringData (stringData) {
+      self.mModelImageData = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mModelImageDoublePoint"], let objectIndex = stringData.base62EncodedInt () {
+      self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["packageObjects"], stringData.count > 0 {
+      var relationshipArray = [PackageObject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! PackageObject)
       }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
+      //self.packageObjects = []
+      self.packageObjects = relationshipArray
+    }
+    if let stringData = inDictionary ["mModelImageObjects"], stringData.count > 0 {
+      var relationshipArray = [PackageModelImageDoublePoint] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
       }
-      ioData.append (ascii: .lineFeed)
+      //self.mModelImageObjects = []
+      self.mModelImageObjects = relationshipArray
     }
   }
 

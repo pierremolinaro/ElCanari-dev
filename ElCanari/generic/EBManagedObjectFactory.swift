@@ -117,30 +117,92 @@ func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?,
 //     loadEasyBindingFile
 //----------------------------------------------------------------------------------------------------------------------
 
-func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) throws -> (UInt8, [String : Any], EBManagedObject?) {
+func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) throws
+     -> (UInt8, [String : Any], EBManagedObject?, EBManagedDocumentFileFormat) {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data:data)
 //--- Check Signature
-  for c in PM_BINARY_FORMAT_SIGNATURE.utf8 {
-    dataScanner.acceptRequired (byte: c)
+  if dataScanner.testString (string: PM_BINARY_FORMAT_SIGNATURE) {
+    return try loadEasyBindingBinaryFile (inUndoManager, from: &dataScanner)
+  }else if dataScanner.testString (string: PM_TEXTUAL_FORMAT_SIGNATURE) {
+    return try loadEasyBindingTextFile (inUndoManager, from: &dataScanner)
+  }else{
+    let dictionary = [
+      "Cannot Open Document" : NSLocalizedDescriptionKey,
+      "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
+    ]
+    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
+        from ioDataScanner: inout EBDataScanner) throws -> (UInt8, [String : Any], EBManagedObject?, EBManagedDocumentFileFormat) {
+//--- Check header ends with line feed
+  ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
 //--- Read Status
-  let metadataStatus = dataScanner.parseByte ()
-//--- if ok, check byte is 1
-  dataScanner.acceptRequired (byte: 1)
+  let metadataStatus = UInt8 (ioDataScanner.parseBase62EncodedInt ())
+ // Swift.print ("metadataStatus \(metadataStatus)")
 //--- Read metadata dictionary
-  let dictionaryData = dataScanner.parseAutosizedData ()
-  let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
-    options:[],
-    format:nil
-  ) as! [String : Any]
-//--- Read data
-  let dataFormat = dataScanner.parseByte ()
-  let fileData = dataScanner.parseAutosizedData ()
-//--- if ok, check final byte (0)
-  dataScanner.acceptRequired (byte: 0)
+  let metadataDictionary : [String : Any] = try ioDataScanner.parseJSON ()
+ // Swift.print ("metadataDictionary \(metadataDictionary)")
+//--- Read classes
+  var classDefinition = [(String, [String])] ()
+  while ioDataScanner.testAccept (byte: ASCII.dollar.rawValue) {
+    let className = try ioDataScanner.parseString ()
+    // Swift.print ("CLASS NAME: '\(className)', class index \(classDefinition.count)")
+    var readPropertyNames = true
+    var propertyNameArray = [String] ()
+    while readPropertyNames, ioDataScanner.ok () {
+      if ioDataScanner.test (byte: ASCII.dollar.rawValue) {
+        readPropertyNames = false
+      }else if ioDataScanner.test (byte: ASCII.at.rawValue) {
+        readPropertyNames = false
+      }else{
+        let propertyName = try ioDataScanner.parseString ()
+        propertyNameArray.append (propertyName)
+//        Swift.print ("  PROPERTY NAME: '\(propertyName)'")
+      }
+    }
+    classDefinition.append ((className, propertyNameArray))
+  }
+//--- Read objects
+  var objectArray = [EBManagedObject] ()
+  var propertyValueArray = [[String : Data]] ()
+  while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
+    let classIndex = ioDataScanner.parseBase62EncodedInt ()
+    // Swift.print ("CLASS INDEX: '\(classIndex)'")
+    let managedObject = newInstanceOfEntityNamed (inUndoManager, classDefinition [classIndex].0)!
+    objectArray.append (managedObject)
+    var readPropertyValues = true
+    var valueDictionary = [String : Data] ()
+    var propertyIndex = 0
+    while readPropertyValues, ioDataScanner.ok () {
+      if ioDataScanner.test (byte: ASCII.at.rawValue) {
+        readPropertyValues = false
+      }else if ioDataScanner.eof () {
+        readPropertyValues = false
+      }else{
+        let propertyValue = try ioDataScanner.parseStringAsData ()
+        valueDictionary [classDefinition [classIndex].1 [propertyIndex]] = propertyValue
+        propertyIndex += 1
+        // Swift.print ("  PROPERTY VALUE: '\(propertyValue)'")
+      }
+    }
+    propertyValueArray.append (valueDictionary)
+  }
+  var idx = 0
+  for managedObject in objectArray {
+    let valueDictionary = propertyValueArray [idx]
+    idx += 1
+    managedObject.setUpWithTextDictionary (valueDictionary, objectArray)
+  }
+//  if ioDataScanner.ok () {
+//    Swift.print ("COMPLETED, \(objectArray.count) objects")
+//  }
 //--- Scanner error ?
-  if !dataScanner.ok () {
+  if !ioDataScanner.ok () {
     let dictionary = [
       "Cannot Open Document" : NSLocalizedDescriptionKey,
       "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
@@ -149,10 +211,8 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
   }
 //--- Analyze read data
   var rootObject : EBManagedObject? = nil
-  if dataFormat == 0x06 {
-    rootObject = try readManagedObjectsFromData (inUndoManager, inData: fileData)
-  }else{
-    try raiseInvalidDataFormatArror (dataFormat: dataFormat)
+  if objectArray.count > 0 {
+    rootObject = objectArray [0]
   }
 //---
   if rootObject == nil {
@@ -163,12 +223,59 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
     throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
   }
 //---
-  return (metadataStatus, metadataDictionary, rootObject)
+  return (metadataStatus, metadataDictionary, rootObject, .textual)
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
+func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
+                                from ioDataScanner: inout EBDataScanner) throws
+                -> (UInt8, [String : Any], EBManagedObject?, EBManagedDocumentFileFormat) {
+//--- Read Status
+  let metadataStatus = ioDataScanner.parseByte ()
+//--- if ok, check byte is 1
+  ioDataScanner.acceptRequired (byte: 1)
+//--- Read metadata dictionary
+  let dictionaryData = ioDataScanner.parseAutosizedData ()
+  let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
+    options:[],
+    format:nil
+  ) as! [String : Any]
+//--- Read data
+  let dataFormat = ioDataScanner.parseByte ()
+  let fileData = ioDataScanner.parseAutosizedData ()
+//--- if ok, check final byte (0)
+  ioDataScanner.acceptRequired (byte: 0)
+//--- Scanner error ?
+  if !ioDataScanner.ok () {
+    let dictionary = [
+      "Cannot Open Document" : NSLocalizedDescriptionKey,
+      "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
+    ]
+    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+  }
+//--- Analyze read data
+  var rootObject : EBManagedObject? = nil
+  if dataFormat == 0x06 {
+    rootObject = try readManagedObjectsFromBinaryData (inUndoManager, inData: fileData)
+  }else{
+    try raiseInvalidDataFormatError (dataFormat: dataFormat)
+  }
+//---
+  if rootObject == nil {
+    let dictionary = [
+      "Cannot Open Document" :  NSLocalizedDescriptionKey,
+      "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
+    ]
+    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+  }
+//---
+  return (metadataStatus, metadataDictionary, rootObject, .binary)
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
   if let dictionaryArray = try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [NSDictionary] {
     let creationStart = Date ()
@@ -205,7 +312,7 @@ fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, i
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate func raiseInvalidDataFormatArror (dataFormat : UInt8) throws {
+fileprivate func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
   let dictionary = [
     "Cannot Open Document" :  NSLocalizedDescriptionKey,
     "Unkown data format: \(dataFormat)" :  NSLocalizedRecoverySuggestionErrorKey
@@ -254,7 +361,7 @@ func loadEasyRootObjectDictionary (from data: Data) throws -> (UInt8, [String : 
       rootObjectDictionary = dictionaryArray [0]
     }
   }else{
-    try raiseInvalidDataFormatArror (dataFormat: dataFormat)
+    try raiseInvalidDataFormatError (dataFormat: dataFormat)
   }
 //---
   if rootObjectDictionary == nil {

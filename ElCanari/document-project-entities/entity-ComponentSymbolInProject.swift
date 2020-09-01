@@ -1207,7 +1207,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPoints
     self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
@@ -1347,6 +1347,63 @@ class ComponentSymbolInProject : SchematicObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mCenterX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCenterX = value
+    }
+    if let stringData = inDictionary ["mCenterY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCenterY = value
+    }
+    if let stringData = inDictionary ["mRotation"], let value = QuadrantRotation.unarchiveFromStringData (stringData) {
+      self.mRotation = value
+    }
+    if let stringData = inDictionary ["mMirror"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mMirror = value
+    }
+    if let stringData = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mSymbolInstanceName = value
+    }
+    if let stringData = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mSymbolTypeName = value
+    }
+    if let stringData = inDictionary ["mDisplayComponentNameOffsetX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDisplayComponentNameOffsetX = value
+    }
+    if let stringData = inDictionary ["mDisplayComponentNameOffsetY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDisplayComponentNameOffsetY = value
+    }
+    if let stringData = inDictionary ["mDisplayComponentValue"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mDisplayComponentValue = value
+    }
+    if let stringData = inDictionary ["mDisplayComponentValueOffsetX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDisplayComponentValueOffsetX = value
+    }
+    if let stringData = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDisplayComponentValueOffsetY = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mComponent"], let objectIndex = stringData.base62EncodedInt () {
+      self.mComponent = inObjectArray [objectIndex] as? ComponentInProject
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mPoints"], stringData.count > 0 {
+      var relationshipArray = [PointInSchematic] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+      }
+      //self.mPoints = []
+      self.mPoints = relationshipArray
     }
   }
 

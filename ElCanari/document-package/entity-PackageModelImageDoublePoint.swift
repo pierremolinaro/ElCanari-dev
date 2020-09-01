@@ -526,7 +526,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -603,6 +603,38 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mFirstX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mFirstX = value
+    }
+    if let stringData = inDictionary ["mFirstY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mFirstY = value
+    }
+    if let stringData = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+      self.mFirstColor = value
+    }
+    if let stringData = inDictionary ["mSecondDx"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSecondDx = value
+    }
+    if let stringData = inDictionary ["mSecondDy"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSecondDy = value
+    }
+    if let stringData = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+      self.mSecondColor = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mRoot"], let objectIndex = stringData.base62EncodedInt () {
+      self.mRoot = inObjectArray [objectIndex] as? PackageRoot
+    }
   //--- To many relationships
   }
 

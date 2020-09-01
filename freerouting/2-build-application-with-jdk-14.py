@@ -97,13 +97,25 @@ runCommand ([
 #   "--mac-signing-key-user-name", "pierre@pcmolinaro.name",
   "--app-version", APP_VERSION
 ])
-runCommand (["codesign", "--force", "-s", "Mac Developer: pierre@pcmolinaro.name", FREE_ROUTING_NAME + ".app"])
+runCommand ([
+  "codesign",
+  "--force",
+  "--sign", "U399CP39LD",
+#   "--sign", "Apple Development: pierre@pcmolinaro.name",
+  "--deep",
+  FREE_ROUTING_NAME + ".app"
+])
 runCommand ([
   "/usr/bin/codesign",
   "-dv",
   "--verbose=4",
   FREE_ROUTING_NAME + ".app"
 ])
+# runCommand ([
+#   "spctl",
+#   "-a",
+#   FREE_ROUTING_NAME + ".app"
+# ])
 runCommand ([
   "spctl",
   "--assess",

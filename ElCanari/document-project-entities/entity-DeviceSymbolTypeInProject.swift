@@ -227,7 +227,7 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -272,6 +272,26 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mFilledBezierPath.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mSymbolTypeName = value
+    }
+    if let stringData = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+      self.mStrokeBezierPath = value
+    }
+    if let stringData = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+      self.mFilledBezierPath = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

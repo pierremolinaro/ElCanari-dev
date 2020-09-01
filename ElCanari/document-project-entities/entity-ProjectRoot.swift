@@ -6953,7 +6953,7 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mSheets
     self.mSheets_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSheets",
@@ -7602,6 +7602,285 @@ class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mArtworkName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mArtworkName = value
+    }
+    if let stringData = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mArtworkVersion = value
+    }
+    if let stringData = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+      self.mPDFBoardBackgroundColor = value
+    }
+    if let stringData = inDictionary ["mCheckClearanceBetweenPadsOfSameNet"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mCheckClearanceBetweenPadsOfSameNet = value
+    }
+    if let stringData = inDictionary ["mLastERCCheckingIsSuccess"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mLastERCCheckingIsSuccess = value
+    }
+    if let stringData = inDictionary ["mLastERCCheckingSignature"], let value = UInt32.unarchiveFromStringData (stringData) {
+      self.mLastERCCheckingSignature = value
+    }
+    if let stringData = inDictionary ["mAutoRouterPreferredDirections"], let value = AutorouterPreferredDirections.unarchiveFromStringData (stringData) {
+      self.mAutoRouterPreferredDirections = value
+    }
+    if let stringData = inDictionary ["mAutorouterSnapAngle"], let value = AutorouterSnapAngle.unarchiveFromStringData (stringData) {
+      self.mAutorouterSnapAngle = value
+    }
+    if let stringData = inDictionary ["mRouteDirection"], let value = RouteDirection.unarchiveFromStringData (stringData) {
+      self.mRouteDirection = value
+    }
+    if let stringData = inDictionary ["mRouteOrigin"], let value = RouteOrigin.unarchiveFromStringData (stringData) {
+      self.mRouteOrigin = value
+    }
+    if let stringData = inDictionary ["mTrackLengthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mTrackLengthUnit = value
+    }
+    if let stringData = inDictionary ["mLayoutClearance"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mLayoutClearance = value
+    }
+    if let stringData = inDictionary ["mLayoutClearanceUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mLayoutClearanceUnit = value
+    }
+    if let stringData = inDictionary ["mBoardSelectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardSelectedInspector = value
+    }
+    if let stringData = inDictionary ["mBoardHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mBoardHorizontalFlip = value
+    }
+    if let stringData = inDictionary ["mBoardVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mBoardVerticalFlip = value
+    }
+    if let stringData = inDictionary ["mBoardGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+      self.mBoardGridStyle = value
+    }
+    if let stringData = inDictionary ["mBoardGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardGridDisplayFactor = value
+    }
+    if let stringData = inDictionary ["mBoardZoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardZoom = value
+    }
+    if let stringData = inDictionary ["mBoardGridStep"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardGridStep = value
+    }
+    if let stringData = inDictionary ["mBoardGridStepUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardGridStepUnit = value
+    }
+    if let stringData = inDictionary ["mErrorOrWarningIssueSize"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mErrorOrWarningIssueSize = value
+    }
+    if let stringData = inDictionary ["mControlKeyHiliteDiameter"], let value = Double.unarchiveFromStringData (stringData) {
+      self.mControlKeyHiliteDiameter = value
+    }
+    if let stringData = inDictionary ["mDSNFileProposedName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mDSNFileProposedName = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsWidth = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsWidthUnit = value
+    }
+    if let stringData = inDictionary ["mBoardClearance"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardClearance = value
+    }
+    if let stringData = inDictionary ["mBoardClearanceUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardClearanceUnit = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsSelectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsSelectedInspector = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsHorizontalFlip = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsVerticalFlip = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsGridStyle = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsGridDisplayFactor = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsZoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsZoom = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsGridStep"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsGridStep = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsGridStepUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsGridStepUnit = value
+    }
+    if let stringData = inDictionary ["mBoardLimitsBoundingBoxUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitsBoundingBoxUnit = value
+    }
+    if let stringData = inDictionary ["mBoardPointsBoundingBoxUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardPointsBoundingBoxUnit = value
+    }
+    if let stringData = inDictionary ["mBoardSelectedCurveDisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardSelectedCurveDisplayUnit = value
+    }
+    if let stringData = inDictionary ["mBoardLimitControlPointsDisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mBoardLimitControlPointsDisplayUnit = value
+    }
+    if let stringData = inDictionary ["mBoardShape"], let value = BoardShape.unarchiveFromStringData (stringData) {
+      self.mBoardShape = value
+    }
+    if let stringData = inDictionary ["mRectangularBoardWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mRectangularBoardWidth = value
+    }
+    if let stringData = inDictionary ["mRectangularBoardWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mRectangularBoardWidthUnit = value
+    }
+    if let stringData = inDictionary ["mRectangularBoardHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mRectangularBoardHeight = value
+    }
+    if let stringData = inDictionary ["mRectangularBoardHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mRectangularBoardHeightUnit = value
+    }
+    if let stringData = inDictionary ["mDefaultNetClassName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mDefaultNetClassName = value
+    }
+    if let stringData = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSelectedPageIndex = value
+    }
+    if let stringData = inDictionary ["mSelectedSchematicInspector"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSelectedSchematicInspector = value
+    }
+    if let stringData = inDictionary ["mSchematicTitle"], let value = String.unarchiveFromStringData (stringData) {
+      self.mSchematicTitle = value
+    }
+    if let stringData = inDictionary ["mSchematicVersion"], let value = String.unarchiveFromStringData (stringData) {
+      self.mSchematicVersion = value
+    }
+    if let stringData = inDictionary ["mSchematicDate"], let value = Date.unarchiveFromStringData (stringData) {
+      self.mSchematicDate = value
+    }
+    if let stringData = inDictionary ["mSchematicHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mSchematicHorizontalFlip = value
+    }
+    if let stringData = inDictionary ["mSchematicVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mSchematicVerticalFlip = value
+    }
+    if let stringData = inDictionary ["mSchematicZoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSchematicZoom = value
+    }
+    if let stringData = inDictionary ["mSchematicGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+      self.mSchematicGridStyle = value
+    }
+    if let stringData = inDictionary ["mSchematicGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSchematicGridDisplayFactor = value
+    }
+    if let stringData = inDictionary ["mSchematicCustomWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSchematicCustomWidth = value
+    }
+    if let stringData = inDictionary ["mSchematicCustomWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSchematicCustomWidthUnit = value
+    }
+    if let stringData = inDictionary ["mSchematicCustomHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSchematicCustomHeight = value
+    }
+    if let stringData = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mSchematicCustomHeightUnit = value
+    }
+    if let stringData = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromStringData (stringData) {
+      self.mSchematicSheetOrientation = value
+    }
+    if let stringData = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromStringData (stringData) {
+      self.mRastnetDisplay = value
+    }
+    if let stringData = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mRastnetDisplayedNetName = value
+    }
+    if let stringData = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mRastnetDisplayedComponentName = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mSelectedSheet"], let objectIndex = stringData.base62EncodedInt () {
+      self.mSelectedSheet = inObjectArray [objectIndex] as? SheetInProject
+    }
+    if let stringData = inDictionary ["mArtwork"], let objectIndex = stringData.base62EncodedInt () {
+      self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mSheets"], stringData.count > 0 {
+      var relationshipArray = [SheetInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SheetInProject)
+      }
+      //self.mSheets = []
+      self.mSheets = relationshipArray
+    }
+    if let stringData = inDictionary ["mNetClasses"], stringData.count > 0 {
+      var relationshipArray = [NetClassInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
+      }
+      //self.mNetClasses = []
+      self.mNetClasses = relationshipArray
+    }
+    if let stringData = inDictionary ["mFonts"], stringData.count > 0 {
+      var relationshipArray = [FontInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! FontInProject)
+      }
+      //self.mFonts = []
+      self.mFonts = relationshipArray
+    }
+    if let stringData = inDictionary ["mDevices"], stringData.count > 0 {
+      var relationshipArray = [DeviceInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! DeviceInProject)
+      }
+      //self.mDevices = []
+      self.mDevices = relationshipArray
+    }
+    if let stringData = inDictionary ["mBorderCurves"], stringData.count > 0 {
+      var relationshipArray = [BorderCurve] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BorderCurve)
+      }
+      //self.mBorderCurves = []
+      self.mBorderCurves = relationshipArray
+    }
+    if let stringData = inDictionary ["mBoardObjects"], stringData.count > 0 {
+      var relationshipArray = [BoardObject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardObject)
+      }
+      //self.mBoardObjects = []
+      self.mBoardObjects = relationshipArray
+    }
+    if let stringData = inDictionary ["mComponents"], stringData.count > 0 {
+      var relationshipArray = [ComponentInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+      }
+      //self.mComponents = []
+      self.mComponents = relationshipArray
     }
   }
 

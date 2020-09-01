@@ -1157,7 +1157,7 @@ class NetClassInProject : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mNets
     self.mNets_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mNets",
@@ -1276,6 +1276,57 @@ class NetClassInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mNetClassName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mNetClassName = value
+    }
+    if let stringData = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+      self.mNetClassColor = value
+    }
+    if let stringData = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mTrackWidth = value
+    }
+    if let stringData = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mTrackWidthUnit = value
+    }
+    if let stringData = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mViaHoleDiameter = value
+    }
+    if let stringData = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mViaHoleDiameterUnit = value
+    }
+    if let stringData = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mViaPadDiameter = value
+    }
+    if let stringData = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mViaPadDiameterUnit = value
+    }
+    if let stringData = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mAllowTracksOnFrontSide = value
+    }
+    if let stringData = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mAllowTracksOnBackSide = value
+    }
+  //--- To one relationships
+  //--- To many relationships
+    if let stringData = inDictionary ["mNets"], stringData.count > 0 {
+      var relationshipArray = [NetInProject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! NetInProject)
+      }
+      //self.mNets = []
+      self.mNets = relationshipArray
     }
   }
 

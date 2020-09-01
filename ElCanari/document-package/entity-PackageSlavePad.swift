@@ -1352,7 +1352,7 @@ class PackageSlavePad : PackageObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: master
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1474,6 +1474,65 @@ class PackageSlavePad : PackageObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["xCenter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xCenter = value
+    }
+    if let stringData = inDictionary ["yCenter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yCenter = value
+    }
+    if let stringData = inDictionary ["width"], let value = Int.unarchiveFromStringData (stringData) {
+      self.width = value
+    }
+    if let stringData = inDictionary ["height"], let value = Int.unarchiveFromStringData (stringData) {
+      self.height = value
+    }
+    if let stringData = inDictionary ["holeWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.holeWidth = value
+    }
+    if let stringData = inDictionary ["holeHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.holeHeight = value
+    }
+    if let stringData = inDictionary ["padShape"], let value = PadShape.unarchiveFromStringData (stringData) {
+      self.padShape = value
+    }
+    if let stringData = inDictionary ["padStyle"], let value = SlavePadStyle.unarchiveFromStringData (stringData) {
+      self.padStyle = value
+    }
+    if let stringData = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xCenterUnit = value
+    }
+    if let stringData = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yCenterUnit = value
+    }
+    if let stringData = inDictionary ["widthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.widthUnit = value
+    }
+    if let stringData = inDictionary ["heightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.heightUnit = value
+    }
+    if let stringData = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.holeWidthUnit = value
+    }
+    if let stringData = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.holeHeightUnit = value
+    }
+    if let stringData = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.annularRingUnit = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["master"], let objectIndex = stringData.base62EncodedInt () {
+      self.master = inObjectArray [objectIndex] as? PackagePad
+    }
   //--- To many relationships
   }
 

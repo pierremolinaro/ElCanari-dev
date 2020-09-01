@@ -536,7 +536,7 @@ class BoardRestrictRectangle : BoardObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -596,6 +596,35 @@ class BoardRestrictRectangle : BoardObject,
     ioData.append (ascii: .lineFeed)
     self.mX.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY = value
+    }
+    if let stringData = inDictionary ["mWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mWidth = value
+    }
+    if let stringData = inDictionary ["mHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mHeight = value
+    }
+    if let stringData = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mIsInFrontLayer = value
+    }
+    if let stringData = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mIsInBackLayer = value
+    }
+    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

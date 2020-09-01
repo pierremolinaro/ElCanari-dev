@@ -79,7 +79,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  SAVE
+  //-  SAVE
   //····················································································································
 
   func metadataStatusForSaving () -> UInt8 {
@@ -116,11 +116,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
         self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] = windowSize.height
       }
     }
-  //--- Temp
-//    let textualData = try self.textualDataForSaving ()
-//    let s = self.fileURL!.lastPathComponent
-//    let tempFile = NSHomeDirectory() + "/desktop/" + s + ".txt"
-//    try textualData.write (to: URL (fileURLWithPath: tempFile))
   //---
     switch self.mManagedDocumentFileFormat {
     case .binary :
@@ -158,7 +153,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   private func textualDataForSaving () throws -> Data {
-    let start = Date ()
+ //   let start = Date ()
+  //--- First line: PM-TEXT-FORMAT
     var fileStringData = Data ()
     fileStringData.append (ascii: .P)
     fileStringData.append (ascii: .M)
@@ -179,7 +175,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     fileStringData.append (base62Encoded: Int (self.metadataStatusForSaving ()))
     fileStringData.append (ascii: .lineFeed)
   //--- Append metadata dictionary
-   // let textMetaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .xml, options: 0)
     let textMetaData = try JSONSerialization.data (withJSONObject: self.mMetadataDictionary, options: [])
     fileStringData += textMetaData
     fileStringData.append (ascii: .lineFeed)
@@ -206,7 +201,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       object.appendPropertyValuesTo (&fileStringData)
     }
   //---
-    Swift.print ("Text Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+ //   Swift.print ("Text Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
     return fileStringData
   }
 
@@ -283,12 +278,14 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func read (from data : Data, ofType typeName : String) throws {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
-    let startLoadFile = Date ()
-    let (metadataStatus, metadataDictionary, possibleRootObject) = try loadEasyBindingFile (self.ebUndoManager, from: data)
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (startLoadFile) * 1000.0)
-      Swift.print ("Load File \(durationMS) ms")
-    }
+ //   let startLoadFile = Date ()
+    let (metadataStatus, metadataDictionary, possibleRootObject, fileFormat) = try loadEasyBindingFile (self.ebUndoManager, from: data)
+    self.mManagedDocumentFileFormat = fileFormat
+    Swift.print ("fileFormat \(fileFormat)")
+//    if LOG_OPERATION_DURATION {
+//      let durationMS = Int (Date ().timeIntervalSince (startLoadFile) * 1000.0)
+//      Swift.print ("Load File \(durationMS) ms")
+//    }
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus
   //--- Store metadata dictionary
@@ -606,11 +603,31 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     let action = inMenuItem.action
     if action == #selector (EBManagedDocument.printDocument(_:)) {
       validate = self.windowForSheet?.firstResponder is EBGraphicView
+    }else if action == #selector (EBManagedDocument.setBinaryFormatAction(_:)) {
+      validate = true
+      inMenuItem.state = (self.mManagedDocumentFileFormat == .binary) ? .on : .off
+    }else if action == #selector (EBManagedDocument.setTextualFormatAction(_:)) {
+      validate = true
+      inMenuItem.state = (self.mManagedDocumentFileFormat == .textual) ? .on : .off
     }else{
       validate = super.validateMenuItem (inMenuItem)
     }
     // NSLog ("VALIDATE \(action) -> \(validate)")
     return validate
+  }
+
+  //····················································································································
+  //   FORMAT ACTIONS
+  //····················································································································
+
+  @IBAction func setBinaryFormatAction (_ inSender : Any?) {
+    self.mManagedDocumentFileFormat = .binary
+  }
+
+  //····················································································································
+
+  @IBAction func setTextualFormatAction (_ inSender : Any?) {
+    self.mManagedDocumentFileFormat = .textual
   }
 
   //····················································································································

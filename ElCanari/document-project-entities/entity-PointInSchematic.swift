@@ -1378,7 +1378,7 @@ class PointInSchematic : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mLabels
     self.mLabels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mLabels",
@@ -1602,6 +1602,68 @@ class PointInSchematic : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mSymbolPinName = value
+    }
+    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX = value
+    }
+    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mSymbol"], let objectIndex = stringData.base62EncodedInt () {
+      self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject
+    }
+    if let stringData = inDictionary ["mNet"], let objectIndex = stringData.base62EncodedInt () {
+      self.mNet = inObjectArray [objectIndex] as? NetInProject
+    }
+    if let stringData = inDictionary ["mNC"], let objectIndex = stringData.base62EncodedInt () {
+      self.mNC = inObjectArray [objectIndex] as? NCInSchematic
+    }
+    if let stringData = inDictionary ["mSheet"], let objectIndex = stringData.base62EncodedInt () {
+      self.mSheet = inObjectArray [objectIndex] as? SheetInProject
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mLabels"], stringData.count > 0 {
+      var relationshipArray = [LabelInSchematic] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
+      }
+      //self.mLabels = []
+      self.mLabels = relationshipArray
+    }
+    if let stringData = inDictionary ["mWiresP2s"], stringData.count > 0 {
+      var relationshipArray = [WireInSchematic] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+      }
+      //self.mWiresP2s = []
+      self.mWiresP2s = relationshipArray
+    }
+    if let stringData = inDictionary ["mWiresP1s"], stringData.count > 0 {
+      var relationshipArray = [WireInSchematic] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+      }
+      //self.mWiresP1s = []
+      self.mWiresP1s = relationshipArray
     }
   }
 

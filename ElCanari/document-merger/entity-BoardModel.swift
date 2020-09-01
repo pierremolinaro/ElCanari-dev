@@ -4477,7 +4477,7 @@ class BoardModel : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: frontLegendLines
     self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendLines",
@@ -5313,6 +5313,244 @@ class BoardModel : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["name"], let value = String.unarchiveFromStringData (stringData) {
+      self.name = value
+    }
+    if let stringData = inDictionary ["modelWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.modelWidth = value
+    }
+    if let stringData = inDictionary ["modelWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.modelWidthUnit = value
+    }
+    if let stringData = inDictionary ["modelHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.modelHeight = value
+    }
+    if let stringData = inDictionary ["modelHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.modelHeightUnit = value
+    }
+    if let stringData = inDictionary ["zoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.zoom = value
+    }
+    if let stringData = inDictionary ["modelLimitWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.modelLimitWidth = value
+    }
+    if let stringData = inDictionary ["modelLimitWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.modelLimitWidthUnit = value
+    }
+    if let stringData = inDictionary ["artworkName"], let value = String.unarchiveFromStringData (stringData) {
+      self.artworkName = value
+    }
+  //--- To one relationships
+  //--- To many relationships
+    if let stringData = inDictionary ["frontLegendLines"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontLegendLines = []
+      self.frontLegendLines = relationshipArray
+    }
+    if let stringData = inDictionary ["backLegendLines"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backLegendLines = []
+      self.backLegendLines = relationshipArray
+    }
+    if let stringData = inDictionary ["frontLegendTexts"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontLegendTexts = []
+      self.frontLegendTexts = relationshipArray
+    }
+    if let stringData = inDictionary ["frontLayoutTexts"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontLayoutTexts = []
+      self.frontLayoutTexts = relationshipArray
+    }
+    if let stringData = inDictionary ["backLegendTexts"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backLegendTexts = []
+      self.backLegendTexts = relationshipArray
+    }
+    if let stringData = inDictionary ["backLayoutTexts"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backLayoutTexts = []
+      self.backLayoutTexts = relationshipArray
+    }
+    if let stringData = inDictionary ["internalBoardsLimits"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.internalBoardsLimits = []
+      self.internalBoardsLimits = relationshipArray
+    }
+    if let stringData = inDictionary ["drills"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.drills = []
+      self.drills = relationshipArray
+    }
+    if let stringData = inDictionary ["vias"], stringData.count > 0 {
+      var relationshipArray = [BoardModelVia] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardModelVia)
+      }
+      //self.vias = []
+      self.vias = relationshipArray
+    }
+    if let stringData = inDictionary ["frontPads"], stringData.count > 0 {
+      var relationshipArray = [BoardModelPad] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+      }
+      //self.frontPads = []
+      self.frontPads = relationshipArray
+    }
+    if let stringData = inDictionary ["backPads"], stringData.count > 0 {
+      var relationshipArray = [BoardModelPad] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+      }
+      //self.backPads = []
+      self.backPads = relationshipArray
+    }
+    if let stringData = inDictionary ["backComponentNames"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backComponentNames = []
+      self.backComponentNames = relationshipArray
+    }
+    if let stringData = inDictionary ["frontComponentNames"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontComponentNames = []
+      self.frontComponentNames = relationshipArray
+    }
+    if let stringData = inDictionary ["frontComponentValues"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontComponentValues = []
+      self.frontComponentValues = relationshipArray
+    }
+    if let stringData = inDictionary ["backComponentValues"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backComponentValues = []
+      self.backComponentValues = relationshipArray
+    }
+    if let stringData = inDictionary ["backTracks"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backTracks = []
+      self.backTracks = relationshipArray
+    }
+    if let stringData = inDictionary ["frontTracks"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontTracks = []
+      self.frontTracks = relationshipArray
+    }
+    if let stringData = inDictionary ["frontPackages"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.frontPackages = []
+      self.frontPackages = relationshipArray
+    }
+    if let stringData = inDictionary ["backPackages"], stringData.count > 0 {
+      var relationshipArray = [SegmentEntity] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+      }
+      //self.backPackages = []
+      self.backPackages = relationshipArray
+    }
+    if let stringData = inDictionary ["myInstances"], stringData.count > 0 {
+      var relationshipArray = [MergerBoardInstance] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+      }
+      //self.myInstances = []
+      self.myInstances = relationshipArray
     }
   }
 

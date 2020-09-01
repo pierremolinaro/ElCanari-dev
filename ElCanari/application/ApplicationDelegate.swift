@@ -10,6 +10,13 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
+enum DocumentFormat {
+  case binary
+  case textual
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 var gApplicationDelegate : ApplicationDelegate? = nil
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +25,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc (ApplicationDelegate) class ApplicationDelegate : NSObject, NSApplicationDelegate {
+@objc (ApplicationDelegate) class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
   //····················································································································
   //  init
@@ -108,6 +115,52 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
     for document in NSDocumentController.shared.documents {
       document.save (inSender)
     }
+  }
+
+  //····················································································································
+  // Menu Events
+  //····················································································································
+
+  func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+    let validate : Bool
+    let action = inMenuItem.action
+    if action == #selector (Self.setBinaryFormatAction (_:)) {
+      validate = false
+      inMenuItem.state = .off
+    }else if action == #selector (Self.setTextualFormatAction (_:)) {
+      validate = false
+      inMenuItem.state = .off
+    }else if action == #selector (Self.actionNewProjectDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionNewMergerDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionNewSymbolDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionNewPackageDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionNewDeviceDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionNewFontDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionNewArtworkDocument (_:)) {
+      validate = true
+    }else{
+      validate = false
+    }
+    // NSLog ("VALIDATE \(action) -> \(validate)")
+    return validate
+  }
+
+  //····················································································································
+  //   FORMAT ACTIONS
+  //····················································································································
+
+  @objc func setBinaryFormatAction (_ inSender : Any?) {
+  }
+
+  //····················································································································
+
+  @objc func setTextualFormatAction (_ inSender : Any?) {
   }
 
   //····················································································································

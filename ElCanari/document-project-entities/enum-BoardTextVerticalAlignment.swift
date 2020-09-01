@@ -67,9 +67,13 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> BoardTextVerticalAlignment {
     var result = BoardTextVerticalAlignment.above
@@ -77,6 +81,16 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> BoardTextVerticalAlignment? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = BoardTextVerticalAlignment (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

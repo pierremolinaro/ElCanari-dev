@@ -885,7 +885,7 @@ class SymbolPin : SymbolObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -965,6 +965,47 @@ class SymbolPin : SymbolObject,
     ioData.append (ascii: .lineFeed)
     self.xPin.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["yPin"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yPin = value
+    }
+    if let stringData = inDictionary ["xName"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xName = value
+    }
+    if let stringData = inDictionary ["yName"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yName = value
+    }
+    if let stringData = inDictionary ["xNumber"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xNumber = value
+    }
+    if let stringData = inDictionary ["yNumber"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yNumber = value
+    }
+    if let stringData = inDictionary ["name"], let value = String.unarchiveFromStringData (stringData) {
+      self.name = value
+    }
+    if let stringData = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+      self.nameHorizontalAlignment = value
+    }
+    if let stringData = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+      self.numberHorizontalAlignment = value
+    }
+    if let stringData = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.pinNameIsDisplayedInSchematics = value
+    }
+    if let stringData = inDictionary ["xPin"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xPin = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

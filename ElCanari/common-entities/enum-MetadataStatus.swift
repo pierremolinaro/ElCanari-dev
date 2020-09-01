@@ -67,9 +67,13 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> MetadataStatus {
     var result = MetadataStatus.unknown
@@ -77,6 +81,16 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> MetadataStatus? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = MetadataStatus (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

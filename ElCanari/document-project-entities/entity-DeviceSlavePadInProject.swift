@@ -534,7 +534,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -604,6 +604,41 @@ class DeviceSlavePadInProject : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mStyle.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mCenterX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCenterX = value
+    }
+    if let stringData = inDictionary ["mCenterY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCenterY = value
+    }
+    if let stringData = inDictionary ["mWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mWidth = value
+    }
+    if let stringData = inDictionary ["mHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mHeight = value
+    }
+    if let stringData = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mHoleWidth = value
+    }
+    if let stringData = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mHoleHeight = value
+    }
+    if let stringData = inDictionary ["mShape"], let value = PadShape.unarchiveFromStringData (stringData) {
+      self.mShape = value
+    }
+    if let stringData = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromStringData (stringData) {
+      self.mStyle = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

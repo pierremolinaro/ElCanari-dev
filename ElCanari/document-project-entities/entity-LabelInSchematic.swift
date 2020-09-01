@@ -475,7 +475,7 @@ class LabelInSchematic : SchematicObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mPoint
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -527,6 +527,23 @@ class LabelInSchematic : SchematicObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromStringData (stringData) {
+      self.mOrientation = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mPoint"], let objectIndex = stringData.base62EncodedInt () {
+      self.mPoint = inObjectArray [objectIndex] as? PointInSchematic
+    }
   //--- To many relationships
   }
 

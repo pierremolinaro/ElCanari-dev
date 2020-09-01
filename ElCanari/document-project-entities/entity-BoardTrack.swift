@@ -1163,7 +1163,7 @@ class BoardTrack : BoardObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mConnectorP1
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1272,6 +1272,44 @@ class BoardTrack : BoardObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mSide"], let value = TrackSide.unarchiveFromStringData (stringData) {
+      self.mSide = value
+    }
+    if let stringData = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDefaultTrackWidthUnit = value
+    }
+    if let stringData = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCustomTrackWidth = value
+    }
+    if let stringData = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCustomTrackWidthUnit = value
+    }
+    if let stringData = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mUsesCustomTrackWidth = value
+    }
+    if let stringData = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mIsPreservedByAutoRouter = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mConnectorP1"], let objectIndex = stringData.base62EncodedInt () {
+      self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector
+    }
+    if let stringData = inDictionary ["mConnectorP2"], let objectIndex = stringData.base62EncodedInt () {
+      self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector
+    }
+    if let stringData = inDictionary ["mNet"], let objectIndex = stringData.base62EncodedInt () {
+      self.mNet = inObjectArray [objectIndex] as? NetInProject
+    }
   //--- To many relationships
   }
 

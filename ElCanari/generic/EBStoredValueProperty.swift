@@ -126,6 +126,14 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
   }
 
   //····················································································································
+
+//   func setUpAtomicPropertyText (_ inOptionalData : Data?) {
+//     if let data = inOptionalData {
+//       self.setProp (T.convertFromTextualData (data))
+//     }
+//   }
+
+  //····················································································································
   //    SIGNATURE
   //····················································································································
 

@@ -702,7 +702,7 @@ class BoardLine : BoardObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -787,6 +787,50 @@ class BoardLine : BoardObject,
     ioData.append (ascii: .lineFeed)
     self.mWidth.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mWidthUnit = value
+    }
+    if let stringData = inDictionary ["mX1"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX1 = value
+    }
+    if let stringData = inDictionary ["mX1Unit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX1Unit = value
+    }
+    if let stringData = inDictionary ["mY1"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY1 = value
+    }
+    if let stringData = inDictionary ["mY1Unit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY1Unit = value
+    }
+    if let stringData = inDictionary ["mX2"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX2 = value
+    }
+    if let stringData = inDictionary ["mX2Unit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX2Unit = value
+    }
+    if let stringData = inDictionary ["mY2"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY2 = value
+    }
+    if let stringData = inDictionary ["mY2Unit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY2Unit = value
+    }
+    if let stringData = inDictionary ["mLayer"], let value = BoardLineLayer.unarchiveFromStringData (stringData) {
+      self.mLayer = value
+    }
+    if let stringData = inDictionary ["mWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mWidth = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

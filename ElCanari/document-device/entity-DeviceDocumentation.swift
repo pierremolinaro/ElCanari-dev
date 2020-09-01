@@ -247,7 +247,7 @@ class DeviceDocumentation : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -287,6 +287,23 @@ class DeviceDocumentation : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mFileData.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mFileName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mFileName = value
+    }
+    if let stringData = inDictionary ["mFileData"], let value = Data.unarchiveFromStringData (stringData) {
+      self.mFileData = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

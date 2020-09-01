@@ -323,7 +323,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mPin
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -375,6 +375,23 @@ class DevicePadAssignmentInProject : EBManagedObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mPadName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mPadName = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mPin"], let objectIndex = stringData.base62EncodedInt () {
+      self.mPin = inObjectArray [objectIndex] as? DevicePinInProject
+    }
   //--- To many relationships
   }
 

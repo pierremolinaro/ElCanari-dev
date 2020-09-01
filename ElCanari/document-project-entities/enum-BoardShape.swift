@@ -61,9 +61,13 @@ enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> BoardShape {
     var result = BoardShape.rectangular
@@ -71,6 +75,16 @@ enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> BoardShape? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = BoardShape (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

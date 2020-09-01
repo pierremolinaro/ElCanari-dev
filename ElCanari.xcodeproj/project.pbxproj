@@ -639,6 +639,8 @@
 		CF5B06F9213EC3C9005D6B37 /* enum-QuadrantRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06F7213EC3C9005D6B37 /* enum-QuadrantRotation.swift */; };
 		CF5B06FA213EC3C9005D6B37 /* entity-SegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */; };
 		CF5B06FC213EC703005D6B37 /* CanariSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06FB213EC703005D6B37 /* CanariSegment.swift */; };
+		CF5BF1A024FE3BFD00FB05B8 /* textual-file-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BF19F24FE3BFD00FB05B8 /* textual-file-format.swift */; };
+		CF5BF1A124FE3BFD00FB05B8 /* textual-file-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BF19F24FE3BFD00FB05B8 /* textual-file-format.swift */; };
 		CF5C4C6D219F04D600EAC52A /* ArtworkDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEDE6271B4678C100036ACF /* ArtworkDocument.xib */; };
 		CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
@@ -1099,6 +1101,8 @@
 		CF7AA01921BDB72900AC0FC7 /* extension-NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */; };
 		CF7AB0D02362E0F800A93F2F /* EBFocusRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */; };
 		CF7AB0D12362E0F800A93F2F /* EBFocusRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */; };
+		CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
+		CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
 		CF7C09FE21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */; };
 		CF7C09FF21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */; };
 		CF7C0A0121E4DAC900FFB7A2 /* open-package-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */; };
@@ -2926,6 +2930,7 @@
 		CF5B06F7213EC3C9005D6B37 /* enum-QuadrantRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-QuadrantRotation.swift"; sourceTree = "<group>"; };
 		CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SegmentEntity.swift"; sourceTree = "<group>"; };
 		CF5B06FB213EC703005D6B37 /* CanariSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSegment.swift; sourceTree = "<group>"; };
+		CF5BF19F24FE3BFD00FB05B8 /* textual-file-format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "textual-file-format.swift"; sourceTree = "<group>"; };
 		CF5C4DB4219F04D600EAC52A /* ElCanari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElCanari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		CF604DC621BC1BC1004F2311 /* EBScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBScrollView.swift; sourceTree = "<group>"; };
@@ -3069,6 +3074,7 @@
 		CF7AA01421BDB72900AC0FC7 /* extension-UInt32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-UInt32.swift"; sourceTree = "<group>"; };
 		CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSTextView.swift"; sourceTree = "<group>"; };
 		CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBFocusRingView.swift; sourceTree = "<group>"; };
+		CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotationCursor.png; sourceTree = "<group>"; };
 		CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-symbol-in-library.swift"; sourceTree = "<group>"; };
 		CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-package-in-library.swift"; sourceTree = "<group>"; };
 		CF7C30E521CCCA9D00EFFDCA /* PackageDocument-pad-numbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PackageDocument-pad-numbering.swift"; sourceTree = "<group>"; };
@@ -4490,6 +4496,7 @@
 				CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */,
 				CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */,
 				CF6172621B3C4BA900F3CA82 /* standard-properties.swift */,
+				CF5BF19F24FE3BFD00FB05B8 /* textual-file-format.swift */,
 				CF07780D23521A8300F56EAB /* ValuePropertyProtocol.swift */,
 			);
 			name = Generic;
@@ -4869,8 +4876,9 @@
 		CFAFA53E24F26EB9002D48BE /* Cursors */ = {
 			isa = PBXGroup;
 			children = (
-				CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */,
 				CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */,
+				CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */,
+				CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */,
 			);
 			name = Cursors;
 			path = ElCanari/cursors;
@@ -5758,7 +5766,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1160;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -5857,6 +5865,7 @@
 				CF7034C22353ABD100F4D2C7 /* canari.icns in Resources */,
 				CF9BB56E23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */,
 				CF6172C81B3C4CD600F3CA82 /* bind.png in Resources */,
+				CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */,
 				CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */,
 				CF6172CB1B3C4CD600F3CA82 /* canari_font.icns in Resources */,
 				CF6173081B3C4CD600F3CA82 /* zone.pdf in Resources */,
@@ -5927,6 +5936,7 @@
 				CF7034C32353ABD100F4D2C7 /* canari.icns in Resources */,
 				CF9BB56F23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */,
 				CF5C4CAE219F04D600EAC52A /* bind.png in Resources */,
+				CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */,
 				CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */,
 				CF5C4CB2219F04D600EAC52A /* canari_font.icns in Resources */,
 				CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */,
@@ -6296,6 +6306,7 @@
 				CFA2EBD122EF0B610044E68F /* action-ProjectDocument-generateProductFilesAction.swift in Sources */,
 				CF69ABD121A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift in Sources */,
 				CF0777ED235216F800F56EAB /* EBStoredEnumProperty.swift in Sources */,
+				CF5BF1A024FE3BFD00FB05B8 /* textual-file-format.swift in Sources */,
 				CFA430B1229AEC41000AA8C8 /* tomany-SymbolObject.swift in Sources */,
 				CF470CDA22AA4BD800D0EA60 /* tomany-BoardObject.swift in Sources */,
 				CFC6325822F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
@@ -7510,6 +7521,7 @@
 				CFEAAD722231827C00F69A12 /* action-DeviceDocument-exportSelectedSymbols.swift in Sources */,
 				CF00846921C4363E003627E9 /* transient-PackageRoot-noIssue.swift in Sources */,
 				CF0777EE235216F800F56EAB /* EBStoredEnumProperty.swift in Sources */,
+				CF5BF1A124FE3BFD00FB05B8 /* textual-file-format.swift in Sources */,
 				CF78DE98222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift in Sources */,
 				CF968AF221BBD3700010175E /* EBGraphicView-binding-shiftArrowKeyMagnitude.swift in Sources */,
 				CF5C4CFB219F04D600EAC52A /* action-MergerDocument-moveLeftAction.swift in Sources */,
@@ -8436,8 +8448,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = YW8QY74J2A;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)$(PROJECT_DIR)/ElCanari/sparkle";
@@ -8500,19 +8515,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = YW8QY74J2A;
-				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -8527,12 +8537,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = YW8QY74J2A;
-				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -8540,7 +8546,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_PNG_TEXT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -8581,15 +8586,18 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = YW8QY74J2A;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)$(PROJECT_DIR)/ElCanari/sparkle";
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
@@ -8650,11 +8658,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YW8QY74J2A;
-				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -8667,7 +8671,6 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_PNG_TEXT = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
@@ -8684,12 +8687,8 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = YW8QY74J2A;
-				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -8701,7 +8700,6 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
 				STRIP_SWIFT_SYMBOLS = NO;

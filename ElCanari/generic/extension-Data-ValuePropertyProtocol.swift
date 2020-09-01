@@ -34,12 +34,6 @@ extension Data : ValuePropertyProtocol {
 
   //····················································································································
 
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (self.base64EncodedData ())
-  }
-
-  //····················································································································
-
   func appendPropertyValueTo_EX_unused (_ ioData : inout Data) {
   //--- Base 85
     let BASE : UInt32 = 85

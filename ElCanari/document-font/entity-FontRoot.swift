@@ -804,7 +804,7 @@ class FontRoot : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: characters (Custom store)
     self.characters_property.setProp (customRead_FontCharacter_characters (from: inDictionary, with: self.ebUndoManager))
     /* self.characters_property.setProp (readEntityArrayFromDictionary (
@@ -899,6 +899,42 @@ class FontRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["comments"], let value = String.unarchiveFromStringData (stringData) {
+      self.comments = value
+    }
+    if let stringData = inDictionary ["nominalSize"], let value = Int.unarchiveFromStringData (stringData) {
+      self.nominalSize = value
+    }
+    if let stringData = inDictionary ["selectedTab"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedTab = value
+    }
+    if let stringData = inDictionary ["selectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedInspector = value
+    }
+    if let stringData = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromStringData (stringData) {
+      self.currentCharacterCodePoint = value
+    }
+  //--- To one relationships
+  //--- To many relationships
+    if let stringData = inDictionary ["characters"], stringData.count > 0 {
+      var relationshipArray = [FontCharacter] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! FontCharacter)
+      }
+      //self.characters = []
+      self.characters = relationshipArray
     }
   }
 

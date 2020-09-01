@@ -417,7 +417,7 @@ class PadProxyInDevice : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To one property: mPinInstance
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -479,6 +479,29 @@ class PadProxyInDevice : EBManagedObject,
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mPinInstanceName = value
+    }
+    if let stringData = inDictionary ["mPadName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mPadName = value
+    }
+    if let stringData = inDictionary ["mIsNC"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mIsNC = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mPinInstance"], let objectIndex = stringData.base62EncodedInt () {
+      self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice
+    }
   //--- To many relationships
   }
 

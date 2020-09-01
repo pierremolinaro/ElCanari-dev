@@ -427,7 +427,7 @@ class SymbolText : SymbolObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -477,6 +477,29 @@ class SymbolText : SymbolObject,
     ioData.append (ascii: .lineFeed)
     self.x.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+      self.y = value
+    }
+    if let stringData = inDictionary ["text"], let value = String.unarchiveFromStringData (stringData) {
+      self.text = value
+    }
+    if let stringData = inDictionary ["horizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+      self.horizontalAlignment = value
+    }
+    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+      self.x = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

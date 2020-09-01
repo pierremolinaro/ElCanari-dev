@@ -335,7 +335,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   }
 
   //····················································································································
@@ -385,6 +385,29 @@ class CanariLibraryEntry : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mUserAndPasswordTag.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mPath"], let value = String.unarchiveFromStringData (stringData) {
+      self.mPath = value
+    }
+    if let stringData = inDictionary ["mUses"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mUses = value
+    }
+    if let stringData = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromStringData (stringData) {
+      self.mLibraryRepositoryURL = value
+    }
+    if let stringData = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromStringData (stringData) {
+      self.mUserAndPasswordTag = value
+    }
   //--- To one relationships
   //--- To many relationships
   }

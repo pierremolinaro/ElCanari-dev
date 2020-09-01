@@ -1212,7 +1212,7 @@ class PackageZone : PackageObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: forbiddenPadNumbers
     self.forbiddenPadNumbers_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "forbiddenPadNumbers",
@@ -1356,6 +1356,72 @@ class PackageZone : PackageObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+      self.x = value
+    }
+    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+      self.y = value
+    }
+    if let stringData = inDictionary ["width"], let value = Int.unarchiveFromStringData (stringData) {
+      self.width = value
+    }
+    if let stringData = inDictionary ["height"], let value = Int.unarchiveFromStringData (stringData) {
+      self.height = value
+    }
+    if let stringData = inDictionary ["xUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xUnit = value
+    }
+    if let stringData = inDictionary ["yUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yUnit = value
+    }
+    if let stringData = inDictionary ["widthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.widthUnit = value
+    }
+    if let stringData = inDictionary ["heightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.heightUnit = value
+    }
+    if let stringData = inDictionary ["zoneName"], let value = String.unarchiveFromStringData (stringData) {
+      self.zoneName = value
+    }
+    if let stringData = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.displayZoneName = value
+    }
+    if let stringData = inDictionary ["xName"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xName = value
+    }
+    if let stringData = inDictionary ["yName"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yName = value
+    }
+    if let stringData = inDictionary ["xNameUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xNameUnit = value
+    }
+    if let stringData = inDictionary ["yNameUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yNameUnit = value
+    }
+    if let stringData = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromStringData (stringData) {
+      self.zoneNumbering = value
+    }
+  //--- To one relationships
+  //--- To many relationships
+    if let stringData = inDictionary ["forbiddenPadNumbers"], stringData.count > 0 {
+      var relationshipArray = [ForbiddenPadNumber] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
+      }
+      //self.forbiddenPadNumbers = []
+      self.forbiddenPadNumbers = relationshipArray
     }
   }
 

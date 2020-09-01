@@ -64,9 +64,13 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> SchematicSheetOrientation {
     var result = SchematicSheetOrientation.a4Vertical
@@ -74,6 +78,16 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> SchematicSheetOrientation? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = SchematicSheetOrientation (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

@@ -14,7 +14,7 @@ extension DeviceDocument {
   //····················································································································
 
   internal func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: inData),
+    if let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: inData),
        let version = metadataDictionary [PMSymbolVersion] as? Int,
        let symbolRoot = rootObject as? SymbolRoot {
       let strokeBezierPathes = NSBezierPath ()
@@ -74,7 +74,7 @@ extension DeviceDocument {
         ioErrorMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
+           let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: data),
            let symbolRoot = rootObject as? SymbolRoot,
            let version = metadataDictionary [PMSymbolVersion] as? Int {
           if version <= symbolType.mVersion {
@@ -141,7 +141,7 @@ extension DeviceDocument {
   //····················································································································
 
   internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: inData),
+    if let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: inData),
        let version = metadataDictionary [PMPackageVersion] as? Int,
        let packageRoot = rootObject as? PackageRoot {
       var strokeBezierPathes = EBBezierPath ()
@@ -193,7 +193,7 @@ extension DeviceDocument {
         ioErrorMessages.append ("No file in Library for package \(package.mName)")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
+           let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: data),
            let packageRoot = rootObject as? PackageRoot,
            let version = metadataDictionary [PMPackageVersion] as? Int {
           if version <= package.mVersion {

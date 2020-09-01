@@ -1726,7 +1726,7 @@ class BoardConnector : BoardObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mTracksP2
     self.mTracksP2_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mTracksP2",
@@ -1909,6 +1909,76 @@ class BoardConnector : BoardObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mComponentPadName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mComponentPadName = value
+    }
+    if let stringData = inDictionary ["mPadIndex"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mPadIndex = value
+    }
+    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mX = value
+    }
+    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mY = value
+    }
+    if let stringData = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDefaultHoleDiameterUnit = value
+    }
+    if let stringData = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCustomHoleDiameter = value
+    }
+    if let stringData = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCustomHoleDiameterUnit = value
+    }
+    if let stringData = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mUsesCustomHoleDiameter = value
+    }
+    if let stringData = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mDefaultPadDiameterUnit = value
+    }
+    if let stringData = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCustomPadDiameter = value
+    }
+    if let stringData = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mCustomPadDiameterUnit = value
+    }
+    if let stringData = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.mUsesCustomPadDiameter = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mComponent"], let objectIndex = stringData.base62EncodedInt () {
+      self.mComponent = inObjectArray [objectIndex] as? ComponentInProject
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mTracksP2"], stringData.count > 0 {
+      var relationshipArray = [BoardTrack] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+      }
+      //self.mTracksP2 = []
+      self.mTracksP2 = relationshipArray
+    }
+    if let stringData = inDictionary ["mTracksP1"], stringData.count > 0 {
+      var relationshipArray = [BoardTrack] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+      }
+      //self.mTracksP1 = []
+      self.mTracksP1 = relationshipArray
     }
   }
 

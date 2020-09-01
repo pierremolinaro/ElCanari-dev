@@ -61,9 +61,13 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
     return UInt32 (self.rawValue)
   }
 
+  //····················································································································
+
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
+
+  //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> BoardLineLayer {
     var result = BoardLineLayer.legendFront
@@ -71,6 +75,16 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       result = v
     }
     return result
+  }
+
+  //····················································································································
+
+  static func unarchiveFromStringData (_ inData : Data) -> BoardLineLayer? {
+    if let rawValue = inData.base62EncodedInt (), let enumValue = BoardLineLayer (rawValue: rawValue) {
+      return enumValue
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

@@ -743,7 +743,7 @@ class SymbolRoot : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: symbolObjects
     self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "symbolObjects",
@@ -864,36 +864,56 @@ class SymbolRoot : EBManagedObject,
       }
       ioData.append (ascii: .lineFeed)
     }
-    do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.symbolPins {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["selectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedInspector = value
+    }
+    if let stringData = inDictionary ["comments"], let value = String.unarchiveFromStringData (stringData) {
+      self.comments = value
+    }
+    if let stringData = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.horizontalFlip = value
+    }
+    if let stringData = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.verticalFlip = value
+    }
+    if let stringData = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+      self.gridStyle = value
+    }
+    if let stringData = inDictionary ["gridDisplay"], let value = Int.unarchiveFromStringData (stringData) {
+      self.gridDisplay = value
+    }
+    if let stringData = inDictionary ["zoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.zoom = value
+    }
+    if let stringData = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.xPlacardUnit = value
+    }
+    if let stringData = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.yPlacardUnit = value
+    }
+    if let stringData = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedPageIndex = value
+    }
+  //--- To one relationships
+  //--- To many relationships
+    if let stringData = inDictionary ["symbolObjects"], stringData.count > 0 {
+      var relationshipArray = [SymbolObject] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! SymbolObject)
       }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
-      }
-      ioData.append (ascii: .lineFeed)
+      //self.symbolObjects = []
+      self.symbolObjects = relationshipArray
     }
   }
 

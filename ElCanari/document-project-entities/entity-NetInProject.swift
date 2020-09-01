@@ -709,7 +709,7 @@ class NetInProject : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPoints
     self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
@@ -837,6 +837,43 @@ class NetInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["mNetName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mNetName = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mNetClass"], let objectIndex = stringData.base62EncodedInt () {
+      self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["mPoints"], stringData.count > 0 {
+      var relationshipArray = [PointInSchematic] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+      }
+      //self.mPoints = []
+      self.mPoints = relationshipArray
+    }
+    if let stringData = inDictionary ["mTracks"], stringData.count > 0 {
+      var relationshipArray = [BoardTrack] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+      }
+      //self.mTracks = []
+      self.mTracks = relationshipArray
     }
   }
 

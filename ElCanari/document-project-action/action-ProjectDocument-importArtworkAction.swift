@@ -19,7 +19,7 @@ extension ProjectDocument {
               windowForSheet: window,
               alreadyLoadedDocuments: [],
               callBack: { (_ inData : Data, _ inName : String) in
-                if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (self.ebUndoManager, from: inData), let artworkRoot = rootObject as? ArtworkRoot {
+                if let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (self.ebUndoManager, from: inData), let artworkRoot = rootObject as? ArtworkRoot {
                   self.rootObject.mArtwork = artworkRoot
                   self.rootObject.mArtworkName = inName
                   if let version = metadataDictionary [PMArtworkVersion] as? Int {

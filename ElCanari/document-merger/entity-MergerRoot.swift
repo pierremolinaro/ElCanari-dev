@@ -2106,7 +2106,7 @@ class MergerRoot : EBManagedObject,
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: boardModels
     self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
@@ -2324,6 +2324,97 @@ class MergerRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
+    }
+  }
+
+  //····················································································································
+  //    setUpWithTextDictionary
+  //····················································································································
+
+  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  //--- Atomic properties
+    if let stringData = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedPageIndex = value
+    }
+    if let stringData = inDictionary ["zoom"], let value = Int.unarchiveFromStringData (stringData) {
+      self.zoom = value
+    }
+    if let stringData = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.automaticBoardSize = value
+    }
+    if let stringData = inDictionary ["boardManualWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.boardManualWidth = value
+    }
+    if let stringData = inDictionary ["boardManualHeight"], let value = Int.unarchiveFromStringData (stringData) {
+      self.boardManualHeight = value
+    }
+    if let stringData = inDictionary ["boardWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.boardWidthUnit = value
+    }
+    if let stringData = inDictionary ["boardHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.boardHeightUnit = value
+    }
+    if let stringData = inDictionary ["overlapingArrangment"], let value = Bool.unarchiveFromStringData (stringData) {
+      self.overlapingArrangment = value
+    }
+    if let stringData = inDictionary ["selectedBoardXUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedBoardXUnit = value
+    }
+    if let stringData = inDictionary ["selectedBoardYUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.selectedBoardYUnit = value
+    }
+    if let stringData = inDictionary ["boardLimitWidth"], let value = Int.unarchiveFromStringData (stringData) {
+      self.boardLimitWidth = value
+    }
+    if let stringData = inDictionary ["boardLimitWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.boardLimitWidthUnit = value
+    }
+    if let stringData = inDictionary ["arrowMagnitude"], let value = Int.unarchiveFromStringData (stringData) {
+      self.arrowMagnitude = value
+    }
+    if let stringData = inDictionary ["arrowMagnitudeUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.arrowMagnitudeUnit = value
+    }
+    if let stringData = inDictionary ["shiftArrowMagnitude"], let value = Int.unarchiveFromStringData (stringData) {
+      self.shiftArrowMagnitude = value
+    }
+    if let stringData = inDictionary ["shiftArrowMagnitudeUnit"], let value = Int.unarchiveFromStringData (stringData) {
+      self.shiftArrowMagnitudeUnit = value
+    }
+    if let stringData = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+      self.mPDFBoardBackgroundColor = value
+    }
+    if let stringData = inDictionary ["mArtworkName"], let value = String.unarchiveFromStringData (stringData) {
+      self.mArtworkName = value
+    }
+    if let stringData = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromStringData (stringData) {
+      self.mArtworkVersion = value
+    }
+  //--- To one relationships
+    if let stringData = inDictionary ["mArtwork"], let objectIndex = stringData.base62EncodedInt () {
+      self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot
+    }
+  //--- To many relationships
+    if let stringData = inDictionary ["boardModels"], stringData.count > 0 {
+      var relationshipArray = [BoardModel] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! BoardModel)
+      }
+      //self.boardModels = []
+      self.boardModels = relationshipArray
+    }
+    if let stringData = inDictionary ["boardInstances"], stringData.count > 0 {
+      var relationshipArray = [MergerBoardInstance] ()
+      let indexArray = stringData.base62EncodedIntArray ()
+      // Swift.print ("TOMANY '\(s)', \(a)")
+      for idx in indexArray {
+        relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+      }
+      //self.boardInstances = []
+      self.boardInstances = relationshipArray
     }
   }
 

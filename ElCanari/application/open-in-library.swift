@@ -447,7 +447,7 @@ fileprivate class OpenInLibraryDialogItem : EBObject {
     let fm = FileManager ()
     if let data = fm.contents (atPath: self.mFullPath) {
       do{
-        let (_, _, rootObject) = try loadEasyBindingFile (nil, from: data)
+        let (_, _, rootObject, _) = try loadEasyBindingFile (nil, from: data)
         image = self.mBuildPreviewShapeFunction (rootObject)
       }catch let error {
         let alert = NSAlert (error: error)
