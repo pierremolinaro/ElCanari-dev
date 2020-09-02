@@ -975,99 +975,56 @@ class SymbolPin : SymbolObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["yPin"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yPin = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yPin = value }
+        //operations.append ({ self.yPin = value })
+        self.yPin = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xName = value }
+        //operations.append ({ self.xName = value })
+        self.xName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yName = value }
+        //operations.append ({ self.yName = value })
+        self.yName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xNumber = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xNumber = value }
+        //operations.append ({ self.xNumber = value })
+        self.xNumber = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yNumber = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yNumber = value }
+        //operations.append ({ self.yNumber = value })
+        self.yNumber = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.name = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.name = value }
+        //operations.append ({ self.name = value })
+        self.name = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.nameHorizontalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.nameHorizontalAlignment = value }
+        //operations.append ({ self.nameHorizontalAlignment = value })
+        self.nameHorizontalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.numberHorizontalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.numberHorizontalAlignment = value }
+        //operations.append ({ self.numberHorizontalAlignment = value })
+        self.numberHorizontalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.pinNameIsDisplayedInSchematics = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.pinNameIsDisplayedInSchematics = value }
+        //operations.append ({ self.pinNameIsDisplayedInSchematics = value })
+        self.pinNameIsDisplayedInSchematics = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xPin"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xPin = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xPin = value }
+        //operations.append ({ self.xPin = value })
+        self.xPin = value
       }
+    //--- To many relationships
+    //--- To one relationships
     }
-  //--- To one relationships
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

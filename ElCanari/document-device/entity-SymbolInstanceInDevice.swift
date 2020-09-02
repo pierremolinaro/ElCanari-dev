@@ -753,48 +753,25 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mInstanceName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mInstanceName = value }
+        //operations.append ({ self.mInstanceName = value })
+        self.mInstanceName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX = value }
+        //operations.append ({ self.mX = value })
+        self.mX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY = value }
+        //operations.append ({ self.mY = value })
+        self.mY = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
-      if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice }
-        // self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice
-        mutex.wait ()
-        operationResultList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice })
-        mutex.signal ()
-      }
-    }
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mPinInstances"], range.length > 0 {
         var relationshipArray = [SymbolPinInstanceInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -802,18 +779,18 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
-        // DispatchQueue.main.async { self.mPinInstances = relationshipArray }
-        // self.mPinInstances = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mPinInstances = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPinInstances = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

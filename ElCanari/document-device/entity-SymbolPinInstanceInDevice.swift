@@ -669,46 +669,31 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-  //--- To one relationships
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice }
-        // self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice
-        mutex.wait ()
-        operationResultList.append ({ self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice }
-        // self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice
-        mutex.wait ()
-        operationResultList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice }
-        // self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice
-        mutex.wait ()
-        operationResultList.append ({ self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

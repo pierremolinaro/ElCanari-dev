@@ -682,47 +682,29 @@ class FontCharacter : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.codePoint = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.codePoint = value }
+        //operations.append ({ self.codePoint = value })
+        self.codePoint = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["advance"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.advance = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.advance = value }
+        //operations.append ({ self.advance = value })
+        self.advance = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWarnsWhenNoSegment"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mWarnsWhenNoSegment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mWarnsWhenNoSegment = value }
+        //operations.append ({ self.mWarnsWhenNoSegment = value })
+        self.mWarnsWhenNoSegment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mWarnsWhenAdvanceIsZero = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mWarnsWhenAdvanceIsZero = value }
+        //operations.append ({ self.mWarnsWhenAdvanceIsZero = value })
+        self.mWarnsWhenAdvanceIsZero = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["segments"], range.length > 0 {
         var relationshipArray = [SegmentForFontCharacter] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -730,18 +712,13 @@ class FontCharacter : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)
         }
-        // DispatchQueue.main.async { self.segments = relationshipArray }
-        // self.segments = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.segments = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.segments = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

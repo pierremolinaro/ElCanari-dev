@@ -503,36 +503,25 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSymbolInstanceName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSymbolInstanceName = value }
+        //operations.append ({ self.mSymbolInstanceName = value })
+        self.mSymbolInstanceName = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject }
-        // self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

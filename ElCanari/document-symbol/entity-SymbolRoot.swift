@@ -872,95 +872,53 @@ class SymbolRoot : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.selectedInspector = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.selectedInspector = value }
+        //operations.append ({ self.selectedInspector = value })
+        self.selectedInspector = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.comments = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.comments = value }
+        //operations.append ({ self.comments = value })
+        self.comments = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.horizontalFlip = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.horizontalFlip = value }
+        //operations.append ({ self.horizontalFlip = value })
+        self.horizontalFlip = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.verticalFlip = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.verticalFlip = value }
+        //operations.append ({ self.verticalFlip = value })
+        self.verticalFlip = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.gridStyle = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.gridStyle = value }
+        //operations.append ({ self.gridStyle = value })
+        self.gridStyle = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.gridDisplay = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.gridDisplay = value }
+        //operations.append ({ self.gridDisplay = value })
+        self.gridDisplay = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.zoom = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.zoom = value }
+        //operations.append ({ self.zoom = value })
+        self.zoom = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xPlacardUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xPlacardUnit = value }
+        //operations.append ({ self.xPlacardUnit = value })
+        self.xPlacardUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yPlacardUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yPlacardUnit = value }
+        //operations.append ({ self.yPlacardUnit = value })
+        self.yPlacardUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.selectedPageIndex = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.selectedPageIndex = value }
+        //operations.append ({ self.selectedPageIndex = value })
+        self.selectedPageIndex = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["symbolObjects"], range.length > 0 {
         var relationshipArray = [SymbolObject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -968,18 +926,13 @@ class SymbolRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolObject)
         }
-        // DispatchQueue.main.async { self.symbolObjects = relationshipArray }
-        // self.symbolObjects = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.symbolObjects = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.symbolObjects = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

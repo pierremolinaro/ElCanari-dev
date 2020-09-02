@@ -3497,352 +3497,177 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.selectedPageIndex = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.selectedPageIndex = value }
+        //operations.append ({ self.selectedPageIndex = value })
+        self.selectedPageIndex = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.selectedInspector = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.selectedInspector = value }
+        //operations.append ({ self.selectedInspector = value })
+        self.selectedInspector = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.comments = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.comments = value }
+        //operations.append ({ self.comments = value })
+        self.comments = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["program"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.program = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.program = value }
+        //operations.append ({ self.program = value })
+        self.program = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.horizontalFlip = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.horizontalFlip = value }
+        //operations.append ({ self.horizontalFlip = value })
+        self.horizontalFlip = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.verticalFlip = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.verticalFlip = value }
+        //operations.append ({ self.verticalFlip = value })
+        self.verticalFlip = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.gridStyle = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.gridStyle = value }
+        //operations.append ({ self.gridStyle = value })
+        self.gridStyle = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["gridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.gridStep = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.gridStep = value }
+        //operations.append ({ self.gridStep = value })
+        self.gridStep = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["gridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.gridStepUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.gridStepUnit = value }
+        //operations.append ({ self.gridStepUnit = value })
+        self.gridStepUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["gridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.gridDisplayFactor = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.gridDisplayFactor = value }
+        //operations.append ({ self.gridDisplayFactor = value })
+        self.gridDisplayFactor = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.zoom = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.zoom = value }
+        //operations.append ({ self.zoom = value })
+        self.zoom = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageOpacity"], let value = Double.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageOpacity = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageOpacity = value }
+        //operations.append ({ self.mModelImageOpacity = value })
+        self.mModelImageOpacity = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageHorizontalFlip = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageHorizontalFlip = value }
+        //operations.append ({ self.mModelImagePageHorizontalFlip = value })
+        self.mModelImagePageHorizontalFlip = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageVerticalFlip = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageVerticalFlip = value }
+        //operations.append ({ self.mModelImagePageVerticalFlip = value })
+        self.mModelImagePageVerticalFlip = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageGridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageGridStyle = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageGridStyle = value }
+        //operations.append ({ self.mModelImagePageGridStyle = value })
+        self.mModelImagePageGridStyle = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageGridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageGridStep = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageGridStep = value }
+        //operations.append ({ self.mModelImagePageGridStep = value })
+        self.mModelImagePageGridStep = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageGridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageGridStepUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageGridStepUnit = value }
+        //operations.append ({ self.mModelImagePageGridStepUnit = value })
+        self.mModelImagePageGridStepUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageGridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageGridDisplayFactor = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageGridDisplayFactor = value }
+        //operations.append ({ self.mModelImagePageGridDisplayFactor = value })
+        self.mModelImagePageGridDisplayFactor = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageZoom = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageZoom = value }
+        //operations.append ({ self.mModelImagePageZoom = value })
+        self.mModelImagePageZoom = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageXPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageXPlacardUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageXPlacardUnit = value }
+        //operations.append ({ self.mModelImagePageXPlacardUnit = value })
+        self.mModelImagePageXPlacardUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePageYPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePageYPlacardUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePageYPlacardUnit = value }
+        //operations.append ({ self.mModelImagePageYPlacardUnit = value })
+        self.mModelImagePageYPlacardUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageSecondPointXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageSecondPointXUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageSecondPointXUnit = value }
+        //operations.append ({ self.mModelImageSecondPointXUnit = value })
+        self.mModelImageSecondPointXUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePSecondointYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePSecondointYUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePSecondointYUnit = value }
+        //operations.append ({ self.mModelImagePSecondointYUnit = value })
+        self.mModelImagePSecondointYUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageFirstPointXOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageFirstPointXOnLock = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageFirstPointXOnLock = value }
+        //operations.append ({ self.mModelImageFirstPointXOnLock = value })
+        self.mModelImageFirstPointXOnLock = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageFirstPointYOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageFirstPointYOnLock = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageFirstPointYOnLock = value }
+        //operations.append ({ self.mModelImageFirstPointYOnLock = value })
+        self.mModelImageFirstPointYOnLock = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePointsDxOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePointsDxOnLock = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePointsDxOnLock = value }
+        //operations.append ({ self.mModelImagePointsDxOnLock = value })
+        self.mModelImagePointsDxOnLock = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImagePointsDyOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImagePointsDyOnLock = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImagePointsDyOnLock = value }
+        //operations.append ({ self.mModelImagePointsDyOnLock = value })
+        self.mModelImagePointsDyOnLock = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageScale"], let value = Double.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageScale = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageScale = value }
+        //operations.append ({ self.mModelImageScale = value })
+        self.mModelImageScale = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageRotationInRadians"], let value = Double.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageRotationInRadians = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageRotationInRadians = value }
+        //operations.append ({ self.mModelImageRotationInRadians = value })
+        self.mModelImageRotationInRadians = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mDimensionUnitFirstModelPointX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mDimensionUnitFirstModelPointX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mDimensionUnitFirstModelPointX = value }
+        //operations.append ({ self.mDimensionUnitFirstModelPointX = value })
+        self.mDimensionUnitFirstModelPointX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mDimensionUnitFirstModelPointY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mDimensionUnitFirstModelPointY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mDimensionUnitFirstModelPointY = value }
+        //operations.append ({ self.mDimensionUnitFirstModelPointY = value })
+        self.mDimensionUnitFirstModelPointY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mDimensionUnitSecondModelPointDx"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mDimensionUnitSecondModelPointDx = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mDimensionUnitSecondModelPointDx = value }
+        //operations.append ({ self.mDimensionUnitSecondModelPointDx = value })
+        self.mDimensionUnitSecondModelPointDx = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mDimensionUnitSecondModelPointDy"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mDimensionUnitSecondModelPointDy = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mDimensionUnitSecondModelPointDy = value }
+        //operations.append ({ self.mDimensionUnitSecondModelPointDy = value })
+        self.mDimensionUnitSecondModelPointDy = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelPointsCircleRadius"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelPointsCircleRadius = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelPointsCircleRadius = value }
+        //operations.append ({ self.mModelPointsCircleRadius = value })
+        self.mModelPointsCircleRadius = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPointsAreLocked"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPointsAreLocked = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPointsAreLocked = value }
+        //operations.append ({ self.mPointsAreLocked = value })
+        self.mPointsAreLocked = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["knobSizeMultpliedByTen"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.knobSizeMultpliedByTen = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.knobSizeMultpliedByTen = value }
+        //operations.append ({ self.knobSizeMultpliedByTen = value })
+        self.knobSizeMultpliedByTen = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["padNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.padNumbering = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.padNumbering = value }
+        //operations.append ({ self.padNumbering = value })
+        self.padNumbering = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["counterClockNumberingStartAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.counterClockNumberingStartAngle = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.counterClockNumberingStartAngle = value }
+        //operations.append ({ self.counterClockNumberingStartAngle = value })
+        self.counterClockNumberingStartAngle = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xPlacardUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xPlacardUnit = value }
+        //operations.append ({ self.xPlacardUnit = value })
+        self.xPlacardUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yPlacardUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yPlacardUnit = value }
+        //operations.append ({ self.yPlacardUnit = value })
+        self.yPlacardUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageData = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mModelImageData = value }
+        //operations.append ({ self.mModelImageData = value })
+        self.mModelImageData = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
-      if let range = inDictionary ["mModelImageDoublePoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint }
-        // self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint })
-        mutex.signal ()
-      }
-    }
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["packageObjects"], range.length > 0 {
         var relationshipArray = [PackageObject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -3850,14 +3675,10 @@ class PackageRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageObject)
         }
-        // DispatchQueue.main.async { self.packageObjects = relationshipArray }
-        // self.packageObjects = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.packageObjects = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.packageObjects = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
         var relationshipArray = [PackageModelImageDoublePoint] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -3865,18 +3686,18 @@ class PackageRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
         }
-        // DispatchQueue.main.async { self.mModelImageObjects = relationshipArray }
-        // self.mModelImageObjects = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mModelImageObjects = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mModelImageObjects = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mModelImageDoublePoint"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

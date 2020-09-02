@@ -908,55 +908,33 @@ class FontRoot : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.comments = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.comments = value }
+        //operations.append ({ self.comments = value })
+        self.comments = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["nominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.nominalSize = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.nominalSize = value }
+        //operations.append ({ self.nominalSize = value })
+        self.nominalSize = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.selectedTab = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.selectedTab = value }
+        //operations.append ({ self.selectedTab = value })
+        self.selectedTab = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.selectedInspector = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.selectedInspector = value }
+        //operations.append ({ self.selectedInspector = value })
+        self.selectedInspector = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.currentCharacterCodePoint = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.currentCharacterCodePoint = value }
+        //operations.append ({ self.currentCharacterCodePoint = value })
+        self.currentCharacterCodePoint = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["characters"], range.length > 0 {
         var relationshipArray = [FontCharacter] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -964,18 +942,13 @@ class FontRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)
         }
-        // DispatchQueue.main.async { self.characters = relationshipArray }
-        // self.characters = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.characters = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.characters = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

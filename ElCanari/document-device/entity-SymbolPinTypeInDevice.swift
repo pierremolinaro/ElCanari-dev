@@ -811,95 +811,53 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mPinX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPinX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPinX = value }
+        //operations.append ({ self.mPinX = value })
+        self.mPinX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPinY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPinY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPinY = value }
+        //operations.append ({ self.mPinY = value })
+        self.mPinY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mXName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mXName = value }
+        //operations.append ({ self.mXName = value })
+        self.mXName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mYName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mYName = value }
+        //operations.append ({ self.mYName = value })
+        self.mYName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mName = value }
+        //operations.append ({ self.mName = value })
+        self.mName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mNameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mNameHorizontalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mNameHorizontalAlignment = value }
+        //operations.append ({ self.mNameHorizontalAlignment = value })
+        self.mNameHorizontalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPinNameIsDisplayedInSchematics = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPinNameIsDisplayedInSchematics = value }
+        //operations.append ({ self.mPinNameIsDisplayedInSchematics = value })
+        self.mPinNameIsDisplayedInSchematics = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mXNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mXNumber = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mXNumber = value }
+        //operations.append ({ self.mXNumber = value })
+        self.mXNumber = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mYNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mYNumber = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mYNumber = value }
+        //operations.append ({ self.mYNumber = value })
+        self.mYNumber = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mNumberHorizontalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mNumberHorizontalAlignment = value }
+        //operations.append ({ self.mNumberHorizontalAlignment = value })
+        self.mNumberHorizontalAlignment = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
         var relationshipArray = [SymbolPinInstanceInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -907,18 +865,13 @@ class SymbolPinTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
-        // DispatchQueue.main.async { self.mInstances = relationshipArray }
-        // self.mInstances = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mInstances = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mInstances = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

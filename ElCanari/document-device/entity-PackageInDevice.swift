@@ -1044,72 +1044,37 @@ class PackageInDevice : EBGraphicManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFileData = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFileData = value }
+        //operations.append ({ self.mFileData = value })
+        self.mFileData = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mName = value }
+        //operations.append ({ self.mName = value })
+        self.mName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mVersion = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mVersion = value }
+        //operations.append ({ self.mVersion = value })
+        self.mVersion = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mStrokeBezierPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+        //operations.append ({ self.mStrokeBezierPath = value })
+        self.mStrokeBezierPath = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX = value }
+        //operations.append ({ self.mX = value })
+        self.mX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY = value }
+        //operations.append ({ self.mY = value })
+        self.mY = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
-      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mRoot = inObjectArray [objectIndex] as? DeviceRoot }
-        // self.mRoot = inObjectArray [objectIndex] as? DeviceRoot
-        mutex.wait ()
-        operationResultList.append ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
-        mutex.signal ()
-      }
-    }
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
         var relationshipArray = [MasterPadInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -1117,18 +1082,18 @@ class PackageInDevice : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
         }
-        // DispatchQueue.main.async { self.mMasterPads = relationshipArray }
-        // self.mMasterPads = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mMasterPads = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

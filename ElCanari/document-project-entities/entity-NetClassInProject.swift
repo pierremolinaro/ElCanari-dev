@@ -1285,95 +1285,53 @@ class NetClassInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mNetClassName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mNetClassName = value }
+        //operations.append ({ self.mNetClassName = value })
+        self.mNetClassName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mNetClassColor = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mNetClassColor = value }
+        //operations.append ({ self.mNetClassColor = value })
+        self.mNetClassColor = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mTrackWidth = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mTrackWidth = value }
+        //operations.append ({ self.mTrackWidth = value })
+        self.mTrackWidth = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mTrackWidthUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mTrackWidthUnit = value }
+        //operations.append ({ self.mTrackWidthUnit = value })
+        self.mTrackWidthUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mViaHoleDiameter = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mViaHoleDiameter = value }
+        //operations.append ({ self.mViaHoleDiameter = value })
+        self.mViaHoleDiameter = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mViaHoleDiameterUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mViaHoleDiameterUnit = value }
+        //operations.append ({ self.mViaHoleDiameterUnit = value })
+        self.mViaHoleDiameterUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mViaPadDiameter = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mViaPadDiameter = value }
+        //operations.append ({ self.mViaPadDiameter = value })
+        self.mViaPadDiameter = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mViaPadDiameterUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mViaPadDiameterUnit = value }
+        //operations.append ({ self.mViaPadDiameterUnit = value })
+        self.mViaPadDiameterUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mAllowTracksOnFrontSide = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mAllowTracksOnFrontSide = value }
+        //operations.append ({ self.mAllowTracksOnFrontSide = value })
+        self.mAllowTracksOnFrontSide = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mAllowTracksOnBackSide = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mAllowTracksOnBackSide = value }
+        //operations.append ({ self.mAllowTracksOnBackSide = value })
+        self.mAllowTracksOnBackSide = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mNets"], range.length > 0 {
         var relationshipArray = [NetInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -1381,18 +1339,13 @@ class NetClassInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)
         }
-        // DispatchQueue.main.async { self.mNets = relationshipArray }
-        // self.mNets = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mNets = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mNets = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

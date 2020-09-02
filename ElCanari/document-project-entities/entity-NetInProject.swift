@@ -846,32 +846,17 @@ class NetInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mNetName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mNetName = value }
+        //operations.append ({ self.mNetName = value })
+        self.mNetName = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
-      if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject }
-        // self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
-        mutex.signal ()
-      }
-    }
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = [PointInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -879,14 +864,10 @@ class NetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        // DispatchQueue.main.async { self.mPoints = relationshipArray }
-        // self.mPoints = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mPoints = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mTracks"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -894,18 +875,18 @@ class NetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        // DispatchQueue.main.async { self.mTracks = relationshipArray }
-        // self.mTracks = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mTracks = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTracks = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

@@ -1281,94 +1281,55 @@ class BoardTrack : BoardObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSide = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSide = value }
+        //operations.append ({ self.mSide = value })
+        self.mSide = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mDefaultTrackWidthUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mDefaultTrackWidthUnit = value }
+        //operations.append ({ self.mDefaultTrackWidthUnit = value })
+        self.mDefaultTrackWidthUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCustomTrackWidth = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCustomTrackWidth = value }
+        //operations.append ({ self.mCustomTrackWidth = value })
+        self.mCustomTrackWidth = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCustomTrackWidthUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCustomTrackWidthUnit = value }
+        //operations.append ({ self.mCustomTrackWidthUnit = value })
+        self.mCustomTrackWidthUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mUsesCustomTrackWidth = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mUsesCustomTrackWidth = value }
+        //operations.append ({ self.mUsesCustomTrackWidth = value })
+        self.mUsesCustomTrackWidth = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mIsPreservedByAutoRouter = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mIsPreservedByAutoRouter = value }
+        //operations.append ({ self.mIsPreservedByAutoRouter = value })
+        self.mIsPreservedByAutoRouter = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector }
-        // self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector
-        mutex.wait ()
-        operationResultList.append ({ self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector }
-        // self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector
-        mutex.wait ()
-        operationResultList.append ({ self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mNet = inObjectArray [objectIndex] as? NetInProject }
-        // self.mNet = inObjectArray [objectIndex] as? NetInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

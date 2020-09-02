@@ -1611,75 +1611,25 @@ class PointInSchematic : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSymbolPinName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSymbolPinName = value }
+        //operations.append ({ self.mSymbolPinName = value })
+        self.mSymbolPinName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX = value }
+        //operations.append ({ self.mX = value })
+        self.mX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY = value }
+        //operations.append ({ self.mY = value })
+        self.mY = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
-      if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject }
-        // self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject })
-        mutex.signal ()
-      }
-    }
-    op.addOperation {
-      if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mNet = inObjectArray [objectIndex] as? NetInProject }
-        // self.mNet = inObjectArray [objectIndex] as? NetInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
-        mutex.signal ()
-      }
-    }
-    op.addOperation {
-      if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mNC = inObjectArray [objectIndex] as? NCInSchematic }
-        // self.mNC = inObjectArray [objectIndex] as? NCInSchematic
-        mutex.wait ()
-        operationResultList.append ({ self.mNC = inObjectArray [objectIndex] as? NCInSchematic })
-        mutex.signal ()
-      }
-    }
-    op.addOperation {
-      if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mSheet = inObjectArray [objectIndex] as? SheetInProject }
-        // self.mSheet = inObjectArray [objectIndex] as? SheetInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
-        mutex.signal ()
-      }
-    }
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mLabels"], range.length > 0 {
         var relationshipArray = [LabelInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -1687,14 +1637,10 @@ class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
         }
-        // DispatchQueue.main.async { self.mLabels = relationshipArray }
-        // self.mLabels = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mLabels = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mLabels = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWiresP2s"], range.length > 0 {
         var relationshipArray = [WireInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -1702,14 +1648,10 @@ class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        // DispatchQueue.main.async { self.mWiresP2s = relationshipArray }
-        // self.mWiresP2s = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mWiresP2s = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP2s = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWiresP1s"], range.length > 0 {
         var relationshipArray = [WireInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -1717,18 +1659,33 @@ class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        // DispatchQueue.main.async { self.mWiresP1s = relationshipArray }
-        // self.mWiresP1s = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mWiresP1s = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP1s = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+      if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+      if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNC = inObjectArray [objectIndex] as? NCInSchematic })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+      if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

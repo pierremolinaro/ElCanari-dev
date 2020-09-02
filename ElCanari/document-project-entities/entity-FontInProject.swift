@@ -767,47 +767,29 @@ class FontInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mNominalSize = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mNominalSize = value }
+        //operations.append ({ self.mNominalSize = value })
+        self.mNominalSize = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFontName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFontName = value }
+        //operations.append ({ self.mFontName = value })
+        self.mFontName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFontVersion = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFontVersion = value }
+        //operations.append ({ self.mFontVersion = value })
+        self.mFontVersion = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mDescriptiveString = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mDescriptiveString = value }
+        //operations.append ({ self.mDescriptiveString = value })
+        self.mDescriptiveString = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mTexts"], range.length > 0 {
         var relationshipArray = [BoardText] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -815,14 +797,10 @@ class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardText)
         }
-        // DispatchQueue.main.async { self.mTexts = relationshipArray }
-        // self.mTexts = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mTexts = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTexts = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mComponentNames"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -830,14 +808,10 @@ class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        // DispatchQueue.main.async { self.mComponentNames = relationshipArray }
-        // self.mComponentNames = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mComponentNames = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mComponentNames = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mComponentValues"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -845,18 +819,13 @@ class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        // DispatchQueue.main.async { self.mComponentValues = relationshipArray }
-        // self.mComponentValues = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mComponentValues = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mComponentValues = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

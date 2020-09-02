@@ -488,52 +488,33 @@ class PadProxyInDevice : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPinInstanceName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPinInstanceName = value }
+        //operations.append ({ self.mPinInstanceName = value })
+        self.mPinInstanceName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPadName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPadName = value }
+        //operations.append ({ self.mPadName = value })
+        self.mPadName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mIsNC = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mIsNC = value }
+        //operations.append ({ self.mIsNC = value })
+        self.mIsNC = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice }
-        // self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice
-        mutex.wait ()
-        operationResultList.append ({ self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

@@ -728,32 +728,17 @@ class SheetInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSheetTitle = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSheetTitle = value }
+        //operations.append ({ self.mSheetTitle = value })
+        self.mSheetTitle = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
-      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mRoot = inObjectArray [objectIndex] as? ProjectRoot }
-        // self.mRoot = inObjectArray [objectIndex] as? ProjectRoot
-        mutex.wait ()
-        operationResultList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
-        mutex.signal ()
-      }
-    }
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mObjects"], range.length > 0 {
         var relationshipArray = [SchematicObject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -761,14 +746,10 @@ class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
         }
-        // DispatchQueue.main.async { self.mObjects = relationshipArray }
-        // self.mObjects = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mObjects = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mObjects = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = [PointInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -776,18 +757,18 @@ class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        // DispatchQueue.main.async { self.mPoints = relationshipArray }
-        // self.mPoints = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mPoints = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

@@ -137,6 +137,15 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
 
 //----------------------------------------------------------------------------------------------------------------------
 
+class ParallelObjectSetupContext {
+  let mOperationQueue = OperationQueue ()
+  var mToOneSetUpOperationList = [() -> Void] ()
+  var mToManySetUpOperationList = [() -> Void] ()
+  let mMutex = DispatchSemaphore (value: 1)
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
         from ioDataScanner: inout EBDataScanner) throws -> (UInt8, [String : Any], EBManagedObject?, EBManagedDocumentFileFormat) {
   var startLoadFile = Date ()
@@ -201,10 +210,19 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
 //--- Setup objects
   startLoadFile = Date ()
   var idx = 0
+  let parallelObjectSetupContext = ParallelObjectSetupContext ()
   for managedObject in objectArray {
     let valueDictionary = propertyValueArray [idx]
     idx += 1
-    managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data)
+    managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, parallelObjectSetupContext)
+  }
+  parallelObjectSetupContext.mOperationQueue.waitUntilAllOperationsAreFinished ()
+  Swift.print ("prepare objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  for resultOperation in parallelObjectSetupContext.mToOneSetUpOperationList{
+    resultOperation ()
+  }
+  for resultOperation in parallelObjectSetupContext.mToManySetUpOperationList {
+    resultOperation ()
   }
   Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
 //--- Scanner error ?

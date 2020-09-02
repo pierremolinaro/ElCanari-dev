@@ -796,55 +796,33 @@ class SymbolTypeInDevice : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mTypeName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mTypeName = value }
+        //operations.append ({ self.mTypeName = value })
+        self.mTypeName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mVersion = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mVersion = value }
+        //operations.append ({ self.mVersion = value })
+        self.mVersion = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFileData = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFileData = value }
+        //operations.append ({ self.mFileData = value })
+        self.mFileData = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mStrokeBezierPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+        //operations.append ({ self.mStrokeBezierPath = value })
+        self.mStrokeBezierPath = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFilledBezierPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFilledBezierPath = value }
+        //operations.append ({ self.mFilledBezierPath = value })
+        self.mFilledBezierPath = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
         var relationshipArray = [SymbolInstanceInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -852,14 +830,10 @@ class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        // DispatchQueue.main.async { self.mInstances = relationshipArray }
-        // self.mInstances = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mInstances = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mInstances = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
         var relationshipArray = [SymbolPinTypeInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -867,18 +841,13 @@ class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
         }
-        // DispatchQueue.main.async { self.mPinTypes = relationshipArray }
-        // self.mPinTypes = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mPinTypes = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPinTypes = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

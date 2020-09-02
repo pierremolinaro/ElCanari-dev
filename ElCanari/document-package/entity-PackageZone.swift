@@ -1365,135 +1365,73 @@ class PackageZone : PackageObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.x = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.x = value }
+        //operations.append ({ self.x = value })
+        self.x = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.y = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.y = value }
+        //operations.append ({ self.y = value })
+        self.y = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.width = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.width = value }
+        //operations.append ({ self.width = value })
+        self.width = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.height = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.height = value }
+        //operations.append ({ self.height = value })
+        self.height = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xUnit = value }
+        //operations.append ({ self.xUnit = value })
+        self.xUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yUnit = value }
+        //operations.append ({ self.yUnit = value })
+        self.yUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.widthUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.widthUnit = value }
+        //operations.append ({ self.widthUnit = value })
+        self.widthUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.heightUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.heightUnit = value }
+        //operations.append ({ self.heightUnit = value })
+        self.heightUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["zoneName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.zoneName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.zoneName = value }
+        //operations.append ({ self.zoneName = value })
+        self.zoneName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.displayZoneName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.displayZoneName = value }
+        //operations.append ({ self.displayZoneName = value })
+        self.displayZoneName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xName = value }
+        //operations.append ({ self.xName = value })
+        self.xName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yName = value }
+        //operations.append ({ self.yName = value })
+        self.yName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["xNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.xNameUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.xNameUnit = value }
+        //operations.append ({ self.xNameUnit = value })
+        self.xNameUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["yNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.yNameUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.yNameUnit = value }
+        //operations.append ({ self.yNameUnit = value })
+        self.yNameUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.zoneNumbering = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.zoneNumbering = value }
+        //operations.append ({ self.zoneNumbering = value })
+        self.zoneNumbering = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
         var relationshipArray = [ForbiddenPadNumber] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -1501,18 +1439,13 @@ class PackageZone : PackageObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
         }
-        // DispatchQueue.main.async { self.forbiddenPadNumbers = relationshipArray }
-        // self.forbiddenPadNumbers = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.forbiddenPadNumbers = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.forbiddenPadNumbers = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

@@ -745,87 +745,49 @@ class DeviceMasterPadInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCenterX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCenterX = value }
+        //operations.append ({ self.mCenterX = value })
+        self.mCenterX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCenterY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCenterY = value }
+        //operations.append ({ self.mCenterY = value })
+        self.mCenterY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mWidth = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mWidth = value }
+        //operations.append ({ self.mWidth = value })
+        self.mWidth = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mHeight = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mHeight = value }
+        //operations.append ({ self.mHeight = value })
+        self.mHeight = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mHoleWidth = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mHoleWidth = value }
+        //operations.append ({ self.mHoleWidth = value })
+        self.mHoleWidth = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mHoleHeight = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mHoleHeight = value }
+        //operations.append ({ self.mHoleHeight = value })
+        self.mHoleHeight = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mShape = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mShape = value }
+        //operations.append ({ self.mShape = value })
+        self.mShape = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mStyle"], let value = PadStyle.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mStyle = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mStyle = value }
+        //operations.append ({ self.mStyle = value })
+        self.mStyle = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mName = value }
+        //operations.append ({ self.mName = value })
+        self.mName = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mSlavePads"], range.length > 0 {
         var relationshipArray = [DeviceSlavePadInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -833,18 +795,13 @@ class DeviceMasterPadInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSlavePadInProject)
         }
-        // DispatchQueue.main.async { self.mSlavePads = relationshipArray }
-        // self.mSlavePads = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mSlavePads = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSlavePads = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

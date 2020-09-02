@@ -597,75 +597,44 @@ class CommentInSchematic : SchematicObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mColor = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mColor = value }
+        //operations.append ({ self.mColor = value })
+        self.mColor = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSize = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSize = value }
+        //operations.append ({ self.mSize = value })
+        self.mSize = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mHorizontalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mHorizontalAlignment = value }
+        //operations.append ({ self.mHorizontalAlignment = value })
+        self.mHorizontalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mVerticalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mVerticalAlignment = value }
+        //operations.append ({ self.mVerticalAlignment = value })
+        self.mVerticalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX = value }
+        //operations.append ({ self.mX = value })
+        self.mX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY = value }
+        //operations.append ({ self.mY = value })
+        self.mY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mComment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mComment = value }
+        //operations.append ({ self.mComment = value })
+        self.mComment = value
       }
+    //--- To many relationships
+    //--- To one relationships
     }
-  //--- To one relationships
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

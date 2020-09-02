@@ -282,43 +282,28 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSymbolTypeName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSymbolTypeName = value }
+        //operations.append ({ self.mSymbolTypeName = value })
+        self.mSymbolTypeName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mStrokeBezierPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+        //operations.append ({ self.mStrokeBezierPath = value })
+        self.mStrokeBezierPath = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFilledBezierPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFilledBezierPath = value }
+        //operations.append ({ self.mFilledBezierPath = value })
+        self.mFilledBezierPath = value
       }
+    //--- To many relationships
+    //--- To one relationships
     }
-  //--- To one relationships
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

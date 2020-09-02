@@ -368,31 +368,21 @@ class DevicePackageInProject : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPackageName = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPackageName = value }
+        //operations.append ({ self.mPackageName = value })
+        self.mPackageName = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mStrokeBezierPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+        //operations.append ({ self.mStrokeBezierPath = value })
+        self.mStrokeBezierPath = value
       }
-    }
-  //--- To one relationships
-  //--- To many relationships
-    op.addOperation {
+    //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
         var relationshipArray = [DeviceMasterPadInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -400,18 +390,13 @@ class DevicePackageInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
         }
-        // DispatchQueue.main.async { self.mMasterPads = relationshipArray }
-        // self.mMasterPads = relationshipArray
-        mutex.wait ()
-        operationResultList.append ({ self.mMasterPads = relationshipArray })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To one relationships
     }
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

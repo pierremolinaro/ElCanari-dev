@@ -612,76 +612,45 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFirstX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFirstX = value }
+        //operations.append ({ self.mFirstX = value })
+        self.mFirstX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFirstY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFirstY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFirstY = value }
+        //operations.append ({ self.mFirstY = value })
+        self.mFirstY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFirstColor = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFirstColor = value }
+        //operations.append ({ self.mFirstColor = value })
+        self.mFirstColor = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mSecondDx"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSecondDx = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSecondDx = value }
+        //operations.append ({ self.mSecondDx = value })
+        self.mSecondDx = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mSecondDy"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSecondDy = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSecondDy = value }
+        //operations.append ({ self.mSecondDy = value })
+        self.mSecondDy = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mSecondColor = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mSecondColor = value }
+        //operations.append ({ self.mSecondColor = value })
+        self.mSecondColor = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mRoot = inObjectArray [objectIndex] as? PackageRoot }
-        // self.mRoot = inObjectArray [objectIndex] as? PackageRoot
-        mutex.wait ()
-        operationResultList.append ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

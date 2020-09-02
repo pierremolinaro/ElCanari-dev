@@ -395,51 +395,32 @@ class CanariLibraryEntry : EBManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mPath = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mPath = value }
+        //operations.append ({ self.mPath = value })
+        self.mPath = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mUses"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mUses = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mUses = value }
+        //operations.append ({ self.mUses = value })
+        self.mUses = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mLibraryRepositoryURL = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mLibraryRepositoryURL = value }
+        //operations.append ({ self.mLibraryRepositoryURL = value })
+        self.mLibraryRepositoryURL = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mUserAndPasswordTag = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mUserAndPasswordTag = value }
+        //operations.append ({ self.mUserAndPasswordTag = value })
+        self.mUserAndPasswordTag = value
       }
+    //--- To many relationships
+    //--- To one relationships
     }
-  //--- To one relationships
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

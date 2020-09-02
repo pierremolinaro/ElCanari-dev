@@ -813,83 +813,48 @@ class SymbolBezierCurve : SymbolObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.y1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.y1 = value }
+        //operations.append ({ self.y1 = value })
+        self.y1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.x2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.x2 = value }
+        //operations.append ({ self.x2 = value })
+        self.x2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.y2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.y2 = value }
+        //operations.append ({ self.y2 = value })
+        self.y2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["cpx1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.cpx1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.cpx1 = value }
+        //operations.append ({ self.cpx1 = value })
+        self.cpx1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["cpy1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.cpy1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.cpy1 = value }
+        //operations.append ({ self.cpy1 = value })
+        self.cpy1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["cpx2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.cpx2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.cpx2 = value }
+        //operations.append ({ self.cpx2 = value })
+        self.cpx2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["cpy2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.cpy2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.cpy2 = value }
+        //operations.append ({ self.cpy2 = value })
+        self.cpy2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.x1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.x1 = value }
+        //operations.append ({ self.x1 = value })
+        self.x1 = value
       }
+    //--- To many relationships
+    //--- To one relationships
     }
-  //--- To one relationships
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

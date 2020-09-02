@@ -536,36 +536,25 @@ class LabelInSchematic : SchematicObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mOrientation = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mOrientation = value }
+        //operations.append ({ self.mOrientation = value })
+        self.mOrientation = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mPoint = inObjectArray [objectIndex] as? PointInSchematic }
-        // self.mPoint = inObjectArray [objectIndex] as? PointInSchematic
-        mutex.wait ()
-        operationResultList.append ({ self.mPoint = inObjectArray [objectIndex] as? PointInSchematic })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPoint = inObjectArray [objectIndex] as? PointInSchematic })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

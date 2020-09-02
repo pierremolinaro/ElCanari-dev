@@ -710,61 +710,38 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.x = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.x = value }
+        //operations.append ({ self.x = value })
+        self.x = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.y = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.y = value }
+        //operations.append ({ self.y = value })
+        self.y = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.instanceRotation = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.instanceRotation = value }
+        //operations.append ({ self.instanceRotation = value })
+        self.instanceRotation = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.myModel = inObjectArray [objectIndex] as? BoardModel }
-        // self.myModel = inObjectArray [objectIndex] as? BoardModel
-        mutex.wait ()
-        operationResultList.append ({ self.myModel = inObjectArray [objectIndex] as? BoardModel })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.myModel = inObjectArray [objectIndex] as? BoardModel })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.myRoot = inObjectArray [objectIndex] as? MergerRoot }
-        // self.myRoot = inObjectArray [objectIndex] as? MergerRoot
-        mutex.wait ()
-        operationResultList.append ({ self.myRoot = inObjectArray [objectIndex] as? MergerRoot })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.myRoot = inObjectArray [objectIndex] as? MergerRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

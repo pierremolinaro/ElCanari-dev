@@ -1007,108 +1007,61 @@ class BoardText : BoardObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX = value }
+        //operations.append ({ self.mX = value })
+        self.mX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY = value }
+        //operations.append ({ self.mY = value })
+        self.mY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mFontSize = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mFontSize = value }
+        //operations.append ({ self.mFontSize = value })
+        self.mFontSize = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mLayer"], let value = BoardTextLayer.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mLayer = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mLayer = value }
+        //operations.append ({ self.mLayer = value })
+        self.mLayer = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mText"], let value = String.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mText = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mText = value }
+        //operations.append ({ self.mText = value })
+        self.mText = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mHorizontalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mHorizontalAlignment = value }
+        //operations.append ({ self.mHorizontalAlignment = value })
+        self.mHorizontalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mVerticalAlignment"], let value = BoardTextVerticalAlignment.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mVerticalAlignment = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mVerticalAlignment = value }
+        //operations.append ({ self.mVerticalAlignment = value })
+        self.mVerticalAlignment = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mRotation = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mRotation = value }
+        //operations.append ({ self.mRotation = value })
+        self.mRotation = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWeight"], let value = Double.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mWeight = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mWeight = value }
+        //operations.append ({ self.mWeight = value })
+        self.mWeight = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mOblique"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mOblique = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mOblique = value }
+        //operations.append ({ self.mOblique = value })
+        self.mOblique = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mFont = inObjectArray [objectIndex] as? FontInProject }
-        // self.mFont = inObjectArray [objectIndex] as? FontInProject
-        mutex.wait ()
-        operationResultList.append ({ self.mFont = inObjectArray [objectIndex] as? FontInProject })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mFont = inObjectArray [objectIndex] as? FontInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

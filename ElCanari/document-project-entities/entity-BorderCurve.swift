@@ -1226,102 +1226,59 @@ class BorderCurve : EBGraphicManagedObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX = value }
+        //operations.append ({ self.mX = value })
+        self.mX = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY = value }
+        //operations.append ({ self.mY = value })
+        self.mY = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCPX1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCPX1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCPX1 = value }
+        //operations.append ({ self.mCPX1 = value })
+        self.mCPX1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCPY1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCPY1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCPY1 = value }
+        //operations.append ({ self.mCPY1 = value })
+        self.mCPY1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCPX2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCPX2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCPX2 = value }
+        //operations.append ({ self.mCPX2 = value })
+        self.mCPX2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mCPY2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mCPY2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mCPY2 = value }
+        //operations.append ({ self.mCPY2 = value })
+        self.mCPY2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mShape = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mShape = value }
+        //operations.append ({ self.mShape = value })
+        self.mShape = value
       }
-    }
-  //--- To one relationships
-    op.addOperation {
+    //--- To many relationships
+    //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mRoot = inObjectArray [objectIndex] as? ProjectRoot }
-        // self.mRoot = inObjectArray [objectIndex] as? ProjectRoot
-        mutex.wait ()
-        operationResultList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mNext = inObjectArray [objectIndex] as? BorderCurve }
-        // self.mNext = inObjectArray [objectIndex] as? BorderCurve
-        mutex.wait ()
-        operationResultList.append ({ self.mNext = inObjectArray [objectIndex] as? BorderCurve })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNext = inObjectArray [objectIndex] as? BorderCurve })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
-        // DispatchQueue.main.async { self.mPrevious = inObjectArray [objectIndex] as? BorderCurve }
-        // self.mPrevious = inObjectArray [objectIndex] as? BorderCurve
-        mutex.wait ()
-        operationResultList.append ({ self.mPrevious = inObjectArray [objectIndex] as? BorderCurve })
-        mutex.signal ()
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPrevious = inObjectArray [objectIndex] as? BorderCurve })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     }
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································

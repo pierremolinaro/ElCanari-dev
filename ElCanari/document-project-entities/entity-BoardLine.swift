@@ -797,107 +797,60 @@ class BoardLine : BoardObject,
 
   override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
                                          _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
-    let op = OperationQueue ()
-    var operationResultList = [() -> Void] ()
-    let mutex = DispatchSemaphore (value: 1)
-  //--- Atomic properties
-    op.addOperation {
+                                         _ inData : Data,
+                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
+    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    //  var operations = [() -> Void] ()
+    //--- Atomic properties
       if let range = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mWidthUnit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mWidthUnit = value }
+        //operations.append ({ self.mWidthUnit = value })
+        self.mWidthUnit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX1 = value }
+        //operations.append ({ self.mX1 = value })
+        self.mX1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX1Unit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX1Unit = value }
+        //operations.append ({ self.mX1Unit = value })
+        self.mX1Unit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY1 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY1 = value }
+        //operations.append ({ self.mY1 = value })
+        self.mY1 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY1Unit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY1Unit = value }
+        //operations.append ({ self.mY1Unit = value })
+        self.mY1Unit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX2 = value }
+        //operations.append ({ self.mX2 = value })
+        self.mX2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mX2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mX2Unit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mX2Unit = value }
+        //operations.append ({ self.mX2Unit = value })
+        self.mX2Unit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY2 = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY2 = value }
+        //operations.append ({ self.mY2 = value })
+        self.mY2 = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mY2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mY2Unit = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mY2Unit = value }
+        //operations.append ({ self.mY2Unit = value })
+        self.mY2Unit = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mLayer"], let value = BoardLineLayer.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mLayer = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mLayer = value }
+        //operations.append ({ self.mLayer = value })
+        self.mLayer = value
       }
-    }
-    op.addOperation {
       if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        mutex.wait ()
-        operationResultList.append ({ self.mWidth = value })
-        mutex.signal ()
-        //DispatchQueue.main.async { self.mWidth = value }
+        //operations.append ({ self.mWidth = value })
+        self.mWidth = value
       }
+    //--- To many relationships
+    //--- To one relationships
     }
-  //--- To one relationships
-  //--- To many relationships
-  //---
-    op.waitUntilAllOperationsAreFinished ()
-    for resultOperation in operationResultList {
-       resultOperation ()
-    }
+  //--- End of addOperation
   }
 
   //····················································································································
