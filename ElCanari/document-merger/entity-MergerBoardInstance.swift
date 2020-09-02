@@ -708,23 +708,25 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x = value
     }
-    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y = value
     }
-    if let stringData = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
       self.instanceRotation = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["myModel"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.myModel = inObjectArray [objectIndex] as? BoardModel
     }
-    if let stringData = inDictionary ["myRoot"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.myRoot = inObjectArray [objectIndex] as? MergerRoot
     }
   //--- To many relationships

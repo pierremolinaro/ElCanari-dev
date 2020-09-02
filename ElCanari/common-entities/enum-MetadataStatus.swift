@@ -85,8 +85,8 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> MetadataStatus? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = MetadataStatus (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> MetadataStatus? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = MetadataStatus (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

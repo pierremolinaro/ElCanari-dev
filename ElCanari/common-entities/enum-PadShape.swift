@@ -82,8 +82,8 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> PadShape? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = PadShape (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> PadShape? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = PadShape (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

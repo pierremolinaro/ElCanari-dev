@@ -72,7 +72,9 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
 
   //····················································································································
 
-  func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
+  func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                _ inObjectArray : [EBManagedObject],
+                                _ inData : Data) {
   }
 
   //····················································································································

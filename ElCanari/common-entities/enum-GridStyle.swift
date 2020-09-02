@@ -82,8 +82,8 @@ enum GridStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> GridStyle? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = GridStyle (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> GridStyle? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = GridStyle (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

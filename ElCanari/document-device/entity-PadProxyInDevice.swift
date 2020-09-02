@@ -486,20 +486,22 @@ class PadProxyInDevice : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPinInstanceName = value
     }
-    if let stringData = inDictionary ["mPadName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPadName = value
     }
-    if let stringData = inDictionary ["mIsNC"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mIsNC = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mPinInstance"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice
     }
   //--- To many relationships

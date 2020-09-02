@@ -393,19 +393,21 @@ class CanariLibraryEntry : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mPath"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPath = value
     }
-    if let stringData = inDictionary ["mUses"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mUses"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mUses = value
     }
-    if let stringData = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mLibraryRepositoryURL = value
     }
-    if let stringData = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mUserAndPasswordTag = value
     }
   //--- To one relationships

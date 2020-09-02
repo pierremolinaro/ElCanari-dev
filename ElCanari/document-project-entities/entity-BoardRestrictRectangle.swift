@@ -604,25 +604,27 @@ class BoardRestrictRectangle : BoardObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-    if let stringData = inDictionary ["mWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mWidth = value
     }
-    if let stringData = inDictionary ["mHeight"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mHeight = value
     }
-    if let stringData = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mIsInFrontLayer = value
     }
-    if let stringData = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mIsInBackLayer = value
     }
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
   //--- To one relationships

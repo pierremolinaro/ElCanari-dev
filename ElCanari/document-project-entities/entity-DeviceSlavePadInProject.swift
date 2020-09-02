@@ -612,31 +612,33 @@ class DeviceSlavePadInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mCenterX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCenterX = value
     }
-    if let stringData = inDictionary ["mCenterY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCenterY = value
     }
-    if let stringData = inDictionary ["mWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mWidth = value
     }
-    if let stringData = inDictionary ["mHeight"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mHeight = value
     }
-    if let stringData = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mHoleWidth = value
     }
-    if let stringData = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mHoleHeight = value
     }
-    if let stringData = inDictionary ["mShape"], let value = PadShape.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
       self.mShape = value
     }
-    if let stringData = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
       self.mStyle = value
     }
   //--- To one relationships

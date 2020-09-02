@@ -811,31 +811,33 @@ class SymbolBezierCurve : SymbolObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["y1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y1 = value
     }
-    if let stringData = inDictionary ["x2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x2 = value
     }
-    if let stringData = inDictionary ["y2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y2 = value
     }
-    if let stringData = inDictionary ["cpx1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["cpx1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.cpx1 = value
     }
-    if let stringData = inDictionary ["cpy1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["cpy1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.cpy1 = value
     }
-    if let stringData = inDictionary ["cpx2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["cpx2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.cpx2 = value
     }
-    if let stringData = inDictionary ["cpy2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["cpy2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.cpy2 = value
     }
-    if let stringData = inDictionary ["x1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x1 = value
     }
   //--- To one relationships

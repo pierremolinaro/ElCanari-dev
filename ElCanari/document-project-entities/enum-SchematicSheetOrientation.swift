@@ -82,8 +82,8 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> SchematicSheetOrientation? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = SchematicSheetOrientation (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> SchematicSheetOrientation? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = SchematicSheetOrientation (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

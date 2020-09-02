@@ -2904,86 +2904,88 @@ class ComponentInProject : BoardObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-    if let stringData = inDictionary ["mRotation"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mRotation = value
     }
-    if let stringData = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromDataRange (inData, range) {
       self.mSide = value
     }
-    if let stringData = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mDisplayLegend = value
     }
-    if let stringData = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mNameIsVisibleInBoard = value
     }
-    if let stringData = inDictionary ["mXName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mXName = value
     }
-    if let stringData = inDictionary ["mYName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mYName = value
     }
-    if let stringData = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mNameFontSize = value
     }
-    if let stringData = inDictionary ["mNameRotation"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNameRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mNameRotation = value
     }
-    if let stringData = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mValueIsVisibleInBoard = value
     }
-    if let stringData = inDictionary ["mXValue"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mXValue"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mXValue = value
     }
-    if let stringData = inDictionary ["mYValue"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mYValue"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mYValue = value
     }
-    if let stringData = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mValueFontSize = value
     }
-    if let stringData = inDictionary ["mValueRotation"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mValueRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mValueRotation = value
     }
-    if let stringData = inDictionary ["mComponentValue"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mComponentValue"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mComponentValue = value
     }
-    if let stringData = inDictionary ["mNamePrefix"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNamePrefix"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mNamePrefix = value
     }
-    if let stringData = inDictionary ["mNameIndex"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNameIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mNameIndex = value
     }
-    if let stringData = inDictionary ["mXUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mXUnit = value
     }
-    if let stringData = inDictionary ["mYUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mYUnit = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mDevice"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mDevice = inObjectArray [objectIndex] as? DeviceInProject
     }
-    if let stringData = inDictionary ["mSelectedPackage"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject
     }
-    if let stringData = inDictionary ["mNameFont"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mNameFont = inObjectArray [objectIndex] as? FontInProject
     }
-    if let stringData = inDictionary ["mValueFont"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mValueFont = inObjectArray [objectIndex] as? FontInProject
     }
   //--- To many relationships
-    if let stringData = inDictionary ["mConnectors"], stringData.count > 0 {
+    if let range = inDictionary ["mConnectors"], range.length > 0 {
       var relationshipArray = [BoardConnector] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! BoardConnector)
@@ -2991,9 +2993,9 @@ class ComponentInProject : BoardObject,
       //self.mConnectors = []
       self.mConnectors = relationshipArray
     }
-    if let stringData = inDictionary ["mSymbols"], stringData.count > 0 {
+    if let range = inDictionary ["mSymbols"], range.length > 0 {
       var relationshipArray = [ComponentSymbolInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)

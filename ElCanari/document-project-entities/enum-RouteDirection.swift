@@ -79,8 +79,8 @@ enum RouteDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> RouteDirection? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = RouteDirection (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> RouteDirection? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = RouteDirection (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

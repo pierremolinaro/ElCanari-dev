@@ -330,11 +330,13 @@ class PackageObject : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
   //--- To one relationships
-    if let stringData = inDictionary ["mRoot"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mRoot = inObjectArray [objectIndex] as? PackageRoot
     }
   //--- To many relationships

@@ -1042,35 +1042,37 @@ class PackageInDevice : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mFileData"], let value = Data.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
       self.mFileData = value
     }
-    if let stringData = inDictionary ["mName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mName = value
     }
-    if let stringData = inDictionary ["mVersion"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mVersion = value
     }
-    if let stringData = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
       self.mStrokeBezierPath = value
     }
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mRoot"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mRoot = inObjectArray [objectIndex] as? DeviceRoot
     }
   //--- To many relationships
-    if let stringData = inDictionary ["mMasterPads"], stringData.count > 0 {
+    if let range = inDictionary ["mMasterPads"], range.length > 0 {
       var relationshipArray = [MasterPadInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)

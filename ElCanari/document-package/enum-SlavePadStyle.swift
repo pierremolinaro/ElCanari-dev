@@ -82,8 +82,8 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> SlavePadStyle? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = SlavePadStyle (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> SlavePadStyle? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = SlavePadStyle (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

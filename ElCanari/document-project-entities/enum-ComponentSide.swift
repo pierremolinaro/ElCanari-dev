@@ -79,8 +79,8 @@ enum ComponentSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> ComponentSide? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = ComponentSide (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> ComponentSide? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = ComponentSide (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

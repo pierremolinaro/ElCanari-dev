@@ -610,29 +610,31 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mFirstX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mFirstX = value
     }
-    if let stringData = inDictionary ["mFirstY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFirstY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mFirstY = value
     }
-    if let stringData = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
       self.mFirstColor = value
     }
-    if let stringData = inDictionary ["mSecondDx"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSecondDx"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSecondDx = value
     }
-    if let stringData = inDictionary ["mSecondDy"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSecondDy"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSecondDy = value
     }
-    if let stringData = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
       self.mSecondColor = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mRoot"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mRoot = inObjectArray [objectIndex] as? PackageRoot
     }
   //--- To many relationships

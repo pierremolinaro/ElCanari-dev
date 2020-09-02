@@ -295,13 +295,15 @@ class DeviceDocumentation : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mFileName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mFileName = value
     }
-    if let stringData = inDictionary ["mFileData"], let value = Data.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
       self.mFileData = value
     }
   //--- To one relationships

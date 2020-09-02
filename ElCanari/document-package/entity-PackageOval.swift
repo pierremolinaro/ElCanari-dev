@@ -757,31 +757,33 @@ class PackageOval : PackageObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y = value
     }
-    if let stringData = inDictionary ["width"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.width = value
     }
-    if let stringData = inDictionary ["height"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.height = value
     }
-    if let stringData = inDictionary ["xUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xUnit = value
     }
-    if let stringData = inDictionary ["yUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yUnit = value
     }
-    if let stringData = inDictionary ["widthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.widthUnit = value
     }
-    if let stringData = inDictionary ["heightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.heightUnit = value
     }
-    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x = value
     }
   //--- To one relationships

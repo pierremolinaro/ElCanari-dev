@@ -429,11 +429,13 @@ class SchematicObject : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
   //--- To one relationships
-    if let stringData = inDictionary ["mSheet"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mSheet = inObjectArray [objectIndex] as? SheetInProject
     }
   //--- To many relationships

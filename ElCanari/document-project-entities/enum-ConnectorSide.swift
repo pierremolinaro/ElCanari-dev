@@ -82,8 +82,8 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> ConnectorSide? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = ConnectorSide (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> ConnectorSide? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = ConnectorSide (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

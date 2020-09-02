@@ -103,8 +103,8 @@ enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> PadNumbering? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = PadNumbering (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> PadNumbering? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = PadNumbering (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

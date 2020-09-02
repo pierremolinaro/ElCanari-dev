@@ -794,29 +794,31 @@ class SymbolTypeInDevice : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mTypeName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mTypeName = value
     }
-    if let stringData = inDictionary ["mVersion"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mVersion = value
     }
-    if let stringData = inDictionary ["mFileData"], let value = Data.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
       self.mFileData = value
     }
-    if let stringData = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
       self.mStrokeBezierPath = value
     }
-    if let stringData = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
       self.mFilledBezierPath = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["mInstances"], stringData.count > 0 {
+    if let range = inDictionary ["mInstances"], range.length > 0 {
       var relationshipArray = [SymbolInstanceInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
@@ -824,9 +826,9 @@ class SymbolTypeInDevice : EBManagedObject,
       //self.mInstances = []
       self.mInstances = relationshipArray
     }
-    if let stringData = inDictionary ["mPinTypes"], stringData.count > 0 {
+    if let range = inDictionary ["mPinTypes"], range.length > 0 {
       var relationshipArray = [SymbolPinTypeInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)

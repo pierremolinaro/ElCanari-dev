@@ -79,8 +79,8 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> AutorouterPreferredDirections? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = AutorouterPreferredDirections (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> AutorouterPreferredDirections? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = AutorouterPreferredDirections (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

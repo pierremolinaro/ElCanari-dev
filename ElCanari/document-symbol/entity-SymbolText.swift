@@ -485,19 +485,21 @@ class SymbolText : SymbolObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y = value
     }
-    if let stringData = inDictionary ["text"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["text"], let value = String.unarchiveFromDataRange (inData, range) {
       self.text = value
     }
-    if let stringData = inDictionary ["horizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["horizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.horizontalAlignment = value
     }
-    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x = value
     }
   //--- To one relationships

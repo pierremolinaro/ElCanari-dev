@@ -85,8 +85,8 @@ enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> QuadrantRotation? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = QuadrantRotation (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> QuadrantRotation? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = QuadrantRotation (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

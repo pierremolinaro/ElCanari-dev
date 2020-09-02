@@ -549,14 +549,16 @@ class WireInSchematic : SchematicObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
   //--- To one relationships
-    if let stringData = inDictionary ["mP1"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mP1 = inObjectArray [objectIndex] as? PointInSchematic
     }
-    if let stringData = inDictionary ["mP2"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mP2 = inObjectArray [objectIndex] as? PointInSchematic
     }
   //--- To many relationships

@@ -1062,46 +1062,48 @@ class PackageDimension : PackageObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["y1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y1 = value
     }
-    if let stringData = inDictionary ["x2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x2 = value
     }
-    if let stringData = inDictionary ["y2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y2 = value
     }
-    if let stringData = inDictionary ["xDimension"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xDimension = value
     }
-    if let stringData = inDictionary ["yDimension"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yDimension = value
     }
-    if let stringData = inDictionary ["x1Unit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x1Unit = value
     }
-    if let stringData = inDictionary ["y1Unit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y1Unit = value
     }
-    if let stringData = inDictionary ["x2Unit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x2Unit = value
     }
-    if let stringData = inDictionary ["y2Unit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y2Unit = value
     }
-    if let stringData = inDictionary ["xDimensionUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xDimensionUnit = value
     }
-    if let stringData = inDictionary ["yDimensionUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yDimensionUnit = value
     }
-    if let stringData = inDictionary ["distanceUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["distanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.distanceUnit = value
     }
-    if let stringData = inDictionary ["x1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x1 = value
     }
   //--- To one relationships

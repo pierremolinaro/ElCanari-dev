@@ -85,8 +85,8 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> VerticalAlignment? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = VerticalAlignment (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> VerticalAlignment? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = VerticalAlignment (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

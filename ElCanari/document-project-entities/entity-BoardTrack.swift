@@ -1279,35 +1279,37 @@ class BoardTrack : BoardObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mSide"], let value = TrackSide.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
       self.mSide = value
     }
-    if let stringData = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDefaultTrackWidthUnit = value
     }
-    if let stringData = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCustomTrackWidth = value
     }
-    if let stringData = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCustomTrackWidthUnit = value
     }
-    if let stringData = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mUsesCustomTrackWidth = value
     }
-    if let stringData = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mIsPreservedByAutoRouter = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mConnectorP1"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector
     }
-    if let stringData = inDictionary ["mConnectorP2"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector
     }
-    if let stringData = inDictionary ["mNet"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mNet = inObjectArray [objectIndex] as? NetInProject
     }
   //--- To many relationships

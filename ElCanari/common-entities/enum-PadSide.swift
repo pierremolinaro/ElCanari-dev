@@ -82,8 +82,8 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> PadSide? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = PadSide (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> PadSide? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = PadSide (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

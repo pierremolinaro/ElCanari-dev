@@ -1363,59 +1363,61 @@ class PackageZone : PackageObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x = value
     }
-    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y = value
     }
-    if let stringData = inDictionary ["width"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.width = value
     }
-    if let stringData = inDictionary ["height"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.height = value
     }
-    if let stringData = inDictionary ["xUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xUnit = value
     }
-    if let stringData = inDictionary ["yUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yUnit = value
     }
-    if let stringData = inDictionary ["widthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.widthUnit = value
     }
-    if let stringData = inDictionary ["heightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.heightUnit = value
     }
-    if let stringData = inDictionary ["zoneName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["zoneName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.zoneName = value
     }
-    if let stringData = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.displayZoneName = value
     }
-    if let stringData = inDictionary ["xName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xName = value
     }
-    if let stringData = inDictionary ["yName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yName = value
     }
-    if let stringData = inDictionary ["xNameUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xNameUnit = value
     }
-    if let stringData = inDictionary ["yNameUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yNameUnit = value
     }
-    if let stringData = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
       self.zoneNumbering = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["forbiddenPadNumbers"], stringData.count > 0 {
+    if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
       var relationshipArray = [ForbiddenPadNumber] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)

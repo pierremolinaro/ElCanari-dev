@@ -1916,53 +1916,55 @@ class BoardConnector : BoardObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mComponentPadName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mComponentPadName = value
     }
-    if let stringData = inDictionary ["mPadIndex"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPadIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mPadIndex = value
     }
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-    if let stringData = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDefaultHoleDiameterUnit = value
     }
-    if let stringData = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCustomHoleDiameter = value
     }
-    if let stringData = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCustomHoleDiameterUnit = value
     }
-    if let stringData = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mUsesCustomHoleDiameter = value
     }
-    if let stringData = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDefaultPadDiameterUnit = value
     }
-    if let stringData = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCustomPadDiameter = value
     }
-    if let stringData = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCustomPadDiameterUnit = value
     }
-    if let stringData = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mUsesCustomPadDiameter = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mComponent"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mComponent = inObjectArray [objectIndex] as? ComponentInProject
     }
   //--- To many relationships
-    if let stringData = inDictionary ["mTracksP2"], stringData.count > 0 {
+    if let range = inDictionary ["mTracksP2"], range.length > 0 {
       var relationshipArray = [BoardTrack] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! BoardTrack)
@@ -1970,9 +1972,9 @@ class BoardConnector : BoardObject,
       //self.mTracksP2 = []
       self.mTracksP2 = relationshipArray
     }
-    if let stringData = inDictionary ["mTracksP1"], stringData.count > 0 {
+    if let range = inDictionary ["mTracksP1"], range.length > 0 {
       var relationshipArray = [BoardTrack] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! BoardTrack)

@@ -79,8 +79,8 @@ enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> BorderCurveShape? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = BorderCurveShape (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BorderCurveShape? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = BorderCurveShape (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

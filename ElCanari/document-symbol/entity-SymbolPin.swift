@@ -973,37 +973,39 @@ class SymbolPin : SymbolObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["yPin"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yPin"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yPin = value
     }
-    if let stringData = inDictionary ["xName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xName = value
     }
-    if let stringData = inDictionary ["yName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yName = value
     }
-    if let stringData = inDictionary ["xNumber"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xNumber = value
     }
-    if let stringData = inDictionary ["yNumber"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yNumber = value
     }
-    if let stringData = inDictionary ["name"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
       self.name = value
     }
-    if let stringData = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.nameHorizontalAlignment = value
     }
-    if let stringData = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.numberHorizontalAlignment = value
     }
-    if let stringData = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.pinNameIsDisplayedInSchematics = value
     }
-    if let stringData = inDictionary ["xPin"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xPin"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xPin = value
     }
   //--- To one relationships

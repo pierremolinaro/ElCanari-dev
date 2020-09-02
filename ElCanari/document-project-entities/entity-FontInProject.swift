@@ -765,26 +765,28 @@ class FontInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mNominalSize"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mNominalSize = value
     }
-    if let stringData = inDictionary ["mFontName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mFontName = value
     }
-    if let stringData = inDictionary ["mFontVersion"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mFontVersion = value
     }
-    if let stringData = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mDescriptiveString = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["mTexts"], stringData.count > 0 {
+    if let range = inDictionary ["mTexts"], range.length > 0 {
       var relationshipArray = [BoardText] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! BoardText)
@@ -792,9 +794,9 @@ class FontInProject : EBManagedObject,
       //self.mTexts = []
       self.mTexts = relationshipArray
     }
-    if let stringData = inDictionary ["mComponentNames"], stringData.count > 0 {
+    if let range = inDictionary ["mComponentNames"], range.length > 0 {
       var relationshipArray = [ComponentInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
@@ -802,9 +804,9 @@ class FontInProject : EBManagedObject,
       //self.mComponentNames = []
       self.mComponentNames = relationshipArray
     }
-    if let stringData = inDictionary ["mComponentValues"], stringData.count > 0 {
+    if let range = inDictionary ["mComponentValues"], range.length > 0 {
       var relationshipArray = [ComponentInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ComponentInProject)

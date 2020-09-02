@@ -100,8 +100,8 @@ enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> RouteOrigin? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = RouteOrigin (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> RouteOrigin? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = RouteOrigin (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

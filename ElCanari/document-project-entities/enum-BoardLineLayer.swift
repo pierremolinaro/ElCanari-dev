@@ -79,8 +79,8 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> BoardLineLayer? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = BoardLineLayer (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BoardLineLayer? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = BoardLineLayer (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

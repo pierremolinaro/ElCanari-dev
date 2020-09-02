@@ -680,26 +680,28 @@ class FontCharacter : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["codePoint"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.codePoint = value
     }
-    if let stringData = inDictionary ["advance"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["advance"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.advance = value
     }
-    if let stringData = inDictionary ["mWarnsWhenNoSegment"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mWarnsWhenNoSegment"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mWarnsWhenNoSegment = value
     }
-    if let stringData = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mWarnsWhenAdvanceIsZero = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["segments"], stringData.count > 0 {
+    if let range = inDictionary ["segments"], range.length > 0 {
       var relationshipArray = [SegmentForFontCharacter] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)

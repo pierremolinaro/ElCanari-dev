@@ -9,7 +9,7 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 struct EBDataScanner {
-  private var mData : Data
+  private let mData : Data
   private var mReadIndex = 0
   private var mReadOk = true
   private var mExpectedBytes = [UInt8] ()
@@ -19,6 +19,10 @@ struct EBDataScanner {
   init (data : Data) {
     mData = data
   }
+
+  //····················································································································
+
+  var data : Data { return self.mData }
 
   //····················································································································
 
@@ -317,6 +321,24 @@ struct EBDataScanner {
       self.mReadOk = false
     }
     return result
+  }
+
+  //····················································································································
+
+  mutating func getLineRange () -> NSRange {
+    let start = self.mReadIndex
+    var loop = true
+    while self.mReadOk, loop {
+      if self.mReadIndex >= self.mData.count {
+        self.mReadOk = false
+      }else if self.mData [self.mReadIndex] == ASCII.lineFeed.rawValue {
+        self.mReadIndex += 1
+        loop = false
+      }else{
+        self.mReadIndex += 1
+      }
+    }
+    return NSRange (location: start, length: self.mReadIndex - start - 1)
   }
 
   //····················································································································

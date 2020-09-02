@@ -382,14 +382,16 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mPadName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPadName = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mPin"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mPin = inObjectArray [objectIndex] as? DevicePinInProject
     }
   //--- To many relationships

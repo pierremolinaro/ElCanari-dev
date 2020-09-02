@@ -501,14 +501,16 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSymbolInstanceName = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mSymbolType"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject
     }
   //--- To many relationships

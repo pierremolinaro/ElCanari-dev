@@ -809,44 +809,46 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mPinX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPinX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mPinX = value
     }
-    if let stringData = inDictionary ["mPinY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPinY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mPinY = value
     }
-    if let stringData = inDictionary ["mXName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mXName = value
     }
-    if let stringData = inDictionary ["mYName"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mYName = value
     }
-    if let stringData = inDictionary ["mName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mName = value
     }
-    if let stringData = inDictionary ["mNameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.mNameHorizontalAlignment = value
     }
-    if let stringData = inDictionary ["mPinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mPinNameIsDisplayedInSchematics = value
     }
-    if let stringData = inDictionary ["mXNumber"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mXNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mXNumber = value
     }
-    if let stringData = inDictionary ["mYNumber"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mYNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mYNumber = value
     }
-    if let stringData = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.mNumberHorizontalAlignment = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["mInstances"], stringData.count > 0 {
+    if let range = inDictionary ["mInstances"], range.length > 0 {
       var relationshipArray = [SymbolPinInstanceInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)

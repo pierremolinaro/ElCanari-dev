@@ -82,8 +82,8 @@ enum AutorouterSnapAngle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> AutorouterSnapAngle? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = AutorouterSnapAngle (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> AutorouterSnapAngle? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = AutorouterSnapAngle (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

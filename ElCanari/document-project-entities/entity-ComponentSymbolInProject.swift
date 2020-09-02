@@ -1354,50 +1354,52 @@ class ComponentSymbolInProject : SchematicObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mCenterX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCenterX = value
     }
-    if let stringData = inDictionary ["mCenterY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCenterY = value
     }
-    if let stringData = inDictionary ["mRotation"], let value = QuadrantRotation.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
       self.mRotation = value
     }
-    if let stringData = inDictionary ["mMirror"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mMirror = value
     }
-    if let stringData = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSymbolInstanceName = value
     }
-    if let stringData = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSymbolTypeName = value
     }
-    if let stringData = inDictionary ["mDisplayComponentNameOffsetX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDisplayComponentNameOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDisplayComponentNameOffsetX = value
     }
-    if let stringData = inDictionary ["mDisplayComponentNameOffsetY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDisplayComponentNameOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDisplayComponentNameOffsetY = value
     }
-    if let stringData = inDictionary ["mDisplayComponentValue"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDisplayComponentValue"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mDisplayComponentValue = value
     }
-    if let stringData = inDictionary ["mDisplayComponentValueOffsetX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDisplayComponentValueOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDisplayComponentValueOffsetX = value
     }
-    if let stringData = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDisplayComponentValueOffsetY = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mComponent"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mComponent = inObjectArray [objectIndex] as? ComponentInProject
     }
   //--- To many relationships
-    if let stringData = inDictionary ["mPoints"], stringData.count > 0 {
+    if let range = inDictionary ["mPoints"], range.length > 0 {
       var relationshipArray = [PointInSchematic] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! PointInSchematic)

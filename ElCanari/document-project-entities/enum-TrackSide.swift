@@ -79,8 +79,8 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> TrackSide? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = TrackSide (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackSide? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackSide (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

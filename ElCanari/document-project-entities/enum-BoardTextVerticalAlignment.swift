@@ -85,8 +85,8 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> BoardTextVerticalAlignment? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = BoardTextVerticalAlignment (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BoardTextVerticalAlignment? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = BoardTextVerticalAlignment (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

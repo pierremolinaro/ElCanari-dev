@@ -595,28 +595,30 @@ class CommentInSchematic : SchematicObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
       self.mColor = value
     }
-    if let stringData = inDictionary ["mSize"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mSize = value
     }
-    if let stringData = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.mHorizontalAlignment = value
     }
-    if let stringData = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
       self.mVerticalAlignment = value
     }
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-    if let stringData = inDictionary ["mComment"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mComment = value
     }
   //--- To one relationships

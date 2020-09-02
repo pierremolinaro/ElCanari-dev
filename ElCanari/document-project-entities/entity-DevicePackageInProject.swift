@@ -366,20 +366,22 @@ class DevicePackageInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mPackageName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPackageName = value
     }
-    if let stringData = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
       self.mStrokeBezierPath = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["mMasterPads"], stringData.count > 0 {
+    if let range = inDictionary ["mMasterPads"], range.length > 0 {
       var relationshipArray = [DeviceMasterPadInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)

@@ -726,20 +726,22 @@ class SheetInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mSheetTitle"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSheetTitle = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mRoot"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mRoot = inObjectArray [objectIndex] as? ProjectRoot
     }
   //--- To many relationships
-    if let stringData = inDictionary ["mObjects"], stringData.count > 0 {
+    if let range = inDictionary ["mObjects"], range.length > 0 {
       var relationshipArray = [SchematicObject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SchematicObject)
@@ -747,9 +749,9 @@ class SheetInProject : EBManagedObject,
       //self.mObjects = []
       self.mObjects = relationshipArray
     }
-    if let stringData = inDictionary ["mPoints"], stringData.count > 0 {
+    if let range = inDictionary ["mPoints"], range.length > 0 {
       var relationshipArray = [PointInSchematic] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! PointInSchematic)

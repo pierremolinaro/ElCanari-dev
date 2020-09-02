@@ -88,8 +88,8 @@ enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> RastnetDisplay? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = RastnetDisplay (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> RastnetDisplay? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = RastnetDisplay (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

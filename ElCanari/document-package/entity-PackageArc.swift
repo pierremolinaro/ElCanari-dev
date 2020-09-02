@@ -1047,46 +1047,48 @@ class PackageArc : PackageObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["yCenter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yCenter = value
     }
-    if let stringData = inDictionary ["radius"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["radius"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.radius = value
     }
-    if let stringData = inDictionary ["startAngle"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["startAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.startAngle = value
     }
-    if let stringData = inDictionary ["arcAngle"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["arcAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.arcAngle = value
     }
-    if let stringData = inDictionary ["startTangent"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["startTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.startTangent = value
     }
-    if let stringData = inDictionary ["endTangent"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["endTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.endTangent = value
     }
-    if let stringData = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.pathIsClosed = value
     }
-    if let stringData = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xCenterUnit = value
     }
-    if let stringData = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yCenterUnit = value
     }
-    if let stringData = inDictionary ["radiusUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["radiusUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.radiusUnit = value
     }
-    if let stringData = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.startTangentUnit = value
     }
-    if let stringData = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.endTangentUnit = value
     }
-    if let stringData = inDictionary ["xCenter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xCenter = value
     }
   //--- To one relationships

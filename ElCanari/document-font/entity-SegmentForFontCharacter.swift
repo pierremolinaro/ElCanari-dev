@@ -432,19 +432,21 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["x1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x1 = value
     }
-    if let stringData = inDictionary ["y1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y1 = value
     }
-    if let stringData = inDictionary ["x2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x2 = value
     }
-    if let stringData = inDictionary ["y2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y2 = value
     }
   //--- To one relationships

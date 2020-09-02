@@ -1481,56 +1481,58 @@ class PackageSlavePad : PackageObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["xCenter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xCenter = value
     }
-    if let stringData = inDictionary ["yCenter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yCenter = value
     }
-    if let stringData = inDictionary ["width"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.width = value
     }
-    if let stringData = inDictionary ["height"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.height = value
     }
-    if let stringData = inDictionary ["holeWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.holeWidth = value
     }
-    if let stringData = inDictionary ["holeHeight"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.holeHeight = value
     }
-    if let stringData = inDictionary ["padShape"], let value = PadShape.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
       self.padShape = value
     }
-    if let stringData = inDictionary ["padStyle"], let value = SlavePadStyle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["padStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
       self.padStyle = value
     }
-    if let stringData = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xCenterUnit = value
     }
-    if let stringData = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yCenterUnit = value
     }
-    if let stringData = inDictionary ["widthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.widthUnit = value
     }
-    if let stringData = inDictionary ["heightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.heightUnit = value
     }
-    if let stringData = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.holeWidthUnit = value
     }
-    if let stringData = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.holeHeightUnit = value
     }
-    if let stringData = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.annularRingUnit = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["master"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.master = inObjectArray [objectIndex] as? PackagePad
     }
   //--- To many relationships

@@ -171,15 +171,16 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   Swift.print ("Read classes \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
   startLoadFile = Date ()
 //--- Read objects
+//  let readIndex = ioDataScanner.mReadIndex
   var objectArray = [EBManagedObject] ()
-  var propertyValueArray = [[String : Data]] ()
+  var propertyValueArray = [[String : NSRange]] ()
   while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
     let classIndex = ioDataScanner.parseBase62EncodedInt ()
     // Swift.print ("CLASS INDEX: '\(classIndex)'")
     let managedObject = newInstanceOfEntityNamed (inUndoManager, classDefinition [classIndex].0)!
     objectArray.append (managedObject)
     var readPropertyValues = true
-    var valueDictionary = [String : Data] ()
+    var valueDictionary = [String : NSRange] ()
     var propertyIndex = 0
     while readPropertyValues, ioDataScanner.ok () {
       if ioDataScanner.test (byte: ASCII.at.rawValue) {
@@ -187,8 +188,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
       }else if ioDataScanner.eof () {
         readPropertyValues = false
       }else{
-        let propertyValue = try ioDataScanner.parseStringAsData ()
-        valueDictionary [classDefinition [classIndex].1 [propertyIndex]] = propertyValue
+        let propertyRange = ioDataScanner.getLineRange ()
+        valueDictionary [classDefinition [classIndex].1 [propertyIndex]] = propertyRange
         propertyIndex += 1
         // Swift.print ("  PROPERTY VALUE: '\(propertyValue)'")
       }
@@ -197,11 +198,40 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   }
   Swift.print ("Read objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
   startLoadFile = Date ()
+//--- Read objects
+//  ioDataScanner.mReadIndex = readIndex
+//  var objectArray = [EBManagedObject] ()
+//  var propertyValueArray = [[String : Data]] ()
+//  while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
+//    let classIndex = ioDataScanner.parseBase62EncodedInt ()
+//    // Swift.print ("CLASS INDEX: '\(classIndex)'")
+//    let managedObject = newInstanceOfEntityNamed (inUndoManager, classDefinition [classIndex].0)!
+//    objectArray.append (managedObject)
+//    var readPropertyValues = true
+//    var valueDictionary = [String : Data] ()
+//    var propertyIndex = 0
+//    while readPropertyValues, ioDataScanner.ok () {
+//      if ioDataScanner.test (byte: ASCII.at.rawValue) {
+//        readPropertyValues = false
+//      }else if ioDataScanner.eof () {
+//        readPropertyValues = false
+//      }else{
+//        let propertyValue = try ioDataScanner.parseStringAsData ()
+//        valueDictionary [classDefinition [classIndex].1 [propertyIndex]] = propertyValue
+//        propertyIndex += 1
+//        // Swift.print ("  PROPERTY VALUE: '\(propertyValue)'")
+//      }
+//    }
+//    propertyValueArray.append (valueDictionary)
+//  }
+//  Swift.print ("Read objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+//--- Setup objects
+  startLoadFile = Date ()
   var idx = 0
   for managedObject in objectArray {
     let valueDictionary = propertyValueArray [idx]
     idx += 1
-    managedObject.setUpWithTextDictionary (valueDictionary, objectArray)
+    managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data)
   }
   Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
 //  if ioDataScanner.ok () {

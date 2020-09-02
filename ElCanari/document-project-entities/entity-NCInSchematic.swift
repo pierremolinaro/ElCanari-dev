@@ -349,14 +349,16 @@ class NCInSchematic : SchematicObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
       self.mOrientation = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mPoint"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mPoint = inObjectArray [objectIndex] as? PointInSchematic
     }
   //--- To many relationships

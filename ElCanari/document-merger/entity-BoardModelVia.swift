@@ -280,16 +280,18 @@ class BoardModelVia : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["y"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y = value
     }
-    if let stringData = inDictionary ["padDiameter"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["padDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.padDiameter = value
     }
-    if let stringData = inDictionary ["x"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.x = value
     }
   //--- To one relationships

@@ -82,8 +82,8 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> HorizontalAlignment? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = HorizontalAlignment (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> HorizontalAlignment? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = HorizontalAlignment (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

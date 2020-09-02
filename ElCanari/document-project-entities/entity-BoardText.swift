@@ -1005,41 +1005,43 @@ class BoardText : BoardObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-    if let stringData = inDictionary ["mFontSize"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mFontSize = value
     }
-    if let stringData = inDictionary ["mLayer"], let value = BoardTextLayer.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mLayer"], let value = BoardTextLayer.unarchiveFromDataRange (inData, range) {
       self.mLayer = value
     }
-    if let stringData = inDictionary ["mText"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mText"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mText = value
     }
-    if let stringData = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.mHorizontalAlignment = value
     }
-    if let stringData = inDictionary ["mVerticalAlignment"], let value = BoardTextVerticalAlignment.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mVerticalAlignment"], let value = BoardTextVerticalAlignment.unarchiveFromDataRange (inData, range) {
       self.mVerticalAlignment = value
     }
-    if let stringData = inDictionary ["mRotation"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mRotation = value
     }
-    if let stringData = inDictionary ["mWeight"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mWeight"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mWeight = value
     }
-    if let stringData = inDictionary ["mOblique"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mOblique"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mOblique = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mFont"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mFont = inObjectArray [objectIndex] as? FontInProject
     }
   //--- To many relationships

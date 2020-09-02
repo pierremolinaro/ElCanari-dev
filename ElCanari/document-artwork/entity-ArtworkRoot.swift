@@ -839,47 +839,49 @@ class ArtworkRoot : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["selectedTab"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.selectedTab = value
     }
-    if let stringData = inDictionary ["comments"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
       self.comments = value
     }
-    if let stringData = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minPPTPTTTWdisplayUnit = value
     }
-    if let stringData = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minPPTPTTTW = value
     }
-    if let stringData = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minValueForOARdisplayUnit = value
     }
-    if let stringData = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minValueForOARinEBUnit = value
     }
-    if let stringData = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minValueForPHDdisplayUnit = value
     }
-    if let stringData = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minValueForPHDinEBUnit = value
     }
-    if let stringData = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minValueForBoardLimitWidthDisplayUnit = value
     }
-    if let stringData = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.minValueForBoardLimitWidth = value
     }
-    if let stringData = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
       self.drillDataFileExtension = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["fileGenerationParameterArray"], stringData.count > 0 {
+    if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
       var relationshipArray = [ArtworkFileGenerationParameters] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)

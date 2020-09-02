@@ -1326,76 +1326,78 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawBoardLimits = value
     }
-    if let stringData = inDictionary ["drawInternalBoardLimits"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawInternalBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawInternalBoardLimits = value
     }
-    if let stringData = inDictionary ["drawComponentNamesTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawComponentNamesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawComponentNamesTopSide = value
     }
-    if let stringData = inDictionary ["drawComponentNamesBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawComponentNamesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawComponentNamesBottomSide = value
     }
-    if let stringData = inDictionary ["drawComponentValuesTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawComponentValuesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawComponentValuesTopSide = value
     }
-    if let stringData = inDictionary ["drawComponentValuesBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawComponentValuesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawComponentValuesBottomSide = value
     }
-    if let stringData = inDictionary ["drawPackageLegendTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawPackageLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawPackageLegendTopSide = value
     }
-    if let stringData = inDictionary ["drawPackageLegendBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawPackageLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawPackageLegendBottomSide = value
     }
-    if let stringData = inDictionary ["drawPadHolesInPDF"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawPadHolesInPDF"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawPadHolesInPDF = value
     }
-    if let stringData = inDictionary ["drawPadsTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawPadsTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawPadsTopSide = value
     }
-    if let stringData = inDictionary ["drawPadsBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawPadsBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawPadsBottomSide = value
     }
-    if let stringData = inDictionary ["drawTextsLayoutTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawTextsLayoutTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawTextsLayoutTopSide = value
     }
-    if let stringData = inDictionary ["drawTextsLayoutBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawTextsLayoutBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawTextsLayoutBottomSide = value
     }
-    if let stringData = inDictionary ["drawTextsLegendTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawTextsLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawTextsLegendTopSide = value
     }
-    if let stringData = inDictionary ["drawTextsLegendBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawTextsLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawTextsLegendBottomSide = value
     }
-    if let stringData = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawTracksTopSide = value
     }
-    if let stringData = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawTracksBottomSide = value
     }
-    if let stringData = inDictionary ["drawVias"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["drawVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.drawVias = value
     }
-    if let stringData = inDictionary ["fileExtension"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["fileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
       self.fileExtension = value
     }
-    if let stringData = inDictionary ["horizontalMirror"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["horizontalMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.horizontalMirror = value
     }
-    if let stringData = inDictionary ["name"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
       self.name = value
     }
-    if let stringData = inDictionary ["measurementUnitForPadHoleInPDF"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["measurementUnitForPadHoleInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.measurementUnitForPadHoleInPDF = value
     }
-    if let stringData = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.padHoleDiameterInPDF = value
     }
   //--- To one relationships

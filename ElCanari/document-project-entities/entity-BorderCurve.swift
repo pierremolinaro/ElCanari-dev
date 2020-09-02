@@ -1224,38 +1224,40 @@ class BorderCurve : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mX"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mX = value
     }
-    if let stringData = inDictionary ["mY"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-    if let stringData = inDictionary ["mCPX1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCPX1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCPX1 = value
     }
-    if let stringData = inDictionary ["mCPY1"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCPY1"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCPY1 = value
     }
-    if let stringData = inDictionary ["mCPX2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCPX2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCPX2 = value
     }
-    if let stringData = inDictionary ["mCPY2"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCPY2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mCPY2 = value
     }
-    if let stringData = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
       self.mShape = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mRoot"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mRoot = inObjectArray [objectIndex] as? ProjectRoot
     }
-    if let stringData = inDictionary ["mNext"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mNext = inObjectArray [objectIndex] as? BorderCurve
     }
-    if let stringData = inDictionary ["mPrevious"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mPrevious = inObjectArray [objectIndex] as? BorderCurve
     }
   //--- To many relationships

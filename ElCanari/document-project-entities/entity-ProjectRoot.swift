@@ -7609,212 +7609,214 @@ class ProjectRoot : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mArtworkName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mArtworkName = value
     }
-    if let stringData = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mArtworkVersion = value
     }
-    if let stringData = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
       self.mPDFBoardBackgroundColor = value
     }
-    if let stringData = inDictionary ["mCheckClearanceBetweenPadsOfSameNet"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mCheckClearanceBetweenPadsOfSameNet"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mCheckClearanceBetweenPadsOfSameNet = value
     }
-    if let stringData = inDictionary ["mLastERCCheckingIsSuccess"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mLastERCCheckingIsSuccess"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mLastERCCheckingIsSuccess = value
     }
-    if let stringData = inDictionary ["mLastERCCheckingSignature"], let value = UInt32.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mLastERCCheckingSignature"], let value = UInt32.unarchiveFromDataRange (inData, range) {
       self.mLastERCCheckingSignature = value
     }
-    if let stringData = inDictionary ["mAutoRouterPreferredDirections"], let value = AutorouterPreferredDirections.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mAutoRouterPreferredDirections"], let value = AutorouterPreferredDirections.unarchiveFromDataRange (inData, range) {
       self.mAutoRouterPreferredDirections = value
     }
-    if let stringData = inDictionary ["mAutorouterSnapAngle"], let value = AutorouterSnapAngle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mAutorouterSnapAngle"], let value = AutorouterSnapAngle.unarchiveFromDataRange (inData, range) {
       self.mAutorouterSnapAngle = value
     }
-    if let stringData = inDictionary ["mRouteDirection"], let value = RouteDirection.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRouteDirection"], let value = RouteDirection.unarchiveFromDataRange (inData, range) {
       self.mRouteDirection = value
     }
-    if let stringData = inDictionary ["mRouteOrigin"], let value = RouteOrigin.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRouteOrigin"], let value = RouteOrigin.unarchiveFromDataRange (inData, range) {
       self.mRouteOrigin = value
     }
-    if let stringData = inDictionary ["mTrackLengthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mTrackLengthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mTrackLengthUnit = value
     }
-    if let stringData = inDictionary ["mLayoutClearance"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mLayoutClearance"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mLayoutClearance = value
     }
-    if let stringData = inDictionary ["mLayoutClearanceUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mLayoutClearanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mLayoutClearanceUnit = value
     }
-    if let stringData = inDictionary ["mBoardSelectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardSelectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardSelectedInspector = value
     }
-    if let stringData = inDictionary ["mBoardHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mBoardHorizontalFlip = value
     }
-    if let stringData = inDictionary ["mBoardVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mBoardVerticalFlip = value
     }
-    if let stringData = inDictionary ["mBoardGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardGridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
       self.mBoardGridStyle = value
     }
-    if let stringData = inDictionary ["mBoardGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardGridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardGridDisplayFactor = value
     }
-    if let stringData = inDictionary ["mBoardZoom"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardZoom = value
     }
-    if let stringData = inDictionary ["mBoardGridStep"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardGridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardGridStep = value
     }
-    if let stringData = inDictionary ["mBoardGridStepUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardGridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardGridStepUnit = value
     }
-    if let stringData = inDictionary ["mErrorOrWarningIssueSize"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mErrorOrWarningIssueSize"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mErrorOrWarningIssueSize = value
     }
-    if let stringData = inDictionary ["mControlKeyHiliteDiameter"], let value = Double.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mControlKeyHiliteDiameter"], let value = Double.unarchiveFromDataRange (inData, range) {
       self.mControlKeyHiliteDiameter = value
     }
-    if let stringData = inDictionary ["mDSNFileProposedName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDSNFileProposedName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mDSNFileProposedName = value
     }
-    if let stringData = inDictionary ["mBoardLimitsWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsWidth = value
     }
-    if let stringData = inDictionary ["mBoardLimitsWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsWidthUnit = value
     }
-    if let stringData = inDictionary ["mBoardClearance"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardClearance"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardClearance = value
     }
-    if let stringData = inDictionary ["mBoardClearanceUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardClearanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardClearanceUnit = value
     }
-    if let stringData = inDictionary ["mBoardLimitsSelectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsSelectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsSelectedInspector = value
     }
-    if let stringData = inDictionary ["mBoardLimitsHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsHorizontalFlip = value
     }
-    if let stringData = inDictionary ["mBoardLimitsVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsVerticalFlip = value
     }
-    if let stringData = inDictionary ["mBoardLimitsGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsGridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsGridStyle = value
     }
-    if let stringData = inDictionary ["mBoardLimitsGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsGridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsGridDisplayFactor = value
     }
-    if let stringData = inDictionary ["mBoardLimitsZoom"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsZoom = value
     }
-    if let stringData = inDictionary ["mBoardLimitsGridStep"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsGridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsGridStep = value
     }
-    if let stringData = inDictionary ["mBoardLimitsGridStepUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsGridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsGridStepUnit = value
     }
-    if let stringData = inDictionary ["mBoardLimitsBoundingBoxUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitsBoundingBoxUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitsBoundingBoxUnit = value
     }
-    if let stringData = inDictionary ["mBoardPointsBoundingBoxUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardPointsBoundingBoxUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardPointsBoundingBoxUnit = value
     }
-    if let stringData = inDictionary ["mBoardSelectedCurveDisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardSelectedCurveDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardSelectedCurveDisplayUnit = value
     }
-    if let stringData = inDictionary ["mBoardLimitControlPointsDisplayUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardLimitControlPointsDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mBoardLimitControlPointsDisplayUnit = value
     }
-    if let stringData = inDictionary ["mBoardShape"], let value = BoardShape.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mBoardShape"], let value = BoardShape.unarchiveFromDataRange (inData, range) {
       self.mBoardShape = value
     }
-    if let stringData = inDictionary ["mRectangularBoardWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRectangularBoardWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mRectangularBoardWidth = value
     }
-    if let stringData = inDictionary ["mRectangularBoardWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRectangularBoardWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mRectangularBoardWidthUnit = value
     }
-    if let stringData = inDictionary ["mRectangularBoardHeight"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRectangularBoardHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mRectangularBoardHeight = value
     }
-    if let stringData = inDictionary ["mRectangularBoardHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRectangularBoardHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mRectangularBoardHeightUnit = value
     }
-    if let stringData = inDictionary ["mDefaultNetClassName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDefaultNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mDefaultNetClassName = value
     }
-    if let stringData = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSelectedPageIndex = value
     }
-    if let stringData = inDictionary ["mSelectedSchematicInspector"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSelectedSchematicInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSelectedSchematicInspector = value
     }
-    if let stringData = inDictionary ["mSchematicTitle"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicTitle"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSchematicTitle = value
     }
-    if let stringData = inDictionary ["mSchematicVersion"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicVersion"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSchematicVersion = value
     }
-    if let stringData = inDictionary ["mSchematicDate"], let value = Date.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicDate"], let value = Date.unarchiveFromDataRange (inData, range) {
       self.mSchematicDate = value
     }
-    if let stringData = inDictionary ["mSchematicHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mSchematicHorizontalFlip = value
     }
-    if let stringData = inDictionary ["mSchematicVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mSchematicVerticalFlip = value
     }
-    if let stringData = inDictionary ["mSchematicZoom"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSchematicZoom = value
     }
-    if let stringData = inDictionary ["mSchematicGridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicGridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
       self.mSchematicGridStyle = value
     }
-    if let stringData = inDictionary ["mSchematicGridDisplayFactor"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicGridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSchematicGridDisplayFactor = value
     }
-    if let stringData = inDictionary ["mSchematicCustomWidth"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicCustomWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSchematicCustomWidth = value
     }
-    if let stringData = inDictionary ["mSchematicCustomWidthUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicCustomWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSchematicCustomWidthUnit = value
     }
-    if let stringData = inDictionary ["mSchematicCustomHeight"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicCustomHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSchematicCustomHeight = value
     }
-    if let stringData = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSchematicCustomHeightUnit = value
     }
-    if let stringData = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
       self.mSchematicSheetOrientation = value
     }
-    if let stringData = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromDataRange (inData, range) {
       self.mRastnetDisplay = value
     }
-    if let stringData = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mRastnetDisplayedNetName = value
     }
-    if let stringData = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mRastnetDisplayedComponentName = value
     }
   //--- To one relationships
-    if let stringData = inDictionary ["mSelectedSheet"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mSelectedSheet = inObjectArray [objectIndex] as? SheetInProject
     }
-    if let stringData = inDictionary ["mArtwork"], let objectIndex = stringData.base62EncodedInt () {
+    if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
       self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot
     }
   //--- To many relationships
-    if let stringData = inDictionary ["mSheets"], stringData.count > 0 {
+    if let range = inDictionary ["mSheets"], range.length > 0 {
       var relationshipArray = [SheetInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SheetInProject)
@@ -7822,9 +7824,9 @@ class ProjectRoot : EBManagedObject,
       //self.mSheets = []
       self.mSheets = relationshipArray
     }
-    if let stringData = inDictionary ["mNetClasses"], stringData.count > 0 {
+    if let range = inDictionary ["mNetClasses"], range.length > 0 {
       var relationshipArray = [NetClassInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
@@ -7832,9 +7834,9 @@ class ProjectRoot : EBManagedObject,
       //self.mNetClasses = []
       self.mNetClasses = relationshipArray
     }
-    if let stringData = inDictionary ["mFonts"], stringData.count > 0 {
+    if let range = inDictionary ["mFonts"], range.length > 0 {
       var relationshipArray = [FontInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! FontInProject)
@@ -7842,9 +7844,9 @@ class ProjectRoot : EBManagedObject,
       //self.mFonts = []
       self.mFonts = relationshipArray
     }
-    if let stringData = inDictionary ["mDevices"], stringData.count > 0 {
+    if let range = inDictionary ["mDevices"], range.length > 0 {
       var relationshipArray = [DeviceInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! DeviceInProject)
@@ -7852,9 +7854,9 @@ class ProjectRoot : EBManagedObject,
       //self.mDevices = []
       self.mDevices = relationshipArray
     }
-    if let stringData = inDictionary ["mBorderCurves"], stringData.count > 0 {
+    if let range = inDictionary ["mBorderCurves"], range.length > 0 {
       var relationshipArray = [BorderCurve] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! BorderCurve)
@@ -7862,9 +7864,9 @@ class ProjectRoot : EBManagedObject,
       //self.mBorderCurves = []
       self.mBorderCurves = relationshipArray
     }
-    if let stringData = inDictionary ["mBoardObjects"], stringData.count > 0 {
+    if let range = inDictionary ["mBoardObjects"], range.length > 0 {
       var relationshipArray = [BoardObject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! BoardObject)
@@ -7872,9 +7874,9 @@ class ProjectRoot : EBManagedObject,
       //self.mBoardObjects = []
       self.mBoardObjects = relationshipArray
     }
-    if let stringData = inDictionary ["mComponents"], stringData.count > 0 {
+    if let range = inDictionary ["mComponents"], range.length > 0 {
       var relationshipArray = [ComponentInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ComponentInProject)

@@ -79,8 +79,8 @@ enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inData : Data) -> BoardShape? {
-    if let rawValue = inData.base62EncodedInt (), let enumValue = BoardShape (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BoardShape? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = BoardShape (rawValue: rawValue) {
       return enumValue
     }else{
       return nil

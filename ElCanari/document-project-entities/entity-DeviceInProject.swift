@@ -1196,26 +1196,28 @@ class DeviceInProject : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mDeviceName"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mDeviceName = value
     }
-    if let stringData = inDictionary ["mPrefix"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPrefix = value
     }
-    if let stringData = inDictionary ["mDeviceVersion"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDeviceVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDeviceVersion = value
     }
-    if let stringData = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
       self.mDeviceFileData = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["mPackages"], stringData.count > 0 {
+    if let range = inDictionary ["mPackages"], range.length > 0 {
       var relationshipArray = [DevicePackageInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
@@ -1223,9 +1225,9 @@ class DeviceInProject : EBManagedObject,
       //self.mPackages = []
       self.mPackages = relationshipArray
     }
-    if let stringData = inDictionary ["mSymbols"], stringData.count > 0 {
+    if let range = inDictionary ["mSymbols"], range.length > 0 {
       var relationshipArray = [DeviceSymbolInstanceInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
@@ -1233,9 +1235,9 @@ class DeviceInProject : EBManagedObject,
       //self.mSymbols = []
       self.mSymbols = relationshipArray
     }
-    if let stringData = inDictionary ["mComponents"], stringData.count > 0 {
+    if let range = inDictionary ["mComponents"], range.length > 0 {
       var relationshipArray = [ComponentInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
@@ -1243,9 +1245,9 @@ class DeviceInProject : EBManagedObject,
       //self.mComponents = []
       self.mComponents = relationshipArray
     }
-    if let stringData = inDictionary ["mPadAssignments"], stringData.count > 0 {
+    if let range = inDictionary ["mPadAssignments"], range.length > 0 {
       var relationshipArray = [DevicePadAssignmentInProject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)

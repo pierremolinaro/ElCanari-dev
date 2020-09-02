@@ -870,44 +870,46 @@ class SymbolRoot : EBManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["selectedInspector"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.selectedInspector = value
     }
-    if let stringData = inDictionary ["comments"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
       self.comments = value
     }
-    if let stringData = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.horizontalFlip = value
     }
-    if let stringData = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.verticalFlip = value
     }
-    if let stringData = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
       self.gridStyle = value
     }
-    if let stringData = inDictionary ["gridDisplay"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.gridDisplay = value
     }
-    if let stringData = inDictionary ["zoom"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.zoom = value
     }
-    if let stringData = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.xPlacardUnit = value
     }
-    if let stringData = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.yPlacardUnit = value
     }
-    if let stringData = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.selectedPageIndex = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["symbolObjects"], stringData.count > 0 {
+    if let range = inDictionary ["symbolObjects"], range.length > 0 {
       var relationshipArray = [SymbolObject] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SymbolObject)

@@ -18,9 +18,9 @@ extension Bool {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> Bool? {
-    if inStringData.count == 1 {
-      let c = inStringData [0]
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Bool? {
+    if inRange.length == 1 {
+      let c = inData [inRange.location]
       if c == ASCII.T.rawValue {
         return true
       }else if c == ASCII.F.rawValue {
@@ -49,8 +49,8 @@ extension Int {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> Int? {
-    return inStringData.base62EncodedInt ()
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Int? {
+    return inData.base62EncodedInt (range: inRange)
   }
 
   //····················································································································
@@ -69,8 +69,8 @@ extension UInt32 {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> UInt32? {
-    return inStringData.base62EncodedUInt32 ()
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> UInt32? {
+    return inData.base62EncodedUInt32 (range: inRange)
   }
 
   //····················································································································
@@ -90,9 +90,10 @@ extension Double {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> Double? {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
     var result : Double? = nil
-    if let s = String (data: inStringData, encoding: .utf8), let v = UInt64 (s, radix: 16) {
+    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8),
+       let v = UInt64 (s, radix: 16) {
       result = Double (bitPattern: v)
     }
     return result
@@ -115,9 +116,9 @@ extension String {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> String? {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> String? {
     var result : String? = nil
-    if let s = String (data: inStringData, encoding: .utf8) {
+    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
       result = s.replacingOccurrences(of: "\\n", with: "\n")
     }
     return result
@@ -139,9 +140,9 @@ extension NSBezierPath {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> NSBezierPath? {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> NSBezierPath? {
     var result : NSBezierPath? = nil
-    if let s = String (data: inStringData, encoding: .utf8) {
+    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
       result = NSBezierPath.unarchiveFromString (string: s) as? NSBezierPath
     }
     return result
@@ -163,9 +164,9 @@ extension Date {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> Date? {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Date? {
     var result : Date? = nil
-    if let timeIntervalSince1970 = Double.unarchiveFromStringData (inStringData) {
+    if let timeIntervalSince1970 = Double.unarchiveFromDataRange (inData, inRange) {
       result = Date (timeIntervalSince1970: timeIntervalSince1970)
     }
     return result
@@ -188,9 +189,9 @@ extension NSColor {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> NSColor? {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> NSColor? {
     var result : NSColor? = nil
-    if let s = String (data: inStringData, encoding: .utf8) {
+    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
       result = NSColor.unarchiveFromString (string: s) as? NSColor
     }
     return result
@@ -212,8 +213,8 @@ extension Data {
 
   //····················································································································
 
-  static func unarchiveFromStringData (_ inStringData : Data) -> Data? {
-    return Data (base64Encoded: inStringData, options: [])
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Data? {
+    return Data (base64Encoded: inData [inRange.location ..< inRange.location + inRange.length], options: [])
   }
 
   //····················································································································
@@ -372,7 +373,7 @@ extension Data {
 
   //····················································································································
 
-  func parseUnsigned (idx ioIdx : inout Int, ok ioOk : inout Bool, result outResult : inout Int) {
+  func parseUnsigned (idx ioIdx : inout Int, result outResult : inout Int) {
     outResult = 0
     var loop = true
     while loop {
@@ -401,28 +402,27 @@ extension Data {
 
   //····················································································································
 
-  func base62EncodedInt () -> Int? {
+  func base62EncodedInt (range inRange : NSRange) -> Int? {
     var sign = 1
-    var idx = 0
-    if self.count > 0, self [0] == ASCII.minus.rawValue {
+    var idx = inRange.location
+    if inRange.length > 0, self [idx] == ASCII.minus.rawValue {
       sign = -1
-      idx = 1
+      idx += 1
     }
     var r = 0
-    var ok = true
-    parseUnsigned (idx: &idx, ok: &ok, result: &r)
-    return ok ? (sign * r) : nil
+    parseUnsigned (idx: &idx, result: &r)
+    return sign * r
   }
 
   //····················································································································
 
-  func base62EncodedUInt32 () -> UInt32? {
+  func base62EncodedUInt32 (range inRange : NSRange) -> UInt32? {
     var result : UInt32 = 0
-    var idx = 0
+    var idx = inRange.location
+    let end = inRange.location + inRange.length
     var loop = true
-    var ok = true
     while loop {
-      if idx < self.count {
+      if idx < end {
         let c = self [idx]
         if (c >= ASCII.zero.rawValue) && (c <= ASCII.nine.rawValue) {
           result *= 62
@@ -438,35 +438,34 @@ extension Data {
           idx += 1
         }else{
           loop = false
-          ok = false
         }
       }else{
         loop = false
       }
     }
-    return ok ? result : nil
+    return result
   }
 
   //····················································································································
 
-  func base62EncodedIntArray () -> [Int] {
+  func base62EncodedIntArray (fromRange inRange : NSRange) -> [Int] {
     var result = [Int] ()
-    var ok = true
-    var idx = 0
+    var idx = inRange.location
+    let end = inRange.location + inRange.length
     var loop = true
     while loop {
       var value = 0
-      parseUnsigned (idx: &idx, ok: &ok, result: &value)
+      parseUnsigned (idx: &idx, result: &value)
       result.append (value)
-      if ok && (idx < self.count) && (self [idx] == ASCII.colon.rawValue) {
+      if (idx < end) && (self [idx] == ASCII.colon.rawValue) {
         idx += 1
         var factor = 0
-        parseUnsigned (idx: &idx, ok: &ok, result: &factor)
+        parseUnsigned (idx: &idx, result: &factor)
         for i in 1 ... factor {
           result.append (value + i)
         }
       }
-      loop = ok && (idx < self.count) && (self [idx] == ASCII.space.rawValue)
+      loop = (idx < end) && (self [idx] == ASCII.space.rawValue)
       idx += 1
     }
     return result

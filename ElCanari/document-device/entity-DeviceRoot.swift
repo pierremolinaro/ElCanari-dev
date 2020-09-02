@@ -1936,59 +1936,61 @@ class DeviceRoot : EBGraphicManagedObject,
   //    setUpWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : Data], _ inObjectArray : [EBManagedObject]) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray)
+  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
+                                         _ inObjectArray : [EBManagedObject],
+                                         _ inData : Data) {
+    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
   //--- Atomic properties
-    if let stringData = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSelectedPageIndex = value
     }
-    if let stringData = inDictionary ["mTitle"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mTitle"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mTitle = value
     }
-    if let stringData = inDictionary ["mImageData"], let value = Data.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
       self.mImageData = value
     }
-    if let stringData = inDictionary ["mPrefix"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPrefix = value
     }
-    if let stringData = inDictionary ["mComments"], let value = String.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mComments"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mComments = value
     }
-    if let stringData = inDictionary ["mPackageDisplayZoom"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPackageDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mPackageDisplayZoom = value
     }
-    if let stringData = inDictionary ["mPackageDisplayHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPackageDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mPackageDisplayHorizontalFlip = value
     }
-    if let stringData = inDictionary ["mPackageDisplayVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mPackageDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mPackageDisplayVerticalFlip = value
     }
-    if let stringData = inDictionary ["mShowPackages"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mShowPackages"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mShowPackages = value
     }
-    if let stringData = inDictionary ["mShowPackagePadNumbers"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mShowPackagePadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mShowPackagePadNumbers = value
     }
-    if let stringData = inDictionary ["mShowPackageFrontPads"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mShowPackageFrontPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mShowPackageFrontPads = value
     }
-    if let stringData = inDictionary ["mShowPackageBackPads"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mShowPackageBackPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mShowPackageBackPads = value
     }
-    if let stringData = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSymbolDisplayZoom = value
     }
-    if let stringData = inDictionary ["mSymbolDisplayHorizontalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSymbolDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mSymbolDisplayHorizontalFlip = value
     }
-    if let stringData = inDictionary ["mSymbolDisplayVerticalFlip"], let value = Bool.unarchiveFromStringData (stringData) {
+    if let range = inDictionary ["mSymbolDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mSymbolDisplayVerticalFlip = value
     }
   //--- To one relationships
   //--- To many relationships
-    if let stringData = inDictionary ["mDocs"], stringData.count > 0 {
+    if let range = inDictionary ["mDocs"], range.length > 0 {
       var relationshipArray = [DeviceDocumentation] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
@@ -1996,9 +1998,9 @@ class DeviceRoot : EBGraphicManagedObject,
       //self.mDocs = []
       self.mDocs = relationshipArray
     }
-    if let stringData = inDictionary ["mSymbolInstances"], stringData.count > 0 {
+    if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
       var relationshipArray = [SymbolInstanceInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
@@ -2006,9 +2008,9 @@ class DeviceRoot : EBGraphicManagedObject,
       //self.mSymbolInstances = []
       self.mSymbolInstances = relationshipArray
     }
-    if let stringData = inDictionary ["mPackages"], stringData.count > 0 {
+    if let range = inDictionary ["mPackages"], range.length > 0 {
       var relationshipArray = [PackageInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
@@ -2016,9 +2018,9 @@ class DeviceRoot : EBGraphicManagedObject,
       //self.mPackages = []
       self.mPackages = relationshipArray
     }
-    if let stringData = inDictionary ["mSymbolTypes"], stringData.count > 0 {
+    if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
       var relationshipArray = [SymbolTypeInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
@@ -2026,9 +2028,9 @@ class DeviceRoot : EBGraphicManagedObject,
       //self.mSymbolTypes = []
       self.mSymbolTypes = relationshipArray
     }
-    if let stringData = inDictionary ["mPadProxies"], stringData.count > 0 {
+    if let range = inDictionary ["mPadProxies"], range.length > 0 {
       var relationshipArray = [PadProxyInDevice] ()
-      let indexArray = stringData.base62EncodedIntArray ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
       // Swift.print ("TOMANY '\(s)', \(a)")
       for idx in indexArray {
         relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
