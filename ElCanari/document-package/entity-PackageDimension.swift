@@ -1068,62 +1068,48 @@ class PackageDimension : PackageObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y1 = value })
         self.y1 = value
       }
       if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x2 = value })
         self.x2 = value
       }
       if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y2 = value })
         self.y2 = value
       }
       if let range = inDictionary ["xDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xDimension = value })
         self.xDimension = value
       }
       if let range = inDictionary ["yDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yDimension = value })
         self.yDimension = value
       }
       if let range = inDictionary ["x1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x1Unit = value })
         self.x1Unit = value
       }
       if let range = inDictionary ["y1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y1Unit = value })
         self.y1Unit = value
       }
       if let range = inDictionary ["x2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x2Unit = value })
         self.x2Unit = value
       }
       if let range = inDictionary ["y2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y2Unit = value })
         self.y2Unit = value
       }
       if let range = inDictionary ["xDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xDimensionUnit = value })
         self.xDimensionUnit = value
       }
       if let range = inDictionary ["yDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yDimensionUnit = value })
         self.yDimensionUnit = value
       }
       if let range = inDictionary ["distanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.distanceUnit = value })
         self.distanceUnit = value
       }
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x1 = value })
         self.x1 = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

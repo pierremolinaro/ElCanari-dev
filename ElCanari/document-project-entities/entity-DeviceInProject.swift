@@ -1202,29 +1202,24 @@ class DeviceInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDeviceName = value })
         self.mDeviceName = value
       }
       if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPrefix = value })
         self.mPrefix = value
       }
       if let range = inDictionary ["mDeviceVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDeviceVersion = value })
         self.mDeviceVersion = value
       }
       if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDeviceFileData = value })
         self.mDeviceFileData = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = [DevicePackageInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
         }
@@ -1235,7 +1230,6 @@ class DeviceInProject : EBManagedObject,
       if let range = inDictionary ["mSymbols"], range.length > 0 {
         var relationshipArray = [DeviceSymbolInstanceInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
         }
@@ -1246,7 +1240,6 @@ class DeviceInProject : EBManagedObject,
       if let range = inDictionary ["mComponents"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
@@ -1257,7 +1250,6 @@ class DeviceInProject : EBManagedObject,
       if let range = inDictionary ["mPadAssignments"], range.length > 0 {
         var relationshipArray = [DevicePadAssignmentInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)
         }
@@ -1265,7 +1257,6 @@ class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPadAssignments = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

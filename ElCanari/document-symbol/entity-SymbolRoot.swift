@@ -876,53 +876,42 @@ class SymbolRoot : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedInspector = value })
         self.selectedInspector = value
       }
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.comments = value })
         self.comments = value
       }
       if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.horizontalFlip = value })
         self.horizontalFlip = value
       }
       if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.verticalFlip = value })
         self.verticalFlip = value
       }
       if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.gridStyle = value })
         self.gridStyle = value
       }
       if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.gridDisplay = value })
         self.gridDisplay = value
       }
       if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.zoom = value })
         self.zoom = value
       }
       if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xPlacardUnit = value })
         self.xPlacardUnit = value
       }
       if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yPlacardUnit = value })
         self.yPlacardUnit = value
       }
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedPageIndex = value })
         self.selectedPageIndex = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["symbolObjects"], range.length > 0 {
         var relationshipArray = [SymbolObject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolObject)
         }
@@ -930,7 +919,6 @@ class SymbolRoot : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.symbolObjects = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

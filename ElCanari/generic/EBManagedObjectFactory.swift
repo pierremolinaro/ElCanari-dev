@@ -218,11 +218,12 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   }
   parallelObjectSetupContext.mOperationQueue.waitUntilAllOperationsAreFinished ()
   Swift.print ("prepare objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  for resultOperation in parallelObjectSetupContext.mToOneSetUpOperationList{
-    resultOperation ()
+  for setupOperation in parallelObjectSetupContext.mToOneSetUpOperationList{
+    setupOperation ()
   }
-  for resultOperation in parallelObjectSetupContext.mToManySetUpOperationList {
-    resultOperation ()
+  Swift.print ("setup toOne \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  for setupOperation in parallelObjectSetupContext.mToManySetUpOperationList {
+    setupOperation ()
   }
   Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
 //--- Scanner error ?

@@ -492,27 +492,23 @@ class PadProxyInDevice : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinInstanceName = value })
         self.mPinInstanceName = value
       }
       if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPadName = value })
         self.mPadName = value
       }
       if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mIsNC = value })
         self.mIsNC = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

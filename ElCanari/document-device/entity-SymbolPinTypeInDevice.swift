@@ -815,53 +815,42 @@ class SymbolPinTypeInDevice : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mPinX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinX = value })
         self.mPinX = value
       }
       if let range = inDictionary ["mPinY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinY = value })
         self.mPinY = value
       }
       if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXName = value })
         self.mXName = value
       }
       if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYName = value })
         self.mYName = value
       }
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mName = value })
         self.mName = value
       }
       if let range = inDictionary ["mNameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNameHorizontalAlignment = value })
         self.mNameHorizontalAlignment = value
       }
       if let range = inDictionary ["mPinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinNameIsDisplayedInSchematics = value })
         self.mPinNameIsDisplayedInSchematics = value
       }
       if let range = inDictionary ["mXNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXNumber = value })
         self.mXNumber = value
       }
       if let range = inDictionary ["mYNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYNumber = value })
         self.mYNumber = value
       }
       if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNumberHorizontalAlignment = value })
         self.mNumberHorizontalAlignment = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
         var relationshipArray = [SymbolPinInstanceInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
@@ -869,7 +858,6 @@ class SymbolPinTypeInDevice : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mInstances = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

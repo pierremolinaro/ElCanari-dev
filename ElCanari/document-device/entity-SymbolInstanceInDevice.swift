@@ -757,36 +757,31 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mInstanceName = value })
         self.mInstanceName = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
-      }
-    //--- To many relationships
-      if let range = inDictionary ["mPinInstances"], range.length > 0 {
-        var relationshipArray = [SymbolPinInstanceInDevice] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPinInstances = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To one relationships
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To many relationships
+      if let range = inDictionary ["mPinInstances"], range.length > 0 {
+        var relationshipArray = [SymbolPinInstanceInDevice] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPinInstances = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

@@ -1289,53 +1289,42 @@ class NetClassInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNetClassName = value })
         self.mNetClassName = value
       }
       if let range = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNetClassColor = value })
         self.mNetClassColor = value
       }
       if let range = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mTrackWidth = value })
         self.mTrackWidth = value
       }
       if let range = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mTrackWidthUnit = value })
         self.mTrackWidthUnit = value
       }
       if let range = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mViaHoleDiameter = value })
         self.mViaHoleDiameter = value
       }
       if let range = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mViaHoleDiameterUnit = value })
         self.mViaHoleDiameterUnit = value
       }
       if let range = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mViaPadDiameter = value })
         self.mViaPadDiameter = value
       }
       if let range = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mViaPadDiameterUnit = value })
         self.mViaPadDiameterUnit = value
       }
       if let range = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mAllowTracksOnFrontSide = value })
         self.mAllowTracksOnFrontSide = value
       }
       if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mAllowTracksOnBackSide = value })
         self.mAllowTracksOnBackSide = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mNets"], range.length > 0 {
         var relationshipArray = [NetInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)
         }
@@ -1343,7 +1332,6 @@ class NetClassInProject : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mNets = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

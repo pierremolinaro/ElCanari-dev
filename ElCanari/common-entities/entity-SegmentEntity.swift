@@ -386,30 +386,24 @@ class SegmentEntity : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y1 = value })
         self.y1 = value
       }
       if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x2 = value })
         self.x2 = value
       }
       if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y2 = value })
         self.y2 = value
       }
       if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.width = value })
         self.width = value
       }
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x1 = value })
         self.x1 = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

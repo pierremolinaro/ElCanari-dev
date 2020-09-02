@@ -979,50 +979,39 @@ class SymbolPin : SymbolObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["yPin"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yPin = value })
         self.yPin = value
       }
       if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xName = value })
         self.xName = value
       }
       if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yName = value })
         self.yName = value
       }
       if let range = inDictionary ["xNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xNumber = value })
         self.xNumber = value
       }
       if let range = inDictionary ["yNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yNumber = value })
         self.yNumber = value
       }
       if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.name = value })
         self.name = value
       }
       if let range = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.nameHorizontalAlignment = value })
         self.nameHorizontalAlignment = value
       }
       if let range = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.numberHorizontalAlignment = value })
         self.numberHorizontalAlignment = value
       }
       if let range = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.pinNameIsDisplayedInSchematics = value })
         self.pinNameIsDisplayedInSchematics = value
       }
       if let range = inDictionary ["xPin"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xPin = value })
         self.xPin = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

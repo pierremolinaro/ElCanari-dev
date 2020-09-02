@@ -491,26 +491,21 @@ class SymbolText : SymbolObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y = value })
         self.y = value
       }
       if let range = inDictionary ["text"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.text = value })
         self.text = value
       }
       if let range = inDictionary ["horizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.horizontalAlignment = value })
         self.horizontalAlignment = value
       }
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x = value })
         self.x = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

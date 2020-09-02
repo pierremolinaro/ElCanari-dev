@@ -686,29 +686,24 @@ class FontCharacter : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.codePoint = value })
         self.codePoint = value
       }
       if let range = inDictionary ["advance"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.advance = value })
         self.advance = value
       }
       if let range = inDictionary ["mWarnsWhenNoSegment"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWarnsWhenNoSegment = value })
         self.mWarnsWhenNoSegment = value
       }
       if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWarnsWhenAdvanceIsZero = value })
         self.mWarnsWhenAdvanceIsZero = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["segments"], range.length > 0 {
         var relationshipArray = [SegmentForFontCharacter] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)
         }
@@ -716,7 +711,6 @@ class FontCharacter : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.segments = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

@@ -616,39 +616,32 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFirstX = value })
         self.mFirstX = value
       }
       if let range = inDictionary ["mFirstY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFirstY = value })
         self.mFirstY = value
       }
       if let range = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFirstColor = value })
         self.mFirstColor = value
       }
       if let range = inDictionary ["mSecondDx"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSecondDx = value })
         self.mSecondDx = value
       }
       if let range = inDictionary ["mSecondDy"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSecondDy = value })
         self.mSecondDy = value
       }
       if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSecondColor = value })
         self.mSecondColor = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

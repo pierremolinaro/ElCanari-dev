@@ -1230,37 +1230,28 @@ class BorderCurve : EBGraphicManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
       }
       if let range = inDictionary ["mCPX1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCPX1 = value })
         self.mCPX1 = value
       }
       if let range = inDictionary ["mCPY1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCPY1 = value })
         self.mCPY1 = value
       }
       if let range = inDictionary ["mCPX2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCPX2 = value })
         self.mCPX2 = value
       }
       if let range = inDictionary ["mCPY2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCPY2 = value })
         self.mCPY2 = value
       }
       if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mShape = value })
         self.mShape = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
@@ -1277,6 +1268,7 @@ class BorderCurve : EBGraphicManagedObject,
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPrevious = inObjectArray [objectIndex] as? BorderCurve })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

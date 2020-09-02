@@ -372,21 +372,18 @@ class DevicePackageInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPackageName = value })
         self.mPackageName = value
       }
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mStrokeBezierPath = value })
         self.mStrokeBezierPath = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
         var relationshipArray = [DeviceMasterPadInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
         }
@@ -394,7 +391,6 @@ class DevicePackageInProject : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

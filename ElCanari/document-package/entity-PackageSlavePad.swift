@@ -1487,75 +1487,59 @@ class PackageSlavePad : PackageObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xCenter = value })
         self.xCenter = value
       }
       if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yCenter = value })
         self.yCenter = value
       }
       if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.width = value })
         self.width = value
       }
       if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.height = value })
         self.height = value
       }
       if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeWidth = value })
         self.holeWidth = value
       }
       if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeHeight = value })
         self.holeHeight = value
       }
       if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.padShape = value })
         self.padShape = value
       }
       if let range = inDictionary ["padStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.padStyle = value })
         self.padStyle = value
       }
       if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xCenterUnit = value })
         self.xCenterUnit = value
       }
       if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yCenterUnit = value })
         self.yCenterUnit = value
       }
       if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.widthUnit = value })
         self.widthUnit = value
       }
       if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.heightUnit = value })
         self.heightUnit = value
       }
       if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeWidthUnit = value })
         self.holeWidthUnit = value
       }
       if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeHeightUnit = value })
         self.holeHeightUnit = value
       }
       if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.annularRingUnit = value })
         self.annularRingUnit = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.master = inObjectArray [objectIndex] as? PackagePad })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

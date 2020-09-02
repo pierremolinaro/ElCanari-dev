@@ -845,57 +845,45 @@ class ArtworkRoot : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedTab = value })
         self.selectedTab = value
       }
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.comments = value })
         self.comments = value
       }
       if let range = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minPPTPTTTWdisplayUnit = value })
         self.minPPTPTTTWdisplayUnit = value
       }
       if let range = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minPPTPTTTW = value })
         self.minPPTPTTTW = value
       }
       if let range = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minValueForOARdisplayUnit = value })
         self.minValueForOARdisplayUnit = value
       }
       if let range = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minValueForOARinEBUnit = value })
         self.minValueForOARinEBUnit = value
       }
       if let range = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minValueForPHDdisplayUnit = value })
         self.minValueForPHDdisplayUnit = value
       }
       if let range = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minValueForPHDinEBUnit = value })
         self.minValueForPHDinEBUnit = value
       }
       if let range = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minValueForBoardLimitWidthDisplayUnit = value })
         self.minValueForBoardLimitWidthDisplayUnit = value
       }
       if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.minValueForBoardLimitWidth = value })
         self.minValueForBoardLimitWidth = value
       }
       if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.drillDataFileExtension = value })
         self.drillDataFileExtension = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
         var relationshipArray = [ArtworkFileGenerationParameters] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
         }
@@ -903,7 +891,6 @@ class ArtworkRoot : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.fileGenerationParameterArray = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

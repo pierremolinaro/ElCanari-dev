@@ -894,58 +894,45 @@ class DevicePinInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mPinName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinName = value })
         self.mPinName = value
       }
       if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolInstanceName = value })
         self.mSymbolInstanceName = value
       }
       if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolTypeName = value })
         self.mSymbolTypeName = value
       }
       if let range = inDictionary ["mPinX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinX = value })
         self.mPinX = value
       }
       if let range = inDictionary ["mPinY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinY = value })
         self.mPinY = value
       }
       if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXName = value })
         self.mXName = value
       }
       if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYName = value })
         self.mYName = value
       }
       if let range = inDictionary ["mNameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNameHorizontalAlignment = value })
         self.mNameHorizontalAlignment = value
       }
       if let range = inDictionary ["mPinNameIsDisplayedInSchematic"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPinNameIsDisplayedInSchematic = value })
         self.mPinNameIsDisplayedInSchematic = value
       }
       if let range = inDictionary ["mXNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXNumber = value })
         self.mXNumber = value
       }
       if let range = inDictionary ["mYNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYNumber = value })
         self.mYNumber = value
       }
       if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNumberHorizontalAlignment = value })
         self.mNumberHorizontalAlignment = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

@@ -2337,89 +2337,74 @@ class MergerRoot : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedPageIndex = value })
         self.selectedPageIndex = value
       }
       if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.zoom = value })
         self.zoom = value
       }
       if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.automaticBoardSize = value })
         self.automaticBoardSize = value
       }
       if let range = inDictionary ["boardManualWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.boardManualWidth = value })
         self.boardManualWidth = value
       }
       if let range = inDictionary ["boardManualHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.boardManualHeight = value })
         self.boardManualHeight = value
       }
       if let range = inDictionary ["boardWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.boardWidthUnit = value })
         self.boardWidthUnit = value
       }
       if let range = inDictionary ["boardHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.boardHeightUnit = value })
         self.boardHeightUnit = value
       }
       if let range = inDictionary ["overlapingArrangment"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.overlapingArrangment = value })
         self.overlapingArrangment = value
       }
       if let range = inDictionary ["selectedBoardXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedBoardXUnit = value })
         self.selectedBoardXUnit = value
       }
       if let range = inDictionary ["selectedBoardYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedBoardYUnit = value })
         self.selectedBoardYUnit = value
       }
       if let range = inDictionary ["boardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.boardLimitWidth = value })
         self.boardLimitWidth = value
       }
       if let range = inDictionary ["boardLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.boardLimitWidthUnit = value })
         self.boardLimitWidthUnit = value
       }
       if let range = inDictionary ["arrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.arrowMagnitude = value })
         self.arrowMagnitude = value
       }
       if let range = inDictionary ["arrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.arrowMagnitudeUnit = value })
         self.arrowMagnitudeUnit = value
       }
       if let range = inDictionary ["shiftArrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.shiftArrowMagnitude = value })
         self.shiftArrowMagnitude = value
       }
       if let range = inDictionary ["shiftArrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.shiftArrowMagnitudeUnit = value })
         self.shiftArrowMagnitudeUnit = value
       }
       if let range = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPDFBoardBackgroundColor = value })
         self.mPDFBoardBackgroundColor = value
       }
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mArtworkName = value })
         self.mArtworkName = value
       }
       if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mArtworkVersion = value })
         self.mArtworkVersion = value
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To many relationships
       if let range = inDictionary ["boardModels"], range.length > 0 {
         var relationshipArray = [BoardModel] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModel)
         }
@@ -2430,18 +2415,11 @@ class MergerRoot : EBManagedObject,
       if let range = inDictionary ["boardInstances"], range.length > 0 {
         var relationshipArray = [MergerBoardInstance] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
         }
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.boardInstances = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-    //--- To one relationships
-      if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

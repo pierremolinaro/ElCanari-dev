@@ -801,54 +801,42 @@ class BoardLine : BoardObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWidthUnit = value })
         self.mWidthUnit = value
       }
       if let range = inDictionary ["mX1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX1 = value })
         self.mX1 = value
       }
       if let range = inDictionary ["mX1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX1Unit = value })
         self.mX1Unit = value
       }
       if let range = inDictionary ["mY1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY1 = value })
         self.mY1 = value
       }
       if let range = inDictionary ["mY1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY1Unit = value })
         self.mY1Unit = value
       }
       if let range = inDictionary ["mX2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX2 = value })
         self.mX2 = value
       }
       if let range = inDictionary ["mX2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX2Unit = value })
         self.mX2Unit = value
       }
       if let range = inDictionary ["mY2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY2 = value })
         self.mY2 = value
       }
       if let range = inDictionary ["mY2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY2Unit = value })
         self.mY2Unit = value
       }
       if let range = inDictionary ["mLayer"], let value = BoardLineLayer.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mLayer = value })
         self.mLayer = value
       }
       if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWidth = value })
         self.mWidth = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

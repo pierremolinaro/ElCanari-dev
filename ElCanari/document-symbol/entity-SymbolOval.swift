@@ -561,26 +561,21 @@ class SymbolOval : SymbolObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y = value })
         self.y = value
       }
       if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.width = value })
         self.width = value
       }
       if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.height = value })
         self.height = value
       }
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x = value })
         self.x = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

@@ -555,9 +555,7 @@ class WireInSchematic : SchematicObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
@@ -569,6 +567,7 @@ class WireInSchematic : SchematicObject,
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mP2 = inObjectArray [objectIndex] as? PointInSchematic })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

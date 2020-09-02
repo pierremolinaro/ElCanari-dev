@@ -399,26 +399,21 @@ class CanariLibraryEntry : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPath = value })
         self.mPath = value
       }
       if let range = inDictionary ["mUses"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mUses = value })
         self.mUses = value
       }
       if let range = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mLibraryRepositoryURL = value })
         self.mLibraryRepositoryURL = value
       }
       if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mUserAndPasswordTag = value })
         self.mUserAndPasswordTag = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

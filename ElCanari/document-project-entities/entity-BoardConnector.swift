@@ -1922,61 +1922,53 @@ class BoardConnector : BoardObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mComponentPadName = value })
         self.mComponentPadName = value
       }
       if let range = inDictionary ["mPadIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPadIndex = value })
         self.mPadIndex = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
       }
       if let range = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDefaultHoleDiameterUnit = value })
         self.mDefaultHoleDiameterUnit = value
       }
       if let range = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCustomHoleDiameter = value })
         self.mCustomHoleDiameter = value
       }
       if let range = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCustomHoleDiameterUnit = value })
         self.mCustomHoleDiameterUnit = value
       }
       if let range = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mUsesCustomHoleDiameter = value })
         self.mUsesCustomHoleDiameter = value
       }
       if let range = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDefaultPadDiameterUnit = value })
         self.mDefaultPadDiameterUnit = value
       }
       if let range = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCustomPadDiameter = value })
         self.mCustomPadDiameter = value
       }
       if let range = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCustomPadDiameterUnit = value })
         self.mCustomPadDiameterUnit = value
       }
       if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mUsesCustomPadDiameter = value })
         self.mUsesCustomPadDiameter = value
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To many relationships
       if let range = inDictionary ["mTracksP2"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
@@ -1987,18 +1979,11 @@ class BoardConnector : BoardObject,
       if let range = inDictionary ["mTracksP1"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTracksP1 = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-    //--- To one relationships
-      if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

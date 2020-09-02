@@ -1011,55 +1011,44 @@ class BoardText : BoardObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
       }
       if let range = inDictionary ["mFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFontSize = value })
         self.mFontSize = value
       }
       if let range = inDictionary ["mLayer"], let value = BoardTextLayer.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mLayer = value })
         self.mLayer = value
       }
       if let range = inDictionary ["mText"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mText = value })
         self.mText = value
       }
       if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mHorizontalAlignment = value })
         self.mHorizontalAlignment = value
       }
       if let range = inDictionary ["mVerticalAlignment"], let value = BoardTextVerticalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mVerticalAlignment = value })
         self.mVerticalAlignment = value
       }
       if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mRotation = value })
         self.mRotation = value
       }
       if let range = inDictionary ["mWeight"], let value = Double.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWeight = value })
         self.mWeight = value
       }
       if let range = inDictionary ["mOblique"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mOblique = value })
         self.mOblique = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mFont = inObjectArray [objectIndex] as? FontInProject })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

@@ -1877,88 +1877,70 @@ class PackagePad : PackageObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xCenter = value })
         self.xCenter = value
       }
       if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yCenter = value })
         self.yCenter = value
       }
       if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.width = value })
         self.width = value
       }
       if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.height = value })
         self.height = value
       }
       if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeWidth = value })
         self.holeWidth = value
       }
       if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeHeight = value })
         self.holeHeight = value
       }
       if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.padShape = value })
         self.padShape = value
       }
       if let range = inDictionary ["padStyle"], let value = PadStyle.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.padStyle = value })
         self.padStyle = value
       }
       if let range = inDictionary ["padNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.padNumber = value })
         self.padNumber = value
       }
       if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xCenterUnit = value })
         self.xCenterUnit = value
       }
       if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yCenterUnit = value })
         self.yCenterUnit = value
       }
       if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.widthUnit = value })
         self.widthUnit = value
       }
       if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.heightUnit = value })
         self.heightUnit = value
       }
       if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeWidthUnit = value })
         self.holeWidthUnit = value
       }
       if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.holeHeightUnit = value })
         self.holeHeightUnit = value
       }
       if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.annularRingUnit = value })
         self.annularRingUnit = value
-      }
-    //--- To many relationships
-      if let range = inDictionary ["slaves"], range.length > 0 {
-        var relationshipArray = [PackageSlavePad] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.slaves = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To one relationships
       if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.zone = inObjectArray [objectIndex] as? PackageZone })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To many relationships
+      if let range = inDictionary ["slaves"], range.length > 0 {
+        var relationshipArray = [PackageSlavePad] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.slaves = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

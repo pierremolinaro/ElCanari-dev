@@ -1369,73 +1369,57 @@ class PackageZone : PackageObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x = value })
         self.x = value
       }
       if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y = value })
         self.y = value
       }
       if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.width = value })
         self.width = value
       }
       if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.height = value })
         self.height = value
       }
       if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xUnit = value })
         self.xUnit = value
       }
       if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yUnit = value })
         self.yUnit = value
       }
       if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.widthUnit = value })
         self.widthUnit = value
       }
       if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.heightUnit = value })
         self.heightUnit = value
       }
       if let range = inDictionary ["zoneName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.zoneName = value })
         self.zoneName = value
       }
       if let range = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.displayZoneName = value })
         self.displayZoneName = value
       }
       if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xName = value })
         self.xName = value
       }
       if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yName = value })
         self.yName = value
       }
       if let range = inDictionary ["xNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xNameUnit = value })
         self.xNameUnit = value
       }
       if let range = inDictionary ["yNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yNameUnit = value })
         self.yNameUnit = value
       }
       if let range = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.zoneNumbering = value })
         self.zoneNumbering = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
         var relationshipArray = [ForbiddenPadNumber] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
         }
@@ -1443,7 +1427,6 @@ class PackageZone : PackageObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.forbiddenPadNumbers = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

@@ -1048,48 +1048,40 @@ class PackageInDevice : EBGraphicManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFileData = value })
         self.mFileData = value
       }
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mName = value })
         self.mName = value
       }
       if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mVersion = value })
         self.mVersion = value
       }
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mStrokeBezierPath = value })
         self.mStrokeBezierPath = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
-      }
-    //--- To many relationships
-      if let range = inDictionary ["mMasterPads"], range.length > 0 {
-        var relationshipArray = [MasterPadInDevice] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To many relationships
+      if let range = inDictionary ["mMasterPads"], range.length > 0 {
+        var relationshipArray = [MasterPadInDevice] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

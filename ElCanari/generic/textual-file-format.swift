@@ -5,7 +5,7 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-// unarchiveFromStringData
+// unarchiveFromDataRange
 //----------------------------------------------------------------------------------------------------------------------
 
 extension Bool {
@@ -90,22 +90,10 @@ extension Double {
 
   //····················································································································
 
-//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> Double? {
-//    var result : Double? = nil
-//    if let s = String (data: ioData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8),
-//       let v = UInt64 (s, radix: 16) {
-//      result = Double (bitPattern: v)
-//    }
-//    return result
-//  }
-
-  //····················································································································
-
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
     let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
     var result : Double? = nil
-    if let s = String (data: dataSlice, encoding: .utf8),
-       let v = UInt64 (s, radix: 16) {
+    if let s = String (data: dataSlice, encoding: .utf8), let v = UInt64 (s, radix: 16) {
       result = Double (bitPattern: v)
     }
     return result
@@ -128,15 +116,6 @@ extension String {
 
   //····················································································································
 
-//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> String? {
-//    var result : String? = nil
-//    if let s = String (data: ioData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
-//      result = s.replacingOccurrences(of: "\\n", with: "\n")
-//    }
-//    return result
-//  }
-
-
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> String? {
     var result : String? = nil
     let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
@@ -145,17 +124,6 @@ extension String {
     }
     return result
   }
-
-  //····················································································································
-
-//  static func unarchiveFromDataRangeNew (_ ioData : inout Data, _ inRange : NSRange) -> String? {
-//    let unsafeData = Data (bytesNoCopy: &ioData[inRange.location], count: inRange.length, deallocator: .none)
-//    var result : String? = nil
-//    if let s = String (data: unsafeData, encoding: .utf8) {
-//      result = s.replacingOccurrences(of: "\\n", with: "\n")
-//    }
-//    return result
-//  }
 
   //····················································································································
 
@@ -181,18 +149,6 @@ extension NSBezierPath {
     }
     return result
   }
-
-  //····················································································································
-
-//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> NSBezierPath? {
-//    var d = ioData
-//    let unsafeData = Data (bytesNoCopy: &d[inRange.location], count: inRange.length, deallocator: .none)
-//    var result : NSBezierPath? = nil
-//    if let s = String (data: unsafeData, encoding: .utf8) {
-//      result = NSBezierPath.unarchiveFromString (string: s) as? NSBezierPath
-//    }
-//    return result
-//  }
 
   //····················································································································
 
@@ -231,16 +187,6 @@ extension NSColor {
   func appendPropertyValueTo (_ ioData : inout Data) {
     ioData.append (self.archiveToString ().data (using: .utf8)!)
   }
-
-  //····················································································································
-
-//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> NSColor? {
-//    var result : NSColor? = nil
-//    if let s = String (data: ioData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
-//      result = NSColor.unarchiveFromString (string: s) as? NSColor
-//    }
-//    return result
-//  }
 
   //····················································································································
 

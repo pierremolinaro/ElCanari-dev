@@ -610,34 +610,27 @@ class BoardRestrictRectangle : BoardObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
       }
       if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWidth = value })
         self.mWidth = value
       }
       if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mHeight = value })
         self.mHeight = value
       }
       if let range = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mIsInFrontLayer = value })
         self.mIsInFrontLayer = value
       }
       if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mIsInBackLayer = value })
         self.mIsInBackLayer = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

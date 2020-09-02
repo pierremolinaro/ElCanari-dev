@@ -1053,62 +1053,48 @@ class PackageArc : PackageObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yCenter = value })
         self.yCenter = value
       }
       if let range = inDictionary ["radius"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.radius = value })
         self.radius = value
       }
       if let range = inDictionary ["startAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.startAngle = value })
         self.startAngle = value
       }
       if let range = inDictionary ["arcAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.arcAngle = value })
         self.arcAngle = value
       }
       if let range = inDictionary ["startTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.startTangent = value })
         self.startTangent = value
       }
       if let range = inDictionary ["endTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.endTangent = value })
         self.endTangent = value
       }
       if let range = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.pathIsClosed = value })
         self.pathIsClosed = value
       }
       if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xCenterUnit = value })
         self.xCenterUnit = value
       }
       if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.yCenterUnit = value })
         self.yCenterUnit = value
       }
       if let range = inDictionary ["radiusUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.radiusUnit = value })
         self.radiusUnit = value
       }
       if let range = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.startTangentUnit = value })
         self.startTangentUnit = value
       }
       if let range = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.endTangentUnit = value })
         self.endTangentUnit = value
       }
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.xCenter = value })
         self.xCenter = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

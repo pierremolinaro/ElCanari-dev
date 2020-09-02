@@ -1615,53 +1615,15 @@ class PointInSchematic : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolPinName = value })
         self.mSymbolPinName = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
-      }
-    //--- To many relationships
-      if let range = inDictionary ["mLabels"], range.length > 0 {
-        var relationshipArray = [LabelInSchematic] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mLabels = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-      if let range = inDictionary ["mWiresP2s"], range.length > 0 {
-        var relationshipArray = [WireInSchematic] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP2s = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-      if let range = inDictionary ["mWiresP1s"], range.length > 0 {
-        var relationshipArray = [WireInSchematic] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP1s = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To one relationships
       if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
@@ -1682,6 +1644,37 @@ class PointInSchematic : EBManagedObject,
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To many relationships
+      if let range = inDictionary ["mLabels"], range.length > 0 {
+        var relationshipArray = [LabelInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mLabels = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+      if let range = inDictionary ["mWiresP2s"], range.length > 0 {
+        var relationshipArray = [WireInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP2s = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+      if let range = inDictionary ["mWiresP1s"], range.length > 0 {
+        var relationshipArray = [WireInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP1s = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

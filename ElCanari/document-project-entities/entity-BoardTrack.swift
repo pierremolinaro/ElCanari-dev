@@ -1285,33 +1285,25 @@ class BoardTrack : BoardObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSide = value })
         self.mSide = value
       }
       if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDefaultTrackWidthUnit = value })
         self.mDefaultTrackWidthUnit = value
       }
       if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCustomTrackWidth = value })
         self.mCustomTrackWidth = value
       }
       if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCustomTrackWidthUnit = value })
         self.mCustomTrackWidthUnit = value
       }
       if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mUsesCustomTrackWidth = value })
         self.mUsesCustomTrackWidth = value
       }
       if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mIsPreservedByAutoRouter = value })
         self.mIsPreservedByAutoRouter = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
@@ -1328,6 +1320,7 @@ class BoardTrack : BoardObject,
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

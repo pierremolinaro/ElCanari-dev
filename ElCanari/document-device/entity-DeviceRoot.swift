@@ -1942,73 +1942,57 @@ class DeviceRoot : EBGraphicManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSelectedPageIndex = value })
         self.mSelectedPageIndex = value
       }
       if let range = inDictionary ["mTitle"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mTitle = value })
         self.mTitle = value
       }
       if let range = inDictionary ["mImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mImageData = value })
         self.mImageData = value
       }
       if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPrefix = value })
         self.mPrefix = value
       }
       if let range = inDictionary ["mComments"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mComments = value })
         self.mComments = value
       }
       if let range = inDictionary ["mPackageDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPackageDisplayZoom = value })
         self.mPackageDisplayZoom = value
       }
       if let range = inDictionary ["mPackageDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPackageDisplayHorizontalFlip = value })
         self.mPackageDisplayHorizontalFlip = value
       }
       if let range = inDictionary ["mPackageDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mPackageDisplayVerticalFlip = value })
         self.mPackageDisplayVerticalFlip = value
       }
       if let range = inDictionary ["mShowPackages"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mShowPackages = value })
         self.mShowPackages = value
       }
       if let range = inDictionary ["mShowPackagePadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mShowPackagePadNumbers = value })
         self.mShowPackagePadNumbers = value
       }
       if let range = inDictionary ["mShowPackageFrontPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mShowPackageFrontPads = value })
         self.mShowPackageFrontPads = value
       }
       if let range = inDictionary ["mShowPackageBackPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mShowPackageBackPads = value })
         self.mShowPackageBackPads = value
       }
       if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolDisplayZoom = value })
         self.mSymbolDisplayZoom = value
       }
       if let range = inDictionary ["mSymbolDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolDisplayHorizontalFlip = value })
         self.mSymbolDisplayHorizontalFlip = value
       }
       if let range = inDictionary ["mSymbolDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolDisplayVerticalFlip = value })
         self.mSymbolDisplayVerticalFlip = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mDocs"], range.length > 0 {
         var relationshipArray = [DeviceDocumentation] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
         }
@@ -2019,7 +2003,6 @@ class DeviceRoot : EBGraphicManagedObject,
       if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
         var relationshipArray = [SymbolInstanceInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
@@ -2030,7 +2013,6 @@ class DeviceRoot : EBGraphicManagedObject,
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = [PackageInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
         }
@@ -2041,7 +2023,6 @@ class DeviceRoot : EBGraphicManagedObject,
       if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
         var relationshipArray = [SymbolTypeInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
         }
@@ -2052,7 +2033,6 @@ class DeviceRoot : EBGraphicManagedObject,
       if let range = inDictionary ["mPadProxies"], range.length > 0 {
         var relationshipArray = [PadProxyInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
         }
@@ -2060,7 +2040,6 @@ class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPadProxies = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

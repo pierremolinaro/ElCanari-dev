@@ -507,19 +507,17 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolInstanceName = value })
         self.mSymbolInstanceName = value
       }
-    //--- To many relationships
     //--- To one relationships
       if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject })
         inParallelObjectSetupContext.mMutex.signal ()
       }
+    //--- To many relationships
     }
   //--- End of addOperation
   }

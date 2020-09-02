@@ -601,38 +601,30 @@ class CommentInSchematic : SchematicObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mColor = value })
         self.mColor = value
       }
       if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSize = value })
         self.mSize = value
       }
       if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mHorizontalAlignment = value })
         self.mHorizontalAlignment = value
       }
       if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mVerticalAlignment = value })
         self.mVerticalAlignment = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
       }
       if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mComment = value })
         self.mComment = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

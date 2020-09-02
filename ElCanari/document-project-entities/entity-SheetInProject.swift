@@ -732,17 +732,20 @@ class SheetInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSheetTitle = value })
         self.mSheetTitle = value
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To many relationships
       if let range = inDictionary ["mObjects"], range.length > 0 {
         var relationshipArray = [SchematicObject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
         }
@@ -753,18 +756,11 @@ class SheetInProject : EBManagedObject,
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = [PointInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-    //--- To one relationships
-      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

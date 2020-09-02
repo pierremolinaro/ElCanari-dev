@@ -1215,74 +1215,57 @@ class PackageBezier : PackageObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y1 = value })
         self.y1 = value
       }
       if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x2 = value })
         self.x2 = value
       }
       if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y2 = value })
         self.y2 = value
       }
       if let range = inDictionary ["cpx1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpx1 = value })
         self.cpx1 = value
       }
       if let range = inDictionary ["cpy1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpy1 = value })
         self.cpy1 = value
       }
       if let range = inDictionary ["cpx2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpx2 = value })
         self.cpx2 = value
       }
       if let range = inDictionary ["cpy2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpy2 = value })
         self.cpy2 = value
       }
       if let range = inDictionary ["x1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x1Unit = value })
         self.x1Unit = value
       }
       if let range = inDictionary ["y1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y1Unit = value })
         self.y1Unit = value
       }
       if let range = inDictionary ["x2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x2Unit = value })
         self.x2Unit = value
       }
       if let range = inDictionary ["y2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.y2Unit = value })
         self.y2Unit = value
       }
       if let range = inDictionary ["cpx1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpx1Unit = value })
         self.cpx1Unit = value
       }
       if let range = inDictionary ["cpy1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpy1Unit = value })
         self.cpy1Unit = value
       }
       if let range = inDictionary ["cpx2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpx2Unit = value })
         self.cpx2Unit = value
       }
       if let range = inDictionary ["cpy2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.cpy2Unit = value })
         self.cpy2Unit = value
       }
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.x1 = value })
         self.x1 = value
       }
-    //--- To many relationships
     //--- To one relationships
+    //--- To many relationships
     }
   //--- End of addOperation
   }

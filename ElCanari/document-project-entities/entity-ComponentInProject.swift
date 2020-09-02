@@ -2910,110 +2910,66 @@ class ComponentInProject : BoardObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mX = value })
         self.mX = value
       }
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mY = value })
         self.mY = value
       }
       if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mRotation = value })
         self.mRotation = value
       }
       if let range = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSide = value })
         self.mSide = value
       }
       if let range = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDisplayLegend = value })
         self.mDisplayLegend = value
       }
       if let range = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNameIsVisibleInBoard = value })
         self.mNameIsVisibleInBoard = value
       }
       if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXName = value })
         self.mXName = value
       }
       if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYName = value })
         self.mYName = value
       }
       if let range = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNameFontSize = value })
         self.mNameFontSize = value
       }
       if let range = inDictionary ["mNameRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNameRotation = value })
         self.mNameRotation = value
       }
       if let range = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mValueIsVisibleInBoard = value })
         self.mValueIsVisibleInBoard = value
       }
       if let range = inDictionary ["mXValue"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXValue = value })
         self.mXValue = value
       }
       if let range = inDictionary ["mYValue"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYValue = value })
         self.mYValue = value
       }
       if let range = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mValueFontSize = value })
         self.mValueFontSize = value
       }
       if let range = inDictionary ["mValueRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mValueRotation = value })
         self.mValueRotation = value
       }
       if let range = inDictionary ["mComponentValue"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mComponentValue = value })
         self.mComponentValue = value
       }
       if let range = inDictionary ["mNamePrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNamePrefix = value })
         self.mNamePrefix = value
       }
       if let range = inDictionary ["mNameIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNameIndex = value })
         self.mNameIndex = value
       }
       if let range = inDictionary ["mXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mXUnit = value })
         self.mXUnit = value
       }
       if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mYUnit = value })
         self.mYUnit = value
-      }
-    //--- To many relationships
-      if let range = inDictionary ["mConnectors"], range.length > 0 {
-        var relationshipArray = [BoardConnector] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardConnector)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mConnectors = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-      if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = [ComponentSymbolInProject] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSymbols = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To one relationships
       if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
@@ -3034,6 +2990,27 @@ class ComponentInProject : BoardObject,
       if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mValueFont = inObjectArray [objectIndex] as? FontInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To many relationships
+      if let range = inDictionary ["mConnectors"], range.length > 0 {
+        var relationshipArray = [BoardConnector] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardConnector)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mConnectors = relationshipArray })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+      if let range = inDictionary ["mSymbols"], range.length > 0 {
+        var relationshipArray = [ComponentSymbolInProject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSymbols = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

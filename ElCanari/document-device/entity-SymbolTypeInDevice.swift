@@ -800,33 +800,27 @@ class SymbolTypeInDevice : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mTypeName = value })
         self.mTypeName = value
       }
       if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mVersion = value })
         self.mVersion = value
       }
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFileData = value })
         self.mFileData = value
       }
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mStrokeBezierPath = value })
         self.mStrokeBezierPath = value
       }
       if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFilledBezierPath = value })
         self.mFilledBezierPath = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
         var relationshipArray = [SymbolInstanceInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
@@ -837,7 +831,6 @@ class SymbolTypeInDevice : EBManagedObject,
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
         var relationshipArray = [SymbolPinTypeInDevice] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
         }
@@ -845,7 +838,6 @@ class SymbolTypeInDevice : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPinTypes = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

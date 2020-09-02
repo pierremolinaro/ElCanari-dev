@@ -1360,68 +1360,55 @@ class ComponentSymbolInProject : SchematicObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCenterX = value })
         self.mCenterX = value
       }
       if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCenterY = value })
         self.mCenterY = value
       }
       if let range = inDictionary ["mRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mRotation = value })
         self.mRotation = value
       }
       if let range = inDictionary ["mMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mMirror = value })
         self.mMirror = value
       }
       if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolInstanceName = value })
         self.mSymbolInstanceName = value
       }
       if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mSymbolTypeName = value })
         self.mSymbolTypeName = value
       }
       if let range = inDictionary ["mDisplayComponentNameOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDisplayComponentNameOffsetX = value })
         self.mDisplayComponentNameOffsetX = value
       }
       if let range = inDictionary ["mDisplayComponentNameOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDisplayComponentNameOffsetY = value })
         self.mDisplayComponentNameOffsetY = value
       }
       if let range = inDictionary ["mDisplayComponentValue"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDisplayComponentValue = value })
         self.mDisplayComponentValue = value
       }
       if let range = inDictionary ["mDisplayComponentValueOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDisplayComponentValueOffsetX = value })
         self.mDisplayComponentValueOffsetX = value
       }
       if let range = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDisplayComponentValueOffsetY = value })
         self.mDisplayComponentValueOffsetY = value
-      }
-    //--- To many relationships
-      if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = [PointInSchematic] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
-        }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To one relationships
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
+      }
+    //--- To many relationships
+      if let range = inDictionary ["mPoints"], range.length > 0 {
+        var relationshipArray = [PointInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+        }
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

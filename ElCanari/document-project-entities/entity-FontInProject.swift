@@ -771,29 +771,24 @@ class FontInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNominalSize = value })
         self.mNominalSize = value
       }
       if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFontName = value })
         self.mFontName = value
       }
       if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mFontVersion = value })
         self.mFontVersion = value
       }
       if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mDescriptiveString = value })
         self.mDescriptiveString = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mTexts"], range.length > 0 {
         var relationshipArray = [BoardText] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardText)
         }
@@ -804,7 +799,6 @@ class FontInProject : EBManagedObject,
       if let range = inDictionary ["mComponentNames"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
@@ -815,7 +809,6 @@ class FontInProject : EBManagedObject,
       if let range = inDictionary ["mComponentValues"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
@@ -823,7 +816,6 @@ class FontInProject : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mComponentValues = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

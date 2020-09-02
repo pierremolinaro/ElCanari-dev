@@ -850,17 +850,20 @@ class NetInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mNetName = value })
         self.mNetName = value
+      }
+    //--- To one relationships
+      if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
+        inParallelObjectSetupContext.mMutex.wait ()
+        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
+        inParallelObjectSetupContext.mMutex.signal ()
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = [PointInSchematic] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
@@ -871,18 +874,11 @@ class NetInProject : EBManagedObject,
       if let range = inDictionary ["mTracks"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
         inParallelObjectSetupContext.mMutex.wait ()
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTracks = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
-      }
-    //--- To one relationships
-      if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
         inParallelObjectSetupContext.mMutex.signal ()
       }
     }

@@ -912,33 +912,27 @@ class FontRoot : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.comments = value })
         self.comments = value
       }
       if let range = inDictionary ["nominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.nominalSize = value })
         self.nominalSize = value
       }
       if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedTab = value })
         self.selectedTab = value
       }
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.selectedInspector = value })
         self.selectedInspector = value
       }
       if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.currentCharacterCodePoint = value })
         self.currentCharacterCodePoint = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["characters"], range.length > 0 {
         var relationshipArray = [FontCharacter] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)
         }
@@ -946,7 +940,6 @@ class FontRoot : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.characters = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }

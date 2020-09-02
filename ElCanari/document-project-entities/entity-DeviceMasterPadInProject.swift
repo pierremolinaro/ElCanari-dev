@@ -749,49 +749,39 @@ class DeviceMasterPadInProject : EBManagedObject,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
-    //  var operations = [() -> Void] ()
     //--- Atomic properties
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCenterX = value })
         self.mCenterX = value
       }
       if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mCenterY = value })
         self.mCenterY = value
       }
       if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mWidth = value })
         self.mWidth = value
       }
       if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mHeight = value })
         self.mHeight = value
       }
       if let range = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mHoleWidth = value })
         self.mHoleWidth = value
       }
       if let range = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mHoleHeight = value })
         self.mHoleHeight = value
       }
       if let range = inDictionary ["mShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mShape = value })
         self.mShape = value
       }
       if let range = inDictionary ["mStyle"], let value = PadStyle.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mStyle = value })
         self.mStyle = value
       }
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-        //operations.append ({ self.mName = value })
         self.mName = value
       }
+    //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mSlavePads"], range.length > 0 {
         var relationshipArray = [DeviceSlavePadInProject] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        // Swift.print ("TOMANY '\(s)', \(a)")
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSlavePadInProject)
         }
@@ -799,7 +789,6 @@ class DeviceMasterPadInProject : EBManagedObject,
         inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSlavePads = relationshipArray })
         inParallelObjectSetupContext.mMutex.signal ()
       }
-    //--- To one relationships
     }
   //--- End of addOperation
   }
