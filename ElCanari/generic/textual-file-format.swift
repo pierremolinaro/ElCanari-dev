@@ -90,9 +90,21 @@ extension Double {
 
   //····················································································································
 
+//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> Double? {
+//    var result : Double? = nil
+//    if let s = String (data: ioData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8),
+//       let v = UInt64 (s, radix: 16) {
+//      result = Double (bitPattern: v)
+//    }
+//    return result
+//  }
+
+  //····················································································································
+
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
     var result : Double? = nil
-    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8),
+    if let s = String (data: dataSlice, encoding: .utf8),
        let v = UInt64 (s, radix: 16) {
       result = Double (bitPattern: v)
     }
@@ -116,13 +128,34 @@ extension String {
 
   //····················································································································
 
+//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> String? {
+//    var result : String? = nil
+//    if let s = String (data: ioData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
+//      result = s.replacingOccurrences(of: "\\n", with: "\n")
+//    }
+//    return result
+//  }
+
+
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> String? {
     var result : String? = nil
-    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    if let s = String (bytes: dataSlice, encoding: .utf8) {
       result = s.replacingOccurrences(of: "\\n", with: "\n")
     }
     return result
   }
+
+  //····················································································································
+
+//  static func unarchiveFromDataRangeNew (_ ioData : inout Data, _ inRange : NSRange) -> String? {
+//    let unsafeData = Data (bytesNoCopy: &ioData[inRange.location], count: inRange.length, deallocator: .none)
+//    var result : String? = nil
+//    if let s = String (data: unsafeData, encoding: .utf8) {
+//      result = s.replacingOccurrences(of: "\\n", with: "\n")
+//    }
+//    return result
+//  }
 
   //····················································································································
 
@@ -142,11 +175,24 @@ extension NSBezierPath {
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> NSBezierPath? {
     var result : NSBezierPath? = nil
-    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    if let s = String (data: dataSlice, encoding: .utf8) {
       result = NSBezierPath.unarchiveFromString (string: s) as? NSBezierPath
     }
     return result
   }
+
+  //····················································································································
+
+//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> NSBezierPath? {
+//    var d = ioData
+//    let unsafeData = Data (bytesNoCopy: &d[inRange.location], count: inRange.length, deallocator: .none)
+//    var result : NSBezierPath? = nil
+//    if let s = String (data: unsafeData, encoding: .utf8) {
+//      result = NSBezierPath.unarchiveFromString (string: s) as? NSBezierPath
+//    }
+//    return result
+//  }
 
   //····················································································································
 
@@ -186,12 +232,22 @@ extension NSColor {
     ioData.append (self.archiveToString ().data (using: .utf8)!)
   }
 
+  //····················································································································
+
+//  static func unarchiveFromDataRange (_ ioData : inout Data, _ inRange : NSRange) -> NSColor? {
+//    var result : NSColor? = nil
+//    if let s = String (data: ioData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
+//      result = NSColor.unarchiveFromString (string: s) as? NSColor
+//    }
+//    return result
+//  }
 
   //····················································································································
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> NSColor? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
     var result : NSColor? = nil
-    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
+    if let s = String (data: dataSlice, encoding: .utf8) {
       result = NSColor.unarchiveFromString (string: s) as? NSColor
     }
     return result
@@ -214,7 +270,8 @@ extension Data {
   //····················································································································
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Data? {
-    return Data (base64Encoded: inData [inRange.location ..< inRange.location + inRange.length], options: [])
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    return Data (base64Encoded: dataSlice)
   }
 
   //····················································································································
