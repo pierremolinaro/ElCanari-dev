@@ -671,18 +671,44 @@ class SymbolPinInstanceInDevice : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
   //--- To one relationships
-    if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice
+    op.addOperation {
+      if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice }
+        // self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice
+    op.addOperation {
+      if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice }
+        // self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice
+        mutex.wait ()
+        operationResultList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice
+    op.addOperation {
+      if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice }
+        // self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice
+        mutex.wait ()
+        operationResultList.append ({ self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

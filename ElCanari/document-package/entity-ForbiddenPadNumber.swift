@@ -186,12 +186,25 @@ class ForbiddenPadNumber : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["padNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.padNumber = value
+    op.addOperation {
+      if let range = inDictionary ["padNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.padNumber = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.padNumber = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

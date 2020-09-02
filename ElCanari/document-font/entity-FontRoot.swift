@@ -910,33 +910,71 @@ class FontRoot : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.comments = value
+    op.addOperation {
+      if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.comments = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.comments = value }
+      }
     }
-    if let range = inDictionary ["nominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.nominalSize = value
+    op.addOperation {
+      if let range = inDictionary ["nominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.nominalSize = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.nominalSize = value }
+      }
     }
-    if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedTab = value
+    op.addOperation {
+      if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedTab = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedTab = value }
+      }
     }
-    if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedInspector = value
+    op.addOperation {
+      if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedInspector = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedInspector = value }
+      }
     }
-    if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.currentCharacterCodePoint = value
+    op.addOperation {
+      if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.currentCharacterCodePoint = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.currentCharacterCodePoint = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["characters"], range.length > 0 {
-      var relationshipArray = [FontCharacter] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! FontCharacter)
+    op.addOperation {
+      if let range = inDictionary ["characters"], range.length > 0 {
+        var relationshipArray = [FontCharacter] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! FontCharacter)
+        }
+        // DispatchQueue.main.async { self.characters = relationshipArray }
+        // self.characters = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.characters = relationshipArray })
+        mutex.signal ()
       }
-      //self.characters = []
-      self.characters = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

@@ -1613,59 +1613,121 @@ class PointInSchematic : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mSymbolPinName = value
+    op.addOperation {
+      if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbolPinName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mSymbolPinName = value }
+      }
     }
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject
+    op.addOperation {
+      if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject }
+        // self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mNet = inObjectArray [objectIndex] as? NetInProject
+    op.addOperation {
+      if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mNet = inObjectArray [objectIndex] as? NetInProject }
+        // self.mNet = inObjectArray [objectIndex] as? NetInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mNC = inObjectArray [objectIndex] as? NCInSchematic
+    op.addOperation {
+      if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mNC = inObjectArray [objectIndex] as? NCInSchematic }
+        // self.mNC = inObjectArray [objectIndex] as? NCInSchematic
+        mutex.wait ()
+        operationResultList.append ({ self.mNC = inObjectArray [objectIndex] as? NCInSchematic })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mSheet = inObjectArray [objectIndex] as? SheetInProject
+    op.addOperation {
+      if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mSheet = inObjectArray [objectIndex] as? SheetInProject }
+        // self.mSheet = inObjectArray [objectIndex] as? SheetInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["mLabels"], range.length > 0 {
-      var relationshipArray = [LabelInSchematic] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
+    op.addOperation {
+      if let range = inDictionary ["mLabels"], range.length > 0 {
+        var relationshipArray = [LabelInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
+        }
+        // DispatchQueue.main.async { self.mLabels = relationshipArray }
+        // self.mLabels = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mLabels = relationshipArray })
+        mutex.signal ()
       }
-      //self.mLabels = []
-      self.mLabels = relationshipArray
     }
-    if let range = inDictionary ["mWiresP2s"], range.length > 0 {
-      var relationshipArray = [WireInSchematic] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+    op.addOperation {
+      if let range = inDictionary ["mWiresP2s"], range.length > 0 {
+        var relationshipArray = [WireInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+        }
+        // DispatchQueue.main.async { self.mWiresP2s = relationshipArray }
+        // self.mWiresP2s = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mWiresP2s = relationshipArray })
+        mutex.signal ()
       }
-      //self.mWiresP2s = []
-      self.mWiresP2s = relationshipArray
     }
-    if let range = inDictionary ["mWiresP1s"], range.length > 0 {
-      var relationshipArray = [WireInSchematic] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+    op.addOperation {
+      if let range = inDictionary ["mWiresP1s"], range.length > 0 {
+        var relationshipArray = [WireInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+        }
+        // DispatchQueue.main.async { self.mWiresP1s = relationshipArray }
+        // self.mWiresP1s = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mWiresP1s = relationshipArray })
+        mutex.signal ()
       }
-      //self.mWiresP1s = []
-      self.mWiresP1s = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

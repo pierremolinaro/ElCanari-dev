@@ -848,34 +848,63 @@ class NetInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mNetName = value
+    op.addOperation {
+      if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNetName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNetName = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject
+    op.addOperation {
+      if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject }
+        // self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["mPoints"], range.length > 0 {
-      var relationshipArray = [PointInSchematic] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+    op.addOperation {
+      if let range = inDictionary ["mPoints"], range.length > 0 {
+        var relationshipArray = [PointInSchematic] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+        }
+        // DispatchQueue.main.async { self.mPoints = relationshipArray }
+        // self.mPoints = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mPoints = relationshipArray })
+        mutex.signal ()
       }
-      //self.mPoints = []
-      self.mPoints = relationshipArray
     }
-    if let range = inDictionary ["mTracks"], range.length > 0 {
-      var relationshipArray = [BoardTrack] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+    op.addOperation {
+      if let range = inDictionary ["mTracks"], range.length > 0 {
+        var relationshipArray = [BoardTrack] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+        }
+        // DispatchQueue.main.async { self.mTracks = relationshipArray }
+        // self.mTracks = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mTracks = relationshipArray })
+        mutex.signal ()
       }
-      //self.mTracks = []
-      self.mTracks = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

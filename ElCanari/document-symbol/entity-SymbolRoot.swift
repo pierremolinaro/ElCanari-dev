@@ -874,48 +874,111 @@ class SymbolRoot : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedInspector = value
+    op.addOperation {
+      if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedInspector = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedInspector = value }
+      }
     }
-    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.comments = value
+    op.addOperation {
+      if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.comments = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.comments = value }
+      }
     }
-    if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.horizontalFlip = value
+    op.addOperation {
+      if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.horizontalFlip = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.horizontalFlip = value }
+      }
     }
-    if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.verticalFlip = value
+    op.addOperation {
+      if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.verticalFlip = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.verticalFlip = value }
+      }
     }
-    if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-      self.gridStyle = value
+    op.addOperation {
+      if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.gridStyle = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.gridStyle = value }
+      }
     }
-    if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.gridDisplay = value
+    op.addOperation {
+      if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.gridDisplay = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.gridDisplay = value }
+      }
     }
-    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.zoom = value
+    op.addOperation {
+      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.zoom = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.zoom = value }
+      }
     }
-    if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xPlacardUnit = value
+    op.addOperation {
+      if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xPlacardUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xPlacardUnit = value }
+      }
     }
-    if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yPlacardUnit = value
+    op.addOperation {
+      if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yPlacardUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yPlacardUnit = value }
+      }
     }
-    if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedPageIndex = value
+    op.addOperation {
+      if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedPageIndex = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedPageIndex = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["symbolObjects"], range.length > 0 {
-      var relationshipArray = [SymbolObject] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SymbolObject)
+    op.addOperation {
+      if let range = inDictionary ["symbolObjects"], range.length > 0 {
+        var relationshipArray = [SymbolObject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SymbolObject)
+        }
+        // DispatchQueue.main.async { self.symbolObjects = relationshipArray }
+        // self.symbolObjects = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.symbolObjects = relationshipArray })
+        mutex.signal ()
       }
-      //self.symbolObjects = []
-      self.symbolObjects = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

@@ -761,33 +761,81 @@ class PackageOval : PackageObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.y = value
+    op.addOperation {
+      if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.y = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.y = value }
+      }
     }
-    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.width = value
+    op.addOperation {
+      if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.width = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.width = value }
+      }
     }
-    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.height = value
+    op.addOperation {
+      if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.height = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.height = value }
+      }
     }
-    if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xUnit = value
+    op.addOperation {
+      if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xUnit = value }
+      }
     }
-    if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yUnit = value
+    op.addOperation {
+      if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yUnit = value }
+      }
     }
-    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.widthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.widthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.widthUnit = value }
+      }
     }
-    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.heightUnit = value
+    op.addOperation {
+      if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.heightUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.heightUnit = value }
+      }
     }
-    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.x = value
+    op.addOperation {
+      if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.x = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.x = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

@@ -5324,235 +5324,388 @@ class BoardModel : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.name = value
+    op.addOperation {
+      if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.name = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.name = value }
+      }
     }
-    if let range = inDictionary ["modelWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.modelWidth = value
+    op.addOperation {
+      if let range = inDictionary ["modelWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.modelWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.modelWidth = value }
+      }
     }
-    if let range = inDictionary ["modelWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.modelWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["modelWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.modelWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.modelWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["modelHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.modelHeight = value
+    op.addOperation {
+      if let range = inDictionary ["modelHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.modelHeight = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.modelHeight = value }
+      }
     }
-    if let range = inDictionary ["modelHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.modelHeightUnit = value
+    op.addOperation {
+      if let range = inDictionary ["modelHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.modelHeightUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.modelHeightUnit = value }
+      }
     }
-    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.zoom = value
+    op.addOperation {
+      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.zoom = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.zoom = value }
+      }
     }
-    if let range = inDictionary ["modelLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.modelLimitWidth = value
+    op.addOperation {
+      if let range = inDictionary ["modelLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.modelLimitWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.modelLimitWidth = value }
+      }
     }
-    if let range = inDictionary ["modelLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.modelLimitWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["modelLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.modelLimitWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.modelLimitWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["artworkName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.artworkName = value
+    op.addOperation {
+      if let range = inDictionary ["artworkName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.artworkName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.artworkName = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["frontLegendLines"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontLegendLines"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontLegendLines = relationshipArray }
+        // self.frontLegendLines = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontLegendLines = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontLegendLines = []
-      self.frontLegendLines = relationshipArray
     }
-    if let range = inDictionary ["backLegendLines"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backLegendLines"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backLegendLines = relationshipArray }
+        // self.backLegendLines = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backLegendLines = relationshipArray })
+        mutex.signal ()
       }
-      //self.backLegendLines = []
-      self.backLegendLines = relationshipArray
     }
-    if let range = inDictionary ["frontLegendTexts"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontLegendTexts"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontLegendTexts = relationshipArray }
+        // self.frontLegendTexts = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontLegendTexts = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontLegendTexts = []
-      self.frontLegendTexts = relationshipArray
     }
-    if let range = inDictionary ["frontLayoutTexts"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontLayoutTexts"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontLayoutTexts = relationshipArray }
+        // self.frontLayoutTexts = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontLayoutTexts = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontLayoutTexts = []
-      self.frontLayoutTexts = relationshipArray
     }
-    if let range = inDictionary ["backLegendTexts"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backLegendTexts"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backLegendTexts = relationshipArray }
+        // self.backLegendTexts = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backLegendTexts = relationshipArray })
+        mutex.signal ()
       }
-      //self.backLegendTexts = []
-      self.backLegendTexts = relationshipArray
     }
-    if let range = inDictionary ["backLayoutTexts"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backLayoutTexts"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backLayoutTexts = relationshipArray }
+        // self.backLayoutTexts = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backLayoutTexts = relationshipArray })
+        mutex.signal ()
       }
-      //self.backLayoutTexts = []
-      self.backLayoutTexts = relationshipArray
     }
-    if let range = inDictionary ["internalBoardsLimits"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["internalBoardsLimits"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.internalBoardsLimits = relationshipArray }
+        // self.internalBoardsLimits = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.internalBoardsLimits = relationshipArray })
+        mutex.signal ()
       }
-      //self.internalBoardsLimits = []
-      self.internalBoardsLimits = relationshipArray
     }
-    if let range = inDictionary ["drills"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["drills"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.drills = relationshipArray }
+        // self.drills = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.drills = relationshipArray })
+        mutex.signal ()
       }
-      //self.drills = []
-      self.drills = relationshipArray
     }
-    if let range = inDictionary ["vias"], range.length > 0 {
-      var relationshipArray = [BoardModelVia] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardModelVia)
+    op.addOperation {
+      if let range = inDictionary ["vias"], range.length > 0 {
+        var relationshipArray = [BoardModelVia] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardModelVia)
+        }
+        // DispatchQueue.main.async { self.vias = relationshipArray }
+        // self.vias = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.vias = relationshipArray })
+        mutex.signal ()
       }
-      //self.vias = []
-      self.vias = relationshipArray
     }
-    if let range = inDictionary ["frontPads"], range.length > 0 {
-      var relationshipArray = [BoardModelPad] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+    op.addOperation {
+      if let range = inDictionary ["frontPads"], range.length > 0 {
+        var relationshipArray = [BoardModelPad] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+        }
+        // DispatchQueue.main.async { self.frontPads = relationshipArray }
+        // self.frontPads = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontPads = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontPads = []
-      self.frontPads = relationshipArray
     }
-    if let range = inDictionary ["backPads"], range.length > 0 {
-      var relationshipArray = [BoardModelPad] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+    op.addOperation {
+      if let range = inDictionary ["backPads"], range.length > 0 {
+        var relationshipArray = [BoardModelPad] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+        }
+        // DispatchQueue.main.async { self.backPads = relationshipArray }
+        // self.backPads = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backPads = relationshipArray })
+        mutex.signal ()
       }
-      //self.backPads = []
-      self.backPads = relationshipArray
     }
-    if let range = inDictionary ["backComponentNames"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backComponentNames"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backComponentNames = relationshipArray }
+        // self.backComponentNames = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backComponentNames = relationshipArray })
+        mutex.signal ()
       }
-      //self.backComponentNames = []
-      self.backComponentNames = relationshipArray
     }
-    if let range = inDictionary ["frontComponentNames"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontComponentNames"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontComponentNames = relationshipArray }
+        // self.frontComponentNames = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontComponentNames = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontComponentNames = []
-      self.frontComponentNames = relationshipArray
     }
-    if let range = inDictionary ["frontComponentValues"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontComponentValues"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontComponentValues = relationshipArray }
+        // self.frontComponentValues = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontComponentValues = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontComponentValues = []
-      self.frontComponentValues = relationshipArray
     }
-    if let range = inDictionary ["backComponentValues"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backComponentValues"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backComponentValues = relationshipArray }
+        // self.backComponentValues = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backComponentValues = relationshipArray })
+        mutex.signal ()
       }
-      //self.backComponentValues = []
-      self.backComponentValues = relationshipArray
     }
-    if let range = inDictionary ["backTracks"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backTracks"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backTracks = relationshipArray }
+        // self.backTracks = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backTracks = relationshipArray })
+        mutex.signal ()
       }
-      //self.backTracks = []
-      self.backTracks = relationshipArray
     }
-    if let range = inDictionary ["frontTracks"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontTracks"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontTracks = relationshipArray }
+        // self.frontTracks = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontTracks = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontTracks = []
-      self.frontTracks = relationshipArray
     }
-    if let range = inDictionary ["frontPackages"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["frontPackages"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.frontPackages = relationshipArray }
+        // self.frontPackages = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.frontPackages = relationshipArray })
+        mutex.signal ()
       }
-      //self.frontPackages = []
-      self.frontPackages = relationshipArray
     }
-    if let range = inDictionary ["backPackages"], range.length > 0 {
-      var relationshipArray = [SegmentEntity] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+    op.addOperation {
+      if let range = inDictionary ["backPackages"], range.length > 0 {
+        var relationshipArray = [SegmentEntity] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        // DispatchQueue.main.async { self.backPackages = relationshipArray }
+        // self.backPackages = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.backPackages = relationshipArray })
+        mutex.signal ()
       }
-      //self.backPackages = []
-      self.backPackages = relationshipArray
     }
-    if let range = inDictionary ["myInstances"], range.length > 0 {
-      var relationshipArray = [MergerBoardInstance] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+    op.addOperation {
+      if let range = inDictionary ["myInstances"], range.length > 0 {
+        var relationshipArray = [MergerBoardInstance] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+        }
+        // DispatchQueue.main.async { self.myInstances = relationshipArray }
+        // self.myInstances = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.myInstances = relationshipArray })
+        mutex.signal ()
       }
-      //self.myInstances = []
-      self.myInstances = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

@@ -284,18 +284,41 @@ class DeviceSymbolTypeInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mSymbolTypeName = value
+    op.addOperation {
+      if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbolTypeName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mSymbolTypeName = value }
+      }
     }
-    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-      self.mStrokeBezierPath = value
+    op.addOperation {
+      if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mStrokeBezierPath = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+      }
     }
-    if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-      self.mFilledBezierPath = value
+    op.addOperation {
+      if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFilledBezierPath = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFilledBezierPath = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

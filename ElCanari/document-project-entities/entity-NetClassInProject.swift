@@ -1287,48 +1287,111 @@ class NetClassInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mNetClassName = value
+    op.addOperation {
+      if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNetClassName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNetClassName = value }
+      }
     }
-    if let range = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-      self.mNetClassColor = value
+    op.addOperation {
+      if let range = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNetClassColor = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNetClassColor = value }
+      }
     }
-    if let range = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mTrackWidth = value
+    op.addOperation {
+      if let range = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mTrackWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mTrackWidth = value }
+      }
     }
-    if let range = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mTrackWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mTrackWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mTrackWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mViaHoleDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mViaHoleDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mViaHoleDiameter = value }
+      }
     }
-    if let range = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mViaHoleDiameterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mViaHoleDiameterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mViaHoleDiameterUnit = value }
+      }
     }
-    if let range = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mViaPadDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mViaPadDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mViaPadDiameter = value }
+      }
     }
-    if let range = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mViaPadDiameterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mViaPadDiameterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mViaPadDiameterUnit = value }
+      }
     }
-    if let range = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mAllowTracksOnFrontSide = value
+    op.addOperation {
+      if let range = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mAllowTracksOnFrontSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mAllowTracksOnFrontSide = value }
+      }
     }
-    if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mAllowTracksOnBackSide = value
+    op.addOperation {
+      if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mAllowTracksOnBackSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mAllowTracksOnBackSide = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["mNets"], range.length > 0 {
-      var relationshipArray = [NetInProject] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! NetInProject)
+    op.addOperation {
+      if let range = inDictionary ["mNets"], range.length > 0 {
+        var relationshipArray = [NetInProject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! NetInProject)
+        }
+        // DispatchQueue.main.async { self.mNets = relationshipArray }
+        // self.mNets = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mNets = relationshipArray })
+        mutex.signal ()
       }
-      //self.mNets = []
-      self.mNets = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

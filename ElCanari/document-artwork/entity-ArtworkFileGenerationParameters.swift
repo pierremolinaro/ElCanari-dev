@@ -1330,78 +1330,201 @@ class ArtworkFileGenerationParameters : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawBoardLimits = value
+    op.addOperation {
+      if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawBoardLimits = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawBoardLimits = value }
+      }
     }
-    if let range = inDictionary ["drawInternalBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawInternalBoardLimits = value
+    op.addOperation {
+      if let range = inDictionary ["drawInternalBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawInternalBoardLimits = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawInternalBoardLimits = value }
+      }
     }
-    if let range = inDictionary ["drawComponentNamesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawComponentNamesTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawComponentNamesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawComponentNamesTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawComponentNamesTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawComponentNamesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawComponentNamesBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawComponentNamesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawComponentNamesBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawComponentNamesBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawComponentValuesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawComponentValuesTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawComponentValuesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawComponentValuesTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawComponentValuesTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawComponentValuesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawComponentValuesBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawComponentValuesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawComponentValuesBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawComponentValuesBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawPackageLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawPackageLegendTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawPackageLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawPackageLegendTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawPackageLegendTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawPackageLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawPackageLegendBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawPackageLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawPackageLegendBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawPackageLegendBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawPadHolesInPDF"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawPadHolesInPDF = value
+    op.addOperation {
+      if let range = inDictionary ["drawPadHolesInPDF"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawPadHolesInPDF = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawPadHolesInPDF = value }
+      }
     }
-    if let range = inDictionary ["drawPadsTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawPadsTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawPadsTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawPadsTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawPadsTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawPadsBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawPadsBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawPadsBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawPadsBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawPadsBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawTextsLayoutTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawTextsLayoutTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawTextsLayoutTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawTextsLayoutTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawTextsLayoutTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawTextsLayoutBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawTextsLayoutBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawTextsLayoutBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawTextsLayoutBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawTextsLayoutBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawTextsLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawTextsLegendTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawTextsLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawTextsLegendTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawTextsLegendTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawTextsLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawTextsLegendBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawTextsLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawTextsLegendBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawTextsLegendBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawTracksTopSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawTracksTopSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawTracksTopSide = value }
+      }
     }
-    if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawTracksBottomSide = value
+    op.addOperation {
+      if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawTracksBottomSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawTracksBottomSide = value }
+      }
     }
-    if let range = inDictionary ["drawVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.drawVias = value
+    op.addOperation {
+      if let range = inDictionary ["drawVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drawVias = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drawVias = value }
+      }
     }
-    if let range = inDictionary ["fileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.fileExtension = value
+    op.addOperation {
+      if let range = inDictionary ["fileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.fileExtension = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.fileExtension = value }
+      }
     }
-    if let range = inDictionary ["horizontalMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.horizontalMirror = value
+    op.addOperation {
+      if let range = inDictionary ["horizontalMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.horizontalMirror = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.horizontalMirror = value }
+      }
     }
-    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.name = value
+    op.addOperation {
+      if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.name = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.name = value }
+      }
     }
-    if let range = inDictionary ["measurementUnitForPadHoleInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.measurementUnitForPadHoleInPDF = value
+    op.addOperation {
+      if let range = inDictionary ["measurementUnitForPadHoleInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.measurementUnitForPadHoleInPDF = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.measurementUnitForPadHoleInPDF = value }
+      }
     }
-    if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.padHoleDiameterInPDF = value
+    op.addOperation {
+      if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.padHoleDiameterInPDF = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.padHoleDiameterInPDF = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

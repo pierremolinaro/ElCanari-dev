@@ -608,27 +608,65 @@ class BoardRestrictRectangle : BoardObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
-    if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mWidth = value
+    op.addOperation {
+      if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mWidth = value }
+      }
     }
-    if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mHeight = value
+    op.addOperation {
+      if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mHeight = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mHeight = value }
+      }
     }
-    if let range = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mIsInFrontLayer = value
+    op.addOperation {
+      if let range = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mIsInFrontLayer = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mIsInFrontLayer = value }
+      }
     }
-    if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mIsInBackLayer = value
+    op.addOperation {
+      if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mIsInBackLayer = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mIsInBackLayer = value }
+      }
     }
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

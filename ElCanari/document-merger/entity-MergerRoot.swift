@@ -2335,88 +2335,207 @@ class MergerRoot : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedPageIndex = value
+    op.addOperation {
+      if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedPageIndex = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedPageIndex = value }
+      }
     }
-    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.zoom = value
+    op.addOperation {
+      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.zoom = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.zoom = value }
+      }
     }
-    if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.automaticBoardSize = value
+    op.addOperation {
+      if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.automaticBoardSize = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.automaticBoardSize = value }
+      }
     }
-    if let range = inDictionary ["boardManualWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.boardManualWidth = value
+    op.addOperation {
+      if let range = inDictionary ["boardManualWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.boardManualWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.boardManualWidth = value }
+      }
     }
-    if let range = inDictionary ["boardManualHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.boardManualHeight = value
+    op.addOperation {
+      if let range = inDictionary ["boardManualHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.boardManualHeight = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.boardManualHeight = value }
+      }
     }
-    if let range = inDictionary ["boardWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.boardWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["boardWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.boardWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.boardWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["boardHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.boardHeightUnit = value
+    op.addOperation {
+      if let range = inDictionary ["boardHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.boardHeightUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.boardHeightUnit = value }
+      }
     }
-    if let range = inDictionary ["overlapingArrangment"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.overlapingArrangment = value
+    op.addOperation {
+      if let range = inDictionary ["overlapingArrangment"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.overlapingArrangment = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.overlapingArrangment = value }
+      }
     }
-    if let range = inDictionary ["selectedBoardXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedBoardXUnit = value
+    op.addOperation {
+      if let range = inDictionary ["selectedBoardXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedBoardXUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedBoardXUnit = value }
+      }
     }
-    if let range = inDictionary ["selectedBoardYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedBoardYUnit = value
+    op.addOperation {
+      if let range = inDictionary ["selectedBoardYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedBoardYUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedBoardYUnit = value }
+      }
     }
-    if let range = inDictionary ["boardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.boardLimitWidth = value
+    op.addOperation {
+      if let range = inDictionary ["boardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.boardLimitWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.boardLimitWidth = value }
+      }
     }
-    if let range = inDictionary ["boardLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.boardLimitWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["boardLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.boardLimitWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.boardLimitWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["arrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.arrowMagnitude = value
+    op.addOperation {
+      if let range = inDictionary ["arrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.arrowMagnitude = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.arrowMagnitude = value }
+      }
     }
-    if let range = inDictionary ["arrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.arrowMagnitudeUnit = value
+    op.addOperation {
+      if let range = inDictionary ["arrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.arrowMagnitudeUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.arrowMagnitudeUnit = value }
+      }
     }
-    if let range = inDictionary ["shiftArrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.shiftArrowMagnitude = value
+    op.addOperation {
+      if let range = inDictionary ["shiftArrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.shiftArrowMagnitude = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.shiftArrowMagnitude = value }
+      }
     }
-    if let range = inDictionary ["shiftArrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.shiftArrowMagnitudeUnit = value
+    op.addOperation {
+      if let range = inDictionary ["shiftArrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.shiftArrowMagnitudeUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.shiftArrowMagnitudeUnit = value }
+      }
     }
-    if let range = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-      self.mPDFBoardBackgroundColor = value
+    op.addOperation {
+      if let range = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mPDFBoardBackgroundColor = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mPDFBoardBackgroundColor = value }
+      }
     }
-    if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mArtworkName = value
+    op.addOperation {
+      if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mArtworkName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mArtworkName = value }
+      }
     }
-    if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mArtworkVersion = value
+    op.addOperation {
+      if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mArtworkVersion = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mArtworkVersion = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot
+    op.addOperation {
+      if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot }
+        // self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot
+        mutex.wait ()
+        operationResultList.append ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["boardModels"], range.length > 0 {
-      var relationshipArray = [BoardModel] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardModel)
+    op.addOperation {
+      if let range = inDictionary ["boardModels"], range.length > 0 {
+        var relationshipArray = [BoardModel] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardModel)
+        }
+        // DispatchQueue.main.async { self.boardModels = relationshipArray }
+        // self.boardModels = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.boardModels = relationshipArray })
+        mutex.signal ()
       }
-      //self.boardModels = []
-      self.boardModels = relationshipArray
     }
-    if let range = inDictionary ["boardInstances"], range.length > 0 {
-      var relationshipArray = [MergerBoardInstance] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+    op.addOperation {
+      if let range = inDictionary ["boardInstances"], range.length > 0 {
+        var relationshipArray = [MergerBoardInstance] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+        }
+        // DispatchQueue.main.async { self.boardInstances = relationshipArray }
+        // self.boardInstances = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.boardInstances = relationshipArray })
+        mutex.signal ()
       }
-      //self.boardInstances = []
-      self.boardInstances = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

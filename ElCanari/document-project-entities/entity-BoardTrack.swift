@@ -1283,36 +1283,92 @@ class BoardTrack : BoardObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
-      self.mSide = value
+    op.addOperation {
+      if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mSide = value }
+      }
     }
-    if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mDefaultTrackWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mDefaultTrackWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mDefaultTrackWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mCustomTrackWidth = value
+    op.addOperation {
+      if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mCustomTrackWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mCustomTrackWidth = value }
+      }
     }
-    if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mCustomTrackWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mCustomTrackWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mCustomTrackWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mUsesCustomTrackWidth = value
+    op.addOperation {
+      if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mUsesCustomTrackWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mUsesCustomTrackWidth = value }
+      }
     }
-    if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mIsPreservedByAutoRouter = value
+    op.addOperation {
+      if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mIsPreservedByAutoRouter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mIsPreservedByAutoRouter = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector
+    op.addOperation {
+      if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector }
+        // self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector
+        mutex.wait ()
+        operationResultList.append ({ self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector
+    op.addOperation {
+      if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector }
+        // self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector
+        mutex.wait ()
+        operationResultList.append ({ self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mNet = inObjectArray [objectIndex] as? NetInProject
+    op.addOperation {
+      if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mNet = inObjectArray [objectIndex] as? NetInProject }
+        // self.mNet = inObjectArray [objectIndex] as? NetInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

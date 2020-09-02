@@ -505,15 +505,34 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mSymbolInstanceName = value
+    op.addOperation {
+      if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbolInstanceName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mSymbolInstanceName = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject
+    op.addOperation {
+      if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject }
+        // self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

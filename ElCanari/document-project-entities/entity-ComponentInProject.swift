@@ -2908,100 +2908,242 @@ class ComponentInProject : BoardObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
-    if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mRotation = value
+    op.addOperation {
+      if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mRotation = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mRotation = value }
+      }
     }
-    if let range = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromDataRange (inData, range) {
-      self.mSide = value
+    op.addOperation {
+      if let range = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mSide = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mSide = value }
+      }
     }
-    if let range = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mDisplayLegend = value
+    op.addOperation {
+      if let range = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mDisplayLegend = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mDisplayLegend = value }
+      }
     }
-    if let range = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mNameIsVisibleInBoard = value
+    op.addOperation {
+      if let range = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNameIsVisibleInBoard = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNameIsVisibleInBoard = value }
+      }
     }
-    if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mXName = value
+    op.addOperation {
+      if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mXName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mXName = value }
+      }
     }
-    if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mYName = value
+    op.addOperation {
+      if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mYName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mYName = value }
+      }
     }
-    if let range = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-      self.mNameFontSize = value
+    op.addOperation {
+      if let range = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNameFontSize = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNameFontSize = value }
+      }
     }
-    if let range = inDictionary ["mNameRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mNameRotation = value
+    op.addOperation {
+      if let range = inDictionary ["mNameRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNameRotation = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNameRotation = value }
+      }
     }
-    if let range = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mValueIsVisibleInBoard = value
+    op.addOperation {
+      if let range = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mValueIsVisibleInBoard = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mValueIsVisibleInBoard = value }
+      }
     }
-    if let range = inDictionary ["mXValue"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mXValue = value
+    op.addOperation {
+      if let range = inDictionary ["mXValue"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mXValue = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mXValue = value }
+      }
     }
-    if let range = inDictionary ["mYValue"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mYValue = value
+    op.addOperation {
+      if let range = inDictionary ["mYValue"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mYValue = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mYValue = value }
+      }
     }
-    if let range = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-      self.mValueFontSize = value
+    op.addOperation {
+      if let range = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mValueFontSize = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mValueFontSize = value }
+      }
     }
-    if let range = inDictionary ["mValueRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mValueRotation = value
+    op.addOperation {
+      if let range = inDictionary ["mValueRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mValueRotation = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mValueRotation = value }
+      }
     }
-    if let range = inDictionary ["mComponentValue"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mComponentValue = value
+    op.addOperation {
+      if let range = inDictionary ["mComponentValue"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mComponentValue = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mComponentValue = value }
+      }
     }
-    if let range = inDictionary ["mNamePrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mNamePrefix = value
+    op.addOperation {
+      if let range = inDictionary ["mNamePrefix"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNamePrefix = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNamePrefix = value }
+      }
     }
-    if let range = inDictionary ["mNameIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mNameIndex = value
+    op.addOperation {
+      if let range = inDictionary ["mNameIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNameIndex = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNameIndex = value }
+      }
     }
-    if let range = inDictionary ["mXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mXUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mXUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mXUnit = value }
+      }
     }
-    if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mYUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mYUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mYUnit = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mDevice = inObjectArray [objectIndex] as? DeviceInProject
+    op.addOperation {
+      if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mDevice = inObjectArray [objectIndex] as? DeviceInProject }
+        // self.mDevice = inObjectArray [objectIndex] as? DeviceInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mDevice = inObjectArray [objectIndex] as? DeviceInProject })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject
+    op.addOperation {
+      if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject }
+        // self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mNameFont = inObjectArray [objectIndex] as? FontInProject
+    op.addOperation {
+      if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mNameFont = inObjectArray [objectIndex] as? FontInProject }
+        // self.mNameFont = inObjectArray [objectIndex] as? FontInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mNameFont = inObjectArray [objectIndex] as? FontInProject })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mValueFont = inObjectArray [objectIndex] as? FontInProject
+    op.addOperation {
+      if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mValueFont = inObjectArray [objectIndex] as? FontInProject }
+        // self.mValueFont = inObjectArray [objectIndex] as? FontInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mValueFont = inObjectArray [objectIndex] as? FontInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["mConnectors"], range.length > 0 {
-      var relationshipArray = [BoardConnector] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardConnector)
+    op.addOperation {
+      if let range = inDictionary ["mConnectors"], range.length > 0 {
+        var relationshipArray = [BoardConnector] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardConnector)
+        }
+        // DispatchQueue.main.async { self.mConnectors = relationshipArray }
+        // self.mConnectors = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mConnectors = relationshipArray })
+        mutex.signal ()
       }
-      //self.mConnectors = []
-      self.mConnectors = relationshipArray
     }
-    if let range = inDictionary ["mSymbols"], range.length > 0 {
-      var relationshipArray = [ComponentSymbolInProject] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
+    op.addOperation {
+      if let range = inDictionary ["mSymbols"], range.length > 0 {
+        var relationshipArray = [ComponentSymbolInProject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
+        }
+        // DispatchQueue.main.async { self.mSymbols = relationshipArray }
+        // self.mSymbols = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mSymbols = relationshipArray })
+        mutex.signal ()
       }
-      //self.mSymbols = []
-      self.mSymbols = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

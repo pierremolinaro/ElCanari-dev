@@ -433,12 +433,26 @@ class SchematicObject : EBGraphicManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
   //--- To one relationships
-    if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mSheet = inObjectArray [objectIndex] as? SheetInProject
+    op.addOperation {
+      if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mSheet = inObjectArray [objectIndex] as? SheetInProject }
+        // self.mSheet = inObjectArray [objectIndex] as? SheetInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

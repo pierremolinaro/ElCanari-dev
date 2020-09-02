@@ -1920,67 +1920,151 @@ class BoardConnector : BoardObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mComponentPadName = value
+    op.addOperation {
+      if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mComponentPadName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mComponentPadName = value }
+      }
     }
-    if let range = inDictionary ["mPadIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mPadIndex = value
+    op.addOperation {
+      if let range = inDictionary ["mPadIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mPadIndex = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mPadIndex = value }
+      }
     }
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
-    if let range = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mDefaultHoleDiameterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mDefaultHoleDiameterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mDefaultHoleDiameterUnit = value }
+      }
     }
-    if let range = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mCustomHoleDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mCustomHoleDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mCustomHoleDiameter = value }
+      }
     }
-    if let range = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mCustomHoleDiameterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mCustomHoleDiameterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mCustomHoleDiameterUnit = value }
+      }
     }
-    if let range = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mUsesCustomHoleDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mUsesCustomHoleDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mUsesCustomHoleDiameter = value }
+      }
     }
-    if let range = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mDefaultPadDiameterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mDefaultPadDiameterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mDefaultPadDiameterUnit = value }
+      }
     }
-    if let range = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mCustomPadDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mCustomPadDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mCustomPadDiameter = value }
+      }
     }
-    if let range = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mCustomPadDiameterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mCustomPadDiameterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mCustomPadDiameterUnit = value }
+      }
     }
-    if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.mUsesCustomPadDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mUsesCustomPadDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mUsesCustomPadDiameter = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mComponent = inObjectArray [objectIndex] as? ComponentInProject
+    op.addOperation {
+      if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mComponent = inObjectArray [objectIndex] as? ComponentInProject }
+        // self.mComponent = inObjectArray [objectIndex] as? ComponentInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["mTracksP2"], range.length > 0 {
-      var relationshipArray = [BoardTrack] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+    op.addOperation {
+      if let range = inDictionary ["mTracksP2"], range.length > 0 {
+        var relationshipArray = [BoardTrack] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+        }
+        // DispatchQueue.main.async { self.mTracksP2 = relationshipArray }
+        // self.mTracksP2 = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mTracksP2 = relationshipArray })
+        mutex.signal ()
       }
-      //self.mTracksP2 = []
-      self.mTracksP2 = relationshipArray
     }
-    if let range = inDictionary ["mTracksP1"], range.length > 0 {
-      var relationshipArray = [BoardTrack] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+    op.addOperation {
+      if let range = inDictionary ["mTracksP1"], range.length > 0 {
+        var relationshipArray = [BoardTrack] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+        }
+        // DispatchQueue.main.async { self.mTracksP1 = relationshipArray }
+        // self.mTracksP1 = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mTracksP1 = relationshipArray })
+        mutex.signal ()
       }
-      //self.mTracksP1 = []
-      self.mTracksP1 = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

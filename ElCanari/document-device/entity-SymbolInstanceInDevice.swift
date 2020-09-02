@@ -755,30 +755,64 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mInstanceName = value
+    op.addOperation {
+      if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mInstanceName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mInstanceName = value }
+      }
     }
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice
+    op.addOperation {
+      if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice }
+        // self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice
+        mutex.wait ()
+        operationResultList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["mPinInstances"], range.length > 0 {
-      var relationshipArray = [SymbolPinInstanceInDevice] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
+    op.addOperation {
+      if let range = inDictionary ["mPinInstances"], range.length > 0 {
+        var relationshipArray = [SymbolPinInstanceInDevice] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
+        }
+        // DispatchQueue.main.async { self.mPinInstances = relationshipArray }
+        // self.mPinInstances = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mPinInstances = relationshipArray })
+        mutex.signal ()
       }
-      //self.mPinInstances = []
-      self.mPinInstances = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

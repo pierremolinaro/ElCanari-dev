@@ -1051,48 +1051,121 @@ class PackageArc : PackageObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yCenter = value
+    op.addOperation {
+      if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yCenter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yCenter = value }
+      }
     }
-    if let range = inDictionary ["radius"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.radius = value
+    op.addOperation {
+      if let range = inDictionary ["radius"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.radius = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.radius = value }
+      }
     }
-    if let range = inDictionary ["startAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.startAngle = value
+    op.addOperation {
+      if let range = inDictionary ["startAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.startAngle = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.startAngle = value }
+      }
     }
-    if let range = inDictionary ["arcAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.arcAngle = value
+    op.addOperation {
+      if let range = inDictionary ["arcAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.arcAngle = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.arcAngle = value }
+      }
     }
-    if let range = inDictionary ["startTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.startTangent = value
+    op.addOperation {
+      if let range = inDictionary ["startTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.startTangent = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.startTangent = value }
+      }
     }
-    if let range = inDictionary ["endTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.endTangent = value
+    op.addOperation {
+      if let range = inDictionary ["endTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.endTangent = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.endTangent = value }
+      }
     }
-    if let range = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromDataRange (inData, range) {
-      self.pathIsClosed = value
+    op.addOperation {
+      if let range = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.pathIsClosed = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.pathIsClosed = value }
+      }
     }
-    if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xCenterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xCenterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xCenterUnit = value }
+      }
     }
-    if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yCenterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yCenterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yCenterUnit = value }
+      }
     }
-    if let range = inDictionary ["radiusUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.radiusUnit = value
+    op.addOperation {
+      if let range = inDictionary ["radiusUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.radiusUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.radiusUnit = value }
+      }
     }
-    if let range = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.startTangentUnit = value
+    op.addOperation {
+      if let range = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.startTangentUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.startTangentUnit = value }
+      }
     }
-    if let range = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.endTangentUnit = value
+    op.addOperation {
+      if let range = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.endTangentUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.endTangentUnit = value }
+      }
     }
-    if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xCenter = value
+    op.addOperation {
+      if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xCenter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xCenter = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

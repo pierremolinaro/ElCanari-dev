@@ -553,15 +553,35 @@ class WireInSchematic : SchematicObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
   //--- To one relationships
-    if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mP1 = inObjectArray [objectIndex] as? PointInSchematic
+    op.addOperation {
+      if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mP1 = inObjectArray [objectIndex] as? PointInSchematic }
+        // self.mP1 = inObjectArray [objectIndex] as? PointInSchematic
+        mutex.wait ()
+        operationResultList.append ({ self.mP1 = inObjectArray [objectIndex] as? PointInSchematic })
+        mutex.signal ()
+      }
     }
-    if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mP2 = inObjectArray [objectIndex] as? PointInSchematic
+    op.addOperation {
+      if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mP2 = inObjectArray [objectIndex] as? PointInSchematic }
+        // self.mP2 = inObjectArray [objectIndex] as? PointInSchematic
+        mutex.wait ()
+        operationResultList.append ({ self.mP2 = inObjectArray [objectIndex] as? PointInSchematic })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

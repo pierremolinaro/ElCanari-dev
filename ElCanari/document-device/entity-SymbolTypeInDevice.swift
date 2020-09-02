@@ -798,43 +798,86 @@ class SymbolTypeInDevice : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mTypeName = value
+    op.addOperation {
+      if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mTypeName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mTypeName = value }
+      }
     }
-    if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mVersion = value
+    op.addOperation {
+      if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mVersion = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mVersion = value }
+      }
     }
-    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-      self.mFileData = value
+    op.addOperation {
+      if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFileData = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFileData = value }
+      }
     }
-    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-      self.mStrokeBezierPath = value
+    op.addOperation {
+      if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mStrokeBezierPath = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+      }
     }
-    if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-      self.mFilledBezierPath = value
+    op.addOperation {
+      if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFilledBezierPath = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFilledBezierPath = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["mInstances"], range.length > 0 {
-      var relationshipArray = [SymbolInstanceInDevice] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
+    op.addOperation {
+      if let range = inDictionary ["mInstances"], range.length > 0 {
+        var relationshipArray = [SymbolInstanceInDevice] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
+        }
+        // DispatchQueue.main.async { self.mInstances = relationshipArray }
+        // self.mInstances = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mInstances = relationshipArray })
+        mutex.signal ()
       }
-      //self.mInstances = []
-      self.mInstances = relationshipArray
     }
-    if let range = inDictionary ["mPinTypes"], range.length > 0 {
-      var relationshipArray = [SymbolPinTypeInDevice] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
+    op.addOperation {
+      if let range = inDictionary ["mPinTypes"], range.length > 0 {
+        var relationshipArray = [SymbolPinTypeInDevice] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
+        }
+        // DispatchQueue.main.async { self.mPinTypes = relationshipArray }
+        // self.mPinTypes = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mPinTypes = relationshipArray })
+        mutex.signal ()
       }
-      //self.mPinTypes = []
-      self.mPinTypes = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

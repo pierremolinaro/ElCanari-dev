@@ -299,15 +299,33 @@ class DeviceDocumentation : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mFileName = value
+    op.addOperation {
+      if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFileName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFileName = value }
+      }
     }
-    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-      self.mFileData = value
+    op.addOperation {
+      if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFileData = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFileData = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

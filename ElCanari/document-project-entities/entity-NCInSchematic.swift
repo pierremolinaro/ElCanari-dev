@@ -353,15 +353,34 @@ class NCInSchematic : SchematicObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-      self.mOrientation = value
+    op.addOperation {
+      if let range = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mOrientation = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mOrientation = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mPoint = inObjectArray [objectIndex] as? PointInSchematic
+    op.addOperation {
+      if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mPoint = inObjectArray [objectIndex] as? PointInSchematic }
+        // self.mPoint = inObjectArray [objectIndex] as? PointInSchematic
+        mutex.wait ()
+        operationResultList.append ({ self.mPoint = inObjectArray [objectIndex] as? PointInSchematic })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

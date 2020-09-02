@@ -1485,57 +1485,146 @@ class PackageSlavePad : PackageObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xCenter = value
+    op.addOperation {
+      if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xCenter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xCenter = value }
+      }
     }
-    if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yCenter = value
+    op.addOperation {
+      if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yCenter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yCenter = value }
+      }
     }
-    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.width = value
+    op.addOperation {
+      if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.width = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.width = value }
+      }
     }
-    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.height = value
+    op.addOperation {
+      if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.height = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.height = value }
+      }
     }
-    if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.holeWidth = value
+    op.addOperation {
+      if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.holeWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.holeWidth = value }
+      }
     }
-    if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.holeHeight = value
+    op.addOperation {
+      if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.holeHeight = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.holeHeight = value }
+      }
     }
-    if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-      self.padShape = value
+    op.addOperation {
+      if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.padShape = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.padShape = value }
+      }
     }
-    if let range = inDictionary ["padStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
-      self.padStyle = value
+    op.addOperation {
+      if let range = inDictionary ["padStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.padStyle = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.padStyle = value }
+      }
     }
-    if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xCenterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xCenterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xCenterUnit = value }
+      }
     }
-    if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yCenterUnit = value
+    op.addOperation {
+      if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yCenterUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yCenterUnit = value }
+      }
     }
-    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.widthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.widthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.widthUnit = value }
+      }
     }
-    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.heightUnit = value
+    op.addOperation {
+      if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.heightUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.heightUnit = value }
+      }
     }
-    if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.holeWidthUnit = value
+    op.addOperation {
+      if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.holeWidthUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.holeWidthUnit = value }
+      }
     }
-    if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.holeHeightUnit = value
+    op.addOperation {
+      if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.holeHeightUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.holeHeightUnit = value }
+      }
     }
-    if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.annularRingUnit = value
+    op.addOperation {
+      if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.annularRingUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.annularRingUnit = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.master = inObjectArray [objectIndex] as? PackagePad
+    op.addOperation {
+      if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.master = inObjectArray [objectIndex] as? PackagePad }
+        // self.master = inObjectArray [objectIndex] as? PackagePad
+        mutex.wait ()
+        operationResultList.append ({ self.master = inObjectArray [objectIndex] as? PackagePad })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

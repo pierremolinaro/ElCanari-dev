@@ -370,24 +370,47 @@ class DevicePackageInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mPackageName = value
+    op.addOperation {
+      if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mPackageName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mPackageName = value }
+      }
     }
-    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-      self.mStrokeBezierPath = value
+    op.addOperation {
+      if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mStrokeBezierPath = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["mMasterPads"], range.length > 0 {
-      var relationshipArray = [DeviceMasterPadInProject] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
+    op.addOperation {
+      if let range = inDictionary ["mMasterPads"], range.length > 0 {
+        var relationshipArray = [DeviceMasterPadInProject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
+        }
+        // DispatchQueue.main.async { self.mMasterPads = relationshipArray }
+        // self.mMasterPads = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mMasterPads = relationshipArray })
+        mutex.signal ()
       }
-      //self.mMasterPads = []
-      self.mMasterPads = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

@@ -1066,48 +1066,121 @@ class PackageDimension : PackageObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.y1 = value
+    op.addOperation {
+      if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.y1 = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.y1 = value }
+      }
     }
-    if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.x2 = value
+    op.addOperation {
+      if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.x2 = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.x2 = value }
+      }
     }
-    if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.y2 = value
+    op.addOperation {
+      if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.y2 = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.y2 = value }
+      }
     }
-    if let range = inDictionary ["xDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xDimension = value
+    op.addOperation {
+      if let range = inDictionary ["xDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xDimension = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xDimension = value }
+      }
     }
-    if let range = inDictionary ["yDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yDimension = value
+    op.addOperation {
+      if let range = inDictionary ["yDimension"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yDimension = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yDimension = value }
+      }
     }
-    if let range = inDictionary ["x1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.x1Unit = value
+    op.addOperation {
+      if let range = inDictionary ["x1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.x1Unit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.x1Unit = value }
+      }
     }
-    if let range = inDictionary ["y1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.y1Unit = value
+    op.addOperation {
+      if let range = inDictionary ["y1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.y1Unit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.y1Unit = value }
+      }
     }
-    if let range = inDictionary ["x2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.x2Unit = value
+    op.addOperation {
+      if let range = inDictionary ["x2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.x2Unit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.x2Unit = value }
+      }
     }
-    if let range = inDictionary ["y2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.y2Unit = value
+    op.addOperation {
+      if let range = inDictionary ["y2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.y2Unit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.y2Unit = value }
+      }
     }
-    if let range = inDictionary ["xDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.xDimensionUnit = value
+    op.addOperation {
+      if let range = inDictionary ["xDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.xDimensionUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.xDimensionUnit = value }
+      }
     }
-    if let range = inDictionary ["yDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.yDimensionUnit = value
+    op.addOperation {
+      if let range = inDictionary ["yDimensionUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.yDimensionUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.yDimensionUnit = value }
+      }
     }
-    if let range = inDictionary ["distanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.distanceUnit = value
+    op.addOperation {
+      if let range = inDictionary ["distanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.distanceUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.distanceUnit = value }
+      }
     }
-    if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.x1 = value
+    op.addOperation {
+      if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.x1 = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.x1 = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

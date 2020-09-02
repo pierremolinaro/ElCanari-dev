@@ -1046,39 +1046,88 @@ class PackageInDevice : EBGraphicManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-      self.mFileData = value
+    op.addOperation {
+      if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFileData = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFileData = value }
+      }
     }
-    if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mName = value
+    op.addOperation {
+      if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mName = value }
+      }
     }
-    if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mVersion = value
+    op.addOperation {
+      if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mVersion = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mVersion = value }
+      }
     }
-    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-      self.mStrokeBezierPath = value
+    op.addOperation {
+      if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mStrokeBezierPath = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mStrokeBezierPath = value }
+      }
     }
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mRoot = inObjectArray [objectIndex] as? DeviceRoot
+    op.addOperation {
+      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mRoot = inObjectArray [objectIndex] as? DeviceRoot }
+        // self.mRoot = inObjectArray [objectIndex] as? DeviceRoot
+        mutex.wait ()
+        operationResultList.append ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
-    if let range = inDictionary ["mMasterPads"], range.length > 0 {
-      var relationshipArray = [MasterPadInDevice] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
+    op.addOperation {
+      if let range = inDictionary ["mMasterPads"], range.length > 0 {
+        var relationshipArray = [MasterPadInDevice] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
+        }
+        // DispatchQueue.main.async { self.mMasterPads = relationshipArray }
+        // self.mMasterPads = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mMasterPads = relationshipArray })
+        mutex.signal ()
       }
-      //self.mMasterPads = []
-      self.mMasterPads = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

@@ -284,18 +284,41 @@ class BoardModelVia : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.y = value
+    op.addOperation {
+      if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.y = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.y = value }
+      }
     }
-    if let range = inDictionary ["padDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.padDiameter = value
+    op.addOperation {
+      if let range = inDictionary ["padDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.padDiameter = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.padDiameter = value }
+      }
     }
-    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.x = value
+    op.addOperation {
+      if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.x = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.x = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

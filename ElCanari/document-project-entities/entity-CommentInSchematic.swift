@@ -599,30 +599,73 @@ class CommentInSchematic : SchematicObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-      self.mColor = value
+    op.addOperation {
+      if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mColor = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mColor = value }
+      }
     }
-    if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-      self.mSize = value
+    op.addOperation {
+      if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mSize = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mSize = value }
+      }
     }
-    if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-      self.mHorizontalAlignment = value
+    op.addOperation {
+      if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mHorizontalAlignment = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mHorizontalAlignment = value }
+      }
     }
-    if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
-      self.mVerticalAlignment = value
+    op.addOperation {
+      if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mVerticalAlignment = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mVerticalAlignment = value }
+      }
     }
-    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mX = value
+    op.addOperation {
+      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mX = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mX = value }
+      }
     }
-    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mY = value
+    op.addOperation {
+      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mY = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mY = value }
+      }
     }
-    if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mComment = value
+    op.addOperation {
+      if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mComment = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mComment = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

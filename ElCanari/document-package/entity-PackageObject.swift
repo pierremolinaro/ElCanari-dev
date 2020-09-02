@@ -334,12 +334,26 @@ class PackageObject : EBGraphicManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
   //--- To one relationships
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mRoot = inObjectArray [objectIndex] as? PackageRoot
+    op.addOperation {
+      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mRoot = inObjectArray [objectIndex] as? PackageRoot }
+        // self.mRoot = inObjectArray [objectIndex] as? PackageRoot
+        mutex.wait ()
+        operationResultList.append ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································

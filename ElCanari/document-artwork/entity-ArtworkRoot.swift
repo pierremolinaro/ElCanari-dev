@@ -843,51 +843,119 @@ class ArtworkRoot : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.selectedTab = value
+    op.addOperation {
+      if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.selectedTab = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.selectedTab = value }
+      }
     }
-    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.comments = value
+    op.addOperation {
+      if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.comments = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.comments = value }
+      }
     }
-    if let range = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minPPTPTTTWdisplayUnit = value
+    op.addOperation {
+      if let range = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minPPTPTTTWdisplayUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minPPTPTTTWdisplayUnit = value }
+      }
     }
-    if let range = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minPPTPTTTW = value
+    op.addOperation {
+      if let range = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minPPTPTTTW = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minPPTPTTTW = value }
+      }
     }
-    if let range = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minValueForOARdisplayUnit = value
+    op.addOperation {
+      if let range = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minValueForOARdisplayUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minValueForOARdisplayUnit = value }
+      }
     }
-    if let range = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minValueForOARinEBUnit = value
+    op.addOperation {
+      if let range = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minValueForOARinEBUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minValueForOARinEBUnit = value }
+      }
     }
-    if let range = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minValueForPHDdisplayUnit = value
+    op.addOperation {
+      if let range = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minValueForPHDdisplayUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minValueForPHDdisplayUnit = value }
+      }
     }
-    if let range = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minValueForPHDinEBUnit = value
+    op.addOperation {
+      if let range = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minValueForPHDinEBUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minValueForPHDinEBUnit = value }
+      }
     }
-    if let range = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minValueForBoardLimitWidthDisplayUnit = value
+    op.addOperation {
+      if let range = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minValueForBoardLimitWidthDisplayUnit = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minValueForBoardLimitWidthDisplayUnit = value }
+      }
     }
-    if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.minValueForBoardLimitWidth = value
+    op.addOperation {
+      if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.minValueForBoardLimitWidth = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.minValueForBoardLimitWidth = value }
+      }
     }
-    if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.drillDataFileExtension = value
+    op.addOperation {
+      if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.drillDataFileExtension = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.drillDataFileExtension = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
-      var relationshipArray = [ArtworkFileGenerationParameters] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
+    op.addOperation {
+      if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
+        var relationshipArray = [ArtworkFileGenerationParameters] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
+        }
+        // DispatchQueue.main.async { self.fileGenerationParameterArray = relationshipArray }
+        // self.fileGenerationParameterArray = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.fileGenerationParameterArray = relationshipArray })
+        mutex.signal ()
       }
-      //self.fileGenerationParameterArray = []
-      self.fileGenerationParameterArray = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

@@ -769,50 +769,93 @@ class FontInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mNominalSize = value
+    op.addOperation {
+      if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mNominalSize = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mNominalSize = value }
+      }
     }
-    if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mFontName = value
+    op.addOperation {
+      if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFontName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFontName = value }
+      }
     }
-    if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-      self.mFontVersion = value
+    op.addOperation {
+      if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mFontVersion = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mFontVersion = value }
+      }
     }
-    if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mDescriptiveString = value
+    op.addOperation {
+      if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mDescriptiveString = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mDescriptiveString = value }
+      }
     }
   //--- To one relationships
   //--- To many relationships
-    if let range = inDictionary ["mTexts"], range.length > 0 {
-      var relationshipArray = [BoardText] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! BoardText)
+    op.addOperation {
+      if let range = inDictionary ["mTexts"], range.length > 0 {
+        var relationshipArray = [BoardText] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardText)
+        }
+        // DispatchQueue.main.async { self.mTexts = relationshipArray }
+        // self.mTexts = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mTexts = relationshipArray })
+        mutex.signal ()
       }
-      //self.mTexts = []
-      self.mTexts = relationshipArray
     }
-    if let range = inDictionary ["mComponentNames"], range.length > 0 {
-      var relationshipArray = [ComponentInProject] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+    op.addOperation {
+      if let range = inDictionary ["mComponentNames"], range.length > 0 {
+        var relationshipArray = [ComponentInProject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+        }
+        // DispatchQueue.main.async { self.mComponentNames = relationshipArray }
+        // self.mComponentNames = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mComponentNames = relationshipArray })
+        mutex.signal ()
       }
-      //self.mComponentNames = []
-      self.mComponentNames = relationshipArray
     }
-    if let range = inDictionary ["mComponentValues"], range.length > 0 {
-      var relationshipArray = [ComponentInProject] ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: range)
-      // Swift.print ("TOMANY '\(s)', \(a)")
-      for idx in indexArray {
-        relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+    op.addOperation {
+      if let range = inDictionary ["mComponentValues"], range.length > 0 {
+        var relationshipArray = [ComponentInProject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        // Swift.print ("TOMANY '\(s)', \(a)")
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+        }
+        // DispatchQueue.main.async { self.mComponentValues = relationshipArray }
+        // self.mComponentValues = relationshipArray
+        mutex.wait ()
+        operationResultList.append ({ self.mComponentValues = relationshipArray })
+        mutex.signal ()
       }
-      //self.mComponentValues = []
-      self.mComponentValues = relationshipArray
+    }
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
     }
   }
 

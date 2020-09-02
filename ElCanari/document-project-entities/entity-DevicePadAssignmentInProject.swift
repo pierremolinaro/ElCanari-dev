@@ -386,15 +386,34 @@ class DevicePadAssignmentInProject : EBManagedObject,
                                          _ inObjectArray : [EBManagedObject],
                                          _ inData : Data) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData)
+    let op = OperationQueue ()
+    var operationResultList = [() -> Void] ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Atomic properties
-    if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-      self.mPadName = value
+    op.addOperation {
+      if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
+        mutex.wait ()
+        operationResultList.append ({ self.mPadName = value })
+        mutex.signal ()
+        //DispatchQueue.main.async { self.mPadName = value }
+      }
     }
   //--- To one relationships
-    if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
-      self.mPin = inObjectArray [objectIndex] as? DevicePinInProject
+    op.addOperation {
+      if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
+        // DispatchQueue.main.async { self.mPin = inObjectArray [objectIndex] as? DevicePinInProject }
+        // self.mPin = inObjectArray [objectIndex] as? DevicePinInProject
+        mutex.wait ()
+        operationResultList.append ({ self.mPin = inObjectArray [objectIndex] as? DevicePinInProject })
+        mutex.signal ()
+      }
     }
   //--- To many relationships
+  //---
+    op.waitUntilAllOperationsAreFinished ()
+    for resultOperation in operationResultList {
+       resultOperation ()
+    }
   }
 
   //····················································································································
