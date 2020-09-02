@@ -92,7 +92,7 @@ extension Double {
 
   static func unarchiveFromStringData (_ inStringData : Data) -> Double? {
     var result : Double? = nil
-    if let s = String (data: inStringData, encoding: .utf8), let v = UInt64 (s) {
+    if let s = String (data: inStringData, encoding: .utf8), let v = UInt64 (s, radix: 16) {
       result = Double (bitPattern: v)
     }
     return result

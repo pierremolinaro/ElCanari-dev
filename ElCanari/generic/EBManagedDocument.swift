@@ -278,13 +278,12 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func read (from data : Data, ofType typeName : String) throws {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
- //   let startLoadFile = Date ()
+    let startLoadFile = Date ()
     let (metadataStatus, metadataDictionary, possibleRootObject, fileFormat) = try loadEasyBindingFile (self.ebUndoManager, from: data)
     self.mManagedDocumentFileFormat = fileFormat
-    Swift.print ("fileFormat \(fileFormat)")
+    // Swift.print ("fileFormat \(fileFormat)")
 //    if LOG_OPERATION_DURATION {
-//      let durationMS = Int (Date ().timeIntervalSince (startLoadFile) * 1000.0)
-//      Swift.print ("Load File \(durationMS) ms")
+      Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(fileFormat)")
 //    }
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus

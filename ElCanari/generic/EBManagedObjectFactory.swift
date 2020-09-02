@@ -139,6 +139,7 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
 
 func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
         from ioDataScanner: inout EBDataScanner) throws -> (UInt8, [String : Any], EBManagedObject?, EBManagedDocumentFileFormat) {
+  var startLoadFile = Date ()
 //--- Check header ends with line feed
   ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
 //--- Read Status
@@ -167,6 +168,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     classDefinition.append ((className, propertyNameArray))
   }
+  Swift.print ("Read classes \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  startLoadFile = Date ()
 //--- Read objects
   var objectArray = [EBManagedObject] ()
   var propertyValueArray = [[String : Data]] ()
@@ -192,12 +195,15 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     propertyValueArray.append (valueDictionary)
   }
+  Swift.print ("Read objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  startLoadFile = Date ()
   var idx = 0
   for managedObject in objectArray {
     let valueDictionary = propertyValueArray [idx]
     idx += 1
     managedObject.setUpWithTextDictionary (valueDictionary, objectArray)
   }
+  Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
 //  if ioDataScanner.ok () {
 //    Swift.print ("COMPLETED, \(objectArray.count) objects")
 //  }
@@ -376,4 +382,3 @@ func loadEasyRootObjectDictionary (from data: Data) throws -> (UInt8, [String : 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-

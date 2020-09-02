@@ -32,7 +32,7 @@ let VERSION_CANARI = "1.2.2"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Uses Sparkle 1.23.0 34-g962878b84",
+  "Uses Sparkle 1.24.0-alpha 16-gd01298c9c",
   "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering"
 ]
 let NEWS : [String] = [
@@ -40,7 +40,8 @@ let NEWS : [String] = [
   "Menu \"File\" > \"Open Artwork in Library…\" is implemented",
   "In schematics, unplaced symbols table view names component value (if any)",
   "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
-  "In schematics, selecting a symbol displays a rotation knob"
+  "In schematics, selecting a symbol displays a rotation knob",
+  "New textual file format"
 ]
 
 //--------------------------------------------------------------------------------------------------
