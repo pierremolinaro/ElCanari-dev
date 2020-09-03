@@ -268,6 +268,107 @@ extension ApplicationDelegate {
 
   //····················································································································
 
+  @IBAction func actionConvertToTextualFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
+    let extensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariFont", "ElCanariProject", "ElCanariMerger"])
+    self.convertFiles (withExtensions: extensions, toFormat: .textual, sender: inSender)
+  }
+
+  //····················································································································
+
+  @IBAction func actionConvertToBinaryFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
+    let extensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariFont", "ElCanariProject", "ElCanariMerger"])
+    self.convertFiles (withExtensions: extensions, toFormat: .binary, sender: inSender)
+  }
+
+  //····················································································································
+
+  private func convertFiles (withExtensions inExtensionSet : Set <String>,
+                             toFormat inFormat : EBManagedDocumentFileFormat,
+                             sender inSender : AnyObject) {
+    if let button = inSender as? NSButton, let window = button.window {
+      self.mMaintenanceLogTextView?.string = ""
+      self.mMaintenanceLogTextField?.stringValue = ""
+      self.mCount = 0
+      let op = NSOpenPanel ()
+      op.allowsMultipleSelection = false
+      op.canChooseDirectories = true
+      op.canChooseFiles = false
+      op.beginSheetModal (for: window) { (_ response : NSApplication.ModalResponse) in
+        op.orderOut (nil)
+        if response == .OK {
+          let baseDirectory : String = op.urls [0].path
+          let fm = FileManager ()
+          var retainedFiles = [String] ()
+          if let subPathes = fm.subpaths (atPath: baseDirectory) {
+            for f in subPathes {
+              if f.first! != "." {
+                let fullpath = baseDirectory + "/" + f
+                if inExtensionSet.contains (fullpath.pathExtension) {
+                  retainedFiles.append (fullpath)
+                }
+              }
+            }
+          }
+          if retainedFiles.count == 0 {
+            let alert = NSAlert ()
+            alert.messageText = "No Document to Examine"
+            _ = alert.beginSheetModal (for: window)
+          }else{
+            let alert = NSAlert ()
+            alert.messageText = "Examine \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
+            alert.addButton (withTitle: "Ok")
+            alert.addButton (withTitle: "Cancel")
+            alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+              if response == .alertFirstButtonReturn {
+                self.mMaintenanceLogTextField?.stringValue = "0 document has been converted to \(inFormat) format."
+                self.mMaintenanceLogTextView?.appendMessageString ("Examining \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")\n")
+                self.mHandledFiles = retainedFiles
+                self.mTotalFileCount = retainedFiles.count
+                self.mHandledFileCount = 0
+                self.mStartDate = Date ()
+                self.examineAndConvertDocuments (toFormat: inFormat)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  func examineAndConvertDocuments (toFormat inFormat : EBManagedDocumentFileFormat) {
+    if self.mHandledFiles.count > 0 {
+      let fullPath = self.mHandledFiles.remove (at: 0)
+      let dc = NSDocumentController ()
+      dc.openDocument (
+        withContentsOf: URL (fileURLWithPath: fullPath),
+        display: true
+      ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+        if let canariDocument = document as? EBManagedDocument {
+          if canariDocument.mManagedDocumentFileFormat != inFormat {
+            canariDocument.mManagedDocumentFileFormat = inFormat
+            canariDocument.save (nil)
+            self.mCount += 1
+            self.mMaintenanceLogTextView?.appendMessageString ("\(fullPath) has been converted.\n")
+          }
+          canariDocument.close ()
+          self.mHandledFileCount += 1
+          var message = "Handled \(self.mHandledFileCount)/\(self.mTotalFileCount), converted to \(inFormat): \(self.mCount)"
+          if self.mHandledFiles.count == 0 {
+            let duration = Int (Date ().timeIntervalSince (self.mStartDate))
+            message += " — DONE in \(duration / 60) min \(duration % 60) s"
+            self.mMaintenanceLogTextView?.appendMessageString ("DONE.\n")
+          }
+          self.mMaintenanceLogTextField?.stringValue = message
+          DispatchQueue.main.async { self.examineAndConvertDocuments (toFormat: inFormat) }
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

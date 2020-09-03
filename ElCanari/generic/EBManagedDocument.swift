@@ -39,7 +39,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   private var mReadMetadataStatus : UInt8 = 0
   private var mMetadataDictionary = [String : Any] ()
   private var mUndoManager = EBUndoManager ()
-  private var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary
+  var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary
 
   //····················································································································
   //    init

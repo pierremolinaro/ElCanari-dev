@@ -51,6 +51,10 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   @IBOutlet internal var mMaintenanceLogTextField : NSTextField? = nil
 
   internal var mCount = 0
+  internal var mHandledFiles = [String] ()
+  internal var mTotalFileCount = 0
+  internal var mHandledFileCount = 0
+  internal var mStartDate = Date ()
 
   //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
