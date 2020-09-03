@@ -23,6 +23,18 @@ extension BoardText {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {
+      return NSCursor.rotationCursor
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

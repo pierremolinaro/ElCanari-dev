@@ -15,6 +15,16 @@ extension PackageDimension {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == PACKAGE_DIMENSION_CENTER {
+      return nil
+    }else{
+      return NSCursor.upDownRightLeftCursor
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

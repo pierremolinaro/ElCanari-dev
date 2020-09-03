@@ -25,6 +25,22 @@ extension ComponentInProject {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
+      return NSCursor.rotationCursor
+    }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

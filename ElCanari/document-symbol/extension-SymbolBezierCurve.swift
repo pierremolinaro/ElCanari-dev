@@ -16,7 +16,7 @@ extension SymbolBezierCurve {
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return upDownRightLeftCursor ()
+    return NSCursor.upDownRightLeftCursor
   }
 
   //····················································································································

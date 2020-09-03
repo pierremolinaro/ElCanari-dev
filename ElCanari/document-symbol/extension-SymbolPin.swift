@@ -16,7 +16,7 @@ extension SymbolPin {
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
     if (inKnobIndex == SYMBOL_PIN_LABEL) || (inKnobIndex == SYMBOL_PIN_NUMBER) {
-      return upDownRightLeftCursor ()
+      return NSCursor.upDownRightLeftCursor
     }else{
       return nil
     }

@@ -23,6 +23,20 @@ extension PackageArc {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if (inKnobIndex == PACKAGE_ARC_RADIUS) {
+      return NSCursor.upDownRightLeftCursor
+    }else if (inKnobIndex == PACKAGE_ARC_RADIUS) {
+      return NSCursor.rotationCursor
+    }else if (inKnobIndex == PACKAGE_ARC_END_ANGLE) {
+      return NSCursor.rotationCursor
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

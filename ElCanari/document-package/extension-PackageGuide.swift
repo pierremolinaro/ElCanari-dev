@@ -14,6 +14,16 @@ extension PackageGuide {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == PACKAGE_GUIDE_CENTER {
+      return nil
+    }else{
+      return NSCursor.upDownRightLeftCursor
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

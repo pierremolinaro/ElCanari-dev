@@ -16,6 +16,20 @@ extension PackageZone {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if (inKnobIndex == PACKAGE_ZONE_RIGHT) && (inKnobIndex == PACKAGE_ZONE_LEFT) {
+      return NSCursor.resizeLeftRight
+    }else if (inKnobIndex == PACKAGE_ZONE_BOTTOM) && (inKnobIndex == PACKAGE_ZONE_TOP) {
+      return NSCursor.resizeUpDown
+    }else if inKnobIndex == PACKAGE_ZONE_NAME {
+      return NSCursor.upDownRightLeftCursor
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

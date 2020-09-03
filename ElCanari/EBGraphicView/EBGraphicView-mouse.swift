@@ -12,6 +12,7 @@ extension EBGraphicView {
 
   final override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
+      NSCursor.arrow.set ()
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       let canariUnalignedMouseDownLocation = unalignedMouseDownLocation.canariPoint
       self.mMouseMovedCallback? (unalignedMouseDownLocation)
@@ -73,6 +74,8 @@ extension EBGraphicView {
       self.mGuideBezierPath = nil
       self.mMouseDownBehaviour.onMouseUp (unalignedLocationInView, self)
       self.mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
+    //--- Set cursor
+      self.setCursor (forLocationInView: unalignedLocationInView)
     }
 
   //····················································································································
@@ -199,6 +202,20 @@ extension EBGraphicView {
     }
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, NSEvent.modifierFlags, self)
     super.flagsChanged (with: inEvent)
+  }
+
+  //····················································································································
+
+  final func setCursor (forLocationInView inLocation : NSPoint) {
+    let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: inLocation)
+    if let objectIndex = possibleObjectIndex,
+       let knobIndex = possibleKnobIndex,
+       let object = self.viewController?.graphicObjectArray [objectIndex],
+       let newCursor = object.cursorForKnob (knob: knobIndex) {
+         newCursor.set ()
+    }else{
+      NSCursor.arrow.set ()
+    }
   }
 
   //····················································································································

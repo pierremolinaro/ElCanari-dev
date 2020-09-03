@@ -16,7 +16,7 @@ extension SymbolSolidOval {
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    if (inKnobIndex == SYMBOL_OVAL_BOTTOM) || (inKnobIndex == SYMBOL_OVAL_TOP) {
+    if (inKnobIndex == SYMBOL_SOLID_OVAL_BOTTOM) || (inKnobIndex == SYMBOL_SOLID_OVAL_TOP) {
       return NSCursor.resizeUpDown
     }else{
       return NSCursor.resizeLeftRight

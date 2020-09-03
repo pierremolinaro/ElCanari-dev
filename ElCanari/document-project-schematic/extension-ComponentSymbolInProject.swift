@@ -23,6 +23,22 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
+      return NSCursor.rotationCursor
+    }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }

@@ -21,6 +21,18 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if (inKnobIndex == BOARD_RESTRICT_RECT_RIGHT) && (inKnobIndex == BOARD_RESTRICT_RECT_LEFT) {
+      return NSCursor.resizeLeftRight
+    }else if (inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM) && (inKnobIndex == BOARD_RESTRICT_RECT_TOP) {
+      return NSCursor.resizeUpDown
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
     var acceptedX = inDx
     let newX = self.mX + acceptedX

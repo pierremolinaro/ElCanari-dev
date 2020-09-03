@@ -10,14 +10,26 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let LABEL_IN_SCHEMATICS_TRANSLATION_KNOB = 0 ;
-let LABEL_IN_SCHEMATICS_ROTATION_KNOB = 1 ;
+let LABEL_IN_SCHEMATICS_TRANSLATION_KNOB = 0
+let LABEL_IN_SCHEMATICS_ROTATION_KNOB = 1
 
 //----------------------------------------------------------------------------------------------------------------------
 //   EXTENSION LabelInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
 extension LabelInSchematic {
+
+  //····················································································································
+
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == LABEL_IN_SCHEMATICS_TRANSLATION_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
+      return NSCursor.rotationCursor
+    }else{
+      return nil
+    }
+  }
 
   //····················································································································
 
