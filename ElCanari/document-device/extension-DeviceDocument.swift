@@ -14,9 +14,9 @@ extension DeviceDocument {
   //····················································································································
 
   internal func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: inData),
-       let version = metadataDictionary [PMSymbolVersion] as? Int,
-       let symbolRoot = rootObject as? SymbolRoot {
+    if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
+       let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int,
+       let symbolRoot = documentData.documentRootObject as? SymbolRoot {
       let strokeBezierPathes = NSBezierPath ()
       let filledBezierPathes = NSBezierPath ()
       var symbolPinTypes = [SymbolPinTypeInDevice] ()
@@ -74,9 +74,9 @@ extension DeviceDocument {
         ioErrorMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: data),
-           let symbolRoot = rootObject as? SymbolRoot,
-           let version = metadataDictionary [PMSymbolVersion] as? Int {
+           let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let symbolRoot = documentData.documentRootObject as? SymbolRoot,
+           let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int {
           if version <= symbolType.mVersion {
             ioOkMessages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
           }else{
@@ -141,9 +141,9 @@ extension DeviceDocument {
   //····················································································································
 
   internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: inData),
-       let version = metadataDictionary [PMPackageVersion] as? Int,
-       let packageRoot = rootObject as? PackageRoot {
+    if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
+       let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int,
+       let packageRoot = documentData.documentRootObject as? PackageRoot {
       var strokeBezierPathes = EBBezierPath ()
       var masterPads = [MasterPadInDevice] ()
       packageRoot.accumulate (
@@ -193,9 +193,9 @@ extension DeviceDocument {
         ioErrorMessages.append ("No file in Library for package \(package.mName)")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: data),
-           let packageRoot = rootObject as? PackageRoot,
-           let version = metadataDictionary [PMPackageVersion] as? Int {
+          let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let packageRoot = documentData.documentRootObject as? PackageRoot,
+           let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int {
           if version <= package.mVersion {
             ioOkMessages.append ("Package \(package.mName) is up-to-date.")
           }else{

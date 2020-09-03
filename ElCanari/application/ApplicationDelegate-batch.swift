@@ -340,30 +340,38 @@ extension ApplicationDelegate {
   func examineAndConvertDocuments (toFormat inFormat : EBManagedDocumentFileFormat) {
     if self.mHandledFiles.count > 0 {
       let fullPath = self.mHandledFiles.remove (at: 0)
-      let dc = NSDocumentController ()
-      dc.openDocument (
-        withContentsOf: URL (fileURLWithPath: fullPath),
-        display: true
-      ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-        if let canariDocument = document as? EBManagedDocument {
-          if canariDocument.mManagedDocumentFileFormat != inFormat {
-            canariDocument.mManagedDocumentFileFormat = inFormat
-            canariDocument.save (nil)
+      let fileURL = URL (fileURLWithPath: fullPath)
+      if let documentData = try? loadEasyBindingFile (fromURL: fileURL) {
+        if documentData.documentFileFormat != inFormat {
+          let newDocumentData = EBDocumentData (
+            documentMetadataStatus: documentData.documentMetadataStatus,
+            documentMetadataDictionary: documentData.documentMetadataDictionary,
+            documentRootObject: documentData.documentRootObject,
+            documentFileFormat: inFormat
+          )
+          do{
+            try save (documentData: newDocumentData, toURL: fileURL)
             self.mCount += 1
             self.mMaintenanceLogTextView?.appendMessageString ("\(fullPath) has been converted.\n")
+          }catch _ {
+            let message = "Cannot save \(fullPath)\n"
+            self.mMaintenanceLogTextView?.appendErrorString (message)
           }
-          canariDocument.close ()
-          self.mHandledFileCount += 1
-          var message = "Handled \(self.mHandledFileCount)/\(self.mTotalFileCount), converted to \(inFormat): \(self.mCount)"
-          if self.mHandledFiles.count == 0 {
-            let duration = Int (Date ().timeIntervalSince (self.mStartDate))
-            message += " — DONE in \(duration / 60) min \(duration % 60) s"
-            self.mMaintenanceLogTextView?.appendMessageString ("DONE.\n")
-          }
-          self.mMaintenanceLogTextField?.stringValue = message
-          DispatchQueue.main.async { self.examineAndConvertDocuments (toFormat: inFormat) }
         }
+        collectAndPrepareObjectsForDeletion (fromRoot: documentData.documentRootObject)
+      }else{
+        let message = "Cannot read \(fullPath)\n"
+        self.mMaintenanceLogTextView?.appendErrorString (message)
       }
+      self.mHandledFileCount += 1
+      var message = "Handled \(self.mHandledFileCount)/\(self.mTotalFileCount), converted to \(inFormat): \(self.mCount)"
+      if self.mHandledFiles.count == 0 {
+        let duration = Int (Date ().timeIntervalSince (self.mStartDate))
+        message += " — DONE in \(duration / 60) min \(duration % 60) s"
+        self.mMaintenanceLogTextView?.appendMessageString ("DONE.\n")
+      }
+      self.mMaintenanceLogTextField?.stringValue = message
+      DispatchQueue.main.async { self.examineAndConvertDocuments (toFormat: inFormat) }
     }
   }
 

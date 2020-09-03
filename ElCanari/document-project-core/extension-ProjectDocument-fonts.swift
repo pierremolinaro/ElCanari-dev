@@ -27,11 +27,10 @@ extension ProjectDocument {
   //····················································································································
 
   internal func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: inData),
-       let version = metadataDictionary [PMFontVersion] as? Int,
-       let rod = rootObjectDictionary,
-       let nominalSize = rod ["nominalSize"] as? Int,
-       let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
+    if let documentRootObjectDictionary = try? loadEasyRootObjectDictionary (from: inData),
+       let version = documentRootObjectDictionary [PMFontVersion] as? Int,
+       let nominalSize = documentRootObjectDictionary ["nominalSize"] as? Int,
+       let descriptiveString = documentRootObjectDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
       let addedFont = FontInProject (self.ebUndoManager)
       addedFont.mFontName = inName
       addedFont.mFontVersion = version
@@ -50,11 +49,10 @@ extension ProjectDocument {
         ioMessages.append ("No file for \(font.mFontName) font in Library")
       }else if pathes.count == 1 {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-           let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: data),
-           let version = metadataDictionary [PMFontVersion] as? Int,
-           let rod = rootObjectDictionary,
-           let nominalSize = rod ["nominalSize"] as? Int,
-           let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
+           let documentRootObjectDictionary = try? loadEasyRootObjectDictionary (from: data),
+           let version = documentRootObjectDictionary [PMFontVersion] as? Int,
+           let nominalSize = documentRootObjectDictionary ["nominalSize"] as? Int,
+           let descriptiveString = documentRootObjectDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
           if font.mFontVersion < version {
             font.mFontVersion = version
             font.mNominalSize = nominalSize

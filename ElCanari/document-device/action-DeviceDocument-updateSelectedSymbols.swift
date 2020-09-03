@@ -22,9 +22,9 @@ extension DeviceDocument {
         messages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let (_, metadataDictionary, rootObject, _) = try? loadEasyBindingFile (nil, from: data),
-           let symbolRoot = rootObject as? SymbolRoot,
-           let version = metadataDictionary [PMSymbolVersion] as? Int {
+           let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let symbolRoot = documentData.documentRootObject as? SymbolRoot,
+           let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int {
           if version <= symbolType.mVersion {
             messages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
           }else{
