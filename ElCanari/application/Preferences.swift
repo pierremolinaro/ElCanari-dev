@@ -88,6 +88,7 @@ let Preferences_displayPadNumbersForBoard = "Preferences:displayPadNumbersForBoa
 let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
+let Preferences_mShowRotationKnobInBoard = "Preferences:mShowRotationKnobInBoard"
 let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
 let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
@@ -1497,6 +1498,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   final var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> { return self.packageDrawingWidthMultpliedByTenForBoard_property.prop }
+
+  //····················································································································
+  //   Atomic property: mShowRotationKnobInBoard
+  //····················································································································
+
+  let mShowRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowRotationKnobInBoard)
+
+  //····················································································································
+
+  final var mShowRotationKnobInBoard : Bool {
+    get { return self.mShowRotationKnobInBoard_property.propval }
+    set { self.mShowRotationKnobInBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mShowRotationKnobInBoard_property_selection : EBSelection <Bool> { return self.mShowRotationKnobInBoard_property.prop }
 
   //····················································································································
   //   Atomic property: showGerberDrawingFlow
@@ -3275,6 +3293,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.padNumberColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
     self.packageDrawingWidthMultpliedByTenForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mShowRotationKnobInBoard
+    self.mShowRotationKnobInBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: showGerberDrawingFlow
     self.showGerberDrawingFlow_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: showGerberDrawingIndexes

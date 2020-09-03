@@ -413,6 +413,15 @@ fileprivate final class EBShapeObject : Hashable {
       bp = EBBezierPath (rect: r)
       backColor = .white
       frameColor = .black
+    case .diamond :
+      bp = EBBezierPath ()
+      bp.move (to: NSPoint (x: r.minX, y: r.midY))
+      bp.line (to: NSPoint (x: r.midX, y: r.minY))
+      bp.line (to: NSPoint (x: r.maxX, y: r.midY))
+      bp.line (to: NSPoint (x: r.midX, y: r.maxY))
+      bp.close ()
+      backColor = .white
+      frameColor = .black
     case .circ :
       bp = EBBezierPath (ovalIn: r)
       backColor = .white
@@ -505,6 +514,16 @@ fileprivate final class EBShapeObject : Hashable {
       switch inKnobKind {
       case .circ :
         var bp = EBBezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
+        self.mElements.append (e1)
+        let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
+        self.mElements.append (e2)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+      case .diamond :
+        var bp = EBBezierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
         bp.lineWidth = 0.5
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -665,6 +684,7 @@ fileprivate final class EBShapeObject : Hashable {
 enum EBKnobKind {
   case rect
   case circ
+  case diamond
   case transparentCircle
 }
 

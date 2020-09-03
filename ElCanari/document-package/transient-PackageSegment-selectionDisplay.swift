@@ -30,8 +30,8 @@ func transient_PackageSegment_selectionDisplay (
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], NSColor.cyan)
-  shape.add (knobAt:  p1, knobIndex: PACKAGE_SEGMENT_ENDPOINT_1, .circ, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  p2, knobIndex: PACKAGE_SEGMENT_ENDPOINT_2, .circ, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  p1, knobIndex: PACKAGE_SEGMENT_ENDPOINT_1, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  p2, knobIndex: PACKAGE_SEGMENT_ENDPOINT_2, .diamond, CGFloat (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

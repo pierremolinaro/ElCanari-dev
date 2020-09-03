@@ -55,11 +55,11 @@ func transient_BorderCurve_selectionDisplay (
             bp.line (to: cp2)
           }
           shape.add (stroke: [bp], .cyan)
-          shape.add (knobAt:  p1, knobIndex: BOARD_LIMIT_P1_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
-          shape.add (knobAt:  p2, knobIndex: BOARD_LIMIT_P2_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
+          shape.add (knobAt:  p1, knobIndex: BOARD_LIMIT_P1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
+          shape.add (knobAt:  p2, knobIndex: BOARD_LIMIT_P2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
           if self_mShape == .bezier {
-            shape.add (knobAt:  cp1, knobIndex: BOARD_LIMIT_CP1_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
-            shape.add (knobAt:  cp2, knobIndex: BOARD_LIMIT_CP2_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
+            shape.add (knobAt:  cp1, knobIndex: BOARD_LIMIT_CP1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
+            shape.add (knobAt:  cp2, knobIndex: BOARD_LIMIT_CP2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
           }
         }
         return shape

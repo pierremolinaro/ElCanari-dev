@@ -1021,6 +1021,7 @@ import Cocoa
   @IBOutlet var mSheetDownButton : EBButton? = nil
   @IBOutlet var mSheetPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mSheetUpButton : EBButton? = nil
+  @IBOutlet var mShowRotationKnobInBoardSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolMirrorSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet var mTrackCountTextField : EBTextObserverField? = nil
@@ -1604,6 +1605,7 @@ import Cocoa
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mShowRotationKnobInBoardSwitch, "mShowRotationKnobInBoardSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mTrackCountTextField, "mTrackCountTextField", EBTextObserverField.self, #file, #line)
@@ -2561,6 +2563,7 @@ import Cocoa
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
     self.mDisplayLegendSwitch?.bind_value (self.componentInBoardSelectionController.mDisplayLegend_property, file: #file, line: #line)
+    self.mShowRotationKnobInBoardSwitch?.bind_value (g_Preferences!.mShowRotationKnobInBoard_property, file: #file, line: #line)
     self.mComponentInBoardCenterXPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
     self.mComponentInBoardCenterXTextField?.bind_dimensionAndUnit (self.componentInBoardSelectionController.mX_property, self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
     self.mComponentInBoardCenterYPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
@@ -3526,6 +3529,7 @@ import Cocoa
     self.mBoardTextWeightTextField?.unbind_value ()
     self.mBoardTextObliqueSwitch?.unbind_value ()
     self.mDisplayLegendSwitch?.unbind_value ()
+    self.mShowRotationKnobInBoardSwitch?.unbind_value ()
     self.mComponentInBoardCenterXPopUp?.unbind_selectedTag ()
     self.mComponentInBoardCenterXTextField?.unbind_dimensionAndUnit ()
     self.mComponentInBoardCenterYPopUp?.unbind_selectedTag ()
@@ -4212,6 +4216,7 @@ import Cocoa
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()
+    self.mShowRotationKnobInBoardSwitch?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mTrackCountTextField?.ebCleanUp ()
@@ -4628,6 +4633,7 @@ import Cocoa
     self.mSheetDownButton = nil
     self.mSheetPopUpButton = nil
     self.mSheetUpButton = nil
+    self.mShowRotationKnobInBoardSwitch = nil
     self.mSymbolMirrorSwitch = nil
     self.mSymbolRotationSegmentedControl = nil
     self.mTrackCountTextField = nil

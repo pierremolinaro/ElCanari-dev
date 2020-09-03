@@ -227,6 +227,7 @@ prefs {
 //--- Symbol drawing line width
   property Int symbolDrawingWidthMultipliedByTenForSchematic default 5 ;
   outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag self.symbolDrawingWidthMultipliedByTenForSchematic ;
+//--- 
 }
 
 //----------------------------------------------------------------------------------------------------------------------*
@@ -300,6 +301,8 @@ prefs {
 //--- Package drawing width
   property Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
   outlet EBPopUpButton mBoardPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultpliedByTenForBoard ;
+//--- Show rotation knob in board
+  property Bool mShowRotationKnobInBoard default yes ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------*

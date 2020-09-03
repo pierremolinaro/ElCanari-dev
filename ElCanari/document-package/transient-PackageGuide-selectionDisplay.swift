@@ -32,8 +32,8 @@ func transient_PackageGuide_selectionDisplay (
   shape.add (stroke: [bp], NSColor.cyan)
   let center = NSPoint.center (p1, p2)
   shape.add (knobAt: center, knobIndex: PACKAGE_GUIDE_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt: p1, knobIndex: PACKAGE_GUIDE_ENDPOINT_1, .circ, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt: p2, knobIndex: PACKAGE_GUIDE_ENDPOINT_2, .circ, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt: p1, knobIndex: PACKAGE_GUIDE_ENDPOINT_1, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt: p2, knobIndex: PACKAGE_GUIDE_ENDPOINT_2, .diamond, CGFloat (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

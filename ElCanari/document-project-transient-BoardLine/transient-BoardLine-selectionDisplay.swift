@@ -33,8 +33,8 @@ func transient_BoardLine_selectionDisplay (
       bp.line (to: p2)
       var shape = EBShape (stroke: [bp], .cyan)
     //--- Knobs
-      shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .circ, 2.0)
-      shape.add (knobAt: p2, knobIndex: BOARD_LINE_P2, .circ, 2.0)
+      shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .diamond, 2.0)
+      shape.add (knobAt: p2, knobIndex: BOARD_LINE_P2, .diamond, 2.0)
     //---
       return shape
 //--- END OF USER ZONE 2

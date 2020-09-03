@@ -45,10 +45,10 @@ func transient_PackageOval_selectionDisplay (
   }
   bp.lineWidth = 0.25
   shape.add (stroke: [bp], NSColor.cyan)
-  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .circ, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .circ, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .circ, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_RIGHT, .circ, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_RIGHT, .diamond, CGFloat (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

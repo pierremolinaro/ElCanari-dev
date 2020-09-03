@@ -45,10 +45,10 @@ func transient_BoardTrack_selectionDisplay (
         shape.add (stroke: [bp], color)
       //--- Knobs
         if let connected = self_mConnectorP1_connectedToComponent, !connected {
-          shape.add (knobAt: p1, knobIndex: BOARD_TRACK_P1, .circ, 2.0)
+          shape.add (knobAt: p1, knobIndex: BOARD_TRACK_P1, .diamond, 2.0)
         }
         if let connected = self_mConnectorP2_connectedToComponent, !connected {
-          shape.add (knobAt: p2, knobIndex: BOARD_TRACK_P2, .circ, 2.0)
+          shape.add (knobAt: p2, knobIndex: BOARD_TRACK_P2, .diamond, 2.0)
         }
       }
       return shape

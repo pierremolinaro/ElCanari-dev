@@ -80,7 +80,8 @@ graphic entity ComponentInProject : BoardObject {
     self.packagePadDictionary, self.padNetDictionary,
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue,
-    prefs.hiliteWidthMultipliedByTen
+    prefs.hiliteWidthMultipliedByTen,
+    prefs.mShowRotationKnobInBoard
   ;
 
 //--- Symbols

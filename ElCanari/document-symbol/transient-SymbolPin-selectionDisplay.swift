@@ -38,9 +38,9 @@ func transient_SymbolPin_selectionDisplay (
   //--- Pin
     shape.add (knobAt:  pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
   //--- Name
-    shape.add (knobAt:  namePoint, knobIndex: SYMBOL_PIN_LABEL, .circ, 2.0)
+    shape.add (knobAt:  namePoint, knobIndex: SYMBOL_PIN_LABEL, .diamond, 2.0)
   //--- Number
-    shape.add (knobAt:  numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .circ, 2.0)
+    shape.add (knobAt:  numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .diamond, 2.0)
   //---
     return shape
 //--- END OF USER ZONE 2

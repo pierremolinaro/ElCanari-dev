@@ -902,9 +902,9 @@ document ProjectDocument root ProjectRoot {
     #boardObjectsController.selectedArray
   ;
 
-  outlet EBSwitch mDisplayLegendSwitch
-    $value #componentInBoardSelectionController.mDisplayLegend
-  ;
+  outlet EBSwitch mDisplayLegendSwitch $value #componentInBoardSelectionController.mDisplayLegend ;
+
+  outlet EBSwitch mShowRotationKnobInBoardSwitch $value prefs.mShowRotationKnobInBoard ;
 
   outlet EBPopUpButton mComponentInBoardCenterXPopUp $selectedTag #componentInBoardSelectionController.mXUnit ;
   outlet CanariDimensionTextField mComponentInBoardCenterXTextField

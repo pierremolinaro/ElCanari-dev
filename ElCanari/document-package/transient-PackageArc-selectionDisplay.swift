@@ -51,19 +51,19 @@ func transient_PackageArc_selectionDisplay (
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle + arcAngle / 2.0)
     let radiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .circ, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt:  radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .diamond, CGFloat (self_PackageObject_knobSize))
   //--- Add start point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle)
     let startPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .circ, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt:  startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
   //--- Add end point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle + arcAngle)
     let endPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .circ, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt:  endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
   //---
     return shape
 //--- END OF USER ZONE 2

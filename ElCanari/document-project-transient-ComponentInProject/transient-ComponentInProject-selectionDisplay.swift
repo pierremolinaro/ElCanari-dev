@@ -36,7 +36,8 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mValueFontSize : Double,              
        _ self_mValueRotation : Int,                 
        _ self_mComponentValue : String,             
-       _ prefs_hiliteWidthMultipliedByTen : Int
+       _ prefs_hiliteWidthMultipliedByTen : Int,    
+       _ prefs_mShowRotationKnobInBoard : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
       let lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
@@ -47,8 +48,10 @@ func transient_ComponentInProject_selectionDisplay (
       var rotatedShape = EBShape ()
       if self_mDisplayLegend {
         var strokeBezierPath = self_strokeBezierPath
-        strokeBezierPath.move (to: rPadsCenter)
-        strokeBezierPath.line (to: rotationKnobLocation)
+        if prefs_mShowRotationKnobInBoard {
+          strokeBezierPath.move (to: rPadsCenter)
+          strokeBezierPath.line (to: rotationKnobLocation)
+        }
         strokeBezierPath.lineWidth = lineWidth
         strokeBezierPath.lineCapStyle = .round
         strokeBezierPath.lineJoinStyle = .round
@@ -75,7 +78,9 @@ func transient_ComponentInProject_selectionDisplay (
     //--- Knobs
       var rotatedKnobs = EBShape ()
       rotatedKnobs.add (knobAt: rPadsCenter, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
-      rotatedKnobs.add (knobAt: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
+      if prefs_mShowRotationKnobInBoard {
+        rotatedKnobs.add (knobAt: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
+      }
     //--- Name
       var nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {

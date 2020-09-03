@@ -500,7 +500,7 @@ extension ProjectDocument {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
-          if let polygon = polygon (masterPad.center, masterPad.padSize, masterPad.shape, af) {
+          if let polygon = buildPolygon (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
               polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
@@ -515,7 +515,7 @@ extension ProjectDocument {
             }
           }
           for slavePad in masterPad.slavePads {
-           if let polygon = polygon (slavePad.center, slavePad.padSize, slavePad.shape, af) {
+           if let polygon = buildPolygon (slavePad.center, slavePad.padSize, slavePad.shape, af) {
              switch slavePad.style {
               case .traversing :
                 polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
@@ -569,10 +569,10 @@ fileprivate func productCircle (_ inCenter : CanariPoint,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate func polygon (_ inCenter : CanariPoint,
-                          _ inPadSize : CanariSize,
-                          _ inShape : PadShape,
-                          _ inAffineTransform : AffineTransform) -> ProductPolygon? {
+fileprivate func buildPolygon (_ inCenter : CanariPoint,
+                               _ inPadSize : CanariSize,
+                               _ inShape : PadShape,
+                               _ inAffineTransform : AffineTransform) -> ProductPolygon? {
   switch inShape {
   case .rect :
     let p = inCenter.cocoaPoint
