@@ -450,29 +450,36 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //  MARK: -
   //····················································································································
 
-  final private var mNextUpdateDate = Date ()
+  final private var mDeferredUpdateViewFrameAndBoundsRegistered = false
 
   final internal func updateViewFrameAndBounds () {
-    var newBounds = NSRect () // For including point (0, 0)
-    newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
-    newBounds = newBounds.union (self.mMinimumRectangle)
-    if let ciImage = self.mBackgroundImage {
-      let bp = NSBezierPath (rect: ciImage.extent)
-      let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
-      newBounds = newBounds.union (transformedBP.bounds)
-    }
-    let currentBounds = self.bounds
-    if currentBounds != newBounds {
-      self.frame.size = newBounds.size
-      self.bounds = newBounds
-      self.setNeedsDisplay (self.frame)
-      self.applyZoom ()
-      let now = Date ()
-      if self.mNextUpdateDate > now {
-        let delay = self.mNextUpdateDate.timeIntervalSince (now)
-        usleep (UInt32 (delay * 1_000_000.0))
+    if !self.mDeferredUpdateViewFrameAndBoundsRegistered && (NSEvent.pressedMouseButtons == 0) {
+      var candidateBounds = NSRect () // For including point (0, 0)
+      candidateBounds = candidateBounds.union (self.objectsAndIssueBoundingBox)
+      candidateBounds = candidateBounds.union (self.mMinimumRectangle)
+      if let ciImage = self.mBackgroundImage {
+        let bp = NSBezierPath (rect: ciImage.extent)
+        let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
+        candidateBounds = candidateBounds.union (transformedBP.bounds)
       }
-      self.mNextUpdateDate = Date (timeIntervalSinceNow: 0.1)
+      if self.bounds != candidateBounds {
+        self.mDeferredUpdateViewFrameAndBoundsRegistered = true
+        DispatchQueue.main.async {
+          self.mDeferredUpdateViewFrameAndBoundsRegistered = false
+          var newBounds = NSRect () // For including point (0, 0)
+          newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
+          newBounds = newBounds.union (self.mMinimumRectangle)
+          if let ciImage = self.mBackgroundImage {
+            let bp = NSBezierPath (rect: ciImage.extent)
+            let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
+            newBounds = newBounds.union (transformedBP.bounds)
+          }
+          self.frame.size = newBounds.size
+          self.bounds = newBounds
+          self.setNeedsDisplay (self.frame)
+          self.applyZoom ()
+        }
+      }
     }
   }
 

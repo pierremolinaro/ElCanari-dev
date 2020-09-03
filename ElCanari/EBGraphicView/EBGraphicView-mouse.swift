@@ -76,6 +76,8 @@ extension EBGraphicView {
       self.mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
     //--- Set cursor
       self.setCursor (forLocationInView: unalignedLocationInView)
+    //--- Update frame and bounds
+      self.updateViewFrameAndBounds ()
     }
 
   //····················································································································
