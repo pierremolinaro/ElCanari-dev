@@ -115,129 +115,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       documentFileFormat: self.mManagedDocumentFileFormat
     )
     return try dataForSaveOperation (from: documentData)
-//    switch self.mManagedDocumentFileFormat {
-//    case .binary :
-//      return try self.binaryDataForSaving ()
-//    case .textual :
-//      return try self.textualDataForSaving ()
-//    }
   }
-
-  //····················································································································
-
-//  private func binaryDataForSaving () throws -> Data {
-//    // let start = Date ()
-//    var fileBinaryData = Data ()
-//  //--- Append signature
-//    fileBinaryData.appendBinarySignature ()
-//  //--- Write status
-//    fileBinaryData.append (self.metadataStatusForSaving ())
-//  //--- Append metadata dictionary
-//    let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .binary, options: 0)
-//    fileBinaryData.append (1)
-//    fileBinaryData.appendAutosizedData (metaData)
-//  //--- Append document data
-//    let dataArray = self.dataForSavingFromRootObject ()
-//    let documentData = try PropertyListSerialization.data (fromPropertyList: dataArray, format: .binary, options: 0)
-//    fileBinaryData.append (6)
-//    fileBinaryData.appendAutosizedData (documentData)
-//  //--- Append final byte
-//    fileBinaryData.append (0)
-//  //---
-//    // Swift.print ("Binary Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-//    return fileBinaryData
-//  }
-
-  //····················································································································
-
-//  private func textualDataForSaving () throws -> Data {
-// //   let start = Date ()
-//  //--- First line: PM-TEXT-FORMAT
-//    var fileStringData = Data ()
-//    fileStringData.append (ascii: .P)
-//    fileStringData.append (ascii: .M)
-//    fileStringData.append (ascii: .minus)
-//    fileStringData.append (ascii: .T)
-//    fileStringData.append (ascii: .E)
-//    fileStringData.append (ascii: .X)
-//    fileStringData.append (ascii: .T)
-//    fileStringData.append (ascii: .minus)
-//    fileStringData.append (ascii: .F)
-//    fileStringData.append (ascii: .O)
-//    fileStringData.append (ascii: .R)
-//    fileStringData.append (ascii: .M)
-//    fileStringData.append (ascii: .A)
-//    fileStringData.append (ascii: .T)
-//    fileStringData.append (ascii: .lineFeed)
-//  //--- Append status
-//    fileStringData.append (base62Encoded: Int (self.metadataStatusForSaving ()))
-//    fileStringData.append (ascii: .lineFeed)
-//  //--- Append metadata dictionary
-//    let textMetaData = try JSONSerialization.data (withJSONObject: self.mMetadataDictionary, options: [])
-//    fileStringData += textMetaData
-//    fileStringData.append (ascii: .lineFeed)
-//  //--- Build class index dictionary
-//    let objectArray = self.reachableObjectsFromRootObject ()
-//    var classDictionary = [String : Int] ()
-//    var classDescriptionString = ""
-//    for object in objectArray {
-//      let key = String (describing: type (of: object as Any))
-//      if classDictionary [key] == nil {
-//        classDictionary [key] = classDictionary.count
-//        classDescriptionString += "$" + key + "\n"
-//        object.appendPropertyNamesTo (&classDescriptionString)
-//      }
-//    }
-//    fileStringData += classDescriptionString.data (using: .utf8)!
-//  //--- Save data
-//    for object in objectArray {
-//      let key = String (describing: type (of: object as Any))
-//      let classIndex = classDictionary [key]!
-//      fileStringData.append (ascii: .at)
-//      fileStringData.append (base62Encoded: classIndex)
-//      fileStringData.append (ascii: .lineFeed)
-//      object.appendPropertyValuesTo (&fileStringData)
-//    }
-//  //---
-// //   Swift.print ("Text Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-//    return fileStringData
-//  }
-
-  //····················································································································
-
-//  private func dataForSavingFromRootObject () -> [NSDictionary] {
-//  //--- Get objectsto save from root object
-//    let rootObject = self.mRootObject!
-//    var reachableObjectArray = [rootObject]
-//    var reachableObjectSet = Set ([rootObject])
-//    var objectsToExploreArray = [rootObject]
-//    while let objectToExplore = objectsToExploreArray.last {
-//      objectsToExploreArray.removeLast ()
-//      var accessible = [EBManagedObject] ()
-//      objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
-//      for managedObject in accessible {
-//        if !reachableObjectSet.contains (managedObject) {
-//          reachableObjectSet.insert (managedObject)
-//          reachableObjectArray.append (managedObject)
-//          objectsToExploreArray.append (managedObject)
-//        }
-//      }
-//    }
-//  //--- Set savingIndex for each object
-//    var idx = 0
-//    for object in reachableObjectArray {
-//      object.savingIndex = idx
-//      idx += 1
-//    }
-//  //---
-//    var saveDataArray : [NSDictionary] = []
-//    for object in reachableObjectArray {
-//      let d = NSMutableDictionary ()
-//      object.saveIntoDictionary (d)
-//      saveDataArray.append (d)
-//    }
-//    return saveDataArray
-//  }
 
   //····················································································································
   //  Reachable objects from root object
@@ -261,11 +139,11 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       }
     }
   //--- Set savingIndex for each object
-    var idx = 0
-    for object in reachableObjectArray {
-      object.savingIndex = idx
-      idx += 1
-    }
+//    var idx = 0
+//    for object in reachableObjectArray {
+//      object.savingIndex = idx
+//      idx += 1
+//    }
     return reachableObjectArray
   }
 
@@ -292,18 +170,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     }
   //--- Store root object
     self.mRootObject = documentData.documentRootObject
-  //---
-//    if mRootObject == nil {
-//      let dictionary = [
-//        "Cannot Open Document" :  NSLocalizedDescriptionKey,
-//        "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
-//      ]
-//      throw NSError (
-//        domain:Bundle.main.bundleIdentifier!,
-//        code:1,
-//        userInfo:dictionary
-//      )
-//    }
   //---
     self.ebUndoManager.enableUndoRegistration ()
   }

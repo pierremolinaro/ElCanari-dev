@@ -64,45 +64,19 @@ func loadEasyBindingFile (fromData inData: Data, undoManager inUndoManager : EBU
 //     loadEasyRootObjectDictionary
 //----------------------------------------------------------------------------------------------------------------------
 
-func loadEasyRootObjectDictionary (from data: Data) throws -> EBDocumentRootObjectDictionary {
-//---- Define input data scanner
-  var dataScanner = EBDataScanner (data: data)
-//--- Check Signature
-  for c in PM_BINARY_FORMAT_SIGNATURE.utf8 {
-    dataScanner.acceptRequired (byte: c)
-  }
-//--- Read Status
-  _ = dataScanner.parseByte ()
-//--- if ok, check byte is 1
-  dataScanner.acceptRequired (byte: 1)
-//--- Read metadata dictionary
-  _ = dataScanner.parseAutosizedData ()
-//  let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData,
-//    options:[],
-//    format:nil
-//  ) as! [String : Any]
-//--- Read data
-  let dataFormat = dataScanner.parseByte ()
-  let fileData = dataScanner.parseAutosizedData ()
-//--- if ok, check final byte (0)
-  dataScanner.acceptRequired (byte: 0)
-//--- Scanner error ?
-  if !dataScanner.ok () {
+func loadEasyRootObjectDictionary (from inData : Data) throws -> EBDocumentRootObjectDictionary {
+  var dataScanner = EBDataScanner (data: inData)
+  if dataScanner.testString (string: PM_BINARY_FORMAT_SIGNATURE) {
+    return try loadEasyRootObjectDictionary (fromBinaryDataScanner: &dataScanner)
+  }else if dataScanner.testString (string: PM_TEXTUAL_FORMAT_SIGNATURE) {
+    return try loadEasyRootObjectDictionary (fromTextDataScanner: &dataScanner)
+  }else{
     let dictionary = [
       "Cannot Open Document" : NSLocalizedDescriptionKey,
       "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
     ]
     throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
   }
-//--- Analyze read data
-  if dataFormat == 0x06, let dictionaryArray = try PropertyListSerialization.propertyList (from: fileData, options: [], format: nil) as? [[String : Any]] {
-    return dictionaryArray [0]
-  }
-  let dictionary = [
-    "Cannot Open Document" :  NSLocalizedDescriptionKey,
-    "Unkown data format: \(dataFormat)" :  NSLocalizedRecoverySuggestionErrorKey
-  ]
-  throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
 }
 
 //----------------------------------------------------------------------------------------------------------------------

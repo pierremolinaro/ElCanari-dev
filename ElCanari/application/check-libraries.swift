@@ -133,9 +133,9 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
                                             deviceDict:inout [String : PMDeviceDictionaryEntry]) throws {
   let deviceName = ((deviceFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
 //--- Get metadata dictionary
-  let (metadataStatus, metadataDictionary) = try metadataForFileAtPath (deviceFullPath)
+  let metadata = try getFileMetadata (atPath: deviceFullPath)
 //--- Version number
-  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: DEVICE_VERSION_METADATA_DICTIONARY_KEY)
+  let possibleVersionNumber : Any? = metadata.metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY]
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue
@@ -143,7 +143,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
     throw badFormatErrorForFileAtPath (deviceFullPath, code:#line)
   }
 //--- Embedded symbol dictionary
-  let possibleSymbolDictionary : Any? = metadataDictionary.object (forKey: DEVICE_SYMBOL_METADATA_DICTIONARY_KEY)
+  let possibleSymbolDictionary : Any? = metadata.metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY]
   var symbolDictionary : [String : Int] = [:]
   if let d = possibleSymbolDictionary as? [String : Int] {
     for (importedSymbolName, symbolDescription) in d {
@@ -153,7 +153,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
     throw badFormatErrorForFileAtPath (deviceFullPath, code:#line)
   }
 //--- Embedded package dictionary
-  let possiblePackageDictionary : Any? = metadataDictionary.object (forKey: DEVICE_PACKAGE_METADATA_DICTIONARY_KEY)
+  let possiblePackageDictionary : Any? = metadata.metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY]
   var packageDictionary : [String : Int] = [:]
   if let d = possiblePackageDictionary as? [String : Int] {
     for (importedPackageName, packageDescription) in d {
@@ -177,7 +177,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
     deviceDict [deviceName] = newEntry
   }else{
     var partStatus : PartStatus
-    switch metadataStatus {
+    switch metadata.metadataStatus {
     case .unknown :
       partStatus = .pmPartHasUnknownStatus
     case .ok :
@@ -348,28 +348,14 @@ private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
                                             symbolDict:inout [String : PMSymbolDictionaryEntry]) throws {
   let symbolName = ((symbolFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
   // print ("symbolFullPath \(symbolFullPath)")
-  let (metadataStatus, metadataDictionary) = try metadataForFileAtPath (symbolFullPath)
-  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: PMSymbolVersion)
+  let metadata = try getFileMetadata (atPath: symbolFullPath)
+  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMSymbolVersion]
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue
   }else{
     throw badFormatErrorForFileAtPath (symbolFullPath, code:#line)
   }
-//--- Metadata status
-//  if let rawStatus = metadataDictionary.object (forKey: STATUS_METADATA_KEY) as? NSNumber,
-//     let status = MetadataStatus (rawValue: rawStatus.intValue) {
-//    switch status {
-//    case .unknown :
-//      metadataStatus = .metadataStatusUnknown
-//    case .ok :
-//      metadataStatus = .metadataStatusSuccess
-//    case .warning :
-//      metadataStatus = .metadataStatusWarning
-//    case .error :
-//      metadataStatus = .metadataStatusError
-//    }
-//  }
   let possibleEntry : PMSymbolDictionaryEntry? = symbolDict [symbolName]
   if let entry = possibleEntry {
   
@@ -380,7 +366,7 @@ private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
     symbolDict [symbolName] = newEntry
   }else{
     let partStatus : PartStatus
-    switch metadataStatus {
+    switch metadata.metadataStatus {
     case .unknown :
       partStatus = .pmPartHasUnknownStatus
     case .ok :
@@ -494,28 +480,14 @@ private func checkPackageLibraryCheckAtPath (_ packageFullPath : String,
                                              logView : NSTextView?,
                                              packageDict:inout [String : PMPackageDictionaryEntry]) throws {
   let packageName = ((packageFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let (metadataStatus, metadataDictionary) = try metadataForFileAtPath (packageFullPath)
-  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: PMPackageVersion)
+  let metadata = try getFileMetadata (atPath: packageFullPath)
+  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMPackageVersion]
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue
   }else{
     throw badFormatErrorForFileAtPath (packageFullPath, code:#line)
   }
-//--- Metadata status
-//  if let rawStatus = metadataDictionary.object (forKey: STATUS_METADATA_KEY) as? NSNumber,
-//     let status = MetadataStatus (rawValue: rawStatus.intValue) {
-//    switch status {
-//    case .unknown :
-//      metadataStatus = .metadataStatusUnknown
-//    case .ok :
-//      metadataStatus = .metadataStatusSuccess
-//    case .warning :
-//      metadataStatus = .metadataStatusWarning
-//    case .error :
-//      metadataStatus = .metadataStatusError
-//    }
-//  }
   let possibleEntry : PMPackageDictionaryEntry? = packageDict [packageName]
   if let entry = possibleEntry {
   
@@ -526,7 +498,7 @@ private func checkPackageLibraryCheckAtPath (_ packageFullPath : String,
     packageDict [packageName] = newEntry
   }else{
     var partStatus : PartStatus
-    switch metadataStatus {
+    switch metadata.metadataStatus {
     case .unknown :
       partStatus = .pmPartHasUnknownStatus
     case .ok :
@@ -638,8 +610,8 @@ private func checkFontLibraryCheckAtPath (_ fontFullPath : String,
                                           logView : NSTextView?,
                                           fontDict:inout [String : PMFontDictionaryEntry]) throws {
   let fontName = ((fontFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let (metadataStatus, metadataDictionary) = try metadataForFileAtPath (fontFullPath)
-  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: PMFontVersion)
+  let metadata = try getFileMetadata (atPath: fontFullPath)
+  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMFontVersion]
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue
@@ -657,7 +629,7 @@ private func checkFontLibraryCheckAtPath (_ fontFullPath : String,
     fontDict [fontName] = newEntry
   }else{
     let partStatus : PartStatus
-    switch metadataStatus {
+    switch metadata.metadataStatus {
     case .unknown :
       partStatus = .pmPartHasUnknownStatus
     case .ok :
@@ -768,11 +740,11 @@ private struct PMArtworkDictionaryEntry {
 
 private func checkArtworkLibraryCheckAtPath (_ artworkFullPath : String,
                                              logView : NSTextView?,
-                                             artworkDict:inout [String : PMArtworkDictionaryEntry]) throws {
+                                             artworkDict: inout [String : PMArtworkDictionaryEntry]) throws {
   let packageName = ((artworkFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let (_, metadataDictionary) = try metadataForFileAtPath (artworkFullPath)
+  let metadata = try getFileMetadata (atPath: artworkFullPath)
   // NSLog ("\(metadataDictionary)")
-  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: PMArtworkVersion)
+  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMArtworkVersion]
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue

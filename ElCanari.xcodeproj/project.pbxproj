@@ -175,6 +175,10 @@
 		CF0AE89421E0F58200BE7EE2 /* transient-PackageDocument-metadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0AE89221E0F58200BE7EE2 /* transient-PackageDocument-metadataStatus.swift */; };
 		CF0AE89621E0F6CB00BE7EE2 /* transient-SymbolDocument-metadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0AE89521E0F6CB00BE7EE2 /* transient-SymbolDocument-metadataStatus.swift */; };
 		CF0AE89721E0F6CB00BE7EE2 /* transient-SymbolDocument-metadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0AE89521E0F6CB00BE7EE2 /* transient-SymbolDocument-metadataStatus.swift */; };
+		CF0B7B77250270540080642D /* file-metadata-text-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B76250270540080642D /* file-metadata-text-format.swift */; };
+		CF0B7B78250270540080642D /* file-metadata-text-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B76250270540080642D /* file-metadata-text-format.swift */; };
+		CF0B7B7A250271370080642D /* file-metadata-binary-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B79250271370080642D /* file-metadata-binary-format.swift */; };
+		CF0B7B7B250271370080642D /* file-metadata-binary-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B79250271370080642D /* file-metadata-binary-format.swift */; };
 		CF0CABEC1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CABEA1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusImage.swift */; };
 		CF0CABED1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CABEB1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusMessage.swift */; };
 		CF0DC14322253B9100DD2076 /* view-droppable-image-view.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DC14222253B9100DD2076 /* view-droppable-image-view.swift */; };
@@ -431,6 +435,8 @@
 		CF3D745421A802F9004F6C43 /* extension-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */; };
 		CF3D9FD924A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */; };
 		CF3D9FDA24A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */; };
+		CF3DD5F8250236A400163A12 /* file-metadata-get.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DD5F7250236A400163A12 /* file-metadata-get.swift */; };
+		CF3DD5F9250236A400163A12 /* file-metadata-get.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DD5F7250236A400163A12 /* file-metadata-get.swift */; };
 		CF3DEFB91BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEFB81BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift */; };
 		CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */; };
 		CF3E658A21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */; };
@@ -714,7 +720,6 @@
 		CF5C4CDA219F04D600EAC52A /* CanariDimensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0D1E61B46FBC000006BD2 /* CanariDimensionTextField.swift */; };
 		CF5C4CDB219F04D600EAC52A /* transient-BoardModel-internalBoardsLimitsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF44C0D42136BEA900707645 /* transient-BoardModel-internalBoardsLimitsSegments.swift */; };
 		CF5C4CDC219F04D600EAC52A /* extension-MergerBoardInstance-graphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC5FE620FB2235003AB275 /* extension-MergerBoardInstance-graphic.swift */; };
-		CF5C4CDD219F04D600EAC52A /* file-metadata-dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC129221B44887700B1866D /* file-metadata-dictionary.swift */; };
 		CF5C4CDE219F04D600EAC52A /* action-MergerDocument-updateBoardModelAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30637820E7EE1B0099182C /* action-MergerDocument-updateBoardModelAction.swift */; };
 		CF5C4CDF219F04D600EAC52A /* EBIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */; };
 		CF5C4CE1219F04D600EAC52A /* transient-MergerDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */; };
@@ -1790,7 +1795,6 @@
 		CFBED92520F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */; };
 		CFBED92720F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */; };
 		CFBEE4DD20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEE4DC20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift */; };
-		CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC129221B44887700B1866D /* file-metadata-dictionary.swift */; };
 		CFC2684F23524D18007C47F6 /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2684E23524D18007C47F6 /* alignmentCenter.png */; };
 		CFC2685023524D18007C47F6 /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2684E23524D18007C47F6 /* alignmentCenter.png */; };
 		CFC2685723524EB7007C47F6 /* alignmentRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685523524EB7007C47F6 /* alignmentRight.png */; };
@@ -2676,6 +2680,8 @@
 		CF0AE88F21E0F56E00BE7EE2 /* enum-MetadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-MetadataStatus.swift"; sourceTree = "<group>"; };
 		CF0AE89221E0F58200BE7EE2 /* transient-PackageDocument-metadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageDocument-metadataStatus.swift"; sourceTree = "<group>"; };
 		CF0AE89521E0F6CB00BE7EE2 /* transient-SymbolDocument-metadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-metadataStatus.swift"; sourceTree = "<group>"; };
+		CF0B7B76250270540080642D /* file-metadata-text-format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-metadata-text-format.swift"; sourceTree = "<group>"; };
+		CF0B7B79250271370080642D /* file-metadata-binary-format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-metadata-binary-format.swift"; sourceTree = "<group>"; };
 		CF0CABEA1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CF0CABEB1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CF0DC14222253B9100DD2076 /* view-droppable-image-view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-droppable-image-view.swift"; sourceTree = "<group>"; };
@@ -2821,6 +2827,7 @@
 		CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-HorizontalAlignment.swift"; sourceTree = "<group>"; };
 		CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-HorizontalAlignment.swift"; sourceTree = "<group>"; };
 		CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceInProject-deviceComponentCountString.swift"; sourceTree = "<group>"; };
+		CF3DD5F7250236A400163A12 /* file-metadata-get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-get.swift"; sourceTree = "<group>"; };
 		CF3DEFB81BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-FontDocument-addSegmentAction.swift"; sourceTree = "<group>"; };
 		CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-importArtworkButtonTitle.swift"; sourceTree = "<group>"; };
 		CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-issue.swift"; sourceTree = "<group>"; };
@@ -3453,7 +3460,6 @@
 		CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLegendLinesSegments.swift"; sourceTree = "<group>"; };
 		CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLegendLinesSegments.swift"; sourceTree = "<group>"; };
 		CFBEE4DC20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-MergerDocument-mBoardModelController.swift"; sourceTree = "<group>"; };
-		CFC129221B44887700B1866D /* file-metadata-dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-dictionary.swift"; sourceTree = "<group>"; };
 		CFC2684E23524D18007C47F6 /* alignmentCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentCenter.png; sourceTree = "<group>"; };
 		CFC2685523524EB7007C47F6 /* alignmentRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentRight.png; sourceTree = "<group>"; };
 		CFC2685623524EB7007C47F6 /* alignmentLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentLeft.png; sourceTree = "<group>"; };
@@ -3981,6 +3987,9 @@
 				CF217C0925015F21003E322E /* file-format-text-utilities.swift */,
 				CF217C0F250165BD003E322E /* file-format-text.swift */,
 				CF217C1925017D6B003E322E /* file-format-utilities.swift */,
+				CF0B7B79250271370080642D /* file-metadata-binary-format.swift */,
+				CF3DD5F7250236A400163A12 /* file-metadata-get.swift */,
+				CF0B7B76250270540080642D /* file-metadata-text-format.swift */,
 				CF217C0C25015FF2003E322E /* file-operations-facade.swift */,
 			);
 			name = "File — Document Operations";
@@ -4426,7 +4435,6 @@
 				CF6BC04A1DE1C008002D935F /* class-CanariMenuItemListClass.swift */,
 				CF3086541B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift */,
 				CF5182D921B8486C0035533A /* entity-CanariLibraryEntry.swift */,
-				CFC129221B44887700B1866D /* file-metadata-dictionary.swift */,
 				CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */,
 				CFA085E921A17A6B00DFD00B /* Info-Release.plist */,
 				CF861AA21B3F04460006BE63 /* library-utilities.swift */,
@@ -6142,7 +6150,6 @@
 				CF0E9CFE2229A5FA00124F04 /* entity-PackageInDevice.swift in Sources */,
 				CF88969F21E13334007A0F1C /* open-in-library.swift in Sources */,
 				CFDD884A2233F821008D3781 /* action-DeviceDocument-performUnbindAllAction.swift in Sources */,
-				CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */,
 				CFCEE47B2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift in Sources */,
 				CF64331A23620D8B00FD8D93 /* NSControl-extension-enable-binding.swift in Sources */,
 				CF7C30E621CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */,
@@ -6540,6 +6547,7 @@
 				CFA4304F229AEB96000AA8C8 /* toone-ProjectRoot.swift in Sources */,
 				CFEB7BB7233A27940060A97A /* transient-DeviceSymbolInstanceInProject-strokeBezierPath.swift in Sources */,
 				CF0E9D072229AC0E00124F04 /* transient-PackageInDevice-versionString.swift in Sources */,
+				CF3DD5F8250236A400163A12 /* file-metadata-get.swift in Sources */,
 				CF7A0E8223007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */,
 				CFB1DB252282D31F005F9811 /* entity-SheetInProject.swift in Sources */,
 				CF07781A23521CB800F56EAB /* PropertyKind.swift in Sources */,
@@ -6742,6 +6750,7 @@
 				CF29563D22325844004100D6 /* transient-DeviceDocument-assignmentInhibitionMessage.swift in Sources */,
 				CF6E147721CD1144008E2180 /* transient-PackageZone-objectDisplay.swift in Sources */,
 				CFA42FCA229AEB0A000AA8C8 /* tomany-BoardModelVia.swift in Sources */,
+				CF0B7B77250270540080642D /* file-metadata-text-format.swift in Sources */,
 				CF0777E9235216F800F56EAB /* EBReadOnlyEnumProperty.swift in Sources */,
 				CF9D4B20227F796C006E2035 /* action-ProjectDocument-exportDeviceAction.swift in Sources */,
 				CF65020624239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift in Sources */,
@@ -7022,6 +7031,7 @@
 				CFEB7A97233A23270060A97A /* transient-BoardConnector-actualPadDiameter.swift in Sources */,
 				CFA952482391888700C1612A /* transient-ComponentInProject-pinPadAssignments.swift in Sources */,
 				CF4D083E21C2F18000380ACA /* transient-PackageSegment-issues.swift in Sources */,
+				CF0B7B7A250271370080642D /* file-metadata-binary-format.swift in Sources */,
 				CFB438B52430EA7700163B86 /* action-PackageDocument-removeModelImageAction.swift in Sources */,
 				CF518E152282CFAE002BCEE5 /* selectionController-ProjectDocument-commentInSchematicSelectionController.swift in Sources */,
 				CFCE71FB20DD611100AB1DE7 /* entity-BoardModelVia.swift in Sources */,
@@ -7373,7 +7383,6 @@
 				CFEB7A96233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */,
 				CFEB7C2D233A284A0060A97A /* transient-PointInSchematic-status.swift in Sources */,
 				CFDD884B2233F821008D3781 /* action-DeviceDocument-performUnbindAllAction.swift in Sources */,
-				CF5C4CDD219F04D600EAC52A /* file-metadata-dictionary.swift in Sources */,
 				CFCEE47C2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift in Sources */,
 				CFA42F92229AEACF000AA8C8 /* tomany-SymbolTypeInDevice.swift in Sources */,
 				CFEB7B95233A267E0060A97A /* transient-DevicePackageInProject-packagePadDictionary.swift in Sources */,
@@ -7759,6 +7768,7 @@
 				CFBCE77722D3A4DD00DC3505 /* selectionController-ProjectDocument-boardTrackSelectionController.swift in Sources */,
 				CFA42F60229AEAAF000AA8C8 /* tomany-ArtworkFileGenerationParameters.swift in Sources */,
 				CFEB7BB8233A27940060A97A /* transient-DeviceSymbolInstanceInProject-strokeBezierPath.swift in Sources */,
+				CF3DD5F9250236A400163A12 /* file-metadata-get.swift in Sources */,
 				CFE85A8D21A5C1C100991A66 /* CanariPoint.swift in Sources */,
 				CFDD886C22342612008D3781 /* transient-DeviceDocument-hasUnconnectedPin.swift in Sources */,
 				CF7A0E8323007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */,
@@ -7961,6 +7971,7 @@
 				CF5C4D47219F04D600EAC52A /* library-utilities.swift in Sources */,
 				CFA43050229AEB96000AA8C8 /* toone-ProjectRoot.swift in Sources */,
 				CF00844821C42106003627E9 /* selectionController-PackageDocument-mPackageBezierCurveSelectionController.swift in Sources */,
+				CF0B7B78250270540080642D /* file-metadata-text-format.swift in Sources */,
 				CF4EC7422284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift in Sources */,
 				CF0777EA235216F800F56EAB /* EBReadOnlyEnumProperty.swift in Sources */,
 				CF65020724239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift in Sources */,
@@ -8241,6 +8252,7 @@
 				CF5C4D85219F04D600EAC52A /* GeometricOblong.swift in Sources */,
 				CFEB7A98233A23270060A97A /* transient-BoardConnector-actualPadDiameter.swift in Sources */,
 				CFA952492391888700C1612A /* transient-ComponentInProject-pinPadAssignments.swift in Sources */,
+				CF0B7B7B250271370080642D /* file-metadata-binary-format.swift in Sources */,
 				CFB438B62430EA7700163B86 /* action-PackageDocument-removeModelImageAction.swift in Sources */,
 				CFDD8869223420C0008D3781 /* action-DeviceDocument-performBindAction.swift in Sources */,
 				CF5C4D87219F04D600EAC52A /* transient-BoardModel-backTrackSegments.swift in Sources */,

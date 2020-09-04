@@ -56,3 +56,17 @@ func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObjec
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+func badFormatErrorForFileAtPath (_ inFilePath : String, code : Int) -> Error {
+  let dictionary : [String : String] = [
+    NSLocalizedDescriptionKey : "Cannot read '\(inFilePath)' file",
+    NSLocalizedRecoverySuggestionErrorKey : "File does not have the required format (code: \(code)).",
+  ]
+  return NSError (
+    domain: Bundle.main.bundleIdentifier!,
+    code: 1,
+    userInfo: dictionary
+  )
+}
+
+//----------------------------------------------------------------------------------------------------------------------

@@ -248,7 +248,10 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
       let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
       self.mFullPathTextField?.stringValue = selectedItem.mFullPath
       self.mStatusTextField?.stringValue = selectedItem.statusString ()
-      self.mOpenButton?.isEnabled = (selectedItem.mFullPath != "") && !selectedItem.mIsAlreadyLoaded
+      self.mOpenButton?.isEnabled =
+        (selectedItem.mFullPath != "")
+        && !selectedItem.mIsAlreadyLoaded
+        && selectedItem.partStatusOk ()
       self.mNoSelectedPartTextField?.isHidden = selectedItem.mFullPath != ""
       self.mPartImage?.image = selectedItem.image
     }else{
@@ -381,15 +384,19 @@ fileprivate class OpenInLibraryDialogItem : EBObject {
     }else if self.mIsDuplicated {
       return "Duplicated"
     }else{
-      switch self.partStatus {
-      case .unknown :
-        return "Unknown"
-      case .ok :
-        return "Ok"
-      case .error :
-        return "This part has error(s)"
-      case .warning :
-        return "This part has warning(s)"
+      do{
+        switch try self.partStatus () {
+        case .unknown :
+          return "Unknown"
+        case .ok :
+          return "Ok"
+        case .error :
+          return "This part has error(s)"
+        case .warning :
+          return "This part has warning(s)"
+        }
+      }catch _ {
+        return "This part cannot be read"
       }
     }
   }
@@ -402,30 +409,46 @@ fileprivate class OpenInLibraryDialogItem : EBObject {
     }else if self.mIsDuplicated || self.mIsAlreadyLoaded {
       return NSImage (named: NSImage.Name ("NSStatusUnavailable"))
     }else{
-      switch self.partStatus {
-      case .unknown :
-        return NSImage (named: NSImage.Name ("NSStatusNone"))
-      case .ok :
-        return NSImage (named: NSImage.Name ("NSStatusAvailable"))
-      case .error :
-        return NSImage (named: NSImage.Name ("NSStatusUnavailable"))
-      case .warning :
-        return NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))
+      do{
+      switch try self.partStatus () {
+        case .unknown :
+          return NSImage (named: NSImage.Name ("NSStatusNone"))
+        case .ok :
+          return NSImage (named: NSImage.Name ("NSStatusAvailable"))
+        case .error :
+          return NSImage (named: NSImage.Name ("NSStatusUnavailable"))
+        case .warning :
+          return NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))
+        }
+      }catch _ {
+        return NSImage (named: NSImage.Name ("exclamation"))
       }
     }
   }
 
   //····················································································································
 
-  var partStatus : MetadataStatus {
-    var status = MetadataStatus.unknown
+  func partStatus () throws -> MetadataStatus {
     if let s = self.mPartStatus {
-      status = s
+      return s
     }else if self.mFullPath != "" {
-      (status, _) = try! metadataForFileAtPath (self.mFullPath)
+      self.mPartStatus = .error
+      let metadata = try getFileMetadata (atPath: self.mFullPath)
+      self.mPartStatus = metadata.metadataStatus
+      return metadata.metadataStatus
+    }else{
+      return .error
     }
-    self.mPartStatus = status
-    return status
+  }
+
+  //····················································································································
+
+  func partStatusOk () -> Bool {
+    if let s = try? self.partStatus () {
+      return s == .ok
+    }else{
+      return false
+    }
   }
 
  //····················································································································
