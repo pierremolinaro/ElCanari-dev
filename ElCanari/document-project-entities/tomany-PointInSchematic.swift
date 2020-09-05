@@ -1264,15 +1264,9 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : [PointInSchematic]) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : [PointInSchematic]) {
-    self.mInternalArrayValue = oldValue
   }
  
   //····················································································································

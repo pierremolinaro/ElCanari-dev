@@ -858,15 +858,9 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : [MergerBoardInstance]) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : [MergerBoardInstance]) {
-    self.mInternalArrayValue = oldValue
   }
  
   //····················································································································

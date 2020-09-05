@@ -1464,7 +1464,7 @@ final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObs
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PackageArc?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -1481,12 +1481,6 @@ final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObs
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : PackageArc?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

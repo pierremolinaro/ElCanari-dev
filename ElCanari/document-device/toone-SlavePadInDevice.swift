@@ -1033,7 +1033,7 @@ final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EB
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : SlavePadInDevice?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -1050,12 +1050,6 @@ final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EB
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : SlavePadInDevice?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

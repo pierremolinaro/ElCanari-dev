@@ -856,15 +856,9 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : [NetInProject]) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : [NetInProject]) {
-    self.mInternalArrayValue = oldValue
   }
  
   //····················································································································

@@ -12,7 +12,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
 
   //····················································································································
 
-  weak var ebUndoManager : UndoManager? = nil  // SOULD BE WEAK
+  weak var ebUndoManager : EBUndoManager? = nil  // SOULD BE WEAK
   var mSetterDelegate : Optional < (_ inValue : T) -> Void >
 
   //····················································································································
@@ -46,7 +46,8 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
       if self.mValue != oldValue {
         self.mSetterDelegate? (mValue)
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        //self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.ebUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -58,9 +59,9 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
 
   //····················································································································
 
-  @objc func performUndo (_ oldValue : NSNumber) {
-    self.mValue = T.convertFromNSObject (object: oldValue)
-  }
+//  @objc func performUndo (_ oldValue : NSNumber) {
+//    self.mValue = T.convertFromNSObject (object: oldValue)
+//  }
 
   //····················································································································
 

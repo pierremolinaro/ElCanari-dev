@@ -17,7 +17,7 @@ class ParallelObjectSetupContext {
 
 func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
                               from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
-  var startLoadFile = Date ()
+  // var startLoadFile = Date ()
 //--- Check header ends with line feed
   ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
 //--- Read Status
@@ -46,8 +46,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     classDefinition.append ((className, propertyNameArray))
   }
-  Swift.print ("Read classes \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  startLoadFile = Date ()
+  // Swift.print ("Read classes \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  // startLoadFile = Date ()
 //--- Read objects
   var objectArray = [EBManagedObject] ()
   var propertyValueArray = [[String : NSRange]] ()
@@ -73,10 +73,9 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     propertyValueArray.append (valueDictionary)
   }
-  Swift.print ("Read objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  startLoadFile = Date ()
+//  Swift.print ("Read objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+//  startLoadFile = Date ()
 //--- Setup objects
-  startLoadFile = Date ()
   var idx = 0
   let parallelObjectSetupContext = ParallelObjectSetupContext ()
   for managedObject in objectArray {
@@ -85,15 +84,15 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, parallelObjectSetupContext)
   }
   parallelObjectSetupContext.mOperationQueue.waitUntilAllOperationsAreFinished ()
-  Swift.print ("prepare objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  // Swift.print ("prepare objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
   for setupOperation in parallelObjectSetupContext.mToOneSetUpOperationList{
     setupOperation ()
   }
-  Swift.print ("setup toOne \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  // Swift.print ("setup toOne \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
   for setupOperation in parallelObjectSetupContext.mToManySetUpOperationList {
     setupOperation ()
   }
-  Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  // Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
 //--- Scanner error ?
   if !ioDataScanner.ok () {
     let dictionary = [

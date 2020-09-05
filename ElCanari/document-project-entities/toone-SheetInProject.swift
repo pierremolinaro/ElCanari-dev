@@ -753,7 +753,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : SheetInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -770,12 +770,6 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : SheetInProject?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

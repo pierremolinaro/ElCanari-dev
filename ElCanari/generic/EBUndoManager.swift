@@ -33,8 +33,8 @@ class EBUndoManager : UndoManager, EBUserClassNameProtocol {
   //    registerUndoWithTarget
   //····················································································································
 
-  override func registerUndo (withTarget target:Any, selector:Selector, object anObject:Any!) {
-    super.registerUndo (withTarget: target, selector:selector, object:anObject)
+  override func registerUndo (withTarget target : Any, selector : Selector, object anObject : Any?) {
+    super.registerUndo (withTarget: target, selector: selector, object: anObject)
     if logEvents () {
       appendToTransientEventLog ("registerUndoWithTarget (\(isUndoRegistrationEnabled), target \(target), selector \"\(selector)\", object \"\(String(describing: anObject))\"\n")
     }
@@ -56,10 +56,10 @@ class EBUndoManager : UndoManager, EBUserClassNameProtocol {
   //····················································································································
 
   override func endUndoGrouping () {
-    super.endUndoGrouping ()
     if logEvents () {
       appendToTransientEventLog ("endUndoGrouping\n")
     }
+    super.endUndoGrouping ()
   }
 
   //····················································································································
@@ -78,10 +78,10 @@ class EBUndoManager : UndoManager, EBUserClassNameProtocol {
   //····················································································································
 
   override func enableUndoRegistration () {
-    super.enableUndoRegistration ()
     if logEvents () {
       appendToTransientEventLog ("enableUndoRegistration\n")
     }
+    super.enableUndoRegistration ()
   }
 
   //····················································································································

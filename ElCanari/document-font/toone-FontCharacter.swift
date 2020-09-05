@@ -857,7 +857,7 @@ final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignat
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : FontCharacter?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -874,12 +874,6 @@ final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignat
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : FontCharacter?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

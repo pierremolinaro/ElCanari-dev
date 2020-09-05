@@ -1156,15 +1156,9 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : [BoardLine]) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : [BoardLine]) {
-    self.mInternalArrayValue = oldValue
   }
  
   //····················································································································

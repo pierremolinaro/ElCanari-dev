@@ -12,7 +12,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  weak var ebUndoManager : UndoManager? = nil // SOULD BE WEAK
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
 
@@ -66,7 +66,8 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        //self.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.ebUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -78,9 +79,9 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  @objc func performUndo (_ oldValue : NSNumber) {
-    self.mValue = T.convertFromNSObject (object: oldValue)
-  }
+//  @objc func performUndo (_ oldValue : NSNumber) {
+//    self.mValue = T.convertFromNSObject (object: oldValue)
+//  }
 
   //····················································································································
 

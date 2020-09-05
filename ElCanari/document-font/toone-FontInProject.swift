@@ -868,7 +868,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : FontInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -885,12 +885,6 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : FontInProject?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

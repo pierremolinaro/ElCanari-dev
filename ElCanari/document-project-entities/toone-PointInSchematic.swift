@@ -1435,7 +1435,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematic?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -1452,12 +1452,6 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : PointInSchematic?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

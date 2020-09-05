@@ -68,6 +68,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
   private var mLastMouseDraggedAlignedLocation : CanariPoint
   private let mObjectIndex : Int
   private let mPossibleKnobIndex : Int? //  knob index
+  private var mBeginUndoGroupingDone = false
 
   //····················································································································
 
@@ -85,7 +86,6 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
     }else{
       self.mPossibleKnobIndex = inPossibleKnobIndex
     }
-    inViewController.ebUndoManager?.beginUndoGrouping ()
   }
 
   //····················································································································
@@ -98,6 +98,10 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
       x: mouseDraggedCanariAlignedLocation.x - self.mLastMouseDraggedAlignedLocation.x,
       y: mouseDraggedCanariAlignedLocation.y - self.mLastMouseDraggedAlignedLocation.y
     )
+    if !self.mBeginUndoGroupingDone {
+      self.mBeginUndoGroupingDone = true
+      inGraphicView.viewController?.ebUndoManager?.beginUndoGrouping ()
+    }
     inGraphicView.guideFor (objectIndexes: [self.mObjectIndex])
     inGraphicView.drag (
       possibleKnob: inModifierFlags.contains(.command) ? nil : self.mPossibleKnobIndex,
@@ -112,7 +116,9 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
 
   override public func onMouseUp (_ inUnalignedMouseUpLocation : NSPoint,
                                   _ inGraphicView : EBGraphicView) {
-    inGraphicView.viewController?.ebUndoManager?.endUndoGrouping ()
+    if self.mBeginUndoGroupingDone {
+      inGraphicView.viewController?.ebUndoManager?.endUndoGrouping ()
+    }
   }
 
   //····················································································································

@@ -890,7 +890,7 @@ final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematic?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -907,12 +907,6 @@ final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : CommentInSchematic?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································

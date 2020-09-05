@@ -681,15 +681,9 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : [SymbolPinInstanceInDevice]) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : [SymbolPinInstanceInDevice]) {
-    self.mInternalArrayValue = oldValue
   }
  
   //····················································································································

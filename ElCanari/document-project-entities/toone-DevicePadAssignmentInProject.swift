@@ -458,7 +458,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePadAssignmentInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -475,12 +475,6 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
- 
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : DevicePadAssignmentInProject?) {
-    self.mInternalValue = oldValue
   }
  
   //····················································································································
