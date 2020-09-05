@@ -8711,7 +8711,6 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
@@ -8740,7 +8739,6 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;

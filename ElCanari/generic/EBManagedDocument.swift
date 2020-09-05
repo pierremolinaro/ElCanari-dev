@@ -30,7 +30,18 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   private var mReadMetadataStatus : UInt8 = 0
   private var mMetadataDictionary = [String : Any] ()
   private var mUndoManager = EBUndoManager ()
-  var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary
+
+  //····················································································································
+  //    File Format
+  //····················································································································
+
+  var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
+    didSet {
+      if self.mManagedDocumentFileFormat != oldValue {
+        self.mUndoManager.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
+      }
+    }
+  }
 
   //····················································································································
   //    init

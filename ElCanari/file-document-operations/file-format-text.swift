@@ -144,6 +144,7 @@ func dataForTextualSaveOperation (from inDocumentData : EBDocumentData) throws -
   fileStringData.append (base62Encoded: Int (inDocumentData.documentMetadataStatus))
   fileStringData.append (ascii: .lineFeed)
 //--- Append metadata dictionary
+  // .sortedKeys is only available in 10.13
   let textMetaData = try JSONSerialization.data (withJSONObject: inDocumentData.documentMetadataDictionary, options: [])
   fileStringData += textMetaData
   fileStringData.append (ascii: .lineFeed)
