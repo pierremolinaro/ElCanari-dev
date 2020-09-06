@@ -677,7 +677,6 @@ document ProjectDocument root ProjectRoot {
   transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
 
   outlet EBGraphicView mBoardView
-//    $controlKeyHiliteDiameter root.mControlKeyHiliteDiameter
     $underObjectsDisplay root.borderOutlineBackground
     $overObjectsDisplay self.overDisplay
     $horizontalFlip root.mBoardHorizontalFlip
@@ -717,6 +716,8 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mLayoutClearanceTextField
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
   ;
+
+  outlet EBPopUpButton mBoardSideForNewTrackPopUp $selectedIndex root.mBoardSideForNewTrack ;
 
   outlet EBSwitch mCheckClearanceBetweenPadsOfSameNetSwitch $value root.mCheckClearanceBetweenPadsOfSameNet ;
 

@@ -543,6 +543,7 @@ struct SlavePadDescriptor : Hashable {
 struct PadLocationAndSide : Hashable {
   let location : NSPoint
   let side : ConnectorSide
+  let bp : EBBezierPath
 }
 
 //----------------------------------------------------------------------------------------------------------------------

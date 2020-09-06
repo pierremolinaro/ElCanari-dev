@@ -45,6 +45,8 @@ entity ProjectRoot {
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
+  property TrackSide mBoardSideForNewTrack default front ;
+  
   property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
   property AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
   property RouteDirection mRouteDirection default from ;

@@ -15,7 +15,6 @@ extension EBGraphicView {
       NSCursor.arrow.set ()
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       let canariUnalignedMouseDownLocation = unalignedMouseDownLocation.canariPoint
-//      self.mMouseMovedOrFlagsChangedCallback? (unalignedMouseDownLocation)
       let modifierFlags = inEvent.modifierFlags
       let modifierFlagsContainsControl = modifierFlags.contains (.control)
       let modifierFlagsContainsShift = modifierFlags.contains (.shift)
@@ -26,15 +25,15 @@ extension EBGraphicView {
         if let theMenu = self.mPopulateContextualMenuClosure? (canariUnalignedMouseDownLocation) {
           NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
         }
-      case (false, false, true) : // Option Key On
+      case (false, true, false) : // Shift Key
+        self.guideFor (possibleObjectIndex: possibleObjectIndex)
+        self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocation, possibleObjectIndex, viewController)
+      case (_, _, true) : // Option Key On
         if let pbType = self.pasteboardType {
           self.ebStartDragging (with: inEvent, dragType: pbType)
         }else{
           self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocation, self, viewController)
         }
-      case (false, true, false) : // Shif Key
-        self.guideFor (possibleObjectIndex: possibleObjectIndex)
-        self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocation, possibleObjectIndex, viewController)
       case (false, false, false) : // No Modifier Key
         self.guideFor (possibleObjectIndex: possibleObjectIndex)
         if let objectIndex = possibleObjectIndex {

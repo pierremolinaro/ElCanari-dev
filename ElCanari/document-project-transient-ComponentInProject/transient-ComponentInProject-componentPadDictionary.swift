@@ -43,7 +43,11 @@ func transient_ComponentInProject_componentPadDictionary (
               padSide = .front
             }
           }
-          let p = PadLocationAndSide (location: af.transform (descriptor.center.cocoaPoint), side: padSide)
+          let p = PadLocationAndSide (
+            location: af.transform (descriptor.center.cocoaPoint),
+            side: padSide,
+            bp: descriptor.bezierPath (index: 0, extraWidth: 0).transformed (by: af)
+          )
           var pads = [p]
           for slavePad in descriptor.slavePads {
             let padSide : ConnectorSide
@@ -65,7 +69,11 @@ func transient_ComponentInProject_componentPadDictionary (
                 padSide = .front
               }
             }
-            let p = PadLocationAndSide (location: af.transform (slavePad.center.cocoaPoint), side: padSide)
+            let p = PadLocationAndSide (
+              location: af.transform (slavePad.center.cocoaPoint),
+              side: padSide,
+              bp: descriptor.bezierPath (index: pads.count, extraWidth: 0).transformed (by: af)
+            )
             pads.append (p)
           }
           let d = ComponentPadDescriptor (padName: padName, pads: pads)

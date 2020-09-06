@@ -42,6 +42,12 @@ protocol ProjectRoot_mLastERCCheckingSignature : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol ProjectRoot_mBoardSideForNewTrack : class {
+  var mBoardSideForNewTrack : TrackSide { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol ProjectRoot_mAutoRouterPreferredDirections : class {
   var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
 }
@@ -729,6 +735,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mCheckClearanceBetweenPadsOfSameNet,
          ProjectRoot_mLastERCCheckingIsSuccess,
          ProjectRoot_mLastERCCheckingSignature,
+         ProjectRoot_mBoardSideForNewTrack,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mRouteDirection,
@@ -980,6 +987,29 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mLastERCCheckingSignature_property_selection : EBSelection <UInt32> { return self.mLastERCCheckingSignature_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardSideForNewTrack
+  //····················································································································
+
+  let mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
+
+  //····················································································································
+
+  final func reset_mBoardSideForNewTrack_toDefaultValue () {
+    self.mBoardSideForNewTrack = TrackSide.front
+  }
+
+  //····················································································································
+
+  final var mBoardSideForNewTrack : TrackSide {
+    get { return self.mBoardSideForNewTrack_property.propval }
+    set { self.mBoardSideForNewTrack_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide> { return self.mBoardSideForNewTrack_property.prop }
 
   //····················································································································
   //   Atomic property: mAutoRouterPreferredDirections
@@ -3928,6 +3958,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardSideForNewTrack
+    self.mBoardSideForNewTrack_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutorouterSnapAngle
@@ -5592,6 +5624,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mLastERCCheckingSignature_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mBoardSideForNewTrack",
+      idx: self.mBoardSideForNewTrack_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardSideForNewTrack_property.mObserverExplorer,
+      valueExplorer: &self.mBoardSideForNewTrack_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mAutoRouterPreferredDirections",
       idx: self.mAutoRouterPreferredDirections_property.ebObjectIndex,
       y: &y,
@@ -6499,6 +6539,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.mObserverExplorer = nil
     self.mLastERCCheckingSignature_property.mValueExplorer = nil
+  //--- Atomic property: mBoardSideForNewTrack
+    self.mBoardSideForNewTrack_property.mObserverExplorer = nil
+    self.mBoardSideForNewTrack_property.mValueExplorer = nil
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.mObserverExplorer = nil
     self.mAutoRouterPreferredDirections_property.mValueExplorer = nil
@@ -6779,6 +6822,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
+  //--- Atomic property: mBoardSideForNewTrack
+    self.mBoardSideForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewTrack")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey: "mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -7038,6 +7083,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingSignature")
+  //--- Atomic property: mBoardSideForNewTrack
+    self.mBoardSideForNewTrack_property.readFrom (dictionary: inDictionary, forKey: "mBoardSideForNewTrack")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey: "mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -7170,6 +7217,7 @@ class ProjectRoot : EBManagedObject,
     ioString += "mCheckClearanceBetweenPadsOfSameNet\n"
     ioString += "mLastERCCheckingIsSuccess\n"
     ioString += "mLastERCCheckingSignature\n"
+    ioString += "mBoardSideForNewTrack\n"
     ioString += "mAutoRouterPreferredDirections\n"
     ioString += "mAutorouterSnapAngle\n"
     ioString += "mRouteDirection\n"
@@ -7259,6 +7307,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mLastERCCheckingSignature.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardSideForNewTrack.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mAutoRouterPreferredDirections.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7633,6 +7683,9 @@ class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mLastERCCheckingSignature"], let value = UInt32.unarchiveFromDataRange (inData, range) {
         self.mLastERCCheckingSignature = value
+      }
+      if let range = inDictionary ["mBoardSideForNewTrack"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
+        self.mBoardSideForNewTrack = value
       }
       if let range = inDictionary ["mAutoRouterPreferredDirections"], let value = AutorouterPreferredDirections.unarchiveFromDataRange (inData, range) {
         self.mAutoRouterPreferredDirections = value

@@ -746,6 +746,7 @@ import Cocoa
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardScrollView : EBScrollView? = nil
   @IBOutlet var mBoardShapePopUp : CanariEnumSegmentedControl? = nil
+  @IBOutlet var mBoardSideForNewTrackPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mBoardTextFontPopUpButton : CanariBoardTextFontPopUpButton? = nil
   @IBOutlet var mBoardTextFontSizeField : EBDoubleField? = nil
@@ -1330,6 +1331,7 @@ import Cocoa
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mBoardShapePopUp, "mBoardShapePopUp", CanariEnumSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mBoardSideForNewTrackPopUp, "mBoardSideForNewTrackPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardStatusImageViewInToolbar, "mBoardStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontPopUpButton, "mBoardTextFontPopUpButton", CanariBoardTextFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontSizeField, "mBoardTextFontSizeField", EBDoubleField.self, #file, #line)
@@ -2509,6 +2511,7 @@ import Cocoa
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mLayoutClearancePopUp?.bind_selectedTag (self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
     self.mLayoutClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
+    self.mBoardSideForNewTrackPopUp?.bind_selectedIndex (self.rootObject.mBoardSideForNewTrack_property, file: #file, line: #line)
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property, file: #file, line: #line)
     self.mAutoRouterPreferredDirectionPopUp?.bind_selectedIndex (self.rootObject.mAutoRouterPreferredDirections_property, file: #file, line: #line)
     self.mAutorouterSnapAnglePopUp?.bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property, file: #file, line: #line)
@@ -3474,6 +3477,7 @@ import Cocoa
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
     self.mLayoutClearancePopUp?.unbind_selectedTag ()
     self.mLayoutClearanceTextField?.unbind_dimensionAndUnit ()
+    self.mBoardSideForNewTrackPopUp?.unbind_selectedIndex ()
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.unbind_value ()
     self.mAutoRouterPreferredDirectionPopUp?.unbind_selectedIndex ()
     self.mAutorouterSnapAnglePopUp?.unbind_selectedIndex ()
@@ -3939,6 +3943,7 @@ import Cocoa
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardScrollView?.ebCleanUp ()
     self.mBoardShapePopUp?.ebCleanUp ()
+    self.mBoardSideForNewTrackPopUp?.ebCleanUp ()
     self.mBoardStatusImageViewInToolbar?.ebCleanUp ()
     self.mBoardTextFontPopUpButton?.ebCleanUp ()
     self.mBoardTextFontSizeField?.ebCleanUp ()
@@ -4356,6 +4361,7 @@ import Cocoa
     self.mBoardPointsBoundingBoxUnitPopUp = nil
     self.mBoardScrollView = nil
     self.mBoardShapePopUp = nil
+    self.mBoardSideForNewTrackPopUp = nil
     self.mBoardStatusImageViewInToolbar = nil
     self.mBoardTextFontPopUpButton = nil
     self.mBoardTextFontSizeField = nil
