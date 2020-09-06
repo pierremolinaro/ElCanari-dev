@@ -15,7 +15,7 @@ extension EBGraphicView {
       NSCursor.arrow.set ()
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       let canariUnalignedMouseDownLocation = unalignedMouseDownLocation.canariPoint
-      self.mMouseMovedCallback? (unalignedMouseDownLocation)
+//      self.mMouseMovedOrFlagsChangedCallback? (unalignedMouseDownLocation)
       let modifierFlags = inEvent.modifierFlags
       let modifierFlagsContainsControl = modifierFlags.contains (.control)
       let modifierFlagsContainsShift = modifierFlags.contains (.shift)
@@ -186,22 +186,7 @@ extension EBGraphicView {
 
   final override func flagsChanged (with inEvent : NSEvent) {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let d = self.controlKeyHilitedDiameter
-    if NSEvent.modifierFlags.contains (.control) && (d > 0.0) {
-      if self.frame.contains (unalignedLocationInView) {
-        let r = NSRect (
-          x: unalignedLocationInView.x - d / 2.0,
-          y: unalignedLocationInView.y - d / 2.0,
-          width: d,
-          height: d
-        )
-        self.mControlKeyHiliteRectangle = r
-      }else{
-        self.mControlKeyHiliteRectangle = nil
-      }
-    }else{
-      self.mControlKeyHiliteRectangle = nil
-    }
+    self.mOptionalMouseMovedOrFlagsChangedShape = self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, NSEvent.modifierFlags, self)
     super.flagsChanged (with: inEvent)
   }

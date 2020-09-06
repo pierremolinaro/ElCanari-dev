@@ -41,7 +41,9 @@ extension EBGraphicView {
     self.drawIssue (inDirtyRect)
     self.drawGuideBezierPath (inDirtyRect)
     self.drawSelectionRectangle (inDirtyRect)
-    self.drawControlKeyHiliteCircle (inDirtyRect)
+    if let shape = self.mOptionalMouseMovedOrFlagsChangedShape {
+      shape.draw (inDirtyRect)
+    }
   }
 
   //····················································································································
@@ -133,19 +135,6 @@ extension EBGraphicView {
   final fileprivate func drawGuideBezierPath (_ inDirtyRect : NSRect) {
     if let bp = self.mGuideBezierPath, !bp.isEmpty {
       NSColor.orange.setStroke ()
-      bp.stroke ()
-    }
-  }
-
-  //····················································································································
-
-  final fileprivate func drawControlKeyHiliteCircle (_ inDirtyRect : NSRect) {
-    if let r = self.mControlKeyHiliteRectangle, !r.isEmpty, r.intersects (inDirtyRect) {
-      let bp = NSBezierPath (ovalIn: r)
-      bp.lineWidth = 1.0 / self.actualScale
-      NSColor.lightGray.withAlphaComponent (0.2).setFill ()
-      bp.fill ()
-      NSColor.green.setStroke ()
       bp.stroke ()
     }
   }

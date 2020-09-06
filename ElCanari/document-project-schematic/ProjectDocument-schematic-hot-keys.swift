@@ -20,7 +20,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func mouseMovedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
+  internal func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) -> EBShape? {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
       let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
@@ -48,6 +48,8 @@ extension CustomizedProjectDocument {
     //--- Exchange symbol
       self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
     }
+  //---
+    return nil
   }
 
   //····················································································································
@@ -152,7 +154,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- For updating hot key labels
-    self.mouseMovedInSchematic (inUnalignedMouseLocation)
+    _ = self.mouseMovedOrFlagsChangedInSchematic (inUnalignedMouseLocation)
   }
 
   //····················································································································

@@ -677,7 +677,7 @@ document ProjectDocument root ProjectRoot {
   transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
 
   outlet EBGraphicView mBoardView
-    $controlKeyHiliteDiameter root.mControlKeyHiliteDiameter
+//    $controlKeyHiliteDiameter root.mControlKeyHiliteDiameter
     $underObjectsDisplay root.borderOutlineBackground
     $overObjectsDisplay self.overDisplay
     $horizontalFlip root.mBoardHorizontalFlip

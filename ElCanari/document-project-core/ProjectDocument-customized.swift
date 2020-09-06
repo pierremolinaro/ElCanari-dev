@@ -366,7 +366,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     )
   //---
     self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicPointsAndNets
-    self.mSchematicsView?.setMouseMovedCallback { [weak self] (mouseLocation) in self?.mouseMovedInSchematic (mouseLocation) }
+    self.mSchematicsView?.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+      return self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
+    }
     self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()
     self.mSchematicsView?.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
@@ -390,6 +392,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
     self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView)
     self.mERCIssueTableView?.register (hideIssueButton: self.mHideERCIssueButton)
+    self.mBoardView?.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
+    }
   }
 
   //····················································································································

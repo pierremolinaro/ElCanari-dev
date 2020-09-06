@@ -17,19 +17,9 @@ extension EBGraphicView {
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
     if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
-      self.mMouseMovedCallback? (locationInView)
+      self.mOptionalMouseMovedOrFlagsChangedShape = self.mMouseMovedOrFlagsChangedCallback? (locationInView)
     }else{
       self.mMouseExitCallback? ()
-    }
-    let d = self.controlKeyHilitedDiameter
-    if NSEvent.modifierFlags.contains (.control) && (d > 0.0) {
-      let r = NSRect (
-        x: locationInView.x - d / 2.0,
-        y: locationInView.y - d / 2.0,
-        width: d,
-        height: d
-      )
-      self.mControlKeyHiliteRectangle = r
     }
   //--- Set cursor
     self.setCursor (forLocationInView: locationInView)
@@ -41,7 +31,8 @@ extension EBGraphicView {
     super.mouseExited (with: inEvent)
     self.clearXYplacards ()
     self.mMouseExitCallback? ()
-    self.mControlKeyHiliteRectangle = nil
+    self.mOptionalMouseMovedOrFlagsChangedShape = nil
+    NSCursor.arrow.set ()
   }
 
   //····················································································································

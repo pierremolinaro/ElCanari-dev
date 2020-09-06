@@ -126,12 +126,29 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mMouseMovedCallback : Optional < (_ inMouseLocation : NSPoint) -> Void> = nil
+  final internal var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> EBShape?> = nil
 
   //····················································································································
 
-  final func setMouseMovedCallback (_ inCallback : @escaping (_ inMouseLocation : NSPoint) -> Void) {
-    self.mMouseMovedCallback = inCallback
+  final func setMouseMovedOrFlagsChangedCallback (_ inCallback : @escaping (_ inMouseUnalignedLocation : NSPoint) -> EBShape?) {
+    self.mMouseMovedOrFlagsChangedCallback = inCallback
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  final internal var mOptionalMouseMovedOrFlagsChangedShape : EBShape? = nil {
+    didSet {
+      if self.mOptionalMouseMovedOrFlagsChangedShape != oldValue {
+        if let oldBox = oldValue?.boundingBox {
+          self.setNeedsDisplay (oldBox)
+        }
+        if let newBox = self.mOptionalMouseMovedOrFlagsChangedShape?.boundingBox {
+          self.setNeedsDisplay (newBox)
+        }
+      }
+    }
   }
 
   //····················································································································
@@ -193,23 +210,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mControlKeyHiliteRectangle : NSRect? = nil {
-    didSet {
-      if self.mControlKeyHiliteRectangle != oldValue {
-        if let oldRect = oldValue {
-          self.setNeedsDisplay (oldRect.insetBy (dx: -1.0, dy: -1.0))
-        }
-        if let newRect = self.mControlKeyHiliteRectangle {
-          self.setNeedsDisplay (newRect.insetBy (dx: -1.0, dy: -1.0))
-        }
-      }
-    }
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
   final var mUnderObjectsDisplay = EBShape () {
     didSet {
       self.noteInvalidRectangles (old: oldValue, new: self.mUnderObjectsDisplay)
@@ -251,22 +251,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     didSet {
       self.invalidateGuideBezierPath ()
     }
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
-  final private var mControlKeyHilitedDiameter : CGFloat = 0.0
-
-  //····················································································································
-
-  final var controlKeyHilitedDiameter : CGFloat { return self.mControlKeyHilitedDiameter }
-
-  //····················································································································
-
-  final func set (controlKeyHiliteDiameter inControlKeyHiliteDiameter : CGFloat) {
-    self.mControlKeyHilitedDiameter = inControlKeyHiliteDiameter
   }
 
   //····················································································································
