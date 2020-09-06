@@ -17,7 +17,7 @@ extension EBGraphicView {
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
     if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
-      self.mOptionalMouseMovedOrFlagsChangedShape = self.mMouseMovedOrFlagsChangedCallback? (locationInView)
+      self.mMouseMovedOrFlagsChangedCallback? (locationInView)
     }else{
       self.mMouseExitCallback? ()
     }
@@ -31,7 +31,7 @@ extension EBGraphicView {
     super.mouseExited (with: inEvent)
     self.clearXYplacards ()
     self.mMouseExitCallback? ()
-    self.mOptionalMouseMovedOrFlagsChangedShape = nil
+    self.mOptionalFrontShape = nil
     NSCursor.arrow.set ()
   }
 

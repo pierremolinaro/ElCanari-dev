@@ -185,7 +185,7 @@ extension EBGraphicView {
 
   final override func flagsChanged (with inEvent : NSEvent) {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-    self.mOptionalMouseMovedOrFlagsChangedShape = self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
+    self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, NSEvent.modifierFlags, self)
     super.flagsChanged (with: inEvent)
   }

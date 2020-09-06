@@ -126,11 +126,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> EBShape?> = nil
+  final internal var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> Void> = nil
 
   //····················································································································
 
-  final func setMouseMovedOrFlagsChangedCallback (_ inCallback : @escaping (_ inMouseUnalignedLocation : NSPoint) -> EBShape?) {
+  final func setMouseMovedOrFlagsChangedCallback (_ inCallback : @escaping (_ inMouseUnalignedLocation : NSPoint) -> Void) {
     self.mMouseMovedOrFlagsChangedCallback = inCallback
   }
 
@@ -138,13 +138,13 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mOptionalMouseMovedOrFlagsChangedShape : EBShape? = nil {
+  final internal var mOptionalFrontShape : EBShape? = nil {
     didSet {
-      if self.mOptionalMouseMovedOrFlagsChangedShape != oldValue {
+      if self.mOptionalFrontShape != oldValue {
         if let oldBox = oldValue?.boundingBox {
           self.setNeedsDisplay (oldBox)
         }
-        if let newBox = self.mOptionalMouseMovedOrFlagsChangedShape?.boundingBox {
+        if let newBox = self.mOptionalFrontShape?.boundingBox {
           self.setNeedsDisplay (newBox)
         }
       }

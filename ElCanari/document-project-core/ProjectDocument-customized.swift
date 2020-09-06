@@ -367,7 +367,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //---
     self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicPointsAndNets
     self.mSchematicsView?.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
-      return self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
+      self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
     }
     self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()

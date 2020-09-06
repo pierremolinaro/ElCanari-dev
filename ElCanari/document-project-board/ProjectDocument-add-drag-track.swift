@@ -99,11 +99,65 @@ extension CustomizedProjectDocument {
      if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2 {
        var canariUnalignedMousePoint = inUnalignedMousePoint.canariPoint
        if inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
-         canariUnalignedMousePoint.quadrantAligned(from: CanariPoint (x: p1.mX, y: p1.mY))
+         canariUnalignedMousePoint.quadrantAligned (from: CanariPoint (x: p1.mX, y: p1.mY))
        }
        connector2.mX = canariUnalignedMousePoint.x
        connector2.mY = canariUnalignedMousePoint.y
+     //--- Update hilite
+       self.updateHiliteDuringTrackCreation (inUnalignedMousePoint)
     }
+  }
+
+  //····················································································································
+
+  fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : NSPoint) {
+    var shape : EBShape? = nil
+    let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
+    let maxDistance = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter)) / 2.0
+  //--- Hilite connectors
+    if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
+      if let netName = connector1.netNameFromComponentPad {
+      //--- Exclude connectors connected to connector 1
+        var excludedConnectors = self.findAllConnectorsConnectedTo (connector1, trackSide: newTrackSide)
+      //--- Exclude connectors at mouse location
+        let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
+        for c in connectorsUnderMouse {
+          excludedConnectors += self.findAllConnectorsConnectedTo (c, trackSide: newTrackSide)
+        }
+      //--- Build shape
+        for object in self.rootObject.mBoardObjects {
+          if let connector = object as? BoardConnector,
+                !excludedConnectors.contains (connector),
+                connector.netNameFromComponentPad == netName {
+            let bp = connector.bezierPathForHilitingOnOptionFlag (trackSide: newTrackSide)
+            if shape == nil {
+              shape = EBShape ()
+            }
+            shape?.add (filled: [bp], NSColor.white)
+          }
+        }
+      }
+    }
+  //--- Control key ?
+    if NSEvent.modifierFlags.contains (.control), maxDistance > 0.0, let boardView = self.mBoardView {
+      if boardView.frame.contains (inUnalignedMouseLocation) {
+        let r = NSRect (
+          x: inUnalignedMouseLocation.x - maxDistance,
+          y: inUnalignedMouseLocation.y - maxDistance,
+          width: maxDistance * 2.0,
+          height: maxDistance * 2.0
+        )
+        var bp = EBBezierPath (ovalIn: r)
+        bp.lineWidth = 1.0 / boardView.actualScale
+        if shape == nil {
+          shape = EBShape ()
+        }
+        shape?.add (filled: [bp], NSColor.lightGray.withAlphaComponent (0.2))
+        shape?.add (stroke: [bp], NSColor.green)
+      }
+    }
+  //---
+    self.mBoardView?.mOptionalFrontShape = shape
   }
 
   //····················································································································

@@ -14,12 +14,12 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : NSPoint) -> EBShape? {
+  internal func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
     let maxDistance = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter)) / 2.0
   //--- Option key ?
-    if NSEvent.modifierFlags.contains (.option), let boardView = self.mBoardView {
+    if NSEvent.modifierFlags.contains (.option) {
       let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
       if connectorsUnderMouse.count == 1 {
         let connectorUnderMouse = connectorsUnderMouse [0]
@@ -58,13 +58,13 @@ extension CustomizedProjectDocument {
       }
     }
   //---
-    return shape
+    self.mBoardView?.mOptionalFrontShape = shape
   }
 
   //····················································································································
 
-  fileprivate func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
-                                                 trackSide inTrackSide : TrackSide) -> [BoardConnector] {
+  internal func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
+                                              trackSide inTrackSide : TrackSide) -> [BoardConnector] {
     var connectorSet = Set ([inConnector])
     var exploreArray = [inConnector]
     while !exploreArray.isEmpty {
