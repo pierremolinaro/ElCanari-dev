@@ -17,36 +17,43 @@ extension CustomizedProjectDocument {
   internal func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let maxDistance = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter)) / 2.0
+    let d = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter))
   //--- Option key ?
     if NSEvent.modifierFlags.contains (.option) {
       let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
       if connectorsUnderMouse.count == 1 {
         let connectorUnderMouse = connectorsUnderMouse [0]
-        if let netName = connectorUnderMouse.netNameFromComponentPad {
+        if let netName = connectorUnderMouse.netName () {
           let connectedConnectors = self.findAllConnectorsConnectedTo (connectorUnderMouse, trackSide: newTrackSide)
+          var bpArray = [EBBezierPath] ()
           for object in self.rootObject.mBoardObjects {
             if let connector = object as? BoardConnector,
                   !connectedConnectors.contains (connector),
                   connector.netNameFromComponentPad == netName {
-              let bp = connector.bezierPathForHilitingOnOptionFlag (trackSide: newTrackSide)
-              if shape == nil {
-                shape = EBShape ()
-              }
-              shape?.add (filled: [bp], NSColor.white)
+              connector.buildBezierPathArrayForHilitingOnOptionFlag (
+                trackSide: newTrackSide,
+                controlKeyHiliteDiameter: d,
+                bezierPathArray: &bpArray
+              )
             }
+          }
+          if bpArray.count > 0 {
+            if shape == nil {
+              shape = EBShape ()
+            }
+            shape?.add (filled: bpArray, NSColor.white)
           }
         }
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), maxDistance > 0.0, let boardView = self.mBoardView {
+    if NSEvent.modifierFlags.contains (.control), d > 0.0, let boardView = self.mBoardView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
-          x: inUnalignedMouseLocation.x - maxDistance,
-          y: inUnalignedMouseLocation.y - maxDistance,
-          width: maxDistance * 2.0,
-          height: maxDistance * 2.0
+          x: inUnalignedMouseLocation.x - d / 2.0,
+          y: inUnalignedMouseLocation.y - d / 2.0,
+          width: d,
+          height: d
         )
         var bp = EBBezierPath (ovalIn: r)
         bp.lineWidth = 1.0 / boardView.actualScale
@@ -81,7 +88,6 @@ extension CustomizedProjectDocument {
         }
       }
     }
-//    Swift.print ("connectorSet \(connectorSet.count)")
     return Array (connectorSet)
   }
 
@@ -95,76 +101,44 @@ extension BoardConnector {
 
   //····················································································································
 
-//  func bezierPathForHilitingOnOptionFlag (unalignedLocation inUnalignedLocation : NSPoint,
-//                                          maxDistance inMaxDistance : CGFloat,
-//                                          trackSide inTrackSide : TrackSide) -> EBBezierPath {
-//    var bp = EBBezierPath ()
-//    if let componentPadDictionary = self.mComponent?.componentPadDictionary,
-//       let pad : ComponentPadDescriptor = componentPadDictionary [self.mComponentPadName] {
-//       let connectorSide : ConnectorSide
-//      switch inTrackSide {
-//      case .front :
-//        connectorSide = .front
-//      case .back :
-//        connectorSide = .back
-//      }
-//      for pad in pad.pads {
-//        if (pad.side == .both) || (pad.side == connectorSide) {
-//          let padLocation = pad.location
-//          if NSPoint.distance (padLocation, inUnalignedLocation) <= inMaxDistance {
-//            bp.append (pad.bp)
-//          }
-//        }
-//      }
-//    }
-//    return bp
-//  }
+  func netName () -> String? {
+    if let name = self.netNameFromComponentPad, name != "—" {
+      return name
+    }else if let name = self.netNameFromTracks, name != "—" {
+      return name
+    }else{
+      return nil
+    }
+  }
 
   //····················································································································
 
-  func bezierPathForHilitingOnOptionFlag (trackSide inTrackSide : TrackSide) -> EBBezierPath {
-    var bp = EBBezierPath ()
-    if let componentPadDictionary = self.mComponent?.componentPadDictionary,
-         let pad : ComponentPadDescriptor = componentPadDictionary [self.mComponentPadName] {
-      let connectorSide : ConnectorSide
-      switch inTrackSide {
+  func buildBezierPathArrayForHilitingOnOptionFlag (trackSide inTrackSide : TrackSide,
+                                                    controlKeyHiliteDiameter inDiameter : CGFloat,
+                                                    bezierPathArray ioArray : inout [EBBezierPath]) {
+    if let padCenter = self.location, let connectorSide = self.side {
+      let accepts : Bool
+      switch connectorSide {
       case .front :
-        connectorSide = .front
+        accepts = inTrackSide == .front
       case .back :
-        connectorSide = .back
+        accepts = inTrackSide == .back
+      case .both :
+        accepts = true
       }
-      for pad in pad.pads {
-        if (pad.side == .both) || (pad.side == connectorSide) {
-          bp.append (pad.bp)
-        }
+      if accepts {
+        let r = NSRect (
+          x: canariUnitToCocoa (padCenter.x) - inDiameter / 2.0,
+          y: canariUnitToCocoa (padCenter.y) - inDiameter / 2.0,
+          width: inDiameter,
+          height: inDiameter
+        )
+        ioArray.append (EBBezierPath (ovalIn: r))
       }
     }
-    return bp
   }
 
   //····················································································································
 
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//extension TrackSide {
-//
-//  func sameSideAs (connector inOptionalConnector : BoardConnector) -> Bool {
-//    if let connectorSide = inOptionalConnector.side {
-//      switch connectorSide {
-//      case .front :
-//        return self == .front
-//      case .back :
-//        return self == .back
-//      case .both :
-//        return true
-//      }
-//    }else{
-//      return false
-//    }
-//  }
-//
-//}
-
 //----------------------------------------------------------------------------------------------------------------------

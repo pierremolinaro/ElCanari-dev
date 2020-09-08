@@ -113,10 +113,10 @@ extension CustomizedProjectDocument {
   fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let maxDistance = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter)) / 2.0
+    let d = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter))
   //--- Hilite connectors
     if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
-      if let netName = connector1.netNameFromComponentPad {
+      if let netName = connector1.netName () {
       //--- Exclude connectors connected to connector 1
         var excludedConnectors = self.findAllConnectorsConnectedTo (connector1, trackSide: newTrackSide)
       //--- Exclude connectors at mouse location
@@ -125,27 +125,34 @@ extension CustomizedProjectDocument {
           excludedConnectors += self.findAllConnectorsConnectedTo (c, trackSide: newTrackSide)
         }
       //--- Build shape
+        var bpArray = [EBBezierPath] ()
         for object in self.rootObject.mBoardObjects {
           if let connector = object as? BoardConnector,
                 !excludedConnectors.contains (connector),
                 connector.netNameFromComponentPad == netName {
-            let bp = connector.bezierPathForHilitingOnOptionFlag (trackSide: newTrackSide)
-            if shape == nil {
-              shape = EBShape ()
-            }
-            shape?.add (filled: [bp], NSColor.white)
+            connector.buildBezierPathArrayForHilitingOnOptionFlag (
+              trackSide: newTrackSide,
+              controlKeyHiliteDiameter: d,
+              bezierPathArray: &bpArray
+            )
           }
+        }
+        if bpArray.count > 0 {
+          if shape == nil {
+            shape = EBShape ()
+          }
+          shape?.add (filled: bpArray, NSColor.white)
         }
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), maxDistance > 0.0, let boardView = self.mBoardView {
+    if NSEvent.modifierFlags.contains (.control), d > 0.0, let boardView = self.mBoardView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
-          x: inUnalignedMouseLocation.x - maxDistance,
-          y: inUnalignedMouseLocation.y - maxDistance,
-          width: maxDistance * 2.0,
-          height: maxDistance * 2.0
+          x: inUnalignedMouseLocation.x - d / 2.0,
+          y: inUnalignedMouseLocation.y - d / 2.0,
+          width: d,
+          height: d
         )
         var bp = EBBezierPath (ovalIn: r)
         bp.lineWidth = 1.0 / boardView.actualScale
