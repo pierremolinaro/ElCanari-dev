@@ -52,14 +52,17 @@ extension ProjectDocument {
         ioMessages.append ("No file for \(font.mFontName) font in Library")
       }else if pathes.count == 1 {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-           let documentRootObjectDictionary = try? loadEasyRootObjectDictionary (from: data),
-           let version = documentRootObjectDictionary [PMFontVersion] as? Int,
-           let nominalSize = documentRootObjectDictionary ["nominalSize"] as? Int,
-           let descriptiveString = documentRootObjectDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
-          if font.mFontVersion < version {
-            font.mFontVersion = version
-            font.mNominalSize = nominalSize
-            font.mDescriptiveString = descriptiveString
+           let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
+          let propertyDictionary = NSMutableDictionary ()
+          documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
+          if let descriptiveString = propertyDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String,
+            let nominalSize = propertyDictionary ["nominalSize"] as? Int  {
+            if font.mFontVersion < version {
+              font.mFontVersion = version
+              font.mNominalSize = nominalSize
+              font.mDescriptiveString = descriptiveString
+            }
           }
          }else{
           ioMessages.append ("Cannot read \(pathes [0]) file.")

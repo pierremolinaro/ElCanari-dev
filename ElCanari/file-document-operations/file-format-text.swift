@@ -175,15 +175,3 @@ func dataForTextualSaveOperation (from inDocumentData : EBDocumentData) throws -
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//     loadEasyRootObjectDictionary (fromTextDataScanner:)
-//----------------------------------------------------------------------------------------------------------------------
-
-func loadEasyRootObjectDictionary (fromTextDataScanner ioDataScanner : inout EBDataScanner) throws -> EBDocumentRootObjectDictionary {
-  let documentData = try loadEasyBindingTextFile (nil, from: &ioDataScanner)
-  let rootObject = documentData.documentRootObject
-  let propertyDictionary = NSMutableDictionary ()
-  rootObject.saveIntoDictionary (propertyDictionary)
-  return propertyDictionary as! EBDocumentRootObjectDictionary
-}
-
-//----------------------------------------------------------------------------------------------------------------------

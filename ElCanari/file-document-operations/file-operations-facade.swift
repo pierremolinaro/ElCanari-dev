@@ -61,25 +61,6 @@ func loadEasyBindingFile (fromData inData: Data, undoManager inUndoManager : EBU
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//     loadEasyRootObjectDictionary
-//----------------------------------------------------------------------------------------------------------------------
-
-func loadEasyRootObjectDictionary (from inData : Data) throws -> EBDocumentRootObjectDictionary {
-  var dataScanner = EBDataScanner (data: inData)
-  if dataScanner.testString (string: PM_BINARY_FORMAT_SIGNATURE) {
-    return try loadEasyRootObjectDictionary (fromBinaryDataScanner: &dataScanner)
-  }else if dataScanner.testString (string: PM_TEXTUAL_FORMAT_SIGNATURE) {
-    return try loadEasyRootObjectDictionary (fromTextDataScanner: &dataScanner)
-  }else{
-    let dictionary = [
-      "Cannot Open Document" : NSLocalizedDescriptionKey,
-      "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //     dataForSaveOperation
 //----------------------------------------------------------------------------------------------------------------------
 

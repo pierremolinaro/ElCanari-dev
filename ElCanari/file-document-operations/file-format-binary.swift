@@ -136,38 +136,3 @@ func dataForBinarySaveOperation (from inDocumentData : EBDocumentData) throws ->
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//     loadEasyRootObjectDictionary (fromBinaryDataScanner:)
-//----------------------------------------------------------------------------------------------------------------------
-
-func loadEasyRootObjectDictionary (fromBinaryDataScanner ioDataScanner : inout EBDataScanner) throws -> EBDocumentRootObjectDictionary {
-//--- Read Status
-  _ = ioDataScanner.parseByte ()
-//--- if ok, check byte is 1
-  ioDataScanner.acceptRequired (byte: 1)
-//--- Read metadata dictionary
-  _ = ioDataScanner.parseAutosizedData ()
-//--- Read data
-  let dataFormat = ioDataScanner.parseByte ()
-  let fileData = ioDataScanner.parseAutosizedData ()
-//--- if ok, check final byte (0)
-  ioDataScanner.acceptRequired (byte: 0)
-//--- Scanner error ?
-  if !ioDataScanner.ok () {
-    let dictionary = [
-      "Cannot Open Document" : NSLocalizedDescriptionKey,
-      "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
-  }
-//--- Analyze read data
-  if dataFormat == 0x06, let dictionaryArray = try PropertyListSerialization.propertyList (from: fileData, options: [], format: nil) as? [[String : Any]] {
-    return dictionaryArray [0]
-  }
-  let dictionary = [
-    "Cannot Open Document" :  NSLocalizedDescriptionKey,
-    "Unkown data format: \(dataFormat)" :  NSLocalizedRecoverySuggestionErrorKey
-  ]
-  throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
-}
-
-//----------------------------------------------------------------------------------------------------------------------

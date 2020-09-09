@@ -20,6 +20,12 @@ let PMArtworkComment = "PMArtworkComment"
 
   //····················································································································
 
+  override func metadataStatusForSaving () -> UInt8 {
+    return UInt8 (MetadataStatus.ok.rawValue)
+  }
+
+  //····················································································································
+
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMArtworkVersion] = version
     metadataDictionary [PMArtworkComment] = self.rootObject.comments
