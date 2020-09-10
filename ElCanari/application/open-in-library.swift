@@ -54,7 +54,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
   internal func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
                                          alreadyLoadedDocuments inNames : Set <String>,
-                                         callBack : @escaping (_ inData : Data, _ inName : String) -> Void,
+                                         callBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
                                          postAction : Optional <() -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
@@ -68,8 +68,10 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
           if selectedItem.mFullPath != "" {
             let fm = FileManager ()
             if let data = fm.contents (atPath: selectedItem.mFullPath) {
-              callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
-              postAction? ()
+              let ok = callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
+              if ok {
+                postAction? ()
+              }
             }
           }
         }

@@ -26,10 +26,11 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func addComponent (_ inData : Data, _ inName : String) {
+  internal func addComponent (_ inData : Data, _ inName : String) -> Bool {
   //--- Append device
     let possibleNewDeviceInProject = self.appendDevice (inData, inName)
-    _ = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject, prefix: nil)
+    let optionalAddedComponent = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject, prefix: nil)
+    return optionalAddedComponent != nil
   }
 
   //····················································································································

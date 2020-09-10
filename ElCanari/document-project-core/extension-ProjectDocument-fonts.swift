@@ -26,7 +26,8 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) {
+  internal func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) -> Bool {
+    var ok = false
     if let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
       let propertyDictionary = NSMutableDictionary ()
@@ -39,8 +40,16 @@ extension ProjectDocument {
         addedFont.mNominalSize = nominalSize
         addedFont.mDescriptiveString = descriptiveString
         self.rootObject.mFonts.append (addedFont)
+        ok = true
       }
     }
+    if !ok, let window = self.windowForSheet {
+      let alert = NSAlert ()
+      alert.messageText = "Internal error: cannot add font."
+      alert.addButton (withTitle: "Ok")
+      alert.beginSheetModal (for: window) { inReturnCode in }
+    }
+    return ok
   }
 
   //····················································································································

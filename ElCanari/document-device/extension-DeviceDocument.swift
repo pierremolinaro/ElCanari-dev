@@ -13,10 +13,12 @@ extension DeviceDocument {
 
   //····················································································································
 
-  internal func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) {
+  internal func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) -> Bool {
+    var ok = false
     if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int,
        let symbolRoot = documentData.documentRootObject as? SymbolRoot {
+      ok = true
       let strokeBezierPathes = NSBezierPath ()
       let filledBezierPathes = NSBezierPath ()
       var symbolPinTypes = [SymbolPinTypeInDevice] ()
@@ -53,6 +55,7 @@ extension DeviceDocument {
         symbolInstance.mPinInstances_property.add (pinInstance)
       }
     }
+    return ok
   }
 
   //····················································································································
@@ -140,10 +143,12 @@ extension DeviceDocument {
 
   //····················································································································
 
-  internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) {
+  internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) -> Bool {
+    var ok = false
     if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int,
        let packageRoot = documentData.documentRootObject as? PackageRoot {
+      ok = true
       var strokeBezierPathes = EBBezierPath ()
       var masterPads = [MasterPadInDevice] ()
       packageRoot.accumulate (
@@ -170,6 +175,7 @@ extension DeviceDocument {
       self.rootObject.mPackages_property.add (package)
       self.updatePadProxies ()
     }
+    return ok
   }
 
   //····················································································································
