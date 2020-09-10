@@ -155,7 +155,11 @@ document ProjectDocument root ProjectRoot {
   outlet EBButton mUpdateFontButton $run updateFontAction $enabled #projectFontController.selectedArray.count > 0 ;
 
   action removeFontAction ;
-  outlet EBButton mRemoveFontButton $run removeFontAction $enabled #projectFontController.selectedArray.count > 0 ;
+  transient Bool canRemoveSelectedFonts dependsFrom #projectFontController.selectedArray.all.canRemoveFont ;
+  outlet EBButton mRemoveFontButton $run removeFontAction
+    $enabled #projectFontController.selectedArray.count > 0
+    & self.canRemoveSelectedFonts
+  ;
 
   action resetFontVersionAction ;
   outlet EBButton mResetFontVersionButton $run resetFontVersionAction $enabled #projectFontController.selectedArray.count > 0 ;

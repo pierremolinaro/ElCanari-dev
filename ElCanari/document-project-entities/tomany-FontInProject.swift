@@ -22,6 +22,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
     self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_canRemoveFont_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mNominalSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mFontName_toElementsOfSet (inAddedSet) // Stored property
@@ -30,6 +31,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
     self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_canRemoveFont_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -424,6 +426,62 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
     for managedObject in inSet {
       self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
         managedObject.descriptor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'canRemoveFont' transient property
+  //····················································································································
+
+  private var mObserversOf_canRemoveFont = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_canRemoveFont.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canRemoveFont_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_canRemoveFont.remove (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canRemoveFont_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_canRemoveFont_toElementsOfSet (_ inSet : Set<FontInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemoveFont.apply { (_ observer : EBEvent) in
+        managedObject.canRemoveFont_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_canRemoveFont_fromElementsOfSet (_ inSet : Set<FontInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemoveFont.apply { (_ observer : EBEvent) in
+        managedObject.canRemoveFont_property.removeEBObserver (observer)
       }
     }
   }

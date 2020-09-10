@@ -47,6 +47,12 @@ protocol FontInProject_descriptor : class {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+protocol FontInProject_canRemoveFont : class {
+  var canRemoveFont : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //    Entity: FontInProject
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -57,7 +63,8 @@ class FontInProject : EBManagedObject,
          FontInProject_mDescriptiveString,
          FontInProject_versionString,
          FontInProject_sizeString,
-         FontInProject_descriptor {
+         FontInProject_descriptor,
+         FontInProject_canRemoveFont {
 
   //····················································································································
   //   To many property: mTexts
@@ -278,6 +285,29 @@ class FontInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: canRemoveFont
+  //····················································································································
+
+  let canRemoveFont_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemoveFont_property_selection : EBSelection <Bool> {
+    return self.canRemoveFont_property.prop
+  }
+
+  //····················································································································
+
+  var canRemoveFont : Bool? {
+    switch self.canRemoveFont_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -383,6 +413,30 @@ class FontInProject : EBManagedObject,
     }
     self.mNominalSize_property.addEBObserver (self.descriptor_property)
     self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
+  //--- Atomic property: canRemoveFont
+    self.canRemoveFont_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponentNames_property.count_property_selection.kind ()
+        kind &= unwSelf.mComponentValues_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponentNames_property.count_property_selection, unwSelf.mComponentValues_property.count_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_FontInProject_canRemoveFont (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponentNames_property.addEBObserver (self.canRemoveFont_property)
+    self.mComponentValues_property.addEBObserver (self.canRemoveFont_property)
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
@@ -408,6 +462,8 @@ class FontInProject : EBManagedObject,
     self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
     self.mNominalSize_property.removeEBObserver (self.descriptor_property)
     self.mDescriptiveString_property.removeEBObserver (self.descriptor_property)
+    self.mComponentNames_property.removeEBObserver (self.canRemoveFont_property)
+    self.mComponentValues_property.removeEBObserver (self.canRemoveFont_property)
   //--- Unregister properties for handling signature
   }
 
@@ -478,6 +534,14 @@ class FontInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.descriptor_property.mObserverExplorer,
       valueExplorer: &self.descriptor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "canRemoveFont",
+      idx: self.canRemoveFont_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.canRemoveFont_property.mObserverExplorer,
+      valueExplorer: &self.canRemoveFont_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

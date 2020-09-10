@@ -16,6 +16,8 @@ entity FontInProject {
   transient String sizeString dependsFrom self.mDescriptiveString ;
   
   transient BoardFontDescriptor descriptor dependsFrom self.mNominalSize, self.mDescriptiveString ;
+  
+  transient Bool canRemoveFont dependsFrom self.mComponentNames.count, self.mComponentValues.count ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -544,6 +544,10 @@
 		CF4D084421C2F30300380ACA /* extension-PackageSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D084221C2F30300380ACA /* extension-PackageSegment.swift */; };
 		CF4D54C02254B93600DBCB62 /* model-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D54BF2254B93600DBCB62 /* model-events.swift */; };
 		CF4D54C12254B93600DBCB62 /* model-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D54BF2254B93600DBCB62 /* model-events.swift */; };
+		CF4E03A2250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E03A1250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift */; };
+		CF4E03A3250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E03A1250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift */; };
+		CF4E03A5250A328D00079227 /* transient-FontInProject-canRemoveFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E03A4250A328C00079227 /* transient-FontInProject-canRemoveFont.swift */; };
+		CF4E03A6250A328D00079227 /* transient-FontInProject-canRemoveFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E03A4250A328C00079227 /* transient-FontInProject-canRemoveFont.swift */; };
 		CF4EC72A228492FF00902FBB /* extension-SheetInProject-points.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EC728228492FF00902FBB /* extension-SheetInProject-points.swift */; };
 		CF4EC72B228492FF00902FBB /* extension-SheetInProject-points.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EC728228492FF00902FBB /* extension-SheetInProject-points.swift */; };
 		CF4EC72C228492FF00902FBB /* extension-SheetInProject-wires-containing-point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EC729228492FF00902FBB /* extension-SheetInProject-wires-containing-point.swift */; };
@@ -2888,6 +2892,8 @@
 		CF4D083921C2F18000380ACA /* entity-PackageSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PackageSegment.swift"; sourceTree = "<group>"; };
 		CF4D084221C2F30300380ACA /* extension-PackageSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-PackageSegment.swift"; sourceTree = "<group>"; };
 		CF4D54BF2254B93600DBCB62 /* model-events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "model-events.swift"; sourceTree = "<group>"; };
+		CF4E03A1250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectDocument-canRemoveSelectedFonts.swift"; sourceTree = "<group>"; };
+		CF4E03A4250A328C00079227 /* transient-FontInProject-canRemoveFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontInProject-canRemoveFont.swift"; sourceTree = "<group>"; };
 		CF4EC728228492FF00902FBB /* extension-SheetInProject-points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SheetInProject-points.swift"; sourceTree = "<group>"; };
 		CF4EC729228492FF00902FBB /* extension-SheetInProject-wires-containing-point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SheetInProject-wires-containing-point.swift"; sourceTree = "<group>"; };
 		CF4EC72E2284937000902FBB /* ProjectDocument-schematic-contextual-click.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-schematic-contextual-click.swift"; sourceTree = "<group>"; };
@@ -5503,6 +5509,7 @@
 		CFEB7BA9233A272C0060A97A /* document — project — transient — FontInProject */ = {
 			isa = PBXGroup;
 			children = (
+				CF4E03A4250A328C00079227 /* transient-FontInProject-canRemoveFont.swift */,
 				CFEB7BC0233A27AE0060A97A /* transient-FontInProject-descriptor.swift */,
 				CFEB7BBF233A27AE0060A97A /* transient-FontInProject-sizeString.swift */,
 				CFEB7BC1233A27AF0060A97A /* transient-FontInProject-versionString.swift */,
@@ -5593,6 +5600,7 @@
 				CFEB7C3C233A28660060A97A /* transient-ProjectDocument-canChangePackage.swift */,
 				CFEB7C3A233A28660060A97A /* transient-ProjectDocument-canRemoveNetClasses.swift */,
 				CFEB7C33233A28640060A97A /* transient-ProjectDocument-canRemoveSelectedDevices.swift */,
+				CF4E03A1250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift */,
 				CFEB7C3E233A28670060A97A /* transient-ProjectDocument-componentCount.swift */,
 				CFEB7C35233A28650060A97A /* transient-ProjectDocument-documentFilePathOk.swift */,
 				CFEB7C38233A28660060A97A /* transient-ProjectDocument-netCount.swift */,
@@ -6680,6 +6688,8 @@
 				CFBCB7A9242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */,
 				CFEB7BF4233A28130060A97A /* transient-NetClassInProject-netWarningCount.swift in Sources */,
 				CFEB7B8A233A26330060A97A /* transient-DeviceInProject-versionString.swift in Sources */,
+				CF4E03A2250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift in Sources */,
+				CF4E03A5250A328D00079227 /* transient-FontInProject-canRemoveFont.swift in Sources */,
 				CF07780923521A4E00F56EAB /* EBReadOnlyValueProperty.swift in Sources */,
 				CF4EC73B2284A07B00902FBB /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CF0E9D0A2229ACE500124F04 /* action-DeviceDocument-editSelectedPackages.swift in Sources */,
@@ -7901,6 +7911,8 @@
 				CFBCB7AA242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */,
 				CFEB7CED233A28A10060A97A /* transient-WireInSchematic-netClassName.swift in Sources */,
 				CFEB7BF5233A28130060A97A /* transient-NetClassInProject-netWarningCount.swift in Sources */,
+				CF4E03A3250A327800079227 /* transient-ProjectDocument-canRemoveSelectedFonts.swift in Sources */,
+				CF4E03A6250A328D00079227 /* transient-FontInProject-canRemoveFont.swift in Sources */,
 				CFEB7B8B233A26330060A97A /* transient-DeviceInProject-versionString.swift in Sources */,
 				CF07780A23521A4E00F56EAB /* EBReadOnlyValueProperty.swift in Sources */,
 				CFA42FA7229AEAEC000AA8C8 /* toone-FontInProject.swift in Sources */,

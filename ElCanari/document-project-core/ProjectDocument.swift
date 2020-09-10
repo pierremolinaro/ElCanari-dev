@@ -480,6 +480,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canRemoveSelectedFonts
+  //····················································································································
+
+  let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemoveSelectedFonts_property_selection : EBSelection <Bool> {
+    return self.canRemoveSelectedFonts_property.prop
+  }
+
+  //····················································································································
+
+  var canRemoveSelectedFonts : Bool? {
+    switch self.canRemoveSelectedFonts_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
@@ -2162,6 +2185,32 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: canRemoveSelectedFonts
+    self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.projectFontController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.projectFontController.selectedArray_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_canRemoveSelectedFonts (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2780,10 +2829,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return ((self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0)) && self.canRemoveSelectedFonts_property_selection)
         },
         outlet: self.mRemoveFontButton
       )
+      self.canRemoveSelectedFonts_property.addEBObserver (controller)
       self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveFontButton_enabled = controller
     }
@@ -3639,6 +3689,7 @@ import Cocoa
     self.mController_mEditFontButton_enabled = nil
     self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
     self.mController_mUpdateFontButton_enabled = nil
+    self.canRemoveSelectedFonts_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
     self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
     self.mController_mRemoveFontButton_enabled = nil
     self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetFontVersionButton_enabled!)
@@ -3803,6 +3854,7 @@ import Cocoa
     self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
     self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
+    self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
