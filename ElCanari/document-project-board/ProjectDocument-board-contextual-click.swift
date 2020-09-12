@@ -243,8 +243,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func mergeTracksInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
-    let connectorsUnderMouse = self.rootObject.connectors (at: alignedMouseDownPoint, trackSide: inSide)
+    let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: inSide)
     if connectorsUnderMouse.count == 1 {
       let connector = connectorsUnderMouse [0]
       let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
@@ -306,8 +305,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func splitTrackInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
-    let tracksUnderMouse = self.rootObject.tracks (at: alignedMouseDownPoint, trackSide: inSide)
+    let tracksUnderMouse = self.rootObject.tracks (at: inUnalignedMouseDownPoint, trackSide: inSide)
     if tracksUnderMouse.count == 1 {
       let title : String
       switch inSide {

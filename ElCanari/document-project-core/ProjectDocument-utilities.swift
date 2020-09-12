@@ -11,7 +11,7 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 let SCHEMATIC_GRID_IN_MILS = 50
-let SCHEMATIC_GRID_IN_CANARI_UNIT = milsToCanariUnit (SCHEMATIC_GRID_IN_MILS)
+let SCHEMATIC_GRID_IN_CANARI_UNIT = milsToCanariUnit (fromInt: SCHEMATIC_GRID_IN_MILS)
 let SCHEMATIC_GRID_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SCHEMATIC_GRID_IN_MILS))
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ let BOARD_KNOB_SIZE : CGFloat = 4.0
 
 let SCHEMATIC_LABEL_SIZE : CGFloat = 3.6
 
-let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = milsToCanariUnit (400)
+let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = milsToCanariUnit (fromInt: 400)
 
 //----------------------------------------------------------------------------------------------------------------------
 

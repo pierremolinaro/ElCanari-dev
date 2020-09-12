@@ -33,7 +33,7 @@ struct CanariSegment {
     let x = Double (inPoint.x)
     let y = Double (inPoint.y)
     let hw = Double (self.width / 2)
-    let within : Bool
+    var within : Bool
     if self.x1 == self.x2 { // vertical segment
       within = (y > min (y1, y2)) && (y < max (y1, y2)) && (x >= (x1 - hw)) && (x <= (x1 + hw))
     }else if self.y1 == self.y2 { // horizontal segment
@@ -49,7 +49,14 @@ struct CanariSegment {
       let d_y2_y1 = y2 - y1
       let d2 = d_x2_x1 * d_x2_x1 + d_y2_y1 * d_y2_y1
       let s = 2.0 * p2 + 2.0 * q2 - d2 - (p2 - q2) * (p2 - q2) / d2
-      within = s <= Double (self.width * self.width)
+      let w = Double (self.width)
+      within = s <= (w * w)
+      if within {
+        within = p2 >= (hw * hw)
+      }
+      if within {
+       within = q2 >= (hw * hw)
+      }
     }else{
       within = false
     }

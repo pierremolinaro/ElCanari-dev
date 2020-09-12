@@ -37,7 +37,7 @@ func transient_BoardTrack_objectDisplay (
            color = prefs_backSideLayoutColorForBoard
          }
          if display {
-           let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (10) : self_actualTrackWidth)
+           let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (fromInt: 10) : self_actualTrackWidth)
            var bp = EBBezierPath ()
            bp.lineWidth = w
            bp.lineCapStyle = .round

@@ -77,13 +77,13 @@ func millimeterToCanariUnit (_ inValue : CGFloat) -> Int {
 
 //······················································································································
 
-func milsToCanariUnit (_ inValue : Int) -> Int {
+func milsToCanariUnit (fromInt inValue : Int) -> Int {
   return inValue * ONE_MIL_IN_CANARI_UNIT
 }
 
 //······················································································································
 
-func milsToCanariUnit (double inValue : Double) -> Int {
+func milsToCanariUnit (fromDouble inValue : Double) -> Int {
   return Int (inValue * Double (ONE_MIL_IN_CANARI_UNIT))
 }
 

@@ -5,7 +5,7 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat  = milsToCocoaUnit (25.0)
-let SYMBOL_GRID_IN_CANARI_UNIT : Int  = milsToCanariUnit (25)
+let SYMBOL_GRID_IN_CANARI_UNIT : Int  = milsToCanariUnit (fromInt: 25)
 
 //----------------------------------------------------------------------------------------------------------------------
 

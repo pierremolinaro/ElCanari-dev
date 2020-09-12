@@ -257,7 +257,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final private var mArrowKeyMagnitude : Int = milsToCanariUnit (25)
+  final private var mArrowKeyMagnitude : Int = milsToCanariUnit (fromInt: 25)
 
   //····················································································································
 
@@ -277,7 +277,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final private var mShiftArrowKeyMagnitude : Int = milsToCanariUnit (100)
+  final private var mShiftArrowKeyMagnitude : Int = milsToCanariUnit (fromInt: 100)
 
   //····················································································································
 
@@ -613,7 +613,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final var mGridStepInCanariUnit : Int = milsToCanariUnit (25) {
+  final var mGridStepInCanariUnit : Int = milsToCanariUnit (fromInt: 25) {
     didSet {
       if (self.mGridStepInCanariUnit != oldValue) && (self.mGridStyle != .noGrid)  {
         self.needsDisplay = true
