@@ -21,6 +21,9 @@ extension CustomizedProjectDocument {
   //--- Disconnect ?
     self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
     self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
+  //--- Merge Tracks ?
+    self.mergeTracksInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
+    self.mergeTracksInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
   //---
     return menu
   }
@@ -228,6 +231,69 @@ extension CustomizedProjectDocument {
         if (c.mComponent == nil) && (c.mTracksP1.count == 0) && (c.mTracksP2.count == 0) {
           c.mRoot = nil // Remove from board objects
         }
+      }
+    }
+  }
+
+  //····················································································································
+  //  Merge Tracks
+  //····················································································································
+
+  private func mergeTracksInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
+    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
+    let connectorsUnderMouse = self.rootObject.connectors (at: alignedMouseDownPoint, trackSide: inSide)
+    if connectorsUnderMouse.count == 1 {
+      let connector = connectorsUnderMouse [0]
+      let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
+      if connectionCount == 2 {
+        let title : String
+        switch inSide {
+        case .front : title = "Merge Tracks in Front Layer"
+        case .back  : title = "Merge Tracks in Back Layer"
+        }
+        let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.mergeTracksInBoardAction), keyEquivalent: "")
+        menuItem.target = self
+        menuItem.representedObject = (connector, inSide)
+        menu.addItem (menuItem)
+      }
+    }
+  }
+
+  //····················································································································
+
+  @objc private func mergeTracksInBoardAction (_ inMenuItem : NSMenuItem) {
+    if let (connector, side) = inMenuItem.representedObject as? (BoardConnector, TrackSide) {
+      var retainedConnectors = [BoardConnector] ()
+      var tracksToRemove = [BoardTrack] ()
+      for track in connector.mTracksP1 {
+        if let c = track.mConnectorP2, c !== connector {
+          retainedConnectors.append (c)
+          tracksToRemove.append (track)
+        }
+      }
+      for track in connector.mTracksP2 {
+        if let c = track.mConnectorP1, c !== connector {
+          retainedConnectors.append (c)
+          tracksToRemove.append (track)
+        }
+      }
+      if retainedConnectors.count == 2 {
+      //--- Remove Tracks
+        for track in tracksToRemove {
+          track.mConnectorP1 = nil
+          track.mConnectorP2 = nil
+          track.mNet = nil
+          track.mRoot = nil
+        }
+      //--- Remove connector
+        connector.mRoot = nil
+      //--- Build Track
+        let track = BoardTrack (self.ebUndoManager)
+        track.mSide = side
+        track.mConnectorP1 = retainedConnectors [0]
+        track.mConnectorP2 = retainedConnectors [1]
+        track.mNet = retainedConnectors [0].connectedTracksNet ()
+        self.rootObject.mBoardObjects.append (track)
       }
     }
   }
