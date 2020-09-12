@@ -60,11 +60,6 @@
                                     <action selector="checkForUpdates:" target="O6f-y5-yve" id="9H2-M7-WfY"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Canari Web Site" id="4Yk-53-Gvm">
-                                <connections>
-                                    <action selector="openCanariWebSite:" target="212" id="9z7-BN-yev"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="202">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
@@ -3204,7 +3199,7 @@ Gw
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <size key="minSize" width="250" height="302"/>
-                                    <size key="maxSize" width="256" height="10000000"/>
+                                    <size key="maxSize" width="265" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
