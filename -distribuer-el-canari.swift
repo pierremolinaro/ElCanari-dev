@@ -30,34 +30,36 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.3.0"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let BUGFIXES : [String] = [
+  "In Board Outline Page, background rectangle has a size conforming to the bard shape selection"
+]
 let CHANGES : [String] = [
   "Uses Sparkle 1.24.0-alpha 16-gd01298c9c",
   "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering"
 ]
 let NEWS : [String] = [
+  "New textual file document format",
   "Display dialog on Export DSN if schematic has warning or error",
   "Menu \"File\" > \"Open Artwork in Library…\" is implemented",
   "In schematics, unplaced symbols table view names component value (if any)",
   "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
-  "In schematics, selecting a symbol displays a rotation knob",
-  "New textual file format"
+  "In schematics, selecting a symbol displays a rotation knob"
 ]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
 //--------------------------------------------------------------------------------------------------
 
-let BLACK   = "\u{001B}[0;30m"
-let RED     = "\u{001B}[0;31m"
-let GREEN   = "\u{001B}[0;32m"
-let YELLOW  = "\u{001B}[0;33m"
-let BLUE    = "\u{001B}[0;34m"
-let MAGENTA = "\u{001B}[0;35m"
-let CYAN    = "\u{001B}[0;36m"
-let ENDC    = "\u{001B}[0;0m"
-let BOLD    = "\u{001B}[0;1m"
-//let UNDERLINE = "\033[4m"
+let BLACK   = "\u{1B}[0;30m"
+let RED     = "\u{1B}[0;31m"
+let GREEN   = "\u{1B}[0;32m"
+let YELLOW  = "\u{1B}[0;33m"
+let BLUE    = "\u{1B}[0;34m"
+let MAGENTA = "\u{1B}[0;35m"
+let CYAN    = "\u{1B}[0;36m"
+let ENDC    = "\u{1B}[0;0m"
+let BOLD    = "\u{1B}[0;1m"
+let UNDERLINE = "\u{1B}[4m"
 let BOLD_MAGENTA = BOLD + MAGENTA
 let BOLD_BLUE = BOLD + BLUE
 let BOLD_GREEN = BOLD + GREEN

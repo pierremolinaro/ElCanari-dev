@@ -1147,7 +1147,6 @@ import Cocoa
   var mController_mArtworkSettingsTabView_hidden : MultipleBindingController_hidden? = nil
   var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mIncorrectFileNameMessageView_hidden : MultipleBindingController_hidden? = nil
-  var mController_boardCurveObjectsController_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -2476,7 +2475,7 @@ import Cocoa
     self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
     self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
     self.mNetWarningTextField?.bind_valueObserver (self.rootObject.netWarningCount_property, file: #file, line: #line, autoFormatter:true)
-    self.mBoardLimitsView?.bind_underObjectsDisplay (self.rootObject.boarderViewBackground_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_underObjectsDisplay (self.rootObject.borderViewBackground_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_horizontalFlip (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_verticalFlip (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_gridStyle (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
@@ -3271,16 +3270,6 @@ import Cocoa
       self.documentFilePathOk_property.addEBObserver (controller)
       self.mController_mIncorrectFileNameMessageView_hidden = controller
     }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.boardShapeIsRectangular_property_selection
-        },
-        outlet: self.boardCurveObjectsController
-      )
-      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
-      self.mController_boardCurveObjectsController_hidden = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -3782,8 +3771,6 @@ import Cocoa
     self.mController_mGenerateProductFilesActionButton_enabled = nil
     self.documentFilePathOk_property.removeEBObserver (self.mController_mIncorrectFileNameMessageView_hidden!)
     self.mController_mIncorrectFileNameMessageView_hidden = nil
-    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_boardCurveObjectsController_hidden!)
-    self.mController_boardCurveObjectsController_hidden = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
     self.netClassController.unbind_tableView (self.mNetClassTableView)

@@ -13,9 +13,9 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func transient_ProjectRoot_boarderViewBackground (
+func transient_ProjectRoot_borderViewBackground (
        _ prefs_boardBackgroundColorForBoard : NSColor,
-       _ self_borderOutlineBackground : EBShape,  
+       _ self_borderOutlineBackground : EBShape, 
        _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay]
 ) -> EBShape {
 //--- START OF USER ZONE 2

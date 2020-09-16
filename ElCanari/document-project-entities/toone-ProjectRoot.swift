@@ -110,7 +110,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.boardLimitBorderRight_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
     inOldValue?.borderElementCountString_property.removeEBObserversFrom (&self.mObserversOf_borderElementCountString) // Transient property
     inOldValue?.borderOutlineBackground_property.removeEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
-    inOldValue?.boarderViewBackground_property.removeEBObserversFrom (&self.mObserversOf_boarderViewBackground) // Transient property
+    inOldValue?.borderViewBackground_property.removeEBObserversFrom (&self.mObserversOf_borderViewBackground) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     inOldValue?.allClassNames_property.removeEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
     inOldValue?.sheetGeometry_property.removeEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
@@ -220,7 +220,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.boardLimitBorderRight_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
     self.mInternalValue?.borderElementCountString_property.addEBObserversFrom (&self.mObserversOf_borderElementCountString) // Transient property
     self.mInternalValue?.borderOutlineBackground_property.addEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
-    self.mInternalValue?.boarderViewBackground_property.addEBObserversFrom (&self.mObserversOf_boarderViewBackground) // Transient property
+    self.mInternalValue?.borderViewBackground_property.addEBObserversFrom (&self.mObserversOf_borderViewBackground) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     self.mInternalValue?.allClassNames_property.addEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
     self.mInternalValue?.sheetGeometry_property.addEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
@@ -7627,16 +7627,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'boarderViewBackground' transient property
+  //   Observers of 'borderViewBackground' transient property
   //····················································································································
 
-  private var mObserversOf_boarderViewBackground = EBWeakEventSet ()
+  private var mObserversOf_borderViewBackground = EBWeakEventSet ()
 
   //····················································································································
 
-  var boarderViewBackground_property_selection : EBSelection <EBShape?> {
+  var borderViewBackground_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
-      switch (model.boarderViewBackground_property_selection) {
+      switch (model.borderViewBackground_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -7651,46 +7651,46 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boarderViewBackground (_ inObserver : EBEvent) {
+  final func addEBObserverOf_borderViewBackground (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_boarderViewBackground.insert (inObserver)
+    self.mObserversOf_borderViewBackground.insert (inObserver)
     switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.boarderViewBackground_property.addEBObserver (inObserver)
+      v?.borderViewBackground_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boarderViewBackground (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_borderViewBackground (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_boarderViewBackground.remove (inObserver)
+    self.mObserversOf_borderViewBackground.remove (inObserver)
     switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.boarderViewBackground_property.removeEBObserver (inObserver)
+      v?.borderViewBackground_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boarderViewBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_borderViewBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boarderViewBackground.apply { (_ observer : EBEvent) in
-        managedObject.boarderViewBackground_property.addEBObserver (observer)
+      self.mObserversOf_borderViewBackground.apply { (_ observer : EBEvent) in
+        managedObject.borderViewBackground_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boarderViewBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_borderViewBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boarderViewBackground.apply { (_ observer : EBEvent) in
-        managedObject.boarderViewBackground_property.removeEBObserver (observer)
+      self.mObserversOf_borderViewBackground.apply { (_ observer : EBEvent) in
+        managedObject.borderViewBackground_property.removeEBObserver (observer)
       }
     }
   }

@@ -642,8 +642,8 @@ protocol ProjectRoot_borderOutlineBackground : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boarderViewBackground : class {
-  var boarderViewBackground : EBShape? { get }
+protocol ProjectRoot_borderViewBackground : class {
+  var borderViewBackground : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -835,7 +835,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boardLimitBorderRight,
          ProjectRoot_borderElementCountString,
          ProjectRoot_borderOutlineBackground,
-         ProjectRoot_boarderViewBackground,
+         ProjectRoot_borderViewBackground,
          ProjectRoot_deviceNames,
          ProjectRoot_allClassNames,
          ProjectRoot_sheetGeometry,
@@ -3613,21 +3613,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boarderViewBackground
+  //   Transient property: borderViewBackground
   //····················································································································
 
-  let boarderViewBackground_property = EBTransientProperty_EBShape ()
+  let borderViewBackground_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var boarderViewBackground_property_selection : EBSelection <EBShape> {
-    return self.boarderViewBackground_property.prop
+  var borderViewBackground_property_selection : EBSelection <EBShape> {
+    return self.borderViewBackground_property.prop
   }
 
   //····················································································································
 
-  var boarderViewBackground : EBShape? {
-    switch self.boarderViewBackground_property_selection {
+  var borderViewBackground : EBShape? {
+    switch self.borderViewBackground_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -5019,8 +5019,8 @@ class ProjectRoot : EBManagedObject,
     g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
     self.mBoardClearance_property.addEBObserver (self.borderOutlineBackground_property)
     g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
-  //--- Atomic property: boarderViewBackground
-    self.boarderViewBackground_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: borderViewBackground
+    self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.boardBackgroundColorForBoard_property_selection.kind ()
         kind &= unwSelf.borderOutlineBackground_property_selection.kind ()
@@ -5033,7 +5033,7 @@ class ProjectRoot : EBManagedObject,
         case .single :
           switch (g_Preferences!.boardBackgroundColorForBoard_property_selection, unwSelf.borderOutlineBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ProjectRoot_boarderViewBackground (v0, v1, v2))
+            return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2))
           default :
             return .empty
           }
@@ -5042,9 +5042,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.boarderViewBackground_property)
-    self.borderOutlineBackground_property.addEBObserver (self.boarderViewBackground_property)
-    self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.boarderViewBackground_property)
+    g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.borderViewBackground_property)
+    self.borderOutlineBackground_property.addEBObserver (self.borderViewBackground_property)
+    self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.borderViewBackground_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5522,9 +5522,9 @@ class ProjectRoot : EBManagedObject,
     g_Preferences?.boardLimitsColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
     self.mBoardClearance_property.removeEBObserver (self.borderOutlineBackground_property)
     g_Preferences?.boardClearanceColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
-    g_Preferences?.boardBackgroundColorForBoard_property.removeEBObserver (self.boarderViewBackground_property)
-    self.borderOutlineBackground_property.removeEBObserver (self.boarderViewBackground_property)
-    self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.boarderViewBackground_property)
+    g_Preferences?.boardBackgroundColorForBoard_property.removeEBObserver (self.borderViewBackground_property)
+    self.borderOutlineBackground_property.removeEBObserver (self.borderViewBackground_property)
+    self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.borderViewBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
     self.mSchematicSheetOrientation_property.removeEBObserver (self.sheetGeometry_property)
@@ -6337,12 +6337,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.borderOutlineBackground_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boarderViewBackground",
-      idx: self.boarderViewBackground_property.ebObjectIndex,
+      "borderViewBackground",
+      idx: self.borderViewBackground_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.boarderViewBackground_property.mObserverExplorer,
-      valueExplorer: &self.boarderViewBackground_property.mValueExplorer
+      observerExplorer: &self.borderViewBackground_property.mObserverExplorer,
+      valueExplorer: &self.borderViewBackground_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceNames",

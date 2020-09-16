@@ -29,7 +29,8 @@ graphic entity BorderCurve {
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape,
     self.mRoot.one.mBoardLimitsWidth,
-    self.mRoot.one.mBoardClearance
+    self.mRoot.one.mBoardClearance,
+    self.mRoot.one.mBoardShape
   ;
 
   transient Bool isLine dependsFrom self.mShape ;

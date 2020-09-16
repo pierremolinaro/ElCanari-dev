@@ -517,13 +517,14 @@ document ProjectDocument root ProjectRoot {
   ;
 
 //----------------- Board limits tab
-  arrayController #boardCurveObjectsController : root.mBorderCurves $hidden root.boardShapeIsRectangular ;
+  arrayController #boardCurveObjectsController : root.mBorderCurves ; // $hidden root.boardShapeIsRectangular ;
 
   outlet EBGraphicView mBoardLimitsView
-    $underObjectsDisplay root.boarderViewBackground
+    $underObjectsDisplay root.borderViewBackground
     $horizontalFlip root.mBoardLimitsHorizontalFlip
     $verticalFlip root.mBoardLimitsVerticalFlip
     $graphicController #boardCurveObjectsController
+//    $objectsAreHidden root.boardShapeIsRectangular
     $gridStyle root.mBoardLimitsGridStyle
     $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
     $gridLineColor prefs.lineColorGridForBoard

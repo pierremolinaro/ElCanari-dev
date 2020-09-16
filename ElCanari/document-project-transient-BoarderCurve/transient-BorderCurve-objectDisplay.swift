@@ -24,11 +24,14 @@ func transient_BorderCurve_objectDisplay (
        _ self_mCPY2 : Int,                
        _ self_mShape : BorderCurveShape,  
        _ self_mRoot_mBoardLimitsWidth : Int?,
-       _ self_mRoot_mBoardClearance : Int?
+       _ self_mRoot_mBoardClearance : Int?,
+       _ self_mRoot_mBoardShape : BoardShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var result = EBShape ()
-        if let x2 = self_mNext_mX,
+        if let boardShape = self_mRoot_mBoardShape,
+           boardShape == .bezierPathes,
+           let x2 = self_mNext_mX,
            let y2 = self_mNext_mY,
            let boardWidth = self_mRoot_mBoardLimitsWidth,
            let boardClearance = self_mRoot_mBoardClearance {

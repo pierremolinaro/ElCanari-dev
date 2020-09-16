@@ -160,7 +160,7 @@ entity ProjectRoot {
     self.mBoardClearance, prefs.boardClearanceColorForBoard
   ;
 
-  transient EBShape boarderViewBackground dependsFrom
+  transient EBShape borderViewBackground dependsFrom
     prefs.boardBackgroundColorForBoard,
     self.borderOutlineBackground,
     self.mBoardObjects.all.objectDisplay
