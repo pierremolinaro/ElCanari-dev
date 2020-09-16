@@ -131,7 +131,7 @@ struct VersionDescriptor : Codable {
   var edSignature = ""
   var news = [String] ()
   var changes = [String] ()
-  var build = ""
+//  var build = ""
   var date = ""
 }
 
@@ -170,16 +170,13 @@ do{
     print (RED + "line \(#line) : object is not a dictionary" + ENDC)
     exit (1)
   }
-  let buildString : String
-  if let s = plistDictionary ["PMBuildString"] as? String {
-    buildString = s
-  }else{
-    print (RED + "Error line \(#line)" + ENDC)
-    exit (1)
-  }
-  print ("Build String '\(buildString)'")
+  //--- Date de construction
+  let dateConstruction = Date ()
+  let dateFormatter = DateFormatter()
+  dateFormatter.locale = Locale(identifier: "en_US")
+  dateFormatter.setLocalizedDateFormatFromTemplate("MMMMdYYYY") // set template after setting locale
   //--- Mettre à jour les numéros de version dans la plist
-  plistDictionary ["CFBundleVersion"] = VERSION_CANARI + ", build " + buildString
+  plistDictionary ["CFBundleVersion"] = VERSION_CANARI + dateFormatter.string (from: date)// + ", build " + buildString
   plistDictionary ["CFBundleShortVersionString"] = VERSION_CANARI
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
@@ -239,12 +236,12 @@ do{
   var versionDescriptor = VersionDescriptor ()
   versionDescriptor.edSignature = edSignature
   versionDescriptor.length = dmgLength
-  versionDescriptor.build = buildString
+//  versionDescriptor.build = buildString
   versionDescriptor.notes = NOTES
   versionDescriptor.bugfixes = BUGFIXES
   versionDescriptor.changes = CHANGES
   versionDescriptor.news = NEWS
-  versionDescriptor.date = ISO8601DateFormatter ().string (from: Date ())
+  versionDescriptor.date = ISO8601DateFormatter ().string (from: dateConstruction)
   let encoder = JSONEncoder ()
   encoder.outputFormatting = .prettyPrinted
   let jsonData = try encoder.encode (versionDescriptor)

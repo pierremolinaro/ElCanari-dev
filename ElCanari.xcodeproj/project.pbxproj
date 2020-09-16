@@ -5762,7 +5762,6 @@
 			buildPhases = (
 				CDCD5072BB1864CDEE4D3D6E /* Resources */,
 				9DD601BBE69F351039152189 /* Sources */,
-				CF027E821BE4FF5D00BD3A31 /* ShellScript */,
 				F495B6AB9DCF8D3B5C6E0B01 /* Frameworks */,
 				CFDBEFFA1BEA1333001CEA4B /* Copy Sparkle Framework */,
 			);
@@ -5782,7 +5781,6 @@
 			buildPhases = (
 				CF5C4C6B219F04D600EAC52A /* Resources */,
 				CF5C4CC1219F04D600EAC52A /* Sources */,
-				CF5C4DAB219F04D600EAC52A /* ShellScript */,
 				CF5C4DAC219F04D600EAC52A /* Frameworks */,
 				CF5C4DAF219F04D600EAC52A /* Copy Sparkle Framework */,
 			);
@@ -5988,35 +5986,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CF027E821BE4FF5D00BD3A31 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "autobuild-versions/auto-build-version-string.swift\n";
-		};
-		CF5C4DAB219F04D600EAC52A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "autobuild-versions/auto-build-version-string.swift\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9DD601BBE69F351039152189 /* Sources */ = {
