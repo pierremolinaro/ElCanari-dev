@@ -154,7 +154,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- For updating hot key labels
-    _ = self.mouseMovedOrFlagsChangedInSchematic (inUnalignedMouseLocation)
+    self.mouseMovedOrFlagsChangedInSchematic (inUnalignedMouseLocation)
   }
 
   //····················································································································

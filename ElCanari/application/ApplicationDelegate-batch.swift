@@ -73,7 +73,7 @@ extension ApplicationDelegate {
           if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No \(inTitle) to Open"
-            _ = alert.beginSheetModal (for: window)
+            alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
             alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
@@ -146,7 +146,7 @@ extension ApplicationDelegate {
           if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No project to Open"
-            _ = alert.beginSheetModal (for: window)
+            alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
             alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
@@ -221,7 +221,7 @@ extension ApplicationDelegate {
           if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No device to Open"
-            _ = alert.beginSheetModal (for: window)
+            alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
             alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
@@ -312,7 +312,7 @@ extension ApplicationDelegate {
           if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No Document to Examine"
-            _ = alert.beginSheetModal (for: window)
+            alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
             alert.messageText = "Examine \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."

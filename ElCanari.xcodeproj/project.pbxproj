@@ -3961,7 +3961,6 @@
 				CFAA756022E77D31002F7F36 /* Free Router Embedded Application */,
 				CF61725D1B3C4B8A00F3CA82 /* Generic */,
 				CF61726E1B3C4CB600F3CA82 /* Images */,
-				CFB1FDA92359A57300135A00 /* layout-constraints */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
 				CF6172681B3C4BE000F3CA82 /* Outlets Easy Bindings */,
 				CF747FB01B3C3D8D00140C49 /* Products */,
@@ -5046,14 +5045,6 @@
 			path = "ElCanari/document-project-entities";
 			sourceTree = "<group>";
 		};
-		CFB1FDA92359A57300135A00 /* layout-constraints */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "layout-constraints";
-			path = "ElCanari/layout-constraints";
-			sourceTree = "<group>";
-		};
 		CFCD1F5E21A1CBB200A8297B /* document — symbol */ = {
 			isa = PBXGroup;
 			children = (
@@ -5801,7 +5792,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -8461,6 +8452,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -8607,6 +8599,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
