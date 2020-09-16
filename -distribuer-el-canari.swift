@@ -35,15 +35,15 @@ let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
   "Uses Sparkle 1.24.0-alpha 16-gd01298c9c",
-  "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering"
+  "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering",
+  "In schematics, unplaced symbols table view names component value (if any)",
+  "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
+  "In schematics, selecting a symbol displays a rotation knob"
 ]
 let NEWS : [String] = [
   "New textual file document format",
   "Display dialog on Export DSN if schematic has warning or error",
-  "Menu \"File\" > \"Open Artwork in Library…\" is implemented",
-  "In schematics, unplaced symbols table view names component value (if any)",
-  "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
-  "In schematics, selecting a symbol displays a rotation knob"
+  "Menu \"File\" > \"Open Artwork in Library…\" is implemented"
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -176,7 +176,7 @@ do{
   dateFormatter.locale = Locale(identifier: "en_US")
   dateFormatter.setLocalizedDateFormatFromTemplate("MMMMdYYYY") // set template after setting locale
   //--- Mettre à jour les numéros de version dans la plist
-  plistDictionary ["CFBundleVersion"] = VERSION_CANARI + dateFormatter.string (from: date)// + ", build " + buildString
+  plistDictionary ["CFBundleVersion"] = VERSION_CANARI + ", " + dateFormatter.string (from: dateConstruction)// + ", build " + buildString
   plistDictionary ["CFBundleShortVersionString"] = VERSION_CANARI
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
