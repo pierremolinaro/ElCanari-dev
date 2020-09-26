@@ -31,9 +31,10 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.3.0"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "In Board Outline Page, background rectangle has a size conforming to the bard shape selection"
+  "In Board Outline Page, background rectangle has a size conforming to the board shape selection"
 ]
 let CHANGES : [String] = [
+  "Compiled with xCode 12.0",
   "Uses Sparkle 1.24.0-alpha 16-gd01298c9c",
   "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering",
   "In schematics, unplaced symbols table view names component value (if any)",

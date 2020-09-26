@@ -26,6 +26,13 @@ func reuseTableViewCells () -> Bool {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+//    EBUserClassNameProtocol protocol
+//----------------------------------------------------------------------------------------------------------------------
+
+@objc protocol EBUserClassNameProtocol {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //    Public routines
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -54,11 +61,29 @@ func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) { // NOT ALWA
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+//    addItemToDebugMenu
+//----------------------------------------------------------------------------------------------------------------------
 
 func addItemToDebugMenu (_ item : NSMenuItem) {
   buildDebugObject ()
-  gDebugObject?.installDebugMenu ()
   gDebugObject?.mDebugMenu?.addItem (item)
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//    buildDebugObject
+//----------------------------------------------------------------------------------------------------------------------
+
+func buildDebugObject () {
+  if nil == gDebugObject {
+    let debugObject = EBAllocationDebug ()
+    gDebugObject = debugObject
+    let mainBundle = Bundle.main
+    let ok = mainBundle.loadNibNamed ("EBAllocationDebug", owner: debugObject, topLevelObjects: &debugObject.mTopLevelObjects)
+    if !ok {
+      presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
+    }
+    debugObject.installDebugMenu ()
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -94,22 +119,6 @@ fileprivate func pmNoteObjectDeallocation (_ inObjectClassName : String) {
     gLiveObjectCountByClass [inObjectClassName] = nil
   }
   gRefreshDisplay = true
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//    Private routine
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate func buildDebugObject () {
-  if nil == gDebugObject {
-    let debugObject = EBAllocationDebug ()
-    gDebugObject = debugObject
-    let mainBundle = Bundle.main
-    let ok = mainBundle.loadNibNamed ("EBAllocationDebug", owner: debugObject, topLevelObjects: &debugObject.mTopLevelObjects)
-    if !ok {
-      presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
-    }
-  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------

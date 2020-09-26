@@ -114,8 +114,6 @@
 		CF0777CA235210E500F56EAB /* EBReadOnlyClassProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777C8235210E500F56EAB /* EBReadOnlyClassProperty.swift */; };
 		CF0777CC235212B200F56EAB /* extension-NSBezierPath-ClassPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777CB235212B100F56EAB /* extension-NSBezierPath-ClassPropertyProtocol.swift */; };
 		CF0777CD235212B200F56EAB /* extension-NSBezierPath-ClassPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777CB235212B100F56EAB /* extension-NSBezierPath-ClassPropertyProtocol.swift */; };
-		CF0777D52352153000F56EAB /* EBUserClassNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777CE2352152F00F56EAB /* EBUserClassNameProtocol.swift */; };
-		CF0777D62352153000F56EAB /* EBUserClassNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777CE2352152F00F56EAB /* EBUserClassNameProtocol.swift */; };
 		CF0777D72352153000F56EAB /* extension-Int-ValuePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777CF2352152F00F56EAB /* extension-Int-ValuePropertyProtocol.swift */; };
 		CF0777D82352153000F56EAB /* extension-Int-ValuePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777CF2352152F00F56EAB /* extension-Int-ValuePropertyProtocol.swift */; };
 		CF0777D92352153000F56EAB /* EBTransientEnumProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777D02352152F00F56EAB /* EBTransientEnumProperty.swift */; };
@@ -2651,7 +2649,6 @@
 		CF0777AD2352100F00F56EAB /* ClassPropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassPropertyProtocol.swift; sourceTree = "<group>"; };
 		CF0777C8235210E500F56EAB /* EBReadOnlyClassProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReadOnlyClassProperty.swift; sourceTree = "<group>"; };
 		CF0777CB235212B100F56EAB /* extension-NSBezierPath-ClassPropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath-ClassPropertyProtocol.swift"; sourceTree = "<group>"; };
-		CF0777CE2352152F00F56EAB /* EBUserClassNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBUserClassNameProtocol.swift; sourceTree = "<group>"; };
 		CF0777CF2352152F00F56EAB /* extension-Int-ValuePropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-Int-ValuePropertyProtocol.swift"; sourceTree = "<group>"; };
 		CF0777D02352152F00F56EAB /* EBTransientEnumProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTransientEnumProperty.swift; sourceTree = "<group>"; };
 		CF0777D12352152F00F56EAB /* EBValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBValidationResult.swift; sourceTree = "<group>"; };
@@ -4503,7 +4500,6 @@
 				CF0777D02352152F00F56EAB /* EBTransientEnumProperty.swift */,
 				CF0777F523521A4E00F56EAB /* EBTransientValueProperty.swift */,
 				CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */,
-				CF0777CE2352152F00F56EAB /* EBUserClassNameProtocol.swift */,
 				CF0777D12352152F00F56EAB /* EBValidationResult.swift */,
 				CF8BE73723510FEB00F95B3A /* EBWeakEventSet.swift */,
 				CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */,
@@ -5792,7 +5788,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -7116,7 +7112,6 @@
 				CFEB7B6F233A260F0060A97A /* transient-ComponentSymbolInProject-symbolInSchematic.swift in Sources */,
 				CFE9B7E821A81533005990D1 /* transient-SymbolRoot-issues.swift in Sources */,
 				CFD7EA2720E7DA8100D53B87 /* action-MergerDocument-insertBoardAction.swift in Sources */,
-				CF0777D52352153000F56EAB /* EBUserClassNameProtocol.swift in Sources */,
 				CFEB7C42233A28670060A97A /* transient-ProjectDocument-rastnetDisplayComponentNet.swift in Sources */,
 				CF2095B322F3437600DC9A17 /* transient-BoardModel-frontTracksBezierPaths.swift in Sources */,
 				CFEB7AC2233A235F0060A97A /* transient-BorderCurve-descriptor.swift in Sources */,
@@ -8339,7 +8334,6 @@
 				CFEB7B70233A260F0060A97A /* transient-ComponentSymbolInProject-symbolInSchematic.swift in Sources */,
 				CFBCE79922D3ACC000DC3505 /* extension-CommentInSchematics.swift in Sources */,
 				CF1D9C8221BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */,
-				CF0777D62352153000F56EAB /* EBUserClassNameProtocol.swift in Sources */,
 				CFEB7C43233A28670060A97A /* transient-ProjectDocument-rastnetDisplayComponentNet.swift in Sources */,
 				CFA43080229AEB96000AA8C8 /* tomany-ComponentInProject.swift in Sources */,
 				CFEB7AC3233A235F0060A97A /* transient-BorderCurve-descriptor.swift in Sources */,
@@ -8432,6 +8426,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -8516,6 +8513,8 @@
 				STRIP_PNG_TEXT = NO;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = x86_64;
@@ -8526,10 +8525,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_MEMORY_MANAGEMENT = NO;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -8542,8 +8539,6 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_REFLECTION_METADATA_LEVEL = none;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 			};
 			name = Debug;
 		};
@@ -8551,10 +8546,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_MEMORY_MANAGEMENT = NO;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -8569,8 +8562,6 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
-				SWIFT_REFLECTION_METADATA_LEVEL = none;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Release;
@@ -8579,6 +8570,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -8666,6 +8660,8 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = x86_64;
@@ -8696,7 +8692,6 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_REFLECTION_METADATA_LEVEL = none;
 			};
 			name = Release;
 		};
@@ -8727,7 +8722,6 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_REFLECTION_METADATA_LEVEL = none;
 			};
 			name = Debug;
 		};

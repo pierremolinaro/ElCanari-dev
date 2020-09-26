@@ -48,9 +48,7 @@ extension MergerDocument {
       }
       accessoryView.frame = rView
       openPanel.accessoryView = accessoryView
-      if #available(OSX 10.11, *) {
-        openPanel.isAccessoryViewDisclosed = true
-      }
+      openPanel.isAccessoryViewDisclosed = true
     //--- Dialog
       openPanel.beginSheetModal (for: window) { (returnCode : NSApplication.ModalResponse) in
         gPanelDelegate?.restoreSavedURLAndReleasePanel ()

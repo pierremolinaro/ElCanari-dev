@@ -55,7 +55,6 @@ extension Preferences {
       FSEventStreamCreateFlags (kFSEventStreamCreateFlagNoDefer | kFSEventStreamCreateFlagWatchRoot)
     )
     if let stream = gStream {
-   // FSEventStreamScheduleWithRunLoop (gStream!, CFRunLoopGetCurrent(), "" as CFString)
       FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString)
       FSEventStreamStart (stream)
     }
