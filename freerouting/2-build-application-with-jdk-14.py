@@ -71,8 +71,7 @@ else:
     print (BLUE + "Create runtime image" + ENDC)
     runCommand ([
       JPKG_HOME + "/bin/jlink",
-      "-p",
-      JPKG_HOME + "/jmods",
+      "--module-path", JPKG_HOME + "/jmods",
       "--add-modules", "java.desktop",
       "--strip-debug",
       "--no-header-files",
@@ -100,8 +99,8 @@ runCommand ([
 runCommand ([
   "codesign",
   "--force",
-  "--sign", "U399CP39LD",
-#   "--sign", "Apple Development: pierre@pcmolinaro.name",
+#  "--sign", "U399CP39LD",
+  "--sign", "Apple Development: pierre@pcmolinaro.name",
   "--deep",
   FREE_ROUTING_NAME + ".app"
 ])
@@ -116,13 +115,13 @@ runCommand ([
 #   "-a",
 #   FREE_ROUTING_NAME + ".app"
 # ])
-runCommand ([
-  "spctl",
-  "--assess",
-  "--verbose=4",
-  "--type", "execute",
-  FREE_ROUTING_NAME + ".app"
-])
+# runCommand ([
+#   "spctl",
+#   "--assess",
+#   "--verbose=4",
+#   "--type", "execute",
+#   FREE_ROUTING_NAME + ".app"
+# ])
 # runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".dmg"])
 # runCommand ([
 #   JPKG_HOME + "/bin/jpackage",

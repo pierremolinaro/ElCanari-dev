@@ -15,10 +15,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			3bHLNSgBNhZkGiQRbTFQnFJXToQ=
+			RYO4gqEgX1K5M61G0wXT45OlhXs=
 			</data>
 			<key>requirement</key>
-			<string>identifier libapplauncher and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VB5E2TV963</string>
+			<string>identifier libapplauncher and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: pierre@pcmolinaro.name (U399CP39LD)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Resources/Freerouting-1.4.4-pm.icns</key>
 		<dict>
@@ -46,11 +46,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uao0hA7xzfPSv5jjb9msQ2mlNmU=
+			tFcGMqCI1/k1yGLpRMV4yinfNPA=
 			</data>
 			<key>hash2</key>
 			<data>
-			j0DojtoLw7qajiyHZC1c8w8QnlA7orXPSWHD1pWo0gk=
+			Dzc1vQxmDJFZH5yYmTGk0w80BEnHNjHK2IrbFKmgseE=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/conf/net.properties</key>
