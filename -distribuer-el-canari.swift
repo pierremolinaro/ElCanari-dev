@@ -39,7 +39,8 @@ let CHANGES : [String] = [
   "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering",
   "In schematics, unplaced symbols table view names component value (if any)",
   "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
-  "In schematics, selecting a symbol displays a rotation knob"
+  "In schematics, selecting a symbol displays a rotation knob",
+  "In views, resizing when dragging outside object rectangles is done ou mouse up"
 ]
 let NEWS : [String] = [
   "New textual file document format",
