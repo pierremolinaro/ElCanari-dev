@@ -5,10 +5,12 @@
 *.pyc
 
 ## Freerouting
-freerouting/jdk14/*
-freerouting/Freerouting-*.app
-freerouting/Freerouting-*.dmg
-freerouting/Freerouting-*.pkg
+freerouting-pm/jdk14/*
+freerouting-pm/Freerouting*.app
+freerouting-pm/Freerouting*.dmg
+freerouting-pm/Freerouting*.pkg
+freerouting-pm/freerouting/.gradle/**
+freerouting-pm/freerouting/build/**
 
 ## Xcode files
 */project.xcworkspace/**
