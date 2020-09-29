@@ -3,7 +3,7 @@ Modifications par rapport à la version 1.4.4
 1 : l'autorouteur ne démarre pas (bug #31 sur https://github.com/freerouting/freerouting)
 Solution:
 
-Ajouter result.set_stop_pass_no (99999) dans AutorouterSettings.java:
+Ajouter result.set_stop_pass_no (99999) dans /src/main/java/eu/mihosoft/freerouting/designforms/specctra/AutorouteSettings.java :
 
   else if (next_token == Keyword.START_PASS_NO)
   {
@@ -15,12 +15,12 @@ Ajouter result.set_stop_pass_no (99999) dans AutorouterSettings.java:
 2: Supprimer le dialogue "Please confirm imported stored rules", lors de
    l'importation d'un fichier DSN
 
-Dans MainApplication.java, commenter les lignes 366 à 390.
+Dans freerouting/src/main/java/eu/mihosoft/freerouting/gui/MainApplication.java, commenter les lignes 366 à 390.
 
 ---------------------------------------------
 3: Supprimer le dialogue "Save also the rules", lors de la sauvegarde d'un fichier SES
 
-Dans DesignFiles.java, commenter les lignes 242 à 245.
+Dans freerouting/src/main/java/eu/mihosoft/freerouting/gui/DesignFile.java , commenter les lignes 242 à 245.
 
 //  if (WindowMessage.confirm(resources.getString("confirm")))
 //  {
@@ -41,7 +41,7 @@ Dans src/main/java/eu/mihosoft/freerouting/designforms/specctra/Structure.java, 
 ---------------------------------------------
 5: Réduire la taille de la fenêtre d'accueil
 
-Dans MainApplication.java, commenter la ligne 276.
+Dans freerouting/src/main/java/eu/mihosoft/freerouting/gui/MainApplication.java, commenter la ligne 276.
 
         this.addWindowListener(new WindowStateListener());
         pack();

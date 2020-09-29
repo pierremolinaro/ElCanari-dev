@@ -28,25 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.0"
+let VERSION_CANARI = "1.3.1"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "In Board Outline Page, background rectangle has a size conforming to the board shape selection"
+  "FreeRouter was broken in release 1.3.0"
 ]
-let CHANGES : [String] = [
-  "Compiled with xCode 12.0",
-  "Uses Sparkle 1.24.0-alpha 16-gd01298c9c",
-  "In Project, \"Add Component from File Library…\" dialog performs a case insensitive filtering",
-  "In schematics, unplaced symbols table view names component value (if any)",
-  "In schematics, \"Merge Subnet into an existing Net\" dialog accepts key entry for selecting net",
-  "In schematics, selecting a symbol displays a rotation knob",
-  "In views, resizing when dragging outside object rectangles is done ou mouse up"
-]
-let NEWS : [String] = [
-  "New textual file document format",
-  "Display dialog on Export DSN if schematic has warning or error",
-  "Menu \"File\" > \"Open Artwork in Library…\" is implemented"
-]
+let CHANGES : [String] = []
+let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
