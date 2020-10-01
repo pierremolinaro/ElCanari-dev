@@ -343,7 +343,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     }
     self.mType_property.addEBObserverOf_mTypeName (self.symbolTypeName_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mType_property.addEBObserverOf_mStrokeBezierPath, self.mType_property.addEBObserverOf_mFilledBezierPath, self.mType_property.addEBObserverOf_pinNameShape, self.mPinInstances_property.addEBObserverOf_numberShape, self.symbolQualifiedName_property, g_Preferences?.symbolDrawingWidthMultipliedByTen_property, self.mX_property, self.mY_property, transient_SymbolInstanceInDevice_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mType_property.addEBObserverOf_mStrokeBezierPath, self.mType_property.addEBObserverOf_mFilledBezierPath, self.mType_property.addEBObserverOf_pinNameShape, self.mPinInstances_property.addEBObserverOf_numberShape, self.symbolQualifiedName_property, prefs_symbolDrawingWidthMultipliedByTen_property, self.mX_property, self.mY_property, transient_SymbolInstanceInDevice_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
@@ -351,7 +351,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= unwSelf.mType_property.pinNameShape_property_selection.kind ()
         kind &= unwSelf.mPinInstances_property_selection.kind ()
         kind &= unwSelf.symbolQualifiedName_property_selection.kind ()
-        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= prefs_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -360,7 +360,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, prefs_symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -376,7 +376,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.addEBObserverOf_pinNameShape (self.selectionDisplay_property)
     self.mPinInstances_property.addEBObserverOf_numberShape (self.selectionDisplay_property)
     self.symbolQualifiedName_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
+    prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: unconnectedPins
@@ -407,7 +407,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mPinInstances_property.addEBObserverOf_isConnected (self.unconnectedPins_property)
     self.mInstanceName_property.addEBObserver (self.unconnectedPins_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mType_property.addEBObserverOf_mStrokeBezierPath, self.mType_property.addEBObserverOf_mFilledBezierPath, self.mType_property.addEBObserverOf_pinNameShape, self.mPinInstances_property.addEBObserverOf_numberShape, self.symbolQualifiedName_property, self.mX_property, self.mY_property, g_Preferences?.symbolDrawingWidthMultipliedByTen_property, g_Preferences?.symbolColor_property, transient_SymbolInstanceInDevice_objectDisplay)
+    // self.objectDisplay_property.configure (self.mType_property.addEBObserverOf_mStrokeBezierPath, self.mType_property.addEBObserverOf_mFilledBezierPath, self.mType_property.addEBObserverOf_pinNameShape, self.mPinInstances_property.addEBObserverOf_numberShape, self.symbolQualifiedName_property, self.mX_property, self.mY_property, prefs_symbolDrawingWidthMultipliedByTen_property, prefs_symbolColor_property, transient_SymbolInstanceInDevice_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
@@ -417,15 +417,15 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= unwSelf.symbolQualifiedName_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
-        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
-        kind &= g_Preferences!.symbolColor_property_selection.kind ()
+        kind &= prefs_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= prefs_symbolColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, prefs_symbolDrawingWidthMultipliedByTen_property_selection, prefs_symbolColor_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
             return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
@@ -443,8 +443,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.symbolQualifiedName_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
+    prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
@@ -468,7 +468,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     // self.mType_property.removeEBObserverOf_pinNameShape (self.selectionDisplay_property)
     // self.mPinInstances_property.removeEBObserverOf_numberShape (self.selectionDisplay_property)
     // self.symbolQualifiedName_property.removeEBObserver (self.selectionDisplay_property)
-    // g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
+    // prefs_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     // self.mX_property.removeEBObserver (self.selectionDisplay_property)
     // self.mY_property.removeEBObserver (self.selectionDisplay_property)
     // self.mPinInstances_property.removeEBObserverOf_pinName (self.unconnectedPins_property)
@@ -481,8 +481,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     // self.symbolQualifiedName_property.removeEBObserver (self.objectDisplay_property)
     // self.mX_property.removeEBObserver (self.objectDisplay_property)
     // self.mY_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
     self.mInstanceName_property.setSignatureObserver (observer: nil)
     self.mPinInstances_property.setSignatureObserver (observer: nil)

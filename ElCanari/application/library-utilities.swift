@@ -23,27 +23,18 @@ func partNameIsValid (_ inPartName : String) -> Bool {
 func existingLibraryPathArray () -> [String] {
   let fm = FileManager ()
   var result = [String] ()
-//--- System library
-//  if let prefs = g_Preferences, prefs.usesSystemLibrary.propval {
-//    let slp = systemLibraryPath ()
-//    if fm.fileExists (atPath: slp) {
-//      result.append (slp)
-//    }
-//  }
 //--- User library
-  if let prefs = g_Preferences, prefs.usesUserLibrary {
+  if prefs_usesUserLibrary {
     let ulp = userLibraryPath ()
     if fm.fileExists (atPath: ulp) {
       result.append (ulp)
     }
   }
 //--- Other libraries
-  if let prefs = g_Preferences {
-    for libraryEntry in prefs.additionnalLibraryArray {
-      if libraryEntry.mUses {
-        if fm.fileExists (atPath: libraryEntry.mPath) {
-          result.append (libraryEntry.mPath)
-        }
+  for libraryEntry in prefs_additionnalLibraryArray {
+    if libraryEntry.mUses {
+      if fm.fileExists (atPath: libraryEntry.mPath) {
+        result.append (libraryEntry.mPath)
       }
     }
   }

@@ -242,7 +242,7 @@ class BoardRestrictRectangle : BoardObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, g_Preferences?.displayFrontRestrictRectangles_property, g_Preferences?.displayBackRestrictRectangles_property, g_Preferences?.frontSideRestrictRectangleColorForBoard_property, g_Preferences?.backSideRestrictRectangleColorForBoard_property, transient_BoardRestrictRectangle_objectDisplay)
+    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, prefs_displayFrontRestrictRectangles_property, prefs_displayBackRestrictRectangles_property, prefs_frontSideRestrictRectangleColorForBoard_property, prefs_backSideRestrictRectangleColorForBoard_property, transient_BoardRestrictRectangle_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -251,17 +251,17 @@ class BoardRestrictRectangle : BoardObject,
         kind &= unwSelf.mHeight_property_selection.kind ()
         kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
         kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
-        kind &= g_Preferences!.displayFrontRestrictRectangles_property_selection.kind ()
-        kind &= g_Preferences!.displayBackRestrictRectangles_property_selection.kind ()
-        kind &= g_Preferences!.frontSideRestrictRectangleColorForBoard_property_selection.kind ()
-        kind &= g_Preferences!.backSideRestrictRectangleColorForBoard_property_selection.kind ()
+        kind &= prefs_displayFrontRestrictRectangles_property_selection.kind ()
+        kind &= prefs_displayBackRestrictRectangles_property_selection.kind ()
+        kind &= prefs_frontSideRestrictRectangleColorForBoard_property_selection.kind ()
+        kind &= prefs_backSideRestrictRectangleColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, g_Preferences!.displayFrontRestrictRectangles_property_selection, g_Preferences!.displayBackRestrictRectangles_property_selection, g_Preferences!.frontSideRestrictRectangleColorForBoard_property_selection, g_Preferences!.backSideRestrictRectangleColorForBoard_property_selection) {
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, prefs_displayFrontRestrictRectangles_property_selection, prefs_displayBackRestrictRectangles_property_selection, prefs_frontSideRestrictRectangleColorForBoard_property_selection, prefs_backSideRestrictRectangleColorForBoard_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
             return .single (transient_BoardRestrictRectangle_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
@@ -278,12 +278,12 @@ class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.objectDisplay_property)
     self.mIsInFrontLayer_property.addEBObserver (self.objectDisplay_property)
     self.mIsInBackLayer_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayFrontRestrictRectangles_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayBackRestrictRectangles_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    prefs_displayFrontRestrictRectangles_property.addEBObserver (self.objectDisplay_property)
+    prefs_displayBackRestrictRectangles_property.addEBObserver (self.objectDisplay_property)
+    prefs_frontSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    prefs_backSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, g_Preferences?.hiliteWidthMultipliedByTen_property, transient_BoardRestrictRectangle_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardRestrictRectangle_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -292,14 +292,14 @@ class BoardRestrictRectangle : BoardObject,
         kind &= unwSelf.mHeight_property_selection.kind ()
         kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
         kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
-        kind &= g_Preferences!.hiliteWidthMultipliedByTen_property_selection.kind ()
+        kind &= prefs_hiliteWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, prefs_hiliteWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
             return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
@@ -316,7 +316,7 @@ class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInFrontLayer_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
+    prefs_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     // self.signatureForERCChecking_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, transient_BoardRestrictRectangle_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
@@ -365,17 +365,17 @@ class BoardRestrictRectangle : BoardObject,
     // self.mHeight_property.removeEBObserver (self.objectDisplay_property)
     // self.mIsInFrontLayer_property.removeEBObserver (self.objectDisplay_property)
     // self.mIsInBackLayer_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.displayFrontRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.displayBackRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.frontSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.backSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_displayFrontRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_displayBackRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_frontSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_backSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.mX_property.removeEBObserver (self.selectionDisplay_property)
     // self.mY_property.removeEBObserver (self.selectionDisplay_property)
     // self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
     // self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
     // self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
     // self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
-    // g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
+    // prefs_hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     // self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mWidth_property.removeEBObserver (self.signatureForERCChecking_property)

@@ -430,19 +430,19 @@ class PackageSegment : PackageObject,
     self.x2_property.addEBObserver (self.strokeBezierPath_property)
     self.y2_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.strokeBezierPath_property, g_Preferences?.packageColor_property, g_Preferences?.packageDrawingWidthMultipliedByTen_property, transient_PackageSegment_objectDisplay)
+    // self.objectDisplay_property.configure (self.strokeBezierPath_property, prefs_packageColor_property, prefs_packageDrawingWidthMultipliedByTen_property, transient_PackageSegment_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
-        kind &= g_Preferences!.packageColor_property_selection.kind ()
-        kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= prefs_packageColor_property_selection.kind ()
+        kind &= prefs_packageDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.strokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.strokeBezierPath_property_selection, prefs_packageColor_property_selection, prefs_packageDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_PackageSegment_objectDisplay (v0, v1, v2))
           default :
@@ -454,8 +454,8 @@ class PackageSegment : PackageObject,
       }
     }
     self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    prefs_packageColor_property.addEBObserver (self.objectDisplay_property)
+    prefs_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.knobSize_property, transient_PackageSegment_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
@@ -568,8 +568,8 @@ class PackageSegment : PackageObject,
     // self.x2_property.removeEBObserver (self.strokeBezierPath_property)
     // self.y2_property.removeEBObserver (self.strokeBezierPath_property)
     // self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_packageColor_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     // self.x1_property.removeEBObserver (self.selectionDisplay_property)
     // self.y1_property.removeEBObserver (self.selectionDisplay_property)
     // self.x2_property.removeEBObserver (self.selectionDisplay_property)

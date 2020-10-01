@@ -495,13 +495,13 @@ class SlavePadInDevice : EBManagedObject,
     self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
-    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, g_Preferences?.padNumberFont_property, g_Preferences?.padNumberColor_property, self.mMasterPad_property.addEBObserverOf_mName, transient_SlavePadInDevice_padNumberDisplay)
+    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, prefs_padNumberFont_property, prefs_padNumberColor_property, self.mMasterPad_property.addEBObserverOf_mName, transient_SlavePadInDevice_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
         kind &= unwSelf.mCenterY_property_selection.kind ()
-        kind &= g_Preferences!.padNumberFont_property_selection.kind ()
-        kind &= g_Preferences!.padNumberColor_property_selection.kind ()
+        kind &= prefs_padNumberFont_property_selection.kind ()
+        kind &= prefs_padNumberColor_property_selection.kind ()
         kind &= unwSelf.mMasterPad_property.mName_property_selection.kind ()
         switch kind {
         case .empty :
@@ -509,7 +509,7 @@ class SlavePadInDevice : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, unwSelf.mMasterPad_property.mName_property_selection) {
+          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, prefs_padNumberFont_property_selection, prefs_padNumberColor_property_selection, unwSelf.mMasterPad_property.mName_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SlavePadInDevice_padNumberDisplay (v0, v1, v2, v3, v4))
           default :
@@ -522,8 +522,8 @@ class SlavePadInDevice : EBManagedObject,
     }
     self.mCenterX_property.addEBObserver (self.padNumberDisplay_property)
     self.mCenterY_property.addEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
+    prefs_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
+    prefs_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.mMasterPad_property.addEBObserverOf_mName (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
@@ -560,8 +560,8 @@ class SlavePadInDevice : EBManagedObject,
     // self.mStyle_property.removeEBObserver (self.backSideFilledBezierPath_property)
     // self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
     // self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
-    // g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
-    // g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
+    // prefs_padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
+    // prefs_padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
     // self.mMasterPad_property.removeEBObserverOf_mName (self.padNumberDisplay_property)
   //--- Unregister properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: nil)

@@ -60,10 +60,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mSlavePadAssignmentPopUpButton?.register (document: self)
   //--- Package color observer
     self.mPackageColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
-    g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
+    prefs_packageColor_property.addEBObserver (self.mPackageColorObserver)
   //--- Pad color observer
     self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
-    g_Preferences?.frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
+    prefs_frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
     let pages = [self.mModelImagePageView, self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
@@ -153,8 +153,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   override func removeUserInterface () {
-    g_Preferences?.packageColor_property.removeEBObserver (self.mPackageColorObserver)
-    g_Preferences?.frontSidePadColor_property.removeEBObserver (self.mPadColorObserver)
+    prefs_packageColor_property.removeEBObserver (self.mPackageColorObserver)
+    prefs_frontSidePadColor_property.removeEBObserver (self.mPadColorObserver)
     self.removeImagePointsObservers ()
     super.removeUserInterface ()
   }
@@ -254,7 +254,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
     bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
     bp.windingRule = .evenOdd
-    let shape = EBShape (filled: [bp], g_Preferences!.frontSidePadColor)
+    let shape = EBShape (filled: [bp], prefs_frontSidePadColor)
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
@@ -268,11 +268,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
     bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
     bp.windingRule = .evenOdd
-    shape.add (filled: [bp], g_Preferences!.frontSidePadColor)
+    shape.add (filled: [bp], prefs_frontSidePadColor)
  //---
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
-      NSAttributedString.Key.foregroundColor : g_Preferences!.frontSidePadColor
+      NSAttributedString.Key.foregroundColor : prefs_frontSidePadColor
     ]
     shape.add (text: "(", NSPoint (x:  2.0, y: 17.0), textAttributes, .onTheRight, .center)
     shape.add (text: ")", NSPoint (x: 38.0, y: 17.0), textAttributes, .onTheLeft, .center)

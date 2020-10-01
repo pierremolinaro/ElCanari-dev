@@ -235,22 +235,22 @@ class SymbolOval : SymbolObject,
     self.width_property.addEBObserver (self.strokeBezierPath_property)
     self.height_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, g_Preferences?.symbolColor_property, g_Preferences?.symbolDrawingWidthMultipliedByTen_property, transient_SymbolOval_objectDisplay)
+    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, prefs_symbolColor_property, prefs_symbolDrawingWidthMultipliedByTen_property, transient_SymbolOval_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
-        kind &= g_Preferences!.symbolColor_property_selection.kind ()
-        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= prefs_symbolColor_property_selection.kind ()
+        kind &= prefs_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, prefs_symbolColor_property_selection, prefs_symbolDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_SymbolOval_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -265,8 +265,8 @@ class SymbolOval : SymbolObject,
     self.y_property.addEBObserver (self.objectDisplay_property)
     self.width_property.addEBObserver (self.objectDisplay_property)
     self.height_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolOval_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
@@ -346,8 +346,8 @@ class SymbolOval : SymbolObject,
     // self.y_property.removeEBObserver (self.objectDisplay_property)
     // self.width_property.removeEBObserver (self.objectDisplay_property)
     // self.height_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     // self.x_property.removeEBObserver (self.selectionDisplay_property)
     // self.y_property.removeEBObserver (self.selectionDisplay_property)
     // self.width_property.removeEBObserver (self.selectionDisplay_property)

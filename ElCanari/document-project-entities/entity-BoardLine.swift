@@ -400,7 +400,7 @@ class BoardLine : BoardObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, g_Preferences?.frontSideLegendColorForBoard_property, g_Preferences?.backSideLegendColorForBoard_property, transient_BoardLine_objectDisplay)
+    // self.objectDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, prefs_frontSideLegendColorForBoard_property, prefs_backSideLegendColorForBoard_property, transient_BoardLine_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX1_property_selection.kind ()
@@ -409,15 +409,15 @@ class BoardLine : BoardObject,
         kind &= unwSelf.mY2_property_selection.kind ()
         kind &= unwSelf.mWidth_property_selection.kind ()
         kind &= unwSelf.mLayer_property_selection.kind ()
-        kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
-        kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
+        kind &= prefs_frontSideLegendColorForBoard_property_selection.kind ()
+        kind &= prefs_backSideLegendColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
+          switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection, prefs_frontSideLegendColorForBoard_property_selection, prefs_backSideLegendColorForBoard_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_BoardLine_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -434,10 +434,10 @@ class BoardLine : BoardObject,
     self.mY2_property.addEBObserver (self.objectDisplay_property)
     self.mWidth_property.addEBObserver (self.objectDisplay_property)
     self.mLayer_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    prefs_frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    prefs_backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, g_Preferences?.hiliteWidthMultipliedByTen_property, transient_BoardLine_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardLine_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX1_property_selection.kind ()
@@ -446,14 +446,14 @@ class BoardLine : BoardObject,
         kind &= unwSelf.mY2_property_selection.kind ()
         kind &= unwSelf.mWidth_property_selection.kind ()
         kind &= unwSelf.mLayer_property_selection.kind ()
-        kind &= g_Preferences!.hiliteWidthMultipliedByTen_property_selection.kind ()
+        kind &= prefs_hiliteWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection, prefs_hiliteWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
             return .single (transient_BoardLine_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
@@ -470,7 +470,7 @@ class BoardLine : BoardObject,
     self.mY2_property.addEBObserver (self.selectionDisplay_property)
     self.mWidth_property.addEBObserver (self.selectionDisplay_property)
     self.mLayer_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
+    prefs_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -486,15 +486,15 @@ class BoardLine : BoardObject,
     // self.mY2_property.removeEBObserver (self.objectDisplay_property)
     // self.mWidth_property.removeEBObserver (self.objectDisplay_property)
     // self.mLayer_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.mX1_property.removeEBObserver (self.selectionDisplay_property)
     // self.mY1_property.removeEBObserver (self.selectionDisplay_property)
     // self.mX2_property.removeEBObserver (self.selectionDisplay_property)
     // self.mY2_property.removeEBObserver (self.selectionDisplay_property)
     // self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
     // self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
-    // g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
+    // prefs_hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

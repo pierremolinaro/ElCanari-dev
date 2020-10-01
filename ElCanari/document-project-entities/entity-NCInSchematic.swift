@@ -114,20 +114,20 @@ class NCInSchematic : SchematicObject,
       resetter: { inObject in inObject.mNC_property.setProp (nil) }
     )
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mPoint_property.addEBObserverOf_location, self.mOrientation_property, self.mPoint_property.addEBObserverOf_symbolRotation, g_Preferences?.pinNameFont_property, transient_NCInSchematic_objectDisplay)
+    // self.objectDisplay_property.configure (self.mPoint_property.addEBObserverOf_location, self.mOrientation_property, self.mPoint_property.addEBObserverOf_symbolRotation, prefs_pinNameFont_property, transient_NCInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
         kind &= unwSelf.mOrientation_property_selection.kind ()
         kind &= unwSelf.mPoint_property.symbolRotation_property_selection.kind ()
-        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= prefs_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, prefs_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_NCInSchematic_objectDisplay (v0, v1, v2, v3))
           default :
@@ -141,22 +141,22 @@ class NCInSchematic : SchematicObject,
     self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
     self.mPoint_property.addEBObserverOf_symbolRotation (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mPoint_property.addEBObserverOf_location, self.mOrientation_property, self.mPoint_property.addEBObserverOf_symbolRotation, g_Preferences?.pinNameFont_property, transient_NCInSchematic_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mPoint_property.addEBObserverOf_location, self.mOrientation_property, self.mPoint_property.addEBObserverOf_symbolRotation, prefs_pinNameFont_property, transient_NCInSchematic_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
         kind &= unwSelf.mOrientation_property_selection.kind ()
         kind &= unwSelf.mPoint_property.symbolRotation_property_selection.kind ()
-        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= prefs_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, prefs_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_NCInSchematic_selectionDisplay (v0, v1, v2, v3))
           default :
@@ -170,7 +170,7 @@ class NCInSchematic : SchematicObject,
     self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
     self.mPoint_property.addEBObserverOf_symbolRotation (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    prefs_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -183,11 +183,11 @@ class NCInSchematic : SchematicObject,
     // self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
     // self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
     // self.mPoint_property.removeEBObserverOf_symbolRotation (self.objectDisplay_property)
-    // g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     // self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
     // self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
     // self.mPoint_property.removeEBObserverOf_symbolRotation (self.selectionDisplay_property)
-    // g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    // prefs_pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

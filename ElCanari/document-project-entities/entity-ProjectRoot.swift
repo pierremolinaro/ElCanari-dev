@@ -5078,7 +5078,7 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBorderCurves_property.addEBObserver (self.borderElementCountString_property)
   //--- Atomic property: borderOutlineBackground
-    // self.borderOutlineBackground_property.configure (self.mBorderCurves_property.addEBObserverOf_descriptor, self.mBoardShape_property, self.mRectangularBoardWidth_property, self.mRectangularBoardHeight_property, self.mBoardLimitsWidth_property, g_Preferences?.boardLimitsColorForBoard_property, self.mBoardClearance_property, g_Preferences?.boardClearanceColorForBoard_property, transient_ProjectRoot_borderOutlineBackground)
+    // self.borderOutlineBackground_property.configure (self.mBorderCurves_property.addEBObserverOf_descriptor, self.mBoardShape_property, self.mRectangularBoardWidth_property, self.mRectangularBoardHeight_property, self.mBoardLimitsWidth_property, prefs_boardLimitsColorForBoard_property, self.mBoardClearance_property, prefs_boardClearanceColorForBoard_property, transient_ProjectRoot_borderOutlineBackground)
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderCurves_property_selection.kind ()
@@ -5086,16 +5086,16 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mRectangularBoardWidth_property_selection.kind ()
         kind &= unwSelf.mRectangularBoardHeight_property_selection.kind ()
         kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
-        kind &= g_Preferences!.boardLimitsColorForBoard_property_selection.kind ()
+        kind &= prefs_boardLimitsColorForBoard_property_selection.kind ()
         kind &= unwSelf.mBoardClearance_property_selection.kind ()
-        kind &= g_Preferences!.boardClearanceColorForBoard_property_selection.kind ()
+        kind &= prefs_boardClearanceColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBorderCurves_property_selection, unwSelf.mBoardShape_property_selection, unwSelf.mRectangularBoardWidth_property_selection, unwSelf.mRectangularBoardHeight_property_selection, unwSelf.mBoardLimitsWidth_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection, unwSelf.mBoardClearance_property_selection, g_Preferences!.boardClearanceColorForBoard_property_selection) {
+          switch (unwSelf.mBorderCurves_property_selection, unwSelf.mBoardShape_property_selection, unwSelf.mRectangularBoardWidth_property_selection, unwSelf.mRectangularBoardHeight_property_selection, unwSelf.mBoardLimitsWidth_property_selection, prefs_boardLimitsColorForBoard_property_selection, unwSelf.mBoardClearance_property_selection, prefs_boardClearanceColorForBoard_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -5111,14 +5111,14 @@ class ProjectRoot : EBManagedObject,
     self.mRectangularBoardWidth_property.addEBObserver (self.borderOutlineBackground_property)
     self.mRectangularBoardHeight_property.addEBObserver (self.borderOutlineBackground_property)
     self.mBoardLimitsWidth_property.addEBObserver (self.borderOutlineBackground_property)
-    g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
+    prefs_boardLimitsColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
     self.mBoardClearance_property.addEBObserver (self.borderOutlineBackground_property)
-    g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
+    prefs_boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
   //--- Atomic property: borderViewBackground
-    // self.borderViewBackground_property.configure (g_Preferences?.boardBackgroundColorForBoard_property, self.borderOutlineBackground_property, self.mBoardObjects_property.addEBObserverOf_objectDisplay, transient_ProjectRoot_borderViewBackground)
+    // self.borderViewBackground_property.configure (prefs_boardBackgroundColorForBoard_property, self.borderOutlineBackground_property, self.mBoardObjects_property.addEBObserverOf_objectDisplay, transient_ProjectRoot_borderViewBackground)
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.boardBackgroundColorForBoard_property_selection.kind ()
+        var kind = prefs_boardBackgroundColorForBoard_property_selection.kind ()
         kind &= unwSelf.borderOutlineBackground_property_selection.kind ()
         kind &= unwSelf.mBoardObjects_property_selection.kind ()
         switch kind {
@@ -5127,7 +5127,7 @@ class ProjectRoot : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (g_Preferences!.boardBackgroundColorForBoard_property_selection, unwSelf.borderOutlineBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
+          switch (prefs_boardBackgroundColorForBoard_property_selection, unwSelf.borderOutlineBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2))
           default :
@@ -5138,7 +5138,7 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.borderViewBackground_property)
+    prefs_boardBackgroundColorForBoard_property.addEBObserver (self.borderViewBackground_property)
     self.borderOutlineBackground_property.addEBObserver (self.borderViewBackground_property)
     self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.borderViewBackground_property)
   //--- Atomic property: deviceNames
@@ -5628,10 +5628,10 @@ class ProjectRoot : EBManagedObject,
     // self.mRectangularBoardWidth_property.removeEBObserver (self.borderOutlineBackground_property)
     // self.mRectangularBoardHeight_property.removeEBObserver (self.borderOutlineBackground_property)
     // self.mBoardLimitsWidth_property.removeEBObserver (self.borderOutlineBackground_property)
-    // g_Preferences?.boardLimitsColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
+    // prefs_boardLimitsColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
     // self.mBoardClearance_property.removeEBObserver (self.borderOutlineBackground_property)
-    // g_Preferences?.boardClearanceColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
-    // g_Preferences?.boardBackgroundColorForBoard_property.removeEBObserver (self.borderViewBackground_property)
+    // prefs_boardClearanceColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
+    // prefs_boardBackgroundColorForBoard_property.removeEBObserver (self.borderViewBackground_property)
     // self.borderOutlineBackground_property.removeEBObserver (self.borderViewBackground_property)
     // self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.borderViewBackground_property)
     // self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)

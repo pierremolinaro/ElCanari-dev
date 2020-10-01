@@ -459,7 +459,7 @@ class SymbolPin : SymbolObject,
     self.xPin_property.addEBObserver (self.filledBezierPath_property)
     self.yPin_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.name_property, self.pinNameIsDisplayedInSchematics_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, g_Preferences?.symbolColor_property, g_Preferences?.pinNameFont_property, transient_SymbolPin_objectDisplay)
+    // self.objectDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.name_property, self.pinNameIsDisplayedInSchematics_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, prefs_symbolColor_property, prefs_pinNameFont_property, transient_SymbolPin_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -472,15 +472,15 @@ class SymbolPin : SymbolObject,
         kind &= unwSelf.pinNameIsDisplayedInSchematics_property_selection.kind ()
         kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
-        kind &= g_Preferences!.symbolColor_property_selection.kind ()
-        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= prefs_symbolColor_property_selection.kind ()
+        kind &= prefs_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsDisplayedInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsDisplayedInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, prefs_symbolColor_property_selection, prefs_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
             return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
@@ -501,8 +501,8 @@ class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property.addEBObserver (self.objectDisplay_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     // self.selectionDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, transient_SymbolPin_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
@@ -576,21 +576,21 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.addEBObserver (self.issues_property)
     self.name_property.addEBObserver (self.issues_property)
   //--- Atomic property: nameRect
-    // self.nameRect_property.configure (self.xName_property, self.yName_property, self.name_property, self.nameHorizontalAlignment_property, g_Preferences?.pinNameFont_property, transient_SymbolPin_nameRect)
+    // self.nameRect_property.configure (self.xName_property, self.yName_property, self.name_property, self.nameHorizontalAlignment_property, prefs_pinNameFont_property, transient_SymbolPin_nameRect)
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xName_property_selection.kind ()
         kind &= unwSelf.yName_property_selection.kind ()
         kind &= unwSelf.name_property_selection.kind ()
         kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
-        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= prefs_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, prefs_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SymbolPin_nameRect (v0, v1, v2, v3, v4))
           default :
@@ -605,7 +605,7 @@ class SymbolPin : SymbolObject,
     self.yName_property.addEBObserver (self.nameRect_property)
     self.name_property.addEBObserver (self.nameRect_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.nameRect_property)
+    prefs_pinNameFont_property.addEBObserver (self.nameRect_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.name_property.setSignatureObserver (observer: self)
@@ -637,8 +637,8 @@ class SymbolPin : SymbolObject,
     // self.pinNameIsDisplayedInSchematics_property.removeEBObserver (self.objectDisplay_property)
     // self.nameHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     // self.numberHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    // g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     // self.xPin_property.removeEBObserver (self.selectionDisplay_property)
     // self.yPin_property.removeEBObserver (self.selectionDisplay_property)
     // self.xName_property.removeEBObserver (self.selectionDisplay_property)
@@ -658,7 +658,7 @@ class SymbolPin : SymbolObject,
     // self.yName_property.removeEBObserver (self.nameRect_property)
     // self.name_property.removeEBObserver (self.nameRect_property)
     // self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
-    // g_Preferences?.pinNameFont_property.removeEBObserver (self.nameRect_property)
+    // prefs_pinNameFont_property.removeEBObserver (self.nameRect_property)
   //--- Unregister properties for handling signature
     self.name_property.setSignatureObserver (observer: nil)
     self.nameHorizontalAlignment_property.setSignatureObserver (observer: nil)

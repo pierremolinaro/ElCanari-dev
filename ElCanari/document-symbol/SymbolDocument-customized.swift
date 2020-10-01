@@ -55,7 +55,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     super.windowControllerDidLoadNib (aController)
   //--- Symbol color observer
     self.mSymbolColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
-    g_Preferences?.symbolColor_property.addEBObserver (self.mSymbolColorObserver)
+    prefs_symbolColor_property.addEBObserver (self.mSymbolColorObserver)
   //--- Set pages segmented control
     let pages = [self.mSymbolPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
@@ -179,7 +179,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 18.0),
-      NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
+      NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
     var shape = EBShape ()
     shape.add (text: "T", NSPoint (x: r.midX, y: r.midY - 3.0), textAttributes, .center, .center)
@@ -199,10 +199,10 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       height: circleDiameter
     )
     var shape = EBShape ()
-    shape.add (filled: [EBBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black)
+    shape.add (filled: [EBBezierPath (ovalIn: circle)], prefs_symbolColor)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 12.0),
-      NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
+      NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
     shape.add (text: "#", NSPoint (x: r.minX + 2.0, y: r.midY - 1.0), textAttributes, .onTheRight, .center)
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
@@ -227,7 +227,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
 
   override func removeUserInterface () {
     super.removeUserInterface ()
-    g_Preferences?.symbolColor_property.removeEBObserver (self.mSymbolColorObserver)
+    prefs_symbolColor_property.removeEBObserver (self.mSymbolColorObserver)
   }
 
   //····················································································································

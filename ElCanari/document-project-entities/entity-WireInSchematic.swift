@@ -215,11 +215,11 @@ class WireInSchematic : SchematicObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }
     )
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mP1_property.addEBObserverOf_wireColor, g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property, self.mP1_property.addEBObserverOf_location, self.mP2_property.addEBObserverOf_location, transient_WireInSchematic_objectDisplay)
+    // self.objectDisplay_property.configure (self.mP1_property.addEBObserverOf_wireColor, prefs_symbolDrawingWidthMultipliedByTenForSchematic_property, self.mP1_property.addEBObserverOf_location, self.mP2_property.addEBObserverOf_location, transient_WireInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mP1_property.wireColor_property_selection.kind ()
-        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
+        kind &= prefs_symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
         kind &= unwSelf.mP1_property.location_property_selection.kind ()
         kind &= unwSelf.mP2_property.location_property_selection.kind ()
         switch kind {
@@ -228,7 +228,7 @@ class WireInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mP1_property.wireColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
+          switch (unwSelf.mP1_property.wireColor_property_selection, prefs_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3))
           default :
@@ -240,7 +240,7 @@ class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.addEBObserverOf_wireColor (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
+    prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
     self.mP1_property.addEBObserverOf_location (self.objectDisplay_property)
     self.mP2_property.addEBObserverOf_location (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -351,7 +351,7 @@ class WireInSchematic : SchematicObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     // self.mP1_property.removeEBObserverOf_wireColor (self.objectDisplay_property)
-    // g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
     // self.mP1_property.removeEBObserverOf_location (self.objectDisplay_property)
     // self.mP2_property.removeEBObserverOf_location (self.objectDisplay_property)
     // self.mP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
