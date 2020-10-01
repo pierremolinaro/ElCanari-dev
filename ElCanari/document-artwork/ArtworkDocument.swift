@@ -24,17 +24,17 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var documentFilePath_property_selection : EBSelection <String> {
+  final var documentFilePath_property_selection : EBSelection <String> {
     return self.documentFilePath_property.prop
   }
 
   //····················································································································
 
-  var documentFilePath : String? {
+  final var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -47,17 +47,17 @@ import Cocoa
   //   Transient property: mGeneratedFileCountString
   //····················································································································
 
-  let mGeneratedFileCountString_property = EBTransientProperty_String ()
+  final let mGeneratedFileCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var mGeneratedFileCountString_property_selection : EBSelection <String> {
+  final var mGeneratedFileCountString_property_selection : EBSelection <String> {
     return self.mGeneratedFileCountString_property.prop
   }
 
   //····················································································································
 
-  var mGeneratedFileCountString : String? {
+  final var mGeneratedFileCountString : String? {
     switch self.mGeneratedFileCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -70,17 +70,17 @@ import Cocoa
   //   Transient property: mStatusImage
   //····················································································································
 
-  let mStatusImage_property = EBTransientProperty_NSImage ()
+  final let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var mStatusImage_property_selection : EBSelection <NSImage> {
+  final var mStatusImage_property_selection : EBSelection <NSImage> {
     return self.mStatusImage_property.prop
   }
 
   //····················································································································
 
-  var mStatusImage : NSImage? {
+  final var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -93,17 +93,17 @@ import Cocoa
   //   Transient property: mStatusMessage
   //····················································································································
 
-  let mStatusMessage_property = EBTransientProperty_String ()
+  final let mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var mStatusMessage_property_selection : EBSelection <String> {
+  final var mStatusMessage_property_selection : EBSelection <String> {
     return self.mStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var mStatusMessage : String? {
+  final var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil

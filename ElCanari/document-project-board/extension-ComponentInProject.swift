@@ -127,13 +127,21 @@ extension ComponentInProject {
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + 270_000) % 360_000
+    ioSet.insert (self)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + 90_000) % 360_000
+    ioSet.insert (self)
   }
 
   //····················································································································

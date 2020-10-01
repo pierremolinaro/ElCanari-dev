@@ -854,7 +854,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mArtworkName
   //····················································································································
 
-  let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
+  final let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -877,7 +877,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mArtworkVersion
   //····················································································································
 
-  let mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -900,7 +900,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mPDFBoardBackgroundColor
   //····················································································································
 
-  let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
+  final let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
 
   //····················································································································
 
@@ -923,7 +923,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
   //····················································································································
 
-  let mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -946,7 +946,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLastERCCheckingIsSuccess
   //····················································································································
 
-  let mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -969,7 +969,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLastERCCheckingSignature
   //····················································································································
 
-  let mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1)
+  final let mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1)
 
   //····················································································································
 
@@ -992,7 +992,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardSideForNewTrack
   //····················································································································
 
-  let mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
+  final let mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
 
   //····················································································································
 
@@ -1015,7 +1015,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mAutoRouterPreferredDirections
   //····················································································································
 
-  let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback)
+  final let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback)
 
   //····················································································································
 
@@ -1038,7 +1038,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mAutorouterSnapAngle
   //····················································································································
 
-  let mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear)
+  final let mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear)
 
   //····················································································································
 
@@ -1061,7 +1061,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRouteDirection
   //····················································································································
 
-  let mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from)
+  final let mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from)
 
   //····················································································································
 
@@ -1084,7 +1084,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRouteOrigin
   //····················································································································
 
-  let mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center)
+  final let mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center)
 
   //····················································································································
 
@@ -1107,7 +1107,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mTrackLengthUnit
   //····················································································································
 
-  let mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000)
+  final let mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000)
 
   //····················································································································
 
@@ -1130,7 +1130,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLayoutClearance
   //····················································································································
 
-  let mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720)
+  final let mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720)
 
   //····················································································································
 
@@ -1153,7 +1153,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLayoutClearanceUnit
   //····················································································································
 
-  let mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -1176,7 +1176,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardSelectedInspector
   //····················································································································
 
-  let mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+  final let mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
 
   //····················································································································
 
@@ -1199,7 +1199,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardHorizontalFlip
   //····················································································································
 
-  let mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -1222,7 +1222,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardVerticalFlip
   //····················································································································
 
-  let mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -1245,7 +1245,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStyle
   //····················································································································
 
-  let mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  final let mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -1268,7 +1268,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridDisplayFactor
   //····················································································································
 
-  let mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  final let mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -1291,7 +1291,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardZoom
   //····················································································································
 
-  let mBoardZoom_property = EBStoredProperty_Int (defaultValue: 200)
+  final let mBoardZoom_property = EBStoredProperty_Int (defaultValue: 200)
 
   //····················································································································
 
@@ -1314,7 +1314,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStep
   //····················································································································
 
-  let mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
+  final let mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -1337,7 +1337,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStepUnit
   //····················································································································
 
-  let mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -1360,7 +1360,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mErrorOrWarningIssueSize
   //····················································································································
 
-  let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6)
+  final let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6)
 
   //····················································································································
 
@@ -1383,7 +1383,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mControlKeyHiliteDiameter
   //····················································································································
 
-  let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100)
+  final let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100)
 
   //····················································································································
 
@@ -1406,7 +1406,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mDSNFileProposedName
   //····················································································································
 
-  let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn")
+  final let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn")
 
   //····················································································································
 
@@ -1429,7 +1429,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsWidth
   //····················································································································
 
-  let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1452,7 +1452,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsWidthUnit
   //····················································································································
 
-  let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1475,7 +1475,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardClearance
   //····················································································································
 
-  let mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1498,7 +1498,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardClearanceUnit
   //····················································································································
 
-  let mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1521,7 +1521,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsSelectedInspector
   //····················································································································
 
-  let mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+  final let mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
 
   //····················································································································
 
@@ -1544,7 +1544,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsHorizontalFlip
   //····················································································································
 
-  let mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -1567,7 +1567,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsVerticalFlip
   //····················································································································
 
-  let mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -1590,7 +1590,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStyle
   //····················································································································
 
-  let mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  final let mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -1613,7 +1613,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridDisplayFactor
   //····················································································································
 
-  let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5)
+  final let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5)
 
   //····················································································································
 
@@ -1636,7 +1636,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsZoom
   //····················································································································
 
-  let mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200)
+  final let mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200)
 
   //····················································································································
 
@@ -1659,7 +1659,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStep
   //····················································································································
 
-  let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1682,7 +1682,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStepUnit
   //····················································································································
 
-  let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1705,7 +1705,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsBoundingBoxUnit
   //····················································································································
 
-  let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1728,7 +1728,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardPointsBoundingBoxUnit
   //····················································································································
 
-  let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1751,7 +1751,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardSelectedCurveDisplayUnit
   //····················································································································
 
-  let mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1774,7 +1774,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitControlPointsDisplayUnit
   //····················································································································
 
-  let mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1797,7 +1797,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardShape
   //····················································································································
 
-  let mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular)
+  final let mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular)
 
   //····················································································································
 
@@ -1820,7 +1820,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardWidth
   //····················································································································
 
-  let mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
+  final let mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
 
   //····················································································································
 
@@ -1843,7 +1843,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardWidthUnit
   //····················································································································
 
-  let mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1866,7 +1866,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardHeight
   //····················································································································
 
-  let mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
+  final let mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
 
   //····················································································································
 
@@ -1889,7 +1889,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardHeightUnit
   //····················································································································
 
-  let mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -1912,17 +1912,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mSheets
   //····················································································································
 
-  let mSheets_property = StoredArrayOf_SheetInProject (usedForSignature: false)
+  final let mSheets_property = StoredArrayOf_SheetInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mSheets_property_selection : EBSelection < [SheetInProject] > {
+  final var mSheets_property_selection : EBSelection < [SheetInProject] > {
     return self.mSheets_property.prop
   }
 
   //····················································································································
 
-  var mSheets : [SheetInProject] {
+  final var mSheets : [SheetInProject] {
     get { return self.mSheets_property.propval }
     set { self.mSheets_property.setProp (newValue) }
   }
@@ -1931,7 +1931,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mDefaultNetClassName
   //····················································································································
 
-  let mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "")
+  final let mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -1954,7 +1954,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -1977,7 +1977,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSelectedSchematicInspector
   //····················································································································
 
-  let mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -2000,7 +2000,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicTitle
   //····················································································································
 
-  let mSchematicTitle_property = EBStoredProperty_String (defaultValue: "")
+  final let mSchematicTitle_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -2023,7 +2023,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicVersion
   //····················································································································
 
-  let mSchematicVersion_property = EBStoredProperty_String (defaultValue: "")
+  final let mSchematicVersion_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -2046,7 +2046,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicDate
   //····················································································································
 
-  let mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date ())
+  final let mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date ())
 
   //····················································································································
 
@@ -2069,7 +2069,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicHorizontalFlip
   //····················································································································
 
-  let mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -2092,7 +2092,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicVerticalFlip
   //····················································································································
 
-  let mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -2115,7 +2115,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicZoom
   //····················································································································
 
-  let mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  final let mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 100)
 
   //····················································································································
 
@@ -2138,7 +2138,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicGridStyle
   //····················································································································
 
-  let mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  final let mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -2161,7 +2161,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicGridDisplayFactor
   //····················································································································
 
-  let mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  final let mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -2184,7 +2184,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomWidth
   //····················································································································
 
-  let mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000)
+  final let mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000)
 
   //····················································································································
 
@@ -2207,7 +2207,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomWidthUnit
   //····················································································································
 
-  let mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -2230,7 +2230,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomHeight
   //····················································································································
 
-  let mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000)
+  final let mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000)
 
   //····················································································································
 
@@ -2253,7 +2253,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomHeightUnit
   //····················································································································
 
-  let mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  final let mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -2276,17 +2276,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mNetClasses
   //····················································································································
 
-  let mNetClasses_property = StoredArrayOf_NetClassInProject (usedForSignature: false)
+  final let mNetClasses_property = StoredArrayOf_NetClassInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mNetClasses_property_selection : EBSelection < [NetClassInProject] > {
+  final var mNetClasses_property_selection : EBSelection < [NetClassInProject] > {
     return self.mNetClasses_property.prop
   }
 
   //····················································································································
 
-  var mNetClasses : [NetClassInProject] {
+  final var mNetClasses : [NetClassInProject] {
     get { return self.mNetClasses_property.propval }
     set { self.mNetClasses_property.setProp (newValue) }
   }
@@ -2295,17 +2295,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mFonts
   //····················································································································
 
-  let mFonts_property = StoredArrayOf_FontInProject (usedForSignature: false)
+  final let mFonts_property = StoredArrayOf_FontInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mFonts_property_selection : EBSelection < [FontInProject] > {
+  final var mFonts_property_selection : EBSelection < [FontInProject] > {
     return self.mFonts_property.prop
   }
 
   //····················································································································
 
-  var mFonts : [FontInProject] {
+  final var mFonts : [FontInProject] {
     get { return self.mFonts_property.propval }
     set { self.mFonts_property.setProp (newValue) }
   }
@@ -2314,17 +2314,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mDevices
   //····················································································································
 
-  let mDevices_property = StoredArrayOf_DeviceInProject (usedForSignature: false)
+  final let mDevices_property = StoredArrayOf_DeviceInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mDevices_property_selection : EBSelection < [DeviceInProject] > {
+  final var mDevices_property_selection : EBSelection < [DeviceInProject] > {
     return self.mDevices_property.prop
   }
 
   //····················································································································
 
-  var mDevices : [DeviceInProject] {
+  final var mDevices : [DeviceInProject] {
     get { return self.mDevices_property.propval }
     set { self.mDevices_property.setProp (newValue) }
   }
@@ -2333,7 +2333,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicSheetOrientation
   //····················································································································
 
-  let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal)
+  final let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal)
 
   //····················································································································
 
@@ -2356,17 +2356,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mBorderCurves
   //····················································································································
 
-  let mBorderCurves_property = StoredArrayOf_BorderCurve (usedForSignature: false)
+  final let mBorderCurves_property = StoredArrayOf_BorderCurve (usedForSignature: false)
 
   //····················································································································
 
-  var mBorderCurves_property_selection : EBSelection < [BorderCurve] > {
+  final var mBorderCurves_property_selection : EBSelection < [BorderCurve] > {
     return self.mBorderCurves_property.prop
   }
 
   //····················································································································
 
-  var mBorderCurves : [BorderCurve] {
+  final var mBorderCurves : [BorderCurve] {
     get { return self.mBorderCurves_property.propval }
     set { self.mBorderCurves_property.setProp (newValue) }
   }
@@ -2375,17 +2375,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mBoardObjects
   //····················································································································
 
-  let mBoardObjects_property = StoredArrayOf_BoardObject (usedForSignature: false)
+  final let mBoardObjects_property = StoredArrayOf_BoardObject (usedForSignature: false)
 
   //····················································································································
 
-  var mBoardObjects_property_selection : EBSelection < [BoardObject] > {
+  final var mBoardObjects_property_selection : EBSelection < [BoardObject] > {
     return self.mBoardObjects_property.prop
   }
 
   //····················································································································
 
-  var mBoardObjects : [BoardObject] {
+  final var mBoardObjects : [BoardObject] {
     get { return self.mBoardObjects_property.propval }
     set { self.mBoardObjects_property.setProp (newValue) }
   }
@@ -2394,7 +2394,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRastnetDisplay
   //····················································································································
 
-  let mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets)
+  final let mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets)
 
   //····················································································································
 
@@ -2417,7 +2417,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRastnetDisplayedNetName
   //····················································································································
 
-  let mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "")
+  final let mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -2440,7 +2440,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRastnetDisplayedComponentName
   //····················································································································
 
-  let mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "")
+  final let mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -2463,17 +2463,17 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+  final var mComponents_property_selection : EBSelection < [ComponentInProject] > {
     return self.mComponents_property.prop
   }
 
   //····················································································································
 
-  var mComponents : [ComponentInProject] {
+  final var mComponents : [ComponentInProject] {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
   }
@@ -2850,17 +2850,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardGridStepMultipliedByDisplayFactor
   //····················································································································
 
-  let boardGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+  final let boardGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var boardGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
+  final var boardGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
     return self.boardGridStepMultipliedByDisplayFactor_property.prop
   }
 
   //····················································································································
 
-  var boardGridStepMultipliedByDisplayFactor : Int? {
+  final var boardGridStepMultipliedByDisplayFactor : Int? {
     switch self.boardGridStepMultipliedByDisplayFactor_property_selection {
     case .empty, .multiple :
       return nil
@@ -2873,17 +2873,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardLimitsGridStepMultipliedByDisplayFactor
   //····················································································································
 
-  let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+  final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
+  final var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
     return self.boardLimitsGridStepMultipliedByDisplayFactor_property.prop
   }
 
   //····················································································································
 
-  var boardLimitsGridStepMultipliedByDisplayFactor : Int? {
+  final var boardLimitsGridStepMultipliedByDisplayFactor : Int? {
     switch self.boardLimitsGridStepMultipliedByDisplayFactor_property_selection {
     case .empty, .multiple :
       return nil
@@ -2896,17 +2896,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardShapeIsRectangular
   //····················································································································
 
-  let boardShapeIsRectangular_property = EBTransientProperty_Bool ()
+  final let boardShapeIsRectangular_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var boardShapeIsRectangular_property_selection : EBSelection <Bool> {
+  final var boardShapeIsRectangular_property_selection : EBSelection <Bool> {
     return self.boardShapeIsRectangular_property.prop
   }
 
   //····················································································································
 
-  var boardShapeIsRectangular : Bool? {
+  final var boardShapeIsRectangular : Bool? {
     switch self.boardShapeIsRectangular_property_selection {
     case .empty, .multiple :
       return nil
@@ -2919,17 +2919,17 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mSelectedSheet
   //····················································································································
 
-  let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  final let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mSelectedSheet_property_selection : EBSelection <SheetInProject?> {
+  final var mSelectedSheet_property_selection : EBSelection <SheetInProject?> {
     return .single (self.mSelectedSheet_property.propval)
   }
 
   //····················································································································
 
-  var mSelectedSheet : SheetInProject? {
+  final var mSelectedSheet : SheetInProject? {
     get {
       return self.mSelectedSheet_property.propval
     }
@@ -2945,11 +2945,11 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
+  final var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
 
   //····················································································································
 
-  var mSelectedSheet_none_selection : EBSelection <Bool> {
+  final var mSelectedSheet_none_selection : EBSelection <Bool> {
     return .single (self.mSelectedSheet_property.propval == nil)
   }
 
@@ -2957,17 +2957,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: selectedSheetIssues
   //····················································································································
 
-  let selectedSheetIssues_property = EBTransientProperty_CanariIssueArray ()
+  final let selectedSheetIssues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray> {
+  final var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray> {
     return self.selectedSheetIssues_property.prop
   }
 
   //····················································································································
 
-  var selectedSheetIssues : CanariIssueArray? {
+  final var selectedSheetIssues : CanariIssueArray? {
     switch self.selectedSheetIssues_property_selection {
     case .empty, .multiple :
       return nil
@@ -2980,17 +2980,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: connectedPoints
   //····················································································································
 
-  let connectedPoints_property = EBTransientProperty_EBShape ()
+  final let connectedPoints_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <EBShape> {
+  final var connectedPoints_property_selection : EBSelection <EBShape> {
     return self.connectedPoints_property.prop
   }
 
   //····················································································································
 
-  var connectedPoints : EBShape? {
+  final var connectedPoints : EBShape? {
     switch self.connectedPoints_property_selection {
     case .empty, .multiple :
       return nil
@@ -3003,17 +3003,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: connexionWarningString
   //····················································································································
 
-  let connexionWarningString_property = EBTransientProperty_String ()
+  final let connexionWarningString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var connexionWarningString_property_selection : EBSelection <String> {
+  final var connexionWarningString_property_selection : EBSelection <String> {
     return self.connexionWarningString_property.prop
   }
 
   //····················································································································
 
-  var connexionWarningString : String? {
+  final var connexionWarningString : String? {
     switch self.connexionWarningString_property_selection {
     case .empty, .multiple :
       return nil
@@ -3026,17 +3026,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: connexionErrorString
   //····················································································································
 
-  let connexionErrorString_property = EBTransientProperty_String ()
+  final let connexionErrorString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var connexionErrorString_property_selection : EBSelection <String> {
+  final var connexionErrorString_property_selection : EBSelection <String> {
     return self.connexionErrorString_property.prop
   }
 
   //····················································································································
 
-  var connexionErrorString : String? {
+  final var connexionErrorString : String? {
     switch self.connexionErrorString_property_selection {
     case .empty, .multiple :
       return nil
@@ -3049,17 +3049,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: sheetIndexes
   //····················································································································
 
-  let sheetIndexes_property = EBTransientProperty_IntArray ()
+  final let sheetIndexes_property = EBTransientProperty_IntArray ()
 
   //····················································································································
 
-  var sheetIndexes_property_selection : EBSelection <IntArray> {
+  final var sheetIndexes_property_selection : EBSelection <IntArray> {
     return self.sheetIndexes_property.prop
   }
 
   //····················································································································
 
-  var sheetIndexes : IntArray? {
+  final var sheetIndexes : IntArray? {
     switch self.sheetIndexes_property_selection {
     case .empty, .multiple :
       return nil
@@ -3072,17 +3072,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: netsDescription
   //····················································································································
 
-  let netsDescription_property = EBTransientProperty_NetInfoArray ()
+  final let netsDescription_property = EBTransientProperty_NetInfoArray ()
 
   //····················································································································
 
-  var netsDescription_property_selection : EBSelection <NetInfoArray> {
+  final var netsDescription_property_selection : EBSelection <NetInfoArray> {
     return self.netsDescription_property.prop
   }
 
   //····················································································································
 
-  var netsDescription : NetInfoArray? {
+  final var netsDescription : NetInfoArray? {
     switch self.netsDescription_property_selection {
     case .empty, .multiple :
       return nil
@@ -3095,17 +3095,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardIssues
   //····················································································································
 
-  let boardIssues_property = EBTransientProperty_CanariIssueArray ()
+  final let boardIssues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var boardIssues_property_selection : EBSelection <CanariIssueArray> {
+  final var boardIssues_property_selection : EBSelection <CanariIssueArray> {
     return self.boardIssues_property.prop
   }
 
   //····················································································································
 
-  var boardIssues : CanariIssueArray? {
+  final var boardIssues : CanariIssueArray? {
     switch self.boardIssues_property_selection {
     case .empty, .multiple :
       return nil
@@ -3118,17 +3118,17 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-  let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 
-  var mArtwork_property_selection : EBSelection <ArtworkRoot?> {
+  final var mArtwork_property_selection : EBSelection <ArtworkRoot?> {
     return .single (self.mArtwork_property.propval)
   }
 
   //····················································································································
 
-  var mArtwork : ArtworkRoot? {
+  final var mArtwork : ArtworkRoot? {
     get {
       return self.mArtwork_property.propval
     }
@@ -3144,11 +3144,11 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var mArtwork_none : StoredObject_ArtworkRoot { return self.mArtwork_property }
+  final var mArtwork_none : StoredObject_ArtworkRoot { return self.mArtwork_property }
 
   //····················································································································
 
-  var mArtwork_none_selection : EBSelection <Bool> {
+  final var mArtwork_none_selection : EBSelection <Bool> {
     return .single (self.mArtwork_property.propval == nil)
   }
 
@@ -3156,17 +3156,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: signatureForERCChecking
   //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32> {
     return self.signatureForERCChecking_property.prop
   }
 
   //····················································································································
 
-  var signatureForERCChecking : UInt32? {
+  final var signatureForERCChecking : UInt32? {
     switch self.signatureForERCChecking_property_selection {
     case .empty, .multiple :
       return nil
@@ -3179,17 +3179,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: ercStatusImage
   //····················································································································
 
-  let ercStatusImage_property = EBTransientProperty_NSImage ()
+  final let ercStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var ercStatusImage_property_selection : EBSelection <NSImage> {
+  final var ercStatusImage_property_selection : EBSelection <NSImage> {
     return self.ercStatusImage_property.prop
   }
 
   //····················································································································
 
-  var ercStatusImage : NSImage? {
+  final var ercStatusImage : NSImage? {
     switch self.ercStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -3202,17 +3202,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: ercStatusMessage
   //····················································································································
 
-  let ercStatusMessage_property = EBTransientProperty_String ()
+  final let ercStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var ercStatusMessage_property_selection : EBSelection <String> {
+  final var ercStatusMessage_property_selection : EBSelection <String> {
     return self.ercStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var ercStatusMessage : String? {
+  final var ercStatusMessage : String? {
     switch self.ercStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -3225,17 +3225,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: viaCountString
   //····················································································································
 
-  let viaCountString_property = EBTransientProperty_String ()
+  final let viaCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var viaCountString_property_selection : EBSelection <String> {
+  final var viaCountString_property_selection : EBSelection <String> {
     return self.viaCountString_property.prop
   }
 
   //····················································································································
 
-  var viaCountString : String? {
+  final var viaCountString : String? {
     switch self.viaCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -3248,17 +3248,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: trackCountString
   //····················································································································
 
-  let trackCountString_property = EBTransientProperty_String ()
+  final let trackCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var trackCountString_property_selection : EBSelection <String> {
+  final var trackCountString_property_selection : EBSelection <String> {
     return self.trackCountString_property.prop
   }
 
   //····················································································································
 
-  var trackCountString : String? {
+  final var trackCountString : String? {
     switch self.trackCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -3271,17 +3271,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: trackLengthString
   //····················································································································
 
-  let trackLengthString_property = EBTransientProperty_String ()
+  final let trackLengthString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var trackLengthString_property_selection : EBSelection <String> {
+  final var trackLengthString_property_selection : EBSelection <String> {
     return self.trackLengthString_property.prop
   }
 
   //····················································································································
 
-  var trackLengthString : String? {
+  final var trackLengthString : String? {
     switch self.trackLengthString_property_selection {
     case .empty, .multiple :
       return nil
@@ -3294,17 +3294,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardStatusImage
   //····················································································································
 
-  let boardStatusImage_property = EBTransientProperty_NSImage ()
+  final let boardStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var boardStatusImage_property_selection : EBSelection <NSImage> {
+  final var boardStatusImage_property_selection : EBSelection <NSImage> {
     return self.boardStatusImage_property.prop
   }
 
   //····················································································································
 
-  var boardStatusImage : NSImage? {
+  final var boardStatusImage : NSImage? {
     switch self.boardStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -3317,17 +3317,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardStatusMessage
   //····················································································································
 
-  let boardStatusMessage_property = EBTransientProperty_String ()
+  final let boardStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardStatusMessage_property_selection : EBSelection <String> {
+  final var boardStatusMessage_property_selection : EBSelection <String> {
     return self.boardStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var boardStatusMessage : String? {
+  final var boardStatusMessage : String? {
     switch self.boardStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -3340,17 +3340,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: interiorBoundBox
   //····················································································································
 
-  let interiorBoundBox_property = EBTransientProperty_CanariRect ()
+  final let interiorBoundBox_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
-  var interiorBoundBox_property_selection : EBSelection <CanariRect> {
+  final var interiorBoundBox_property_selection : EBSelection <CanariRect> {
     return self.interiorBoundBox_property.prop
   }
 
   //····················································································································
 
-  var interiorBoundBox : CanariRect? {
+  final var interiorBoundBox : CanariRect? {
     switch self.interiorBoundBox_property_selection {
     case .empty, .multiple :
       return nil
@@ -3363,17 +3363,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardBoundBox
   //····················································································································
 
-  let boardBoundBox_property = EBTransientProperty_CanariRect ()
+  final let boardBoundBox_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
-  var boardBoundBox_property_selection : EBSelection <CanariRect> {
+  final var boardBoundBox_property_selection : EBSelection <CanariRect> {
     return self.boardBoundBox_property.prop
   }
 
   //····················································································································
 
-  var boardBoundBox : CanariRect? {
+  final var boardBoundBox : CanariRect? {
     switch self.boardBoundBox_property_selection {
     case .empty, .multiple :
       return nil
@@ -3386,17 +3386,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardInteriorTop
   //····················································································································
 
-  let boardInteriorTop_property = EBTransientProperty_String ()
+  final let boardInteriorTop_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardInteriorTop_property_selection : EBSelection <String> {
+  final var boardInteriorTop_property_selection : EBSelection <String> {
     return self.boardInteriorTop_property.prop
   }
 
   //····················································································································
 
-  var boardInteriorTop : String? {
+  final var boardInteriorTop : String? {
     switch self.boardInteriorTop_property_selection {
     case .empty, .multiple :
       return nil
@@ -3409,17 +3409,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardInteriorBottom
   //····················································································································
 
-  let boardInteriorBottom_property = EBTransientProperty_String ()
+  final let boardInteriorBottom_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardInteriorBottom_property_selection : EBSelection <String> {
+  final var boardInteriorBottom_property_selection : EBSelection <String> {
     return self.boardInteriorBottom_property.prop
   }
 
   //····················································································································
 
-  var boardInteriorBottom : String? {
+  final var boardInteriorBottom : String? {
     switch self.boardInteriorBottom_property_selection {
     case .empty, .multiple :
       return nil
@@ -3432,17 +3432,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardInteriorLeft
   //····················································································································
 
-  let boardInteriorLeft_property = EBTransientProperty_String ()
+  final let boardInteriorLeft_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardInteriorLeft_property_selection : EBSelection <String> {
+  final var boardInteriorLeft_property_selection : EBSelection <String> {
     return self.boardInteriorLeft_property.prop
   }
 
   //····················································································································
 
-  var boardInteriorLeft : String? {
+  final var boardInteriorLeft : String? {
     switch self.boardInteriorLeft_property_selection {
     case .empty, .multiple :
       return nil
@@ -3455,17 +3455,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardInteriorRight
   //····················································································································
 
-  let boardInteriorRight_property = EBTransientProperty_String ()
+  final let boardInteriorRight_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardInteriorRight_property_selection : EBSelection <String> {
+  final var boardInteriorRight_property_selection : EBSelection <String> {
     return self.boardInteriorRight_property.prop
   }
 
   //····················································································································
 
-  var boardInteriorRight : String? {
+  final var boardInteriorRight : String? {
     switch self.boardInteriorRight_property_selection {
     case .empty, .multiple :
       return nil
@@ -3478,17 +3478,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardLimitBorderTop
   //····················································································································
 
-  let boardLimitBorderTop_property = EBTransientProperty_String ()
+  final let boardLimitBorderTop_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitBorderTop_property_selection : EBSelection <String> {
+  final var boardLimitBorderTop_property_selection : EBSelection <String> {
     return self.boardLimitBorderTop_property.prop
   }
 
   //····················································································································
 
-  var boardLimitBorderTop : String? {
+  final var boardLimitBorderTop : String? {
     switch self.boardLimitBorderTop_property_selection {
     case .empty, .multiple :
       return nil
@@ -3501,17 +3501,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardLimitBorderBottom
   //····················································································································
 
-  let boardLimitBorderBottom_property = EBTransientProperty_String ()
+  final let boardLimitBorderBottom_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitBorderBottom_property_selection : EBSelection <String> {
+  final var boardLimitBorderBottom_property_selection : EBSelection <String> {
     return self.boardLimitBorderBottom_property.prop
   }
 
   //····················································································································
 
-  var boardLimitBorderBottom : String? {
+  final var boardLimitBorderBottom : String? {
     switch self.boardLimitBorderBottom_property_selection {
     case .empty, .multiple :
       return nil
@@ -3524,17 +3524,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardLimitBorderLeft
   //····················································································································
 
-  let boardLimitBorderLeft_property = EBTransientProperty_String ()
+  final let boardLimitBorderLeft_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitBorderLeft_property_selection : EBSelection <String> {
+  final var boardLimitBorderLeft_property_selection : EBSelection <String> {
     return self.boardLimitBorderLeft_property.prop
   }
 
   //····················································································································
 
-  var boardLimitBorderLeft : String? {
+  final var boardLimitBorderLeft : String? {
     switch self.boardLimitBorderLeft_property_selection {
     case .empty, .multiple :
       return nil
@@ -3547,17 +3547,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: boardLimitBorderRight
   //····················································································································
 
-  let boardLimitBorderRight_property = EBTransientProperty_String ()
+  final let boardLimitBorderRight_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitBorderRight_property_selection : EBSelection <String> {
+  final var boardLimitBorderRight_property_selection : EBSelection <String> {
     return self.boardLimitBorderRight_property.prop
   }
 
   //····················································································································
 
-  var boardLimitBorderRight : String? {
+  final var boardLimitBorderRight : String? {
     switch self.boardLimitBorderRight_property_selection {
     case .empty, .multiple :
       return nil
@@ -3570,17 +3570,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: borderElementCountString
   //····················································································································
 
-  let borderElementCountString_property = EBTransientProperty_String ()
+  final let borderElementCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var borderElementCountString_property_selection : EBSelection <String> {
+  final var borderElementCountString_property_selection : EBSelection <String> {
     return self.borderElementCountString_property.prop
   }
 
   //····················································································································
 
-  var borderElementCountString : String? {
+  final var borderElementCountString : String? {
     switch self.borderElementCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -3593,17 +3593,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: borderOutlineBackground
   //····················································································································
 
-  let borderOutlineBackground_property = EBTransientProperty_EBShape ()
+  final let borderOutlineBackground_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var borderOutlineBackground_property_selection : EBSelection <EBShape> {
+  final var borderOutlineBackground_property_selection : EBSelection <EBShape> {
     return self.borderOutlineBackground_property.prop
   }
 
   //····················································································································
 
-  var borderOutlineBackground : EBShape? {
+  final var borderOutlineBackground : EBShape? {
     switch self.borderOutlineBackground_property_selection {
     case .empty, .multiple :
       return nil
@@ -3616,17 +3616,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: borderViewBackground
   //····················································································································
 
-  let borderViewBackground_property = EBTransientProperty_EBShape ()
+  final let borderViewBackground_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var borderViewBackground_property_selection : EBSelection <EBShape> {
+  final var borderViewBackground_property_selection : EBSelection <EBShape> {
     return self.borderViewBackground_property.prop
   }
 
   //····················································································································
 
-  var borderViewBackground : EBShape? {
+  final var borderViewBackground : EBShape? {
     switch self.borderViewBackground_property_selection {
     case .empty, .multiple :
       return nil
@@ -3639,17 +3639,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: deviceNames
   //····················································································································
 
-  let deviceNames_property = EBTransientProperty_StringArray ()
+  final let deviceNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var deviceNames_property_selection : EBSelection <StringArray> {
+  final var deviceNames_property_selection : EBSelection <StringArray> {
     return self.deviceNames_property.prop
   }
 
   //····················································································································
 
-  var deviceNames : StringArray? {
+  final var deviceNames : StringArray? {
     switch self.deviceNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -3662,17 +3662,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: allClassNames
   //····················································································································
 
-  let allClassNames_property = EBTransientProperty_StringArray ()
+  final let allClassNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var allClassNames_property_selection : EBSelection <StringArray> {
+  final var allClassNames_property_selection : EBSelection <StringArray> {
     return self.allClassNames_property.prop
   }
 
   //····················································································································
 
-  var allClassNames : StringArray? {
+  final var allClassNames : StringArray? {
     switch self.allClassNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -3685,17 +3685,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: sheetGeometry
   //····················································································································
 
-  let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
+  final let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
 
   //····················································································································
 
-  var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry> {
+  final var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry> {
     return self.sheetGeometry_property.prop
   }
 
   //····················································································································
 
-  var sheetGeometry : SchematicSheetGeometry? {
+  final var sheetGeometry : SchematicSheetGeometry? {
     switch self.sheetGeometry_property_selection {
     case .empty, .multiple :
       return nil
@@ -3708,17 +3708,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: schematicBackgroundDisplay
   //····················································································································
 
-  let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
+  final let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var schematicBackgroundDisplay_property_selection : EBSelection <EBShape> {
+  final var schematicBackgroundDisplay_property_selection : EBSelection <EBShape> {
     return self.schematicBackgroundDisplay_property.prop
   }
 
   //····················································································································
 
-  var schematicBackgroundDisplay : EBShape? {
+  final var schematicBackgroundDisplay : EBShape? {
     switch self.schematicBackgroundDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -3731,17 +3731,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: netWarningCount
   //····················································································································
 
-  let netWarningCount_property = EBTransientProperty_Int ()
+  final let netWarningCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var netWarningCount_property_selection : EBSelection <Int> {
+  final var netWarningCount_property_selection : EBSelection <Int> {
     return self.netWarningCount_property.prop
   }
 
   //····················································································································
 
-  var netWarningCount : Int? {
+  final var netWarningCount : Int? {
     switch self.netWarningCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -3754,17 +3754,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: netNamesArray
   //····················································································································
 
-  let netNamesArray_property = EBTransientProperty_StringArray ()
+  final let netNamesArray_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var netNamesArray_property_selection : EBSelection <StringArray> {
+  final var netNamesArray_property_selection : EBSelection <StringArray> {
     return self.netNamesArray_property.prop
   }
 
   //····················································································································
 
-  var netNamesArray : StringArray? {
+  final var netNamesArray : StringArray? {
     switch self.netNamesArray_property_selection {
     case .empty, .multiple :
       return nil
@@ -3777,17 +3777,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: unplacedSymbols
   //····················································································································
 
-  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
-  var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
+  final var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
     return self.unplacedSymbols_property.prop
   }
 
   //····················································································································
 
-  var unplacedSymbols : StringTagArray? {
+  final var unplacedSymbols : StringTagArray? {
     switch self.unplacedSymbols_property_selection {
     case .empty, .multiple :
       return nil
@@ -3800,17 +3800,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: unplacedPackages
   //····················································································································
 
-  let unplacedPackages_property = EBTransientProperty_StringTagArray ()
+  final let unplacedPackages_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
-  var unplacedPackages_property_selection : EBSelection <StringTagArray> {
+  final var unplacedPackages_property_selection : EBSelection <StringTagArray> {
     return self.unplacedPackages_property.prop
   }
 
   //····················································································································
 
-  var unplacedPackages : StringTagArray? {
+  final var unplacedPackages : StringTagArray? {
     switch self.unplacedPackages_property_selection {
     case .empty, .multiple :
       return nil
@@ -3823,17 +3823,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: componentsPlacedInBoard
   //····················································································································
 
-  let componentsPlacedInBoard_property = EBTransientProperty_StringTagArray ()
+  final let componentsPlacedInBoard_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
-  var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray> {
+  final var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray> {
     return self.componentsPlacedInBoard_property.prop
   }
 
   //····················································································································
 
-  var componentsPlacedInBoard : StringTagArray? {
+  final var componentsPlacedInBoard : StringTagArray? {
     switch self.componentsPlacedInBoard_property_selection {
     case .empty, .multiple :
       return nil
@@ -3846,17 +3846,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: placedComponentNameArray
   //····················································································································
 
-  let placedComponentNameArray_property = EBTransientProperty_StringArray ()
+  final let placedComponentNameArray_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var placedComponentNameArray_property_selection : EBSelection <StringArray> {
+  final var placedComponentNameArray_property_selection : EBSelection <StringArray> {
     return self.placedComponentNameArray_property.prop
   }
 
   //····················································································································
 
-  var placedComponentNameArray : StringArray? {
+  final var placedComponentNameArray : StringArray? {
     switch self.placedComponentNameArray_property_selection {
     case .empty, .multiple :
       return nil
@@ -3869,17 +3869,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: schematicHasErrorOrWarning
   //····················································································································
 
-  let schematicHasErrorOrWarning_property = EBTransientProperty_Bool ()
+  final let schematicHasErrorOrWarning_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var schematicHasErrorOrWarning_property_selection : EBSelection <Bool> {
+  final var schematicHasErrorOrWarning_property_selection : EBSelection <Bool> {
     return self.schematicHasErrorOrWarning_property.prop
   }
 
   //····················································································································
 
-  var schematicHasErrorOrWarning : Bool? {
+  final var schematicHasErrorOrWarning : Bool? {
     switch self.schematicHasErrorOrWarning_property_selection {
     case .empty, .multiple :
       return nil
@@ -3892,17 +3892,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: schematicStatusMessage
   //····················································································································
 
-  let schematicStatusMessage_property = EBTransientProperty_String ()
+  final let schematicStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var schematicStatusMessage_property_selection : EBSelection <String> {
+  final var schematicStatusMessage_property_selection : EBSelection <String> {
     return self.schematicStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var schematicStatusMessage : String? {
+  final var schematicStatusMessage : String? {
     switch self.schematicStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -3915,17 +3915,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: schematicStatusImage
   //····················································································································
 
-  let schematicStatusImage_property = EBTransientProperty_NSImage ()
+  final let schematicStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var schematicStatusImage_property_selection : EBSelection <NSImage> {
+  final var schematicStatusImage_property_selection : EBSelection <NSImage> {
     return self.schematicStatusImage_property.prop
   }
 
   //····················································································································
 
-  var schematicStatusImage : NSImage? {
+  final var schematicStatusImage : NSImage? {
     switch self.schematicStatusImage_property_selection {
     case .empty, .multiple :
       return nil

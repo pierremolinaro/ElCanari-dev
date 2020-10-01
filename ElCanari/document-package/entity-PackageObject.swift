@@ -42,17 +42,17 @@ class PackageObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -65,17 +65,17 @@ class PackageObject : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <PackageRoot?> {
+  final var mRoot_property_selection : EBSelection <PackageRoot?> {
     return .single (self.mRoot_property.propval)
   }
 
   //····················································································································
 
-  var mRoot : PackageRoot? {
+  final var mRoot : PackageRoot? {
     get {
       return self.mRoot_property.propval
     }
@@ -91,11 +91,11 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mRoot_none : StoredObject_PackageRoot { return self.mRoot_property }
+  final var mRoot_none : StoredObject_PackageRoot { return self.mRoot_property }
 
   //····················································································································
 
-  var mRoot_none_selection : EBSelection <Bool> {
+  final var mRoot_none_selection : EBSelection <Bool> {
     return .single (self.mRoot_property.propval == nil)
   }
 
@@ -103,17 +103,17 @@ class PackageObject : EBGraphicManagedObject,
   //   Transient property: knobSize
   //····················································································································
 
-  let knobSize_property = EBTransientProperty_Double ()
+  final let knobSize_property = EBTransientProperty_Double ()
 
   //····················································································································
 
-  var knobSize_property_selection : EBSelection <Double> {
+  final var knobSize_property_selection : EBSelection <Double> {
     return self.knobSize_property.prop
   }
 
   //····················································································································
 
-  var knobSize : Double? {
+  final var knobSize : Double? {
     switch self.knobSize_property_selection {
     case .empty, .multiple :
       return nil

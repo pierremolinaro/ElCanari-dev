@@ -35,7 +35,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Atomic property: mPadName
   //····················································································································
 
-  let mPadName_property = EBStoredProperty_String (defaultValue: "")
+  final let mPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -58,17 +58,17 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-  let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false)
+  final let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mPin_property_selection : EBSelection <DevicePinInProject?> {
+  final var mPin_property_selection : EBSelection <DevicePinInProject?> {
     return .single (self.mPin_property.propval)
   }
 
   //····················································································································
 
-  var mPin : DevicePinInProject? {
+  final var mPin : DevicePinInProject? {
     get {
       return self.mPin_property.propval
     }
@@ -84,11 +84,11 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
+  final var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
 
   //····················································································································
 
-  var mPin_none_selection : EBSelection <Bool> {
+  final var mPin_none_selection : EBSelection <Bool> {
     return .single (self.mPin_property.propval == nil)
   }
 
@@ -96,17 +96,17 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Transient property: pinPadAssignment
   //····················································································································
 
-  let pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
+  final let pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
 
   //····················································································································
 
-  var pinPadAssignment_property_selection : EBSelection <ThreeStrings> {
+  final var pinPadAssignment_property_selection : EBSelection <ThreeStrings> {
     return self.pinPadAssignment_property.prop
   }
 
   //····················································································································
 
-  var pinPadAssignment : ThreeStrings? {
+  final var pinPadAssignment : ThreeStrings? {
     switch self.pinPadAssignment_property_selection {
     case .empty, .multiple :
       return nil
@@ -119,17 +119,17 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  let descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
+  final let descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <PinPadAssignmentInProject> {
+  final var descriptor_property_selection : EBSelection <PinPadAssignmentInProject> {
     return self.descriptor_property.prop
   }
 
   //····················································································································
 
-  var descriptor : PinPadAssignmentInProject? {
+  final var descriptor : PinPadAssignmentInProject? {
     switch self.descriptor_property_selection {
     case .empty, .multiple :
       return nil

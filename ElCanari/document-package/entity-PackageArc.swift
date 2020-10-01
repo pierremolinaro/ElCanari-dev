@@ -133,7 +133,7 @@ class PackageArc : PackageObject,
   //   Atomic property: yCenter
   //····················································································································
 
-  let yCenter_property = EBStoredProperty_Int (defaultValue: 342900)
+  final let yCenter_property = EBStoredProperty_Int (defaultValue: 342900)
 
   //····················································································································
 
@@ -156,7 +156,7 @@ class PackageArc : PackageObject,
   //   Atomic property: radius
   //····················································································································
 
-  let radius_property = EBStoredProperty_Int (defaultValue: 342900)
+  final let radius_property = EBStoredProperty_Int (defaultValue: 342900)
 
   //····················································································································
 
@@ -179,7 +179,7 @@ class PackageArc : PackageObject,
   //   Atomic property: startAngle
   //····················································································································
 
-  let startAngle_property = EBStoredProperty_Int (defaultValue: 45000)
+  final let startAngle_property = EBStoredProperty_Int (defaultValue: 45000)
 
   //····················································································································
 
@@ -202,7 +202,7 @@ class PackageArc : PackageObject,
   //   Atomic property: arcAngle
   //····················································································································
 
-  let arcAngle_property = EBStoredProperty_Int (defaultValue: 270000)
+  final let arcAngle_property = EBStoredProperty_Int (defaultValue: 270000)
 
   //····················································································································
 
@@ -225,7 +225,7 @@ class PackageArc : PackageObject,
   //   Atomic property: startTangent
   //····················································································································
 
-  let startTangent_property = EBStoredProperty_Int (defaultValue: 0)
+  final let startTangent_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -248,7 +248,7 @@ class PackageArc : PackageObject,
   //   Atomic property: endTangent
   //····················································································································
 
-  let endTangent_property = EBStoredProperty_Int (defaultValue: 0)
+  final let endTangent_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -271,7 +271,7 @@ class PackageArc : PackageObject,
   //   Atomic property: pathIsClosed
   //····················································································································
 
-  let pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false)
+  final let pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -294,7 +294,7 @@ class PackageArc : PackageObject,
   //   Atomic property: xCenterUnit
   //····················································································································
 
-  let xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -317,7 +317,7 @@ class PackageArc : PackageObject,
   //   Atomic property: yCenterUnit
   //····················································································································
 
-  let yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -340,7 +340,7 @@ class PackageArc : PackageObject,
   //   Atomic property: radiusUnit
   //····················································································································
 
-  let radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -363,7 +363,7 @@ class PackageArc : PackageObject,
   //   Atomic property: startTangentUnit
   //····················································································································
 
-  let startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -386,7 +386,7 @@ class PackageArc : PackageObject,
   //   Atomic property: endTangentUnit
   //····················································································································
 
-  let endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -409,7 +409,7 @@ class PackageArc : PackageObject,
   //   Atomic property: xCenter
   //····················································································································
 
-  let xCenter_property = EBStoredProperty_Int (defaultValue: 342900)
+  final let xCenter_property = EBStoredProperty_Int (defaultValue: 342900)
 
   //····················································································································
 
@@ -432,17 +432,17 @@ class PackageArc : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
+  final var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
     return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
 
-  var strokeBezierPath : EBBezierPath? {
+  final var strokeBezierPath : EBBezierPath? {
     switch self.strokeBezierPath_property_selection {
     case .empty, .multiple :
       return nil

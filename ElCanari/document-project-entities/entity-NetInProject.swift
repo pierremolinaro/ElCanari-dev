@@ -70,17 +70,17 @@ class NetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
+  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
+  final var mPoints_property_selection : EBSelection < [PointInSchematic] > {
     return self.mPoints_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematic] {
+  final var mPoints : [PointInSchematic] {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -89,7 +89,7 @@ class NetInProject : EBManagedObject,
   //   Atomic property: mNetName
   //····················································································································
 
-  let mNetName_property = EBStoredProperty_String (defaultValue: "")
+  final let mNetName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -112,17 +112,17 @@ class NetInProject : EBManagedObject,
   //   To many property: mTracks
   //····················································································································
 
-  let mTracks_property = StoredArrayOf_BoardTrack (usedForSignature: false)
+  final let mTracks_property = StoredArrayOf_BoardTrack (usedForSignature: false)
 
   //····················································································································
 
-  var mTracks_property_selection : EBSelection < [BoardTrack] > {
+  final var mTracks_property_selection : EBSelection < [BoardTrack] > {
     return self.mTracks_property.prop
   }
 
   //····················································································································
 
-  var mTracks : [BoardTrack] {
+  final var mTracks : [BoardTrack] {
     get { return self.mTracks_property.propval }
     set { self.mTracks_property.setProp (newValue) }
   }
@@ -131,17 +131,17 @@ class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-  let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false)
+  final let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mNetClass_property_selection : EBSelection <NetClassInProject?> {
+  final var mNetClass_property_selection : EBSelection <NetClassInProject?> {
     return .single (self.mNetClass_property.propval)
   }
 
   //····················································································································
 
-  var mNetClass : NetClassInProject? {
+  final var mNetClass : NetClassInProject? {
     get {
       return self.mNetClass_property.propval
     }
@@ -157,11 +157,11 @@ class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
+  final var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
 
   //····················································································································
 
-  var mNetClass_none_selection : EBSelection <Bool> {
+  final var mNetClass_none_selection : EBSelection <Bool> {
     return .single (self.mNetClass_property.propval == nil)
   }
 
@@ -169,17 +169,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: netClassName
   //····················································································································
 
-  let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String> {
+  final var netClassName_property_selection : EBSelection <String> {
     return self.netClassName_property.prop
   }
 
   //····················································································································
 
-  var netClassName : String? {
+  final var netClassName : String? {
     switch self.netClassName_property_selection {
     case .empty, .multiple :
       return nil
@@ -192,17 +192,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: netClassTrackWidth
   //····················································································································
 
-  let netClassTrackWidth_property = EBTransientProperty_Int ()
+  final let netClassTrackWidth_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var netClassTrackWidth_property_selection : EBSelection <Int> {
+  final var netClassTrackWidth_property_selection : EBSelection <Int> {
     return self.netClassTrackWidth_property.prop
   }
 
   //····················································································································
 
-  var netClassTrackWidth : Int? {
+  final var netClassTrackWidth : Int? {
     switch self.netClassTrackWidth_property_selection {
     case .empty, .multiple :
       return nil
@@ -215,17 +215,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: netClassViaHoleDiameter
   //····················································································································
 
-  let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
+  final var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
     return self.netClassViaHoleDiameter_property.prop
   }
 
   //····················································································································
 
-  var netClassViaHoleDiameter : Int? {
+  final var netClassViaHoleDiameter : Int? {
     switch self.netClassViaHoleDiameter_property_selection {
     case .empty, .multiple :
       return nil
@@ -238,17 +238,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: netClassViaPadDiameter
   //····················································································································
 
-  let netClassViaPadDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaPadDiameter_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var netClassViaPadDiameter_property_selection : EBSelection <Int> {
+  final var netClassViaPadDiameter_property_selection : EBSelection <Int> {
     return self.netClassViaPadDiameter_property.prop
   }
 
   //····················································································································
 
-  var netClassViaPadDiameter : Int? {
+  final var netClassViaPadDiameter : Int? {
     switch self.netClassViaPadDiameter_property_selection {
     case .empty, .multiple :
       return nil
@@ -261,17 +261,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: wireColor
   //····················································································································
 
-  let wireColor_property = EBTransientProperty_NSColor ()
+  final let wireColor_property = EBTransientProperty_NSColor ()
 
   //····················································································································
 
-  var wireColor_property_selection : EBSelection <NSColor> {
+  final var wireColor_property_selection : EBSelection <NSColor> {
     return self.wireColor_property.prop
   }
 
   //····················································································································
 
-  var wireColor : NSColor? {
+  final var wireColor : NSColor? {
     switch self.wireColor_property_selection {
     case .empty, .multiple :
       return nil
@@ -284,17 +284,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: netSchematicPointsInfo
   //····················································································································
 
-  let netSchematicPointsInfo_property = EBTransientProperty_NetInfoPointArray ()
+  final let netSchematicPointsInfo_property = EBTransientProperty_NetInfoPointArray ()
 
   //····················································································································
 
-  var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray> {
+  final var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray> {
     return self.netSchematicPointsInfo_property.prop
   }
 
   //····················································································································
 
-  var netSchematicPointsInfo : NetInfoPointArray? {
+  final var netSchematicPointsInfo : NetInfoPointArray? {
     switch self.netSchematicPointsInfo_property_selection {
     case .empty, .multiple :
       return nil
@@ -307,17 +307,17 @@ class NetInProject : EBManagedObject,
   //   Transient property: trackCount
   //····················································································································
 
-  let trackCount_property = EBTransientProperty_Int ()
+  final let trackCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var trackCount_property_selection : EBSelection <Int> {
+  final var trackCount_property_selection : EBSelection <Int> {
     return self.trackCount_property.prop
   }
 
   //····················································································································
 
-  var trackCount : Int? {
+  final var trackCount : Int? {
     switch self.trackCount_property_selection {
     case .empty, .multiple :
       return nil

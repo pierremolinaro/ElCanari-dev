@@ -35,13 +35,13 @@ extension WireInSchematic {
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
-    if let p1 = self.mP1, !ioSet.objects.contains (p1) {
-      ioSet.objects.insert (p1)
+    if let p1 = self.mP1, !ioSet.contains (p1) {
+      ioSet.insert (p1)
       p1.mX += inDx
       p1.mY += inDy
     }
-    if let p2 = self.mP2, !ioSet.objects.contains (p2) {
-      ioSet.objects.insert (p2)
+    if let p2 = self.mP2, !ioSet.contains (p2) {
+      ioSet.insert (p2)
       p2.mX += inDx
       p2.mY += inDy
     }

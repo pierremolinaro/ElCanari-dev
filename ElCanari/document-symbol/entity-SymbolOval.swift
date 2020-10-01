@@ -70,7 +70,7 @@ class SymbolOval : SymbolObject,
   //   Atomic property: y
   //····················································································································
 
-  let y_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -93,7 +93,7 @@ class SymbolOval : SymbolObject,
   //   Atomic property: width
   //····················································································································
 
-  let width_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let width_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -116,7 +116,7 @@ class SymbolOval : SymbolObject,
   //   Atomic property: height
   //····················································································································
 
-  let height_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let height_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -139,7 +139,7 @@ class SymbolOval : SymbolObject,
   //   Atomic property: x
   //····················································································································
 
-  let x_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -162,17 +162,17 @@ class SymbolOval : SymbolObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
     return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
 
-  var strokeBezierPath : NSBezierPath? {
+  final var strokeBezierPath : NSBezierPath? {
     switch self.strokeBezierPath_property_selection {
     case .empty, .multiple :
       return nil

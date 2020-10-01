@@ -35,17 +35,17 @@ class SymbolObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil

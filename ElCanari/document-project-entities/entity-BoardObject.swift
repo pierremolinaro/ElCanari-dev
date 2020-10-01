@@ -84,17 +84,17 @@ class BoardObject : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <ProjectRoot?> {
+  final var mRoot_property_selection : EBSelection <ProjectRoot?> {
     return .single (self.mRoot_property.propval)
   }
 
   //····················································································································
 
-  var mRoot : ProjectRoot? {
+  final var mRoot : ProjectRoot? {
     get {
       return self.mRoot_property.propval
     }
@@ -110,11 +110,11 @@ class BoardObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+  final var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
 
   //····················································································································
 
-  var mRoot_none_selection : EBSelection <Bool> {
+  final var mRoot_none_selection : EBSelection <Bool> {
     return .single (self.mRoot_property.propval == nil)
   }
 
@@ -122,17 +122,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: isPlacedInBoard
   //····················································································································
 
-  let isPlacedInBoard_property = EBTransientProperty_Bool ()
+  final let isPlacedInBoard_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var isPlacedInBoard_property_selection : EBSelection <Bool> {
+  final var isPlacedInBoard_property_selection : EBSelection <Bool> {
     return self.isPlacedInBoard_property.prop
   }
 
   //····················································································································
 
-  var isPlacedInBoard : Bool? {
+  final var isPlacedInBoard : Bool? {
     switch self.isPlacedInBoard_property_selection {
     case .empty, .multiple :
       return nil
@@ -145,17 +145,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -168,17 +168,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: isVia
   //····················································································································
 
-  let isVia_property = EBTransientProperty_Bool ()
+  final let isVia_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var isVia_property_selection : EBSelection <Bool> {
+  final var isVia_property_selection : EBSelection <Bool> {
     return self.isVia_property.prop
   }
 
   //····················································································································
 
-  var isVia : Bool? {
+  final var isVia : Bool? {
     switch self.isVia_property_selection {
     case .empty, .multiple :
       return nil
@@ -191,17 +191,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: trackLength
   //····················································································································
 
-  let trackLength_property = EBTransientProperty_Double ()
+  final let trackLength_property = EBTransientProperty_Double ()
 
   //····················································································································
 
-  var trackLength_property_selection : EBSelection <Double> {
+  final var trackLength_property_selection : EBSelection <Double> {
     return self.trackLength_property.prop
   }
 
   //····················································································································
 
-  var trackLength : Double? {
+  final var trackLength : Double? {
     switch self.trackLength_property_selection {
     case .empty, .multiple :
       return nil
@@ -214,17 +214,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: signatureForERCChecking
   //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32> {
     return self.signatureForERCChecking_property.prop
   }
 
   //····················································································································
 
-  var signatureForERCChecking : UInt32? {
+  final var signatureForERCChecking : UInt32? {
     switch self.signatureForERCChecking_property_selection {
     case .empty, .multiple :
       return nil
@@ -237,17 +237,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: netNameAndPadLocation
   //····················································································································
 
-  let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
+  final let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
 
   //····················································································································
 
-  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
+  final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
     return self.netNameAndPadLocation_property.prop
   }
 
   //····················································································································
 
-  var netNameAndPadLocation : RastnetInfoArray? {
+  final var netNameAndPadLocation : RastnetInfoArray? {
     switch self.netNameAndPadLocation_property_selection {
     case .empty, .multiple :
       return nil
@@ -260,17 +260,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: componentName
   //····················································································································
 
-  let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var componentName_property_selection : EBSelection <String> {
+  final var componentName_property_selection : EBSelection <String> {
     return self.componentName_property.prop
   }
 
   //····················································································································
 
-  var componentName : String? {
+  final var componentName : String? {
     switch self.componentName_property_selection {
     case .empty, .multiple :
       return nil
@@ -283,17 +283,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: errorOrWarningIssueSize
   //····················································································································
 
-  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
+  final let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
 
   //····················································································································
 
-  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
+  final var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
     return self.errorOrWarningIssueSize_property.prop
   }
 
   //····················································································································
 
-  var errorOrWarningIssueSize : Double? {
+  final var errorOrWarningIssueSize : Double? {
     switch self.errorOrWarningIssueSize_property_selection {
     case .empty, .multiple :
       return nil

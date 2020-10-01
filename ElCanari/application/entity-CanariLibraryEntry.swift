@@ -49,7 +49,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mPath
   //····················································································································
 
-  let mPath_property = EBStoredProperty_String (defaultValue: "Hello")
+  final let mPath_property = EBStoredProperty_String (defaultValue: "Hello")
 
   //····················································································································
 
@@ -72,7 +72,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUses
   //····················································································································
 
-  let mUses_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mUses_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mLibraryRepositoryURL
   //····················································································································
 
-  let mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
+  final let mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUserAndPasswordTag
   //····················································································································
 
-  let mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
+  final let mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -141,17 +141,17 @@ class CanariLibraryEntry : EBManagedObject,
   //   Transient property: mStatusImage
   //····················································································································
 
-  let mStatusImage_property = EBTransientProperty_NSImage ()
+  final let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var mStatusImage_property_selection : EBSelection <NSImage> {
+  final var mStatusImage_property_selection : EBSelection <NSImage> {
     return self.mStatusImage_property.prop
   }
 
   //····················································································································
 
-  var mStatusImage : NSImage? {
+  final var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil

@@ -40,8 +40,8 @@ extension LabelInSchematic {
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
-    if let point = self.mPoint, point.mSymbol == nil, !ioSet.objects.contains (point) {
-      ioSet.objects.insert (point)
+    if let point = self.mPoint, point.mSymbol == nil, !ioSet.contains (point) {
+      ioSet.insert (point)
       point.mX += inDx
       point.mY += inDy
     }

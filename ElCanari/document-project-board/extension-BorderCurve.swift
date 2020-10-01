@@ -55,15 +55,15 @@ extension BorderCurve {
     if let next = self.mNext, let previous = self.mPrevious, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       let dx = max (inDx, -self.mX, -next.mX)
       let dy = max (inDy, -self.mY, -next.mY)
-      if !ioSet.objects.contains (self) {
-        ioSet.objects.insert (self)
+      if !ioSet.contains (self) {
+        ioSet.insert (self)
         self.mX += dx
         self.mY += dy
         self.setControlPointsDefaultValuesForLine ()
         previous.setControlPointsDefaultValuesForLine ()
       }
-      if !ioSet.objects.contains (next) {
-        ioSet.objects.insert (next)
+      if !ioSet.contains (next) {
+        ioSet.insert (next)
         next.mX += dx
         next.mY += dy
         self.setControlPointsDefaultValuesForLine ()

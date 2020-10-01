@@ -70,7 +70,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mFirstX
   //····················································································································
 
-  let mFirstX_property = EBStoredProperty_Int (defaultValue: 457200)
+  final let mFirstX_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -93,7 +93,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mFirstY
   //····················································································································
 
-  let mFirstY_property = EBStoredProperty_Int (defaultValue: 457200)
+  final let mFirstY_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -116,7 +116,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mFirstColor
   //····················································································································
 
-  let mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green)
+  final let mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green)
 
   //····················································································································
 
@@ -139,7 +139,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mSecondDx
   //····················································································································
 
-  let mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200)
+  final let mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -162,7 +162,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mSecondDy
   //····················································································································
 
-  let mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200)
+  final let mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -185,7 +185,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mSecondColor
   //····················································································································
 
-  let mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
+  final let mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
 
   //····················································································································
 
@@ -208,17 +208,17 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <PackageRoot?> {
+  final var mRoot_property_selection : EBSelection <PackageRoot?> {
     return .single (self.mRoot_property.propval)
   }
 
   //····················································································································
 
-  var mRoot : PackageRoot? {
+  final var mRoot : PackageRoot? {
     get {
       return self.mRoot_property.propval
     }
@@ -234,11 +234,11 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mRoot_none : StoredObject_PackageRoot { return self.mRoot_property }
+  final var mRoot_none : StoredObject_PackageRoot { return self.mRoot_property }
 
   //····················································································································
 
-  var mRoot_none_selection : EBSelection <Bool> {
+  final var mRoot_none_selection : EBSelection <Bool> {
     return .single (self.mRoot_property.propval == nil)
   }
 

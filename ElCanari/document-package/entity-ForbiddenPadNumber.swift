@@ -21,7 +21,7 @@ class ForbiddenPadNumber : EBManagedObject,
   //   Atomic property: padNumber
   //····················································································································
 
-  let padNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  final let padNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

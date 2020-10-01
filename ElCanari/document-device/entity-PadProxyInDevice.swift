@@ -49,7 +49,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mPinInstanceName
   //····················································································································
 
-  let mPinInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  final let mPinInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -72,7 +72,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mPadName
   //····················································································································
 
-  let mPadName_property = EBStoredProperty_String (defaultValue: "")
+  final let mPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mIsNC
   //····················································································································
 
-  let mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -118,17 +118,17 @@ class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-  let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false)
+  final let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false)
 
   //····················································································································
 
-  var mPinInstance_property_selection : EBSelection <SymbolPinInstanceInDevice?> {
+  final var mPinInstance_property_selection : EBSelection <SymbolPinInstanceInDevice?> {
     return .single (self.mPinInstance_property.propval)
   }
 
   //····················································································································
 
-  var mPinInstance : SymbolPinInstanceInDevice? {
+  final var mPinInstance : SymbolPinInstanceInDevice? {
     get {
       return self.mPinInstance_property.propval
     }
@@ -144,11 +144,11 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
+  final var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
 
   //····················································································································
 
-  var mPinInstance_none_selection : EBSelection <Bool> {
+  final var mPinInstance_none_selection : EBSelection <Bool> {
     return .single (self.mPinInstance_property.propval == nil)
   }
 
@@ -156,17 +156,17 @@ class PadProxyInDevice : EBManagedObject,
   //   Transient property: isConnected
   //····················································································································
 
-  let isConnected_property = EBTransientProperty_Bool ()
+  final let isConnected_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var isConnected_property_selection : EBSelection <Bool> {
+  final var isConnected_property_selection : EBSelection <Bool> {
     return self.isConnected_property.prop
   }
 
   //····················································································································
 
-  var isConnected : Bool? {
+  final var isConnected : Bool? {
     switch self.isConnected_property_selection {
     case .empty, .multiple :
       return nil
@@ -179,17 +179,17 @@ class PadProxyInDevice : EBManagedObject,
   //   Transient property: symbolName
   //····················································································································
 
-  let symbolName_property = EBTransientProperty_String ()
+  final let symbolName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var symbolName_property_selection : EBSelection <String> {
+  final var symbolName_property_selection : EBSelection <String> {
     return self.symbolName_property.prop
   }
 
   //····················································································································
 
-  var symbolName : String? {
+  final var symbolName : String? {
     switch self.symbolName_property_selection {
     case .empty, .multiple :
       return nil

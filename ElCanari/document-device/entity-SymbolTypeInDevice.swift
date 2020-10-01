@@ -77,17 +77,17 @@ class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  let mInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: false)
+  final let mInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: false)
 
   //····················································································································
 
-  var mInstances_property_selection : EBSelection < [SymbolInstanceInDevice] > {
+  final var mInstances_property_selection : EBSelection < [SymbolInstanceInDevice] > {
     return self.mInstances_property.prop
   }
 
   //····················································································································
 
-  var mInstances : [SymbolInstanceInDevice] {
+  final var mInstances : [SymbolInstanceInDevice] {
     get { return self.mInstances_property.propval }
     set { self.mInstances_property.setProp (newValue) }
   }
@@ -96,7 +96,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mTypeName
   //····················································································································
 
-  let mTypeName_property = EBStoredProperty_String (defaultValue: "")
+  final let mTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -119,7 +119,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mVersion
   //····················································································································
 
-  let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -142,7 +142,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -165,7 +165,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -188,7 +188,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFilledBezierPath
   //····················································································································
 
-  let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  final let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -211,17 +211,17 @@ class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mPinTypes
   //····················································································································
 
-  let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice (usedForSignature: true)
+  final let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice (usedForSignature: true)
 
   //····················································································································
 
-  var mPinTypes_property_selection : EBSelection < [SymbolPinTypeInDevice] > {
+  final var mPinTypes_property_selection : EBSelection < [SymbolPinTypeInDevice] > {
     return self.mPinTypes_property.prop
   }
 
   //····················································································································
 
-  var mPinTypes : [SymbolPinTypeInDevice] {
+  final var mPinTypes : [SymbolPinTypeInDevice] {
     get { return self.mPinTypes_property.propval }
     set { self.mPinTypes_property.setProp (newValue) }
   }
@@ -230,17 +230,17 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String> {
+  final var versionString_property_selection : EBSelection <String> {
     return self.versionString_property.prop
   }
 
   //····················································································································
 
-  var versionString : String? {
+  final var versionString : String? {
     switch self.versionString_property_selection {
     case .empty, .multiple :
       return nil
@@ -253,17 +253,17 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: instanceCount
   //····················································································································
 
-  let instanceCount_property = EBTransientProperty_Int ()
+  final let instanceCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var instanceCount_property_selection : EBSelection <Int> {
+  final var instanceCount_property_selection : EBSelection <Int> {
     return self.instanceCount_property.prop
   }
 
   //····················································································································
 
-  var instanceCount : Int? {
+  final var instanceCount : Int? {
     switch self.instanceCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -276,17 +276,17 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: documentSizeString
   //····················································································································
 
-  let documentSizeString_property = EBTransientProperty_String ()
+  final let documentSizeString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var documentSizeString_property_selection : EBSelection <String> {
+  final var documentSizeString_property_selection : EBSelection <String> {
     return self.documentSizeString_property.prop
   }
 
   //····················································································································
 
-  var documentSizeString : String? {
+  final var documentSizeString : String? {
     switch self.documentSizeString_property_selection {
     case .empty, .multiple :
       return nil
@@ -299,17 +299,17 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: pinNameShape
   //····················································································································
 
-  let pinNameShape_property = EBTransientProperty_EBShape ()
+  final let pinNameShape_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var pinNameShape_property_selection : EBSelection <EBShape> {
+  final var pinNameShape_property_selection : EBSelection <EBShape> {
     return self.pinNameShape_property.prop
   }
 
   //····················································································································
 
-  var pinNameShape : EBShape? {
+  final var pinNameShape : EBShape? {
     switch self.pinNameShape_property_selection {
     case .empty, .multiple :
       return nil

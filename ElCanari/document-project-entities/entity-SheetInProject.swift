@@ -56,17 +56,17 @@ class SheetInProject : EBManagedObject,
   //   To many property: mObjects
   //····················································································································
 
-  let mObjects_property = StoredArrayOf_SchematicObject (usedForSignature: false)
+  final let mObjects_property = StoredArrayOf_SchematicObject (usedForSignature: false)
 
   //····················································································································
 
-  var mObjects_property_selection : EBSelection < [SchematicObject] > {
+  final var mObjects_property_selection : EBSelection < [SchematicObject] > {
     return self.mObjects_property.prop
   }
 
   //····················································································································
 
-  var mObjects : [SchematicObject] {
+  final var mObjects : [SchematicObject] {
     get { return self.mObjects_property.propval }
     set { self.mObjects_property.setProp (newValue) }
   }
@@ -75,17 +75,17 @@ class SheetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
+  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
+  final var mPoints_property_selection : EBSelection < [PointInSchematic] > {
     return self.mPoints_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematic] {
+  final var mPoints : [PointInSchematic] {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -94,7 +94,7 @@ class SheetInProject : EBManagedObject,
   //   Atomic property: mSheetTitle
   //····················································································································
 
-  let mSheetTitle_property = EBStoredProperty_String (defaultValue: "")
+  final let mSheetTitle_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -117,17 +117,17 @@ class SheetInProject : EBManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <ProjectRoot?> {
+  final var mRoot_property_selection : EBSelection <ProjectRoot?> {
     return .single (self.mRoot_property.propval)
   }
 
   //····················································································································
 
-  var mRoot : ProjectRoot? {
+  final var mRoot : ProjectRoot? {
     get {
       return self.mRoot_property.propval
     }
@@ -143,11 +143,11 @@ class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+  final var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
 
   //····················································································································
 
-  var mRoot_none_selection : EBSelection <Bool> {
+  final var mRoot_none_selection : EBSelection <Bool> {
     return .single (self.mRoot_property.propval == nil)
   }
 
@@ -155,17 +155,17 @@ class SheetInProject : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -178,17 +178,17 @@ class SheetInProject : EBManagedObject,
   //   Transient property: connectedPoints
   //····················································································································
 
-  let connectedPoints_property = EBTransientProperty_EBShape ()
+  final let connectedPoints_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <EBShape> {
+  final var connectedPoints_property_selection : EBSelection <EBShape> {
     return self.connectedPoints_property.prop
   }
 
   //····················································································································
 
-  var connectedPoints : EBShape? {
+  final var connectedPoints : EBShape? {
     switch self.connectedPoints_property_selection {
     case .empty, .multiple :
       return nil
@@ -201,17 +201,17 @@ class SheetInProject : EBManagedObject,
   //   Transient property: connexionWarnings
   //····················································································································
 
-  let connexionWarnings_property = EBTransientProperty_Int ()
+  final let connexionWarnings_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var connexionWarnings_property_selection : EBSelection <Int> {
+  final var connexionWarnings_property_selection : EBSelection <Int> {
     return self.connexionWarnings_property.prop
   }
 
   //····················································································································
 
-  var connexionWarnings : Int? {
+  final var connexionWarnings : Int? {
     switch self.connexionWarnings_property_selection {
     case .empty, .multiple :
       return nil
@@ -224,17 +224,17 @@ class SheetInProject : EBManagedObject,
   //   Transient property: connexionErrors
   //····················································································································
 
-  let connexionErrors_property = EBTransientProperty_Int ()
+  final let connexionErrors_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var connexionErrors_property_selection : EBSelection <Int> {
+  final var connexionErrors_property_selection : EBSelection <Int> {
     return self.connexionErrors_property.prop
   }
 
   //····················································································································
 
-  var connexionErrors : Int? {
+  final var connexionErrors : Int? {
     switch self.connexionErrors_property_selection {
     case .empty, .multiple :
       return nil
@@ -247,17 +247,17 @@ class SheetInProject : EBManagedObject,
   //   Transient property: sheetDescriptor
   //····················································································································
 
-  let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
+  final let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
 
   //····················································································································
 
-  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
+  final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
     return self.sheetDescriptor_property.prop
   }
 
   //····················································································································
 
-  var sheetDescriptor : SchematicSheetDescriptor? {
+  final var sheetDescriptor : SchematicSheetDescriptor? {
     switch self.sheetDescriptor_property_selection {
     case .empty, .multiple :
       return nil

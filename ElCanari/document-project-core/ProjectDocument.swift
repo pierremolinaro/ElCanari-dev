@@ -138,17 +138,17 @@ import Cocoa
   //   Transient property: netCount
   //····················································································································
 
-  let netCount_property = EBTransientProperty_Int ()
+  final let netCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var netCount_property_selection : EBSelection <Int> {
+  final var netCount_property_selection : EBSelection <Int> {
     return self.netCount_property.prop
   }
 
   //····················································································································
 
-  var netCount : Int? {
+  final var netCount : Int? {
     switch self.netCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -161,17 +161,17 @@ import Cocoa
   //   Transient property: rastnetDisplayComponentNet
   //····················································································································
 
-  let rastnetDisplayComponentNet_property = EBTransientProperty_Bool ()
+  final let rastnetDisplayComponentNet_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var rastnetDisplayComponentNet_property_selection : EBSelection <Bool> {
+  final var rastnetDisplayComponentNet_property_selection : EBSelection <Bool> {
     return self.rastnetDisplayComponentNet_property.prop
   }
 
   //····················································································································
 
-  var rastnetDisplayComponentNet : Bool? {
+  final var rastnetDisplayComponentNet : Bool? {
     switch self.rastnetDisplayComponentNet_property_selection {
     case .empty, .multiple :
       return nil
@@ -184,17 +184,17 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var documentFilePath_property_selection : EBSelection <String> {
+  final var documentFilePath_property_selection : EBSelection <String> {
     return self.documentFilePath_property.prop
   }
 
   //····················································································································
 
-  var documentFilePath : String? {
+  final var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -207,17 +207,17 @@ import Cocoa
   //   Transient property: componentCount
   //····················································································································
 
-  let componentCount_property = EBTransientProperty_String ()
+  final let componentCount_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var componentCount_property_selection : EBSelection <String> {
+  final var componentCount_property_selection : EBSelection <String> {
     return self.componentCount_property.prop
   }
 
   //····················································································································
 
-  var componentCount : String? {
+  final var componentCount : String? {
     switch self.componentCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -230,17 +230,17 @@ import Cocoa
   //   Transient property: canRemoveNetClasses
   //····················································································································
 
-  let canRemoveNetClasses_property = EBTransientProperty_Bool ()
+  final let canRemoveNetClasses_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canRemoveNetClasses_property_selection : EBSelection <Bool> {
+  final var canRemoveNetClasses_property_selection : EBSelection <Bool> {
     return self.canRemoveNetClasses_property.prop
   }
 
   //····················································································································
 
-  var canRemoveNetClasses : Bool? {
+  final var canRemoveNetClasses : Bool? {
     switch self.canRemoveNetClasses_property_selection {
     case .empty, .multiple :
       return nil
@@ -253,17 +253,17 @@ import Cocoa
   //   Transient property: selectedDevicePackageNames
   //····················································································································
 
-  let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
+  final let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var selectedDevicePackageNames_property_selection : EBSelection <StringArray> {
+  final var selectedDevicePackageNames_property_selection : EBSelection <StringArray> {
     return self.selectedDevicePackageNames_property.prop
   }
 
   //····················································································································
 
-  var selectedDevicePackageNames : StringArray? {
+  final var selectedDevicePackageNames : StringArray? {
     switch self.selectedDevicePackageNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -276,17 +276,17 @@ import Cocoa
   //   Transient property: selectedDeviceSymbols
   //····················································································································
 
-  let selectedDeviceSymbols_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let selectedDeviceSymbols_property = EBTransientProperty_DeviceSymbolDictionary ()
 
   //····················································································································
 
-  var selectedDeviceSymbols_property_selection : EBSelection <DeviceSymbolDictionary> {
+  final var selectedDeviceSymbols_property_selection : EBSelection <DeviceSymbolDictionary> {
     return self.selectedDeviceSymbols_property.prop
   }
 
   //····················································································································
 
-  var selectedDeviceSymbols : DeviceSymbolDictionary? {
+  final var selectedDeviceSymbols : DeviceSymbolDictionary? {
     switch self.selectedDeviceSymbols_property_selection {
     case .empty, .multiple :
       return nil
@@ -299,17 +299,17 @@ import Cocoa
   //   Transient property: selectedDeviceSymbolNames
   //····················································································································
 
-  let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
+  final let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
 
   //····················································································································
 
-  var selectedDeviceSymbolNames_property_selection : EBSelection <TwoStringArray> {
+  final var selectedDeviceSymbolNames_property_selection : EBSelection <TwoStringArray> {
     return self.selectedDeviceSymbolNames_property.prop
   }
 
   //····················································································································
 
-  var selectedDeviceSymbolNames : TwoStringArray? {
+  final var selectedDeviceSymbolNames : TwoStringArray? {
     switch self.selectedDeviceSymbolNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -322,17 +322,17 @@ import Cocoa
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
 
-  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+  final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
     return self.pinPadAssignments_property.prop
   }
 
   //····················································································································
 
-  var pinPadAssignments : ThreeStringArray? {
+  final var pinPadAssignments : ThreeStringArray? {
     switch self.pinPadAssignments_property_selection {
     case .empty, .multiple :
       return nil
@@ -345,17 +345,17 @@ import Cocoa
   //   Transient property: schematicSheetOrientationIsCustom
   //····················································································································
 
-  let schematicSheetOrientationIsCustom_property = EBTransientProperty_Bool ()
+  final let schematicSheetOrientationIsCustom_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var schematicSheetOrientationIsCustom_property_selection : EBSelection <Bool> {
+  final var schematicSheetOrientationIsCustom_property_selection : EBSelection <Bool> {
     return self.schematicSheetOrientationIsCustom_property.prop
   }
 
   //····················································································································
 
-  var schematicSheetOrientationIsCustom : Bool? {
+  final var schematicSheetOrientationIsCustom : Bool? {
     switch self.schematicSheetOrientationIsCustom_property_selection {
     case .empty, .multiple :
       return nil
@@ -368,17 +368,17 @@ import Cocoa
   //   Transient property: netCountString
   //····················································································································
 
-  let netCountString_property = EBTransientProperty_String ()
+  final let netCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netCountString_property_selection : EBSelection <String> {
+  final var netCountString_property_selection : EBSelection <String> {
     return self.netCountString_property.prop
   }
 
   //····················································································································
 
-  var netCountString : String? {
+  final var netCountString : String? {
     switch self.netCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -391,17 +391,17 @@ import Cocoa
   //   Transient property: rastnetShape
   //····················································································································
 
-  let rastnetShape_property = EBTransientProperty_EBShape ()
+  final let rastnetShape_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var rastnetShape_property_selection : EBSelection <EBShape> {
+  final var rastnetShape_property_selection : EBSelection <EBShape> {
     return self.rastnetShape_property.prop
   }
 
   //····················································································································
 
-  var rastnetShape : EBShape? {
+  final var rastnetShape : EBShape? {
     switch self.rastnetShape_property_selection {
     case .empty, .multiple :
       return nil
@@ -414,17 +414,17 @@ import Cocoa
   //   Transient property: rastnetDisplayOneNet
   //····················································································································
 
-  let rastnetDisplayOneNet_property = EBTransientProperty_Bool ()
+  final let rastnetDisplayOneNet_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var rastnetDisplayOneNet_property_selection : EBSelection <Bool> {
+  final var rastnetDisplayOneNet_property_selection : EBSelection <Bool> {
     return self.rastnetDisplayOneNet_property.prop
   }
 
   //····················································································································
 
-  var rastnetDisplayOneNet : Bool? {
+  final var rastnetDisplayOneNet : Bool? {
     switch self.rastnetDisplayOneNet_property_selection {
     case .empty, .multiple :
       return nil
@@ -437,17 +437,17 @@ import Cocoa
   //   Transient property: artworlImportButtonTitle
   //····················································································································
 
-  let artworlImportButtonTitle_property = EBTransientProperty_String ()
+  final let artworlImportButtonTitle_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var artworlImportButtonTitle_property_selection : EBSelection <String> {
+  final var artworlImportButtonTitle_property_selection : EBSelection <String> {
     return self.artworlImportButtonTitle_property.prop
   }
 
   //····················································································································
 
-  var artworlImportButtonTitle : String? {
+  final var artworlImportButtonTitle : String? {
     switch self.artworlImportButtonTitle_property_selection {
     case .empty, .multiple :
       return nil
@@ -460,17 +460,17 @@ import Cocoa
   //   Transient property: documentFilePathOk
   //····················································································································
 
-  let documentFilePathOk_property = EBTransientProperty_Bool ()
+  final let documentFilePathOk_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var documentFilePathOk_property_selection : EBSelection <Bool> {
+  final var documentFilePathOk_property_selection : EBSelection <Bool> {
     return self.documentFilePathOk_property.prop
   }
 
   //····················································································································
 
-  var documentFilePathOk : Bool? {
+  final var documentFilePathOk : Bool? {
     switch self.documentFilePathOk_property_selection {
     case .empty, .multiple :
       return nil
@@ -483,17 +483,17 @@ import Cocoa
   //   Transient property: canRemoveSelectedFonts
   //····················································································································
 
-  let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
+  final let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canRemoveSelectedFonts_property_selection : EBSelection <Bool> {
+  final var canRemoveSelectedFonts_property_selection : EBSelection <Bool> {
     return self.canRemoveSelectedFonts_property.prop
   }
 
   //····················································································································
 
-  var canRemoveSelectedFonts : Bool? {
+  final var canRemoveSelectedFonts : Bool? {
     switch self.canRemoveSelectedFonts_property_selection {
     case .empty, .multiple :
       return nil
@@ -506,17 +506,17 @@ import Cocoa
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
-  let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
+  final let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canRemoveSelectedDevices_property_selection : EBSelection <Bool> {
+  final var canRemoveSelectedDevices_property_selection : EBSelection <Bool> {
     return self.canRemoveSelectedDevices_property.prop
   }
 
   //····················································································································
 
-  var canRemoveSelectedDevices : Bool? {
+  final var canRemoveSelectedDevices : Bool? {
     switch self.canRemoveSelectedDevices_property_selection {
     case .empty, .multiple :
       return nil
@@ -529,17 +529,17 @@ import Cocoa
   //   Transient property: unplacedSymbolsCount
   //····················································································································
 
-  let unplacedSymbolsCount_property = EBTransientProperty_Int ()
+  final let unplacedSymbolsCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var unplacedSymbolsCount_property_selection : EBSelection <Int> {
+  final var unplacedSymbolsCount_property_selection : EBSelection <Int> {
     return self.unplacedSymbolsCount_property.prop
   }
 
   //····················································································································
 
-  var unplacedSymbolsCount : Int? {
+  final var unplacedSymbolsCount : Int? {
     switch self.unplacedSymbolsCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -552,17 +552,17 @@ import Cocoa
   //   Transient property: unplacedSymbolsCountString
   //····················································································································
 
-  let unplacedSymbolsCountString_property = EBTransientProperty_String ()
+  final let unplacedSymbolsCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var unplacedSymbolsCountString_property_selection : EBSelection <String> {
+  final var unplacedSymbolsCountString_property_selection : EBSelection <String> {
     return self.unplacedSymbolsCountString_property.prop
   }
 
   //····················································································································
 
-  var unplacedSymbolsCountString : String? {
+  final var unplacedSymbolsCountString : String? {
     switch self.unplacedSymbolsCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -575,17 +575,17 @@ import Cocoa
   //   Transient property: unplacedPackageCount
   //····················································································································
 
-  let unplacedPackageCount_property = EBTransientProperty_Int ()
+  final let unplacedPackageCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var unplacedPackageCount_property_selection : EBSelection <Int> {
+  final var unplacedPackageCount_property_selection : EBSelection <Int> {
     return self.unplacedPackageCount_property.prop
   }
 
   //····················································································································
 
-  var unplacedPackageCount : Int? {
+  final var unplacedPackageCount : Int? {
     switch self.unplacedPackageCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -598,17 +598,17 @@ import Cocoa
   //   Transient property: unplacedPackagesCountString
   //····················································································································
 
-  let unplacedPackagesCountString_property = EBTransientProperty_String ()
+  final let unplacedPackagesCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var unplacedPackagesCountString_property_selection : EBSelection <String> {
+  final var unplacedPackagesCountString_property_selection : EBSelection <String> {
     return self.unplacedPackagesCountString_property.prop
   }
 
   //····················································································································
 
-  var unplacedPackagesCountString : String? {
+  final var unplacedPackagesCountString : String? {
     switch self.unplacedPackagesCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -621,17 +621,17 @@ import Cocoa
   //   Transient property: overDisplay
   //····················································································································
 
-  let overDisplay_property = EBTransientProperty_EBShape ()
+  final let overDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var overDisplay_property_selection : EBSelection <EBShape> {
+  final var overDisplay_property_selection : EBSelection <EBShape> {
     return self.overDisplay_property.prop
   }
 
   //····················································································································
 
-  var overDisplay : EBShape? {
+  final var overDisplay : EBShape? {
     switch self.overDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -644,17 +644,17 @@ import Cocoa
   //   Transient property: canChangePackage
   //····················································································································
 
-  let canChangePackage_property = EBTransientProperty_Bool ()
+  final let canChangePackage_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canChangePackage_property_selection : EBSelection <Bool> {
+  final var canChangePackage_property_selection : EBSelection <Bool> {
     return self.canChangePackage_property.prop
   }
 
   //····················································································································
 
-  var canChangePackage : Bool? {
+  final var canChangePackage : Bool? {
     switch self.canChangePackage_property_selection {
     case .empty, .multiple :
       return nil

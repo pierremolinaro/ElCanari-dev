@@ -35,17 +35,17 @@ class DevicePackageInProject : EBManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  let mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject (usedForSignature: false)
+  final let mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mMasterPads_property_selection : EBSelection < [DeviceMasterPadInProject] > {
+  final var mMasterPads_property_selection : EBSelection < [DeviceMasterPadInProject] > {
     return self.mMasterPads_property.prop
   }
 
   //····················································································································
 
-  var mMasterPads : [DeviceMasterPadInProject] {
+  final var mMasterPads : [DeviceMasterPadInProject] {
     get { return self.mMasterPads_property.propval }
     set { self.mMasterPads_property.setProp (newValue) }
   }
@@ -54,7 +54,7 @@ class DevicePackageInProject : EBManagedObject,
   //   Atomic property: mPackageName
   //····················································································································
 
-  let mPackageName_property = EBStoredProperty_String (defaultValue: "")
+  final let mPackageName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -77,7 +77,7 @@ class DevicePackageInProject : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -100,17 +100,17 @@ class DevicePackageInProject : EBManagedObject,
   //   Transient property: packagePadDictionary
   //····················································································································
 
-  let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+  final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
 
   //····················································································································
 
-  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
+  final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
     return self.packagePadDictionary_property.prop
   }
 
   //····················································································································
 
-  var packagePadDictionary : PackageMasterPadDictionary? {
+  final var packagePadDictionary : PackageMasterPadDictionary? {
     switch self.packagePadDictionary_property_selection {
     case .empty, .multiple :
       return nil

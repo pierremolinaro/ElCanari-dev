@@ -91,7 +91,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mPinX
   //····················································································································
 
-  let mPinX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mPinX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -114,7 +114,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mPinY
   //····················································································································
 
-  let mPinY_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mPinY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -137,7 +137,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mXName
   //····················································································································
 
-  let mXName_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mXName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -160,7 +160,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mYName
   //····················································································································
 
-  let mYName_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mYName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mName
   //····················································································································
 
-  let mName_property = EBStoredProperty_String (defaultValue: "")
+  final let mName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -206,7 +206,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mNameHorizontalAlignment
   //····················································································································
 
-  let mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  final let mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -229,7 +229,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mPinNameIsDisplayedInSchematics
   //····················································································································
 
-  let mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -252,7 +252,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mXNumber
   //····················································································································
 
-  let mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -275,7 +275,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mYNumber
   //····················································································································
 
-  let mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -298,7 +298,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Atomic property: mNumberHorizontalAlignment
   //····················································································································
 
-  let mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  final let mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -321,17 +321,17 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  let mInstances_property = StoredArrayOf_SymbolPinInstanceInDevice (usedForSignature: false)
+  final let mInstances_property = StoredArrayOf_SymbolPinInstanceInDevice (usedForSignature: false)
 
   //····················································································································
 
-  var mInstances_property_selection : EBSelection < [SymbolPinInstanceInDevice] > {
+  final var mInstances_property_selection : EBSelection < [SymbolPinInstanceInDevice] > {
     return self.mInstances_property.prop
   }
 
   //····················································································································
 
-  var mInstances : [SymbolPinInstanceInDevice] {
+  final var mInstances : [SymbolPinInstanceInDevice] {
     get { return self.mInstances_property.propval }
     set { self.mInstances_property.setProp (newValue) }
   }
@@ -340,17 +340,17 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   Transient property: nameShape
   //····················································································································
 
-  let nameShape_property = EBTransientProperty_EBShape ()
+  final let nameShape_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var nameShape_property_selection : EBSelection <EBShape> {
+  final var nameShape_property_selection : EBSelection <EBShape> {
     return self.nameShape_property.prop
   }
 
   //····················································································································
 
-  var nameShape : EBShape? {
+  final var nameShape : EBShape? {
     switch self.nameShape_property_selection {
     case .empty, .multiple :
       return nil

@@ -35,7 +35,7 @@ class BoardModelVia : EBManagedObject,
   //   Atomic property: y
   //····················································································································
 
-  let y_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -58,7 +58,7 @@ class BoardModelVia : EBManagedObject,
   //   Atomic property: padDiameter
   //····················································································································
 
-  let padDiameter_property = EBStoredProperty_Int (defaultValue: 0)
+  final let padDiameter_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -81,7 +81,7 @@ class BoardModelVia : EBManagedObject,
   //   Atomic property: x
   //····················································································································
 
-  let x_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

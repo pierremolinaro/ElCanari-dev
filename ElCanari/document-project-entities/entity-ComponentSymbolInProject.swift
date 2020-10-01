@@ -147,7 +147,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -170,7 +170,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -193,7 +193,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mRotation
   //····················································································································
 
-  let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+  final let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 
@@ -216,7 +216,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mMirror
   //····················································································································
 
-  let mMirror_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mMirror_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -239,7 +239,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -262,7 +262,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+  final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -285,7 +285,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentNameOffsetX
   //····················································································································
 
-  let mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -308,7 +308,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentNameOffsetY
   //····················································································································
 
-  let mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
+  final let mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -331,7 +331,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentValue
   //····················································································································
 
-  let mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -354,7 +354,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentValueOffsetX
   //····················································································································
 
-  let mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentValueOffsetY
   //····················································································································
 
-  let mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
+  final let mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
 
   //····················································································································
 
@@ -400,17 +400,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
+  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
+  final var mPoints_property_selection : EBSelection < [PointInSchematic] > {
     return self.mPoints_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematic] {
+  final var mPoints : [PointInSchematic] {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -447,17 +447,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   To one property: mComponent
   //····················································································································
 
-  let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
+  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mComponent_property_selection : EBSelection <ComponentInProject?> {
+  final var mComponent_property_selection : EBSelection <ComponentInProject?> {
     return .single (self.mComponent_property.propval)
   }
 
   //····················································································································
 
-  var mComponent : ComponentInProject? {
+  final var mComponent : ComponentInProject? {
     get {
       return self.mComponent_property.propval
     }
@@ -473,11 +473,11 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+  final var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
 
   //····················································································································
 
-  var mComponent_none_selection : EBSelection <Bool> {
+  final var mComponent_none_selection : EBSelection <Bool> {
     return .single (self.mComponent_property.propval == nil)
   }
 
@@ -485,17 +485,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   Transient property: componentName
   //····················································································································
 
-  let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var componentName_property_selection : EBSelection <String> {
+  final var componentName_property_selection : EBSelection <String> {
     return self.componentName_property.prop
   }
 
   //····················································································································
 
-  var componentName : String? {
+  final var componentName : String? {
     switch self.componentName_property_selection {
     case .empty, .multiple :
       return nil
@@ -508,17 +508,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   Transient property: deviceName
   //····················································································································
 
-  let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var deviceName_property_selection : EBSelection <String> {
+  final var deviceName_property_selection : EBSelection <String> {
     return self.deviceName_property.prop
   }
 
   //····················································································································
 
-  var deviceName : String? {
+  final var deviceName : String? {
     switch self.deviceName_property_selection {
     case .empty, .multiple :
       return nil
@@ -531,17 +531,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   Transient property: symbolInfo
   //····················································································································
 
-  let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
+  final let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
 
   //····················································································································
 
-  var symbolInfo_property_selection : EBSelection <ComponentSymbolInfo> {
+  final var symbolInfo_property_selection : EBSelection <ComponentSymbolInfo> {
     return self.symbolInfo_property.prop
   }
 
   //····················································································································
 
-  var symbolInfo : ComponentSymbolInfo? {
+  final var symbolInfo : ComponentSymbolInfo? {
     switch self.symbolInfo_property_selection {
     case .empty, .multiple :
       return nil
@@ -554,17 +554,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
 
-  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+  final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
     return self.pinPadAssignments_property.prop
   }
 
   //····················································································································
 
-  var pinPadAssignments : ThreeStringArray? {
+  final var pinPadAssignments : ThreeStringArray? {
     switch self.pinPadAssignments_property_selection {
     case .empty, .multiple :
       return nil
@@ -577,17 +577,17 @@ class ComponentSymbolInProject : SchematicObject,
   //   Transient property: symbolInSchematic
   //····················································································································
 
-  let symbolInSchematic_property = EBTransientProperty_Bool ()
+  final let symbolInSchematic_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var symbolInSchematic_property_selection : EBSelection <Bool> {
+  final var symbolInSchematic_property_selection : EBSelection <Bool> {
     return self.symbolInSchematic_property.prop
   }
 
   //····················································································································
 
-  var symbolInSchematic : Bool? {
+  final var symbolInSchematic : Bool? {
     switch self.symbolInSchematic_property_selection {
     case .empty, .multiple :
       return nil

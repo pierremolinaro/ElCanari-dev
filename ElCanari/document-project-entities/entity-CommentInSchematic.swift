@@ -77,7 +77,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mColor
   //····················································································································
 
-  let mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black)
+  final let mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black)
 
   //····················································································································
 
@@ -100,7 +100,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mSize
   //····················································································································
 
-  let mSize_property = EBStoredProperty_Double (defaultValue: 11)
+  final let mSize_property = EBStoredProperty_Double (defaultValue: 11)
 
   //····················································································································
 
@@ -123,7 +123,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mHorizontalAlignment
   //····················································································································
 
-  let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  final let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mVerticalAlignment
   //····················································································································
 
-  let mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center)
+  final let mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center)
 
   //····················································································································
 
@@ -169,7 +169,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mX
   //····················································································································
 
-  let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -192,7 +192,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mY
   //····················································································································
 
-  let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -215,7 +215,7 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mComment
   //····················································································································
 
-  let mComment_property = EBStoredProperty_String (defaultValue: "")
+  final let mComment_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

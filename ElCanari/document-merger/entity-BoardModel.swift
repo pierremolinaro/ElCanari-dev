@@ -378,7 +378,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: name
   //····················································································································
 
-  let name_property = EBStoredProperty_String (defaultValue: "")
+  final let name_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -401,7 +401,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidth
   //····················································································································
 
-  let modelWidth_property = EBStoredProperty_Int (defaultValue: 0)
+  final let modelWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -424,7 +424,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidthUnit
   //····················································································································
 
-  let modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
+  final let modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -447,7 +447,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeight
   //····················································································································
 
-  let modelHeight_property = EBStoredProperty_Int (defaultValue: 0)
+  final let modelHeight_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -470,7 +470,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeightUnit
   //····················································································································
 
-  let modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0)
+  final let modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -493,7 +493,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  let zoom_property = EBStoredProperty_Int (defaultValue: 0)
+  final let zoom_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -516,17 +516,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontLegendLines
   //····················································································································
 
-  let frontLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontLegendLines_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontLegendLines_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontLegendLines_property.prop
   }
 
   //····················································································································
 
-  var frontLegendLines : [SegmentEntity] {
+  final var frontLegendLines : [SegmentEntity] {
     get { return self.frontLegendLines_property.propval }
     set { self.frontLegendLines_property.setProp (newValue) }
   }
@@ -535,17 +535,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backLegendLines
   //····················································································································
 
-  let backLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backLegendLines_property_selection : EBSelection < [SegmentEntity] > {
+  final var backLegendLines_property_selection : EBSelection < [SegmentEntity] > {
     return self.backLegendLines_property.prop
   }
 
   //····················································································································
 
-  var backLegendLines : [SegmentEntity] {
+  final var backLegendLines : [SegmentEntity] {
     get { return self.backLegendLines_property.propval }
     set { self.backLegendLines_property.setProp (newValue) }
   }
@@ -554,17 +554,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontLegendTexts
   //····················································································································
 
-  let frontLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontLegendTexts_property.prop
   }
 
   //····················································································································
 
-  var frontLegendTexts : [SegmentEntity] {
+  final var frontLegendTexts : [SegmentEntity] {
     get { return self.frontLegendTexts_property.propval }
     set { self.frontLegendTexts_property.setProp (newValue) }
   }
@@ -573,17 +573,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontLayoutTexts
   //····················································································································
 
-  let frontLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontLayoutTexts_property.prop
   }
 
   //····················································································································
 
-  var frontLayoutTexts : [SegmentEntity] {
+  final var frontLayoutTexts : [SegmentEntity] {
     get { return self.frontLayoutTexts_property.propval }
     set { self.frontLayoutTexts_property.setProp (newValue) }
   }
@@ -592,17 +592,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backLegendTexts
   //····················································································································
 
-  let backLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
+  final var backLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
     return self.backLegendTexts_property.prop
   }
 
   //····················································································································
 
-  var backLegendTexts : [SegmentEntity] {
+  final var backLegendTexts : [SegmentEntity] {
     get { return self.backLegendTexts_property.propval }
     set { self.backLegendTexts_property.setProp (newValue) }
   }
@@ -611,17 +611,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backLayoutTexts
   //····················································································································
 
-  let backLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
+  final var backLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
     return self.backLayoutTexts_property.prop
   }
 
   //····················································································································
 
-  var backLayoutTexts : [SegmentEntity] {
+  final var backLayoutTexts : [SegmentEntity] {
     get { return self.backLayoutTexts_property.propval }
     set { self.backLayoutTexts_property.setProp (newValue) }
   }
@@ -630,17 +630,17 @@ class BoardModel : EBManagedObject,
   //   To many property: internalBoardsLimits
   //····················································································································
 
-  let internalBoardsLimits_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let internalBoardsLimits_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var internalBoardsLimits_property_selection : EBSelection < [SegmentEntity] > {
+  final var internalBoardsLimits_property_selection : EBSelection < [SegmentEntity] > {
     return self.internalBoardsLimits_property.prop
   }
 
   //····················································································································
 
-  var internalBoardsLimits : [SegmentEntity] {
+  final var internalBoardsLimits : [SegmentEntity] {
     get { return self.internalBoardsLimits_property.propval }
     set { self.internalBoardsLimits_property.setProp (newValue) }
   }
@@ -649,17 +649,17 @@ class BoardModel : EBManagedObject,
   //   To many property: drills
   //····················································································································
 
-  let drills_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let drills_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var drills_property_selection : EBSelection < [SegmentEntity] > {
+  final var drills_property_selection : EBSelection < [SegmentEntity] > {
     return self.drills_property.prop
   }
 
   //····················································································································
 
-  var drills : [SegmentEntity] {
+  final var drills : [SegmentEntity] {
     get { return self.drills_property.propval }
     set { self.drills_property.setProp (newValue) }
   }
@@ -668,17 +668,17 @@ class BoardModel : EBManagedObject,
   //   To many property: vias
   //····················································································································
 
-  let vias_property = StoredArrayOf_BoardModelVia (usedForSignature: false)
+  final let vias_property = StoredArrayOf_BoardModelVia (usedForSignature: false)
 
   //····················································································································
 
-  var vias_property_selection : EBSelection < [BoardModelVia] > {
+  final var vias_property_selection : EBSelection < [BoardModelVia] > {
     return self.vias_property.prop
   }
 
   //····················································································································
 
-  var vias : [BoardModelVia] {
+  final var vias : [BoardModelVia] {
     get { return self.vias_property.propval }
     set { self.vias_property.setProp (newValue) }
   }
@@ -687,17 +687,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontPads
   //····················································································································
 
-  let frontPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
+  final let frontPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
 
   //····················································································································
 
-  var frontPads_property_selection : EBSelection < [BoardModelPad] > {
+  final var frontPads_property_selection : EBSelection < [BoardModelPad] > {
     return self.frontPads_property.prop
   }
 
   //····················································································································
 
-  var frontPads : [BoardModelPad] {
+  final var frontPads : [BoardModelPad] {
     get { return self.frontPads_property.propval }
     set { self.frontPads_property.setProp (newValue) }
   }
@@ -706,17 +706,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backPads
   //····················································································································
 
-  let backPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
+  final let backPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
 
   //····················································································································
 
-  var backPads_property_selection : EBSelection < [BoardModelPad] > {
+  final var backPads_property_selection : EBSelection < [BoardModelPad] > {
     return self.backPads_property.prop
   }
 
   //····················································································································
 
-  var backPads : [BoardModelPad] {
+  final var backPads : [BoardModelPad] {
     get { return self.backPads_property.propval }
     set { self.backPads_property.setProp (newValue) }
   }
@@ -725,7 +725,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidth
   //····················································································································
 
-  let modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0)
+  final let modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -748,7 +748,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidthUnit
   //····················································································································
 
-  let modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
+  final let modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -771,17 +771,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backComponentNames
   //····················································································································
 
-  let backComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backComponentNames_property_selection : EBSelection < [SegmentEntity] > {
+  final var backComponentNames_property_selection : EBSelection < [SegmentEntity] > {
     return self.backComponentNames_property.prop
   }
 
   //····················································································································
 
-  var backComponentNames : [SegmentEntity] {
+  final var backComponentNames : [SegmentEntity] {
     get { return self.backComponentNames_property.propval }
     set { self.backComponentNames_property.setProp (newValue) }
   }
@@ -790,17 +790,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontComponentNames
   //····················································································································
 
-  let frontComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontComponentNames_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontComponentNames_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontComponentNames_property.prop
   }
 
   //····················································································································
 
-  var frontComponentNames : [SegmentEntity] {
+  final var frontComponentNames : [SegmentEntity] {
     get { return self.frontComponentNames_property.propval }
     set { self.frontComponentNames_property.setProp (newValue) }
   }
@@ -809,17 +809,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontComponentValues
   //····················································································································
 
-  let frontComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontComponentValues_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontComponentValues_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontComponentValues_property.prop
   }
 
   //····················································································································
 
-  var frontComponentValues : [SegmentEntity] {
+  final var frontComponentValues : [SegmentEntity] {
     get { return self.frontComponentValues_property.propval }
     set { self.frontComponentValues_property.setProp (newValue) }
   }
@@ -828,17 +828,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backComponentValues
   //····················································································································
 
-  let backComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backComponentValues_property_selection : EBSelection < [SegmentEntity] > {
+  final var backComponentValues_property_selection : EBSelection < [SegmentEntity] > {
     return self.backComponentValues_property.prop
   }
 
   //····················································································································
 
-  var backComponentValues : [SegmentEntity] {
+  final var backComponentValues : [SegmentEntity] {
     get { return self.backComponentValues_property.propval }
     set { self.backComponentValues_property.setProp (newValue) }
   }
@@ -847,17 +847,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backTracks
   //····················································································································
 
-  let backTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backTracks_property_selection : EBSelection < [SegmentEntity] > {
+  final var backTracks_property_selection : EBSelection < [SegmentEntity] > {
     return self.backTracks_property.prop
   }
 
   //····················································································································
 
-  var backTracks : [SegmentEntity] {
+  final var backTracks : [SegmentEntity] {
     get { return self.backTracks_property.propval }
     set { self.backTracks_property.setProp (newValue) }
   }
@@ -866,17 +866,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontTracks
   //····················································································································
 
-  let frontTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontTracks_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontTracks_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontTracks_property.prop
   }
 
   //····················································································································
 
-  var frontTracks : [SegmentEntity] {
+  final var frontTracks : [SegmentEntity] {
     get { return self.frontTracks_property.propval }
     set { self.frontTracks_property.setProp (newValue) }
   }
@@ -885,17 +885,17 @@ class BoardModel : EBManagedObject,
   //   To many property: frontPackages
   //····················································································································
 
-  let frontPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var frontPackages_property_selection : EBSelection < [SegmentEntity] > {
+  final var frontPackages_property_selection : EBSelection < [SegmentEntity] > {
     return self.frontPackages_property.prop
   }
 
   //····················································································································
 
-  var frontPackages : [SegmentEntity] {
+  final var frontPackages : [SegmentEntity] {
     get { return self.frontPackages_property.propval }
     set { self.frontPackages_property.setProp (newValue) }
   }
@@ -904,17 +904,17 @@ class BoardModel : EBManagedObject,
   //   To many property: backPackages
   //····················································································································
 
-  let backPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
-  var backPackages_property_selection : EBSelection < [SegmentEntity] > {
+  final var backPackages_property_selection : EBSelection < [SegmentEntity] > {
     return self.backPackages_property.prop
   }
 
   //····················································································································
 
-  var backPackages : [SegmentEntity] {
+  final var backPackages : [SegmentEntity] {
     get { return self.backPackages_property.propval }
     set { self.backPackages_property.setProp (newValue) }
   }
@@ -923,7 +923,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: artworkName
   //····················································································································
 
-  let artworkName_property = EBStoredProperty_String (defaultValue: "")
+  final let artworkName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -946,17 +946,17 @@ class BoardModel : EBManagedObject,
   //   To many property: myInstances
   //····················································································································
 
-  let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false)
+  final let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false)
 
   //····················································································································
 
-  var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
+  final var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
     return self.myInstances_property.prop
   }
 
   //····················································································································
 
-  var myInstances : [MergerBoardInstance] {
+  final var myInstances : [MergerBoardInstance] {
     get { return self.myInstances_property.propval }
     set { self.myInstances_property.setProp (newValue) }
   }
@@ -965,17 +965,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendLinesSegments
   //····················································································································
 
-  let frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontLegendLinesSegments_property.prop
   }
 
   //····················································································································
 
-  var frontLegendLinesSegments : MergerSegmentArray? {
+  final var frontLegendLinesSegments : MergerSegmentArray? {
     switch self.frontLegendLinesSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -988,17 +988,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendLinesSegments
   //····················································································································
 
-  let backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backLegendLinesSegments_property.prop
   }
 
   //····················································································································
 
-  var backLegendLinesSegments : MergerSegmentArray? {
+  final var backLegendLinesSegments : MergerSegmentArray? {
     switch self.backLegendLinesSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1011,17 +1011,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendLinesBezierPaths
   //····················································································································
 
-  let backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backLegendLinesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backLegendLinesBezierPaths : BezierPathArray? {
+  final var backLegendLinesBezierPaths : BezierPathArray? {
     switch self.backLegendLinesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1034,17 +1034,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendTextsSegments
   //····················································································································
 
-  let frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontLegendTextsSegments_property.prop
   }
 
   //····················································································································
 
-  var frontLegendTextsSegments : MergerSegmentArray? {
+  final var frontLegendTextsSegments : MergerSegmentArray? {
     switch self.frontLegendTextsSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1057,17 +1057,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendTextsBezierPaths
   //····················································································································
 
-  let frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontLegendTextsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontLegendTextsBezierPaths : BezierPathArray? {
+  final var frontLegendTextsBezierPaths : BezierPathArray? {
     switch self.frontLegendTextsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1080,17 +1080,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLayoutTextsSegments
   //····················································································································
 
-  let frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontLayoutTextsSegments_property.prop
   }
 
   //····················································································································
 
-  var frontLayoutTextsSegments : MergerSegmentArray? {
+  final var frontLayoutTextsSegments : MergerSegmentArray? {
     switch self.frontLayoutTextsSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1103,17 +1103,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLayoutTextsBezierPaths
   //····················································································································
 
-  let frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontLayoutTextsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontLayoutTextsBezierPaths : BezierPathArray? {
+  final var frontLayoutTextsBezierPaths : BezierPathArray? {
     switch self.frontLayoutTextsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1126,17 +1126,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendTextsSegments
   //····················································································································
 
-  let backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backLegendTextsSegments_property.prop
   }
 
   //····················································································································
 
-  var backLegendTextsSegments : MergerSegmentArray? {
+  final var backLegendTextsSegments : MergerSegmentArray? {
     switch self.backLegendTextsSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1149,17 +1149,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendTextsBezierPaths
   //····················································································································
 
-  let backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backLegendTextsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backLegendTextsBezierPaths : BezierPathArray? {
+  final var backLegendTextsBezierPaths : BezierPathArray? {
     switch self.backLegendTextsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1172,17 +1172,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLayoutTextsSegments
   //····················································································································
 
-  let backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backLayoutTextsSegments_property.prop
   }
 
   //····················································································································
 
-  var backLayoutTextsSegments : MergerSegmentArray? {
+  final var backLayoutTextsSegments : MergerSegmentArray? {
     switch self.backLayoutTextsSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1195,17 +1195,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLayoutTextsBezierPaths
   //····················································································································
 
-  let backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backLayoutTextsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backLayoutTextsBezierPaths : BezierPathArray? {
+  final var backLayoutTextsBezierPaths : BezierPathArray? {
     switch self.backLayoutTextsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1218,17 +1218,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: internalBoardsLimitsSegments
   //····················································································································
 
-  let internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.internalBoardsLimitsSegments_property.prop
   }
 
   //····················································································································
 
-  var internalBoardsLimitsSegments : MergerSegmentArray? {
+  final var internalBoardsLimitsSegments : MergerSegmentArray? {
     switch self.internalBoardsLimitsSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1241,17 +1241,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: internalBoardsLimitsBezierPaths
   //····················································································································
 
-  let internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.internalBoardsLimitsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var internalBoardsLimitsBezierPaths : BezierPathArray? {
+  final var internalBoardsLimitsBezierPaths : BezierPathArray? {
     switch self.internalBoardsLimitsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1264,17 +1264,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: drillSegments
   //····················································································································
 
-  let drillSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let drillSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.drillSegments_property.prop
   }
 
   //····················································································································
 
-  var drillSegments : MergerSegmentArray? {
+  final var drillSegments : MergerSegmentArray? {
     switch self.drillSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1287,17 +1287,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: holesBezierPaths
   //····················································································································
 
-  let holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var holesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var holesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.holesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var holesBezierPaths : BezierPathArray? {
+  final var holesBezierPaths : BezierPathArray? {
     switch self.holesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1310,17 +1310,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: viaShapes
   //····················································································································
 
-  let viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+  final let viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
 
   //····················································································································
 
-  var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
+  final var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
     return self.viaShapes_property.prop
   }
 
   //····················································································································
 
-  var viaShapes : MergerViaShapeArray? {
+  final var viaShapes : MergerViaShapeArray? {
     switch self.viaShapes_property_selection {
     case .empty, .multiple :
       return nil
@@ -1333,17 +1333,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: viasBezierPaths
   //····················································································································
 
-  let viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.viasBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var viasBezierPaths : BezierPathArray? {
+  final var viasBezierPaths : BezierPathArray? {
     switch self.viasBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1356,17 +1356,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPadArray
   //····················································································································
 
-  let frontPadArray_property = EBTransientProperty_MergerPadArray ()
+  final let frontPadArray_property = EBTransientProperty_MergerPadArray ()
 
   //····················································································································
 
-  var frontPadArray_property_selection : EBSelection <MergerPadArray> {
+  final var frontPadArray_property_selection : EBSelection <MergerPadArray> {
     return self.frontPadArray_property.prop
   }
 
   //····················································································································
 
-  var frontPadArray : MergerPadArray? {
+  final var frontPadArray : MergerPadArray? {
     switch self.frontPadArray_property_selection {
     case .empty, .multiple :
       return nil
@@ -1379,17 +1379,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPadsBezierPaths
   //····················································································································
 
-  let frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontPadsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontPadsBezierPaths : BezierPathArray? {
+  final var frontPadsBezierPaths : BezierPathArray? {
     switch self.frontPadsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1402,17 +1402,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPadArray
   //····················································································································
 
-  let backPadArray_property = EBTransientProperty_MergerPadArray ()
+  final let backPadArray_property = EBTransientProperty_MergerPadArray ()
 
   //····················································································································
 
-  var backPadArray_property_selection : EBSelection <MergerPadArray> {
+  final var backPadArray_property_selection : EBSelection <MergerPadArray> {
     return self.backPadArray_property.prop
   }
 
   //····················································································································
 
-  var backPadArray : MergerPadArray? {
+  final var backPadArray : MergerPadArray? {
     switch self.backPadArray_property_selection {
     case .empty, .multiple :
       return nil
@@ -1425,17 +1425,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPadsBezierPaths
   //····················································································································
 
-  let backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backPadsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backPadsBezierPaths : BezierPathArray? {
+  final var backPadsBezierPaths : BezierPathArray? {
     switch self.backPadsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1448,17 +1448,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: boardLimits
   //····················································································································
 
-  let boardLimits_property = EBTransientProperty_MergerBoardLimits ()
+  final let boardLimits_property = EBTransientProperty_MergerBoardLimits ()
 
   //····················································································································
 
-  var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
+  final var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
     return self.boardLimits_property.prop
   }
 
   //····················································································································
 
-  var boardLimits : MergerBoardLimits? {
+  final var boardLimits : MergerBoardLimits? {
     switch self.boardLimits_property_selection {
     case .empty, .multiple :
       return nil
@@ -1471,17 +1471,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: boardLimitsBezierPaths
   //····················································································································
 
-  let boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.boardLimitsBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var boardLimitsBezierPaths : BezierPathArray? {
+  final var boardLimitsBezierPaths : BezierPathArray? {
     switch self.boardLimitsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1494,17 +1494,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentNameSegments
   //····················································································································
 
-  let backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backComponentNameSegments_property.prop
   }
 
   //····················································································································
 
-  var backComponentNameSegments : MergerSegmentArray? {
+  final var backComponentNameSegments : MergerSegmentArray? {
     switch self.backComponentNameSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1517,17 +1517,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentNamesBezierPaths
   //····················································································································
 
-  let backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backComponentNamesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backComponentNamesBezierPaths : BezierPathArray? {
+  final var backComponentNamesBezierPaths : BezierPathArray? {
     switch self.backComponentNamesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1540,17 +1540,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentNameSegments
   //····················································································································
 
-  let frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontComponentNameSegments_property.prop
   }
 
   //····················································································································
 
-  var frontComponentNameSegments : MergerSegmentArray? {
+  final var frontComponentNameSegments : MergerSegmentArray? {
     switch self.frontComponentNameSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1563,17 +1563,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentNamesBezierPaths
   //····················································································································
 
-  let frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontComponentNamesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontComponentNamesBezierPaths : BezierPathArray? {
+  final var frontComponentNamesBezierPaths : BezierPathArray? {
     switch self.frontComponentNamesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1586,17 +1586,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentValueSegments
   //····················································································································
 
-  let frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontComponentValueSegments_property.prop
   }
 
   //····················································································································
 
-  var frontComponentValueSegments : MergerSegmentArray? {
+  final var frontComponentValueSegments : MergerSegmentArray? {
     switch self.frontComponentValueSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1609,17 +1609,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentValuesBezierPaths
   //····················································································································
 
-  let frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontComponentValuesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontComponentValuesBezierPaths : BezierPathArray? {
+  final var frontComponentValuesBezierPaths : BezierPathArray? {
     switch self.frontComponentValuesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1632,17 +1632,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentValueSegments
   //····················································································································
 
-  let backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backComponentValueSegments_property.prop
   }
 
   //····················································································································
 
-  var backComponentValueSegments : MergerSegmentArray? {
+  final var backComponentValueSegments : MergerSegmentArray? {
     switch self.backComponentValueSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1655,17 +1655,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentValuesBezierPaths
   //····················································································································
 
-  let backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backComponentValuesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backComponentValuesBezierPaths : BezierPathArray? {
+  final var backComponentValuesBezierPaths : BezierPathArray? {
     switch self.backComponentValuesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1678,17 +1678,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backTrackSegments
   //····················································································································
 
-  let backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backTrackSegments_property.prop
   }
 
   //····················································································································
 
-  var backTrackSegments : MergerSegmentArray? {
+  final var backTrackSegments : MergerSegmentArray? {
     switch self.backTrackSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1701,17 +1701,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backTracksBezierPaths
   //····················································································································
 
-  let backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backTracksBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backTracksBezierPaths : BezierPathArray? {
+  final var backTracksBezierPaths : BezierPathArray? {
     switch self.backTracksBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1724,17 +1724,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontTrackSegments
   //····················································································································
 
-  let frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontTrackSegments_property.prop
   }
 
   //····················································································································
 
-  var frontTrackSegments : MergerSegmentArray? {
+  final var frontTrackSegments : MergerSegmentArray? {
     switch self.frontTrackSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1747,17 +1747,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontTracksBezierPaths
   //····················································································································
 
-  let frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontTracksBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontTracksBezierPaths : BezierPathArray? {
+  final var frontTracksBezierPaths : BezierPathArray? {
     switch self.frontTracksBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1770,17 +1770,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPackagesSegments
   //····················································································································
 
-  let frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.frontPackagesSegments_property.prop
   }
 
   //····················································································································
 
-  var frontPackagesSegments : MergerSegmentArray? {
+  final var frontPackagesSegments : MergerSegmentArray? {
     switch self.frontPackagesSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1793,17 +1793,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPackagesBezierPaths
   //····················································································································
 
-  let frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontPackagesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontPackagesBezierPaths : BezierPathArray? {
+  final var frontPackagesBezierPaths : BezierPathArray? {
     switch self.frontPackagesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1816,17 +1816,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPackagesSegments
   //····················································································································
 
-  let backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
-  var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
+  final var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
     return self.backPackagesSegments_property.prop
   }
 
   //····················································································································
 
-  var backPackagesSegments : MergerSegmentArray? {
+  final var backPackagesSegments : MergerSegmentArray? {
     switch self.backPackagesSegments_property_selection {
     case .empty, .multiple :
       return nil
@@ -1839,17 +1839,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPackagesBezierPaths
   //····················································································································
 
-  let backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.backPackagesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var backPackagesBezierPaths : BezierPathArray? {
+  final var backPackagesBezierPaths : BezierPathArray? {
     switch self.backPackagesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1862,17 +1862,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: instanceCount
   //····················································································································
 
-  let instanceCount_property = EBTransientProperty_Int ()
+  final let instanceCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var instanceCount_property_selection : EBSelection <Int> {
+  final var instanceCount_property_selection : EBSelection <Int> {
     return self.instanceCount_property.prop
   }
 
   //····················································································································
 
-  var instanceCount : Int? {
+  final var instanceCount : Int? {
     switch self.instanceCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -1885,17 +1885,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendLinesBezierPaths
   //····················································································································
 
-  let frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
-  var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+  final var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
     return self.frontLegendLinesBezierPaths_property.prop
   }
 
   //····················································································································
 
-  var frontLegendLinesBezierPaths : BezierPathArray? {
+  final var frontLegendLinesBezierPaths : BezierPathArray? {
     switch self.frontLegendLinesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
@@ -1908,17 +1908,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: imageForModel
   //····················································································································
 
-  let imageForModel_property = EBTransientProperty_EBShape ()
+  final let imageForModel_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var imageForModel_property_selection : EBSelection <EBShape> {
+  final var imageForModel_property_selection : EBSelection <EBShape> {
     return self.imageForModel_property.prop
   }
 
   //····················································································································
 
-  var imageForModel : EBShape? {
+  final var imageForModel : EBShape? {
     switch self.imageForModel_property_selection {
     case .empty, .multiple :
       return nil
@@ -1931,17 +1931,17 @@ class BoardModel : EBManagedObject,
   //   Transient property: imageForInstances
   //····················································································································
 
-  let imageForInstances_property = EBTransientProperty_EBShape ()
+  final let imageForInstances_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var imageForInstances_property_selection : EBSelection <EBShape> {
+  final var imageForInstances_property_selection : EBSelection <EBShape> {
     return self.imageForInstances_property.prop
   }
 
   //····················································································································
 
-  var imageForInstances : EBShape? {
+  final var imageForInstances : EBShape? {
     switch self.imageForInstances_property_selection {
     case .empty, .multiple :
       return nil

@@ -189,7 +189,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -212,7 +212,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mTitle
   //····················································································································
 
-  let mTitle_property = EBStoredProperty_String (defaultValue: "")
+  final let mTitle_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -235,7 +235,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mImageData
   //····················································································································
 
-  let mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
+  final let mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -258,7 +258,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPrefix
   //····················································································································
 
-  let mPrefix_property = EBStoredProperty_String (defaultValue: "")
+  final let mPrefix_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -281,7 +281,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mComments
   //····················································································································
 
-  let mComments_property = EBStoredProperty_String (defaultValue: "")
+  final let mComments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -304,7 +304,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayZoom
   //····················································································································
 
-  let mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
+  final let mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
 
   //····················································································································
 
@@ -327,7 +327,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayHorizontalFlip
   //····················································································································
 
-  let mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -350,7 +350,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayVerticalFlip
   //····················································································································
 
-  let mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -373,7 +373,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackages
   //····················································································································
 
-  let mShowPackages_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mShowPackages_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -396,7 +396,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackagePadNumbers
   //····················································································································
 
-  let mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -419,7 +419,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackageFrontPads
   //····················································································································
 
-  let mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -442,7 +442,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackageBackPads
   //····················································································································
 
-  let mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -465,7 +465,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayZoom
   //····················································································································
 
-  let mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
+  final let mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
 
   //····················································································································
 
@@ -488,7 +488,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayHorizontalFlip
   //····················································································································
 
-  let mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -511,7 +511,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayVerticalFlip
   //····················································································································
 
-  let mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -534,17 +534,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mDocs
   //····················································································································
 
-  let mDocs_property = StoredArrayOf_DeviceDocumentation (usedForSignature: true)
+  final let mDocs_property = StoredArrayOf_DeviceDocumentation (usedForSignature: true)
 
   //····················································································································
 
-  var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
+  final var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
     return self.mDocs_property.prop
   }
 
   //····················································································································
 
-  var mDocs : [DeviceDocumentation] {
+  final var mDocs : [DeviceDocumentation] {
     get { return self.mDocs_property.propval }
     set { self.mDocs_property.setProp (newValue) }
   }
@@ -553,17 +553,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mSymbolInstances
   //····················································································································
 
-  let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: true)
+  final let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: true)
 
   //····················································································································
 
-  var mSymbolInstances_property_selection : EBSelection < [SymbolInstanceInDevice] > {
+  final var mSymbolInstances_property_selection : EBSelection < [SymbolInstanceInDevice] > {
     return self.mSymbolInstances_property.prop
   }
 
   //····················································································································
 
-  var mSymbolInstances : [SymbolInstanceInDevice] {
+  final var mSymbolInstances : [SymbolInstanceInDevice] {
     get { return self.mSymbolInstances_property.propval }
     set { self.mSymbolInstances_property.setProp (newValue) }
   }
@@ -572,17 +572,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  let mPackages_property = StoredArrayOf_PackageInDevice (usedForSignature: true)
+  final let mPackages_property = StoredArrayOf_PackageInDevice (usedForSignature: true)
 
   //····················································································································
 
-  var mPackages_property_selection : EBSelection < [PackageInDevice] > {
+  final var mPackages_property_selection : EBSelection < [PackageInDevice] > {
     return self.mPackages_property.prop
   }
 
   //····················································································································
 
-  var mPackages : [PackageInDevice] {
+  final var mPackages : [PackageInDevice] {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -591,17 +591,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mSymbolTypes
   //····················································································································
 
-  let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice (usedForSignature: true)
+  final let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice (usedForSignature: true)
 
   //····················································································································
 
-  var mSymbolTypes_property_selection : EBSelection < [SymbolTypeInDevice] > {
+  final var mSymbolTypes_property_selection : EBSelection < [SymbolTypeInDevice] > {
     return self.mSymbolTypes_property.prop
   }
 
   //····················································································································
 
-  var mSymbolTypes : [SymbolTypeInDevice] {
+  final var mSymbolTypes : [SymbolTypeInDevice] {
     get { return self.mSymbolTypes_property.propval }
     set { self.mSymbolTypes_property.setProp (newValue) }
   }
@@ -610,17 +610,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mPadProxies
   //····················································································································
 
-  let mPadProxies_property = StoredArrayOf_PadProxyInDevice (usedForSignature: true)
+  final let mPadProxies_property = StoredArrayOf_PadProxyInDevice (usedForSignature: true)
 
   //····················································································································
 
-  var mPadProxies_property_selection : EBSelection < [PadProxyInDevice] > {
+  final var mPadProxies_property_selection : EBSelection < [PadProxyInDevice] > {
     return self.mPadProxies_property.prop
   }
 
   //····················································································································
 
-  var mPadProxies : [PadProxyInDevice] {
+  final var mPadProxies : [PadProxyInDevice] {
     get { return self.mPadProxies_property.propval }
     set { self.mPadProxies_property.setProp (newValue) }
   }
@@ -629,17 +629,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: imageIsValid
   //····················································································································
 
-  let imageIsValid_property = EBTransientProperty_Bool ()
+  final let imageIsValid_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var imageIsValid_property_selection : EBSelection <Bool> {
+  final var imageIsValid_property_selection : EBSelection <Bool> {
     return self.imageIsValid_property.prop
   }
 
   //····················································································································
 
-  var imageIsValid : Bool? {
+  final var imageIsValid : Bool? {
     switch self.imageIsValid_property_selection {
     case .empty, .multiple :
       return nil
@@ -652,17 +652,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
-  let inconsistentPackagePadNameSetsMessage_property = EBTransientProperty_String ()
+  final let inconsistentPackagePadNameSetsMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var inconsistentPackagePadNameSetsMessage_property_selection : EBSelection <String> {
+  final var inconsistentPackagePadNameSetsMessage_property_selection : EBSelection <String> {
     return self.inconsistentPackagePadNameSetsMessage_property.prop
   }
 
   //····················································································································
 
-  var inconsistentPackagePadNameSetsMessage : String? {
+  final var inconsistentPackagePadNameSetsMessage : String? {
     switch self.inconsistentPackagePadNameSetsMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -675,17 +675,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: inconsistentSymbolNameSetMessage
   //····················································································································
 
-  let inconsistentSymbolNameSetMessage_property = EBTransientProperty_String ()
+  final let inconsistentSymbolNameSetMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var inconsistentSymbolNameSetMessage_property_selection : EBSelection <String> {
+  final var inconsistentSymbolNameSetMessage_property_selection : EBSelection <String> {
     return self.inconsistentSymbolNameSetMessage_property.prop
   }
 
   //····················································································································
 
-  var inconsistentSymbolNameSetMessage : String? {
+  final var inconsistentSymbolNameSetMessage : String? {
     switch self.inconsistentSymbolNameSetMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -698,17 +698,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: unconnectedPins
   //····················································································································
 
-  let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+  final let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
 
   //····················································································································
 
-  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
+  final var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
     return self.unconnectedPins_property.prop
   }
 
   //····················································································································
 
-  var unconnectedPins : UnconnectedSymbolPinsInDevice? {
+  final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
     switch self.unconnectedPins_property_selection {
     case .empty, .multiple :
       return nil
@@ -721,17 +721,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: packagePadNameSetsAreConsistent
   //····················································································································
 
-  let packagePadNameSetsAreConsistent_property = EBTransientProperty_Bool ()
+  final let packagePadNameSetsAreConsistent_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var packagePadNameSetsAreConsistent_property_selection : EBSelection <Bool> {
+  final var packagePadNameSetsAreConsistent_property_selection : EBSelection <Bool> {
     return self.packagePadNameSetsAreConsistent_property.prop
   }
 
   //····················································································································
 
-  var packagePadNameSetsAreConsistent : Bool? {
+  final var packagePadNameSetsAreConsistent : Bool? {
     switch self.packagePadNameSetsAreConsistent_property_selection {
     case .empty, .multiple :
       return nil
@@ -744,17 +744,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: symbolNameAreConsistent
   //····················································································································
 
-  let symbolNameAreConsistent_property = EBTransientProperty_Bool ()
+  final let symbolNameAreConsistent_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var symbolNameAreConsistent_property_selection : EBSelection <Bool> {
+  final var symbolNameAreConsistent_property_selection : EBSelection <Bool> {
     return self.symbolNameAreConsistent_property.prop
   }
 
   //····················································································································
 
-  var symbolNameAreConsistent : Bool? {
+  final var symbolNameAreConsistent : Bool? {
     switch self.symbolNameAreConsistent_property_selection {
     case .empty, .multiple :
       return nil
@@ -767,17 +767,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: symbolTypeNames
   //····················································································································
 
-  let symbolTypeNames_property = EBTransientProperty_StringArray ()
+  final let symbolTypeNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var symbolTypeNames_property_selection : EBSelection <StringArray> {
+  final var symbolTypeNames_property_selection : EBSelection <StringArray> {
     return self.symbolTypeNames_property.prop
   }
 
   //····················································································································
 
-  var symbolTypeNames : StringArray? {
+  final var symbolTypeNames : StringArray? {
     switch self.symbolTypeNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -790,17 +790,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: unconnectedPads
   //····················································································································
 
-  let unconnectedPads_property = EBTransientProperty_StringArray ()
+  final let unconnectedPads_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var unconnectedPads_property_selection : EBSelection <StringArray> {
+  final var unconnectedPads_property_selection : EBSelection <StringArray> {
     return self.unconnectedPads_property.prop
   }
 
   //····················································································································
 
-  var unconnectedPads : StringArray? {
+  final var unconnectedPads : StringArray? {
     switch self.unconnectedPads_property_selection {
     case .empty, .multiple :
       return nil
@@ -813,17 +813,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: assignedPadProxies
   //····················································································································
 
-  let assignedPadProxies_property = EBTransientProperty_AssignedPadProxiesInDevice ()
+  final let assignedPadProxies_property = EBTransientProperty_AssignedPadProxiesInDevice ()
 
   //····················································································································
 
-  var assignedPadProxies_property_selection : EBSelection <AssignedPadProxiesInDevice> {
+  final var assignedPadProxies_property_selection : EBSelection <AssignedPadProxiesInDevice> {
     return self.assignedPadProxies_property.prop
   }
 
   //····················································································································
 
-  var assignedPadProxies : AssignedPadProxiesInDevice? {
+  final var assignedPadProxies : AssignedPadProxiesInDevice? {
     switch self.assignedPadProxies_property_selection {
     case .empty, .multiple :
       return nil
@@ -836,17 +836,17 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil

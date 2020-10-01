@@ -34,13 +34,13 @@ extension BoardTrack {
   //····················································································································
 
   override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : OCObjectSet) {
-    if let connectorP1 = self.mConnectorP1, !ioSet.objects.contains (connectorP1) {
-      ioSet.objects.insert (connectorP1)
+    if let connectorP1 = self.mConnectorP1, !ioSet.contains (connectorP1) {
+      ioSet.insert (connectorP1)
       connectorP1.mX += inDx
       connectorP1.mY += inDy
     }
-    if let connectorP2 = self.mConnectorP2, !ioSet.objects.contains (connectorP2) {
-      ioSet.objects.insert (connectorP2)
+    if let connectorP2 = self.mConnectorP2, !ioSet.contains (connectorP2) {
+      ioSet.insert (connectorP2)
       connectorP2.mX += inDx
       connectorP2.mY += inDy
     }
@@ -69,6 +69,58 @@ extension BoardTrack {
     }else if inKnobIndex == BOARD_TRACK_P2 {
       self.mConnectorP2?.mX += inDx
       self.mConnectorP2?.mY += inDy
+    }
+  }
+
+  //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
+      accumulatedPoints.insert (CanariPoint (x: p1.x, y: p1.y))
+      accumulatedPoints.insert (CanariPoint (x: p2.x, y: p2.y))
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
+      if !ioSet.contains (connectorP1) {
+        let p = inRotationCenter.rotated90Clockwise (x: connectorP1.mX, y: connectorP1.mY)
+        connectorP1.mX = p.x
+        connectorP1.mY = p.y
+        ioSet.insert (connectorP1)
+      }
+      if !ioSet.contains (connectorP2) {
+        let p = inRotationCenter.rotated90Clockwise (x: connectorP2.mX, y: connectorP2.mY)
+        connectorP2.mX = p.x
+        connectorP2.mY = p.y
+        ioSet.insert (connectorP2)
+      }
+    }
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
+      if !ioSet.contains (connectorP1) {
+        let p = inRotationCenter.rotated90CounterClockwise (x: connectorP1.mX, y: connectorP1.mY)
+        connectorP1.mX = p.x
+        connectorP1.mY = p.y
+        ioSet.insert (connectorP1)
+      }
+      if !ioSet.contains (connectorP2) {
+        let p = inRotationCenter.rotated90CounterClockwise (x: connectorP2.mX, y: connectorP2.mY)
+        connectorP2.mX = p.x
+        connectorP2.mY = p.y
+        ioSet.insert (connectorP2)
+      }
     }
   }
 

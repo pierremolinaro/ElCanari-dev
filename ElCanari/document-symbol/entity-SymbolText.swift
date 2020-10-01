@@ -63,7 +63,7 @@ class SymbolText : SymbolObject,
   //   Atomic property: y
   //····················································································································
 
-  let y_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -86,7 +86,7 @@ class SymbolText : SymbolObject,
   //   Atomic property: text
   //····················································································································
 
-  let text_property = EBStoredProperty_String (defaultValue: "text")
+  final let text_property = EBStoredProperty_String (defaultValue: "text")
 
   //····················································································································
 
@@ -109,7 +109,7 @@ class SymbolText : SymbolObject,
   //   Atomic property: horizontalAlignment
   //····················································································································
 
-  let horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  final let horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class SymbolText : SymbolObject,
   //   Atomic property: x
   //····················································································································
 
-  let x_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

@@ -98,7 +98,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  final let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  let comments_property = EBStoredProperty_String (defaultValue: "")
+  final let comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -144,7 +144,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: horizontalFlip
   //····················································································································
 
-  let horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -167,7 +167,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: verticalFlip
   //····················································································································
 
-  let verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  final let verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -190,7 +190,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  let gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  final let gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -213,7 +213,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridDisplay
   //····················································································································
 
-  let gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
+  final let gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -236,7 +236,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  let zoom_property = EBStoredProperty_Int (defaultValue: 600)
+  final let zoom_property = EBStoredProperty_Int (defaultValue: 600)
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: xPlacardUnit
   //····················································································································
 
-  let xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -282,7 +282,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: yPlacardUnit
   //····················································································································
 
-  let yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -305,17 +305,17 @@ class SymbolRoot : EBManagedObject,
   //   To many property: symbolObjects
   //····················································································································
 
-  let symbolObjects_property = StoredArrayOf_SymbolObject (usedForSignature: true)
+  final let symbolObjects_property = StoredArrayOf_SymbolObject (usedForSignature: true)
 
   //····················································································································
 
-  var symbolObjects_property_selection : EBSelection < [SymbolObject] > {
+  final var symbolObjects_property_selection : EBSelection < [SymbolObject] > {
     return self.symbolObjects_property.prop
   }
 
   //····················································································································
 
-  var symbolObjects : [SymbolObject] {
+  final var symbolObjects : [SymbolObject] {
     get { return self.symbolObjects_property.propval }
     set { self.symbolObjects_property.setProp (newValue) }
   }
@@ -324,17 +324,17 @@ class SymbolRoot : EBManagedObject,
   //   To many property: symbolPins
   //····················································································································
 
-  let symbolPins_property = TransientArrayOfSuperOf_SymbolPin <SymbolObject> ()
+  final let symbolPins_property = TransientArrayOfSuperOf_SymbolPin <SymbolObject> ()
 
   //····················································································································
 
-  var symbolPins_property_selection : EBSelection < [SymbolPin] > {
+  final var symbolPins_property_selection : EBSelection < [SymbolPin] > {
     return self.symbolPins_property.prop
   }
 
   //····················································································································
 
-  var symbolPins : [SymbolPin] {
+  final var symbolPins : [SymbolPin] {
     get { return self.symbolPins_property.propval }
   }
 
@@ -342,7 +342,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  final let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -365,17 +365,17 @@ class SymbolRoot : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -388,17 +388,17 @@ class SymbolRoot : EBManagedObject,
   //   Transient property: noIssue
   //····················································································································
 
-  let noIssue_property = EBTransientProperty_Bool ()
+  final let noIssue_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var noIssue_property_selection : EBSelection <Bool> {
+  final var noIssue_property_selection : EBSelection <Bool> {
     return self.noIssue_property.prop
   }
 
   //····················································································································
 
-  var noIssue : Bool? {
+  final var noIssue : Bool? {
     switch self.noIssue_property_selection {
     case .empty, .multiple :
       return nil

@@ -27,8 +27,8 @@ extension BoardConnector {
   //····················································································································
 
   override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : OCObjectSet) {
-    if !ioSet.objects.contains (self) {
-      ioSet.objects.insert (self)
+    if !ioSet.contains (self) {
+      ioSet.insert (self)
       self.mX += inDx
       self.mY += inDy
     }

@@ -49,7 +49,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: y1
   //····················································································································
 
-  let y1_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -72,7 +72,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: x2
   //····················································································································
 
-  let x2_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: y2
   //····················································································································
 
-  let y2_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: width
   //····················································································································
 
-  let width_property = EBStoredProperty_Int (defaultValue: 0)
+  final let width_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -141,7 +141,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: x1
   //····················································································································
 
-  let x1_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

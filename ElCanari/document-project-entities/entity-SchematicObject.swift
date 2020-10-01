@@ -56,17 +56,17 @@ class SchematicObject : EBGraphicManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-  let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mSheet_property_selection : EBSelection <SheetInProject?> {
+  final var mSheet_property_selection : EBSelection <SheetInProject?> {
     return .single (self.mSheet_property.propval)
   }
 
   //····················································································································
 
-  var mSheet : SheetInProject? {
+  final var mSheet : SheetInProject? {
     get {
       return self.mSheet_property.propval
     }
@@ -82,11 +82,11 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
+  final var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
 
   //····················································································································
 
-  var mSheet_none_selection : EBSelection <Bool> {
+  final var mSheet_none_selection : EBSelection <Bool> {
     return .single (self.mSheet_property.propval == nil)
   }
 
@@ -94,17 +94,17 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -117,17 +117,17 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: connectedPoints
   //····················································································································
 
-  let connectedPoints_property = EBTransientProperty_CanariPointArray ()
+  final let connectedPoints_property = EBTransientProperty_CanariPointArray ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <CanariPointArray> {
+  final var connectedPoints_property_selection : EBSelection <CanariPointArray> {
     return self.connectedPoints_property.prop
   }
 
   //····················································································································
 
-  var connectedPoints : CanariPointArray? {
+  final var connectedPoints : CanariPointArray? {
     switch self.connectedPoints_property_selection {
     case .empty, .multiple :
       return nil
@@ -140,17 +140,17 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: sheetDescriptor
   //····················································································································
 
-  let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
+  final let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
 
   //····················································································································
 
-  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
+  final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
     return self.sheetDescriptor_property.prop
   }
 
   //····················································································································
 
-  var sheetDescriptor : SchematicSheetDescriptor? {
+  final var sheetDescriptor : SchematicSheetDescriptor? {
     switch self.sheetDescriptor_property_selection {
     case .empty, .multiple :
       return nil
@@ -163,17 +163,17 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: isPlacedInSchematic
   //····················································································································
 
-  let isPlacedInSchematic_property = EBTransientProperty_Bool ()
+  final let isPlacedInSchematic_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var isPlacedInSchematic_property_selection : EBSelection <Bool> {
+  final var isPlacedInSchematic_property_selection : EBSelection <Bool> {
     return self.isPlacedInSchematic_property.prop
   }
 
   //····················································································································
 
-  var isPlacedInSchematic : Bool? {
+  final var isPlacedInSchematic : Bool? {
     switch self.isPlacedInSchematic_property_selection {
     case .empty, .multiple :
       return nil

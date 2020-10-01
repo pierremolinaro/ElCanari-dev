@@ -98,7 +98,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y1
   //····················································································································
 
-  let y1_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let y1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: x2
   //····················································································································
 
-  let x2_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -144,7 +144,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y2
   //····················································································································
 
-  let y2_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -167,7 +167,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpx1
   //····················································································································
 
-  let cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -190,7 +190,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy1
   //····················································································································
 
-  let cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -213,7 +213,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpx2
   //····················································································································
 
-  let cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -236,7 +236,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy2
   //····················································································································
 
-  let cpy2_property = EBStoredProperty_Int (defaultValue: 0)
+  final let cpy2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: x1
   //····················································································································
 
-  let x1_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -282,17 +282,17 @@ class SymbolBezierCurve : SymbolObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
     return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
 
-  var strokeBezierPath : NSBezierPath? {
+  final var strokeBezierPath : NSBezierPath? {
     switch self.strokeBezierPath_property_selection {
     case .empty, .multiple :
       return nil

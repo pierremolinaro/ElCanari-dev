@@ -49,17 +49,17 @@ class WireInSchematic : SchematicObject,
   //   To one property: mP1
   //····················································································································
 
-  let mP1_property = StoredObject_PointInSchematic (usedForSignature: false)
+  final let mP1_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
-  var mP1_property_selection : EBSelection <PointInSchematic?> {
+  final var mP1_property_selection : EBSelection <PointInSchematic?> {
     return .single (self.mP1_property.propval)
   }
 
   //····················································································································
 
-  var mP1 : PointInSchematic? {
+  final var mP1 : PointInSchematic? {
     get {
       return self.mP1_property.propval
     }
@@ -75,11 +75,11 @@ class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mP1_none : StoredObject_PointInSchematic { return self.mP1_property }
+  final var mP1_none : StoredObject_PointInSchematic { return self.mP1_property }
 
   //····················································································································
 
-  var mP1_none_selection : EBSelection <Bool> {
+  final var mP1_none_selection : EBSelection <Bool> {
     return .single (self.mP1_property.propval == nil)
   }
 
@@ -87,17 +87,17 @@ class WireInSchematic : SchematicObject,
   //   To one property: mP2
   //····················································································································
 
-  let mP2_property = StoredObject_PointInSchematic (usedForSignature: false)
+  final let mP2_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
-  var mP2_property_selection : EBSelection <PointInSchematic?> {
+  final var mP2_property_selection : EBSelection <PointInSchematic?> {
     return .single (self.mP2_property.propval)
   }
 
   //····················································································································
 
-  var mP2 : PointInSchematic? {
+  final var mP2 : PointInSchematic? {
     get {
       return self.mP2_property.propval
     }
@@ -113,11 +113,11 @@ class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mP2_none : StoredObject_PointInSchematic { return self.mP2_property }
+  final var mP2_none : StoredObject_PointInSchematic { return self.mP2_property }
 
   //····················································································································
 
-  var mP2_none_selection : EBSelection <Bool> {
+  final var mP2_none_selection : EBSelection <Bool> {
     return .single (self.mP2_property.propval == nil)
   }
 
@@ -125,17 +125,17 @@ class WireInSchematic : SchematicObject,
   //   Transient property: netName
   //····················································································································
 
-  let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netName_property_selection : EBSelection <String> {
+  final var netName_property_selection : EBSelection <String> {
     return self.netName_property.prop
   }
 
   //····················································································································
 
-  var netName : String? {
+  final var netName : String? {
     switch self.netName_property_selection {
     case .empty, .multiple :
       return nil
@@ -148,17 +148,17 @@ class WireInSchematic : SchematicObject,
   //   Transient property: netClassName
   //····················································································································
 
-  let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String> {
+  final var netClassName_property_selection : EBSelection <String> {
     return self.netClassName_property.prop
   }
 
   //····················································································································
 
-  var netClassName : String? {
+  final var netClassName : String? {
     switch self.netClassName_property_selection {
     case .empty, .multiple :
       return nil
@@ -171,17 +171,17 @@ class WireInSchematic : SchematicObject,
   //   Transient property: hasNet
   //····················································································································
 
-  let hasNet_property = EBTransientProperty_Bool ()
+  final let hasNet_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var hasNet_property_selection : EBSelection <Bool> {
+  final var hasNet_property_selection : EBSelection <Bool> {
     return self.hasNet_property.prop
   }
 
   //····················································································································
 
-  var hasNet : Bool? {
+  final var hasNet : Bool? {
     switch self.hasNet_property_selection {
     case .empty, .multiple :
       return nil

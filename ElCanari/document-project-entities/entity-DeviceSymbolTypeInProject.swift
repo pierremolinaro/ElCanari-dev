@@ -35,7 +35,7 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+  final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -58,7 +58,7 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -81,7 +81,7 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //   Atomic property: mFilledBezierPath
   //····················································································································
 
-  let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  final let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 

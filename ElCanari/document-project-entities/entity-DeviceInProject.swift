@@ -105,7 +105,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceName
   //····················································································································
 
-  let mDeviceName_property = EBStoredProperty_String (defaultValue: "")
+  final let mDeviceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -128,7 +128,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mPrefix
   //····················································································································
 
-  let mPrefix_property = EBStoredProperty_String (defaultValue: "")
+  final let mPrefix_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -151,7 +151,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceVersion
   //····················································································································
 
-  let mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -174,7 +174,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceFileData
   //····················································································································
 
-  let mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  final let mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -197,17 +197,17 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  let mPackages_property = StoredArrayOf_DevicePackageInProject (usedForSignature: false)
+  final let mPackages_property = StoredArrayOf_DevicePackageInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mPackages_property_selection : EBSelection < [DevicePackageInProject] > {
+  final var mPackages_property_selection : EBSelection < [DevicePackageInProject] > {
     return self.mPackages_property.prop
   }
 
   //····················································································································
 
-  var mPackages : [DevicePackageInProject] {
+  final var mPackages : [DevicePackageInProject] {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -216,17 +216,17 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mSymbols
   //····················································································································
 
-  let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject (usedForSignature: false)
+  final let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mSymbols_property_selection : EBSelection < [DeviceSymbolInstanceInProject] > {
+  final var mSymbols_property_selection : EBSelection < [DeviceSymbolInstanceInProject] > {
     return self.mSymbols_property.prop
   }
 
   //····················································································································
 
-  var mSymbols : [DeviceSymbolInstanceInProject] {
+  final var mSymbols : [DeviceSymbolInstanceInProject] {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
   }
@@ -235,17 +235,17 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+  final var mComponents_property_selection : EBSelection < [ComponentInProject] > {
     return self.mComponents_property.prop
   }
 
   //····················································································································
 
-  var mComponents : [ComponentInProject] {
+  final var mComponents : [ComponentInProject] {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
   }
@@ -254,17 +254,17 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mPadAssignments
   //····················································································································
 
-  let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject (usedForSignature: false)
+  final let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mPadAssignments_property_selection : EBSelection < [DevicePadAssignmentInProject] > {
+  final var mPadAssignments_property_selection : EBSelection < [DevicePadAssignmentInProject] > {
     return self.mPadAssignments_property.prop
   }
 
   //····················································································································
 
-  var mPadAssignments : [DevicePadAssignmentInProject] {
+  final var mPadAssignments : [DevicePadAssignmentInProject] {
     get { return self.mPadAssignments_property.propval }
     set { self.mPadAssignments_property.setProp (newValue) }
   }
@@ -273,17 +273,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String> {
+  final var versionString_property_selection : EBSelection <String> {
     return self.versionString_property.prop
   }
 
   //····················································································································
 
-  var versionString : String? {
+  final var versionString : String? {
     switch self.versionString_property_selection {
     case .empty, .multiple :
       return nil
@@ -296,17 +296,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: sizeString
   //····················································································································
 
-  let sizeString_property = EBTransientProperty_String ()
+  final let sizeString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var sizeString_property_selection : EBSelection <String> {
+  final var sizeString_property_selection : EBSelection <String> {
     return self.sizeString_property.prop
   }
 
   //····················································································································
 
-  var sizeString : String? {
+  final var sizeString : String? {
     switch self.sizeString_property_selection {
     case .empty, .multiple :
       return nil
@@ -319,17 +319,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: canExport
   //····················································································································
 
-  let canExport_property = EBTransientProperty_Bool ()
+  final let canExport_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canExport_property_selection : EBSelection <Bool> {
+  final var canExport_property_selection : EBSelection <Bool> {
     return self.canExport_property.prop
   }
 
   //····················································································································
 
-  var canExport : Bool? {
+  final var canExport : Bool? {
     switch self.canExport_property_selection {
     case .empty, .multiple :
       return nil
@@ -342,17 +342,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: packageNames
   //····················································································································
 
-  let packageNames_property = EBTransientProperty_StringArray ()
+  final let packageNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var packageNames_property_selection : EBSelection <StringArray> {
+  final var packageNames_property_selection : EBSelection <StringArray> {
     return self.packageNames_property.prop
   }
 
   //····················································································································
 
-  var packageNames : StringArray? {
+  final var packageNames : StringArray? {
     switch self.packageNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -365,17 +365,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: deviceComponentCountString
   //····················································································································
 
-  let deviceComponentCountString_property = EBTransientProperty_String ()
+  final let deviceComponentCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var deviceComponentCountString_property_selection : EBSelection <String> {
+  final var deviceComponentCountString_property_selection : EBSelection <String> {
     return self.deviceComponentCountString_property.prop
   }
 
   //····················································································································
 
-  var deviceComponentCountString : String? {
+  final var deviceComponentCountString : String? {
     switch self.deviceComponentCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -388,17 +388,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: canRemove
   //····················································································································
 
-  let canRemove_property = EBTransientProperty_Bool ()
+  final let canRemove_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canRemove_property_selection : EBSelection <Bool> {
+  final var canRemove_property_selection : EBSelection <Bool> {
     return self.canRemove_property.prop
   }
 
   //····················································································································
 
-  var canRemove : Bool? {
+  final var canRemove : Bool? {
     switch self.canRemove_property_selection {
     case .empty, .multiple :
       return nil
@@ -411,17 +411,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: symbolAndTypesNames
   //····················································································································
 
-  let symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
+  final let symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
 
   //····················································································································
 
-  var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray> {
+  final var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray> {
     return self.symbolAndTypesNames_property.prop
   }
 
   //····················································································································
 
-  var symbolAndTypesNames : SymbolInProjectIdentifierArray? {
+  final var symbolAndTypesNames : SymbolInProjectIdentifierArray? {
     switch self.symbolAndTypesNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -434,17 +434,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
 
-  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+  final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
     return self.pinPadAssignments_property.prop
   }
 
   //····················································································································
 
-  var pinPadAssignments : ThreeStringArray? {
+  final var pinPadAssignments : ThreeStringArray? {
     switch self.pinPadAssignments_property_selection {
     case .empty, .multiple :
       return nil
@@ -457,17 +457,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
-  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
 
   //····················································································································
 
-  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
+  final var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
     return self.deviceSymbolDictionary_property.prop
   }
 
   //····················································································································
 
-  var deviceSymbolDictionary : DeviceSymbolDictionary? {
+  final var deviceSymbolDictionary : DeviceSymbolDictionary? {
     switch self.deviceSymbolDictionary_property_selection {
     case .empty, .multiple :
       return nil

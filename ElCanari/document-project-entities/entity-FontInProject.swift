@@ -70,17 +70,17 @@ class FontInProject : EBManagedObject,
   //   To many property: mTexts
   //····················································································································
 
-  let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false)
+  final let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false)
 
   //····················································································································
 
-  var mTexts_property_selection : EBSelection < [BoardText] > {
+  final var mTexts_property_selection : EBSelection < [BoardText] > {
     return self.mTexts_property.prop
   }
 
   //····················································································································
 
-  var mTexts : [BoardText] {
+  final var mTexts : [BoardText] {
     get { return self.mTexts_property.propval }
     set { self.mTexts_property.setProp (newValue) }
   }
@@ -89,7 +89,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mNominalSize
   //····················································································································
 
-  let mNominalSize_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mNominalSize_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -112,7 +112,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontName
   //····················································································································
 
-  let mFontName_property = EBStoredProperty_String (defaultValue: "")
+  final let mFontName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -135,7 +135,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontVersion
   //····················································································································
 
-  let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -158,7 +158,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mDescriptiveString
   //····················································································································
 
-  let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
+  final let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -181,17 +181,17 @@ class FontInProject : EBManagedObject,
   //   To many property: mComponentNames
   //····················································································································
 
-  let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
+  final var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
     return self.mComponentNames_property.prop
   }
 
   //····················································································································
 
-  var mComponentNames : [ComponentInProject] {
+  final var mComponentNames : [ComponentInProject] {
     get { return self.mComponentNames_property.propval }
     set { self.mComponentNames_property.setProp (newValue) }
   }
@@ -200,17 +200,17 @@ class FontInProject : EBManagedObject,
   //   To many property: mComponentValues
   //····················································································································
 
-  let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
+  final var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
     return self.mComponentValues_property.prop
   }
 
   //····················································································································
 
-  var mComponentValues : [ComponentInProject] {
+  final var mComponentValues : [ComponentInProject] {
     get { return self.mComponentValues_property.propval }
     set { self.mComponentValues_property.setProp (newValue) }
   }
@@ -219,17 +219,17 @@ class FontInProject : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String> {
+  final var versionString_property_selection : EBSelection <String> {
     return self.versionString_property.prop
   }
 
   //····················································································································
 
-  var versionString : String? {
+  final var versionString : String? {
     switch self.versionString_property_selection {
     case .empty, .multiple :
       return nil
@@ -242,17 +242,17 @@ class FontInProject : EBManagedObject,
   //   Transient property: sizeString
   //····················································································································
 
-  let sizeString_property = EBTransientProperty_String ()
+  final let sizeString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var sizeString_property_selection : EBSelection <String> {
+  final var sizeString_property_selection : EBSelection <String> {
     return self.sizeString_property.prop
   }
 
   //····················································································································
 
-  var sizeString : String? {
+  final var sizeString : String? {
     switch self.sizeString_property_selection {
     case .empty, .multiple :
       return nil
@@ -265,17 +265,17 @@ class FontInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  let descriptor_property = EBTransientProperty_BoardFontDescriptor ()
+  final let descriptor_property = EBTransientProperty_BoardFontDescriptor ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <BoardFontDescriptor> {
+  final var descriptor_property_selection : EBSelection <BoardFontDescriptor> {
     return self.descriptor_property.prop
   }
 
   //····················································································································
 
-  var descriptor : BoardFontDescriptor? {
+  final var descriptor : BoardFontDescriptor? {
     switch self.descriptor_property_selection {
     case .empty, .multiple :
       return nil
@@ -288,17 +288,17 @@ class FontInProject : EBManagedObject,
   //   Transient property: canRemoveFont
   //····················································································································
 
-  let canRemoveFont_property = EBTransientProperty_Bool ()
+  final let canRemoveFont_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var canRemoveFont_property_selection : EBSelection <Bool> {
+  final var canRemoveFont_property_selection : EBSelection <Bool> {
     return self.canRemoveFont_property.prop
   }
 
   //····················································································································
 
-  var canRemoveFont : Bool? {
+  final var canRemoveFont : Bool? {
     switch self.canRemoveFont_property_selection {
     case .empty, .multiple :
       return nil

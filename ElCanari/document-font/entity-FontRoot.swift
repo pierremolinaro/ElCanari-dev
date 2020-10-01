@@ -98,7 +98,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  let comments_property = EBStoredProperty_String (defaultValue: "")
+  final let comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: nominalSize
   //····················································································································
 
-  let nominalSize_property = EBStoredProperty_Int (defaultValue: 14)
+  final let nominalSize_property = EBStoredProperty_Int (defaultValue: 14)
 
   //····················································································································
 
@@ -144,7 +144,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedTab
   //····················································································································
 
-  let selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
+  final let selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -167,7 +167,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  final let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -190,7 +190,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: currentCharacterCodePoint
   //····················································································································
 
-  let currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32)
+  final let currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32)
 
   //····················································································································
 
@@ -219,17 +219,17 @@ class FontRoot : EBManagedObject,
   //   To many property: characters
   //····················································································································
 
-  let characters_property = StoredArrayOf_FontCharacter (usedForSignature: true)
+  final let characters_property = StoredArrayOf_FontCharacter (usedForSignature: true)
 
   //····················································································································
 
-  var characters_property_selection : EBSelection < [FontCharacter] > {
+  final var characters_property_selection : EBSelection < [FontCharacter] > {
     return self.characters_property.prop
   }
 
   //····················································································································
 
-  var characters : [FontCharacter] {
+  final var characters : [FontCharacter] {
     get { return self.characters_property.propval }
     set { self.characters_property.setProp (newValue) }
   }
@@ -238,17 +238,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: currentCharacterCodePointString
   //····················································································································
 
-  let currentCharacterCodePointString_property = EBTransientProperty_String ()
+  final let currentCharacterCodePointString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var currentCharacterCodePointString_property_selection : EBSelection <String> {
+  final var currentCharacterCodePointString_property_selection : EBSelection <String> {
     return self.currentCharacterCodePointString_property.prop
   }
 
   //····················································································································
 
-  var currentCharacterCodePointString : String? {
+  final var currentCharacterCodePointString : String? {
     switch self.currentCharacterCodePointString_property_selection {
     case .empty, .multiple :
       return nil
@@ -261,17 +261,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPath
   //····················································································································
 
-  let sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
-  var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath> {
+  final var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath> {
     return self.sampleStringBezierPath_property.prop
   }
 
   //····················································································································
 
-  var sampleStringBezierPath : NSBezierPath? {
+  final var sampleStringBezierPath : NSBezierPath? {
     switch self.sampleStringBezierPath_property_selection {
     case .empty, .multiple :
       return nil
@@ -284,17 +284,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPathWidth
   //····················································································································
 
-  let sampleStringBezierPathWidth_property = EBTransientProperty_String ()
+  final let sampleStringBezierPathWidth_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var sampleStringBezierPathWidth_property_selection : EBSelection <String> {
+  final var sampleStringBezierPathWidth_property_selection : EBSelection <String> {
     return self.sampleStringBezierPathWidth_property.prop
   }
 
   //····················································································································
 
-  var sampleStringBezierPathWidth : String? {
+  final var sampleStringBezierPathWidth : String? {
     switch self.sampleStringBezierPathWidth_property_selection {
     case .empty, .multiple :
       return nil
@@ -307,17 +307,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPathAscent
   //····················································································································
 
-  let sampleStringBezierPathAscent_property = EBTransientProperty_String ()
+  final let sampleStringBezierPathAscent_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var sampleStringBezierPathAscent_property_selection : EBSelection <String> {
+  final var sampleStringBezierPathAscent_property_selection : EBSelection <String> {
     return self.sampleStringBezierPathAscent_property.prop
   }
 
   //····················································································································
 
-  var sampleStringBezierPathAscent : String? {
+  final var sampleStringBezierPathAscent : String? {
     switch self.sampleStringBezierPathAscent_property_selection {
     case .empty, .multiple :
       return nil
@@ -330,17 +330,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPathDescent
   //····················································································································
 
-  let sampleStringBezierPathDescent_property = EBTransientProperty_String ()
+  final let sampleStringBezierPathDescent_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var sampleStringBezierPathDescent_property_selection : EBSelection <String> {
+  final var sampleStringBezierPathDescent_property_selection : EBSelection <String> {
     return self.sampleStringBezierPathDescent_property.prop
   }
 
   //····················································································································
 
-  var sampleStringBezierPathDescent : String? {
+  final var sampleStringBezierPathDescent : String? {
     switch self.sampleStringBezierPathDescent_property_selection {
     case .empty, .multiple :
       return nil
@@ -353,17 +353,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: definedCharacters
   //····················································································································
 
-  let definedCharacters_property = EBTransientProperty_DefinedCharactersInDevice ()
+  final let definedCharacters_property = EBTransientProperty_DefinedCharactersInDevice ()
 
   //····················································································································
 
-  var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice> {
+  final var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice> {
     return self.definedCharacters_property.prop
   }
 
   //····················································································································
 
-  var definedCharacters : DefinedCharactersInDevice? {
+  final var definedCharacters : DefinedCharactersInDevice? {
     switch self.definedCharacters_property_selection {
     case .empty, .multiple :
       return nil
@@ -376,17 +376,17 @@ class FontRoot : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -807,11 +807,6 @@ class FontRoot : EBManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: characters (Custom store)
     self.characters_property.setProp (customRead_FontCharacter_characters (from: inDictionary, with: self.ebUndoManager))
-    /* self.characters_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "characters",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [FontCharacter]) */
   }
 
   //····················································································································

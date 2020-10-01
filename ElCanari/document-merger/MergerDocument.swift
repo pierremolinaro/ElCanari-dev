@@ -48,17 +48,17 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var documentFilePath_property_selection : EBSelection <String> {
+  final var documentFilePath_property_selection : EBSelection <String> {
     return self.documentFilePath_property.prop
   }
 
   //····················································································································
 
-  var documentFilePath : String? {
+  final var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -71,17 +71,17 @@ import Cocoa
   //   Transient property: documentFileNameOk
   //····················································································································
 
-  let documentFileNameOk_property = EBTransientProperty_Bool ()
+  final let documentFileNameOk_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var documentFileNameOk_property_selection : EBSelection <Bool> {
+  final var documentFileNameOk_property_selection : EBSelection <Bool> {
     return self.documentFileNameOk_property.prop
   }
 
   //····················································································································
 
-  var documentFileNameOk : Bool? {
+  final var documentFileNameOk : Bool? {
     switch self.documentFileNameOk_property_selection {
     case .empty, .multiple :
       return nil
@@ -94,17 +94,17 @@ import Cocoa
   //   Transient property: documentIsUnnamed
   //····················································································································
 
-  let documentIsUnnamed_property = EBTransientProperty_Bool ()
+  final let documentIsUnnamed_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var documentIsUnnamed_property_selection : EBSelection <Bool> {
+  final var documentIsUnnamed_property_selection : EBSelection <Bool> {
     return self.documentIsUnnamed_property.prop
   }
 
   //····················································································································
 
-  var documentIsUnnamed : Bool? {
+  final var documentIsUnnamed : Bool? {
     switch self.documentIsUnnamed_property_selection {
     case .empty, .multiple :
       return nil
@@ -117,17 +117,17 @@ import Cocoa
   //   Transient property: importArtworkButtonTitle
   //····················································································································
 
-  let importArtworkButtonTitle_property = EBTransientProperty_String ()
+  final let importArtworkButtonTitle_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var importArtworkButtonTitle_property_selection : EBSelection <String> {
+  final var importArtworkButtonTitle_property_selection : EBSelection <String> {
     return self.importArtworkButtonTitle_property.prop
   }
 
   //····················································································································
 
-  var importArtworkButtonTitle : String? {
+  final var importArtworkButtonTitle : String? {
     switch self.importArtworkButtonTitle_property_selection {
     case .empty, .multiple :
       return nil
@@ -140,17 +140,17 @@ import Cocoa
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -163,17 +163,17 @@ import Cocoa
   //   Transient property: mStatusImage
   //····················································································································
 
-  let mStatusImage_property = EBTransientProperty_NSImage ()
+  final let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var mStatusImage_property_selection : EBSelection <NSImage> {
+  final var mStatusImage_property_selection : EBSelection <NSImage> {
     return self.mStatusImage_property.prop
   }
 
   //····················································································································
 
-  var mStatusImage : NSImage? {
+  final var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -186,17 +186,17 @@ import Cocoa
   //   Transient property: mStatusMessage
   //····················································································································
 
-  let mStatusMessage_property = EBTransientProperty_String ()
+  final let mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var mStatusMessage_property_selection : EBSelection <String> {
+  final var mStatusMessage_property_selection : EBSelection <String> {
     return self.mStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var mStatusMessage : String? {
+  final var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -209,17 +209,17 @@ import Cocoa
   //   Transient property: incorrectDocumentFileErrorMessage
   //····················································································································
 
-  let incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
+  final let incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
+  final var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
     return self.incorrectDocumentFileErrorMessage_property.prop
   }
 
   //····················································································································
 
-  var incorrectDocumentFileErrorMessage : String? {
+  final var incorrectDocumentFileErrorMessage : String? {
     switch self.incorrectDocumentFileErrorMessage_property_selection {
     case .empty, .multiple :
       return nil

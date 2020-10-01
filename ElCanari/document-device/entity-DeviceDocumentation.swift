@@ -35,7 +35,7 @@ class DeviceDocumentation : EBManagedObject,
   //   Atomic property: mFileName
   //····················································································································
 
-  let mFileName_property = EBStoredProperty_String (defaultValue: "")
+  final let mFileName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -58,7 +58,7 @@ class DeviceDocumentation : EBManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -81,17 +81,17 @@ class DeviceDocumentation : EBManagedObject,
   //   Transient property: fileSize
   //····················································································································
 
-  let fileSize_property = EBTransientProperty_Int ()
+  final let fileSize_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var fileSize_property_selection : EBSelection <Int> {
+  final var fileSize_property_selection : EBSelection <Int> {
     return self.fileSize_property.prop
   }
 
   //····················································································································
 
-  var fileSize : Int? {
+  final var fileSize : Int? {
     switch self.fileSize_property_selection {
     case .empty, .multiple :
       return nil

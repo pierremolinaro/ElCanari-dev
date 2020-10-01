@@ -68,6 +68,40 @@ extension BoardLine {
   }
 
   //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    accumulatedPoints.insert (CanariPoint (x: self.mX1, y: self.mY1))
+    accumulatedPoints.insert (CanariPoint (x: self.mX2, y: self.mY2))
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90Clockwise (x: self.mX1, y: self.mY1)
+    self.mX1 = p1.x
+    self.mY1 = p1.y
+    let p2 = inRotationCenter.rotated90Clockwise (x: self.mX2, y: self.mY2)
+    self.mX2 = p2.x
+    self.mY2 = p2.y
+    ioSet.insert (self)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mX1, y: self.mY1)
+    self.mX1 = p1.x
+    self.mY1 = p1.y
+    let p2 = inRotationCenter.rotated90CounterClockwise (x: self.mX2, y: self.mY2)
+    self.mX2 = p2.x
+    self.mY2 = p2.y
+    ioSet.insert (self)
+  }
+
+  //····················································································································
   //   SNAP TO GRID
   //····················································································································
 

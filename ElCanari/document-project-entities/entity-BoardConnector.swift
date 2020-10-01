@@ -210,7 +210,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mComponentPadName
   //····················································································································
 
-  let mComponentPadName_property = EBStoredProperty_String (defaultValue: "")
+  final let mComponentPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -233,7 +233,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mPadIndex
   //····················································································································
 
-  let mPadIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mPadIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -256,7 +256,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mX
   //····················································································································
 
-  let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -279,7 +279,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mY
   //····················································································································
 
-  let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -302,17 +302,17 @@ class BoardConnector : BoardObject,
   //   To many property: mTracksP2
   //····················································································································
 
-  let mTracksP2_property = StoredArrayOf_BoardTrack (usedForSignature: false)
+  final let mTracksP2_property = StoredArrayOf_BoardTrack (usedForSignature: false)
 
   //····················································································································
 
-  var mTracksP2_property_selection : EBSelection < [BoardTrack] > {
+  final var mTracksP2_property_selection : EBSelection < [BoardTrack] > {
     return self.mTracksP2_property.prop
   }
 
   //····················································································································
 
-  var mTracksP2 : [BoardTrack] {
+  final var mTracksP2 : [BoardTrack] {
     get { return self.mTracksP2_property.propval }
     set { self.mTracksP2_property.setProp (newValue) }
   }
@@ -321,7 +321,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mDefaultHoleDiameterUnit
   //····················································································································
 
-  let mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -344,7 +344,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomHoleDiameter
   //····················································································································
 
-  let mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+  final let mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
 
   //····················································································································
 
@@ -367,7 +367,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomHoleDiameterUnit
   //····················································································································
 
-  let mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -390,7 +390,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mUsesCustomHoleDiameter
   //····················································································································
 
-  let mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -413,7 +413,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mDefaultPadDiameterUnit
   //····················································································································
 
-  let mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -436,7 +436,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomPadDiameter
   //····················································································································
 
-  let mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+  final let mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
 
   //····················································································································
 
@@ -459,7 +459,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomPadDiameterUnit
   //····················································································································
 
-  let mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -482,7 +482,7 @@ class BoardConnector : BoardObject,
   //   Atomic property: mUsesCustomPadDiameter
   //····················································································································
 
-  let mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+  final let mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -505,17 +505,17 @@ class BoardConnector : BoardObject,
   //   To many property: mTracksP1
   //····················································································································
 
-  let mTracksP1_property = StoredArrayOf_BoardTrack (usedForSignature: false)
+  final let mTracksP1_property = StoredArrayOf_BoardTrack (usedForSignature: false)
 
   //····················································································································
 
-  var mTracksP1_property_selection : EBSelection < [BoardTrack] > {
+  final var mTracksP1_property_selection : EBSelection < [BoardTrack] > {
     return self.mTracksP1_property.prop
   }
 
   //····················································································································
 
-  var mTracksP1 : [BoardTrack] {
+  final var mTracksP1 : [BoardTrack] {
     get { return self.mTracksP1_property.propval }
     set { self.mTracksP1_property.setProp (newValue) }
   }
@@ -524,17 +524,17 @@ class BoardConnector : BoardObject,
   //   To one property: mComponent
   //····················································································································
 
-  let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
+  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mComponent_property_selection : EBSelection <ComponentInProject?> {
+  final var mComponent_property_selection : EBSelection <ComponentInProject?> {
     return .single (self.mComponent_property.propval)
   }
 
   //····················································································································
 
-  var mComponent : ComponentInProject? {
+  final var mComponent : ComponentInProject? {
     get {
       return self.mComponent_property.propval
     }
@@ -550,11 +550,11 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+  final var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
 
   //····················································································································
 
-  var mComponent_none_selection : EBSelection <Bool> {
+  final var mComponent_none_selection : EBSelection <Bool> {
     return .single (self.mComponent_property.propval == nil)
   }
 
@@ -562,17 +562,17 @@ class BoardConnector : BoardObject,
   //   Transient property: location
   //····················································································································
 
-  let location_property = EBTransientProperty_CanariPoint ()
+  final let location_property = EBTransientProperty_CanariPoint ()
 
   //····················································································································
 
-  var location_property_selection : EBSelection <CanariPoint> {
+  final var location_property_selection : EBSelection <CanariPoint> {
     return self.location_property.prop
   }
 
   //····················································································································
 
-  var location : CanariPoint? {
+  final var location : CanariPoint? {
     switch self.location_property_selection {
     case .empty, .multiple :
       return nil
@@ -585,17 +585,17 @@ class BoardConnector : BoardObject,
   //   Transient property: netNameFromComponentPad
   //····················································································································
 
-  let netNameFromComponentPad_property = EBTransientProperty_String ()
+  final let netNameFromComponentPad_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netNameFromComponentPad_property_selection : EBSelection <String> {
+  final var netNameFromComponentPad_property_selection : EBSelection <String> {
     return self.netNameFromComponentPad_property.prop
   }
 
   //····················································································································
 
-  var netNameFromComponentPad : String? {
+  final var netNameFromComponentPad : String? {
     switch self.netNameFromComponentPad_property_selection {
     case .empty, .multiple :
       return nil
@@ -608,17 +608,17 @@ class BoardConnector : BoardObject,
   //   Transient property: side
   //····················································································································
 
-  let side_property = EBTransientProperty_ConnectorSide ()
+  final let side_property = EBTransientProperty_ConnectorSide ()
 
   //····················································································································
 
-  var side_property_selection : EBSelection <ConnectorSide> {
+  final var side_property_selection : EBSelection <ConnectorSide> {
     return self.side_property.prop
   }
 
   //····················································································································
 
-  var side : ConnectorSide? {
+  final var side : ConnectorSide? {
     switch self.side_property_selection {
     case .empty, .multiple :
       return nil
@@ -631,17 +631,17 @@ class BoardConnector : BoardObject,
   //   Transient property: viaDefaultHoleDiameter
   //····················································································································
 
-  let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
+  final let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
+  final var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
     return self.viaDefaultHoleDiameter_property.prop
   }
 
   //····················································································································
 
-  var viaDefaultHoleDiameter : Int? {
+  final var viaDefaultHoleDiameter : Int? {
     switch self.viaDefaultHoleDiameter_property_selection {
     case .empty, .multiple :
       return nil
@@ -654,17 +654,17 @@ class BoardConnector : BoardObject,
   //   Transient property: viaDefaultPadDiameter
   //····················································································································
 
-  let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
+  final let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
+  final var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
     return self.viaDefaultPadDiameter_property.prop
   }
 
   //····················································································································
 
-  var viaDefaultPadDiameter : Int? {
+  final var viaDefaultPadDiameter : Int? {
     switch self.viaDefaultPadDiameter_property_selection {
     case .empty, .multiple :
       return nil
@@ -677,17 +677,17 @@ class BoardConnector : BoardObject,
   //   Transient property: netNameFromTracks
   //····················································································································
 
-  let netNameFromTracks_property = EBTransientProperty_String ()
+  final let netNameFromTracks_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netNameFromTracks_property_selection : EBSelection <String> {
+  final var netNameFromTracks_property_selection : EBSelection <String> {
     return self.netNameFromTracks_property.prop
   }
 
   //····················································································································
 
-  var netNameFromTracks : String? {
+  final var netNameFromTracks : String? {
     switch self.netNameFromTracks_property_selection {
     case .empty, .multiple :
       return nil
@@ -700,17 +700,17 @@ class BoardConnector : BoardObject,
   //   Transient property: netClassName
   //····················································································································
 
-  let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String> {
+  final var netClassName_property_selection : EBSelection <String> {
     return self.netClassName_property.prop
   }
 
   //····················································································································
 
-  var netClassName : String? {
+  final var netClassName : String? {
     switch self.netClassName_property_selection {
     case .empty, .multiple :
       return nil
@@ -723,17 +723,17 @@ class BoardConnector : BoardObject,
   //   Transient property: connectedToComponent
   //····················································································································
 
-  let connectedToComponent_property = EBTransientProperty_Bool ()
+  final let connectedToComponent_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var connectedToComponent_property_selection : EBSelection <Bool> {
+  final var connectedToComponent_property_selection : EBSelection <Bool> {
     return self.connectedToComponent_property.prop
   }
 
   //····················································································································
 
-  var connectedToComponent : Bool? {
+  final var connectedToComponent : Bool? {
     switch self.connectedToComponent_property_selection {
     case .empty, .multiple :
       return nil
@@ -746,17 +746,17 @@ class BoardConnector : BoardObject,
   //   Transient property: actualHoleDiameter
   //····················································································································
 
-  let actualHoleDiameter_property = EBTransientProperty_Int ()
+  final let actualHoleDiameter_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var actualHoleDiameter_property_selection : EBSelection <Int> {
+  final var actualHoleDiameter_property_selection : EBSelection <Int> {
     return self.actualHoleDiameter_property.prop
   }
 
   //····················································································································
 
-  var actualHoleDiameter : Int? {
+  final var actualHoleDiameter : Int? {
     switch self.actualHoleDiameter_property_selection {
     case .empty, .multiple :
       return nil
@@ -769,17 +769,17 @@ class BoardConnector : BoardObject,
   //   Transient property: actualPadDiameter
   //····················································································································
 
-  let actualPadDiameter_property = EBTransientProperty_Int ()
+  final let actualPadDiameter_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var actualPadDiameter_property_selection : EBSelection <Int> {
+  final var actualPadDiameter_property_selection : EBSelection <Int> {
     return self.actualPadDiameter_property.prop
   }
 
   //····················································································································
 
-  var actualPadDiameter : Int? {
+  final var actualPadDiameter : Int? {
     switch self.actualPadDiameter_property_selection {
     case .empty, .multiple :
       return nil

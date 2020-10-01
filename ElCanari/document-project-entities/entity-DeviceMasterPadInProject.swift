@@ -84,7 +84,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -107,7 +107,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  final let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -130,7 +130,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mWidth
   //····················································································································
 
-  let mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+  final let mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
 
   //····················································································································
 
@@ -153,7 +153,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mHeight
   //····················································································································
 
-  let mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
+  final let mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -176,7 +176,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mHoleWidth
   //····················································································································
 
-  let mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150)
+  final let mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -199,7 +199,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mHoleHeight
   //····················································································································
 
-  let mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150)
+  final let mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -222,7 +222,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mShape
   //····················································································································
 
-  let mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+  final let mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
 
   //····················································································································
 
@@ -245,7 +245,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mStyle
   //····················································································································
 
-  let mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing)
+  final let mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing)
 
   //····················································································································
 
@@ -268,7 +268,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mName
   //····················································································································
 
-  let mName_property = EBStoredProperty_String (defaultValue: "")
+  final let mName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -291,17 +291,17 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   To many property: mSlavePads
   //····················································································································
 
-  let mSlavePads_property = StoredArrayOf_DeviceSlavePadInProject (usedForSignature: false)
+  final let mSlavePads_property = StoredArrayOf_DeviceSlavePadInProject (usedForSignature: false)
 
   //····················································································································
 
-  var mSlavePads_property_selection : EBSelection < [DeviceSlavePadInProject] > {
+  final var mSlavePads_property_selection : EBSelection < [DeviceSlavePadInProject] > {
     return self.mSlavePads_property.prop
   }
 
   //····················································································································
 
-  var mSlavePads : [DeviceSlavePadInProject] {
+  final var mSlavePads : [DeviceSlavePadInProject] {
     get { return self.mSlavePads_property.propval }
     set { self.mSlavePads_property.setProp (newValue) }
   }
@@ -310,17 +310,17 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  let descriptor_property = EBTransientProperty_MasterPadDescriptor ()
+  final let descriptor_property = EBTransientProperty_MasterPadDescriptor ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <MasterPadDescriptor> {
+  final var descriptor_property_selection : EBSelection <MasterPadDescriptor> {
     return self.descriptor_property.prop
   }
 
   //····················································································································
 
-  var descriptor : MasterPadDescriptor? {
+  final var descriptor : MasterPadDescriptor? {
     switch self.descriptor_property_selection {
     case .empty, .multiple :
       return nil

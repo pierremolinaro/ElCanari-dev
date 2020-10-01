@@ -35,7 +35,7 @@ class NCInSchematic : SchematicObject,
   //   Atomic property: mOrientation
   //····················································································································
 
-  let mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+  final let mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 
@@ -58,17 +58,17 @@ class NCInSchematic : SchematicObject,
   //   To one property: mPoint
   //····················································································································
 
-  let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
+  final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
-  var mPoint_property_selection : EBSelection <PointInSchematic?> {
+  final var mPoint_property_selection : EBSelection <PointInSchematic?> {
     return .single (self.mPoint_property.propval)
   }
 
   //····················································································································
 
-  var mPoint : PointInSchematic? {
+  final var mPoint : PointInSchematic? {
     get {
       return self.mPoint_property.propval
     }
@@ -84,11 +84,11 @@ class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  var mPoint_none : StoredObject_PointInSchematic { return self.mPoint_property }
+  final var mPoint_none : StoredObject_PointInSchematic { return self.mPoint_property }
 
   //····················································································································
 
-  var mPoint_none_selection : EBSelection <Bool> {
+  final var mPoint_none_selection : EBSelection <Bool> {
     return .single (self.mPoint_property.propval == nil)
   }
 

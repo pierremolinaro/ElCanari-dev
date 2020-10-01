@@ -112,7 +112,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y1
   //····················································································································
 
-  let y1_property = EBStoredProperty_Int (defaultValue: 0)
+  final let y1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -135,7 +135,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x2
   //····················································································································
 
-  let x2_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let x2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -158,7 +158,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y2
   //····················································································································
 
-  let y2_property = EBStoredProperty_Int (defaultValue: 685800)
+  final let y2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -181,7 +181,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x1Unit
   //····················································································································
 
-  let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -204,7 +204,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y1Unit
   //····················································································································
 
-  let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -227,7 +227,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x2Unit
   //····················································································································
 
-  let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -250,7 +250,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y2Unit
   //····················································································································
 
-  let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -273,7 +273,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: lengthUnit
   //····················································································································
 
-  let lengthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  final let lengthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -296,7 +296,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x1
   //····················································································································
 
-  let x1_property = EBStoredProperty_Int (defaultValue: 0)
+  final let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -319,17 +319,17 @@ class PackageSegment : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
     return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
 
-  var strokeBezierPath : NSBezierPath? {
+  final var strokeBezierPath : NSBezierPath? {
     switch self.strokeBezierPath_property_selection {
     case .empty, .multiple :
       return nil
@@ -342,17 +342,17 @@ class PackageSegment : PackageObject,
   //   Transient property: lengthInCanariUnit
   //····················································································································
 
-  let lengthInCanariUnit_property = EBTransientProperty_Int ()
+  final let lengthInCanariUnit_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var lengthInCanariUnit_property_selection : EBSelection <Int> {
+  final var lengthInCanariUnit_property_selection : EBSelection <Int> {
     return self.lengthInCanariUnit_property.prop
   }
 
   //····················································································································
 
-  var lengthInCanariUnit : Int? {
+  final var lengthInCanariUnit : Int? {
     switch self.lengthInCanariUnit_property_selection {
     case .empty, .multiple :
       return nil

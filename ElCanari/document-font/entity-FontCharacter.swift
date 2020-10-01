@@ -70,7 +70,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: codePoint
   //····················································································································
 
-  let codePoint_property = EBStoredProperty_Int (defaultValue: 0)
+  final let codePoint_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -93,7 +93,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: advance
   //····················································································································
 
-  let advance_property = EBStoredProperty_Int (defaultValue: 0)
+  final let advance_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -116,7 +116,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: mWarnsWhenNoSegment
   //····················································································································
 
-  let mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -139,7 +139,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: mWarnsWhenAdvanceIsZero
   //····················································································································
 
-  let mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true)
+  final let mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -162,17 +162,17 @@ class FontCharacter : EBManagedObject,
   //   To many property: segments
   //····················································································································
 
-  let segments_property = StoredArrayOf_SegmentForFontCharacter (usedForSignature: true)
+  final let segments_property = StoredArrayOf_SegmentForFontCharacter (usedForSignature: true)
 
   //····················································································································
 
-  var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
+  final var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
     return self.segments_property.prop
   }
 
   //····················································································································
 
-  var segments : [SegmentForFontCharacter] {
+  final var segments : [SegmentForFontCharacter] {
     get { return self.segments_property.propval }
     set { self.segments_property.setProp (newValue) }
   }
@@ -181,17 +181,17 @@ class FontCharacter : EBManagedObject,
   //   Transient property: segmentArrayForDrawing
   //····················································································································
 
-  let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+  final let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
   //····················································································································
 
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
+  final var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
     return self.segmentArrayForDrawing_property.prop
   }
 
   //····················································································································
 
-  var segmentArrayForDrawing : CharacterSegmentListClass? {
+  final var segmentArrayForDrawing : CharacterSegmentListClass? {
     switch self.segmentArrayForDrawing_property_selection {
     case .empty, .multiple :
       return nil
@@ -204,17 +204,17 @@ class FontCharacter : EBManagedObject,
   //   Transient property: gerberCode
   //····················································································································
 
-  let gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+  final let gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
   //····················································································································
 
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
+  final var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
     return self.gerberCode_property.prop
   }
 
   //····················································································································
 
-  var gerberCode : CharacterGerberCodeClass? {
+  final var gerberCode : CharacterGerberCodeClass? {
     switch self.gerberCode_property_selection {
     case .empty, .multiple :
       return nil
@@ -227,17 +227,17 @@ class FontCharacter : EBManagedObject,
   //   Transient property: gerberCodeInstructionCountMessage
   //····················································································································
 
-  let gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
+  final let gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
+  final var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
     return self.gerberCodeInstructionCountMessage_property.prop
   }
 
   //····················································································································
 
-  var gerberCodeInstructionCountMessage : String? {
+  final var gerberCodeInstructionCountMessage : String? {
     switch self.gerberCodeInstructionCountMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -250,17 +250,17 @@ class FontCharacter : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
+  final var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
+  final var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
