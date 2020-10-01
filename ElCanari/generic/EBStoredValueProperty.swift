@@ -13,7 +13,6 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
   //····················································································································
 
   weak var ebUndoManager : EBUndoManager? = nil  // SOULD BE WEAK
-  var mSetterDelegate : Optional < (_ inValue : T) -> Void >
 
   //····················································································································
 
@@ -27,15 +26,6 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
 
   init (defaultValue inValue : T) {
     mValue = inValue
-    mSetterDelegate = nil
-    super.init ()
-  }
-
- //····················································································································
-
-  init (defaultValue inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
-    mValue = inValue
-    mSetterDelegate = inSetterDelegate
     super.init ()
   }
 
@@ -44,7 +34,6 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
   private var mValue : T {
     didSet {
       if self.mValue != oldValue {
-        self.mSetterDelegate? (mValue)
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.ebUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {

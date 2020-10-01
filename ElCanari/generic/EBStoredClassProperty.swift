@@ -10,7 +10,6 @@ import Cocoa
 
 class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
   weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
-  var mSetterDelegate : ((_ inValue : T) -> Void)?
 
   //····················································································································
 
@@ -24,15 +23,6 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
 
   init (defaultValue inValue : T) {
     mValue = inValue
-    mSetterDelegate = nil
-    super.init ()
-  }
-
-   //····················································································································
-
-  init (defaultValue inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
-    mValue = inValue
-    mSetterDelegate = inSetterDelegate
     super.init ()
   }
 
@@ -41,9 +31,7 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
   private var mValue : T {
     didSet {
       if self.mValue != oldValue {
-        self.mSetterDelegate? (self.mValue)
         self.mValueExplorer?.stringValue = "\(mValue)"
-        //self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector (performUndo(_:)), object: oldValue)
         self.ebUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
@@ -53,12 +41,6 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
       }
     }
   }
-
-  //····················································································································
-
-//  @objc func performUndo (_ oldValue : NSObject) {
-//    self.mValue = oldValue as! T
-//  }
 
   //····················································································································
 

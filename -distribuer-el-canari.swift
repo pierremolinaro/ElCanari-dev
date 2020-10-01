@@ -28,11 +28,9 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.1"
+let VERSION_CANARI = "1.3.2"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "FreeRouter was broken in release 1.3.0"
-]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = []
 let NEWS : [String] = []
 
@@ -132,7 +130,7 @@ let fm = FileManager ()
 let scriptDir = URL (fileURLWithPath:CommandLine.arguments [0]).deletingLastPathComponent ().path
 print ("scriptDir \(scriptDir)")
 //-------------------- Supprimer une distribution existante
-let DISTRIBUTION_DIR = scriptDir + "/../DISTRIBUTION_EL_CANARI_" + VERSION_CANARI
+let DISTRIBUTION_DIR = scriptDir + "/../EL_CANARI_DISTRIBUTION_" + VERSION_CANARI
 while fm.fileExists (atPath: DISTRIBUTION_DIR) {
   runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR])
 }

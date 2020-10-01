@@ -14,7 +14,6 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
-  var mSetterDelegate : ((_ inValue : T) -> Void)?
 
   //····················································································································
 
@@ -29,7 +28,6 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   init (defaultValue inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
-    mSetterDelegate = nil
     super.init ()
   }
 
@@ -38,7 +36,6 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
-    mSetterDelegate = nil
     super.init ()
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
@@ -47,21 +44,11 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
     }
   }
 
- //····················································································································
-
-  init (defaultValue inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
-    mValue = inValue
-    mPreferenceKey = nil
-    mSetterDelegate = inSetterDelegate
-    super.init ()
-  }
-
   //····················································································································
 
   private var mValue : T {
     didSet {
       if self.mValue != oldValue {
-        self.mSetterDelegate? (self.mValue)
         if let prefKey = self.mPreferenceKey {
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
