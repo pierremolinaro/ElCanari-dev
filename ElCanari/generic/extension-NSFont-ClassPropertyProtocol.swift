@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension NSFont : ClassPropertyProtocol
+//    extension NSFont : ValuePropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension NSFont : ClassPropertyProtocol {
+extension NSFont : ValuePropertyProtocol {
 
   //····················································································································
 
@@ -19,9 +19,22 @@ extension NSFont : ClassPropertyProtocol {
 
   //····················································································································
 
+  func convertToNSObject () -> NSObject {
+    let s = self.archiveToString ()
+    return s as NSString
+  }
+
+  //····················································································································
+
+  static func convertFromNSObject (object : NSObject) -> Self {
+    let string = object as! String
+    return Self.unarchiveFromString (string: string) as! Self
+  }
+
+  //····················································································································
+
   func archiveToString () -> String {
-    let s = "\(self.fontName):\(self.pointSize)"
-    // Swift.print ("Font '\(s)'")
+    let s = "\(self.displayName!):\(self.pointSize)"
     return s
   }
 
@@ -37,7 +50,12 @@ extension NSFont : ClassPropertyProtocol {
     let components = string.components (separatedBy: ":")
     if components.count == 2, let fontSize = Double (components [1]) {
       let fontName = components [0]
-      return NSFont (name: fontName, size: CGFloat (CGFloat (fontSize)))
+      let fs = CGFloat (fontSize)
+      if let font = NSFont (name: fontName, size: fs) {
+        return font
+      }else{
+        return NSFont.systemFont (ofSize: fs)
+      }
     }else{
       return nil
     }

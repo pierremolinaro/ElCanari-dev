@@ -8,13 +8,27 @@ import Cocoa
 //    extension NSColor : ClassPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension NSColor : ClassPropertyProtocol {
+extension NSColor : ValuePropertyProtocol {
 
   //····················································································································
 
   final func ebHashValue () -> UInt32 {
     let s = self.archiveToString ()
     return s.ebHashValue ()
+  }
+
+  //····················································································································
+
+  func convertToNSObject () -> NSObject {
+    let s = self.archiveToString ()
+    return s as NSString
+  }
+
+  //····················································································································
+
+  static func convertFromNSObject (object : NSObject) -> Self {
+    let string = object as! String
+    return Self.unarchiveFromString (string: string) as! Self
   }
 
   //····················································································································

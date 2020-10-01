@@ -22,7 +22,7 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
   //····················································································································
 
   init (defaultValue inValue : T, undoManager inUndoManager : EBUndoManager?) {
-    mValue = inValue
+    self.mValue = inValue
     self.mEBUndoManager = inUndoManager
     super.init ()
   }
@@ -45,7 +45,7 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
 
   //····················································································································
 
-  override var prop : EBSelection<T> { return .single (mValue) }
+  override var prop : EBSelection <T> { return .single (mValue) }
 
   var propval : T { return self.mValue }
 

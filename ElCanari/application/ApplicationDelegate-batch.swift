@@ -320,7 +320,7 @@ extension ApplicationDelegate {
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
-                self.mMaintenanceLogTextField?.stringValue = "0 document has been converted to \(inFormat) format."
+                self.mMaintenanceLogTextField?.stringValue = "0 document has been converted to \(inFormat.string) format."
                 self.mMaintenanceLogTextView?.appendMessageString ("Examining \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")\n")
                 self.mHandledFiles = retainedFiles
                 self.mTotalFileCount = retainedFiles.count
@@ -364,7 +364,7 @@ extension ApplicationDelegate {
         self.mMaintenanceLogTextView?.appendErrorString (message)
       }
       self.mHandledFileCount += 1
-      var message = "Handled \(self.mHandledFileCount)/\(self.mTotalFileCount), converted to \(inFormat): \(self.mCount)"
+      var message = "Handled \(self.mHandledFileCount)/\(self.mTotalFileCount), converted to \(inFormat.string): \(self.mCount)"
       if self.mHandledFiles.count == 0 {
         let duration = Int (Date ().timeIntervalSince (self.mStartDate))
         message += " — DONE in \(duration / 60) min \(duration % 60) s"
