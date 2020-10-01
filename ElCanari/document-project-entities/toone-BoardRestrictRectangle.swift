@@ -832,7 +832,7 @@ final class ProxyObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictRe
 //    StoredObject_BoardRestrictRectangle 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictRectangle, EBSignatureObserverProtocol {
+final class StoredObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictRectangle, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -617,7 +617,7 @@ final class ProxyObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFont
 //    StoredObject_SegmentForFontCharacter 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFontCharacter, EBSignatureObserverProtocol {
+final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFontCharacter, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -100,7 +100,7 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate func updateIndex (_ object : EBReadObservableEnumProtocol) {
+  fileprivate func updateIndex (_ object : EBReadWriteObservableEnumProtocol) {
     if let v = object.rawValue () {
       self.enableFromValueBinding (true)
       self.selectItem (at: v)
@@ -115,7 +115,7 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedIndex (_ object :  EBReadWriteObservableEnumProtocol, file : String, line : Int) {
+  func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol, file : String, line : Int) {
     self.mSelectedIndexController = Controller_EBPopUpButton_Index (object: object, outlet: self)
   }
 

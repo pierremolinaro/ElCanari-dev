@@ -542,7 +542,7 @@ final class ProxyObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIns
 //    StoredObject_SymbolPinInstanceInDevice 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinInstanceInDevice, EBSignatureObserverProtocol {
+final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinInstanceInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

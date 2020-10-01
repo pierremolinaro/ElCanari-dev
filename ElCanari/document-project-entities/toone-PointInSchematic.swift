@@ -1378,7 +1378,7 @@ final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
 //    StoredObject_PointInSchematic 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol {
+final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -1407,7 +1407,7 @@ final class ProxyObject_PackageDimension : ReadWriteObject_PackageDimension {
 //    StoredObject_PackageDimension 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EBSignatureObserverProtocol {
+final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

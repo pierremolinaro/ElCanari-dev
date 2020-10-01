@@ -403,7 +403,7 @@ final class ProxyObject_BoardModelVia : ReadWriteObject_BoardModelVia {
 //    StoredObject_BoardModelVia 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignatureObserverProtocol {
+final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

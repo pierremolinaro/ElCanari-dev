@@ -1257,7 +1257,7 @@ final class ProxyObject_BorderCurve : ReadWriteObject_BorderCurve {
 //    StoredObject_BorderCurve 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureObserverProtocol {
+final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

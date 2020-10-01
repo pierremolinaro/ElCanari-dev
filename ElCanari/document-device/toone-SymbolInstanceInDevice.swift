@@ -799,7 +799,7 @@ final class ProxyObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceI
 //    StoredObject_SymbolInstanceInDevice 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice, EBSignatureObserverProtocol {
+final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

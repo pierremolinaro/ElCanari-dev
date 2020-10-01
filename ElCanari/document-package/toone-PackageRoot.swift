@@ -4476,7 +4476,7 @@ final class ProxyObject_PackageRoot : ReadWriteObject_PackageRoot {
 //    StoredObject_PackageRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureObserverProtocol {
+final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

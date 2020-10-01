@@ -2232,7 +2232,7 @@ final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
 //    StoredObject_PackagePad 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObserverProtocol {
+final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

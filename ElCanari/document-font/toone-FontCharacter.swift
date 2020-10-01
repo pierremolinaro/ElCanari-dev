@@ -800,7 +800,7 @@ final class ProxyObject_FontCharacter : ReadWriteObject_FontCharacter {
 //    StoredObject_FontCharacter 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignatureObserverProtocol {
+final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

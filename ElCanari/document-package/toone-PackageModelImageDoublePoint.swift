@@ -761,7 +761,7 @@ final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageMo
 //    StoredObject_PackageModelImageDoublePoint 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol {
+final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

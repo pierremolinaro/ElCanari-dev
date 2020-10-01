@@ -976,7 +976,7 @@ final class ProxyObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice {
 //    StoredObject_SlavePadInDevice 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EBSignatureObserverProtocol {
+final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

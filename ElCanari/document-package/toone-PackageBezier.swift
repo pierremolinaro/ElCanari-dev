@@ -1623,7 +1623,7 @@ final class ProxyObject_PackageBezier : ReadWriteObject_PackageBezier {
 //    StoredObject_PackageBezier 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignatureObserverProtocol {
+final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

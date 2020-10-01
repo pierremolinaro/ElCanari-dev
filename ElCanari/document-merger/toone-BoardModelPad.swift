@@ -619,7 +619,7 @@ final class ProxyObject_BoardModelPad : ReadWriteObject_BoardModelPad {
 //    StoredObject_BoardModelPad 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignatureObserverProtocol {
+final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

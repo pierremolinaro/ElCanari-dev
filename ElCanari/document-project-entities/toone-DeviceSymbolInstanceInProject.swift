@@ -543,7 +543,7 @@ final class ProxyObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceSy
 //    StoredObject_DeviceSymbolInstanceInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceSymbolInstanceInProject, EBSignatureObserverProtocol {
+final class StoredObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceSymbolInstanceInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

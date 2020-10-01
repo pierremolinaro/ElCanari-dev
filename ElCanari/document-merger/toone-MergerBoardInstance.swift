@@ -758,7 +758,7 @@ final class ProxyObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstanc
 //    StoredObject_MergerBoardInstance 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstance, EBSignatureObserverProtocol {
+final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstance, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

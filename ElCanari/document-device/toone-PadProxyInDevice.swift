@@ -545,7 +545,7 @@ final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
 //    StoredObject_PadProxyInDevice 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EBSignatureObserverProtocol {
+final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

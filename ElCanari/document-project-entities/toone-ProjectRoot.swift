@@ -9048,7 +9048,7 @@ final class ProxyObject_ProjectRoot : ReadWriteObject_ProjectRoot {
 //    StoredObject_ProjectRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureObserverProtocol {
+final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -402,7 +402,7 @@ final class ProxyObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentatio
 //    StoredObject_DeviceDocumentation 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentation, EBSignatureObserverProtocol {
+final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentation, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

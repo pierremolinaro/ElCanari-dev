@@ -401,7 +401,7 @@ final class ProxyObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePad
 //    StoredObject_DevicePadAssignmentInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePadAssignmentInProject, EBSignatureObserverProtocol {
+final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePadAssignmentInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

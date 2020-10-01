@@ -976,7 +976,7 @@ final class ProxyObject_PackageGuide : ReadWriteObject_PackageGuide {
 //    StoredObject_PackageGuide 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatureObserverProtocol {
+final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

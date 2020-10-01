@@ -403,7 +403,7 @@ final class ProxyObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbol
 //    StoredObject_DeviceSymbolTypeInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbolTypeInProject, EBSignatureObserverProtocol {
+final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbolTypeInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

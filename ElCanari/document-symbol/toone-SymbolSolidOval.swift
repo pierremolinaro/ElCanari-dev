@@ -759,7 +759,7 @@ final class ProxyObject_SymbolSolidOval : ReadWriteObject_SymbolSolidOval {
 //    StoredObject_SymbolSolidOval 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolSolidOval : ReadWriteObject_SymbolSolidOval, EBSignatureObserverProtocol {
+final class StoredObject_SymbolSolidOval : ReadWriteObject_SymbolSolidOval, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

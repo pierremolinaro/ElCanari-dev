@@ -1587,7 +1587,7 @@ final class ProxyObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymb
 //    StoredObject_ComponentSymbolInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject, EBSignatureObserverProtocol {
+final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

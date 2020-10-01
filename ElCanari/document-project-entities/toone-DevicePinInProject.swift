@@ -1193,7 +1193,7 @@ final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject 
 //    StoredObject_DevicePinInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject, EBSignatureObserverProtocol {
+final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

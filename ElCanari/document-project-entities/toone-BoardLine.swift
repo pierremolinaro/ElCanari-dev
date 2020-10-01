@@ -1121,7 +1121,7 @@ final class ProxyObject_BoardLine : ReadWriteObject_BoardLine {
 //    StoredObject_BoardLine 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardLine : ReadWriteObject_BoardLine, EBSignatureObserverProtocol {
+final class StoredObject_BoardLine : ReadWriteObject_BoardLine, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

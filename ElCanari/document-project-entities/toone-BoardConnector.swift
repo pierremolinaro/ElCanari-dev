@@ -2269,7 +2269,7 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
 //    StoredObject_BoardConnector 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSignatureObserverProtocol {
+final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

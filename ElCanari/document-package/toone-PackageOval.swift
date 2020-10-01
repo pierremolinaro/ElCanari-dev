@@ -1047,7 +1047,7 @@ final class ProxyObject_PackageOval : ReadWriteObject_PackageOval {
 //    StoredObject_PackageOval 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageOval : ReadWriteObject_PackageOval, EBSignatureObserverProtocol {
+final class StoredObject_PackageOval : ReadWriteObject_PackageOval, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

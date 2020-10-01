@@ -547,7 +547,7 @@ final class ProxyObject_SegmentEntity : ReadWriteObject_SegmentEntity {
 //    StoredObject_SegmentEntity 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignatureObserverProtocol {
+final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

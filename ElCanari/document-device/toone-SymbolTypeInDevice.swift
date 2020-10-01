@@ -913,7 +913,7 @@ final class ProxyObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice 
 //    StoredObject_SymbolTypeInDevice 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice, EBSignatureObserverProtocol {
+final class StoredObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

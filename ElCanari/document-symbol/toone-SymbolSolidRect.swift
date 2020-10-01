@@ -759,7 +759,7 @@ final class ProxyObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect {
 //    StoredObject_SymbolSolidRect 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSignatureObserverProtocol {
+final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

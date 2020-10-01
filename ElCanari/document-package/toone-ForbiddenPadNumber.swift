@@ -259,7 +259,7 @@ final class ProxyObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber 
 //    StoredObject_ForbiddenPadNumber 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber, EBSignatureObserverProtocol {
+final class StoredObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

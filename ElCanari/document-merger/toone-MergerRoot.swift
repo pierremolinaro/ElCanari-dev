@@ -2763,7 +2763,7 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 //    StoredObject_MergerRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol {
+final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

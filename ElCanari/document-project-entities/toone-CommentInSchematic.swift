@@ -833,7 +833,7 @@ final class ProxyObject_CommentInSchematic : ReadWriteObject_CommentInSchematic 
 //    StoredObject_CommentInSchematic 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic, EBSignatureObserverProtocol {
+final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

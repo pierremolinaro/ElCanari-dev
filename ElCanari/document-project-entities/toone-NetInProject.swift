@@ -838,7 +838,7 @@ final class ProxyObject_NetInProject : ReadWriteObject_NetInProject {
 //    StoredObject_NetInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatureObserverProtocol {
+final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

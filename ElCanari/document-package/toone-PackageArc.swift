@@ -1407,7 +1407,7 @@ final class ProxyObject_PackageArc : ReadWriteObject_PackageArc {
 //    StoredObject_PackageArc 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObserverProtocol {
+final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

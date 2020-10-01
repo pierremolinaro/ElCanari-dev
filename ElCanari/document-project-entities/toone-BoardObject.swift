@@ -897,7 +897,7 @@ final class ProxyObject_BoardObject : ReadWriteObject_BoardObject {
 //    StoredObject_BoardObject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardObject : ReadWriteObject_BoardObject, EBSignatureObserverProtocol {
+final class StoredObject_BoardObject : ReadWriteObject_BoardObject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -1157,7 +1157,7 @@ final class ProxyObject_PackageInDevice : ReadWriteObject_PackageInDevice {
 //    StoredObject_PackageInDevice 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageInDevice : ReadWriteObject_PackageInDevice, EBSignatureObserverProtocol {
+final class StoredObject_PackageInDevice : ReadWriteObject_PackageInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

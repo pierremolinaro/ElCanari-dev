@@ -1400,7 +1400,7 @@ final class ProxyObject_BoardTrack : ReadWriteObject_BoardTrack {
 //    StoredObject_BoardTrack 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_BoardTrack : ReadWriteObject_BoardTrack, EBSignatureObserverProtocol {
+final class StoredObject_BoardTrack : ReadWriteObject_BoardTrack, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

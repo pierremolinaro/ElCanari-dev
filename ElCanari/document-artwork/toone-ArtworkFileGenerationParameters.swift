@@ -1843,7 +1843,7 @@ final class ProxyObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwor
 //    StoredObject_ArtworkFileGenerationParameters 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
+final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_ArtworkFileGenerationParameters, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

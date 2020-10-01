@@ -1835,7 +1835,7 @@ final class ProxyObject_PackageSlavePad : ReadWriteObject_PackageSlavePad {
 //    StoredObject_PackageSlavePad 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSignatureObserverProtocol {
+final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

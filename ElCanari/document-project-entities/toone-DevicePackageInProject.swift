@@ -443,7 +443,7 @@ final class ProxyObject_DevicePackageInProject : ReadWriteObject_DevicePackageIn
 //    StoredObject_DevicePackageInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageInProject, EBSignatureObserverProtocol {
+final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

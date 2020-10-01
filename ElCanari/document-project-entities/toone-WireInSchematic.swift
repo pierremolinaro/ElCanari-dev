@@ -542,7 +542,7 @@ final class ProxyObject_WireInSchematic : ReadWriteObject_WireInSchematic {
 //    StoredObject_WireInSchematic 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_WireInSchematic : ReadWriteObject_WireInSchematic, EBSignatureObserverProtocol {
+final class StoredObject_WireInSchematic : ReadWriteObject_WireInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

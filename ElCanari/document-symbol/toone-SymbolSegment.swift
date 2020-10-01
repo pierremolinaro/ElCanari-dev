@@ -759,7 +759,7 @@ final class ProxyObject_SymbolSegment : ReadWriteObject_SymbolSegment {
 //    StoredObject_SymbolSegment 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolSegment : ReadWriteObject_SymbolSegment, EBSignatureObserverProtocol {
+final class StoredObject_SymbolSegment : ReadWriteObject_SymbolSegment, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

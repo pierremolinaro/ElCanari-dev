@@ -1131,7 +1131,7 @@ final class ProxyObject_SymbolRoot : ReadWriteObject_SymbolRoot {
 //    StoredObject_SymbolRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolRoot : ReadWriteObject_SymbolRoot, EBSignatureObserverProtocol {
+final class StoredObject_SymbolRoot : ReadWriteObject_SymbolRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

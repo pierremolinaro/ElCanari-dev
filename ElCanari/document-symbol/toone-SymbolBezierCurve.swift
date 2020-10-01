@@ -1047,7 +1047,7 @@ final class ProxyObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve {
 //    StoredObject_SymbolBezierCurve 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve, EBSignatureObserverProtocol {
+final class StoredObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

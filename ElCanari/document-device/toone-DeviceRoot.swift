@@ -2182,7 +2182,7 @@ final class ProxyObject_DeviceRoot : ReadWriteObject_DeviceRoot {
 //    StoredObject_DeviceRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObserverProtocol {
+final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

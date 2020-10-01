@@ -1262,7 +1262,7 @@ final class ProxyObject_SymbolPin : ReadWriteObject_SymbolPin {
 //    StoredObject_SymbolPin 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolPin : ReadWriteObject_SymbolPin, EBSignatureObserverProtocol {
+final class StoredObject_SymbolPin : ReadWriteObject_SymbolPin, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -401,7 +401,7 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
 //    StoredObject_NCInSchematic 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignatureObserverProtocol {
+final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

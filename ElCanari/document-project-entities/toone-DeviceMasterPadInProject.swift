@@ -947,7 +947,7 @@ final class ProxyObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMasterP
 //    StoredObject_DeviceMasterPadInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMasterPadInProject, EBSignatureObserverProtocol {
+final class StoredObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMasterPadInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

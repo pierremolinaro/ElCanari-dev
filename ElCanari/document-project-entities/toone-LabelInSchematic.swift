@@ -614,7 +614,7 @@ final class ProxyObject_LabelInSchematic : ReadWriteObject_LabelInSchematic {
 //    StoredObject_LabelInSchematic 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_LabelInSchematic : ReadWriteObject_LabelInSchematic, EBSignatureObserverProtocol {
+final class StoredObject_LabelInSchematic : ReadWriteObject_LabelInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

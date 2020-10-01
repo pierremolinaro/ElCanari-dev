@@ -1085,7 +1085,7 @@ final class ProxyObject_FontRoot : ReadWriteObject_FontRoot {
 //    StoredObject_FontRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserverProtocol {
+final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

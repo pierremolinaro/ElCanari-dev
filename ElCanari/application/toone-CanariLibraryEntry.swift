@@ -546,7 +546,7 @@ final class ProxyObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry 
 //    StoredObject_CanariLibraryEntry 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry, EBSignatureObserverProtocol {
+final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

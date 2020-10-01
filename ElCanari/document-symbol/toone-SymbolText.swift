@@ -688,7 +688,7 @@ final class ProxyObject_SymbolText : ReadWriteObject_SymbolText {
 //    StoredObject_SymbolText 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SymbolText : ReadWriteObject_SymbolText, EBSignatureObserverProtocol {
+final class StoredObject_SymbolText : ReadWriteObject_SymbolText, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

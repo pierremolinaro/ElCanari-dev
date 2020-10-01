@@ -613,7 +613,7 @@ final class ProxyObject_SchematicObject : ReadWriteObject_SchematicObject {
 //    StoredObject_SchematicObject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSignatureObserverProtocol {
+final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

@@ -1734,7 +1734,7 @@ final class ProxyObject_PackageZone : ReadWriteObject_PackageZone {
 //    StoredObject_PackageZone 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureObserverProtocol {
+final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

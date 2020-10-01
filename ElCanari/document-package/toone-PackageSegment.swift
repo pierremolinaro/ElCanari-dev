@@ -1190,7 +1190,7 @@ final class ProxyObject_PackageSegment : ReadWriteObject_PackageSegment {
 //    StoredObject_PackageSegment 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_PackageSegment : ReadWriteObject_PackageSegment, EBSignatureObserverProtocol {
+final class StoredObject_PackageSegment : ReadWriteObject_PackageSegment, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

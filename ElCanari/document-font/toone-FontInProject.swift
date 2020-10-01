@@ -882,7 +882,7 @@ final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
 //    StoredObject_FontInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol {
+final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 
