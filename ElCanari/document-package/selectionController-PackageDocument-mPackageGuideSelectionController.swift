@@ -15,7 +15,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let y1_property = EBPropertyProxy_Int ()
-
   var y1_property_selection : EBSelection <Int> {
     return self.y1_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let x2_property = EBPropertyProxy_Int ()
-
   var x2_property_selection : EBSelection <Int> {
     return self.x2_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let y2_property = EBPropertyProxy_Int ()
-
   var y2_property_selection : EBSelection <Int> {
     return self.y2_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let x1Unit_property = EBPropertyProxy_Int ()
-
   var x1Unit_property_selection : EBSelection <Int> {
     return self.x1Unit_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let y1Unit_property = EBPropertyProxy_Int ()
-
   var y1Unit_property_selection : EBSelection <Int> {
     return self.y1Unit_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let x2Unit_property = EBPropertyProxy_Int ()
-
   var x2Unit_property_selection : EBSelection <Int> {
     return self.x2Unit_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let y2Unit_property = EBPropertyProxy_Int ()
-
   var y2Unit_property_selection : EBSelection <Int> {
     return self.y2Unit_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
   //····················································································································
 
   let x1_property = EBPropertyProxy_Int ()
-
   var x1_property_selection : EBSelection <Int> {
     return self.x1_property.prop
   }

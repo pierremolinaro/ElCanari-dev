@@ -287,7 +287,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -310,7 +312,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -333,7 +337,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mRotation
   //····················································································································
 
-  final let mRotation_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mRotation_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mRotation_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -356,7 +362,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mSide
   //····················································································································
 
-  final let mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front)
+  // final let mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front)
+
+  final let mSide_property : EBStoredProperty_ComponentSide
 
   //····················································································································
 
@@ -379,7 +387,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mDisplayLegend
   //····················································································································
 
-  final let mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mDisplayLegend_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -440,7 +450,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mNameIsVisibleInBoard
   //····················································································································
 
-  final let mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mNameIsVisibleInBoard_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -463,7 +475,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mXName
   //····················································································································
 
-  final let mXName_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mXName_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mXName_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -486,7 +500,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mYName
   //····················································································································
 
-  final let mYName_property = EBStoredProperty_Int (defaultValue: 685800)
+  // final let mYName_property = EBStoredProperty_Int (defaultValue: 685800)
+
+  final let mYName_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -509,7 +525,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mNameFontSize
   //····················································································································
 
-  final let mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+  // final let mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+
+  final let mNameFontSize_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -532,7 +550,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mNameRotation
   //····················································································································
 
-  final let mNameRotation_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mNameRotation_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mNameRotation_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -555,7 +575,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mValueIsVisibleInBoard
   //····················································································································
 
-  final let mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mValueIsVisibleInBoard_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -578,7 +600,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mXValue
   //····················································································································
 
-  final let mXValue_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mXValue_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mXValue_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -601,7 +625,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mYValue
   //····················································································································
 
-  final let mYValue_property = EBStoredProperty_Int (defaultValue: -685800)
+  // final let mYValue_property = EBStoredProperty_Int (defaultValue: -685800)
+
+  final let mYValue_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -624,7 +650,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mValueFontSize
   //····················································································································
 
-  final let mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+  // final let mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+
+  final let mValueFontSize_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -647,7 +675,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mValueRotation
   //····················································································································
 
-  final let mValueRotation_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mValueRotation_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mValueRotation_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -670,7 +700,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mComponentValue
   //····················································································································
 
-  final let mComponentValue_property = EBStoredProperty_String (defaultValue: "")
+  // final let mComponentValue_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mComponentValue_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -693,7 +725,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mNamePrefix
   //····················································································································
 
-  final let mNamePrefix_property = EBStoredProperty_String (defaultValue: "")
+  // final let mNamePrefix_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mNamePrefix_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -716,7 +750,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mNameIndex
   //····················································································································
 
-  final let mNameIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mNameIndex_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mNameIndex_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -739,7 +775,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mXUnit
   //····················································································································
 
-  final let mXUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mXUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mXUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -762,7 +800,9 @@ class ComponentInProject : BoardObject,
   //   Atomic property: mYUnit
   //····················································································································
 
-  final let mYUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mYUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mYUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1319,6 +1359,26 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: ebUndoManager)
+    self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
+    self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: ebUndoManager)
+    self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mXValue_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mYValue_property = EBStoredProperty_Int (defaultValue: -685800, undoManager: ebUndoManager)
+    self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: ebUndoManager)
+    self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -1326,16 +1386,6 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRotation
-    self.mRotation_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSide
-    self.mSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDisplayLegend
-    self.mDisplayLegend_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.ebUndoManager = self.ebUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1348,36 +1398,6 @@ class ComponentInProject : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
-  //--- Atomic property: mNameIsVisibleInBoard
-    self.mNameIsVisibleInBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mXName
-    self.mXName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mYName
-    self.mYName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNameFontSize
-    self.mNameFontSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNameRotation
-    self.mNameRotation_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mValueIsVisibleInBoard
-    self.mValueIsVisibleInBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mXValue
-    self.mXValue_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mYValue
-    self.mYValue_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mValueFontSize
-    self.mValueFontSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mValueRotation
-    self.mValueRotation_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mComponentValue
-    self.mComponentValue_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNamePrefix
-    self.mNamePrefix_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNameIndex
-    self.mNameIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mXUnit
-    self.mXUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mYUnit
-    self.mYUnit_property.ebUndoManager = self.ebUndoManager
   //--- Array controller property: componentAvailablePackagesController
     self.componentAvailablePackagesController.bind_model (self.mPackages_property, self.ebUndoManager)
   //--- ToMany proxy: mPackages

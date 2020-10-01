@@ -49,7 +49,9 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSymbolInstanceName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -203,6 +205,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -210,8 +213,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
     self.mSymbolType_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolAndTypeName

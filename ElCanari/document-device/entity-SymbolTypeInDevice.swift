@@ -96,7 +96,9 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mTypeName
   //····················································································································
 
-  final let mTypeName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mTypeName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mTypeName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -119,7 +121,9 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mVersion
   //····················································································································
 
-  final let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mVersion_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -142,7 +146,9 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  // final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+
+  final let mFileData_property : EBStoredProperty_Data
 
   //····················································································································
 
@@ -165,7 +171,9 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  // final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+
+  final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
 
@@ -188,7 +196,9 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFilledBezierPath
   //····················································································································
 
-  final let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  // final let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+
+  final let mFilledBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
 
@@ -323,6 +333,11 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
+    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -336,16 +351,6 @@ class SymbolTypeInDevice : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
       resetter: { inObject in inObject.mType_property.setProp (nil) }
     )
-  //--- Atomic property: mTypeName
-    self.mTypeName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mVersion
-    self.mVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFileData
-    self.mFileData_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPinTypes (no option)
     self.mPinTypes_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString

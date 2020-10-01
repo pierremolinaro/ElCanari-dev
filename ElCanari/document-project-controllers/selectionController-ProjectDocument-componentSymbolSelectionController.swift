@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mCenterX_property = EBPropertyProxy_Int ()
-
   var mCenterX_property_selection : EBSelection <Int> {
     return self.mCenterX_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mCenterY_property = EBPropertyProxy_Int ()
-
   var mCenterY_property_selection : EBSelection <Int> {
     return self.mCenterY_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mRotation_property = EBPropertyProxy_QuadrantRotation ()
-
   var mRotation_property_selection : EBSelection <QuadrantRotation> {
     return self.mRotation_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mMirror_property = EBPropertyProxy_Bool ()
-
   var mMirror_property_selection : EBSelection <Bool> {
     return self.mMirror_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mSymbolInstanceName_property = EBPropertyProxy_String ()
-
   var mSymbolInstanceName_property_selection : EBSelection <String> {
     return self.mSymbolInstanceName_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mSymbolTypeName_property = EBPropertyProxy_String ()
-
   var mSymbolTypeName_property_selection : EBSelection <String> {
     return self.mSymbolTypeName_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mDisplayComponentNameOffsetX_property = EBPropertyProxy_Int ()
-
   var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int> {
     return self.mDisplayComponentNameOffsetX_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mDisplayComponentNameOffsetY_property = EBPropertyProxy_Int ()
-
   var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int> {
     return self.mDisplayComponentNameOffsetY_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mDisplayComponentValue_property = EBPropertyProxy_Bool ()
-
   var mDisplayComponentValue_property_selection : EBSelection <Bool> {
     return self.mDisplayComponentValue_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mDisplayComponentValueOffsetX_property = EBPropertyProxy_Int ()
-
   var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int> {
     return self.mDisplayComponentValueOffsetX_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   let mDisplayComponentValueOffsetY_property = EBPropertyProxy_Int ()
-
   var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> {
     return self.mDisplayComponentValueOffsetY_property.prop
   }

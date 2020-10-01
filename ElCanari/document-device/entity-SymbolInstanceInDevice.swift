@@ -89,7 +89,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mInstanceName
   //····················································································································
 
-  final let mInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mInstanceName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -112,7 +114,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -135,7 +139,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -266,6 +272,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -279,12 +288,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
       resetter: { inObject in inObject.mSymbolInstance_property.setProp (nil) }
     )
-  //--- Atomic property: mInstanceName
-    self.mInstanceName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mType (has opposite to many relationship: mInstances)
     self.mType_property.ebUndoManager = self.ebUndoManager
     self.mType_property.setOppositeRelationShipFunctions (

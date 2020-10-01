@@ -147,7 +147,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetClassName
   //····················································································································
 
-  final let mNetClassName_property = EBStoredProperty_String (defaultValue: "Default")
+  // final let mNetClassName_property = EBStoredProperty_String (defaultValue: "Default")
+
+  final let mNetClassName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -170,7 +172,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetClassColor
   //····················································································································
 
-  final let mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue)
+  // final let mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue)
+
+  final let mNetClassColor_property : EBStoredProperty_NSColor
 
   //····················································································································
 
@@ -193,7 +197,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mTrackWidth
   //····················································································································
 
-  final let mTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+  // final let mTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  final let mTrackWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -216,7 +222,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mTrackWidthUnit
   //····················································································································
 
-  final let mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mTrackWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -239,7 +247,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaHoleDiameter
   //····················································································································
 
-  final let mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+  // final let mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  final let mViaHoleDiameter_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -262,7 +272,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaHoleDiameterUnit
   //····················································································································
 
-  final let mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mViaHoleDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -285,7 +297,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaPadDiameter
   //····················································································································
 
-  final let mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+  // final let mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+
+  final let mViaPadDiameter_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -308,7 +322,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaPadDiameterUnit
   //····················································································································
 
-  final let mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mViaPadDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -331,7 +347,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mAllowTracksOnFrontSide
   //····················································································································
 
-  final let mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mAllowTracksOnFrontSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -354,7 +372,9 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mAllowTracksOnBackSide
   //····················································································································
 
-  final let mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mAllowTracksOnBackSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -604,6 +624,16 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mNetClassName_property = EBStoredProperty_String (defaultValue: "Default", undoManager: ebUndoManager)
+    self.mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, undoManager: ebUndoManager)
+    self.mTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
+    self.mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
+    self.mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: ebUndoManager)
+    self.mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -611,26 +641,6 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mNetClassName
-    self.mNetClassName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mTrackWidth
-    self.mTrackWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mTrackWidthUnit
-    self.mTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mViaHoleDiameter
-    self.mViaHoleDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mViaHoleDiameterUnit
-    self.mViaHoleDiameterUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mViaPadDiameter
-    self.mViaPadDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mViaPadDiameterUnit
-    self.mViaPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mAllowTracksOnFrontSide
-    self.mAllowTracksOnFrontSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mAllowTracksOnBackSide
-    self.mAllowTracksOnBackSide_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (

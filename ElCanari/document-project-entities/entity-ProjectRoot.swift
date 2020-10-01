@@ -854,7 +854,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mArtworkName
   //····················································································································
 
-  final let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mArtworkName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -877,7 +879,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mArtworkVersion
   //····················································································································
 
-  final let mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mArtworkVersion_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -900,7 +904,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mPDFBoardBackgroundColor
   //····················································································································
 
-  final let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
+  // final let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
+
+  final let mPDFBoardBackgroundColor_property : EBStoredProperty_NSColor
 
   //····················································································································
 
@@ -923,7 +929,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
   //····················································································································
 
-  final let mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mCheckClearanceBetweenPadsOfSameNet_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -946,7 +954,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLastERCCheckingIsSuccess
   //····················································································································
 
-  final let mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mLastERCCheckingIsSuccess_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -969,7 +979,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLastERCCheckingSignature
   //····················································································································
 
-  final let mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1)
+  // final let mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1)
+
+  final let mLastERCCheckingSignature_property : EBStoredProperty_UInt32
 
   //····················································································································
 
@@ -992,7 +1004,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardSideForNewTrack
   //····················································································································
 
-  final let mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
+  // final let mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
+
+  final let mBoardSideForNewTrack_property : EBStoredProperty_TrackSide
 
   //····················································································································
 
@@ -1015,7 +1029,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mAutoRouterPreferredDirections
   //····················································································································
 
-  final let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback)
+  // final let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback)
+
+  final let mAutoRouterPreferredDirections_property : EBStoredProperty_AutorouterPreferredDirections
 
   //····················································································································
 
@@ -1038,7 +1054,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mAutorouterSnapAngle
   //····················································································································
 
-  final let mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear)
+  // final let mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear)
+
+  final let mAutorouterSnapAngle_property : EBStoredProperty_AutorouterSnapAngle
 
   //····················································································································
 
@@ -1061,7 +1079,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRouteDirection
   //····················································································································
 
-  final let mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from)
+  // final let mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from)
+
+  final let mRouteDirection_property : EBStoredProperty_RouteDirection
 
   //····················································································································
 
@@ -1084,7 +1104,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRouteOrigin
   //····················································································································
 
-  final let mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center)
+  // final let mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center)
+
+  final let mRouteOrigin_property : EBStoredProperty_RouteOrigin
 
   //····················································································································
 
@@ -1107,7 +1129,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mTrackLengthUnit
   //····················································································································
 
-  final let mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000)
+  // final let mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000)
+
+  final let mTrackLengthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1130,7 +1154,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLayoutClearance
   //····················································································································
 
-  final let mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720)
+  // final let mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  final let mLayoutClearance_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1153,7 +1179,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mLayoutClearanceUnit
   //····················································································································
 
-  final let mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mLayoutClearanceUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1176,7 +1204,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardSelectedInspector
   //····················································································································
 
-  final let mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+  // final let mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+
+  final let mBoardSelectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1199,7 +1229,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardHorizontalFlip
   //····················································································································
 
-  final let mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mBoardHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -1222,7 +1254,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardVerticalFlip
   //····················································································································
 
-  final let mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mBoardVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -1245,7 +1279,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStyle
   //····················································································································
 
-  final let mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  // final let mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+
+  final let mBoardGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
 
@@ -1268,7 +1304,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridDisplayFactor
   //····················································································································
 
-  final let mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  // final let mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+
+  final let mBoardGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1291,7 +1329,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardZoom
   //····················································································································
 
-  final let mBoardZoom_property = EBStoredProperty_Int (defaultValue: 200)
+  // final let mBoardZoom_property = EBStoredProperty_Int (defaultValue: 200)
+
+  final let mBoardZoom_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1314,7 +1354,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStep
   //····················································································································
 
-  final let mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
+  // final let mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  final let mBoardGridStep_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1337,7 +1379,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStepUnit
   //····················································································································
 
-  final let mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mBoardGridStepUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1360,7 +1404,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mErrorOrWarningIssueSize
   //····················································································································
 
-  final let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6)
+  // final let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6)
+
+  final let mErrorOrWarningIssueSize_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -1383,7 +1429,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mControlKeyHiliteDiameter
   //····················································································································
 
-  final let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100)
+  // final let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100)
+
+  final let mControlKeyHiliteDiameter_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -1406,7 +1454,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mDSNFileProposedName
   //····················································································································
 
-  final let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn")
+  // final let mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn")
+
+  final let mDSNFileProposedName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -1429,7 +1479,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsWidth
   //····················································································································
 
-  final let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardLimitsWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1452,7 +1504,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsWidthUnit
   //····················································································································
 
-  final let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardLimitsWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1475,7 +1529,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardClearance
   //····················································································································
 
-  final let mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardClearance_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1498,7 +1554,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardClearanceUnit
   //····················································································································
 
-  final let mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardClearanceUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1521,7 +1579,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsSelectedInspector
   //····················································································································
 
-  final let mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+  // final let mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+
+  final let mBoardLimitsSelectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1544,7 +1604,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsHorizontalFlip
   //····················································································································
 
-  final let mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mBoardLimitsHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -1567,7 +1629,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsVerticalFlip
   //····················································································································
 
-  final let mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mBoardLimitsVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -1590,7 +1654,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStyle
   //····················································································································
 
-  final let mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  // final let mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+
+  final let mBoardLimitsGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
 
@@ -1613,7 +1679,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridDisplayFactor
   //····················································································································
 
-  final let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5)
+  // final let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5)
+
+  final let mBoardLimitsGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1636,7 +1704,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsZoom
   //····················································································································
 
-  final let mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200)
+  // final let mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200)
+
+  final let mBoardLimitsZoom_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1659,7 +1729,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStep
   //····················································································································
 
-  final let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardLimitsGridStep_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1682,7 +1754,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStepUnit
   //····················································································································
 
-  final let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardLimitsGridStepUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1705,7 +1779,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsBoundingBoxUnit
   //····················································································································
 
-  final let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardLimitsBoundingBoxUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1728,7 +1804,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardPointsBoundingBoxUnit
   //····················································································································
 
-  final let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardPointsBoundingBoxUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1751,7 +1829,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardSelectedCurveDisplayUnit
   //····················································································································
 
-  final let mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardSelectedCurveDisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1774,7 +1854,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitControlPointsDisplayUnit
   //····················································································································
 
-  final let mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mBoardLimitControlPointsDisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1797,7 +1879,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardShape
   //····················································································································
 
-  final let mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular)
+  // final let mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular)
+
+  final let mBoardShape_property : EBStoredProperty_BoardShape
 
   //····················································································································
 
@@ -1820,7 +1904,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardWidth
   //····················································································································
 
-  final let mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
+  // final let mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
+
+  final let mRectangularBoardWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1843,7 +1929,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardWidthUnit
   //····················································································································
 
-  final let mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mRectangularBoardWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1866,7 +1954,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardHeight
   //····················································································································
 
-  final let mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
+  // final let mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
+
+  final let mRectangularBoardHeight_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1889,7 +1979,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRectangularBoardHeightUnit
   //····················································································································
 
-  final let mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mRectangularBoardHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1931,7 +2023,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mDefaultNetClassName
   //····················································································································
 
-  final let mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mDefaultNetClassName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -1954,7 +2048,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  final let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mSelectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -1977,7 +2073,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSelectedSchematicInspector
   //····················································································································
 
-  final let mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mSelectedSchematicInspector_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2000,7 +2098,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicTitle
   //····················································································································
 
-  final let mSchematicTitle_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSchematicTitle_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSchematicTitle_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -2023,7 +2123,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicVersion
   //····················································································································
 
-  final let mSchematicVersion_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSchematicVersion_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSchematicVersion_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -2046,7 +2148,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicDate
   //····················································································································
 
-  final let mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date ())
+  // final let mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date ())
+
+  final let mSchematicDate_property : EBStoredProperty_Date
 
   //····················································································································
 
@@ -2069,7 +2173,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicHorizontalFlip
   //····················································································································
 
-  final let mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mSchematicHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -2092,7 +2198,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicVerticalFlip
   //····················································································································
 
-  final let mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mSchematicVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -2115,7 +2223,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicZoom
   //····················································································································
 
-  final let mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  // final let mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 100)
+
+  final let mSchematicZoom_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2138,7 +2248,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicGridStyle
   //····················································································································
 
-  final let mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  // final let mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+
+  final let mSchematicGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
 
@@ -2161,7 +2273,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicGridDisplayFactor
   //····················································································································
 
-  final let mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  // final let mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+
+  final let mSchematicGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2184,7 +2298,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomWidth
   //····················································································································
 
-  final let mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000)
+  // final let mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000)
+
+  final let mSchematicCustomWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2207,7 +2323,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomWidthUnit
   //····················································································································
 
-  final let mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mSchematicCustomWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2230,7 +2348,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomHeight
   //····················································································································
 
-  final let mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000)
+  // final let mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000)
+
+  final let mSchematicCustomHeight_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2253,7 +2373,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicCustomHeightUnit
   //····················································································································
 
-  final let mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let mSchematicCustomHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -2333,7 +2455,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicSheetOrientation
   //····················································································································
 
-  final let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal)
+  // final let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal)
+
+  final let mSchematicSheetOrientation_property : EBStoredProperty_SchematicSheetOrientation
 
   //····················································································································
 
@@ -2394,7 +2518,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRastnetDisplay
   //····················································································································
 
-  final let mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets)
+  // final let mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets)
+
+  final let mRastnetDisplay_property : EBStoredProperty_RastnetDisplay
 
   //····················································································································
 
@@ -2417,7 +2543,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRastnetDisplayedNetName
   //····················································································································
 
-  final let mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mRastnetDisplayedNetName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -2440,7 +2568,9 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mRastnetDisplayedComponentName
   //····················································································································
 
-  final let mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -3939,6 +4069,71 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: ebUndoManager)
+    self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: ebUndoManager)
+    self.mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: ebUndoManager)
+    self.mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback, undoManager: ebUndoManager)
+    self.mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear, undoManager: ebUndoManager)
+    self.mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from, undoManager: ebUndoManager)
+    self.mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center, undoManager: ebUndoManager)
+    self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: ebUndoManager)
+    self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
+    self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
+    self.mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
+    self.mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
+    self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: ebUndoManager)
+    self.mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
+    self.mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: ebUndoManager)
+    self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: ebUndoManager)
+    self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: ebUndoManager)
+    self.mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
+    self.mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
+    self.mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5, undoManager: ebUndoManager)
+    self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: ebUndoManager)
+    self.mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular, undoManager: ebUndoManager)
+    self.mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
+    self.mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
+    self.mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mSchematicTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mSchematicVersion_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date (), undoManager: ebUndoManager)
+    self.mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 100, undoManager: ebUndoManager)
+    self.mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
+    self.mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
+    self.mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
+    self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
+    self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
+    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
+    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -3946,142 +4141,18 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mArtworkName
-    self.mArtworkName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
-    self.mCheckClearanceBetweenPadsOfSameNet_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mLastERCCheckingIsSuccess
-    self.mLastERCCheckingIsSuccess_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mLastERCCheckingSignature
-    self.mLastERCCheckingSignature_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardSideForNewTrack
-    self.mBoardSideForNewTrack_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mAutoRouterPreferredDirections
-    self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mAutorouterSnapAngle
-    self.mAutorouterSnapAngle_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRouteDirection
-    self.mRouteDirection_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRouteOrigin
-    self.mRouteOrigin_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mTrackLengthUnit
-    self.mTrackLengthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mLayoutClearance
-    self.mLayoutClearance_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mLayoutClearanceUnit
-    self.mLayoutClearanceUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardSelectedInspector
-    self.mBoardSelectedInspector_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardHorizontalFlip
-    self.mBoardHorizontalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardVerticalFlip
-    self.mBoardVerticalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardGridStyle
-    self.mBoardGridStyle_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardGridDisplayFactor
-    self.mBoardGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardZoom
-    self.mBoardZoom_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardGridStep
-    self.mBoardGridStep_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardGridStepUnit
-    self.mBoardGridStepUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mErrorOrWarningIssueSize
-    self.mErrorOrWarningIssueSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mControlKeyHiliteDiameter
-    self.mControlKeyHiliteDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDSNFileProposedName
-    self.mDSNFileProposedName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsWidth
-    self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsWidthUnit
-    self.mBoardLimitsWidthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardClearance
-    self.mBoardClearance_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardClearanceUnit
-    self.mBoardClearanceUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsSelectedInspector
-    self.mBoardLimitsSelectedInspector_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsHorizontalFlip
-    self.mBoardLimitsHorizontalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsVerticalFlip
-    self.mBoardLimitsVerticalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsGridStyle
-    self.mBoardLimitsGridStyle_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsGridDisplayFactor
-    self.mBoardLimitsGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsZoom
-    self.mBoardLimitsZoom_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsGridStep
-    self.mBoardLimitsGridStep_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsGridStepUnit
-    self.mBoardLimitsGridStepUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitsBoundingBoxUnit
-    self.mBoardLimitsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardPointsBoundingBoxUnit
-    self.mBoardPointsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardSelectedCurveDisplayUnit
-    self.mBoardSelectedCurveDisplayUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardLimitControlPointsDisplayUnit
-    self.mBoardLimitControlPointsDisplayUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mBoardShape
-    self.mBoardShape_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRectangularBoardWidth
-    self.mRectangularBoardWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRectangularBoardWidthUnit
-    self.mRectangularBoardWidthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRectangularBoardHeight
-    self.mRectangularBoardHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRectangularBoardHeightUnit
-    self.mRectangularBoardHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
-  //--- Atomic property: mDefaultNetClassName
-    self.mDefaultNetClassName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSelectedSchematicInspector
-    self.mSelectedSchematicInspector_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicTitle
-    self.mSchematicTitle_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicVersion
-    self.mSchematicVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicDate
-    self.mSchematicDate_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicHorizontalFlip
-    self.mSchematicHorizontalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicVerticalFlip
-    self.mSchematicVerticalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicZoom
-    self.mSchematicZoom_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicGridStyle
-    self.mSchematicGridStyle_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicGridDisplayFactor
-    self.mSchematicGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicCustomWidth
-    self.mSchematicCustomWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicCustomWidthUnit
-    self.mSchematicCustomWidthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicCustomHeight
-    self.mSchematicCustomHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicCustomHeightUnit
-    self.mSchematicCustomHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNetClasses (no option)
     self.mNetClasses_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mFonts (no option)
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mBorderCurves (has opposite relationship)
     self.mBorderCurves_property.ebUndoManager = self.ebUndoManager
     self.mBorderCurves_property.setOppositeRelationShipFunctions (
@@ -4094,12 +4165,6 @@ class ProjectRoot : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
-  //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (no option)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit

@@ -54,7 +54,9 @@ class DevicePackageInProject : EBManagedObject,
   //   Atomic property: mPackageName
   //····················································································································
 
-  final let mPackageName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mPackageName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mPackageName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -77,7 +79,9 @@ class DevicePackageInProject : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  // final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+
+  final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
 
@@ -124,6 +128,8 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -133,10 +139,6 @@ class DevicePackageInProject : EBManagedObject,
   private final func configureObject () {
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

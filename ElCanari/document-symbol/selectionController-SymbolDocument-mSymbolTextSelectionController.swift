@@ -15,7 +15,6 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   let y_property = EBPropertyProxy_Int ()
-
   var y_property_selection : EBSelection <Int> {
     return self.y_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   let text_property = EBPropertyProxy_String ()
-
   var text_property_selection : EBSelection <String> {
     return self.text_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   let horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-
   var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.horizontalAlignment_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   let x_property = EBPropertyProxy_Int ()
-
   var x_property_selection : EBSelection <Int> {
     return self.x_property.prop
   }

@@ -98,7 +98,9 @@ class PackageOval : PackageObject,
   //   Atomic property: y
   //····················································································································
 
-  final let y_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let y_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let y_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -121,7 +123,9 @@ class PackageOval : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  final let width_property = EBStoredProperty_Int (defaultValue: 685800)
+  // final let width_property = EBStoredProperty_Int (defaultValue: 685800)
+
+  final let width_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -144,7 +148,9 @@ class PackageOval : PackageObject,
   //   Atomic property: height
   //····················································································································
 
-  final let height_property = EBStoredProperty_Int (defaultValue: 685800)
+  // final let height_property = EBStoredProperty_Int (defaultValue: 685800)
+
+  final let height_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -167,7 +173,9 @@ class PackageOval : PackageObject,
   //   Atomic property: xUnit
   //····················································································································
 
-  final let xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let xUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -190,7 +198,9 @@ class PackageOval : PackageObject,
   //   Atomic property: yUnit
   //····················································································································
 
-  final let yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let yUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -213,7 +223,9 @@ class PackageOval : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  final let widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let widthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -236,7 +248,9 @@ class PackageOval : PackageObject,
   //   Atomic property: heightUnit
   //····················································································································
 
-  final let heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let heightUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -259,7 +273,9 @@ class PackageOval : PackageObject,
   //   Atomic property: x
   //····················································································································
 
-  final let x_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let x_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let x_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -306,6 +322,14 @@ class PackageOval : PackageObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
+    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
+    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -313,22 +337,6 @@ class PackageOval : PackageObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: y
-    self.y_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: width
-    self.width_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: height
-    self.height_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: xUnit
-    self.xUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: yUnit
-    self.yUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: widthUnit
-    self.widthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: heightUnit
-    self.heightUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x
-    self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

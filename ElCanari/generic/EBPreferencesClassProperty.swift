@@ -18,7 +18,7 @@ final class EBPreferencesClassProperty <T : ClassPropertyProtocol> : EBStoredCla
 
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     mPreferenceKey = inPreferenceKey
-    super.init (defaultValue: inValue)
+    super.init (defaultValue: inValue, undoManager: nil)
   //--- Read value from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
     if let value = possibleValue as? Data, let unarchivedValue = T.unarchiveFromData (data: value) as? T {

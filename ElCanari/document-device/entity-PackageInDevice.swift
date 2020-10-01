@@ -105,7 +105,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  // final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+
+  final let mFileData_property : EBStoredProperty_Data
 
   //····················································································································
 
@@ -128,7 +130,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mName
   //····················································································································
 
-  final let mName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -151,7 +155,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mVersion
   //····················································································································
 
-  final let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mVersion_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -174,7 +180,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  // final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+
+  final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
 
@@ -197,7 +205,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -220,7 +230,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -416,6 +428,12 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -423,18 +441,6 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mFileData
-    self.mFileData_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mName
-    self.mName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mVersion
-    self.mVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)

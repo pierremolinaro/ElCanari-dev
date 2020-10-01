@@ -63,7 +63,9 @@ class SymbolText : SymbolObject,
   //   Atomic property: y
   //····················································································································
 
-  final let y_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let y_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let y_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -86,7 +88,9 @@ class SymbolText : SymbolObject,
   //   Atomic property: text
   //····················································································································
 
-  final let text_property = EBStoredProperty_String (defaultValue: "text")
+  // final let text_property = EBStoredProperty_String (defaultValue: "text")
+
+  final let text_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -109,7 +113,9 @@ class SymbolText : SymbolObject,
   //   Atomic property: horizontalAlignment
   //····················································································································
 
-  final let horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  // final let horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  final let horizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
 
@@ -132,7 +138,9 @@ class SymbolText : SymbolObject,
   //   Atomic property: x
   //····················································································································
 
-  final let x_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let x_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let x_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -156,6 +164,10 @@ class SymbolText : SymbolObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.text_property = EBStoredProperty_String (defaultValue: "text", undoManager: ebUndoManager)
+    self.horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -163,14 +175,6 @@ class SymbolText : SymbolObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: y
-    self.y_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: text
-    self.text_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: horizontalAlignment
-    self.horizontalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x
-    self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

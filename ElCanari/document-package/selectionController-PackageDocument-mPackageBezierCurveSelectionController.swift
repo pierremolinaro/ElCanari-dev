@@ -15,7 +15,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let y1_property = EBPropertyProxy_Int ()
-
   var y1_property_selection : EBSelection <Int> {
     return self.y1_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let x2_property = EBPropertyProxy_Int ()
-
   var x2_property_selection : EBSelection <Int> {
     return self.x2_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let y2_property = EBPropertyProxy_Int ()
-
   var y2_property_selection : EBSelection <Int> {
     return self.y2_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpx1_property = EBPropertyProxy_Int ()
-
   var cpx1_property_selection : EBSelection <Int> {
     return self.cpx1_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpy1_property = EBPropertyProxy_Int ()
-
   var cpy1_property_selection : EBSelection <Int> {
     return self.cpy1_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpx2_property = EBPropertyProxy_Int ()
-
   var cpx2_property_selection : EBSelection <Int> {
     return self.cpx2_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpy2_property = EBPropertyProxy_Int ()
-
   var cpy2_property_selection : EBSelection <Int> {
     return self.cpy2_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let x1Unit_property = EBPropertyProxy_Int ()
-
   var x1Unit_property_selection : EBSelection <Int> {
     return self.x1Unit_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let y1Unit_property = EBPropertyProxy_Int ()
-
   var y1Unit_property_selection : EBSelection <Int> {
     return self.y1Unit_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let x2Unit_property = EBPropertyProxy_Int ()
-
   var x2Unit_property_selection : EBSelection <Int> {
     return self.x2Unit_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let y2Unit_property = EBPropertyProxy_Int ()
-
   var y2Unit_property_selection : EBSelection <Int> {
     return self.y2Unit_property.prop
   }
@@ -125,7 +114,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpx1Unit_property = EBPropertyProxy_Int ()
-
   var cpx1Unit_property_selection : EBSelection <Int> {
     return self.cpx1Unit_property.prop
   }
@@ -135,7 +123,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpy1Unit_property = EBPropertyProxy_Int ()
-
   var cpy1Unit_property_selection : EBSelection <Int> {
     return self.cpy1Unit_property.prop
   }
@@ -145,7 +132,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpx2Unit_property = EBPropertyProxy_Int ()
-
   var cpx2Unit_property_selection : EBSelection <Int> {
     return self.cpx2Unit_property.prop
   }
@@ -155,7 +141,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let cpy2Unit_property = EBPropertyProxy_Int ()
-
   var cpy2Unit_property_selection : EBSelection <Int> {
     return self.cpy2Unit_property.prop
   }
@@ -165,7 +150,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   let x1_property = EBPropertyProxy_Int ()
-
   var x1_property_selection : EBSelection <Int> {
     return self.x1_property.prop
   }

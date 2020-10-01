@@ -77,7 +77,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mColor
   //····················································································································
 
-  final let mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black)
+  // final let mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black)
+
+  final let mColor_property : EBStoredProperty_NSColor
 
   //····················································································································
 
@@ -100,7 +102,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mSize
   //····················································································································
 
-  final let mSize_property = EBStoredProperty_Double (defaultValue: 11)
+  // final let mSize_property = EBStoredProperty_Double (defaultValue: 11)
+
+  final let mSize_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -123,7 +127,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mHorizontalAlignment
   //····················································································································
 
-  final let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  // final let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  final let mHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
 
@@ -146,7 +152,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mVerticalAlignment
   //····················································································································
 
-  final let mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center)
+  // final let mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center)
+
+  final let mVerticalAlignment_property : EBStoredProperty_VerticalAlignment
 
   //····················································································································
 
@@ -169,7 +177,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -192,7 +202,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -215,7 +227,9 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mComment
   //····················································································································
 
-  final let mComment_property = EBStoredProperty_String (defaultValue: "")
+  // final let mComment_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mComment_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -239,6 +253,13 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black, undoManager: ebUndoManager)
+    self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: ebUndoManager)
+    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
+    self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: ebUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -246,20 +267,6 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mColor
-    self.mColor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSize
-    self.mSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mComment
-    self.mComment_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

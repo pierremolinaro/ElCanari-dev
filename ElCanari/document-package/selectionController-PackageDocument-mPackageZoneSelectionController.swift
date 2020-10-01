@@ -15,7 +15,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let x_property = EBPropertyProxy_Int ()
-
   var x_property_selection : EBSelection <Int> {
     return self.x_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let y_property = EBPropertyProxy_Int ()
-
   var y_property_selection : EBSelection <Int> {
     return self.y_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let width_property = EBPropertyProxy_Int ()
-
   var width_property_selection : EBSelection <Int> {
     return self.width_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let height_property = EBPropertyProxy_Int ()
-
   var height_property_selection : EBSelection <Int> {
     return self.height_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let xUnit_property = EBPropertyProxy_Int ()
-
   var xUnit_property_selection : EBSelection <Int> {
     return self.xUnit_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let yUnit_property = EBPropertyProxy_Int ()
-
   var yUnit_property_selection : EBSelection <Int> {
     return self.yUnit_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let widthUnit_property = EBPropertyProxy_Int ()
-
   var widthUnit_property_selection : EBSelection <Int> {
     return self.widthUnit_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let heightUnit_property = EBPropertyProxy_Int ()
-
   var heightUnit_property_selection : EBSelection <Int> {
     return self.heightUnit_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let zoneName_property = EBPropertyProxy_String ()
-
   var zoneName_property_selection : EBSelection <String> {
     return self.zoneName_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let displayZoneName_property = EBPropertyProxy_Bool ()
-
   var displayZoneName_property_selection : EBSelection <Bool> {
     return self.displayZoneName_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let xName_property = EBPropertyProxy_Int ()
-
   var xName_property_selection : EBSelection <Int> {
     return self.xName_property.prop
   }
@@ -125,7 +114,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let yName_property = EBPropertyProxy_Int ()
-
   var yName_property_selection : EBSelection <Int> {
     return self.yName_property.prop
   }
@@ -135,7 +123,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let xNameUnit_property = EBPropertyProxy_Int ()
-
   var xNameUnit_property_selection : EBSelection <Int> {
     return self.xNameUnit_property.prop
   }
@@ -145,7 +132,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let yNameUnit_property = EBPropertyProxy_Int ()
-
   var yNameUnit_property_selection : EBSelection <Int> {
     return self.yNameUnit_property.prop
   }
@@ -155,7 +141,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //····················································································································
 
   let zoneNumbering_property = EBPropertyProxy_PadNumbering ()
-
   var zoneNumbering_property_selection : EBSelection <PadNumbering> {
     return self.zoneNumbering_property.prop
   }

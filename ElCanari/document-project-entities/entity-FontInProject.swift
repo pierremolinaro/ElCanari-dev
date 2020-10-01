@@ -89,7 +89,9 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mNominalSize
   //····················································································································
 
-  final let mNominalSize_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mNominalSize_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mNominalSize_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -112,7 +114,9 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontName
   //····················································································································
 
-  final let mFontName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mFontName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mFontName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -135,7 +139,9 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontVersion
   //····················································································································
 
-  final let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mFontVersion_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -158,7 +164,9 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mDescriptiveString
   //····················································································································
 
-  final let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
+  // final let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mDescriptiveString_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -312,6 +320,10 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -325,14 +337,6 @@ class FontInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
       resetter: { inObject in inObject.mFont_property.setProp (nil) }
     )
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontName
-    self.mFontName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponentNames (has opposite relationship)
     self.mComponentNames_property.ebUndoManager = self.ebUndoManager
     self.mComponentNames_property.setOppositeRelationShipFunctions (

@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   //····················································································································
 
   let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
-
   var mOrientation_property_selection : EBSelection <QuadrantRotation> {
     return self.mOrientation_property.prop
   }

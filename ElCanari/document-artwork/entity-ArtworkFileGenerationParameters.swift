@@ -175,7 +175,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawBoardLimits
   //····················································································································
 
-  final let drawBoardLimits_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawBoardLimits_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawBoardLimits_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -198,7 +200,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawInternalBoardLimits
   //····················································································································
 
-  final let drawInternalBoardLimits_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawInternalBoardLimits_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawInternalBoardLimits_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -221,7 +225,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentNamesTopSide
   //····················································································································
 
-  final let drawComponentNamesTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawComponentNamesTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawComponentNamesTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -244,7 +250,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentNamesBottomSide
   //····················································································································
 
-  final let drawComponentNamesBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawComponentNamesBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawComponentNamesBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -267,7 +275,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentValuesTopSide
   //····················································································································
 
-  final let drawComponentValuesTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawComponentValuesTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawComponentValuesTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -290,7 +300,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentValuesBottomSide
   //····················································································································
 
-  final let drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawComponentValuesBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -313,7 +325,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPackageLegendTopSide
   //····················································································································
 
-  final let drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawPackageLegendTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -336,7 +350,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPackageLegendBottomSide
   //····················································································································
 
-  final let drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawPackageLegendBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -359,7 +375,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPadHolesInPDF
   //····················································································································
 
-  final let drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawPadHolesInPDF_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -382,7 +400,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPadsTopSide
   //····················································································································
 
-  final let drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawPadsTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -405,7 +425,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPadsBottomSide
   //····················································································································
 
-  final let drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawPadsBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -428,7 +450,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLayoutTopSide
   //····················································································································
 
-  final let drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawTextsLayoutTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -451,7 +475,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLayoutBottomSide
   //····················································································································
 
-  final let drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawTextsLayoutBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -474,7 +500,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLegendTopSide
   //····················································································································
 
-  final let drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawTextsLegendTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -497,7 +525,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLegendBottomSide
   //····················································································································
 
-  final let drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawTextsLegendBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -520,7 +550,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTracksTopSide
   //····················································································································
 
-  final let drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawTracksTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -543,7 +575,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTracksBottomSide
   //····················································································································
 
-  final let drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawTracksBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -566,7 +600,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawVias
   //····················································································································
 
-  final let drawVias_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let drawVias_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let drawVias_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -589,7 +625,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: fileExtension
   //····················································································································
 
-  final let fileExtension_property = EBStoredProperty_String (defaultValue: "?")
+  // final let fileExtension_property = EBStoredProperty_String (defaultValue: "?")
+
+  final let fileExtension_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -612,7 +650,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: horizontalMirror
   //····················································································································
 
-  final let horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let horizontalMirror_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -635,7 +675,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: name
   //····················································································································
 
-  final let name_property = EBStoredProperty_String (defaultValue: "Unnamed")
+  // final let name_property = EBStoredProperty_String (defaultValue: "Unnamed")
+
+  final let name_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -658,7 +700,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: measurementUnitForPadHoleInPDF
   //····················································································································
 
-  final let measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let measurementUnitForPadHoleInPDF_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -681,7 +725,9 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: padHoleDiameterInPDF
   //····················································································································
 
-  final let padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000)
+  // final let padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  final let padHoleDiameterInPDF_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -705,6 +751,29 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.drawBoardLimits_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawInternalBoardLimits_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawComponentNamesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawComponentNamesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawComponentValuesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.fileExtension_property = EBStoredProperty_String (defaultValue: "?", undoManager: ebUndoManager)
+    self.horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.name_property = EBStoredProperty_String (defaultValue: "Unnamed", undoManager: ebUndoManager)
+    self.measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -712,52 +781,6 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: drawBoardLimits
-    self.drawBoardLimits_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawInternalBoardLimits
-    self.drawInternalBoardLimits_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawComponentNamesTopSide
-    self.drawComponentNamesTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawComponentNamesBottomSide
-    self.drawComponentNamesBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawComponentValuesTopSide
-    self.drawComponentValuesTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawComponentValuesBottomSide
-    self.drawComponentValuesBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawPackageLegendTopSide
-    self.drawPackageLegendTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawPackageLegendBottomSide
-    self.drawPackageLegendBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawPadsTopSide
-    self.drawPadsTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawPadsBottomSide
-    self.drawPadsBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawTextsLayoutTopSide
-    self.drawTextsLayoutTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawTextsLayoutBottomSide
-    self.drawTextsLayoutBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawTextsLegendTopSide
-    self.drawTextsLegendTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawTextsLegendBottomSide
-    self.drawTextsLegendBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawTracksTopSide
-    self.drawTracksTopSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawTracksBottomSide
-    self.drawTracksBottomSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawVias
-    self.drawVias_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: fileExtension
-    self.fileExtension_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: horizontalMirror
-    self.horizontalMirror_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: name
-    self.name_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)

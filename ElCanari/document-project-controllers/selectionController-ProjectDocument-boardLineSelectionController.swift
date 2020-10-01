@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mWidthUnit_property = EBPropertyProxy_Int ()
-
   var mWidthUnit_property_selection : EBSelection <Int> {
     return self.mWidthUnit_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mX1_property = EBPropertyProxy_Int ()
-
   var mX1_property_selection : EBSelection <Int> {
     return self.mX1_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mX1Unit_property = EBPropertyProxy_Int ()
-
   var mX1Unit_property_selection : EBSelection <Int> {
     return self.mX1Unit_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mY1_property = EBPropertyProxy_Int ()
-
   var mY1_property_selection : EBSelection <Int> {
     return self.mY1_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mY1Unit_property = EBPropertyProxy_Int ()
-
   var mY1Unit_property_selection : EBSelection <Int> {
     return self.mY1Unit_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mX2_property = EBPropertyProxy_Int ()
-
   var mX2_property_selection : EBSelection <Int> {
     return self.mX2_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mX2Unit_property = EBPropertyProxy_Int ()
-
   var mX2Unit_property_selection : EBSelection <Int> {
     return self.mX2Unit_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mY2_property = EBPropertyProxy_Int ()
-
   var mY2_property_selection : EBSelection <Int> {
     return self.mY2_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mY2Unit_property = EBPropertyProxy_Int ()
-
   var mY2Unit_property_selection : EBSelection <Int> {
     return self.mY2Unit_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mLayer_property = EBPropertyProxy_BoardLineLayer ()
-
   var mLayer_property_selection : EBSelection <BoardLineLayer> {
     return self.mLayer_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //····················································································································
 
   let mWidth_property = EBPropertyProxy_Int ()
-
   var mWidth_property_selection : EBSelection <Int> {
     return self.mWidth_property.prop
   }

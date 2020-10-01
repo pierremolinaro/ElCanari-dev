@@ -15,7 +15,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let xCenter_property = EBPropertyProxy_Int ()
-
   var xCenter_property_selection : EBSelection <Int> {
     return self.xCenter_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let yCenter_property = EBPropertyProxy_Int ()
-
   var yCenter_property_selection : EBSelection <Int> {
     return self.yCenter_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let width_property = EBPropertyProxy_Int ()
-
   var width_property_selection : EBSelection <Int> {
     return self.width_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let height_property = EBPropertyProxy_Int ()
-
   var height_property_selection : EBSelection <Int> {
     return self.height_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let holeWidth_property = EBPropertyProxy_Int ()
-
   var holeWidth_property_selection : EBSelection <Int> {
     return self.holeWidth_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let holeHeight_property = EBPropertyProxy_Int ()
-
   var holeHeight_property_selection : EBSelection <Int> {
     return self.holeHeight_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let padShape_property = EBPropertyProxy_PadShape ()
-
   var padShape_property_selection : EBSelection <PadShape> {
     return self.padShape_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let padStyle_property = EBPropertyProxy_SlavePadStyle ()
-
   var padStyle_property_selection : EBSelection <SlavePadStyle> {
     return self.padStyle_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let xCenterUnit_property = EBPropertyProxy_Int ()
-
   var xCenterUnit_property_selection : EBSelection <Int> {
     return self.xCenterUnit_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let yCenterUnit_property = EBPropertyProxy_Int ()
-
   var yCenterUnit_property_selection : EBSelection <Int> {
     return self.yCenterUnit_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let widthUnit_property = EBPropertyProxy_Int ()
-
   var widthUnit_property_selection : EBSelection <Int> {
     return self.widthUnit_property.prop
   }
@@ -125,7 +114,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let heightUnit_property = EBPropertyProxy_Int ()
-
   var heightUnit_property_selection : EBSelection <Int> {
     return self.heightUnit_property.prop
   }
@@ -135,7 +123,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let holeWidthUnit_property = EBPropertyProxy_Int ()
-
   var holeWidthUnit_property_selection : EBSelection <Int> {
     return self.holeWidthUnit_property.prop
   }
@@ -145,7 +132,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let holeHeightUnit_property = EBPropertyProxy_Int ()
-
   var holeHeightUnit_property_selection : EBSelection <Int> {
     return self.holeHeightUnit_property.prop
   }
@@ -155,7 +141,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   let annularRingUnit_property = EBPropertyProxy_Int ()
-
   var annularRingUnit_property_selection : EBSelection <Int> {
     return self.annularRingUnit_property.prop
   }

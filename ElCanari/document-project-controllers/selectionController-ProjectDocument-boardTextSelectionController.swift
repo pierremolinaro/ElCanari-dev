@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-
   var mX_property_selection : EBSelection <Int> {
     return self.mX_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-
   var mY_property_selection : EBSelection <Int> {
     return self.mY_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mFontSize_property = EBPropertyProxy_Double ()
-
   var mFontSize_property_selection : EBSelection <Double> {
     return self.mFontSize_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mLayer_property = EBPropertyProxy_BoardTextLayer ()
-
   var mLayer_property_selection : EBSelection <BoardTextLayer> {
     return self.mLayer_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mText_property = EBPropertyProxy_String ()
-
   var mText_property_selection : EBSelection <String> {
     return self.mText_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-
   var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.mHorizontalAlignment_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mVerticalAlignment_property = EBPropertyProxy_BoardTextVerticalAlignment ()
-
   var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> {
     return self.mVerticalAlignment_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mRotation_property = EBPropertyProxy_Int ()
-
   var mRotation_property_selection : EBSelection <Int> {
     return self.mRotation_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mWeight_property = EBPropertyProxy_Double ()
-
   var mWeight_property_selection : EBSelection <Double> {
     return self.mWeight_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mOblique_property = EBPropertyProxy_Bool ()
-
   var mOblique_property_selection : EBSelection <Bool> {
     return self.mOblique_property.prop
   }

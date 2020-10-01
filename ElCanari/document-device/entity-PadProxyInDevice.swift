@@ -49,7 +49,9 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mPinInstanceName
   //····················································································································
 
-  final let mPinInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mPinInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mPinInstanceName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -72,7 +74,9 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mPadName
   //····················································································································
 
-  final let mPadName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mPadName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mPadName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -95,7 +99,9 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mIsNC
   //····················································································································
 
-  final let mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mIsNC_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -203,6 +209,9 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mPinInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -210,12 +219,6 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mPinInstanceName
-    self.mPinInstanceName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPadName
-    self.mPadName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mIsNC
-    self.mIsNC_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.ebUndoManager = self.ebUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (

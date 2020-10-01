@@ -77,7 +77,9 @@ class BoardRestrictRectangle : BoardObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -100,7 +102,9 @@ class BoardRestrictRectangle : BoardObject,
   //   Atomic property: mWidth
   //····················································································································
 
-  final let mWidth_property = EBStoredProperty_Int (defaultValue: 2286000)
+  // final let mWidth_property = EBStoredProperty_Int (defaultValue: 2286000)
+
+  final let mWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -123,7 +127,9 @@ class BoardRestrictRectangle : BoardObject,
   //   Atomic property: mHeight
   //····················································································································
 
-  final let mHeight_property = EBStoredProperty_Int (defaultValue: 2286000)
+  // final let mHeight_property = EBStoredProperty_Int (defaultValue: 2286000)
+
+  final let mHeight_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -146,7 +152,9 @@ class BoardRestrictRectangle : BoardObject,
   //   Atomic property: mIsInFrontLayer
   //····················································································································
 
-  final let mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mIsInFrontLayer_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -169,7 +177,9 @@ class BoardRestrictRectangle : BoardObject,
   //   Atomic property: mIsInBackLayer
   //····················································································································
 
-  final let mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mIsInBackLayer_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -192,7 +202,9 @@ class BoardRestrictRectangle : BoardObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -216,6 +228,12 @@ class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: ebUndoManager)
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: ebUndoManager)
+    self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -223,18 +241,6 @@ class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mWidth
-    self.mWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHeight
-    self.mHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mIsInFrontLayer
-    self.mIsInFrontLayer_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mIsInBackLayer
-    self.mIsInBackLayer_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

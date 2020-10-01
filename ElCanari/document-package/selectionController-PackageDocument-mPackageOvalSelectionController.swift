@@ -15,7 +15,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let y_property = EBPropertyProxy_Int ()
-
   var y_property_selection : EBSelection <Int> {
     return self.y_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let width_property = EBPropertyProxy_Int ()
-
   var width_property_selection : EBSelection <Int> {
     return self.width_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let height_property = EBPropertyProxy_Int ()
-
   var height_property_selection : EBSelection <Int> {
     return self.height_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let xUnit_property = EBPropertyProxy_Int ()
-
   var xUnit_property_selection : EBSelection <Int> {
     return self.xUnit_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let yUnit_property = EBPropertyProxy_Int ()
-
   var yUnit_property_selection : EBSelection <Int> {
     return self.yUnit_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let widthUnit_property = EBPropertyProxy_Int ()
-
   var widthUnit_property_selection : EBSelection <Int> {
     return self.widthUnit_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let heightUnit_property = EBPropertyProxy_Int ()
-
   var heightUnit_property_selection : EBSelection <Int> {
     return self.heightUnit_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   let x_property = EBPropertyProxy_Int ()
-
   var x_property_selection : EBSelection <Int> {
     return self.x_property.prop
   }

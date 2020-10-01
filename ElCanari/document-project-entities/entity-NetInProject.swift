@@ -89,7 +89,9 @@ class NetInProject : EBManagedObject,
   //   Atomic property: mNetName
   //····················································································································
 
-  final let mNetName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mNetName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mNetName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -331,6 +333,7 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -344,8 +347,6 @@ class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
-  //--- Atomic property: mNetName
-    self.mNetName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mTracks (has opposite relationship)
     self.mTracks_property.ebUndoManager = self.ebUndoManager
     self.mTracks_property.setOppositeRelationShipFunctions (

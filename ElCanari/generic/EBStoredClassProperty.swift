@@ -9,7 +9,7 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak private var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -21,8 +21,9 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
 
   //····················································································································
 
-  init (defaultValue inValue : T) {
+  init (defaultValue inValue : T, undoManager inUndoManager : EBUndoManager?) {
     mValue = inValue
+    self.mEBUndoManager = inUndoManager
     super.init ()
   }
 
@@ -32,7 +33,7 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
     didSet {
       if self.mValue != oldValue {
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.ebUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
+        self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }

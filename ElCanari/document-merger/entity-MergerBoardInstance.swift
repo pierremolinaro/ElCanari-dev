@@ -70,7 +70,9 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Atomic property: x
   //····················································································································
 
-  final let x_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let x_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let x_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -93,7 +95,9 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Atomic property: y
   //····················································································································
 
-  final let y_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let y_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let y_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -116,7 +120,9 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Atomic property: instanceRotation
   //····················································································································
 
-  final let instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+  // final let instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+
+  final let instanceRotation_property : EBStoredProperty_QuadrantRotation
 
   //····················································································································
 
@@ -285,6 +291,9 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -292,12 +301,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: x
-    self.x_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: y
-    self.y_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: instanceRotation
-    self.instanceRotation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.ebUndoManager = self.ebUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (

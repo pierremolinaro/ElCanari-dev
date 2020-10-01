@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mComponentPadName_property = EBPropertyProxy_String ()
-
   var mComponentPadName_property_selection : EBSelection <String> {
     return self.mComponentPadName_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mPadIndex_property = EBPropertyProxy_Int ()
-
   var mPadIndex_property_selection : EBSelection <Int> {
     return self.mPadIndex_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-
   var mX_property_selection : EBSelection <Int> {
     return self.mX_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-
   var mY_property_selection : EBSelection <Int> {
     return self.mY_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mDefaultHoleDiameterUnit_property = EBPropertyProxy_Int ()
-
   var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> {
     return self.mDefaultHoleDiameterUnit_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mCustomHoleDiameter_property = EBPropertyProxy_Int ()
-
   var mCustomHoleDiameter_property_selection : EBSelection <Int> {
     return self.mCustomHoleDiameter_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mCustomHoleDiameterUnit_property = EBPropertyProxy_Int ()
-
   var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> {
     return self.mCustomHoleDiameterUnit_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mUsesCustomHoleDiameter_property = EBPropertyProxy_Bool ()
-
   var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> {
     return self.mUsesCustomHoleDiameter_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mDefaultPadDiameterUnit_property = EBPropertyProxy_Int ()
-
   var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> {
     return self.mDefaultPadDiameterUnit_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mCustomPadDiameter_property = EBPropertyProxy_Int ()
-
   var mCustomPadDiameter_property_selection : EBSelection <Int> {
     return self.mCustomPadDiameter_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mCustomPadDiameterUnit_property = EBPropertyProxy_Int ()
-
   var mCustomPadDiameterUnit_property_selection : EBSelection <Int> {
     return self.mCustomPadDiameterUnit_property.prop
   }
@@ -125,7 +114,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mUsesCustomPadDiameter_property = EBPropertyProxy_Bool ()
-
   var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> {
     return self.mUsesCustomPadDiameter_property.prop
   }

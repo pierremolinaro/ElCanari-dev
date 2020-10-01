@@ -119,7 +119,9 @@ class PointInSchematic : EBManagedObject,
   //   Atomic property: mSymbolPinName
   //····················································································································
 
-  final let mSymbolPinName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSymbolPinName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSymbolPinName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -161,7 +163,9 @@ class PointInSchematic : EBManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -184,7 +188,9 @@ class PointInSchematic : EBManagedObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -674,6 +680,9 @@ class PointInSchematic : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mSymbolPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -681,18 +690,12 @@ class PointInSchematic : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mSymbolPinName
-    self.mSymbolPinName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.ebUndoManager = self.ebUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
       resetter: { inObject in inObject.mPoint_property.setProp (nil) }
     )
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mWiresP2s (has opposite relationship)
     self.mWiresP2s_property.ebUndoManager = self.ebUndoManager
     self.mWiresP2s_property.setOppositeRelationShipFunctions (

@@ -98,7 +98,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  final let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let selectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -121,7 +123,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  final let comments_property = EBStoredProperty_String (defaultValue: "")
+  // final let comments_property = EBStoredProperty_String (defaultValue: "")
+
+  final let comments_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -144,7 +148,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: horizontalFlip
   //····················································································································
 
-  final let horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let horizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -167,7 +173,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: verticalFlip
   //····················································································································
 
-  final let verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let verticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -190,7 +198,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  final let gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  // final let gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+
+  final let gridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
 
@@ -213,7 +223,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridDisplay
   //····················································································································
 
-  final let gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
+  // final let gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
+
+  final let gridDisplay_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -236,7 +248,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  final let zoom_property = EBStoredProperty_Int (defaultValue: 600)
+  // final let zoom_property = EBStoredProperty_Int (defaultValue: 600)
+
+  final let zoom_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -259,7 +273,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: xPlacardUnit
   //····················································································································
 
-  final let xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let xPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -282,7 +298,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: yPlacardUnit
   //····················································································································
 
-  final let yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let yPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -342,7 +360,9 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  final let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let selectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -412,6 +432,16 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
+    self.gridDisplay_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: ebUndoManager)
+    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -419,28 +449,8 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: comments
-    self.comments_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: gridDisplay
-    self.gridDisplay_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: zoom
-    self.zoom_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

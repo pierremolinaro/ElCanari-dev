@@ -49,7 +49,9 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mPath
   //····················································································································
 
-  final let mPath_property = EBStoredProperty_String (defaultValue: "Hello")
+  // final let mPath_property = EBStoredProperty_String (defaultValue: "Hello")
+
+  final let mPath_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -72,7 +74,9 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUses
   //····················································································································
 
-  final let mUses_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mUses_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mUses_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -95,7 +99,9 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mLibraryRepositoryURL
   //····················································································································
 
-  final let mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
+  // final let mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mLibraryRepositoryURL_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -118,7 +124,9 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUserAndPasswordTag
   //····················································································································
 
-  final let mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
+  // final let mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mUserAndPasswordTag_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -165,6 +173,10 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mPath_property = EBStoredProperty_String (defaultValue: "Hello", undoManager: ebUndoManager)
+    self.mUses_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -172,14 +184,6 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mPath
-    self.mPath_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mUses
-    self.mUses_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mLibraryRepositoryURL
-    self.mLibraryRepositoryURL_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mUserAndPasswordTag
-    self.mUserAndPasswordTag_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

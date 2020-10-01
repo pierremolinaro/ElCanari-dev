@@ -15,7 +15,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let yPin_property = EBPropertyProxy_Int ()
-
   var yPin_property_selection : EBSelection <Int> {
     return self.yPin_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let xName_property = EBPropertyProxy_Int ()
-
   var xName_property_selection : EBSelection <Int> {
     return self.xName_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let yName_property = EBPropertyProxy_Int ()
-
   var yName_property_selection : EBSelection <Int> {
     return self.yName_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let xNumber_property = EBPropertyProxy_Int ()
-
   var xNumber_property_selection : EBSelection <Int> {
     return self.xNumber_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let yNumber_property = EBPropertyProxy_Int ()
-
   var yNumber_property_selection : EBSelection <Int> {
     return self.yNumber_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let name_property = EBPropertyProxy_String ()
-
   var name_property_selection : EBSelection <String> {
     return self.name_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let nameHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-
   var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.nameHorizontalAlignment_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let numberHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-
   var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.numberHorizontalAlignment_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let pinNameIsDisplayedInSchematics_property = EBPropertyProxy_Bool ()
-
   var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> {
     return self.pinNameIsDisplayedInSchematics_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   let xPin_property = EBPropertyProxy_Int ()
-
   var xPin_property_selection : EBSelection <Int> {
     return self.xPin_property.prop
   }

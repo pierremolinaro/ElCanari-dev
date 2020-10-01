@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-
   var mX_property_selection : EBSelection <Int> {
     return self.mX_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-
   var mY_property_selection : EBSelection <Int> {
     return self.mY_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mRotation_property = EBPropertyProxy_Int ()
-
   var mRotation_property_selection : EBSelection <Int> {
     return self.mRotation_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mSide_property = EBPropertyProxy_ComponentSide ()
-
   var mSide_property_selection : EBSelection <ComponentSide> {
     return self.mSide_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mDisplayLegend_property = EBPropertyProxy_Bool ()
-
   var mDisplayLegend_property_selection : EBSelection <Bool> {
     return self.mDisplayLegend_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mNameIsVisibleInBoard_property = EBPropertyProxy_Bool ()
-
   var mNameIsVisibleInBoard_property_selection : EBSelection <Bool> {
     return self.mNameIsVisibleInBoard_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mXName_property = EBPropertyProxy_Int ()
-
   var mXName_property_selection : EBSelection <Int> {
     return self.mXName_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mYName_property = EBPropertyProxy_Int ()
-
   var mYName_property_selection : EBSelection <Int> {
     return self.mYName_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mNameFontSize_property = EBPropertyProxy_Double ()
-
   var mNameFontSize_property_selection : EBSelection <Double> {
     return self.mNameFontSize_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mNameRotation_property = EBPropertyProxy_Int ()
-
   var mNameRotation_property_selection : EBSelection <Int> {
     return self.mNameRotation_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mValueIsVisibleInBoard_property = EBPropertyProxy_Bool ()
-
   var mValueIsVisibleInBoard_property_selection : EBSelection <Bool> {
     return self.mValueIsVisibleInBoard_property.prop
   }
@@ -125,7 +114,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mXValue_property = EBPropertyProxy_Int ()
-
   var mXValue_property_selection : EBSelection <Int> {
     return self.mXValue_property.prop
   }
@@ -135,7 +123,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mYValue_property = EBPropertyProxy_Int ()
-
   var mYValue_property_selection : EBSelection <Int> {
     return self.mYValue_property.prop
   }
@@ -145,7 +132,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mValueFontSize_property = EBPropertyProxy_Double ()
-
   var mValueFontSize_property_selection : EBSelection <Double> {
     return self.mValueFontSize_property.prop
   }
@@ -155,7 +141,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mValueRotation_property = EBPropertyProxy_Int ()
-
   var mValueRotation_property_selection : EBSelection <Int> {
     return self.mValueRotation_property.prop
   }
@@ -165,7 +150,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mComponentValue_property = EBPropertyProxy_String ()
-
   var mComponentValue_property_selection : EBSelection <String> {
     return self.mComponentValue_property.prop
   }
@@ -175,7 +159,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mNamePrefix_property = EBPropertyProxy_String ()
-
   var mNamePrefix_property_selection : EBSelection <String> {
     return self.mNamePrefix_property.prop
   }
@@ -185,7 +168,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mNameIndex_property = EBPropertyProxy_Int ()
-
   var mNameIndex_property_selection : EBSelection <Int> {
     return self.mNameIndex_property.prop
   }
@@ -195,7 +177,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mXUnit_property = EBPropertyProxy_Int ()
-
   var mXUnit_property_selection : EBSelection <Int> {
     return self.mXUnit_property.prop
   }
@@ -205,7 +186,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   let mYUnit_property = EBPropertyProxy_Int ()
-
   var mYUnit_property_selection : EBSelection <Int> {
     return self.mYUnit_property.prop
   }

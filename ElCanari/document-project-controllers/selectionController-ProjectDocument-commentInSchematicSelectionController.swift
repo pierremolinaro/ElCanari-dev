@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mColor_property = EBPropertyProxy_NSColor ()
-
   var mColor_property_selection : EBSelection <NSColor> {
     return self.mColor_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mSize_property = EBPropertyProxy_Double ()
-
   var mSize_property_selection : EBSelection <Double> {
     return self.mSize_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-
   var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.mHorizontalAlignment_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mVerticalAlignment_property = EBPropertyProxy_VerticalAlignment ()
-
   var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> {
     return self.mVerticalAlignment_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-
   var mX_property_selection : EBSelection <Int> {
     return self.mX_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-
   var mY_property_selection : EBSelection <Int> {
     return self.mY_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //····················································································································
 
   let mComment_property = EBPropertyProxy_String ()
-
   var mComment_property_selection : EBSelection <String> {
     return self.mComment_property.prop
   }

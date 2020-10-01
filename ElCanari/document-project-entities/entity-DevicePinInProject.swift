@@ -112,7 +112,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinName
   //····················································································································
 
-  final let mPinName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mPinName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mPinName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -135,7 +137,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSymbolInstanceName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -158,7 +162,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSymbolTypeName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -181,7 +187,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinX
   //····················································································································
 
-  final let mPinX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mPinX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mPinX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -204,7 +212,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinY
   //····················································································································
 
-  final let mPinY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mPinY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mPinY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -227,7 +237,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mXName
   //····················································································································
 
-  final let mXName_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mXName_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mXName_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -250,7 +262,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mYName
   //····················································································································
 
-  final let mYName_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mYName_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mYName_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -273,7 +287,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mNameHorizontalAlignment
   //····················································································································
 
-  final let mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  // final let mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  final let mNameHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
 
@@ -296,7 +312,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinNameIsDisplayedInSchematic
   //····················································································································
 
-  final let mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mPinNameIsDisplayedInSchematic_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -319,7 +337,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mXNumber
   //····················································································································
 
-  final let mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mXNumber_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -342,7 +362,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mYNumber
   //····················································································································
 
-  final let mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mYNumber_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -365,7 +387,9 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mNumberHorizontalAlignment
   //····················································································································
 
-  final let mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  // final let mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  final let mNumberHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
 
@@ -435,6 +459,18 @@ class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
+    self.mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -442,30 +478,6 @@ class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mPinName
-    self.mPinName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPinX
-    self.mPinX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPinY
-    self.mPinY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mXName
-    self.mXName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mYName
-    self.mYName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNameHorizontalAlignment
-    self.mNameHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPinNameIsDisplayedInSchematic
-    self.mPinNameIsDisplayedInSchematic_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mXNumber
-    self.mXNumber_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mYNumber
-    self.mYNumber_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNumberHorizontalAlignment
-    self.mNumberHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

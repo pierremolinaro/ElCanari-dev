@@ -15,7 +15,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let yCenter_property = EBPropertyProxy_Int ()
-
   var yCenter_property_selection : EBSelection <Int> {
     return self.yCenter_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let radius_property = EBPropertyProxy_Int ()
-
   var radius_property_selection : EBSelection <Int> {
     return self.radius_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let startAngle_property = EBPropertyProxy_Int ()
-
   var startAngle_property_selection : EBSelection <Int> {
     return self.startAngle_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let arcAngle_property = EBPropertyProxy_Int ()
-
   var arcAngle_property_selection : EBSelection <Int> {
     return self.arcAngle_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let startTangent_property = EBPropertyProxy_Int ()
-
   var startTangent_property_selection : EBSelection <Int> {
     return self.startTangent_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let endTangent_property = EBPropertyProxy_Int ()
-
   var endTangent_property_selection : EBSelection <Int> {
     return self.endTangent_property.prop
   }
@@ -75,7 +69,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let pathIsClosed_property = EBPropertyProxy_Bool ()
-
   var pathIsClosed_property_selection : EBSelection <Bool> {
     return self.pathIsClosed_property.prop
   }
@@ -85,7 +78,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let xCenterUnit_property = EBPropertyProxy_Int ()
-
   var xCenterUnit_property_selection : EBSelection <Int> {
     return self.xCenterUnit_property.prop
   }
@@ -95,7 +87,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let yCenterUnit_property = EBPropertyProxy_Int ()
-
   var yCenterUnit_property_selection : EBSelection <Int> {
     return self.yCenterUnit_property.prop
   }
@@ -105,7 +96,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let radiusUnit_property = EBPropertyProxy_Int ()
-
   var radiusUnit_property_selection : EBSelection <Int> {
     return self.radiusUnit_property.prop
   }
@@ -115,7 +105,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let startTangentUnit_property = EBPropertyProxy_Int ()
-
   var startTangentUnit_property_selection : EBSelection <Int> {
     return self.startTangentUnit_property.prop
   }
@@ -125,7 +114,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let endTangentUnit_property = EBPropertyProxy_Int ()
-
   var endTangentUnit_property_selection : EBSelection <Int> {
     return self.endTangentUnit_property.prop
   }
@@ -135,7 +123,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   let xCenter_property = EBPropertyProxy_Int ()
-
   var xCenter_property_selection : EBSelection <Int> {
     return self.xCenter_property.prop
   }

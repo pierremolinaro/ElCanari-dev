@@ -15,7 +15,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mSide_property = EBPropertyProxy_TrackSide ()
-
   var mSide_property_selection : EBSelection <TrackSide> {
     return self.mSide_property.prop
   }
@@ -25,7 +24,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mDefaultTrackWidthUnit_property = EBPropertyProxy_Int ()
-
   var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> {
     return self.mDefaultTrackWidthUnit_property.prop
   }
@@ -35,7 +33,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mCustomTrackWidth_property = EBPropertyProxy_Int ()
-
   var mCustomTrackWidth_property_selection : EBSelection <Int> {
     return self.mCustomTrackWidth_property.prop
   }
@@ -45,7 +42,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mCustomTrackWidthUnit_property = EBPropertyProxy_Int ()
-
   var mCustomTrackWidthUnit_property_selection : EBSelection <Int> {
     return self.mCustomTrackWidthUnit_property.prop
   }
@@ -55,7 +51,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mUsesCustomTrackWidth_property = EBPropertyProxy_Bool ()
-
   var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> {
     return self.mUsesCustomTrackWidth_property.prop
   }
@@ -65,7 +60,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mIsPreservedByAutoRouter_property = EBPropertyProxy_Bool ()
-
   var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> {
     return self.mIsPreservedByAutoRouter_property.prop
   }

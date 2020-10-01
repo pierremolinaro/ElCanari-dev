@@ -12,7 +12,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
 
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil  // SOULD BE WEAK
+  weak private var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -24,8 +24,9 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
 
   //····················································································································
 
-  init (defaultValue inValue : T) {
-    mValue = inValue
+  init (defaultValue inValue : T, undoManager inEBUndoManager : EBUndoManager?) {
+    self.mValue = inValue
+    self.mEBUndoManager = inEBUndoManager
     super.init ()
   }
 
@@ -35,7 +36,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
     didSet {
       if self.mValue != oldValue {
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.ebUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
+        self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }

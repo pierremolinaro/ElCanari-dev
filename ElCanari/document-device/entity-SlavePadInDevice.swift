@@ -91,7 +91,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  final let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mCenterX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -114,7 +116,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  final let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mCenterY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -137,7 +141,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mWidth
   //····················································································································
 
-  final let mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+  // final let mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+
+  final let mWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -160,7 +166,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mHeight
   //····················································································································
 
-  final let mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
+  // final let mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
+
+  final let mHeight_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -183,7 +191,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mHoleWidth
   //····················································································································
 
-  final let mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150)
+  // final let mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  final let mHoleWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -206,7 +216,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mHoleHeight
   //····················································································································
 
-  final let mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150)
+  // final let mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  final let mHoleHeight_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -229,7 +241,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mShape
   //····················································································································
 
-  final let mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+  // final let mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+
+  final let mShape_property : EBStoredProperty_PadShape
 
   //····················································································································
 
@@ -252,7 +266,9 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mStyle
   //····················································································································
 
-  final let mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
+  // final let mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
+
+  final let mStyle_property : EBStoredProperty_SlavePadStyle
 
   //····················································································································
 
@@ -383,6 +399,14 @@ class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: ebUndoManager)
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
+    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
+    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
+    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: ebUndoManager)
+    self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -390,22 +414,6 @@ class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mCenterX
-    self.mCenterX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCenterY
-    self.mCenterY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mWidth
-    self.mWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHeight
-    self.mHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHoleWidth
-    self.mHoleWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHoleHeight
-    self.mHoleHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mShape
-    self.mShape_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mStyle
-    self.mStyle_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.ebUndoManager = self.ebUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (

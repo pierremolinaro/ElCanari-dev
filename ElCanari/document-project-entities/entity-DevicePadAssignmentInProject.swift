@@ -35,7 +35,9 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Atomic property: mPadName
   //····················································································································
 
-  final let mPadName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mPadName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mPadName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -143,6 +145,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -150,8 +153,6 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mPadName
-    self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPin
     self.mPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinPadAssignment

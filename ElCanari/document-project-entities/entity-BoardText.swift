@@ -112,7 +112,9 @@ class BoardText : BoardObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -135,7 +137,9 @@ class BoardText : BoardObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -158,7 +162,9 @@ class BoardText : BoardObject,
   //   Atomic property: mFontSize
   //····················································································································
 
-  final let mFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+  // final let mFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+
+  final let mFontSize_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -181,7 +187,9 @@ class BoardText : BoardObject,
   //   Atomic property: mLayer
   //····················································································································
 
-  final let mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront)
+  // final let mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront)
+
+  final let mLayer_property : EBStoredProperty_BoardTextLayer
 
   //····················································································································
 
@@ -204,7 +212,9 @@ class BoardText : BoardObject,
   //   Atomic property: mText
   //····················································································································
 
-  final let mText_property = EBStoredProperty_String (defaultValue: "")
+  // final let mText_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mText_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -227,7 +237,9 @@ class BoardText : BoardObject,
   //   Atomic property: mHorizontalAlignment
   //····················································································································
 
-  final let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  // final let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  final let mHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
 
@@ -250,7 +262,9 @@ class BoardText : BoardObject,
   //   Atomic property: mVerticalAlignment
   //····················································································································
 
-  final let mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base)
+  // final let mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base)
+
+  final let mVerticalAlignment_property : EBStoredProperty_BoardTextVerticalAlignment
 
   //····················································································································
 
@@ -273,7 +287,9 @@ class BoardText : BoardObject,
   //   Atomic property: mRotation
   //····················································································································
 
-  final let mRotation_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mRotation_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mRotation_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -296,7 +312,9 @@ class BoardText : BoardObject,
   //   Atomic property: mWeight
   //····················································································································
 
-  final let mWeight_property = EBStoredProperty_Double (defaultValue: 1)
+  // final let mWeight_property = EBStoredProperty_Double (defaultValue: 1)
+
+  final let mWeight_property : EBStoredProperty_Double
 
   //····················································································································
 
@@ -319,7 +337,9 @@ class BoardText : BoardObject,
   //   Atomic property: mOblique
   //····················································································································
 
-  final let mOblique_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mOblique_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mOblique_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -404,6 +424,16 @@ class BoardText : BoardObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: ebUndoManager)
+    self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: ebUndoManager)
+    self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
+    self.mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base, undoManager: ebUndoManager)
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: ebUndoManager)
+    self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -411,26 +441,6 @@ class BoardText : BoardObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontSize
-    self.mFontSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mLayer
-    self.mLayer_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mText
-    self.mText_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRotation
-    self.mRotation_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mWeight
-    self.mWeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mOblique
-    self.mOblique_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.ebUndoManager = self.ebUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (

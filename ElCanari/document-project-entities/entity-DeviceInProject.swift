@@ -105,7 +105,9 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceName
   //····················································································································
 
-  final let mDeviceName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mDeviceName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mDeviceName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -128,7 +130,9 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mPrefix
   //····················································································································
 
-  final let mPrefix_property = EBStoredProperty_String (defaultValue: "")
+  // final let mPrefix_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mPrefix_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -151,7 +155,9 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceVersion
   //····················································································································
 
-  final let mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mDeviceVersion_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -174,7 +180,9 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceFileData
   //····················································································································
 
-  final let mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  // final let mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+
+  final let mDeviceFileData_property : EBStoredProperty_Data
 
   //····················································································································
 
@@ -481,6 +489,10 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mDeviceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -488,14 +500,6 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mDeviceName
-    self.mDeviceName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPrefix
-    self.mPrefix_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPackages (no option)
     self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (no option)

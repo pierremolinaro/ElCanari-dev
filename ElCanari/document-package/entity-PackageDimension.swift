@@ -133,7 +133,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: y1
   //····················································································································
 
-  final let y1_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let y1_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let y1_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -156,7 +158,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: x2
   //····················································································································
 
-  final let x2_property = EBStoredProperty_Int (defaultValue: 685800)
+  // final let x2_property = EBStoredProperty_Int (defaultValue: 685800)
+
+  final let x2_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -179,7 +183,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: y2
   //····················································································································
 
-  final let y2_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let y2_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let y2_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -202,7 +208,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: xDimension
   //····················································································································
 
-  final let xDimension_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let xDimension_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let xDimension_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -225,7 +233,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: yDimension
   //····················································································································
 
-  final let yDimension_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let yDimension_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let yDimension_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -248,7 +258,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: x1Unit
   //····················································································································
 
-  final let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let x1Unit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -271,7 +283,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: y1Unit
   //····················································································································
 
-  final let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let y1Unit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -294,7 +308,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: x2Unit
   //····················································································································
 
-  final let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let x2Unit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -317,7 +333,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: y2Unit
   //····················································································································
 
-  final let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let y2Unit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -340,7 +358,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: xDimensionUnit
   //····················································································································
 
-  final let xDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let xDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let xDimensionUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -363,7 +383,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: yDimensionUnit
   //····················································································································
 
-  final let yDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let yDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let yDimensionUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -386,7 +408,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: distanceUnit
   //····················································································································
 
-  final let distanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let distanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let distanceUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -409,7 +433,9 @@ class PackageDimension : PackageObject,
   //   Atomic property: x1
   //····················································································································
 
-  final let x1_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let x1_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let x1_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -456,6 +482,19 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.x2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
+    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.xDimension_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.yDimension_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.x1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.y1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.x2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.y2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.xDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.yDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.distanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -463,32 +502,6 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: y1
-    self.y1_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x2
-    self.x2_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: y2
-    self.y2_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: xDimension
-    self.xDimension_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: yDimension
-    self.yDimension_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x1Unit
-    self.x1Unit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: y1Unit
-    self.y1Unit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x2Unit
-    self.x2Unit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: y2Unit
-    self.y2Unit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: xDimensionUnit
-    self.xDimensionUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: yDimensionUnit
-    self.yDimensionUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: distanceUnit
-    self.distanceUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x1
-    self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: distanceInCanariUnit
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

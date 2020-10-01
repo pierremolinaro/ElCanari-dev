@@ -147,7 +147,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  final let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mCenterX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -170,7 +172,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  final let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mCenterY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -193,7 +197,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mRotation
   //····················································································································
 
-  final let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+  // final let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+
+  final let mRotation_property : EBStoredProperty_QuadrantRotation
 
   //····················································································································
 
@@ -216,7 +222,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mMirror
   //····················································································································
 
-  final let mMirror_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mMirror_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mMirror_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -239,7 +247,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSymbolInstanceName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -262,7 +272,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mSymbolTypeName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -285,7 +297,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentNameOffsetX
   //····················································································································
 
-  final let mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mDisplayComponentNameOffsetX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -308,7 +322,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentNameOffsetY
   //····················································································································
 
-  final let mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
+  // final let mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
+
+  final let mDisplayComponentNameOffsetY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -331,7 +347,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentValue
   //····················································································································
 
-  final let mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
+  // final let mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
+
+  final let mDisplayComponentValue_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -354,7 +372,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentValueOffsetX
   //····················································································································
 
-  final let mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mDisplayComponentValueOffsetX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -377,7 +397,9 @@ class ComponentSymbolInProject : SchematicObject,
   //   Atomic property: mDisplayComponentValueOffsetY
   //····················································································································
 
-  final let mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
+  // final let mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
+
+  final let mDisplayComponentValueOffsetY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -601,6 +623,17 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
+    self.mMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
+    self.mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -608,28 +641,6 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mCenterX
-    self.mCenterX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCenterY
-    self.mCenterY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRotation
-    self.mRotation_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mMirror
-    self.mMirror_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDisplayComponentNameOffsetX
-    self.mDisplayComponentNameOffsetX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDisplayComponentNameOffsetY
-    self.mDisplayComponentNameOffsetY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDisplayComponentValue
-    self.mDisplayComponentValue_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDisplayComponentValueOffsetX
-    self.mDisplayComponentValueOffsetX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDisplayComponentValueOffsetY
-    self.mDisplayComponentValueOffsetY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (

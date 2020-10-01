@@ -18,7 +18,7 @@ final class EBPreferencesValueProperty <T : ValuePropertyProtocol> : EBStoredVal
 
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     mPreferenceKey = inPreferenceKey
-    super.init (defaultValue: inValue)
+    super.init (defaultValue: inValue, undoManager: nil)
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
     if let value = possibleValue as? NSObject {

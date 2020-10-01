@@ -210,7 +210,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mComponentPadName
   //····················································································································
 
-  final let mComponentPadName_property = EBStoredProperty_String (defaultValue: "")
+  // final let mComponentPadName_property = EBStoredProperty_String (defaultValue: "")
+
+  final let mComponentPadName_property : EBStoredProperty_String
 
   //····················································································································
 
@@ -233,7 +235,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mPadIndex
   //····················································································································
 
-  final let mPadIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mPadIndex_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mPadIndex_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -256,7 +260,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mX
   //····················································································································
 
-  final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mX_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -279,7 +285,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mY
   //····················································································································
 
-  final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  final let mY_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -321,7 +329,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mDefaultHoleDiameterUnit
   //····················································································································
 
-  final let mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mDefaultHoleDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -344,7 +354,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomHoleDiameter
   //····················································································································
 
-  final let mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+  // final let mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  final let mCustomHoleDiameter_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -367,7 +379,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomHoleDiameterUnit
   //····················································································································
 
-  final let mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mCustomHoleDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -390,7 +404,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mUsesCustomHoleDiameter
   //····················································································································
 
-  final let mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mUsesCustomHoleDiameter_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -413,7 +429,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mDefaultPadDiameterUnit
   //····················································································································
 
-  final let mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mDefaultPadDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -436,7 +454,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomPadDiameter
   //····················································································································
 
-  final let mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+  // final let mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+
+  final let mCustomPadDiameter_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -459,7 +479,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mCustomPadDiameterUnit
   //····················································································································
 
-  final let mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mCustomPadDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -482,7 +504,9 @@ class BoardConnector : BoardObject,
   //   Atomic property: mUsesCustomPadDiameter
   //····················································································································
 
-  final let mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mUsesCustomPadDiameter_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -793,6 +817,18 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mComponentPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mPadIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
+    self.mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: ebUndoManager)
+    self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -800,36 +836,12 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mComponentPadName
-    self.mComponentPadName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPadIndex
-    self.mPadIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.ebUndoManager = self.ebUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP2_property.setProp (nil) }
     )
-  //--- Atomic property: mDefaultHoleDiameterUnit
-    self.mDefaultHoleDiameterUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCustomHoleDiameter
-    self.mCustomHoleDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCustomHoleDiameterUnit
-    self.mCustomHoleDiameterUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mUsesCustomHoleDiameter
-    self.mUsesCustomHoleDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDefaultPadDiameterUnit
-    self.mDefaultPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCustomPadDiameter
-    self.mCustomPadDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCustomPadDiameterUnit
-    self.mCustomPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mUsesCustomPadDiameter
-    self.mUsesCustomPadDiameter_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mTracksP1 (has opposite relationship)
     self.mTracksP1_property.ebUndoManager = self.ebUndoManager
     self.mTracksP1_property.setOppositeRelationShipFunctions (

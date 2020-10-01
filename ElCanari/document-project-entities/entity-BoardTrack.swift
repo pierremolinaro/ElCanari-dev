@@ -133,7 +133,9 @@ class BoardTrack : BoardObject,
   //   Atomic property: mSide
   //····················································································································
 
-  final let mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
+  // final let mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
+
+  final let mSide_property : EBStoredProperty_TrackSide
 
   //····················································································································
 
@@ -156,7 +158,9 @@ class BoardTrack : BoardObject,
   //   Atomic property: mDefaultTrackWidthUnit
   //····················································································································
 
-  final let mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mDefaultTrackWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -179,7 +183,9 @@ class BoardTrack : BoardObject,
   //   Atomic property: mCustomTrackWidth
   //····················································································································
 
-  final let mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+  // final let mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  final let mCustomTrackWidth_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -202,7 +208,9 @@ class BoardTrack : BoardObject,
   //   Atomic property: mCustomTrackWidthUnit
   //····················································································································
 
-  final let mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  // final let mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  final let mCustomTrackWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
@@ -225,7 +233,9 @@ class BoardTrack : BoardObject,
   //   Atomic property: mUsesCustomTrackWidth
   //····················································································································
 
-  final let mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mUsesCustomTrackWidth_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -248,7 +258,9 @@ class BoardTrack : BoardObject,
   //   Atomic property: mIsPreservedByAutoRouter
   //····················································································································
 
-  final let mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false)
+  // final let mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false)
+
+  final let mIsPreservedByAutoRouter_property : EBStoredProperty_Bool
 
   //····················································································································
 
@@ -547,6 +559,12 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: ebUndoManager)
+    self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
+    self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.configureObject ()
   }
@@ -554,18 +572,6 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   private final func configureObject () {
-  //--- Atomic property: mSide
-    self.mSide_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDefaultTrackWidthUnit
-    self.mDefaultTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCustomTrackWidth
-    self.mCustomTrackWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCustomTrackWidthUnit
-    self.mCustomTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mUsesCustomTrackWidth
-    self.mUsesCustomTrackWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mIsPreservedByAutoRouter
-    self.mIsPreservedByAutoRouter_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
