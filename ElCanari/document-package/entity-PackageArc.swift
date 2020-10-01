@@ -539,31 +539,37 @@ class PackageArc : PackageObject,
     self.startTangent_property.addEBObserver (self.strokeBezierPath_property)
     self.endTangent_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.strokeBezierPath_property_selection.kind ()
-        kind &= g_Preferences!.packageColor_property_selection.kind ()
-        kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.strokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PackageArc_objectDisplay (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.objectDisplay_property.configure (
+      self.strokeBezierPath_property,
+      g_Preferences!.packageColor_property,
+      g_Preferences!.packageDrawingWidthMultipliedByTen_property,
+      transient_PackageArc_objectDisplay
+    )
+//    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+//      if let unwSelf = self {
+//        var kind = unwSelf.strokeBezierPath_property_selection.kind ()
+//        kind &= g_Preferences!.packageColor_property_selection.kind ()
+//        kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
+//        switch kind {
+//        case .empty :
+//          return .empty
+//        case .multiple :
+//          return .multiple
+//        case .single :
+//          switch (unwSelf.strokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
+//          case (.single (let v0), .single (let v1), .single (let v2)) :
+//            return .single (transient_PackageArc_objectDisplay (v0, v1, v2))
+//          default :
+//            return .empty
+//          }
+//        }
+//      }else{
+//        return .empty
+//      }
+//    }
+//    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+//    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
+//    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -664,9 +670,9 @@ class PackageArc : PackageObject,
     self.pathIsClosed_property.removeEBObserver (self.strokeBezierPath_property)
     self.startTangent_property.removeEBObserver (self.strokeBezierPath_property)
     self.endTangent_property.removeEBObserver (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+//    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+//    g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
+//    g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
     self.yCenter_property.removeEBObserver (self.selectionDisplay_property)
     self.radius_property.removeEBObserver (self.selectionDisplay_property)

@@ -67,6 +67,30 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equat
 
   //····················································································································
 
+  func configure <T1, T2, T3> (_ in1 : EBReadOnlyValueProperty <T1>,
+                               _ in2 : EBReadOnlyValueProperty <T2>,
+                               _ in3 : EBReadOnlyValueProperty <T3>,
+                               _ computationCallBack : @escaping (_ in1 : T1, _ in2 : T2, _ in3 : T3) -> T) {
+    in1.addEBObserver (self)
+    in2.addEBObserver (self)
+    in3.addEBObserver (self)
+    self.mReadModelFunction = { [weak in1, weak in2, weak in3] in
+      if let uwIn1 = in1, let uwIn2 = in2, let uwIn3 = in3 {
+        switch (uwIn1.prop, uwIn2.prop, uwIn3.prop) {
+        case (.single (let v1), .single (let v2), .single (let v3)) :
+          let v = computationCallBack (v1, v2, v3)
+          return .single (v)
+        default:
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

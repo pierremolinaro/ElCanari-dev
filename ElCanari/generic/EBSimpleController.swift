@@ -12,11 +12,11 @@ class EBSimpleController : EBOutletEvent {
 
   //····················································································································
 
-  private let mPrivateObservedObjects : [EBAbstractProperty]
+  private let mPrivateObservedObjects : [EBObservableObjectProtocol]
 
   //····················································································································
 
-  init (observedObjects : [EBAbstractProperty], callBack: @escaping () -> Void) {
+  init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
     mPrivateObservedObjects = observedObjects
     super.init ()
     self.mEventCallBack = callBack

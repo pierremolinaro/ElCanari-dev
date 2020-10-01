@@ -138,8 +138,6 @@
 		CF07780823521A4E00F56EAB /* EnumPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */; };
 		CF07780923521A4E00F56EAB /* EBReadOnlyValueProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBReadOnlyValueProperty.swift */; };
 		CF07780A23521A4E00F56EAB /* EBReadOnlyValueProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBReadOnlyValueProperty.swift */; };
-		CF07780B23521A4E00F56EAB /* EBAbstractEnumProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F823521A4E00F56EAB /* EBAbstractEnumProperty.swift */; };
-		CF07780C23521A4E00F56EAB /* EBAbstractEnumProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F823521A4E00F56EAB /* EBAbstractEnumProperty.swift */; };
 		CF07780E23521A8300F56EAB /* EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */; };
 		CF07780F23521A8300F56EAB /* EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */; };
 		CF07781423521CB800F56EAB /* func-defaultValidationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07781023521CB700F56EAB /* func-defaultValidationFunction.swift */; };
@@ -512,6 +510,8 @@
 		CF4BA71D23E9E58300C403B5 /* transient-PackageZone-emptyForbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4BA71C23E9E58300C403B5 /* transient-PackageZone-emptyForbiddenPadArray.swift */; };
 		CF4BA71E23E9E58300C403B5 /* transient-PackageZone-emptyForbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4BA71C23E9E58300C403B5 /* transient-PackageZone-emptyForbiddenPadArray.swift */; };
 		CF4C32C020FFD04C00F74D7B /* transient-BoardModel-backPadsBezierPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C32BF20FFD04C00F74D7B /* transient-BoardModel-backPadsBezierPaths.swift */; };
+		CF4C8F3925262ADC0046F831 /* EBObservableObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */; };
+		CF4C8F3A25262ADC0046F831 /* EBObservableObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */; };
 		CF4D083121C2DE4300380ACA /* action-PackageDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D083021C2DE4200380ACA /* action-PackageDocument-resetVersionAction.swift */; };
 		CF4D083221C2DE4300380ACA /* action-PackageDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D083021C2DE4200380ACA /* action-PackageDocument-resetVersionAction.swift */; };
 		CF4D083421C2F10E00380ACA /* entity-PackageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D083321C2F10E00380ACA /* entity-PackageObject.swift */; };
@@ -2647,7 +2647,6 @@
 		CF0777F523521A4E00F56EAB /* EBTransientValueProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTransientValueProperty.swift; sourceTree = "<group>"; };
 		CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumPropertyProtocol.swift; sourceTree = "<group>"; };
 		CF0777F723521A4E00F56EAB /* EBReadOnlyValueProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReadOnlyValueProperty.swift; sourceTree = "<group>"; };
-		CF0777F823521A4E00F56EAB /* EBAbstractEnumProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBAbstractEnumProperty.swift; sourceTree = "<group>"; };
 		CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBPropertyProtocol.swift; sourceTree = "<group>"; };
 		CF07781023521CB700F56EAB /* func-defaultValidationFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "func-defaultValidationFunction.swift"; sourceTree = "<group>"; };
 		CF07781123521CB800F56EAB /* EBSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBSelection.swift; sourceTree = "<group>"; };
@@ -2858,6 +2857,7 @@
 		CF4B7D581BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariAppUpdaterSparkleSettings.swift; sourceTree = "<group>"; };
 		CF4BA71C23E9E58300C403B5 /* transient-PackageZone-emptyForbiddenPadArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageZone-emptyForbiddenPadArray.swift"; sourceTree = "<group>"; };
 		CF4C32BF20FFD04C00F74D7B /* transient-BoardModel-backPadsBezierPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backPadsBezierPaths.swift"; sourceTree = "<group>"; };
+		CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservableObjectProtocol.swift; sourceTree = "<group>"; };
 		CF4D083021C2DE4200380ACA /* action-PackageDocument-resetVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-resetVersionAction.swift"; sourceTree = "<group>"; };
 		CF4D083321C2F10E00380ACA /* entity-PackageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PackageObject.swift"; sourceTree = "<group>"; };
 		CF4D083621C2F18000380ACA /* transient-PackageSegment-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageSegment-selectionDisplay.swift"; sourceTree = "<group>"; };
@@ -4442,10 +4442,10 @@
 		CF61725D1B3C4B8A00F3CA82 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */,
 				CF61725E1B3C4BA900F3CA82 /* Application.swift */,
 				CF0777A62352100D00F56EAB /* BezierPathArray.swift */,
 				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
-				CF0777F823521A4E00F56EAB /* EBAbstractEnumProperty.swift */,
 				CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */,
@@ -6372,7 +6372,6 @@
 				CF1D9C7B21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift in Sources */,
 				CFD24153222C0BB1000D6B65 /* transient-DeviceRoot-packagePadNameSetsAreConsistent.swift in Sources */,
 				CFEB7B4C233A25EC0060A97A /* transient-ComponentInProject-padNetDictionary.swift in Sources */,
-				CF07780B23521A4E00F56EAB /* EBAbstractEnumProperty.swift in Sources */,
 				CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */,
 				CFBAFCE41DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_devices.swift in Sources */,
 				CFEB7CF2233A298D0060A97A /* transient-SchematicObject-isPlacedInSchematic.swift in Sources */,
@@ -7092,6 +7091,7 @@
 				CFEAAD6D2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
 				CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF644E1122E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */,
+				CF4C8F3925262ADC0046F831 /* EBObservableObjectProtocol.swift in Sources */,
 				CF2FF0D7242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift in Sources */,
 				CFA42FA8229AEAEC000AA8C8 /* toone-SegmentForFontCharacter.swift in Sources */,
 				CF35A54C21A825BC00A0E500 /* extension-String.swift in Sources */,
@@ -7590,7 +7590,6 @@
 				CF5C4D0C219F04D600EAC52A /* transient-BoardModel-backPadArray.swift in Sources */,
 				CF4EC73C2284A07B00902FBB /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CFEB7B4D233A25EC0060A97A /* transient-ComponentInProject-padNetDictionary.swift in Sources */,
-				CF07780C23521A4E00F56EAB /* EBAbstractEnumProperty.swift in Sources */,
 				CFFF32BC248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift in Sources */,
 				CFB1DB162282D31F005F9811 /* entity-DevicePinInProject.swift in Sources */,
 				CF5C4D0D219F04D600EAC52A /* action-MergerDocument-addBoardModelAction.swift in Sources */,
@@ -8307,6 +8306,7 @@
 				CF30CDE421C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF35A54D21A825BC00A0E500 /* extension-String.swift in Sources */,
 				CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */,
+				CF4C8F3A25262ADC0046F831 /* EBObservableObjectProtocol.swift in Sources */,
 				CF2FF0D8242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift in Sources */,
 				CFF5EF0722269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CFA43084229AEB96000AA8C8 /* tomany-ProjectRoot.swift in Sources */,

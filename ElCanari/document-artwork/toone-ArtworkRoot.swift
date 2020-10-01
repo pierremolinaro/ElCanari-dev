@@ -1091,7 +1091,7 @@ final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
 //    StoredObject_ArtworkRoot 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureObserverProtocol {
+final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

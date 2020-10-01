@@ -8,13 +8,13 @@ import Cocoa
 //   EBReadOnlyEnumProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBAbstractEnumProperty where T : Equatable {
+class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBReadOnlyValueProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
 
-  var prop : EBSelection <T> { return .empty } // Abstract method
+  func setFrom (rawValue : Int) {}  // Abstract method
 
   //····················································································································
 
-  override func rawValue () -> Int? {
+  func rawValue () -> Int? {
     switch self.prop {
     case .empty, .multiple :
       return nil

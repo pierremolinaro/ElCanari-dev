@@ -696,7 +696,7 @@ final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
 //    StoredObject_SheetInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSignatureObserverProtocol {
+final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 

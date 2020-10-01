@@ -39,7 +39,7 @@ class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   //    binding
   //····················································································································
 
-  fileprivate func updateSelectedSegment (_ object : EBAbstractEnumProperty) {
+  fileprivate func updateSelectedSegment (_ object : EBReadObservableEnumProtocol) {
     self.selectedSegment = object.rawValue () ?? 0
   }
 
@@ -49,7 +49,7 @@ class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedSegment (_ object : EBAbstractEnumProperty, file : String, line : Int) {
+  func bind_selectedSegment (_ object : EBReadWriteObservableEnumProtocol, file : String, line : Int) {
     self.mController = Controller_CanariEnumSegmentedControl_selectedSegment (object:object, outlet:self)
   }
 
@@ -70,12 +70,12 @@ class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
 final class Controller_CanariEnumSegmentedControl_selectedSegment : EBSimpleController {
 
-  private let mObject : EBAbstractEnumProperty
+  private let mObject : EBReadWriteObservableEnumProtocol
   private let mOutlet : CanariEnumSegmentedControl
 
   //····················································································································
 
-  init (object : EBAbstractEnumProperty, outlet : CanariEnumSegmentedControl) {
+  init (object : EBReadWriteObservableEnumProtocol, outlet : CanariEnumSegmentedControl) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], callBack: { outlet.updateSelectedSegment (object) })

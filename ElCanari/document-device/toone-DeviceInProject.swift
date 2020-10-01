@@ -1278,7 +1278,7 @@ final class ProxyObject_DeviceInProject : ReadWriteObject_DeviceInProject {
 //    StoredObject_DeviceInProject 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class StoredObject_DeviceInProject : ReadWriteObject_DeviceInProject, EBSignatureObserverProtocol {
+final class StoredObject_DeviceInProject : ReadWriteObject_DeviceInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
 
  //····················································································································
 
