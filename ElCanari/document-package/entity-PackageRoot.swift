@@ -2078,6 +2078,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
   //--- Atomic property: freePadNumbering
+    // self.freePadNumbering_property.configure (self.padNumbering_property, transient_PackageRoot_freePadNumbering)
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padNumbering_property_selection.kind ()
@@ -2100,6 +2101,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.padNumbering_property.addEBObserver (self.freePadNumbering_property)
   //--- Atomic property: counterClockNumbering
+    // self.counterClockNumbering_property.configure (self.padNumbering_property, transient_PackageRoot_counterClockNumbering)
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padNumbering_property_selection.kind ()
@@ -2122,6 +2124,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.padNumbering_property.addEBObserver (self.counterClockNumbering_property)
   //--- Atomic property: gridStepMultipliedByDisplayFactor
+    // self.gridStepMultipliedByDisplayFactor_property.configure (self.gridStep_property, self.gridDisplayFactor_property, transient_PackageRoot_gridStepMultipliedByDisplayFactor)
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.gridStep_property_selection.kind ()
@@ -2146,6 +2149,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: secondPointX
+    // self.secondPointX_property.configure (self.mModelImageFirstPointX_property, self.mModelImageSecondPointDx_property, transient_PackageRoot_secondPointX)
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mModelImageFirstPointX_property_selection.kind ()
@@ -2170,6 +2174,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.addEBObserver (self.secondPointX_property)
     self.mModelImageSecondPointDx_property.addEBObserver (self.secondPointX_property)
   //--- Atomic property: secondPointY
+    // self.secondPointY_property.configure (self.mModelImageFirstPointY_property, self.mModelImageSecondPointDy_property, transient_PackageRoot_secondPointY)
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mModelImageFirstPointY_property_selection.kind ()
@@ -2194,6 +2199,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointY_property.addEBObserver (self.secondPointY_property)
     self.mModelImageSecondPointDy_property.addEBObserver (self.secondPointY_property)
   //--- Atomic property: lockImageView
+    // self.lockImageView_property.configure (self.mPointsAreLocked_property, transient_PackageRoot_lockImageView)
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPointsAreLocked_property_selection.kind ()
@@ -2218,6 +2224,7 @@ class PackageRoot : EBGraphicManagedObject,
   //--- To one property: mModelImageDoublePoint
     self.mModelImageDoublePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberDisplay
+    // self.padNumberDisplay_property.configure (g_Preferences?.showPadNumber_property, self.packagePads_property.addEBObserverOf_padNumberDisplay, self.packageSlavePads_property.addEBObserverOf_padNumberDisplay, transient_PackageRoot_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.showPadNumber_property_selection.kind ()
@@ -2244,6 +2251,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: backgroundImagePageBackgroundDisplay
+    // self.backgroundImagePageBackgroundDisplay_property.configure (self.packageObjects_property.addEBObserverOf_objectDisplay, self.mModelImageData_property, transient_PackageRoot_backgroundImagePageBackgroundDisplay)
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
@@ -2268,6 +2276,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageObjects_property.addEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.addEBObserver (self.backgroundImagePageBackgroundDisplay_property)
   //--- Atomic property: modelImageSizeString
+    // self.modelImageSizeString_property.configure (self.mModelImageData_property, transient_PackageRoot_modelImageSizeString)
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mModelImageData_property_selection.kind ()
@@ -2290,6 +2299,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageData_property.addEBObserver (self.modelImageSizeString_property)
   //--- Atomic property: hasModelImage
+    // self.hasModelImage_property.configure (self.mModelImageData_property, transient_PackageRoot_hasModelImage)
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mModelImageData_property_selection.kind ()
@@ -2312,6 +2322,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageData_property.addEBObserver (self.hasModelImage_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.packageObjects_property.addEBObserverOf_issues, self.packageZones_property.addEBObserverOf_rect, self.packageZones_property.addEBObserverOf_zoneName, self.packageZones_property.addEBObserverOf_xName, self.packageZones_property.addEBObserverOf_yName, g_Preferences?.padZoneFont_property, transient_PackageRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
@@ -2344,6 +2355,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     g_Preferences?.padZoneFont_property.addEBObserver (self.issues_property)
   //--- Atomic property: noIssue
+    // self.noIssue_property.configure (self.issues_property, transient_PackageRoot_noIssue)
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -2417,29 +2429,29 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageSecondPointDy_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = nil
     self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
-    self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
-    self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
-    self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.mModelImageFirstPointX_property.removeEBObserver (self.secondPointX_property)
-    self.mModelImageSecondPointDx_property.removeEBObserver (self.secondPointX_property)
-    self.mModelImageFirstPointY_property.removeEBObserver (self.secondPointY_property)
-    self.mModelImageSecondPointDy_property.removeEBObserver (self.secondPointY_property)
-    self.mPointsAreLocked_property.removeEBObserver (self.lockImageView_property)
-    g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
-    self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
-    self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
-    self.packageObjects_property.removeEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
-    self.mModelImageData_property.removeEBObserver (self.backgroundImagePageBackgroundDisplay_property)
-    self.mModelImageData_property.removeEBObserver (self.modelImageSizeString_property)
-    self.mModelImageData_property.removeEBObserver (self.hasModelImage_property)
-    self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_xName (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_yName (self.issues_property)
-    g_Preferences?.padZoneFont_property.removeEBObserver (self.issues_property)
-    self.issues_property.removeEBObserver (self.noIssue_property)
+    // self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
+    // self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
+    // self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    // self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    // self.mModelImageFirstPointX_property.removeEBObserver (self.secondPointX_property)
+    // self.mModelImageSecondPointDx_property.removeEBObserver (self.secondPointX_property)
+    // self.mModelImageFirstPointY_property.removeEBObserver (self.secondPointY_property)
+    // self.mModelImageSecondPointDy_property.removeEBObserver (self.secondPointY_property)
+    // self.mPointsAreLocked_property.removeEBObserver (self.lockImageView_property)
+    // g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
+    // self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    // self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    // self.packageObjects_property.removeEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
+    // self.mModelImageData_property.removeEBObserver (self.backgroundImagePageBackgroundDisplay_property)
+    // self.mModelImageData_property.removeEBObserver (self.modelImageSizeString_property)
+    // self.mModelImageData_property.removeEBObserver (self.hasModelImage_property)
+    // self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
+    // self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
+    // self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
+    // self.packageZones_property.removeEBObserverOf_xName (self.issues_property)
+    // self.packageZones_property.removeEBObserverOf_yName (self.issues_property)
+    // g_Preferences?.padZoneFont_property.removeEBObserver (self.issues_property)
+    // self.issues_property.removeEBObserver (self.noIssue_property)
     self.packagePads_property.setDataProvider (nil)
     self.packageSlavePads_property.setDataProvider (nil)
     self.packageZones_property.setDataProvider (nil)

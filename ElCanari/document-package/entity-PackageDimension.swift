@@ -503,6 +503,7 @@ class PackageDimension : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: distanceInCanariUnit
+    // self.distanceInCanariUnit_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageDimension_distanceInCanariUnit)
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -531,6 +532,7 @@ class PackageDimension : PackageObject,
     self.x2_property.addEBObserver (self.distanceInCanariUnit_property)
     self.y2_property.addEBObserver (self.distanceInCanariUnit_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.xDimension_property, self.yDimension_property, self.distanceInCanariUnit_property, self.distanceUnit_property, g_Preferences?.dimensionFont_property, g_Preferences?.packageBackgroundColor_property, g_Preferences?.packageDimensionColor_property, transient_PackageDimension_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -573,6 +575,7 @@ class PackageDimension : PackageObject,
     g_Preferences?.packageBackgroundColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDimensionColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, g_Preferences?.packageBackgroundColor_property, g_Preferences?.packageDimensionColor_property, self.xDimension_property, self.yDimension_property, self.distanceInCanariUnit_property, self.distanceUnit_property, g_Preferences?.dimensionFont_property, self.knobSize_property, transient_PackageDimension_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -617,6 +620,7 @@ class PackageDimension : PackageObject,
     g_Preferences?.dimensionFont_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageDimension_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -666,37 +670,37 @@ class PackageDimension : PackageObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x1_property.removeEBObserver (self.distanceInCanariUnit_property)
-    self.y1_property.removeEBObserver (self.distanceInCanariUnit_property)
-    self.x2_property.removeEBObserver (self.distanceInCanariUnit_property)
-    self.y2_property.removeEBObserver (self.distanceInCanariUnit_property)
-    self.x1_property.removeEBObserver (self.objectDisplay_property)
-    self.y1_property.removeEBObserver (self.objectDisplay_property)
-    self.x2_property.removeEBObserver (self.objectDisplay_property)
-    self.y2_property.removeEBObserver (self.objectDisplay_property)
-    self.xDimension_property.removeEBObserver (self.objectDisplay_property)
-    self.yDimension_property.removeEBObserver (self.objectDisplay_property)
-    self.distanceInCanariUnit_property.removeEBObserver (self.objectDisplay_property)
-    self.distanceUnit_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.dimensionFont_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDimensionColor_property.removeEBObserver (self.objectDisplay_property)
-    self.x1_property.removeEBObserver (self.selectionDisplay_property)
-    self.y1_property.removeEBObserver (self.selectionDisplay_property)
-    self.x2_property.removeEBObserver (self.selectionDisplay_property)
-    self.y2_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.packageDimensionColor_property.removeEBObserver (self.selectionDisplay_property)
-    self.xDimension_property.removeEBObserver (self.selectionDisplay_property)
-    self.yDimension_property.removeEBObserver (self.selectionDisplay_property)
-    self.distanceInCanariUnit_property.removeEBObserver (self.selectionDisplay_property)
-    self.distanceUnit_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.dimensionFont_property.removeEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
-    self.x1_property.removeEBObserver (self.issues_property)
-    self.y1_property.removeEBObserver (self.issues_property)
-    self.x2_property.removeEBObserver (self.issues_property)
-    self.y2_property.removeEBObserver (self.issues_property)
+    // self.x1_property.removeEBObserver (self.distanceInCanariUnit_property)
+    // self.y1_property.removeEBObserver (self.distanceInCanariUnit_property)
+    // self.x2_property.removeEBObserver (self.distanceInCanariUnit_property)
+    // self.y2_property.removeEBObserver (self.distanceInCanariUnit_property)
+    // self.x1_property.removeEBObserver (self.objectDisplay_property)
+    // self.y1_property.removeEBObserver (self.objectDisplay_property)
+    // self.x2_property.removeEBObserver (self.objectDisplay_property)
+    // self.y2_property.removeEBObserver (self.objectDisplay_property)
+    // self.xDimension_property.removeEBObserver (self.objectDisplay_property)
+    // self.yDimension_property.removeEBObserver (self.objectDisplay_property)
+    // self.distanceInCanariUnit_property.removeEBObserver (self.objectDisplay_property)
+    // self.distanceUnit_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.dimensionFont_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageDimensionColor_property.removeEBObserver (self.objectDisplay_property)
+    // self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.packageDimensionColor_property.removeEBObserver (self.selectionDisplay_property)
+    // self.xDimension_property.removeEBObserver (self.selectionDisplay_property)
+    // self.yDimension_property.removeEBObserver (self.selectionDisplay_property)
+    // self.distanceInCanariUnit_property.removeEBObserver (self.selectionDisplay_property)
+    // self.distanceUnit_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.dimensionFont_property.removeEBObserver (self.selectionDisplay_property)
+    // self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x1_property.removeEBObserver (self.issues_property)
+    // self.y1_property.removeEBObserver (self.issues_property)
+    // self.x2_property.removeEBObserver (self.issues_property)
+    // self.y2_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: nil)
     self.x1_property.setSignatureObserver (observer: nil)

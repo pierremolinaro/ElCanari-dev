@@ -452,6 +452,7 @@ class SymbolRoot : EBManagedObject,
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
+    // self.issues_property.configure (self.symbolObjects_property.addEBObserverOf_issues, self.symbolPins_property.addEBObserverOf_name, self.symbolPins_property.addEBObserverOf_nameRect, self.symbolPins_property.addEBObserverOf_xPin, self.symbolPins_property.addEBObserverOf_yPin, transient_SymbolRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.symbolObjects_property_selection.kind ()
@@ -482,6 +483,7 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
   //--- Atomic property: noIssue
+    // self.noIssue_property.configure (self.issues_property, transient_SymbolRoot_noIssue)
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -519,12 +521,12 @@ class SymbolRoot : EBManagedObject,
     super.removeAllObservers ()
   //--- To many property: symbolPins
     self.symbolObjects_property.removeEBObserver (self.symbolPins_property)
-    self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
-    self.symbolPins_property.removeEBObserverOf_name (self.issues_property)
-    self.symbolPins_property.removeEBObserverOf_nameRect (self.issues_property)
-    self.symbolPins_property.removeEBObserverOf_xPin (self.issues_property)
-    self.symbolPins_property.removeEBObserverOf_yPin (self.issues_property)
-    self.issues_property.removeEBObserver (self.noIssue_property)
+    // self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
+    // self.symbolPins_property.removeEBObserverOf_name (self.issues_property)
+    // self.symbolPins_property.removeEBObserverOf_nameRect (self.issues_property)
+    // self.symbolPins_property.removeEBObserverOf_xPin (self.issues_property)
+    // self.symbolPins_property.removeEBObserverOf_yPin (self.issues_property)
+    // self.issues_property.removeEBObserver (self.noIssue_property)
     self.symbolPins_property.setDataProvider (nil)
   //--- Unregister properties for handling signature
     self.comments_property.setSignatureObserver (observer: nil)

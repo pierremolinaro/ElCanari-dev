@@ -736,6 +736,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: documentFileNameOk
+    // self.documentFileNameOk_property.configure (self.documentFilePath_property, transient_MergerDocument_documentFileNameOk)
     self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -762,6 +763,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: documentIsUnnamed
+    // self.documentIsUnnamed_property.configure (self.documentFilePath_property, transient_MergerDocument_documentIsUnnamed)
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -788,6 +790,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: importArtworkButtonTitle
+    // self.importArtworkButtonTitle_property.configure (self.rootObject.mArtworkName_property, transient_MergerDocument_importArtworkButtonTitle)
     self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mArtworkName_property_selection.kind ()
@@ -814,6 +817,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: issues
+    // self.issues_property.configure (self.rootObject.overlapingArrangment_property, self.rootObject.boardRect_property, self.rootObject.boardDisplayRect_property, self.rootObject.boardInstances_property.addEBObserverOf_instanceRect, self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth, transient_MergerDocument_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()
@@ -848,6 +852,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
+    // self.mStatusImage_property.configure (self.issues_property, transient_MergerDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -874,6 +879,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
+    // self.mStatusMessage_property.configure (self.issues_property, transient_MergerDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -900,6 +906,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: incorrectDocumentFileErrorMessage
+    // self.incorrectDocumentFileErrorMessage_property.configure (self.documentFilePath_property, transient_MergerDocument_incorrectDocumentFileErrorMessage)
     self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -1527,17 +1534,17 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
-    self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
-    self.rootObject.mArtworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
-    self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
-    self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
-    self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
-    self.rootObject.boardInstances_property.removeEBObserverOf_instanceRect (self.issues_property)
-    self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
-    self.issues_property.removeEBObserver (self.mStatusImage_property)
-    self.issues_property.removeEBObserver (self.mStatusMessage_property)
-    self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    // self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
+    // self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
+    // self.rootObject.mArtworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
+    // self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardInstances_property.removeEBObserverOf_instanceRect (self.issues_property)
+    // self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
+    // self.issues_property.removeEBObserver (self.mStatusImage_property)
+    // self.issues_property.removeEBObserver (self.mStatusMessage_property)
+    // self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
   //--------------------------- Remove targets / actions
     self.showPrefsForSettingMergerDisplayButton?.target = nil
     self.dismissPrefsForSettingMergerDisplayButton?.target = nil

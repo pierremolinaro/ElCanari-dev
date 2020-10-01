@@ -602,6 +602,7 @@ class PackageBezier : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: strokeBezierPath
+    // self.strokeBezierPath_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.cpx1_property, self.cpy1_property, self.cpx2_property, self.cpy2_property, transient_PackageBezier_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -638,6 +639,7 @@ class PackageBezier : PackageObject,
     self.cpx2_property.addEBObserver (self.strokeBezierPath_property)
     self.cpy2_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.strokeBezierPath_property, g_Preferences?.packageColor_property, g_Preferences?.packageDrawingWidthMultipliedByTen_property, transient_PackageBezier_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
@@ -664,6 +666,7 @@ class PackageBezier : PackageObject,
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.cpx1_property, self.cpy1_property, self.cpx2_property, self.cpy2_property, self.knobSize_property, transient_PackageBezier_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -702,6 +705,7 @@ class PackageBezier : PackageObject,
     self.cpy2_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.cpx1_property, self.cpy1_property, self.cpx2_property, self.cpy2_property, transient_PackageBezier_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -762,34 +766,34 @@ class PackageBezier : PackageObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x1_property.removeEBObserver (self.strokeBezierPath_property)
-    self.y1_property.removeEBObserver (self.strokeBezierPath_property)
-    self.x2_property.removeEBObserver (self.strokeBezierPath_property)
-    self.y2_property.removeEBObserver (self.strokeBezierPath_property)
-    self.cpx1_property.removeEBObserver (self.strokeBezierPath_property)
-    self.cpy1_property.removeEBObserver (self.strokeBezierPath_property)
-    self.cpx2_property.removeEBObserver (self.strokeBezierPath_property)
-    self.cpy2_property.removeEBObserver (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
-    self.x1_property.removeEBObserver (self.selectionDisplay_property)
-    self.y1_property.removeEBObserver (self.selectionDisplay_property)
-    self.x2_property.removeEBObserver (self.selectionDisplay_property)
-    self.y2_property.removeEBObserver (self.selectionDisplay_property)
-    self.cpx1_property.removeEBObserver (self.selectionDisplay_property)
-    self.cpy1_property.removeEBObserver (self.selectionDisplay_property)
-    self.cpx2_property.removeEBObserver (self.selectionDisplay_property)
-    self.cpy2_property.removeEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
-    self.x1_property.removeEBObserver (self.issues_property)
-    self.y1_property.removeEBObserver (self.issues_property)
-    self.x2_property.removeEBObserver (self.issues_property)
-    self.y2_property.removeEBObserver (self.issues_property)
-    self.cpx1_property.removeEBObserver (self.issues_property)
-    self.cpy1_property.removeEBObserver (self.issues_property)
-    self.cpx2_property.removeEBObserver (self.issues_property)
-    self.cpy2_property.removeEBObserver (self.issues_property)
+    // self.x1_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.y1_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.x2_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.y2_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.cpx1_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.cpy1_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.cpx2_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.cpy2_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.cpx1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.cpy1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.cpx2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.cpy2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x1_property.removeEBObserver (self.issues_property)
+    // self.y1_property.removeEBObserver (self.issues_property)
+    // self.x2_property.removeEBObserver (self.issues_property)
+    // self.y2_property.removeEBObserver (self.issues_property)
+    // self.cpx1_property.removeEBObserver (self.issues_property)
+    // self.cpy1_property.removeEBObserver (self.issues_property)
+    // self.cpx2_property.removeEBObserver (self.issues_property)
+    // self.cpy2_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: nil)
     self.cpx1Unit_property.setSignatureObserver (observer: nil)

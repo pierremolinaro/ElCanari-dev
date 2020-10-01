@@ -169,6 +169,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_SegmentForFontCharacter_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -197,6 +198,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.addEBObserver (self.selectionDisplay_property)
     self.y2_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_SegmentForFontCharacter_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -237,14 +239,14 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x1_property.removeEBObserver (self.selectionDisplay_property)
-    self.y1_property.removeEBObserver (self.selectionDisplay_property)
-    self.x2_property.removeEBObserver (self.selectionDisplay_property)
-    self.y2_property.removeEBObserver (self.selectionDisplay_property)
-    self.x1_property.removeEBObserver (self.objectDisplay_property)
-    self.y1_property.removeEBObserver (self.objectDisplay_property)
-    self.x2_property.removeEBObserver (self.objectDisplay_property)
-    self.y2_property.removeEBObserver (self.objectDisplay_property)
+    // self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x1_property.removeEBObserver (self.objectDisplay_property)
+    // self.y1_property.removeEBObserver (self.objectDisplay_property)
+    // self.x2_property.removeEBObserver (self.objectDisplay_property)
+    // self.y2_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
     self.x1_property.setSignatureObserver (observer: nil)
     self.x2_property.setSignatureObserver (observer: nil)

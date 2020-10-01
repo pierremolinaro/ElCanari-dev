@@ -242,6 +242,7 @@ class BoardRestrictRectangle : BoardObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, g_Preferences?.displayFrontRestrictRectangles_property, g_Preferences?.displayBackRestrictRectangles_property, g_Preferences?.frontSideRestrictRectangleColorForBoard_property, g_Preferences?.backSideRestrictRectangleColorForBoard_property, transient_BoardRestrictRectangle_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -282,6 +283,7 @@ class BoardRestrictRectangle : BoardObject,
     g_Preferences?.frontSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, g_Preferences?.hiliteWidthMultipliedByTen_property, transient_BoardRestrictRectangle_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -316,6 +318,7 @@ class BoardRestrictRectangle : BoardObject,
     self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
+    // self.signatureForERCChecking_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, transient_BoardRestrictRectangle_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -356,29 +359,29 @@ class BoardRestrictRectangle : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mX_property.removeEBObserver (self.objectDisplay_property)
-    self.mY_property.removeEBObserver (self.objectDisplay_property)
-    self.mWidth_property.removeEBObserver (self.objectDisplay_property)
-    self.mHeight_property.removeEBObserver (self.objectDisplay_property)
-    self.mIsInFrontLayer_property.removeEBObserver (self.objectDisplay_property)
-    self.mIsInBackLayer_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayFrontRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayBackRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    self.mX_property.removeEBObserver (self.selectionDisplay_property)
-    self.mY_property.removeEBObserver (self.selectionDisplay_property)
-    self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
-    self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
-    self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
-    self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
-    self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.mWidth_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.mHeight_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.mIsInFrontLayer_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.mIsInBackLayer_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mX_property.removeEBObserver (self.objectDisplay_property)
+    // self.mY_property.removeEBObserver (self.objectDisplay_property)
+    // self.mWidth_property.removeEBObserver (self.objectDisplay_property)
+    // self.mHeight_property.removeEBObserver (self.objectDisplay_property)
+    // self.mIsInFrontLayer_property.removeEBObserver (self.objectDisplay_property)
+    // self.mIsInBackLayer_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.displayFrontRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.displayBackRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.frontSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.backSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // self.mX_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mWidth_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mHeight_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mIsInFrontLayer_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mIsInBackLayer_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
   }
 

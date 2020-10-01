@@ -206,6 +206,7 @@ class SymbolSolidOval : SymbolObject,
 
   private final func configureObject () {
   //--- Atomic property: filledBezierPath
+    // self.filledBezierPath_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolSolidOval_filledBezierPath)
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -234,6 +235,7 @@ class SymbolSolidOval : SymbolObject,
     self.width_property.addEBObserver (self.filledBezierPath_property)
     self.height_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, g_Preferences?.symbolColor_property, transient_SymbolSolidOval_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -264,6 +266,7 @@ class SymbolSolidOval : SymbolObject,
     self.height_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolSolidOval_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -292,6 +295,7 @@ class SymbolSolidOval : SymbolObject,
     self.width_property.addEBObserver (self.selectionDisplay_property)
     self.height_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolSolidOval_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -332,23 +336,23 @@ class SymbolSolidOval : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x_property.removeEBObserver (self.filledBezierPath_property)
-    self.y_property.removeEBObserver (self.filledBezierPath_property)
-    self.width_property.removeEBObserver (self.filledBezierPath_property)
-    self.height_property.removeEBObserver (self.filledBezierPath_property)
-    self.x_property.removeEBObserver (self.objectDisplay_property)
-    self.y_property.removeEBObserver (self.objectDisplay_property)
-    self.width_property.removeEBObserver (self.objectDisplay_property)
-    self.height_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    self.x_property.removeEBObserver (self.selectionDisplay_property)
-    self.y_property.removeEBObserver (self.selectionDisplay_property)
-    self.width_property.removeEBObserver (self.selectionDisplay_property)
-    self.height_property.removeEBObserver (self.selectionDisplay_property)
-    self.x_property.removeEBObserver (self.issues_property)
-    self.y_property.removeEBObserver (self.issues_property)
-    self.width_property.removeEBObserver (self.issues_property)
-    self.height_property.removeEBObserver (self.issues_property)
+    // self.x_property.removeEBObserver (self.filledBezierPath_property)
+    // self.y_property.removeEBObserver (self.filledBezierPath_property)
+    // self.width_property.removeEBObserver (self.filledBezierPath_property)
+    // self.height_property.removeEBObserver (self.filledBezierPath_property)
+    // self.x_property.removeEBObserver (self.objectDisplay_property)
+    // self.y_property.removeEBObserver (self.objectDisplay_property)
+    // self.width_property.removeEBObserver (self.objectDisplay_property)
+    // self.height_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // self.x_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y_property.removeEBObserver (self.selectionDisplay_property)
+    // self.width_property.removeEBObserver (self.selectionDisplay_property)
+    // self.height_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x_property.removeEBObserver (self.issues_property)
+    // self.y_property.removeEBObserver (self.issues_property)
+    // self.width_property.removeEBObserver (self.issues_property)
+    // self.height_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.height_property.setSignatureObserver (observer: nil)
     self.width_property.setSignatureObserver (observer: nil)

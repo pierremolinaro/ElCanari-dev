@@ -434,6 +434,7 @@ class SymbolPin : SymbolObject,
 
   private final func configureObject () {
   //--- Atomic property: filledBezierPath
+    // self.filledBezierPath_property.configure (self.xPin_property, self.yPin_property, transient_SymbolPin_filledBezierPath)
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -458,6 +459,7 @@ class SymbolPin : SymbolObject,
     self.xPin_property.addEBObserver (self.filledBezierPath_property)
     self.yPin_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.name_property, self.pinNameIsDisplayedInSchematics_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, g_Preferences?.symbolColor_property, g_Preferences?.pinNameFont_property, transient_SymbolPin_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -502,6 +504,7 @@ class SymbolPin : SymbolObject,
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, transient_SymbolPin_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -538,6 +541,7 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.name_property, transient_SymbolPin_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -572,6 +576,7 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.addEBObserver (self.issues_property)
     self.name_property.addEBObserver (self.issues_property)
   //--- Atomic property: nameRect
+    // self.nameRect_property.configure (self.xName_property, self.yName_property, self.name_property, self.nameHorizontalAlignment_property, g_Preferences?.pinNameFont_property, transient_SymbolPin_nameRect)
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xName_property_selection.kind ()
@@ -620,40 +625,40 @@ class SymbolPin : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.xPin_property.removeEBObserver (self.filledBezierPath_property)
-    self.yPin_property.removeEBObserver (self.filledBezierPath_property)
-    self.xPin_property.removeEBObserver (self.objectDisplay_property)
-    self.yPin_property.removeEBObserver (self.objectDisplay_property)
-    self.xName_property.removeEBObserver (self.objectDisplay_property)
-    self.yName_property.removeEBObserver (self.objectDisplay_property)
-    self.xNumber_property.removeEBObserver (self.objectDisplay_property)
-    self.yNumber_property.removeEBObserver (self.objectDisplay_property)
-    self.name_property.removeEBObserver (self.objectDisplay_property)
-    self.pinNameIsDisplayedInSchematics_property.removeEBObserver (self.objectDisplay_property)
-    self.nameHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    self.numberHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
-    self.xPin_property.removeEBObserver (self.selectionDisplay_property)
-    self.yPin_property.removeEBObserver (self.selectionDisplay_property)
-    self.xName_property.removeEBObserver (self.selectionDisplay_property)
-    self.yName_property.removeEBObserver (self.selectionDisplay_property)
-    self.xNumber_property.removeEBObserver (self.selectionDisplay_property)
-    self.yNumber_property.removeEBObserver (self.selectionDisplay_property)
-    self.nameHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
-    self.numberHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
-    self.xPin_property.removeEBObserver (self.issues_property)
-    self.yPin_property.removeEBObserver (self.issues_property)
-    self.xName_property.removeEBObserver (self.issues_property)
-    self.yName_property.removeEBObserver (self.issues_property)
-    self.xNumber_property.removeEBObserver (self.issues_property)
-    self.yNumber_property.removeEBObserver (self.issues_property)
-    self.name_property.removeEBObserver (self.issues_property)
-    self.xName_property.removeEBObserver (self.nameRect_property)
-    self.yName_property.removeEBObserver (self.nameRect_property)
-    self.name_property.removeEBObserver (self.nameRect_property)
-    self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.nameRect_property)
+    // self.xPin_property.removeEBObserver (self.filledBezierPath_property)
+    // self.yPin_property.removeEBObserver (self.filledBezierPath_property)
+    // self.xPin_property.removeEBObserver (self.objectDisplay_property)
+    // self.yPin_property.removeEBObserver (self.objectDisplay_property)
+    // self.xName_property.removeEBObserver (self.objectDisplay_property)
+    // self.yName_property.removeEBObserver (self.objectDisplay_property)
+    // self.xNumber_property.removeEBObserver (self.objectDisplay_property)
+    // self.yNumber_property.removeEBObserver (self.objectDisplay_property)
+    // self.name_property.removeEBObserver (self.objectDisplay_property)
+    // self.pinNameIsDisplayedInSchematics_property.removeEBObserver (self.objectDisplay_property)
+    // self.nameHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    // self.numberHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // self.xPin_property.removeEBObserver (self.selectionDisplay_property)
+    // self.yPin_property.removeEBObserver (self.selectionDisplay_property)
+    // self.xName_property.removeEBObserver (self.selectionDisplay_property)
+    // self.yName_property.removeEBObserver (self.selectionDisplay_property)
+    // self.xNumber_property.removeEBObserver (self.selectionDisplay_property)
+    // self.yNumber_property.removeEBObserver (self.selectionDisplay_property)
+    // self.nameHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    // self.numberHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    // self.xPin_property.removeEBObserver (self.issues_property)
+    // self.yPin_property.removeEBObserver (self.issues_property)
+    // self.xName_property.removeEBObserver (self.issues_property)
+    // self.yName_property.removeEBObserver (self.issues_property)
+    // self.xNumber_property.removeEBObserver (self.issues_property)
+    // self.yNumber_property.removeEBObserver (self.issues_property)
+    // self.name_property.removeEBObserver (self.issues_property)
+    // self.xName_property.removeEBObserver (self.nameRect_property)
+    // self.yName_property.removeEBObserver (self.nameRect_property)
+    // self.name_property.removeEBObserver (self.nameRect_property)
+    // self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.nameRect_property)
   //--- Unregister properties for handling signature
     self.name_property.setSignatureObserver (observer: nil)
     self.nameHorizontalAlignment_property.setSignatureObserver (observer: nil)

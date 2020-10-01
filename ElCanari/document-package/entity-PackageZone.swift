@@ -650,6 +650,7 @@ class PackageZone : PackageObject,
   //--- To many property: forbiddenPadNumbers (no option)
     self.forbiddenPadNumbers_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, self.xName_property, self.yName_property, self.zoneName_property, g_Preferences?.padZoneFont_property, g_Preferences?.padZoneColor_property, transient_PackageZone_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -688,6 +689,7 @@ class PackageZone : PackageObject,
     g_Preferences?.padZoneFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padZoneColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, self.xName_property, self.yName_property, self.zoneName_property, transient_PackageZone_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -722,6 +724,7 @@ class PackageZone : PackageObject,
     self.yName_property.addEBObserver (self.issues_property)
     self.zoneName_property.addEBObserver (self.issues_property)
   //--- Atomic property: rect
+    // self.rect_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_PackageZone_rect)
     self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -750,6 +753,7 @@ class PackageZone : PackageObject,
     self.width_property.addEBObserver (self.rect_property)
     self.height_property.addEBObserver (self.rect_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, self.xName_property, self.yName_property, self.zoneName_property, g_Preferences?.padZoneFont_property, g_Preferences?.packageBackgroundColor_property, g_Preferences?.padZoneColor_property, self.knobSize_property, transient_PackageZone_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -792,6 +796,7 @@ class PackageZone : PackageObject,
     g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: forbiddenPadArray
+    // self.forbiddenPadArray_property.configure (self.forbiddenPadNumbers_property.addEBObserverOf_padNumber, transient_PackageZone_forbiddenPadArray)
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.forbiddenPadNumbers_property_selection.kind ()
@@ -814,6 +819,7 @@ class PackageZone : PackageObject,
     }
     self.forbiddenPadNumbers_property.addEBObserverOf_padNumber (self.forbiddenPadArray_property)
   //--- Atomic property: emptyForbiddenPadArray
+    // self.emptyForbiddenPadArray_property.configure (self.forbiddenPadNumbers_property, transient_PackageZone_emptyForbiddenPadArray)
     self.emptyForbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.forbiddenPadNumbers_property.count_property_selection.kind ()
@@ -859,39 +865,39 @@ class PackageZone : PackageObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x_property.removeEBObserver (self.objectDisplay_property)
-    self.y_property.removeEBObserver (self.objectDisplay_property)
-    self.width_property.removeEBObserver (self.objectDisplay_property)
-    self.height_property.removeEBObserver (self.objectDisplay_property)
-    self.xName_property.removeEBObserver (self.objectDisplay_property)
-    self.yName_property.removeEBObserver (self.objectDisplay_property)
-    self.zoneName_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.padZoneFont_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.padZoneColor_property.removeEBObserver (self.objectDisplay_property)
-    self.x_property.removeEBObserver (self.issues_property)
-    self.y_property.removeEBObserver (self.issues_property)
-    self.width_property.removeEBObserver (self.issues_property)
-    self.height_property.removeEBObserver (self.issues_property)
-    self.xName_property.removeEBObserver (self.issues_property)
-    self.yName_property.removeEBObserver (self.issues_property)
-    self.zoneName_property.removeEBObserver (self.issues_property)
-    self.x_property.removeEBObserver (self.rect_property)
-    self.y_property.removeEBObserver (self.rect_property)
-    self.width_property.removeEBObserver (self.rect_property)
-    self.height_property.removeEBObserver (self.rect_property)
-    self.x_property.removeEBObserver (self.selectionDisplay_property)
-    self.y_property.removeEBObserver (self.selectionDisplay_property)
-    self.width_property.removeEBObserver (self.selectionDisplay_property)
-    self.height_property.removeEBObserver (self.selectionDisplay_property)
-    self.xName_property.removeEBObserver (self.selectionDisplay_property)
-    self.yName_property.removeEBObserver (self.selectionDisplay_property)
-    self.zoneName_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneFont_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
-    self.forbiddenPadNumbers_property.removeEBObserverOf_padNumber (self.forbiddenPadArray_property)
-    self.forbiddenPadNumbers_property.removeEBObserver (self.emptyForbiddenPadArray_property)
+    // self.x_property.removeEBObserver (self.objectDisplay_property)
+    // self.y_property.removeEBObserver (self.objectDisplay_property)
+    // self.width_property.removeEBObserver (self.objectDisplay_property)
+    // self.height_property.removeEBObserver (self.objectDisplay_property)
+    // self.xName_property.removeEBObserver (self.objectDisplay_property)
+    // self.yName_property.removeEBObserver (self.objectDisplay_property)
+    // self.zoneName_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.padZoneFont_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.padZoneColor_property.removeEBObserver (self.objectDisplay_property)
+    // self.x_property.removeEBObserver (self.issues_property)
+    // self.y_property.removeEBObserver (self.issues_property)
+    // self.width_property.removeEBObserver (self.issues_property)
+    // self.height_property.removeEBObserver (self.issues_property)
+    // self.xName_property.removeEBObserver (self.issues_property)
+    // self.yName_property.removeEBObserver (self.issues_property)
+    // self.zoneName_property.removeEBObserver (self.issues_property)
+    // self.x_property.removeEBObserver (self.rect_property)
+    // self.y_property.removeEBObserver (self.rect_property)
+    // self.width_property.removeEBObserver (self.rect_property)
+    // self.height_property.removeEBObserver (self.rect_property)
+    // self.x_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y_property.removeEBObserver (self.selectionDisplay_property)
+    // self.width_property.removeEBObserver (self.selectionDisplay_property)
+    // self.height_property.removeEBObserver (self.selectionDisplay_property)
+    // self.xName_property.removeEBObserver (self.selectionDisplay_property)
+    // self.yName_property.removeEBObserver (self.selectionDisplay_property)
+    // self.zoneName_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.padZoneFont_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
+    // self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.forbiddenPadNumbers_property.removeEBObserverOf_padNumber (self.forbiddenPadArray_property)
+    // self.forbiddenPadNumbers_property.removeEBObserver (self.emptyForbiddenPadArray_property)
   //--- Unregister properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)

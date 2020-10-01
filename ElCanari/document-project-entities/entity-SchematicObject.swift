@@ -201,6 +201,7 @@ class SchematicObject : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
     )
   //--- Atomic property: sheetDescriptor
+    // self.sheetDescriptor_property.configure (self.mSheet_property.addEBObserverOf_sheetDescriptor, transient_SchematicObject_sheetDescriptor)
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheet_property.sheetDescriptor_property_selection.kind ()
@@ -223,6 +224,7 @@ class SchematicObject : EBGraphicManagedObject,
     }
     self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
   //--- Atomic property: isPlacedInSchematic
+    // self.isPlacedInSchematic_property.configure (self.mSheet_property, transient_SchematicObject_isPlacedInSchematic)
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheet_none_selection.kind ()
@@ -253,8 +255,8 @@ class SchematicObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mSheet_property.removeEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
-    self.mSheet_property.removeEBObserver (self.isPlacedInSchematic_property)
+    // self.mSheet_property.removeEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
+    // self.mSheet_property.removeEBObserver (self.isPlacedInSchematic_property)
   //--- Unregister properties for handling signature
   }
 

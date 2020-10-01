@@ -400,6 +400,7 @@ class BoardLine : BoardObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, g_Preferences?.frontSideLegendColorForBoard_property, g_Preferences?.backSideLegendColorForBoard_property, transient_BoardLine_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX1_property_selection.kind ()
@@ -436,6 +437,7 @@ class BoardLine : BoardObject,
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, g_Preferences?.hiliteWidthMultipliedByTen_property, transient_BoardLine_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX1_property_selection.kind ()
@@ -478,21 +480,21 @@ class BoardLine : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mX1_property.removeEBObserver (self.objectDisplay_property)
-    self.mY1_property.removeEBObserver (self.objectDisplay_property)
-    self.mX2_property.removeEBObserver (self.objectDisplay_property)
-    self.mY2_property.removeEBObserver (self.objectDisplay_property)
-    self.mWidth_property.removeEBObserver (self.objectDisplay_property)
-    self.mLayer_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    self.mX1_property.removeEBObserver (self.selectionDisplay_property)
-    self.mY1_property.removeEBObserver (self.selectionDisplay_property)
-    self.mX2_property.removeEBObserver (self.selectionDisplay_property)
-    self.mY2_property.removeEBObserver (self.selectionDisplay_property)
-    self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
-    self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mX1_property.removeEBObserver (self.objectDisplay_property)
+    // self.mY1_property.removeEBObserver (self.objectDisplay_property)
+    // self.mX2_property.removeEBObserver (self.objectDisplay_property)
+    // self.mY2_property.removeEBObserver (self.objectDisplay_property)
+    // self.mWidth_property.removeEBObserver (self.objectDisplay_property)
+    // self.mLayer_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // self.mX1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mY1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mX2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mY2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

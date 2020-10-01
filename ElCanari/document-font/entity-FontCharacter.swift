@@ -296,6 +296,7 @@ class FontCharacter : EBManagedObject,
   //--- To many property: segments (no option)
     self.segments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: segmentArrayForDrawing
+    // self.segmentArrayForDrawing_property.configure (self.segments_property.addEBObserverOf_x1, self.segments_property.addEBObserverOf_y1, self.segments_property.addEBObserverOf_x2, self.segments_property.addEBObserverOf_y2, transient_FontCharacter_segmentArrayForDrawing)
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.segments_property_selection.kind ()
@@ -324,6 +325,7 @@ class FontCharacter : EBManagedObject,
     self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
     self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
   //--- Atomic property: gerberCode
+    // self.gerberCode_property.configure (self.segmentArrayForDrawing_property, transient_FontCharacter_gerberCode)
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
@@ -346,6 +348,7 @@ class FontCharacter : EBManagedObject,
     }
     self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
   //--- Atomic property: gerberCodeInstructionCountMessage
+    // self.gerberCodeInstructionCountMessage_property.configure (self.gerberCode_property, transient_FontCharacter_gerberCodeInstructionCountMessage)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.gerberCode_property_selection.kind ()
@@ -368,6 +371,7 @@ class FontCharacter : EBManagedObject,
     }
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.codePoint_property, self.advance_property, self.mWarnsWhenNoSegment_property, self.mWarnsWhenAdvanceIsZero_property, self.segments_property, transient_FontCharacter_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.codePoint_property_selection.kind ()
@@ -411,17 +415,17 @@ class FontCharacter : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
-    self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
-    self.segments_property.removeEBObserverOf_x2 (self.segmentArrayForDrawing_property)
-    self.segments_property.removeEBObserverOf_y2 (self.segmentArrayForDrawing_property)
-    self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
-    self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
-    self.codePoint_property.removeEBObserver (self.issues_property)
-    self.advance_property.removeEBObserver (self.issues_property)
-    self.mWarnsWhenNoSegment_property.removeEBObserver (self.issues_property)
-    self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.issues_property)
-    self.segments_property.removeEBObserver (self.issues_property)
+    // self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
+    // self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
+    // self.segments_property.removeEBObserverOf_x2 (self.segmentArrayForDrawing_property)
+    // self.segments_property.removeEBObserverOf_y2 (self.segmentArrayForDrawing_property)
+    // self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
+    // self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
+    // self.codePoint_property.removeEBObserver (self.issues_property)
+    // self.advance_property.removeEBObserver (self.issues_property)
+    // self.mWarnsWhenNoSegment_property.removeEBObserver (self.issues_property)
+    // self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.issues_property)
+    // self.segments_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.advance_property.setSignatureObserver (observer: nil)
     self.codePoint_property.setSignatureObserver (observer: nil)

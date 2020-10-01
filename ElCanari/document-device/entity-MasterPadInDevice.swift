@@ -435,6 +435,7 @@ class MasterPadInDevice : EBManagedObject,
       resetter: { inObject in inObject.mMasterPad_property.setProp (nil) }
     )
   //--- Atomic property: padNumberDisplay
+    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, g_Preferences?.padNumberColor_property, self.mName_property, g_Preferences?.padNumberFont_property, transient_MasterPadInDevice_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -465,6 +466,7 @@ class MasterPadInDevice : EBManagedObject,
     self.mName_property.addEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
   //--- Atomic property: frontSideFilledBezierPathArray
+    // self.frontSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath, transient_MasterPadInDevice_frontSideFilledBezierPathArray)
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -503,6 +505,7 @@ class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPathArray_property)
   //--- Atomic property: backSideFilledBezierPathArray
+    // self.backSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath, transient_MasterPadInDevice_backSideFilledBezierPathArray)
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -563,29 +566,29 @@ class MasterPadInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
-    self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
-    self.mName_property.removeEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
-    self.mCenterX_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mCenterY_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mWidth_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mHeight_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mHoleWidth_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mHoleHeight_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mShape_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mStyle_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mSlavePads_property.removeEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPathArray_property)
-    self.mCenterX_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mCenterY_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mWidth_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mHeight_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mHoleWidth_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mHoleHeight_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mShape_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mStyle_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mSlavePads_property.removeEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
+    // self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
+    // self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
+    // g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
+    // self.mName_property.removeEBObserver (self.padNumberDisplay_property)
+    // g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
+    // self.mCenterX_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mCenterY_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mWidth_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mHeight_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mHoleWidth_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mHoleHeight_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mShape_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mStyle_property.removeEBObserver (self.frontSideFilledBezierPathArray_property)
+    // self.mSlavePads_property.removeEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPathArray_property)
+    // self.mCenterX_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mCenterY_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mWidth_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mHeight_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mHoleWidth_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mHoleHeight_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mShape_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mStyle_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
+    // self.mSlavePads_property.removeEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
   //--- Unregister properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: nil)
     self.mCenterY_property.setSignatureObserver (observer: nil)

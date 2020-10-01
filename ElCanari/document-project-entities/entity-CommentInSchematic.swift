@@ -268,6 +268,7 @@ class CommentInSchematic : SchematicObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.mComment_property, self.mColor_property, self.mSize_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mX_property, self.mY_property, transient_CommentInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComment_property_selection.kind ()
@@ -302,6 +303,7 @@ class CommentInSchematic : SchematicObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.mComment_property, self.mColor_property, self.mSize_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, g_Preferences?.schematicBackColor_property, self.mX_property, self.mY_property, transient_CommentInSchematic_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComment_property_selection.kind ()
@@ -346,21 +348,21 @@ class CommentInSchematic : SchematicObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mComment_property.removeEBObserver (self.objectDisplay_property)
-    self.mColor_property.removeEBObserver (self.objectDisplay_property)
-    self.mSize_property.removeEBObserver (self.objectDisplay_property)
-    self.mHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    self.mVerticalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    self.mX_property.removeEBObserver (self.objectDisplay_property)
-    self.mY_property.removeEBObserver (self.objectDisplay_property)
-    self.mComment_property.removeEBObserver (self.selectionDisplay_property)
-    self.mColor_property.removeEBObserver (self.selectionDisplay_property)
-    self.mSize_property.removeEBObserver (self.selectionDisplay_property)
-    self.mHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
-    self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.schematicBackColor_property.removeEBObserver (self.selectionDisplay_property)
-    self.mX_property.removeEBObserver (self.selectionDisplay_property)
-    self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mComment_property.removeEBObserver (self.objectDisplay_property)
+    // self.mColor_property.removeEBObserver (self.objectDisplay_property)
+    // self.mSize_property.removeEBObserver (self.objectDisplay_property)
+    // self.mHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    // self.mVerticalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    // self.mX_property.removeEBObserver (self.objectDisplay_property)
+    // self.mY_property.removeEBObserver (self.objectDisplay_property)
+    // self.mComment_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mColor_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.schematicBackColor_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mX_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mY_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

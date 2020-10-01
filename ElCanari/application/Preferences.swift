@@ -3142,6 +3142,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--- Array controller property: additionnalLibraryArrayController
     self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
+    // self.mValueRevealInFinder_packages_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_packages)
     self.mValueRevealInFinder_packages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
@@ -3168,6 +3169,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
+    // self.mValueRevealInFinder_devices_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_devices)
     self.mValueRevealInFinder_devices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
@@ -3194,6 +3196,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
+    // self.mValueRevealInFinder_fonts_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_fonts)
     self.mValueRevealInFinder_fonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
@@ -3220,6 +3223,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
+    // self.mValueRevealInFinder_artworks_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_artworks)
     self.mValueRevealInFinder_artworks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
@@ -3246,6 +3250,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
+    // self.mValueRevealInFinder_symbols_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_symbols)
     self.mValueRevealInFinder_symbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
@@ -3550,21 +3555,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--- Array controller property: additionnalLibraryArrayController
     self.additionnalLibraryArrayController.unbind_model ()
-    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_packages_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
-    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_devices_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
-    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_fonts_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
-    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_artworks_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
-    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_symbols_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
-    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
+    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_packages_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
+    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_devices_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
+    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_fonts_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
+    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_artworks_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
+    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_symbols_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
+    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
   }
 
   //····················································································································

@@ -401,6 +401,7 @@ class PackageSegment : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: strokeBezierPath
+    // self.strokeBezierPath_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageSegment_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -429,6 +430,7 @@ class PackageSegment : PackageObject,
     self.x2_property.addEBObserver (self.strokeBezierPath_property)
     self.y2_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.strokeBezierPath_property, g_Preferences?.packageColor_property, g_Preferences?.packageDrawingWidthMultipliedByTen_property, transient_PackageSegment_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
@@ -455,6 +457,7 @@ class PackageSegment : PackageObject,
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.knobSize_property, transient_PackageSegment_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -485,6 +488,7 @@ class PackageSegment : PackageObject,
     self.y2_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageSegment_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -513,6 +517,7 @@ class PackageSegment : PackageObject,
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
   //--- Atomic property: lengthInCanariUnit
+    // self.lengthInCanariUnit_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageSegment_lengthInCanariUnit)
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -558,26 +563,26 @@ class PackageSegment : PackageObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x1_property.removeEBObserver (self.strokeBezierPath_property)
-    self.y1_property.removeEBObserver (self.strokeBezierPath_property)
-    self.x2_property.removeEBObserver (self.strokeBezierPath_property)
-    self.y2_property.removeEBObserver (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
-    self.x1_property.removeEBObserver (self.selectionDisplay_property)
-    self.y1_property.removeEBObserver (self.selectionDisplay_property)
-    self.x2_property.removeEBObserver (self.selectionDisplay_property)
-    self.y2_property.removeEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
-    self.x1_property.removeEBObserver (self.issues_property)
-    self.y1_property.removeEBObserver (self.issues_property)
-    self.x2_property.removeEBObserver (self.issues_property)
-    self.y2_property.removeEBObserver (self.issues_property)
-    self.x1_property.removeEBObserver (self.lengthInCanariUnit_property)
-    self.y1_property.removeEBObserver (self.lengthInCanariUnit_property)
-    self.x2_property.removeEBObserver (self.lengthInCanariUnit_property)
-    self.y2_property.removeEBObserver (self.lengthInCanariUnit_property)
+    // self.x1_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.y1_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.x2_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.y2_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    // self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x1_property.removeEBObserver (self.issues_property)
+    // self.y1_property.removeEBObserver (self.issues_property)
+    // self.x2_property.removeEBObserver (self.issues_property)
+    // self.y2_property.removeEBObserver (self.issues_property)
+    // self.x1_property.removeEBObserver (self.lengthInCanariUnit_property)
+    // self.y1_property.removeEBObserver (self.lengthInCanariUnit_property)
+    // self.x2_property.removeEBObserver (self.lengthInCanariUnit_property)
+    // self.y2_property.removeEBObserver (self.lengthInCanariUnit_property)
   //--- Unregister properties for handling signature
     self.lengthUnit_property.setSignatureObserver (observer: nil)
     self.x1_property.setSignatureObserver (observer: nil)

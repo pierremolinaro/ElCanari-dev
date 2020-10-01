@@ -479,6 +479,7 @@ class DevicePinInProject : EBManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: pinQualifiedName
+    // self.pinQualifiedName_property.configure (self.mSymbolInstanceName_property, self.mPinName_property, transient_DevicePinInProject_pinQualifiedName)
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSymbolInstanceName_property_selection.kind ()
@@ -503,6 +504,7 @@ class DevicePinInProject : EBManagedObject,
     self.mSymbolInstanceName_property.addEBObserver (self.pinQualifiedName_property)
     self.mPinName_property.addEBObserver (self.pinQualifiedName_property)
   //--- Atomic property: descriptor
+    // self.descriptor_property.configure (self.mPinName_property, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, self.mPinX_property, self.mPinY_property, self.mXName_property, self.mYName_property, self.mNameHorizontalAlignment_property, self.mPinNameIsDisplayedInSchematic_property, self.mXNumber_property, self.mYNumber_property, self.mNumberHorizontalAlignment_property, transient_DevicePinInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPinName_property_selection.kind ()
@@ -555,20 +557,20 @@ class DevicePinInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mSymbolInstanceName_property.removeEBObserver (self.pinQualifiedName_property)
-    self.mPinName_property.removeEBObserver (self.pinQualifiedName_property)
-    self.mPinName_property.removeEBObserver (self.descriptor_property)
-    self.mSymbolInstanceName_property.removeEBObserver (self.descriptor_property)
-    self.mSymbolTypeName_property.removeEBObserver (self.descriptor_property)
-    self.mPinX_property.removeEBObserver (self.descriptor_property)
-    self.mPinY_property.removeEBObserver (self.descriptor_property)
-    self.mXName_property.removeEBObserver (self.descriptor_property)
-    self.mYName_property.removeEBObserver (self.descriptor_property)
-    self.mNameHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
-    self.mPinNameIsDisplayedInSchematic_property.removeEBObserver (self.descriptor_property)
-    self.mXNumber_property.removeEBObserver (self.descriptor_property)
-    self.mYNumber_property.removeEBObserver (self.descriptor_property)
-    self.mNumberHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
+    // self.mSymbolInstanceName_property.removeEBObserver (self.pinQualifiedName_property)
+    // self.mPinName_property.removeEBObserver (self.pinQualifiedName_property)
+    // self.mPinName_property.removeEBObserver (self.descriptor_property)
+    // self.mSymbolInstanceName_property.removeEBObserver (self.descriptor_property)
+    // self.mSymbolTypeName_property.removeEBObserver (self.descriptor_property)
+    // self.mPinX_property.removeEBObserver (self.descriptor_property)
+    // self.mPinY_property.removeEBObserver (self.descriptor_property)
+    // self.mXName_property.removeEBObserver (self.descriptor_property)
+    // self.mYName_property.removeEBObserver (self.descriptor_property)
+    // self.mNameHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
+    // self.mPinNameIsDisplayedInSchematic_property.removeEBObserver (self.descriptor_property)
+    // self.mXNumber_property.removeEBObserver (self.descriptor_property)
+    // self.mYNumber_property.removeEBObserver (self.descriptor_property)
+    // self.mNumberHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
   //--- Unregister properties for handling signature
   }
 

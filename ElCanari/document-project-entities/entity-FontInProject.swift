@@ -350,6 +350,7 @@ class FontInProject : EBManagedObject,
       resetter: { inObject in inObject.mValueFont_property.setProp (nil) }
     )
   //--- Atomic property: versionString
+    // self.versionString_property.configure (self.mFontVersion_property, transient_FontInProject_versionString)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFontVersion_property_selection.kind ()
@@ -372,6 +373,7 @@ class FontInProject : EBManagedObject,
     }
     self.mFontVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: sizeString
+    // self.sizeString_property.configure (self.mDescriptiveString_property, transient_FontInProject_sizeString)
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDescriptiveString_property_selection.kind ()
@@ -394,6 +396,7 @@ class FontInProject : EBManagedObject,
     }
     self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
   //--- Atomic property: descriptor
+    // self.descriptor_property.configure (self.mNominalSize_property, self.mDescriptiveString_property, transient_FontInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNominalSize_property_selection.kind ()
@@ -418,6 +421,7 @@ class FontInProject : EBManagedObject,
     self.mNominalSize_property.addEBObserver (self.descriptor_property)
     self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
   //--- Atomic property: canRemoveFont
+    // self.canRemoveFont_property.configure (self.mComponentNames_property, self.mComponentValues_property, transient_FontInProject_canRemoveFont)
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponentNames_property.count_property_selection.kind ()
@@ -462,12 +466,12 @@ class FontInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mFontVersion_property.removeEBObserver (self.versionString_property)
-    self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
-    self.mNominalSize_property.removeEBObserver (self.descriptor_property)
-    self.mDescriptiveString_property.removeEBObserver (self.descriptor_property)
-    self.mComponentNames_property.removeEBObserver (self.canRemoveFont_property)
-    self.mComponentValues_property.removeEBObserver (self.canRemoveFont_property)
+    // self.mFontVersion_property.removeEBObserver (self.versionString_property)
+    // self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
+    // self.mNominalSize_property.removeEBObserver (self.descriptor_property)
+    // self.mDescriptiveString_property.removeEBObserver (self.descriptor_property)
+    // self.mComponentNames_property.removeEBObserver (self.canRemoveFont_property)
+    // self.mComponentValues_property.removeEBObserver (self.canRemoveFont_property)
   //--- Unregister properties for handling signature
   }
 

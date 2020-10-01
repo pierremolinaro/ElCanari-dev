@@ -354,6 +354,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- To many property: mPinTypes (no option)
     self.mPinTypes_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
+    // self.versionString_property.configure (self.mVersion_property, transient_SymbolTypeInDevice_versionString)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mVersion_property_selection.kind ()
@@ -376,6 +377,7 @@ class SymbolTypeInDevice : EBManagedObject,
     }
     self.mVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: instanceCount
+    // self.instanceCount_property.configure (self.mInstances_property, transient_SymbolTypeInDevice_instanceCount)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mInstances_property.count_property_selection.kind ()
@@ -398,6 +400,7 @@ class SymbolTypeInDevice : EBManagedObject,
     }
     self.mInstances_property.addEBObserver (self.instanceCount_property)
   //--- Atomic property: documentSizeString
+    // self.documentSizeString_property.configure (self.mFileData_property, transient_SymbolTypeInDevice_documentSizeString)
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFileData_property_selection.kind ()
@@ -420,6 +423,7 @@ class SymbolTypeInDevice : EBManagedObject,
     }
     self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: pinNameShape
+    // self.pinNameShape_property.configure (self.mPinTypes_property.addEBObserverOf_nameShape, transient_SymbolTypeInDevice_pinNameShape)
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPinTypes_property_selection.kind ()
@@ -460,10 +464,10 @@ class SymbolTypeInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mVersion_property.removeEBObserver (self.versionString_property)
-    self.mInstances_property.removeEBObserver (self.instanceCount_property)
-    self.mFileData_property.removeEBObserver (self.documentSizeString_property)
-    self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
+    // self.mVersion_property.removeEBObserver (self.versionString_property)
+    // self.mInstances_property.removeEBObserver (self.instanceCount_property)
+    // self.mFileData_property.removeEBObserver (self.documentSizeString_property)
+    // self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Unregister properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: nil)
     self.mFilledBezierPath_property.setSignatureObserver (observer: nil)

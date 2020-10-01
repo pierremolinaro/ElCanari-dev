@@ -119,6 +119,7 @@ class DeviceDocumentation : EBManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: fileSize
+    // self.fileSize_property.configure (self.mFileData_property, transient_DeviceDocumentation_fileSize)
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFileData_property_selection.kind ()
@@ -151,7 +152,7 @@ class DeviceDocumentation : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mFileData_property.removeEBObserver (self.fileSize_property)
+    // self.mFileData_property.removeEBObserver (self.fileSize_property)
   //--- Unregister properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: nil)
     self.mFileName_property.setSignatureObserver (observer: nil)

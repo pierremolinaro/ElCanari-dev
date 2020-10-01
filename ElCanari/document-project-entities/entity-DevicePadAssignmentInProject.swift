@@ -156,6 +156,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //--- To one property: mPin
     self.mPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinPadAssignment
+    // self.pinPadAssignment_property.configure (self.mPadName_property, self.mPin_property.addEBObserverOf_mSymbolInstanceName, self.mPin_property.addEBObserverOf_mPinName, transient_DevicePadAssignmentInProject_pinPadAssignment)
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadName_property_selection.kind ()
@@ -182,6 +183,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
     self.mPin_property.addEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
     self.mPin_property.addEBObserverOf_mPinName (self.pinPadAssignment_property)
   //--- Atomic property: descriptor
+    // self.descriptor_property.configure (self.mPadName_property, self.mPin_property.addEBObserverOf_descriptor, transient_DevicePadAssignmentInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadName_property_selection.kind ()
@@ -214,11 +216,11 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mPadName_property.removeEBObserver (self.pinPadAssignment_property)
-    self.mPin_property.removeEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
-    self.mPin_property.removeEBObserverOf_mPinName (self.pinPadAssignment_property)
-    self.mPadName_property.removeEBObserver (self.descriptor_property)
-    self.mPin_property.removeEBObserverOf_descriptor (self.descriptor_property)
+    // self.mPadName_property.removeEBObserver (self.pinPadAssignment_property)
+    // self.mPin_property.removeEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
+    // self.mPin_property.removeEBObserverOf_mPinName (self.pinPadAssignment_property)
+    // self.mPadName_property.removeEBObserver (self.descriptor_property)
+    // self.mPin_property.removeEBObserverOf_descriptor (self.descriptor_property)
   //--- Unregister properties for handling signature
   }
 

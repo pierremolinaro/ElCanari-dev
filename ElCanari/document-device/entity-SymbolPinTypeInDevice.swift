@@ -408,6 +408,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
       resetter: { inObject in inObject.mType_property.setProp (nil) }
     )
   //--- Atomic property: nameShape
+    // self.nameShape_property.configure (self.mXName_property, self.mYName_property, self.mName_property, self.mNameHorizontalAlignment_property, self.mPinNameIsDisplayedInSchematics_property, g_Preferences?.pinNameFont_property, transient_SymbolPinTypeInDevice_nameShape)
     self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mXName_property_selection.kind ()
@@ -462,12 +463,12 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mXName_property.removeEBObserver (self.nameShape_property)
-    self.mYName_property.removeEBObserver (self.nameShape_property)
-    self.mName_property.removeEBObserver (self.nameShape_property)
-    self.mNameHorizontalAlignment_property.removeEBObserver (self.nameShape_property)
-    self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.nameShape_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.nameShape_property)
+    // self.mXName_property.removeEBObserver (self.nameShape_property)
+    // self.mYName_property.removeEBObserver (self.nameShape_property)
+    // self.mName_property.removeEBObserver (self.nameShape_property)
+    // self.mNameHorizontalAlignment_property.removeEBObserver (self.nameShape_property)
+    // self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.nameShape_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.nameShape_property)
   //--- Unregister properties for handling signature
     self.mName_property.setSignatureObserver (observer: nil)
     self.mNameHorizontalAlignment_property.setSignatureObserver (observer: nil)

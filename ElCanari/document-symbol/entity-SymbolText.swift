@@ -176,6 +176,7 @@ class SymbolText : SymbolObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.text_property, self.horizontalAlignment_property, g_Preferences?.symbolColor_property, g_Preferences?.pinNameFont_property, transient_SymbolText_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -208,6 +209,7 @@ class SymbolText : SymbolObject,
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.text_property, self.horizontalAlignment_property, g_Preferences?.pinNameFont_property, transient_SymbolText_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -238,6 +240,7 @@ class SymbolText : SymbolObject,
     self.horizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.x_property, self.y_property, self.text_property, transient_SymbolText_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -276,20 +279,20 @@ class SymbolText : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x_property.removeEBObserver (self.objectDisplay_property)
-    self.y_property.removeEBObserver (self.objectDisplay_property)
-    self.text_property.removeEBObserver (self.objectDisplay_property)
-    self.horizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
-    self.x_property.removeEBObserver (self.selectionDisplay_property)
-    self.y_property.removeEBObserver (self.selectionDisplay_property)
-    self.text_property.removeEBObserver (self.selectionDisplay_property)
-    self.horizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
-    self.x_property.removeEBObserver (self.issues_property)
-    self.y_property.removeEBObserver (self.issues_property)
-    self.text_property.removeEBObserver (self.issues_property)
+    // self.x_property.removeEBObserver (self.objectDisplay_property)
+    // self.y_property.removeEBObserver (self.objectDisplay_property)
+    // self.text_property.removeEBObserver (self.objectDisplay_property)
+    // self.horizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // self.x_property.removeEBObserver (self.selectionDisplay_property)
+    // self.y_property.removeEBObserver (self.selectionDisplay_property)
+    // self.text_property.removeEBObserver (self.selectionDisplay_property)
+    // self.horizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    // self.x_property.removeEBObserver (self.issues_property)
+    // self.y_property.removeEBObserver (self.issues_property)
+    // self.text_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.horizontalAlignment_property.setSignatureObserver (observer: nil)
     self.text_property.setSignatureObserver (observer: nil)

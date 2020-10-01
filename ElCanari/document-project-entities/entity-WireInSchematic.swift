@@ -215,6 +215,7 @@ class WireInSchematic : SchematicObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }
     )
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.mP1_property.addEBObserverOf_wireColor, g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property, self.mP1_property.addEBObserverOf_location, self.mP2_property.addEBObserverOf_location, transient_WireInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mP1_property.wireColor_property_selection.kind ()
@@ -243,6 +244,7 @@ class WireInSchematic : SchematicObject,
     self.mP1_property.addEBObserverOf_location (self.objectDisplay_property)
     self.mP2_property.addEBObserverOf_location (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.mP1_property.addEBObserverOf_location, self.mP1_property.addEBObserverOf_canMove, self.mP2_property.addEBObserverOf_location, self.mP2_property.addEBObserverOf_canMove, transient_WireInSchematic_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mP1_property.location_property_selection.kind ()
@@ -271,6 +273,7 @@ class WireInSchematic : SchematicObject,
     self.mP2_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.mP2_property.addEBObserverOf_canMove (self.selectionDisplay_property)
   //--- Atomic property: netName
+    // self.netName_property.configure (self.mP1_property.addEBObserverOf_netName, transient_WireInSchematic_netName)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mP1_property.netName_property_selection.kind ()
@@ -293,6 +296,7 @@ class WireInSchematic : SchematicObject,
     }
     self.mP1_property.addEBObserverOf_netName (self.netName_property)
   //--- Atomic property: netClassName
+    // self.netClassName_property.configure (self.mP1_property.addEBObserverOf_netClassName, transient_WireInSchematic_netClassName)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mP1_property.netClassName_property_selection.kind ()
@@ -315,6 +319,7 @@ class WireInSchematic : SchematicObject,
     }
     self.mP1_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: hasNet
+    // self.hasNet_property.configure (self.mP1_property.addEBObserverOf_hasNet, transient_WireInSchematic_hasNet)
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mP1_property.hasNet_property_selection.kind ()
@@ -345,17 +350,17 @@ class WireInSchematic : SchematicObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mP1_property.removeEBObserverOf_wireColor (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
-    self.mP1_property.removeEBObserverOf_location (self.objectDisplay_property)
-    self.mP2_property.removeEBObserverOf_location (self.objectDisplay_property)
-    self.mP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.mP1_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
-    self.mP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.mP2_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
-    self.mP1_property.removeEBObserverOf_netName (self.netName_property)
-    self.mP1_property.removeEBObserverOf_netClassName (self.netClassName_property)
-    self.mP1_property.removeEBObserverOf_hasNet (self.hasNet_property)
+    // self.mP1_property.removeEBObserverOf_wireColor (self.objectDisplay_property)
+    // g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // self.mP1_property.removeEBObserverOf_location (self.objectDisplay_property)
+    // self.mP2_property.removeEBObserverOf_location (self.objectDisplay_property)
+    // self.mP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    // self.mP1_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
+    // self.mP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    // self.mP2_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
+    // self.mP1_property.removeEBObserverOf_netName (self.netName_property)
+    // self.mP1_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    // self.mP1_property.removeEBObserverOf_hasNet (self.hasNet_property)
   //--- Unregister properties for handling signature
   }
 

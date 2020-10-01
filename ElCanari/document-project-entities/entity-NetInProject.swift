@@ -360,6 +360,7 @@ class NetInProject : EBManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
     )
   //--- Atomic property: netClassName
+    // self.netClassName_property.configure (self.mNetClass_property.addEBObserverOf_mNetClassName, transient_NetInProject_netClassName)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClass_property.mNetClassName_property_selection.kind ()
@@ -382,6 +383,7 @@ class NetInProject : EBManagedObject,
     }
     self.mNetClass_property.addEBObserverOf_mNetClassName (self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
+    // self.netClassTrackWidth_property.configure (self.mNetClass_property.addEBObserverOf_mTrackWidth, transient_NetInProject_netClassTrackWidth)
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClass_property.mTrackWidth_property_selection.kind ()
@@ -404,6 +406,7 @@ class NetInProject : EBManagedObject,
     }
     self.mNetClass_property.addEBObserverOf_mTrackWidth (self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
+    // self.netClassViaHoleDiameter_property.configure (self.mNetClass_property.addEBObserverOf_mViaHoleDiameter, transient_NetInProject_netClassViaHoleDiameter)
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClass_property.mViaHoleDiameter_property_selection.kind ()
@@ -426,6 +429,7 @@ class NetInProject : EBManagedObject,
     }
     self.mNetClass_property.addEBObserverOf_mViaHoleDiameter (self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
+    // self.netClassViaPadDiameter_property.configure (self.mNetClass_property.addEBObserverOf_mViaPadDiameter, transient_NetInProject_netClassViaPadDiameter)
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClass_property.mViaPadDiameter_property_selection.kind ()
@@ -448,6 +452,7 @@ class NetInProject : EBManagedObject,
     }
     self.mNetClass_property.addEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property)
   //--- Atomic property: wireColor
+    // self.wireColor_property.configure (self.mNetClass_property.addEBObserverOf_mNetClassColor, transient_NetInProject_wireColor)
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClass_property.mNetClassColor_property_selection.kind ()
@@ -470,6 +475,7 @@ class NetInProject : EBManagedObject,
     }
     self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property)
   //--- Atomic property: netSchematicPointsInfo
+    // self.netSchematicPointsInfo_property.configure (self.mPoints_property.addEBObserverOf_netInfoForPoint, transient_NetInProject_netSchematicPointsInfo)
     self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoints_property_selection.kind ()
@@ -492,6 +498,7 @@ class NetInProject : EBManagedObject,
     }
     self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
   //--- Atomic property: trackCount
+    // self.trackCount_property.configure (self.mTracks_property, transient_NetInProject_trackCount)
     self.trackCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mTracks_property.count_property_selection.kind ()
@@ -530,13 +537,13 @@ class NetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mNetClass_property.removeEBObserverOf_mNetClassName (self.netClassName_property)
-    self.mNetClass_property.removeEBObserverOf_mTrackWidth (self.netClassTrackWidth_property)
-    self.mNetClass_property.removeEBObserverOf_mViaHoleDiameter (self.netClassViaHoleDiameter_property)
-    self.mNetClass_property.removeEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property)
-    self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
-    self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
-    self.mTracks_property.removeEBObserver (self.trackCount_property)
+    // self.mNetClass_property.removeEBObserverOf_mNetClassName (self.netClassName_property)
+    // self.mNetClass_property.removeEBObserverOf_mTrackWidth (self.netClassTrackWidth_property)
+    // self.mNetClass_property.removeEBObserverOf_mViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    // self.mNetClass_property.removeEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property)
+    // self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
+    // self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
+    // self.mTracks_property.removeEBObserver (self.trackCount_property)
   //--- Unregister properties for handling signature
   }
 

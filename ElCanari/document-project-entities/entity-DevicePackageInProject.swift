@@ -140,6 +140,7 @@ class DevicePackageInProject : EBManagedObject,
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
+    // self.packagePadDictionary_property.configure (self.mMasterPads_property.addEBObserverOf_descriptor, transient_DevicePackageInProject_packagePadDictionary)
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mMasterPads_property_selection.kind ()
@@ -170,7 +171,7 @@ class DevicePackageInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mMasterPads_property.removeEBObserverOf_descriptor (self.packagePadDictionary_property)
+    // self.mMasterPads_property.removeEBObserverOf_descriptor (self.packagePadDictionary_property)
   //--- Unregister properties for handling signature
   }
 

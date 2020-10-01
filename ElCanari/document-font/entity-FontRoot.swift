@@ -429,6 +429,7 @@ class FontRoot : EBManagedObject,
   //--- To many property: characters (no option)
     self.characters_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: currentCharacterCodePointString
+    // self.currentCharacterCodePointString_property.configure (self.currentCharacterCodePoint_property, transient_FontRoot_currentCharacterCodePointString)
     self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.currentCharacterCodePoint_property_selection.kind ()
@@ -451,6 +452,7 @@ class FontRoot : EBManagedObject,
     }
     self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
+    // self.sampleStringBezierPath_property.configure (self.nominalSize_property, self.characters_property.addEBObserverOf_segmentArrayForDrawing, self.characters_property.addEBObserverOf_advance, g_Preferences?.sampleString_property, g_Preferences?.sampleStringSize_property, transient_FontRoot_sampleStringBezierPath)
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.nominalSize_property_selection.kind ()
@@ -481,6 +483,7 @@ class FontRoot : EBManagedObject,
     g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
     g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
   //--- Atomic property: sampleStringBezierPathWidth
+    // self.sampleStringBezierPathWidth_property.configure (self.sampleStringBezierPath_property, transient_FontRoot_sampleStringBezierPathWidth)
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -503,6 +506,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
   //--- Atomic property: sampleStringBezierPathAscent
+    // self.sampleStringBezierPathAscent_property.configure (self.sampleStringBezierPath_property, transient_FontRoot_sampleStringBezierPathAscent)
     self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -525,6 +529,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
   //--- Atomic property: sampleStringBezierPathDescent
+    // self.sampleStringBezierPathDescent_property.configure (self.sampleStringBezierPath_property, transient_FontRoot_sampleStringBezierPathDescent)
     self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -547,6 +552,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Atomic property: definedCharacters
+    // self.definedCharacters_property.configure (self.characters_property.addEBObserverOf_codePoint, transient_FontRoot_definedCharacters)
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.characters_property_selection.kind ()
@@ -569,6 +575,7 @@ class FontRoot : EBManagedObject,
     }
     self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.characters_property.addEBObserverOf_issues, transient_FontRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.characters_property_selection.kind ()
@@ -602,17 +609,17 @@ class FontRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
-    self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
-    self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
-    self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
-    g_Preferences?.sampleString_property.removeEBObserver (self.sampleStringBezierPath_property)
-    g_Preferences?.sampleStringSize_property.removeEBObserver (self.sampleStringBezierPath_property)
-    self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathWidth_property)
-    self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
-    self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
-    self.characters_property.removeEBObserverOf_codePoint (self.definedCharacters_property)
-    self.characters_property.removeEBObserverOf_issues (self.issues_property)
+    // self.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
+    // self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
+    // self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
+    // self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
+    // g_Preferences?.sampleString_property.removeEBObserver (self.sampleStringBezierPath_property)
+    // g_Preferences?.sampleStringSize_property.removeEBObserver (self.sampleStringBezierPath_property)
+    // self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathWidth_property)
+    // self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
+    // self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
+    // self.characters_property.removeEBObserverOf_codePoint (self.definedCharacters_property)
+    // self.characters_property.removeEBObserverOf_issues (self.issues_property)
   //--- Unregister properties for handling signature
     self.characters_property.setSignatureObserver (observer: nil)
     self.comments_property.setSignatureObserver (observer: nil)

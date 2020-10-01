@@ -503,6 +503,7 @@ class PackageArc : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: strokeBezierPath
+    // self.strokeBezierPath_property.configure (self.xCenter_property, self.yCenter_property, self.radius_property, self.startAngle_property, self.arcAngle_property, self.pathIsClosed_property, self.startTangent_property, self.endTangent_property, transient_PackageArc_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
@@ -539,6 +540,7 @@ class PackageArc : PackageObject,
     self.startTangent_property.addEBObserver (self.strokeBezierPath_property)
     self.endTangent_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (self.strokeBezierPath_property, g_Preferences?.packageColor_property, g_Preferences?.packageDrawingWidthMultipliedByTen_property, transient_PackageArc_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
@@ -565,6 +567,7 @@ class PackageArc : PackageObject,
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.xCenter_property, self.yCenter_property, self.radius_property, self.startAngle_property, self.arcAngle_property, self.startTangent_property, self.endTangent_property, self.pathIsClosed_property, self.knobSize_property, transient_PackageArc_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
@@ -603,6 +606,7 @@ class PackageArc : PackageObject,
     self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
+    // self.issues_property.configure (self.xCenter_property, self.yCenter_property, self.radius_property, self.startAngle_property, self.arcAngle_property, self.pathIsClosed_property, transient_PackageArc_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
@@ -656,32 +660,32 @@ class PackageArc : PackageObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.xCenter_property.removeEBObserver (self.strokeBezierPath_property)
-    self.yCenter_property.removeEBObserver (self.strokeBezierPath_property)
-    self.radius_property.removeEBObserver (self.strokeBezierPath_property)
-    self.startAngle_property.removeEBObserver (self.strokeBezierPath_property)
-    self.arcAngle_property.removeEBObserver (self.strokeBezierPath_property)
-    self.pathIsClosed_property.removeEBObserver (self.strokeBezierPath_property)
-    self.startTangent_property.removeEBObserver (self.strokeBezierPath_property)
-    self.endTangent_property.removeEBObserver (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
-    self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
-    self.yCenter_property.removeEBObserver (self.selectionDisplay_property)
-    self.radius_property.removeEBObserver (self.selectionDisplay_property)
-    self.startAngle_property.removeEBObserver (self.selectionDisplay_property)
-    self.arcAngle_property.removeEBObserver (self.selectionDisplay_property)
-    self.startTangent_property.removeEBObserver (self.selectionDisplay_property)
-    self.endTangent_property.removeEBObserver (self.selectionDisplay_property)
-    self.pathIsClosed_property.removeEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
-    self.xCenter_property.removeEBObserver (self.issues_property)
-    self.yCenter_property.removeEBObserver (self.issues_property)
-    self.radius_property.removeEBObserver (self.issues_property)
-    self.startAngle_property.removeEBObserver (self.issues_property)
-    self.arcAngle_property.removeEBObserver (self.issues_property)
-    self.pathIsClosed_property.removeEBObserver (self.issues_property)
+    // self.xCenter_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.yCenter_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.radius_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.startAngle_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.arcAngle_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.pathIsClosed_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.startTangent_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.endTangent_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
+    // self.yCenter_property.removeEBObserver (self.selectionDisplay_property)
+    // self.radius_property.removeEBObserver (self.selectionDisplay_property)
+    // self.startAngle_property.removeEBObserver (self.selectionDisplay_property)
+    // self.arcAngle_property.removeEBObserver (self.selectionDisplay_property)
+    // self.startTangent_property.removeEBObserver (self.selectionDisplay_property)
+    // self.endTangent_property.removeEBObserver (self.selectionDisplay_property)
+    // self.pathIsClosed_property.removeEBObserver (self.selectionDisplay_property)
+    // self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.xCenter_property.removeEBObserver (self.issues_property)
+    // self.yCenter_property.removeEBObserver (self.issues_property)
+    // self.radius_property.removeEBObserver (self.issues_property)
+    // self.startAngle_property.removeEBObserver (self.issues_property)
+    // self.arcAngle_property.removeEBObserver (self.issues_property)
+    // self.pathIsClosed_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.arcAngle_property.setSignatureObserver (observer: nil)
     self.endTangent_property.setSignatureObserver (observer: nil)

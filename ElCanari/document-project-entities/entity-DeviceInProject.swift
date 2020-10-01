@@ -513,6 +513,7 @@ class DeviceInProject : EBManagedObject,
   //--- To many property: mPadAssignments (no option)
     self.mPadAssignments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
+    // self.versionString_property.configure (self.mDeviceVersion_property, transient_DeviceInProject_versionString)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDeviceVersion_property_selection.kind ()
@@ -535,6 +536,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: sizeString
+    // self.sizeString_property.configure (self.mDeviceFileData_property, transient_DeviceInProject_sizeString)
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDeviceFileData_property_selection.kind ()
@@ -557,6 +559,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceFileData_property.addEBObserver (self.sizeString_property)
   //--- Atomic property: canExport
+    // self.canExport_property.configure (self.mDeviceFileData_property, transient_DeviceInProject_canExport)
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDeviceFileData_property_selection.kind ()
@@ -579,6 +582,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceFileData_property.addEBObserver (self.canExport_property)
   //--- Atomic property: packageNames
+    // self.packageNames_property.configure (self.mPackages_property.addEBObserverOf_mPackageName, transient_DeviceInProject_packageNames)
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPackages_property_selection.kind ()
@@ -601,6 +605,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
   //--- Atomic property: deviceComponentCountString
+    // self.deviceComponentCountString_property.configure (self.mComponents_property, transient_DeviceInProject_deviceComponentCountString)
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponents_property.count_property_selection.kind ()
@@ -623,6 +628,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mComponents_property.addEBObserver (self.deviceComponentCountString_property)
   //--- Atomic property: canRemove
+    // self.canRemove_property.configure (self.mComponents_property, transient_DeviceInProject_canRemove)
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponents_property.count_property_selection.kind ()
@@ -645,6 +651,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: symbolAndTypesNames
+    // self.symbolAndTypesNames_property.configure (self.mSymbols_property.addEBObserverOf_symbolAndTypeName, transient_DeviceInProject_symbolAndTypesNames)
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
@@ -667,6 +674,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
   //--- Atomic property: pinPadAssignments
+    // self.pinPadAssignments_property.configure (self.mPadAssignments_property.addEBObserverOf_pinPadAssignment, transient_DeviceInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPadAssignments_property_selection.kind ()
@@ -689,6 +697,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
   //--- Atomic property: deviceSymbolDictionary
+    // self.deviceSymbolDictionary_property.configure (self.mPadAssignments_property.addEBObserverOf_descriptor, self.mSymbols_property.addEBObserverOf_symbolAndTypeName, self.mSymbols_property.addEBObserverOf_filledBezierPath, self.mSymbols_property.addEBObserverOf_strokeBezierPath, transient_DeviceInProject_deviceSymbolDictionary)
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadAssignments_property_selection.kind ()
@@ -729,18 +738,18 @@ class DeviceInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
-    self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
-    self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
-    self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
-    self.mComponents_property.removeEBObserver (self.deviceComponentCountString_property)
-    self.mComponents_property.removeEBObserver (self.canRemove_property)
-    self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
-    self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
-    self.mPadAssignments_property.removeEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.removeEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.removeEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
+    // self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
+    // self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
+    // self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
+    // self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
+    // self.mComponents_property.removeEBObserver (self.deviceComponentCountString_property)
+    // self.mComponents_property.removeEBObserver (self.canRemove_property)
+    // self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
+    // self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
+    // self.mPadAssignments_property.removeEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
+    // self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
+    // self.mSymbols_property.removeEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
+    // self.mSymbols_property.removeEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
   //--- Unregister properties for handling signature
   }
 

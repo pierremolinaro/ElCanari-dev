@@ -349,6 +349,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canDeleteCurrentCharacter
+    // self.canDeleteCurrentCharacter_property.configure (self.rootObject.definedCharacters_property, transient_FontDocument_canDeleteCurrentCharacter)
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.definedCharacters_property_selection.kind ()
@@ -375,6 +376,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: noIssue
+    // self.noIssue_property.configure (self.rootObject.issues_property, transient_FontDocument_noIssue)
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -401,6 +403,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
+    // self.mStatusImage_property.configure (self.rootObject.issues_property, transient_FontDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -427,6 +430,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
+    // self.mStatusMessage_property.configure (self.rootObject.issues_property, transient_FontDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -453,6 +457,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mMetadataStatus
+    // self.mMetadataStatus_property.configure (self.rootObject.issues_property, transient_FontDocument_mMetadataStatus)
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -646,11 +651,11 @@ import Cocoa
     self.mSelectedCharacterController.unbind_model ()
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.unbind_selection ()
-    self.rootObject.definedCharacters_property.removeEBObserver (self.canDeleteCurrentCharacter_property)
-    self.rootObject.issues_property.removeEBObserver (self.noIssue_property)
-    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
-    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
-    self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
+    // self.rootObject.definedCharacters_property.removeEBObserver (self.canDeleteCurrentCharacter_property)
+    // self.rootObject.issues_property.removeEBObserver (self.noIssue_property)
+    // self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
   //--------------------------- Remove targets / actions
     self.mAddCharacterButton?.target = nil
     self.mDeleteCurrentCharacterButton?.target = nil

@@ -321,6 +321,7 @@ class BoardObject : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }
     )
   //--- Atomic property: isPlacedInBoard
+    // self.isPlacedInBoard_property.configure (self.mRoot_property, transient_BoardObject_isPlacedInBoard)
     self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mRoot_none_selection.kind ()
@@ -343,6 +344,7 @@ class BoardObject : EBGraphicManagedObject,
     }
     self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
   //--- Atomic property: errorOrWarningIssueSize
+    // self.errorOrWarningIssueSize_property.configure (self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize, transient_BoardObject_errorOrWarningIssueSize)
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection.kind ()
@@ -373,8 +375,8 @@ class BoardObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
-    self.mRoot_property.removeEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
+    // self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
+    // self.mRoot_property.removeEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
   //--- Unregister properties for handling signature
   }
 

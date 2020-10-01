@@ -648,6 +648,7 @@ class NetClassInProject : EBManagedObject,
       resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
     )
   //--- Atomic property: trackWidthString
+    // self.trackWidthString_property.configure (self.mTrackWidth_property, self.mTrackWidthUnit_property, transient_NetClassInProject_trackWidthString)
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTrackWidth_property_selection.kind ()
@@ -672,6 +673,7 @@ class NetClassInProject : EBManagedObject,
     self.mTrackWidth_property.addEBObserver (self.trackWidthString_property)
     self.mTrackWidthUnit_property.addEBObserver (self.trackWidthString_property)
   //--- Atomic property: viaHoleDiameter
+    // self.viaHoleDiameter_property.configure (self.mViaHoleDiameter_property, self.mViaHoleDiameterUnit_property, transient_NetClassInProject_viaHoleDiameter)
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mViaHoleDiameter_property_selection.kind ()
@@ -696,6 +698,7 @@ class NetClassInProject : EBManagedObject,
     self.mViaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property)
     self.mViaHoleDiameterUnit_property.addEBObserver (self.viaHoleDiameter_property)
   //--- Atomic property: viaPadDiameter
+    // self.viaPadDiameter_property.configure (self.mViaPadDiameter_property, self.mViaPadDiameterUnit_property, transient_NetClassInProject_viaPadDiameter)
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mViaPadDiameter_property_selection.kind ()
@@ -720,6 +723,7 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameter_property.addEBObserver (self.viaPadDiameter_property)
     self.mViaPadDiameterUnit_property.addEBObserver (self.viaPadDiameter_property)
   //--- Atomic property: allowTracksOnFrontSideString
+    // self.allowTracksOnFrontSideString_property.configure (self.mAllowTracksOnFrontSide_property, transient_NetClassInProject_allowTracksOnFrontSideString)
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mAllowTracksOnFrontSide_property_selection.kind ()
@@ -742,6 +746,7 @@ class NetClassInProject : EBManagedObject,
     }
     self.mAllowTracksOnFrontSide_property.addEBObserver (self.allowTracksOnFrontSideString_property)
   //--- Atomic property: allowTracksOnBackSideString
+    // self.allowTracksOnBackSideString_property.configure (self.mAllowTracksOnBackSide_property, transient_NetClassInProject_allowTracksOnBackSideString)
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mAllowTracksOnBackSide_property_selection.kind ()
@@ -764,6 +769,7 @@ class NetClassInProject : EBManagedObject,
     }
     self.mAllowTracksOnBackSide_property.addEBObserver (self.allowTracksOnBackSideString_property)
   //--- Atomic property: canRemove
+    // self.canRemove_property.configure (self.mNets_property, transient_NetClassInProject_canRemove)
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNets_property.count_property_selection.kind ()
@@ -786,6 +792,7 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: netUsage
+    // self.netUsage_property.configure (self.mNets_property, transient_NetClassInProject_netUsage)
     self.netUsage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNets_property.count_property_selection.kind ()
@@ -808,6 +815,7 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.netUsage_property)
   //--- Atomic property: netsDescription
+    // self.netsDescription_property.configure (self.mNets_property, self.mNets_property.addEBObserverOf_trackCount, self.mNets_property.addEBObserverOf_mNetName, self.mNets_property.addEBObserverOf_netSchematicPointsInfo, self.mNetClassName_property, transient_NetClassInProject_netsDescription)
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNets_property_selection.kind ()
@@ -838,6 +846,7 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.addEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
   //--- Atomic property: netWarningCount
+    // self.netWarningCount_property.configure (self.netsDescription_property, transient_NetClassInProject_netWarningCount)
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.netsDescription_property_selection.kind ()
@@ -872,22 +881,22 @@ class NetClassInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mTrackWidth_property.removeEBObserver (self.trackWidthString_property)
-    self.mTrackWidthUnit_property.removeEBObserver (self.trackWidthString_property)
-    self.mViaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property)
-    self.mViaHoleDiameterUnit_property.removeEBObserver (self.viaHoleDiameter_property)
-    self.mViaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property)
-    self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
-    self.mAllowTracksOnFrontSide_property.removeEBObserver (self.allowTracksOnFrontSideString_property)
-    self.mAllowTracksOnBackSide_property.removeEBObserver (self.allowTracksOnBackSideString_property)
-    self.mNets_property.removeEBObserver (self.canRemove_property)
-    self.mNets_property.removeEBObserver (self.netUsage_property)
-    self.mNets_property.removeEBObserver (self.netsDescription_property)
-    self.mNets_property.removeEBObserverOf_trackCount (self.netsDescription_property)
-    self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
-    self.mNets_property.removeEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
-    self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
-    self.netsDescription_property.removeEBObserver (self.netWarningCount_property)
+    // self.mTrackWidth_property.removeEBObserver (self.trackWidthString_property)
+    // self.mTrackWidthUnit_property.removeEBObserver (self.trackWidthString_property)
+    // self.mViaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property)
+    // self.mViaHoleDiameterUnit_property.removeEBObserver (self.viaHoleDiameter_property)
+    // self.mViaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property)
+    // self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
+    // self.mAllowTracksOnFrontSide_property.removeEBObserver (self.allowTracksOnFrontSideString_property)
+    // self.mAllowTracksOnBackSide_property.removeEBObserver (self.allowTracksOnBackSideString_property)
+    // self.mNets_property.removeEBObserver (self.canRemove_property)
+    // self.mNets_property.removeEBObserver (self.netUsage_property)
+    // self.mNets_property.removeEBObserver (self.netsDescription_property)
+    // self.mNets_property.removeEBObserverOf_trackCount (self.netsDescription_property)
+    // self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
+    // self.mNets_property.removeEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
+    // self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
+    // self.netsDescription_property.removeEBObserver (self.netWarningCount_property)
   //--- Unregister properties for handling signature
   }
 

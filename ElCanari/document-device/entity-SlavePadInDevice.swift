@@ -421,6 +421,7 @@ class SlavePadInDevice : EBManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.remove (me) } }
     )
   //--- Atomic property: frontSideFilledBezierPath
+    // self.frontSideFilledBezierPath_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, transient_SlavePadInDevice_frontSideFilledBezierPath)
     self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -457,6 +458,7 @@ class SlavePadInDevice : EBManagedObject,
     self.mShape_property.addEBObserver (self.frontSideFilledBezierPath_property)
     self.mStyle_property.addEBObserver (self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
+    // self.backSideFilledBezierPath_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, transient_SlavePadInDevice_backSideFilledBezierPath)
     self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -493,6 +495,7 @@ class SlavePadInDevice : EBManagedObject,
     self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
+    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, g_Preferences?.padNumberFont_property, g_Preferences?.padNumberColor_property, self.mMasterPad_property.addEBObserverOf_mName, transient_SlavePadInDevice_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -539,27 +542,27 @@ class SlavePadInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mCenterX_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mCenterY_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mWidth_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHeight_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHoleWidth_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHoleHeight_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mShape_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mStyle_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mCenterX_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mCenterY_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mWidth_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mHeight_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mHoleWidth_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mHoleHeight_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mShape_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mStyle_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
-    self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
-    self.mMasterPad_property.removeEBObserverOf_mName (self.padNumberDisplay_property)
+    // self.mCenterX_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mCenterY_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mWidth_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mHeight_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mHoleWidth_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mHoleHeight_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mShape_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mStyle_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    // self.mCenterX_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mCenterY_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mWidth_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mHeight_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mHoleWidth_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mHoleHeight_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mShape_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mStyle_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    // self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
+    // self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
+    // g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
+    // g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
+    // self.mMasterPad_property.removeEBObserverOf_mName (self.padNumberDisplay_property)
   //--- Unregister properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: nil)
     self.mCenterY_property.setSignatureObserver (observer: nil)

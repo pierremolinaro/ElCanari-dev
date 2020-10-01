@@ -185,6 +185,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: mStatusImage
+    // self.mStatusImage_property.configure (self.mPath_property, transient_CanariLibraryEntry_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPath_property_selection.kind ()
@@ -216,7 +217,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mPath_property.removeEBObserver (self.mStatusImage_property)
+    // self.mPath_property.removeEBObserver (self.mStatusImage_property)
   //--- Unregister properties for handling signature
   }
 

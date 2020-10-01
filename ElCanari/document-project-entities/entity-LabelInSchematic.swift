@@ -204,6 +204,7 @@ class LabelInSchematic : SchematicObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mLabels_property.remove (me) } }
     )
   //--- Atomic property: location
+    // self.location_property.configure (self.mPoint_property.addEBObserverOf_location, transient_LabelInSchematic_location)
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoint_property.location_property_selection.kind ()
@@ -226,6 +227,7 @@ class LabelInSchematic : SchematicObject,
     }
     self.mPoint_property.addEBObserverOf_location (self.location_property)
   //--- Atomic property: netName
+    // self.netName_property.configure (self.mPoint_property.addEBObserverOf_netName, transient_LabelInSchematic_netName)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoint_property.netName_property_selection.kind ()
@@ -248,6 +250,7 @@ class LabelInSchematic : SchematicObject,
     }
     self.mPoint_property.addEBObserverOf_netName (self.netName_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (self.mPoint_property.addEBObserverOf_location, self.netName_property, g_Preferences?.pinNameFont_property, self.mOrientation_property, transient_LabelInSchematic_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
@@ -276,6 +279,7 @@ class LabelInSchematic : SchematicObject,
     g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netClassName
+    // self.netClassName_property.configure (self.mPoint_property.addEBObserverOf_netClassName, transient_LabelInSchematic_netClassName)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoint_property.netClassName_property_selection.kind ()
@@ -298,6 +302,7 @@ class LabelInSchematic : SchematicObject,
     }
     self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (g_Preferences?.symbolColorForSchematic_property, g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property, self.mPoint_property.addEBObserverOf_location, self.netName_property, g_Preferences?.pinNameFont_property, self.mOrientation_property, transient_LabelInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.symbolColorForSchematic_property_selection.kind ()
@@ -338,19 +343,19 @@ class LabelInSchematic : SchematicObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mPoint_property.removeEBObserverOf_location (self.location_property)
-    self.mPoint_property.removeEBObserverOf_netName (self.netName_property)
-    self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.netName_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
-    self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
-    self.mPoint_property.removeEBObserverOf_netClassName (self.netClassName_property)
-    g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
-    self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
-    self.netName_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
-    self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
+    // self.mPoint_property.removeEBObserverOf_location (self.location_property)
+    // self.mPoint_property.removeEBObserverOf_netName (self.netName_property)
+    // self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    // self.netName_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mPoint_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    // g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
+    // self.netName_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
   }
 

@@ -141,6 +141,7 @@ class PackageObject : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.packageObjects_property.remove (me) } }
     )
   //--- Atomic property: knobSize
+    // self.knobSize_property.configure (self.mRoot_property.addEBObserverOf_knobSizeMultpliedByTen, transient_PackageObject_knobSize)
     self.knobSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mRoot_property.knobSizeMultpliedByTen_property_selection.kind ()
@@ -171,7 +172,7 @@ class PackageObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mRoot_property.removeEBObserverOf_knobSizeMultpliedByTen (self.knobSize_property)
+    // self.mRoot_property.removeEBObserverOf_knobSizeMultpliedByTen (self.knobSize_property)
   //--- Unregister properties for handling signature
   }
 

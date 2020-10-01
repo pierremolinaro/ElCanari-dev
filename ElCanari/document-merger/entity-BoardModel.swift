@@ -2034,6 +2034,7 @@ class BoardModel : EBManagedObject,
       resetter: { inObject in inObject.myModel_property.setProp (nil) }
     )
   //--- Atomic property: frontLegendLinesSegments
+    // self.frontLegendLinesSegments_property.configure (self.frontLegendLines_property.addEBObserverOf_x1, self.frontLegendLines_property.addEBObserverOf_y1, self.frontLegendLines_property.addEBObserverOf_x2, self.frontLegendLines_property.addEBObserverOf_y2, self.frontLegendLines_property.addEBObserverOf_width, transient_BoardModel_frontLegendLinesSegments)
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendLines_property_selection.kind ()
@@ -2064,6 +2065,7 @@ class BoardModel : EBManagedObject,
     self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesSegments
+    // self.backLegendLinesSegments_property.configure (self.backLegendLines_property.addEBObserverOf_x1, self.backLegendLines_property.addEBObserverOf_y1, self.backLegendLines_property.addEBObserverOf_x2, self.backLegendLines_property.addEBObserverOf_y2, self.backLegendLines_property.addEBObserverOf_width, transient_BoardModel_backLegendLinesSegments)
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendLines_property_selection.kind ()
@@ -2094,6 +2096,7 @@ class BoardModel : EBManagedObject,
     self.backLegendLines_property.addEBObserverOf_y2 (self.backLegendLinesSegments_property)
     self.backLegendLines_property.addEBObserverOf_width (self.backLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesBezierPaths
+    // self.backLegendLinesBezierPaths_property.configure (self.backLegendLinesSegments_property, transient_BoardModel_backLegendLinesBezierPaths)
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLegendLinesSegments_property_selection.kind ()
@@ -2116,6 +2119,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesBezierPaths_property)
   //--- Atomic property: frontLegendTextsSegments
+    // self.frontLegendTextsSegments_property.configure (self.frontLegendTexts_property.addEBObserverOf_x1, self.frontLegendTexts_property.addEBObserverOf_y1, self.frontLegendTexts_property.addEBObserverOf_x2, self.frontLegendTexts_property.addEBObserverOf_y2, self.frontLegendTexts_property.addEBObserverOf_width, transient_BoardModel_frontLegendTextsSegments)
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendTexts_property_selection.kind ()
@@ -2146,6 +2150,7 @@ class BoardModel : EBManagedObject,
     self.frontLegendTexts_property.addEBObserverOf_y2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_width (self.frontLegendTextsSegments_property)
   //--- Atomic property: frontLegendTextsBezierPaths
+    // self.frontLegendTextsBezierPaths_property.configure (self.frontLegendTextsSegments_property, transient_BoardModel_frontLegendTextsBezierPaths)
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLegendTextsSegments_property_selection.kind ()
@@ -2168,6 +2173,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsBezierPaths_property)
   //--- Atomic property: frontLayoutTextsSegments
+    // self.frontLayoutTextsSegments_property.configure (self.frontLayoutTexts_property.addEBObserverOf_x1, self.frontLayoutTexts_property.addEBObserverOf_y1, self.frontLayoutTexts_property.addEBObserverOf_x2, self.frontLayoutTexts_property.addEBObserverOf_y2, self.frontLayoutTexts_property.addEBObserverOf_width, transient_BoardModel_frontLayoutTextsSegments)
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLayoutTexts_property_selection.kind ()
@@ -2198,6 +2204,7 @@ class BoardModel : EBManagedObject,
     self.frontLayoutTexts_property.addEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_width (self.frontLayoutTextsSegments_property)
   //--- Atomic property: frontLayoutTextsBezierPaths
+    // self.frontLayoutTextsBezierPaths_property.configure (self.frontLayoutTextsSegments_property, transient_BoardModel_frontLayoutTextsBezierPaths)
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLayoutTextsSegments_property_selection.kind ()
@@ -2220,6 +2227,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsBezierPaths_property)
   //--- Atomic property: backLegendTextsSegments
+    // self.backLegendTextsSegments_property.configure (self.backLegendTexts_property.addEBObserverOf_x1, self.backLegendTexts_property.addEBObserverOf_y1, self.backLegendTexts_property.addEBObserverOf_x2, self.backLegendTexts_property.addEBObserverOf_y2, self.backLegendTexts_property.addEBObserverOf_width, transient_BoardModel_backLegendTextsSegments)
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendTexts_property_selection.kind ()
@@ -2250,6 +2258,7 @@ class BoardModel : EBManagedObject,
     self.backLegendTexts_property.addEBObserverOf_y2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_width (self.backLegendTextsSegments_property)
   //--- Atomic property: backLegendTextsBezierPaths
+    // self.backLegendTextsBezierPaths_property.configure (self.backLegendTextsSegments_property, transient_BoardModel_backLegendTextsBezierPaths)
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLegendTextsSegments_property_selection.kind ()
@@ -2272,6 +2281,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsBezierPaths_property)
   //--- Atomic property: backLayoutTextsSegments
+    // self.backLayoutTextsSegments_property.configure (self.backLayoutTexts_property.addEBObserverOf_x1, self.backLayoutTexts_property.addEBObserverOf_y1, self.backLayoutTexts_property.addEBObserverOf_x2, self.backLayoutTexts_property.addEBObserverOf_y2, self.backLayoutTexts_property.addEBObserverOf_width, transient_BoardModel_backLayoutTextsSegments)
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLayoutTexts_property_selection.kind ()
@@ -2302,6 +2312,7 @@ class BoardModel : EBManagedObject,
     self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
   //--- Atomic property: backLayoutTextsBezierPaths
+    // self.backLayoutTextsBezierPaths_property.configure (self.backLayoutTextsSegments_property, transient_BoardModel_backLayoutTextsBezierPaths)
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLayoutTextsSegments_property_selection.kind ()
@@ -2324,6 +2335,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsBezierPaths_property)
   //--- Atomic property: internalBoardsLimitsSegments
+    // self.internalBoardsLimitsSegments_property.configure (self.internalBoardsLimits_property.addEBObserverOf_x1, self.internalBoardsLimits_property.addEBObserverOf_y1, self.internalBoardsLimits_property.addEBObserverOf_x2, self.internalBoardsLimits_property.addEBObserverOf_y2, self.internalBoardsLimits_property.addEBObserverOf_width, transient_BoardModel_internalBoardsLimitsSegments)
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.internalBoardsLimits_property_selection.kind ()
@@ -2354,6 +2366,7 @@ class BoardModel : EBManagedObject,
     self.internalBoardsLimits_property.addEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimits_property.addEBObserverOf_width (self.internalBoardsLimitsSegments_property)
   //--- Atomic property: internalBoardsLimitsBezierPaths
+    // self.internalBoardsLimitsBezierPaths_property.configure (self.internalBoardsLimitsSegments_property, transient_BoardModel_internalBoardsLimitsBezierPaths)
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.internalBoardsLimitsSegments_property_selection.kind ()
@@ -2376,6 +2389,7 @@ class BoardModel : EBManagedObject,
     }
     self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
   //--- Atomic property: drillSegments
+    // self.drillSegments_property.configure (self.drills_property.addEBObserverOf_x1, self.drills_property.addEBObserverOf_y1, self.drills_property.addEBObserverOf_x2, self.drills_property.addEBObserverOf_y2, self.drills_property.addEBObserverOf_width, transient_BoardModel_drillSegments)
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.drills_property_selection.kind ()
@@ -2406,6 +2420,7 @@ class BoardModel : EBManagedObject,
     self.drills_property.addEBObserverOf_y2 (self.drillSegments_property)
     self.drills_property.addEBObserverOf_width (self.drillSegments_property)
   //--- Atomic property: holesBezierPaths
+    // self.holesBezierPaths_property.configure (self.drillSegments_property, transient_BoardModel_holesBezierPaths)
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.drillSegments_property_selection.kind ()
@@ -2428,6 +2443,7 @@ class BoardModel : EBManagedObject,
     }
     self.drillSegments_property.addEBObserver (self.holesBezierPaths_property)
   //--- Atomic property: viaShapes
+    // self.viaShapes_property.configure (self.vias_property.addEBObserverOf_x, self.vias_property.addEBObserverOf_y, self.vias_property.addEBObserverOf_padDiameter, transient_BoardModel_viaShapes)
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.vias_property_selection.kind ()
@@ -2454,6 +2470,7 @@ class BoardModel : EBManagedObject,
     self.vias_property.addEBObserverOf_y (self.viaShapes_property)
     self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
   //--- Atomic property: viasBezierPaths
+    // self.viasBezierPaths_property.configure (self.viaShapes_property, transient_BoardModel_viasBezierPaths)
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.viaShapes_property_selection.kind ()
@@ -2476,6 +2493,7 @@ class BoardModel : EBManagedObject,
     }
     self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
   //--- Atomic property: frontPadArray
+    // self.frontPadArray_property.configure (self.frontPads_property.addEBObserverOf_x, self.frontPads_property.addEBObserverOf_y, self.frontPads_property.addEBObserverOf_width, self.frontPads_property.addEBObserverOf_height, self.frontPads_property.addEBObserverOf_shape, self.frontPads_property.addEBObserverOf_rotation, transient_BoardModel_frontPadArray)
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPads_property_selection.kind ()
@@ -2508,6 +2526,7 @@ class BoardModel : EBManagedObject,
     self.frontPads_property.addEBObserverOf_shape (self.frontPadArray_property)
     self.frontPads_property.addEBObserverOf_rotation (self.frontPadArray_property)
   //--- Atomic property: frontPadsBezierPaths
+    // self.frontPadsBezierPaths_property.configure (self.frontPadArray_property, transient_BoardModel_frontPadsBezierPaths)
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontPadArray_property_selection.kind ()
@@ -2530,6 +2549,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontPadArray_property.addEBObserver (self.frontPadsBezierPaths_property)
   //--- Atomic property: backPadArray
+    // self.backPadArray_property.configure (self.backPads_property.addEBObserverOf_x, self.backPads_property.addEBObserverOf_y, self.backPads_property.addEBObserverOf_width, self.backPads_property.addEBObserverOf_height, self.backPads_property.addEBObserverOf_shape, self.backPads_property.addEBObserverOf_rotation, transient_BoardModel_backPadArray)
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPads_property_selection.kind ()
@@ -2562,6 +2582,7 @@ class BoardModel : EBManagedObject,
     self.backPads_property.addEBObserverOf_shape (self.backPadArray_property)
     self.backPads_property.addEBObserverOf_rotation (self.backPadArray_property)
   //--- Atomic property: backPadsBezierPaths
+    // self.backPadsBezierPaths_property.configure (self.backPadArray_property, transient_BoardModel_backPadsBezierPaths)
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backPadArray_property_selection.kind ()
@@ -2584,6 +2605,7 @@ class BoardModel : EBManagedObject,
     }
     self.backPadArray_property.addEBObserver (self.backPadsBezierPaths_property)
   //--- Atomic property: boardLimits
+    // self.boardLimits_property.configure (self.modelWidth_property, self.modelHeight_property, self.modelLimitWidth_property, g_Preferences?.mergerModelViewDisplayBoardLimits_property, transient_BoardModel_boardLimits)
     self.boardLimits_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
@@ -2612,6 +2634,7 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
   //--- Atomic property: boardLimitsBezierPaths
+    // self.boardLimitsBezierPaths_property.configure (self.modelWidth_property, self.modelHeight_property, self.modelLimitWidth_property, transient_BoardModel_boardLimitsBezierPaths)
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
@@ -2638,6 +2661,7 @@ class BoardModel : EBManagedObject,
     self.modelHeight_property.addEBObserver (self.boardLimitsBezierPaths_property)
     self.modelLimitWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
   //--- Atomic property: backComponentNameSegments
+    // self.backComponentNameSegments_property.configure (self.backComponentNames_property.addEBObserverOf_x1, self.backComponentNames_property.addEBObserverOf_y1, self.backComponentNames_property.addEBObserverOf_x2, self.backComponentNames_property.addEBObserverOf_y2, self.backComponentNames_property.addEBObserverOf_width, transient_BoardModel_backComponentNameSegments)
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentNames_property_selection.kind ()
@@ -2668,6 +2692,7 @@ class BoardModel : EBManagedObject,
     self.backComponentNames_property.addEBObserverOf_y2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_width (self.backComponentNameSegments_property)
   //--- Atomic property: backComponentNamesBezierPaths
+    // self.backComponentNamesBezierPaths_property.configure (self.backComponentNameSegments_property, transient_BoardModel_backComponentNamesBezierPaths)
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backComponentNameSegments_property_selection.kind ()
@@ -2690,6 +2715,7 @@ class BoardModel : EBManagedObject,
     }
     self.backComponentNameSegments_property.addEBObserver (self.backComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentNameSegments
+    // self.frontComponentNameSegments_property.configure (self.frontComponentNames_property.addEBObserverOf_x1, self.frontComponentNames_property.addEBObserverOf_y1, self.frontComponentNames_property.addEBObserverOf_x2, self.frontComponentNames_property.addEBObserverOf_y2, self.frontComponentNames_property.addEBObserverOf_width, transient_BoardModel_frontComponentNameSegments)
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentNames_property_selection.kind ()
@@ -2720,6 +2746,7 @@ class BoardModel : EBManagedObject,
     self.frontComponentNames_property.addEBObserverOf_y2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_width (self.frontComponentNameSegments_property)
   //--- Atomic property: frontComponentNamesBezierPaths
+    // self.frontComponentNamesBezierPaths_property.configure (self.frontComponentNameSegments_property, transient_BoardModel_frontComponentNamesBezierPaths)
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontComponentNameSegments_property_selection.kind ()
@@ -2742,6 +2769,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentValueSegments
+    // self.frontComponentValueSegments_property.configure (self.frontComponentValues_property.addEBObserverOf_x1, self.frontComponentValues_property.addEBObserverOf_y1, self.frontComponentValues_property.addEBObserverOf_x2, self.frontComponentValues_property.addEBObserverOf_y2, self.frontComponentValues_property.addEBObserverOf_width, transient_BoardModel_frontComponentValueSegments)
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentValues_property_selection.kind ()
@@ -2772,6 +2800,7 @@ class BoardModel : EBManagedObject,
     self.frontComponentValues_property.addEBObserverOf_y2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_width (self.frontComponentValueSegments_property)
   //--- Atomic property: frontComponentValuesBezierPaths
+    // self.frontComponentValuesBezierPaths_property.configure (self.frontComponentValueSegments_property, transient_BoardModel_frontComponentValuesBezierPaths)
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontComponentValueSegments_property_selection.kind ()
@@ -2794,6 +2823,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValuesBezierPaths_property)
   //--- Atomic property: backComponentValueSegments
+    // self.backComponentValueSegments_property.configure (self.backComponentValues_property.addEBObserverOf_x1, self.backComponentValues_property.addEBObserverOf_y1, self.backComponentValues_property.addEBObserverOf_x2, self.backComponentValues_property.addEBObserverOf_y2, self.backComponentValues_property.addEBObserverOf_width, transient_BoardModel_backComponentValueSegments)
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentValues_property_selection.kind ()
@@ -2824,6 +2854,7 @@ class BoardModel : EBManagedObject,
     self.backComponentValues_property.addEBObserverOf_y2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_width (self.backComponentValueSegments_property)
   //--- Atomic property: backComponentValuesBezierPaths
+    // self.backComponentValuesBezierPaths_property.configure (self.backComponentValueSegments_property, transient_BoardModel_backComponentValuesBezierPaths)
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backComponentValueSegments_property_selection.kind ()
@@ -2846,6 +2877,7 @@ class BoardModel : EBManagedObject,
     }
     self.backComponentValueSegments_property.addEBObserver (self.backComponentValuesBezierPaths_property)
   //--- Atomic property: backTrackSegments
+    // self.backTrackSegments_property.configure (self.backTracks_property.addEBObserverOf_x1, self.backTracks_property.addEBObserverOf_y1, self.backTracks_property.addEBObserverOf_x2, self.backTracks_property.addEBObserverOf_y2, self.backTracks_property.addEBObserverOf_width, transient_BoardModel_backTrackSegments)
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backTracks_property_selection.kind ()
@@ -2876,6 +2908,7 @@ class BoardModel : EBManagedObject,
     self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
   //--- Atomic property: backTracksBezierPaths
+    // self.backTracksBezierPaths_property.configure (self.backTrackSegments_property, transient_BoardModel_backTracksBezierPaths)
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backTrackSegments_property_selection.kind ()
@@ -2898,6 +2931,7 @@ class BoardModel : EBManagedObject,
     }
     self.backTrackSegments_property.addEBObserver (self.backTracksBezierPaths_property)
   //--- Atomic property: frontTrackSegments
+    // self.frontTrackSegments_property.configure (self.frontTracks_property.addEBObserverOf_x1, self.frontTracks_property.addEBObserverOf_y1, self.frontTracks_property.addEBObserverOf_x2, self.frontTracks_property.addEBObserverOf_y2, self.frontTracks_property.addEBObserverOf_width, transient_BoardModel_frontTrackSegments)
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontTracks_property_selection.kind ()
@@ -2928,6 +2962,7 @@ class BoardModel : EBManagedObject,
     self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
   //--- Atomic property: frontTracksBezierPaths
+    // self.frontTracksBezierPaths_property.configure (self.frontTrackSegments_property, transient_BoardModel_frontTracksBezierPaths)
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontTrackSegments_property_selection.kind ()
@@ -2950,6 +2985,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
   //--- Atomic property: frontPackagesSegments
+    // self.frontPackagesSegments_property.configure (self.frontPackages_property.addEBObserverOf_x1, self.frontPackages_property.addEBObserverOf_y1, self.frontPackages_property.addEBObserverOf_x2, self.frontPackages_property.addEBObserverOf_y2, self.frontPackages_property.addEBObserverOf_width, transient_BoardModel_frontPackagesSegments)
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPackages_property_selection.kind ()
@@ -2980,6 +3016,7 @@ class BoardModel : EBManagedObject,
     self.frontPackages_property.addEBObserverOf_y2 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_width (self.frontPackagesSegments_property)
   //--- Atomic property: frontPackagesBezierPaths
+    // self.frontPackagesBezierPaths_property.configure (self.frontPackagesSegments_property, transient_BoardModel_frontPackagesBezierPaths)
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontPackagesSegments_property_selection.kind ()
@@ -3002,6 +3039,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontPackagesSegments_property.addEBObserver (self.frontPackagesBezierPaths_property)
   //--- Atomic property: backPackagesSegments
+    // self.backPackagesSegments_property.configure (self.backPackages_property.addEBObserverOf_x1, self.backPackages_property.addEBObserverOf_y1, self.backPackages_property.addEBObserverOf_x2, self.backPackages_property.addEBObserverOf_y2, self.backPackages_property.addEBObserverOf_width, transient_BoardModel_backPackagesSegments)
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPackages_property_selection.kind ()
@@ -3032,6 +3070,7 @@ class BoardModel : EBManagedObject,
     self.backPackages_property.addEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_width (self.backPackagesSegments_property)
   //--- Atomic property: backPackagesBezierPaths
+    // self.backPackagesBezierPaths_property.configure (self.backPackagesSegments_property, transient_BoardModel_backPackagesBezierPaths)
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backPackagesSegments_property_selection.kind ()
@@ -3054,6 +3093,7 @@ class BoardModel : EBManagedObject,
     }
     self.backPackagesSegments_property.addEBObserver (self.backPackagesBezierPaths_property)
   //--- Atomic property: instanceCount
+    // self.instanceCount_property.configure (self.myInstances_property, transient_BoardModel_instanceCount)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.myInstances_property.count_property_selection.kind ()
@@ -3076,6 +3116,7 @@ class BoardModel : EBManagedObject,
     }
     self.myInstances_property.addEBObserver (self.instanceCount_property)
   //--- Atomic property: frontLegendLinesBezierPaths
+    // self.frontLegendLinesBezierPaths_property.configure (self.frontLegendLinesSegments_property, transient_BoardModel_frontLegendLinesBezierPaths)
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLegendLinesSegments_property_selection.kind ()
@@ -3098,6 +3139,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesBezierPaths_property)
   //--- Atomic property: imageForModel
+    // self.imageForModel_property.configure (g_Preferences?.mergerColorBackground_property, self.modelWidth_property, self.modelHeight_property, self.boardLimitsBezierPaths_property, g_Preferences?.mergerModelViewDisplayBoardLimits_property, g_Preferences?.mergerColorBoardLimits_property, self.internalBoardsLimitsBezierPaths_property, g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property, g_Preferences?.mergerColorInternalBoardsLimits_property, self.frontTracksBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontTracks_property, g_Preferences?.mergerColorFrontTracks_property, self.backTracksBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackTracks_property, g_Preferences?.mergerColorBackTracks_property, self.frontPadsBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontPads_property, g_Preferences?.mergerColorFrontPads_property, self.backPadsBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackPads_property, g_Preferences?.mergerColorBackPads_property, self.viasBezierPaths_property, g_Preferences?.mergerModelViewDisplayVias_property, g_Preferences?.mergerColorVias_property, self.holesBezierPaths_property, g_Preferences?.mergerModelViewDisplayHoles_property, g_Preferences?.mergerColorHoles_property, self.frontLegendLinesBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontLegendLines_property, g_Preferences?.mergerColorFrontLegendLines_property, self.backLegendLinesBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackLegendLines_property, g_Preferences?.mergerColorBackLegendLines_property, self.frontLegendTextsBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property, g_Preferences?.mergerColorFrontLegendTexts_property, self.frontLayoutTextsBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property, g_Preferences?.mergerColorFrontLayoutTexts_property, self.backLegendTextsBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackLegendTexts_property, g_Preferences?.mergerColorBackLegendTexts_property, self.backLayoutTextsBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property, g_Preferences?.mergerColorBackLayoutTexts_property, self.backComponentNamesBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackComponentNames_property, g_Preferences?.mergerColorBackComponentNames_property, self.frontComponentNamesBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontComponentNames_property, g_Preferences?.mergerColorFrontComponentNames_property, self.frontComponentValuesBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontComponentValues_property, g_Preferences?.mergerColorFrontComponentValues_property, self.backComponentValuesBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackComponentValues_property, g_Preferences?.mergerColorBackComponentValues_property, self.frontPackagesBezierPaths_property, g_Preferences?.mergerModelViewDisplayFrontPackages_property, g_Preferences?.mergerColorFrontPackages_property, self.backPackagesBezierPaths_property, g_Preferences?.mergerModelViewDisplayBackPackages_property, g_Preferences?.mergerColorBackPackages_property, transient_BoardModel_imageForModel)
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
@@ -3244,6 +3286,7 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForModel_property)
   //--- Atomic property: imageForInstances
+    // self.imageForInstances_property.configure (g_Preferences?.mergerColorBackground_property, self.modelWidth_property, self.modelHeight_property, self.frontTracksBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontTracks_property, g_Preferences?.mergerColorFrontTracks_property, self.backTracksBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackTracks_property, g_Preferences?.mergerColorBackTracks_property, self.internalBoardsLimitsBezierPaths_property, self.boardLimitsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayInternalBoardsLimits_property, g_Preferences?.mergerColorInternalBoardsLimits_property, self.frontPadsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontPads_property, g_Preferences?.mergerColorFrontPads_property, self.backPadsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackPads_property, g_Preferences?.mergerColorBackPads_property, self.viasBezierPaths_property, g_Preferences?.mergerBoardViewDisplayVias_property, g_Preferences?.mergerColorVias_property, self.holesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayHoles_property, g_Preferences?.mergerColorHoles_property, self.frontLegendLinesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontLegendLines_property, g_Preferences?.mergerColorFrontLegendLines_property, self.backLegendLinesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackLegendLines_property, g_Preferences?.mergerColorBackLegendLines_property, self.frontLegendTextsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontLegendTexts_property, g_Preferences?.mergerColorFrontLegendTexts_property, self.frontLayoutTextsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontLayoutTexts_property, g_Preferences?.mergerColorFrontLayoutTexts_property, self.backLegendTextsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackLegendTexts_property, g_Preferences?.mergerColorBackLegendTexts_property, self.backLayoutTextsBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackLayoutTexts_property, g_Preferences?.mergerColorBackLayoutTexts_property, self.backComponentNamesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackComponentNames_property, g_Preferences?.mergerColorBackComponentNames_property, self.frontComponentNamesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontComponentNames_property, g_Preferences?.mergerColorFrontComponentNames_property, self.frontComponentValuesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontComponentValues_property, g_Preferences?.mergerColorFrontComponentValues_property, self.backComponentValuesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackComponentValues_property, g_Preferences?.mergerColorBackComponentValues_property, self.frontPackagesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayFrontPackages_property, g_Preferences?.mergerColorFrontPackages_property, self.backPackagesBezierPaths_property, g_Preferences?.mergerBoardViewDisplayBackPackages_property, g_Preferences?.mergerColorBackPackages_property, transient_BoardModel_imageForInstances)
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
@@ -3398,252 +3441,252 @@ class BoardModel : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.removeEBObserverOf_y2 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.removeEBObserverOf_width (self.frontLegendLinesSegments_property)
-    self.backLegendLines_property.removeEBObserverOf_x1 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.removeEBObserverOf_y1 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.removeEBObserverOf_x2 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.removeEBObserverOf_y2 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.removeEBObserverOf_width (self.backLegendLinesSegments_property)
-    self.backLegendLinesSegments_property.removeEBObserver (self.backLegendLinesBezierPaths_property)
-    self.frontLegendTexts_property.removeEBObserverOf_x1 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.removeEBObserverOf_y1 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.removeEBObserverOf_y2 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.removeEBObserverOf_width (self.frontLegendTextsSegments_property)
-    self.frontLegendTextsSegments_property.removeEBObserver (self.frontLegendTextsBezierPaths_property)
-    self.frontLayoutTexts_property.removeEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.removeEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.removeEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.removeEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.removeEBObserverOf_width (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTextsSegments_property.removeEBObserver (self.frontLayoutTextsBezierPaths_property)
-    self.backLegendTexts_property.removeEBObserverOf_x1 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.removeEBObserverOf_y1 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.removeEBObserverOf_x2 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.removeEBObserverOf_y2 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.removeEBObserverOf_width (self.backLegendTextsSegments_property)
-    self.backLegendTextsSegments_property.removeEBObserver (self.backLegendTextsBezierPaths_property)
-    self.backLayoutTexts_property.removeEBObserverOf_x1 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.removeEBObserverOf_y1 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.removeEBObserverOf_x2 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.removeEBObserverOf_y2 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.removeEBObserverOf_width (self.backLayoutTextsSegments_property)
-    self.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsBezierPaths_property)
-    self.internalBoardsLimits_property.removeEBObserverOf_x1 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.removeEBObserverOf_y1 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.removeEBObserverOf_x2 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.removeEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.removeEBObserverOf_width (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimitsSegments_property.removeEBObserver (self.internalBoardsLimitsBezierPaths_property)
-    self.drills_property.removeEBObserverOf_x1 (self.drillSegments_property)
-    self.drills_property.removeEBObserverOf_y1 (self.drillSegments_property)
-    self.drills_property.removeEBObserverOf_x2 (self.drillSegments_property)
-    self.drills_property.removeEBObserverOf_y2 (self.drillSegments_property)
-    self.drills_property.removeEBObserverOf_width (self.drillSegments_property)
-    self.drillSegments_property.removeEBObserver (self.holesBezierPaths_property)
-    self.vias_property.removeEBObserverOf_x (self.viaShapes_property)
-    self.vias_property.removeEBObserverOf_y (self.viaShapes_property)
-    self.vias_property.removeEBObserverOf_padDiameter (self.viaShapes_property)
-    self.viaShapes_property.removeEBObserver (self.viasBezierPaths_property)
-    self.frontPads_property.removeEBObserverOf_x (self.frontPadArray_property)
-    self.frontPads_property.removeEBObserverOf_y (self.frontPadArray_property)
-    self.frontPads_property.removeEBObserverOf_width (self.frontPadArray_property)
-    self.frontPads_property.removeEBObserverOf_height (self.frontPadArray_property)
-    self.frontPads_property.removeEBObserverOf_shape (self.frontPadArray_property)
-    self.frontPads_property.removeEBObserverOf_rotation (self.frontPadArray_property)
-    self.frontPadArray_property.removeEBObserver (self.frontPadsBezierPaths_property)
-    self.backPads_property.removeEBObserverOf_x (self.backPadArray_property)
-    self.backPads_property.removeEBObserverOf_y (self.backPadArray_property)
-    self.backPads_property.removeEBObserverOf_width (self.backPadArray_property)
-    self.backPads_property.removeEBObserverOf_height (self.backPadArray_property)
-    self.backPads_property.removeEBObserverOf_shape (self.backPadArray_property)
-    self.backPads_property.removeEBObserverOf_rotation (self.backPadArray_property)
-    self.backPadArray_property.removeEBObserver (self.backPadsBezierPaths_property)
-    self.modelWidth_property.removeEBObserver (self.boardLimits_property)
-    self.modelHeight_property.removeEBObserver (self.boardLimits_property)
-    self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
-    g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
-    self.modelWidth_property.removeEBObserver (self.boardLimitsBezierPaths_property)
-    self.modelHeight_property.removeEBObserver (self.boardLimitsBezierPaths_property)
-    self.modelLimitWidth_property.removeEBObserver (self.boardLimitsBezierPaths_property)
-    self.backComponentNames_property.removeEBObserverOf_x1 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.removeEBObserverOf_y1 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.removeEBObserverOf_x2 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.removeEBObserverOf_y2 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.removeEBObserverOf_width (self.backComponentNameSegments_property)
-    self.backComponentNameSegments_property.removeEBObserver (self.backComponentNamesBezierPaths_property)
-    self.frontComponentNames_property.removeEBObserverOf_x1 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.removeEBObserverOf_y1 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.removeEBObserverOf_x2 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.removeEBObserverOf_y2 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.removeEBObserverOf_width (self.frontComponentNameSegments_property)
-    self.frontComponentNameSegments_property.removeEBObserver (self.frontComponentNamesBezierPaths_property)
-    self.frontComponentValues_property.removeEBObserverOf_x1 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.removeEBObserverOf_y1 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.removeEBObserverOf_x2 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.removeEBObserverOf_y2 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.removeEBObserverOf_width (self.frontComponentValueSegments_property)
-    self.frontComponentValueSegments_property.removeEBObserver (self.frontComponentValuesBezierPaths_property)
-    self.backComponentValues_property.removeEBObserverOf_x1 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.removeEBObserverOf_y1 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.removeEBObserverOf_x2 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.removeEBObserverOf_y2 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.removeEBObserverOf_width (self.backComponentValueSegments_property)
-    self.backComponentValueSegments_property.removeEBObserver (self.backComponentValuesBezierPaths_property)
-    self.backTracks_property.removeEBObserverOf_x1 (self.backTrackSegments_property)
-    self.backTracks_property.removeEBObserverOf_y1 (self.backTrackSegments_property)
-    self.backTracks_property.removeEBObserverOf_x2 (self.backTrackSegments_property)
-    self.backTracks_property.removeEBObserverOf_y2 (self.backTrackSegments_property)
-    self.backTracks_property.removeEBObserverOf_width (self.backTrackSegments_property)
-    self.backTrackSegments_property.removeEBObserver (self.backTracksBezierPaths_property)
-    self.frontTracks_property.removeEBObserverOf_x1 (self.frontTrackSegments_property)
-    self.frontTracks_property.removeEBObserverOf_y1 (self.frontTrackSegments_property)
-    self.frontTracks_property.removeEBObserverOf_x2 (self.frontTrackSegments_property)
-    self.frontTracks_property.removeEBObserverOf_y2 (self.frontTrackSegments_property)
-    self.frontTracks_property.removeEBObserverOf_width (self.frontTrackSegments_property)
-    self.frontTrackSegments_property.removeEBObserver (self.frontTracksBezierPaths_property)
-    self.frontPackages_property.removeEBObserverOf_x1 (self.frontPackagesSegments_property)
-    self.frontPackages_property.removeEBObserverOf_y1 (self.frontPackagesSegments_property)
-    self.frontPackages_property.removeEBObserverOf_x2 (self.frontPackagesSegments_property)
-    self.frontPackages_property.removeEBObserverOf_y2 (self.frontPackagesSegments_property)
-    self.frontPackages_property.removeEBObserverOf_width (self.frontPackagesSegments_property)
-    self.frontPackagesSegments_property.removeEBObserver (self.frontPackagesBezierPaths_property)
-    self.backPackages_property.removeEBObserverOf_x1 (self.backPackagesSegments_property)
-    self.backPackages_property.removeEBObserverOf_y1 (self.backPackagesSegments_property)
-    self.backPackages_property.removeEBObserverOf_x2 (self.backPackagesSegments_property)
-    self.backPackages_property.removeEBObserverOf_y2 (self.backPackagesSegments_property)
-    self.backPackages_property.removeEBObserverOf_width (self.backPackagesSegments_property)
-    self.backPackagesSegments_property.removeEBObserver (self.backPackagesBezierPaths_property)
-    self.myInstances_property.removeEBObserver (self.instanceCount_property)
-    self.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesBezierPaths_property)
-    g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForModel_property)
-    self.modelWidth_property.removeEBObserver (self.imageForModel_property)
-    self.modelHeight_property.removeEBObserver (self.imageForModel_property)
-    self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.imageForModel_property)
-    self.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorInternalBoardsLimits_property.removeEBObserver (self.imageForModel_property)
-    self.frontTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForModel_property)
-    self.backTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackTracks_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForModel_property)
-    self.frontPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontPads_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForModel_property)
-    self.backPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackPads_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackPads_property.removeEBObserver (self.imageForModel_property)
-    self.viasBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayVias_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorVias_property.removeEBObserver (self.imageForModel_property)
-    self.holesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayHoles_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorHoles_property.removeEBObserver (self.imageForModel_property)
-    self.frontLegendLinesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontLegendLines_property.removeEBObserver (self.imageForModel_property)
-    self.backLegendLinesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackLegendLines_property.removeEBObserver (self.imageForModel_property)
-    self.frontLegendTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontLegendTexts_property.removeEBObserver (self.imageForModel_property)
-    self.frontLayoutTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontLayoutTexts_property.removeEBObserver (self.imageForModel_property)
-    self.backLegendTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackLegendTexts_property.removeEBObserver (self.imageForModel_property)
-    self.backLayoutTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackLayoutTexts_property.removeEBObserver (self.imageForModel_property)
-    self.backComponentNamesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackComponentNames_property.removeEBObserver (self.imageForModel_property)
-    self.frontComponentNamesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontComponentNames_property.removeEBObserver (self.imageForModel_property)
-    self.frontComponentValuesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontComponentValues_property.removeEBObserver (self.imageForModel_property)
-    self.backComponentValuesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackComponentValues_property.removeEBObserver (self.imageForModel_property)
-    self.frontPackagesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontPackages_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontPackages_property.removeEBObserver (self.imageForModel_property)
-    self.backPackagesBezierPaths_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackPackages_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForInstances_property)
-    self.modelWidth_property.removeEBObserver (self.imageForInstances_property)
-    self.modelHeight_property.removeEBObserver (self.imageForInstances_property)
-    self.frontTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontTracks_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForInstances_property)
-    self.backTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackTracks_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForInstances_property)
-    self.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayInternalBoardsLimits_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorInternalBoardsLimits_property.removeEBObserver (self.imageForInstances_property)
-    self.frontPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontPads_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForInstances_property)
-    self.backPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackPads_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackPads_property.removeEBObserver (self.imageForInstances_property)
-    self.viasBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayVias_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorVias_property.removeEBObserver (self.imageForInstances_property)
-    self.holesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayHoles_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorHoles_property.removeEBObserver (self.imageForInstances_property)
-    self.frontLegendLinesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontLegendLines_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontLegendLines_property.removeEBObserver (self.imageForInstances_property)
-    self.backLegendLinesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackLegendLines_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackLegendLines_property.removeEBObserver (self.imageForInstances_property)
-    self.frontLegendTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontLegendTexts_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontLegendTexts_property.removeEBObserver (self.imageForInstances_property)
-    self.frontLayoutTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
-    self.backLegendTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackLegendTexts_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackLegendTexts_property.removeEBObserver (self.imageForInstances_property)
-    self.backLayoutTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
-    self.backComponentNamesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackComponentNames_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackComponentNames_property.removeEBObserver (self.imageForInstances_property)
-    self.frontComponentNamesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontComponentNames_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontComponentNames_property.removeEBObserver (self.imageForInstances_property)
-    self.frontComponentValuesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontComponentValues_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontComponentValues_property.removeEBObserver (self.imageForInstances_property)
-    self.backComponentValuesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackComponentValues_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackComponentValues_property.removeEBObserver (self.imageForInstances_property)
-    self.frontPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayFrontPackages_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorFrontPackages_property.removeEBObserver (self.imageForInstances_property)
-    self.backPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayBackPackages_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
+    // self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
+    // self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
+    // self.frontLegendLines_property.removeEBObserverOf_y2 (self.frontLegendLinesSegments_property)
+    // self.frontLegendLines_property.removeEBObserverOf_width (self.frontLegendLinesSegments_property)
+    // self.backLegendLines_property.removeEBObserverOf_x1 (self.backLegendLinesSegments_property)
+    // self.backLegendLines_property.removeEBObserverOf_y1 (self.backLegendLinesSegments_property)
+    // self.backLegendLines_property.removeEBObserverOf_x2 (self.backLegendLinesSegments_property)
+    // self.backLegendLines_property.removeEBObserverOf_y2 (self.backLegendLinesSegments_property)
+    // self.backLegendLines_property.removeEBObserverOf_width (self.backLegendLinesSegments_property)
+    // self.backLegendLinesSegments_property.removeEBObserver (self.backLegendLinesBezierPaths_property)
+    // self.frontLegendTexts_property.removeEBObserverOf_x1 (self.frontLegendTextsSegments_property)
+    // self.frontLegendTexts_property.removeEBObserverOf_y1 (self.frontLegendTextsSegments_property)
+    // self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
+    // self.frontLegendTexts_property.removeEBObserverOf_y2 (self.frontLegendTextsSegments_property)
+    // self.frontLegendTexts_property.removeEBObserverOf_width (self.frontLegendTextsSegments_property)
+    // self.frontLegendTextsSegments_property.removeEBObserver (self.frontLegendTextsBezierPaths_property)
+    // self.frontLayoutTexts_property.removeEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
+    // self.frontLayoutTexts_property.removeEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
+    // self.frontLayoutTexts_property.removeEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
+    // self.frontLayoutTexts_property.removeEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
+    // self.frontLayoutTexts_property.removeEBObserverOf_width (self.frontLayoutTextsSegments_property)
+    // self.frontLayoutTextsSegments_property.removeEBObserver (self.frontLayoutTextsBezierPaths_property)
+    // self.backLegendTexts_property.removeEBObserverOf_x1 (self.backLegendTextsSegments_property)
+    // self.backLegendTexts_property.removeEBObserverOf_y1 (self.backLegendTextsSegments_property)
+    // self.backLegendTexts_property.removeEBObserverOf_x2 (self.backLegendTextsSegments_property)
+    // self.backLegendTexts_property.removeEBObserverOf_y2 (self.backLegendTextsSegments_property)
+    // self.backLegendTexts_property.removeEBObserverOf_width (self.backLegendTextsSegments_property)
+    // self.backLegendTextsSegments_property.removeEBObserver (self.backLegendTextsBezierPaths_property)
+    // self.backLayoutTexts_property.removeEBObserverOf_x1 (self.backLayoutTextsSegments_property)
+    // self.backLayoutTexts_property.removeEBObserverOf_y1 (self.backLayoutTextsSegments_property)
+    // self.backLayoutTexts_property.removeEBObserverOf_x2 (self.backLayoutTextsSegments_property)
+    // self.backLayoutTexts_property.removeEBObserverOf_y2 (self.backLayoutTextsSegments_property)
+    // self.backLayoutTexts_property.removeEBObserverOf_width (self.backLayoutTextsSegments_property)
+    // self.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsBezierPaths_property)
+    // self.internalBoardsLimits_property.removeEBObserverOf_x1 (self.internalBoardsLimitsSegments_property)
+    // self.internalBoardsLimits_property.removeEBObserverOf_y1 (self.internalBoardsLimitsSegments_property)
+    // self.internalBoardsLimits_property.removeEBObserverOf_x2 (self.internalBoardsLimitsSegments_property)
+    // self.internalBoardsLimits_property.removeEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
+    // self.internalBoardsLimits_property.removeEBObserverOf_width (self.internalBoardsLimitsSegments_property)
+    // self.internalBoardsLimitsSegments_property.removeEBObserver (self.internalBoardsLimitsBezierPaths_property)
+    // self.drills_property.removeEBObserverOf_x1 (self.drillSegments_property)
+    // self.drills_property.removeEBObserverOf_y1 (self.drillSegments_property)
+    // self.drills_property.removeEBObserverOf_x2 (self.drillSegments_property)
+    // self.drills_property.removeEBObserverOf_y2 (self.drillSegments_property)
+    // self.drills_property.removeEBObserverOf_width (self.drillSegments_property)
+    // self.drillSegments_property.removeEBObserver (self.holesBezierPaths_property)
+    // self.vias_property.removeEBObserverOf_x (self.viaShapes_property)
+    // self.vias_property.removeEBObserverOf_y (self.viaShapes_property)
+    // self.vias_property.removeEBObserverOf_padDiameter (self.viaShapes_property)
+    // self.viaShapes_property.removeEBObserver (self.viasBezierPaths_property)
+    // self.frontPads_property.removeEBObserverOf_x (self.frontPadArray_property)
+    // self.frontPads_property.removeEBObserverOf_y (self.frontPadArray_property)
+    // self.frontPads_property.removeEBObserverOf_width (self.frontPadArray_property)
+    // self.frontPads_property.removeEBObserverOf_height (self.frontPadArray_property)
+    // self.frontPads_property.removeEBObserverOf_shape (self.frontPadArray_property)
+    // self.frontPads_property.removeEBObserverOf_rotation (self.frontPadArray_property)
+    // self.frontPadArray_property.removeEBObserver (self.frontPadsBezierPaths_property)
+    // self.backPads_property.removeEBObserverOf_x (self.backPadArray_property)
+    // self.backPads_property.removeEBObserverOf_y (self.backPadArray_property)
+    // self.backPads_property.removeEBObserverOf_width (self.backPadArray_property)
+    // self.backPads_property.removeEBObserverOf_height (self.backPadArray_property)
+    // self.backPads_property.removeEBObserverOf_shape (self.backPadArray_property)
+    // self.backPads_property.removeEBObserverOf_rotation (self.backPadArray_property)
+    // self.backPadArray_property.removeEBObserver (self.backPadsBezierPaths_property)
+    // self.modelWidth_property.removeEBObserver (self.boardLimits_property)
+    // self.modelHeight_property.removeEBObserver (self.boardLimits_property)
+    // self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
+    // g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
+    // self.modelWidth_property.removeEBObserver (self.boardLimitsBezierPaths_property)
+    // self.modelHeight_property.removeEBObserver (self.boardLimitsBezierPaths_property)
+    // self.modelLimitWidth_property.removeEBObserver (self.boardLimitsBezierPaths_property)
+    // self.backComponentNames_property.removeEBObserverOf_x1 (self.backComponentNameSegments_property)
+    // self.backComponentNames_property.removeEBObserverOf_y1 (self.backComponentNameSegments_property)
+    // self.backComponentNames_property.removeEBObserverOf_x2 (self.backComponentNameSegments_property)
+    // self.backComponentNames_property.removeEBObserverOf_y2 (self.backComponentNameSegments_property)
+    // self.backComponentNames_property.removeEBObserverOf_width (self.backComponentNameSegments_property)
+    // self.backComponentNameSegments_property.removeEBObserver (self.backComponentNamesBezierPaths_property)
+    // self.frontComponentNames_property.removeEBObserverOf_x1 (self.frontComponentNameSegments_property)
+    // self.frontComponentNames_property.removeEBObserverOf_y1 (self.frontComponentNameSegments_property)
+    // self.frontComponentNames_property.removeEBObserverOf_x2 (self.frontComponentNameSegments_property)
+    // self.frontComponentNames_property.removeEBObserverOf_y2 (self.frontComponentNameSegments_property)
+    // self.frontComponentNames_property.removeEBObserverOf_width (self.frontComponentNameSegments_property)
+    // self.frontComponentNameSegments_property.removeEBObserver (self.frontComponentNamesBezierPaths_property)
+    // self.frontComponentValues_property.removeEBObserverOf_x1 (self.frontComponentValueSegments_property)
+    // self.frontComponentValues_property.removeEBObserverOf_y1 (self.frontComponentValueSegments_property)
+    // self.frontComponentValues_property.removeEBObserverOf_x2 (self.frontComponentValueSegments_property)
+    // self.frontComponentValues_property.removeEBObserverOf_y2 (self.frontComponentValueSegments_property)
+    // self.frontComponentValues_property.removeEBObserverOf_width (self.frontComponentValueSegments_property)
+    // self.frontComponentValueSegments_property.removeEBObserver (self.frontComponentValuesBezierPaths_property)
+    // self.backComponentValues_property.removeEBObserverOf_x1 (self.backComponentValueSegments_property)
+    // self.backComponentValues_property.removeEBObserverOf_y1 (self.backComponentValueSegments_property)
+    // self.backComponentValues_property.removeEBObserverOf_x2 (self.backComponentValueSegments_property)
+    // self.backComponentValues_property.removeEBObserverOf_y2 (self.backComponentValueSegments_property)
+    // self.backComponentValues_property.removeEBObserverOf_width (self.backComponentValueSegments_property)
+    // self.backComponentValueSegments_property.removeEBObserver (self.backComponentValuesBezierPaths_property)
+    // self.backTracks_property.removeEBObserverOf_x1 (self.backTrackSegments_property)
+    // self.backTracks_property.removeEBObserverOf_y1 (self.backTrackSegments_property)
+    // self.backTracks_property.removeEBObserverOf_x2 (self.backTrackSegments_property)
+    // self.backTracks_property.removeEBObserverOf_y2 (self.backTrackSegments_property)
+    // self.backTracks_property.removeEBObserverOf_width (self.backTrackSegments_property)
+    // self.backTrackSegments_property.removeEBObserver (self.backTracksBezierPaths_property)
+    // self.frontTracks_property.removeEBObserverOf_x1 (self.frontTrackSegments_property)
+    // self.frontTracks_property.removeEBObserverOf_y1 (self.frontTrackSegments_property)
+    // self.frontTracks_property.removeEBObserverOf_x2 (self.frontTrackSegments_property)
+    // self.frontTracks_property.removeEBObserverOf_y2 (self.frontTrackSegments_property)
+    // self.frontTracks_property.removeEBObserverOf_width (self.frontTrackSegments_property)
+    // self.frontTrackSegments_property.removeEBObserver (self.frontTracksBezierPaths_property)
+    // self.frontPackages_property.removeEBObserverOf_x1 (self.frontPackagesSegments_property)
+    // self.frontPackages_property.removeEBObserverOf_y1 (self.frontPackagesSegments_property)
+    // self.frontPackages_property.removeEBObserverOf_x2 (self.frontPackagesSegments_property)
+    // self.frontPackages_property.removeEBObserverOf_y2 (self.frontPackagesSegments_property)
+    // self.frontPackages_property.removeEBObserverOf_width (self.frontPackagesSegments_property)
+    // self.frontPackagesSegments_property.removeEBObserver (self.frontPackagesBezierPaths_property)
+    // self.backPackages_property.removeEBObserverOf_x1 (self.backPackagesSegments_property)
+    // self.backPackages_property.removeEBObserverOf_y1 (self.backPackagesSegments_property)
+    // self.backPackages_property.removeEBObserverOf_x2 (self.backPackagesSegments_property)
+    // self.backPackages_property.removeEBObserverOf_y2 (self.backPackagesSegments_property)
+    // self.backPackages_property.removeEBObserverOf_width (self.backPackagesSegments_property)
+    // self.backPackagesSegments_property.removeEBObserver (self.backPackagesBezierPaths_property)
+    // self.myInstances_property.removeEBObserver (self.instanceCount_property)
+    // self.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesBezierPaths_property)
+    // g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForModel_property)
+    // self.modelWidth_property.removeEBObserver (self.imageForModel_property)
+    // self.modelHeight_property.removeEBObserver (self.imageForModel_property)
+    // self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.imageForModel_property)
+    // self.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorInternalBoardsLimits_property.removeEBObserver (self.imageForModel_property)
+    // self.frontTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForModel_property)
+    // self.backTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackTracks_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForModel_property)
+    // self.frontPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontPads_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForModel_property)
+    // self.backPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackPads_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackPads_property.removeEBObserver (self.imageForModel_property)
+    // self.viasBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayVias_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorVias_property.removeEBObserver (self.imageForModel_property)
+    // self.holesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayHoles_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorHoles_property.removeEBObserver (self.imageForModel_property)
+    // self.frontLegendLinesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontLegendLines_property.removeEBObserver (self.imageForModel_property)
+    // self.backLegendLinesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackLegendLines_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackLegendLines_property.removeEBObserver (self.imageForModel_property)
+    // self.frontLegendTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    // self.frontLayoutTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    // self.backLegendTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    // self.backLayoutTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    // self.backComponentNamesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackComponentNames_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackComponentNames_property.removeEBObserver (self.imageForModel_property)
+    // self.frontComponentNamesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontComponentNames_property.removeEBObserver (self.imageForModel_property)
+    // self.frontComponentValuesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontComponentValues_property.removeEBObserver (self.imageForModel_property)
+    // self.backComponentValuesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackComponentValues_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackComponentValues_property.removeEBObserver (self.imageForModel_property)
+    // self.frontPackagesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayFrontPackages_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorFrontPackages_property.removeEBObserver (self.imageForModel_property)
+    // self.backPackagesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerModelViewDisplayBackPackages_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForModel_property)
+    // g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForInstances_property)
+    // self.modelWidth_property.removeEBObserver (self.imageForInstances_property)
+    // self.modelHeight_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontTracks_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForInstances_property)
+    // self.backTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackTracks_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForInstances_property)
+    // self.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayInternalBoardsLimits_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorInternalBoardsLimits_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontPads_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForInstances_property)
+    // self.backPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackPads_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackPads_property.removeEBObserver (self.imageForInstances_property)
+    // self.viasBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayVias_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorVias_property.removeEBObserver (self.imageForInstances_property)
+    // self.holesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayHoles_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorHoles_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontLegendLinesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontLegendLines_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontLegendLines_property.removeEBObserver (self.imageForInstances_property)
+    // self.backLegendLinesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackLegendLines_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackLegendLines_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontLegendTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontLegendTexts_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontLegendTexts_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontLayoutTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
+    // self.backLegendTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackLegendTexts_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackLegendTexts_property.removeEBObserver (self.imageForInstances_property)
+    // self.backLayoutTextsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackLayoutTexts_property.removeEBObserver (self.imageForInstances_property)
+    // self.backComponentNamesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackComponentNames_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackComponentNames_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontComponentNamesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontComponentNames_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontComponentNames_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontComponentValuesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontComponentValues_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontComponentValues_property.removeEBObserver (self.imageForInstances_property)
+    // self.backComponentValuesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackComponentValues_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackComponentValues_property.removeEBObserver (self.imageForInstances_property)
+    // self.frontPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayFrontPackages_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorFrontPackages_property.removeEBObserver (self.imageForInstances_property)
+    // self.backPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerBoardViewDisplayBackPackages_property.removeEBObserver (self.imageForInstances_property)
+    // g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForInstances_property)
   //--- Unregister properties for handling signature
   }
 

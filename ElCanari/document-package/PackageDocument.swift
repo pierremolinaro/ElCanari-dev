@@ -834,6 +834,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: statusMessage
+    // self.statusMessage_property.configure (self.rootObject.issues_property, transient_PackageDocument_statusMessage)
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -860,6 +861,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: metadataStatus
+    // self.metadataStatus_property.configure (self.rootObject.issues_property, transient_PackageDocument_metadataStatus)
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -886,6 +888,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: statusImage
+    // self.statusImage_property.configure (self.rootObject.issues_property, transient_PackageDocument_statusImage)
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -1639,9 +1642,9 @@ import Cocoa
     self.mModelImageObjectsController.unbind_model ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
-    self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
-    self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
-    self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
+    // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
     self.mSetDimensionTextOriginAtMidX?.target = nil
     self.mSetDimensionTextOriginAtMidY?.target = nil

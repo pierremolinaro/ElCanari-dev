@@ -371,6 +371,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: descriptor
+    // self.descriptor_property.configure (self.mName_property, self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.addEBObserverOf_descriptor, transient_DeviceMasterPadInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mName_property_selection.kind ()
@@ -419,16 +420,16 @@ class DeviceMasterPadInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mName_property.removeEBObserver (self.descriptor_property)
-    self.mCenterX_property.removeEBObserver (self.descriptor_property)
-    self.mCenterY_property.removeEBObserver (self.descriptor_property)
-    self.mWidth_property.removeEBObserver (self.descriptor_property)
-    self.mHeight_property.removeEBObserver (self.descriptor_property)
-    self.mHoleWidth_property.removeEBObserver (self.descriptor_property)
-    self.mHoleHeight_property.removeEBObserver (self.descriptor_property)
-    self.mShape_property.removeEBObserver (self.descriptor_property)
-    self.mStyle_property.removeEBObserver (self.descriptor_property)
-    self.mSlavePads_property.removeEBObserverOf_descriptor (self.descriptor_property)
+    // self.mName_property.removeEBObserver (self.descriptor_property)
+    // self.mCenterX_property.removeEBObserver (self.descriptor_property)
+    // self.mCenterY_property.removeEBObserver (self.descriptor_property)
+    // self.mWidth_property.removeEBObserver (self.descriptor_property)
+    // self.mHeight_property.removeEBObserver (self.descriptor_property)
+    // self.mHoleWidth_property.removeEBObserver (self.descriptor_property)
+    // self.mHoleHeight_property.removeEBObserver (self.descriptor_property)
+    // self.mShape_property.removeEBObserver (self.descriptor_property)
+    // self.mStyle_property.removeEBObserver (self.descriptor_property)
+    // self.mSlavePads_property.removeEBObserverOf_descriptor (self.descriptor_property)
   //--- Unregister properties for handling signature
   }
 

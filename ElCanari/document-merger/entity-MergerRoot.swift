@@ -1457,6 +1457,7 @@ class MergerRoot : EBManagedObject,
     }
     self.mArtwork_property.addEBObserverOf_comments (self.comments_property)
   //--- Atomic property: modelNames
+    // self.modelNames_property.configure (self.boardModels_property.addEBObserverOf_name, self.boardModels_property, transient_MergerRoot_modelNames)
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardModels_property_selection.kind ()
@@ -1481,6 +1482,7 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
     self.boardModels_property.addEBObserver (self.modelNames_property)
   //--- Atomic property: boardRect
+    // self.boardRect_property.configure (self.automaticBoardSize_property, self.boardManualWidth_property, self.boardManualHeight_property, self.boardInstances_property.addEBObserverOf_instanceRect, transient_MergerRoot_boardRect)
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.automaticBoardSize_property_selection.kind ()
@@ -1509,6 +1511,7 @@ class MergerRoot : EBManagedObject,
     self.boardManualHeight_property.addEBObserver (self.boardRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
   //--- Atomic property: boardDisplayRect
+    // self.boardDisplayRect_property.configure (self.boardManualWidth_property, self.boardManualHeight_property, self.boardInstances_property.addEBObserverOf_instanceRect, transient_MergerRoot_boardDisplayRect)
     self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardManualWidth_property_selection.kind ()
@@ -1535,6 +1538,7 @@ class MergerRoot : EBManagedObject,
     self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
   //--- Atomic property: boardWidth
+    // self.boardWidth_property.configure (self.boardRect_property, transient_MergerRoot_boardWidth)
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardRect_property_selection.kind ()
@@ -1557,6 +1561,7 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardWidth_property)
   //--- Atomic property: boardHeight
+    // self.boardHeight_property.configure (self.boardRect_property, transient_MergerRoot_boardHeight)
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardRect_property_selection.kind ()
@@ -1581,6 +1586,7 @@ class MergerRoot : EBManagedObject,
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardOutlineRectDisplay
+    // self.boardOutlineRectDisplay_property.configure (self.boardRect_property, self.boardLimitWidth_property, g_Preferences?.mergerBoardViewDisplayBoardLimits_property, g_Preferences?.mergerColorBoardLimits_property, transient_MergerRoot_boardOutlineRectDisplay)
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardRect_property_selection.kind ()
@@ -1675,21 +1681,21 @@ class MergerRoot : EBManagedObject,
     self.comments_property.mWriteModelFunction = nil
     self.comments_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.removeEBObserverOf_comments (self.comments_property)
-    self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
-    self.boardModels_property.removeEBObserver (self.modelNames_property)
-    self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
-    self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
-    self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
-    self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
-    self.boardManualWidth_property.removeEBObserver (self.boardDisplayRect_property)
-    self.boardManualHeight_property.removeEBObserver (self.boardDisplayRect_property)
-    self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
-    self.boardRect_property.removeEBObserver (self.boardWidth_property)
-    self.boardRect_property.removeEBObserver (self.boardHeight_property)
-    self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
-    self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    // self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
+    // self.boardModels_property.removeEBObserver (self.modelNames_property)
+    // self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
+    // self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
+    // self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
+    // self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
+    // self.boardManualWidth_property.removeEBObserver (self.boardDisplayRect_property)
+    // self.boardManualHeight_property.removeEBObserver (self.boardDisplayRect_property)
+    // self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
+    // self.boardRect_property.removeEBObserver (self.boardWidth_property)
+    // self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    // self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    // self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    // g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    // g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
   //--- Unregister properties for handling signature
   }
 

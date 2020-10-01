@@ -317,6 +317,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mGeneratedFileCountString
+    // self.mGeneratedFileCountString_property.configure (self.mDataController.sortedArray_property.count_property, transient_ArtworkDocument_mGeneratedFileCountString)
     self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
@@ -343,6 +344,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
+    // self.mStatusImage_property.configure (self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension, self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name, transient_ArtworkDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -371,6 +373,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
+    // self.mStatusMessage_property.configure (self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension, self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name, transient_ArtworkDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -578,11 +581,11 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    self.mDataController.sortedArray_property.count_property.removeEBObserver (self.mGeneratedFileCountString_property)
-    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusMessage_property)
+    // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.mGeneratedFileCountString_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusMessage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusMessage_property)
   //--------------------------- Remove targets / actions
     self.mAddGenerationFileButton?.target = nil
     self.mRemoveGenerationFileButton?.target = nil

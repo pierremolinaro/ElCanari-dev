@@ -1807,6 +1807,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: netCount
+    // self.netCount_property.configure (self.rootObject.netsDescription_property, transient_ProjectDocument_netCount)
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
@@ -1833,6 +1834,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetDisplayComponentNet
+    // self.rastnetDisplayComponentNet_property.configure (self.rootObject.mRastnetDisplay_property, transient_ProjectDocument_rastnetDisplayComponentNet)
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -1863,6 +1865,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: componentCount
+    // self.componentCount_property.configure (self.rootObject.mComponents_property.count_property, transient_ProjectDocument_componentCount)
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
@@ -1889,6 +1892,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveNetClasses
+    // self.canRemoveNetClasses_property.configure (self.rootObject.mNetClasses_property.count_property, self.netClassController.selectedArray_property.addEBObserverOf_canRemove, transient_ProjectDocument_canRemoveNetClasses)
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
@@ -1917,6 +1921,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDevicePackageNames
+    // self.selectedDevicePackageNames_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames, transient_ProjectDocument_selectedDevicePackageNames)
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1943,6 +1948,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDeviceSymbols
+    // self.selectedDeviceSymbols_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_deviceSymbolDictionary, transient_ProjectDocument_selectedDeviceSymbols)
     self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1969,6 +1975,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDeviceSymbolNames
+    // self.selectedDeviceSymbolNames_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames, transient_ProjectDocument_selectedDeviceSymbolNames)
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1995,6 +2002,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: pinPadAssignments
+    // self.pinPadAssignments_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments, transient_ProjectDocument_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2021,6 +2029,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: schematicSheetOrientationIsCustom
+    // self.schematicSheetOrientationIsCustom_property.configure (self.rootObject.mSchematicSheetOrientation_property, transient_ProjectDocument_schematicSheetOrientationIsCustom)
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mSchematicSheetOrientation_property_selection.kind ()
@@ -2047,6 +2056,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: netCountString
+    // self.netCountString_property.configure (self.rootObject.netsDescription_property, transient_ProjectDocument_netCountString)
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
@@ -2073,6 +2083,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetShape
+    // self.rastnetShape_property.configure (self.rootObject.mRastnetDisplay_property, self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation, self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName, transient_ProjectDocument_rastnetShape)
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -2107,6 +2118,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetDisplayOneNet
+    // self.rastnetDisplayOneNet_property.configure (self.rootObject.mRastnetDisplay_property, transient_ProjectDocument_rastnetDisplayOneNet)
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -2133,6 +2145,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: artworlImportButtonTitle
+    // self.artworlImportButtonTitle_property.configure (self.rootObject.mArtwork_property, transient_ProjectDocument_artworlImportButtonTitle)
     self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mArtwork_none_selection.kind ()
@@ -2159,6 +2172,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: documentFilePathOk
+    // self.documentFilePathOk_property.configure (self.documentFilePath_property, transient_ProjectDocument_documentFilePathOk)
     self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -2185,6 +2199,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveSelectedFonts
+    // self.canRemoveSelectedFonts_property.configure (self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont, transient_ProjectDocument_canRemoveSelectedFonts)
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectFontController.selectedArray_property_selection.kind ()
@@ -2211,6 +2226,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveSelectedDevices
+    // self.canRemoveSelectedDevices_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove, transient_ProjectDocument_canRemoveSelectedDevices)
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2237,6 +2253,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedSymbolsCount
+    // self.unplacedSymbolsCount_property.configure (self.rootObject.unplacedSymbols_property, transient_ProjectDocument_unplacedSymbolsCount)
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unplacedSymbols_property_selection.kind ()
@@ -2263,6 +2280,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedSymbolsCountString
+    // self.unplacedSymbolsCountString_property.configure (self.unplacedSymbolsCount_property, transient_ProjectDocument_unplacedSymbolsCountString)
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.unplacedSymbolsCount_property_selection.kind ()
@@ -2289,6 +2307,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedPackageCount
+    // self.unplacedPackageCount_property.configure (self.rootObject.unplacedPackages_property, transient_ProjectDocument_unplacedPackageCount)
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unplacedPackages_property_selection.kind ()
@@ -2315,6 +2334,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedPackagesCountString
+    // self.unplacedPackagesCountString_property.configure (self.unplacedPackageCount_property, transient_ProjectDocument_unplacedPackagesCountString)
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.unplacedPackageCount_property_selection.kind ()
@@ -2341,6 +2361,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: overDisplay
+    // self.overDisplay_property.configure (self.rastnetShape_property, self.rootObject.boardIssues_property, transient_ProjectDocument_overDisplay)
     self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rastnetShape_property_selection.kind ()
@@ -2369,6 +2390,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canChangePackage
+    // self.canChangePackage_property.configure (self.componentController.selectedArray_property.addEBObserverOf_availablePackages, transient_ProjectDocument_canChangePackage)
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.componentController.selectedArray_property_selection.kind ()
@@ -3822,34 +3844,34 @@ import Cocoa
     self.componentController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
-    self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
-    self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
-    self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
-    self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
-    self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
-    self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
-    self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
-    self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
-    self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
-    self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
-    self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
-    self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-    self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
-    self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
-    self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
-    self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
-    self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
-    self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
-    self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
-    self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
-    self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
-    self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
-    self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
-    self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
+    // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+    // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
+    // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    // self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
+    // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
+    // self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
+    // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
+    // self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
+    // self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
+    // self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
+    // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
+    // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
+    // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mDuplicateSelectedComponentsActionButton?.target = nil

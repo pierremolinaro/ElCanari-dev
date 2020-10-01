@@ -437,6 +437,7 @@ class ArtworkRoot : EBManagedObject,
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking
+    // self.signatureForERCChecking_property.configure (self.minPPTPTTTW_property, self.minValueForOARinEBUnit_property, self.minValueForBoardLimitWidth_property, self.minValueForPHDinEBUnit_property, transient_ArtworkRoot_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.minPPTPTTTW_property_selection.kind ()
@@ -480,10 +481,10 @@ class ArtworkRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.minPPTPTTTW_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.minValueForOARinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.minValueForBoardLimitWidth_property.removeEBObserver (self.signatureForERCChecking_property)
-    self.minValueForPHDinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.minPPTPTTTW_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.minValueForOARinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.minValueForBoardLimitWidth_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.minValueForPHDinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
     self.comments_property.setSignatureObserver (observer: nil)
     self.drillDataFileExtension_property.setSignatureObserver (observer: nil)

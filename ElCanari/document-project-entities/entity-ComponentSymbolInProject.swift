@@ -669,6 +669,7 @@ class ComponentSymbolInProject : SchematicObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
     )
   //--- Atomic property: componentName
+    // self.componentName_property.configure (self.mComponent_property.addEBObserverOf_componentName, transient_ComponentSymbolInProject_componentName)
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.componentName_property_selection.kind ()
@@ -691,6 +692,7 @@ class ComponentSymbolInProject : SchematicObject,
     }
     self.mComponent_property.addEBObserverOf_componentName (self.componentName_property)
   //--- Atomic property: deviceName
+    // self.deviceName_property.configure (self.mComponent_property.addEBObserverOf_deviceName, transient_ComponentSymbolInProject_deviceName)
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.deviceName_property_selection.kind ()
@@ -713,6 +715,7 @@ class ComponentSymbolInProject : SchematicObject,
     }
     self.mComponent_property.addEBObserverOf_deviceName (self.deviceName_property)
   //--- Atomic property: symbolInfo
+    // self.symbolInfo_property.configure (self.mRotation_property, self.mMirror_property, self.componentName_property, self.mComponent_property.addEBObserverOf_mComponentValue, self.mComponent_property.addEBObserverOf_deviceSymbolDictionary, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, self.mCenterX_property, self.mCenterY_property, g_Preferences?.pinNameFont_property, self.mPoints_property.addEBObserverOf_symbolNameNetName, transient_ComponentSymbolInProject_symbolInfo)
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mRotation_property_selection.kind ()
@@ -755,6 +758,7 @@ class ComponentSymbolInProject : SchematicObject,
     g_Preferences?.pinNameFont_property.addEBObserver (self.symbolInfo_property)
     self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
   //--- Atomic property: pinPadAssignments
+    // self.pinPadAssignments_property.configure (self.mComponent_property.addEBObserverOf_pinPadAssignments, transient_ComponentSymbolInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.pinPadAssignments_property_selection.kind ()
@@ -777,6 +781,7 @@ class ComponentSymbolInProject : SchematicObject,
     }
     self.mComponent_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- Atomic property: objectDisplay
+    // self.objectDisplay_property.configure (g_Preferences?.pinNameFont_property, self.mDisplayComponentNameOffsetX_property, self.mDisplayComponentNameOffsetY_property, self.mDisplayComponentValue_property, self.mDisplayComponentValueOffsetX_property, self.mDisplayComponentValueOffsetY_property, self.symbolInfo_property, g_Preferences?.symbolColorForSchematic_property, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, transient_ComponentSymbolInProject_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.pinNameFont_property_selection.kind ()
@@ -817,6 +822,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property)
     self.mSymbolTypeName_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
+    // self.selectionDisplay_property.configure (g_Preferences?.pinNameFont_property, g_Preferences?.schematicBackColor_property, self.mDisplayComponentNameOffsetX_property, self.mDisplayComponentNameOffsetY_property, self.mDisplayComponentValue_property, self.mDisplayComponentValueOffsetX_property, self.mDisplayComponentValueOffsetY_property, self.symbolInfo_property, self.mRotation_property, transient_ComponentSymbolInProject_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.pinNameFont_property_selection.kind ()
@@ -855,6 +861,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
     self.mRotation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: symbolInSchematic
+    // self.symbolInSchematic_property.configure (self.isPlacedInSchematic_property, transient_ComponentSymbolInProject_symbolInSchematic)
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.isPlacedInSchematic_property_selection.kind ()
@@ -894,40 +901,40 @@ class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mWriteModelFunction = nil
     self.componentValueProxy_property.mValidateAndWriteModelFunction = nil
     self.mComponent_property.removeEBObserverOf_mComponentValue (self.componentValueProxy_property)
-    self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
-    self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
-    self.mRotation_property.removeEBObserver (self.symbolInfo_property)
-    self.mMirror_property.removeEBObserver (self.symbolInfo_property)
-    self.componentName_property.removeEBObserver (self.symbolInfo_property)
-    self.mComponent_property.removeEBObserverOf_mComponentValue (self.symbolInfo_property)
-    self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
-    self.mSymbolInstanceName_property.removeEBObserver (self.symbolInfo_property)
-    self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
-    self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
-    self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.symbolInfo_property)
-    self.mPoints_property.removeEBObserverOf_symbolNameNetName (self.symbolInfo_property)
-    self.mComponent_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
-    self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
-    self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)
-    self.mDisplayComponentValue_property.removeEBObserver (self.objectDisplay_property)
-    self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.objectDisplay_property)
-    self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.objectDisplay_property)
-    self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
-    self.mSymbolInstanceName_property.removeEBObserver (self.objectDisplay_property)
-    self.mSymbolTypeName_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.schematicBackColor_property.removeEBObserver (self.selectionDisplay_property)
-    self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.selectionDisplay_property)
-    self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.selectionDisplay_property)
-    self.mDisplayComponentValue_property.removeEBObserver (self.selectionDisplay_property)
-    self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.selectionDisplay_property)
-    self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
-    self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
-    self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
-    self.isPlacedInSchematic_property.removeEBObserver (self.symbolInSchematic_property)
+    // self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
+    // self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
+    // self.mRotation_property.removeEBObserver (self.symbolInfo_property)
+    // self.mMirror_property.removeEBObserver (self.symbolInfo_property)
+    // self.componentName_property.removeEBObserver (self.symbolInfo_property)
+    // self.mComponent_property.removeEBObserverOf_mComponentValue (self.symbolInfo_property)
+    // self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
+    // self.mSymbolInstanceName_property.removeEBObserver (self.symbolInfo_property)
+    // self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
+    // self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
+    // self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.symbolInfo_property)
+    // self.mPoints_property.removeEBObserverOf_symbolNameNetName (self.symbolInfo_property)
+    // self.mComponent_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
+    // self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)
+    // self.mDisplayComponentValue_property.removeEBObserver (self.objectDisplay_property)
+    // self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.objectDisplay_property)
+    // self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.objectDisplay_property)
+    // self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // self.mSymbolInstanceName_property.removeEBObserver (self.objectDisplay_property)
+    // self.mSymbolTypeName_property.removeEBObserver (self.objectDisplay_property)
+    // g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    // g_Preferences?.schematicBackColor_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mDisplayComponentValue_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
+    // self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
+    // self.isPlacedInSchematic_property.removeEBObserver (self.symbolInSchematic_property)
   //--- Unregister properties for handling signature
   }
 
