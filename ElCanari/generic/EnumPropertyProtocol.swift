@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EnumPropertyProtocol : ValuePropertyProtocol, EBEnumProtocol {
+protocol EnumPropertyProtocol : EBPropertyProtocol, EBEnumProtocol {
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -5,28 +5,31 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension UInt32 : ValuePropertyProtocol
+//    extension Date : EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension UInt32 : ValuePropertyProtocol {
+extension Date : EBPropertyProtocol {
 
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    return self
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    return (data as Data).ebHashValue ()
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    return NSNumber (value: self)
+    return self as NSObject
   }
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> UInt32 {
-    let number = object as! NSNumber
-    return number.uint32Value
+  static func convertFromNSObject (object : NSObject) -> Date {
+    return (object as? Date) ?? Date ()
   }
 
   //····················································································································

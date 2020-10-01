@@ -5,36 +5,33 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension String : ValuePropertyProtocol
+//    extension Double : EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension String : ValuePropertyProtocol {
+extension Double : EBPropertyProtocol {
 
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let possibleData = self.data (using: String.Encoding.utf8)
-    if let data = possibleData {
-      return data.ebHashValue ()
-    }else{
-      return 0
-    }
+    var value = self.bitPattern.bigEndian
+    let array = withUnsafeBytes (of: &value) { Array($0) }
+    return array.ebHashValue ()
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    return self as NSObject
+    return NSNumber (value: self)
   }
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> String {
-    return object as! String
+  static func convertFromNSObject (object : NSObject) -> Double {
+    let number = object as! NSNumber
+    return number.doubleValue
   }
 
   //····················································································································
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------

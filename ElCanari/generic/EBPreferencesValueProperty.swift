@@ -8,7 +8,7 @@ import Cocoa
 //   EBPreferencesValueProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EBPreferencesValueProperty <T : ValuePropertyProtocol> : EBStoredValueProperty <T> {
+final class EBPreferencesValueProperty <T : EBPropertyProtocol> : EBStoredValueProperty <T> {
 
   //····················································································································
 

@@ -5,15 +5,15 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension Double : ValuePropertyProtocol
+//    extension Int : EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension Double : ValuePropertyProtocol {
+extension Int : EBPropertyProtocol {
 
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    var value = self.bitPattern.bigEndian
+    var value = self.bigEndian
     let array = withUnsafeBytes (of: &value) { Array($0) }
     return array.ebHashValue ()
   }
@@ -26,12 +26,27 @@ extension Double : ValuePropertyProtocol {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> Double {
+  static func convertFromNSObject (object : NSObject) -> Int {
     let number = object as! NSNumber
-    return number.doubleValue
+    return number.intValue
   }
 
   //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extension Data {
+
+  //····················································································································
+
+  mutating func append (ascii inValue : ASCII) {
+    self.append (inValue.rawValue)
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

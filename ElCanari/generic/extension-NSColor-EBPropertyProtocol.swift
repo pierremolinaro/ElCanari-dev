@@ -5,63 +5,63 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBTransientClassProperty <T>
+//    extension NSColor : EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> where T : Equatable {
-  private var mValueCache : EBSelection <T>? = nil
-  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
+extension NSColor : EBPropertyProtocol {
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
-    didSet {
-      if let valueCache = self.mValueCache {
-        self.mValueExplorer?.stringValue = "\(valueCache)"
-      }else{
-        self.mValueExplorer?.stringValue = "nil"
-      }
-    }
+  final func ebHashValue () -> UInt32 {
+    let s = self.archiveToString ()
+    return s.ebHashValue ()
   }
 
   //····················································································································
 
-  private var mMutex = DispatchSemaphore (value: 1)
-
-  override var prop : EBSelection <T> {
-    self.mMutex.wait ()
-    if self.mValueCache == nil {
-      self.mValueCache = self.mReadModelFunction? ()
-      if self.mValueCache == nil {
-        self.mValueCache = .empty
-      }
-      self.mValueExplorer?.stringValue = "\(mValueCache!)"
-    }
-    self.mMutex.signal ()
-    return self.mValueCache!
+  func convertToNSObject () -> NSObject {
+    let s = self.archiveToString ()
+    return s as NSString
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mValueCache != nil {
-      self.mValueCache = nil
-      self.mValueExplorer?.stringValue = "nil"
-      if logEvents () {
-        let className = String (describing:type(of: self))
-        appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      let className = String (describing:type(of: self))
-      appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
+  static func convertFromNSObject (object : NSObject) -> Self {
+    let string = object as! String
+    return Self.unarchiveFromString (string: string) as! Self
   }
 
   //····················································································································
 
-  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
-    inOperationQueue.addOperation { _ = self.prop }
+  func archiveToString () -> String {
+    let rgbColor = self.usingColorSpaceName (.calibratedRGB)!
+    let red = rgbColor.redComponent
+    let green = rgbColor.greenComponent
+    let blue = rgbColor.blueComponent
+    let alpha = rgbColor.alphaComponent
+    let s = "\(red) \(green) \(blue) \(alpha)"
+    return s
+  }
+
+  //····················································································································
+
+  static func unarchiveFromData (data : Data) -> NSObject? {
+    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSColor
+  }
+
+  //····················································································································
+
+  static func unarchiveFromString (string : String) -> NSObject? {
+    let scanner = Scanner (string: string)
+    var red = 0.0
+    _ = scanner.scanDouble (&red)
+    var green = 0.0
+    _ = scanner.scanDouble (&green)
+    var blue = 0.0
+    _ = scanner.scanDouble (&blue)
+    var alpha = 0.0
+    _ = scanner.scanDouble (&alpha)
+    return NSColor (calibratedRed: CGFloat (red), green: CGFloat (green), blue: CGFloat (blue), alpha: CGFloat (alpha))
   }
 
   //····················································································································

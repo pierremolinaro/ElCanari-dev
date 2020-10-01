@@ -5,13 +5,14 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBReadOnlyClassProperty <T>
+//   Protocol EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBReadOnlyClassProperty <T> : EBAbstractProperty where T : Equatable {
-
-  var prop : EBSelection <T> { return .empty } // Abstract method
-
+protocol EBPropertyProtocol : Equatable {
+  func ebHashValue () -> UInt32
+  func convertToNSObject () -> NSObject
+  static func convertFromNSObject (object : NSObject) -> Self
+  func appendPropertyValueTo (_ ioData : inout Data)
 }
 
 //----------------------------------------------------------------------------------------------------------------------

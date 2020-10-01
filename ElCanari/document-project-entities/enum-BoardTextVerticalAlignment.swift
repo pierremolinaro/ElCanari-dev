@@ -60,7 +60,7 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
   }
 
   //····················································································································
-  //  ValuePropertyProtocol
+  //  EBPropertyProtocol
   //····················································································································
 
   func ebHashValue () -> UInt32 {

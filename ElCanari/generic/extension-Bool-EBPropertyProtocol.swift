@@ -5,35 +5,46 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension Date : ValuePropertyProtocol
+//    extension Bool : EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension Date : ValuePropertyProtocol {
+extension Bool : EBPropertyProtocol {
 
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let data = NSMutableData ()
-    let archiver = NSKeyedArchiver (forWritingWith: data)
-    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-    archiver.finishEncoding ()
-    return (data as Data).ebHashValue ()
+    var crc : UInt32 = 0
+    crc.accumulateUInt8 (self ? 1 : 0)
+    return crc
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    return self as NSObject
+    return NSNumber (value: self)
   }
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> Date {
-    return (object as? Date) ?? Date ()
+  static func convertFromNSObject (object : NSObject) -> Bool {
+    let number = object as! NSNumber
+    return number.boolValue
   }
 
   //····················································································································
 
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+public func < (left : Bool, right : Bool) -> Bool {
+  return !left && right
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+public func > (left : Bool, right : Bool) -> Bool {
+  return left && !right
 }
 
 //----------------------------------------------------------------------------------------------------------------------

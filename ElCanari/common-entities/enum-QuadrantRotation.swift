@@ -60,7 +60,7 @@ enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   }
 
   //····················································································································
-  //  ValuePropertyProtocol
+  //  EBPropertyProtocol
   //····················································································································
 
   func ebHashValue () -> UInt32 {

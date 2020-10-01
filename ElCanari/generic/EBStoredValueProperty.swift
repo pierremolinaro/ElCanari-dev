@@ -8,7 +8,7 @@ import Cocoa
 //   EBStoredValueProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
+class EBStoredValueProperty <T : EBPropertyProtocol> : EBReadWriteValueProperty <T> {
 
   //····················································································································
 

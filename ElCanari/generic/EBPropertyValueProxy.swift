@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBPropertyValueProxy <T : ValuePropertyProtocol>
+//   EBPropertyValueProxy <T : EBPropertyProtocol>
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
+final class EBPropertyValueProxy <T : EBPropertyProtocol> : EBReadWriteValueProperty <T> {
 
   //····················································································································
 

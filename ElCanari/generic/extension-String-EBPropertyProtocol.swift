@@ -5,46 +5,36 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension Bool : ValuePropertyProtocol
+//    extension String : EBPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension Bool : ValuePropertyProtocol {
+extension String : EBPropertyProtocol {
 
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    var crc : UInt32 = 0
-    crc.accumulateUInt8 (self ? 1 : 0)
-    return crc
+    let possibleData = self.data (using: String.Encoding.utf8)
+    if let data = possibleData {
+      return data.ebHashValue ()
+    }else{
+      return 0
+    }
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    return NSNumber (value: self)
+    return self as NSObject
   }
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> Bool {
-    let number = object as! NSNumber
-    return number.boolValue
+  static func convertFromNSObject (object : NSObject) -> String {
+    return object as! String
   }
 
   //····················································································································
 
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-public func < (left : Bool, right : Bool) -> Bool {
-  return !left && right
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-public func > (left : Bool, right : Bool) -> Bool {
-  return left && !right
 }
 
 //----------------------------------------------------------------------------------------------------------------------
