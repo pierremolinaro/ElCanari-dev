@@ -1420,7 +1420,7 @@ class ComponentInProject : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
     )
   //--- Atomic property: deviceName
-    // self.deviceName_property.configure (self.mDevice_property.addEBObserverOf_mDeviceName, transient_ComponentInProject_deviceName)
+    // self.deviceName_property.configure (self.mDevice_property.mDeviceName_property, transient_ComponentInProject_deviceName)
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDevice_property.mDeviceName_property_selection.kind ()
@@ -1441,11 +1441,11 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_mDeviceName (self.deviceName_property)
+    self.mDevice_property.mDeviceName_property.addEBObserver (self.deviceName_property)
   //--- To one property: mSelectedPackage
     self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
-    // self.packagePadDictionary_property.configure (self.mSelectedPackage_property.addEBObserverOf_packagePadDictionary, transient_ComponentInProject_packagePadDictionary)
+    // self.packagePadDictionary_property.configure (self.mSelectedPackage_property.packagePadDictionary_property, transient_ComponentInProject_packagePadDictionary)
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSelectedPackage_property.packagePadDictionary_property_selection.kind ()
@@ -1466,9 +1466,9 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSelectedPackage_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
+    self.mSelectedPackage_property.packagePadDictionary_property.addEBObserver (self.packagePadDictionary_property)
   //--- Atomic property: selectedPackageName
-    // self.selectedPackageName_property.configure (self.mSelectedPackage_property.addEBObserverOf_mPackageName, transient_ComponentInProject_selectedPackageName)
+    // self.selectedPackageName_property.configure (self.mSelectedPackage_property.mPackageName_property, transient_ComponentInProject_selectedPackageName)
     self.selectedPackageName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSelectedPackage_property.mPackageName_property_selection.kind ()
@@ -1489,9 +1489,9 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSelectedPackage_property.addEBObserverOf_mPackageName (self.selectedPackageName_property)
+    self.mSelectedPackage_property.mPackageName_property.addEBObserver (self.selectedPackageName_property)
   //--- Atomic property: availablePackages
-    // self.availablePackages_property.configure (self.mDevice_property.addEBObserverOf_packageNames, transient_ComponentInProject_availablePackages)
+    // self.availablePackages_property.configure (self.mDevice_property.packageNames_property, transient_ComponentInProject_availablePackages)
     self.availablePackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDevice_property.packageNames_property_selection.kind ()
@@ -1512,9 +1512,9 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
+    self.mDevice_property.packageNames_property.addEBObserver (self.availablePackages_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.mConnectors_property.addEBObserverOf_issues, transient_ComponentInProject_issues)
+    // self.issues_property.configure (self.mConnectors_property.issues_property, transient_ComponentInProject_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mConnectors_property_selection.kind ()
@@ -1583,7 +1583,7 @@ class ComponentInProject : BoardObject,
     }
     self.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoardString_property)
   //--- Atomic property: strokeBezierPath
-    // self.strokeBezierPath_property.configure (self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath, transient_ComponentInProject_strokeBezierPath)
+    // self.strokeBezierPath_property.configure (self.mSelectedPackage_property.mStrokeBezierPath_property, transient_ComponentInProject_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSelectedPackage_property.mStrokeBezierPath_property_selection.kind ()
@@ -1604,7 +1604,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    self.mSelectedPackage_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
   //--- To one property: mNameFont (has opposite to many relationship: mComponentNames)
     self.mNameFont_property.ebUndoManager = self.ebUndoManager
     self.mNameFont_property.setOppositeRelationShipFunctions (
@@ -1618,7 +1618,7 @@ class ComponentInProject : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.remove (me) } }
     )
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.mDevice_property.addEBObserverOf_pinPadAssignments, transient_ComponentInProject_pinPadAssignments)
+    // self.pinPadAssignments_property.configure (self.mDevice_property.pinPadAssignments_property, transient_ComponentInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDevice_property.pinPadAssignments_property_selection.kind ()
@@ -1639,9 +1639,9 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.mDevice_property.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property)
   //--- Atomic property: placementInSchematic
-    // self.placementInSchematic_property.configure (self.mSymbols_property.addEBObserverOf_symbolInSchematic, transient_ComponentInProject_placementInSchematic)
+    // self.placementInSchematic_property.configure (self.mSymbols_property.symbolInSchematic_property, transient_ComponentInProject_placementInSchematic)
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
@@ -1664,7 +1664,7 @@ class ComponentInProject : BoardObject,
     }
     self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
   //--- Atomic property: deviceSymbolDictionary
-    // self.deviceSymbolDictionary_property.configure (self.mDevice_property.addEBObserverOf_deviceSymbolDictionary, transient_ComponentInProject_deviceSymbolDictionary)
+    // self.deviceSymbolDictionary_property.configure (self.mDevice_property.deviceSymbolDictionary_property, transient_ComponentInProject_deviceSymbolDictionary)
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDevice_property.deviceSymbolDictionary_property_selection.kind ()
@@ -1685,9 +1685,9 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
+    self.mDevice_property.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property)
   //--- Atomic property: componentNameFontName
-    // self.componentNameFontName_property.configure (self.mNameFont_property.addEBObserverOf_mFontName, transient_ComponentInProject_componentNameFontName)
+    // self.componentNameFontName_property.configure (self.mNameFont_property.mFontName_property, transient_ComponentInProject_componentNameFontName)
     self.componentNameFontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNameFont_property.mFontName_property_selection.kind ()
@@ -1708,9 +1708,9 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mNameFont_property.addEBObserverOf_mFontName (self.componentNameFontName_property)
+    self.mNameFont_property.mFontName_property.addEBObserver (self.componentNameFontName_property)
   //--- Atomic property: componentValueFontName
-    // self.componentValueFontName_property.configure (self.mValueFont_property.addEBObserverOf_mFontName, transient_ComponentInProject_componentValueFontName)
+    // self.componentValueFontName_property.configure (self.mValueFont_property.mFontName_property, transient_ComponentInProject_componentValueFontName)
     self.componentValueFontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mValueFont_property.mFontName_property_selection.kind ()
@@ -1731,7 +1731,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mValueFont_property.addEBObserverOf_mFontName (self.componentValueFontName_property)
+    self.mValueFont_property.mFontName_property.addEBObserver (self.componentValueFontName_property)
   //--- Atomic property: componentPadDictionary
     // self.componentPadDictionary_property.configure (self.mX_property, self.mY_property, self.mRotation_property, self.mSide_property, self.packagePadDictionary_property, transient_ComponentInProject_componentPadDictionary)
     self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
@@ -1764,7 +1764,7 @@ class ComponentInProject : BoardObject,
     self.mSide_property.addEBObserver (self.componentPadDictionary_property)
     self.packagePadDictionary_property.addEBObserver (self.componentPadDictionary_property)
   //--- Atomic property: padNetDictionary
-    // self.padNetDictionary_property.configure (self.mSymbols_property.addEBObserverOf_symbolInfo, transient_ComponentInProject_padNetDictionary)
+    // self.padNetDictionary_property.configure (self.mSymbols_property.symbolInfo_property, transient_ComponentInProject_padNetDictionary)
     self.padNetDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
@@ -1812,7 +1812,7 @@ class ComponentInProject : BoardObject,
     self.mNamePrefix_property.addEBObserver (self.componentName_property)
     self.mNameIndex_property.addEBObserver (self.componentName_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mRotation_property, self.mSide_property, self.strokeBezierPath_property, self.mDisplayLegend_property, self.mNameIsVisibleInBoard_property, self.mXName_property, self.mYName_property, self.mNameFont_property.addEBObserverOf_descriptor, self.mNameFontSize_property, self.mNameRotation_property, self.componentName_property, self.packagePadDictionary_property, self.padNetDictionary_property, self.mValueIsVisibleInBoard_property, self.mXValue_property, self.mYValue_property, self.mValueFont_property.addEBObserverOf_descriptor, self.mValueFontSize_property, self.mValueRotation_property, self.mComponentValue_property, prefs_hiliteWidthMultipliedByTen_property, prefs_mShowRotationKnobInBoard_property, transient_ComponentInProject_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mRotation_property, self.mSide_property, self.strokeBezierPath_property, self.mDisplayLegend_property, self.mNameIsVisibleInBoard_property, self.mXName_property, self.mYName_property, self.mNameFont_property.descriptor_property, self.mNameFontSize_property, self.mNameRotation_property, self.componentName_property, self.packagePadDictionary_property, self.padNetDictionary_property, self.mValueIsVisibleInBoard_property, self.mXValue_property, self.mYValue_property, self.mValueFont_property.descriptor_property, self.mValueFontSize_property, self.mValueRotation_property, self.mComponentValue_property, prefs_hiliteWidthMultipliedByTen_property, prefs_mShowRotationKnobInBoard_property, transient_ComponentInProject_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -1865,7 +1865,7 @@ class ComponentInProject : BoardObject,
     self.mNameIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mXName_property.addEBObserver (self.selectionDisplay_property)
     self.mYName_property.addEBObserver (self.selectionDisplay_property)
-    self.mNameFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mNameFont_property.descriptor_property.addEBObserver (self.selectionDisplay_property)
     self.mNameFontSize_property.addEBObserver (self.selectionDisplay_property)
     self.mNameRotation_property.addEBObserver (self.selectionDisplay_property)
     self.componentName_property.addEBObserver (self.selectionDisplay_property)
@@ -1874,14 +1874,14 @@ class ComponentInProject : BoardObject,
     self.mValueIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mXValue_property.addEBObserver (self.selectionDisplay_property)
     self.mYValue_property.addEBObserver (self.selectionDisplay_property)
-    self.mValueFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mValueFont_property.descriptor_property.addEBObserver (self.selectionDisplay_property)
     self.mValueFontSize_property.addEBObserver (self.selectionDisplay_property)
     self.mValueRotation_property.addEBObserver (self.selectionDisplay_property)
     self.mComponentValue_property.addEBObserver (self.selectionDisplay_property)
     prefs_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     prefs_mShowRotationKnobInBoard_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: unplacedSymbols
-    // self.unplacedSymbols_property.configure (self.componentName_property, self.mSymbols_property, self.mSymbols_property.addEBObserverOf_symbolInSchematic, self.mSymbols_property.addEBObserverOf_mSymbolInstanceName, self.mSymbols_property.addEBObserverOf_mSymbolTypeName, self.mComponentValue_property, transient_ComponentInProject_unplacedSymbols)
+    // self.unplacedSymbols_property.configure (self.componentName_property, self.mSymbols_property, self.mSymbols_property.symbolInSchematic_property, self.mSymbols_property.mSymbolInstanceName_property, self.mSymbols_property.mSymbolTypeName_property, self.mComponentValue_property, transient_ComponentInProject_unplacedSymbols)
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.componentName_property_selection.kind ()
@@ -1914,7 +1914,7 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
     self.mComponentValue_property.addEBObserver (self.unplacedSymbols_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mRotation_property, self.mSide_property, self.packagePadDictionary_property, self.padNetDictionary_property, self.strokeBezierPath_property, self.mDisplayLegend_property, prefs_frontSideLegendColorForBoard_property, prefs_backSideLegendColorForBoard_property, prefs_packageDrawingWidthMultpliedByTenForBoard_property, prefs_frontSidePadColorForBoard_property, prefs_displayFrontPadsForBoard_property, prefs_backSidePadColorForBoard_property, prefs_displayBackPadsForBoard_property, prefs_displayFrontLegendForBoard_property, prefs_displayBackLegendForBoard_property, prefs_padNumberFontForBoard_property, prefs_padNumberColorForBoard_property, prefs_displayPadNumbersForBoard_property, self.mNameIsVisibleInBoard_property, self.mXName_property, self.mYName_property, self.mNameFont_property.addEBObserverOf_descriptor, self.mNameFontSize_property, self.mNameRotation_property, self.componentName_property, self.mValueIsVisibleInBoard_property, self.mXValue_property, self.mYValue_property, self.mValueFont_property.addEBObserverOf_descriptor, self.mValueFontSize_property, self.mValueRotation_property, self.mComponentValue_property, self.mDevice_property.addEBObserverOf_pinPadAssignments, transient_ComponentInProject_objectDisplay)
+    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mRotation_property, self.mSide_property, self.packagePadDictionary_property, self.padNetDictionary_property, self.strokeBezierPath_property, self.mDisplayLegend_property, prefs_frontSideLegendColorForBoard_property, prefs_backSideLegendColorForBoard_property, prefs_packageDrawingWidthMultpliedByTenForBoard_property, prefs_frontSidePadColorForBoard_property, prefs_displayFrontPadsForBoard_property, prefs_backSidePadColorForBoard_property, prefs_displayBackPadsForBoard_property, prefs_displayFrontLegendForBoard_property, prefs_displayBackLegendForBoard_property, prefs_padNumberFontForBoard_property, prefs_padNumberColorForBoard_property, prefs_displayPadNumbersForBoard_property, self.mNameIsVisibleInBoard_property, self.mXName_property, self.mYName_property, self.mNameFont_property.descriptor_property, self.mNameFontSize_property, self.mNameRotation_property, self.componentName_property, self.mValueIsVisibleInBoard_property, self.mXValue_property, self.mYValue_property, self.mValueFont_property.descriptor_property, self.mValueFontSize_property, self.mValueRotation_property, self.mComponentValue_property, self.mDevice_property.pinPadAssignments_property, transient_ComponentInProject_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -1992,18 +1992,18 @@ class ComponentInProject : BoardObject,
     self.mNameIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property)
     self.mXName_property.addEBObserver (self.objectDisplay_property)
     self.mYName_property.addEBObserver (self.objectDisplay_property)
-    self.mNameFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mNameFont_property.descriptor_property.addEBObserver (self.objectDisplay_property)
     self.mNameFontSize_property.addEBObserver (self.objectDisplay_property)
     self.mNameRotation_property.addEBObserver (self.objectDisplay_property)
     self.componentName_property.addEBObserver (self.objectDisplay_property)
     self.mValueIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property)
     self.mXValue_property.addEBObserver (self.objectDisplay_property)
     self.mYValue_property.addEBObserver (self.objectDisplay_property)
-    self.mValueFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mValueFont_property.descriptor_property.addEBObserver (self.objectDisplay_property)
     self.mValueFontSize_property.addEBObserver (self.objectDisplay_property)
     self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
     self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
-    self.mDevice_property.addEBObserverOf_pinPadAssignments (self.objectDisplay_property)
+    self.mDevice_property.pinPadAssignments_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -2027,19 +2027,19 @@ class ComponentInProject : BoardObject,
     self.mPackages_property.setModel (nil)
     self.mPackages_modelDidChangeController?.unregister ()
     self.mPackages_modelDidChangeController = nil
-    // self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
-    // self.mSelectedPackage_property.removeEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
-    // self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
-    // self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
+    // self.mDevice_property.mDeviceName_property.removeEBObserver (self.deviceName_property)
+    // self.mSelectedPackage_property.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property)
+    // self.mSelectedPackage_property.mPackageName_property.removeEBObserver (self.selectedPackageName_property)
+    // self.mDevice_property.packageNames_property.removeEBObserver (self.availablePackages_property)
     // self.mConnectors_property.removeEBObserverOf_issues (self.issues_property)
     // self.isPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property)
     // self.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoardString_property)
-    // self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
-    // self.mDevice_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    // self.mSelectedPackage_property.mStrokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property)
+    // self.mDevice_property.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property)
     // self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
-    // self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
-    // self.mNameFont_property.removeEBObserverOf_mFontName (self.componentNameFontName_property)
-    // self.mValueFont_property.removeEBObserverOf_mFontName (self.componentValueFontName_property)
+    // self.mDevice_property.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property)
+    // self.mNameFont_property.mFontName_property.removeEBObserver (self.componentNameFontName_property)
+    // self.mValueFont_property.mFontName_property.removeEBObserver (self.componentValueFontName_property)
     // self.mX_property.removeEBObserver (self.componentPadDictionary_property)
     // self.mY_property.removeEBObserver (self.componentPadDictionary_property)
     // self.mRotation_property.removeEBObserver (self.componentPadDictionary_property)
@@ -2057,7 +2057,7 @@ class ComponentInProject : BoardObject,
     // self.mNameIsVisibleInBoard_property.removeEBObserver (self.selectionDisplay_property)
     // self.mXName_property.removeEBObserver (self.selectionDisplay_property)
     // self.mYName_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mNameFont_property.removeEBObserverOf_descriptor (self.selectionDisplay_property)
+    // self.mNameFont_property.descriptor_property.removeEBObserver (self.selectionDisplay_property)
     // self.mNameFontSize_property.removeEBObserver (self.selectionDisplay_property)
     // self.mNameRotation_property.removeEBObserver (self.selectionDisplay_property)
     // self.componentName_property.removeEBObserver (self.selectionDisplay_property)
@@ -2066,7 +2066,7 @@ class ComponentInProject : BoardObject,
     // self.mValueIsVisibleInBoard_property.removeEBObserver (self.selectionDisplay_property)
     // self.mXValue_property.removeEBObserver (self.selectionDisplay_property)
     // self.mYValue_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mValueFont_property.removeEBObserverOf_descriptor (self.selectionDisplay_property)
+    // self.mValueFont_property.descriptor_property.removeEBObserver (self.selectionDisplay_property)
     // self.mValueFontSize_property.removeEBObserver (self.selectionDisplay_property)
     // self.mValueRotation_property.removeEBObserver (self.selectionDisplay_property)
     // self.mComponentValue_property.removeEBObserver (self.selectionDisplay_property)
@@ -2101,18 +2101,18 @@ class ComponentInProject : BoardObject,
     // self.mNameIsVisibleInBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.mXName_property.removeEBObserver (self.objectDisplay_property)
     // self.mYName_property.removeEBObserver (self.objectDisplay_property)
-    // self.mNameFont_property.removeEBObserverOf_descriptor (self.objectDisplay_property)
+    // self.mNameFont_property.descriptor_property.removeEBObserver (self.objectDisplay_property)
     // self.mNameFontSize_property.removeEBObserver (self.objectDisplay_property)
     // self.mNameRotation_property.removeEBObserver (self.objectDisplay_property)
     // self.componentName_property.removeEBObserver (self.objectDisplay_property)
     // self.mValueIsVisibleInBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.mXValue_property.removeEBObserver (self.objectDisplay_property)
     // self.mYValue_property.removeEBObserver (self.objectDisplay_property)
-    // self.mValueFont_property.removeEBObserverOf_descriptor (self.objectDisplay_property)
+    // self.mValueFont_property.descriptor_property.removeEBObserver (self.objectDisplay_property)
     // self.mValueFontSize_property.removeEBObserver (self.objectDisplay_property)
     // self.mValueRotation_property.removeEBObserver (self.objectDisplay_property)
     // self.mComponentValue_property.removeEBObserver (self.objectDisplay_property)
-    // self.mDevice_property.removeEBObserverOf_pinPadAssignments (self.objectDisplay_property)
+    // self.mDevice_property.pinPadAssignments_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
   }
 

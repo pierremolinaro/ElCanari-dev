@@ -950,7 +950,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.mImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
-    // self.inconsistentPackagePadNameSetsMessage_property.configure (self.mPackages_property.addEBObserverOf_padNameSet, self.mPackages_property.addEBObserverOf_mName, transient_DeviceRoot_inconsistentPackagePadNameSetsMessage)
+    // self.inconsistentPackagePadNameSetsMessage_property.configure (self.mPackages_property.padNameSet_property, self.mPackages_property.mName_property, transient_DeviceRoot_inconsistentPackagePadNameSetsMessage)
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPackages_property_selection.kind ()
@@ -975,7 +975,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.addEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.addEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
   //--- Atomic property: inconsistentSymbolNameSetMessage
-    // self.inconsistentSymbolNameSetMessage_property.configure (self.mSymbolInstances_property.addEBObserverOf_symbolQualifiedName, transient_DeviceRoot_inconsistentSymbolNameSetMessage)
+    // self.inconsistentSymbolNameSetMessage_property.configure (self.mSymbolInstances_property.symbolQualifiedName_property, transient_DeviceRoot_inconsistentSymbolNameSetMessage)
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbolInstances_property_selection.kind ()
@@ -998,7 +998,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.mSymbolInstances_property.addEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
   //--- Atomic property: unconnectedPins
-    // self.unconnectedPins_property.configure (self.mSymbolInstances_property.addEBObserverOf_unconnectedPins, transient_DeviceRoot_unconnectedPins)
+    // self.unconnectedPins_property.configure (self.mSymbolInstances_property.unconnectedPins_property, transient_DeviceRoot_unconnectedPins)
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbolInstances_property_selection.kind ()
@@ -1021,7 +1021,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
-    // self.packagePadNameSetsAreConsistent_property.configure (self.mPackages_property.addEBObserverOf_padNameSet, transient_DeviceRoot_packagePadNameSetsAreConsistent)
+    // self.packagePadNameSetsAreConsistent_property.configure (self.mPackages_property.padNameSet_property, transient_DeviceRoot_packagePadNameSetsAreConsistent)
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPackages_property_selection.kind ()
@@ -1067,7 +1067,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.symbolNameAreConsistent_property)
   //--- Atomic property: symbolTypeNames
-    // self.symbolTypeNames_property.configure (self.mSymbolTypes_property.addEBObserverOf_mTypeName, transient_DeviceRoot_symbolTypeNames)
+    // self.symbolTypeNames_property.configure (self.mSymbolTypes_property.mTypeName_property, transient_DeviceRoot_symbolTypeNames)
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbolTypes_property_selection.kind ()
@@ -1090,7 +1090,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.symbolTypeNames_property)
   //--- Atomic property: unconnectedPads
-    // self.unconnectedPads_property.configure (self.mPadProxies_property.addEBObserverOf_mPadName, self.mPadProxies_property.addEBObserverOf_isConnected, transient_DeviceRoot_unconnectedPads)
+    // self.unconnectedPads_property.configure (self.mPadProxies_property.mPadName_property, self.mPadProxies_property.isConnected_property, transient_DeviceRoot_unconnectedPads)
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadProxies_property_selection.kind ()
@@ -1115,7 +1115,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPadProxies_property.addEBObserverOf_mPadName (self.unconnectedPads_property)
     self.mPadProxies_property.addEBObserverOf_isConnected (self.unconnectedPads_property)
   //--- Atomic property: assignedPadProxies
-    // self.assignedPadProxies_property.configure (self.mPadProxies_property.addEBObserverOf_mPadName, self.mPadProxies_property.addEBObserverOf_symbolName, self.mPadProxies_property.addEBObserverOf_mPinInstanceName, self.mPadProxies_property.addEBObserverOf_isConnected, transient_DeviceRoot_assignedPadProxies)
+    // self.assignedPadProxies_property.configure (self.mPadProxies_property.mPadName_property, self.mPadProxies_property.symbolName_property, self.mPadProxies_property.mPinInstanceName_property, self.mPadProxies_property.isConnected_property, transient_DeviceRoot_assignedPadProxies)
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadProxies_property_selection.kind ()
@@ -1144,7 +1144,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPadProxies_property.addEBObserverOf_mPinInstanceName (self.assignedPadProxies_property)
     self.mPadProxies_property.addEBObserverOf_isConnected (self.assignedPadProxies_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.mTitle_property, self.mPrefix_property, self.inconsistentPackagePadNameSetsMessage_property, self.inconsistentSymbolNameSetMessage_property, self.unconnectedPins_property, self.unconnectedPads_property, self.mPackages_property.addEBObserverOf_mVersion, self.mPackages_property.addEBObserverOf_mName, self.mSymbolTypes_property.addEBObserverOf_mVersion, self.mSymbolTypes_property.addEBObserverOf_mTypeName, self.mSymbolTypes_property.addEBObserverOf_instanceCount, transient_DeviceRoot_issues)
+    // self.issues_property.configure (self.mTitle_property, self.mPrefix_property, self.inconsistentPackagePadNameSetsMessage_property, self.inconsistentSymbolNameSetMessage_property, self.unconnectedPins_property, self.unconnectedPads_property, self.mPackages_property.mVersion_property, self.mPackages_property.mName_property, self.mSymbolTypes_property.mVersion_property, self.mSymbolTypes_property.mTypeName_property, self.mSymbolTypes_property.instanceCount_property, transient_DeviceRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTitle_property_selection.kind ()

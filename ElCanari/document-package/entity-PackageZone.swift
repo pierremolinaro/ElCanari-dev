@@ -796,7 +796,7 @@ class PackageZone : PackageObject,
     prefs_padZoneColor_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: forbiddenPadArray
-    // self.forbiddenPadArray_property.configure (self.forbiddenPadNumbers_property.addEBObserverOf_padNumber, transient_PackageZone_forbiddenPadArray)
+    // self.forbiddenPadArray_property.configure (self.forbiddenPadNumbers_property.padNumber_property, transient_PackageZone_forbiddenPadArray)
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.forbiddenPadNumbers_property_selection.kind ()

@@ -296,7 +296,7 @@ class FontCharacter : EBManagedObject,
   //--- To many property: segments (no option)
     self.segments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: segmentArrayForDrawing
-    // self.segmentArrayForDrawing_property.configure (self.segments_property.addEBObserverOf_x1, self.segments_property.addEBObserverOf_y1, self.segments_property.addEBObserverOf_x2, self.segments_property.addEBObserverOf_y2, transient_FontCharacter_segmentArrayForDrawing)
+    // self.segmentArrayForDrawing_property.configure (self.segments_property.x1_property, self.segments_property.y1_property, self.segments_property.x2_property, self.segments_property.y2_property, transient_FontCharacter_segmentArrayForDrawing)
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.segments_property_selection.kind ()

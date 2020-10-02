@@ -15,866 +15,262 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolBezierCurve?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    inOldValue?.cpx1_property.removeEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
-    inOldValue?.cpy1_property.removeEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
-    inOldValue?.cpx2_property.removeEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
-    inOldValue?.cpy2_property.removeEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
-    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
-    inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.y1_property.removeEBObserver (self.y1_property) // Stored property
+    inOldValue?.x2_property.removeEBObserver (self.x2_property) // Stored property
+    inOldValue?.y2_property.removeEBObserver (self.y2_property) // Stored property
+    inOldValue?.cpx1_property.removeEBObserver (self.cpx1_property) // Stored property
+    inOldValue?.cpy1_property.removeEBObserver (self.cpy1_property) // Stored property
+    inOldValue?.cpx2_property.removeEBObserver (self.cpx2_property) // Stored property
+    inOldValue?.cpy2_property.removeEBObserver (self.cpy2_property) // Stored property
+    inOldValue?.x1_property.removeEBObserver (self.x1_property) // Stored property
+    inOldValue?.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+    inOldValue?.issues_property.removeEBObserver (self.issues_property) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    self.mInternalValue?.cpx1_property.addEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
-    self.mInternalValue?.cpy1_property.addEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
-    self.mInternalValue?.cpx2_property.addEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
-    self.mInternalValue?.cpy2_property.addEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
-    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
-    self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.y1_property.addEBObserver (self.y1_property) // Stored property
+    self.mInternalValue?.x2_property.addEBObserver (self.x2_property) // Stored property
+    self.mInternalValue?.y2_property.addEBObserver (self.y2_property) // Stored property
+    self.mInternalValue?.cpx1_property.addEBObserver (self.cpx1_property) // Stored property
+    self.mInternalValue?.cpy1_property.addEBObserver (self.cpy1_property) // Stored property
+    self.mInternalValue?.cpx2_property.addEBObserver (self.cpx2_property) // Stored property
+    self.mInternalValue?.cpy2_property.addEBObserver (self.cpy2_property) // Stored property
+    self.mInternalValue?.x1_property.addEBObserver (self.x1_property) // Stored property
+    self.mInternalValue?.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+    self.mInternalValue?.issues_property.addEBObserver (self.issues_property) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'y1' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var y1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.y1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.y1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y1_property.prop ?? .empty }
+    self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y1_property.setProp (inValue) }
+    self.x2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x2_property.prop ?? .empty }
+    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x2_property.setProp (inValue) }
+    self.y2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y2_property.prop ?? .empty }
+    self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y2_property.setProp (inValue) }
+    self.cpx1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.cpx1_property.prop ?? .empty }
+    self.cpx1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.cpx1_property.setProp (inValue) }
+    self.cpy1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.cpy1_property.prop ?? .empty }
+    self.cpy1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.cpy1_property.setProp (inValue) }
+    self.cpx2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.cpx2_property.prop ?? .empty }
+    self.cpx2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.cpx2_property.setProp (inValue) }
+    self.cpy2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.cpy2_property.prop ?? .empty }
+    self.cpy2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.cpy2_property.setProp (inValue) }
+    self.x1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x1_property.prop ?? .empty }
+    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x1_property.setProp (inValue) }
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.strokeBezierPath_property.prop ?? .empty }
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
+    self.issues_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.issues_property.prop ?? .empty }
   }
 
   //····················································································································
+  //   Proxy of 'y1' stored property
+  //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_y1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let y1_property = EBPropertyProxy_Int ()
+
+  var y1_property_selection : EBSelection <Int> {
+    switch (self.y1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.y1_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'x2' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_y1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let x2_property = EBPropertyProxy_Int ()
+
+  var x2_property_selection : EBSelection <Int> {
+    switch (self.x2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.y1_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-        managedObject.y1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'y2' stored property
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y1_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let y2_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'x2' stored property
-  //····················································································································
-
-  private var mObserversOf_x2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var x2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.x2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var y2_property_selection : EBSelection <Int> {
+    switch (self.y2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.x2_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'cpx1' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let cpx1_property = EBPropertyProxy_Int ()
+
+  var cpx1_property_selection : EBSelection <Int> {
+    switch (self.cpx1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.x2_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-        managedObject.x2_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'cpy1' stored property
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x2_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let cpy1_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'y2' stored property
-  //····················································································································
-
-  private var mObserversOf_y2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var y2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.y2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_y2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var cpy1_property_selection : EBSelection <Int> {
+    switch (self.cpy1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.y2_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'cpx2' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_y2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let cpx2_property = EBPropertyProxy_Int ()
+
+  var cpx2_property_selection : EBSelection <Int> {
+    switch (self.cpx2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.y2_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-        managedObject.y2_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'cpy2' stored property
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y2_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let cpy2_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'cpx1' stored property
-  //····················································································································
-
-  private var mObserversOf_cpx1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var cpx1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.cpx1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_cpx1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var cpy2_property_selection : EBSelection <Int> {
+    switch (self.cpy2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.cpx1_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'x1' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_cpx1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_cpx1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let x1_property = EBPropertyProxy_Int ()
+
+  var x1_property_selection : EBSelection <Int> {
+    switch (self.x1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.cpx1_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
-        managedObject.cpx1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'strokeBezierPath' transient property
   //····················································································································
 
-  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpx1_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
-  //····················································································································
-  //   Observers of 'cpy1' stored property
-  //····················································································································
-
-  private var mObserversOf_cpy1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var cpy1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.cpy1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_cpy1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    switch (self.strokeBezierPath_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.cpy1_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'objectDisplay' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_cpy1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_cpy1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    switch (self.objectDisplay_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.cpy1_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
-        managedObject.cpy1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'selectionDisplay' transient property
   //····················································································································
 
-  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpy1_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  //····················································································································
-  //   Observers of 'cpx2' stored property
-  //····················································································································
-
-  private var mObserversOf_cpx2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var cpx2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.cpx2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_cpx2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    switch (self.selectionDisplay_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.cpx2_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'issues' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_cpx2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_cpx2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    switch (self.issues_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.cpx2_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
-        managedObject.cpx2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpx2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'cpy2' stored property
-  //····················································································································
-
-  private var mObserversOf_cpy2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var cpy2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.cpy2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_cpy2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.cpy2_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_cpy2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_cpy2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.cpy2_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
-        managedObject.cpy2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpy2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'x1' stored property
-  //····················································································································
-
-  private var mObserversOf_x1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var x1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.x1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.x1_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.x1_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-        managedObject.x1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x1_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'strokeBezierPath' transient property
-  //····················································································································
-
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
-      switch (model.strokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.strokeBezierPath_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_strokeBezierPath.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.strokeBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'selectionDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'issues' transient property
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

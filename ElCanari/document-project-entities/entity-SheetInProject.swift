@@ -300,7 +300,7 @@ class SheetInProject : EBManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mSheets_property.remove (me) } }
     )
   //--- Atomic property: issues
-    // self.issues_property.configure (self.mPoints_property.addEBObserverOf_status, transient_SheetInProject_issues)
+    // self.issues_property.configure (self.mPoints_property.status_property, transient_SheetInProject_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoints_property_selection.kind ()
@@ -323,7 +323,7 @@ class SheetInProject : EBManagedObject,
     }
     self.mPoints_property.addEBObserverOf_status (self.issues_property)
   //--- Atomic property: connectedPoints
-    // self.connectedPoints_property.configure (self.mPoints_property.addEBObserverOf_connectedPoints, transient_SheetInProject_connectedPoints)
+    // self.connectedPoints_property.configure (self.mPoints_property.connectedPoints_property, transient_SheetInProject_connectedPoints)
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoints_property_selection.kind ()
@@ -392,7 +392,7 @@ class SheetInProject : EBManagedObject,
     }
     self.issues_property.addEBObserver (self.connexionErrors_property)
   //--- Atomic property: sheetDescriptor
-    // self.sheetDescriptor_property.configure (self.mRoot_property.addEBObserverOf_sheetGeometry, self.mRoot_property.addEBObserverOf_sheetIndexes, transient_SheetInProject_sheetDescriptor)
+    // self.sheetDescriptor_property.configure (self.mRoot_property.sheetGeometry_property, self.mRoot_property.sheetIndexes_property, transient_SheetInProject_sheetDescriptor)
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mRoot_property.sheetGeometry_property_selection.kind ()
@@ -415,8 +415,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_sheetGeometry (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
+    self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
+    self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -438,8 +438,8 @@ class SheetInProject : EBManagedObject,
     // self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     // self.issues_property.removeEBObserver (self.connexionWarnings_property)
     // self.issues_property.removeEBObserver (self.connexionErrors_property)
-    // self.mRoot_property.removeEBObserverOf_sheetGeometry (self.sheetDescriptor_property)
-    // self.mRoot_property.removeEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
+    // self.mRoot_property.sheetGeometry_property.removeEBObserver (self.sheetDescriptor_property)
+    // self.mRoot_property.sheetIndexes_property.removeEBObserver (self.sheetDescriptor_property)
   //--- Unregister properties for handling signature
   }
 

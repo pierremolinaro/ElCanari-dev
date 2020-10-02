@@ -423,7 +423,7 @@ class SymbolTypeInDevice : EBManagedObject,
     }
     self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: pinNameShape
-    // self.pinNameShape_property.configure (self.mPinTypes_property.addEBObserverOf_nameShape, transient_SymbolTypeInDevice_pinNameShape)
+    // self.pinNameShape_property.configure (self.mPinTypes_property.nameShape_property, transient_SymbolTypeInDevice_pinNameShape)
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPinTypes_property_selection.kind ()

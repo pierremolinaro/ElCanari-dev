@@ -591,7 +591,7 @@ class BoardTrack : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mTracks_property.remove (me) } }
     )
   //--- Atomic property: actualTrackWidth
-    // self.actualTrackWidth_property.configure (self.mNet_property.addEBObserverOf_netClassTrackWidth, self.mUsesCustomTrackWidth_property, self.mCustomTrackWidth_property, transient_BoardTrack_actualTrackWidth)
+    // self.actualTrackWidth_property.configure (self.mNet_property.netClassTrackWidth_property, self.mUsesCustomTrackWidth_property, self.mCustomTrackWidth_property, transient_BoardTrack_actualTrackWidth)
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
@@ -614,11 +614,11 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
+    self.mNet_property.netClassTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
     self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
     self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mConnectorP1_property.addEBObserverOf_location, self.mConnectorP1_property.addEBObserverOf_connectedToComponent, self.mConnectorP2_property.addEBObserverOf_location, self.mConnectorP2_property.addEBObserverOf_connectedToComponent, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, self.mSide_property, self.actualTrackWidth_property, transient_BoardTrack_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP1_property.connectedToComponent_property, self.mConnectorP2_property.location_property, self.mConnectorP2_property.connectedToComponent_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, self.mSide_property, self.actualTrackWidth_property, transient_BoardTrack_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -646,16 +646,16 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.selectionDisplay_property)
+    self.mConnectorP1_property.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.selectionDisplay_property)
+    self.mConnectorP2_property.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
     prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     prefs_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netName
-    // self.netName_property.configure (self.mNet_property.addEBObserverOf_mNetName, transient_BoardTrack_netName)
+    // self.netName_property.configure (self.mNet_property.mNetName_property, transient_BoardTrack_netName)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.mNetName_property_selection.kind ()
@@ -676,9 +676,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.mNetName_property.addEBObserver (self.netName_property)
   //--- Atomic property: netClassName
-    // self.netClassName_property.configure (self.mNet_property.addEBObserverOf_netClassName, transient_BoardTrack_netClassName)
+    // self.netClassName_property.configure (self.mNet_property.netClassName_property, transient_BoardTrack_netClassName)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassName_property_selection.kind ()
@@ -699,9 +699,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mNet_property.netClassName_property.addEBObserver (self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
-    // self.netClassTrackWidth_property.configure (self.mNet_property.addEBObserverOf_netClassTrackWidth, transient_BoardTrack_netClassTrackWidth)
+    // self.netClassTrackWidth_property.configure (self.mNet_property.netClassTrackWidth_property, transient_BoardTrack_netClassTrackWidth)
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
@@ -722,9 +722,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.mNet_property.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
-    // self.netClassViaHoleDiameter_property.configure (self.mNet_property.addEBObserverOf_netClassViaHoleDiameter, transient_BoardTrack_netClassViaHoleDiameter)
+    // self.netClassViaHoleDiameter_property.configure (self.mNet_property.netClassViaHoleDiameter_property, transient_BoardTrack_netClassViaHoleDiameter)
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassViaHoleDiameter_property_selection.kind ()
@@ -745,9 +745,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    self.mNet_property.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
-    // self.netClassViaPadDiameter_property.configure (self.mNet_property.addEBObserverOf_netClassViaPadDiameter, transient_BoardTrack_netClassViaPadDiameter)
+    // self.netClassViaPadDiameter_property.configure (self.mNet_property.netClassViaPadDiameter_property, transient_BoardTrack_netClassViaPadDiameter)
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassViaPadDiameter_property_selection.kind ()
@@ -768,9 +768,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+    self.mNet_property.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property)
   //--- Atomic property: trackLength
-    // self.trackLength_property.configure (self.mConnectorP1_property.addEBObserverOf_location, self.mConnectorP2_property.addEBObserverOf_location, transient_BoardTrack_trackLength)
+    // self.trackLength_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP2_property.location_property, transient_BoardTrack_trackLength)
     self.trackLength_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -792,10 +792,10 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.trackLength_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.trackLength_property)
   //--- Atomic property: endPointsLocation
-    // self.endPointsLocation_property.configure (self.mConnectorP1_property.addEBObserverOf_location, self.mConnectorP2_property.addEBObserverOf_location, transient_BoardTrack_endPointsLocation)
+    // self.endPointsLocation_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP2_property.location_property, transient_BoardTrack_endPointsLocation)
     self.endPointsLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -817,8 +817,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.endPointsLocation_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.endPointsLocation_property)
   //--- Atomic property: signatureForERCChecking
     // self.signatureForERCChecking_property.configure (self.mSide_property, self.actualTrackWidth_property, transient_BoardTrack_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
@@ -845,7 +845,7 @@ class BoardTrack : BoardObject,
     self.mSide_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mConnectorP1_property.addEBObserverOf_location, self.mConnectorP2_property.addEBObserverOf_location, prefs_displayFrontLayoutForBoard_property, prefs_displayBackLayoutForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, self.actualTrackWidth_property, self.mSide_property, transient_BoardTrack_objectDisplay)
+    // self.objectDisplay_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP2_property.location_property, prefs_displayFrontLayoutForBoard_property, prefs_displayBackLayoutForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, self.actualTrackWidth_property, self.mSide_property, transient_BoardTrack_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -873,8 +873,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.objectDisplay_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.objectDisplay_property)
     prefs_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -890,30 +890,30 @@ class BoardTrack : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    // self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
+    // self.mNet_property.netClassTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     // self.mUsesCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     // self.mCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
-    // self.mConnectorP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    // self.mConnectorP1_property.removeEBObserverOf_connectedToComponent (self.selectionDisplay_property)
-    // self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    // self.mConnectorP2_property.removeEBObserverOf_connectedToComponent (self.selectionDisplay_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mConnectorP1_property.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mConnectorP2_property.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
     // prefs_frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // self.mSide_property.removeEBObserver (self.selectionDisplay_property)
     // self.actualTrackWidth_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
-    // self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
-    // self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
-    // self.mNet_property.removeEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
-    // self.mNet_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
-    // self.mConnectorP1_property.removeEBObserverOf_location (self.trackLength_property)
-    // self.mConnectorP2_property.removeEBObserverOf_location (self.trackLength_property)
-    // self.mConnectorP1_property.removeEBObserverOf_location (self.endPointsLocation_property)
-    // self.mConnectorP2_property.removeEBObserverOf_location (self.endPointsLocation_property)
+    // self.mNet_property.mNetName_property.removeEBObserver (self.netName_property)
+    // self.mNet_property.netClassName_property.removeEBObserver (self.netClassName_property)
+    // self.mNet_property.netClassTrackWidth_property.removeEBObserver (self.netClassTrackWidth_property)
+    // self.mNet_property.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property)
+    // self.mNet_property.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackLength_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackLength_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.endPointsLocation_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.endPointsLocation_property)
     // self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
-    // self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
-    // self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.objectDisplay_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.objectDisplay_property)
     // prefs_displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
     // prefs_displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
     // prefs_frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)

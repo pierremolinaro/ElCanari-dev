@@ -2031,7 +2031,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mFirstX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.addEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.mFirstX_property.addEBObserver (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint {
@@ -2046,7 +2046,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mFirstY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.addEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.mFirstY_property.addEBObserver (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint {
@@ -2061,7 +2061,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mSecondDx_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
+    self.mModelImageDoublePoint_property.mSecondDx_property.addEBObserver (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint {
@@ -2076,7 +2076,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mSecondDy_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
+    self.mModelImageDoublePoint_property.mSecondDy_property.addEBObserver (self.mModelImageSecondPointDy_property)
   //--- Atomic property: freePadNumbering
     // self.freePadNumbering_property.configure (self.padNumbering_property, transient_PackageRoot_freePadNumbering)
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
@@ -2224,7 +2224,7 @@ class PackageRoot : EBGraphicManagedObject,
   //--- To one property: mModelImageDoublePoint
     self.mModelImageDoublePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberDisplay
-    // self.padNumberDisplay_property.configure (prefs_showPadNumber_property, self.packagePads_property.addEBObserverOf_padNumberDisplay, self.packageSlavePads_property.addEBObserverOf_padNumberDisplay, transient_PackageRoot_padNumberDisplay)
+    // self.padNumberDisplay_property.configure (prefs_showPadNumber_property, self.packagePads_property.padNumberDisplay_property, self.packageSlavePads_property.padNumberDisplay_property, transient_PackageRoot_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = prefs_showPadNumber_property_selection.kind ()
@@ -2251,7 +2251,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: backgroundImagePageBackgroundDisplay
-    // self.backgroundImagePageBackgroundDisplay_property.configure (self.packageObjects_property.addEBObserverOf_objectDisplay, self.mModelImageData_property, transient_PackageRoot_backgroundImagePageBackgroundDisplay)
+    // self.backgroundImagePageBackgroundDisplay_property.configure (self.packageObjects_property.objectDisplay_property, self.mModelImageData_property, transient_PackageRoot_backgroundImagePageBackgroundDisplay)
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
@@ -2322,7 +2322,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageData_property.addEBObserver (self.hasModelImage_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.packageObjects_property.addEBObserverOf_issues, self.packageZones_property.addEBObserverOf_rect, self.packageZones_property.addEBObserverOf_zoneName, self.packageZones_property.addEBObserverOf_xName, self.packageZones_property.addEBObserverOf_yName, prefs_padZoneFont_property, transient_PackageRoot_issues)
+    // self.issues_property.configure (self.packageObjects_property.issues_property, self.packageZones_property.rect_property, self.packageZones_property.zoneName_property, self.packageZones_property.xName_property, self.packageZones_property.yName_property, prefs_padZoneFont_property, transient_PackageRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
@@ -2413,22 +2413,22 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.mReadModelFunction = nil
     self.mModelImageFirstPointX_property.mWriteModelFunction = nil
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.mFirstX_property.removeEBObserver (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = nil
     self.mModelImageFirstPointY_property.mWriteModelFunction = nil
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.mFirstY_property.removeEBObserver (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = nil
     self.mModelImageSecondPointDx_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
+    self.mModelImageDoublePoint_property.mSecondDx_property.removeEBObserver (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = nil
     self.mModelImageSecondPointDy_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
+    self.mModelImageDoublePoint_property.mSecondDy_property.removeEBObserver (self.mModelImageSecondPointDy_property)
     // self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     // self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     // self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)

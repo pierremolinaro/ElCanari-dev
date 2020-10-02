@@ -817,7 +817,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: issues
-    // self.issues_property.configure (self.rootObject.overlapingArrangment_property, self.rootObject.boardRect_property, self.rootObject.boardDisplayRect_property, self.rootObject.boardInstances_property.addEBObserverOf_instanceRect, self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth, transient_MergerDocument_issues)
+    // self.issues_property.configure (self.rootObject.overlapingArrangment_property, self.rootObject.boardRect_property, self.rootObject.boardDisplayRect_property, self.rootObject.boardInstances_property.instanceRect_property, self.rootObject.boardInstances_property.boardLimitWidth_property, transient_MergerDocument_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()

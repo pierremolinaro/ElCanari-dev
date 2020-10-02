@@ -15,78 +15,35 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ForbiddenPadNumber?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.padNumber_property.removeEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
+    inOldValue?.padNumber_property.removeEBObserver (self.padNumber_property) // Stored property
   //--- Add observers to added objects
-    self.mInternalValue?.padNumber_property.addEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
+    self.mInternalValue?.padNumber_property.addEBObserver (self.padNumber_property) // Stored property
   }
 
   //····················································································································
-  //   Observers of 'padNumber' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_padNumber = EBWeakEventSet ()
-
-  //····················································································································
-
-  var padNumber_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.padNumber_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.padNumber_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.padNumber_property.prop ?? .empty }
+    self.padNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.padNumber_property.setProp (inValue) }
   }
 
   //····················································································································
+  //   Proxy of 'padNumber' stored property
+  //····················································································································
 
-  final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_padNumber.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let padNumber_property = EBPropertyProxy_Int ()
+
+  var padNumber_property_selection : EBSelection <Int> {
+    switch (self.padNumber_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.padNumber_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_padNumber.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.padNumber_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
-        managedObject.padNumber_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
-    self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padNumber_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

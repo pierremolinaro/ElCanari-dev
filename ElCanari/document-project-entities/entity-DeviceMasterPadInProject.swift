@@ -371,7 +371,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: descriptor
-    // self.descriptor_property.configure (self.mName_property, self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.addEBObserverOf_descriptor, transient_DeviceMasterPadInProject_descriptor)
+    // self.descriptor_property.configure (self.mName_property, self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.descriptor_property, transient_DeviceMasterPadInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mName_property_selection.kind ()

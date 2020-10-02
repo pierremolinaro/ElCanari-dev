@@ -849,7 +849,7 @@ class PackageSlavePad : PackageObject,
     self.holeWidth_property.addEBObserver (self.annularRing_property)
     self.holeHeight_property.addEBObserver (self.annularRing_property)
   //--- Atomic property: padNameWithZoneName
-    // self.padNameWithZoneName_property.configure (self.master_property.addEBObserverOf_padNameWithZoneName, transient_PackageSlavePad_padNameWithZoneName)
+    // self.padNameWithZoneName_property.configure (self.master_property.padNameWithZoneName_property, transient_PackageSlavePad_padNameWithZoneName)
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.master_property.padNameWithZoneName_property_selection.kind ()
@@ -870,9 +870,9 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+    self.master_property.padNameWithZoneName_property.addEBObserver (self.padNameWithZoneName_property)
   //--- Atomic property: padNameForDisplay
-    // self.padNameForDisplay_property.configure (self.master_property.addEBObserverOf_padNameForDisplay, transient_PackageSlavePad_padNameForDisplay)
+    // self.padNameForDisplay_property.configure (self.master_property.padNameForDisplay_property, transient_PackageSlavePad_padNameForDisplay)
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.master_property.padNameForDisplay_property_selection.kind ()
@@ -893,7 +893,7 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
+    self.master_property.padNameForDisplay_property.addEBObserver (self.padNameForDisplay_property)
   //--- Atomic property: padNumberDisplay
     // self.padNumberDisplay_property.configure (self.xCenter_property, self.yCenter_property, prefs_padNumberFont_property, prefs_padNumberColor_property, self.padNameForDisplay_property, transient_PackageSlavePad_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
@@ -1010,8 +1010,8 @@ class PackageSlavePad : PackageObject,
     // self.height_property.removeEBObserver (self.annularRing_property)
     // self.holeWidth_property.removeEBObserver (self.annularRing_property)
     // self.holeHeight_property.removeEBObserver (self.annularRing_property)
-    // self.master_property.removeEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
-    // self.master_property.removeEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
+    // self.master_property.padNameWithZoneName_property.removeEBObserver (self.padNameWithZoneName_property)
+    // self.master_property.padNameForDisplay_property.removeEBObserver (self.padNameForDisplay_property)
     // self.xCenter_property.removeEBObserver (self.padNumberDisplay_property)
     // self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
     // prefs_padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)

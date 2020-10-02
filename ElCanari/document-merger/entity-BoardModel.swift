@@ -2034,7 +2034,7 @@ class BoardModel : EBManagedObject,
       resetter: { inObject in inObject.myModel_property.setProp (nil) }
     )
   //--- Atomic property: frontLegendLinesSegments
-    // self.frontLegendLinesSegments_property.configure (self.frontLegendLines_property.addEBObserverOf_x1, self.frontLegendLines_property.addEBObserverOf_y1, self.frontLegendLines_property.addEBObserverOf_x2, self.frontLegendLines_property.addEBObserverOf_y2, self.frontLegendLines_property.addEBObserverOf_width, transient_BoardModel_frontLegendLinesSegments)
+    // self.frontLegendLinesSegments_property.configure (self.frontLegendLines_property.x1_property, self.frontLegendLines_property.y1_property, self.frontLegendLines_property.x2_property, self.frontLegendLines_property.y2_property, self.frontLegendLines_property.width_property, transient_BoardModel_frontLegendLinesSegments)
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendLines_property_selection.kind ()
@@ -2065,7 +2065,7 @@ class BoardModel : EBManagedObject,
     self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesSegments
-    // self.backLegendLinesSegments_property.configure (self.backLegendLines_property.addEBObserverOf_x1, self.backLegendLines_property.addEBObserverOf_y1, self.backLegendLines_property.addEBObserverOf_x2, self.backLegendLines_property.addEBObserverOf_y2, self.backLegendLines_property.addEBObserverOf_width, transient_BoardModel_backLegendLinesSegments)
+    // self.backLegendLinesSegments_property.configure (self.backLegendLines_property.x1_property, self.backLegendLines_property.y1_property, self.backLegendLines_property.x2_property, self.backLegendLines_property.y2_property, self.backLegendLines_property.width_property, transient_BoardModel_backLegendLinesSegments)
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendLines_property_selection.kind ()
@@ -2119,7 +2119,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesBezierPaths_property)
   //--- Atomic property: frontLegendTextsSegments
-    // self.frontLegendTextsSegments_property.configure (self.frontLegendTexts_property.addEBObserverOf_x1, self.frontLegendTexts_property.addEBObserverOf_y1, self.frontLegendTexts_property.addEBObserverOf_x2, self.frontLegendTexts_property.addEBObserverOf_y2, self.frontLegendTexts_property.addEBObserverOf_width, transient_BoardModel_frontLegendTextsSegments)
+    // self.frontLegendTextsSegments_property.configure (self.frontLegendTexts_property.x1_property, self.frontLegendTexts_property.y1_property, self.frontLegendTexts_property.x2_property, self.frontLegendTexts_property.y2_property, self.frontLegendTexts_property.width_property, transient_BoardModel_frontLegendTextsSegments)
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendTexts_property_selection.kind ()
@@ -2173,7 +2173,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsBezierPaths_property)
   //--- Atomic property: frontLayoutTextsSegments
-    // self.frontLayoutTextsSegments_property.configure (self.frontLayoutTexts_property.addEBObserverOf_x1, self.frontLayoutTexts_property.addEBObserverOf_y1, self.frontLayoutTexts_property.addEBObserverOf_x2, self.frontLayoutTexts_property.addEBObserverOf_y2, self.frontLayoutTexts_property.addEBObserverOf_width, transient_BoardModel_frontLayoutTextsSegments)
+    // self.frontLayoutTextsSegments_property.configure (self.frontLayoutTexts_property.x1_property, self.frontLayoutTexts_property.y1_property, self.frontLayoutTexts_property.x2_property, self.frontLayoutTexts_property.y2_property, self.frontLayoutTexts_property.width_property, transient_BoardModel_frontLayoutTextsSegments)
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLayoutTexts_property_selection.kind ()
@@ -2227,7 +2227,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsBezierPaths_property)
   //--- Atomic property: backLegendTextsSegments
-    // self.backLegendTextsSegments_property.configure (self.backLegendTexts_property.addEBObserverOf_x1, self.backLegendTexts_property.addEBObserverOf_y1, self.backLegendTexts_property.addEBObserverOf_x2, self.backLegendTexts_property.addEBObserverOf_y2, self.backLegendTexts_property.addEBObserverOf_width, transient_BoardModel_backLegendTextsSegments)
+    // self.backLegendTextsSegments_property.configure (self.backLegendTexts_property.x1_property, self.backLegendTexts_property.y1_property, self.backLegendTexts_property.x2_property, self.backLegendTexts_property.y2_property, self.backLegendTexts_property.width_property, transient_BoardModel_backLegendTextsSegments)
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendTexts_property_selection.kind ()
@@ -2281,7 +2281,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsBezierPaths_property)
   //--- Atomic property: backLayoutTextsSegments
-    // self.backLayoutTextsSegments_property.configure (self.backLayoutTexts_property.addEBObserverOf_x1, self.backLayoutTexts_property.addEBObserverOf_y1, self.backLayoutTexts_property.addEBObserverOf_x2, self.backLayoutTexts_property.addEBObserverOf_y2, self.backLayoutTexts_property.addEBObserverOf_width, transient_BoardModel_backLayoutTextsSegments)
+    // self.backLayoutTextsSegments_property.configure (self.backLayoutTexts_property.x1_property, self.backLayoutTexts_property.y1_property, self.backLayoutTexts_property.x2_property, self.backLayoutTexts_property.y2_property, self.backLayoutTexts_property.width_property, transient_BoardModel_backLayoutTextsSegments)
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLayoutTexts_property_selection.kind ()
@@ -2335,7 +2335,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsBezierPaths_property)
   //--- Atomic property: internalBoardsLimitsSegments
-    // self.internalBoardsLimitsSegments_property.configure (self.internalBoardsLimits_property.addEBObserverOf_x1, self.internalBoardsLimits_property.addEBObserverOf_y1, self.internalBoardsLimits_property.addEBObserverOf_x2, self.internalBoardsLimits_property.addEBObserverOf_y2, self.internalBoardsLimits_property.addEBObserverOf_width, transient_BoardModel_internalBoardsLimitsSegments)
+    // self.internalBoardsLimitsSegments_property.configure (self.internalBoardsLimits_property.x1_property, self.internalBoardsLimits_property.y1_property, self.internalBoardsLimits_property.x2_property, self.internalBoardsLimits_property.y2_property, self.internalBoardsLimits_property.width_property, transient_BoardModel_internalBoardsLimitsSegments)
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.internalBoardsLimits_property_selection.kind ()
@@ -2389,7 +2389,7 @@ class BoardModel : EBManagedObject,
     }
     self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
   //--- Atomic property: drillSegments
-    // self.drillSegments_property.configure (self.drills_property.addEBObserverOf_x1, self.drills_property.addEBObserverOf_y1, self.drills_property.addEBObserverOf_x2, self.drills_property.addEBObserverOf_y2, self.drills_property.addEBObserverOf_width, transient_BoardModel_drillSegments)
+    // self.drillSegments_property.configure (self.drills_property.x1_property, self.drills_property.y1_property, self.drills_property.x2_property, self.drills_property.y2_property, self.drills_property.width_property, transient_BoardModel_drillSegments)
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.drills_property_selection.kind ()
@@ -2443,7 +2443,7 @@ class BoardModel : EBManagedObject,
     }
     self.drillSegments_property.addEBObserver (self.holesBezierPaths_property)
   //--- Atomic property: viaShapes
-    // self.viaShapes_property.configure (self.vias_property.addEBObserverOf_x, self.vias_property.addEBObserverOf_y, self.vias_property.addEBObserverOf_padDiameter, transient_BoardModel_viaShapes)
+    // self.viaShapes_property.configure (self.vias_property.x_property, self.vias_property.y_property, self.vias_property.padDiameter_property, transient_BoardModel_viaShapes)
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.vias_property_selection.kind ()
@@ -2493,7 +2493,7 @@ class BoardModel : EBManagedObject,
     }
     self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
   //--- Atomic property: frontPadArray
-    // self.frontPadArray_property.configure (self.frontPads_property.addEBObserverOf_x, self.frontPads_property.addEBObserverOf_y, self.frontPads_property.addEBObserverOf_width, self.frontPads_property.addEBObserverOf_height, self.frontPads_property.addEBObserverOf_shape, self.frontPads_property.addEBObserverOf_rotation, transient_BoardModel_frontPadArray)
+    // self.frontPadArray_property.configure (self.frontPads_property.x_property, self.frontPads_property.y_property, self.frontPads_property.width_property, self.frontPads_property.height_property, self.frontPads_property.shape_property, self.frontPads_property.rotation_property, transient_BoardModel_frontPadArray)
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPads_property_selection.kind ()
@@ -2549,7 +2549,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontPadArray_property.addEBObserver (self.frontPadsBezierPaths_property)
   //--- Atomic property: backPadArray
-    // self.backPadArray_property.configure (self.backPads_property.addEBObserverOf_x, self.backPads_property.addEBObserverOf_y, self.backPads_property.addEBObserverOf_width, self.backPads_property.addEBObserverOf_height, self.backPads_property.addEBObserverOf_shape, self.backPads_property.addEBObserverOf_rotation, transient_BoardModel_backPadArray)
+    // self.backPadArray_property.configure (self.backPads_property.x_property, self.backPads_property.y_property, self.backPads_property.width_property, self.backPads_property.height_property, self.backPads_property.shape_property, self.backPads_property.rotation_property, transient_BoardModel_backPadArray)
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPads_property_selection.kind ()
@@ -2661,7 +2661,7 @@ class BoardModel : EBManagedObject,
     self.modelHeight_property.addEBObserver (self.boardLimitsBezierPaths_property)
     self.modelLimitWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
   //--- Atomic property: backComponentNameSegments
-    // self.backComponentNameSegments_property.configure (self.backComponentNames_property.addEBObserverOf_x1, self.backComponentNames_property.addEBObserverOf_y1, self.backComponentNames_property.addEBObserverOf_x2, self.backComponentNames_property.addEBObserverOf_y2, self.backComponentNames_property.addEBObserverOf_width, transient_BoardModel_backComponentNameSegments)
+    // self.backComponentNameSegments_property.configure (self.backComponentNames_property.x1_property, self.backComponentNames_property.y1_property, self.backComponentNames_property.x2_property, self.backComponentNames_property.y2_property, self.backComponentNames_property.width_property, transient_BoardModel_backComponentNameSegments)
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentNames_property_selection.kind ()
@@ -2715,7 +2715,7 @@ class BoardModel : EBManagedObject,
     }
     self.backComponentNameSegments_property.addEBObserver (self.backComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentNameSegments
-    // self.frontComponentNameSegments_property.configure (self.frontComponentNames_property.addEBObserverOf_x1, self.frontComponentNames_property.addEBObserverOf_y1, self.frontComponentNames_property.addEBObserverOf_x2, self.frontComponentNames_property.addEBObserverOf_y2, self.frontComponentNames_property.addEBObserverOf_width, transient_BoardModel_frontComponentNameSegments)
+    // self.frontComponentNameSegments_property.configure (self.frontComponentNames_property.x1_property, self.frontComponentNames_property.y1_property, self.frontComponentNames_property.x2_property, self.frontComponentNames_property.y2_property, self.frontComponentNames_property.width_property, transient_BoardModel_frontComponentNameSegments)
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentNames_property_selection.kind ()
@@ -2769,7 +2769,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentValueSegments
-    // self.frontComponentValueSegments_property.configure (self.frontComponentValues_property.addEBObserverOf_x1, self.frontComponentValues_property.addEBObserverOf_y1, self.frontComponentValues_property.addEBObserverOf_x2, self.frontComponentValues_property.addEBObserverOf_y2, self.frontComponentValues_property.addEBObserverOf_width, transient_BoardModel_frontComponentValueSegments)
+    // self.frontComponentValueSegments_property.configure (self.frontComponentValues_property.x1_property, self.frontComponentValues_property.y1_property, self.frontComponentValues_property.x2_property, self.frontComponentValues_property.y2_property, self.frontComponentValues_property.width_property, transient_BoardModel_frontComponentValueSegments)
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentValues_property_selection.kind ()
@@ -2823,7 +2823,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValuesBezierPaths_property)
   //--- Atomic property: backComponentValueSegments
-    // self.backComponentValueSegments_property.configure (self.backComponentValues_property.addEBObserverOf_x1, self.backComponentValues_property.addEBObserverOf_y1, self.backComponentValues_property.addEBObserverOf_x2, self.backComponentValues_property.addEBObserverOf_y2, self.backComponentValues_property.addEBObserverOf_width, transient_BoardModel_backComponentValueSegments)
+    // self.backComponentValueSegments_property.configure (self.backComponentValues_property.x1_property, self.backComponentValues_property.y1_property, self.backComponentValues_property.x2_property, self.backComponentValues_property.y2_property, self.backComponentValues_property.width_property, transient_BoardModel_backComponentValueSegments)
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentValues_property_selection.kind ()
@@ -2877,7 +2877,7 @@ class BoardModel : EBManagedObject,
     }
     self.backComponentValueSegments_property.addEBObserver (self.backComponentValuesBezierPaths_property)
   //--- Atomic property: backTrackSegments
-    // self.backTrackSegments_property.configure (self.backTracks_property.addEBObserverOf_x1, self.backTracks_property.addEBObserverOf_y1, self.backTracks_property.addEBObserverOf_x2, self.backTracks_property.addEBObserverOf_y2, self.backTracks_property.addEBObserverOf_width, transient_BoardModel_backTrackSegments)
+    // self.backTrackSegments_property.configure (self.backTracks_property.x1_property, self.backTracks_property.y1_property, self.backTracks_property.x2_property, self.backTracks_property.y2_property, self.backTracks_property.width_property, transient_BoardModel_backTrackSegments)
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backTracks_property_selection.kind ()
@@ -2931,7 +2931,7 @@ class BoardModel : EBManagedObject,
     }
     self.backTrackSegments_property.addEBObserver (self.backTracksBezierPaths_property)
   //--- Atomic property: frontTrackSegments
-    // self.frontTrackSegments_property.configure (self.frontTracks_property.addEBObserverOf_x1, self.frontTracks_property.addEBObserverOf_y1, self.frontTracks_property.addEBObserverOf_x2, self.frontTracks_property.addEBObserverOf_y2, self.frontTracks_property.addEBObserverOf_width, transient_BoardModel_frontTrackSegments)
+    // self.frontTrackSegments_property.configure (self.frontTracks_property.x1_property, self.frontTracks_property.y1_property, self.frontTracks_property.x2_property, self.frontTracks_property.y2_property, self.frontTracks_property.width_property, transient_BoardModel_frontTrackSegments)
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontTracks_property_selection.kind ()
@@ -2985,7 +2985,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
   //--- Atomic property: frontPackagesSegments
-    // self.frontPackagesSegments_property.configure (self.frontPackages_property.addEBObserverOf_x1, self.frontPackages_property.addEBObserverOf_y1, self.frontPackages_property.addEBObserverOf_x2, self.frontPackages_property.addEBObserverOf_y2, self.frontPackages_property.addEBObserverOf_width, transient_BoardModel_frontPackagesSegments)
+    // self.frontPackagesSegments_property.configure (self.frontPackages_property.x1_property, self.frontPackages_property.y1_property, self.frontPackages_property.x2_property, self.frontPackages_property.y2_property, self.frontPackages_property.width_property, transient_BoardModel_frontPackagesSegments)
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPackages_property_selection.kind ()
@@ -3039,7 +3039,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontPackagesSegments_property.addEBObserver (self.frontPackagesBezierPaths_property)
   //--- Atomic property: backPackagesSegments
-    // self.backPackagesSegments_property.configure (self.backPackages_property.addEBObserverOf_x1, self.backPackages_property.addEBObserverOf_y1, self.backPackages_property.addEBObserverOf_x2, self.backPackages_property.addEBObserverOf_y2, self.backPackages_property.addEBObserverOf_width, transient_BoardModel_backPackagesSegments)
+    // self.backPackagesSegments_property.configure (self.backPackages_property.x1_property, self.backPackages_property.y1_property, self.backPackages_property.x2_property, self.backPackages_property.y2_property, self.backPackages_property.width_property, transient_BoardModel_backPackagesSegments)
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPackages_property_selection.kind ()

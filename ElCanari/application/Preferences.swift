@@ -3143,7 +3143,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--- Array controller property: additionnalLibraryArrayController
     prefs_additionnalLibraryArrayController.bind_model (prefs_additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
-    // prefs_mValueRevealInFinder_packages_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_packages)
+    // prefs_mValueRevealInFinder_packages_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.mUses_property, self.additionnalLibraryArray_property.mPath_property, transient_Preferences_mValueRevealInFinder_packages)
     prefs_mValueRevealInFinder_packages_property.mReadModelFunction = {
         var kind = prefs_usesUserLibrary_property_selection.kind ()
         kind &= prefs_additionnalLibraryArray_property_selection.kind ()
@@ -3166,7 +3166,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_packages_property)
     prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
-    // prefs_mValueRevealInFinder_devices_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_devices)
+    // prefs_mValueRevealInFinder_devices_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.mUses_property, self.additionnalLibraryArray_property.mPath_property, transient_Preferences_mValueRevealInFinder_devices)
     prefs_mValueRevealInFinder_devices_property.mReadModelFunction = {
         var kind = prefs_usesUserLibrary_property_selection.kind ()
         kind &= prefs_additionnalLibraryArray_property_selection.kind ()
@@ -3189,7 +3189,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_devices_property)
     prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
-    // prefs_mValueRevealInFinder_fonts_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_fonts)
+    // prefs_mValueRevealInFinder_fonts_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.mUses_property, self.additionnalLibraryArray_property.mPath_property, transient_Preferences_mValueRevealInFinder_fonts)
     prefs_mValueRevealInFinder_fonts_property.mReadModelFunction = {
         var kind = prefs_usesUserLibrary_property_selection.kind ()
         kind &= prefs_additionnalLibraryArray_property_selection.kind ()
@@ -3212,7 +3212,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_fonts_property)
     prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
-    // prefs_mValueRevealInFinder_artworks_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_artworks)
+    // prefs_mValueRevealInFinder_artworks_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.mUses_property, self.additionnalLibraryArray_property.mPath_property, transient_Preferences_mValueRevealInFinder_artworks)
     prefs_mValueRevealInFinder_artworks_property.mReadModelFunction = {
         var kind = prefs_usesUserLibrary_property_selection.kind ()
         kind &= prefs_additionnalLibraryArray_property_selection.kind ()
@@ -3235,7 +3235,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_artworks_property)
     prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
-    // prefs_mValueRevealInFinder_symbols_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.addEBObserverOf_mUses, self.additionnalLibraryArray_property.addEBObserverOf_mPath, transient_Preferences_mValueRevealInFinder_symbols)
+    // prefs_mValueRevealInFinder_symbols_property.configure (self.usesUserLibrary_property, self.additionnalLibraryArray_property.mUses_property, self.additionnalLibraryArray_property.mPath_property, transient_Preferences_mValueRevealInFinder_symbols)
     prefs_mValueRevealInFinder_symbols_property.mReadModelFunction = {
         var kind = prefs_usesUserLibrary_property_selection.kind ()
         kind &= prefs_additionnalLibraryArray_property_selection.kind ()

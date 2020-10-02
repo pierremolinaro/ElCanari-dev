@@ -216,7 +216,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- To one property: mSymbolType
     self.mSymbolType_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolAndTypeName
-    // self.symbolAndTypeName_property.configure (self.mSymbolInstanceName_property, self.mSymbolType_property.addEBObserverOf_mSymbolTypeName, transient_DeviceSymbolInstanceInProject_symbolAndTypeName)
+    // self.symbolAndTypeName_property.configure (self.mSymbolInstanceName_property, self.mSymbolType_property.mSymbolTypeName_property, transient_DeviceSymbolInstanceInProject_symbolAndTypeName)
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSymbolInstanceName_property_selection.kind ()
@@ -239,9 +239,9 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolInstanceName_property.addEBObserver (self.symbolAndTypeName_property)
-    self.mSymbolType_property.addEBObserverOf_mSymbolTypeName (self.symbolAndTypeName_property)
+    self.mSymbolType_property.mSymbolTypeName_property.addEBObserver (self.symbolAndTypeName_property)
   //--- Atomic property: symbolTypeName
-    // self.symbolTypeName_property.configure (self.mSymbolType_property.addEBObserverOf_mSymbolTypeName, transient_DeviceSymbolInstanceInProject_symbolTypeName)
+    // self.symbolTypeName_property.configure (self.mSymbolType_property.mSymbolTypeName_property, transient_DeviceSymbolInstanceInProject_symbolTypeName)
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbolType_property.mSymbolTypeName_property_selection.kind ()
@@ -262,9 +262,9 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
+    self.mSymbolType_property.mSymbolTypeName_property.addEBObserver (self.symbolTypeName_property)
   //--- Atomic property: filledBezierPath
-    // self.filledBezierPath_property.configure (self.mSymbolType_property.addEBObserverOf_mFilledBezierPath, transient_DeviceSymbolInstanceInProject_filledBezierPath)
+    // self.filledBezierPath_property.configure (self.mSymbolType_property.mFilledBezierPath_property, transient_DeviceSymbolInstanceInProject_filledBezierPath)
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbolType_property.mFilledBezierPath_property_selection.kind ()
@@ -285,9 +285,9 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mFilledBezierPath (self.filledBezierPath_property)
+    self.mSymbolType_property.mFilledBezierPath_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: strokeBezierPath
-    // self.strokeBezierPath_property.configure (self.mSymbolType_property.addEBObserverOf_mStrokeBezierPath, prefs_symbolDrawingWidthMultipliedByTenForSchematic_property, transient_DeviceSymbolInstanceInProject_strokeBezierPath)
+    // self.strokeBezierPath_property.configure (self.mSymbolType_property.mStrokeBezierPath_property, prefs_symbolDrawingWidthMultipliedByTenForSchematic_property, transient_DeviceSymbolInstanceInProject_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection.kind ()
@@ -309,7 +309,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    self.mSymbolType_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
     prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
@@ -321,10 +321,10 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     // self.mSymbolInstanceName_property.removeEBObserver (self.symbolAndTypeName_property)
-    // self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolAndTypeName_property)
-    // self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
-    // self.mSymbolType_property.removeEBObserverOf_mFilledBezierPath (self.filledBezierPath_property)
-    // self.mSymbolType_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    // self.mSymbolType_property.mSymbolTypeName_property.removeEBObserver (self.symbolAndTypeName_property)
+    // self.mSymbolType_property.mSymbolTypeName_property.removeEBObserver (self.symbolTypeName_property)
+    // self.mSymbolType_property.mFilledBezierPath_property.removeEBObserver (self.filledBezierPath_property)
+    // self.mSymbolType_property.mStrokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property)
     // prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.strokeBezierPath_property)
   //--- Unregister properties for handling signature
   }

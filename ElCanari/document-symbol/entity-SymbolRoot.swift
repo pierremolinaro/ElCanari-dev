@@ -452,7 +452,7 @@ class SymbolRoot : EBManagedObject,
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
-    // self.issues_property.configure (self.symbolObjects_property.addEBObserverOf_issues, self.symbolPins_property.addEBObserverOf_name, self.symbolPins_property.addEBObserverOf_nameRect, self.symbolPins_property.addEBObserverOf_xPin, self.symbolPins_property.addEBObserverOf_yPin, transient_SymbolRoot_issues)
+    // self.issues_property.configure (self.symbolObjects_property.issues_property, self.symbolPins_property.name_property, self.symbolPins_property.nameRect_property, self.symbolPins_property.xPin_property, self.symbolPins_property.yPin_property, transient_SymbolRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.symbolObjects_property_selection.kind ()

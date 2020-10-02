@@ -15,940 +15,285 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardLine?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mWidthUnit) // Stored property
-    inOldValue?.mX1_property.removeEBObserversFrom (&self.mObserversOf_mX1) // Stored property
-    inOldValue?.mX1Unit_property.removeEBObserversFrom (&self.mObserversOf_mX1Unit) // Stored property
-    inOldValue?.mY1_property.removeEBObserversFrom (&self.mObserversOf_mY1) // Stored property
-    inOldValue?.mY1Unit_property.removeEBObserversFrom (&self.mObserversOf_mY1Unit) // Stored property
-    inOldValue?.mX2_property.removeEBObserversFrom (&self.mObserversOf_mX2) // Stored property
-    inOldValue?.mX2Unit_property.removeEBObserversFrom (&self.mObserversOf_mX2Unit) // Stored property
-    inOldValue?.mY2_property.removeEBObserversFrom (&self.mObserversOf_mY2) // Stored property
-    inOldValue?.mY2Unit_property.removeEBObserversFrom (&self.mObserversOf_mY2Unit) // Stored property
-    inOldValue?.mLayer_property.removeEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
-    inOldValue?.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.mWidthUnit_property.removeEBObserver (self.mWidthUnit_property) // Stored property
+    inOldValue?.mX1_property.removeEBObserver (self.mX1_property) // Stored property
+    inOldValue?.mX1Unit_property.removeEBObserver (self.mX1Unit_property) // Stored property
+    inOldValue?.mY1_property.removeEBObserver (self.mY1_property) // Stored property
+    inOldValue?.mY1Unit_property.removeEBObserver (self.mY1Unit_property) // Stored property
+    inOldValue?.mX2_property.removeEBObserver (self.mX2_property) // Stored property
+    inOldValue?.mX2Unit_property.removeEBObserver (self.mX2Unit_property) // Stored property
+    inOldValue?.mY2_property.removeEBObserver (self.mY2_property) // Stored property
+    inOldValue?.mY2Unit_property.removeEBObserver (self.mY2Unit_property) // Stored property
+    inOldValue?.mLayer_property.removeEBObserver (self.mLayer_property) // Stored property
+    inOldValue?.mWidth_property.removeEBObserver (self.mWidth_property) // Stored property
+    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mWidthUnit) // Stored property
-    self.mInternalValue?.mX1_property.addEBObserversFrom (&self.mObserversOf_mX1) // Stored property
-    self.mInternalValue?.mX1Unit_property.addEBObserversFrom (&self.mObserversOf_mX1Unit) // Stored property
-    self.mInternalValue?.mY1_property.addEBObserversFrom (&self.mObserversOf_mY1) // Stored property
-    self.mInternalValue?.mY1Unit_property.addEBObserversFrom (&self.mObserversOf_mY1Unit) // Stored property
-    self.mInternalValue?.mX2_property.addEBObserversFrom (&self.mObserversOf_mX2) // Stored property
-    self.mInternalValue?.mX2Unit_property.addEBObserversFrom (&self.mObserversOf_mX2Unit) // Stored property
-    self.mInternalValue?.mY2_property.addEBObserversFrom (&self.mObserversOf_mY2) // Stored property
-    self.mInternalValue?.mY2Unit_property.addEBObserversFrom (&self.mObserversOf_mY2Unit) // Stored property
-    self.mInternalValue?.mLayer_property.addEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
-    self.mInternalValue?.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.mWidthUnit_property.addEBObserver (self.mWidthUnit_property) // Stored property
+    self.mInternalValue?.mX1_property.addEBObserver (self.mX1_property) // Stored property
+    self.mInternalValue?.mX1Unit_property.addEBObserver (self.mX1Unit_property) // Stored property
+    self.mInternalValue?.mY1_property.addEBObserver (self.mY1_property) // Stored property
+    self.mInternalValue?.mY1Unit_property.addEBObserver (self.mY1Unit_property) // Stored property
+    self.mInternalValue?.mX2_property.addEBObserver (self.mX2_property) // Stored property
+    self.mInternalValue?.mX2Unit_property.addEBObserver (self.mX2Unit_property) // Stored property
+    self.mInternalValue?.mY2_property.addEBObserver (self.mY2_property) // Stored property
+    self.mInternalValue?.mY2Unit_property.addEBObserver (self.mY2Unit_property) // Stored property
+    self.mInternalValue?.mLayer_property.addEBObserver (self.mLayer_property) // Stored property
+    self.mInternalValue?.mWidth_property.addEBObserver (self.mWidth_property) // Stored property
+    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mWidthUnit' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_mWidthUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mWidthUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mWidthUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.mWidthUnit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mWidthUnit_property.prop ?? .empty }
+    self.mWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mWidthUnit_property.setProp (inValue) }
+    self.mX1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX1_property.prop ?? .empty }
+    self.mX1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX1_property.setProp (inValue) }
+    self.mX1Unit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX1Unit_property.prop ?? .empty }
+    self.mX1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX1Unit_property.setProp (inValue) }
+    self.mY1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY1_property.prop ?? .empty }
+    self.mY1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY1_property.setProp (inValue) }
+    self.mY1Unit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY1Unit_property.prop ?? .empty }
+    self.mY1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY1Unit_property.setProp (inValue) }
+    self.mX2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX2_property.prop ?? .empty }
+    self.mX2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX2_property.setProp (inValue) }
+    self.mX2Unit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX2Unit_property.prop ?? .empty }
+    self.mX2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX2Unit_property.setProp (inValue) }
+    self.mY2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY2_property.prop ?? .empty }
+    self.mY2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY2_property.setProp (inValue) }
+    self.mY2Unit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY2Unit_property.prop ?? .empty }
+    self.mY2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY2Unit_property.setProp (inValue) }
+    self.mLayer_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mLayer_property.prop ?? .empty }
+    self.mLayer_property.mWriteModelFunction = { [weak self] (inValue : BoardLineLayer) in self?.mInternalValue?.mLayer_property.setProp (inValue) }
+    self.mWidth_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mWidth_property.prop ?? .empty }
+    self.mWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mWidth_property.setProp (inValue) }
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
   }
 
   //····················································································································
+  //   Proxy of 'mWidthUnit' stored property
+  //····················································································································
 
-  final func addEBObserverOf_mWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mWidthUnit.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mWidthUnit_property = EBPropertyProxy_Int ()
+
+  var mWidthUnit_property_selection : EBSelection <Int> {
+    switch (self.mWidthUnit_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mWidthUnit_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mX1' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mWidthUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mWidthUnit.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mX1_property = EBPropertyProxy_Int ()
+
+  var mX1_property_selection : EBSelection <Int> {
+    switch (self.mX1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mWidthUnit_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mWidthUnit_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWidthUnit.apply { (_ observer : EBEvent) in
-        managedObject.mWidthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mX1Unit' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mWidthUnit_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mWidthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mX1Unit_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mX1' stored property
-  //····················································································································
-
-  private var mObserversOf_mX1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mX1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mX1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mX1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mX1Unit_property_selection : EBSelection <Int> {
+    switch (self.mX1Unit_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mX1_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mY1' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mX1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mY1_property = EBPropertyProxy_Int ()
+
+  var mY1_property_selection : EBSelection <Int> {
+    switch (self.mY1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mX1_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mX1_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
-        managedObject.mX1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mY1Unit' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX1_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mY1Unit_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mX1Unit' stored property
-  //····················································································································
-
-  private var mObserversOf_mX1Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mX1Unit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mX1Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mX1Unit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX1Unit.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mY1Unit_property_selection : EBSelection <Int> {
+    switch (self.mY1Unit_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mX1Unit_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mX2' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mX1Unit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX1Unit.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mX2_property = EBPropertyProxy_Int ()
+
+  var mX2_property_selection : EBSelection <Int> {
+    switch (self.mX2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mX1Unit_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mX1Unit_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX1Unit.apply { (_ observer : EBEvent) in
-        managedObject.mX1Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mX2Unit' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mX1Unit_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mX1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX1Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mX2Unit_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mY1' stored property
-  //····················································································································
-
-  private var mObserversOf_mY1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mY1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mY1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mY1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mX2Unit_property_selection : EBSelection <Int> {
+    switch (self.mX2Unit_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mY1_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mY2' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mY1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mY2_property = EBPropertyProxy_Int ()
+
+  var mY2_property_selection : EBSelection <Int> {
+    switch (self.mY2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mY1_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mY1_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
-        managedObject.mY1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mY2Unit' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY1_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mY2Unit_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mY1Unit' stored property
-  //····················································································································
-
-  private var mObserversOf_mY1Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mY1Unit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mY1Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mY1Unit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY1Unit.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mY2Unit_property_selection : EBSelection <Int> {
+    switch (self.mY2Unit_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mY1Unit_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mLayer' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mY1Unit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY1Unit.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mLayer_property = EBPropertyProxy_BoardLineLayer ()
+
+  var mLayer_property_selection : EBSelection <BoardLineLayer> {
+    switch (self.mLayer_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mY1Unit_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mY1Unit_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY1Unit.apply { (_ observer : EBEvent) in
-        managedObject.mY1Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mWidth' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mY1Unit_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mY1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY1Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mWidth_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mX2' stored property
-  //····················································································································
-
-  private var mObserversOf_mX2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mX2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mX2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mX2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mWidth_property_selection : EBSelection <Int> {
+    switch (self.mWidth_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mX2_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'objectDisplay' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_mX2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    switch (self.objectDisplay_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mX2_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mX2_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX2.apply { (_ observer : EBEvent) in
-        managedObject.mX2_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'selectionDisplay' transient property
   //····················································································································
 
-  final func removeEBObserversOf_mX2_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mX2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX2_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  //····················································································································
-  //   Observers of 'mX2Unit' stored property
-  //····················································································································
-
-  private var mObserversOf_mX2Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mX2Unit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mX2Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mX2Unit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX2Unit.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    switch (self.selectionDisplay_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mX2Unit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mX2Unit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX2Unit.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mX2Unit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mX2Unit_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX2Unit.apply { (_ observer : EBEvent) in
-        managedObject.mX2Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mX2Unit_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mX2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX2Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mY2' stored property
-  //····················································································································
-
-  private var mObserversOf_mY2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mY2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mY2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mY2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mY2_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mY2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mY2_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mY2_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY2.apply { (_ observer : EBEvent) in
-        managedObject.mY2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mY2_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mY2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mY2Unit' stored property
-  //····················································································································
-
-  private var mObserversOf_mY2Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mY2Unit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mY2Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mY2Unit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY2Unit.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mY2Unit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mY2Unit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY2Unit.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mY2Unit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mY2Unit_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY2Unit.apply { (_ observer : EBEvent) in
-        managedObject.mY2Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mY2Unit_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mY2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY2Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mLayer' stored property
-  //····················································································································
-
-  private var mObserversOf_mLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mLayer_property_selection : EBSelection <BoardLineLayer?> {
-    if let model = self.propval {
-      switch (model.mLayer_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mLayer.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mLayer_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mLayer.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mLayer_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mLayer_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mLayer.apply { (_ observer : EBEvent) in
-        managedObject.mLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mWidth' stored property
-  //····················································································································
-
-  private var mObserversOf_mWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mWidth_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mWidth.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mWidth.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-        managedObject.mWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'selectionDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

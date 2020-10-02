@@ -15,652 +15,201 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
-    inOldValue?.mSize_property.removeEBObserversFrom (&self.mObserversOf_mSize) // Stored property
-    inOldValue?.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
-    inOldValue?.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.mColor_property.removeEBObserver (self.mColor_property) // Stored property
+    inOldValue?.mSize_property.removeEBObserver (self.mSize_property) // Stored property
+    inOldValue?.mHorizontalAlignment_property.removeEBObserver (self.mHorizontalAlignment_property) // Stored property
+    inOldValue?.mVerticalAlignment_property.removeEBObserver (self.mVerticalAlignment_property) // Stored property
+    inOldValue?.mX_property.removeEBObserver (self.mX_property) // Stored property
+    inOldValue?.mY_property.removeEBObserver (self.mY_property) // Stored property
+    inOldValue?.mComment_property.removeEBObserver (self.mComment_property) // Stored property
+    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
-    self.mInternalValue?.mSize_property.addEBObserversFrom (&self.mObserversOf_mSize) // Stored property
-    self.mInternalValue?.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
-    self.mInternalValue?.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.mColor_property.addEBObserver (self.mColor_property) // Stored property
+    self.mInternalValue?.mSize_property.addEBObserver (self.mSize_property) // Stored property
+    self.mInternalValue?.mHorizontalAlignment_property.addEBObserver (self.mHorizontalAlignment_property) // Stored property
+    self.mInternalValue?.mVerticalAlignment_property.addEBObserver (self.mVerticalAlignment_property) // Stored property
+    self.mInternalValue?.mX_property.addEBObserver (self.mX_property) // Stored property
+    self.mInternalValue?.mY_property.addEBObserver (self.mY_property) // Stored property
+    self.mInternalValue?.mComment_property.addEBObserver (self.mComment_property) // Stored property
+    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mColor' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_mColor = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mColor_property_selection : EBSelection <NSColor?> {
-    if let model = self.propval {
-      switch (model.mColor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.mColor_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mColor_property.prop ?? .empty }
+    self.mColor_property.mWriteModelFunction = { [weak self] (inValue : NSColor) in self?.mInternalValue?.mColor_property.setProp (inValue) }
+    self.mSize_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mSize_property.prop ?? .empty }
+    self.mSize_property.mWriteModelFunction = { [weak self] (inValue : Double) in self?.mInternalValue?.mSize_property.setProp (inValue) }
+    self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mHorizontalAlignment_property.prop ?? .empty }
+    self.mHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in self?.mInternalValue?.mHorizontalAlignment_property.setProp (inValue) }
+    self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mVerticalAlignment_property.prop ?? .empty }
+    self.mVerticalAlignment_property.mWriteModelFunction = { [weak self] (inValue : VerticalAlignment) in self?.mInternalValue?.mVerticalAlignment_property.setProp (inValue) }
+    self.mX_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX_property.prop ?? .empty }
+    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX_property.setProp (inValue) }
+    self.mY_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY_property.prop ?? .empty }
+    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY_property.setProp (inValue) }
+    self.mComment_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mComment_property.prop ?? .empty }
+    self.mComment_property.mWriteModelFunction = { [weak self] (inValue : String) in self?.mInternalValue?.mComment_property.setProp (inValue) }
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
   }
 
   //····················································································································
+  //   Proxy of 'mColor' stored property
+  //····················································································································
 
-  final func addEBObserverOf_mColor (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mColor.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mColor_property = EBPropertyProxy_NSColor ()
+
+  var mColor_property_selection : EBSelection <NSColor> {
+    switch (self.mColor_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mColor_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mSize' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mColor (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mColor.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mSize_property = EBPropertyProxy_Double ()
+
+  var mSize_property_selection : EBSelection <Double> {
+    switch (self.mSize_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mColor_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mColor_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-        managedObject.mColor_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mHorizontalAlignment' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mColor_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
 
-  //····················································································································
-  //   Observers of 'mSize' stored property
-  //····················································································································
-
-  private var mObserversOf_mSize = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mSize_property_selection : EBSelection <Double?> {
-    if let model = self.propval {
-      switch (model.mSize_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSize.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
+    switch (self.mHorizontalAlignment_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mSize_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mVerticalAlignment' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mSize (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSize.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mVerticalAlignment_property = EBPropertyProxy_VerticalAlignment ()
+
+  var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> {
+    switch (self.mVerticalAlignment_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mSize_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSize_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
-        managedObject.mSize_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mX' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSize_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mX_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mHorizontalAlignment' stored property
-  //····················································································································
-
-  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
-    if let model = self.propval {
-      switch (model.mHorizontalAlignment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mHorizontalAlignment.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mX_property_selection : EBSelection <Int> {
+    switch (self.mX_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mHorizontalAlignment_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mY' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mHorizontalAlignment.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mY_property = EBPropertyProxy_Int ()
+
+  var mY_property_selection : EBSelection <Int> {
+    switch (self.mY_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mHorizontalAlignment_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.mHorizontalAlignment_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mComment' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mComment_property = EBPropertyProxy_String ()
 
-  //····················································································································
-  //   Observers of 'mVerticalAlignment' stored property
-  //····················································································································
-
-  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment?> {
-    if let model = self.propval {
-      switch (model.mVerticalAlignment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mVerticalAlignment.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mComment_property_selection : EBSelection <String> {
+    switch (self.mComment_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mVerticalAlignment_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'objectDisplay' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mVerticalAlignment.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    switch (self.objectDisplay_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mVerticalAlignment_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.mVerticalAlignment_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'selectionDisplay' transient property
   //····················································································································
 
-  final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mVerticalAlignment_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  //····················································································································
-  //   Observers of 'mX' stored property
-  //····················································································································
-
-  private var mObserversOf_mX = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mX_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mX_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    switch (self.selectionDisplay_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mX_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mY' stored property
-  //····················································································································
-
-  private var mObserversOf_mY = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mY_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mY_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mY_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mComment' stored property
-  //····················································································································
-
-  private var mObserversOf_mComment = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mComment_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mComment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mComment.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mComment_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mComment (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mComment.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mComment_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mComment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-        managedObject.mComment_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mComment_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'selectionDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

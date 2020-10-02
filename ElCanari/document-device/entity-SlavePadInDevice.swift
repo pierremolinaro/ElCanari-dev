@@ -495,7 +495,7 @@ class SlavePadInDevice : EBManagedObject,
     self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
-    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, prefs_padNumberFont_property, prefs_padNumberColor_property, self.mMasterPad_property.addEBObserverOf_mName, transient_SlavePadInDevice_padNumberDisplay)
+    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, prefs_padNumberFont_property, prefs_padNumberColor_property, self.mMasterPad_property.mName_property, transient_SlavePadInDevice_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -524,7 +524,7 @@ class SlavePadInDevice : EBManagedObject,
     self.mCenterY_property.addEBObserver (self.padNumberDisplay_property)
     prefs_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     prefs_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.mMasterPad_property.addEBObserverOf_mName (self.padNumberDisplay_property)
+    self.mMasterPad_property.mName_property.addEBObserver (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
@@ -562,7 +562,7 @@ class SlavePadInDevice : EBManagedObject,
     // self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
     // prefs_padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
     // prefs_padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
-    // self.mMasterPad_property.removeEBObserverOf_mName (self.padNumberDisplay_property)
+    // self.mMasterPad_property.mName_property.removeEBObserver (self.padNumberDisplay_property)
   //--- Unregister properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: nil)
     self.mCenterY_property.setSignatureObserver (observer: nil)

@@ -15,222 +15,77 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSymbolTypeInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
-    inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    inOldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+    inOldValue?.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
+    inOldValue?.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
+    inOldValue?.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
   //--- Add observers to added objects
-    self.mInternalValue?.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
-    self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    self.mInternalValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+    self.mInternalValue?.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
+    self.mInternalValue?.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
+    self.mInternalValue?.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
   }
 
   //····················································································································
-  //   Observers of 'mSymbolTypeName' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mSymbolTypeName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mSymbolTypeName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mSymbolTypeName_property.prop ?? .empty }
+    self.mSymbolTypeName_property.mWriteModelFunction = { [weak self] (inValue : String) in self?.mInternalValue?.mSymbolTypeName_property.setProp (inValue) }
+    self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mStrokeBezierPath_property.prop ?? .empty }
+    self.mStrokeBezierPath_property.mWriteModelFunction = { [weak self] (inValue : NSBezierPath) in self?.mInternalValue?.mStrokeBezierPath_property.setProp (inValue) }
+    self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mFilledBezierPath_property.prop ?? .empty }
+    self.mFilledBezierPath_property.mWriteModelFunction = { [weak self] (inValue : NSBezierPath) in self?.mInternalValue?.mFilledBezierPath_property.setProp (inValue) }
   }
 
   //····················································································································
+  //   Proxy of 'mSymbolTypeName' stored property
+  //····················································································································
 
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSymbolTypeName.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mSymbolTypeName_property = EBPropertyProxy_String ()
+
+  var mSymbolTypeName_property_selection : EBSelection <String> {
+    switch (self.mSymbolTypeName_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mSymbolTypeName_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mStrokeBezierPath' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSymbolTypeName.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mStrokeBezierPath_property = EBPropertyProxy_NSBezierPath ()
+
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    switch (self.mStrokeBezierPath_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mSymbolTypeName_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
-        managedObject.mSymbolTypeName_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mFilledBezierPath' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSymbolTypeName_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mFilledBezierPath_property = EBPropertyProxy_NSBezierPath ()
 
-  //····················································································································
-  //   Observers of 'mStrokeBezierPath' stored property
-  //····················································································································
-
-  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
-      switch (model.mStrokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    switch (self.mFilledBezierPath_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mStrokeBezierPath_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mStrokeBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mFilledBezierPath' stored property
-  //····················································································································
-
-  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
-      switch (model.mFilledBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mFilledBezierPath.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mFilledBezierPath_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mFilledBezierPath.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mFilledBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.mFilledBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mFilledBezierPath_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

@@ -815,7 +815,7 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.netUsage_property)
   //--- Atomic property: netsDescription
-    // self.netsDescription_property.configure (self.mNets_property, self.mNets_property.addEBObserverOf_trackCount, self.mNets_property.addEBObserverOf_mNetName, self.mNets_property.addEBObserverOf_netSchematicPointsInfo, self.mNetClassName_property, transient_NetClassInProject_netsDescription)
+    // self.netsDescription_property.configure (self.mNets_property, self.mNets_property.trackCount_property, self.mNets_property.mNetName_property, self.mNets_property.netSchematicPointsInfo_property, self.mNetClassName_property, transient_NetClassInProject_netsDescription)
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNets_property_selection.kind ()

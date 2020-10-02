@@ -15,366 +15,119 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentEntity?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
-    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    inOldValue?.y1_property.removeEBObserver (self.y1_property) // Stored property
+    inOldValue?.x2_property.removeEBObserver (self.x2_property) // Stored property
+    inOldValue?.y2_property.removeEBObserver (self.y2_property) // Stored property
+    inOldValue?.width_property.removeEBObserver (self.width_property) // Stored property
+    inOldValue?.x1_property.removeEBObserver (self.x1_property) // Stored property
   //--- Add observers to added objects
-    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
-    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    self.mInternalValue?.y1_property.addEBObserver (self.y1_property) // Stored property
+    self.mInternalValue?.x2_property.addEBObserver (self.x2_property) // Stored property
+    self.mInternalValue?.y2_property.addEBObserver (self.y2_property) // Stored property
+    self.mInternalValue?.width_property.addEBObserver (self.width_property) // Stored property
+    self.mInternalValue?.x1_property.addEBObserver (self.x1_property) // Stored property
   }
 
   //····················································································································
-  //   Observers of 'y1' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var y1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.y1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.y1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y1_property.prop ?? .empty }
+    self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y1_property.setProp (inValue) }
+    self.x2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x2_property.prop ?? .empty }
+    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x2_property.setProp (inValue) }
+    self.y2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y2_property.prop ?? .empty }
+    self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y2_property.setProp (inValue) }
+    self.width_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.width_property.prop ?? .empty }
+    self.width_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.width_property.setProp (inValue) }
+    self.x1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x1_property.prop ?? .empty }
+    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x1_property.setProp (inValue) }
   }
 
   //····················································································································
+  //   Proxy of 'y1' stored property
+  //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_y1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let y1_property = EBPropertyProxy_Int ()
+
+  var y1_property_selection : EBSelection <Int> {
+    switch (self.y1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.y1_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'x2' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_y1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let x2_property = EBPropertyProxy_Int ()
+
+  var x2_property_selection : EBSelection <Int> {
+    switch (self.x2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.y1_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-        managedObject.y1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'y2' stored property
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y1_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let y2_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'x2' stored property
-  //····················································································································
-
-  private var mObserversOf_x2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var x2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.x2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var y2_property_selection : EBSelection <Int> {
+    switch (self.y2_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.x2_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'width' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let width_property = EBPropertyProxy_Int ()
+
+  var width_property_selection : EBSelection <Int> {
+    switch (self.width_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.x2_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-        managedObject.x2_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'x1' stored property
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x2_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let x1_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'y2' stored property
-  //····················································································································
-
-  private var mObserversOf_y2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var y2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.y2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_y2.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var x1_property_selection : EBSelection <Int> {
+    switch (self.x1_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.y2_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_y2.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.y2_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-        managedObject.y2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'width' stored property
-  //····················································································································
-
-  private var mObserversOf_width = EBWeakEventSet ()
-
-  //····················································································································
-
-  var width_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.width_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_width.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.width_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_width.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.width_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_width.apply { (_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'x1' stored property
-  //····················································································································
-
-  private var mObserversOf_x1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  var x1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.x1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x1.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.x1_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x1.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.x1_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-        managedObject.x1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x1_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

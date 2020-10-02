@@ -582,7 +582,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceFileData_property.addEBObserver (self.canExport_property)
   //--- Atomic property: packageNames
-    // self.packageNames_property.configure (self.mPackages_property.addEBObserverOf_mPackageName, transient_DeviceInProject_packageNames)
+    // self.packageNames_property.configure (self.mPackages_property.mPackageName_property, transient_DeviceInProject_packageNames)
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPackages_property_selection.kind ()
@@ -651,7 +651,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: symbolAndTypesNames
-    // self.symbolAndTypesNames_property.configure (self.mSymbols_property.addEBObserverOf_symbolAndTypeName, transient_DeviceInProject_symbolAndTypesNames)
+    // self.symbolAndTypesNames_property.configure (self.mSymbols_property.symbolAndTypeName_property, transient_DeviceInProject_symbolAndTypesNames)
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
@@ -674,7 +674,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.mPadAssignments_property.addEBObserverOf_pinPadAssignment, transient_DeviceInProject_pinPadAssignments)
+    // self.pinPadAssignments_property.configure (self.mPadAssignments_property.pinPadAssignment_property, transient_DeviceInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPadAssignments_property_selection.kind ()
@@ -697,7 +697,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
   //--- Atomic property: deviceSymbolDictionary
-    // self.deviceSymbolDictionary_property.configure (self.mPadAssignments_property.addEBObserverOf_descriptor, self.mSymbols_property.addEBObserverOf_symbolAndTypeName, self.mSymbols_property.addEBObserverOf_filledBezierPath, self.mSymbols_property.addEBObserverOf_strokeBezierPath, transient_DeviceInProject_deviceSymbolDictionary)
+    // self.deviceSymbolDictionary_property.configure (self.mPadAssignments_property.descriptor_property, self.mSymbols_property.symbolAndTypeName_property, self.mSymbols_property.filledBezierPath_property, self.mSymbols_property.strokeBezierPath_property, transient_DeviceInProject_deviceSymbolDictionary)
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadAssignments_property_selection.kind ()

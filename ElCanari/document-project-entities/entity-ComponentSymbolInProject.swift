@@ -661,7 +661,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
+    self.mComponent_property.mComponentValue_property.addEBObserver (self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -669,7 +669,7 @@ class ComponentSymbolInProject : SchematicObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
     )
   //--- Atomic property: componentName
-    // self.componentName_property.configure (self.mComponent_property.addEBObserverOf_componentName, transient_ComponentSymbolInProject_componentName)
+    // self.componentName_property.configure (self.mComponent_property.componentName_property, transient_ComponentSymbolInProject_componentName)
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.componentName_property_selection.kind ()
@@ -690,9 +690,9 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_componentName (self.componentName_property)
+    self.mComponent_property.componentName_property.addEBObserver (self.componentName_property)
   //--- Atomic property: deviceName
-    // self.deviceName_property.configure (self.mComponent_property.addEBObserverOf_deviceName, transient_ComponentSymbolInProject_deviceName)
+    // self.deviceName_property.configure (self.mComponent_property.deviceName_property, transient_ComponentSymbolInProject_deviceName)
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.deviceName_property_selection.kind ()
@@ -713,9 +713,9 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_deviceName (self.deviceName_property)
+    self.mComponent_property.deviceName_property.addEBObserver (self.deviceName_property)
   //--- Atomic property: symbolInfo
-    // self.symbolInfo_property.configure (self.mRotation_property, self.mMirror_property, self.componentName_property, self.mComponent_property.addEBObserverOf_mComponentValue, self.mComponent_property.addEBObserverOf_deviceSymbolDictionary, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, self.mCenterX_property, self.mCenterY_property, prefs_pinNameFont_property, self.mPoints_property.addEBObserverOf_symbolNameNetName, transient_ComponentSymbolInProject_symbolInfo)
+    // self.symbolInfo_property.configure (self.mRotation_property, self.mMirror_property, self.componentName_property, self.mComponent_property.mComponentValue_property, self.mComponent_property.deviceSymbolDictionary_property, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, self.mCenterX_property, self.mCenterY_property, prefs_pinNameFont_property, self.mPoints_property.symbolNameNetName_property, transient_ComponentSymbolInProject_symbolInfo)
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mRotation_property_selection.kind ()
@@ -749,8 +749,8 @@ class ComponentSymbolInProject : SchematicObject,
     self.mRotation_property.addEBObserver (self.symbolInfo_property)
     self.mMirror_property.addEBObserver (self.symbolInfo_property)
     self.componentName_property.addEBObserver (self.symbolInfo_property)
-    self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property)
-    self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
+    self.mComponent_property.mComponentValue_property.addEBObserver (self.symbolInfo_property)
+    self.mComponent_property.deviceSymbolDictionary_property.addEBObserver (self.symbolInfo_property)
     self.mSymbolInstanceName_property.addEBObserver (self.symbolInfo_property)
     self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
     self.mCenterX_property.addEBObserver (self.symbolInfo_property)
@@ -758,7 +758,7 @@ class ComponentSymbolInProject : SchematicObject,
     prefs_pinNameFont_property.addEBObserver (self.symbolInfo_property)
     self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.mComponent_property.addEBObserverOf_pinPadAssignments, transient_ComponentSymbolInProject_pinPadAssignments)
+    // self.pinPadAssignments_property.configure (self.mComponent_property.pinPadAssignments_property, transient_ComponentSymbolInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.pinPadAssignments_property_selection.kind ()
@@ -779,7 +779,7 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.mComponent_property.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property)
   //--- Atomic property: objectDisplay
     // self.objectDisplay_property.configure (prefs_pinNameFont_property, self.mDisplayComponentNameOffsetX_property, self.mDisplayComponentNameOffsetY_property, self.mDisplayComponentValue_property, self.mDisplayComponentValueOffsetX_property, self.mDisplayComponentValueOffsetY_property, self.symbolInfo_property, prefs_symbolColorForSchematic_property, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, transient_ComponentSymbolInProject_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -900,21 +900,21 @@ class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mReadModelFunction = nil
     self.componentValueProxy_property.mWriteModelFunction = nil
     self.componentValueProxy_property.mValidateAndWriteModelFunction = nil
-    self.mComponent_property.removeEBObserverOf_mComponentValue (self.componentValueProxy_property)
-    // self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
-    // self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
+    self.mComponent_property.mComponentValue_property.removeEBObserver (self.componentValueProxy_property)
+    // self.mComponent_property.componentName_property.removeEBObserver (self.componentName_property)
+    // self.mComponent_property.deviceName_property.removeEBObserver (self.deviceName_property)
     // self.mRotation_property.removeEBObserver (self.symbolInfo_property)
     // self.mMirror_property.removeEBObserver (self.symbolInfo_property)
     // self.componentName_property.removeEBObserver (self.symbolInfo_property)
-    // self.mComponent_property.removeEBObserverOf_mComponentValue (self.symbolInfo_property)
-    // self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
+    // self.mComponent_property.mComponentValue_property.removeEBObserver (self.symbolInfo_property)
+    // self.mComponent_property.deviceSymbolDictionary_property.removeEBObserver (self.symbolInfo_property)
     // self.mSymbolInstanceName_property.removeEBObserver (self.symbolInfo_property)
     // self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
     // self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
     // self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
     // prefs_pinNameFont_property.removeEBObserver (self.symbolInfo_property)
     // self.mPoints_property.removeEBObserverOf_symbolNameNetName (self.symbolInfo_property)
-    // self.mComponent_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    // self.mComponent_property.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property)
     // prefs_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)

@@ -15,933 +15,278 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mDeviceName_property.removeEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
-    inOldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
-    inOldValue?.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
-    inOldValue?.mDeviceFileData_property.removeEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
-    inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    inOldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
-    inOldValue?.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport) // Transient property
-    inOldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
-    inOldValue?.deviceComponentCountString_property.removeEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
-    inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
-    inOldValue?.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
-    inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
-    inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    inOldValue?.mDeviceName_property.removeEBObserver (self.mDeviceName_property) // Stored property
+    inOldValue?.mPrefix_property.removeEBObserver (self.mPrefix_property) // Stored property
+    inOldValue?.mDeviceVersion_property.removeEBObserver (self.mDeviceVersion_property) // Stored property
+    inOldValue?.mDeviceFileData_property.removeEBObserver (self.mDeviceFileData_property) // Stored property
+    inOldValue?.versionString_property.removeEBObserver (self.versionString_property) // Transient property
+    inOldValue?.sizeString_property.removeEBObserver (self.sizeString_property) // Transient property
+    inOldValue?.canExport_property.removeEBObserver (self.canExport_property) // Transient property
+    inOldValue?.packageNames_property.removeEBObserver (self.packageNames_property) // Transient property
+    inOldValue?.deviceComponentCountString_property.removeEBObserver (self.deviceComponentCountString_property) // Transient property
+    inOldValue?.canRemove_property.removeEBObserver (self.canRemove_property) // Transient property
+    inOldValue?.symbolAndTypesNames_property.removeEBObserver (self.symbolAndTypesNames_property) // Transient property
+    inOldValue?.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
+    inOldValue?.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mDeviceName_property.addEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
-    self.mInternalValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
-    self.mInternalValue?.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
-    self.mInternalValue?.mDeviceFileData_property.addEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
-    self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    self.mInternalValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
-    self.mInternalValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport) // Transient property
-    self.mInternalValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
-    self.mInternalValue?.deviceComponentCountString_property.addEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
-    self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
-    self.mInternalValue?.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
-    self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
-    self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    self.mInternalValue?.mDeviceName_property.addEBObserver (self.mDeviceName_property) // Stored property
+    self.mInternalValue?.mPrefix_property.addEBObserver (self.mPrefix_property) // Stored property
+    self.mInternalValue?.mDeviceVersion_property.addEBObserver (self.mDeviceVersion_property) // Stored property
+    self.mInternalValue?.mDeviceFileData_property.addEBObserver (self.mDeviceFileData_property) // Stored property
+    self.mInternalValue?.versionString_property.addEBObserver (self.versionString_property) // Transient property
+    self.mInternalValue?.sizeString_property.addEBObserver (self.sizeString_property) // Transient property
+    self.mInternalValue?.canExport_property.addEBObserver (self.canExport_property) // Transient property
+    self.mInternalValue?.packageNames_property.addEBObserver (self.packageNames_property) // Transient property
+    self.mInternalValue?.deviceComponentCountString_property.addEBObserver (self.deviceComponentCountString_property) // Transient property
+    self.mInternalValue?.canRemove_property.addEBObserver (self.canRemove_property) // Transient property
+    self.mInternalValue?.symbolAndTypesNames_property.addEBObserver (self.symbolAndTypesNames_property) // Transient property
+    self.mInternalValue?.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
+    self.mInternalValue?.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mDeviceName' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_mDeviceName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mDeviceName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mDeviceName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.mDeviceName_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mDeviceName_property.prop ?? .empty }
+    self.mDeviceName_property.mWriteModelFunction = { [weak self] (inValue : String) in self?.mInternalValue?.mDeviceName_property.setProp (inValue) }
+    self.mPrefix_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mPrefix_property.prop ?? .empty }
+    self.mPrefix_property.mWriteModelFunction = { [weak self] (inValue : String) in self?.mInternalValue?.mPrefix_property.setProp (inValue) }
+    self.mDeviceVersion_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mDeviceVersion_property.prop ?? .empty }
+    self.mDeviceVersion_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mDeviceVersion_property.setProp (inValue) }
+    self.mDeviceFileData_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mDeviceFileData_property.prop ?? .empty }
+    self.mDeviceFileData_property.mWriteModelFunction = { [weak self] (inValue : Data) in self?.mInternalValue?.mDeviceFileData_property.setProp (inValue) }
+    self.versionString_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.versionString_property.prop ?? .empty }
+    self.sizeString_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.sizeString_property.prop ?? .empty }
+    self.canExport_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.canExport_property.prop ?? .empty }
+    self.packageNames_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.packageNames_property.prop ?? .empty }
+    self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.deviceComponentCountString_property.prop ?? .empty }
+    self.canRemove_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.canRemove_property.prop ?? .empty }
+    self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.symbolAndTypesNames_property.prop ?? .empty }
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.pinPadAssignments_property.prop ?? .empty }
+    self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.deviceSymbolDictionary_property.prop ?? .empty }
   }
 
   //····················································································································
+  //   Proxy of 'mDeviceName' stored property
+  //····················································································································
 
-  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDeviceName.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mDeviceName_property = EBPropertyProxy_String ()
+
+  var mDeviceName_property_selection : EBSelection <String> {
+    switch (self.mDeviceName_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mDeviceName_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mPrefix' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDeviceName.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mPrefix_property = EBPropertyProxy_String ()
+
+  var mPrefix_property_selection : EBSelection <String> {
+    switch (self.mPrefix_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mDeviceName_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
-        managedObject.mDeviceName_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mDeviceVersion' stored property
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceName_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mDeviceVersion_property = EBPropertyProxy_Int ()
 
-  //····················································································································
-  //   Observers of 'mPrefix' stored property
-  //····················································································································
-
-  private var mObserversOf_mPrefix = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mPrefix_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mPrefix_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mPrefix.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mDeviceVersion_property_selection : EBSelection <Int> {
+    switch (self.mDeviceVersion_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mPrefix_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mDeviceFileData' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_mPrefix (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mPrefix.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mDeviceFileData_property = EBPropertyProxy_Data ()
+
+  var mDeviceFileData_property_selection : EBSelection <Data> {
+    switch (self.mDeviceFileData_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mPrefix_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mPrefix_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
-        managedObject.mPrefix_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'versionString' transient property
   //····················································································································
 
-  final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPrefix_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let versionString_property = EBTransientProperty_String ()
 
-  //····················································································································
-  //   Observers of 'mDeviceVersion' stored property
-  //····················································································································
-
-  private var mObserversOf_mDeviceVersion = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mDeviceVersion_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mDeviceVersion_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDeviceVersion.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var versionString_property_selection : EBSelection <String> {
+    switch (self.versionString_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mDeviceVersion_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'sizeString' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDeviceVersion.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let sizeString_property = EBTransientProperty_String ()
+
+  var sizeString_property_selection : EBSelection <String> {
+    switch (self.sizeString_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mDeviceVersion_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
-        managedObject.mDeviceVersion_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'canExport' transient property
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceVersion_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let canExport_property = EBTransientProperty_Bool ()
 
-  //····················································································································
-  //   Observers of 'mDeviceFileData' stored property
-  //····················································································································
-
-  private var mObserversOf_mDeviceFileData = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mDeviceFileData_property_selection : EBSelection <Data?> {
-    if let model = self.propval {
-      switch (model.mDeviceFileData_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDeviceFileData.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var canExport_property_selection : EBSelection <Bool> {
+    switch (self.canExport_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mDeviceFileData_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'packageNames' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDeviceFileData.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let packageNames_property = EBTransientProperty_StringArray ()
+
+  var packageNames_property_selection : EBSelection <StringArray> {
+    switch (self.packageNames_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mDeviceFileData_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
-        managedObject.mDeviceFileData_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'deviceComponentCountString' transient property
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceFileData_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let deviceComponentCountString_property = EBTransientProperty_String ()
 
-  //····················································································································
-  //   Observers of 'versionString' transient property
-  //····················································································································
-
-  private var mObserversOf_versionString = EBWeakEventSet ()
-
-  //····················································································································
-
-  var versionString_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.versionString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_versionString.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var deviceComponentCountString_property_selection : EBSelection <String> {
+    switch (self.deviceComponentCountString_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.versionString_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'canRemove' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_versionString.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let canRemove_property = EBTransientProperty_Bool ()
+
+  var canRemove_property_selection : EBSelection <Bool> {
+    switch (self.canRemove_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.versionString_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
-        managedObject.versionString_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'symbolAndTypesNames' transient property
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
-        managedObject.versionString_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
 
-  //····················································································································
-  //   Observers of 'sizeString' transient property
-  //····················································································································
-
-  private var mObserversOf_sizeString = EBWeakEventSet ()
-
-  //····················································································································
-
-  var sizeString_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.sizeString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sizeString.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray> {
+    switch (self.symbolAndTypesNames_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.sizeString_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'pinPadAssignments' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sizeString.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+    switch (self.pinPadAssignments_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.sizeString_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
-        managedObject.sizeString_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
-        managedObject.sizeString_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
 
-  //····················································································································
-  //   Observers of 'canExport' transient property
-  //····················································································································
-
-  private var mObserversOf_canExport = EBWeakEventSet ()
-
-  //····················································································································
-
-  var canExport_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.canExport_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_canExport (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canExport.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
+    switch (self.deviceSymbolDictionary_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.canExport_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_canExport (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canExport.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canExport_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canExport.apply { (_ observer : EBEvent) in
-        managedObject.canExport_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canExport.apply { (_ observer : EBEvent) in
-        managedObject.canExport_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'packageNames' transient property
-  //····················································································································
-
-  private var mObserversOf_packageNames = EBWeakEventSet ()
-
-  //····················································································································
-
-  var packageNames_property_selection : EBSelection <StringArray?> {
-    if let model = self.propval {
-      switch (model.packageNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_packageNames (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_packageNames.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.packageNames_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_packageNames (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_packageNames.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.packageNames_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_packageNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
-        managedObject.packageNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_packageNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
-        managedObject.packageNames_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'deviceComponentCountString' transient property
-  //····················································································································
-
-  private var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
-
-  //····················································································································
-
-  var deviceComponentCountString_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.deviceComponentCountString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_deviceComponentCountString.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.deviceComponentCountString_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_deviceComponentCountString.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.deviceComponentCountString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_deviceComponentCountString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceComponentCountString.apply { (_ observer : EBEvent) in
-        managedObject.deviceComponentCountString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceComponentCountString.apply { (_ observer : EBEvent) in
-        managedObject.deviceComponentCountString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'canRemove' transient property
-  //····················································································································
-
-  private var mObserversOf_canRemove = EBWeakEventSet ()
-
-  //····················································································································
-
-  var canRemove_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.canRemove_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canRemove.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canRemove_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canRemove.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canRemove_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'symbolAndTypesNames' transient property
-  //····················································································································
-
-  private var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
-
-  //····················································································································
-
-  var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray?> {
-    if let model = self.propval {
-      switch (model.symbolAndTypesNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_symbolAndTypesNames.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.symbolAndTypesNames_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolAndTypesNames.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.symbolAndTypesNames_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_symbolAndTypesNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolAndTypesNames.apply { (_ observer : EBEvent) in
-        managedObject.symbolAndTypesNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolAndTypesNames.apply { (_ observer : EBEvent) in
-        managedObject.symbolAndTypesNames_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'pinPadAssignments' transient property
-  //····················································································································
-
-  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
-
-  //····················································································································
-
-  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
-    if let model = self.propval {
-      switch (model.pinPadAssignments_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_pinPadAssignments.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.pinPadAssignments_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_pinPadAssignments.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.pinPadAssignments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
-        managedObject.pinPadAssignments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
-        managedObject.pinPadAssignments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'deviceSymbolDictionary' transient property
-  //····················································································································
-
-  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
-
-  //····················································································································
-
-  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary?> {
-    if let model = self.propval {
-      switch (model.deviceSymbolDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.deviceSymbolDictionary_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.deviceSymbolDictionary_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
-        managedObject.deviceSymbolDictionary_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
-        managedObject.deviceSymbolDictionary_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 

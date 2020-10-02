@@ -344,7 +344,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
-    // self.mStatusImage_property.configure (self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension, self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name, transient_ArtworkDocument_mStatusImage)
+    // self.mStatusImage_property.configure (self.rootObject.fileGenerationParameterArray_property.fileExtension_property, self.rootObject.fileGenerationParameterArray_property.name_property, transient_ArtworkDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -373,7 +373,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
-    // self.mStatusMessage_property.configure (self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension, self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name, transient_ArtworkDocument_mStatusMessage)
+    // self.mStatusMessage_property.configure (self.rootObject.fileGenerationParameterArray_property.fileExtension_property, self.rootObject.fileGenerationParameterArray_property.name_property, transient_ArtworkDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()

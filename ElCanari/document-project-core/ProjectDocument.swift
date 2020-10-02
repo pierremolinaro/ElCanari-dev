@@ -1892,7 +1892,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveNetClasses
-    // self.canRemoveNetClasses_property.configure (self.rootObject.mNetClasses_property.count_property, self.netClassController.selectedArray_property.addEBObserverOf_canRemove, transient_ProjectDocument_canRemoveNetClasses)
+    // self.canRemoveNetClasses_property.configure (self.rootObject.mNetClasses_property.count_property, self.netClassController.selectedArray_property.canRemove_property, transient_ProjectDocument_canRemoveNetClasses)
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
@@ -1921,7 +1921,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDevicePackageNames
-    // self.selectedDevicePackageNames_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames, transient_ProjectDocument_selectedDevicePackageNames)
+    // self.selectedDevicePackageNames_property.configure (self.projectDeviceController.selectedArray_property.packageNames_property, transient_ProjectDocument_selectedDevicePackageNames)
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1948,7 +1948,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDeviceSymbols
-    // self.selectedDeviceSymbols_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_deviceSymbolDictionary, transient_ProjectDocument_selectedDeviceSymbols)
+    // self.selectedDeviceSymbols_property.configure (self.projectDeviceController.selectedArray_property.deviceSymbolDictionary_property, transient_ProjectDocument_selectedDeviceSymbols)
     self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1975,7 +1975,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDeviceSymbolNames
-    // self.selectedDeviceSymbolNames_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames, transient_ProjectDocument_selectedDeviceSymbolNames)
+    // self.selectedDeviceSymbolNames_property.configure (self.projectDeviceController.selectedArray_property.symbolAndTypesNames_property, transient_ProjectDocument_selectedDeviceSymbolNames)
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2002,7 +2002,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments, transient_ProjectDocument_pinPadAssignments)
+    // self.pinPadAssignments_property.configure (self.projectDeviceController.selectedArray_property.pinPadAssignments_property, transient_ProjectDocument_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2083,7 +2083,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetShape
-    // self.rastnetShape_property.configure (self.rootObject.mRastnetDisplay_property, self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation, self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName, transient_ProjectDocument_rastnetShape)
+    // self.rastnetShape_property.configure (self.rootObject.mRastnetDisplay_property, self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.mBoardObjects_property.netNameAndPadLocation_property, self.boardObjectsController.selectedArray_property.componentName_property, transient_ProjectDocument_rastnetShape)
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -2199,7 +2199,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveSelectedFonts
-    // self.canRemoveSelectedFonts_property.configure (self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont, transient_ProjectDocument_canRemoveSelectedFonts)
+    // self.canRemoveSelectedFonts_property.configure (self.projectFontController.selectedArray_property.canRemoveFont_property, transient_ProjectDocument_canRemoveSelectedFonts)
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectFontController.selectedArray_property_selection.kind ()
@@ -2226,7 +2226,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveSelectedDevices
-    // self.canRemoveSelectedDevices_property.configure (self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove, transient_ProjectDocument_canRemoveSelectedDevices)
+    // self.canRemoveSelectedDevices_property.configure (self.projectDeviceController.selectedArray_property.canRemove_property, transient_ProjectDocument_canRemoveSelectedDevices)
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2390,7 +2390,7 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canChangePackage
-    // self.canChangePackage_property.configure (self.componentController.selectedArray_property.addEBObserverOf_availablePackages, transient_ProjectDocument_canChangePackage)
+    // self.canChangePackage_property.configure (self.componentController.selectedArray_property.availablePackages_property, transient_ProjectDocument_canChangePackage)
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.componentController.selectedArray_property_selection.kind ()

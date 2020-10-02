@@ -466,7 +466,7 @@ class MasterPadInDevice : EBManagedObject,
     self.mName_property.addEBObserver (self.padNumberDisplay_property)
     prefs_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
   //--- Atomic property: frontSideFilledBezierPathArray
-    // self.frontSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath, transient_MasterPadInDevice_frontSideFilledBezierPathArray)
+    // self.frontSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.frontSideFilledBezierPath_property, transient_MasterPadInDevice_frontSideFilledBezierPathArray)
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -505,7 +505,7 @@ class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPathArray_property)
   //--- Atomic property: backSideFilledBezierPathArray
-    // self.backSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath, transient_MasterPadInDevice_backSideFilledBezierPathArray)
+    // self.backSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.backSideFilledBezierPath_property, transient_MasterPadInDevice_backSideFilledBezierPathArray)
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()

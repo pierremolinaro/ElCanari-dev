@@ -585,7 +585,7 @@ class BorderCurve : EBGraphicManagedObject,
     self.mNextX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mNext?.mX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mNext_property.addEBObserverOf_mX (self.mNextX_property)
+    self.mNext_property.mX_property.addEBObserver (self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext {
@@ -600,7 +600,7 @@ class BorderCurve : EBGraphicManagedObject,
     self.mNextY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mNext?.mY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mNext_property.addEBObserverOf_mY (self.mNextY_property)
+    self.mNext_property.mY_property.addEBObserver (self.mNextY_property)
   //--- To one property: mRoot (has opposite to many relationship: mBorderCurves)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -620,7 +620,7 @@ class BorderCurve : EBGraphicManagedObject,
       resetter: { inObject in inObject.mNext_property.setProp (nil) }
     )
   //--- Atomic property: p2Xstring
-    // self.p2Xstring_property.configure (self.mNext_property.addEBObserverOf_mX, self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit, transient_BorderCurve_p2Xstring)
+    // self.p2Xstring_property.configure (self.mNext_property.mX_property, self.mRoot_property.mBoardSelectedCurveDisplayUnit_property, transient_BorderCurve_p2Xstring)
     self.p2Xstring_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNext_property.mX_property_selection.kind ()
@@ -642,10 +642,10 @@ class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.addEBObserverOf_mX (self.p2Xstring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
+    self.mNext_property.mX_property.addEBObserver (self.p2Xstring_property)
+    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.p2Xstring_property)
   //--- Atomic property: p2Ystring
-    // self.p2Ystring_property.configure (self.mNext_property.addEBObserverOf_mY, self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit, transient_BorderCurve_p2Ystring)
+    // self.p2Ystring_property.configure (self.mNext_property.mY_property, self.mRoot_property.mBoardSelectedCurveDisplayUnit_property, transient_BorderCurve_p2Ystring)
     self.p2Ystring_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNext_property.mY_property_selection.kind ()
@@ -667,10 +667,10 @@ class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.addEBObserverOf_mY (self.p2Ystring_property)
-    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Ystring_property)
+    self.mNext_property.mY_property.addEBObserver (self.p2Ystring_property)
+    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.p2Ystring_property)
   //--- Atomic property: descriptor
-    // self.descriptor_property.configure (self.mX_property, self.mY_property, self.mNext_property.addEBObserverOf_mX, self.mNext_property.addEBObserverOf_mY, self.mCPX1_property, self.mCPY1_property, self.mCPX2_property, self.mCPY2_property, self.mShape_property, transient_BorderCurve_descriptor)
+    // self.descriptor_property.configure (self.mX_property, self.mY_property, self.mNext_property.mX_property, self.mNext_property.mY_property, self.mCPX1_property, self.mCPY1_property, self.mCPX2_property, self.mCPY2_property, self.mShape_property, transient_BorderCurve_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -701,15 +701,15 @@ class BorderCurve : EBGraphicManagedObject,
     }
     self.mX_property.addEBObserver (self.descriptor_property)
     self.mY_property.addEBObserver (self.descriptor_property)
-    self.mNext_property.addEBObserverOf_mX (self.descriptor_property)
-    self.mNext_property.addEBObserverOf_mY (self.descriptor_property)
+    self.mNext_property.mX_property.addEBObserver (self.descriptor_property)
+    self.mNext_property.mY_property.addEBObserver (self.descriptor_property)
     self.mCPX1_property.addEBObserver (self.descriptor_property)
     self.mCPY1_property.addEBObserver (self.descriptor_property)
     self.mCPX2_property.addEBObserver (self.descriptor_property)
     self.mCPY2_property.addEBObserver (self.descriptor_property)
     self.mShape_property.addEBObserver (self.descriptor_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mNext_property.addEBObserverOf_mX, self.mNext_property.addEBObserverOf_mY, self.mCPX1_property, self.mCPY1_property, self.mCPX2_property, self.mCPY2_property, self.mShape_property, self.mRoot_property.addEBObserverOf_mBoardLimitsWidth, self.mRoot_property.addEBObserverOf_mBoardClearance, self.mRoot_property.addEBObserverOf_mBoardShape, transient_BorderCurve_objectDisplay)
+    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mNext_property.mX_property, self.mNext_property.mY_property, self.mCPX1_property, self.mCPY1_property, self.mCPX2_property, self.mCPY2_property, self.mShape_property, self.mRoot_property.mBoardLimitsWidth_property, self.mRoot_property.mBoardClearance_property, self.mRoot_property.mBoardShape_property, transient_BorderCurve_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -743,16 +743,16 @@ class BorderCurve : EBGraphicManagedObject,
     }
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
-    self.mNext_property.addEBObserverOf_mX (self.objectDisplay_property)
-    self.mNext_property.addEBObserverOf_mY (self.objectDisplay_property)
+    self.mNext_property.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mNext_property.mY_property.addEBObserver (self.objectDisplay_property)
     self.mCPX1_property.addEBObserver (self.objectDisplay_property)
     self.mCPY1_property.addEBObserver (self.objectDisplay_property)
     self.mCPX2_property.addEBObserver (self.objectDisplay_property)
     self.mCPY2_property.addEBObserver (self.objectDisplay_property)
     self.mShape_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mBoardClearance (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mBoardShape (self.objectDisplay_property)
+    self.mRoot_property.mBoardLimitsWidth_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.mBoardClearance_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.mBoardShape_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: isLine
     // self.isLine_property.configure (self.mShape_property, transient_BorderCurve_isLine)
     self.isLine_property.mReadModelFunction = { [weak self] in
@@ -777,7 +777,7 @@ class BorderCurve : EBGraphicManagedObject,
     }
     self.mShape_property.addEBObserver (self.isLine_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mNext_property.addEBObserverOf_mX, self.mNext_property.addEBObserverOf_mY, self.mCPX1_property, self.mCPY1_property, self.mCPX2_property, self.mCPY2_property, self.mShape_property, self.mRoot_property.addEBObserverOf_mBoardShape, transient_BorderCurve_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mNext_property.mX_property, self.mNext_property.mY_property, self.mCPX1_property, self.mCPY1_property, self.mCPX2_property, self.mCPY2_property, self.mShape_property, self.mRoot_property.mBoardShape_property, transient_BorderCurve_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -809,14 +809,14 @@ class BorderCurve : EBGraphicManagedObject,
     }
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
-    self.mNext_property.addEBObserverOf_mX (self.selectionDisplay_property)
-    self.mNext_property.addEBObserverOf_mY (self.selectionDisplay_property)
+    self.mNext_property.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mNext_property.mY_property.addEBObserver (self.selectionDisplay_property)
     self.mCPX1_property.addEBObserver (self.selectionDisplay_property)
     self.mCPY1_property.addEBObserver (self.selectionDisplay_property)
     self.mCPX2_property.addEBObserver (self.selectionDisplay_property)
     self.mCPY2_property.addEBObserver (self.selectionDisplay_property)
     self.mShape_property.addEBObserver (self.selectionDisplay_property)
-    self.mRoot_property.addEBObserverOf_mBoardShape (self.selectionDisplay_property)
+    self.mRoot_property.mBoardShape_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -830,20 +830,20 @@ class BorderCurve : EBGraphicManagedObject,
     self.mNextX_property.mReadModelFunction = nil
     self.mNextX_property.mWriteModelFunction = nil
     self.mNextX_property.mValidateAndWriteModelFunction = nil
-    self.mNext_property.removeEBObserverOf_mX (self.mNextX_property)
+    self.mNext_property.mX_property.removeEBObserver (self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = nil
     self.mNextY_property.mWriteModelFunction = nil
     self.mNextY_property.mValidateAndWriteModelFunction = nil
-    self.mNext_property.removeEBObserverOf_mY (self.mNextY_property)
-    // self.mNext_property.removeEBObserverOf_mX (self.p2Xstring_property)
-    // self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
-    // self.mNext_property.removeEBObserverOf_mY (self.p2Ystring_property)
-    // self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Ystring_property)
+    self.mNext_property.mY_property.removeEBObserver (self.mNextY_property)
+    // self.mNext_property.mX_property.removeEBObserver (self.p2Xstring_property)
+    // self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (self.p2Xstring_property)
+    // self.mNext_property.mY_property.removeEBObserver (self.p2Ystring_property)
+    // self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (self.p2Ystring_property)
     // self.mX_property.removeEBObserver (self.descriptor_property)
     // self.mY_property.removeEBObserver (self.descriptor_property)
-    // self.mNext_property.removeEBObserverOf_mX (self.descriptor_property)
-    // self.mNext_property.removeEBObserverOf_mY (self.descriptor_property)
+    // self.mNext_property.mX_property.removeEBObserver (self.descriptor_property)
+    // self.mNext_property.mY_property.removeEBObserver (self.descriptor_property)
     // self.mCPX1_property.removeEBObserver (self.descriptor_property)
     // self.mCPY1_property.removeEBObserver (self.descriptor_property)
     // self.mCPX2_property.removeEBObserver (self.descriptor_property)
@@ -851,27 +851,27 @@ class BorderCurve : EBGraphicManagedObject,
     // self.mShape_property.removeEBObserver (self.descriptor_property)
     // self.mX_property.removeEBObserver (self.objectDisplay_property)
     // self.mY_property.removeEBObserver (self.objectDisplay_property)
-    // self.mNext_property.removeEBObserverOf_mX (self.objectDisplay_property)
-    // self.mNext_property.removeEBObserverOf_mY (self.objectDisplay_property)
+    // self.mNext_property.mX_property.removeEBObserver (self.objectDisplay_property)
+    // self.mNext_property.mY_property.removeEBObserver (self.objectDisplay_property)
     // self.mCPX1_property.removeEBObserver (self.objectDisplay_property)
     // self.mCPY1_property.removeEBObserver (self.objectDisplay_property)
     // self.mCPX2_property.removeEBObserver (self.objectDisplay_property)
     // self.mCPY2_property.removeEBObserver (self.objectDisplay_property)
     // self.mShape_property.removeEBObserver (self.objectDisplay_property)
-    // self.mRoot_property.removeEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
-    // self.mRoot_property.removeEBObserverOf_mBoardClearance (self.objectDisplay_property)
-    // self.mRoot_property.removeEBObserverOf_mBoardShape (self.objectDisplay_property)
+    // self.mRoot_property.mBoardLimitsWidth_property.removeEBObserver (self.objectDisplay_property)
+    // self.mRoot_property.mBoardClearance_property.removeEBObserver (self.objectDisplay_property)
+    // self.mRoot_property.mBoardShape_property.removeEBObserver (self.objectDisplay_property)
     // self.mShape_property.removeEBObserver (self.isLine_property)
     // self.mX_property.removeEBObserver (self.selectionDisplay_property)
     // self.mY_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mNext_property.removeEBObserverOf_mX (self.selectionDisplay_property)
-    // self.mNext_property.removeEBObserverOf_mY (self.selectionDisplay_property)
+    // self.mNext_property.mX_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mNext_property.mY_property.removeEBObserver (self.selectionDisplay_property)
     // self.mCPX1_property.removeEBObserver (self.selectionDisplay_property)
     // self.mCPY1_property.removeEBObserver (self.selectionDisplay_property)
     // self.mCPX2_property.removeEBObserver (self.selectionDisplay_property)
     // self.mCPY2_property.removeEBObserver (self.selectionDisplay_property)
     // self.mShape_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mRoot_property.removeEBObserverOf_mBoardShape (self.selectionDisplay_property)
+    // self.mRoot_property.mBoardShape_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

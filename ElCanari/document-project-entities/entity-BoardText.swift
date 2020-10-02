@@ -448,7 +448,7 @@ class BoardText : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mTexts_property.remove (me) } }
     )
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.addEBObserverOf_descriptor, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mLayer_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, prefs_displayFrontLegendForBoard_property, prefs_displayBackLegendForBoard_property, prefs_displayFrontLayoutForBoard_property, prefs_displayBackLayoutForBoard_property, prefs_frontSideLegendColorForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, prefs_backSideLegendColorForBoard_property, transient_BoardText_objectDisplay)
+    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.descriptor_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mLayer_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, prefs_displayFrontLegendForBoard_property, prefs_displayBackLegendForBoard_property, prefs_displayFrontLayoutForBoard_property, prefs_displayBackLayoutForBoard_property, prefs_frontSideLegendColorForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, prefs_backSideLegendColorForBoard_property, transient_BoardText_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -491,7 +491,7 @@ class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.mText_property.addEBObserver (self.objectDisplay_property)
     self.mFontSize_property.addEBObserver (self.objectDisplay_property)
-    self.mFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mFont_property.descriptor_property.addEBObserver (self.objectDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mLayer_property.addEBObserver (self.objectDisplay_property)
@@ -507,7 +507,7 @@ class BoardText : BoardObject,
     prefs_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.addEBObserverOf_descriptor, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mLayer_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, prefs_frontSideLegendColorForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, prefs_backSideLegendColorForBoard_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardText_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.descriptor_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mLayer_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, prefs_frontSideLegendColorForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, prefs_backSideLegendColorForBoard_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardText_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -547,7 +547,7 @@ class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.selectionDisplay_property)
     self.mText_property.addEBObserver (self.selectionDisplay_property)
     self.mFontSize_property.addEBObserver (self.selectionDisplay_property)
-    self.mFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mFont_property.descriptor_property.addEBObserver (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mLayer_property.addEBObserver (self.selectionDisplay_property)
@@ -560,7 +560,7 @@ class BoardText : BoardObject,
     prefs_backSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     prefs_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: fontName
-    // self.fontName_property.configure (self.mFont_property.addEBObserverOf_mFontName, transient_BoardText_fontName)
+    // self.fontName_property.configure (self.mFont_property.mFontName_property, transient_BoardText_fontName)
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFont_property.mFontName_property_selection.kind ()
@@ -581,9 +581,9 @@ class BoardText : BoardObject,
         return .empty
       }
     }
-    self.mFont_property.addEBObserverOf_mFontName (self.fontName_property)
+    self.mFont_property.mFontName_property.addEBObserver (self.fontName_property)
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.mLayer_property, self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.addEBObserverOf_descriptor, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, transient_BoardText_signatureForERCChecking)
+    // self.signatureForERCChecking_property.configure (self.mLayer_property, self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.descriptor_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, transient_BoardText_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mLayer_property_selection.kind ()
@@ -619,7 +619,7 @@ class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.signatureForERCChecking_property)
     self.mText_property.addEBObserver (self.signatureForERCChecking_property)
     self.mFontSize_property.addEBObserver (self.signatureForERCChecking_property)
-    self.mFont_property.addEBObserverOf_descriptor (self.signatureForERCChecking_property)
+    self.mFont_property.descriptor_property.addEBObserver (self.signatureForERCChecking_property)
     self.mHorizontalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
     self.mVerticalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)
@@ -638,7 +638,7 @@ class BoardText : BoardObject,
     // self.mY_property.removeEBObserver (self.objectDisplay_property)
     // self.mText_property.removeEBObserver (self.objectDisplay_property)
     // self.mFontSize_property.removeEBObserver (self.objectDisplay_property)
-    // self.mFont_property.removeEBObserverOf_descriptor (self.objectDisplay_property)
+    // self.mFont_property.descriptor_property.removeEBObserver (self.objectDisplay_property)
     // self.mHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     // self.mVerticalAlignment_property.removeEBObserver (self.objectDisplay_property)
     // self.mLayer_property.removeEBObserver (self.objectDisplay_property)
@@ -657,7 +657,7 @@ class BoardText : BoardObject,
     // self.mY_property.removeEBObserver (self.selectionDisplay_property)
     // self.mText_property.removeEBObserver (self.selectionDisplay_property)
     // self.mFontSize_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mFont_property.removeEBObserverOf_descriptor (self.selectionDisplay_property)
+    // self.mFont_property.descriptor_property.removeEBObserver (self.selectionDisplay_property)
     // self.mHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     // self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     // self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
@@ -669,13 +669,13 @@ class BoardText : BoardObject,
     // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // prefs_backSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // prefs_hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mFont_property.removeEBObserverOf_mFontName (self.fontName_property)
+    // self.mFont_property.mFontName_property.removeEBObserver (self.fontName_property)
     // self.mLayer_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mText_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mFontSize_property.removeEBObserver (self.signatureForERCChecking_property)
-    // self.mFont_property.removeEBObserverOf_descriptor (self.signatureForERCChecking_property)
+    // self.mFont_property.descriptor_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mHorizontalAlignment_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mVerticalAlignment_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mRotation_property.removeEBObserver (self.signatureForERCChecking_property)

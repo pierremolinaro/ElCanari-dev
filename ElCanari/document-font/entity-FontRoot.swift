@@ -452,7 +452,7 @@ class FontRoot : EBManagedObject,
     }
     self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
-    // self.sampleStringBezierPath_property.configure (self.nominalSize_property, self.characters_property.addEBObserverOf_segmentArrayForDrawing, self.characters_property.addEBObserverOf_advance, prefs_sampleString_property, prefs_sampleStringSize_property, transient_FontRoot_sampleStringBezierPath)
+    // self.sampleStringBezierPath_property.configure (self.nominalSize_property, self.characters_property.segmentArrayForDrawing_property, self.characters_property.advance_property, prefs_sampleString_property, prefs_sampleStringSize_property, transient_FontRoot_sampleStringBezierPath)
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.nominalSize_property_selection.kind ()
@@ -552,7 +552,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Atomic property: definedCharacters
-    // self.definedCharacters_property.configure (self.characters_property.addEBObserverOf_codePoint, transient_FontRoot_definedCharacters)
+    // self.definedCharacters_property.configure (self.characters_property.codePoint_property, transient_FontRoot_definedCharacters)
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.characters_property_selection.kind ()
@@ -575,7 +575,7 @@ class FontRoot : EBManagedObject,
     }
     self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.characters_property.addEBObserverOf_issues, transient_FontRoot_issues)
+    // self.issues_property.configure (self.characters_property.issues_property, transient_FontRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.characters_property_selection.kind ()

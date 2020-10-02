@@ -295,7 +295,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
     )
   //--- Atomic property: symbolQualifiedName
-    // self.symbolQualifiedName_property.configure (self.mInstanceName_property, self.mType_property.addEBObserverOf_mTypeName, transient_SymbolInstanceInDevice_symbolQualifiedName)
+    // self.symbolQualifiedName_property.configure (self.mInstanceName_property, self.mType_property.mTypeName_property, transient_SymbolInstanceInDevice_symbolQualifiedName)
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mInstanceName_property_selection.kind ()
@@ -318,9 +318,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mInstanceName_property.addEBObserver (self.symbolQualifiedName_property)
-    self.mType_property.addEBObserverOf_mTypeName (self.symbolQualifiedName_property)
+    self.mType_property.mTypeName_property.addEBObserver (self.symbolQualifiedName_property)
   //--- Atomic property: symbolTypeName
-    // self.symbolTypeName_property.configure (self.mType_property.addEBObserverOf_mTypeName, transient_SymbolInstanceInDevice_symbolTypeName)
+    // self.symbolTypeName_property.configure (self.mType_property.mTypeName_property, transient_SymbolInstanceInDevice_symbolTypeName)
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mType_property.mTypeName_property_selection.kind ()
@@ -341,9 +341,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mTypeName (self.symbolTypeName_property)
+    self.mType_property.mTypeName_property.addEBObserver (self.symbolTypeName_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mType_property.addEBObserverOf_mStrokeBezierPath, self.mType_property.addEBObserverOf_mFilledBezierPath, self.mType_property.addEBObserverOf_pinNameShape, self.mPinInstances_property.addEBObserverOf_numberShape, self.symbolQualifiedName_property, prefs_symbolDrawingWidthMultipliedByTen_property, self.mX_property, self.mY_property, transient_SymbolInstanceInDevice_selectionDisplay)
+    // self.selectionDisplay_property.configure (self.mType_property.mStrokeBezierPath_property, self.mType_property.mFilledBezierPath_property, self.mType_property.pinNameShape_property, self.mPinInstances_property.numberShape_property, self.symbolQualifiedName_property, prefs_symbolDrawingWidthMultipliedByTen_property, self.mX_property, self.mY_property, transient_SymbolInstanceInDevice_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
@@ -371,16 +371,16 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
-    self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
-    self.mType_property.addEBObserverOf_pinNameShape (self.selectionDisplay_property)
+    self.mType_property.mStrokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.mType_property.mFilledBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.mType_property.pinNameShape_property.addEBObserver (self.selectionDisplay_property)
     self.mPinInstances_property.addEBObserverOf_numberShape (self.selectionDisplay_property)
     self.symbolQualifiedName_property.addEBObserver (self.selectionDisplay_property)
     prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: unconnectedPins
-    // self.unconnectedPins_property.configure (self.mPinInstances_property.addEBObserverOf_pinName, self.mPinInstances_property.addEBObserverOf_isConnected, self.mInstanceName_property, transient_SymbolInstanceInDevice_unconnectedPins)
+    // self.unconnectedPins_property.configure (self.mPinInstances_property.pinName_property, self.mPinInstances_property.isConnected_property, self.mInstanceName_property, transient_SymbolInstanceInDevice_unconnectedPins)
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPinInstances_property_selection.kind ()
@@ -407,7 +407,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mPinInstances_property.addEBObserverOf_isConnected (self.unconnectedPins_property)
     self.mInstanceName_property.addEBObserver (self.unconnectedPins_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mType_property.addEBObserverOf_mStrokeBezierPath, self.mType_property.addEBObserverOf_mFilledBezierPath, self.mType_property.addEBObserverOf_pinNameShape, self.mPinInstances_property.addEBObserverOf_numberShape, self.symbolQualifiedName_property, self.mX_property, self.mY_property, prefs_symbolDrawingWidthMultipliedByTen_property, prefs_symbolColor_property, transient_SymbolInstanceInDevice_objectDisplay)
+    // self.objectDisplay_property.configure (self.mType_property.mStrokeBezierPath_property, self.mType_property.mFilledBezierPath_property, self.mType_property.pinNameShape_property, self.mPinInstances_property.numberShape_property, self.symbolQualifiedName_property, self.mX_property, self.mY_property, prefs_symbolDrawingWidthMultipliedByTen_property, prefs_symbolColor_property, transient_SymbolInstanceInDevice_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
@@ -436,9 +436,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
-    self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
-    self.mType_property.addEBObserverOf_pinNameShape (self.objectDisplay_property)
+    self.mType_property.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.mType_property.mFilledBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.mType_property.pinNameShape_property.addEBObserver (self.objectDisplay_property)
     self.mPinInstances_property.addEBObserverOf_numberShape (self.objectDisplay_property)
     self.symbolQualifiedName_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
@@ -461,11 +461,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     // self.mInstanceName_property.removeEBObserver (self.symbolQualifiedName_property)
-    // self.mType_property.removeEBObserverOf_mTypeName (self.symbolQualifiedName_property)
-    // self.mType_property.removeEBObserverOf_mTypeName (self.symbolTypeName_property)
-    // self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
-    // self.mType_property.removeEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
-    // self.mType_property.removeEBObserverOf_pinNameShape (self.selectionDisplay_property)
+    // self.mType_property.mTypeName_property.removeEBObserver (self.symbolQualifiedName_property)
+    // self.mType_property.mTypeName_property.removeEBObserver (self.symbolTypeName_property)
+    // self.mType_property.mStrokeBezierPath_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mType_property.mFilledBezierPath_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mType_property.pinNameShape_property.removeEBObserver (self.selectionDisplay_property)
     // self.mPinInstances_property.removeEBObserverOf_numberShape (self.selectionDisplay_property)
     // self.symbolQualifiedName_property.removeEBObserver (self.selectionDisplay_property)
     // prefs_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
@@ -474,9 +474,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     // self.mPinInstances_property.removeEBObserverOf_pinName (self.unconnectedPins_property)
     // self.mPinInstances_property.removeEBObserverOf_isConnected (self.unconnectedPins_property)
     // self.mInstanceName_property.removeEBObserver (self.unconnectedPins_property)
-    // self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
-    // self.mType_property.removeEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
-    // self.mType_property.removeEBObserverOf_pinNameShape (self.objectDisplay_property)
+    // self.mType_property.mStrokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    // self.mType_property.mFilledBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    // self.mType_property.pinNameShape_property.removeEBObserver (self.objectDisplay_property)
     // self.mPinInstances_property.removeEBObserverOf_numberShape (self.objectDisplay_property)
     // self.symbolQualifiedName_property.removeEBObserver (self.objectDisplay_property)
     // self.mX_property.removeEBObserver (self.objectDisplay_property)

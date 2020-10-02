@@ -15,578 +15,178 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
-    inOldValue?.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
-    inOldValue?.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
-    inOldValue?.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
-    inOldValue?.segmentArrayForDrawing_property.removeEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
-    inOldValue?.gerberCode_property.removeEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
-    inOldValue?.gerberCodeInstructionCountMessage_property.removeEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.codePoint_property.removeEBObserver (self.codePoint_property) // Stored property
+    inOldValue?.advance_property.removeEBObserver (self.advance_property) // Stored property
+    inOldValue?.mWarnsWhenNoSegment_property.removeEBObserver (self.mWarnsWhenNoSegment_property) // Stored property
+    inOldValue?.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.mWarnsWhenAdvanceIsZero_property) // Stored property
+    inOldValue?.segmentArrayForDrawing_property.removeEBObserver (self.segmentArrayForDrawing_property) // Transient property
+    inOldValue?.gerberCode_property.removeEBObserver (self.gerberCode_property) // Transient property
+    inOldValue?.gerberCodeInstructionCountMessage_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property) // Transient property
+    inOldValue?.issues_property.removeEBObserver (self.issues_property) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
-    self.mInternalValue?.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
-    self.mInternalValue?.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
-    self.mInternalValue?.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
-    self.mInternalValue?.segmentArrayForDrawing_property.addEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
-    self.mInternalValue?.gerberCode_property.addEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
-    self.mInternalValue?.gerberCodeInstructionCountMessage_property.addEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.codePoint_property.addEBObserver (self.codePoint_property) // Stored property
+    self.mInternalValue?.advance_property.addEBObserver (self.advance_property) // Stored property
+    self.mInternalValue?.mWarnsWhenNoSegment_property.addEBObserver (self.mWarnsWhenNoSegment_property) // Stored property
+    self.mInternalValue?.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.mWarnsWhenAdvanceIsZero_property) // Stored property
+    self.mInternalValue?.segmentArrayForDrawing_property.addEBObserver (self.segmentArrayForDrawing_property) // Transient property
+    self.mInternalValue?.gerberCode_property.addEBObserver (self.gerberCode_property) // Transient property
+    self.mInternalValue?.gerberCodeInstructionCountMessage_property.addEBObserver (self.gerberCodeInstructionCountMessage_property) // Transient property
+    self.mInternalValue?.issues_property.addEBObserver (self.issues_property) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'codePoint' stored property
+  //   init
   //····················································································································
 
-  private var mObserversOf_codePoint = EBWeakEventSet ()
-
-  //····················································································································
-
-  var codePoint_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.codePoint_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
+  override init () {
+    super.init ()
+    self.codePoint_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.codePoint_property.prop ?? .empty }
+    self.codePoint_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.codePoint_property.setProp (inValue) }
+    self.advance_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.advance_property.prop ?? .empty }
+    self.advance_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.advance_property.setProp (inValue) }
+    self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mWarnsWhenNoSegment_property.prop ?? .empty }
+    self.mWarnsWhenNoSegment_property.mWriteModelFunction = { [weak self] (inValue : Bool) in self?.mInternalValue?.mWarnsWhenNoSegment_property.setProp (inValue) }
+    self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mWarnsWhenAdvanceIsZero_property.prop ?? .empty }
+    self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = { [weak self] (inValue : Bool) in self?.mInternalValue?.mWarnsWhenAdvanceIsZero_property.setProp (inValue) }
+    self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.segmentArrayForDrawing_property.prop ?? .empty }
+    self.gerberCode_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.gerberCode_property.prop ?? .empty }
+    self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.gerberCodeInstructionCountMessage_property.prop ?? .empty }
+    self.issues_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.issues_property.prop ?? .empty }
   }
 
   //····················································································································
+  //   Proxy of 'codePoint' stored property
+  //····················································································································
 
-  final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_codePoint.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let codePoint_property = EBPropertyProxy_Int ()
+
+  var codePoint_property_selection : EBSelection <Int> {
+    switch (self.codePoint_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.codePoint_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'advance' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_codePoint.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let advance_property = EBPropertyProxy_Int ()
+
+  var advance_property_selection : EBSelection <Int> {
+    switch (self.advance_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.codePoint_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_codePoint_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_codePoint.apply { (_ observer : EBEvent) in
-        managedObject.codePoint_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Proxy of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-  final func removeEBObserversOf_codePoint_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_codePoint.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.codePoint_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let mWarnsWhenNoSegment_property = EBPropertyProxy_Bool ()
 
-  //····················································································································
-  //   Observers of 'advance' stored property
-  //····················································································································
-
-  private var mObserversOf_advance = EBWeakEventSet ()
-
-  //····················································································································
-
-  var advance_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.advance_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_advance (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_advance.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> {
+    switch (self.mWarnsWhenNoSegment_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.advance_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Proxy of 'mWarnsWhenAdvanceIsZero' stored property
+  //····················································································································
 
-  final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_advance.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let mWarnsWhenAdvanceIsZero_property = EBPropertyProxy_Bool ()
+
+  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> {
+    switch (self.mWarnsWhenAdvanceIsZero_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.advance_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_advance_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_advance.apply { (_ observer : EBEvent) in
-        managedObject.advance_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'segmentArrayForDrawing' transient property
   //····················································································································
 
-  final func removeEBObserversOf_advance_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_advance.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.advance_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
-  //····················································································································
-  //   Observers of 'mWarnsWhenNoSegment' stored property
-  //····················································································································
-
-  private var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.mWarnsWhenNoSegment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
+    switch (self.segmentArrayForDrawing_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'gerberCode' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+
+  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
+    switch (self.gerberCode_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mWarnsWhenNoSegment_property.removeEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWarnsWhenNoSegment.apply { (_ observer : EBEvent) in
-        managedObject.mWarnsWhenNoSegment_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   Observer of 'gerberCodeInstructionCountMessage' transient property
   //····················································································································
 
-  final func removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_mWarnsWhenNoSegment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mWarnsWhenNoSegment_property.removeEBObserver (observer)
-      }
-    }
-  }
+  let gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
-  //····················································································································
-  //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
-  //····················································································································
-
-  private var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.mWarnsWhenAdvanceIsZero_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
+    switch (self.gerberCodeInstructionCountMessage_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-       v?.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
+      return .single (v)
     }
   }
 
   //····················································································································
+  //   Observer of 'issues' transient property
+  //····················································································································
 
-  final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    switch (self.issues_property.prop) {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      v?.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWarnsWhenAdvanceIsZero.apply { (_ observer : EBEvent) in
-        managedObject.mWarnsWhenAdvanceIsZero_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_mWarnsWhenAdvanceIsZero.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mWarnsWhenAdvanceIsZero_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'segmentArrayForDrawing' transient property
-  //····················································································································
-
-  private var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
-
-  //····················································································································
-
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass?> {
-    if let model = self.propval {
-      switch (model.segmentArrayForDrawing_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_segmentArrayForDrawing.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentArrayForDrawing_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_segmentArrayForDrawing.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentArrayForDrawing_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply { (_ observer : EBEvent) in
-        managedObject.segmentArrayForDrawing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply { (_ observer : EBEvent) in
-        managedObject.segmentArrayForDrawing_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'gerberCode' transient property
-  //····················································································································
-
-  private var mObserversOf_gerberCode = EBWeakEventSet ()
-
-  //····················································································································
-
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass?> {
-    if let model = self.propval {
-      switch (model.gerberCode_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_gerberCode.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCode_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_gerberCode.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCode_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gerberCode_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply { (_ observer : EBEvent) in
-        managedObject.gerberCode_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gerberCode_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply { (_ observer : EBEvent) in
-        managedObject.gerberCode_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'gerberCodeInstructionCountMessage' transient property
-  //····················································································································
-
-  private var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
-
-  //····················································································································
-
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.gerberCodeInstructionCountMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCodeInstructionCountMessage_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply { (_ observer : EBEvent) in
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply { (_ observer : EBEvent) in
-        managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'issues' transient property
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
+      return .single (v)
     }
   }
 
