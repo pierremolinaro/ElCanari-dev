@@ -47,7 +47,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -62,7 +62,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -104,7 +104,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHeight.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_mIsInFrontLayer (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mIsInFrontLayer.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_mIsInFrontLayer (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mIsInFrontLayer.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -275,7 +275,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_mIsInBackLayer (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mIsInBackLayer.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_mIsInBackLayer (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mIsInBackLayer.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -389,7 +389,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -445,7 +445,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -460,7 +460,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -501,7 +501,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -630,7 +630,7 @@ final class TransientArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestr
       self.mModelArrayShouldBeComputed = false
       let newArray : [BoardRestrictRectangle] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -655,7 +655,7 @@ final class TransientArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestr
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardRestrictRectangle] > {
+  override var selection : EBSelection < [BoardRestrictRectangle] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -722,7 +722,7 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -749,7 +749,7 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardRestrictRectangle] > {
+  override var selection : EBSelection < [BoardRestrictRectangle] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -808,7 +808,7 @@ final class ProxyArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrict
   override func notifyModelDidChange () {
     let newModelArray : [BoardRestrictRectangle]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -831,9 +831,9 @@ final class ProxyArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrict
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardRestrictRectangle] > {
+  override var selection : EBSelection < [BoardRestrictRectangle] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -843,7 +843,7 @@ final class ProxyArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrict
 
   override var propval : [BoardRestrictRectangle] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -903,7 +903,7 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -963,7 +963,7 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
  
   //····················································································································
 
-  override var prop : EBSelection < [BoardRestrictRectangle] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardRestrictRectangle] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1052,7 +1052,7 @@ final class StandAloneArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRes
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardRestrictRectangle] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardRestrictRectangle] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

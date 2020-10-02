@@ -96,7 +96,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.prop }
+  final var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.selection }
 
   //····················································································································
   //   Atomic property: mSize
@@ -121,7 +121,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mSize_property_selection : EBSelection <Double> { return self.mSize_property.prop }
+  final var mSize_property_selection : EBSelection <Double> { return self.mSize_property.selection }
 
   //····················································································································
   //   Atomic property: mHorizontalAlignment
@@ -146,7 +146,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
+  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mVerticalAlignment
@@ -171,7 +171,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> { return self.mVerticalAlignment_property.prop }
+  final var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> { return self.mVerticalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -196,7 +196,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //   Atomic property: mY
@@ -221,7 +221,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   Atomic property: mComment
@@ -246,7 +246,7 @@ class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mComment_property_selection : EBSelection <String> { return self.mComment_property.prop }
+  final var mComment_property_selection : EBSelection <String> { return self.mComment_property.selection }
 
   //····················································································································
   //    init
@@ -268,7 +268,6 @@ class CommentInSchematic : SchematicObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mComment_property, self.mColor_property, self.mSize_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mX_property, self.mY_property, transient_CommentInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComment_property_selection.kind ()
@@ -303,7 +302,6 @@ class CommentInSchematic : SchematicObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mComment_property, self.mColor_property, self.mSize_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, prefs_schematicBackColor_property, self.mX_property, self.mY_property, transient_CommentInSchematic_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComment_property_selection.kind ()

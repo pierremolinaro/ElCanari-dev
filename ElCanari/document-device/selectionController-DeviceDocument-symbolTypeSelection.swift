@@ -17,7 +17,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var documentSizeString_property = EBTransientProperty_String ()
 
   var documentSizeString_property_selection : EBSelection <String> {
-    return self.documentSizeString_property.prop
+    return self.documentSizeString_property.selection
   }
 
   //····················································································································
@@ -27,7 +27,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var instanceCount_property = EBTransientProperty_Int ()
 
   var instanceCount_property_selection : EBSelection <Int> {
-    return self.instanceCount_property.prop
+    return self.instanceCount_property.selection
   }
 
   //····················································································································
@@ -37,7 +37,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var mFileData_property = EBPropertyProxy_Data ()
 
   var mFileData_property_selection : EBSelection <Data> {
-    return self.mFileData_property.prop
+    return self.mFileData_property.selection
   }
 
   //····················································································································
@@ -47,7 +47,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var mFilledBezierPath_property = EBPropertyProxy_NSBezierPath ()
 
   var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mFilledBezierPath_property.prop
+    return self.mFilledBezierPath_property.selection
   }
 
   //····················································································································
@@ -65,7 +65,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var mStrokeBezierPath_property = EBPropertyProxy_NSBezierPath ()
 
   var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mStrokeBezierPath_property.prop
+    return self.mStrokeBezierPath_property.selection
   }
 
   //····················································································································
@@ -75,7 +75,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var mTypeName_property = EBPropertyProxy_String ()
 
   var mTypeName_property_selection : EBSelection <String> {
-    return self.mTypeName_property.prop
+    return self.mTypeName_property.selection
   }
 
   //····················································································································
@@ -85,7 +85,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var mVersion_property = EBPropertyProxy_Int ()
 
   var mVersion_property_selection : EBSelection <Int> {
-    return self.mVersion_property.prop
+    return self.mVersion_property.selection
   }
 
   //····················································································································
@@ -95,7 +95,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var pinNameShape_property = EBTransientProperty_EBShape ()
 
   var pinNameShape_property_selection : EBSelection <EBShape> {
-    return self.pinNameShape_property.prop
+    return self.pinNameShape_property.selection
   }
 
   //····················································································································
@@ -105,7 +105,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   var versionString_property = EBTransientProperty_String ()
 
   var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.prop
+    return self.versionString_property.selection
   }
 
   //····················································································································
@@ -308,7 +308,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_documentSizeString (self.documentSizeString_property)
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -348,7 +348,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_instanceCount (self.instanceCount_property)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -388,7 +388,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_mFileData (self.mFileData_property)
     self.mFileData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -422,7 +422,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mFileData_property.mWriteModelFunction = { [weak self] (inValue : Data) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -434,7 +434,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mFileData_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Data, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -458,7 +458,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_mFilledBezierPath (self.mFilledBezierPath_property)
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -492,7 +492,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mFilledBezierPath_property.mWriteModelFunction = { [weak self] (inValue : NSBezierPath) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -504,7 +504,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mFilledBezierPath_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSBezierPath, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -528,7 +528,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_mStrokeBezierPath (self.mStrokeBezierPath_property)
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -562,7 +562,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mStrokeBezierPath_property.mWriteModelFunction = { [weak self] (inValue : NSBezierPath) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -574,7 +574,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mStrokeBezierPath_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSBezierPath, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -598,7 +598,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_mTypeName (self.mTypeName_property)
     self.mTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -632,7 +632,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mTypeName_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -644,7 +644,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mTypeName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -668,7 +668,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_mVersion (self.mVersion_property)
     self.mVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -702,7 +702,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mVersion_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -714,7 +714,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     }
     self.mVersion_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -738,7 +738,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_pinNameShape (self.pinNameShape_property)
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -778,7 +778,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
     model.addEBObserverOf_versionString (self.versionString_property)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

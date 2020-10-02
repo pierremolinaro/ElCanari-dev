@@ -16,7 +16,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   let y_property = EBPropertyProxy_Int ()
   var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
+    return self.y_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   let text_property = EBPropertyProxy_String ()
   var text_property_selection : EBSelection <String> {
-    return self.text_property.prop
+    return self.text_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   let horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
   var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.horizontalAlignment_property.prop
+    return self.horizontalAlignment_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   let x_property = EBPropertyProxy_Int ()
   var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
+    return self.x_property.selection
   }
 
   //····················································································································
@@ -53,7 +53,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -63,7 +63,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -73,7 +73,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   let issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -265,7 +265,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -299,7 +299,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -311,7 +311,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -334,7 +334,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_text (self.text_property)
     self.text_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -368,7 +368,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.text_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -380,7 +380,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.text_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -403,7 +403,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
     self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -437,7 +437,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.horizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -449,7 +449,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.horizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -472,7 +472,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_x (self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -506,7 +506,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -518,7 +518,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     }
     self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -541,7 +541,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -580,7 +580,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -619,7 +619,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

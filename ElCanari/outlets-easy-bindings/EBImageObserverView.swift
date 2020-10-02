@@ -35,7 +35,7 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateImage (_ object : EBReadOnlyProperty_NSImage) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.image = nil
       self.enableFromValueBinding (false)
@@ -70,7 +70,7 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateTooltip (_ object : EBReadOnlyProperty_String) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.toolTip = nil
       self.enableFromValueBinding (false)

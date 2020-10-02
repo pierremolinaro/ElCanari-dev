@@ -35,7 +35,7 @@ import Cocoa
   //····················································································································
 
   final var statusImage_property_selection : EBSelection <NSImage> {
-    return self.statusImage_property.prop
+    return self.statusImage_property.selection
   }
 
   //····················································································································
@@ -58,7 +58,7 @@ import Cocoa
   //····················································································································
 
   final var statusMessage_property_selection : EBSelection <String> {
-    return self.statusMessage_property.prop
+    return self.statusMessage_property.selection
   }
 
   //····················································································································
@@ -81,7 +81,7 @@ import Cocoa
   //····················································································································
 
   final var metadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.metadataStatus_property.prop
+    return self.metadataStatus_property.selection
   }
 
   //····················································································································
@@ -104,7 +104,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
+    return self.documentFilePath_property.selection
   }
 
   //····················································································································
@@ -323,7 +323,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: statusImage
-    // self.statusImage_property.configure (self.rootObject.issues_property, transient_SymbolDocument_statusImage)
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -350,7 +349,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: statusMessage
-    // self.statusMessage_property.configure (self.rootObject.issues_property, transient_SymbolDocument_statusMessage)
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -377,7 +375,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: metadataStatus
-    // self.metadataStatus_property.configure (self.rootObject.issues_property, transient_SymbolDocument_metadataStatus)
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()

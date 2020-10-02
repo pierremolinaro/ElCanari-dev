@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mGridStyle = .noGrid
     case .single (let v) :

@@ -61,7 +61,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var mObjects_property_selection : EBSelection < [SchematicObject] > {
-    return self.mObjects_property.prop
+    return self.mObjects_property.selection
   }
 
   //····················································································································
@@ -80,7 +80,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var mPoints_property_selection : EBSelection < [PointInSchematic] > {
-    return self.mPoints_property.prop
+    return self.mPoints_property.selection
   }
 
   //····················································································································
@@ -113,7 +113,7 @@ class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.prop }
+  final var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.selection }
 
   //····················································································································
   //   To one property: mRoot
@@ -162,7 +162,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -185,7 +185,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connectedPoints_property_selection : EBSelection <EBShape> {
-    return self.connectedPoints_property.prop
+    return self.connectedPoints_property.selection
   }
 
   //····················································································································
@@ -208,7 +208,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connexionWarnings_property_selection : EBSelection <Int> {
-    return self.connexionWarnings_property.prop
+    return self.connexionWarnings_property.selection
   }
 
   //····················································································································
@@ -231,7 +231,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connexionErrors_property_selection : EBSelection <Int> {
-    return self.connexionErrors_property.prop
+    return self.connexionErrors_property.selection
   }
 
   //····················································································································
@@ -254,7 +254,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
-    return self.sheetDescriptor_property.prop
+    return self.sheetDescriptor_property.selection
   }
 
   //····················································································································
@@ -300,7 +300,6 @@ class SheetInProject : EBManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mSheets_property.remove (me) } }
     )
   //--- Atomic property: issues
-    // self.issues_property.configure (self.mPoints_property.status_property, transient_SheetInProject_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoints_property_selection.kind ()
@@ -323,7 +322,6 @@ class SheetInProject : EBManagedObject,
     }
     self.mPoints_property.addEBObserverOf_status (self.issues_property)
   //--- Atomic property: connectedPoints
-    // self.connectedPoints_property.configure (self.mPoints_property.connectedPoints_property, transient_SheetInProject_connectedPoints)
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoints_property_selection.kind ()
@@ -346,7 +344,6 @@ class SheetInProject : EBManagedObject,
     }
     self.mPoints_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
   //--- Atomic property: connexionWarnings
-    // self.connexionWarnings_property.configure (self.issues_property, transient_SheetInProject_connexionWarnings)
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -369,7 +366,6 @@ class SheetInProject : EBManagedObject,
     }
     self.issues_property.addEBObserver (self.connexionWarnings_property)
   //--- Atomic property: connexionErrors
-    // self.connexionErrors_property.configure (self.issues_property, transient_SheetInProject_connexionErrors)
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -392,7 +388,6 @@ class SheetInProject : EBManagedObject,
     }
     self.issues_property.addEBObserver (self.connexionErrors_property)
   //--- Atomic property: sheetDescriptor
-    // self.sheetDescriptor_property.configure (self.mRoot_property.sheetGeometry_property, self.mRoot_property.sheetIndexes_property, transient_SheetInProject_sheetDescriptor)
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mRoot_property.sheetGeometry_property_selection.kind ()
@@ -415,8 +410,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
-    self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
+    self.mRoot_property.addEBObserverOf_sheetGeometry (self.sheetDescriptor_property)
+    self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },

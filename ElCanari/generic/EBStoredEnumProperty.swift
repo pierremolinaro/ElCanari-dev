@@ -66,7 +66,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  override var prop : EBSelection<T> { return .single (mValue) }
+  override var selection : EBSelection<T> { return .single (mValue) }
 
   //····················································································································
 

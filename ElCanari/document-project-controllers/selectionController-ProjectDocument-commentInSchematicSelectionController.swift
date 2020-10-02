@@ -16,7 +16,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mColor_property = EBPropertyProxy_NSColor ()
   var mColor_property_selection : EBSelection <NSColor> {
-    return self.mColor_property.prop
+    return self.mColor_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mSize_property = EBPropertyProxy_Double ()
   var mSize_property_selection : EBSelection <Double> {
-    return self.mSize_property.prop
+    return self.mSize_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
   var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.mHorizontalAlignment_property.prop
+    return self.mHorizontalAlignment_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mVerticalAlignment_property = EBPropertyProxy_VerticalAlignment ()
   var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> {
-    return self.mVerticalAlignment_property.prop
+    return self.mVerticalAlignment_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mX_property = EBPropertyProxy_Int ()
   var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
+    return self.mX_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mY_property = EBPropertyProxy_Int ()
   var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
+    return self.mY_property.selection
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   let mComment_property = EBPropertyProxy_String ()
   var mComment_property_selection : EBSelection <String> {
-    return self.mComment_property.prop
+    return self.mComment_property.selection
   }
 
   //····················································································································
@@ -80,7 +80,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -90,7 +90,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -320,7 +320,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mColor (self.mColor_property)
     self.mColor_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -354,7 +354,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mColor_property.mWriteModelFunction = { [weak self] (inValue : NSColor) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -366,7 +366,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mColor_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSColor, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -389,7 +389,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mSize (self.mSize_property)
     self.mSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -423,7 +423,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mSize_property.mWriteModelFunction = { [weak self] (inValue : Double) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -435,7 +435,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -458,7 +458,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
     self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -492,7 +492,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -504,7 +504,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -527,7 +527,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
     self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -561,7 +561,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mVerticalAlignment_property.mWriteModelFunction = { [weak self] (inValue : VerticalAlignment) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -573,7 +573,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mVerticalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : VerticalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -596,7 +596,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -630,7 +630,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -642,7 +642,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -665,7 +665,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -699,7 +699,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -711,7 +711,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -734,7 +734,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_mComment (self.mComment_property)
     self.mComment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -768,7 +768,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mComment_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -780,7 +780,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     }
     self.mComment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -803,7 +803,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -842,7 +842,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

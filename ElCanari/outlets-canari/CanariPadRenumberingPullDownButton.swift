@@ -72,7 +72,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   //····················································································································
 
   private func update (fromPadNumber model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.enableFromValueBinding (false)
     case .single (let v) :
@@ -153,7 +153,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   //····················································································································
 
   private func update (fromZoneName model : EBReadOnlyProperty_String) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mCurrentZoneName = ""
     case .single (let v) :

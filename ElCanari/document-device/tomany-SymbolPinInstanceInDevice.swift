@@ -39,7 +39,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func removeEBObserverOf_pinName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -151,7 +151,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func removeEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isConnected.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_numberShape.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   final func removeEBObserverOf_numberShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_numberShape.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -392,7 +392,7 @@ final class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolP
       self.mModelArrayShouldBeComputed = false
       let newArray : [SymbolPinInstanceInDevice] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -417,7 +417,7 @@ final class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolP
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolPinInstanceInDevice] > {
+  override var selection : EBSelection < [SymbolPinInstanceInDevice] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -484,7 +484,7 @@ final class TransientArrayOfSuperOf_SymbolPinInstanceInDevice <SUPER : EBManaged
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -511,7 +511,7 @@ final class TransientArrayOfSuperOf_SymbolPinInstanceInDevice <SUPER : EBManaged
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolPinInstanceInDevice] > {
+  override var selection : EBSelection < [SymbolPinInstanceInDevice] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -570,7 +570,7 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
   override func notifyModelDidChange () {
     let newModelArray : [SymbolPinInstanceInDevice]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -593,9 +593,9 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolPinInstanceInDevice] > {
+  override var selection : EBSelection < [SymbolPinInstanceInDevice] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -605,7 +605,7 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
 
   override var propval : [SymbolPinInstanceInDevice] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -665,7 +665,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -725,7 +725,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
  
   //····················································································································
 
-  override var prop : EBSelection < [SymbolPinInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SymbolPinInstanceInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -814,7 +814,7 @@ final class StandAloneArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_Symbo
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolPinInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SymbolPinInstanceInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

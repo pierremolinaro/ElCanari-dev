@@ -29,7 +29,7 @@ extension  EBGraphicView {
   //····················································································································
 
   final private func updateGridColor (from model : EBReadOnlyProperty_NSColor) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple  :
       self.mGridCrossColor = .black
     case .single (let v) :

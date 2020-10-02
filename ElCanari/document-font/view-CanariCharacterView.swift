@@ -254,7 +254,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final private func updateAdvance (_ object : EBReadOnlyProperty_Int) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       break ;
     case .single (let value) :
@@ -311,7 +311,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentListClass) {
-    switch inSegments.prop {
+    switch inSegments.selection {
     case .empty, .multiple :
       ()
     case .single (let segments) :
@@ -336,7 +336,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final private func updateTransparency (_ object : EBReadOnlyProperty_Double) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       break
     case .single(let t) :
@@ -377,7 +377,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final private func updateDisplayFlow (_ object : EBReadOnlyProperty_Bool) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       break
     case .single (let b) :
@@ -419,7 +419,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final private func updateIndexDrawing (_ object : EBReadOnlyProperty_Bool) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       break
     case .single (let b) :

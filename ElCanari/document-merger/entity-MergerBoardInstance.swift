@@ -89,7 +89,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //   Atomic property: y
@@ -114,7 +114,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
 
   //····················································································································
   //   Atomic property: instanceRotation
@@ -139,7 +139,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var instanceRotation_property_selection : EBSelection <QuadrantRotation> { return self.instanceRotation_property.prop }
+  final var instanceRotation_property_selection : EBSelection <QuadrantRotation> { return self.instanceRotation_property.selection }
 
   //····················································································································
   //   To one property: myModel
@@ -188,7 +188,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   final var instanceRect_property_selection : EBSelection <CanariRect> {
-    return self.instanceRect_property.prop
+    return self.instanceRect_property.selection
   }
 
   //····················································································································
@@ -211,7 +211,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   final var modelName_property_selection : EBSelection <String> {
-    return self.modelName_property.prop
+    return self.modelName_property.selection
   }
 
   //····················································································································
@@ -234,7 +234,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   final var boardLimitWidth_property_selection : EBSelection <Int> {
-    return self.boardLimitWidth_property.prop
+    return self.boardLimitWidth_property.selection
   }
 
   //····················································································································
@@ -308,7 +308,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.myInstances_property.remove (me) } }
     )
   //--- Atomic property: instanceRect
-    // self.instanceRect_property.configure (self.x_property, self.y_property, self.myModel_property.modelWidth_property, self.myModel_property.modelHeight_property, self.instanceRotation_property, transient_MergerBoardInstance_instanceRect)
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -335,11 +334,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
     self.x_property.addEBObserver (self.instanceRect_property)
     self.y_property.addEBObserver (self.instanceRect_property)
-    self.myModel_property.modelWidth_property.addEBObserver (self.instanceRect_property)
-    self.myModel_property.modelHeight_property.addEBObserver (self.instanceRect_property)
+    self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
+    self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
     self.instanceRotation_property.addEBObserver (self.instanceRect_property)
   //--- Atomic property: modelName
-    // self.modelName_property.configure (self.myModel_property.name_property, transient_MergerBoardInstance_modelName)
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.myModel_property.name_property_selection.kind ()
@@ -360,9 +358,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.myModel_property.name_property.addEBObserver (self.modelName_property)
+    self.myModel_property.addEBObserverOf_name (self.modelName_property)
   //--- Atomic property: boardLimitWidth
-    // self.boardLimitWidth_property.configure (self.myModel_property.modelLimitWidth_property, transient_MergerBoardInstance_boardLimitWidth)
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.myModel_property.modelLimitWidth_property_selection.kind ()
@@ -383,9 +380,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.myModel_property.modelLimitWidth_property.addEBObserver (self.boardLimitWidth_property)
+    self.myModel_property.addEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.instanceRect_property, transient_MergerBoardInstance_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.instanceRect_property_selection.kind ()
@@ -408,7 +404,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
     self.instanceRect_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.myModel_property.modelWidth_property, self.myModel_property.modelHeight_property, self.instanceRotation_property, self.myModel_property.imageForInstances_property, transient_MergerBoardInstance_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -436,10 +431,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
     self.x_property.addEBObserver (self.objectDisplay_property)
     self.y_property.addEBObserver (self.objectDisplay_property)
-    self.myModel_property.modelWidth_property.addEBObserver (self.objectDisplay_property)
-    self.myModel_property.modelHeight_property.addEBObserver (self.objectDisplay_property)
+    self.myModel_property.addEBObserverOf_modelWidth (self.objectDisplay_property)
+    self.myModel_property.addEBObserverOf_modelHeight (self.objectDisplay_property)
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
-    self.myModel_property.imageForInstances_property.addEBObserver (self.objectDisplay_property)
+    self.myModel_property.addEBObserverOf_imageForInstances (self.objectDisplay_property)
   //--- To one property: myRoot (has opposite to many relationship: boardInstances)
     self.myRoot_property.ebUndoManager = self.ebUndoManager
     self.myRoot_property.setOppositeRelationShipFunctions (

@@ -15,214 +15,716 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.isPlacedInBoard_property.removeEBObserver (self.isPlacedInBoard_property) // Transient property
-    inOldValue?.issues_property.removeEBObserver (self.issues_property) // Transient property
-    inOldValue?.isVia_property.removeEBObserver (self.isVia_property) // Transient property
-    inOldValue?.trackLength_property.removeEBObserver (self.trackLength_property) // Transient property
-    inOldValue?.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
-    inOldValue?.netNameAndPadLocation_property.removeEBObserver (self.netNameAndPadLocation_property) // Transient property
-    inOldValue?.componentName_property.removeEBObserver (self.componentName_property) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-    inOldValue?.errorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSize_property) // Transient property
+    inOldValue?.isPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+    inOldValue?.trackLength_property.removeEBObserversFrom (&self.mObserversOf_trackLength) // Transient property
+    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    inOldValue?.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+    inOldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.isPlacedInBoard_property.addEBObserver (self.isPlacedInBoard_property) // Transient property
-    self.mInternalValue?.issues_property.addEBObserver (self.issues_property) // Transient property
-    self.mInternalValue?.isVia_property.addEBObserver (self.isVia_property) // Transient property
-    self.mInternalValue?.trackLength_property.addEBObserver (self.trackLength_property) // Transient property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
-    self.mInternalValue?.netNameAndPadLocation_property.addEBObserver (self.netNameAndPadLocation_property) // Transient property
-    self.mInternalValue?.componentName_property.addEBObserver (self.componentName_property) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-    self.mInternalValue?.errorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property) // Transient property
+    self.mInternalValue?.isPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+    self.mInternalValue?.trackLength_property.addEBObserversFrom (&self.mObserversOf_trackLength) // Transient property
+    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    self.mInternalValue?.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+    self.mInternalValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'isPlacedInBoard' transient property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.isPlacedInBoard_property.prop ?? .empty }
-    self.issues_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.issues_property.prop ?? .empty }
-    self.isVia_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.isVia_property.prop ?? .empty }
-    self.trackLength_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.trackLength_property.prop ?? .empty }
-    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.signatureForERCChecking_property.prop ?? .empty }
-    self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.netNameAndPadLocation_property.prop ?? .empty }
-    self.componentName_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.componentName_property.prop ?? .empty }
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
-    self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.errorOrWarningIssueSize_property.prop ?? .empty }
-  }
+  private var mObserversOf_isPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
-  //   Observer of 'isPlacedInBoard' transient property
-  //····················································································································
 
-  let isPlacedInBoard_property = EBTransientProperty_Bool ()
-
-  var isPlacedInBoard_property_selection : EBSelection <Bool> {
-    switch (self.isPlacedInBoard_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var isPlacedInBoard_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isPlacedInBoard_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'issues' transient property
-  //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    switch (self.issues_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isPlacedInBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.isPlacedInBoard_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'isVia' transient property
-  //····················································································································
 
-  let isVia_property = EBTransientProperty_Bool ()
-
-  var isVia_property_selection : EBSelection <Bool> {
-    switch (self.isVia_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isPlacedInBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.isPlacedInBoard_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'trackLength' transient property
-  //····················································································································
 
-  let trackLength_property = EBTransientProperty_Double ()
-
-  var trackLength_property_selection : EBSelection <Double> {
-    switch (self.trackLength_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_isPlacedInBoard_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInBoard_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'signatureForERCChecking' transient property
-  //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
-
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    switch (self.signatureForERCChecking_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInBoard_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'netNameAndPadLocation' transient property
+  //   Observers of 'issues' transient property
   //····················································································································
 
-  let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
+  private var mObserversOf_issues = EBWeakEventSet ()
 
-  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
-    switch (self.netNameAndPadLocation_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'componentName' transient property
-  //····················································································································
 
-  let componentName_property = EBTransientProperty_String ()
-
-  var componentName_property_selection : EBSelection <String> {
-    switch (self.componentName_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'selectionDisplay' transient property
-  //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.selectionDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'objectDisplay' transient property
-  //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.objectDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'errorOrWarningIssueSize' transient property
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isVia' transient property
   //····················································································································
 
-  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
+  private var mObserversOf_isVia = EBWeakEventSet ()
 
-  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
-    switch (self.errorOrWarningIssueSize_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  var isVia_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isVia_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isVia.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.isVia_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isVia.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isVia_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+        managedObject.isVia_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+        managedObject.isVia_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'trackLength' transient property
+  //····················································································································
+
+  private var mObserversOf_trackLength = EBWeakEventSet ()
+
+  //····················································································································
+
+  var trackLength_property_selection : EBSelection <Double?> {
+    if let model = self.propval {
+      switch (model.trackLength_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_trackLength (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_trackLength.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.trackLength_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_trackLength (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_trackLength.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.trackLength_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_trackLength_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackLength.apply { (_ observer : EBEvent) in
+        managedObject.trackLength_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_trackLength_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackLength.apply { (_ observer : EBEvent) in
+        managedObject.trackLength_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+    if let model = self.propval {
+      switch (model.signatureForERCChecking_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netNameAndPadLocation' transient property
+  //····················································································································
+
+  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
+    if let model = self.propval {
+      switch (model.netNameAndPadLocation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameAndPadLocation_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameAndPadLocation_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentName' transient property
+  //····················································································································
+
+  private var mObserversOf_componentName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var componentName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.componentName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentName.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.componentName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentName.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.componentName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
+        managedObject.componentName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
+        managedObject.componentName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'errorOrWarningIssueSize' transient property
+  //····················································································································
+
+  private var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  var errorOrWarningIssueSize_property_selection : EBSelection <Double?> {
+    if let model = self.propval {
+      switch (model.errorOrWarningIssueSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_errorOrWarningIssueSize.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.errorOrWarningIssueSize_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_errorOrWarningIssueSize.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.errorOrWarningIssueSize_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        managedObject.errorOrWarningIssueSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        managedObject.errorOrWarningIssueSize_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -258,7 +760,7 @@ class TransientObject_BoardObject : ReadOnlyObject_BoardObject {
   override func notifyModelDidChange () {
     let newObject : BoardObject? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -279,7 +781,7 @@ class TransientObject_BoardObject : ReadOnlyObject_BoardObject {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardObject? > {
+  override var selection : EBSelection < BoardObject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -341,7 +843,7 @@ final class ProxyObject_BoardObject : ReadWriteObject_BoardObject {
   override func notifyModelDidChange () {
     let newModel : BoardObject?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -364,9 +866,9 @@ final class ProxyObject_BoardObject : ReadWriteObject_BoardObject {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardObject? > {
+  override var selection : EBSelection < BoardObject? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -376,7 +878,7 @@ final class ProxyObject_BoardObject : ReadWriteObject_BoardObject {
 
   override var propval : BoardObject? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -436,7 +938,7 @@ final class StoredObject_BoardObject : ReadWriteObject_BoardObject, EBSignatureO
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -489,7 +991,7 @@ final class StoredObject_BoardObject : ReadWriteObject_BoardObject, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < BoardObject? > {
+  override var selection : EBSelection < BoardObject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

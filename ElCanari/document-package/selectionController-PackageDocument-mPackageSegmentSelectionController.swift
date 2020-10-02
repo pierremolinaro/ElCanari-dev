@@ -16,7 +16,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let y1_property = EBPropertyProxy_Int ()
   var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.prop
+    return self.y1_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let x2_property = EBPropertyProxy_Int ()
   var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.prop
+    return self.x2_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let y2_property = EBPropertyProxy_Int ()
   var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.prop
+    return self.y2_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let x1Unit_property = EBPropertyProxy_Int ()
   var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.prop
+    return self.x1Unit_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let y1Unit_property = EBPropertyProxy_Int ()
   var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.prop
+    return self.y1Unit_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let x2Unit_property = EBPropertyProxy_Int ()
   var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.prop
+    return self.x2Unit_property.selection
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let y2Unit_property = EBPropertyProxy_Int ()
   var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.prop
+    return self.y2Unit_property.selection
   }
 
   //····················································································································
@@ -79,7 +79,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let lengthUnit_property = EBPropertyProxy_Int ()
   var lengthUnit_property_selection : EBSelection <Int> {
-    return self.lengthUnit_property.prop
+    return self.lengthUnit_property.selection
   }
 
   //····················································································································
@@ -88,7 +88,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   let x1_property = EBPropertyProxy_Int ()
   var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.prop
+    return self.x1_property.selection
   }
 
   //····················································································································
@@ -98,7 +98,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.prop
+    return self.strokeBezierPath_property.selection
   }
 
   //····················································································································
@@ -108,7 +108,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -118,7 +118,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -128,7 +128,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   let issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -138,7 +138,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   let lengthInCanariUnit_property = EBTransientProperty_Int ()
 
   var lengthInCanariUnit_property_selection : EBSelection <Int> {
-    return self.lengthInCanariUnit_property.prop
+    return self.lengthInCanariUnit_property.selection
   }
 
   //····················································································································
@@ -408,7 +408,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -442,7 +442,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -454,7 +454,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -477,7 +477,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -511,7 +511,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -523,7 +523,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -546,7 +546,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -580,7 +580,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -592,7 +592,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -615,7 +615,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -649,7 +649,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -661,7 +661,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -684,7 +684,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -718,7 +718,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -730,7 +730,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -753,7 +753,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -787,7 +787,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -799,7 +799,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -822,7 +822,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -856,7 +856,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -868,7 +868,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -891,7 +891,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_lengthUnit (self.lengthUnit_property)
     self.lengthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -925,7 +925,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.lengthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -937,7 +937,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.lengthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -960,7 +960,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -994,7 +994,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1006,7 +1006,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1029,7 +1029,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1068,7 +1068,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1107,7 +1107,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1146,7 +1146,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1185,7 +1185,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.selectedArray_property.addEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

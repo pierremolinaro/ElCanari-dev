@@ -15,77 +15,222 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardModelVia?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y_property.removeEBObserver (self.y_property) // Stored property
-    inOldValue?.padDiameter_property.removeEBObserver (self.padDiameter_property) // Stored property
-    inOldValue?.x_property.removeEBObserver (self.x_property) // Stored property
+    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+    inOldValue?.padDiameter_property.removeEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
+    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
   //--- Add observers to added objects
-    self.mInternalValue?.y_property.addEBObserver (self.y_property) // Stored property
-    self.mInternalValue?.padDiameter_property.addEBObserver (self.padDiameter_property) // Stored property
-    self.mInternalValue?.x_property.addEBObserver (self.x_property) // Stored property
+    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+    self.mInternalValue?.padDiameter_property.addEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
+    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'y' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.y_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y_property.prop ?? .empty }
-    self.y_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y_property.setProp (inValue) }
-    self.padDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.padDiameter_property.prop ?? .empty }
-    self.padDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.padDiameter_property.setProp (inValue) }
-    self.x_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x_property.prop ?? .empty }
-    self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x_property.setProp (inValue) }
-  }
+  private var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
-  //   Proxy of 'y' stored property
-  //····················································································································
 
-  let y_property = EBPropertyProxy_Int ()
-
-  var y_property_selection : EBSelection <Int> {
-    switch (self.y_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var y_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Proxy of 'padDiameter' stored property
-  //····················································································································
 
-  let padDiameter_property = EBPropertyProxy_Int ()
-
-  var padDiameter_property_selection : EBSelection <Int> {
-    switch (self.padDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'x' stored property
+
+  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.y_property.removeEBObserver (inObserver)
+    }
+  }
+
   //····················································································································
 
-  let x_property = EBPropertyProxy_Int ()
+  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    for managedObject in inSet {
+      self.mObserversOf_y.apply { (_ observer : EBEvent) in
+        managedObject.y_property.addEBObserver (observer)
+      }
+    }
+  }
 
-  var x_property_selection : EBSelection <Int> {
-    switch (self.x_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    self.mObserversOf_y.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_padDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.padDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.padDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.padDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    for managedObject in inSet {
+      self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
+        managedObject.padDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x' stored property
+  //····················································································································
+
+  private var mObserversOf_x = EBWeakEventSet ()
+
+  //····················································································································
+
+  var x_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.x_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.x_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    for managedObject in inSet {
+      self.mObserversOf_x.apply { (_ observer : EBEvent) in
+        managedObject.x_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    self.mObserversOf_x.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -121,7 +266,7 @@ class TransientObject_BoardModelVia : ReadOnlyObject_BoardModelVia {
   override func notifyModelDidChange () {
     let newObject : BoardModelVia? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -142,7 +287,7 @@ class TransientObject_BoardModelVia : ReadOnlyObject_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelVia? > {
+  override var selection : EBSelection < BoardModelVia? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -204,7 +349,7 @@ final class ProxyObject_BoardModelVia : ReadWriteObject_BoardModelVia {
   override func notifyModelDidChange () {
     let newModel : BoardModelVia?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -227,9 +372,9 @@ final class ProxyObject_BoardModelVia : ReadWriteObject_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelVia? > {
+  override var selection : EBSelection < BoardModelVia? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -239,7 +384,7 @@ final class ProxyObject_BoardModelVia : ReadWriteObject_BoardModelVia {
 
   override var propval : BoardModelVia? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -299,7 +444,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -352,7 +497,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelVia? > {
+  override var selection : EBSelection < BoardModelVia? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

@@ -14,7 +14,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
   // Abstract methods
   //····················································································································
 
-  var prop : EBSelection < [T] > { get { return .empty } }  // Abstract method
+  var selection : EBSelection < [T] > { get { return .empty } }  // Abstract method
 
   //····················································································································
 
@@ -69,7 +69,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
 
   final var count_property = EBTransientProperty_Int ()
 
-  final var count_property_selection : EBSelection <Int> { return self.count_property.prop }
+  final var count_property_selection : EBSelection <Int> { return self.count_property.selection }
 
   //····················································································································
   //  init
@@ -79,7 +79,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
     super.init ()
     self.count_property.mReadModelFunction = { [weak self] in
       if let me = self {
-        switch me.prop {
+        switch me.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -127,7 +127,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isPlacedInBoard_property_selection : EBSelection <Bool> {
-    return self.isPlacedInBoard_property.prop
+    return self.isPlacedInBoard_property.selection
   }
 
   //····················································································································
@@ -150,7 +150,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -173,7 +173,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isVia_property_selection : EBSelection <Bool> {
-    return self.isVia_property.prop
+    return self.isVia_property.selection
   }
 
   //····················································································································
@@ -196,7 +196,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var trackLength_property_selection : EBSelection <Double> {
-    return self.trackLength_property.prop
+    return self.trackLength_property.selection
   }
 
   //····················································································································
@@ -219,7 +219,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -242,7 +242,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
-    return self.netNameAndPadLocation_property.prop
+    return self.netNameAndPadLocation_property.selection
   }
 
   //····················································································································
@@ -265,7 +265,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var componentName_property_selection : EBSelection <String> {
-    return self.componentName_property.prop
+    return self.componentName_property.selection
   }
 
   //····················································································································
@@ -288,7 +288,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
-    return self.errorOrWarningIssueSize_property.prop
+    return self.errorOrWarningIssueSize_property.selection
   }
 
   //····················································································································
@@ -321,7 +321,6 @@ class BoardObject : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }
     )
   //--- Atomic property: isPlacedInBoard
-    // self.isPlacedInBoard_property.configure (self.mRoot_property, transient_BoardObject_isPlacedInBoard)
     self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mRoot_none_selection.kind ()
@@ -344,7 +343,6 @@ class BoardObject : EBGraphicManagedObject,
     }
     self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
   //--- Atomic property: errorOrWarningIssueSize
-    // self.errorOrWarningIssueSize_property.configure (self.mRoot_property.mErrorOrWarningIssueSize_property, transient_BoardObject_errorOrWarningIssueSize)
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection.kind ()
@@ -365,7 +363,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.mErrorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property)
+    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

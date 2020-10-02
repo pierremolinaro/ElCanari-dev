@@ -15,75 +15,220 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePadAssignmentInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mPadName_property.removeEBObserver (self.mPadName_property) // Stored property
-    inOldValue?.pinPadAssignment_property.removeEBObserver (self.pinPadAssignment_property) // Transient property
-    inOldValue?.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
+    inOldValue?.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+    inOldValue?.pinPadAssignment_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
+    inOldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mPadName_property.addEBObserver (self.mPadName_property) // Stored property
-    self.mInternalValue?.pinPadAssignment_property.addEBObserver (self.pinPadAssignment_property) // Transient property
-    self.mInternalValue?.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
+    self.mInternalValue?.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+    self.mInternalValue?.pinPadAssignment_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
+    self.mInternalValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'mPadName' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.mPadName_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mPadName_property.prop ?? .empty }
-    self.mPadName_property.mWriteModelFunction = { [weak self] (inValue : String) in self?.mInternalValue?.mPadName_property.setProp (inValue) }
-    self.pinPadAssignment_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.pinPadAssignment_property.prop ?? .empty }
-    self.descriptor_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.descriptor_property.prop ?? .empty }
-  }
+  private var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
-  //   Proxy of 'mPadName' stored property
-  //····················································································································
 
-  let mPadName_property = EBPropertyProxy_String ()
-
-  var mPadName_property_selection : EBSelection <String> {
-    switch (self.mPadName_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var mPadName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPadName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'pinPadAssignment' transient property
-  //····················································································································
 
-  let pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
-
-  var pinPadAssignment_property_selection : EBSelection <ThreeStrings> {
-    switch (self.pinPadAssignment_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mPadName.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mPadName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'descriptor' transient property
+
+  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mPadName.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mPadName_property.removeEBObserver (inObserver)
+    }
+  }
+
   //····················································································································
 
-  let descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
+  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
+        managedObject.mPadName_property.addEBObserver (observer)
+      }
+    }
+  }
 
-  var descriptor_property_selection : EBSelection <PinPadAssignmentInProject> {
-    switch (self.descriptor_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mPadName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pinPadAssignment' transient property
+  //····················································································································
+
+  private var mObserversOf_pinPadAssignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinPadAssignment_property_selection : EBSelection <ThreeStrings?> {
+    if let model = self.propval {
+      switch (model.pinPadAssignment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignment.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.pinPadAssignment_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignment.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pinPadAssignment_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignment.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignment.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'descriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <PinPadAssignmentInProject?> {
+    if let model = self.propval {
+      switch (model.descriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_descriptor.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.descriptor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_descriptor.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.descriptor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -119,7 +264,7 @@ class TransientObject_DevicePadAssignmentInProject : ReadOnlyObject_DevicePadAss
   override func notifyModelDidChange () {
     let newObject : DevicePadAssignmentInProject? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -140,7 +285,7 @@ class TransientObject_DevicePadAssignmentInProject : ReadOnlyObject_DevicePadAss
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePadAssignmentInProject? > {
+  override var selection : EBSelection < DevicePadAssignmentInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -202,7 +347,7 @@ final class ProxyObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePad
   override func notifyModelDidChange () {
     let newModel : DevicePadAssignmentInProject?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -225,9 +370,9 @@ final class ProxyObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePad
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePadAssignmentInProject? > {
+  override var selection : EBSelection < DevicePadAssignmentInProject? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -237,7 +382,7 @@ final class ProxyObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePad
 
   override var propval : DevicePadAssignmentInProject? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -297,7 +442,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -350,7 +495,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePadAssignmentInProject? > {
+  override var selection : EBSelection < DevicePadAssignmentInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

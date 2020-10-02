@@ -40,7 +40,7 @@ class ForbiddenPadNumber : EBManagedObject,
 
   //····················································································································
 
-  final var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.prop }
+  final var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.selection }
 
   //····················································································································
   //    init

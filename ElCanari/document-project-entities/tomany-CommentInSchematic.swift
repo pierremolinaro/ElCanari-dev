@@ -47,7 +47,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mColor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -62,7 +62,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mColor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -104,7 +104,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSize.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSize.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mVerticalAlignment.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mVerticalAlignment.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -275,7 +275,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -389,7 +389,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComment.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_mComment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mComment.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -461,7 +461,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -517,7 +517,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -631,7 +631,7 @@ final class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchem
       self.mModelArrayShouldBeComputed = false
       let newArray : [CommentInSchematic] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -656,7 +656,7 @@ final class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchem
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematic] > {
+  override var selection : EBSelection < [CommentInSchematic] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -723,7 +723,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -750,7 +750,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematic] > {
+  override var selection : EBSelection < [CommentInSchematic] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -809,7 +809,7 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
   override func notifyModelDidChange () {
     let newModelArray : [CommentInSchematic]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -832,9 +832,9 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematic] > {
+  override var selection : EBSelection < [CommentInSchematic] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -844,7 +844,7 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
 
   override var propval : [CommentInSchematic] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -904,7 +904,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -964,7 +964,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
  
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1053,7 +1053,7 @@ final class StandAloneArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSch
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

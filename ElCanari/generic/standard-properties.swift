@@ -18,16 +18,16 @@ typealias EBPreferencesProperty_UInt32 = EBPreferencesValueProperty <UInt32>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_UInt32_properties (_ left : EBReadOnlyProperty_UInt32, _ right : EBReadOnlyProperty_UInt32) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -36,7 +36,7 @@ func compare_UInt32_properties (_ left : EBReadOnlyProperty_UInt32, _ right : EB
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -65,16 +65,16 @@ typealias EBPreferencesProperty_Int = EBPreferencesValueProperty <Int>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_Int_properties (_ left : EBReadOnlyProperty_Int, _ right : EBReadOnlyProperty_Int) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -83,7 +83,7 @@ func compare_Int_properties (_ left : EBReadOnlyProperty_Int, _ right : EBReadOn
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -112,16 +112,16 @@ typealias EBPreferencesProperty_Bool = EBPreferencesValueProperty <Bool>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_Bool_properties (_ left : EBReadOnlyProperty_Bool, _ right : EBReadOnlyProperty_Bool) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -130,7 +130,7 @@ func compare_Bool_properties (_ left : EBReadOnlyProperty_Bool, _ right : EBRead
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -159,16 +159,16 @@ typealias EBPreferencesProperty_Double = EBPreferencesValueProperty <Double>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_Double_properties (_ left : EBReadOnlyProperty_Double, _ right : EBReadOnlyProperty_Double) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -177,7 +177,7 @@ func compare_Double_properties (_ left : EBReadOnlyProperty_Double, _ right : EB
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -206,16 +206,16 @@ typealias EBPreferencesProperty_String = EBPreferencesValueProperty <String>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_String_properties (_ left : EBReadOnlyProperty_String, _ right : EBReadOnlyProperty_String) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -224,7 +224,7 @@ func compare_String_properties (_ left : EBReadOnlyProperty_String, _ right : EB
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -247,16 +247,16 @@ typealias EBPreferencesProperty_Data = EBPreferencesValueProperty <Data>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_Data_properties (_ left : EBReadOnlyProperty_Data, _ right : EBReadOnlyProperty_Data) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -265,7 +265,7 @@ func compare_Data_properties (_ left : EBReadOnlyProperty_Data, _ right : EBRead
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -294,16 +294,16 @@ typealias EBPreferencesProperty_Date = EBPreferencesValueProperty <Date>
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_Date_properties (_ left : EBReadOnlyProperty_Date, _ right : EBReadOnlyProperty_Date) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -312,7 +312,7 @@ func compare_Date_properties (_ left : EBReadOnlyProperty_Date, _ right : EBRead
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
@@ -341,16 +341,16 @@ typealias EBPreferencesProperty_BezierPathArray = EBPreferencesValueProperty <Be
 //----------------------------------------------------------------------------------------------------------------------
 
 func compare_BezierPathArray_properties (_ left : EBReadOnlyProperty_BezierPathArray, _ right : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
-  switch left.prop {
+  switch left.selection {
   case .empty :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
   case .multiple :
-    switch right.prop {
+    switch right.selection {
     case .empty :
       return .orderedDescending
     case .multiple :
@@ -359,7 +359,7 @@ func compare_BezierPathArray_properties (_ left : EBReadOnlyProperty_BezierPathA
       return .orderedAscending
    }
  case .single (let currentValue) :
-    switch right.prop {
+    switch right.selection {
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :

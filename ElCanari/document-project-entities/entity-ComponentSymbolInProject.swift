@@ -166,7 +166,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
+  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.selection }
 
   //····················································································································
   //   Atomic property: mCenterY
@@ -191,7 +191,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
+  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.selection }
 
   //····················································································································
   //   Atomic property: mRotation
@@ -216,7 +216,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
+  final var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.selection }
 
   //····················································································································
   //   Atomic property: mMirror
@@ -241,7 +241,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mMirror_property_selection : EBSelection <Bool> { return self.mMirror_property.prop }
+  final var mMirror_property_selection : EBSelection <Bool> { return self.mMirror_property.selection }
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -266,7 +266,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
+  final var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.selection }
 
   //····················································································································
   //   Atomic property: mSymbolTypeName
@@ -291,7 +291,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
+  final var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.selection }
 
   //····················································································································
   //   Atomic property: mDisplayComponentNameOffsetX
@@ -316,7 +316,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetX_property.prop }
+  final var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetX_property.selection }
 
   //····················································································································
   //   Atomic property: mDisplayComponentNameOffsetY
@@ -341,7 +341,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetY_property.prop }
+  final var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetY_property.selection }
 
   //····················································································································
   //   Atomic property: mDisplayComponentValue
@@ -366,7 +366,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mDisplayComponentValue_property_selection : EBSelection <Bool> { return self.mDisplayComponentValue_property.prop }
+  final var mDisplayComponentValue_property_selection : EBSelection <Bool> { return self.mDisplayComponentValue_property.selection }
 
   //····················································································································
   //   Atomic property: mDisplayComponentValueOffsetX
@@ -391,7 +391,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetX_property.prop }
+  final var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetX_property.selection }
 
   //····················································································································
   //   Atomic property: mDisplayComponentValueOffsetY
@@ -416,7 +416,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
+  final var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.selection }
 
   //····················································································································
   //   To many property: mPoints
@@ -427,7 +427,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var mPoints_property_selection : EBSelection < [PointInSchematic] > {
-    return self.mPoints_property.prop
+    return self.mPoints_property.selection
   }
 
   //····················································································································
@@ -447,7 +447,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   var componentValueProxy : String? {
     get {
-      switch self.componentValueProxy_property.prop {
+      switch self.componentValueProxy_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -463,7 +463,7 @@ class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  var componentValueProxy_property_selection : EBSelection <String> { return self.componentValueProxy_property.prop }
+  var componentValueProxy_property_selection : EBSelection <String> { return self.componentValueProxy_property.selection }
 
   //····················································································································
   //   To one property: mComponent
@@ -512,7 +512,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var componentName_property_selection : EBSelection <String> {
-    return self.componentName_property.prop
+    return self.componentName_property.selection
   }
 
   //····················································································································
@@ -535,7 +535,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var deviceName_property_selection : EBSelection <String> {
-    return self.deviceName_property.prop
+    return self.deviceName_property.selection
   }
 
   //····················································································································
@@ -558,7 +558,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var symbolInfo_property_selection : EBSelection <ComponentSymbolInfo> {
-    return self.symbolInfo_property.prop
+    return self.symbolInfo_property.selection
   }
 
   //····················································································································
@@ -581,7 +581,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
-    return self.pinPadAssignments_property.prop
+    return self.pinPadAssignments_property.selection
   }
 
   //····················································································································
@@ -604,7 +604,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var symbolInSchematic_property_selection : EBSelection <Bool> {
-    return self.symbolInSchematic_property.prop
+    return self.symbolInSchematic_property.selection
   }
 
   //····················································································································
@@ -661,7 +661,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mComponent_property.mComponentValue_property.addEBObserver (self.componentValueProxy_property)
+    self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -669,7 +669,6 @@ class ComponentSymbolInProject : SchematicObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
     )
   //--- Atomic property: componentName
-    // self.componentName_property.configure (self.mComponent_property.componentName_property, transient_ComponentSymbolInProject_componentName)
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.componentName_property_selection.kind ()
@@ -690,9 +689,8 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.componentName_property.addEBObserver (self.componentName_property)
+    self.mComponent_property.addEBObserverOf_componentName (self.componentName_property)
   //--- Atomic property: deviceName
-    // self.deviceName_property.configure (self.mComponent_property.deviceName_property, transient_ComponentSymbolInProject_deviceName)
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.deviceName_property_selection.kind ()
@@ -713,9 +711,8 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.deviceName_property.addEBObserver (self.deviceName_property)
+    self.mComponent_property.addEBObserverOf_deviceName (self.deviceName_property)
   //--- Atomic property: symbolInfo
-    // self.symbolInfo_property.configure (self.mRotation_property, self.mMirror_property, self.componentName_property, self.mComponent_property.mComponentValue_property, self.mComponent_property.deviceSymbolDictionary_property, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, self.mCenterX_property, self.mCenterY_property, prefs_pinNameFont_property, self.mPoints_property.symbolNameNetName_property, transient_ComponentSymbolInProject_symbolInfo)
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mRotation_property_selection.kind ()
@@ -749,8 +746,8 @@ class ComponentSymbolInProject : SchematicObject,
     self.mRotation_property.addEBObserver (self.symbolInfo_property)
     self.mMirror_property.addEBObserver (self.symbolInfo_property)
     self.componentName_property.addEBObserver (self.symbolInfo_property)
-    self.mComponent_property.mComponentValue_property.addEBObserver (self.symbolInfo_property)
-    self.mComponent_property.deviceSymbolDictionary_property.addEBObserver (self.symbolInfo_property)
+    self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property)
+    self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
     self.mSymbolInstanceName_property.addEBObserver (self.symbolInfo_property)
     self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
     self.mCenterX_property.addEBObserver (self.symbolInfo_property)
@@ -758,7 +755,6 @@ class ComponentSymbolInProject : SchematicObject,
     prefs_pinNameFont_property.addEBObserver (self.symbolInfo_property)
     self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.mComponent_property.pinPadAssignments_property, transient_ComponentSymbolInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.pinPadAssignments_property_selection.kind ()
@@ -779,9 +775,8 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property)
+    self.mComponent_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (prefs_pinNameFont_property, self.mDisplayComponentNameOffsetX_property, self.mDisplayComponentNameOffsetY_property, self.mDisplayComponentValue_property, self.mDisplayComponentValueOffsetX_property, self.mDisplayComponentValueOffsetY_property, self.symbolInfo_property, prefs_symbolColorForSchematic_property, self.mSymbolInstanceName_property, self.mSymbolTypeName_property, transient_ComponentSymbolInProject_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = prefs_pinNameFont_property_selection.kind ()
@@ -822,7 +817,6 @@ class ComponentSymbolInProject : SchematicObject,
     self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property)
     self.mSymbolTypeName_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (prefs_pinNameFont_property, prefs_schematicBackColor_property, self.mDisplayComponentNameOffsetX_property, self.mDisplayComponentNameOffsetY_property, self.mDisplayComponentValue_property, self.mDisplayComponentValueOffsetX_property, self.mDisplayComponentValueOffsetY_property, self.symbolInfo_property, self.mRotation_property, transient_ComponentSymbolInProject_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = prefs_pinNameFont_property_selection.kind ()
@@ -861,7 +855,6 @@ class ComponentSymbolInProject : SchematicObject,
     self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
     self.mRotation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: symbolInSchematic
-    // self.symbolInSchematic_property.configure (self.isPlacedInSchematic_property, transient_ComponentSymbolInProject_symbolInSchematic)
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.isPlacedInSchematic_property_selection.kind ()
@@ -900,7 +893,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mReadModelFunction = nil
     self.componentValueProxy_property.mWriteModelFunction = nil
     self.componentValueProxy_property.mValidateAndWriteModelFunction = nil
-    self.mComponent_property.mComponentValue_property.removeEBObserver (self.componentValueProxy_property)
+    self.mComponent_property.removeEBObserverOf_mComponentValue (self.componentValueProxy_property)
     // self.mComponent_property.componentName_property.removeEBObserver (self.componentName_property)
     // self.mComponent_property.deviceName_property.removeEBObserver (self.deviceName_property)
     // self.mRotation_property.removeEBObserver (self.symbolInfo_property)

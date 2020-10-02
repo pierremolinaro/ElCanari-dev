@@ -140,7 +140,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[DeviceDocumentation]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[DeviceDocumentation]> { return self.selectedArray_property.selection }
  
   //····················································································································
 
@@ -236,7 +236,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
  //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    switch self.sortedArray_property.prop {
+    switch self.sortedArray_property.selection {
     case .empty, .multiple :
        return NSIndexSet ()
     case .single (let v) :
@@ -260,7 +260,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
   //····················································································································
 
   func numberOfRows (in _ : NSTableView) -> Int {
-    switch self.sortedArray_property.prop {
+    switch self.sortedArray_property.selection {
     case .empty, .multiple :
       return 0
     case .single (let v) :
@@ -273,7 +273,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-    switch self.sortedArray_property.prop {
+    switch self.sortedArray_property.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -308,7 +308,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
-    switch self.sortedArray_property.prop {
+    switch self.sortedArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -348,7 +348,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
 
   func select (object inObject: DeviceDocumentation) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
@@ -365,7 +365,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
 
    @objc func add (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let v) :
@@ -385,11 +385,11 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
 
   @objc func remove (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let model_prop) :
-        switch self.sortedArray_property.prop {
+        switch self.sortedArray_property.selection {
         case .empty, .multiple :
           break
         case .single (let sortedArray_prop) :

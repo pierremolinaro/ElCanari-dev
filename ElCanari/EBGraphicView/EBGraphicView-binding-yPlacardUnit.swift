@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateYPlacardUnit (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.set (YPlacardUnit: 2286) // mils
     case .single (let v) :

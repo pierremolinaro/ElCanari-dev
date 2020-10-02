@@ -229,7 +229,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.prop }
+  final var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.selection }
 
   //····················································································································
   //   Atomic property: yCenter
@@ -254,7 +254,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.prop }
+  final var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.selection }
 
   //····················································································································
   //   Atomic property: width
@@ -279,7 +279,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
 
   //····················································································································
   //   Atomic property: height
@@ -304,7 +304,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
 
   //····················································································································
   //   Atomic property: holeWidth
@@ -329,7 +329,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var holeWidth_property_selection : EBSelection <Int> { return self.holeWidth_property.prop }
+  final var holeWidth_property_selection : EBSelection <Int> { return self.holeWidth_property.selection }
 
   //····················································································································
   //   Atomic property: holeHeight
@@ -354,7 +354,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var holeHeight_property_selection : EBSelection <Int> { return self.holeHeight_property.prop }
+  final var holeHeight_property_selection : EBSelection <Int> { return self.holeHeight_property.selection }
 
   //····················································································································
   //   Atomic property: padShape
@@ -379,7 +379,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var padShape_property_selection : EBSelection <PadShape> { return self.padShape_property.prop }
+  final var padShape_property_selection : EBSelection <PadShape> { return self.padShape_property.selection }
 
   //····················································································································
   //   Atomic property: padStyle
@@ -404,7 +404,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var padStyle_property_selection : EBSelection <PadStyle> { return self.padStyle_property.prop }
+  final var padStyle_property_selection : EBSelection <PadStyle> { return self.padStyle_property.selection }
 
   //····················································································································
   //   Atomic property: padNumber
@@ -429,7 +429,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.prop }
+  final var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.selection }
 
   //····················································································································
   //   Atomic property: xCenterUnit
@@ -454,7 +454,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.prop }
+  final var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yCenterUnit
@@ -479,7 +479,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.prop }
+  final var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -504,7 +504,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
+  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -529,7 +529,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
+  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.selection }
 
   //····················································································································
   //   Atomic property: holeWidthUnit
@@ -554,7 +554,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var holeWidthUnit_property_selection : EBSelection <Int> { return self.holeWidthUnit_property.prop }
+  final var holeWidthUnit_property_selection : EBSelection <Int> { return self.holeWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: holeHeightUnit
@@ -579,7 +579,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var holeHeightUnit_property_selection : EBSelection <Int> { return self.holeHeightUnit_property.prop }
+  final var holeHeightUnit_property_selection : EBSelection <Int> { return self.holeHeightUnit_property.selection }
 
   //····················································································································
   //   Atomic property: annularRingUnit
@@ -604,7 +604,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var annularRingUnit_property_selection : EBSelection <Int> { return self.annularRingUnit_property.prop }
+  final var annularRingUnit_property_selection : EBSelection <Int> { return self.annularRingUnit_property.selection }
 
   //····················································································································
   //   To many property: slaves
@@ -615,7 +615,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var slaves_property_selection : EBSelection < [PackageSlavePad] > {
-    return self.slaves_property.prop
+    return self.slaves_property.selection
   }
 
   //····················································································································
@@ -672,7 +672,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var padNameForDisplay_property_selection : EBSelection <String> {
-    return self.padNameForDisplay_property.prop
+    return self.padNameForDisplay_property.selection
   }
 
   //····················································································································
@@ -695,7 +695,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var padIsTraversing_property_selection : EBSelection <Bool> {
-    return self.padIsTraversing_property.prop
+    return self.padIsTraversing_property.selection
   }
 
   //····················································································································
@@ -718,7 +718,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var annularRing_property_selection : EBSelection <Int> {
-    return self.annularRing_property.prop
+    return self.annularRing_property.selection
   }
 
   //····················································································································
@@ -741,7 +741,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var padNameWithZoneName_property_selection : EBSelection <String> {
-    return self.padNameWithZoneName_property.prop
+    return self.padNameWithZoneName_property.selection
   }
 
   //····················································································································
@@ -764,7 +764,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var zoneName_property_selection : EBSelection <String> {
-    return self.zoneName_property.prop
+    return self.zoneName_property.selection
   }
 
   //····················································································································
@@ -787,7 +787,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var noZone_property_selection : EBSelection <Bool> {
-    return self.noZone_property.prop
+    return self.noZone_property.selection
   }
 
   //····················································································································
@@ -810,7 +810,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var zoneAllowsManualRenumbering_property_selection : EBSelection <Bool> {
-    return self.zoneAllowsManualRenumbering_property.prop
+    return self.zoneAllowsManualRenumbering_property.selection
   }
 
   //····················································································································
@@ -833,7 +833,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var slavePadCount_property_selection : EBSelection <Int> {
-    return self.slavePadCount_property.prop
+    return self.slavePadCount_property.selection
   }
 
   //····················································································································
@@ -856,7 +856,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   final var padNumberDisplay_property_selection : EBSelection <EBShape> {
-    return self.padNumberDisplay_property.prop
+    return self.padNumberDisplay_property.selection
   }
 
   //····················································································································
@@ -907,7 +907,6 @@ class PackagePad : PackageObject,
   //--- To one property: zone
     self.zone_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.xCenter_property, self.yCenter_property, self.width_property, self.height_property, self.padShape_property, transient_PackagePad_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
@@ -938,7 +937,6 @@ class PackagePad : PackageObject,
     self.height_property.addEBObserver (self.selectionDisplay_property)
     self.padShape_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: padNameForDisplay
-    // self.padNameForDisplay_property.configure (self.padNumber_property, self.zone_property.zoneName_property, self.zone_property.displayZoneName_property, transient_PackagePad_padNameForDisplay)
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.padNumber_property_selection.kind ()
@@ -962,10 +960,9 @@ class PackagePad : PackageObject,
       }
     }
     self.padNumber_property.addEBObserver (self.padNameForDisplay_property)
-    self.zone_property.zoneName_property.addEBObserver (self.padNameForDisplay_property)
-    self.zone_property.displayZoneName_property.addEBObserver (self.padNameForDisplay_property)
+    self.zone_property.addEBObserverOf_zoneName (self.padNameForDisplay_property)
+    self.zone_property.addEBObserverOf_displayZoneName (self.padNameForDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.xCenter_property, self.yCenter_property, self.width_property, self.height_property, self.holeWidth_property, self.holeHeight_property, transient_PackagePad_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
@@ -998,7 +995,6 @@ class PackagePad : PackageObject,
     self.holeWidth_property.addEBObserver (self.issues_property)
     self.holeHeight_property.addEBObserver (self.issues_property)
   //--- Atomic property: padIsTraversing
-    // self.padIsTraversing_property.configure (self.padStyle_property, transient_PackagePad_padIsTraversing)
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padStyle_property_selection.kind ()
@@ -1021,7 +1017,6 @@ class PackagePad : PackageObject,
     }
     self.padStyle_property.addEBObserver (self.padIsTraversing_property)
   //--- Atomic property: annularRing
-    // self.annularRing_property.configure (self.width_property, self.height_property, self.holeWidth_property, self.holeHeight_property, transient_PackagePad_annularRing)
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.width_property_selection.kind ()
@@ -1050,7 +1045,6 @@ class PackagePad : PackageObject,
     self.holeWidth_property.addEBObserver (self.annularRing_property)
     self.holeHeight_property.addEBObserver (self.annularRing_property)
   //--- Atomic property: padNameWithZoneName
-    // self.padNameWithZoneName_property.configure (self.padNumber_property, self.zone_property.zoneName_property, transient_PackagePad_padNameWithZoneName)
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.padNumber_property_selection.kind ()
@@ -1073,9 +1067,8 @@ class PackagePad : PackageObject,
       }
     }
     self.padNumber_property.addEBObserver (self.padNameWithZoneName_property)
-    self.zone_property.zoneName_property.addEBObserver (self.padNameWithZoneName_property)
+    self.zone_property.addEBObserverOf_zoneName (self.padNameWithZoneName_property)
   //--- Atomic property: zoneName
-    // self.zoneName_property.configure (self.zone_property.zoneName_property, transient_PackagePad_zoneName)
     self.zoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.zone_property.zoneName_property_selection.kind ()
@@ -1096,9 +1089,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.zoneName_property.addEBObserver (self.zoneName_property)
+    self.zone_property.addEBObserverOf_zoneName (self.zoneName_property)
   //--- Atomic property: noZone
-    // self.noZone_property.configure (self.zone_property, transient_PackagePad_noZone)
     self.noZone_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.zone_none_selection.kind ()
@@ -1121,7 +1113,6 @@ class PackagePad : PackageObject,
     }
     self.zone_property.addEBObserver (self.noZone_property)
   //--- Atomic property: zoneAllowsManualRenumbering
-    // self.zoneAllowsManualRenumbering_property.configure (self.zone_property.zoneNumbering_property, transient_PackagePad_zoneAllowsManualRenumbering)
     self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.zone_property.zoneNumbering_property_selection.kind ()
@@ -1142,9 +1133,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.zoneNumbering_property.addEBObserver (self.zoneAllowsManualRenumbering_property)
+    self.zone_property.addEBObserverOf_zoneNumbering (self.zoneAllowsManualRenumbering_property)
   //--- Atomic property: slavePadCount
-    // self.slavePadCount_property.configure (self.slaves_property, transient_PackagePad_slavePadCount)
     self.slavePadCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.slaves_property.count_property_selection.kind ()
@@ -1167,7 +1157,6 @@ class PackagePad : PackageObject,
     }
     self.slaves_property.addEBObserver (self.slavePadCount_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.xCenter_property, self.yCenter_property, self.width_property, self.height_property, self.holeWidth_property, self.holeHeight_property, self.padShape_property, self.padStyle_property, prefs_frontSidePadColor_property, prefs_displayPackageFrontSidePads_property, prefs_backSidePadColor_property, prefs_displayPackageBackSidePads_property, transient_PackagePad_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
@@ -1212,7 +1201,6 @@ class PackagePad : PackageObject,
     prefs_backSidePadColor_property.addEBObserver (self.objectDisplay_property)
     prefs_displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: padNumberDisplay
-    // self.padNumberDisplay_property.configure (self.xCenter_property, self.yCenter_property, prefs_padNumberFont_property, prefs_padNumberColor_property, self.padNameForDisplay_property, transient_PackagePad_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()

@@ -57,7 +57,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mPinName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mPinName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -114,7 +114,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -171,7 +171,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -228,7 +228,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mPinX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mPinX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -285,7 +285,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mPinY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mPinY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mXName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -414,7 +414,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mYName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameHorizontalAlignment.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNameHorizontalAlignment.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mPinNameIsDisplayedInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinNameIsDisplayedInSchematic.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mPinNameIsDisplayedInSchematic (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinNameIsDisplayedInSchematic.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXNumber.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mXNumber.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -627,7 +627,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mYNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYNumber.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mYNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mYNumber.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -684,7 +684,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNumberHorizontalAlignment.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -699,7 +699,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNumberHorizontalAlignment.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -741,7 +741,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -756,7 +756,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -797,7 +797,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -812,7 +812,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -926,7 +926,7 @@ final class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInPro
       self.mModelArrayShouldBeComputed = false
       let newArray : [DevicePinInProject] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -951,7 +951,7 @@ final class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInPro
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePinInProject] > {
+  override var selection : EBSelection < [DevicePinInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -1018,7 +1018,7 @@ final class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject>
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -1045,7 +1045,7 @@ final class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePinInProject] > {
+  override var selection : EBSelection < [DevicePinInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -1104,7 +1104,7 @@ final class ProxyArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProjec
   override func notifyModelDidChange () {
     let newModelArray : [DevicePinInProject]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -1127,9 +1127,9 @@ final class ProxyArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProjec
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePinInProject] > {
+  override var selection : EBSelection < [DevicePinInProject] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -1139,7 +1139,7 @@ final class ProxyArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProjec
 
   override var propval : [DevicePinInProject] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -1199,7 +1199,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -1259,7 +1259,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
  
   //····················································································································
 
-  override var prop : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1348,7 +1348,7 @@ final class StandAloneArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInP
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateVerticalFlip (from model : EBReadOnlyProperty_Bool) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       self.setVerticalFlip (false)
     case .single (let v) :

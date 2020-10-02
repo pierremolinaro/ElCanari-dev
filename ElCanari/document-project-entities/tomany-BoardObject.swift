@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isPlacedInBoard.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -64,7 +64,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isPlacedInBoard.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isVia.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isVia.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_trackLength (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackLength.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -232,7 +232,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_trackLength (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_trackLength.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -273,7 +273,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -385,7 +385,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_componentName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -441,7 +441,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -497,7 +497,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -553,7 +553,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_errorOrWarningIssueSize.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -568,7 +568,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_errorOrWarningIssueSize.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -682,7 +682,7 @@ final class TransientArrayOf_BoardObject : ReadOnlyArrayOf_BoardObject {
       self.mModelArrayShouldBeComputed = false
       let newArray : [BoardObject] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -707,7 +707,7 @@ final class TransientArrayOf_BoardObject : ReadOnlyArrayOf_BoardObject {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardObject] > {
+  override var selection : EBSelection < [BoardObject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -774,7 +774,7 @@ final class TransientArrayOfSuperOf_BoardObject <SUPER : EBManagedObject> : Read
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -801,7 +801,7 @@ final class TransientArrayOfSuperOf_BoardObject <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardObject] > {
+  override var selection : EBSelection < [BoardObject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -860,7 +860,7 @@ final class ProxyArrayOf_BoardObject : ReadWriteArrayOf_BoardObject {
   override func notifyModelDidChange () {
     let newModelArray : [BoardObject]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -883,9 +883,9 @@ final class ProxyArrayOf_BoardObject : ReadWriteArrayOf_BoardObject {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardObject] > {
+  override var selection : EBSelection < [BoardObject] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -895,7 +895,7 @@ final class ProxyArrayOf_BoardObject : ReadWriteArrayOf_BoardObject {
 
   override var propval : [BoardObject] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -955,7 +955,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -1015,7 +1015,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
  
   //····················································································································
 
-  override var prop : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1104,7 +1104,7 @@ final class StandAloneArrayOf_BoardObject : ReadWriteArrayOf_BoardObject {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

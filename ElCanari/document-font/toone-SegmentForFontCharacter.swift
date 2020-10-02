@@ -15,138 +15,436 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentForFontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.x1_property.removeEBObserver (self.x1_property) // Stored property
-    inOldValue?.y1_property.removeEBObserver (self.y1_property) // Stored property
-    inOldValue?.x2_property.removeEBObserver (self.x2_property) // Stored property
-    inOldValue?.y2_property.removeEBObserver (self.y2_property) // Stored property
-    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
+    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
+    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.x1_property.addEBObserver (self.x1_property) // Stored property
-    self.mInternalValue?.y1_property.addEBObserver (self.y1_property) // Stored property
-    self.mInternalValue?.x2_property.addEBObserver (self.x2_property) // Stored property
-    self.mInternalValue?.y2_property.addEBObserver (self.y2_property) // Stored property
-    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
+    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
+    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'x1' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.x1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x1_property.prop ?? .empty }
-    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x1_property.setProp (inValue) }
-    self.y1_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y1_property.prop ?? .empty }
-    self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y1_property.setProp (inValue) }
-    self.x2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.x2_property.prop ?? .empty }
-    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.x2_property.setProp (inValue) }
-    self.y2_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.y2_property.prop ?? .empty }
-    self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.y2_property.setProp (inValue) }
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
-  }
+  private var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
-  //   Proxy of 'x1' stored property
-  //····················································································································
 
-  let x1_property = EBPropertyProxy_Int ()
-
-  var x1_property_selection : EBSelection <Int> {
-    switch (self.x1_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var x1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Proxy of 'y1' stored property
-  //····················································································································
 
-  let y1_property = EBPropertyProxy_Int ()
-
-  var y1_property_selection : EBSelection <Int> {
-    switch (self.y1_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x1.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.x1_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'x2' stored property
-  //····················································································································
 
-  let x2_property = EBPropertyProxy_Int ()
-
-  var x2_property_selection : EBSelection <Int> {
-    switch (self.x2_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x1.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.x1_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'y2' stored property
-  //····················································································································
 
-  let y2_property = EBPropertyProxy_Int ()
-
-  var y2_property_selection : EBSelection <Int> {
-    switch (self.y2_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+        managedObject.x1_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'selectionDisplay' transient property
-  //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.selectionDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x1_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'objectDisplay' transient property
+  //   Observers of 'y1' stored property
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  private var mObserversOf_y1 = EBWeakEventSet ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.objectDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  var y1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y1.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.y1_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y1.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.y1_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+        managedObject.y1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x2' stored property
+  //····················································································································
+
+  private var mObserversOf_x2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  var x2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x2.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.x2_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x2.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.x2_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+        managedObject.x2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'y2' stored property
+  //····················································································································
+
+  private var mObserversOf_y2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  var y2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y2.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.y2_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y2.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.y2_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+        managedObject.y2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -182,7 +480,7 @@ class TransientObject_SegmentForFontCharacter : ReadOnlyObject_SegmentForFontCha
   override func notifyModelDidChange () {
     let newObject : SegmentForFontCharacter? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -203,7 +501,7 @@ class TransientObject_SegmentForFontCharacter : ReadOnlyObject_SegmentForFontCha
 
   //····················································································································
 
-  override var prop : EBSelection < SegmentForFontCharacter? > {
+  override var selection : EBSelection < SegmentForFontCharacter? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -265,7 +563,7 @@ final class ProxyObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFont
   override func notifyModelDidChange () {
     let newModel : SegmentForFontCharacter?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -288,9 +586,9 @@ final class ProxyObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFont
 
   //····················································································································
 
-  override var prop : EBSelection < SegmentForFontCharacter? > {
+  override var selection : EBSelection < SegmentForFontCharacter? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -300,7 +598,7 @@ final class ProxyObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFont
 
   override var propval : SegmentForFontCharacter? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -360,7 +658,7 @@ final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFon
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -413,7 +711,7 @@ final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFon
 
   //····················································································································
 
-  override var prop : EBSelection < SegmentForFontCharacter? > {
+  override var selection : EBSelection < SegmentForFontCharacter? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

@@ -89,7 +89,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mFirstX_property_selection : EBSelection <Int> { return self.mFirstX_property.prop }
+  final var mFirstX_property_selection : EBSelection <Int> { return self.mFirstX_property.selection }
 
   //····················································································································
   //   Atomic property: mFirstY
@@ -114,7 +114,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mFirstY_property_selection : EBSelection <Int> { return self.mFirstY_property.prop }
+  final var mFirstY_property_selection : EBSelection <Int> { return self.mFirstY_property.selection }
 
   //····················································································································
   //   Atomic property: mFirstColor
@@ -139,7 +139,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mFirstColor_property_selection : EBSelection <NSColor> { return self.mFirstColor_property.prop }
+  final var mFirstColor_property_selection : EBSelection <NSColor> { return self.mFirstColor_property.selection }
 
   //····················································································································
   //   Atomic property: mSecondDx
@@ -164,7 +164,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSecondDx_property_selection : EBSelection <Int> { return self.mSecondDx_property.prop }
+  final var mSecondDx_property_selection : EBSelection <Int> { return self.mSecondDx_property.selection }
 
   //····················································································································
   //   Atomic property: mSecondDy
@@ -189,7 +189,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSecondDy_property_selection : EBSelection <Int> { return self.mSecondDy_property.prop }
+  final var mSecondDy_property_selection : EBSelection <Int> { return self.mSecondDy_property.selection }
 
   //····················································································································
   //   Atomic property: mSecondColor
@@ -214,7 +214,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSecondColor_property_selection : EBSelection <NSColor> { return self.mSecondColor_property.prop }
+  final var mSecondColor_property_selection : EBSelection <NSColor> { return self.mSecondColor_property.selection }
 
   //····················································································································
   //   To one property: mRoot
@@ -279,7 +279,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.remove (me) } }
     )
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mFirstX_property, self.mFirstY_property, self.mFirstColor_property, self.mSecondDx_property, self.mSecondDy_property, self.mSecondColor_property, self.mRoot_property.mModelPointsCircleRadius_property, self.mRoot_property.mPointsAreLocked_property, transient_PackageModelImageDoublePoint_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mFirstX_property_selection.kind ()
@@ -313,10 +312,9 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDx_property.addEBObserver (self.objectDisplay_property)
     self.mSecondDy_property.addEBObserver (self.objectDisplay_property)
     self.mSecondColor_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.mModelPointsCircleRadius_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.mPointsAreLocked_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mModelPointsCircleRadius (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mPointsAreLocked (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mFirstX_property, self.mFirstY_property, self.mSecondDx_property, self.mSecondDy_property, self.mRoot_property.mModelPointsCircleRadius_property, transient_PackageModelImageDoublePoint_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mFirstX_property_selection.kind ()
@@ -345,7 +343,7 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mFirstY_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDx_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDy_property.addEBObserver (self.selectionDisplay_property)
-    self.mRoot_property.mModelPointsCircleRadius_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mModelPointsCircleRadius (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -53,7 +53,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
+    return self.documentFilePath_property.selection
   }
 
   //····················································································································
@@ -76,7 +76,7 @@ import Cocoa
   //····················································································································
 
   final var documentFileNameOk_property_selection : EBSelection <Bool> {
-    return self.documentFileNameOk_property.prop
+    return self.documentFileNameOk_property.selection
   }
 
   //····················································································································
@@ -99,7 +99,7 @@ import Cocoa
   //····················································································································
 
   final var documentIsUnnamed_property_selection : EBSelection <Bool> {
-    return self.documentIsUnnamed_property.prop
+    return self.documentIsUnnamed_property.selection
   }
 
   //····················································································································
@@ -122,7 +122,7 @@ import Cocoa
   //····················································································································
 
   final var importArtworkButtonTitle_property_selection : EBSelection <String> {
-    return self.importArtworkButtonTitle_property.prop
+    return self.importArtworkButtonTitle_property.selection
   }
 
   //····················································································································
@@ -145,7 +145,7 @@ import Cocoa
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -168,7 +168,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+    return self.mStatusImage_property.selection
   }
 
   //····················································································································
@@ -191,7 +191,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
+    return self.mStatusMessage_property.selection
   }
 
   //····················································································································
@@ -214,7 +214,7 @@ import Cocoa
   //····················································································································
 
   final var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
-    return self.incorrectDocumentFileErrorMessage_property.prop
+    return self.incorrectDocumentFileErrorMessage_property.selection
   }
 
   //····················································································································
@@ -736,7 +736,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: documentFileNameOk
-    // self.documentFileNameOk_property.configure (self.documentFilePath_property, transient_MergerDocument_documentFileNameOk)
     self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -763,7 +762,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: documentIsUnnamed
-    // self.documentIsUnnamed_property.configure (self.documentFilePath_property, transient_MergerDocument_documentIsUnnamed)
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -790,7 +788,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: importArtworkButtonTitle
-    // self.importArtworkButtonTitle_property.configure (self.rootObject.mArtworkName_property, transient_MergerDocument_importArtworkButtonTitle)
     self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mArtworkName_property_selection.kind ()
@@ -817,7 +814,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: issues
-    // self.issues_property.configure (self.rootObject.overlapingArrangment_property, self.rootObject.boardRect_property, self.rootObject.boardDisplayRect_property, self.rootObject.boardInstances_property.instanceRect_property, self.rootObject.boardInstances_property.boardLimitWidth_property, transient_MergerDocument_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()
@@ -852,7 +848,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
-    // self.mStatusImage_property.configure (self.issues_property, transient_MergerDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -879,7 +874,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
-    // self.mStatusMessage_property.configure (self.issues_property, transient_MergerDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -906,7 +900,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: incorrectDocumentFileErrorMessage
-    // self.incorrectDocumentFileErrorMessage_property.configure (self.documentFilePath_property, transient_MergerDocument_incorrectDocumentFileErrorMessage)
     self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()

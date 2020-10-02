@@ -229,7 +229,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mComponentPadName_property_selection : EBSelection <String> { return self.mComponentPadName_property.prop }
+  final var mComponentPadName_property_selection : EBSelection <String> { return self.mComponentPadName_property.selection }
 
   //····················································································································
   //   Atomic property: mPadIndex
@@ -254,7 +254,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mPadIndex_property_selection : EBSelection <Int> { return self.mPadIndex_property.prop }
+  final var mPadIndex_property_selection : EBSelection <Int> { return self.mPadIndex_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -279,7 +279,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //   Atomic property: mY
@@ -304,7 +304,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   To many property: mTracksP2
@@ -315,7 +315,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var mTracksP2_property_selection : EBSelection < [BoardTrack] > {
-    return self.mTracksP2_property.prop
+    return self.mTracksP2_property.selection
   }
 
   //····················································································································
@@ -348,7 +348,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultHoleDiameterUnit_property.prop }
+  final var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultHoleDiameterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomHoleDiameter
@@ -373,7 +373,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mCustomHoleDiameter_property_selection : EBSelection <Int> { return self.mCustomHoleDiameter_property.prop }
+  final var mCustomHoleDiameter_property_selection : EBSelection <Int> { return self.mCustomHoleDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomHoleDiameterUnit
@@ -398,7 +398,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomHoleDiameterUnit_property.prop }
+  final var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomHoleDiameterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mUsesCustomHoleDiameter
@@ -423,7 +423,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomHoleDiameter_property.prop }
+  final var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomHoleDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: mDefaultPadDiameterUnit
@@ -448,7 +448,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultPadDiameterUnit_property.prop }
+  final var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultPadDiameterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomPadDiameter
@@ -473,7 +473,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mCustomPadDiameter_property_selection : EBSelection <Int> { return self.mCustomPadDiameter_property.prop }
+  final var mCustomPadDiameter_property_selection : EBSelection <Int> { return self.mCustomPadDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomPadDiameterUnit
@@ -498,7 +498,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mCustomPadDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomPadDiameterUnit_property.prop }
+  final var mCustomPadDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomPadDiameterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mUsesCustomPadDiameter
@@ -523,7 +523,7 @@ class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomPadDiameter_property.prop }
+  final var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomPadDiameter_property.selection }
 
   //····················································································································
   //   To many property: mTracksP1
@@ -534,7 +534,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var mTracksP1_property_selection : EBSelection < [BoardTrack] > {
-    return self.mTracksP1_property.prop
+    return self.mTracksP1_property.selection
   }
 
   //····················································································································
@@ -591,7 +591,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.prop
+    return self.location_property.selection
   }
 
   //····················································································································
@@ -614,7 +614,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var netNameFromComponentPad_property_selection : EBSelection <String> {
-    return self.netNameFromComponentPad_property.prop
+    return self.netNameFromComponentPad_property.selection
   }
 
   //····················································································································
@@ -637,7 +637,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var side_property_selection : EBSelection <ConnectorSide> {
-    return self.side_property.prop
+    return self.side_property.selection
   }
 
   //····················································································································
@@ -660,7 +660,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
-    return self.viaDefaultHoleDiameter_property.prop
+    return self.viaDefaultHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -683,7 +683,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
-    return self.viaDefaultPadDiameter_property.prop
+    return self.viaDefaultPadDiameter_property.selection
   }
 
   //····················································································································
@@ -706,7 +706,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var netNameFromTracks_property_selection : EBSelection <String> {
-    return self.netNameFromTracks_property.prop
+    return self.netNameFromTracks_property.selection
   }
 
   //····················································································································
@@ -729,7 +729,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.prop
+    return self.netClassName_property.selection
   }
 
   //····················································································································
@@ -752,7 +752,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var connectedToComponent_property_selection : EBSelection <Bool> {
-    return self.connectedToComponent_property.prop
+    return self.connectedToComponent_property.selection
   }
 
   //····················································································································
@@ -775,7 +775,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var actualHoleDiameter_property_selection : EBSelection <Int> {
-    return self.actualHoleDiameter_property.prop
+    return self.actualHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -798,7 +798,7 @@ class BoardConnector : BoardObject,
   //····················································································································
 
   final var actualPadDiameter_property_selection : EBSelection <Int> {
-    return self.actualPadDiameter_property.prop
+    return self.actualPadDiameter_property.selection
   }
 
   //····················································································································
@@ -855,7 +855,6 @@ class BoardConnector : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }
     )
   //--- Atomic property: location
-    // self.location_property.configure (self.mComponent_property.componentPadDictionary_property, self.mComponentPadName_property, self.mPadIndex_property, self.mX_property, self.mY_property, transient_BoardConnector_location)
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
@@ -880,13 +879,12 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.componentPadDictionary_property.addEBObserver (self.location_property)
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.location_property)
     self.mComponentPadName_property.addEBObserver (self.location_property)
     self.mPadIndex_property.addEBObserver (self.location_property)
     self.mX_property.addEBObserver (self.location_property)
     self.mY_property.addEBObserver (self.location_property)
   //--- Atomic property: netNameFromComponentPad
-    // self.netNameFromComponentPad_property.configure (self.mComponent_property.padNetDictionary_property, self.mComponentPadName_property, transient_BoardConnector_netNameFromComponentPad)
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
@@ -908,10 +906,9 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.padNetDictionary_property.addEBObserver (self.netNameFromComponentPad_property)
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameFromComponentPad_property)
     self.mComponentPadName_property.addEBObserver (self.netNameFromComponentPad_property)
   //--- Atomic property: netNameAndPadLocation
-    // self.netNameAndPadLocation_property.configure (self.mComponent_property.padNetDictionary_property, self.mComponentPadName_property, self.location_property, self.mComponent_property.componentName_property, transient_BoardConnector_netNameAndPadLocation)
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
@@ -935,12 +932,11 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.padNetDictionary_property.addEBObserver (self.netNameAndPadLocation_property)
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameAndPadLocation_property)
     self.mComponentPadName_property.addEBObserver (self.netNameAndPadLocation_property)
     self.location_property.addEBObserver (self.netNameAndPadLocation_property)
-    self.mComponent_property.componentName_property.addEBObserver (self.netNameAndPadLocation_property)
+    self.mComponent_property.addEBObserverOf_componentName (self.netNameAndPadLocation_property)
   //--- Atomic property: side
-    // self.side_property.configure (self.mComponent_property.componentPadDictionary_property, self.mComponentPadName_property, self.mPadIndex_property, self.mTracksP1_property.mSide_property, self.mTracksP2_property.mSide_property, transient_BoardConnector_side)
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
@@ -965,13 +961,12 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.componentPadDictionary_property.addEBObserver (self.side_property)
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.addEBObserver (self.side_property)
     self.mPadIndex_property.addEBObserver (self.side_property)
     self.mTracksP1_property.addEBObserverOf_mSide (self.side_property)
     self.mTracksP2_property.addEBObserverOf_mSide (self.side_property)
   //--- Atomic property: isVia
-    // self.isVia_property.configure (self.mTracksP1_property.mSide_property, self.mTracksP2_property.mSide_property, self.mComponent_property, transient_BoardConnector_isVia)
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTracksP1_property_selection.kind ()
@@ -998,7 +993,6 @@ class BoardConnector : BoardObject,
     self.mTracksP2_property.addEBObserverOf_mSide (self.isVia_property)
     self.mComponent_property.addEBObserver (self.isVia_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.location_property, self.mComponent_property, self.mComponentPadName_property, self.mTracksP1_property, self.mTracksP2_property, self.errorOrWarningIssueSize_property, self.mComponent_property.padNetDictionary_property, transient_BoardConnector_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.location_property_selection.kind ()
@@ -1031,9 +1025,8 @@ class BoardConnector : BoardObject,
     self.mTracksP1_property.addEBObserver (self.issues_property)
     self.mTracksP2_property.addEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
-    self.mComponent_property.padNetDictionary_property.addEBObserver (self.issues_property)
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Atomic property: viaDefaultHoleDiameter
-    // self.viaDefaultHoleDiameter_property.configure (self.mTracksP1_property.netClassViaHoleDiameter_property, self.mTracksP2_property.netClassViaHoleDiameter_property, transient_BoardConnector_viaDefaultHoleDiameter)
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTracksP1_property_selection.kind ()
@@ -1058,7 +1051,6 @@ class BoardConnector : BoardObject,
     self.mTracksP1_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
     self.mTracksP2_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
   //--- Atomic property: viaDefaultPadDiameter
-    // self.viaDefaultPadDiameter_property.configure (self.mTracksP1_property.netClassViaPadDiameter_property, self.mTracksP2_property.netClassViaPadDiameter_property, transient_BoardConnector_viaDefaultPadDiameter)
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTracksP1_property_selection.kind ()
@@ -1083,7 +1075,6 @@ class BoardConnector : BoardObject,
     self.mTracksP1_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
     self.mTracksP2_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
   //--- Atomic property: netNameFromTracks
-    // self.netNameFromTracks_property.configure (self.mTracksP1_property.netName_property, self.mTracksP2_property.netName_property, transient_BoardConnector_netNameFromTracks)
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTracksP1_property_selection.kind ()
@@ -1108,7 +1099,6 @@ class BoardConnector : BoardObject,
     self.mTracksP1_property.addEBObserverOf_netName (self.netNameFromTracks_property)
     self.mTracksP2_property.addEBObserverOf_netName (self.netNameFromTracks_property)
   //--- Atomic property: netClassName
-    // self.netClassName_property.configure (self.mTracksP1_property.netClassName_property, self.mTracksP2_property.netClassName_property, transient_BoardConnector_netClassName)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTracksP1_property_selection.kind ()
@@ -1133,7 +1123,6 @@ class BoardConnector : BoardObject,
     self.mTracksP1_property.addEBObserverOf_netClassName (self.netClassName_property)
     self.mTracksP2_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: connectedToComponent
-    // self.connectedToComponent_property.configure (self.mComponent_property, transient_BoardConnector_connectedToComponent)
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponent_none_selection.kind ()
@@ -1156,7 +1145,6 @@ class BoardConnector : BoardObject,
     }
     self.mComponent_property.addEBObserver (self.connectedToComponent_property)
   //--- Atomic property: actualHoleDiameter
-    // self.actualHoleDiameter_property.configure (self.viaDefaultHoleDiameter_property, self.mUsesCustomHoleDiameter_property, self.mCustomHoleDiameter_property, transient_BoardConnector_actualHoleDiameter)
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.viaDefaultHoleDiameter_property_selection.kind ()
@@ -1183,7 +1171,6 @@ class BoardConnector : BoardObject,
     self.mUsesCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
     self.mCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
   //--- Atomic property: actualPadDiameter
-    // self.actualPadDiameter_property.configure (self.viaDefaultPadDiameter_property, self.mUsesCustomPadDiameter_property, self.mCustomPadDiameter_property, transient_BoardConnector_actualPadDiameter)
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.viaDefaultPadDiameter_property_selection.kind ()
@@ -1210,7 +1197,6 @@ class BoardConnector : BoardObject,
     self.mUsesCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
     self.mCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.connectedToComponent_property, self.side_property, self.location_property, self.actualHoleDiameter_property, self.actualPadDiameter_property, prefs_frontSidePadColorForBoard_property, transient_BoardConnector_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.connectedToComponent_property_selection.kind ()
@@ -1243,7 +1229,6 @@ class BoardConnector : BoardObject,
     self.actualPadDiameter_property.addEBObserver (self.objectDisplay_property)
     prefs_frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.connectedToComponent_property, self.side_property, self.location_property, transient_BoardConnector_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.connectedToComponent_property_selection.kind ()
@@ -1270,7 +1255,6 @@ class BoardConnector : BoardObject,
     self.side_property.addEBObserver (self.selectionDisplay_property)
     self.location_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.location_property, self.isVia_property, self.actualPadDiameter_property, transient_BoardConnector_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.location_property_selection.kind ()

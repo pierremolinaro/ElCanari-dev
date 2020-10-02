@@ -14,7 +14,7 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
   // Abstract methods
   //····················································································································
 
-  var prop : EBSelection < T? > { get { return .empty } }  // Abstract method
+  var selection : EBSelection < T? > { get { return .empty } }  // Abstract method
 
   //····················································································································
 
@@ -48,7 +48,7 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
 
   final var none_property = EBTransientProperty_Bool ()
 
-  final var none_property_selection : EBSelection <Bool> { return self.none_property.prop }
+  final var none_property_selection : EBSelection <Bool> { return self.none_property.selection }
 
   //····················································································································
   //  init
@@ -58,7 +58,7 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
     super.init ()
     self.none_property.mReadModelFunction = { [weak self] in
       if let me = self {
-        switch me.prop {
+        switch me.selection {
         case .empty :
           return .single (false)
         case .multiple :

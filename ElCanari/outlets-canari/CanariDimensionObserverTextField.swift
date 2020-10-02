@@ -55,7 +55,7 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
   //····················································································································
 
   fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
-    switch combine (dimension: dimension.prop, unit: unit.prop) {
+    switch combine (dimension: dimension.selection, unit: unit.selection) {
     case .empty :
       self.stringValue = "—"
       self.enableFromValueBinding (false)

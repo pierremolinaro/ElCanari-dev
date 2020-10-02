@@ -168,7 +168,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var pinName_property_selection : EBSelection <String> {
-    return self.pinName_property.prop
+    return self.pinName_property.selection
   }
 
   //····················································································································
@@ -191,7 +191,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var symbolName_property_selection : EBSelection <String> {
-    return self.symbolName_property.prop
+    return self.symbolName_property.selection
   }
 
   //····················································································································
@@ -214,7 +214,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct> {
-    return self.pinQualifiedName_property.prop
+    return self.pinQualifiedName_property.selection
   }
 
   //····················································································································
@@ -237,7 +237,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var isConnected_property_selection : EBSelection <Bool> {
-    return self.isConnected_property.prop
+    return self.isConnected_property.selection
   }
 
   //····················································································································
@@ -260,7 +260,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var numberShape_property_selection : EBSelection <EBShape> {
-    return self.numberShape_property.prop
+    return self.numberShape_property.selection
   }
 
   //····················································································································
@@ -305,7 +305,6 @@ class SymbolPinInstanceInDevice : EBManagedObject,
       resetter: { inObject in inObject.mPinInstance_property.setProp (nil) }
     )
   //--- Atomic property: pinName
-    // self.pinName_property.configure (self.mType_property.mName_property, transient_SymbolPinInstanceInDevice_pinName)
     self.pinName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mType_property.mName_property_selection.kind ()
@@ -326,9 +325,8 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.mName_property.addEBObserver (self.pinName_property)
+    self.mType_property.addEBObserverOf_mName (self.pinName_property)
   //--- Atomic property: symbolName
-    // self.symbolName_property.configure (self.mSymbolInstance_property.mInstanceName_property, transient_SymbolPinInstanceInDevice_symbolName)
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbolInstance_property.mInstanceName_property_selection.kind ()
@@ -349,9 +347,8 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstance_property.mInstanceName_property.addEBObserver (self.symbolName_property)
+    self.mSymbolInstance_property.addEBObserverOf_mInstanceName (self.symbolName_property)
   //--- Atomic property: pinQualifiedName
-    // self.pinQualifiedName_property.configure (self.symbolName_property, self.pinName_property, transient_SymbolPinInstanceInDevice_pinQualifiedName)
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.symbolName_property_selection.kind ()
@@ -376,7 +373,6 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     self.symbolName_property.addEBObserver (self.pinQualifiedName_property)
     self.pinName_property.addEBObserver (self.pinQualifiedName_property)
   //--- Atomic property: isConnected
-    // self.isConnected_property.configure (self.mPadProxy_property, transient_SymbolPinInstanceInDevice_isConnected)
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPadProxy_none_selection.kind ()
@@ -399,7 +395,6 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     }
     self.mPadProxy_property.addEBObserver (self.isConnected_property)
   //--- Atomic property: numberShape
-    // self.numberShape_property.configure (self.mType_property.mXNumber_property, self.mType_property.mYNumber_property, self.mType_property.mNumberHorizontalAlignment_property, self.mPadProxy_property.mPadName_property, prefs_pinNameFont_property, transient_SymbolPinInstanceInDevice_numberShape)
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mType_property.mXNumber_property_selection.kind ()
@@ -424,10 +419,10 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.mXNumber_property.addEBObserver (self.numberShape_property)
-    self.mType_property.mYNumber_property.addEBObserver (self.numberShape_property)
-    self.mType_property.mNumberHorizontalAlignment_property.addEBObserver (self.numberShape_property)
-    self.mPadProxy_property.mPadName_property.addEBObserver (self.numberShape_property)
+    self.mType_property.addEBObserverOf_mXNumber (self.numberShape_property)
+    self.mType_property.addEBObserverOf_mYNumber (self.numberShape_property)
+    self.mType_property.addEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
+    self.mPadProxy_property.addEBObserverOf_mPadName (self.numberShape_property)
     prefs_pinNameFont_property.addEBObserver (self.numberShape_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

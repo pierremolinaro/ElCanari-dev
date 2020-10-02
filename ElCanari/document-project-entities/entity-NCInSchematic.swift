@@ -54,7 +54,7 @@ class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.prop }
+  final var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.selection }
 
   //····················································································································
   //   To one property: mPoint
@@ -114,7 +114,6 @@ class NCInSchematic : SchematicObject,
       resetter: { inObject in inObject.mNC_property.setProp (nil) }
     )
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mPoint_property.location_property, self.mOrientation_property, self.mPoint_property.symbolRotation_property, prefs_pinNameFont_property, transient_NCInSchematic_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
@@ -138,12 +137,11 @@ class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.location_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
-    self.mPoint_property.symbolRotation_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.addEBObserverOf_symbolRotation (self.objectDisplay_property)
     prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mPoint_property.location_property, self.mOrientation_property, self.mPoint_property.symbolRotation_property, prefs_pinNameFont_property, transient_NCInSchematic_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
@@ -167,9 +165,9 @@ class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.location_property.addEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
-    self.mPoint_property.symbolRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.addEBObserverOf_symbolRotation (self.selectionDisplay_property)
     prefs_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

@@ -124,7 +124,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mWidthUnit_property_selection : EBSelection <Int> { return self.mWidthUnit_property.prop }
+  final var mWidthUnit_property_selection : EBSelection <Int> { return self.mWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mX1
@@ -149,7 +149,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mX1_property_selection : EBSelection <Int> { return self.mX1_property.prop }
+  final var mX1_property_selection : EBSelection <Int> { return self.mX1_property.selection }
 
   //····················································································································
   //   Atomic property: mX1Unit
@@ -174,7 +174,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mX1Unit_property_selection : EBSelection <Int> { return self.mX1Unit_property.prop }
+  final var mX1Unit_property_selection : EBSelection <Int> { return self.mX1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: mY1
@@ -199,7 +199,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mY1_property_selection : EBSelection <Int> { return self.mY1_property.prop }
+  final var mY1_property_selection : EBSelection <Int> { return self.mY1_property.selection }
 
   //····················································································································
   //   Atomic property: mY1Unit
@@ -224,7 +224,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mY1Unit_property_selection : EBSelection <Int> { return self.mY1Unit_property.prop }
+  final var mY1Unit_property_selection : EBSelection <Int> { return self.mY1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: mX2
@@ -249,7 +249,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mX2_property_selection : EBSelection <Int> { return self.mX2_property.prop }
+  final var mX2_property_selection : EBSelection <Int> { return self.mX2_property.selection }
 
   //····················································································································
   //   Atomic property: mX2Unit
@@ -274,7 +274,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mX2Unit_property_selection : EBSelection <Int> { return self.mX2Unit_property.prop }
+  final var mX2Unit_property_selection : EBSelection <Int> { return self.mX2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: mY2
@@ -299,7 +299,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mY2_property_selection : EBSelection <Int> { return self.mY2_property.prop }
+  final var mY2_property_selection : EBSelection <Int> { return self.mY2_property.selection }
 
   //····················································································································
   //   Atomic property: mY2Unit
@@ -324,7 +324,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mY2Unit_property_selection : EBSelection <Int> { return self.mY2Unit_property.prop }
+  final var mY2Unit_property_selection : EBSelection <Int> { return self.mY2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: mLayer
@@ -349,7 +349,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mLayer_property_selection : EBSelection <BoardLineLayer> { return self.mLayer_property.prop }
+  final var mLayer_property_selection : EBSelection <BoardLineLayer> { return self.mLayer_property.selection }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -374,7 +374,7 @@ class BoardLine : BoardObject,
 
   //····················································································································
 
-  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.selection }
 
   //····················································································································
   //    init
@@ -400,7 +400,6 @@ class BoardLine : BoardObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, prefs_frontSideLegendColorForBoard_property, prefs_backSideLegendColorForBoard_property, transient_BoardLine_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX1_property_selection.kind ()
@@ -437,7 +436,6 @@ class BoardLine : BoardObject,
     prefs_frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX1_property, self.mY1_property, self.mX2_property, self.mY2_property, self.mWidth_property, self.mLayer_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardLine_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX1_property_selection.kind ()

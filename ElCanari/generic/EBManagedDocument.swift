@@ -99,7 +99,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func data (ofType typeName : String) throws -> Data {
   //--- Update document version
     var version = self.mVersion.propval
-    switch self.mVersionShouldChangeObserver.prop {
+    switch self.mVersionShouldChangeObserver.selection {
     case .empty, .multiple :
       break
     case .single (let shouldChange) :
@@ -150,12 +150,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
         }
       }
     }
-  //--- Set savingIndex for each object
-//    var idx = 0
-//    for object in reachableObjectArray {
-//      object.savingIndex = idx
-//      idx += 1
-//    }
     return reachableObjectArray
   }
 
@@ -166,10 +160,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func read (from data : Data, ofType typeName : String) throws {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
-    // let startLoadFile = Date ()
+    let startLoadFile = Date ()
     let documentData = try loadEasyBindingFile (fromData: data, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
-    // Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat)")
+    Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat.string)")
   //--- Store Status
     self.mReadMetadataStatus = documentData.documentMetadataStatus
   //--- Store metadata dictionary

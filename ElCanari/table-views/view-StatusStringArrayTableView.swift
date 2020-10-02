@@ -152,7 +152,7 @@ class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVi
   //····················································································································
 
   func update (from inModel : EBReadOnlyProperty_StatusStringArray) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

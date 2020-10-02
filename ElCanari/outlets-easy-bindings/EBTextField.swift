@@ -49,7 +49,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
   //····················································································································
 
   fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.stringValue = "-"
       self.enableFromValueBinding (false)

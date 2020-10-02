@@ -166,7 +166,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mNetClassName_property_selection : EBSelection <String> { return self.mNetClassName_property.prop }
+  final var mNetClassName_property_selection : EBSelection <String> { return self.mNetClassName_property.selection }
 
   //····················································································································
   //   Atomic property: mNetClassColor
@@ -191,7 +191,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
+  final var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.selection }
 
   //····················································································································
   //   Atomic property: mTrackWidth
@@ -216,7 +216,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mTrackWidth_property_selection : EBSelection <Int> { return self.mTrackWidth_property.prop }
+  final var mTrackWidth_property_selection : EBSelection <Int> { return self.mTrackWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mTrackWidthUnit
@@ -241,7 +241,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mTrackWidthUnit_property_selection : EBSelection <Int> { return self.mTrackWidthUnit_property.prop }
+  final var mTrackWidthUnit_property_selection : EBSelection <Int> { return self.mTrackWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mViaHoleDiameter
@@ -266,7 +266,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mViaHoleDiameter_property_selection : EBSelection <Int> { return self.mViaHoleDiameter_property.prop }
+  final var mViaHoleDiameter_property_selection : EBSelection <Int> { return self.mViaHoleDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: mViaHoleDiameterUnit
@@ -291,7 +291,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mViaHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mViaHoleDiameterUnit_property.prop }
+  final var mViaHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mViaHoleDiameterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mViaPadDiameter
@@ -316,7 +316,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mViaPadDiameter_property_selection : EBSelection <Int> { return self.mViaPadDiameter_property.prop }
+  final var mViaPadDiameter_property_selection : EBSelection <Int> { return self.mViaPadDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: mViaPadDiameterUnit
@@ -341,7 +341,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mViaPadDiameterUnit_property_selection : EBSelection <Int> { return self.mViaPadDiameterUnit_property.prop }
+  final var mViaPadDiameterUnit_property_selection : EBSelection <Int> { return self.mViaPadDiameterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mAllowTracksOnFrontSide
@@ -366,7 +366,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnFrontSide_property.prop }
+  final var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnFrontSide_property.selection }
 
   //····················································································································
   //   Atomic property: mAllowTracksOnBackSide
@@ -391,7 +391,7 @@ class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mAllowTracksOnBackSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnBackSide_property.prop }
+  final var mAllowTracksOnBackSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnBackSide_property.selection }
 
   //····················································································································
   //   To many property: mNets
@@ -402,7 +402,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var mNets_property_selection : EBSelection < [NetInProject] > {
-    return self.mNets_property.prop
+    return self.mNets_property.selection
   }
 
   //····················································································································
@@ -421,7 +421,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var trackWidthString_property_selection : EBSelection <String> {
-    return self.trackWidthString_property.prop
+    return self.trackWidthString_property.selection
   }
 
   //····················································································································
@@ -444,7 +444,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var viaHoleDiameter_property_selection : EBSelection <String> {
-    return self.viaHoleDiameter_property.prop
+    return self.viaHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -467,7 +467,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var viaPadDiameter_property_selection : EBSelection <String> {
-    return self.viaPadDiameter_property.prop
+    return self.viaPadDiameter_property.selection
   }
 
   //····················································································································
@@ -490,7 +490,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnFrontSideString_property_selection : EBSelection <String> {
-    return self.allowTracksOnFrontSideString_property.prop
+    return self.allowTracksOnFrontSideString_property.selection
   }
 
   //····················································································································
@@ -513,7 +513,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnBackSideString_property_selection : EBSelection <String> {
-    return self.allowTracksOnBackSideString_property.prop
+    return self.allowTracksOnBackSideString_property.selection
   }
 
   //····················································································································
@@ -536,7 +536,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var canRemove_property_selection : EBSelection <Bool> {
-    return self.canRemove_property.prop
+    return self.canRemove_property.selection
   }
 
   //····················································································································
@@ -559,7 +559,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var netUsage_property_selection : EBSelection <String> {
-    return self.netUsage_property.prop
+    return self.netUsage_property.selection
   }
 
   //····················································································································
@@ -582,7 +582,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var netsDescription_property_selection : EBSelection <NetInfoArray> {
-    return self.netsDescription_property.prop
+    return self.netsDescription_property.selection
   }
 
   //····················································································································
@@ -605,7 +605,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var netWarningCount_property_selection : EBSelection <Int> {
-    return self.netWarningCount_property.prop
+    return self.netWarningCount_property.selection
   }
 
   //····················································································································
@@ -648,7 +648,6 @@ class NetClassInProject : EBManagedObject,
       resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
     )
   //--- Atomic property: trackWidthString
-    // self.trackWidthString_property.configure (self.mTrackWidth_property, self.mTrackWidthUnit_property, transient_NetClassInProject_trackWidthString)
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTrackWidth_property_selection.kind ()
@@ -673,7 +672,6 @@ class NetClassInProject : EBManagedObject,
     self.mTrackWidth_property.addEBObserver (self.trackWidthString_property)
     self.mTrackWidthUnit_property.addEBObserver (self.trackWidthString_property)
   //--- Atomic property: viaHoleDiameter
-    // self.viaHoleDiameter_property.configure (self.mViaHoleDiameter_property, self.mViaHoleDiameterUnit_property, transient_NetClassInProject_viaHoleDiameter)
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mViaHoleDiameter_property_selection.kind ()
@@ -698,7 +696,6 @@ class NetClassInProject : EBManagedObject,
     self.mViaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property)
     self.mViaHoleDiameterUnit_property.addEBObserver (self.viaHoleDiameter_property)
   //--- Atomic property: viaPadDiameter
-    // self.viaPadDiameter_property.configure (self.mViaPadDiameter_property, self.mViaPadDiameterUnit_property, transient_NetClassInProject_viaPadDiameter)
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mViaPadDiameter_property_selection.kind ()
@@ -723,7 +720,6 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameter_property.addEBObserver (self.viaPadDiameter_property)
     self.mViaPadDiameterUnit_property.addEBObserver (self.viaPadDiameter_property)
   //--- Atomic property: allowTracksOnFrontSideString
-    // self.allowTracksOnFrontSideString_property.configure (self.mAllowTracksOnFrontSide_property, transient_NetClassInProject_allowTracksOnFrontSideString)
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mAllowTracksOnFrontSide_property_selection.kind ()
@@ -746,7 +742,6 @@ class NetClassInProject : EBManagedObject,
     }
     self.mAllowTracksOnFrontSide_property.addEBObserver (self.allowTracksOnFrontSideString_property)
   //--- Atomic property: allowTracksOnBackSideString
-    // self.allowTracksOnBackSideString_property.configure (self.mAllowTracksOnBackSide_property, transient_NetClassInProject_allowTracksOnBackSideString)
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mAllowTracksOnBackSide_property_selection.kind ()
@@ -769,7 +764,6 @@ class NetClassInProject : EBManagedObject,
     }
     self.mAllowTracksOnBackSide_property.addEBObserver (self.allowTracksOnBackSideString_property)
   //--- Atomic property: canRemove
-    // self.canRemove_property.configure (self.mNets_property, transient_NetClassInProject_canRemove)
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNets_property.count_property_selection.kind ()
@@ -792,7 +786,6 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: netUsage
-    // self.netUsage_property.configure (self.mNets_property, transient_NetClassInProject_netUsage)
     self.netUsage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNets_property.count_property_selection.kind ()
@@ -815,7 +808,6 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.netUsage_property)
   //--- Atomic property: netsDescription
-    // self.netsDescription_property.configure (self.mNets_property, self.mNets_property.trackCount_property, self.mNets_property.mNetName_property, self.mNets_property.netSchematicPointsInfo_property, self.mNetClassName_property, transient_NetClassInProject_netsDescription)
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNets_property_selection.kind ()
@@ -846,7 +838,6 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.addEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
   //--- Atomic property: netWarningCount
-    // self.netWarningCount_property.configure (self.netsDescription_property, transient_NetClassInProject_netWarningCount)
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.netsDescription_property_selection.kind ()

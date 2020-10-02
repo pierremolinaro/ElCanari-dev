@@ -65,7 +65,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[PackageObject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[PackageObject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init
@@ -381,7 +381,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   func select (object inObject : PackageObject) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
@@ -398,7 +398,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
    @objc func add (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let v) :
@@ -418,7 +418,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   @objc func remove (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let model_prop) :

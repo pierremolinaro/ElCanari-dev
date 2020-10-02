@@ -48,7 +48,7 @@ class EBStoredValueProperty <T : EBPropertyProtocol> : EBReadWriteValueProperty 
 
   //····················································································································
 
-  override var prop : EBSelection<T> { return .single (mValue) }
+  override var selection : EBSelection <T> { return .single (mValue) }
 
   //····················································································································
 

@@ -89,7 +89,7 @@ class SymbolOval : SymbolObject,
 
   //····················································································································
 
-  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
 
   //····················································································································
   //   Atomic property: width
@@ -114,7 +114,7 @@ class SymbolOval : SymbolObject,
 
   //····················································································································
 
-  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
 
   //····················································································································
   //   Atomic property: height
@@ -139,7 +139,7 @@ class SymbolOval : SymbolObject,
 
   //····················································································································
 
-  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
 
   //····················································································································
   //   Atomic property: x
@@ -164,7 +164,7 @@ class SymbolOval : SymbolObject,
 
   //····················································································································
 
-  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //   Transient property: strokeBezierPath
@@ -175,7 +175,7 @@ class SymbolOval : SymbolObject,
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.prop
+    return self.strokeBezierPath_property.selection
   }
 
   //····················································································································
@@ -206,7 +206,6 @@ class SymbolOval : SymbolObject,
 
   private final func configureObject () {
   //--- Atomic property: strokeBezierPath
-    // self.strokeBezierPath_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolOval_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -235,7 +234,6 @@ class SymbolOval : SymbolObject,
     self.width_property.addEBObserver (self.strokeBezierPath_property)
     self.height_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, prefs_symbolColor_property, prefs_symbolDrawingWidthMultipliedByTen_property, transient_SymbolOval_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -268,7 +266,6 @@ class SymbolOval : SymbolObject,
     prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
     prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolOval_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -297,7 +294,6 @@ class SymbolOval : SymbolObject,
     self.width_property.addEBObserver (self.selectionDisplay_property)
     self.height_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_SymbolOval_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()

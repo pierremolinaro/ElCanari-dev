@@ -99,7 +99,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -122,7 +122,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var connectedPoints_property_selection : EBSelection <CanariPointArray> {
-    return self.connectedPoints_property.prop
+    return self.connectedPoints_property.selection
   }
 
   //····················································································································
@@ -145,7 +145,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
-    return self.sheetDescriptor_property.prop
+    return self.sheetDescriptor_property.selection
   }
 
   //····················································································································
@@ -168,7 +168,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isPlacedInSchematic_property_selection : EBSelection <Bool> {
-    return self.isPlacedInSchematic_property.prop
+    return self.isPlacedInSchematic_property.selection
   }
 
   //····················································································································
@@ -201,7 +201,6 @@ class SchematicObject : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
     )
   //--- Atomic property: sheetDescriptor
-    // self.sheetDescriptor_property.configure (self.mSheet_property.sheetDescriptor_property, transient_SchematicObject_sheetDescriptor)
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheet_property.sheetDescriptor_property_selection.kind ()
@@ -222,9 +221,8 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.sheetDescriptor_property.addEBObserver (self.sheetDescriptor_property)
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
   //--- Atomic property: isPlacedInSchematic
-    // self.isPlacedInSchematic_property.configure (self.mSheet_property, transient_SchematicObject_isPlacedInSchematic)
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheet_none_selection.kind ()

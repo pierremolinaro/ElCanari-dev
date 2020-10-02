@@ -17,7 +17,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var advance_property = EBPropertyProxy_Int ()
 
   var advance_property_selection : EBSelection <Int> {
-    return self.advance_property.prop
+    return self.advance_property.selection
   }
 
   //····················································································································
@@ -27,7 +27,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var codePoint_property = EBPropertyProxy_Int ()
 
   var codePoint_property_selection : EBSelection <Int> {
-    return self.codePoint_property.prop
+    return self.codePoint_property.selection
   }
 
   //····················································································································
@@ -37,7 +37,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
   var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    return self.gerberCode_property.prop
+    return self.gerberCode_property.selection
   }
 
   //····················································································································
@@ -47,7 +47,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
   var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
-    return self.gerberCodeInstructionCountMessage_property.prop
+    return self.gerberCodeInstructionCountMessage_property.selection
   }
 
   //····················································································································
@@ -57,7 +57,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -67,7 +67,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var mWarnsWhenAdvanceIsZero_property = EBPropertyProxy_Bool ()
 
   var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> {
-    return self.mWarnsWhenAdvanceIsZero_property.prop
+    return self.mWarnsWhenAdvanceIsZero_property.selection
   }
 
   //····················································································································
@@ -77,7 +77,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var mWarnsWhenNoSegment_property = EBPropertyProxy_Bool ()
 
   var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> {
-    return self.mWarnsWhenNoSegment_property.prop
+    return self.mWarnsWhenNoSegment_property.selection
   }
 
   //····················································································································
@@ -87,7 +87,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
   var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
-    return self.segmentArrayForDrawing_property.prop
+    return self.segmentArrayForDrawing_property.selection
   }
 
   //····················································································································
@@ -280,7 +280,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_advance (self.advance_property)
     self.advance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -314,7 +314,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.advance_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -326,7 +326,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.advance_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -350,7 +350,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_codePoint (self.codePoint_property)
     self.codePoint_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -384,7 +384,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.codePoint_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -396,7 +396,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.codePoint_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -420,7 +420,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_gerberCode (self.gerberCode_property)
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -460,7 +460,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -500,7 +500,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -540,7 +540,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -574,7 +574,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -586,7 +586,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.mWarnsWhenAdvanceIsZero_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -610,7 +610,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
     self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -644,7 +644,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.mWarnsWhenNoSegment_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -656,7 +656,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     }
     self.mWarnsWhenNoSegment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -680,7 +680,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -15,200 +15,651 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardRestrictRectangle?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mY_property.removeEBObserver (self.mY_property) // Stored property
-    inOldValue?.mWidth_property.removeEBObserver (self.mWidth_property) // Stored property
-    inOldValue?.mHeight_property.removeEBObserver (self.mHeight_property) // Stored property
-    inOldValue?.mIsInFrontLayer_property.removeEBObserver (self.mIsInFrontLayer_property) // Stored property
-    inOldValue?.mIsInBackLayer_property.removeEBObserver (self.mIsInBackLayer_property) // Stored property
-    inOldValue?.mX_property.removeEBObserver (self.mX_property) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-    inOldValue?.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    inOldValue?.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+    inOldValue?.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+    inOldValue?.mIsInFrontLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
+    inOldValue?.mIsInBackLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
+    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mY_property.addEBObserver (self.mY_property) // Stored property
-    self.mInternalValue?.mWidth_property.addEBObserver (self.mWidth_property) // Stored property
-    self.mInternalValue?.mHeight_property.addEBObserver (self.mHeight_property) // Stored property
-    self.mInternalValue?.mIsInFrontLayer_property.addEBObserver (self.mIsInFrontLayer_property) // Stored property
-    self.mInternalValue?.mIsInBackLayer_property.addEBObserver (self.mIsInBackLayer_property) // Stored property
-    self.mInternalValue?.mX_property.addEBObserver (self.mX_property) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    self.mInternalValue?.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+    self.mInternalValue?.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+    self.mInternalValue?.mIsInFrontLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
+    self.mInternalValue?.mIsInBackLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
+    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'mY' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.mY_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY_property.prop ?? .empty }
-    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY_property.setProp (inValue) }
-    self.mWidth_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mWidth_property.prop ?? .empty }
-    self.mWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mWidth_property.setProp (inValue) }
-    self.mHeight_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mHeight_property.prop ?? .empty }
-    self.mHeight_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mHeight_property.setProp (inValue) }
-    self.mIsInFrontLayer_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mIsInFrontLayer_property.prop ?? .empty }
-    self.mIsInFrontLayer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in self?.mInternalValue?.mIsInFrontLayer_property.setProp (inValue) }
-    self.mIsInBackLayer_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mIsInBackLayer_property.prop ?? .empty }
-    self.mIsInBackLayer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in self?.mInternalValue?.mIsInBackLayer_property.setProp (inValue) }
-    self.mX_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX_property.prop ?? .empty }
-    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX_property.setProp (inValue) }
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
-    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.signatureForERCChecking_property.prop ?? .empty }
-  }
+  private var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
-  //   Proxy of 'mY' stored property
-  //····················································································································
 
-  let mY_property = EBPropertyProxy_Int ()
-
-  var mY_property_selection : EBSelection <Int> {
-    switch (self.mY_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var mY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mWidth' stored property
-  //····················································································································
 
-  let mWidth_property = EBPropertyProxy_Int ()
-
-  var mWidth_property_selection : EBSelection <Int> {
-    switch (self.mWidth_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mY.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mY_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mHeight' stored property
-  //····················································································································
 
-  let mHeight_property = EBPropertyProxy_Int ()
-
-  var mHeight_property_selection : EBSelection <Int> {
-    switch (self.mHeight_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mY.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mY_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mIsInFrontLayer' stored property
-  //····················································································································
 
-  let mIsInFrontLayer_property = EBPropertyProxy_Bool ()
-
-  var mIsInFrontLayer_property_selection : EBSelection <Bool> {
-    switch (self.mIsInFrontLayer_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+        managedObject.mY_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Proxy of 'mIsInBackLayer' stored property
-  //····················································································································
 
-  let mIsInBackLayer_property = EBPropertyProxy_Bool ()
-
-  var mIsInBackLayer_property_selection : EBSelection <Bool> {
-    switch (self.mIsInBackLayer_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mY_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Proxy of 'mX' stored property
+  //   Observers of 'mWidth' stored property
   //····················································································································
 
-  let mX_property = EBPropertyProxy_Int ()
+  private var mObserversOf_mWidth = EBWeakEventSet ()
 
-  var mX_property_selection : EBSelection <Int> {
-    switch (self.mX_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var mWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'objectDisplay' transient property
-  //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.objectDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mWidth.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mWidth_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'selectionDisplay' transient property
-  //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.selectionDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mWidth.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mWidth_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'signatureForERCChecking' transient property
+
+  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
+        managedObject.mWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
   //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    switch (self.signatureForERCChecking_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+  //   Observers of 'mHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_mHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mHeight_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mHeight_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mHeight.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mHeight_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mHeight.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mHeight_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
+        managedObject.mHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mHeight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsInFrontLayer' stored property
+  //····················································································································
+
+  private var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mIsInFrontLayer_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mIsInFrontLayer_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsInFrontLayer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsInFrontLayer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mIsInFrontLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsInFrontLayer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsInFrontLayer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mIsInFrontLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
+        managedObject.mIsInFrontLayer_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mIsInFrontLayer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsInBackLayer' stored property
+  //····················································································································
+
+  private var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mIsInBackLayer_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mIsInBackLayer_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsInBackLayer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsInBackLayer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mIsInBackLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsInBackLayer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsInBackLayer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mIsInBackLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
+        managedObject.mIsInBackLayer_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mIsInBackLayer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mX' stored property
+  //····················································································································
+
+  private var mObserversOf_mX = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mX.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mX_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mX.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mX_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+        managedObject.mX_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mX_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+    if let model = self.propval {
+      switch (model.signatureForERCChecking_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -244,7 +695,7 @@ class TransientObject_BoardRestrictRectangle : ReadOnlyObject_BoardRestrictRecta
   override func notifyModelDidChange () {
     let newObject : BoardRestrictRectangle? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -265,7 +716,7 @@ class TransientObject_BoardRestrictRectangle : ReadOnlyObject_BoardRestrictRecta
 
   //····················································································································
 
-  override var prop : EBSelection < BoardRestrictRectangle? > {
+  override var selection : EBSelection < BoardRestrictRectangle? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -327,7 +778,7 @@ final class ProxyObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictRe
   override func notifyModelDidChange () {
     let newModel : BoardRestrictRectangle?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -350,9 +801,9 @@ final class ProxyObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictRe
 
   //····················································································································
 
-  override var prop : EBSelection < BoardRestrictRectangle? > {
+  override var selection : EBSelection < BoardRestrictRectangle? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -362,7 +813,7 @@ final class ProxyObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictRe
 
   override var propval : BoardRestrictRectangle? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -422,7 +873,7 @@ final class StoredObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictR
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -475,7 +926,7 @@ final class StoredObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictR
 
   //····················································································································
 
-  override var prop : EBSelection < BoardRestrictRectangle? > {
+  override var selection : EBSelection < BoardRestrictRectangle? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

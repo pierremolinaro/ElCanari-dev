@@ -45,7 +45,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mInstanceName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mInstanceName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -159,7 +159,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -216,7 +216,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_symbolQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolQualifiedName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_symbolQualifiedName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolQualifiedName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -287,7 +287,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -328,7 +328,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -384,7 +384,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -569,7 +569,7 @@ final class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInst
       self.mModelArrayShouldBeComputed = false
       let newArray : [SymbolInstanceInDevice] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -594,7 +594,7 @@ final class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInst
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolInstanceInDevice] > {
+  override var selection : EBSelection < [SymbolInstanceInDevice] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -661,7 +661,7 @@ final class TransientArrayOfSuperOf_SymbolInstanceInDevice <SUPER : EBManagedObj
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -688,7 +688,7 @@ final class TransientArrayOfSuperOf_SymbolInstanceInDevice <SUPER : EBManagedObj
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolInstanceInDevice] > {
+  override var selection : EBSelection < [SymbolInstanceInDevice] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -747,7 +747,7 @@ final class ProxyArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanc
   override func notifyModelDidChange () {
     let newModelArray : [SymbolInstanceInDevice]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -770,9 +770,9 @@ final class ProxyArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanc
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolInstanceInDevice] > {
+  override var selection : EBSelection < [SymbolInstanceInDevice] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -782,7 +782,7 @@ final class ProxyArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanc
 
   override var propval : [SymbolInstanceInDevice] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -842,7 +842,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -902,7 +902,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
  
   //····················································································································
 
-  override var prop : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -991,7 +991,7 @@ final class StandAloneArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolIn
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

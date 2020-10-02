@@ -17,7 +17,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var mInstanceName_property = EBPropertyProxy_String ()
 
   var mInstanceName_property_selection : EBSelection <String> {
-    return self.mInstanceName_property.prop
+    return self.mInstanceName_property.selection
   }
 
   //····················································································································
@@ -35,7 +35,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var mX_property = EBPropertyProxy_Int ()
 
   var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
+    return self.mX_property.selection
   }
 
   //····················································································································
@@ -45,7 +45,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var mY_property = EBPropertyProxy_Int ()
 
   var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
+    return self.mY_property.selection
   }
 
   //····················································································································
@@ -55,7 +55,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -65,7 +65,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -75,7 +75,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var symbolQualifiedName_property = EBTransientProperty_String ()
 
   var symbolQualifiedName_property_selection : EBSelection <String> {
-    return self.symbolQualifiedName_property.prop
+    return self.symbolQualifiedName_property.selection
   }
 
   //····················································································································
@@ -85,7 +85,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var symbolTypeName_property = EBTransientProperty_String ()
 
   var symbolTypeName_property_selection : EBSelection <String> {
-    return self.symbolTypeName_property.prop
+    return self.symbolTypeName_property.selection
   }
 
   //····················································································································
@@ -95,7 +95,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
 
   var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
-    return self.unconnectedPins_property.prop
+    return self.unconnectedPins_property.selection
   }
 
   //····················································································································
@@ -274,7 +274,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_mInstanceName (self.mInstanceName_property)
     self.mInstanceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -308,7 +308,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     }
     self.mInstanceName_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -320,7 +320,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     }
     self.mInstanceName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -344,7 +344,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -378,7 +378,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     }
     self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -390,7 +390,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     }
     self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -414,7 +414,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -448,7 +448,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     }
     self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -460,7 +460,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     }
     self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -484,7 +484,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -524,7 +524,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -564,7 +564,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_symbolQualifiedName (self.symbolQualifiedName_property)
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -604,7 +604,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_symbolTypeName (self.symbolTypeName_property)
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -644,7 +644,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     model.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -15,586 +15,2006 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardConnector?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mComponentPadName_property.removeEBObserver (self.mComponentPadName_property) // Stored property
-    inOldValue?.mPadIndex_property.removeEBObserver (self.mPadIndex_property) // Stored property
-    inOldValue?.mX_property.removeEBObserver (self.mX_property) // Stored property
-    inOldValue?.mY_property.removeEBObserver (self.mY_property) // Stored property
-    inOldValue?.mDefaultHoleDiameterUnit_property.removeEBObserver (self.mDefaultHoleDiameterUnit_property) // Stored property
-    inOldValue?.mCustomHoleDiameter_property.removeEBObserver (self.mCustomHoleDiameter_property) // Stored property
-    inOldValue?.mCustomHoleDiameterUnit_property.removeEBObserver (self.mCustomHoleDiameterUnit_property) // Stored property
-    inOldValue?.mUsesCustomHoleDiameter_property.removeEBObserver (self.mUsesCustomHoleDiameter_property) // Stored property
-    inOldValue?.mDefaultPadDiameterUnit_property.removeEBObserver (self.mDefaultPadDiameterUnit_property) // Stored property
-    inOldValue?.mCustomPadDiameter_property.removeEBObserver (self.mCustomPadDiameter_property) // Stored property
-    inOldValue?.mCustomPadDiameterUnit_property.removeEBObserver (self.mCustomPadDiameterUnit_property) // Stored property
-    inOldValue?.mUsesCustomPadDiameter_property.removeEBObserver (self.mUsesCustomPadDiameter_property) // Stored property
-    inOldValue?.location_property.removeEBObserver (self.location_property) // Transient property
-    inOldValue?.netNameFromComponentPad_property.removeEBObserver (self.netNameFromComponentPad_property) // Transient property
-    inOldValue?.netNameAndPadLocation_property.removeEBObserver (self.netNameAndPadLocation_property) // Transient property
-    inOldValue?.side_property.removeEBObserver (self.side_property) // Transient property
-    inOldValue?.isVia_property.removeEBObserver (self.isVia_property) // Transient property
-    inOldValue?.issues_property.removeEBObserver (self.issues_property) // Transient property
-    inOldValue?.viaDefaultHoleDiameter_property.removeEBObserver (self.viaDefaultHoleDiameter_property) // Transient property
-    inOldValue?.viaDefaultPadDiameter_property.removeEBObserver (self.viaDefaultPadDiameter_property) // Transient property
-    inOldValue?.netNameFromTracks_property.removeEBObserver (self.netNameFromTracks_property) // Transient property
-    inOldValue?.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
-    inOldValue?.connectedToComponent_property.removeEBObserver (self.connectedToComponent_property) // Transient property
-    inOldValue?.actualHoleDiameter_property.removeEBObserver (self.actualHoleDiameter_property) // Transient property
-    inOldValue?.actualPadDiameter_property.removeEBObserver (self.actualPadDiameter_property) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-    inOldValue?.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+    inOldValue?.mComponentPadName_property.removeEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+    inOldValue?.mPadIndex_property.removeEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
+    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    inOldValue?.mDefaultHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mDefaultHoleDiameterUnit) // Stored property
+    inOldValue?.mCustomHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mCustomHoleDiameter) // Stored property
+    inOldValue?.mCustomHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomHoleDiameterUnit) // Stored property
+    inOldValue?.mUsesCustomHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomHoleDiameter) // Stored property
+    inOldValue?.mDefaultPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mDefaultPadDiameterUnit) // Stored property
+    inOldValue?.mCustomPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mCustomPadDiameter) // Stored property
+    inOldValue?.mCustomPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomPadDiameterUnit) // Stored property
+    inOldValue?.mUsesCustomPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomPadDiameter) // Stored property
+    inOldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
+    inOldValue?.netNameFromComponentPad_property.removeEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
+    inOldValue?.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+    inOldValue?.side_property.removeEBObserversFrom (&self.mObserversOf_side) // Transient property
+    inOldValue?.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.viaDefaultHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaDefaultHoleDiameter) // Transient property
+    inOldValue?.viaDefaultPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaDefaultPadDiameter) // Transient property
+    inOldValue?.netNameFromTracks_property.removeEBObserversFrom (&self.mObserversOf_netNameFromTracks) // Transient property
+    inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+    inOldValue?.connectedToComponent_property.removeEBObserversFrom (&self.mObserversOf_connectedToComponent) // Transient property
+    inOldValue?.actualHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_actualHoleDiameter) // Transient property
+    inOldValue?.actualPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_actualPadDiameter) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mComponentPadName_property.addEBObserver (self.mComponentPadName_property) // Stored property
-    self.mInternalValue?.mPadIndex_property.addEBObserver (self.mPadIndex_property) // Stored property
-    self.mInternalValue?.mX_property.addEBObserver (self.mX_property) // Stored property
-    self.mInternalValue?.mY_property.addEBObserver (self.mY_property) // Stored property
-    self.mInternalValue?.mDefaultHoleDiameterUnit_property.addEBObserver (self.mDefaultHoleDiameterUnit_property) // Stored property
-    self.mInternalValue?.mCustomHoleDiameter_property.addEBObserver (self.mCustomHoleDiameter_property) // Stored property
-    self.mInternalValue?.mCustomHoleDiameterUnit_property.addEBObserver (self.mCustomHoleDiameterUnit_property) // Stored property
-    self.mInternalValue?.mUsesCustomHoleDiameter_property.addEBObserver (self.mUsesCustomHoleDiameter_property) // Stored property
-    self.mInternalValue?.mDefaultPadDiameterUnit_property.addEBObserver (self.mDefaultPadDiameterUnit_property) // Stored property
-    self.mInternalValue?.mCustomPadDiameter_property.addEBObserver (self.mCustomPadDiameter_property) // Stored property
-    self.mInternalValue?.mCustomPadDiameterUnit_property.addEBObserver (self.mCustomPadDiameterUnit_property) // Stored property
-    self.mInternalValue?.mUsesCustomPadDiameter_property.addEBObserver (self.mUsesCustomPadDiameter_property) // Stored property
-    self.mInternalValue?.location_property.addEBObserver (self.location_property) // Transient property
-    self.mInternalValue?.netNameFromComponentPad_property.addEBObserver (self.netNameFromComponentPad_property) // Transient property
-    self.mInternalValue?.netNameAndPadLocation_property.addEBObserver (self.netNameAndPadLocation_property) // Transient property
-    self.mInternalValue?.side_property.addEBObserver (self.side_property) // Transient property
-    self.mInternalValue?.isVia_property.addEBObserver (self.isVia_property) // Transient property
-    self.mInternalValue?.issues_property.addEBObserver (self.issues_property) // Transient property
-    self.mInternalValue?.viaDefaultHoleDiameter_property.addEBObserver (self.viaDefaultHoleDiameter_property) // Transient property
-    self.mInternalValue?.viaDefaultPadDiameter_property.addEBObserver (self.viaDefaultPadDiameter_property) // Transient property
-    self.mInternalValue?.netNameFromTracks_property.addEBObserver (self.netNameFromTracks_property) // Transient property
-    self.mInternalValue?.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
-    self.mInternalValue?.connectedToComponent_property.addEBObserver (self.connectedToComponent_property) // Transient property
-    self.mInternalValue?.actualHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property) // Transient property
-    self.mInternalValue?.actualPadDiameter_property.addEBObserver (self.actualPadDiameter_property) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+    self.mInternalValue?.mComponentPadName_property.addEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+    self.mInternalValue?.mPadIndex_property.addEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
+    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    self.mInternalValue?.mDefaultHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mDefaultHoleDiameterUnit) // Stored property
+    self.mInternalValue?.mCustomHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mCustomHoleDiameter) // Stored property
+    self.mInternalValue?.mCustomHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomHoleDiameterUnit) // Stored property
+    self.mInternalValue?.mUsesCustomHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomHoleDiameter) // Stored property
+    self.mInternalValue?.mDefaultPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mDefaultPadDiameterUnit) // Stored property
+    self.mInternalValue?.mCustomPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mCustomPadDiameter) // Stored property
+    self.mInternalValue?.mCustomPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomPadDiameterUnit) // Stored property
+    self.mInternalValue?.mUsesCustomPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomPadDiameter) // Stored property
+    self.mInternalValue?.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
+    self.mInternalValue?.netNameFromComponentPad_property.addEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
+    self.mInternalValue?.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+    self.mInternalValue?.side_property.addEBObserversFrom (&self.mObserversOf_side) // Transient property
+    self.mInternalValue?.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.viaDefaultHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaDefaultHoleDiameter) // Transient property
+    self.mInternalValue?.viaDefaultPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaDefaultPadDiameter) // Transient property
+    self.mInternalValue?.netNameFromTracks_property.addEBObserversFrom (&self.mObserversOf_netNameFromTracks) // Transient property
+    self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+    self.mInternalValue?.connectedToComponent_property.addEBObserversFrom (&self.mObserversOf_connectedToComponent) // Transient property
+    self.mInternalValue?.actualHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_actualHoleDiameter) // Transient property
+    self.mInternalValue?.actualPadDiameter_property.addEBObserversFrom (&self.mObserversOf_actualPadDiameter) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.mComponentPadName_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mComponentPadName_property.prop ?? .empty }
-    self.mComponentPadName_property.mWriteModelFunction = { [weak self] (inValue : String) in self?.mInternalValue?.mComponentPadName_property.setProp (inValue) }
-    self.mPadIndex_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mPadIndex_property.prop ?? .empty }
-    self.mPadIndex_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mPadIndex_property.setProp (inValue) }
-    self.mX_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mX_property.prop ?? .empty }
-    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mX_property.setProp (inValue) }
-    self.mY_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mY_property.prop ?? .empty }
-    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mY_property.setProp (inValue) }
-    self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mDefaultHoleDiameterUnit_property.prop ?? .empty }
-    self.mDefaultHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mDefaultHoleDiameterUnit_property.setProp (inValue) }
-    self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mCustomHoleDiameter_property.prop ?? .empty }
-    self.mCustomHoleDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mCustomHoleDiameter_property.setProp (inValue) }
-    self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mCustomHoleDiameterUnit_property.prop ?? .empty }
-    self.mCustomHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mCustomHoleDiameterUnit_property.setProp (inValue) }
-    self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mUsesCustomHoleDiameter_property.prop ?? .empty }
-    self.mUsesCustomHoleDiameter_property.mWriteModelFunction = { [weak self] (inValue : Bool) in self?.mInternalValue?.mUsesCustomHoleDiameter_property.setProp (inValue) }
-    self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mDefaultPadDiameterUnit_property.prop ?? .empty }
-    self.mDefaultPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mDefaultPadDiameterUnit_property.setProp (inValue) }
-    self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mCustomPadDiameter_property.prop ?? .empty }
-    self.mCustomPadDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mCustomPadDiameter_property.setProp (inValue) }
-    self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mCustomPadDiameterUnit_property.prop ?? .empty }
-    self.mCustomPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.mCustomPadDiameterUnit_property.setProp (inValue) }
-    self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mUsesCustomPadDiameter_property.prop ?? .empty }
-    self.mUsesCustomPadDiameter_property.mWriteModelFunction = { [weak self] (inValue : Bool) in self?.mInternalValue?.mUsesCustomPadDiameter_property.setProp (inValue) }
-    self.location_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.location_property.prop ?? .empty }
-    self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.netNameFromComponentPad_property.prop ?? .empty }
-    self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.netNameAndPadLocation_property.prop ?? .empty }
-    self.side_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.side_property.prop ?? .empty }
-    self.isVia_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.isVia_property.prop ?? .empty }
-    self.issues_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.issues_property.prop ?? .empty }
-    self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.viaDefaultHoleDiameter_property.prop ?? .empty }
-    self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.viaDefaultPadDiameter_property.prop ?? .empty }
-    self.netNameFromTracks_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.netNameFromTracks_property.prop ?? .empty }
-    self.netClassName_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.netClassName_property.prop ?? .empty }
-    self.connectedToComponent_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.connectedToComponent_property.prop ?? .empty }
-    self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.actualHoleDiameter_property.prop ?? .empty }
-    self.actualPadDiameter_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.actualPadDiameter_property.prop ?? .empty }
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
-    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.signatureForERCChecking_property.prop ?? .empty }
-  }
+  private var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
-  //   Proxy of 'mComponentPadName' stored property
-  //····················································································································
 
-  let mComponentPadName_property = EBPropertyProxy_String ()
-
-  var mComponentPadName_property_selection : EBSelection <String> {
-    switch (self.mComponentPadName_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var mComponentPadName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mComponentPadName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mPadIndex' stored property
-  //····················································································································
 
-  let mPadIndex_property = EBPropertyProxy_Int ()
-
-  var mPadIndex_property_selection : EBSelection <Int> {
-    switch (self.mPadIndex_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mComponentPadName.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mComponentPadName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mX' stored property
-  //····················································································································
 
-  let mX_property = EBPropertyProxy_Int ()
-
-  var mX_property_selection : EBSelection <Int> {
-    switch (self.mX_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mComponentPadName.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mComponentPadName_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mY' stored property
-  //····················································································································
 
-  let mY_property = EBPropertyProxy_Int ()
-
-  var mY_property_selection : EBSelection <Int> {
-    switch (self.mY_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_mComponentPadName_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
+        managedObject.mComponentPadName_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Proxy of 'mDefaultHoleDiameterUnit' stored property
-  //····················································································································
 
-  let mDefaultHoleDiameterUnit_property = EBPropertyProxy_Int ()
-
-  var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> {
-    switch (self.mDefaultHoleDiameterUnit_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mComponentPadName_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Proxy of 'mCustomHoleDiameter' stored property
+  //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  let mCustomHoleDiameter_property = EBPropertyProxy_Int ()
+  private var mObserversOf_mPadIndex = EBWeakEventSet ()
 
-  var mCustomHoleDiameter_property_selection : EBSelection <Int> {
-    switch (self.mCustomHoleDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var mPadIndex_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mPadIndex_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mCustomHoleDiameterUnit' stored property
-  //····················································································································
 
-  let mCustomHoleDiameterUnit_property = EBPropertyProxy_Int ()
-
-  var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> {
-    switch (self.mCustomHoleDiameterUnit_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mPadIndex.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mPadIndex_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mUsesCustomHoleDiameter' stored property
-  //····················································································································
 
-  let mUsesCustomHoleDiameter_property = EBPropertyProxy_Bool ()
-
-  var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> {
-    switch (self.mUsesCustomHoleDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mPadIndex.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mPadIndex_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mDefaultPadDiameterUnit' stored property
-  //····················································································································
 
-  let mDefaultPadDiameterUnit_property = EBPropertyProxy_Int ()
-
-  var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> {
-    switch (self.mDefaultPadDiameterUnit_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_mPadIndex_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
+        managedObject.mPadIndex_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Proxy of 'mCustomPadDiameter' stored property
-  //····················································································································
 
-  let mCustomPadDiameter_property = EBPropertyProxy_Int ()
-
-  var mCustomPadDiameter_property_selection : EBSelection <Int> {
-    switch (self.mCustomPadDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mPadIndex_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Proxy of 'mCustomPadDiameterUnit' stored property
+  //   Observers of 'mX' stored property
   //····················································································································
 
-  let mCustomPadDiameterUnit_property = EBPropertyProxy_Int ()
+  private var mObserversOf_mX = EBWeakEventSet ()
 
-  var mCustomPadDiameterUnit_property_selection : EBSelection <Int> {
-    switch (self.mCustomPadDiameterUnit_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var mX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Proxy of 'mUsesCustomPadDiameter' stored property
-  //····················································································································
 
-  let mUsesCustomPadDiameter_property = EBPropertyProxy_Bool ()
-
-  var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> {
-    switch (self.mUsesCustomPadDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mX.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mX_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'location' transient property
-  //····················································································································
 
-  let location_property = EBTransientProperty_CanariPoint ()
-
-  var location_property_selection : EBSelection <CanariPoint> {
-    switch (self.location_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mX.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mX_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'netNameFromComponentPad' transient property
-  //····················································································································
 
-  let netNameFromComponentPad_property = EBTransientProperty_String ()
-
-  var netNameFromComponentPad_property_selection : EBSelection <String> {
-    switch (self.netNameFromComponentPad_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+        managedObject.mX_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'netNameAndPadLocation' transient property
-  //····················································································································
 
-  let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
-
-  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
-    switch (self.netNameAndPadLocation_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mX_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'side' transient property
+  //   Observers of 'mY' stored property
   //····················································································································
 
-  let side_property = EBTransientProperty_ConnectorSide ()
+  private var mObserversOf_mY = EBWeakEventSet ()
 
-  var side_property_selection : EBSelection <ConnectorSide> {
-    switch (self.side_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var mY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'isVia' transient property
-  //····················································································································
 
-  let isVia_property = EBTransientProperty_Bool ()
-
-  var isVia_property_selection : EBSelection <Bool> {
-    switch (self.isVia_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mY.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mY_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'issues' transient property
-  //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    switch (self.issues_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mY.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mY_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'viaDefaultHoleDiameter' transient property
-  //····················································································································
 
-  let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
-
-  var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
-    switch (self.viaDefaultHoleDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+        managedObject.mY_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'viaDefaultPadDiameter' transient property
-  //····················································································································
 
-  let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
-
-  var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
-    switch (self.viaDefaultPadDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mY_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'netNameFromTracks' transient property
+  //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-  let netNameFromTracks_property = EBTransientProperty_String ()
+  private var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
 
-  var netNameFromTracks_property_selection : EBSelection <String> {
-    switch (self.netNameFromTracks_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDefaultHoleDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'netClassName' transient property
-  //····················································································································
 
-  let netClassName_property = EBTransientProperty_String ()
-
-  var netClassName_property_selection : EBSelection <String> {
-    switch (self.netClassName_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDefaultHoleDiameterUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mDefaultHoleDiameterUnit_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'connectedToComponent' transient property
-  //····················································································································
 
-  let connectedToComponent_property = EBTransientProperty_Bool ()
-
-  var connectedToComponent_property_selection : EBSelection <Bool> {
-    switch (self.connectedToComponent_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDefaultHoleDiameterUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.mDefaultHoleDiameterUnit_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'actualHoleDiameter' transient property
-  //····················································································································
 
-  let actualHoleDiameter_property = EBTransientProperty_Int ()
-
-  var actualHoleDiameter_property_selection : EBSelection <Int> {
-    switch (self.actualHoleDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_mDefaultHoleDiameterUnit_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDefaultHoleDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.mDefaultHoleDiameterUnit_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'actualPadDiameter' transient property
-  //····················································································································
 
-  let actualPadDiameter_property = EBTransientProperty_Int ()
-
-  var actualPadDiameter_property_selection : EBSelection <Int> {
-    switch (self.actualPadDiameter_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_mDefaultHoleDiameterUnit_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mDefaultHoleDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDefaultHoleDiameterUnit_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'objectDisplay' transient property
+  //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  private var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.objectDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  //····················································································································
+
+  var mCustomHoleDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCustomHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'selectionDisplay' transient property
-  //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.selectionDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCustomHoleDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mCustomHoleDiameter_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'signatureForERCChecking' transient property
+
+  final func removeEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCustomHoleDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mCustomHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
   //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final func addEBObserversOf_mCustomHoleDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCustomHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mCustomHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    switch (self.signatureForERCChecking_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  final func removeEBObserversOf_mCustomHoleDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mCustomHoleDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCustomHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCustomHoleDiameterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mCustomHoleDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCustomHoleDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCustomHoleDiameterUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mCustomHoleDiameterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCustomHoleDiameterUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mCustomHoleDiameterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCustomHoleDiameterUnit_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCustomHoleDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.mCustomHoleDiameterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCustomHoleDiameterUnit_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mCustomHoleDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCustomHoleDiameterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mUsesCustomHoleDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mUsesCustomHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mUsesCustomHoleDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mUsesCustomHoleDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mUsesCustomHoleDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mUsesCustomHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mUsesCustomHoleDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mUsesCustomHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mUsesCustomHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mUsesCustomHoleDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mUsesCustomHoleDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mUsesCustomHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDefaultPadDiameterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDefaultPadDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDefaultPadDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDefaultPadDiameterUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDefaultPadDiameterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDefaultPadDiameterUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDefaultPadDiameterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDefaultPadDiameterUnit_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDefaultPadDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.mDefaultPadDiameterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDefaultPadDiameterUnit_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mDefaultPadDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDefaultPadDiameterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCustomPadDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mCustomPadDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCustomPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCustomPadDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mCustomPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCustomPadDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mCustomPadDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCustomPadDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCustomPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mCustomPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCustomPadDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mCustomPadDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCustomPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCustomPadDiameterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mCustomPadDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCustomPadDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCustomPadDiameterUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mCustomPadDiameterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCustomPadDiameterUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mCustomPadDiameterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCustomPadDiameterUnit_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCustomPadDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.mCustomPadDiameterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCustomPadDiameterUnit_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mCustomPadDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCustomPadDiameterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mUsesCustomPadDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mUsesCustomPadDiameter_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mUsesCustomPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mUsesCustomPadDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mUsesCustomPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mUsesCustomPadDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mUsesCustomPadDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mUsesCustomPadDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_mUsesCustomPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mUsesCustomPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    self.mObserversOf_mUsesCustomPadDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mUsesCustomPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'location' transient property
+  //····················································································································
+
+  private var mObserversOf_location = EBWeakEventSet ()
+
+  //····················································································································
+
+  var location_property_selection : EBSelection <CanariPoint?> {
+    if let model = self.propval {
+      switch (model.location_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_location (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_location.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.location_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_location.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.location_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netNameFromComponentPad' transient property
+  //····················································································································
+
+  private var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netNameFromComponentPad_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netNameFromComponentPad_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netNameFromComponentPad.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameFromComponentPad_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netNameFromComponentPad.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameFromComponentPad_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netNameFromComponentPad_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameFromComponentPad.apply { (_ observer : EBEvent) in
+        managedObject.netNameFromComponentPad_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netNameFromComponentPad_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameFromComponentPad.apply { (_ observer : EBEvent) in
+        managedObject.netNameFromComponentPad_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netNameAndPadLocation' transient property
+  //····················································································································
+
+  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
+    if let model = self.propval {
+      switch (model.netNameAndPadLocation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameAndPadLocation_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameAndPadLocation_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'side' transient property
+  //····················································································································
+
+  private var mObserversOf_side = EBWeakEventSet ()
+
+  //····················································································································
+
+  var side_property_selection : EBSelection <ConnectorSide?> {
+    if let model = self.propval {
+      switch (model.side_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_side (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_side.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.side_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_side.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.side_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_side.apply { (_ observer : EBEvent) in
+        managedObject.side_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_side.apply { (_ observer : EBEvent) in
+        managedObject.side_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isVia' transient property
+  //····················································································································
+
+  private var mObserversOf_isVia = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isVia_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isVia_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isVia.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isVia_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isVia.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isVia_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+        managedObject.isVia_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+        managedObject.isVia_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'viaDefaultHoleDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var viaDefaultHoleDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.viaDefaultHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_viaDefaultHoleDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.viaDefaultHoleDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_viaDefaultHoleDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.viaDefaultHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viaDefaultHoleDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaDefaultHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaDefaultHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viaDefaultHoleDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaDefaultHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaDefaultHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'viaDefaultPadDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var viaDefaultPadDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.viaDefaultPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_viaDefaultPadDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.viaDefaultPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_viaDefaultPadDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.viaDefaultPadDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viaDefaultPadDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaDefaultPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaDefaultPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viaDefaultPadDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaDefaultPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaDefaultPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netNameFromTracks' transient property
+  //····················································································································
+
+  private var mObserversOf_netNameFromTracks = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netNameFromTracks_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netNameFromTracks_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netNameFromTracks.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameFromTracks_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netNameFromTracks.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameFromTracks_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netNameFromTracks_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameFromTracks.apply { (_ observer : EBEvent) in
+        managedObject.netNameFromTracks_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netNameFromTracks_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameFromTracks.apply { (_ observer : EBEvent) in
+        managedObject.netNameFromTracks_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassName' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netClassName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassName.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassName.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+        managedObject.netClassName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+        managedObject.netClassName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'connectedToComponent' transient property
+  //····················································································································
+
+  private var mObserversOf_connectedToComponent = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connectedToComponent_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.connectedToComponent_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedToComponent.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.connectedToComponent_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedToComponent.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.connectedToComponent_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedToComponent_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
+        managedObject.connectedToComponent_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedToComponent_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
+        managedObject.connectedToComponent_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'actualHoleDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var actualHoleDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.actualHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_actualHoleDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.actualHoleDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_actualHoleDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.actualHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_actualHoleDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_actualHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.actualHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_actualHoleDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_actualHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.actualHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'actualPadDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_actualPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var actualPadDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.actualPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_actualPadDiameter.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.actualPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_actualPadDiameter.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.actualPadDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_actualPadDiameter_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_actualPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.actualPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_actualPadDiameter_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_actualPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.actualPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+    if let model = self.propval {
+      switch (model.signatureForERCChecking_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -712,7 +2132,7 @@ class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
   override func notifyModelDidChange () {
     let newObject : BoardConnector? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -733,7 +2153,7 @@ class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardConnector? > {
+  override var selection : EBSelection < BoardConnector? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -795,7 +2215,7 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
   override func notifyModelDidChange () {
     let newModel : BoardConnector?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -818,9 +2238,9 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardConnector? > {
+  override var selection : EBSelection < BoardConnector? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -830,7 +2250,7 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
 
   override var propval : BoardConnector? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -890,7 +2310,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -943,7 +2363,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < BoardConnector? > {
+  override var selection : EBSelection < BoardConnector? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

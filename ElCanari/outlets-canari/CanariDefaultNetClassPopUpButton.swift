@@ -64,7 +64,7 @@ final class Controller_CanariDefaultNetClassPopUpButton : EBSimpleController {
   fileprivate func updateOutlet (_ inSelectedNetClassName : EBReadWriteProperty_String,
                                  _ inNetClassNames : EBReadOnlyProperty_StringArray) {
     self.mOutlet.removeAllItems ()
-    switch (inSelectedNetClassName.prop, inNetClassNames.prop) {
+    switch (inSelectedNetClassName.selection, inNetClassNames.selection) {
     case (.single (let selectedName), .single (let netClassNames)) :
       for name in netClassNames.sorted () {
         self.mOutlet.addItem (withTitle: name)

@@ -18,7 +18,7 @@ class CanariSelectionPopUpButton : EBPopUpButton {
 
   fileprivate func updateOutlet (_ inSelectedName : EBReadOnlyProperty_String,
                                  _ inNameArray : EBReadOnlyProperty_StringArray) {
-    switch (inSelectedName.prop, inNameArray.prop) {
+    switch (inSelectedName.selection, inNameArray.selection) {
     case (.single (let selectedName), .single (let netArray)) :
       self.removeAllItems ()
       do{

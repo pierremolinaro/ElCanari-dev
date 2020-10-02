@@ -70,7 +70,7 @@ class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
   //--- Empty submenu
     let submenu = self.submenu
     submenu?.removeAllItems ()
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       ()
     case .single (let netNames) :

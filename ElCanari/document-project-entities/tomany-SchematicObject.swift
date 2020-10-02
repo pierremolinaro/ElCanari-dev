@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -153,7 +153,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -265,7 +265,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func addEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isPlacedInSchematic.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -336,7 +336,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   final func removeEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isPlacedInSchematic.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -450,7 +450,7 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
       self.mModelArrayShouldBeComputed = false
       let newArray : [SchematicObject] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -475,7 +475,7 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 
   //····················································································································
 
-  override var prop : EBSelection < [SchematicObject] > {
+  override var selection : EBSelection < [SchematicObject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -542,7 +542,7 @@ final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : 
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -569,7 +569,7 @@ final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var prop : EBSelection < [SchematicObject] > {
+  override var selection : EBSelection < [SchematicObject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -628,7 +628,7 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
   override func notifyModelDidChange () {
     let newModelArray : [SchematicObject]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -651,9 +651,9 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
   //····················································································································
 
-  override var prop : EBSelection < [SchematicObject] > {
+  override var selection : EBSelection < [SchematicObject] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -663,7 +663,7 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
   override var propval : [SchematicObject] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -723,7 +723,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -783,7 +783,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
  
   //····················································································································
 
-  override var prop : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -872,7 +872,7 @@ final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject
 
   //····················································································································
 
-  override var prop : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

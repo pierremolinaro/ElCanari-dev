@@ -37,7 +37,7 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
   //····················································································································
 
   fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "-"
@@ -79,7 +79,7 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
   //····················································································································
 
   fileprivate func updateBackColor (_ object : EBReadOnlyProperty_NSColor) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       self.backgroundColor = .white
     case .single (let v):

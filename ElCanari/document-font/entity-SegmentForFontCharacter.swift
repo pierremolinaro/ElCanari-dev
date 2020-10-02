@@ -75,7 +75,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
 
   //····················································································································
   //   Atomic property: y1
@@ -100,7 +100,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
 
   //····················································································································
   //   Atomic property: x2
@@ -125,7 +125,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -150,7 +150,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
 
   //····················································································································
   //    init
@@ -169,7 +169,6 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_SegmentForFontCharacter_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -198,7 +197,6 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.addEBObserver (self.selectionDisplay_property)
     self.y2_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_SegmentForFontCharacter_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()

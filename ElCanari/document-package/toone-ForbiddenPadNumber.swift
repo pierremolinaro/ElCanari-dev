@@ -15,35 +15,78 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ForbiddenPadNumber?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.padNumber_property.removeEBObserver (self.padNumber_property) // Stored property
+    inOldValue?.padNumber_property.removeEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
   //--- Add observers to added objects
-    self.mInternalValue?.padNumber_property.addEBObserver (self.padNumber_property) // Stored property
+    self.mInternalValue?.padNumber_property.addEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'padNumber' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.padNumber_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.padNumber_property.prop ?? .empty }
-    self.padNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in self?.mInternalValue?.padNumber_property.setProp (inValue) }
+  private var mObserversOf_padNumber = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padNumber_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.padNumber_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
   }
 
   //····················································································································
-  //   Proxy of 'padNumber' stored property
-  //····················································································································
 
-  let padNumber_property = EBPropertyProxy_Int ()
-
-  var padNumber_property_selection : EBSelection <Int> {
-    switch (self.padNumber_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padNumber.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.padNumber_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padNumber.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.padNumber_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
+        managedObject.padNumber_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
+    self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padNumber_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -79,7 +122,7 @@ class TransientObject_ForbiddenPadNumber : ReadOnlyObject_ForbiddenPadNumber {
   override func notifyModelDidChange () {
     let newObject : ForbiddenPadNumber? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -100,7 +143,7 @@ class TransientObject_ForbiddenPadNumber : ReadOnlyObject_ForbiddenPadNumber {
 
   //····················································································································
 
-  override var prop : EBSelection < ForbiddenPadNumber? > {
+  override var selection : EBSelection < ForbiddenPadNumber? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -162,7 +205,7 @@ final class ProxyObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber 
   override func notifyModelDidChange () {
     let newModel : ForbiddenPadNumber?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -185,9 +228,9 @@ final class ProxyObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber 
 
   //····················································································································
 
-  override var prop : EBSelection < ForbiddenPadNumber? > {
+  override var selection : EBSelection < ForbiddenPadNumber? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -197,7 +240,7 @@ final class ProxyObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber 
 
   override var propval : ForbiddenPadNumber? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -257,7 +300,7 @@ final class StoredObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -310,7 +353,7 @@ final class StoredObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber
 
   //····················································································································
 
-  override var prop : EBSelection < ForbiddenPadNumber? > {
+  override var selection : EBSelection < ForbiddenPadNumber? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

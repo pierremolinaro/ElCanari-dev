@@ -131,7 +131,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //   Atomic property: mY
@@ -156,7 +156,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   Atomic property: mFontSize
@@ -181,7 +181,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mFontSize_property_selection : EBSelection <Double> { return self.mFontSize_property.prop }
+  final var mFontSize_property_selection : EBSelection <Double> { return self.mFontSize_property.selection }
 
   //····················································································································
   //   Atomic property: mLayer
@@ -206,7 +206,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mLayer_property_selection : EBSelection <BoardTextLayer> { return self.mLayer_property.prop }
+  final var mLayer_property_selection : EBSelection <BoardTextLayer> { return self.mLayer_property.selection }
 
   //····················································································································
   //   Atomic property: mText
@@ -231,7 +231,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mText_property_selection : EBSelection <String> { return self.mText_property.prop }
+  final var mText_property_selection : EBSelection <String> { return self.mText_property.selection }
 
   //····················································································································
   //   Atomic property: mHorizontalAlignment
@@ -256,7 +256,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
+  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mVerticalAlignment
@@ -281,7 +281,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> { return self.mVerticalAlignment_property.prop }
+  final var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> { return self.mVerticalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mRotation
@@ -306,7 +306,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
+  final var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.selection }
 
   //····················································································································
   //   Atomic property: mWeight
@@ -331,7 +331,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mWeight_property_selection : EBSelection <Double> { return self.mWeight_property.prop }
+  final var mWeight_property_selection : EBSelection <Double> { return self.mWeight_property.selection }
 
   //····················································································································
   //   Atomic property: mOblique
@@ -356,7 +356,7 @@ class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mOblique_property_selection : EBSelection <Bool> { return self.mOblique_property.prop }
+  final var mOblique_property_selection : EBSelection <Bool> { return self.mOblique_property.selection }
 
   //····················································································································
   //   To one property: mFont
@@ -405,7 +405,7 @@ class BoardText : BoardObject,
   //····················································································································
 
   final var fontName_property_selection : EBSelection <String> {
-    return self.fontName_property.prop
+    return self.fontName_property.selection
   }
 
   //····················································································································
@@ -448,7 +448,6 @@ class BoardText : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mTexts_property.remove (me) } }
     )
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.descriptor_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mLayer_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, prefs_displayFrontLegendForBoard_property, prefs_displayBackLegendForBoard_property, prefs_displayFrontLayoutForBoard_property, prefs_displayBackLayoutForBoard_property, prefs_frontSideLegendColorForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, prefs_backSideLegendColorForBoard_property, transient_BoardText_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -491,7 +490,7 @@ class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.mText_property.addEBObserver (self.objectDisplay_property)
     self.mFontSize_property.addEBObserver (self.objectDisplay_property)
-    self.mFont_property.descriptor_property.addEBObserver (self.objectDisplay_property)
+    self.mFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mLayer_property.addEBObserver (self.objectDisplay_property)
@@ -507,7 +506,6 @@ class BoardText : BoardObject,
     prefs_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.descriptor_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mLayer_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, prefs_frontSideLegendColorForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, prefs_backSideLegendColorForBoard_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardText_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -547,7 +545,7 @@ class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.selectionDisplay_property)
     self.mText_property.addEBObserver (self.selectionDisplay_property)
     self.mFontSize_property.addEBObserver (self.selectionDisplay_property)
-    self.mFont_property.descriptor_property.addEBObserver (self.selectionDisplay_property)
+    self.mFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mLayer_property.addEBObserver (self.selectionDisplay_property)
@@ -560,7 +558,6 @@ class BoardText : BoardObject,
     prefs_backSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     prefs_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: fontName
-    // self.fontName_property.configure (self.mFont_property.mFontName_property, transient_BoardText_fontName)
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFont_property.mFontName_property_selection.kind ()
@@ -581,9 +578,8 @@ class BoardText : BoardObject,
         return .empty
       }
     }
-    self.mFont_property.mFontName_property.addEBObserver (self.fontName_property)
+    self.mFont_property.addEBObserverOf_mFontName (self.fontName_property)
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.mLayer_property, self.mX_property, self.mY_property, self.mText_property, self.mFontSize_property, self.mFont_property.descriptor_property, self.mHorizontalAlignment_property, self.mVerticalAlignment_property, self.mRotation_property, self.mWeight_property, self.mOblique_property, transient_BoardText_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mLayer_property_selection.kind ()
@@ -619,7 +615,7 @@ class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.signatureForERCChecking_property)
     self.mText_property.addEBObserver (self.signatureForERCChecking_property)
     self.mFontSize_property.addEBObserver (self.signatureForERCChecking_property)
-    self.mFont_property.descriptor_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mFont_property.addEBObserverOf_descriptor (self.signatureForERCChecking_property)
     self.mHorizontalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
     self.mVerticalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)

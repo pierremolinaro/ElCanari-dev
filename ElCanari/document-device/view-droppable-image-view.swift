@@ -126,7 +126,7 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   func updateImageData (_ object : EBReadOnlyProperty_Data) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       self.image = nil
     case .single (let data) :

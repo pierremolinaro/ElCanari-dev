@@ -54,7 +54,7 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
 
   //····················································································································
   //   Atomic property: padDiameter
@@ -79,7 +79,7 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  final var padDiameter_property_selection : EBSelection <Int> { return self.padDiameter_property.prop }
+  final var padDiameter_property_selection : EBSelection <Int> { return self.padDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: x
@@ -104,7 +104,7 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //    init

@@ -30,7 +30,7 @@ extension EBGraphicView {
 
   final private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
     var horizontalFlip = false
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       ()
     case .single (let v) :

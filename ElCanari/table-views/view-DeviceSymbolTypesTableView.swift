@@ -120,7 +120,7 @@ class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableVi
   //····················································································································
 
   func update (from inModel : EBReadOnlyProperty_DeviceSymbolDictionary) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource (DeviceSymbolDictionary ())
     case .single (let unconnectedPadArray) :

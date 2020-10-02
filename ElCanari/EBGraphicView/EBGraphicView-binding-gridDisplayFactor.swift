@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateGridDisplayFactor (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mGridDisplayFactor = 4
     case .single (let v) :

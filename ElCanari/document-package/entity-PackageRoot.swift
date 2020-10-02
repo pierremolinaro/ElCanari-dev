@@ -432,7 +432,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
+  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.selection }
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -457,7 +457,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
+  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.selection }
 
   //····················································································································
   //   Atomic property: comments
@@ -482,7 +482,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.selection }
 
   //····················································································································
   //   Atomic property: program
@@ -507,7 +507,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var program_property_selection : EBSelection <String> { return self.program_property.prop }
+  final var program_property_selection : EBSelection <String> { return self.program_property.selection }
 
   //····················································································································
   //   Atomic property: horizontalFlip
@@ -532,7 +532,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
+  final var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: verticalFlip
@@ -557,7 +557,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
+  final var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -582,7 +582,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
+  final var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.selection }
 
   //····················································································································
   //   Atomic property: gridStep
@@ -607,7 +607,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var gridStep_property_selection : EBSelection <Int> { return self.gridStep_property.prop }
+  final var gridStep_property_selection : EBSelection <Int> { return self.gridStep_property.selection }
 
   //····················································································································
   //   Atomic property: gridStepUnit
@@ -632,7 +632,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var gridStepUnit_property_selection : EBSelection <Int> { return self.gridStepUnit_property.prop }
+  final var gridStepUnit_property_selection : EBSelection <Int> { return self.gridStepUnit_property.selection }
 
   //····················································································································
   //   Atomic property: gridDisplayFactor
@@ -657,7 +657,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var gridDisplayFactor_property_selection : EBSelection <Int> { return self.gridDisplayFactor_property.prop }
+  final var gridDisplayFactor_property_selection : EBSelection <Int> { return self.gridDisplayFactor_property.selection }
 
   //····················································································································
   //   Atomic property: zoom
@@ -682,7 +682,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageOpacity
@@ -707,7 +707,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageOpacity_property_selection : EBSelection <Double> { return self.mModelImageOpacity_property.prop }
+  final var mModelImageOpacity_property_selection : EBSelection <Double> { return self.mModelImageOpacity_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageHorizontalFlip
@@ -732,7 +732,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageHorizontalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageHorizontalFlip_property.prop }
+  final var mModelImagePageHorizontalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageHorizontalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageVerticalFlip
@@ -757,7 +757,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageVerticalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageVerticalFlip_property.prop }
+  final var mModelImagePageVerticalFlip_property_selection : EBSelection <Bool> { return self.mModelImagePageVerticalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridStyle
@@ -782,7 +782,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageGridStyle_property_selection : EBSelection <GridStyle> { return self.mModelImagePageGridStyle_property.prop }
+  final var mModelImagePageGridStyle_property_selection : EBSelection <GridStyle> { return self.mModelImagePageGridStyle_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridStep
@@ -807,7 +807,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageGridStep_property_selection : EBSelection <Int> { return self.mModelImagePageGridStep_property.prop }
+  final var mModelImagePageGridStep_property_selection : EBSelection <Int> { return self.mModelImagePageGridStep_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridStepUnit
@@ -832,7 +832,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageGridStepUnit_property_selection : EBSelection <Int> { return self.mModelImagePageGridStepUnit_property.prop }
+  final var mModelImagePageGridStepUnit_property_selection : EBSelection <Int> { return self.mModelImagePageGridStepUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageGridDisplayFactor
@@ -857,7 +857,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageGridDisplayFactor_property_selection : EBSelection <Int> { return self.mModelImagePageGridDisplayFactor_property.prop }
+  final var mModelImagePageGridDisplayFactor_property_selection : EBSelection <Int> { return self.mModelImagePageGridDisplayFactor_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageZoom
@@ -882,7 +882,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageZoom_property_selection : EBSelection <Int> { return self.mModelImagePageZoom_property.prop }
+  final var mModelImagePageZoom_property_selection : EBSelection <Int> { return self.mModelImagePageZoom_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageXPlacardUnit
@@ -907,7 +907,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageXPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageXPlacardUnit_property.prop }
+  final var mModelImagePageXPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageXPlacardUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePageYPlacardUnit
@@ -932,7 +932,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.prop }
+  final var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageSecondPointXUnit
@@ -957,7 +957,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageSecondPointXUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointXUnit_property.prop }
+  final var mModelImageSecondPointXUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointXUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePSecondointYUnit
@@ -982,7 +982,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePSecondointYUnit_property_selection : EBSelection <Int> { return self.mModelImagePSecondointYUnit_property.prop }
+  final var mModelImagePSecondointYUnit_property_selection : EBSelection <Int> { return self.mModelImagePSecondointYUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageFirstPointXOnLock
@@ -1007,7 +1007,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageFirstPointXOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointXOnLock_property.prop }
+  final var mModelImageFirstPointXOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointXOnLock_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageFirstPointYOnLock
@@ -1032,7 +1032,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageFirstPointYOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointYOnLock_property.prop }
+  final var mModelImageFirstPointYOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointYOnLock_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePointsDxOnLock
@@ -1057,7 +1057,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePointsDxOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDxOnLock_property.prop }
+  final var mModelImagePointsDxOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDxOnLock_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImagePointsDyOnLock
@@ -1082,7 +1082,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImagePointsDyOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDyOnLock_property.prop }
+  final var mModelImagePointsDyOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDyOnLock_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageScale
@@ -1107,7 +1107,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageScale_property_selection : EBSelection <Double> { return self.mModelImageScale_property.prop }
+  final var mModelImageScale_property_selection : EBSelection <Double> { return self.mModelImageScale_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageRotationInRadians
@@ -1132,7 +1132,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageRotationInRadians_property_selection : EBSelection <Double> { return self.mModelImageRotationInRadians_property.prop }
+  final var mModelImageRotationInRadians_property_selection : EBSelection <Double> { return self.mModelImageRotationInRadians_property.selection }
 
   //····················································································································
   //   Atomic property: mDimensionUnitFirstModelPointX
@@ -1157,7 +1157,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mDimensionUnitFirstModelPointX_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointX_property.prop }
+  final var mDimensionUnitFirstModelPointX_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointX_property.selection }
 
   //····················································································································
   //   Atomic property: mDimensionUnitFirstModelPointY
@@ -1182,7 +1182,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mDimensionUnitFirstModelPointY_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointY_property.prop }
+  final var mDimensionUnitFirstModelPointY_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstModelPointY_property.selection }
 
   //····················································································································
   //   Atomic property: mDimensionUnitSecondModelPointDx
@@ -1207,7 +1207,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mDimensionUnitSecondModelPointDx_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDx_property.prop }
+  final var mDimensionUnitSecondModelPointDx_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDx_property.selection }
 
   //····················································································································
   //   Atomic property: mDimensionUnitSecondModelPointDy
@@ -1232,7 +1232,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mDimensionUnitSecondModelPointDy_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDy_property.prop }
+  final var mDimensionUnitSecondModelPointDy_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDy_property.selection }
 
   //····················································································································
   //   Atomic property: mModelPointsCircleRadius
@@ -1257,7 +1257,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelPointsCircleRadius_property_selection : EBSelection <Int> { return self.mModelPointsCircleRadius_property.prop }
+  final var mModelPointsCircleRadius_property_selection : EBSelection <Int> { return self.mModelPointsCircleRadius_property.selection }
 
   //····················································································································
   //   Atomic property: mPointsAreLocked
@@ -1282,7 +1282,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPointsAreLocked_property_selection : EBSelection <Bool> { return self.mPointsAreLocked_property.prop }
+  final var mPointsAreLocked_property_selection : EBSelection <Bool> { return self.mPointsAreLocked_property.selection }
 
   //····················································································································
   //   Atomic property: knobSizeMultpliedByTen
@@ -1307,7 +1307,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var knobSizeMultpliedByTen_property_selection : EBSelection <Int> { return self.knobSizeMultpliedByTen_property.prop }
+  final var knobSizeMultpliedByTen_property_selection : EBSelection <Int> { return self.knobSizeMultpliedByTen_property.selection }
 
   //····················································································································
   //   Atomic property: padNumbering
@@ -1332,7 +1332,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var padNumbering_property_selection : EBSelection <PadNumbering> { return self.padNumbering_property.prop }
+  final var padNumbering_property_selection : EBSelection <PadNumbering> { return self.padNumbering_property.selection }
 
   //····················································································································
   //   Atomic property: counterClockNumberingStartAngle
@@ -1357,7 +1357,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var counterClockNumberingStartAngle_property_selection : EBSelection <Int> { return self.counterClockNumberingStartAngle_property.prop }
+  final var counterClockNumberingStartAngle_property_selection : EBSelection <Int> { return self.counterClockNumberingStartAngle_property.selection }
 
   //····················································································································
   //   Atomic property: xPlacardUnit
@@ -1382,7 +1382,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
+  final var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yPlacardUnit
@@ -1407,7 +1407,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
+  final var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.selection }
 
   //····················································································································
   //   To many property: packageObjects
@@ -1418,7 +1418,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var packageObjects_property_selection : EBSelection < [PackageObject] > {
-    return self.packageObjects_property.prop
+    return self.packageObjects_property.selection
   }
 
   //····················································································································
@@ -1437,7 +1437,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var mModelImageObjects_property_selection : EBSelection < [PackageModelImageDoublePoint] > {
-    return self.mModelImageObjects_property.prop
+    return self.mModelImageObjects_property.selection
   }
 
   //····················································································································
@@ -1456,7 +1456,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var packagePads_property_selection : EBSelection < [PackagePad] > {
-    return self.packagePads_property.prop
+    return self.packagePads_property.selection
   }
 
   //····················································································································
@@ -1474,7 +1474,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var packageSlavePads_property_selection : EBSelection < [PackageSlavePad] > {
-    return self.packageSlavePads_property.prop
+    return self.packageSlavePads_property.selection
   }
 
   //····················································································································
@@ -1492,7 +1492,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var packageZones_property_selection : EBSelection < [PackageZone] > {
-    return self.packageZones_property.prop
+    return self.packageZones_property.selection
   }
 
   //····················································································································
@@ -1524,7 +1524,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageData_property_selection : EBSelection <Data> { return self.mModelImageData_property.prop }
+  final var mModelImageData_property_selection : EBSelection <Data> { return self.mModelImageData_property.selection }
 
   //····················································································································
   //   Atomic proxy property: mModelImageFirstPointX
@@ -1536,7 +1536,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   var mModelImageFirstPointX : Int? {
     get {
-      switch self.mModelImageFirstPointX_property.prop {
+      switch self.mModelImageFirstPointX_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1552,7 +1552,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageFirstPointX_property_selection : EBSelection <Int> { return self.mModelImageFirstPointX_property.prop }
+  var mModelImageFirstPointX_property_selection : EBSelection <Int> { return self.mModelImageFirstPointX_property.selection }
 
   //····················································································································
   //   Atomic proxy property: mModelImageFirstPointY
@@ -1564,7 +1564,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   var mModelImageFirstPointY : Int? {
     get {
-      switch self.mModelImageFirstPointY_property.prop {
+      switch self.mModelImageFirstPointY_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1580,7 +1580,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageFirstPointY_property_selection : EBSelection <Int> { return self.mModelImageFirstPointY_property.prop }
+  var mModelImageFirstPointY_property_selection : EBSelection <Int> { return self.mModelImageFirstPointY_property.selection }
 
   //····················································································································
   //   Atomic proxy property: mModelImageSecondPointDx
@@ -1592,7 +1592,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   var mModelImageSecondPointDx : Int? {
     get {
-      switch self.mModelImageSecondPointDx_property.prop {
+      switch self.mModelImageSecondPointDx_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1608,7 +1608,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageSecondPointDx_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDx_property.prop }
+  var mModelImageSecondPointDx_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDx_property.selection }
 
   //····················································································································
   //   Atomic proxy property: mModelImageSecondPointDy
@@ -1620,7 +1620,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   var mModelImageSecondPointDy : Int? {
     get {
-      switch self.mModelImageSecondPointDy_property.prop {
+      switch self.mModelImageSecondPointDy_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1636,7 +1636,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  var mModelImageSecondPointDy_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDy_property.prop }
+  var mModelImageSecondPointDy_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDy_property.selection }
 
   //····················································································································
   //   Transient property: freePadNumbering
@@ -1647,7 +1647,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var freePadNumbering_property_selection : EBSelection <Bool> {
-    return self.freePadNumbering_property.prop
+    return self.freePadNumbering_property.selection
   }
 
   //····················································································································
@@ -1670,7 +1670,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var counterClockNumbering_property_selection : EBSelection <Bool> {
-    return self.counterClockNumbering_property.prop
+    return self.counterClockNumbering_property.selection
   }
 
   //····················································································································
@@ -1693,7 +1693,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var gridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
-    return self.gridStepMultipliedByDisplayFactor_property.prop
+    return self.gridStepMultipliedByDisplayFactor_property.selection
   }
 
   //····················································································································
@@ -1716,7 +1716,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var secondPointX_property_selection : EBSelection <Int> {
-    return self.secondPointX_property.prop
+    return self.secondPointX_property.selection
   }
 
   //····················································································································
@@ -1739,7 +1739,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var secondPointY_property_selection : EBSelection <Int> {
-    return self.secondPointY_property.prop
+    return self.secondPointY_property.selection
   }
 
   //····················································································································
@@ -1762,7 +1762,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var lockImageView_property_selection : EBSelection <NSImage> {
-    return self.lockImageView_property.prop
+    return self.lockImageView_property.selection
   }
 
   //····················································································································
@@ -1823,7 +1823,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var padNumberDisplay_property_selection : EBSelection <EBShape> {
-    return self.padNumberDisplay_property.prop
+    return self.padNumberDisplay_property.selection
   }
 
   //····················································································································
@@ -1846,7 +1846,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var backgroundImagePageBackgroundDisplay_property_selection : EBSelection <EBShape> {
-    return self.backgroundImagePageBackgroundDisplay_property.prop
+    return self.backgroundImagePageBackgroundDisplay_property.selection
   }
 
   //····················································································································
@@ -1869,7 +1869,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var modelImageSizeString_property_selection : EBSelection <String> {
-    return self.modelImageSizeString_property.prop
+    return self.modelImageSizeString_property.selection
   }
 
   //····················································································································
@@ -1892,7 +1892,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var hasModelImage_property_selection : EBSelection <Bool> {
-    return self.hasModelImage_property.prop
+    return self.hasModelImage_property.selection
   }
 
   //····················································································································
@@ -1915,7 +1915,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -1938,7 +1938,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var noIssue_property_selection : EBSelection <Bool> {
-    return self.noIssue_property.prop
+    return self.noIssue_property.selection
   }
 
   //····················································································································
@@ -2031,7 +2031,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mFirstX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.mFirstX_property.addEBObserver (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint {
@@ -2046,7 +2046,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mFirstY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.mFirstY_property.addEBObserver (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint {
@@ -2061,7 +2061,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mSecondDx_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.mSecondDx_property.addEBObserver (self.mModelImageSecondPointDx_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint {
@@ -2076,9 +2076,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mModelImageDoublePoint?.mSecondDy_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageDoublePoint_property.mSecondDy_property.addEBObserver (self.mModelImageSecondPointDy_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
   //--- Atomic property: freePadNumbering
-    // self.freePadNumbering_property.configure (self.padNumbering_property, transient_PackageRoot_freePadNumbering)
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padNumbering_property_selection.kind ()
@@ -2101,7 +2100,6 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.padNumbering_property.addEBObserver (self.freePadNumbering_property)
   //--- Atomic property: counterClockNumbering
-    // self.counterClockNumbering_property.configure (self.padNumbering_property, transient_PackageRoot_counterClockNumbering)
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padNumbering_property_selection.kind ()
@@ -2124,7 +2122,6 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.padNumbering_property.addEBObserver (self.counterClockNumbering_property)
   //--- Atomic property: gridStepMultipliedByDisplayFactor
-    // self.gridStepMultipliedByDisplayFactor_property.configure (self.gridStep_property, self.gridDisplayFactor_property, transient_PackageRoot_gridStepMultipliedByDisplayFactor)
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.gridStep_property_selection.kind ()
@@ -2149,7 +2146,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: secondPointX
-    // self.secondPointX_property.configure (self.mModelImageFirstPointX_property, self.mModelImageSecondPointDx_property, transient_PackageRoot_secondPointX)
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mModelImageFirstPointX_property_selection.kind ()
@@ -2174,7 +2170,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.addEBObserver (self.secondPointX_property)
     self.mModelImageSecondPointDx_property.addEBObserver (self.secondPointX_property)
   //--- Atomic property: secondPointY
-    // self.secondPointY_property.configure (self.mModelImageFirstPointY_property, self.mModelImageSecondPointDy_property, transient_PackageRoot_secondPointY)
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mModelImageFirstPointY_property_selection.kind ()
@@ -2199,7 +2194,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointY_property.addEBObserver (self.secondPointY_property)
     self.mModelImageSecondPointDy_property.addEBObserver (self.secondPointY_property)
   //--- Atomic property: lockImageView
-    // self.lockImageView_property.configure (self.mPointsAreLocked_property, transient_PackageRoot_lockImageView)
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPointsAreLocked_property_selection.kind ()
@@ -2224,7 +2218,6 @@ class PackageRoot : EBGraphicManagedObject,
   //--- To one property: mModelImageDoublePoint
     self.mModelImageDoublePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberDisplay
-    // self.padNumberDisplay_property.configure (prefs_showPadNumber_property, self.packagePads_property.padNumberDisplay_property, self.packageSlavePads_property.padNumberDisplay_property, transient_PackageRoot_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = prefs_showPadNumber_property_selection.kind ()
@@ -2251,7 +2244,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: backgroundImagePageBackgroundDisplay
-    // self.backgroundImagePageBackgroundDisplay_property.configure (self.packageObjects_property.objectDisplay_property, self.mModelImageData_property, transient_PackageRoot_backgroundImagePageBackgroundDisplay)
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
@@ -2276,7 +2268,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageObjects_property.addEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.addEBObserver (self.backgroundImagePageBackgroundDisplay_property)
   //--- Atomic property: modelImageSizeString
-    // self.modelImageSizeString_property.configure (self.mModelImageData_property, transient_PackageRoot_modelImageSizeString)
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mModelImageData_property_selection.kind ()
@@ -2299,7 +2290,6 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageData_property.addEBObserver (self.modelImageSizeString_property)
   //--- Atomic property: hasModelImage
-    // self.hasModelImage_property.configure (self.mModelImageData_property, transient_PackageRoot_hasModelImage)
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mModelImageData_property_selection.kind ()
@@ -2322,7 +2312,6 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageData_property.addEBObserver (self.hasModelImage_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.packageObjects_property.issues_property, self.packageZones_property.rect_property, self.packageZones_property.zoneName_property, self.packageZones_property.xName_property, self.packageZones_property.yName_property, prefs_padZoneFont_property, transient_PackageRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
@@ -2355,7 +2344,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     prefs_padZoneFont_property.addEBObserver (self.issues_property)
   //--- Atomic property: noIssue
-    // self.noIssue_property.configure (self.issues_property, transient_PackageRoot_noIssue)
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -2413,22 +2401,22 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.mReadModelFunction = nil
     self.mModelImageFirstPointX_property.mWriteModelFunction = nil
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.mFirstX_property.removeEBObserver (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = nil
     self.mModelImageFirstPointY_property.mWriteModelFunction = nil
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.mFirstY_property.removeEBObserver (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = nil
     self.mModelImageSecondPointDx_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.mSecondDx_property.removeEBObserver (self.mModelImageSecondPointDx_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = nil
     self.mModelImageSecondPointDy_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.mSecondDy_property.removeEBObserver (self.mModelImageSecondPointDy_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
     // self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     // self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     // self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)

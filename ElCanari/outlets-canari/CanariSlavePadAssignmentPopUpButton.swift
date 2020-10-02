@@ -74,7 +74,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
   private func update (fromMasterPadName model : EBReadOnlyProperty_String) {
     if let document = self.mDocument {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         self.mCurrentSlavePad = nil
       case .single (let v) :

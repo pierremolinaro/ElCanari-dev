@@ -19,7 +19,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -42,7 +42,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································

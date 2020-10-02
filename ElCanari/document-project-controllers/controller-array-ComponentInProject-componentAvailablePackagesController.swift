@@ -52,7 +52,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[DevicePackageInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[DevicePackageInProject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init
@@ -166,7 +166,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   func select (object inObject : DevicePackageInProject) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
@@ -183,7 +183,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
    @objc func add (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let v) :
@@ -203,7 +203,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   @objc func remove (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let model_prop) :

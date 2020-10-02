@@ -1097,6 +1097,8 @@
 		CF7AA01921BDB72900AC0FC7 /* extension-NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */; };
 		CF7AB0D02362E0F800A93F2F /* EBFocusRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */; };
 		CF7AB0D12362E0F800A93F2F /* EBFocusRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */; };
+		CF7AFEFE25275896001671E4 /* transient-computation-define-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AFEFD25275896001671E4 /* transient-computation-define-extension.swift */; };
+		CF7AFEFF25275896001671E4 /* transient-computation-define-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AFEFD25275896001671E4 /* transient-computation-define-extension.swift */; };
 		CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
 		CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
 		CF7C09FE21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */; };
@@ -3071,6 +3073,7 @@
 		CF7AA01421BDB72900AC0FC7 /* extension-UInt32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-UInt32.swift"; sourceTree = "<group>"; };
 		CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSTextView.swift"; sourceTree = "<group>"; };
 		CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBFocusRingView.swift; sourceTree = "<group>"; };
+		CF7AFEFD25275896001671E4 /* transient-computation-define-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-computation-define-extension.swift"; sourceTree = "<group>"; };
 		CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotationCursor.png; sourceTree = "<group>"; };
 		CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-symbol-in-library.swift"; sourceTree = "<group>"; };
 		CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-package-in-library.swift"; sourceTree = "<group>"; };
@@ -4500,6 +4503,7 @@
 				CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */,
 				CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */,
 				CF6172621B3C4BA900F3CA82 /* standard-properties.swift */,
+				CF7AFEFD25275896001671E4 /* transient-computation-define-extension.swift */,
 			);
 			name = Generic;
 			path = ElCanari/generic;
@@ -6891,6 +6895,7 @@
 				CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */,
 				CFA43081229AEB96000AA8C8 /* toone-DeviceMasterPadInProject.swift in Sources */,
 				CF6B330021C93A2400E3B985 /* selectionController-PackageDocument-mPackageDimensionSelectionController.swift in Sources */,
+				CF7AFEFE25275896001671E4 /* transient-computation-define-extension.swift in Sources */,
 				CF2FF0CF242F79C40030E49A /* transient-PackageRoot-secondPointX.swift in Sources */,
 				CFEAAD5822317C0300F69A12 /* transient-SymbolOval-strokeBezierPath.swift in Sources */,
 				CFEB7AE6233A24570060A97A /* transient-BoardObject-errorOrWarningIssueSize.swift in Sources */,
@@ -8106,6 +8111,7 @@
 				CF5C4D79219F04D600EAC52A /* selectionController-FontDocument-mCharacterSelection.swift in Sources */,
 				CFF2A1F421B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift in Sources */,
 				CFF63C2922B3EF3100032398 /* toone-BoardRestrictRectangle.swift in Sources */,
+				CF7AFEFF25275896001671E4 /* transient-computation-define-extension.swift in Sources */,
 				CF2FF0D0242F79C40030E49A /* transient-PackageRoot-secondPointX.swift in Sources */,
 				CF00843C21C41B8D003627E9 /* transient-PackageBezier-issues.swift in Sources */,
 				CF2095AA22F3437600DC9A17 /* transient-BoardModel-frontComponentNamesBezierPaths.swift in Sources */,

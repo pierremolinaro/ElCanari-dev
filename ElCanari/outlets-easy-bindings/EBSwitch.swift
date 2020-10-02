@@ -42,7 +42,7 @@ class EBSwitch : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateValue (_ inObject : EBReadOnlyProperty_Bool) {
-    switch inObject.prop {
+    switch inObject.selection {
     case .empty :
       self.state = NSControl.StateValue.off
       self.enableFromValueBinding (false)

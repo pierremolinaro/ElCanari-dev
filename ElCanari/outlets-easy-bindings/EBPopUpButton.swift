@@ -84,7 +84,7 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
     case .single (let v) :

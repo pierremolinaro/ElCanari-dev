@@ -39,7 +39,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -151,7 +151,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasNet.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasNet.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -392,7 +392,7 @@ final class TransientArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
       self.mModelArrayShouldBeComputed = false
       let newArray : [WireInSchematic] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -417,7 +417,7 @@ final class TransientArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < [WireInSchematic] > {
+  override var selection : EBSelection < [WireInSchematic] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -484,7 +484,7 @@ final class TransientArrayOfSuperOf_WireInSchematic <SUPER : EBManagedObject> : 
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -511,7 +511,7 @@ final class TransientArrayOfSuperOf_WireInSchematic <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var prop : EBSelection < [WireInSchematic] > {
+  override var selection : EBSelection < [WireInSchematic] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -570,7 +570,7 @@ final class ProxyArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
   override func notifyModelDidChange () {
     let newModelArray : [WireInSchematic]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -593,9 +593,9 @@ final class ProxyArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < [WireInSchematic] > {
+  override var selection : EBSelection < [WireInSchematic] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -605,7 +605,7 @@ final class ProxyArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
 
   override var propval : [WireInSchematic] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -665,7 +665,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -725,7 +725,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
  
   //····················································································································
 
-  override var prop : EBSelection < [WireInSchematic] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [WireInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -814,7 +814,7 @@ final class StandAloneArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic
 
   //····················································································································
 
-  override var prop : EBSelection < [WireInSchematic] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [WireInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

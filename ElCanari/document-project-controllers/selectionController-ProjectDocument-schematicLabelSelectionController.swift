@@ -16,7 +16,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
 
   let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
   var mOrientation_property_selection : EBSelection <QuadrantRotation> {
-    return self.mOrientation_property.prop
+    return self.mOrientation_property.selection
   }
 
   //····················································································································
@@ -26,7 +26,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   let location_property = EBTransientProperty_CanariPoint ()
 
   var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.prop
+    return self.location_property.selection
   }
 
   //····················································································································
@@ -36,7 +36,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   let netName_property = EBTransientProperty_String ()
 
   var netName_property_selection : EBSelection <String> {
-    return self.netName_property.prop
+    return self.netName_property.selection
   }
 
   //····················································································································
@@ -46,7 +46,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -56,7 +56,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   let netClassName_property = EBTransientProperty_String ()
 
   var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.prop
+    return self.netClassName_property.selection
   }
 
   //····················································································································
@@ -66,7 +66,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -224,7 +224,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
     self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -258,7 +258,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     }
     self.mOrientation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -270,7 +270,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     }
     self.mOrientation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -293,7 +293,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     self.selectedArray_property.addEBObserverOf_location (self.location_property)
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -332,7 +332,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -371,7 +371,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -410,7 +410,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -449,7 +449,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

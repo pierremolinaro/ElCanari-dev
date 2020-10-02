@@ -47,7 +47,7 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -108,7 +108,7 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final var knobSize_property_selection : EBSelection <Double> {
-    return self.knobSize_property.prop
+    return self.knobSize_property.selection
   }
 
   //····················································································································
@@ -141,7 +141,6 @@ class PackageObject : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.packageObjects_property.remove (me) } }
     )
   //--- Atomic property: knobSize
-    // self.knobSize_property.configure (self.mRoot_property.knobSizeMultpliedByTen_property, transient_PackageObject_knobSize)
     self.knobSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mRoot_property.knobSizeMultpliedByTen_property_selection.kind ()
@@ -162,7 +161,7 @@ class PackageObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
+    self.mRoot_property.addEBObserverOf_knobSizeMultpliedByTen (self.knobSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

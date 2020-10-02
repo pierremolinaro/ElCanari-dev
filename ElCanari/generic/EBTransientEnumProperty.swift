@@ -31,7 +31,7 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   private var mMutex = DispatchSemaphore (value: 1)
 
-  override var prop : EBSelection <T> {
+  override var selection : EBSelection <T> {
     self.mMutex.wait ()
     if self.mValueCache == nil {
       self.mValueCache = self.mReadModelFunction? ()
@@ -62,7 +62,7 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
   //····················································································································
 
   override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
-    inOperationQueue.addOperation { _ = self.prop }
+    inOperationQueue.addOperation { _ = self.selection }
   }
 
   //····················································································································

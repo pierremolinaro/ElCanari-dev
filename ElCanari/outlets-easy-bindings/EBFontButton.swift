@@ -70,7 +70,7 @@ class EBFontButton : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateFont (_ object : EBReadOnlyProperty_NSFont) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       self.enableFromValueBinding (false)
       self.title = ""

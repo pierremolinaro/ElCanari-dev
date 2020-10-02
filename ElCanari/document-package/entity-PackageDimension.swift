@@ -152,7 +152,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
 
   //····················································································································
   //   Atomic property: x2
@@ -177,7 +177,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -202,7 +202,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
 
   //····················································································································
   //   Atomic property: xDimension
@@ -227,7 +227,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var xDimension_property_selection : EBSelection <Int> { return self.xDimension_property.prop }
+  final var xDimension_property_selection : EBSelection <Int> { return self.xDimension_property.selection }
 
   //····················································································································
   //   Atomic property: yDimension
@@ -252,7 +252,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var yDimension_property_selection : EBSelection <Int> { return self.yDimension_property.prop }
+  final var yDimension_property_selection : EBSelection <Int> { return self.yDimension_property.selection }
 
   //····················································································································
   //   Atomic property: x1Unit
@@ -277,7 +277,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
+  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -302,7 +302,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
+  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: x2Unit
@@ -327,7 +327,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
+  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -352,7 +352,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
+  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: xDimensionUnit
@@ -377,7 +377,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var xDimensionUnit_property_selection : EBSelection <Int> { return self.xDimensionUnit_property.prop }
+  final var xDimensionUnit_property_selection : EBSelection <Int> { return self.xDimensionUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yDimensionUnit
@@ -402,7 +402,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var yDimensionUnit_property_selection : EBSelection <Int> { return self.yDimensionUnit_property.prop }
+  final var yDimensionUnit_property_selection : EBSelection <Int> { return self.yDimensionUnit_property.selection }
 
   //····················································································································
   //   Atomic property: distanceUnit
@@ -427,7 +427,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.prop }
+  final var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.selection }
 
   //····················································································································
   //   Atomic property: x1
@@ -452,7 +452,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
 
   //····················································································································
   //   Transient property: distanceInCanariUnit
@@ -463,7 +463,7 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   final var distanceInCanariUnit_property_selection : EBSelection <Int> {
-    return self.distanceInCanariUnit_property.prop
+    return self.distanceInCanariUnit_property.selection
   }
 
   //····················································································································
@@ -503,7 +503,6 @@ class PackageDimension : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: distanceInCanariUnit
-    // self.distanceInCanariUnit_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageDimension_distanceInCanariUnit)
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -532,7 +531,6 @@ class PackageDimension : PackageObject,
     self.x2_property.addEBObserver (self.distanceInCanariUnit_property)
     self.y2_property.addEBObserver (self.distanceInCanariUnit_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.xDimension_property, self.yDimension_property, self.distanceInCanariUnit_property, self.distanceUnit_property, prefs_dimensionFont_property, prefs_packageBackgroundColor_property, prefs_packageDimensionColor_property, transient_PackageDimension_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -575,7 +573,6 @@ class PackageDimension : PackageObject,
     prefs_packageBackgroundColor_property.addEBObserver (self.objectDisplay_property)
     prefs_packageDimensionColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, prefs_packageBackgroundColor_property, prefs_packageDimensionColor_property, self.xDimension_property, self.yDimension_property, self.distanceInCanariUnit_property, self.distanceUnit_property, prefs_dimensionFont_property, self.knobSize_property, transient_PackageDimension_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -620,7 +617,6 @@ class PackageDimension : PackageObject,
     prefs_dimensionFont_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageDimension_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()

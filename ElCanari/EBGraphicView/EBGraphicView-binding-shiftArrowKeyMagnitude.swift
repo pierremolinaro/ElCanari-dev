@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateShiftArrowKeyMagnitude (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       break
     case .single (let v) :

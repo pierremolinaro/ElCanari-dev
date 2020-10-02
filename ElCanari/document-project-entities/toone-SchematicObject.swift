@@ -15,134 +15,432 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SchematicObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.issues_property.removeEBObserver (self.issues_property) // Transient property
-    inOldValue?.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
-    inOldValue?.sheetDescriptor_property.removeEBObserver (self.sheetDescriptor_property) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-    inOldValue?.isPlacedInSchematic_property.removeEBObserver (self.isPlacedInSchematic_property) // Transient property
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+    inOldValue?.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.isPlacedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.issues_property.addEBObserver (self.issues_property) // Transient property
-    self.mInternalValue?.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
-    self.mInternalValue?.sheetDescriptor_property.addEBObserver (self.sheetDescriptor_property) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-    self.mInternalValue?.isPlacedInSchematic_property.addEBObserver (self.isPlacedInSchematic_property) // Transient property
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+    self.mInternalValue?.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.isPlacedInSchematic_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'issues' transient property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.issues_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.issues_property.prop ?? .empty }
-    self.connectedPoints_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.connectedPoints_property.prop ?? .empty }
-    self.sheetDescriptor_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.sheetDescriptor_property.prop ?? .empty }
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
-    self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.isPlacedInSchematic_property.prop ?? .empty }
-  }
+  private var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
-  //   Observer of 'issues' transient property
-  //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    switch (self.issues_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'connectedPoints' transient property
-  //····················································································································
 
-  let connectedPoints_property = EBTransientProperty_CanariPointArray ()
-
-  var connectedPoints_property_selection : EBSelection <CanariPointArray> {
-    switch (self.connectedPoints_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'sheetDescriptor' transient property
-  //····················································································································
 
-  let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
-
-  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
-    switch (self.sheetDescriptor_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'selectionDisplay' transient property
-  //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.selectionDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'objectDisplay' transient property
-  //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.objectDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
     }
   }
 
   //····················································································································
-  //   Observer of 'isPlacedInSchematic' transient property
+  //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  let isPlacedInSchematic_property = EBTransientProperty_Bool ()
+  private var mObserversOf_connectedPoints = EBWeakEventSet ()
 
-  var isPlacedInSchematic_property_selection : EBSelection <Bool> {
-    switch (self.isPlacedInSchematic_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
+    if let model = self.propval {
+      switch (model.connectedPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.connectedPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.connectedPoints_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sheetDescriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
+    if let model = self.propval {
+      switch (model.sheetDescriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetDescriptor.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetDescriptor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetDescriptor.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetDescriptor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+        managedObject.sheetDescriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+        managedObject.sheetDescriptor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isPlacedInSchematic' transient property
+  //····················································································································
+
+  private var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isPlacedInSchematic_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isPlacedInSchematic_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isPlacedInSchematic.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isPlacedInSchematic_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isPlacedInSchematic.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isPlacedInSchematic_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isPlacedInSchematic_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInSchematic_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isPlacedInSchematic_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInSchematic_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -178,7 +476,7 @@ class TransientObject_SchematicObject : ReadOnlyObject_SchematicObject {
   override func notifyModelDidChange () {
     let newObject : SchematicObject? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -199,7 +497,7 @@ class TransientObject_SchematicObject : ReadOnlyObject_SchematicObject {
 
   //····················································································································
 
-  override var prop : EBSelection < SchematicObject? > {
+  override var selection : EBSelection < SchematicObject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -261,7 +559,7 @@ final class ProxyObject_SchematicObject : ReadWriteObject_SchematicObject {
   override func notifyModelDidChange () {
     let newModel : SchematicObject?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -284,9 +582,9 @@ final class ProxyObject_SchematicObject : ReadWriteObject_SchematicObject {
 
   //····················································································································
 
-  override var prop : EBSelection < SchematicObject? > {
+  override var selection : EBSelection < SchematicObject? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -296,7 +594,7 @@ final class ProxyObject_SchematicObject : ReadWriteObject_SchematicObject {
 
   override var propval : SchematicObject? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -356,7 +654,7 @@ final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSi
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -409,7 +707,7 @@ final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSi
 
   //····················································································································
 
-  override var prop : EBSelection < SchematicObject? > {
+  override var selection : EBSelection < SchematicObject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

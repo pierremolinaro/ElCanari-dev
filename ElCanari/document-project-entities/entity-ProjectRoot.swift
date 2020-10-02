@@ -873,7 +873,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
+  final var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.selection }
 
   //····················································································································
   //   Atomic property: mArtworkVersion
@@ -898,7 +898,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
+  final var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.selection }
 
   //····················································································································
   //   Atomic property: mPDFBoardBackgroundColor
@@ -923,7 +923,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
+  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.selection }
 
   //····················································································································
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
@@ -948,7 +948,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool> { return self.mCheckClearanceBetweenPadsOfSameNet_property.prop }
+  final var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool> { return self.mCheckClearanceBetweenPadsOfSameNet_property.selection }
 
   //····················································································································
   //   Atomic property: mLastERCCheckingIsSuccess
@@ -973,7 +973,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool> { return self.mLastERCCheckingIsSuccess_property.prop }
+  final var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool> { return self.mLastERCCheckingIsSuccess_property.selection }
 
   //····················································································································
   //   Atomic property: mLastERCCheckingSignature
@@ -998,7 +998,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mLastERCCheckingSignature_property_selection : EBSelection <UInt32> { return self.mLastERCCheckingSignature_property.prop }
+  final var mLastERCCheckingSignature_property_selection : EBSelection <UInt32> { return self.mLastERCCheckingSignature_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardSideForNewTrack
@@ -1023,7 +1023,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide> { return self.mBoardSideForNewTrack_property.prop }
+  final var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide> { return self.mBoardSideForNewTrack_property.selection }
 
   //····················································································································
   //   Atomic property: mAutoRouterPreferredDirections
@@ -1048,7 +1048,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections> { return self.mAutoRouterPreferredDirections_property.prop }
+  final var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections> { return self.mAutoRouterPreferredDirections_property.selection }
 
   //····················································································································
   //   Atomic property: mAutorouterSnapAngle
@@ -1073,7 +1073,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.prop }
+  final var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.selection }
 
   //····················································································································
   //   Atomic property: mRouteDirection
@@ -1098,7 +1098,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRouteDirection_property_selection : EBSelection <RouteDirection> { return self.mRouteDirection_property.prop }
+  final var mRouteDirection_property_selection : EBSelection <RouteDirection> { return self.mRouteDirection_property.selection }
 
   //····················································································································
   //   Atomic property: mRouteOrigin
@@ -1123,7 +1123,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRouteOrigin_property_selection : EBSelection <RouteOrigin> { return self.mRouteOrigin_property.prop }
+  final var mRouteOrigin_property_selection : EBSelection <RouteOrigin> { return self.mRouteOrigin_property.selection }
 
   //····················································································································
   //   Atomic property: mTrackLengthUnit
@@ -1148,7 +1148,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mTrackLengthUnit_property_selection : EBSelection <Int> { return self.mTrackLengthUnit_property.prop }
+  final var mTrackLengthUnit_property_selection : EBSelection <Int> { return self.mTrackLengthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mLayoutClearance
@@ -1173,7 +1173,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mLayoutClearance_property_selection : EBSelection <Int> { return self.mLayoutClearance_property.prop }
+  final var mLayoutClearance_property_selection : EBSelection <Int> { return self.mLayoutClearance_property.selection }
 
   //····················································································································
   //   Atomic property: mLayoutClearanceUnit
@@ -1198,7 +1198,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mLayoutClearanceUnit_property_selection : EBSelection <Int> { return self.mLayoutClearanceUnit_property.prop }
+  final var mLayoutClearanceUnit_property_selection : EBSelection <Int> { return self.mLayoutClearanceUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardSelectedInspector
@@ -1223,7 +1223,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardSelectedInspector_property.prop }
+  final var mBoardSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardSelectedInspector_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardHorizontalFlip
@@ -1248,7 +1248,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardHorizontalFlip_property.prop }
+  final var mBoardHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardHorizontalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardVerticalFlip
@@ -1273,7 +1273,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardVerticalFlip_property.prop }
+  final var mBoardVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardVerticalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardGridStyle
@@ -1298,7 +1298,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardGridStyle_property.prop }
+  final var mBoardGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardGridStyle_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardGridDisplayFactor
@@ -1323,7 +1323,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardGridDisplayFactor_property.prop }
+  final var mBoardGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardGridDisplayFactor_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardZoom
@@ -1348,7 +1348,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardZoom_property_selection : EBSelection <Int> { return self.mBoardZoom_property.prop }
+  final var mBoardZoom_property_selection : EBSelection <Int> { return self.mBoardZoom_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardGridStep
@@ -1373,7 +1373,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardGridStep_property_selection : EBSelection <Int> { return self.mBoardGridStep_property.prop }
+  final var mBoardGridStep_property_selection : EBSelection <Int> { return self.mBoardGridStep_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardGridStepUnit
@@ -1398,7 +1398,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardGridStepUnit_property.prop }
+  final var mBoardGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardGridStepUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mErrorOrWarningIssueSize
@@ -1423,7 +1423,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mErrorOrWarningIssueSize_property_selection : EBSelection <Double> { return self.mErrorOrWarningIssueSize_property.prop }
+  final var mErrorOrWarningIssueSize_property_selection : EBSelection <Double> { return self.mErrorOrWarningIssueSize_property.selection }
 
   //····················································································································
   //   Atomic property: mControlKeyHiliteDiameter
@@ -1448,7 +1448,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
+  final var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.selection }
 
   //····················································································································
   //   Atomic property: mDSNFileProposedName
@@ -1473,7 +1473,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mDSNFileProposedName_property_selection : EBSelection <String> { return self.mDSNFileProposedName_property.prop }
+  final var mDSNFileProposedName_property_selection : EBSelection <String> { return self.mDSNFileProposedName_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -1498,7 +1498,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsWidth_property_selection : EBSelection <Int> { return self.mBoardLimitsWidth_property.prop }
+  final var mBoardLimitsWidth_property_selection : EBSelection <Int> { return self.mBoardLimitsWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidthUnit
@@ -1523,7 +1523,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsWidthUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsWidthUnit_property.prop }
+  final var mBoardLimitsWidthUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardClearance
@@ -1548,7 +1548,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardClearance_property_selection : EBSelection <Int> { return self.mBoardClearance_property.prop }
+  final var mBoardClearance_property_selection : EBSelection <Int> { return self.mBoardClearance_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardClearanceUnit
@@ -1573,7 +1573,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardClearanceUnit_property_selection : EBSelection <Int> { return self.mBoardClearanceUnit_property.prop }
+  final var mBoardClearanceUnit_property_selection : EBSelection <Int> { return self.mBoardClearanceUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsSelectedInspector
@@ -1598,7 +1598,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardLimitsSelectedInspector_property.prop }
+  final var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardLimitsSelectedInspector_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsHorizontalFlip
@@ -1623,7 +1623,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsHorizontalFlip_property.prop }
+  final var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsHorizontalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsVerticalFlip
@@ -1648,7 +1648,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsVerticalFlip_property.prop }
+  final var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsVerticalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStyle
@@ -1673,7 +1673,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardLimitsGridStyle_property.prop }
+  final var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardLimitsGridStyle_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridDisplayFactor
@@ -1698,7 +1698,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardLimitsGridDisplayFactor_property.prop }
+  final var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardLimitsGridDisplayFactor_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsZoom
@@ -1723,7 +1723,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsZoom_property_selection : EBSelection <Int> { return self.mBoardLimitsZoom_property.prop }
+  final var mBoardLimitsZoom_property_selection : EBSelection <Int> { return self.mBoardLimitsZoom_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStep
@@ -1748,7 +1748,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsGridStep_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStep_property.prop }
+  final var mBoardLimitsGridStep_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStep_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStepUnit
@@ -1773,7 +1773,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStepUnit_property.prop }
+  final var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStepUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitsBoundingBoxUnit
@@ -1798,7 +1798,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsBoundingBoxUnit_property.prop }
+  final var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsBoundingBoxUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardPointsBoundingBoxUnit
@@ -1823,7 +1823,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardPointsBoundingBoxUnit_property.prop }
+  final var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardPointsBoundingBoxUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardSelectedCurveDisplayUnit
@@ -1848,7 +1848,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.prop }
+  final var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLimitControlPointsDisplayUnit
@@ -1873,7 +1873,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardLimitControlPointsDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardLimitControlPointsDisplayUnit_property.prop }
+  final var mBoardLimitControlPointsDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardLimitControlPointsDisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardShape
@@ -1898,7 +1898,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardShape_property_selection : EBSelection <BoardShape> { return self.mBoardShape_property.prop }
+  final var mBoardShape_property_selection : EBSelection <BoardShape> { return self.mBoardShape_property.selection }
 
   //····················································································································
   //   Atomic property: mRectangularBoardWidth
@@ -1923,7 +1923,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRectangularBoardWidth_property_selection : EBSelection <Int> { return self.mRectangularBoardWidth_property.prop }
+  final var mRectangularBoardWidth_property_selection : EBSelection <Int> { return self.mRectangularBoardWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mRectangularBoardWidthUnit
@@ -1948,7 +1948,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRectangularBoardWidthUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardWidthUnit_property.prop }
+  final var mRectangularBoardWidthUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mRectangularBoardHeight
@@ -1973,7 +1973,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRectangularBoardHeight_property_selection : EBSelection <Int> { return self.mRectangularBoardHeight_property.prop }
+  final var mRectangularBoardHeight_property_selection : EBSelection <Int> { return self.mRectangularBoardHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mRectangularBoardHeightUnit
@@ -1998,7 +1998,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRectangularBoardHeightUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardHeightUnit_property.prop }
+  final var mRectangularBoardHeightUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardHeightUnit_property.selection }
 
   //····················································································································
   //   To many property: mSheets
@@ -2009,7 +2009,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mSheets_property_selection : EBSelection < [SheetInProject] > {
-    return self.mSheets_property.prop
+    return self.mSheets_property.selection
   }
 
   //····················································································································
@@ -2042,7 +2042,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mDefaultNetClassName_property_selection : EBSelection <String> { return self.mDefaultNetClassName_property.prop }
+  final var mDefaultNetClassName_property_selection : EBSelection <String> { return self.mDefaultNetClassName_property.selection }
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -2067,7 +2067,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
+  final var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.selection }
 
   //····················································································································
   //   Atomic property: mSelectedSchematicInspector
@@ -2092,7 +2092,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSelectedSchematicInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicInspector_property.prop }
+  final var mSelectedSchematicInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicInspector_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicTitle
@@ -2117,7 +2117,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicTitle_property_selection : EBSelection <String> { return self.mSchematicTitle_property.prop }
+  final var mSchematicTitle_property_selection : EBSelection <String> { return self.mSchematicTitle_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicVersion
@@ -2142,7 +2142,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicVersion_property_selection : EBSelection <String> { return self.mSchematicVersion_property.prop }
+  final var mSchematicVersion_property_selection : EBSelection <String> { return self.mSchematicVersion_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicDate
@@ -2167,7 +2167,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicDate_property_selection : EBSelection <Date> { return self.mSchematicDate_property.prop }
+  final var mSchematicDate_property_selection : EBSelection <Date> { return self.mSchematicDate_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicHorizontalFlip
@@ -2192,7 +2192,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSchematicHorizontalFlip_property.prop }
+  final var mSchematicHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSchematicHorizontalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicVerticalFlip
@@ -2217,7 +2217,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicVerticalFlip_property_selection : EBSelection <Bool> { return self.mSchematicVerticalFlip_property.prop }
+  final var mSchematicVerticalFlip_property_selection : EBSelection <Bool> { return self.mSchematicVerticalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicZoom
@@ -2242,7 +2242,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicZoom_property_selection : EBSelection <Int> { return self.mSchematicZoom_property.prop }
+  final var mSchematicZoom_property_selection : EBSelection <Int> { return self.mSchematicZoom_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicGridStyle
@@ -2267,7 +2267,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicGridStyle_property_selection : EBSelection <GridStyle> { return self.mSchematicGridStyle_property.prop }
+  final var mSchematicGridStyle_property_selection : EBSelection <GridStyle> { return self.mSchematicGridStyle_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicGridDisplayFactor
@@ -2292,7 +2292,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicGridDisplayFactor_property.prop }
+  final var mSchematicGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicGridDisplayFactor_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicCustomWidth
@@ -2317,7 +2317,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicCustomWidth_property_selection : EBSelection <Int> { return self.mSchematicCustomWidth_property.prop }
+  final var mSchematicCustomWidth_property_selection : EBSelection <Int> { return self.mSchematicCustomWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicCustomWidthUnit
@@ -2342,7 +2342,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicCustomWidthUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomWidthUnit_property.prop }
+  final var mSchematicCustomWidthUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicCustomHeight
@@ -2367,7 +2367,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicCustomHeight_property_selection : EBSelection <Int> { return self.mSchematicCustomHeight_property.prop }
+  final var mSchematicCustomHeight_property_selection : EBSelection <Int> { return self.mSchematicCustomHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mSchematicCustomHeightUnit
@@ -2392,7 +2392,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicCustomHeightUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomHeightUnit_property.prop }
+  final var mSchematicCustomHeightUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomHeightUnit_property.selection }
 
   //····················································································································
   //   To many property: mNetClasses
@@ -2403,7 +2403,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mNetClasses_property_selection : EBSelection < [NetClassInProject] > {
-    return self.mNetClasses_property.prop
+    return self.mNetClasses_property.selection
   }
 
   //····················································································································
@@ -2422,7 +2422,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mFonts_property_selection : EBSelection < [FontInProject] > {
-    return self.mFonts_property.prop
+    return self.mFonts_property.selection
   }
 
   //····················································································································
@@ -2441,7 +2441,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mDevices_property_selection : EBSelection < [DeviceInProject] > {
-    return self.mDevices_property.prop
+    return self.mDevices_property.selection
   }
 
   //····················································································································
@@ -2474,7 +2474,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
+  final var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.selection }
 
   //····················································································································
   //   To many property: mBorderCurves
@@ -2485,7 +2485,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mBorderCurves_property_selection : EBSelection < [BorderCurve] > {
-    return self.mBorderCurves_property.prop
+    return self.mBorderCurves_property.selection
   }
 
   //····················································································································
@@ -2504,7 +2504,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mBoardObjects_property_selection : EBSelection < [BoardObject] > {
-    return self.mBoardObjects_property.prop
+    return self.mBoardObjects_property.selection
   }
 
   //····················································································································
@@ -2537,7 +2537,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay> { return self.mRastnetDisplay_property.prop }
+  final var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay> { return self.mRastnetDisplay_property.selection }
 
   //····················································································································
   //   Atomic property: mRastnetDisplayedNetName
@@ -2562,7 +2562,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRastnetDisplayedNetName_property_selection : EBSelection <String> { return self.mRastnetDisplayedNetName_property.prop }
+  final var mRastnetDisplayedNetName_property_selection : EBSelection <String> { return self.mRastnetDisplayedNetName_property.selection }
 
   //····················································································································
   //   Atomic property: mRastnetDisplayedComponentName
@@ -2587,7 +2587,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mRastnetDisplayedComponentName_property_selection : EBSelection <String> { return self.mRastnetDisplayedComponentName_property.prop }
+  final var mRastnetDisplayedComponentName_property_selection : EBSelection <String> { return self.mRastnetDisplayedComponentName_property.selection }
 
   //····················································································································
   //   To many property: mComponents
@@ -2598,7 +2598,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
+    return self.mComponents_property.selection
   }
 
   //····················································································································
@@ -2618,7 +2618,7 @@ class ProjectRoot : EBManagedObject,
 
   var minPPTPTTTWdisplayUnit : Int? {
     get {
-      switch self.minPPTPTTTWdisplayUnit_property.prop {
+      switch self.minPPTPTTTWdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2634,7 +2634,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.prop }
+  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minPPTPTTTW
@@ -2646,7 +2646,7 @@ class ProjectRoot : EBManagedObject,
 
   var minPPTPTTTW : Int? {
     get {
-      switch self.minPPTPTTTW_property.prop {
+      switch self.minPPTPTTTW_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2662,7 +2662,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.prop }
+  var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForOARdisplayUnit
@@ -2674,7 +2674,7 @@ class ProjectRoot : EBManagedObject,
 
   var minValueForOARdisplayUnit : Int? {
     get {
-      switch self.minValueForOARdisplayUnit_property.prop {
+      switch self.minValueForOARdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2690,7 +2690,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.prop }
+  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForOARinEBUnit
@@ -2702,7 +2702,7 @@ class ProjectRoot : EBManagedObject,
 
   var minValueForOARinEBUnit : Int? {
     get {
-      switch self.minValueForOARinEBUnit_property.prop {
+      switch self.minValueForOARinEBUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2718,7 +2718,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.prop }
+  var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForPHDdisplayUnit
@@ -2730,7 +2730,7 @@ class ProjectRoot : EBManagedObject,
 
   var minValueForPHDdisplayUnit : Int? {
     get {
-      switch self.minValueForPHDdisplayUnit_property.prop {
+      switch self.minValueForPHDdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2746,7 +2746,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.prop }
+  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForPHDinEBUnit
@@ -2758,7 +2758,7 @@ class ProjectRoot : EBManagedObject,
 
   var minValueForPHDinEBUnit : Int? {
     get {
-      switch self.minValueForPHDinEBUnit_property.prop {
+      switch self.minValueForPHDinEBUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2774,7 +2774,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.prop }
+  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForBoardLimitWidth
@@ -2786,7 +2786,7 @@ class ProjectRoot : EBManagedObject,
 
   var minValueForBoardLimitWidth : Int? {
     get {
-      switch self.minValueForBoardLimitWidth_property.prop {
+      switch self.minValueForBoardLimitWidth_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2802,7 +2802,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.prop }
+  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
@@ -2814,7 +2814,7 @@ class ProjectRoot : EBManagedObject,
 
   var minValueForBoardLimitWidthDisplayUnit : Int? {
     get {
-      switch self.minValueForBoardLimitWidthDisplayUnit_property.prop {
+      switch self.minValueForBoardLimitWidthDisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2830,7 +2830,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.prop }
+  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: drillDataFileExtension
@@ -2842,7 +2842,7 @@ class ProjectRoot : EBManagedObject,
 
   var drillDataFileExtension : String? {
     get {
-      switch self.drillDataFileExtension_property.prop {
+      switch self.drillDataFileExtension_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2858,7 +2858,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.prop }
+  var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.selection }
 
   //····················································································································
   //   Atomic proxy property: comments
@@ -2870,7 +2870,7 @@ class ProjectRoot : EBManagedObject,
 
   var comments : String? {
     get {
-      switch self.comments_property.prop {
+      switch self.comments_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2886,7 +2886,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  var comments_property_selection : EBSelection <String> { return self.comments_property.selection }
 
   //····················································································································
   //   Atomic proxy property: selectedSheetTitle
@@ -2898,7 +2898,7 @@ class ProjectRoot : EBManagedObject,
 
   var selectedSheetTitle : String? {
     get {
-      switch self.selectedSheetTitle_property.prop {
+      switch self.selectedSheetTitle_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2914,7 +2914,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedSheetTitle_property_selection : EBSelection <String> { return self.selectedSheetTitle_property.prop }
+  var selectedSheetTitle_property_selection : EBSelection <String> { return self.selectedSheetTitle_property.selection }
 
   //····················································································································
   //   ToMany proxy: selectedSheetObjects
@@ -2928,7 +2928,7 @@ class ProjectRoot : EBManagedObject,
 
   var selectedSheetObjects : [SchematicObject] {
     get {
-      switch self.selectedSheetObjects_property.prop {
+      switch self.selectedSheetObjects_property.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -2943,7 +2943,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var selectedSheetObjects_property_selection : EBSelection <[SchematicObject]> {
-    return self.selectedSheetObjects_property.prop
+    return self.selectedSheetObjects_property.selection
   }
 
   //····················································································································
@@ -2958,7 +2958,7 @@ class ProjectRoot : EBManagedObject,
 
   var fileGenerationParameterArray : [ArtworkFileGenerationParameters] {
     get {
-      switch self.fileGenerationParameterArray_property.prop {
+      switch self.fileGenerationParameterArray_property.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -2973,7 +2973,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
-    return self.fileGenerationParameterArray_property.prop
+    return self.fileGenerationParameterArray_property.selection
   }
 
   //····················································································································
@@ -2985,7 +2985,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
-    return self.boardGridStepMultipliedByDisplayFactor_property.prop
+    return self.boardGridStepMultipliedByDisplayFactor_property.selection
   }
 
   //····················································································································
@@ -3008,7 +3008,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
-    return self.boardLimitsGridStepMultipliedByDisplayFactor_property.prop
+    return self.boardLimitsGridStepMultipliedByDisplayFactor_property.selection
   }
 
   //····················································································································
@@ -3031,7 +3031,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardShapeIsRectangular_property_selection : EBSelection <Bool> {
-    return self.boardShapeIsRectangular_property.prop
+    return self.boardShapeIsRectangular_property.selection
   }
 
   //····················································································································
@@ -3092,7 +3092,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray> {
-    return self.selectedSheetIssues_property.prop
+    return self.selectedSheetIssues_property.selection
   }
 
   //····················································································································
@@ -3115,7 +3115,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var connectedPoints_property_selection : EBSelection <EBShape> {
-    return self.connectedPoints_property.prop
+    return self.connectedPoints_property.selection
   }
 
   //····················································································································
@@ -3138,7 +3138,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var connexionWarningString_property_selection : EBSelection <String> {
-    return self.connexionWarningString_property.prop
+    return self.connexionWarningString_property.selection
   }
 
   //····················································································································
@@ -3161,7 +3161,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var connexionErrorString_property_selection : EBSelection <String> {
-    return self.connexionErrorString_property.prop
+    return self.connexionErrorString_property.selection
   }
 
   //····················································································································
@@ -3184,7 +3184,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var sheetIndexes_property_selection : EBSelection <IntArray> {
-    return self.sheetIndexes_property.prop
+    return self.sheetIndexes_property.selection
   }
 
   //····················································································································
@@ -3207,7 +3207,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var netsDescription_property_selection : EBSelection <NetInfoArray> {
-    return self.netsDescription_property.prop
+    return self.netsDescription_property.selection
   }
 
   //····················································································································
@@ -3230,7 +3230,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardIssues_property_selection : EBSelection <CanariIssueArray> {
-    return self.boardIssues_property.prop
+    return self.boardIssues_property.selection
   }
 
   //····················································································································
@@ -3291,7 +3291,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -3314,7 +3314,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var ercStatusImage_property_selection : EBSelection <NSImage> {
-    return self.ercStatusImage_property.prop
+    return self.ercStatusImage_property.selection
   }
 
   //····················································································································
@@ -3337,7 +3337,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var ercStatusMessage_property_selection : EBSelection <String> {
-    return self.ercStatusMessage_property.prop
+    return self.ercStatusMessage_property.selection
   }
 
   //····················································································································
@@ -3360,7 +3360,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var viaCountString_property_selection : EBSelection <String> {
-    return self.viaCountString_property.prop
+    return self.viaCountString_property.selection
   }
 
   //····················································································································
@@ -3383,7 +3383,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var trackCountString_property_selection : EBSelection <String> {
-    return self.trackCountString_property.prop
+    return self.trackCountString_property.selection
   }
 
   //····················································································································
@@ -3406,7 +3406,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var trackLengthString_property_selection : EBSelection <String> {
-    return self.trackLengthString_property.prop
+    return self.trackLengthString_property.selection
   }
 
   //····················································································································
@@ -3429,7 +3429,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardStatusImage_property_selection : EBSelection <NSImage> {
-    return self.boardStatusImage_property.prop
+    return self.boardStatusImage_property.selection
   }
 
   //····················································································································
@@ -3452,7 +3452,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardStatusMessage_property_selection : EBSelection <String> {
-    return self.boardStatusMessage_property.prop
+    return self.boardStatusMessage_property.selection
   }
 
   //····················································································································
@@ -3475,7 +3475,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var interiorBoundBox_property_selection : EBSelection <CanariRect> {
-    return self.interiorBoundBox_property.prop
+    return self.interiorBoundBox_property.selection
   }
 
   //····················································································································
@@ -3498,7 +3498,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardBoundBox_property_selection : EBSelection <CanariRect> {
-    return self.boardBoundBox_property.prop
+    return self.boardBoundBox_property.selection
   }
 
   //····················································································································
@@ -3521,7 +3521,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorTop_property_selection : EBSelection <String> {
-    return self.boardInteriorTop_property.prop
+    return self.boardInteriorTop_property.selection
   }
 
   //····················································································································
@@ -3544,7 +3544,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorBottom_property_selection : EBSelection <String> {
-    return self.boardInteriorBottom_property.prop
+    return self.boardInteriorBottom_property.selection
   }
 
   //····················································································································
@@ -3567,7 +3567,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorLeft_property_selection : EBSelection <String> {
-    return self.boardInteriorLeft_property.prop
+    return self.boardInteriorLeft_property.selection
   }
 
   //····················································································································
@@ -3590,7 +3590,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorRight_property_selection : EBSelection <String> {
-    return self.boardInteriorRight_property.prop
+    return self.boardInteriorRight_property.selection
   }
 
   //····················································································································
@@ -3613,7 +3613,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderTop_property_selection : EBSelection <String> {
-    return self.boardLimitBorderTop_property.prop
+    return self.boardLimitBorderTop_property.selection
   }
 
   //····················································································································
@@ -3636,7 +3636,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderBottom_property_selection : EBSelection <String> {
-    return self.boardLimitBorderBottom_property.prop
+    return self.boardLimitBorderBottom_property.selection
   }
 
   //····················································································································
@@ -3659,7 +3659,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderLeft_property_selection : EBSelection <String> {
-    return self.boardLimitBorderLeft_property.prop
+    return self.boardLimitBorderLeft_property.selection
   }
 
   //····················································································································
@@ -3682,7 +3682,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderRight_property_selection : EBSelection <String> {
-    return self.boardLimitBorderRight_property.prop
+    return self.boardLimitBorderRight_property.selection
   }
 
   //····················································································································
@@ -3705,7 +3705,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var borderElementCountString_property_selection : EBSelection <String> {
-    return self.borderElementCountString_property.prop
+    return self.borderElementCountString_property.selection
   }
 
   //····················································································································
@@ -3728,7 +3728,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var borderOutlineBackground_property_selection : EBSelection <EBShape> {
-    return self.borderOutlineBackground_property.prop
+    return self.borderOutlineBackground_property.selection
   }
 
   //····················································································································
@@ -3751,7 +3751,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var borderViewBackground_property_selection : EBSelection <EBShape> {
-    return self.borderViewBackground_property.prop
+    return self.borderViewBackground_property.selection
   }
 
   //····················································································································
@@ -3774,7 +3774,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var deviceNames_property_selection : EBSelection <StringArray> {
-    return self.deviceNames_property.prop
+    return self.deviceNames_property.selection
   }
 
   //····················································································································
@@ -3797,7 +3797,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var allClassNames_property_selection : EBSelection <StringArray> {
-    return self.allClassNames_property.prop
+    return self.allClassNames_property.selection
   }
 
   //····················································································································
@@ -3820,7 +3820,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry> {
-    return self.sheetGeometry_property.prop
+    return self.sheetGeometry_property.selection
   }
 
   //····················································································································
@@ -3843,7 +3843,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicBackgroundDisplay_property_selection : EBSelection <EBShape> {
-    return self.schematicBackgroundDisplay_property.prop
+    return self.schematicBackgroundDisplay_property.selection
   }
 
   //····················································································································
@@ -3866,7 +3866,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var netWarningCount_property_selection : EBSelection <Int> {
-    return self.netWarningCount_property.prop
+    return self.netWarningCount_property.selection
   }
 
   //····················································································································
@@ -3889,7 +3889,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var netNamesArray_property_selection : EBSelection <StringArray> {
-    return self.netNamesArray_property.prop
+    return self.netNamesArray_property.selection
   }
 
   //····················································································································
@@ -3912,7 +3912,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
-    return self.unplacedSymbols_property.prop
+    return self.unplacedSymbols_property.selection
   }
 
   //····················································································································
@@ -3935,7 +3935,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var unplacedPackages_property_selection : EBSelection <StringTagArray> {
-    return self.unplacedPackages_property.prop
+    return self.unplacedPackages_property.selection
   }
 
   //····················································································································
@@ -3958,7 +3958,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray> {
-    return self.componentsPlacedInBoard_property.prop
+    return self.componentsPlacedInBoard_property.selection
   }
 
   //····················································································································
@@ -3981,7 +3981,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var placedComponentNameArray_property_selection : EBSelection <StringArray> {
-    return self.placedComponentNameArray_property.prop
+    return self.placedComponentNameArray_property.selection
   }
 
   //····················································································································
@@ -4004,7 +4004,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicHasErrorOrWarning_property_selection : EBSelection <Bool> {
-    return self.schematicHasErrorOrWarning_property.prop
+    return self.schematicHasErrorOrWarning_property.selection
   }
 
   //····················································································································
@@ -4027,7 +4027,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicStatusMessage_property_selection : EBSelection <String> {
-    return self.schematicStatusMessage_property.prop
+    return self.schematicStatusMessage_property.selection
   }
 
   //····················································································································
@@ -4050,7 +4050,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicStatusImage_property_selection : EBSelection <NSImage> {
-    return self.schematicStatusImage_property.prop
+    return self.schematicStatusImage_property.selection
   }
 
   //····················································································································
@@ -4181,7 +4181,7 @@ class ProjectRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minPPTPTTTWdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4196,7 +4196,7 @@ class ProjectRoot : EBManagedObject,
     self.minPPTPTTTW_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minPPTPTTTW_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property)
+    self.mArtwork_property.addEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4211,7 +4211,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForOARdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4226,7 +4226,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForOARinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4241,7 +4241,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForPHDdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4256,7 +4256,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForPHDinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4271,7 +4271,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForBoardLimitWidth_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property)
+    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4286,7 +4286,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4301,7 +4301,7 @@ class ProjectRoot : EBManagedObject,
     self.drillDataFileExtension_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
+    self.mArtwork_property.addEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
   //--- Atomic proxy property: comments
     self.comments_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -4316,7 +4316,7 @@ class ProjectRoot : EBManagedObject,
     self.comments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.comments_property.addEBObserver (self.comments_property)
+    self.mArtwork_property.addEBObserverOf_comments (self.comments_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
       if let object = self?.mSelectedSheet {
@@ -4331,7 +4331,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.selectedSheetTitle_property)
+    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
     do{
       let controller = EBSimpleController (
@@ -4359,7 +4359,6 @@ class ProjectRoot : EBManagedObject,
       self.fileGenerationParameterArray_modelDidChangeController = controller
     }
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
-    // self.boardGridStepMultipliedByDisplayFactor_property.configure (self.mBoardGridStep_property, self.mBoardGridDisplayFactor_property, transient_ProjectRoot_boardGridStepMultipliedByDisplayFactor)
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBoardGridStep_property_selection.kind ()
@@ -4384,7 +4383,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardGridStep_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     self.mBoardGridDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: boardLimitsGridStepMultipliedByDisplayFactor
-    // self.boardLimitsGridStepMultipliedByDisplayFactor_property.configure (self.mBoardLimitsGridStep_property, self.mBoardLimitsGridDisplayFactor_property, transient_ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor)
     self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBoardLimitsGridStep_property_selection.kind ()
@@ -4409,7 +4407,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsGridStep_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: boardShapeIsRectangular
-    // self.boardShapeIsRectangular_property.configure (self.mBoardShape_property, transient_ProjectRoot_boardShapeIsRectangular)
     self.boardShapeIsRectangular_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mBoardShape_property_selection.kind ()
@@ -4434,7 +4431,6 @@ class ProjectRoot : EBManagedObject,
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedSheetIssues
-    // self.selectedSheetIssues_property.configure (self.mSelectedSheet_property.issues_property, transient_ProjectRoot_selectedSheetIssues)
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSelectedSheet_property.issues_property_selection.kind ()
@@ -4455,9 +4451,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.issues_property.addEBObserver (self.selectedSheetIssues_property)
+    self.mSelectedSheet_property.addEBObserverOf_issues (self.selectedSheetIssues_property)
   //--- Atomic property: connectedPoints
-    // self.connectedPoints_property.configure (self.mSelectedSheet_property.connectedPoints_property, self.selectedSheetIssues_property, transient_ProjectRoot_connectedPoints)
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSelectedSheet_property.connectedPoints_property_selection.kind ()
@@ -4479,10 +4474,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.connectedPoints_property.addEBObserver (self.connectedPoints_property)
+    self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
   //--- Atomic property: connexionWarningString
-    // self.connexionWarningString_property.configure (self.mSheets_property.connexionWarnings_property, transient_ProjectRoot_connexionWarningString)
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheets_property_selection.kind ()
@@ -4505,7 +4499,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.connexionWarningString_property)
   //--- Atomic property: connexionErrorString
-    // self.connexionErrorString_property.configure (self.mSheets_property.connexionErrors_property, transient_ProjectRoot_connexionErrorString)
     self.connexionErrorString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheets_property_selection.kind ()
@@ -4528,7 +4521,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
   //--- Atomic property: sheetIndexes
-    // self.sheetIndexes_property.configure (self.mSheets_property, transient_ProjectRoot_sheetIndexes)
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheets_property_selection.kind ()
@@ -4551,7 +4543,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mSheets_property.addEBObserver (self.sheetIndexes_property)
   //--- Atomic property: netsDescription
-    // self.netsDescription_property.configure (self.mNetClasses_property.netsDescription_property, transient_ProjectRoot_netsDescription)
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClasses_property_selection.kind ()
@@ -4574,7 +4565,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
   //--- Atomic property: boardIssues
-    // self.boardIssues_property.configure (self.mBoardObjects_property.issues_property, transient_ProjectRoot_boardIssues)
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mBoardObjects_property_selection.kind ()
@@ -4599,7 +4589,6 @@ class ProjectRoot : EBManagedObject,
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.mBoardObjects_property.signatureForERCChecking_property, self.mArtwork_property.signatureForERCChecking_property, transient_ProjectRoot_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBoardObjects_property_selection.kind ()
@@ -4622,9 +4611,8 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-    self.mArtwork_property.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mArtwork_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
   //--- Atomic property: ercStatusImage
-    // self.ercStatusImage_property.configure (self.mLastERCCheckingIsSuccess_property, self.mLastERCCheckingSignature_property, self.signatureForERCChecking_property, transient_ProjectRoot_ercStatusImage)
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mLastERCCheckingIsSuccess_property_selection.kind ()
@@ -4651,7 +4639,6 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusImage_property)
     self.signatureForERCChecking_property.addEBObserver (self.ercStatusImage_property)
   //--- Atomic property: ercStatusMessage
-    // self.ercStatusMessage_property.configure (self.mLastERCCheckingIsSuccess_property, self.mLastERCCheckingSignature_property, self.signatureForERCChecking_property, transient_ProjectRoot_ercStatusMessage)
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mLastERCCheckingIsSuccess_property_selection.kind ()
@@ -4678,7 +4665,6 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusMessage_property)
     self.signatureForERCChecking_property.addEBObserver (self.ercStatusMessage_property)
   //--- Atomic property: viaCountString
-    // self.viaCountString_property.configure (self.mBoardObjects_property.isVia_property, transient_ProjectRoot_viaCountString)
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mBoardObjects_property_selection.kind ()
@@ -4701,7 +4687,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBoardObjects_property.addEBObserverOf_isVia (self.viaCountString_property)
   //--- Atomic property: trackCountString
-    // self.trackCountString_property.configure (self.mBoardObjects_property.trackLength_property, transient_ProjectRoot_trackCountString)
     self.trackCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mBoardObjects_property_selection.kind ()
@@ -4724,7 +4709,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackCountString_property)
   //--- Atomic property: trackLengthString
-    // self.trackLengthString_property.configure (self.mBoardObjects_property.trackLength_property, self.mTrackLengthUnit_property, transient_ProjectRoot_trackLengthString)
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBoardObjects_property_selection.kind ()
@@ -4749,7 +4733,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackLengthString_property)
     self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property)
   //--- Atomic property: boardStatusImage
-    // self.boardStatusImage_property.configure (self.boardIssues_property, transient_ProjectRoot_boardStatusImage)
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardIssues_property_selection.kind ()
@@ -4772,7 +4755,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.boardIssues_property.addEBObserver (self.boardStatusImage_property)
   //--- Atomic property: boardStatusMessage
-    // self.boardStatusMessage_property.configure (self.boardIssues_property, transient_ProjectRoot_boardStatusMessage)
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardIssues_property_selection.kind ()
@@ -4795,7 +4777,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.boardIssues_property.addEBObserver (self.boardStatusMessage_property)
   //--- Atomic property: interiorBoundBox
-    // self.interiorBoundBox_property.configure (self.mBorderCurves_property.descriptor_property, self.mBoardShape_property, self.mRectangularBoardWidth_property, self.mRectangularBoardHeight_property, self.mBoardClearance_property, self.mBoardLimitsWidth_property, transient_ProjectRoot_interiorBoundBox)
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderCurves_property_selection.kind ()
@@ -4828,7 +4809,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearance_property.addEBObserver (self.interiorBoundBox_property)
     self.mBoardLimitsWidth_property.addEBObserver (self.interiorBoundBox_property)
   //--- Atomic property: boardBoundBox
-    // self.boardBoundBox_property.configure (self.interiorBoundBox_property, self.mBoardLimitsWidth_property, self.mBoardClearance_property, transient_ProjectRoot_boardBoundBox)
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.interiorBoundBox_property_selection.kind ()
@@ -4855,7 +4835,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsWidth_property.addEBObserver (self.boardBoundBox_property)
     self.mBoardClearance_property.addEBObserver (self.boardBoundBox_property)
   //--- Atomic property: boardInteriorTop
-    // self.boardInteriorTop_property.configure (self.interiorBoundBox_property, self.mBoardPointsBoundingBoxUnit_property, transient_ProjectRoot_boardInteriorTop)
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.interiorBoundBox_property_selection.kind ()
@@ -4880,7 +4859,6 @@ class ProjectRoot : EBManagedObject,
     self.interiorBoundBox_property.addEBObserver (self.boardInteriorTop_property)
     self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorTop_property)
   //--- Atomic property: boardInteriorBottom
-    // self.boardInteriorBottom_property.configure (self.interiorBoundBox_property, self.mBoardPointsBoundingBoxUnit_property, transient_ProjectRoot_boardInteriorBottom)
     self.boardInteriorBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.interiorBoundBox_property_selection.kind ()
@@ -4905,7 +4883,6 @@ class ProjectRoot : EBManagedObject,
     self.interiorBoundBox_property.addEBObserver (self.boardInteriorBottom_property)
     self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorBottom_property)
   //--- Atomic property: boardInteriorLeft
-    // self.boardInteriorLeft_property.configure (self.interiorBoundBox_property, self.mBoardPointsBoundingBoxUnit_property, transient_ProjectRoot_boardInteriorLeft)
     self.boardInteriorLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.interiorBoundBox_property_selection.kind ()
@@ -4930,7 +4907,6 @@ class ProjectRoot : EBManagedObject,
     self.interiorBoundBox_property.addEBObserver (self.boardInteriorLeft_property)
     self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorLeft_property)
   //--- Atomic property: boardInteriorRight
-    // self.boardInteriorRight_property.configure (self.interiorBoundBox_property, self.mBoardPointsBoundingBoxUnit_property, transient_ProjectRoot_boardInteriorRight)
     self.boardInteriorRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.interiorBoundBox_property_selection.kind ()
@@ -4955,7 +4931,6 @@ class ProjectRoot : EBManagedObject,
     self.interiorBoundBox_property.addEBObserver (self.boardInteriorRight_property)
     self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorRight_property)
   //--- Atomic property: boardLimitBorderTop
-    // self.boardLimitBorderTop_property.configure (self.boardBoundBox_property, self.mBoardLimitsBoundingBoxUnit_property, transient_ProjectRoot_boardLimitBorderTop)
     self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardBoundBox_property_selection.kind ()
@@ -4980,7 +4955,6 @@ class ProjectRoot : EBManagedObject,
     self.boardBoundBox_property.addEBObserver (self.boardLimitBorderTop_property)
     self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderTop_property)
   //--- Atomic property: boardLimitBorderBottom
-    // self.boardLimitBorderBottom_property.configure (self.boardBoundBox_property, self.mBoardLimitsBoundingBoxUnit_property, transient_ProjectRoot_boardLimitBorderBottom)
     self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardBoundBox_property_selection.kind ()
@@ -5005,7 +4979,6 @@ class ProjectRoot : EBManagedObject,
     self.boardBoundBox_property.addEBObserver (self.boardLimitBorderBottom_property)
     self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderBottom_property)
   //--- Atomic property: boardLimitBorderLeft
-    // self.boardLimitBorderLeft_property.configure (self.boardBoundBox_property, self.mBoardLimitsBoundingBoxUnit_property, transient_ProjectRoot_boardLimitBorderLeft)
     self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardBoundBox_property_selection.kind ()
@@ -5030,7 +5003,6 @@ class ProjectRoot : EBManagedObject,
     self.boardBoundBox_property.addEBObserver (self.boardLimitBorderLeft_property)
     self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderLeft_property)
   //--- Atomic property: boardLimitBorderRight
-    // self.boardLimitBorderRight_property.configure (self.boardBoundBox_property, self.mBoardLimitsBoundingBoxUnit_property, transient_ProjectRoot_boardLimitBorderRight)
     self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardBoundBox_property_selection.kind ()
@@ -5055,7 +5027,6 @@ class ProjectRoot : EBManagedObject,
     self.boardBoundBox_property.addEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderRight_property)
   //--- Atomic property: borderElementCountString
-    // self.borderElementCountString_property.configure (self.mBorderCurves_property, transient_ProjectRoot_borderElementCountString)
     self.borderElementCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mBorderCurves_property.count_property_selection.kind ()
@@ -5078,7 +5049,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBorderCurves_property.addEBObserver (self.borderElementCountString_property)
   //--- Atomic property: borderOutlineBackground
-    // self.borderOutlineBackground_property.configure (self.mBorderCurves_property.descriptor_property, self.mBoardShape_property, self.mRectangularBoardWidth_property, self.mRectangularBoardHeight_property, self.mBoardLimitsWidth_property, prefs_boardLimitsColorForBoard_property, self.mBoardClearance_property, prefs_boardClearanceColorForBoard_property, transient_ProjectRoot_borderOutlineBackground)
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderCurves_property_selection.kind ()
@@ -5115,7 +5085,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearance_property.addEBObserver (self.borderOutlineBackground_property)
     prefs_boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
   //--- Atomic property: borderViewBackground
-    // self.borderViewBackground_property.configure (prefs_boardBackgroundColorForBoard_property, self.borderOutlineBackground_property, self.mBoardObjects_property.objectDisplay_property, transient_ProjectRoot_borderViewBackground)
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = prefs_boardBackgroundColorForBoard_property_selection.kind ()
@@ -5142,7 +5111,6 @@ class ProjectRoot : EBManagedObject,
     self.borderOutlineBackground_property.addEBObserver (self.borderViewBackground_property)
     self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.borderViewBackground_property)
   //--- Atomic property: deviceNames
-    // self.deviceNames_property.configure (self.mDevices_property.mDeviceName_property, transient_ProjectRoot_deviceNames)
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDevices_property_selection.kind ()
@@ -5165,7 +5133,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
   //--- Atomic property: allClassNames
-    // self.allClassNames_property.configure (self.mNetClasses_property.mNetClassName_property, transient_ProjectRoot_allClassNames)
     self.allClassNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClasses_property_selection.kind ()
@@ -5188,7 +5155,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property)
   //--- Atomic property: sheetGeometry
-    // self.sheetGeometry_property.configure (self.mSchematicSheetOrientation_property, self.mSchematicCustomWidth_property, self.mSchematicCustomHeight_property, transient_ProjectRoot_sheetGeometry)
     self.sheetGeometry_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSchematicSheetOrientation_property_selection.kind ()
@@ -5215,7 +5181,6 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicCustomWidth_property.addEBObserver (self.sheetGeometry_property)
     self.mSchematicCustomHeight_property.addEBObserver (self.sheetGeometry_property)
   //--- Atomic property: schematicBackgroundDisplay
-    // self.schematicBackgroundDisplay_property.configure (self.mSchematicTitle_property, self.mSchematicVersion_property, self.sheetGeometry_property, self.mSelectedSheet_property.mSheetTitle_property, self.mSheets_property, self.mSelectedSheet_property, self.mSchematicDate_property, transient_ProjectRoot_schematicBackgroundDisplay)
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSchematicTitle_property_selection.kind ()
@@ -5245,12 +5210,11 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: netWarningCount
-    // self.netWarningCount_property.configure (self.mNetClasses_property.netWarningCount_property, transient_ProjectRoot_netWarningCount)
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClasses_property_selection.kind ()
@@ -5273,7 +5237,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mNetClasses_property.addEBObserverOf_netWarningCount (self.netWarningCount_property)
   //--- Atomic property: netNamesArray
-    // self.netNamesArray_property.configure (self.mNetClasses_property.netsDescription_property, transient_ProjectRoot_netNamesArray)
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNetClasses_property_selection.kind ()
@@ -5296,7 +5259,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netNamesArray_property)
   //--- Atomic property: unplacedSymbols
-    // self.unplacedSymbols_property.configure (self.mComponents_property.unplacedSymbols_property, transient_ProjectRoot_unplacedSymbols)
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponents_property_selection.kind ()
@@ -5319,7 +5281,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
   //--- Atomic property: unplacedPackages
-    // self.unplacedPackages_property.configure (self.mComponents_property, self.mComponents_property.componentName_property, self.mComponents_property.mComponentValue_property, self.mComponents_property.componentIsPlacedInBoard_property, transient_ProjectRoot_unplacedPackages)
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponents_property_selection.kind ()
@@ -5348,7 +5309,6 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
   //--- Atomic property: componentsPlacedInBoard
-    // self.componentsPlacedInBoard_property.configure (self.mComponents_property.mNamePrefix_property, self.mComponents_property.mNameIndex_property, self.mComponents_property.componentIsPlacedInBoard_property, transient_ProjectRoot_componentsPlacedInBoard)
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponents_property_selection.kind ()
@@ -5375,7 +5335,6 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
   //--- Atomic property: placedComponentNameArray
-    // self.placedComponentNameArray_property.configure (self.mComponents_property.componentName_property, self.mComponents_property.componentIsPlacedInBoard_property, transient_ProjectRoot_placedComponentNameArray)
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponents_property_selection.kind ()
@@ -5400,7 +5359,6 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_componentName (self.placedComponentNameArray_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property)
   //--- Atomic property: schematicHasErrorOrWarning
-    // self.schematicHasErrorOrWarning_property.configure (self.unplacedSymbols_property, self.netWarningCount_property, self.mSheets_property.connexionWarnings_property, self.mSheets_property.connexionErrors_property, transient_ProjectRoot_schematicHasErrorOrWarning)
     self.schematicHasErrorOrWarning_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.unplacedSymbols_property_selection.kind ()
@@ -5429,7 +5387,6 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicHasErrorOrWarning_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicHasErrorOrWarning_property)
   //--- Atomic property: schematicStatusMessage
-    // self.schematicStatusMessage_property.configure (self.unplacedSymbols_property, self.netWarningCount_property, self.mSheets_property.connexionWarnings_property, self.mSheets_property.connexionErrors_property, transient_ProjectRoot_schematicStatusMessage)
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.unplacedSymbols_property_selection.kind ()
@@ -5458,7 +5415,6 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
   //--- Atomic property: schematicStatusImage
-    // self.schematicStatusImage_property.configure (self.unplacedSymbols_property, self.netWarningCount_property, self.mSheets_property.connexionWarnings_property, self.mSheets_property.connexionErrors_property, transient_ProjectRoot_schematicStatusImage)
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.unplacedSymbols_property_selection.kind ()
@@ -5511,57 +5467,57 @@ class ProjectRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property)
+    self.mArtwork_property.removeEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = nil
     self.minPPTPTTTW_property.mWriteModelFunction = nil
     self.minPPTPTTTW_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minPPTPTTTW_property.removeEBObserver (self.minPPTPTTTW_property)
+    self.mArtwork_property.removeEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = nil
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = nil
     self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minValueForOARdisplayUnit_property.removeEBObserver (self.minValueForOARdisplayUnit_property)
+    self.mArtwork_property.removeEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = nil
     self.minValueForOARinEBUnit_property.mWriteModelFunction = nil
     self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minValueForOARinEBUnit_property.removeEBObserver (self.minValueForOARinEBUnit_property)
+    self.mArtwork_property.removeEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = nil
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = nil
     self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minValueForPHDdisplayUnit_property.removeEBObserver (self.minValueForPHDdisplayUnit_property)
+    self.mArtwork_property.removeEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = nil
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = nil
     self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property)
+    self.mArtwork_property.removeEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = nil
     self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property)
+    self.mArtwork_property.removeEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.mArtwork_property.removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = nil
     self.drillDataFileExtension_property.mWriteModelFunction = nil
     self.drillDataFileExtension_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property)
+    self.mArtwork_property.removeEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
   //--- Atomic proxy property: comments
     self.comments_property.mReadModelFunction = nil
     self.comments_property.mWriteModelFunction = nil
     self.comments_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.comments_property.removeEBObserver (self.comments_property)
+    self.mArtwork_property.removeEBObserverOf_comments (self.comments_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = nil
     self.selectedSheetTitle_property.mWriteModelFunction = nil
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = nil
-    self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.selectedSheetTitle_property)
+    self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
     self.selectedSheetObjects_property.setModel (nil)
     self.selectedSheetObjects_modelDidChangeController?.unregister ()

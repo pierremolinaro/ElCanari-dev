@@ -59,7 +59,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
+    return self.documentFilePath_property.selection
   }
 
   //····················································································································
@@ -82,7 +82,7 @@ import Cocoa
   //····················································································································
 
   final var assignmentInhibitionMessage_property_selection : EBSelection <String> {
-    return self.assignmentInhibitionMessage_property.prop
+    return self.assignmentInhibitionMessage_property.selection
   }
 
   //····················································································································
@@ -105,7 +105,7 @@ import Cocoa
   //····················································································································
 
   final var hasUnconnectedPin_property_selection : EBSelection <Bool> {
-    return self.hasUnconnectedPin_property.prop
+    return self.hasUnconnectedPin_property.selection
   }
 
   //····················································································································
@@ -128,7 +128,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
+    return self.mStatusMessage_property.selection
   }
 
   //····················································································································
@@ -151,7 +151,7 @@ import Cocoa
   //····················································································································
 
   final var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.mMetadataStatus_property.prop
+    return self.mMetadataStatus_property.selection
   }
 
   //····················································································································
@@ -174,7 +174,7 @@ import Cocoa
   //····················································································································
 
   final var hasUnconnectedPad_property_selection : EBSelection <Bool> {
-    return self.hasUnconnectedPad_property.prop
+    return self.hasUnconnectedPad_property.selection
   }
 
   //····················································································································
@@ -197,7 +197,7 @@ import Cocoa
   //····················································································································
 
   final var hasAssignedPadProxies_property_selection : EBSelection <Bool> {
-    return self.hasAssignedPadProxies_property.prop
+    return self.hasAssignedPadProxies_property.selection
   }
 
   //····················································································································
@@ -220,7 +220,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+    return self.mStatusImage_property.selection
   }
 
   //····················································································································
@@ -545,7 +545,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: assignmentInhibitionMessage
-    // self.assignmentInhibitionMessage_property.configure (self.rootObject.inconsistentPackagePadNameSetsMessage_property, self.rootObject.inconsistentSymbolNameSetMessage_property, transient_DeviceDocument_assignmentInhibitionMessage)
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
@@ -574,7 +573,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: hasUnconnectedPin
-    // self.hasUnconnectedPin_property.configure (self.rootObject.unconnectedPins_property, transient_DeviceDocument_hasUnconnectedPin)
     self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unconnectedPins_property_selection.kind ()
@@ -601,7 +599,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
-    // self.mStatusMessage_property.configure (self.rootObject.issues_property, transient_DeviceDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -628,7 +625,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mMetadataStatus
-    // self.mMetadataStatus_property.configure (self.rootObject.issues_property, transient_DeviceDocument_mMetadataStatus)
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -655,7 +651,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: hasUnconnectedPad
-    // self.hasUnconnectedPad_property.configure (self.rootObject.unconnectedPads_property, transient_DeviceDocument_hasUnconnectedPad)
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unconnectedPads_property_selection.kind ()
@@ -682,7 +677,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: hasAssignedPadProxies
-    // self.hasAssignedPadProxies_property.configure (self.rootObject.assignedPadProxies_property, transient_DeviceDocument_hasAssignedPadProxies)
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.assignedPadProxies_property_selection.kind ()
@@ -709,7 +703,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
-    // self.mStatusImage_property.configure (self.rootObject.issues_property, transient_DeviceDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()

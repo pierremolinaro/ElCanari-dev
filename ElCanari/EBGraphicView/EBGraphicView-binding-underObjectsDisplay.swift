@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateUnderObjectsDisplay (from model : EBReadOnlyProperty_EBShape) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mUnderObjectsDisplay = EBShape ()
     case .single (let v) :

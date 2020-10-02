@@ -45,7 +45,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_mFirstX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFirstX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_mFirstX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFirstX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFirstY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFirstY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -159,7 +159,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFirstColor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFirstColor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -216,7 +216,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSecondDx.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSecondDx.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -273,7 +273,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSecondDy.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSecondDy.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -330,7 +330,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSecondColor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSecondColor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -402,7 +402,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -458,7 +458,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -572,7 +572,7 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
       self.mModelArrayShouldBeComputed = false
       let newArray : [PackageModelImageDoublePoint] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -597,7 +597,7 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageModelImageDoublePoint] > {
+  override var selection : EBSelection < [PackageModelImageDoublePoint] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -664,7 +664,7 @@ final class TransientArrayOfSuperOf_PackageModelImageDoublePoint <SUPER : EBMana
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -691,7 +691,7 @@ final class TransientArrayOfSuperOf_PackageModelImageDoublePoint <SUPER : EBMana
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageModelImageDoublePoint] > {
+  override var selection : EBSelection < [PackageModelImageDoublePoint] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -750,7 +750,7 @@ final class ProxyArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Package
   override func notifyModelDidChange () {
     let newModelArray : [PackageModelImageDoublePoint]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -773,9 +773,9 @@ final class ProxyArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Package
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageModelImageDoublePoint] > {
+  override var selection : EBSelection < [PackageModelImageDoublePoint] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -785,7 +785,7 @@ final class ProxyArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Package
 
   override var propval : [PackageModelImageDoublePoint] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -845,7 +845,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -905,7 +905,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
  
   //····················································································································
 
-  override var prop : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -994,7 +994,7 @@ final class StandAloneArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Pa
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

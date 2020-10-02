@@ -16,7 +16,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mComponentPadName_property = EBPropertyProxy_String ()
   var mComponentPadName_property_selection : EBSelection <String> {
-    return self.mComponentPadName_property.prop
+    return self.mComponentPadName_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mPadIndex_property = EBPropertyProxy_Int ()
   var mPadIndex_property_selection : EBSelection <Int> {
-    return self.mPadIndex_property.prop
+    return self.mPadIndex_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mX_property = EBPropertyProxy_Int ()
   var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
+    return self.mX_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mY_property = EBPropertyProxy_Int ()
   var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
+    return self.mY_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mDefaultHoleDiameterUnit_property = EBPropertyProxy_Int ()
   var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mDefaultHoleDiameterUnit_property.prop
+    return self.mDefaultHoleDiameterUnit_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mCustomHoleDiameter_property = EBPropertyProxy_Int ()
   var mCustomHoleDiameter_property_selection : EBSelection <Int> {
-    return self.mCustomHoleDiameter_property.prop
+    return self.mCustomHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mCustomHoleDiameterUnit_property = EBPropertyProxy_Int ()
   var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mCustomHoleDiameterUnit_property.prop
+    return self.mCustomHoleDiameterUnit_property.selection
   }
 
   //····················································································································
@@ -79,7 +79,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mUsesCustomHoleDiameter_property = EBPropertyProxy_Bool ()
   var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> {
-    return self.mUsesCustomHoleDiameter_property.prop
+    return self.mUsesCustomHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -88,7 +88,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mDefaultPadDiameterUnit_property = EBPropertyProxy_Int ()
   var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mDefaultPadDiameterUnit_property.prop
+    return self.mDefaultPadDiameterUnit_property.selection
   }
 
   //····················································································································
@@ -97,7 +97,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mCustomPadDiameter_property = EBPropertyProxy_Int ()
   var mCustomPadDiameter_property_selection : EBSelection <Int> {
-    return self.mCustomPadDiameter_property.prop
+    return self.mCustomPadDiameter_property.selection
   }
 
   //····················································································································
@@ -106,7 +106,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mCustomPadDiameterUnit_property = EBPropertyProxy_Int ()
   var mCustomPadDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mCustomPadDiameterUnit_property.prop
+    return self.mCustomPadDiameterUnit_property.selection
   }
 
   //····················································································································
@@ -115,7 +115,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let mUsesCustomPadDiameter_property = EBPropertyProxy_Bool ()
   var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> {
-    return self.mUsesCustomPadDiameter_property.prop
+    return self.mUsesCustomPadDiameter_property.selection
   }
 
   //····················································································································
@@ -125,7 +125,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let location_property = EBTransientProperty_CanariPoint ()
 
   var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.prop
+    return self.location_property.selection
   }
 
   //····················································································································
@@ -135,7 +135,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let netNameFromComponentPad_property = EBTransientProperty_String ()
 
   var netNameFromComponentPad_property_selection : EBSelection <String> {
-    return self.netNameFromComponentPad_property.prop
+    return self.netNameFromComponentPad_property.selection
   }
 
   //····················································································································
@@ -145,7 +145,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
 
   var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
-    return self.netNameAndPadLocation_property.prop
+    return self.netNameAndPadLocation_property.selection
   }
 
   //····················································································································
@@ -155,7 +155,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let side_property = EBTransientProperty_ConnectorSide ()
 
   var side_property_selection : EBSelection <ConnectorSide> {
-    return self.side_property.prop
+    return self.side_property.selection
   }
 
   //····················································································································
@@ -165,7 +165,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let isVia_property = EBTransientProperty_Bool ()
 
   var isVia_property_selection : EBSelection <Bool> {
-    return self.isVia_property.prop
+    return self.isVia_property.selection
   }
 
   //····················································································································
@@ -175,7 +175,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -185,7 +185,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
 
   var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
-    return self.viaDefaultHoleDiameter_property.prop
+    return self.viaDefaultHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -195,7 +195,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
 
   var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
-    return self.viaDefaultPadDiameter_property.prop
+    return self.viaDefaultPadDiameter_property.selection
   }
 
   //····················································································································
@@ -205,7 +205,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let netNameFromTracks_property = EBTransientProperty_String ()
 
   var netNameFromTracks_property_selection : EBSelection <String> {
-    return self.netNameFromTracks_property.prop
+    return self.netNameFromTracks_property.selection
   }
 
   //····················································································································
@@ -215,7 +215,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let netClassName_property = EBTransientProperty_String ()
 
   var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.prop
+    return self.netClassName_property.selection
   }
 
   //····················································································································
@@ -225,7 +225,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let connectedToComponent_property = EBTransientProperty_Bool ()
 
   var connectedToComponent_property_selection : EBSelection <Bool> {
-    return self.connectedToComponent_property.prop
+    return self.connectedToComponent_property.selection
   }
 
   //····················································································································
@@ -235,7 +235,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let actualHoleDiameter_property = EBTransientProperty_Int ()
 
   var actualHoleDiameter_property_selection : EBSelection <Int> {
-    return self.actualHoleDiameter_property.prop
+    return self.actualHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -245,7 +245,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let actualPadDiameter_property = EBTransientProperty_Int ()
 
   var actualPadDiameter_property_selection : EBSelection <Int> {
-    return self.actualPadDiameter_property.prop
+    return self.actualPadDiameter_property.selection
   }
 
   //····················································································································
@@ -255,7 +255,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -265,7 +265,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -275,7 +275,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -631,7 +631,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mComponentPadName (self.mComponentPadName_property)
     self.mComponentPadName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -665,7 +665,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mComponentPadName_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -677,7 +677,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mComponentPadName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -700,7 +700,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mPadIndex (self.mPadIndex_property)
     self.mPadIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -734,7 +734,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mPadIndex_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -746,7 +746,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mPadIndex_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -769,7 +769,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -803,7 +803,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -815,7 +815,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -838,7 +838,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -872,7 +872,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -884,7 +884,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -907,7 +907,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mDefaultHoleDiameterUnit (self.mDefaultHoleDiameterUnit_property)
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -941,7 +941,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mDefaultHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -953,7 +953,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mDefaultHoleDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -976,7 +976,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mCustomHoleDiameter (self.mCustomHoleDiameter_property)
     self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1010,7 +1010,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomHoleDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1022,7 +1022,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomHoleDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1045,7 +1045,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mCustomHoleDiameterUnit (self.mCustomHoleDiameterUnit_property)
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1079,7 +1079,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1091,7 +1091,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomHoleDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1114,7 +1114,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mUsesCustomHoleDiameter (self.mUsesCustomHoleDiameter_property)
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1148,7 +1148,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mUsesCustomHoleDiameter_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1160,7 +1160,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mUsesCustomHoleDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1183,7 +1183,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mDefaultPadDiameterUnit (self.mDefaultPadDiameterUnit_property)
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1217,7 +1217,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mDefaultPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1229,7 +1229,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mDefaultPadDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1252,7 +1252,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mCustomPadDiameter (self.mCustomPadDiameter_property)
     self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1286,7 +1286,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomPadDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1298,7 +1298,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomPadDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1321,7 +1321,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mCustomPadDiameterUnit (self.mCustomPadDiameterUnit_property)
     self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1355,7 +1355,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1367,7 +1367,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mCustomPadDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1390,7 +1390,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property)
     self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1424,7 +1424,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mUsesCustomPadDiameter_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1436,7 +1436,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     }
     self.mUsesCustomPadDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1459,7 +1459,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_location (self.location_property)
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1498,7 +1498,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1537,7 +1537,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property)
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1576,7 +1576,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_side (self.side_property)
     self.side_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1615,7 +1615,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_isVia (self.isVia_property)
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1654,7 +1654,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1693,7 +1693,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property)
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1732,7 +1732,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property)
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1771,7 +1771,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_netNameFromTracks (self.netNameFromTracks_property)
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1810,7 +1810,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1849,7 +1849,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_connectedToComponent (self.connectedToComponent_property)
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1888,7 +1888,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property)
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1927,7 +1927,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_actualPadDiameter (self.actualPadDiameter_property)
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1966,7 +1966,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2005,7 +2005,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2044,7 +2044,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

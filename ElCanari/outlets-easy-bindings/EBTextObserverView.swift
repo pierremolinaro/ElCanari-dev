@@ -37,7 +37,7 @@ class EBTextObserverView : NSTextView, EBUserClassNameProtocol {
   //····················································································································
 
   private func updateTextValue (_ object : EBReadOnlyProperty_String) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       self.string = ""
     case .single (let propertyValue) :

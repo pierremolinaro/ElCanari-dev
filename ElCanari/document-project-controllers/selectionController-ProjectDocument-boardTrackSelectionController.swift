@@ -16,7 +16,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let mSide_property = EBPropertyProxy_TrackSide ()
   var mSide_property_selection : EBSelection <TrackSide> {
-    return self.mSide_property.prop
+    return self.mSide_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let mDefaultTrackWidthUnit_property = EBPropertyProxy_Int ()
   var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> {
-    return self.mDefaultTrackWidthUnit_property.prop
+    return self.mDefaultTrackWidthUnit_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let mCustomTrackWidth_property = EBPropertyProxy_Int ()
   var mCustomTrackWidth_property_selection : EBSelection <Int> {
-    return self.mCustomTrackWidth_property.prop
+    return self.mCustomTrackWidth_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let mCustomTrackWidthUnit_property = EBPropertyProxy_Int ()
   var mCustomTrackWidthUnit_property_selection : EBSelection <Int> {
-    return self.mCustomTrackWidthUnit_property.prop
+    return self.mCustomTrackWidthUnit_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let mUsesCustomTrackWidth_property = EBPropertyProxy_Bool ()
   var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> {
-    return self.mUsesCustomTrackWidth_property.prop
+    return self.mUsesCustomTrackWidth_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let mIsPreservedByAutoRouter_property = EBPropertyProxy_Bool ()
   var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> {
-    return self.mIsPreservedByAutoRouter_property.prop
+    return self.mIsPreservedByAutoRouter_property.selection
   }
 
   //····················································································································
@@ -71,7 +71,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let actualTrackWidth_property = EBTransientProperty_Int ()
 
   var actualTrackWidth_property_selection : EBSelection <Int> {
-    return self.actualTrackWidth_property.prop
+    return self.actualTrackWidth_property.selection
   }
 
   //····················································································································
@@ -81,7 +81,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -91,7 +91,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let netName_property = EBTransientProperty_String ()
 
   var netName_property_selection : EBSelection <String> {
-    return self.netName_property.prop
+    return self.netName_property.selection
   }
 
   //····················································································································
@@ -101,7 +101,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let netClassName_property = EBTransientProperty_String ()
 
   var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.prop
+    return self.netClassName_property.selection
   }
 
   //····················································································································
@@ -111,7 +111,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let netClassTrackWidth_property = EBTransientProperty_Int ()
 
   var netClassTrackWidth_property_selection : EBSelection <Int> {
-    return self.netClassTrackWidth_property.prop
+    return self.netClassTrackWidth_property.selection
   }
 
   //····················································································································
@@ -121,7 +121,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
 
   var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaHoleDiameter_property.prop
+    return self.netClassViaHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -131,7 +131,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let netClassViaPadDiameter_property = EBTransientProperty_Int ()
 
   var netClassViaPadDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaPadDiameter_property.prop
+    return self.netClassViaPadDiameter_property.selection
   }
 
   //····················································································································
@@ -141,7 +141,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let trackLength_property = EBTransientProperty_Double ()
 
   var trackLength_property_selection : EBSelection <Double> {
-    return self.trackLength_property.prop
+    return self.trackLength_property.selection
   }
 
   //····················································································································
@@ -151,7 +151,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let endPointsLocation_property = EBTransientProperty_CanariPointArray ()
 
   var endPointsLocation_property_selection : EBSelection <CanariPointArray> {
-    return self.endPointsLocation_property.prop
+    return self.endPointsLocation_property.selection
   }
 
   //····················································································································
@@ -161,7 +161,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -171,7 +171,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -423,7 +423,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_mSide (self.mSide_property)
     self.mSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -457,7 +457,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mSide_property.mWriteModelFunction = { [weak self] (inValue : TrackSide) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -469,7 +469,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : TrackSide, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -492,7 +492,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
     self.mDefaultTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -526,7 +526,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mDefaultTrackWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -538,7 +538,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mDefaultTrackWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -561,7 +561,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
     self.mCustomTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -595,7 +595,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mCustomTrackWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -607,7 +607,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mCustomTrackWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -630,7 +630,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
     self.mCustomTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -664,7 +664,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mCustomTrackWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -676,7 +676,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mCustomTrackWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -699,7 +699,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
     self.mUsesCustomTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -733,7 +733,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mUsesCustomTrackWidth_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -745,7 +745,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mUsesCustomTrackWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -768,7 +768,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
     self.mIsPreservedByAutoRouter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -802,7 +802,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mIsPreservedByAutoRouter_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -814,7 +814,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     }
     self.mIsPreservedByAutoRouter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -837,7 +837,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -876,7 +876,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -915,7 +915,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -954,7 +954,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -993,7 +993,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1032,7 +1032,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1071,7 +1071,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1110,7 +1110,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_trackLength (self.trackLength_property)
     self.trackLength_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1149,7 +1149,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_endPointsLocation (self.endPointsLocation_property)
     self.endPointsLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1188,7 +1188,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1227,7 +1227,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

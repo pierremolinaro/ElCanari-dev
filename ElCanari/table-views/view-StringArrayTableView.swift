@@ -115,7 +115,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
   //····················································································································
 
   func update (from inModel : EBReadOnlyProperty_StringArray) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

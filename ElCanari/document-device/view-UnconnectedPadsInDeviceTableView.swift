@@ -109,7 +109,7 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NST
   //····················································································································
 
   func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_StringArray) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

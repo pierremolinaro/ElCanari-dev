@@ -35,7 +35,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padDiameter.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padDiameter.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -149,7 +149,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -279,7 +279,7 @@ final class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
       self.mModelArrayShouldBeComputed = false
       let newArray : [BoardModelVia] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -304,7 +304,7 @@ final class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelVia] > {
+  override var selection : EBSelection < [BoardModelVia] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -371,7 +371,7 @@ final class TransientArrayOfSuperOf_BoardModelVia <SUPER : EBManagedObject> : Re
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -398,7 +398,7 @@ final class TransientArrayOfSuperOf_BoardModelVia <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelVia] > {
+  override var selection : EBSelection < [BoardModelVia] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -457,7 +457,7 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
   override func notifyModelDidChange () {
     let newModelArray : [BoardModelVia]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -480,9 +480,9 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelVia] > {
+  override var selection : EBSelection < [BoardModelVia] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -492,7 +492,7 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 
   override var propval : [BoardModelVia] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -552,7 +552,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -612,7 +612,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
  
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -701,7 +701,7 @@ final class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

@@ -44,7 +44,7 @@ class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtoc
   //····················································································································
 
   fileprivate func updateSelectedSegment (_ object : EBReadOnlyProperty_QuadrantRotation) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.selectedSegment = -1

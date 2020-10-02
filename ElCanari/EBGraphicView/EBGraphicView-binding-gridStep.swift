@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateGridStep (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mGridStepInCanariUnit = milsToCanariUnit (fromInt: 25)
     case .single (let v) :

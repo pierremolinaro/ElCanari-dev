@@ -54,7 +54,7 @@ class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  final var mFileName_property_selection : EBSelection <String> { return self.mFileName_property.prop }
+  final var mFileName_property_selection : EBSelection <String> { return self.mFileName_property.selection }
 
   //····················································································································
   //   Atomic property: mFileData
@@ -79,7 +79,7 @@ class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
+  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.selection }
 
   //····················································································································
   //   Transient property: fileSize
@@ -90,7 +90,7 @@ class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   final var fileSize_property_selection : EBSelection <Int> {
-    return self.fileSize_property.prop
+    return self.fileSize_property.selection
   }
 
   //····················································································································
@@ -119,7 +119,6 @@ class DeviceDocumentation : EBManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: fileSize
-    // self.fileSize_property.configure (self.mFileData_property, transient_DeviceDocumentation_fileSize)
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFileData_property_selection.kind ()

@@ -29,7 +29,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
+    return self.documentFilePath_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ import Cocoa
   //····················································································································
 
   final var canDeleteCurrentCharacter_property_selection : EBSelection <Bool> {
-    return self.canDeleteCurrentCharacter_property.prop
+    return self.canDeleteCurrentCharacter_property.selection
   }
 
   //····················································································································
@@ -75,7 +75,7 @@ import Cocoa
   //····················································································································
 
   final var noIssue_property_selection : EBSelection <Bool> {
-    return self.noIssue_property.prop
+    return self.noIssue_property.selection
   }
 
   //····················································································································
@@ -98,7 +98,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+    return self.mStatusImage_property.selection
   }
 
   //····················································································································
@@ -121,7 +121,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
+    return self.mStatusMessage_property.selection
   }
 
   //····················································································································
@@ -144,7 +144,7 @@ import Cocoa
   //····················································································································
 
   final var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.mMetadataStatus_property.prop
+    return self.mMetadataStatus_property.selection
   }
 
   //····················································································································
@@ -349,7 +349,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canDeleteCurrentCharacter
-    // self.canDeleteCurrentCharacter_property.configure (self.rootObject.definedCharacters_property, transient_FontDocument_canDeleteCurrentCharacter)
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.definedCharacters_property_selection.kind ()
@@ -376,7 +375,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: noIssue
-    // self.noIssue_property.configure (self.rootObject.issues_property, transient_FontDocument_noIssue)
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -403,7 +401,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
-    // self.mStatusImage_property.configure (self.rootObject.issues_property, transient_FontDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -430,7 +427,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
-    // self.mStatusMessage_property.configure (self.rootObject.issues_property, transient_FontDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
@@ -457,7 +453,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mMetadataStatus
-    // self.mMetadataStatus_property.configure (self.rootObject.issues_property, transient_FontDocument_mMetadataStatus)
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()

@@ -17,7 +17,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var boardLimitWidth_property = EBTransientProperty_Int ()
 
   var boardLimitWidth_property_selection : EBSelection <Int> {
-    return self.boardLimitWidth_property.prop
+    return self.boardLimitWidth_property.selection
   }
 
   //····················································································································
@@ -27,7 +27,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var instanceRect_property = EBTransientProperty_CanariRect ()
 
   var instanceRect_property_selection : EBSelection <CanariRect> {
-    return self.instanceRect_property.prop
+    return self.instanceRect_property.selection
   }
 
   //····················································································································
@@ -37,7 +37,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var instanceRotation_property = EBPropertyProxy_QuadrantRotation ()
 
   var instanceRotation_property_selection : EBSelection <QuadrantRotation> {
-    return self.instanceRotation_property.prop
+    return self.instanceRotation_property.selection
   }
 
   //····················································································································
@@ -47,7 +47,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var modelName_property = EBTransientProperty_String ()
 
   var modelName_property_selection : EBSelection <String> {
-    return self.modelName_property.prop
+    return self.modelName_property.selection
   }
 
   //····················································································································
@@ -65,7 +65,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -75,7 +75,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -85,7 +85,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var x_property = EBPropertyProxy_Int ()
 
   var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
+    return self.x_property.selection
   }
 
   //····················································································································
@@ -95,7 +95,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var y_property = EBPropertyProxy_Int ()
 
   var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
+    return self.y_property.selection
   }
 
   //····················································································································
@@ -274,7 +274,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -314,7 +314,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_instanceRect (self.instanceRect_property)
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -354,7 +354,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_instanceRotation (self.instanceRotation_property)
     self.instanceRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -388,7 +388,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     }
     self.instanceRotation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -400,7 +400,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     }
     self.instanceRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -424,7 +424,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_modelName (self.modelName_property)
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -464,7 +464,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -504,7 +504,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -544,7 +544,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_x (self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -578,7 +578,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     }
     self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -590,7 +590,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     }
     self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -614,7 +614,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     model.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -648,7 +648,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     }
     self.y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -660,7 +660,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     }
     self.y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :

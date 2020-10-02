@@ -45,7 +45,7 @@ class CanariOrientationSegmentedControl : NSSegmentedControl, EBUserClassNamePro
   //····················································································································
 
   fileprivate func updateSelectedSegment (_ object : EBReadWriteProperty_Int) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.selectedSegment = -1

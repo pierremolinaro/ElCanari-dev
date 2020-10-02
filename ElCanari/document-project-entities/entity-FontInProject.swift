@@ -75,7 +75,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var mTexts_property_selection : EBSelection < [BoardText] > {
-    return self.mTexts_property.prop
+    return self.mTexts_property.selection
   }
 
   //····················································································································
@@ -108,7 +108,7 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mNominalSize_property_selection : EBSelection <Int> { return self.mNominalSize_property.prop }
+  final var mNominalSize_property_selection : EBSelection <Int> { return self.mNominalSize_property.selection }
 
   //····················································································································
   //   Atomic property: mFontName
@@ -133,7 +133,7 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
+  final var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.selection }
 
   //····················································································································
   //   Atomic property: mFontVersion
@@ -158,7 +158,7 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.prop }
+  final var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.selection }
 
   //····················································································································
   //   Atomic property: mDescriptiveString
@@ -183,7 +183,7 @@ class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
+  final var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.selection }
 
   //····················································································································
   //   To many property: mComponentNames
@@ -194,7 +194,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponentNames_property.prop
+    return self.mComponentNames_property.selection
   }
 
   //····················································································································
@@ -213,7 +213,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponentValues_property.prop
+    return self.mComponentValues_property.selection
   }
 
   //····················································································································
@@ -232,7 +232,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.prop
+    return self.versionString_property.selection
   }
 
   //····················································································································
@@ -255,7 +255,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var sizeString_property_selection : EBSelection <String> {
-    return self.sizeString_property.prop
+    return self.sizeString_property.selection
   }
 
   //····················································································································
@@ -278,7 +278,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor_property_selection : EBSelection <BoardFontDescriptor> {
-    return self.descriptor_property.prop
+    return self.descriptor_property.selection
   }
 
   //····················································································································
@@ -301,7 +301,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   final var canRemoveFont_property_selection : EBSelection <Bool> {
-    return self.canRemoveFont_property.prop
+    return self.canRemoveFont_property.selection
   }
 
   //····················································································································
@@ -350,7 +350,6 @@ class FontInProject : EBManagedObject,
       resetter: { inObject in inObject.mValueFont_property.setProp (nil) }
     )
   //--- Atomic property: versionString
-    // self.versionString_property.configure (self.mFontVersion_property, transient_FontInProject_versionString)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFontVersion_property_selection.kind ()
@@ -373,7 +372,6 @@ class FontInProject : EBManagedObject,
     }
     self.mFontVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: sizeString
-    // self.sizeString_property.configure (self.mDescriptiveString_property, transient_FontInProject_sizeString)
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDescriptiveString_property_selection.kind ()
@@ -396,7 +394,6 @@ class FontInProject : EBManagedObject,
     }
     self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
   //--- Atomic property: descriptor
-    // self.descriptor_property.configure (self.mNominalSize_property, self.mDescriptiveString_property, transient_FontInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNominalSize_property_selection.kind ()
@@ -421,7 +418,6 @@ class FontInProject : EBManagedObject,
     self.mNominalSize_property.addEBObserver (self.descriptor_property)
     self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
   //--- Atomic property: canRemoveFont
-    // self.canRemoveFont_property.configure (self.mComponentNames_property, self.mComponentValues_property, transient_FontInProject_canRemoveFont)
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponentNames_property.count_property_selection.kind ()

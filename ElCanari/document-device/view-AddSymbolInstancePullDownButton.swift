@@ -35,7 +35,7 @@ class AddSymbolInstancePullDownButton : EBPopUpButton {
     while self.numberOfItems > 1 {
       self.removeItem (at: self.numberOfItems - 1)
     }
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       ()
     case .single (let stringArray) :

@@ -52,7 +52,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateOutlet (_ names : EBReadOnlyProperty_StringTagArray) {
-    switch names.prop {
+    switch names.selection {
     case .empty :
       self.setNames ([])
     case .single (let v) :

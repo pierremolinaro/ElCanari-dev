@@ -34,7 +34,7 @@ extension EBGraphicView {
       self.updateViewFrameAndBounds ()
       self.needsDisplay = true
     }
-    switch model.prop {
+    switch model.selection {
     case .empty :
       break
     case .single (let v) :
@@ -67,7 +67,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       break
     case .single (let v) :

@@ -143,7 +143,7 @@ import Cocoa
   //····················································································································
 
   final var netCount_property_selection : EBSelection <Int> {
-    return self.netCount_property.prop
+    return self.netCount_property.selection
   }
 
   //····················································································································
@@ -166,7 +166,7 @@ import Cocoa
   //····················································································································
 
   final var rastnetDisplayComponentNet_property_selection : EBSelection <Bool> {
-    return self.rastnetDisplayComponentNet_property.prop
+    return self.rastnetDisplayComponentNet_property.selection
   }
 
   //····················································································································
@@ -189,7 +189,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
+    return self.documentFilePath_property.selection
   }
 
   //····················································································································
@@ -212,7 +212,7 @@ import Cocoa
   //····················································································································
 
   final var componentCount_property_selection : EBSelection <String> {
-    return self.componentCount_property.prop
+    return self.componentCount_property.selection
   }
 
   //····················································································································
@@ -235,7 +235,7 @@ import Cocoa
   //····················································································································
 
   final var canRemoveNetClasses_property_selection : EBSelection <Bool> {
-    return self.canRemoveNetClasses_property.prop
+    return self.canRemoveNetClasses_property.selection
   }
 
   //····················································································································
@@ -258,7 +258,7 @@ import Cocoa
   //····················································································································
 
   final var selectedDevicePackageNames_property_selection : EBSelection <StringArray> {
-    return self.selectedDevicePackageNames_property.prop
+    return self.selectedDevicePackageNames_property.selection
   }
 
   //····················································································································
@@ -281,7 +281,7 @@ import Cocoa
   //····················································································································
 
   final var selectedDeviceSymbols_property_selection : EBSelection <DeviceSymbolDictionary> {
-    return self.selectedDeviceSymbols_property.prop
+    return self.selectedDeviceSymbols_property.selection
   }
 
   //····················································································································
@@ -304,7 +304,7 @@ import Cocoa
   //····················································································································
 
   final var selectedDeviceSymbolNames_property_selection : EBSelection <TwoStringArray> {
-    return self.selectedDeviceSymbolNames_property.prop
+    return self.selectedDeviceSymbolNames_property.selection
   }
 
   //····················································································································
@@ -327,7 +327,7 @@ import Cocoa
   //····················································································································
 
   final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
-    return self.pinPadAssignments_property.prop
+    return self.pinPadAssignments_property.selection
   }
 
   //····················································································································
@@ -350,7 +350,7 @@ import Cocoa
   //····················································································································
 
   final var schematicSheetOrientationIsCustom_property_selection : EBSelection <Bool> {
-    return self.schematicSheetOrientationIsCustom_property.prop
+    return self.schematicSheetOrientationIsCustom_property.selection
   }
 
   //····················································································································
@@ -373,7 +373,7 @@ import Cocoa
   //····················································································································
 
   final var netCountString_property_selection : EBSelection <String> {
-    return self.netCountString_property.prop
+    return self.netCountString_property.selection
   }
 
   //····················································································································
@@ -396,7 +396,7 @@ import Cocoa
   //····················································································································
 
   final var rastnetShape_property_selection : EBSelection <EBShape> {
-    return self.rastnetShape_property.prop
+    return self.rastnetShape_property.selection
   }
 
   //····················································································································
@@ -419,7 +419,7 @@ import Cocoa
   //····················································································································
 
   final var rastnetDisplayOneNet_property_selection : EBSelection <Bool> {
-    return self.rastnetDisplayOneNet_property.prop
+    return self.rastnetDisplayOneNet_property.selection
   }
 
   //····················································································································
@@ -442,7 +442,7 @@ import Cocoa
   //····················································································································
 
   final var artworlImportButtonTitle_property_selection : EBSelection <String> {
-    return self.artworlImportButtonTitle_property.prop
+    return self.artworlImportButtonTitle_property.selection
   }
 
   //····················································································································
@@ -465,7 +465,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePathOk_property_selection : EBSelection <Bool> {
-    return self.documentFilePathOk_property.prop
+    return self.documentFilePathOk_property.selection
   }
 
   //····················································································································
@@ -488,7 +488,7 @@ import Cocoa
   //····················································································································
 
   final var canRemoveSelectedFonts_property_selection : EBSelection <Bool> {
-    return self.canRemoveSelectedFonts_property.prop
+    return self.canRemoveSelectedFonts_property.selection
   }
 
   //····················································································································
@@ -511,7 +511,7 @@ import Cocoa
   //····················································································································
 
   final var canRemoveSelectedDevices_property_selection : EBSelection <Bool> {
-    return self.canRemoveSelectedDevices_property.prop
+    return self.canRemoveSelectedDevices_property.selection
   }
 
   //····················································································································
@@ -534,7 +534,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedSymbolsCount_property_selection : EBSelection <Int> {
-    return self.unplacedSymbolsCount_property.prop
+    return self.unplacedSymbolsCount_property.selection
   }
 
   //····················································································································
@@ -557,7 +557,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedSymbolsCountString_property_selection : EBSelection <String> {
-    return self.unplacedSymbolsCountString_property.prop
+    return self.unplacedSymbolsCountString_property.selection
   }
 
   //····················································································································
@@ -580,7 +580,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedPackageCount_property_selection : EBSelection <Int> {
-    return self.unplacedPackageCount_property.prop
+    return self.unplacedPackageCount_property.selection
   }
 
   //····················································································································
@@ -603,7 +603,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedPackagesCountString_property_selection : EBSelection <String> {
-    return self.unplacedPackagesCountString_property.prop
+    return self.unplacedPackagesCountString_property.selection
   }
 
   //····················································································································
@@ -626,7 +626,7 @@ import Cocoa
   //····················································································································
 
   final var overDisplay_property_selection : EBSelection <EBShape> {
-    return self.overDisplay_property.prop
+    return self.overDisplay_property.selection
   }
 
   //····················································································································
@@ -649,7 +649,7 @@ import Cocoa
   //····················································································································
 
   final var canChangePackage_property_selection : EBSelection <Bool> {
-    return self.canChangePackage_property.prop
+    return self.canChangePackage_property.selection
   }
 
   //····················································································································
@@ -1807,7 +1807,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: netCount
-    // self.netCount_property.configure (self.rootObject.netsDescription_property, transient_ProjectDocument_netCount)
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
@@ -1834,7 +1833,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetDisplayComponentNet
-    // self.rastnetDisplayComponentNet_property.configure (self.rootObject.mRastnetDisplay_property, transient_ProjectDocument_rastnetDisplayComponentNet)
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -1865,7 +1863,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: componentCount
-    // self.componentCount_property.configure (self.rootObject.mComponents_property.count_property, transient_ProjectDocument_componentCount)
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
@@ -1892,7 +1889,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveNetClasses
-    // self.canRemoveNetClasses_property.configure (self.rootObject.mNetClasses_property.count_property, self.netClassController.selectedArray_property.canRemove_property, transient_ProjectDocument_canRemoveNetClasses)
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
@@ -1921,7 +1917,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDevicePackageNames
-    // self.selectedDevicePackageNames_property.configure (self.projectDeviceController.selectedArray_property.packageNames_property, transient_ProjectDocument_selectedDevicePackageNames)
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1948,7 +1943,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDeviceSymbols
-    // self.selectedDeviceSymbols_property.configure (self.projectDeviceController.selectedArray_property.deviceSymbolDictionary_property, transient_ProjectDocument_selectedDeviceSymbols)
     self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -1975,7 +1969,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: selectedDeviceSymbolNames
-    // self.selectedDeviceSymbolNames_property.configure (self.projectDeviceController.selectedArray_property.symbolAndTypesNames_property, transient_ProjectDocument_selectedDeviceSymbolNames)
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2002,7 +1995,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.projectDeviceController.selectedArray_property.pinPadAssignments_property, transient_ProjectDocument_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2029,7 +2021,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: schematicSheetOrientationIsCustom
-    // self.schematicSheetOrientationIsCustom_property.configure (self.rootObject.mSchematicSheetOrientation_property, transient_ProjectDocument_schematicSheetOrientationIsCustom)
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mSchematicSheetOrientation_property_selection.kind ()
@@ -2056,7 +2047,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: netCountString
-    // self.netCountString_property.configure (self.rootObject.netsDescription_property, transient_ProjectDocument_netCountString)
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
@@ -2083,7 +2073,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetShape
-    // self.rastnetShape_property.configure (self.rootObject.mRastnetDisplay_property, self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.mBoardObjects_property.netNameAndPadLocation_property, self.boardObjectsController.selectedArray_property.componentName_property, transient_ProjectDocument_rastnetShape)
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -2118,7 +2107,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: rastnetDisplayOneNet
-    // self.rastnetDisplayOneNet_property.configure (self.rootObject.mRastnetDisplay_property, transient_ProjectDocument_rastnetDisplayOneNet)
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
@@ -2145,7 +2133,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: artworlImportButtonTitle
-    // self.artworlImportButtonTitle_property.configure (self.rootObject.mArtwork_property, transient_ProjectDocument_artworlImportButtonTitle)
     self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mArtwork_none_selection.kind ()
@@ -2172,7 +2159,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: documentFilePathOk
-    // self.documentFilePathOk_property.configure (self.documentFilePath_property, transient_ProjectDocument_documentFilePathOk)
     self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -2199,7 +2185,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveSelectedFonts
-    // self.canRemoveSelectedFonts_property.configure (self.projectFontController.selectedArray_property.canRemoveFont_property, transient_ProjectDocument_canRemoveSelectedFonts)
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectFontController.selectedArray_property_selection.kind ()
@@ -2226,7 +2211,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canRemoveSelectedDevices
-    // self.canRemoveSelectedDevices_property.configure (self.projectDeviceController.selectedArray_property.canRemove_property, transient_ProjectDocument_canRemoveSelectedDevices)
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
@@ -2253,7 +2237,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedSymbolsCount
-    // self.unplacedSymbolsCount_property.configure (self.rootObject.unplacedSymbols_property, transient_ProjectDocument_unplacedSymbolsCount)
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unplacedSymbols_property_selection.kind ()
@@ -2280,7 +2263,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedSymbolsCountString
-    // self.unplacedSymbolsCountString_property.configure (self.unplacedSymbolsCount_property, transient_ProjectDocument_unplacedSymbolsCountString)
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.unplacedSymbolsCount_property_selection.kind ()
@@ -2307,7 +2289,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedPackageCount
-    // self.unplacedPackageCount_property.configure (self.rootObject.unplacedPackages_property, transient_ProjectDocument_unplacedPackageCount)
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unplacedPackages_property_selection.kind ()
@@ -2334,7 +2315,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: unplacedPackagesCountString
-    // self.unplacedPackagesCountString_property.configure (self.unplacedPackageCount_property, transient_ProjectDocument_unplacedPackagesCountString)
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.unplacedPackageCount_property_selection.kind ()
@@ -2361,7 +2341,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: overDisplay
-    // self.overDisplay_property.configure (self.rastnetShape_property, self.rootObject.boardIssues_property, transient_ProjectDocument_overDisplay)
     self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rastnetShape_property_selection.kind ()
@@ -2390,7 +2369,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: canChangePackage
-    // self.canChangePackage_property.configure (self.componentController.selectedArray_property.availablePackages_property, transient_ProjectDocument_canChangePackage)
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.componentController.selectedArray_property_selection.kind ()

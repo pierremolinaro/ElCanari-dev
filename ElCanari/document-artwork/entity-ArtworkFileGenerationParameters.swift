@@ -194,7 +194,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawBoardLimits_property_selection : EBSelection <Bool> { return self.drawBoardLimits_property.prop }
+  final var drawBoardLimits_property_selection : EBSelection <Bool> { return self.drawBoardLimits_property.selection }
 
   //····················································································································
   //   Atomic property: drawInternalBoardLimits
@@ -219,7 +219,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawInternalBoardLimits_property_selection : EBSelection <Bool> { return self.drawInternalBoardLimits_property.prop }
+  final var drawInternalBoardLimits_property_selection : EBSelection <Bool> { return self.drawInternalBoardLimits_property.selection }
 
   //····················································································································
   //   Atomic property: drawComponentNamesTopSide
@@ -244,7 +244,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawComponentNamesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesTopSide_property.prop }
+  final var drawComponentNamesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawComponentNamesBottomSide
@@ -269,7 +269,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesBottomSide_property.prop }
+  final var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentNamesBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawComponentValuesTopSide
@@ -294,7 +294,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawComponentValuesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesTopSide_property.prop }
+  final var drawComponentValuesTopSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawComponentValuesBottomSide
@@ -319,7 +319,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesBottomSide_property.prop }
+  final var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> { return self.drawComponentValuesBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawPackageLegendTopSide
@@ -344,7 +344,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawPackageLegendTopSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendTopSide_property.prop }
+  final var drawPackageLegendTopSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawPackageLegendBottomSide
@@ -369,7 +369,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendBottomSide_property.prop }
+  final var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawPackageLegendBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawPadHolesInPDF
@@ -394,7 +394,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawPadHolesInPDF_property_selection : EBSelection <Bool> { return self.drawPadHolesInPDF_property.prop }
+  final var drawPadHolesInPDF_property_selection : EBSelection <Bool> { return self.drawPadHolesInPDF_property.selection }
 
   //····················································································································
   //   Atomic property: drawPadsTopSide
@@ -419,7 +419,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawPadsTopSide_property_selection : EBSelection <Bool> { return self.drawPadsTopSide_property.prop }
+  final var drawPadsTopSide_property_selection : EBSelection <Bool> { return self.drawPadsTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawPadsBottomSide
@@ -444,7 +444,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawPadsBottomSide_property_selection : EBSelection <Bool> { return self.drawPadsBottomSide_property.prop }
+  final var drawPadsBottomSide_property_selection : EBSelection <Bool> { return self.drawPadsBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawTextsLayoutTopSide
@@ -469,7 +469,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutTopSide_property.prop }
+  final var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawTextsLayoutBottomSide
@@ -494,7 +494,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutBottomSide_property.prop }
+  final var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLayoutBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawTextsLegendTopSide
@@ -519,7 +519,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawTextsLegendTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendTopSide_property.prop }
+  final var drawTextsLegendTopSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawTextsLegendBottomSide
@@ -544,7 +544,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendBottomSide_property.prop }
+  final var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> { return self.drawTextsLegendBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawTracksTopSide
@@ -569,7 +569,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawTracksTopSide_property_selection : EBSelection <Bool> { return self.drawTracksTopSide_property.prop }
+  final var drawTracksTopSide_property_selection : EBSelection <Bool> { return self.drawTracksTopSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawTracksBottomSide
@@ -594,7 +594,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawTracksBottomSide_property_selection : EBSelection <Bool> { return self.drawTracksBottomSide_property.prop }
+  final var drawTracksBottomSide_property_selection : EBSelection <Bool> { return self.drawTracksBottomSide_property.selection }
 
   //····················································································································
   //   Atomic property: drawVias
@@ -619,7 +619,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var drawVias_property_selection : EBSelection <Bool> { return self.drawVias_property.prop }
+  final var drawVias_property_selection : EBSelection <Bool> { return self.drawVias_property.selection }
 
   //····················································································································
   //   Atomic property: fileExtension
@@ -644,7 +644,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var fileExtension_property_selection : EBSelection <String> { return self.fileExtension_property.prop }
+  final var fileExtension_property_selection : EBSelection <String> { return self.fileExtension_property.selection }
 
   //····················································································································
   //   Atomic property: horizontalMirror
@@ -669,7 +669,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var horizontalMirror_property_selection : EBSelection <Bool> { return self.horizontalMirror_property.prop }
+  final var horizontalMirror_property_selection : EBSelection <Bool> { return self.horizontalMirror_property.selection }
 
   //····················································································································
   //   Atomic property: name
@@ -694,7 +694,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var name_property_selection : EBSelection <String> { return self.name_property.prop }
+  final var name_property_selection : EBSelection <String> { return self.name_property.selection }
 
   //····················································································································
   //   Atomic property: measurementUnitForPadHoleInPDF
@@ -719,7 +719,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> { return self.measurementUnitForPadHoleInPDF_property.prop }
+  final var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> { return self.measurementUnitForPadHoleInPDF_property.selection }
 
   //····················································································································
   //   Atomic property: padHoleDiameterInPDF
@@ -744,7 +744,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final var padHoleDiameterInPDF_property_selection : EBSelection <Int> { return self.padHoleDiameterInPDF_property.prop }
+  final var padHoleDiameterInPDF_property_selection : EBSelection <Int> { return self.padHoleDiameterInPDF_property.selection }
 
   //····················································································································
   //    init

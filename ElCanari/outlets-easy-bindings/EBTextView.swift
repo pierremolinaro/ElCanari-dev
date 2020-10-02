@@ -28,7 +28,7 @@ class EBTextView : NSTextView, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       self.string = ""
       self.isEditable = false

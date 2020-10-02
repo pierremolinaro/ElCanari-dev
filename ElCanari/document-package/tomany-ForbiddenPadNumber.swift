@@ -31,7 +31,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumber.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -46,7 +46,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padNumber.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -161,7 +161,7 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
       self.mModelArrayShouldBeComputed = false
       let newArray : [ForbiddenPadNumber] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -186,7 +186,7 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
 
   //····················································································································
 
-  override var prop : EBSelection < [ForbiddenPadNumber] > {
+  override var selection : EBSelection < [ForbiddenPadNumber] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -253,7 +253,7 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -280,7 +280,7 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var prop : EBSelection < [ForbiddenPadNumber] > {
+  override var selection : EBSelection < [ForbiddenPadNumber] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -339,7 +339,7 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
   override func notifyModelDidChange () {
     let newModelArray : [ForbiddenPadNumber]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -362,9 +362,9 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
 
   //····················································································································
 
-  override var prop : EBSelection < [ForbiddenPadNumber] > {
+  override var selection : EBSelection < [ForbiddenPadNumber] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -374,7 +374,7 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
 
   override var propval : [ForbiddenPadNumber] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -434,7 +434,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -494,7 +494,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
  
   //····················································································································
 
-  override var prop : EBSelection < [ForbiddenPadNumber] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [ForbiddenPadNumber] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -583,7 +583,7 @@ final class StandAloneArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPad
 
   //····················································································································
 
-  override var prop : EBSelection < [ForbiddenPadNumber] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [ForbiddenPadNumber] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

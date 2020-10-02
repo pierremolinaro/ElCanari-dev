@@ -33,7 +33,7 @@ class EBColorWell : NSColorWell, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateColor (_ object : EBReadOnlyProperty_NSColor) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "-"

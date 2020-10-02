@@ -16,7 +16,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let xCenter_property = EBPropertyProxy_Int ()
   var xCenter_property_selection : EBSelection <Int> {
-    return self.xCenter_property.prop
+    return self.xCenter_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let yCenter_property = EBPropertyProxy_Int ()
   var yCenter_property_selection : EBSelection <Int> {
-    return self.yCenter_property.prop
+    return self.yCenter_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let width_property = EBPropertyProxy_Int ()
   var width_property_selection : EBSelection <Int> {
-    return self.width_property.prop
+    return self.width_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let height_property = EBPropertyProxy_Int ()
   var height_property_selection : EBSelection <Int> {
-    return self.height_property.prop
+    return self.height_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let holeWidth_property = EBPropertyProxy_Int ()
   var holeWidth_property_selection : EBSelection <Int> {
-    return self.holeWidth_property.prop
+    return self.holeWidth_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let holeHeight_property = EBPropertyProxy_Int ()
   var holeHeight_property_selection : EBSelection <Int> {
-    return self.holeHeight_property.prop
+    return self.holeHeight_property.selection
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let padShape_property = EBPropertyProxy_PadShape ()
   var padShape_property_selection : EBSelection <PadShape> {
-    return self.padShape_property.prop
+    return self.padShape_property.selection
   }
 
   //····················································································································
@@ -79,7 +79,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let padStyle_property = EBPropertyProxy_PadStyle ()
   var padStyle_property_selection : EBSelection <PadStyle> {
-    return self.padStyle_property.prop
+    return self.padStyle_property.selection
   }
 
   //····················································································································
@@ -88,7 +88,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let padNumber_property = EBPropertyProxy_Int ()
   var padNumber_property_selection : EBSelection <Int> {
-    return self.padNumber_property.prop
+    return self.padNumber_property.selection
   }
 
   //····················································································································
@@ -97,7 +97,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let xCenterUnit_property = EBPropertyProxy_Int ()
   var xCenterUnit_property_selection : EBSelection <Int> {
-    return self.xCenterUnit_property.prop
+    return self.xCenterUnit_property.selection
   }
 
   //····················································································································
@@ -106,7 +106,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let yCenterUnit_property = EBPropertyProxy_Int ()
   var yCenterUnit_property_selection : EBSelection <Int> {
-    return self.yCenterUnit_property.prop
+    return self.yCenterUnit_property.selection
   }
 
   //····················································································································
@@ -115,7 +115,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let widthUnit_property = EBPropertyProxy_Int ()
   var widthUnit_property_selection : EBSelection <Int> {
-    return self.widthUnit_property.prop
+    return self.widthUnit_property.selection
   }
 
   //····················································································································
@@ -124,7 +124,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let heightUnit_property = EBPropertyProxy_Int ()
   var heightUnit_property_selection : EBSelection <Int> {
-    return self.heightUnit_property.prop
+    return self.heightUnit_property.selection
   }
 
   //····················································································································
@@ -133,7 +133,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let holeWidthUnit_property = EBPropertyProxy_Int ()
   var holeWidthUnit_property_selection : EBSelection <Int> {
-    return self.holeWidthUnit_property.prop
+    return self.holeWidthUnit_property.selection
   }
 
   //····················································································································
@@ -142,7 +142,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let holeHeightUnit_property = EBPropertyProxy_Int ()
   var holeHeightUnit_property_selection : EBSelection <Int> {
-    return self.holeHeightUnit_property.prop
+    return self.holeHeightUnit_property.selection
   }
 
   //····················································································································
@@ -151,7 +151,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   let annularRingUnit_property = EBPropertyProxy_Int ()
   var annularRingUnit_property_selection : EBSelection <Int> {
-    return self.annularRingUnit_property.prop
+    return self.annularRingUnit_property.selection
   }
 
   //····················································································································
@@ -161,7 +161,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -171,7 +171,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let padNameForDisplay_property = EBTransientProperty_String ()
 
   var padNameForDisplay_property_selection : EBSelection <String> {
-    return self.padNameForDisplay_property.prop
+    return self.padNameForDisplay_property.selection
   }
 
   //····················································································································
@@ -181,7 +181,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -191,7 +191,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let padIsTraversing_property = EBTransientProperty_Bool ()
 
   var padIsTraversing_property_selection : EBSelection <Bool> {
-    return self.padIsTraversing_property.prop
+    return self.padIsTraversing_property.selection
   }
 
   //····················································································································
@@ -201,7 +201,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let annularRing_property = EBTransientProperty_Int ()
 
   var annularRing_property_selection : EBSelection <Int> {
-    return self.annularRing_property.prop
+    return self.annularRing_property.selection
   }
 
   //····················································································································
@@ -211,7 +211,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let padNameWithZoneName_property = EBTransientProperty_String ()
 
   var padNameWithZoneName_property_selection : EBSelection <String> {
-    return self.padNameWithZoneName_property.prop
+    return self.padNameWithZoneName_property.selection
   }
 
   //····················································································································
@@ -221,7 +221,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let zoneName_property = EBTransientProperty_String ()
 
   var zoneName_property_selection : EBSelection <String> {
-    return self.zoneName_property.prop
+    return self.zoneName_property.selection
   }
 
   //····················································································································
@@ -231,7 +231,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let noZone_property = EBTransientProperty_Bool ()
 
   var noZone_property_selection : EBSelection <Bool> {
-    return self.noZone_property.prop
+    return self.noZone_property.selection
   }
 
   //····················································································································
@@ -241,7 +241,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let zoneAllowsManualRenumbering_property = EBTransientProperty_Bool ()
 
   var zoneAllowsManualRenumbering_property_selection : EBSelection <Bool> {
-    return self.zoneAllowsManualRenumbering_property.prop
+    return self.zoneAllowsManualRenumbering_property.selection
   }
 
   //····················································································································
@@ -251,7 +251,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let slavePadCount_property = EBTransientProperty_Int ()
 
   var slavePadCount_property_selection : EBSelection <Int> {
-    return self.slavePadCount_property.prop
+    return self.slavePadCount_property.selection
   }
 
   //····················································································································
@@ -261,7 +261,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -271,7 +271,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   let padNumberDisplay_property = EBTransientProperty_EBShape ()
 
   var padNumberDisplay_property_selection : EBSelection <EBShape> {
-    return self.padNumberDisplay_property.prop
+    return self.padNumberDisplay_property.selection
   }
 
   //····················································································································
@@ -667,7 +667,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_xCenter (self.xCenter_property)
     self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -701,7 +701,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.xCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -713,7 +713,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -736,7 +736,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_yCenter (self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -770,7 +770,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.yCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -782,7 +782,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.yCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -805,7 +805,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_width (self.width_property)
     self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -839,7 +839,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.width_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -851,7 +851,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.width_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -874,7 +874,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_height (self.height_property)
     self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -908,7 +908,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.height_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -920,7 +920,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.height_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -943,7 +943,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_holeWidth (self.holeWidth_property)
     self.holeWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -977,7 +977,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -989,7 +989,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1012,7 +1012,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_holeHeight (self.holeHeight_property)
     self.holeHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1046,7 +1046,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeHeight_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1058,7 +1058,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeHeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1081,7 +1081,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padShape (self.padShape_property)
     self.padShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1115,7 +1115,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.padShape_property.mWriteModelFunction = { [weak self] (inValue : PadShape) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1127,7 +1127,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.padShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : PadShape, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1150,7 +1150,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padStyle (self.padStyle_property)
     self.padStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1184,7 +1184,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.padStyle_property.mWriteModelFunction = { [weak self] (inValue : PadStyle) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1196,7 +1196,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.padStyle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : PadStyle, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1219,7 +1219,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padNumber (self.padNumber_property)
     self.padNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1253,7 +1253,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.padNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1265,7 +1265,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.padNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1288,7 +1288,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1322,7 +1322,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1334,7 +1334,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1357,7 +1357,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1391,7 +1391,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.yCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1403,7 +1403,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.yCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1426,7 +1426,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_widthUnit (self.widthUnit_property)
     self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1460,7 +1460,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1472,7 +1472,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.widthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1495,7 +1495,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_heightUnit (self.heightUnit_property)
     self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1529,7 +1529,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1541,7 +1541,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.heightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1564,7 +1564,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_holeWidthUnit (self.holeWidthUnit_property)
     self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1598,7 +1598,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1610,7 +1610,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1633,7 +1633,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_holeHeightUnit (self.holeHeightUnit_property)
     self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1667,7 +1667,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeHeightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1679,7 +1679,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.holeHeightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1702,7 +1702,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_annularRingUnit (self.annularRingUnit_property)
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1736,7 +1736,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.annularRingUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1748,7 +1748,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     }
     self.annularRingUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1771,7 +1771,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1810,7 +1810,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1849,7 +1849,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1888,7 +1888,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padIsTraversing (self.padIsTraversing_property)
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1927,7 +1927,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_annularRing (self.annularRing_property)
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1966,7 +1966,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2005,7 +2005,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_zoneName (self.zoneName_property)
     self.zoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2044,7 +2044,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_noZone (self.noZone_property)
     self.noZone_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2083,7 +2083,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_zoneAllowsManualRenumbering (self.zoneAllowsManualRenumbering_property)
     self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2122,7 +2122,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_slavePadCount (self.slavePadCount_property)
     self.slavePadCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2161,7 +2161,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2200,7 +2200,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.selectedArray_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

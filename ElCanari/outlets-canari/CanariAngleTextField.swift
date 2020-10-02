@@ -41,7 +41,7 @@ class CanariAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDe
   //····················································································································
 
   fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.stringValue = "—"
       self.enableFromValueBinding (false)
@@ -118,7 +118,7 @@ final class Controller_CanariAngleTextField_angle : EBSimpleController {
   //····················································································································
 
   @objc func action (_ sender : CanariAngleTextField) {
-    switch self.mAngle.prop {
+    switch self.mAngle.selection {
     case .empty, .multiple :
       break
     case .single (_) :

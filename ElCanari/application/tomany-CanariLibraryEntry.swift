@@ -39,7 +39,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPath.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPath.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUses.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -111,7 +111,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mUses.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -153,7 +153,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -267,7 +267,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStatusImage.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mStatusImage.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -396,7 +396,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
       self.mModelArrayShouldBeComputed = false
       let newArray : [CanariLibraryEntry] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -421,7 +421,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
 
   //····················································································································
 
-  override var prop : EBSelection < [CanariLibraryEntry] > {
+  override var selection : EBSelection < [CanariLibraryEntry] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -488,7 +488,7 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -515,7 +515,7 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var prop : EBSelection < [CanariLibraryEntry] > {
+  override var selection : EBSelection < [CanariLibraryEntry] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -574,7 +574,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
   override func notifyModelDidChange () {
     let newModelArray : [CanariLibraryEntry]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -597,9 +597,9 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 
   //····················································································································
 
-  override var prop : EBSelection < [CanariLibraryEntry] > {
+  override var selection : EBSelection < [CanariLibraryEntry] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -609,7 +609,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 
   override var propval : [CanariLibraryEntry] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -669,7 +669,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -729,7 +729,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
  
   //····················································································································
 
-  override var prop : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -818,7 +818,7 @@ final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibrar
 
   //····················································································································
 
-  override var prop : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

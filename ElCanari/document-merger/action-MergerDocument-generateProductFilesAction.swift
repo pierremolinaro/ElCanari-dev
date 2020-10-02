@@ -13,7 +13,7 @@ import Cocoa
 extension MergerDocument {
   @objc func generateProductFilesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    switch self.issues_property.prop {
+    switch self.issues_property.selection {
     case .multiple, .empty :
       break
     case .single (let issues) :

@@ -68,7 +68,7 @@ class SegmentEntity : EBManagedObject,
 
   //····················································································································
 
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
 
   //····················································································································
   //   Atomic property: x2
@@ -93,7 +93,7 @@ class SegmentEntity : EBManagedObject,
 
   //····················································································································
 
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -118,7 +118,7 @@ class SegmentEntity : EBManagedObject,
 
   //····················································································································
 
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
 
   //····················································································································
   //   Atomic property: width
@@ -143,7 +143,7 @@ class SegmentEntity : EBManagedObject,
 
   //····················································································································
 
-  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
 
   //····················································································································
   //   Atomic property: x1
@@ -168,7 +168,7 @@ class SegmentEntity : EBManagedObject,
 
   //····················································································································
 
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
 
   //····················································································································
   //    init

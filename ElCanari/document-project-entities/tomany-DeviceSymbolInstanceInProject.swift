@@ -39,7 +39,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolAndTypeName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -111,7 +111,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolAndTypeName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_filledBezierPath.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_filledBezierPath.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -393,7 +393,7 @@ final class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_Dev
       self.mModelArrayShouldBeComputed = false
       let newArray : [DeviceSymbolInstanceInProject] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -418,7 +418,7 @@ final class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_Dev
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > {
+  override var selection : EBSelection < [DeviceSymbolInstanceInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -485,7 +485,7 @@ final class TransientArrayOfSuperOf_DeviceSymbolInstanceInProject <SUPER : EBMan
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -512,7 +512,7 @@ final class TransientArrayOfSuperOf_DeviceSymbolInstanceInProject <SUPER : EBMan
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > {
+  override var selection : EBSelection < [DeviceSymbolInstanceInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -571,7 +571,7 @@ final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Device
   override func notifyModelDidChange () {
     let newModelArray : [DeviceSymbolInstanceInProject]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -594,9 +594,9 @@ final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Device
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > {
+  override var selection : EBSelection < [DeviceSymbolInstanceInProject] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -606,7 +606,7 @@ final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Device
 
   override var propval : [DeviceSymbolInstanceInProject] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -666,7 +666,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -726,7 +726,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
  
   //····················································································································
 
-  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -815,7 +815,7 @@ final class StandAloneArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_D
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

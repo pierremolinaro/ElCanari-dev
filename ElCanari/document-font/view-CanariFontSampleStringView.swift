@@ -81,7 +81,7 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final private func updateBezierPath (_ object : EBReadOnlyProperty_NSBezierPath) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       break ;
     case .single (let bezierPath) :

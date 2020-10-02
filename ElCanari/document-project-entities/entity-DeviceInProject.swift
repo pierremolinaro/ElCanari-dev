@@ -124,7 +124,7 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mDeviceName_property_selection : EBSelection <String> { return self.mDeviceName_property.prop }
+  final var mDeviceName_property_selection : EBSelection <String> { return self.mDeviceName_property.selection }
 
   //····················································································································
   //   Atomic property: mPrefix
@@ -149,7 +149,7 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.prop }
+  final var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.selection }
 
   //····················································································································
   //   Atomic property: mDeviceVersion
@@ -174,7 +174,7 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mDeviceVersion_property_selection : EBSelection <Int> { return self.mDeviceVersion_property.prop }
+  final var mDeviceVersion_property_selection : EBSelection <Int> { return self.mDeviceVersion_property.selection }
 
   //····················································································································
   //   Atomic property: mDeviceFileData
@@ -199,7 +199,7 @@ class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mDeviceFileData_property_selection : EBSelection <Data> { return self.mDeviceFileData_property.prop }
+  final var mDeviceFileData_property_selection : EBSelection <Data> { return self.mDeviceFileData_property.selection }
 
   //····················································································································
   //   To many property: mPackages
@@ -210,7 +210,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var mPackages_property_selection : EBSelection < [DevicePackageInProject] > {
-    return self.mPackages_property.prop
+    return self.mPackages_property.selection
   }
 
   //····················································································································
@@ -229,7 +229,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var mSymbols_property_selection : EBSelection < [DeviceSymbolInstanceInProject] > {
-    return self.mSymbols_property.prop
+    return self.mSymbols_property.selection
   }
 
   //····················································································································
@@ -248,7 +248,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
+    return self.mComponents_property.selection
   }
 
   //····················································································································
@@ -267,7 +267,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var mPadAssignments_property_selection : EBSelection < [DevicePadAssignmentInProject] > {
-    return self.mPadAssignments_property.prop
+    return self.mPadAssignments_property.selection
   }
 
   //····················································································································
@@ -286,7 +286,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.prop
+    return self.versionString_property.selection
   }
 
   //····················································································································
@@ -309,7 +309,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var sizeString_property_selection : EBSelection <String> {
-    return self.sizeString_property.prop
+    return self.sizeString_property.selection
   }
 
   //····················································································································
@@ -332,7 +332,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var canExport_property_selection : EBSelection <Bool> {
-    return self.canExport_property.prop
+    return self.canExport_property.selection
   }
 
   //····················································································································
@@ -355,7 +355,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var packageNames_property_selection : EBSelection <StringArray> {
-    return self.packageNames_property.prop
+    return self.packageNames_property.selection
   }
 
   //····················································································································
@@ -378,7 +378,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var deviceComponentCountString_property_selection : EBSelection <String> {
-    return self.deviceComponentCountString_property.prop
+    return self.deviceComponentCountString_property.selection
   }
 
   //····················································································································
@@ -401,7 +401,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var canRemove_property_selection : EBSelection <Bool> {
-    return self.canRemove_property.prop
+    return self.canRemove_property.selection
   }
 
   //····················································································································
@@ -424,7 +424,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray> {
-    return self.symbolAndTypesNames_property.prop
+    return self.symbolAndTypesNames_property.selection
   }
 
   //····················································································································
@@ -447,7 +447,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
-    return self.pinPadAssignments_property.prop
+    return self.pinPadAssignments_property.selection
   }
 
   //····················································································································
@@ -470,7 +470,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
-    return self.deviceSymbolDictionary_property.prop
+    return self.deviceSymbolDictionary_property.selection
   }
 
   //····················································································································
@@ -513,7 +513,6 @@ class DeviceInProject : EBManagedObject,
   //--- To many property: mPadAssignments (no option)
     self.mPadAssignments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
-    // self.versionString_property.configure (self.mDeviceVersion_property, transient_DeviceInProject_versionString)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDeviceVersion_property_selection.kind ()
@@ -536,7 +535,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: sizeString
-    // self.sizeString_property.configure (self.mDeviceFileData_property, transient_DeviceInProject_sizeString)
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDeviceFileData_property_selection.kind ()
@@ -559,7 +557,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceFileData_property.addEBObserver (self.sizeString_property)
   //--- Atomic property: canExport
-    // self.canExport_property.configure (self.mDeviceFileData_property, transient_DeviceInProject_canExport)
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDeviceFileData_property_selection.kind ()
@@ -582,7 +579,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mDeviceFileData_property.addEBObserver (self.canExport_property)
   //--- Atomic property: packageNames
-    // self.packageNames_property.configure (self.mPackages_property.mPackageName_property, transient_DeviceInProject_packageNames)
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPackages_property_selection.kind ()
@@ -605,7 +601,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
   //--- Atomic property: deviceComponentCountString
-    // self.deviceComponentCountString_property.configure (self.mComponents_property, transient_DeviceInProject_deviceComponentCountString)
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponents_property.count_property_selection.kind ()
@@ -628,7 +623,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mComponents_property.addEBObserver (self.deviceComponentCountString_property)
   //--- Atomic property: canRemove
-    // self.canRemove_property.configure (self.mComponents_property, transient_DeviceInProject_canRemove)
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mComponents_property.count_property_selection.kind ()
@@ -651,7 +645,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: symbolAndTypesNames
-    // self.symbolAndTypesNames_property.configure (self.mSymbols_property.symbolAndTypeName_property, transient_DeviceInProject_symbolAndTypesNames)
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
@@ -674,7 +667,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
   //--- Atomic property: pinPadAssignments
-    // self.pinPadAssignments_property.configure (self.mPadAssignments_property.pinPadAssignment_property, transient_DeviceInProject_pinPadAssignments)
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPadAssignments_property_selection.kind ()
@@ -697,7 +689,6 @@ class DeviceInProject : EBManagedObject,
     }
     self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
   //--- Atomic property: deviceSymbolDictionary
-    // self.deviceSymbolDictionary_property.configure (self.mPadAssignments_property.descriptor_property, self.mSymbols_property.symbolAndTypeName_property, self.mSymbols_property.filledBezierPath_property, self.mSymbols_property.strokeBezierPath_property, transient_DeviceInProject_deviceSymbolDictionary)
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPadAssignments_property_selection.kind ()

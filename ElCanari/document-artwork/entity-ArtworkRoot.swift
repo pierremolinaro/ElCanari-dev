@@ -117,7 +117,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
+  final var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.selection }
 
   //····················································································································
   //   Atomic property: comments
@@ -142,7 +142,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.selection }
 
   //····················································································································
   //   Atomic property: minPPTPTTTWdisplayUnit
@@ -167,7 +167,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.prop }
+  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic property: minPPTPTTTW
@@ -192,7 +192,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.prop }
+  final var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.selection }
 
   //····················································································································
   //   Atomic property: minValueForOARdisplayUnit
@@ -217,7 +217,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.prop }
+  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic property: minValueForOARinEBUnit
@@ -242,7 +242,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.prop }
+  final var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.selection }
 
   //····················································································································
   //   Atomic property: minValueForPHDdisplayUnit
@@ -267,7 +267,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.prop }
+  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic property: minValueForPHDinEBUnit
@@ -292,7 +292,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.prop }
+  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.selection }
 
   //····················································································································
   //   Atomic property: minValueForBoardLimitWidthDisplayUnit
@@ -317,7 +317,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.prop }
+  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic property: minValueForBoardLimitWidth
@@ -342,7 +342,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.prop }
+  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.selection }
 
   //····················································································································
   //   Atomic property: drillDataFileExtension
@@ -367,7 +367,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.prop }
+  final var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.selection }
 
   //····················································································································
   //   To many property: fileGenerationParameterArray
@@ -378,7 +378,7 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var fileGenerationParameterArray_property_selection : EBSelection < [ArtworkFileGenerationParameters] > {
-    return self.fileGenerationParameterArray_property.prop
+    return self.fileGenerationParameterArray_property.selection
   }
 
   //····················································································································
@@ -397,7 +397,7 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -437,7 +437,6 @@ class ArtworkRoot : EBManagedObject,
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.minPPTPTTTW_property, self.minValueForOARinEBUnit_property, self.minValueForBoardLimitWidth_property, self.minValueForPHDinEBUnit_property, transient_ArtworkRoot_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.minPPTPTTTW_property_selection.kind ()

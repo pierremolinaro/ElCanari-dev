@@ -16,7 +16,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let y1_property = EBPropertyProxy_Int ()
   var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.prop
+    return self.y1_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let x2_property = EBPropertyProxy_Int ()
   var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.prop
+    return self.x2_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let y2_property = EBPropertyProxy_Int ()
   var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.prop
+    return self.y2_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let xDimension_property = EBPropertyProxy_Int ()
   var xDimension_property_selection : EBSelection <Int> {
-    return self.xDimension_property.prop
+    return self.xDimension_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let yDimension_property = EBPropertyProxy_Int ()
   var yDimension_property_selection : EBSelection <Int> {
-    return self.yDimension_property.prop
+    return self.yDimension_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let x1Unit_property = EBPropertyProxy_Int ()
   var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.prop
+    return self.x1Unit_property.selection
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let y1Unit_property = EBPropertyProxy_Int ()
   var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.prop
+    return self.y1Unit_property.selection
   }
 
   //····················································································································
@@ -79,7 +79,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let x2Unit_property = EBPropertyProxy_Int ()
   var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.prop
+    return self.x2Unit_property.selection
   }
 
   //····················································································································
@@ -88,7 +88,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let y2Unit_property = EBPropertyProxy_Int ()
   var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.prop
+    return self.y2Unit_property.selection
   }
 
   //····················································································································
@@ -97,7 +97,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let xDimensionUnit_property = EBPropertyProxy_Int ()
   var xDimensionUnit_property_selection : EBSelection <Int> {
-    return self.xDimensionUnit_property.prop
+    return self.xDimensionUnit_property.selection
   }
 
   //····················································································································
@@ -106,7 +106,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let yDimensionUnit_property = EBPropertyProxy_Int ()
   var yDimensionUnit_property_selection : EBSelection <Int> {
-    return self.yDimensionUnit_property.prop
+    return self.yDimensionUnit_property.selection
   }
 
   //····················································································································
@@ -115,7 +115,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let distanceUnit_property = EBPropertyProxy_Int ()
   var distanceUnit_property_selection : EBSelection <Int> {
-    return self.distanceUnit_property.prop
+    return self.distanceUnit_property.selection
   }
 
   //····················································································································
@@ -124,7 +124,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   let x1_property = EBPropertyProxy_Int ()
   var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.prop
+    return self.x1_property.selection
   }
 
   //····················································································································
@@ -134,7 +134,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   let distanceInCanariUnit_property = EBTransientProperty_Int ()
 
   var distanceInCanariUnit_property_selection : EBSelection <Int> {
-    return self.distanceInCanariUnit_property.prop
+    return self.distanceInCanariUnit_property.selection
   }
 
   //····················································································································
@@ -144,7 +144,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -154,7 +154,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -164,7 +164,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   let issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -486,7 +486,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -520,7 +520,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -532,7 +532,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -555,7 +555,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -589,7 +589,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -601,7 +601,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -624,7 +624,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -658,7 +658,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -670,7 +670,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -693,7 +693,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_xDimension (self.xDimension_property)
     self.xDimension_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -727,7 +727,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.xDimension_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -739,7 +739,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.xDimension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -762,7 +762,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_yDimension (self.yDimension_property)
     self.yDimension_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -796,7 +796,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.yDimension_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -808,7 +808,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.yDimension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -831,7 +831,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -865,7 +865,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -877,7 +877,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -900,7 +900,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -934,7 +934,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -946,7 +946,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -969,7 +969,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1003,7 +1003,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1015,7 +1015,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1038,7 +1038,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1072,7 +1072,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1084,7 +1084,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1107,7 +1107,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
     self.xDimensionUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1141,7 +1141,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.xDimensionUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1153,7 +1153,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.xDimensionUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1176,7 +1176,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
     self.yDimensionUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1210,7 +1210,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.yDimensionUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1222,7 +1222,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.yDimensionUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1245,7 +1245,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_distanceUnit (self.distanceUnit_property)
     self.distanceUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1279,7 +1279,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.distanceUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1291,7 +1291,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.distanceUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1314,7 +1314,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1348,7 +1348,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1360,7 +1360,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     }
     self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1383,7 +1383,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_distanceInCanariUnit (self.distanceInCanariUnit_property)
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1422,7 +1422,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1461,7 +1461,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1500,7 +1500,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

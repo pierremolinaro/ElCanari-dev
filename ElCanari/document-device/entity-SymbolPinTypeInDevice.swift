@@ -110,7 +110,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinX_property_selection : EBSelection <Int> { return self.mPinX_property.prop }
+  final var mPinX_property_selection : EBSelection <Int> { return self.mPinX_property.selection }
 
   //····················································································································
   //   Atomic property: mPinY
@@ -135,7 +135,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinY_property_selection : EBSelection <Int> { return self.mPinY_property.prop }
+  final var mPinY_property_selection : EBSelection <Int> { return self.mPinY_property.selection }
 
   //····················································································································
   //   Atomic property: mXName
@@ -160,7 +160,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mXName_property_selection : EBSelection <Int> { return self.mXName_property.prop }
+  final var mXName_property_selection : EBSelection <Int> { return self.mXName_property.selection }
 
   //····················································································································
   //   Atomic property: mYName
@@ -185,7 +185,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mYName_property_selection : EBSelection <Int> { return self.mYName_property.prop }
+  final var mYName_property_selection : EBSelection <Int> { return self.mYName_property.selection }
 
   //····················································································································
   //   Atomic property: mName
@@ -210,7 +210,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
+  final var mName_property_selection : EBSelection <String> { return self.mName_property.selection }
 
   //····················································································································
   //   Atomic property: mNameHorizontalAlignment
@@ -235,7 +235,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNameHorizontalAlignment_property.prop }
+  final var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNameHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mPinNameIsDisplayedInSchematics
@@ -260,7 +260,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.mPinNameIsDisplayedInSchematics_property.prop }
+  final var mPinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.mPinNameIsDisplayedInSchematics_property.selection }
 
   //····················································································································
   //   Atomic property: mXNumber
@@ -285,7 +285,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mXNumber_property_selection : EBSelection <Int> { return self.mXNumber_property.prop }
+  final var mXNumber_property_selection : EBSelection <Int> { return self.mXNumber_property.selection }
 
   //····················································································································
   //   Atomic property: mYNumber
@@ -310,7 +310,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mYNumber_property_selection : EBSelection <Int> { return self.mYNumber_property.prop }
+  final var mYNumber_property_selection : EBSelection <Int> { return self.mYNumber_property.selection }
 
   //····················································································································
   //   Atomic property: mNumberHorizontalAlignment
@@ -335,7 +335,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNumberHorizontalAlignment_property.prop }
+  final var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNumberHorizontalAlignment_property.selection }
 
   //····················································································································
   //   To many property: mInstances
@@ -346,7 +346,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var mInstances_property_selection : EBSelection < [SymbolPinInstanceInDevice] > {
-    return self.mInstances_property.prop
+    return self.mInstances_property.selection
   }
 
   //····················································································································
@@ -365,7 +365,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var nameShape_property_selection : EBSelection <EBShape> {
-    return self.nameShape_property.prop
+    return self.nameShape_property.selection
   }
 
   //····················································································································
@@ -408,7 +408,6 @@ class SymbolPinTypeInDevice : EBManagedObject,
       resetter: { inObject in inObject.mType_property.setProp (nil) }
     )
   //--- Atomic property: nameShape
-    // self.nameShape_property.configure (self.mXName_property, self.mYName_property, self.mName_property, self.mNameHorizontalAlignment_property, self.mPinNameIsDisplayedInSchematics_property, prefs_pinNameFont_property, transient_SymbolPinTypeInDevice_nameShape)
     self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mXName_property_selection.kind ()

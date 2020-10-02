@@ -165,7 +165,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
   //····················································································································
 
   func update (from inModel : EBReadOnlyProperty_NetInfoArray) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

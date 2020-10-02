@@ -40,7 +40,7 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   final var mMasterPads_property_selection : EBSelection < [DeviceMasterPadInProject] > {
-    return self.mMasterPads_property.prop
+    return self.mMasterPads_property.selection
   }
 
   //····················································································································
@@ -73,7 +73,7 @@ class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
+  final var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.selection }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -98,7 +98,7 @@ class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.selection }
 
   //····················································································································
   //   Transient property: packagePadDictionary
@@ -109,7 +109,7 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
-    return self.packagePadDictionary_property.prop
+    return self.packagePadDictionary_property.selection
   }
 
   //····················································································································
@@ -140,7 +140,6 @@ class DevicePackageInProject : EBManagedObject,
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
-    // self.packagePadDictionary_property.configure (self.mMasterPads_property.descriptor_property, transient_DevicePackageInProject_packagePadDictionary)
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mMasterPads_property_selection.kind ()

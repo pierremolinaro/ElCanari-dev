@@ -33,7 +33,7 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //····················································································································
 
   fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
-    switch combine (dimension.prop, unit: unit.prop) {
+    switch combine (dimension.selection, unit: unit.selection) {
     case .empty :
       self.stringValue = "—"
       self.enableFromValueBinding (false)
@@ -118,7 +118,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
   //····················································································································
 
   @objc func action (_ sender : CanariDimensionTextField) {
-    switch self.mUnit.prop {
+    switch self.mUnit.selection {
     case .empty, .multiple :
       break
     case .single (let unit) :

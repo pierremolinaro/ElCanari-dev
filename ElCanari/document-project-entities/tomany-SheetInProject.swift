@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -169,7 +169,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionErrors.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connexionErrors.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -451,7 +451,7 @@ final class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
       self.mModelArrayShouldBeComputed = false
       let newArray : [SheetInProject] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -476,7 +476,7 @@ final class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > {
+  override var selection : EBSelection < [SheetInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -543,7 +543,7 @@ final class TransientArrayOfSuperOf_SheetInProject <SUPER : EBManagedObject> : R
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -570,7 +570,7 @@ final class TransientArrayOfSuperOf_SheetInProject <SUPER : EBManagedObject> : R
 
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > {
+  override var selection : EBSelection < [SheetInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -629,7 +629,7 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
   override func notifyModelDidChange () {
     let newModelArray : [SheetInProject]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -652,9 +652,9 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > {
+  override var selection : EBSelection < [SheetInProject] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -664,7 +664,7 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 
   override var propval : [SheetInProject] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -724,7 +724,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -784,7 +784,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
  
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -873,7 +873,7 @@ final class StandAloneArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

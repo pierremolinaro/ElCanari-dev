@@ -35,7 +35,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func removeEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPackageName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -149,7 +149,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packagePadDictionary.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_packagePadDictionary.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -278,7 +278,7 @@ final class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePack
       self.mModelArrayShouldBeComputed = false
       let newArray : [DevicePackageInProject] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -303,7 +303,7 @@ final class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePack
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > {
+  override var selection : EBSelection < [DevicePackageInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -370,7 +370,7 @@ final class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObj
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -397,7 +397,7 @@ final class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObj
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > {
+  override var selection : EBSelection < [DevicePackageInProject] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -456,7 +456,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
   override func notifyModelDidChange () {
     let newModelArray : [DevicePackageInProject]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -479,9 +479,9 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > {
+  override var selection : EBSelection < [DevicePackageInProject] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -491,7 +491,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 
   override var propval : [DevicePackageInProject] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -551,7 +551,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -611,7 +611,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
  
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DevicePackageInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -700,7 +700,7 @@ final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePa
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DevicePackageInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

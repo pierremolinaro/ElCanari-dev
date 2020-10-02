@@ -117,7 +117,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
+  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.selection }
 
   //····················································································································
   //   Atomic property: mCenterY
@@ -142,7 +142,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
+  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.selection }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -167,7 +167,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -192,7 +192,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
+  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mHoleWidth
@@ -217,7 +217,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.prop }
+  final var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mHoleHeight
@@ -242,7 +242,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.prop }
+  final var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mShape
@@ -267,7 +267,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.prop }
+  final var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.selection }
 
   //····················································································································
   //   Atomic property: mStyle
@@ -292,7 +292,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mStyle_property_selection : EBSelection <PadStyle> { return self.mStyle_property.prop }
+  final var mStyle_property_selection : EBSelection <PadStyle> { return self.mStyle_property.selection }
 
   //····················································································································
   //   Atomic property: mName
@@ -317,7 +317,7 @@ class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
+  final var mName_property_selection : EBSelection <String> { return self.mName_property.selection }
 
   //····················································································································
   //   To many property: mSlavePads
@@ -328,7 +328,7 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var mSlavePads_property_selection : EBSelection < [SlavePadInDevice] > {
-    return self.mSlavePads_property.prop
+    return self.mSlavePads_property.selection
   }
 
   //····················································································································
@@ -347,7 +347,7 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var padNumberDisplay_property_selection : EBSelection <EBShape> {
-    return self.padNumberDisplay_property.prop
+    return self.padNumberDisplay_property.selection
   }
 
   //····················································································································
@@ -370,7 +370,7 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var frontSideFilledBezierPathArray_property_selection : EBSelection <BezierPathArray> {
-    return self.frontSideFilledBezierPathArray_property.prop
+    return self.frontSideFilledBezierPathArray_property.selection
   }
 
   //····················································································································
@@ -393,7 +393,7 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var backSideFilledBezierPathArray_property_selection : EBSelection <BezierPathArray> {
-    return self.backSideFilledBezierPathArray_property.prop
+    return self.backSideFilledBezierPathArray_property.selection
   }
 
   //····················································································································
@@ -435,7 +435,6 @@ class MasterPadInDevice : EBManagedObject,
       resetter: { inObject in inObject.mMasterPad_property.setProp (nil) }
     )
   //--- Atomic property: padNumberDisplay
-    // self.padNumberDisplay_property.configure (self.mCenterX_property, self.mCenterY_property, prefs_padNumberColor_property, self.mName_property, prefs_padNumberFont_property, transient_MasterPadInDevice_padNumberDisplay)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -466,7 +465,6 @@ class MasterPadInDevice : EBManagedObject,
     self.mName_property.addEBObserver (self.padNumberDisplay_property)
     prefs_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
   //--- Atomic property: frontSideFilledBezierPathArray
-    // self.frontSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.frontSideFilledBezierPath_property, transient_MasterPadInDevice_frontSideFilledBezierPathArray)
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()
@@ -505,7 +503,6 @@ class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPathArray_property)
   //--- Atomic property: backSideFilledBezierPathArray
-    // self.backSideFilledBezierPathArray_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, self.mSlavePads_property.backSideFilledBezierPath_property, transient_MasterPadInDevice_backSideFilledBezierPathArray)
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()

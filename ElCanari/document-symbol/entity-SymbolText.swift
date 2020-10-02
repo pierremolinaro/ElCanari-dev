@@ -82,7 +82,7 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
 
   //····················································································································
   //   Atomic property: text
@@ -107,7 +107,7 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  final var text_property_selection : EBSelection <String> { return self.text_property.prop }
+  final var text_property_selection : EBSelection <String> { return self.text_property.selection }
 
   //····················································································································
   //   Atomic property: horizontalAlignment
@@ -132,7 +132,7 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  final var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.horizontalAlignment_property.prop }
+  final var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.horizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: x
@@ -157,7 +157,7 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //    init
@@ -176,7 +176,6 @@ class SymbolText : SymbolObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.x_property, self.y_property, self.text_property, self.horizontalAlignment_property, prefs_symbolColor_property, prefs_pinNameFont_property, transient_SymbolText_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -209,7 +208,6 @@ class SymbolText : SymbolObject,
     prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
     prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.text_property, self.horizontalAlignment_property, prefs_pinNameFont_property, transient_SymbolText_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -240,7 +238,6 @@ class SymbolText : SymbolObject,
     self.horizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     prefs_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.x_property, self.y_property, self.text_property, transient_SymbolText_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()

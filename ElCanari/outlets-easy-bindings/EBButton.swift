@@ -33,7 +33,7 @@ class EBButton : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateTitle (_ object : EBReadOnlyProperty_String) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.title = "-"
       self.toolTip = nil

@@ -83,7 +83,7 @@ class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate 
   //····················································································································
 
   fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "-"

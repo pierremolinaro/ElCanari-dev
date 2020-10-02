@@ -12,7 +12,7 @@ class EBReadOnlyValueProperty <T> : EBAbstractProperty, EBObservableObjectProtoc
 
   //····················································································································
 
-  var prop : EBSelection <T> { return .empty } // Abstract method
+  var selection : EBSelection <T> { return .empty } // Abstract method
 
   //····················································································································
 }

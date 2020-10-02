@@ -135,7 +135,7 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
   //····················································································································
 
   func update (from inModel : EBReadOnlyProperty_TwoStringArray) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

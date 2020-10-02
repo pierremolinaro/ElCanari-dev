@@ -39,7 +39,7 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
   //····················································································································
 
   private func updateOutlet (_ object : EBReadOnlyProperty_CanariMenuItemListClass) {
-    switch object.prop {
+    switch object.selection {
     case .empty, .multiple :
       self.removeAllItems ()
     case .single (let itemList) :

@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateOverObjectsDisplay (from model : EBReadOnlyProperty_EBShape) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mOverObjectsDisplay = EBShape ()
     case .single (let v) :

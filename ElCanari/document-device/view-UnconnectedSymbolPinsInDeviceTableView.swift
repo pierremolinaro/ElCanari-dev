@@ -111,7 +111,7 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //····················································································································
 
   func updateUnconnectedSymbolPinsList (from inModel : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedSymbolPinArray) :

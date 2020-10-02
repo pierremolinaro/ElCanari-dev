@@ -57,7 +57,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   private func update (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "—"
@@ -99,7 +99,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
   //      Swift.print ("RGB \(c.redComponent) \(c.greenComponent) \(c.blueComponent)")
 
   private func update (from model : EBReadOnlyProperty_Bool) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       break
     case .single (let v) :

@@ -117,7 +117,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
 
   //····················································································································
   //   Atomic property: width
@@ -142,7 +142,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
 
   //····················································································································
   //   Atomic property: height
@@ -167,7 +167,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
 
   //····················································································································
   //   Atomic property: xUnit
@@ -192,7 +192,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.prop }
+  final var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yUnit
@@ -217,7 +217,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.prop }
+  final var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.selection }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -242,7 +242,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
+  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -267,7 +267,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
+  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.selection }
 
   //····················································································································
   //   Atomic property: x
@@ -292,7 +292,7 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  final var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //   Transient property: strokeBezierPath
@@ -303,7 +303,7 @@ class PackageOval : PackageObject,
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.prop
+    return self.strokeBezierPath_property.selection
   }
 
   //····················································································································
@@ -338,7 +338,6 @@ class PackageOval : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: strokeBezierPath
-    // self.strokeBezierPath_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_PackageOval_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -367,7 +366,6 @@ class PackageOval : PackageObject,
     self.width_property.addEBObserver (self.strokeBezierPath_property)
     self.height_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.strokeBezierPath_property, prefs_packageColor_property, prefs_packageDrawingWidthMultipliedByTen_property, transient_PackageOval_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
@@ -394,7 +392,6 @@ class PackageOval : PackageObject,
     prefs_packageColor_property.addEBObserver (self.objectDisplay_property)
     prefs_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, self.knobSize_property, transient_PackageOval_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -425,7 +422,6 @@ class PackageOval : PackageObject,
     self.height_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.x_property, self.y_property, self.width_property, self.height_property, transient_PackageOval_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()

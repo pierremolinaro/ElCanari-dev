@@ -41,7 +41,7 @@ class CanariObserverSwitch : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateValue (_ object : EBReadOnlyProperty_Bool) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.state = NSControl.StateValue.off
     case .multiple :

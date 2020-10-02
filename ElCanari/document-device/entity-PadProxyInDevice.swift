@@ -68,7 +68,7 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinInstanceName_property_selection : EBSelection <String> { return self.mPinInstanceName_property.prop }
+  final var mPinInstanceName_property_selection : EBSelection <String> { return self.mPinInstanceName_property.selection }
 
   //····················································································································
   //   Atomic property: mPadName
@@ -93,7 +93,7 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
+  final var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.selection }
 
   //····················································································································
   //   Atomic property: mIsNC
@@ -118,7 +118,7 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.prop }
+  final var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.selection }
 
   //····················································································································
   //   To one property: mPinInstance
@@ -167,7 +167,7 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final var isConnected_property_selection : EBSelection <Bool> {
-    return self.isConnected_property.prop
+    return self.isConnected_property.selection
   }
 
   //····················································································································
@@ -190,7 +190,7 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final var symbolName_property_selection : EBSelection <String> {
-    return self.symbolName_property.prop
+    return self.symbolName_property.selection
   }
 
   //····················································································································
@@ -226,7 +226,6 @@ class PadProxyInDevice : EBManagedObject,
       resetter: { inObject in inObject.mPadProxy_property.setProp (nil) }
     )
   //--- Atomic property: isConnected
-    // self.isConnected_property.configure (self.mIsNC_property, self.mPinInstance_property, transient_PadProxyInDevice_isConnected)
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mIsNC_property_selection.kind ()
@@ -251,7 +250,6 @@ class PadProxyInDevice : EBManagedObject,
     self.mIsNC_property.addEBObserver (self.isConnected_property)
     self.mPinInstance_property.addEBObserver (self.isConnected_property)
   //--- Atomic property: symbolName
-    // self.symbolName_property.configure (self.mPinInstance_property.symbolName_property, transient_PadProxyInDevice_symbolName)
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPinInstance_property.symbolName_property_selection.kind ()
@@ -272,7 +270,7 @@ class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinInstance_property.symbolName_property.addEBObserver (self.symbolName_property)
+    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)

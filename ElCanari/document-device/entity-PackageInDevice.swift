@@ -124,7 +124,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
+  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.selection }
 
   //····················································································································
   //   Atomic property: mName
@@ -149,7 +149,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
+  final var mName_property_selection : EBSelection <String> { return self.mName_property.selection }
 
   //····················································································································
   //   Atomic property: mVersion
@@ -174,7 +174,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
+  final var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.selection }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -199,7 +199,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -224,7 +224,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //   Atomic property: mY
@@ -249,7 +249,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   To many property: mMasterPads
@@ -260,7 +260,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var mMasterPads_property_selection : EBSelection < [MasterPadInDevice] > {
-    return self.mMasterPads_property.prop
+    return self.mMasterPads_property.selection
   }
 
   //····················································································································
@@ -317,7 +317,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.prop
+    return self.versionString_property.selection
   }
 
   //····················································································································
@@ -340,7 +340,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var documentSizeString_property_selection : EBSelection <String> {
-    return self.documentSizeString_property.prop
+    return self.documentSizeString_property.selection
   }
 
   //····················································································································
@@ -363,7 +363,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var frontSidePadFilledBezierPathArray_property_selection : EBSelection <BezierPathArray> {
-    return self.frontSidePadFilledBezierPathArray_property.prop
+    return self.frontSidePadFilledBezierPathArray_property.selection
   }
 
   //····················································································································
@@ -386,7 +386,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var backSidePadFilledBezierPathArray_property_selection : EBSelection <BezierPathArray> {
-    return self.backSidePadFilledBezierPathArray_property.prop
+    return self.backSidePadFilledBezierPathArray_property.selection
   }
 
   //····················································································································
@@ -409,7 +409,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var padNameSet_property_selection : EBSelection <StringSet> {
-    return self.padNameSet_property.prop
+    return self.padNameSet_property.selection
   }
 
   //····················································································································
@@ -450,7 +450,6 @@ class PackageInDevice : EBGraphicManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mPackages_property.remove (me) } }
     )
   //--- Atomic property: versionString
-    // self.versionString_property.configure (self.mVersion_property, transient_PackageInDevice_versionString)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mVersion_property_selection.kind ()
@@ -473,7 +472,6 @@ class PackageInDevice : EBGraphicManagedObject,
     }
     self.mVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: documentSizeString
-    // self.documentSizeString_property.configure (self.mFileData_property, transient_PackageInDevice_documentSizeString)
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFileData_property_selection.kind ()
@@ -496,7 +494,6 @@ class PackageInDevice : EBGraphicManagedObject,
     }
     self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: frontSidePadFilledBezierPathArray
-    // self.frontSidePadFilledBezierPathArray_property.configure (self.mMasterPads_property.frontSideFilledBezierPathArray_property, transient_PackageInDevice_frontSidePadFilledBezierPathArray)
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mMasterPads_property_selection.kind ()
@@ -519,7 +516,6 @@ class PackageInDevice : EBGraphicManagedObject,
     }
     self.mMasterPads_property.addEBObserverOf_frontSideFilledBezierPathArray (self.frontSidePadFilledBezierPathArray_property)
   //--- Atomic property: backSidePadFilledBezierPathArray
-    // self.backSidePadFilledBezierPathArray_property.configure (self.mMasterPads_property.backSideFilledBezierPathArray_property, transient_PackageInDevice_backSidePadFilledBezierPathArray)
     self.backSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mMasterPads_property_selection.kind ()
@@ -542,7 +538,6 @@ class PackageInDevice : EBGraphicManagedObject,
     }
     self.mMasterPads_property.addEBObserverOf_backSideFilledBezierPathArray (self.backSidePadFilledBezierPathArray_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mMasterPads_property.padNumberDisplay_property, self.mRoot_property.mShowPackagePadNumbers_property, self.mRoot_property.mShowPackages_property, self.mRoot_property.mShowPackageFrontPads_property, self.mRoot_property.mShowPackageBackPads_property, self.mStrokeBezierPath_property, prefs_packageColor_property, prefs_packageDrawingWidthMultipliedByTen_property, self.frontSidePadFilledBezierPathArray_property, prefs_frontSidePadColor_property, self.backSidePadFilledBezierPathArray_property, prefs_backSidePadColor_property, self.mName_property, self.mX_property, self.mY_property, transient_PackageInDevice_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mMasterPads_property_selection.kind ()
@@ -578,10 +573,10 @@ class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
-    self.mRoot_property.mShowPackagePadNumbers_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.mShowPackages_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.mShowPackageFrontPads_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.mShowPackageBackPads_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackages (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
     self.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     prefs_packageColor_property.addEBObserver (self.objectDisplay_property)
     prefs_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
@@ -593,7 +588,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mMasterPads_property.padNumberDisplay_property, self.mRoot_property.mShowPackagePadNumbers_property, self.mRoot_property.mShowPackages_property, self.mRoot_property.mShowPackageFrontPads_property, self.mRoot_property.mShowPackageBackPads_property, self.mStrokeBezierPath_property, prefs_packageDrawingWidthMultipliedByTen_property, self.frontSidePadFilledBezierPathArray_property, self.backSidePadFilledBezierPathArray_property, self.mName_property, self.mX_property, self.mY_property, transient_PackageInDevice_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mMasterPads_property_selection.kind ()
@@ -626,10 +620,10 @@ class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.selectionDisplay_property)
-    self.mRoot_property.mShowPackagePadNumbers_property.addEBObserver (self.selectionDisplay_property)
-    self.mRoot_property.mShowPackages_property.addEBObserver (self.selectionDisplay_property)
-    self.mRoot_property.mShowPackageFrontPads_property.addEBObserver (self.selectionDisplay_property)
-    self.mRoot_property.mShowPackageBackPads_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackages (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.selectionDisplay_property)
     self.mStrokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
     prefs_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.selectionDisplay_property)
@@ -638,7 +632,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: padNameSet
-    // self.padNameSet_property.configure (self.mMasterPads_property.mName_property, transient_PackageInDevice_padNameSet)
     self.padNameSet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mMasterPads_property_selection.kind ()

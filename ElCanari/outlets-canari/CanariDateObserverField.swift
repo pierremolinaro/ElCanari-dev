@@ -41,7 +41,7 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
   //····················································································································
 
   private func updateOutlet (_ inObject : EBReadOnlyProperty_Date) {
-    switch inObject.prop {
+    switch inObject.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "—"

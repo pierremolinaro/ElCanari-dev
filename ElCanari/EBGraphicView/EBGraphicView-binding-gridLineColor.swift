@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.mGridLineColor = .black
     case .single (let v) :

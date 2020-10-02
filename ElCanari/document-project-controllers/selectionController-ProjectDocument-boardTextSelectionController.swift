@@ -16,7 +16,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mX_property = EBPropertyProxy_Int ()
   var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
+    return self.mX_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mY_property = EBPropertyProxy_Int ()
   var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
+    return self.mY_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mFontSize_property = EBPropertyProxy_Double ()
   var mFontSize_property_selection : EBSelection <Double> {
-    return self.mFontSize_property.prop
+    return self.mFontSize_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mLayer_property = EBPropertyProxy_BoardTextLayer ()
   var mLayer_property_selection : EBSelection <BoardTextLayer> {
-    return self.mLayer_property.prop
+    return self.mLayer_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mText_property = EBPropertyProxy_String ()
   var mText_property_selection : EBSelection <String> {
-    return self.mText_property.prop
+    return self.mText_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
   var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.mHorizontalAlignment_property.prop
+    return self.mHorizontalAlignment_property.selection
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mVerticalAlignment_property = EBPropertyProxy_BoardTextVerticalAlignment ()
   var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> {
-    return self.mVerticalAlignment_property.prop
+    return self.mVerticalAlignment_property.selection
   }
 
   //····················································································································
@@ -79,7 +79,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mRotation_property = EBPropertyProxy_Int ()
   var mRotation_property_selection : EBSelection <Int> {
-    return self.mRotation_property.prop
+    return self.mRotation_property.selection
   }
 
   //····················································································································
@@ -88,7 +88,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mWeight_property = EBPropertyProxy_Double ()
   var mWeight_property_selection : EBSelection <Double> {
-    return self.mWeight_property.prop
+    return self.mWeight_property.selection
   }
 
   //····················································································································
@@ -97,7 +97,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let mOblique_property = EBPropertyProxy_Bool ()
   var mOblique_property_selection : EBSelection <Bool> {
-    return self.mOblique_property.prop
+    return self.mOblique_property.selection
   }
 
   //····················································································································
@@ -107,7 +107,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -117,7 +117,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -127,7 +127,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   let fontName_property = EBTransientProperty_String ()
 
   var fontName_property_selection : EBSelection <String> {
-    return self.fontName_property.prop
+    return self.fontName_property.selection
   }
 
   //····················································································································
@@ -137,7 +137,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -417,7 +417,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -451,7 +451,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -463,7 +463,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -486,7 +486,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -520,7 +520,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -532,7 +532,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -555,7 +555,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mFontSize (self.mFontSize_property)
     self.mFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -589,7 +589,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mFontSize_property.mWriteModelFunction = { [weak self] (inValue : Double) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -601,7 +601,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mFontSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -624,7 +624,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mLayer (self.mLayer_property)
     self.mLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -658,7 +658,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mLayer_property.mWriteModelFunction = { [weak self] (inValue : BoardTextLayer) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -670,7 +670,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardTextLayer, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -693,7 +693,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mText (self.mText_property)
     self.mText_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -727,7 +727,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mText_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -739,7 +739,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mText_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -762,7 +762,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
     self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -796,7 +796,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -808,7 +808,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -831,7 +831,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
     self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -865,7 +865,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mVerticalAlignment_property.mWriteModelFunction = { [weak self] (inValue : BoardTextVerticalAlignment) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -877,7 +877,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mVerticalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardTextVerticalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -900,7 +900,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property)
     self.mRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -934,7 +934,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -946,7 +946,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -969,7 +969,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mWeight (self.mWeight_property)
     self.mWeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1003,7 +1003,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mWeight_property.mWriteModelFunction = { [weak self] (inValue : Double) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1015,7 +1015,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mWeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1038,7 +1038,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_mOblique (self.mOblique_property)
     self.mOblique_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1072,7 +1072,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mOblique_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -1084,7 +1084,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     }
     self.mOblique_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -1107,7 +1107,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1146,7 +1146,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1185,7 +1185,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_fontName (self.fontName_property)
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1224,7 +1224,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

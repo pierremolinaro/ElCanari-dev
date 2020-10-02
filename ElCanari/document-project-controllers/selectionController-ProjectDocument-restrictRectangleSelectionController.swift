@@ -16,7 +16,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mY_property = EBPropertyProxy_Int ()
   var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
+    return self.mY_property.selection
   }
 
   //····················································································································
@@ -25,7 +25,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mWidth_property = EBPropertyProxy_Int ()
   var mWidth_property_selection : EBSelection <Int> {
-    return self.mWidth_property.prop
+    return self.mWidth_property.selection
   }
 
   //····················································································································
@@ -34,7 +34,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mHeight_property = EBPropertyProxy_Int ()
   var mHeight_property_selection : EBSelection <Int> {
-    return self.mHeight_property.prop
+    return self.mHeight_property.selection
   }
 
   //····················································································································
@@ -43,7 +43,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mIsInFrontLayer_property = EBPropertyProxy_Bool ()
   var mIsInFrontLayer_property_selection : EBSelection <Bool> {
-    return self.mIsInFrontLayer_property.prop
+    return self.mIsInFrontLayer_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mIsInBackLayer_property = EBPropertyProxy_Bool ()
   var mIsInBackLayer_property_selection : EBSelection <Bool> {
-    return self.mIsInBackLayer_property.prop
+    return self.mIsInBackLayer_property.selection
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mX_property = EBPropertyProxy_Int ()
   var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
+    return self.mX_property.selection
   }
 
   //····················································································································
@@ -71,7 +71,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+    return self.objectDisplay_property.selection
   }
 
   //····················································································································
@@ -81,7 +81,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -91,7 +91,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.prop
+    return self.signatureForERCChecking_property.selection
   }
 
   //····················································································································
@@ -311,7 +311,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -345,7 +345,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -357,7 +357,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -380,7 +380,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_mWidth (self.mWidth_property)
     self.mWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -414,7 +414,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -426,7 +426,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -449,7 +449,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_mHeight (self.mHeight_property)
     self.mHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -483,7 +483,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mHeight_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -495,7 +495,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mHeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -518,7 +518,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_mIsInFrontLayer (self.mIsInFrontLayer_property)
     self.mIsInFrontLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -552,7 +552,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mIsInFrontLayer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -564,7 +564,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mIsInFrontLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -587,7 +587,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property)
     self.mIsInBackLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -621,7 +621,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mIsInBackLayer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -633,7 +633,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mIsInBackLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -656,7 +656,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -690,7 +690,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -702,7 +702,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     }
     self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -725,7 +725,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -764,7 +764,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -803,7 +803,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -96,7 +96,7 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -121,7 +121,7 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -146,7 +146,7 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
+  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mIsInFrontLayer
@@ -171,7 +171,7 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final var mIsInFrontLayer_property_selection : EBSelection <Bool> { return self.mIsInFrontLayer_property.prop }
+  final var mIsInFrontLayer_property_selection : EBSelection <Bool> { return self.mIsInFrontLayer_property.selection }
 
   //····················································································································
   //   Atomic property: mIsInBackLayer
@@ -196,7 +196,7 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final var mIsInBackLayer_property_selection : EBSelection <Bool> { return self.mIsInBackLayer_property.prop }
+  final var mIsInBackLayer_property_selection : EBSelection <Bool> { return self.mIsInBackLayer_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -221,7 +221,7 @@ class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //    init
@@ -242,7 +242,6 @@ class BoardRestrictRectangle : BoardObject,
 
   private final func configureObject () {
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, prefs_displayFrontRestrictRectangles_property, prefs_displayBackRestrictRectangles_property, prefs_frontSideRestrictRectangleColorForBoard_property, prefs_backSideRestrictRectangleColorForBoard_property, transient_BoardRestrictRectangle_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -283,7 +282,6 @@ class BoardRestrictRectangle : BoardObject,
     prefs_frontSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_backSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, prefs_hiliteWidthMultipliedByTen_property, transient_BoardRestrictRectangle_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
@@ -318,7 +316,6 @@ class BoardRestrictRectangle : BoardObject,
     self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
     prefs_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.mX_property, self.mY_property, self.mWidth_property, self.mHeight_property, self.mIsInFrontLayer_property, self.mIsInBackLayer_property, transient_BoardRestrictRectangle_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()

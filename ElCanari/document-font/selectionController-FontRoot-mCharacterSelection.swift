@@ -20,35 +20,35 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   var advance_property_selection : EBSelection <Int> {
     get {
-      return self.advance_property.prop
+      return self.advance_property.selection
     }
   }
   var codePoint_property = EBPropertyProxy_Int ()
 
   var codePoint_property_selection : EBSelection <Int> {
     get {
-      return self.codePoint_property.prop
+      return self.codePoint_property.selection
     }
   }
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
   var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
     get {
-      return self.gerberCode_property.prop
+      return self.gerberCode_property.selection
     }
   }
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
   var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
     get {
-      return self.gerberCodeInstructionCountMessage_property.prop
+      return self.gerberCodeInstructionCountMessage_property.selection
     }
   }
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
   var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
     get {
-      return self.segmentArrayForDrawing_property.prop
+      return self.segmentArrayForDrawing_property.selection
     }
   }
 
@@ -174,7 +174,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     model.addEBObserverOf_advance (self.advance_property)
     self.advance_property.mReadModelFunction = {
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -208,7 +208,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     }
     self.advance_property.mWriteModelFunction = { (inValue : Int) in
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -220,7 +220,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     }
     self.advance_property.mValidateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -244,7 +244,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     model.addEBObserverOf_codePoint (self.codePoint_property)
     self.codePoint_property.mReadModelFunction = {
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -278,7 +278,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     }
     self.codePoint_property.mWriteModelFunction = { (inValue : Int) in
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -290,7 +290,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     }
     self.codePoint_property.mValidateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -314,7 +314,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     model.addEBObserverOf_gerberCode (self.gerberCode_property)
     self.gerberCode_property.mReadModelFunction = {
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -354,7 +354,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = {
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -394,7 +394,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.mReadModelFunction = {
       if let model = self.mModel {
-        switch model.prop {
+        switch model.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -59,7 +59,7 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   private func update (from model : EBReadOnlyProperty_UInt32) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       self.stringValue = "—"
     case .single (let v) :

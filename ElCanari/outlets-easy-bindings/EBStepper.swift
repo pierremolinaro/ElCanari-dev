@@ -42,7 +42,7 @@ class EBStepper : NSStepper, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateValue (_ object : EBReadOnlyProperty_Int) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.stringValue = "-"
       self.enableFromValueBinding (false)

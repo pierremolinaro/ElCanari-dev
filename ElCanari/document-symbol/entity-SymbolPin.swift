@@ -138,7 +138,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var yPin_property_selection : EBSelection <Int> { return self.yPin_property.prop }
+  final var yPin_property_selection : EBSelection <Int> { return self.yPin_property.selection }
 
   //····················································································································
   //   Atomic property: xName
@@ -163,7 +163,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var xName_property_selection : EBSelection <Int> { return self.xName_property.prop }
+  final var xName_property_selection : EBSelection <Int> { return self.xName_property.selection }
 
   //····················································································································
   //   Atomic property: yName
@@ -188,7 +188,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var yName_property_selection : EBSelection <Int> { return self.yName_property.prop }
+  final var yName_property_selection : EBSelection <Int> { return self.yName_property.selection }
 
   //····················································································································
   //   Atomic property: xNumber
@@ -213,7 +213,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var xNumber_property_selection : EBSelection <Int> { return self.xNumber_property.prop }
+  final var xNumber_property_selection : EBSelection <Int> { return self.xNumber_property.selection }
 
   //····················································································································
   //   Atomic property: yNumber
@@ -238,7 +238,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var yNumber_property_selection : EBSelection <Int> { return self.yNumber_property.prop }
+  final var yNumber_property_selection : EBSelection <Int> { return self.yNumber_property.selection }
 
   //····················································································································
   //   Atomic property: name
@@ -263,7 +263,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var name_property_selection : EBSelection <String> { return self.name_property.prop }
+  final var name_property_selection : EBSelection <String> { return self.name_property.selection }
 
   //····················································································································
   //   Atomic property: nameHorizontalAlignment
@@ -288,7 +288,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.nameHorizontalAlignment_property.prop }
+  final var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.nameHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: numberHorizontalAlignment
@@ -313,7 +313,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.numberHorizontalAlignment_property.prop }
+  final var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.numberHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: pinNameIsDisplayedInSchematics
@@ -338,7 +338,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.pinNameIsDisplayedInSchematics_property.prop }
+  final var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.pinNameIsDisplayedInSchematics_property.selection }
 
   //····················································································································
   //   Atomic property: xPin
@@ -363,7 +363,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final var xPin_property_selection : EBSelection <Int> { return self.xPin_property.prop }
+  final var xPin_property_selection : EBSelection <Int> { return self.xPin_property.selection }
 
   //····················································································································
   //   Transient property: filledBezierPath
@@ -374,7 +374,7 @@ class SymbolPin : SymbolObject,
   //····················································································································
 
   final var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.prop
+    return self.filledBezierPath_property.selection
   }
 
   //····················································································································
@@ -397,7 +397,7 @@ class SymbolPin : SymbolObject,
   //····················································································································
 
   final var nameRect_property_selection : EBSelection <NSRect> {
-    return self.nameRect_property.prop
+    return self.nameRect_property.selection
   }
 
   //····················································································································
@@ -434,7 +434,6 @@ class SymbolPin : SymbolObject,
 
   private final func configureObject () {
   //--- Atomic property: filledBezierPath
-    // self.filledBezierPath_property.configure (self.xPin_property, self.yPin_property, transient_SymbolPin_filledBezierPath)
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -459,7 +458,6 @@ class SymbolPin : SymbolObject,
     self.xPin_property.addEBObserver (self.filledBezierPath_property)
     self.yPin_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.name_property, self.pinNameIsDisplayedInSchematics_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, prefs_symbolColor_property, prefs_pinNameFont_property, transient_SymbolPin_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -504,7 +502,6 @@ class SymbolPin : SymbolObject,
     prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
     prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.nameHorizontalAlignment_property, self.numberHorizontalAlignment_property, transient_SymbolPin_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -541,7 +538,6 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.xPin_property, self.yPin_property, self.xName_property, self.yName_property, self.xNumber_property, self.yNumber_property, self.name_property, transient_SymbolPin_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
@@ -576,7 +572,6 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.addEBObserver (self.issues_property)
     self.name_property.addEBObserver (self.issues_property)
   //--- Atomic property: nameRect
-    // self.nameRect_property.configure (self.xName_property, self.yName_property, self.name_property, self.nameHorizontalAlignment_property, prefs_pinNameFont_property, transient_SymbolPin_nameRect)
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xName_property_selection.kind ()

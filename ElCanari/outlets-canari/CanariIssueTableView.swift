@@ -208,7 +208,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //····················································································································
 
   private func update (from model : EBReadOnlyProperty_CanariIssueArray) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       self.mModelArray = []
     case .single (let v) :

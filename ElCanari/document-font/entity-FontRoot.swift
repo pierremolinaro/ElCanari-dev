@@ -117,7 +117,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
+  final var comments_property_selection : EBSelection <String> { return self.comments_property.selection }
 
   //····················································································································
   //   Atomic property: nominalSize
@@ -142,7 +142,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var nominalSize_property_selection : EBSelection <Int> { return self.nominalSize_property.prop }
+  final var nominalSize_property_selection : EBSelection <Int> { return self.nominalSize_property.selection }
 
   //····················································································································
   //   Atomic property: selectedTab
@@ -167,7 +167,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
+  final var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.selection }
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -192,7 +192,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
+  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.selection }
 
   //····················································································································
   //   Atomic property: currentCharacterCodePoint
@@ -217,7 +217,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var currentCharacterCodePoint_property_selection : EBSelection <Int> { return self.currentCharacterCodePoint_property.prop }
+  final var currentCharacterCodePoint_property_selection : EBSelection <Int> { return self.currentCharacterCodePoint_property.selection }
 
   //····················································································································
 
@@ -234,7 +234,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var characters_property_selection : EBSelection < [FontCharacter] > {
-    return self.characters_property.prop
+    return self.characters_property.selection
   }
 
   //····················································································································
@@ -253,7 +253,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var currentCharacterCodePointString_property_selection : EBSelection <String> {
-    return self.currentCharacterCodePointString_property.prop
+    return self.currentCharacterCodePointString_property.selection
   }
 
   //····················································································································
@@ -276,7 +276,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.sampleStringBezierPath_property.prop
+    return self.sampleStringBezierPath_property.selection
   }
 
   //····················································································································
@@ -299,7 +299,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var sampleStringBezierPathWidth_property_selection : EBSelection <String> {
-    return self.sampleStringBezierPathWidth_property.prop
+    return self.sampleStringBezierPathWidth_property.selection
   }
 
   //····················································································································
@@ -322,7 +322,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var sampleStringBezierPathAscent_property_selection : EBSelection <String> {
-    return self.sampleStringBezierPathAscent_property.prop
+    return self.sampleStringBezierPathAscent_property.selection
   }
 
   //····················································································································
@@ -345,7 +345,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var sampleStringBezierPathDescent_property_selection : EBSelection <String> {
-    return self.sampleStringBezierPathDescent_property.prop
+    return self.sampleStringBezierPathDescent_property.selection
   }
 
   //····················································································································
@@ -368,7 +368,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice> {
-    return self.definedCharacters_property.prop
+    return self.definedCharacters_property.selection
   }
 
   //····················································································································
@@ -391,7 +391,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+    return self.issues_property.selection
   }
 
   //····················································································································
@@ -429,7 +429,6 @@ class FontRoot : EBManagedObject,
   //--- To many property: characters (no option)
     self.characters_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: currentCharacterCodePointString
-    // self.currentCharacterCodePointString_property.configure (self.currentCharacterCodePoint_property, transient_FontRoot_currentCharacterCodePointString)
     self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.currentCharacterCodePoint_property_selection.kind ()
@@ -452,7 +451,6 @@ class FontRoot : EBManagedObject,
     }
     self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
-    // self.sampleStringBezierPath_property.configure (self.nominalSize_property, self.characters_property.segmentArrayForDrawing_property, self.characters_property.advance_property, prefs_sampleString_property, prefs_sampleStringSize_property, transient_FontRoot_sampleStringBezierPath)
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.nominalSize_property_selection.kind ()
@@ -483,7 +481,6 @@ class FontRoot : EBManagedObject,
     prefs_sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
     prefs_sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
   //--- Atomic property: sampleStringBezierPathWidth
-    // self.sampleStringBezierPathWidth_property.configure (self.sampleStringBezierPath_property, transient_FontRoot_sampleStringBezierPathWidth)
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -506,7 +503,6 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
   //--- Atomic property: sampleStringBezierPathAscent
-    // self.sampleStringBezierPathAscent_property.configure (self.sampleStringBezierPath_property, transient_FontRoot_sampleStringBezierPathAscent)
     self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -529,7 +525,6 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
   //--- Atomic property: sampleStringBezierPathDescent
-    // self.sampleStringBezierPathDescent_property.configure (self.sampleStringBezierPath_property, transient_FontRoot_sampleStringBezierPathDescent)
     self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -552,7 +547,6 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Atomic property: definedCharacters
-    // self.definedCharacters_property.configure (self.characters_property.codePoint_property, transient_FontRoot_definedCharacters)
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.characters_property_selection.kind ()
@@ -575,7 +569,6 @@ class FontRoot : EBManagedObject,
     }
     self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.characters_property.issues_property, transient_FontRoot_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.characters_property_selection.kind ()

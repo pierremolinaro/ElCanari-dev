@@ -145,7 +145,7 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, N
   //····················································································································
 
   func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_AssignedPadProxiesInDevice) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

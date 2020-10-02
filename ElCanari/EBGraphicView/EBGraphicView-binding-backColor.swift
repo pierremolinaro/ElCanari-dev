@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
-    switch model.prop {
+    switch model.selection {
     case .empty :
       break
     case .single (let v) :

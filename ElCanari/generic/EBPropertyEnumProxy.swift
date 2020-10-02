@@ -58,7 +58,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 
   //····················································································································
 
-  override var prop : EBSelection <T> {
+  override var selection : EBSelection <T> {
     if let unReadModelFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unReadModelFunction ()
       self.updateValueExplorer (possibleValue: self.mCachedValue)

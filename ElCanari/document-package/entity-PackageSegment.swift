@@ -131,7 +131,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
 
   //····················································································································
   //   Atomic property: x2
@@ -156,7 +156,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
+  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -181,7 +181,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
+  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
 
   //····················································································································
   //   Atomic property: x1Unit
@@ -206,7 +206,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
+  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -231,7 +231,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
+  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: x2Unit
@@ -256,7 +256,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
+  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -281,7 +281,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
+  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: lengthUnit
@@ -306,7 +306,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var lengthUnit_property_selection : EBSelection <Int> { return self.lengthUnit_property.prop }
+  final var lengthUnit_property_selection : EBSelection <Int> { return self.lengthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: x1
@@ -331,7 +331,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
+  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
 
   //····················································································································
   //   Transient property: strokeBezierPath
@@ -342,7 +342,7 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.prop
+    return self.strokeBezierPath_property.selection
   }
 
   //····················································································································
@@ -365,7 +365,7 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   final var lengthInCanariUnit_property_selection : EBSelection <Int> {
-    return self.lengthInCanariUnit_property.prop
+    return self.lengthInCanariUnit_property.selection
   }
 
   //····················································································································
@@ -401,7 +401,6 @@ class PackageSegment : PackageObject,
 
   private final func configureObject () {
   //--- Atomic property: strokeBezierPath
-    // self.strokeBezierPath_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageSegment_strokeBezierPath)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -430,7 +429,6 @@ class PackageSegment : PackageObject,
     self.x2_property.addEBObserver (self.strokeBezierPath_property)
     self.y2_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.strokeBezierPath_property, prefs_packageColor_property, prefs_packageDrawingWidthMultipliedByTen_property, transient_PackageSegment_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
@@ -457,7 +455,6 @@ class PackageSegment : PackageObject,
     prefs_packageColor_property.addEBObserver (self.objectDisplay_property)
     prefs_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, self.knobSize_property, transient_PackageSegment_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -488,7 +485,6 @@ class PackageSegment : PackageObject,
     self.y2_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    // self.issues_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageSegment_issues)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -517,7 +513,6 @@ class PackageSegment : PackageObject,
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
   //--- Atomic property: lengthInCanariUnit
-    // self.lengthInCanariUnit_property.configure (self.x1_property, self.y1_property, self.x2_property, self.y2_property, transient_PackageSegment_lengthInCanariUnit)
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()

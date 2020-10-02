@@ -29,7 +29,7 @@ extension EBGraphicView {
   //····················································································································
 
   final private func updateMouseGrid (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.set (mouseGridInCanariUnit: 1)
     case .single (let v) :

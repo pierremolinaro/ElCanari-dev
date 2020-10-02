@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_width.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func removeEBObserverOf_height (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_height.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserverOf_shape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shape.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -227,7 +227,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func removeEBObserverOf_shape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_shape.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -269,7 +269,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserverOf_rotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_rotation.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func removeEBObserverOf_rotation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_rotation.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -456,7 +456,7 @@ final class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
       self.mModelArrayShouldBeComputed = false
       let newArray : [BoardModelPad] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -481,7 +481,7 @@ final class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelPad] > {
+  override var selection : EBSelection < [BoardModelPad] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -548,7 +548,7 @@ final class TransientArrayOfSuperOf_BoardModelPad <SUPER : EBManagedObject> : Re
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -575,7 +575,7 @@ final class TransientArrayOfSuperOf_BoardModelPad <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelPad] > {
+  override var selection : EBSelection < [BoardModelPad] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -634,7 +634,7 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
   override func notifyModelDidChange () {
     let newModelArray : [BoardModelPad]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -657,9 +657,9 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelPad] > {
+  override var selection : EBSelection < [BoardModelPad] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -669,7 +669,7 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 
   override var propval : [BoardModelPad] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -729,7 +729,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -789,7 +789,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
  
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -878,7 +878,7 @@ final class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

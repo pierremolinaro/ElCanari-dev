@@ -35,7 +35,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileName.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileName.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileData.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -149,7 +149,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileSize.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_fileSize.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -278,7 +278,7 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
       self.mModelArrayShouldBeComputed = false
       let newArray : [DeviceDocumentation] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -303,7 +303,7 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceDocumentation] > {
+  override var selection : EBSelection < [DeviceDocumentation] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -370,7 +370,7 @@ final class TransientArrayOfSuperOf_DeviceDocumentation <SUPER : EBManagedObject
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -397,7 +397,7 @@ final class TransientArrayOfSuperOf_DeviceDocumentation <SUPER : EBManagedObject
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceDocumentation] > {
+  override var selection : EBSelection < [DeviceDocumentation] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -456,7 +456,7 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
   override func notifyModelDidChange () {
     let newModelArray : [DeviceDocumentation]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -479,9 +479,9 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceDocumentation] > {
+  override var selection : EBSelection < [DeviceDocumentation] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -491,7 +491,7 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
 
   override var propval : [DeviceDocumentation] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -551,7 +551,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -611,7 +611,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
  
   //····················································································································
 
-  override var prop : EBSelection < [DeviceDocumentation] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DeviceDocumentation] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -700,7 +700,7 @@ final class StandAloneArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocum
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceDocumentation] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DeviceDocumentation] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

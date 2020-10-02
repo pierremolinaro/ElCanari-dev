@@ -65,7 +65,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[MergerBoardInstance]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[MergerBoardInstance]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init
@@ -381,7 +381,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   func select (object inObject : MergerBoardInstance) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
@@ -398,7 +398,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
    @objc func add (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let v) :
@@ -418,7 +418,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   @objc func remove (_ sender : Any) {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         break
       case .single (let model_prop) :

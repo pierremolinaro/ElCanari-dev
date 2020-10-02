@@ -96,7 +96,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
+  final var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.selection }
 
   //····················································································································
   //   Atomic property: mCenterY
@@ -121,7 +121,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
+  final var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.selection }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -146,7 +146,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
+  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -171,7 +171,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
+  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mHoleWidth
@@ -196,7 +196,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.prop }
+  final var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mHoleHeight
@@ -221,7 +221,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.prop }
+  final var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.selection }
 
   //····················································································································
   //   Atomic property: mShape
@@ -246,7 +246,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.prop }
+  final var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.selection }
 
   //····················································································································
   //   Atomic property: mStyle
@@ -271,7 +271,7 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mStyle_property_selection : EBSelection <SlavePadStyle> { return self.mStyle_property.prop }
+  final var mStyle_property_selection : EBSelection <SlavePadStyle> { return self.mStyle_property.selection }
 
   //····················································································································
   //   Transient property: descriptor
@@ -282,7 +282,7 @@ class DeviceSlavePadInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor_property_selection : EBSelection <SlavePadDescriptor> {
-    return self.descriptor_property.prop
+    return self.descriptor_property.selection
   }
 
   //····················································································································
@@ -317,7 +317,6 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: descriptor
-    // self.descriptor_property.configure (self.mCenterX_property, self.mCenterY_property, self.mWidth_property, self.mHeight_property, self.mHoleWidth_property, self.mHoleHeight_property, self.mShape_property, self.mStyle_property, transient_DeviceSlavePadInProject_descriptor)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mCenterX_property_selection.kind ()

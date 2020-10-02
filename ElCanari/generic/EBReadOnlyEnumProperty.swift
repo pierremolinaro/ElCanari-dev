@@ -15,7 +15,7 @@ class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBReadOnlyValueProperty <T>,
   //····················································································································
 
   func rawValue () -> Int? {
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :

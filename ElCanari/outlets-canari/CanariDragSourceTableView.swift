@@ -252,7 +252,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func update (from model : EBReadOnlyProperty_StringTagArray) {
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       self.setModel ([])
     case .single (let v) :

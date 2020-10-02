@@ -101,7 +101,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch mObject.prop {
+    switch mObject.selection {
     case .empty, .multiple :
       return 0
     case .single (let v) :
@@ -119,7 +119,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch mObject.prop {
+    switch mObject.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :

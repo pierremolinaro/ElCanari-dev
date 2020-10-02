@@ -55,7 +55,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -70,7 +70,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -127,7 +127,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -169,7 +169,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPX1.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPX1.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -226,7 +226,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPY1.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPY1.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPX2.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -298,7 +298,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPX2.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -340,7 +340,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCPY2.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -355,7 +355,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCPY2.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -397,7 +397,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -412,7 +412,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShape.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -454,7 +454,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mNextX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNextX.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mNextX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNextX.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -511,7 +511,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_mNextY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNextY.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -526,7 +526,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_mNextY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNextY.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -568,7 +568,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_p2Xstring.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -583,7 +583,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_p2Xstring.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -624,7 +624,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_p2Ystring.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -639,7 +639,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_p2Ystring.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -680,7 +680,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -695,7 +695,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -736,7 +736,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -751,7 +751,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -792,7 +792,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_isLine (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isLine.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -807,7 +807,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_isLine (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isLine.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -848,7 +848,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -863,7 +863,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -977,7 +977,7 @@ final class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
       self.mModelArrayShouldBeComputed = false
       let newArray : [BorderCurve] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -1002,7 +1002,7 @@ final class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
 
-  override var prop : EBSelection < [BorderCurve] > {
+  override var selection : EBSelection < [BorderCurve] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -1069,7 +1069,7 @@ final class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : Read
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -1096,7 +1096,7 @@ final class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var prop : EBSelection < [BorderCurve] > {
+  override var selection : EBSelection < [BorderCurve] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -1155,7 +1155,7 @@ final class ProxyArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
   override func notifyModelDidChange () {
     let newModelArray : [BorderCurve]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -1178,9 +1178,9 @@ final class ProxyArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 
   //····················································································································
 
-  override var prop : EBSelection < [BorderCurve] > {
+  override var selection : EBSelection < [BorderCurve] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -1190,7 +1190,7 @@ final class ProxyArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 
   override var propval : [BorderCurve] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -1250,7 +1250,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -1310,7 +1310,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
  
   //····················································································································
 
-  override var prop : EBSelection < [BorderCurve] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BorderCurve] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1399,7 +1399,7 @@ final class StandAloneArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 
   //····················································································································
 
-  override var prop : EBSelection < [BorderCurve] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [BorderCurve] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

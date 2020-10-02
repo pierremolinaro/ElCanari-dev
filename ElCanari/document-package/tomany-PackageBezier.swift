@@ -69,7 +69,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -84,7 +84,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -198,7 +198,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -240,7 +240,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx1.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -255,7 +255,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpx1.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy1.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -312,7 +312,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpy1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpy1.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -354,7 +354,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx2.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -369,7 +369,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpx2.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -411,7 +411,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy2.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpy2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpy2.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -468,7 +468,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -483,7 +483,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -525,7 +525,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -540,7 +540,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -582,7 +582,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -597,7 +597,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -639,7 +639,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -654,7 +654,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -696,7 +696,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpx1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx1Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -711,7 +711,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpx1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpx1Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -753,7 +753,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpy1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy1Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -768,7 +768,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpy1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpy1Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -810,7 +810,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpx2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx2Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -825,7 +825,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpx2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpx2Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -867,7 +867,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_cpy2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy2Unit.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -882,7 +882,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_cpy2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_cpy2Unit.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -924,7 +924,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -939,7 +939,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -981,7 +981,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -996,7 +996,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1037,7 +1037,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1052,7 +1052,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1093,7 +1093,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1108,7 +1108,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1149,7 +1149,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1164,7 +1164,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1278,7 +1278,7 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
       self.mModelArrayShouldBeComputed = false
       let newArray : [PackageBezier] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -1303,7 +1303,7 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezier] > {
+  override var selection : EBSelection < [PackageBezier] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -1370,7 +1370,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -1397,7 +1397,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezier] > {
+  override var selection : EBSelection < [PackageBezier] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -1456,7 +1456,7 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
   override func notifyModelDidChange () {
     let newModelArray : [PackageBezier]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -1479,9 +1479,9 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezier] > {
+  override var selection : EBSelection < [PackageBezier] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -1491,7 +1491,7 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   override var propval : [PackageBezier] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -1551,7 +1551,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -1611,7 +1611,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
  
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezier] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [PackageBezier] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1700,7 +1700,7 @@ final class StandAloneArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezier] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [PackageBezier] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

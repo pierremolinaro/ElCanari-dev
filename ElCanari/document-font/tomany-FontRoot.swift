@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_comments.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_nominalSize.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_nominalSize.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedTab.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -182,7 +182,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectedTab.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectedInspector.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePoint.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -296,7 +296,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePoint.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePointString.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePointString.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPath.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPath.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -450,7 +450,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -465,7 +465,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -562,7 +562,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -577,7 +577,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -618,7 +618,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_definedCharacters.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_definedCharacters.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -674,7 +674,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -689,7 +689,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -803,7 +803,7 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
       self.mModelArrayShouldBeComputed = false
       let newArray : [FontRoot] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -828,7 +828,7 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < [FontRoot] > {
+  override var selection : EBSelection < [FontRoot] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -895,7 +895,7 @@ final class TransientArrayOfSuperOf_FontRoot <SUPER : EBManagedObject> : ReadOnl
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -922,7 +922,7 @@ final class TransientArrayOfSuperOf_FontRoot <SUPER : EBManagedObject> : ReadOnl
 
   //····················································································································
 
-  override var prop : EBSelection < [FontRoot] > {
+  override var selection : EBSelection < [FontRoot] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -981,7 +981,7 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
   override func notifyModelDidChange () {
     let newModelArray : [FontRoot]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -1004,9 +1004,9 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < [FontRoot] > {
+  override var selection : EBSelection < [FontRoot] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -1016,7 +1016,7 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   override var propval : [FontRoot] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -1076,7 +1076,7 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -1136,7 +1136,7 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
  
   //····················································································································
 
-  override var prop : EBSelection < [FontRoot] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [FontRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1225,7 +1225,7 @@ final class StandAloneArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < [FontRoot] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [FontRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

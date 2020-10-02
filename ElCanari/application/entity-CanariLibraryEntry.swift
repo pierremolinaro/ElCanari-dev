@@ -68,7 +68,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  final var mPath_property_selection : EBSelection <String> { return self.mPath_property.prop }
+  final var mPath_property_selection : EBSelection <String> { return self.mPath_property.selection }
 
   //····················································································································
   //   Atomic property: mUses
@@ -93,7 +93,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  final var mUses_property_selection : EBSelection <Bool> { return self.mUses_property.prop }
+  final var mUses_property_selection : EBSelection <Bool> { return self.mUses_property.selection }
 
   //····················································································································
   //   Atomic property: mLibraryRepositoryURL
@@ -118,7 +118,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  final var mLibraryRepositoryURL_property_selection : EBSelection <String> { return self.mLibraryRepositoryURL_property.prop }
+  final var mLibraryRepositoryURL_property_selection : EBSelection <String> { return self.mLibraryRepositoryURL_property.selection }
 
   //····················································································································
   //   Atomic property: mUserAndPasswordTag
@@ -143,7 +143,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  final var mUserAndPasswordTag_property_selection : EBSelection <String> { return self.mUserAndPasswordTag_property.prop }
+  final var mUserAndPasswordTag_property_selection : EBSelection <String> { return self.mUserAndPasswordTag_property.selection }
 
   //····················································································································
   //   Transient property: mStatusImage
@@ -154,7 +154,7 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+    return self.mStatusImage_property.selection
   }
 
   //····················································································································
@@ -185,7 +185,6 @@ class CanariLibraryEntry : EBManagedObject,
 
   private final func configureObject () {
   //--- Atomic property: mStatusImage
-    // self.mStatusImage_property.configure (self.mPath_property, transient_CanariLibraryEntry_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPath_property_selection.kind ()

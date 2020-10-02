@@ -35,7 +35,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
   final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mOrientation.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
   final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mOrientation.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -163,7 +163,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.prop {
+    switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -277,7 +277,7 @@ final class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
       self.mModelArrayShouldBeComputed = false
       let newArray : [NCInSchematic] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newArray = []
           self.mTransientKind = .empty
@@ -302,7 +302,7 @@ final class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < [NCInSchematic] > {
+  override var selection : EBSelection < [NCInSchematic] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -369,7 +369,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
       self.mModelArrayShouldBeComputed = false
       var newModelArray : [SUPER] 
       if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
+        switch dataProvider.selection {
         case .empty :
           newModelArray = []
           self.mTransientKind = .empty
@@ -396,7 +396,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var prop : EBSelection < [NCInSchematic] > {
+  override var selection : EBSelection < [NCInSchematic] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -455,7 +455,7 @@ final class ProxyArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
   override func notifyModelDidChange () {
     let newModelArray : [NCInSchematic]
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModelArray = []
       case .single (let v) :
@@ -478,9 +478,9 @@ final class ProxyArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < [NCInSchematic] > {
+  override var selection : EBSelection < [NCInSchematic] > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -490,7 +490,7 @@ final class ProxyArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
 
   override var propval : [NCInSchematic] {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return []
       case .single (let v) :
@@ -550,7 +550,7 @@ class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureO
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -610,7 +610,7 @@ class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureO
  
   //····················································································································
 
-  override var prop : EBSelection < [NCInSchematic] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [NCInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -699,7 +699,7 @@ final class StandAloneArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < [NCInSchematic] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [NCInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 

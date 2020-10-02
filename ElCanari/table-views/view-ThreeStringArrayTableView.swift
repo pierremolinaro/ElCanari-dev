@@ -141,7 +141,7 @@ class ThreeStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVie
   //····················································································································
 
   func update (from inModel : EBReadOnlyProperty_ThreeStringArray) {
-    switch inModel.prop {
+    switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
     case .single (let unconnectedPadArray) :

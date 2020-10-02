@@ -15,75 +15,220 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : NCInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mOrientation_property.removeEBObserver (self.mOrientation_property) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+    inOldValue?.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mOrientation_property.addEBObserver (self.mOrientation_property) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+    self.mInternalValue?.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
 
   //····················································································································
-  //   init
+  //   Observers of 'mOrientation' stored property
   //····················································································································
 
-  override init () {
-    super.init ()
-    self.mOrientation_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.mOrientation_property.prop ?? .empty }
-    self.mOrientation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in self?.mInternalValue?.mOrientation_property.setProp (inValue) }
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.objectDisplay_property.prop ?? .empty }
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in self?.mInternalValue?.selectionDisplay_property.prop ?? .empty }
-  }
+  private var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
-  //   Proxy of 'mOrientation' stored property
-  //····················································································································
 
-  let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
-
-  var mOrientation_property_selection : EBSelection <QuadrantRotation> {
-    switch (self.mOrientation_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let v) :
-      return .single (v)
+  var mOrientation_property_selection : EBSelection <QuadrantRotation?> {
+    if let model = self.propval {
+      switch (model.mOrientation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
     }
   }
 
   //····················································································································
-  //   Observer of 'objectDisplay' transient property
-  //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.objectDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mOrientation.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+       v?.mOrientation_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observer of 'selectionDisplay' transient property
+
+  final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mOrientation.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mOrientation_property.removeEBObserver (inObserver)
+    }
+  }
+
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+        managedObject.mOrientation_property.addEBObserver (observer)
+      }
+    }
+  }
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    switch (self.selectionDisplay_property.prop) {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
+  //····················································································································
+
+  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
+    self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mOrientation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
     case .single (let v) :
-      return .single (v)
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -119,7 +264,7 @@ class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
   override func notifyModelDidChange () {
     let newObject : NCInSchematic? 
     if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
+      switch dataProvider.selection {
       case .empty :
         newObject = nil
         self.mTransientKind = .empty
@@ -140,7 +285,7 @@ class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < NCInSchematic? > {
+  override var selection : EBSelection < NCInSchematic? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -202,7 +347,7 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
   override func notifyModelDidChange () {
     let newModel : NCInSchematic?
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty :
         newModel = nil
       case .single (let v) :
@@ -225,9 +370,9 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
 
   //····················································································································
 
-  override var prop : EBSelection < NCInSchematic? > {
+  override var selection : EBSelection < NCInSchematic? > {
     if let model = self.mModel {
-      return model.prop
+      return model.selection
     }else{
       return .empty
     }
@@ -237,7 +382,7 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
 
   override var propval : NCInSchematic? {
     if let model = self.mModel {
-      switch model.prop {
+      switch model.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -297,7 +442,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch self.selection {
         case .empty, .multiple :
           break ;
         case .single (let v) :
@@ -350,7 +495,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < NCInSchematic? > {
+  override var selection : EBSelection < NCInSchematic? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

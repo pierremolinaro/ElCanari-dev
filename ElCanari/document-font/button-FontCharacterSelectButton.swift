@@ -114,7 +114,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func updateCodePoint (_ object : EBReadOnlyProperty_Int) {
-    switch object.prop {
+    switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
       self.title = ""
@@ -135,7 +135,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
     self.mCharactersController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in
-        switch model.prop {
+        switch model.selection {
         case .empty, .multiple :
           self?.setDefinedCharacterSet ([])
         case .single (let s) :

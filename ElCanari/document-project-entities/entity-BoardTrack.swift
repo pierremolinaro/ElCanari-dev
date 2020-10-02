@@ -152,7 +152,7 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.prop }
+  final var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.selection }
 
   //····················································································································
   //   Atomic property: mDefaultTrackWidthUnit
@@ -177,7 +177,7 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> { return self.mDefaultTrackWidthUnit_property.prop }
+  final var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> { return self.mDefaultTrackWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomTrackWidth
@@ -202,7 +202,7 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mCustomTrackWidth_property_selection : EBSelection <Int> { return self.mCustomTrackWidth_property.prop }
+  final var mCustomTrackWidth_property_selection : EBSelection <Int> { return self.mCustomTrackWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomTrackWidthUnit
@@ -227,7 +227,7 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mCustomTrackWidthUnit_property_selection : EBSelection <Int> { return self.mCustomTrackWidthUnit_property.prop }
+  final var mCustomTrackWidthUnit_property_selection : EBSelection <Int> { return self.mCustomTrackWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mUsesCustomTrackWidth
@@ -252,7 +252,7 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.prop }
+  final var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mIsPreservedByAutoRouter
@@ -277,7 +277,7 @@ class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.prop }
+  final var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.selection }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -402,7 +402,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var actualTrackWidth_property_selection : EBSelection <Int> {
-    return self.actualTrackWidth_property.prop
+    return self.actualTrackWidth_property.selection
   }
 
   //····················································································································
@@ -425,7 +425,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var netName_property_selection : EBSelection <String> {
-    return self.netName_property.prop
+    return self.netName_property.selection
   }
 
   //····················································································································
@@ -448,7 +448,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.prop
+    return self.netClassName_property.selection
   }
 
   //····················································································································
@@ -471,7 +471,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassTrackWidth_property_selection : EBSelection <Int> {
-    return self.netClassTrackWidth_property.prop
+    return self.netClassTrackWidth_property.selection
   }
 
   //····················································································································
@@ -494,7 +494,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaHoleDiameter_property.prop
+    return self.netClassViaHoleDiameter_property.selection
   }
 
   //····················································································································
@@ -517,7 +517,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassViaPadDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaPadDiameter_property.prop
+    return self.netClassViaPadDiameter_property.selection
   }
 
   //····················································································································
@@ -540,7 +540,7 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var endPointsLocation_property_selection : EBSelection <CanariPointArray> {
-    return self.endPointsLocation_property.prop
+    return self.endPointsLocation_property.selection
   }
 
   //····················································································································
@@ -591,7 +591,6 @@ class BoardTrack : BoardObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mTracks_property.remove (me) } }
     )
   //--- Atomic property: actualTrackWidth
-    // self.actualTrackWidth_property.configure (self.mNet_property.netClassTrackWidth_property, self.mUsesCustomTrackWidth_property, self.mCustomTrackWidth_property, transient_BoardTrack_actualTrackWidth)
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
@@ -614,11 +613,10 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
+    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
     self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
     self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
   //--- Atomic property: selectionDisplay
-    // self.selectionDisplay_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP1_property.connectedToComponent_property, self.mConnectorP2_property.location_property, self.mConnectorP2_property.connectedToComponent_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, self.mSide_property, self.actualTrackWidth_property, transient_BoardTrack_selectionDisplay)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -646,16 +644,15 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.addEBObserver (self.selectionDisplay_property)
-    self.mConnectorP1_property.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
-    self.mConnectorP2_property.location_property.addEBObserver (self.selectionDisplay_property)
-    self.mConnectorP2_property.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
     prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     prefs_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netName
-    // self.netName_property.configure (self.mNet_property.mNetName_property, transient_BoardTrack_netName)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.mNetName_property_selection.kind ()
@@ -676,9 +673,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.mNetName_property.addEBObserver (self.netName_property)
+    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
   //--- Atomic property: netClassName
-    // self.netClassName_property.configure (self.mNet_property.netClassName_property, transient_BoardTrack_netClassName)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassName_property_selection.kind ()
@@ -699,9 +695,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassName_property.addEBObserver (self.netClassName_property)
+    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
-    // self.netClassTrackWidth_property.configure (self.mNet_property.netClassTrackWidth_property, transient_BoardTrack_netClassTrackWidth)
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
@@ -722,9 +717,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property)
+    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
-    // self.netClassViaHoleDiameter_property.configure (self.mNet_property.netClassViaHoleDiameter_property, transient_BoardTrack_netClassViaHoleDiameter)
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassViaHoleDiameter_property_selection.kind ()
@@ -745,9 +739,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property)
+    self.mNet_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
-    // self.netClassViaPadDiameter_property.configure (self.mNet_property.netClassViaPadDiameter_property, transient_BoardTrack_netClassViaPadDiameter)
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mNet_property.netClassViaPadDiameter_property_selection.kind ()
@@ -768,9 +761,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property)
+    self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
   //--- Atomic property: trackLength
-    // self.trackLength_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP2_property.location_property, transient_BoardTrack_trackLength)
     self.trackLength_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -792,10 +784,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.addEBObserver (self.trackLength_property)
-    self.mConnectorP2_property.location_property.addEBObserver (self.trackLength_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
   //--- Atomic property: endPointsLocation
-    // self.endPointsLocation_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP2_property.location_property, transient_BoardTrack_endPointsLocation)
     self.endPointsLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -817,10 +808,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.addEBObserver (self.endPointsLocation_property)
-    self.mConnectorP2_property.location_property.addEBObserver (self.endPointsLocation_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property)
   //--- Atomic property: signatureForERCChecking
-    // self.signatureForERCChecking_property.configure (self.mSide_property, self.actualTrackWidth_property, transient_BoardTrack_signatureForERCChecking)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSide_property_selection.kind ()
@@ -845,7 +835,6 @@ class BoardTrack : BoardObject,
     self.mSide_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Atomic property: objectDisplay
-    // self.objectDisplay_property.configure (self.mConnectorP1_property.location_property, self.mConnectorP2_property.location_property, prefs_displayFrontLayoutForBoard_property, prefs_displayBackLayoutForBoard_property, prefs_frontSideLayoutColorForBoard_property, prefs_backSideLayoutColorForBoard_property, self.actualTrackWidth_property, self.mSide_property, transient_BoardTrack_objectDisplay)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
@@ -873,8 +862,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.addEBObserver (self.objectDisplay_property)
-    self.mConnectorP2_property.location_property.addEBObserver (self.objectDisplay_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
     prefs_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)

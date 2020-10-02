@@ -73,7 +73,7 @@ class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNam
 
   private func update (fromPadNumber model : EBReadOnlyProperty_StringArray) {
     let array : StringArray
-    switch model.prop {
+    switch model.selection {
     case .empty, .multiple :
       array = []
     case .single (let v) :

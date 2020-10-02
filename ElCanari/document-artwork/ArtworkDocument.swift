@@ -29,7 +29,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
+    return self.documentFilePath_property.selection
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ import Cocoa
   //····················································································································
 
   final var mGeneratedFileCountString_property_selection : EBSelection <String> {
-    return self.mGeneratedFileCountString_property.prop
+    return self.mGeneratedFileCountString_property.selection
   }
 
   //····················································································································
@@ -75,7 +75,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+    return self.mStatusImage_property.selection
   }
 
   //····················································································································
@@ -98,7 +98,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
+    return self.mStatusMessage_property.selection
   }
 
   //····················································································································
@@ -317,7 +317,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mGeneratedFileCountString
-    // self.mGeneratedFileCountString_property.configure (self.mDataController.sortedArray_property.count_property, transient_ArtworkDocument_mGeneratedFileCountString)
     self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
@@ -344,7 +343,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusImage
-    // self.mStatusImage_property.configure (self.rootObject.fileGenerationParameterArray_property.fileExtension_property, self.rootObject.fileGenerationParameterArray_property.name_property, transient_ArtworkDocument_mStatusImage)
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -373,7 +371,6 @@ import Cocoa
       opIdx += 1
     }
   //--- Atomic property: mStatusMessage
-    // self.mStatusMessage_property.configure (self.rootObject.fileGenerationParameterArray_property.fileExtension_property, self.rootObject.fileGenerationParameterArray_property.name_property, transient_ArtworkDocument_mStatusMessage)
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
