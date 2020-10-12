@@ -70,8 +70,6 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: codePoint
   //····················································································································
 
-  // final let codePoint_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let codePoint_property : EBStoredProperty_Int
 
   //····················································································································
@@ -94,8 +92,6 @@ class FontCharacter : EBManagedObject,
   //····················································································································
   //   Atomic property: advance
   //····················································································································
-
-  // final let advance_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let advance_property : EBStoredProperty_Int
 
@@ -120,8 +116,6 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: mWarnsWhenNoSegment
   //····················································································································
 
-  // final let mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true)
-
   final let mWarnsWhenNoSegment_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -144,8 +138,6 @@ class FontCharacter : EBManagedObject,
   //····················································································································
   //   Atomic property: mWarnsWhenAdvanceIsZero
   //····················································································································
-
-  // final let mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true)
 
   final let mWarnsWhenAdvanceIsZero_property : EBStoredProperty_Bool
 
@@ -287,12 +279,6 @@ class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: segments (no option)
     self.segments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: segmentArrayForDrawing

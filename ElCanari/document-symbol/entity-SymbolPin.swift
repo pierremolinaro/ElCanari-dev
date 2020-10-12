@@ -119,8 +119,6 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yPin
   //····················································································································
 
-  // final let yPin_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let yPin_property : EBStoredProperty_Int
 
   //····················································································································
@@ -143,8 +141,6 @@ class SymbolPin : SymbolObject,
   //····················································································································
   //   Atomic property: xName
   //····················································································································
-
-  // final let xName_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let xName_property : EBStoredProperty_Int
 
@@ -169,8 +165,6 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yName
   //····················································································································
 
-  // final let yName_property = EBStoredProperty_Int (defaultValue: 228600)
-
   final let yName_property : EBStoredProperty_Int
 
   //····················································································································
@@ -193,8 +187,6 @@ class SymbolPin : SymbolObject,
   //····················································································································
   //   Atomic property: xNumber
   //····················································································································
-
-  // final let xNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let xNumber_property : EBStoredProperty_Int
 
@@ -219,8 +211,6 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yNumber
   //····················································································································
 
-  // final let yNumber_property = EBStoredProperty_Int (defaultValue: -228600)
-
   final let yNumber_property : EBStoredProperty_Int
 
   //····················································································································
@@ -243,8 +233,6 @@ class SymbolPin : SymbolObject,
   //····················································································································
   //   Atomic property: name
   //····················································································································
-
-  // final let name_property = EBStoredProperty_String (defaultValue: "")
 
   final let name_property : EBStoredProperty_String
 
@@ -269,8 +257,6 @@ class SymbolPin : SymbolObject,
   //   Atomic property: nameHorizontalAlignment
   //····················································································································
 
-  // final let nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
-
   final let nameHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
@@ -293,8 +279,6 @@ class SymbolPin : SymbolObject,
   //····················································································································
   //   Atomic property: numberHorizontalAlignment
   //····················································································································
-
-  // final let numberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   final let numberHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
@@ -319,8 +303,6 @@ class SymbolPin : SymbolObject,
   //   Atomic property: pinNameIsDisplayedInSchematics
   //····················································································································
 
-  // final let pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
-
   final let pinNameIsDisplayedInSchematics_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -343,8 +325,6 @@ class SymbolPin : SymbolObject,
   //····················································································································
   //   Atomic property: xPin
   //····················································································································
-
-  // final let xPin_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let xPin_property : EBStoredProperty_Int
 
@@ -427,12 +407,6 @@ class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

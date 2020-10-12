@@ -96,8 +96,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mTypeName
   //····················································································································
 
-  // final let mTypeName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mTypeName_property : EBStoredProperty_String
 
   //····················································································································
@@ -120,8 +118,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
   //   Atomic property: mVersion
   //····················································································································
-
-  // final let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mVersion_property : EBStoredProperty_Int
 
@@ -146,8 +142,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  // final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
-
   final let mFileData_property : EBStoredProperty_Data
 
   //····················································································································
@@ -171,8 +165,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  // final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
-
   final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
@@ -195,8 +187,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
   //   Atomic property: mFilledBezierPath
   //····················································································································
-
-  // final let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   final let mFilledBezierPath_property : EBStoredProperty_NSBezierPath
 
@@ -339,12 +329,6 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.ebUndoManager = self.ebUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (

@@ -98,8 +98,6 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y1
   //····················································································································
 
-  // final let y1_property = EBStoredProperty_Int (defaultValue: 685800)
-
   final let y1_property : EBStoredProperty_Int
 
   //····················································································································
@@ -122,8 +120,6 @@ class SymbolBezierCurve : SymbolObject,
   //····················································································································
   //   Atomic property: x2
   //····················································································································
-
-  // final let x2_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let x2_property : EBStoredProperty_Int
 
@@ -148,8 +144,6 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y2
   //····················································································································
 
-  // final let y2_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let y2_property : EBStoredProperty_Int
 
   //····················································································································
@@ -172,8 +166,6 @@ class SymbolBezierCurve : SymbolObject,
   //····················································································································
   //   Atomic property: cpx1
   //····················································································································
-
-  // final let cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   final let cpx1_property : EBStoredProperty_Int
 
@@ -198,8 +190,6 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy1
   //····················································································································
 
-  // final let cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
-
   final let cpy1_property : EBStoredProperty_Int
 
   //····················································································································
@@ -222,8 +212,6 @@ class SymbolBezierCurve : SymbolObject,
   //····················································································································
   //   Atomic property: cpx2
   //····················································································································
-
-  // final let cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   final let cpx2_property : EBStoredProperty_Int
 
@@ -248,8 +236,6 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy2
   //····················································································································
 
-  // final let cpy2_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let cpy2_property : EBStoredProperty_Int
 
   //····················································································································
@@ -272,8 +258,6 @@ class SymbolBezierCurve : SymbolObject,
   //····················································································································
   //   Atomic property: x1
   //····················································································································
-
-  // final let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let x1_property : EBStoredProperty_Int
 
@@ -331,12 +315,6 @@ class SymbolBezierCurve : SymbolObject,
     self.cpy2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

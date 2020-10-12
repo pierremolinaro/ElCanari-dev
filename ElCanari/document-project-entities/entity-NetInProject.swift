@@ -89,8 +89,6 @@ class NetInProject : EBManagedObject,
   //   Atomic property: mNetName
   //····················································································································
 
-  // final let mNetName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mNetName_property : EBStoredProperty_String
 
   //····················································································································
@@ -335,12 +333,6 @@ class NetInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (

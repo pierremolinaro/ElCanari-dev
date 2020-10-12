@@ -189,8 +189,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  // final let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mSelectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
@@ -213,8 +211,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mTitle
   //····················································································································
-
-  // final let mTitle_property = EBStoredProperty_String (defaultValue: "")
 
   final let mTitle_property : EBStoredProperty_String
 
@@ -239,8 +235,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mImageData
   //····················································································································
 
-  // final let mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
-
   final let mImageData_property : EBStoredProperty_Data
 
   //····················································································································
@@ -263,8 +257,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mPrefix
   //····················································································································
-
-  // final let mPrefix_property = EBStoredProperty_String (defaultValue: "")
 
   final let mPrefix_property : EBStoredProperty_String
 
@@ -289,8 +281,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mComments
   //····················································································································
 
-  // final let mComments_property = EBStoredProperty_String (defaultValue: "")
-
   final let mComments_property : EBStoredProperty_String
 
   //····················································································································
@@ -313,8 +303,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mPackageDisplayZoom
   //····················································································································
-
-  // final let mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
 
   final let mPackageDisplayZoom_property : EBStoredProperty_Int
 
@@ -339,8 +327,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayHorizontalFlip
   //····················································································································
 
-  // final let mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
-
   final let mPackageDisplayHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -363,8 +349,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mPackageDisplayVerticalFlip
   //····················································································································
-
-  // final let mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   final let mPackageDisplayVerticalFlip_property : EBStoredProperty_Bool
 
@@ -389,8 +373,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackages
   //····················································································································
 
-  // final let mShowPackages_property = EBStoredProperty_Bool (defaultValue: true)
-
   final let mShowPackages_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -413,8 +395,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mShowPackagePadNumbers
   //····················································································································
-
-  // final let mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
 
   final let mShowPackagePadNumbers_property : EBStoredProperty_Bool
 
@@ -439,8 +419,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackageFrontPads
   //····················································································································
 
-  // final let mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
-
   final let mShowPackageFrontPads_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -463,8 +441,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mShowPackageBackPads
   //····················································································································
-
-  // final let mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true)
 
   final let mShowPackageBackPads_property : EBStoredProperty_Bool
 
@@ -489,8 +465,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayZoom
   //····················································································································
 
-  // final let mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
-
   final let mSymbolDisplayZoom_property : EBStoredProperty_Int
 
   //····················································································································
@@ -514,8 +488,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayHorizontalFlip
   //····················································································································
 
-  // final let mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
-
   final let mSymbolDisplayHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -538,8 +510,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mSymbolDisplayVerticalFlip
   //····················································································································
-
-  // final let mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   final let mSymbolDisplayVerticalFlip_property : EBStoredProperty_Bool
 
@@ -906,12 +876,6 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mDocs (no option)
     self.mDocs_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbolInstances (no option)

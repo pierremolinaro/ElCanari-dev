@@ -280,12 +280,6 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (

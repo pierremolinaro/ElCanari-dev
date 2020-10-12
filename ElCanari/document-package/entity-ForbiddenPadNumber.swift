@@ -21,8 +21,6 @@ class ForbiddenPadNumber : EBManagedObject,
   //   Atomic property: padNumber
   //····················································································································
 
-  // final let padNumber_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let padNumber_property : EBStoredProperty_Int
 
   //····················································································································
@@ -49,12 +47,6 @@ class ForbiddenPadNumber : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.padNumber_property.setSignatureObserver (observer: self)

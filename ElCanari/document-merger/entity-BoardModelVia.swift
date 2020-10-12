@@ -35,8 +35,6 @@ class BoardModelVia : EBManagedObject,
   //   Atomic property: y
   //····················································································································
 
-  // final let y_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let y_property : EBStoredProperty_Int
 
   //····················································································································
@@ -60,8 +58,6 @@ class BoardModelVia : EBManagedObject,
   //   Atomic property: padDiameter
   //····················································································································
 
-  // final let padDiameter_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let padDiameter_property : EBStoredProperty_Int
 
   //····················································································································
@@ -84,8 +80,6 @@ class BoardModelVia : EBManagedObject,
   //····················································································································
   //   Atomic property: x
   //····················································································································
-
-  // final let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let x_property : EBStoredProperty_Int
 
@@ -115,12 +109,6 @@ class BoardModelVia : EBManagedObject,
     self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

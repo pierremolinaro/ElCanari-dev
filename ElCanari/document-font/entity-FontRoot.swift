@@ -98,8 +98,6 @@ class FontRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  // final let comments_property = EBStoredProperty_String (defaultValue: "")
-
   final let comments_property : EBStoredProperty_String
 
   //····················································································································
@@ -122,8 +120,6 @@ class FontRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: nominalSize
   //····················································································································
-
-  // final let nominalSize_property = EBStoredProperty_Int (defaultValue: 14)
 
   final let nominalSize_property : EBStoredProperty_Int
 
@@ -148,8 +144,6 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedTab
   //····················································································································
 
-  // final let selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let selectedTab_property : EBStoredProperty_Int
 
   //····················································································································
@@ -173,8 +167,6 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  // final let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let selectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
@@ -197,8 +189,6 @@ class FontRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: currentCharacterCodePoint
   //····················································································································
-
-  // final let currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32)
 
   final let currentCharacterCodePoint_property : EBStoredProperty_Int
 
@@ -416,12 +406,6 @@ class FontRoot : EBManagedObject,
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.validationFunction = { [weak self] in
       return self?.validate_currentCharacterCodePoint (currentValue: $0, proposedValue: $1) ?? .rejectWithBeep

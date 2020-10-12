@@ -35,8 +35,6 @@ class DeviceDocumentation : EBManagedObject,
   //   Atomic property: mFileName
   //····················································································································
 
-  // final let mFileName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mFileName_property : EBStoredProperty_String
 
   //····················································································································
@@ -59,8 +57,6 @@ class DeviceDocumentation : EBManagedObject,
   //····················································································································
   //   Atomic property: mFileData
   //····················································································································
-
-  // final let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   final let mFileData_property : EBStoredProperty_Data
 
@@ -112,12 +108,6 @@ class DeviceDocumentation : EBManagedObject,
     self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

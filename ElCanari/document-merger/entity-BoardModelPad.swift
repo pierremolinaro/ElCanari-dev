@@ -56,8 +56,6 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: y
   //····················································································································
 
-  // final let y_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let y_property : EBStoredProperty_Int
 
   //····················································································································
@@ -80,8 +78,6 @@ class BoardModelPad : EBManagedObject,
   //····················································································································
   //   Atomic property: width
   //····················································································································
-
-  // final let width_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let width_property : EBStoredProperty_Int
 
@@ -106,8 +102,6 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: height
   //····················································································································
 
-  // final let height_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let height_property : EBStoredProperty_Int
 
   //····················································································································
@@ -130,8 +124,6 @@ class BoardModelPad : EBManagedObject,
   //····················································································································
   //   Atomic property: shape
   //····················································································································
-
-  // final let shape_property = EBStoredProperty_PadShape (defaultValue: PadShape.rect)
 
   final let shape_property : EBStoredProperty_PadShape
 
@@ -156,8 +148,6 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: rotation
   //····················································································································
 
-  // final let rotation_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let rotation_property : EBStoredProperty_Int
 
   //····················································································································
@@ -180,8 +170,6 @@ class BoardModelPad : EBManagedObject,
   //····················································································································
   //   Atomic property: x
   //····················································································································
-
-  // final let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let x_property : EBStoredProperty_Int
 
@@ -214,12 +202,6 @@ class BoardModelPad : EBManagedObject,
     self.rotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -119,8 +119,6 @@ class PointInSchematic : EBManagedObject,
   //   Atomic property: mSymbolPinName
   //····················································································································
 
-  // final let mSymbolPinName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mSymbolPinName_property : EBStoredProperty_String
 
   //····················································································································
@@ -163,8 +161,6 @@ class PointInSchematic : EBManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mX_property : EBStoredProperty_Int
 
   //····················································································································
@@ -187,8 +183,6 @@ class PointInSchematic : EBManagedObject,
   //····················································································································
   //   Atomic property: mY
   //····················································································································
-
-  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mY_property : EBStoredProperty_Int
 
@@ -684,12 +678,6 @@ class PointInSchematic : EBManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.ebUndoManager = self.ebUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (

@@ -94,8 +94,6 @@ class SheetInProject : EBManagedObject,
   //   Atomic property: mSheetTitle
   //····················································································································
 
-  // final let mSheetTitle_property = EBStoredProperty_String (defaultValue: "")
-
   final let mSheetTitle_property : EBStoredProperty_String
 
   //····················································································································
@@ -275,12 +273,6 @@ class SheetInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mSheetTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (

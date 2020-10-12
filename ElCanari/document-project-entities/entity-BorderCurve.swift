@@ -119,8 +119,6 @@ class BorderCurve : EBGraphicManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mX_property : EBStoredProperty_Int
 
   //····················································································································
@@ -143,8 +141,6 @@ class BorderCurve : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mY
   //····················································································································
-
-  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mY_property : EBStoredProperty_Int
 
@@ -169,8 +165,6 @@ class BorderCurve : EBGraphicManagedObject,
   //   Atomic property: mCPX1
   //····················································································································
 
-  // final let mCPX1_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mCPX1_property : EBStoredProperty_Int
 
   //····················································································································
@@ -193,8 +187,6 @@ class BorderCurve : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mCPY1
   //····················································································································
-
-  // final let mCPY1_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mCPY1_property : EBStoredProperty_Int
 
@@ -219,8 +211,6 @@ class BorderCurve : EBGraphicManagedObject,
   //   Atomic property: mCPX2
   //····················································································································
 
-  // final let mCPX2_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mCPX2_property : EBStoredProperty_Int
 
   //····················································································································
@@ -244,8 +234,6 @@ class BorderCurve : EBGraphicManagedObject,
   //   Atomic property: mCPY2
   //····················································································································
 
-  // final let mCPY2_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mCPY2_property : EBStoredProperty_Int
 
   //····················································································································
@@ -268,8 +256,6 @@ class BorderCurve : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mShape
   //····················································································································
-
-  // final let mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line)
 
   final let mShape_property : EBStoredProperty_BorderCurveShape
 
@@ -565,12 +551,6 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext {

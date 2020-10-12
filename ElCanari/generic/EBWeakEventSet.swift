@@ -36,20 +36,20 @@ struct EBWeakEventSet {
 
   //····················································································································
 
-  fileprivate var mDictionary = [UInt : EBWeakObserverSetElement] ()
+  fileprivate var mDictionary = [Int : EBWeakObserverSetElement] ()
 
   //····················································································································
 
   mutating func insert (_ inObserver : EBEvent) {
-    let address : UInt = unsafeBitCast (inObserver, to: UInt.self) // inObserver.ebObjectIndex
-    self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
+    let idx : Int = inObserver.ebObjectIndex
+    self.mDictionary [idx] = EBWeakObserverSetElement (observer:inObserver)
   }
 
   //····················································································································
 
   mutating func remove (_ inObserver : EBEvent) {
-    let address : UInt = unsafeBitCast (inObserver, to: UInt.self) // inObserver.ebObjectIndex
-    self.mDictionary [address] = nil
+    let idx : Int = inObserver.ebObjectIndex
+    self.mDictionary [idx] = nil
   }
 
   //····················································································································

@@ -297,8 +297,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  // final let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let selectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
@@ -321,8 +319,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: zoom
   //····················································································································
-
-  // final let zoom_property = EBStoredProperty_Int (defaultValue: 100)
 
   final let zoom_property : EBStoredProperty_Int
 
@@ -347,8 +343,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: automaticBoardSize
   //····················································································································
 
-  // final let automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true)
-
   final let automaticBoardSize_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -371,8 +365,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: boardManualWidth
   //····················································································································
-
-  // final let boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
 
   final let boardManualWidth_property : EBStoredProperty_Int
 
@@ -397,8 +389,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardManualHeight
   //····················································································································
 
-  // final let boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
-
   final let boardManualHeight_property : EBStoredProperty_Int
 
   //····················································································································
@@ -421,8 +411,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: boardWidthUnit
   //····················································································································
-
-  // final let boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   final let boardWidthUnit_property : EBStoredProperty_Int
 
@@ -447,8 +435,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardHeightUnit
   //····················································································································
 
-  // final let boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
-
   final let boardHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -471,8 +457,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: overlapingArrangment
   //····················································································································
-
-  // final let overlapingArrangment_property = EBStoredProperty_Bool (defaultValue: false)
 
   final let overlapingArrangment_property : EBStoredProperty_Bool
 
@@ -497,8 +481,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: selectedBoardXUnit
   //····················································································································
 
-  // final let selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000)
-
   final let selectedBoardXUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -521,8 +503,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: selectedBoardYUnit
   //····················································································································
-
-  // final let selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   final let selectedBoardYUnit_property : EBStoredProperty_Int
 
@@ -547,8 +527,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardLimitWidth
   //····················································································································
 
-  // final let boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000)
-
   final let boardLimitWidth_property : EBStoredProperty_Int
 
   //····················································································································
@@ -571,8 +549,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: boardLimitWidthUnit
   //····················································································································
-
-  // final let boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   final let boardLimitWidthUnit_property : EBStoredProperty_Int
 
@@ -597,8 +573,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: arrowMagnitude
   //····················································································································
 
-  // final let arrowMagnitude_property = EBStoredProperty_Int (defaultValue: 900000)
-
   final let arrowMagnitude_property : EBStoredProperty_Int
 
   //····················································································································
@@ -621,8 +595,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: arrowMagnitudeUnit
   //····················································································································
-
-  // final let arrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   final let arrowMagnitudeUnit_property : EBStoredProperty_Int
 
@@ -647,8 +619,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: shiftArrowMagnitude
   //····················································································································
 
-  // final let shiftArrowMagnitude_property = EBStoredProperty_Int (defaultValue: 3600000)
-
   final let shiftArrowMagnitude_property : EBStoredProperty_Int
 
   //····················································································································
@@ -671,8 +641,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: shiftArrowMagnitudeUnit
   //····················································································································
-
-  // final let shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   final let shiftArrowMagnitudeUnit_property : EBStoredProperty_Int
 
@@ -697,8 +665,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: mPDFBoardBackgroundColor
   //····················································································································
 
-  // final let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
-
   final let mPDFBoardBackgroundColor_property : EBStoredProperty_NSColor
 
   //····················································································································
@@ -722,8 +688,6 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: mArtworkName
   //····················································································································
 
-  // final let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mArtworkName_property : EBStoredProperty_String
 
   //····················································································································
@@ -746,8 +710,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: mArtworkVersion
   //····················································································································
-
-  // final let mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mArtworkVersion_property : EBStoredProperty_Int
 
@@ -1279,12 +1241,6 @@ class MergerRoot : EBManagedObject,
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: boardModels (no option)
     self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)

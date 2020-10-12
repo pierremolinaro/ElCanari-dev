@@ -77,8 +77,6 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mColor
   //····················································································································
 
-  // final let mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black)
-
   final let mColor_property : EBStoredProperty_NSColor
 
   //····················································································································
@@ -101,8 +99,6 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
   //   Atomic property: mSize
   //····················································································································
-
-  // final let mSize_property = EBStoredProperty_Double (defaultValue: 11)
 
   final let mSize_property : EBStoredProperty_Double
 
@@ -127,8 +123,6 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mHorizontalAlignment
   //····················································································································
 
-  // final let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
-
   final let mHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
@@ -151,8 +145,6 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
   //   Atomic property: mVerticalAlignment
   //····················································································································
-
-  // final let mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center)
 
   final let mVerticalAlignment_property : EBStoredProperty_VerticalAlignment
 
@@ -177,8 +169,6 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mX
   //····················································································································
 
-  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mX_property : EBStoredProperty_Int
 
   //····················································································································
@@ -202,8 +192,6 @@ class CommentInSchematic : SchematicObject,
   //   Atomic property: mY
   //····················································································································
 
-  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mY_property : EBStoredProperty_Int
 
   //····················································································································
@@ -226,8 +214,6 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
   //   Atomic property: mComment
   //····················································································································
-
-  // final let mComment_property = EBStoredProperty_String (defaultValue: "")
 
   final let mComment_property : EBStoredProperty_String
 
@@ -261,12 +247,6 @@ class CommentInSchematic : SchematicObject,
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

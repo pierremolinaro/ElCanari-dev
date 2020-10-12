@@ -89,8 +89,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mInstanceName
   //····················································································································
 
-  // final let mInstanceName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mInstanceName_property : EBStoredProperty_String
 
   //····················································································································
@@ -114,8 +112,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  // final let mX_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mX_property : EBStoredProperty_Int
 
   //····················································································································
@@ -138,8 +134,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mY
   //····················································································································
-
-  // final let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mY_property : EBStoredProperty_Int
 
@@ -276,12 +270,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.ebUndoManager = self.ebUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (

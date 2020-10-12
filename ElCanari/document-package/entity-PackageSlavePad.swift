@@ -175,8 +175,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: xCenter
   //····················································································································
 
-  // final let xCenter_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let xCenter_property : EBStoredProperty_Int
 
   //····················································································································
@@ -199,8 +197,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: yCenter
   //····················································································································
-
-  // final let yCenter_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let yCenter_property : EBStoredProperty_Int
 
@@ -225,8 +221,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  // final let width_property = EBStoredProperty_Int (defaultValue: 114300)
-
   final let width_property : EBStoredProperty_Int
 
   //····················································································································
@@ -249,8 +243,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: height
   //····················································································································
-
-  // final let height_property = EBStoredProperty_Int (defaultValue: 228600)
 
   final let height_property : EBStoredProperty_Int
 
@@ -275,8 +267,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: holeWidth
   //····················································································································
 
-  // final let holeWidth_property = EBStoredProperty_Int (defaultValue: 57150)
-
   final let holeWidth_property : EBStoredProperty_Int
 
   //····················································································································
@@ -299,8 +289,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: holeHeight
   //····················································································································
-
-  // final let holeHeight_property = EBStoredProperty_Int (defaultValue: 57150)
 
   final let holeHeight_property : EBStoredProperty_Int
 
@@ -325,8 +313,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: padShape
   //····················································································································
 
-  // final let padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
-
   final let padShape_property : EBStoredProperty_PadShape
 
   //····················································································································
@@ -349,8 +335,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: padStyle
   //····················································································································
-
-  // final let padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
 
   final let padStyle_property : EBStoredProperty_SlavePadStyle
 
@@ -375,8 +359,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: xCenterUnit
   //····················································································································
 
-  // final let xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let xCenterUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -399,8 +381,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: yCenterUnit
   //····················································································································
-
-  // final let yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let yCenterUnit_property : EBStoredProperty_Int
 
@@ -425,8 +405,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  // final let widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let widthUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -449,8 +427,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: heightUnit
   //····················································································································
-
-  // final let heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let heightUnit_property : EBStoredProperty_Int
 
@@ -475,8 +451,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: holeWidthUnit
   //····················································································································
 
-  // final let holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let holeWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -500,8 +474,6 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: holeHeightUnit
   //····················································································································
 
-  // final let holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let holeHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -524,8 +496,6 @@ class PackageSlavePad : PackageObject,
   //····················································································································
   //   Atomic property: annularRingUnit
   //····················································································································
-
-  // final let annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let annularRingUnit_property : EBStoredProperty_Int
 
@@ -720,12 +690,6 @@ class PackageSlavePad : PackageObject,
     self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.ebUndoManager = self.ebUndoManager
     self.master_property.setOppositeRelationShipFunctions (

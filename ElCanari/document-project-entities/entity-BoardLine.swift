@@ -105,8 +105,6 @@ class BoardLine : BoardObject,
   //   Atomic property: mWidthUnit
   //····················································································································
 
-  // final let mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -129,8 +127,6 @@ class BoardLine : BoardObject,
   //····················································································································
   //   Atomic property: mX1
   //····················································································································
-
-  // final let mX1_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mX1_property : EBStoredProperty_Int
 
@@ -155,8 +151,6 @@ class BoardLine : BoardObject,
   //   Atomic property: mX1Unit
   //····················································································································
 
-  // final let mX1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mX1Unit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -179,8 +173,6 @@ class BoardLine : BoardObject,
   //····················································································································
   //   Atomic property: mY1
   //····················································································································
-
-  // final let mY1_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mY1_property : EBStoredProperty_Int
 
@@ -205,8 +197,6 @@ class BoardLine : BoardObject,
   //   Atomic property: mY1Unit
   //····················································································································
 
-  // final let mY1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mY1Unit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -229,8 +219,6 @@ class BoardLine : BoardObject,
   //····················································································································
   //   Atomic property: mX2
   //····················································································································
-
-  // final let mX2_property = EBStoredProperty_Int (defaultValue: 457200)
 
   final let mX2_property : EBStoredProperty_Int
 
@@ -255,8 +243,6 @@ class BoardLine : BoardObject,
   //   Atomic property: mX2Unit
   //····················································································································
 
-  // final let mX2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mX2Unit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -279,8 +265,6 @@ class BoardLine : BoardObject,
   //····················································································································
   //   Atomic property: mY2
   //····················································································································
-
-  // final let mY2_property = EBStoredProperty_Int (defaultValue: 457200)
 
   final let mY2_property : EBStoredProperty_Int
 
@@ -305,8 +289,6 @@ class BoardLine : BoardObject,
   //   Atomic property: mY2Unit
   //····················································································································
 
-  // final let mY2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mY2Unit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -330,8 +312,6 @@ class BoardLine : BoardObject,
   //   Atomic property: mLayer
   //····················································································································
 
-  // final let mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront)
-
   final let mLayer_property : EBStoredProperty_BoardLineLayer
 
   //····················································································································
@@ -354,8 +334,6 @@ class BoardLine : BoardObject,
   //····················································································································
   //   Atomic property: mWidth
   //····················································································································
-
-  // final let mWidth_property = EBStoredProperty_Int (defaultValue: 57150)
 
   final let mWidth_property : EBStoredProperty_Int
 
@@ -393,12 +371,6 @@ class BoardLine : BoardObject,
     self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: ebUndoManager)
     self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

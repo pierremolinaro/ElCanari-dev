@@ -196,12 +196,6 @@ class WireInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.ebUndoManager = self.ebUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (

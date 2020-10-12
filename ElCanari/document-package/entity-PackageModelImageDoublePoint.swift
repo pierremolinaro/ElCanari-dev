@@ -70,8 +70,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mFirstX
   //····················································································································
 
-  // final let mFirstX_property = EBStoredProperty_Int (defaultValue: 457200)
-
   final let mFirstX_property : EBStoredProperty_Int
 
   //····················································································································
@@ -94,8 +92,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mFirstY
   //····················································································································
-
-  // final let mFirstY_property = EBStoredProperty_Int (defaultValue: 457200)
 
   final let mFirstY_property : EBStoredProperty_Int
 
@@ -120,8 +116,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mFirstColor
   //····················································································································
 
-  // final let mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green)
-
   final let mFirstColor_property : EBStoredProperty_NSColor
 
   //····················································································································
@@ -144,8 +138,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mSecondDx
   //····················································································································
-
-  // final let mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200)
 
   final let mSecondDx_property : EBStoredProperty_Int
 
@@ -170,8 +162,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   Atomic property: mSecondDy
   //····················································································································
 
-  // final let mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200)
-
   final let mSecondDy_property : EBStoredProperty_Int
 
   //····················································································································
@@ -194,8 +184,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mSecondColor
   //····················································································································
-
-  // final let mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
 
   final let mSecondColor_property : EBStoredProperty_NSColor
 
@@ -266,12 +254,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
     self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (

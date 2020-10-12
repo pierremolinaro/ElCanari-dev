@@ -89,8 +89,6 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mNominalSize
   //····················································································································
 
-  // final let mNominalSize_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mNominalSize_property : EBStoredProperty_Int
 
   //····················································································································
@@ -113,8 +111,6 @@ class FontInProject : EBManagedObject,
   //····················································································································
   //   Atomic property: mFontName
   //····················································································································
-
-  // final let mFontName_property = EBStoredProperty_String (defaultValue: "")
 
   final let mFontName_property : EBStoredProperty_String
 
@@ -139,8 +135,6 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontVersion
   //····················································································································
 
-  // final let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mFontVersion_property : EBStoredProperty_Int
 
   //····················································································································
@@ -163,8 +157,6 @@ class FontInProject : EBManagedObject,
   //····················································································································
   //   Atomic property: mDescriptiveString
   //····················································································································
-
-  // final let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
 
   final let mDescriptiveString_property : EBStoredProperty_String
 
@@ -325,12 +317,6 @@ class FontInProject : EBManagedObject,
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.ebUndoManager = self.ebUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (

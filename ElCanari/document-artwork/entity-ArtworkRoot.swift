@@ -98,8 +98,6 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: selectedTab
   //····················································································································
 
-  // final let selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let selectedTab_property : EBStoredProperty_Int
 
   //····················································································································
@@ -122,8 +120,6 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: comments
   //····················································································································
-
-  // final let comments_property = EBStoredProperty_String (defaultValue: "")
 
   final let comments_property : EBStoredProperty_String
 
@@ -148,8 +144,6 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minPPTPTTTWdisplayUnit
   //····················································································································
 
-  // final let minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
-
   final let minPPTPTTTWdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -172,8 +166,6 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: minPPTPTTTW
   //····················································································································
-
-  // final let minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000)
 
   final let minPPTPTTTW_property : EBStoredProperty_Int
 
@@ -198,8 +190,6 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForOARdisplayUnit
   //····················································································································
 
-  // final let minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
-
   final let minValueForOARdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -222,8 +212,6 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: minValueForOARinEBUnit
   //····················································································································
-
-  // final let minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000)
 
   final let minValueForOARinEBUnit_property : EBStoredProperty_Int
 
@@ -248,8 +236,6 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForPHDdisplayUnit
   //····················································································································
 
-  // final let minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
-
   final let minValueForPHDdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -272,8 +258,6 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: minValueForPHDinEBUnit
   //····················································································································
-
-  // final let minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000)
 
   final let minValueForPHDinEBUnit_property : EBStoredProperty_Int
 
@@ -298,8 +282,6 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForBoardLimitWidthDisplayUnit
   //····················································································································
 
-  // final let minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
-
   final let minValueForBoardLimitWidthDisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -323,8 +305,6 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForBoardLimitWidth
   //····················································································································
 
-  // final let minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000)
-
   final let minValueForBoardLimitWidth_property : EBStoredProperty_Int
 
   //····················································································································
@@ -347,8 +327,6 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
   //   Atomic property: drillDataFileExtension
   //····················································································································
-
-  // final let drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "drf")
 
   final let drillDataFileExtension_property : EBStoredProperty_String
 
@@ -428,12 +406,6 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "drf", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking

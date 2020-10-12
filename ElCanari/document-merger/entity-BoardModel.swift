@@ -378,8 +378,6 @@ class BoardModel : EBManagedObject,
   //   Atomic property: name
   //····················································································································
 
-  // final let name_property = EBStoredProperty_String (defaultValue: "")
-
   final let name_property : EBStoredProperty_String
 
   //····················································································································
@@ -402,8 +400,6 @@ class BoardModel : EBManagedObject,
   //····················································································································
   //   Atomic property: modelWidth
   //····················································································································
-
-  // final let modelWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let modelWidth_property : EBStoredProperty_Int
 
@@ -428,8 +424,6 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidthUnit
   //····················································································································
 
-  // final let modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let modelWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -452,8 +446,6 @@ class BoardModel : EBManagedObject,
   //····················································································································
   //   Atomic property: modelHeight
   //····················································································································
-
-  // final let modelHeight_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let modelHeight_property : EBStoredProperty_Int
 
@@ -478,8 +470,6 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeightUnit
   //····················································································································
 
-  // final let modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let modelHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -502,8 +492,6 @@ class BoardModel : EBManagedObject,
   //····················································································································
   //   Atomic property: zoom
   //····················································································································
-
-  // final let zoom_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let zoom_property : EBStoredProperty_Int
 
@@ -737,8 +725,6 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidth
   //····················································································································
 
-  // final let modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let modelLimitWidth_property : EBStoredProperty_Int
 
   //····················································································································
@@ -761,8 +747,6 @@ class BoardModel : EBManagedObject,
   //····················································································································
   //   Atomic property: modelLimitWidthUnit
   //····················································································································
-
-  // final let modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let modelLimitWidthUnit_property : EBStoredProperty_Int
 
@@ -938,8 +922,6 @@ class BoardModel : EBManagedObject,
   //····················································································································
   //   Atomic property: artworkName
   //····················································································································
-
-  // final let artworkName_property = EBStoredProperty_String (defaultValue: "")
 
   final let artworkName_property : EBStoredProperty_String
 
@@ -1983,12 +1965,6 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: frontLegendLines (no option)
     self.frontLegendLines_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backLegendLines (no option)

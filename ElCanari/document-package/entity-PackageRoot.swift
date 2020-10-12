@@ -413,8 +413,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  // final let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 1)
-
   final let selectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
@@ -437,8 +435,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: selectedInspector
   //····················································································································
-
-  // final let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let selectedInspector_property : EBStoredProperty_Int
 
@@ -463,8 +459,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  // final let comments_property = EBStoredProperty_String (defaultValue: "")
-
   final let comments_property : EBStoredProperty_String
 
   //····················································································································
@@ -487,8 +481,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: program
   //····················································································································
-
-  // final let program_property = EBStoredProperty_String (defaultValue: "")
 
   final let program_property : EBStoredProperty_String
 
@@ -513,8 +505,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: horizontalFlip
   //····················································································································
 
-  // final let horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
-
   final let horizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -537,8 +527,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: verticalFlip
   //····················································································································
-
-  // final let verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   final let verticalFlip_property : EBStoredProperty_Bool
 
@@ -563,8 +551,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  // final let gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
-
   final let gridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
@@ -587,8 +573,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: gridStep
   //····················································································································
-
-  // final let gridStep_property = EBStoredProperty_Int (defaultValue: 57150)
 
   final let gridStep_property : EBStoredProperty_Int
 
@@ -613,8 +597,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridStepUnit
   //····················································································································
 
-  // final let gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let gridStepUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -637,8 +619,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: gridDisplayFactor
   //····················································································································
-
-  // final let gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
 
   final let gridDisplayFactor_property : EBStoredProperty_Int
 
@@ -663,8 +643,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  // final let zoom_property = EBStoredProperty_Int (defaultValue: 600)
-
   final let zoom_property : EBStoredProperty_Int
 
   //····················································································································
@@ -687,8 +665,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImageOpacity
   //····················································································································
-
-  // final let mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 1)
 
   final let mModelImageOpacity_property : EBStoredProperty_Double
 
@@ -713,8 +689,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageHorizontalFlip
   //····················································································································
 
-  // final let mModelImagePageHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
-
   final let mModelImagePageHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -737,8 +711,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImagePageVerticalFlip
   //····················································································································
-
-  // final let mModelImagePageVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   final let mModelImagePageVerticalFlip_property : EBStoredProperty_Bool
 
@@ -763,8 +735,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageGridStyle
   //····················································································································
 
-  // final let mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid)
-
   final let mModelImagePageGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
@@ -787,8 +757,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImagePageGridStep
   //····················································································································
-
-  // final let mModelImagePageGridStep_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let mModelImagePageGridStep_property : EBStoredProperty_Int
 
@@ -813,8 +781,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageGridStepUnit
   //····················································································································
 
-  // final let mModelImagePageGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mModelImagePageGridStepUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -837,8 +803,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImagePageGridDisplayFactor
   //····················································································································
-
-  // final let mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 100)
 
   final let mModelImagePageGridDisplayFactor_property : EBStoredProperty_Int
 
@@ -863,8 +827,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageZoom
   //····················································································································
 
-  // final let mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 200)
-
   final let mModelImagePageZoom_property : EBStoredProperty_Int
 
   //····················································································································
@@ -887,8 +849,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImagePageXPlacardUnit
   //····················································································································
-
-  // final let mModelImagePageXPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let mModelImagePageXPlacardUnit_property : EBStoredProperty_Int
 
@@ -913,8 +873,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageYPlacardUnit
   //····················································································································
 
-  // final let mModelImagePageYPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mModelImagePageYPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -937,8 +895,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImageSecondPointXUnit
   //····················································································································
-
-  // final let mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let mModelImageSecondPointXUnit_property : EBStoredProperty_Int
 
@@ -963,8 +919,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePSecondointYUnit
   //····················································································································
 
-  // final let mModelImagePSecondointYUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mModelImagePSecondointYUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -987,8 +941,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImageFirstPointXOnLock
   //····················································································································
-
-  // final let mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mModelImageFirstPointXOnLock_property : EBStoredProperty_Int
 
@@ -1013,8 +965,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImageFirstPointYOnLock
   //····················································································································
 
-  // final let mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mModelImageFirstPointYOnLock_property : EBStoredProperty_Int
 
   //····················································································································
@@ -1037,8 +987,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImagePointsDxOnLock
   //····················································································································
-
-  // final let mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0)
 
   final let mModelImagePointsDxOnLock_property : EBStoredProperty_Int
 
@@ -1063,8 +1011,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePointsDyOnLock
   //····················································································································
 
-  // final let mModelImagePointsDyOnLock_property = EBStoredProperty_Int (defaultValue: 0)
-
   final let mModelImagePointsDyOnLock_property : EBStoredProperty_Int
 
   //····················································································································
@@ -1087,8 +1033,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImageScale
   //····················································································································
-
-  // final let mModelImageScale_property = EBStoredProperty_Double (defaultValue: 1)
 
   final let mModelImageScale_property : EBStoredProperty_Double
 
@@ -1113,8 +1057,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImageRotationInRadians
   //····················································································································
 
-  // final let mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0)
-
   final let mModelImageRotationInRadians_property : EBStoredProperty_Double
 
   //····················································································································
@@ -1137,8 +1079,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mDimensionUnitFirstModelPointX
   //····················································································································
-
-  // final let mDimensionUnitFirstModelPointX_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let mDimensionUnitFirstModelPointX_property : EBStoredProperty_Int
 
@@ -1163,8 +1103,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mDimensionUnitFirstModelPointY
   //····················································································································
 
-  // final let mDimensionUnitFirstModelPointY_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mDimensionUnitFirstModelPointY_property : EBStoredProperty_Int
 
   //····················································································································
@@ -1187,8 +1125,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mDimensionUnitSecondModelPointDx
   //····················································································································
-
-  // final let mDimensionUnitSecondModelPointDx_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let mDimensionUnitSecondModelPointDx_property : EBStoredProperty_Int
 
@@ -1213,8 +1149,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mDimensionUnitSecondModelPointDy
   //····················································································································
 
-  // final let mDimensionUnitSecondModelPointDy_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let mDimensionUnitSecondModelPointDy_property : EBStoredProperty_Int
 
   //····················································································································
@@ -1237,8 +1171,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelPointsCircleRadius
   //····················································································································
-
-  // final let mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10)
 
   final let mModelPointsCircleRadius_property : EBStoredProperty_Int
 
@@ -1263,8 +1195,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mPointsAreLocked
   //····················································································································
 
-  // final let mPointsAreLocked_property = EBStoredProperty_Bool (defaultValue: false)
-
   final let mPointsAreLocked_property : EBStoredProperty_Bool
 
   //····················································································································
@@ -1287,8 +1217,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: knobSizeMultpliedByTen
   //····················································································································
-
-  // final let knobSizeMultpliedByTen_property = EBStoredProperty_Int (defaultValue: 20)
 
   final let knobSizeMultpliedByTen_property : EBStoredProperty_Int
 
@@ -1313,8 +1241,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: padNumbering
   //····················································································································
 
-  // final let padNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering)
-
   final let padNumbering_property : EBStoredProperty_PadNumbering
 
   //····················································································································
@@ -1337,8 +1263,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: counterClockNumberingStartAngle
   //····················································································································
-
-  // final let counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 90)
 
   final let counterClockNumberingStartAngle_property : EBStoredProperty_Int
 
@@ -1363,8 +1287,6 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: xPlacardUnit
   //····················································································································
 
-  // final let xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
-
   final let xPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
@@ -1387,8 +1309,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: yPlacardUnit
   //····················································································································
-
-  // final let yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   final let yPlacardUnit_property : EBStoredProperty_Int
 
@@ -1504,8 +1424,6 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
   //   Atomic property: mModelImageData
   //····················································································································
-
-  // final let mModelImageData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   final let mModelImageData_property : EBStoredProperty_Data
 
@@ -1999,12 +1917,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: packageObjects (has opposite relationship)
     self.packageObjects_property.ebUndoManager = self.ebUndoManager
     self.packageObjects_property.setOppositeRelationShipFunctions (

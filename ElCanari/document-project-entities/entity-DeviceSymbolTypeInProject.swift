@@ -35,8 +35,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  // final let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mSymbolTypeName_property : EBStoredProperty_String
 
   //····················································································································
@@ -60,8 +58,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  // final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
-
   final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
@@ -84,8 +80,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //····················································································································
   //   Atomic property: mFilledBezierPath
   //····················································································································
-
-  // final let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   final let mFilledBezierPath_property : EBStoredProperty_NSBezierPath
 
@@ -115,12 +109,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

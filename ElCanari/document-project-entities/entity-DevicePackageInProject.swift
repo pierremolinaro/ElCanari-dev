@@ -54,8 +54,6 @@ class DevicePackageInProject : EBManagedObject,
   //   Atomic property: mPackageName
   //····················································································································
 
-  // final let mPackageName_property = EBStoredProperty_String (defaultValue: "")
-
   final let mPackageName_property : EBStoredProperty_String
 
   //····················································································································
@@ -78,8 +76,6 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
   //   Atomic property: mStrokeBezierPath
   //····················································································································
-
-  // final let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
@@ -131,12 +127,6 @@ class DevicePackageInProject : EBManagedObject,
     self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary

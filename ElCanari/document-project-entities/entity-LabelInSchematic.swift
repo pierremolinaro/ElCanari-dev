@@ -56,8 +56,6 @@ class LabelInSchematic : SchematicObject,
   //   Atomic property: mOrientation
   //····················································································································
 
-  // final let mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
-
   final let mOrientation_property : EBStoredProperty_QuadrantRotation
 
   //····················································································································
@@ -191,12 +189,6 @@ class LabelInSchematic : SchematicObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.configureObject ()
-  }
-  
-  //····················································································································
-
-  private final func configureObject () {
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
     self.mPoint_property.ebUndoManager = self.ebUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
