@@ -119,7 +119,6 @@ struct VersionDescriptor : Codable {
   var edSignature = ""
   var news = [String] ()
   var changes = [String] ()
-//  var build = ""
   var date = ""
 }
 
@@ -127,7 +126,7 @@ struct VersionDescriptor : Codable {
 
 let fm = FileManager ()
 //-------------------- Get script absolute path
-let scriptDir = URL (fileURLWithPath:CommandLine.arguments [0]).deletingLastPathComponent ().path
+let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
 print ("scriptDir \(scriptDir)")
 //-------------------- Supprimer une distribution existante
 let DISTRIBUTION_DIR = scriptDir + "/../EL_CANARI_DISTRIBUTION_" + VERSION_CANARI

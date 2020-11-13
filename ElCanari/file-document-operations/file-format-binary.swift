@@ -122,16 +122,7 @@ func dataForBinarySaveOperation (from inDocumentData : EBDocumentData) throws ->
     let d = NSMutableDictionary ()
     object.saveIntoDictionary (d)
     saveDataArray.append (d)
-    let mirror = Mirror (reflecting: object)
-    Swift.print ("CHILDREN: \(mirror.children.count)")
-    for property in mirror.children {
-      if let propertyName = property.label {
-        Swift.print ("\(propertyName)")
-      }
-    }
   }
-
-//  let dataArray = self.dataForSavingFromRootObject ()
   let documentData = try PropertyListSerialization.data (fromPropertyList: saveDataArray, format: .binary, options: 0)
   fileBinaryData.append (6)
   fileBinaryData.appendAutosizedData (documentData)
