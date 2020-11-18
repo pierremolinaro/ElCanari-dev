@@ -29,14 +29,10 @@ let BUILD_KIND = ProductKind.release
 //--------------------------------------------------------------------------------------------------
 
 let VERSION_CANARI = "1.3.2"
-let NOTES : [String] = []
+let NOTES : [String] = ["Built with 12.3 beta, option \"optimize for speed\""]
 let BUGFIXES : [String] = []
-let CHANGES : [String] = [
-  "Uses Sparkle 1.24.0"
-]
-let NEWS : [String] = [
-  "Added rotation and drag cursors"
-]
+let CHANGES : [String] = ["Uses Sparkle 1.24.0"]
+let NEWS : [String] = ["Added rotation and drag cursors"]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
