@@ -41,6 +41,7 @@ extension CustomizedProjectDocument {
             object.mSheet = sheet
           }
           self.rootObject.mSelectedSheet = sheet
+          self.schematicObjectsController.setSelection (Array (selectedObjects))
         }
       }
     }

@@ -644,7 +644,6 @@
 		CF5C4C6D219F04D600EAC52A /* ArtworkDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEDE6271B4678C100036ACF /* ArtworkDocument.xib */; };
 		CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
-		CF5C4C72219F04D600EAC52A /* schematic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A71B3C4CD600F3CA82 /* schematic.pdf */; };
 		CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
 		CF5C4C74219F04D600EAC52A /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
@@ -912,7 +911,6 @@
 		CF6172EC1B3C4CD600F3CA82 /* PreviousToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */; };
 		CF6172F21B3C4CD600F3CA82 /* restrict-rect-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */; };
 		CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */; };
-		CF6172F51B3C4CD600F3CA82 /* schematic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A71B3C4CD600F3CA82 /* schematic.pdf */; };
 		CF6172F91B3C4CD600F3CA82 /* sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172AB1B3C4CD600F3CA82 /* sheet.png */; };
 		CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */; };
 		CF6173001B3C4CD600F3CA82 /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
@@ -2963,7 +2961,6 @@
 		CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PreviousToolbarImage.tif; sourceTree = "<group>"; };
 		CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restrict-rect-in-board.png"; sourceTree = "<group>"; };
 		CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SaveAsToolbarImage.tiff; sourceTree = "<group>"; };
-		CF6172A71B3C4CD600F3CA82 /* schematic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = schematic.pdf; sourceTree = "<group>"; };
 		CF6172AB1B3C4CD600F3CA82 /* sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheet.png; sourceTree = "<group>"; };
 		CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = symbolAnd.pdf; sourceTree = "<group>"; };
 		CF6172B21B3C4CD600F3CA82 /* track-in-board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track-in-board.png"; sourceTree = "<group>"; };
@@ -4576,7 +4573,6 @@
 				CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */,
 				CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */,
 				CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */,
-				CF6172A71B3C4CD600F3CA82 /* schematic.pdf */,
 				CF6172AB1B3C4CD600F3CA82 /* sheet.png */,
 				CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */,
 				CF21549222B65E4C0068354E /* text-in-symbol.png */,
@@ -5760,7 +5756,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -5811,7 +5807,6 @@
 				CFEDE6281B4678C100036ACF /* ArtworkDocument.xib in Resources */,
 				CF6173091B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff in Resources */,
 				CF6172BE1B3C4CD600F3CA82 /* A4vertical.pdf in Resources */,
-				CF6172F51B3C4CD600F3CA82 /* schematic.pdf in Resources */,
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
 				CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */,
 				CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */,
@@ -5881,7 +5876,6 @@
 				CF5C4C6D219F04D600EAC52A /* ArtworkDocument.xib in Resources */,
 				CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */,
 				CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */,
-				CF5C4C72219F04D600EAC52A /* schematic.pdf in Resources */,
 				CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */,
 				CF5C4C74219F04D600EAC52A /* canari_merger.icns in Resources */,
 				CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */,
@@ -8384,7 +8378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -8486,6 +8480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -8495,7 +8490,6 @@
 				PRODUCT_NAME = ElCanari;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
-				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -8507,6 +8501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -8518,7 +8513,6 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_PNG_TEXT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -8529,7 +8523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -8635,6 +8629,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -8650,7 +8645,7 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -8662,6 +8657,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;

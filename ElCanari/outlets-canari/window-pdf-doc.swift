@@ -104,10 +104,10 @@ class CanariPDFWindow : EBWindow, NSToolbarDelegate {
   func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return [
       SaveAsToolbarIdentifier,
-      .separator,
+      .flexibleSpace,
       NextPageToolbarIdentifier,
       PreviousPageToolbarIdentifier,
-      .separator,
+      .flexibleSpace,
       ZoomInToolbarIdentifier,
       ZoomOutToolbarIdentifier
     ]
@@ -122,7 +122,7 @@ class CanariPDFWindow : EBWindow, NSToolbarDelegate {
       PreviousPageToolbarIdentifier,
       ZoomInToolbarIdentifier,
       ZoomOutToolbarIdentifier,
-      .separator
+      .flexibleSpace
     ]
   }
 
