@@ -28,11 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.2"
-let NOTES : [String] = ["Built with 12.3 beta, option \"optimize for speed\""]
+let VERSION_CANARI = "1.3.3"
+let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = ["Uses Sparkle 1.24.0"]
-let NEWS : [String] = ["Added rotation and drag cursors"]
+let CHANGES : [String] = ["Changed \"Import Artwork…\" dialog in Merger"]
+let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
