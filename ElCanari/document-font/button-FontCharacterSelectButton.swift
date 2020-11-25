@@ -95,7 +95,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  $codePoint binding                                                                                                *
+  //  $codePoint binding
   //····················································································································
 
   private var mCodePointController : Controller_CanariFontCharacterSelectButton_codePoint?
@@ -110,7 +110,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  $characters binding                                                                                                *
+  //  $characters binding
   //····················································································································
 
   fileprivate func updateCodePoint (_ object : EBReadOnlyProperty_Int) {
@@ -155,7 +155,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//   Controller_CanariFontCharacterSelectButton_codePoint                                                              *
+//   Controller_CanariFontCharacterSelectButton_codePoint
 //----------------------------------------------------------------------------------------------------------------------
 
 final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleController {

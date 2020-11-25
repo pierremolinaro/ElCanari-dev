@@ -125,11 +125,11 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func buildXYView () -> NSView {
+  final private func buildXYPopover () -> NSPopover {
     let view = NSView (frame: NSRect (x: 0.0, y: 0.0, width: 90.0, height: 40.0))
   //--- X
-    let rX = NSRect (x: 0.0, y: 20.0, width: 90.0, height: 20.0)
-    let xPlacard = NSTextField (frame: rX)
+    let xPlacard = NSTextField (frame: NSRect ())
+    xPlacard.translatesAutoresizingMaskIntoConstraints = false
     xPlacard.isBezeled = false
     xPlacard.isBordered = false
     xPlacard.drawsBackground = true
@@ -139,8 +139,8 @@ extension EBGraphicView {
     xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     view.addSubview (xPlacard)
   //--- Y
-    let rY = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
-    let yPlacard = NSTextField (frame: rY)
+    let yPlacard = NSTextField (frame: NSRect ())
+    yPlacard.translatesAutoresizingMaskIntoConstraints = false
     yPlacard.isBezeled = false
     yPlacard.isBordered = false
     yPlacard.drawsBackground = true
@@ -150,54 +150,59 @@ extension EBGraphicView {
     yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     view.addSubview (yPlacard)
   //--- Add constraints
+    xPlacard.layout (.width, .greaterThanOrEqual, 0.0)
+    xPlacard.layout (.height, .greaterThanOrEqual, 0.0)
+    yPlacard.layout (.width, .greaterThanOrEqual, 0.0)
+    yPlacard.layout (.height, .greaterThanOrEqual, 0.0)
     xPlacard.layout (.left, .equal, superview: .left)
     yPlacard.layout (.left, .equal, superview: .left)
     xPlacard.layout (.top, .equal, superview: .top)
     xPlacard.layout (.bottom, .equal, to: yPlacard, .top)
     yPlacard.layout (.bottom, .equal, superview: .bottom)
   //---
-    return view
+    let viewController = NSViewController.init (nibName:nil, bundle:nil)
+    viewController.view = view
+    let popover = NSPopover ()
+    Swift.print ("popover.behavior \(popover.behavior.rawValue)")
+    popover.contentViewController = viewController
+    popover.animates = false
+    return popover
   }
 
   //····················································································································
 
   final internal func updateXYplacards (_ inLocationInView : NSPoint) {
     let commandKey = NSEvent.modifierFlags.contains (.command)
+    Swift.print ("commandKey \(commandKey)")
     if commandKey {
       let x = stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
       let y = stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
-      let xyView : NSView
-      if let view = self.mXYView {
-        xyView = view
+      let xyPopover : NSPopover
+      if let popover = self.mXYpopover {
+        xyPopover = popover
       }else{
-        xyView = buildXYView ()
-        self.window?.contentView?.addSubview (xyView)
-        self.mXYView = xyView
+        xyPopover = buildXYPopover ()
+        self.mXYpopover = xyPopover
       }
-      if xyView.subviews.count == 2, let placardX = xyView.subviews [0] as? NSTextField, let placardY = xyView.subviews [1] as? NSTextField {
+      if let view = xyPopover.contentViewController?.view, view.subviews.count == 2, let placardX = view.subviews [0] as? NSTextField, let placardY = view.subviews [1] as? NSTextField {
         placardX.stringValue = "X = " + x
         placardY.stringValue = "Y = " + y
-        placardX.frame.size = placardX.fittingSize
-        placardY.frame.size = placardY.fittingSize
-        placardX.frame.origin.y = placardY.frame.size.height
-        xyView.frame.size.width = max (placardX.frame.size.width, placardY.frame.size.width)
-        xyView.frame.size.height = placardX.frame.size.height + placardY.frame.size.height
-        let locationInWindow = self.convert (inLocationInView, to: nil)
-        xyView.frame.origin.x = locationInWindow.x - xyView.frame.size.width - 10.0
-        xyView.frame.origin.y = locationInWindow.y  - xyView.frame.size.height / 2.0
+        placardX.invalidateIntrinsicContentSize ()
+        placardY.invalidateIntrinsicContentSize ()
+        let r = NSRect (x: inLocationInView.x, y: inLocationInView.y, width: 10.0, height: 10.0)
+        xyPopover.show (relativeTo: r, of: self, preferredEdge: NSRectEdge.minX)
       }
     }else{
-      clearXYplacards ()
+      clearXYpopover ()
     }
   }
 
   //····················································································································
 
-  final internal func clearXYplacards () {
-    if let view = self.mXYView {
-      view.removeFromSuperview ()
-      self.mXYView = nil
-    }
+  final internal func clearXYpopover () {
+    Swift.print ("clearXYpopover")
+    self.mXYpopover?.close ()
+    self.mXYpopover = nil
   }
 
   //····················································································································

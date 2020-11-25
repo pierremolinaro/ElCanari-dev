@@ -28,8 +28,9 @@ extension EBGraphicView {
   //····················································································································
 
   final override func mouseExited (with inEvent : NSEvent) {
+    Swift.print ("mouseExited")
     super.mouseExited (with: inEvent)
-    self.clearXYplacards ()
+    self.clearXYpopover ()
     self.mMouseExitCallback? ()
     self.mOptionalFrontShape = nil
     NSCursor.arrow.set ()
