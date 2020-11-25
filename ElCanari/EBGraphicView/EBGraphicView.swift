@@ -47,6 +47,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     if !self.wantsLayer {
       presentErrorWindow (#file, #line, "EBGraphicView requires layer")
     }
+    self.installPlacards ()
+    self.addEndLiveMagnificationObserver ()
+    self.updateViewFrameAndBounds ()
   }
 
   //····················································································································
@@ -472,8 +475,10 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   final internal var mZoomPopUpButton : NSPopUpButton? = nil
-  final internal var mXPlacard : NSTextField? = nil
-  final internal var mYPlacard : NSTextField? = nil
+  final internal var mZoomToFitButton : NSButton? = nil
+  final internal var mXYView : NSView? = nil
+//  final internal var mXPlacard : NSTextField? = nil
+//  final internal var mYPlacard : NSTextField? = nil
 
   //····················································································································
   // MARK: -

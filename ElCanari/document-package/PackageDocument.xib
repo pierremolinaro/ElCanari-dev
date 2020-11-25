@@ -2314,32 +2314,38 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-ub-L1B" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqs-oY-lML" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-ub-L1B" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
-                                <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
+                            <subviews>
+                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
+                                        <rect key="frame" x="1" y="1" width="412" height="484"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </customView>
-                                </subviews>
-                            </clipView>
-                            <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="2828">
-                                <rect key="frame" x="1" y="485" width="412" height="15"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </scroller>
-                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2827">
-                                <rect key="frame" x="413" y="1" width="15" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </scroller>
-                        </scrollView>
+                                        <subviews>
+                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </customView>
+                                        </subviews>
+                                    </clipView>
+                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="2828">
+                                        <rect key="frame" x="1" y="485" width="412" height="15"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </scroller>
+                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2827">
+                                        <rect key="frame" x="413" y="1" width="15" height="484"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </scroller>
+                                </scrollView>
+                            </subviews>
+                        </customView>
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2923">
@@ -5683,23 +5689,27 @@ DQ
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-oO-DML" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1o-8u-JKa" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="0.10000000000000001" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-oO-DML" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" drawsBackground="NO" id="a7R-xu-Y3w">
-                                <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-aa-bds" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
+                            <subviews>
+                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="0.10000000000000001" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <clipView key="contentView" drawsBackground="NO" id="a7R-xu-Y3w">
+                                        <rect key="frame" x="1" y="1" width="412" height="484"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <animations>
-                                            <caTransition key="subviews">
-                                                <mutableData key="keyedArchiveRepresentation">
+                                        <subviews>
+                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-aa-bds" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <animations>
+                                                    <caTransition key="subviews">
+                                                        <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
 S2V5ZWRBcmNoaXZlctEICVRyb290gAGnCwwTFA0ZH1UkbnVsbNMNDg8QERJUdHlwZVYkY2xhc3NfEBJf
 X0NBQ29kaW5nQ29udGVudHOAAoAGgANUZmFkZdIVDhYYWk5TLm9iamVjdHOhF4AEgAXSGhscHVokY2xh
@@ -5708,20 +5718,22 @@ VHJhbnNpdGlvbltDQUFuaW1hdGlvbgAIABEAGgAkACkAMgA3AEkATABRAFMAWwBhAGgAbQB0AIkAiwCN
 AI8AlACZAKQApgCoAKoArwC6AMMAywDOANcA3ADpAO0A+gAAAAAAAAIBAAAAAAAAACQAAAAAAAAAAAAA
 AAAAAAEGA
 </mutableData>
-                                            </caTransition>
-                                        </animations>
-                                    </customView>
-                                </subviews>
-                            </clipView>
-                            <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Tan-dm-BXz">
-                                <rect key="frame" x="1" y="485" width="412" height="15"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </scroller>
-                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Dho-Fx-Tig">
-                                <rect key="frame" x="413" y="1" width="15" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </scroller>
-                        </scrollView>
+                                                    </caTransition>
+                                                </animations>
+                                            </customView>
+                                        </subviews>
+                                    </clipView>
+                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Tan-dm-BXz">
+                                        <rect key="frame" x="1" y="485" width="412" height="15"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </scroller>
+                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Dho-Fx-Tig">
+                                        <rect key="frame" x="413" y="1" width="15" height="484"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </scroller>
+                                </scrollView>
+                            </subviews>
+                        </customView>
                     </subviews>
                 </customView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-1c-m3H" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">

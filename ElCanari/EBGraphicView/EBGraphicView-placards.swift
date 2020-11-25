@@ -10,6 +10,16 @@ extension EBGraphicView {
 
  //····················································································································
 
+ final private func optionalHelperView () -> EBHelperView? {
+//   Swift.print ("super \(self.superview)")
+//   Swift.print ("super 2 \(self.superview?.superview)")
+//   Swift.print ("super 3 \(self.superview?.superview?.superview)")
+//   Swift.print ("super 4 \(self.superview?.superview?.superview?.superview)")
+   return self.superview?.superview?.superview?.superview as? EBHelperView
+ }
+
+ //····················································································································
+
   final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inScrollView : NSScrollView) {
     if let zoomPopUpButton = self.mZoomPopUpButton {
       let minMagnification = inScrollView.minMagnification
@@ -21,6 +31,15 @@ extension EBGraphicView {
         zoomPopUpButton.lastItem?.tag = inZoom
       }
     }
+  }
+
+  //····················································································································
+
+  @objc final fileprivate func setZoomToFitButton (_ inSender : NSButton) {
+    let actualZoom = 0 // Means zoom to fit
+    self.mZoomController?.updateModel (self, actualZoom)
+    self.mZoomPropertyCache = actualZoom
+    self.applyZoom ()
   }
 
   //····················································································································
@@ -37,25 +56,41 @@ extension EBGraphicView {
   final internal func installPlacards () {
     if let scrollView = self.enclosingScrollView as? EBScrollView {
       self.installZoomPopUpButton (scrollView)
-      self.installXYplacards (scrollView)
+      self.installZoomToFitButton ()
       self.installLiveScrollingNotification ()
     }
   }
 
   //····················································································································
 
+  final internal func installZoomToFitButton () {
+    if self.mZoomToFitButton == nil, let helperView = optionalHelperView () {
+      let r = NSRect (x: 0.0, y: 0.0, width: 100.0, height: 20.0)
+      let zoomToFitButton = NSButton (frame: r)
+      self.mZoomToFitButton = zoomToFitButton
+      zoomToFitButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      zoomToFitButton.title = "Zoom to Fit"
+      zoomToFitButton.bezelStyle = .roundRect
+      zoomToFitButton.action = #selector (EBGraphicView.setZoomToFitButton(_:))
+      zoomToFitButton.target = self
+      helperView.addPlacard (zoomToFitButton)
+    }
+  }
+
+  //····················································································································
+
   final internal func installZoomPopUpButton (_ inScrollView : EBScrollView) {
-    if self.mZoomPopUpButton == nil {
+    if self.mZoomPopUpButton == nil, let helperView = optionalHelperView () {
       let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
-      let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
+      let zoomPopUpButton = NSPopUpButton (frame: r, pullsDown: true)
       self.mZoomPopUpButton = zoomPopUpButton
       zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       zoomPopUpButton.autoenablesItems = false
-      zoomPopUpButton.bezelStyle = .shadowlessSquare
+      zoomPopUpButton.bezelStyle = .roundRect
       if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
         popUpButtonCell.arrowPosition = .arrowAtBottom
       }
-      zoomPopUpButton.isBordered = false
+      zoomPopUpButton.isBordered = true
       zoomPopUpButton.menu?.addItem (
         withTitle:"\(Int (self.actualScale * 100.0)) %",
         action:nil,
@@ -84,56 +119,85 @@ extension EBGraphicView {
       self.addPopupButtonItemForZoom (4000, inScrollView)
       self.addPopupButtonItemForZoom (4500, inScrollView)
       self.addPopupButtonItemForZoom (5000, inScrollView)
-      zoomPopUpButton.menu?.addItem (withTitle:"Fit to Window", action:#selector (EBGraphicView.setZoomFromPopUpButton(_:)), keyEquivalent:"")
-      zoomPopUpButton.lastItem?.target = self
-      zoomPopUpButton.lastItem?.tag = 0
-      inScrollView.addPlacard (zoomPopUpButton)
+      helperView.addPlacard (zoomPopUpButton)
     }
   }
 
   //····················································································································
 
-  final private func installXYplacards (_ inScrollView : EBScrollView) {
-    if self.mXPlacard == nil {
-      let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
-      let xPlacard = NSTextField (frame: r)
-      xPlacard.isBezeled = false
-      xPlacard.isBordered = false
-      xPlacard.drawsBackground = false
-      xPlacard.isEnabled = true
-      xPlacard.isEditable = false
-      xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-      inScrollView.addPlacard (xPlacard)
-      self.mXPlacard = xPlacard
-    }
-    if self.mYPlacard == nil {
-      let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
-      let yPlacard = NSTextField (frame: r)
-      yPlacard.isBezeled = false
-      yPlacard.isBordered = false
-      yPlacard.drawsBackground = false
-      yPlacard.isEnabled = true
-      yPlacard.isEditable = false
-      yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-      inScrollView.addPlacard (yPlacard)
-      self.mYPlacard = yPlacard
-    }
+  final private func buildXYView () -> NSView {
+    let view = NSView (frame: NSRect (x: 0.0, y: 0.0, width: 90.0, height: 40.0))
+  //--- X
+    let rX = NSRect (x: 0.0, y: 20.0, width: 90.0, height: 20.0)
+    let xPlacard = NSTextField (frame: rX)
+    xPlacard.isBezeled = false
+    xPlacard.isBordered = false
+    xPlacard.drawsBackground = true
+    xPlacard.backgroundColor = .white
+    xPlacard.isEnabled = true
+    xPlacard.isEditable = false
+    xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    view.addSubview (xPlacard)
+  //--- Y
+    let rY = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
+    let yPlacard = NSTextField (frame: rY)
+    yPlacard.isBezeled = false
+    yPlacard.isBordered = false
+    yPlacard.drawsBackground = true
+    yPlacard.backgroundColor = .white
+    yPlacard.isEnabled = true
+    yPlacard.isEditable = false
+    yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    view.addSubview (yPlacard)
+  //--- Add constraints
+    xPlacard.layout (.left, .equal, superview: .left)
+    yPlacard.layout (.left, .equal, superview: .left)
+    xPlacard.layout (.top, .equal, superview: .top)
+    xPlacard.layout (.bottom, .equal, to: yPlacard, .top)
+    yPlacard.layout (.bottom, .equal, superview: .bottom)
+  //---
+    return view
   }
 
   //····················································································································
 
   final internal func updateXYplacards (_ inLocationInView : NSPoint) {
-    let x = stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
-    let y = stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
-    self.mXPlacard?.stringValue = "X = " + x
-    self.mYPlacard?.stringValue = "Y = " + y
+    let commandKey = NSEvent.modifierFlags.contains (.command)
+    if commandKey {
+      let x = stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
+      let y = stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
+      let xyView : NSView
+      if let view = self.mXYView {
+        xyView = view
+      }else{
+        xyView = buildXYView ()
+        self.window?.contentView?.addSubview (xyView)
+        self.mXYView = xyView
+      }
+      if xyView.subviews.count == 2, let placardX = xyView.subviews [0] as? NSTextField, let placardY = xyView.subviews [1] as? NSTextField {
+        placardX.stringValue = "X = " + x
+        placardY.stringValue = "Y = " + y
+        placardX.frame.size = placardX.fittingSize
+        placardY.frame.size = placardY.fittingSize
+        placardX.frame.origin.y = placardY.frame.size.height
+        xyView.frame.size.width = max (placardX.frame.size.width, placardY.frame.size.width)
+        xyView.frame.size.height = placardX.frame.size.height + placardY.frame.size.height
+        let locationInWindow = self.convert (inLocationInView, to: nil)
+        xyView.frame.origin.x = locationInWindow.x - xyView.frame.size.width - 10.0
+        xyView.frame.origin.y = locationInWindow.y  - xyView.frame.size.height / 2.0
+      }
+    }else{
+      clearXYplacards ()
+    }
   }
 
   //····················································································································
 
   final internal func clearXYplacards () {
-    self.mXPlacard?.stringValue = ""
-    self.mYPlacard?.stringValue = ""
+    if let view = self.mXYView {
+      view.removeFromSuperview ()
+      self.mXYView = nil
+    }
   }
 
   //····················································································································

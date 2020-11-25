@@ -218,3 +218,54 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down with shift and control keys
+
+  //····················································································································
+
+  private var mOperationInProgress : Bool
+  private let mMouseDownUnalignedLocation : NSPoint
+
+  //····················································································································
+
+  public init (_ inUnalignedLocation : NSPoint, _ inViewController : EBGraphicViewControllerProtocol) {
+    self.mMouseDownUnalignedLocation = inUnalignedLocation
+    self.mOperationInProgress = true
+  }
+
+  //····················································································································
+
+  public override func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+                                                             _ inModifierFlags : NSEvent.ModifierFlags,
+                                                             _ inGraphicView : EBGraphicView) {
+    if self.mOperationInProgress {
+      let r = NSRect (point: self.mMouseDownUnalignedLocation, point: inMouseDraggedUnalignedLocation)
+      inGraphicView.mSelectionRectangle = r
+    }
+  }
+
+  //····················································································································
+
+  override public func abortOperation (_ inGraphicView : EBGraphicView) {
+    if self.mOperationInProgress {
+      self.mOperationInProgress = false
+      inGraphicView.mSelectionRectangle = nil
+    }
+  }
+
+  //····················································································································
+
+  override public func onMouseUp (_ inUnalignedMouseUpLocation : NSPoint,
+                                  _ inGraphicView : EBGraphicView) {
+    if self.mOperationInProgress,
+          let scrollView = inGraphicView.superview?.superview as? NSScrollView,
+          let r = inGraphicView.mSelectionRectangle {
+      scrollView.magnify (toFit: r)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------

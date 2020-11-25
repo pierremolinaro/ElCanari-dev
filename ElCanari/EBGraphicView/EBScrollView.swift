@@ -31,6 +31,15 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+
+//  final override func viewDidMoveToSuperview () {
+//    super.viewDidMoveToSuperview ()
+//    if self.superview is EBHelperView {
+//      __NSBeep ()
+//    }
+//  }
+
+  //····················································································································
   // MARK: -
   //····················································································································
 
@@ -51,7 +60,15 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  internal var mPlacardArray = [NSView] ()
+  final override func tile () { // tile is called during live resizing
+    super.tile ()
+    if let graphicView = self.documentView as? EBGraphicView {
+      graphicView.scrollViewIsLiveResizing ()
+    }
+    if let focusView = self.superview as? EBFocusRingView {
+      focusView.viewIsLiveResing ()
+    }
+  }
 
   //····················································································································
   // MARK: -

@@ -47,7 +47,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), d > 0.0, let boardView = self.mBoardView {
+    if NSEvent.modifierFlags.contains (.control), !NSEvent.modifierFlags.contains (.shift), d > 0.0, let boardView = self.mBoardView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
           x: inUnalignedMouseLocation.x - d / 2.0,

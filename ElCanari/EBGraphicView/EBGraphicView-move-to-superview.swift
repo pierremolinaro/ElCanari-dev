@@ -15,9 +15,9 @@ extension EBGraphicView {
   final override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
     if self.superview != nil {
-      self.installPlacards ()
-      self.addEndLiveMagnificationObserver ()
-      self.updateViewFrameAndBounds ()
+//      self.installPlacards ()
+//      self.addEndLiveMagnificationObserver ()
+//      self.updateViewFrameAndBounds ()
     }
   }
 

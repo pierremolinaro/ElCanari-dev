@@ -21,6 +21,8 @@ extension EBGraphicView {
       let modifierFlagsContainsOption = modifierFlags.contains (.option)
       let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocation)
       switch (modifierFlagsContainsControl, modifierFlagsContainsShift, modifierFlagsContainsOption) {
+      case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
+        self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocation, viewController)
       case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
         if let theMenu = self.mPopulateContextualMenuClosure? (canariUnalignedMouseDownLocation) {
           NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
@@ -47,8 +49,8 @@ extension EBGraphicView {
         }else{
           self.mMouseDownBehaviour = MouseDownOutsideAnyObjectBehaviour (unalignedMouseDownLocation, viewController)
         }
-      default :
-        super.mouseDown (with: inEvent)
+//      default :
+//        super.mouseDown (with: inEvent)
       }
     }
   }
@@ -69,10 +71,10 @@ extension EBGraphicView {
     final override func mouseUp (with inEvent : NSEvent) {
       super.mouseUp (with: inEvent)
       let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-      self.mSelectionRectangle = nil
-      self.mGuideBezierPath = nil
       self.mMouseDownBehaviour.onMouseUp (unalignedLocationInView, self)
       self.mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
+      self.mSelectionRectangle = nil
+      self.mGuideBezierPath = nil
     //--- Set cursor
       self.setCursor (forLocationInView: unalignedLocationInView)
     //--- Update frame and bounds
@@ -187,6 +189,10 @@ extension EBGraphicView {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, NSEvent.modifierFlags, self)
+  //--- XY
+    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
+    self.updateXYplacards (locationOnGridInView)
+  //---
     super.flagsChanged (with: inEvent)
   }
 
