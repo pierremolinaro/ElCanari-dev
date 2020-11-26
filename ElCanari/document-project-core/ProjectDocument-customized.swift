@@ -207,6 +207,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
   //--- Option click for creating track
+     self.mBoardView?.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
      self.mBoardView?.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
        continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
@@ -329,6 +330,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mSchematicsView?.set (arrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT)
     self.mSchematicsView?.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
     self.mSchematicsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
+    self.mSchematicsView?.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
     self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
     self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbol)

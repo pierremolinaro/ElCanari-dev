@@ -98,6 +98,8 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   final var mDrawFrameIssue = true
 
+  //····················································································································
+
   private var mEventMonitor : Any? = nil // For tracking option key change
 
   //····················································································································
@@ -486,6 +488,8 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   final internal var mZoomPopUpButton : NSPopUpButton? = nil
   final internal var mZoomToFitButton : NSButton? = nil
+  final internal var mHelperTextField : NSTextField? = nil
+  final var mHelperStringForOptionModifier : String? = nil
   final internal var mXYwindow : NSWindow? = nil
 
   //····················································································································

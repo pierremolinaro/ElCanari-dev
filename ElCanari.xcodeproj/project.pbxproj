@@ -229,8 +229,8 @@
 		CF1D9C7F21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C7D21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift */; };
 		CF1D9C8121BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */; };
 		CF1D9C8221BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */; };
-		CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-placards.swift */; };
-		CF1D9C8521BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-placards.swift */; };
+		CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */; };
+		CF1D9C8521BBF4EE00FFF459 /* EBGraphicView-helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */; };
 		CF1D9C8721BBFBB100FFF459 /* EBGraphicView-key-down.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8621BBFBB100FFF459 /* EBGraphicView-key-down.swift */; };
 		CF1D9C8821BBFBB100FFF459 /* EBGraphicView-key-down.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8621BBFBB100FFF459 /* EBGraphicView-key-down.swift */; };
 		CF1D9C8A21BBFD7900FFF459 /* EBGraphicView-mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */; };
@@ -2695,7 +2695,7 @@
 		CF1D9C7A21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-overObjectsDisplay.swift"; sourceTree = "<group>"; };
 		CF1D9C7D21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-menu-actions.swift"; sourceTree = "<group>"; };
 		CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-tracking-areas.swift"; sourceTree = "<group>"; };
-		CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-placards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-placards.swift"; sourceTree = "<group>"; };
+		CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-helpers.swift"; sourceTree = "<group>"; };
 		CF1D9C8621BBFBB100FFF459 /* EBGraphicView-key-down.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-key-down.swift"; sourceTree = "<group>"; };
 		CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-mouse.swift"; sourceTree = "<group>"; };
 		CF1EA41A213F0F3900424C02 /* kicad-font-utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-font-utilities.swift"; sourceTree = "<group>"; };
@@ -5199,7 +5199,7 @@
 				CFFF32B7248E273E0008EC34 /* EBGraphicView-mouse-down-behaviours.swift */,
 				CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift */,
 				CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */,
-				CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-placards.swift */,
+				CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */,
 				CF6B571D22CAA828006910BF /* EBGraphicView-tool-tips.swift */,
 				CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */,
 				CFDDD4D921BB1529007D2F14 /* EBGraphicView.swift */,
@@ -6877,7 +6877,7 @@
 				CF1A11072108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift in Sources */,
 				CFEDE5B01B4677BA00036ACF /* ArtworkDocument.swift in Sources */,
 				CFA1AA17223265E30023928C /* entity-SymbolPinTypeInDevice.swift in Sources */,
-				CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */,
+				CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-helpers.swift in Sources */,
 				CFA43081229AEB96000AA8C8 /* toone-DeviceMasterPadInProject.swift in Sources */,
 				CF6B330021C93A2400E3B985 /* selectionController-PackageDocument-mPackageDimensionSelectionController.swift in Sources */,
 				CF2FF0CF242F79C40030E49A /* transient-PackageRoot-secondPointX.swift in Sources */,
@@ -8073,7 +8073,7 @@
 				CFA1AA18223265E30023928C /* entity-SymbolPinTypeInDevice.swift in Sources */,
 				CF5C4D74219F04D600EAC52A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */,
 				CFEB7CFB233A2A030060A97A /* transient-SheetInProject-connexionErrors.swift in Sources */,
-				CF1D9C8521BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */,
+				CF1D9C8521BBF4EE00FFF459 /* EBGraphicView-helpers.swift in Sources */,
 				CFA430CD229AED07000AA8C8 /* tomany-CanariLibraryEntry.swift in Sources */,
 				CF8388732423E718007F1D21 /* extension-PackageModelImageDoublePoint.swift in Sources */,
 				CFAFA54424F26F2C002D48BE /* ElCanariCursors.swift in Sources */,

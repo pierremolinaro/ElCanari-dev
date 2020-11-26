@@ -9,6 +9,7 @@ import Cocoa
 private let XY_WINDOW_MARGIN : CGFloat = 5.0
 private let XY_WINDOW_BACKGROUND_COLOR = NSColor.black
 private let XY_WINDOW_TEXT_COLOR = NSColor.white
+let DEFAULT_HELPER_TEXT = "SHIFT, CONTROL, OPTION and COMMAND modifier keys helper text"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -59,7 +60,27 @@ extension EBGraphicView {
     if let scrollView = self.enclosingScrollView as? EBScrollView {
       self.installZoomPopUpButton (scrollView)
       self.installZoomToFitButton ()
+      self.installHelperTextField ()
       self.installLiveScrollingNotification ()
+    }
+  }
+
+  //····················································································································
+
+  final internal func installHelperTextField () {
+    if self.mHelperTextField == nil, let helperView = optionalHelperView () {
+      let r = NSRect (x: 0.0, y: 0.0, width: 100.0, height: 20.0)
+      let helperTextField = NSTextField (frame: r)
+      self.mHelperTextField = helperTextField
+      helperTextField.isBezeled = false
+      helperTextField.isBordered = false
+      helperTextField.drawsBackground = false
+      helperTextField.textColor = .black
+      helperTextField.isEnabled = true
+      helperTextField.isEditable = false
+      helperTextField.stringValue = DEFAULT_HELPER_TEXT
+      helperTextField.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      helperView.addLastHelperView (helperTextField)
     }
   }
 
@@ -75,7 +96,7 @@ extension EBGraphicView {
       zoomToFitButton.bezelStyle = .roundRect
       zoomToFitButton.action = #selector (EBGraphicView.setZoomToFitButton(_:))
       zoomToFitButton.target = self
-      helperView.addPlacard (zoomToFitButton)
+      helperView.addHelperView (zoomToFitButton)
     }
   }
 
@@ -121,7 +142,7 @@ extension EBGraphicView {
       self.addPopupButtonItemForZoom (4000, inScrollView)
       self.addPopupButtonItemForZoom (4500, inScrollView)
       self.addPopupButtonItemForZoom (5000, inScrollView)
-      helperView.addPlacard (zoomPopUpButton)
+      helperView.addHelperView (zoomPopUpButton)
     }
   }
 
@@ -137,7 +158,6 @@ extension EBGraphicView {
     window.contentView = view
   //--- X
     let xPlacard = NSTextField (frame: NSRect ())
-
     xPlacard.isBezeled = false
     xPlacard.isBordered = false
     xPlacard.drawsBackground = true
@@ -238,6 +258,42 @@ extension EBGraphicView {
       let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
       self.updateXYHelperWindow (locationOnGridInView)
     }
+  }
+
+  //····················································································································
+
+  final func updateHelperString (with inUnalignedMouseLocationInView : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) {
+    let modifierFlagsContainsControl = inModifierFlags.contains (.control)
+    let modifierFlagsContainsShift = inModifierFlags.contains (.shift)
+    let modifierFlagsContainsOption = inModifierFlags.contains (.option)
+    let (possibleObjectIndex, _) = self.indexOfFrontObject (at: inUnalignedMouseLocationInView)
+    var helperString = DEFAULT_HELPER_TEXT
+    switch (modifierFlagsContainsControl, modifierFlagsContainsShift, modifierFlagsContainsOption) {
+    case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
+      helperString = "CONTROL + SHIFT: mouse down starts a zoom region"
+    case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
+      if let _ = self.mPopulateContextualMenuClosure? (inUnalignedMouseLocationInView.canariPoint) {
+        helperString = "CONTROL: mouse down shows a contextual menu"
+      }
+    case (false, true, false) : // Shift Key
+      helperString = "SHIFT: mouse down complements selection of objects intersecting selection rectangle"
+    case (_, _, true) : // Option Key On
+      if let _ = self.pasteboardType {
+        helperString = "OPTION: mouse down starts a duplication of selected objects"
+      }else if let s = self.mHelperStringForOptionModifier {
+        helperString = s
+      }
+    case (false, false, false) : // No Modifier Key
+      if let _ = possibleObjectIndex {
+        helperString = "Mouse down inside an object selects it"
+      }else{
+        helperString = "Mouse down outside any object starts a selection rectangle"
+      }
+    }
+    if inModifierFlags.contains (.command) {
+      helperString += ", COMMAND: displays XY location"
+    }
+    self.mHelperTextField?.stringValue = helperString
   }
 
   //····················································································································

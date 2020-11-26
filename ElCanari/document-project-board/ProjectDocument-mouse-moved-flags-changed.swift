@@ -42,6 +42,7 @@ extension CustomizedProjectDocument {
               shape = EBShape ()
             }
             shape?.add (filled: bpArray, NSColor.white)
+//            ioHelperString = "Option: start a new track"
           }
         }
       }
@@ -62,6 +63,7 @@ extension CustomizedProjectDocument {
         }
         shape?.add (filled: [bp], NSColor.lightGray.withAlphaComponent (0.2))
         shape?.add (stroke: [bp], NSColor.green)
+//        ioHelperString = "Control: perform operation at mouse location"
       }
     }
   //---
