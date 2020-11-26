@@ -28,12 +28,6 @@ class CanariOrientationSegmentedControl : NSSegmentedControl, EBUserClassNamePro
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
     let angle = self.selectedSegment * 90_000
     self.mController?.updateModel (self, angle)

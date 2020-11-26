@@ -27,12 +27,6 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func removeFromSuperview () {
     super.removeFromSuperview ()
     if Thread.isMainThread {

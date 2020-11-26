@@ -39,12 +39,6 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   func register (masterView : NSView?, _ inPageViews : [CanariViewWithKeyView?]) {
     self.mMasterView = masterView
     self.mPageViews = inPageViews

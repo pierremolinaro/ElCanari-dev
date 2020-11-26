@@ -51,10 +51,14 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     self.addEndLiveMagnificationObserver ()
     self.updateViewFrameAndBounds ()
   //--- Track flags changed events, event if view is not first responder
-    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { inEvent in
-      let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-      if self.bounds.contains (unalignedLocationInView) {
-        self.flagsChanged (with: inEvent)
+    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
+      if let me = self {
+        let unalignedLocationInView = me.convert (inEvent.locationInWindow, from: nil)
+        if me.bounds.contains (unalignedLocationInView), let isKeyWindow = me.window?.isKeyWindow, isKeyWindow {
+          me.flagsChanged (with: inEvent)
+        }else{
+          me.removeXYHelperWindow ()
+        }
       }
       return inEvent
     }
@@ -70,12 +74,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
       name: NSView.frameDidChangeNotification,
       object: self
     )
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································

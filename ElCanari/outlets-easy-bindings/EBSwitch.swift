@@ -26,12 +26,6 @@ class EBSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mValueController?.updateModel ()
     return super.sendAction (action, to: to)

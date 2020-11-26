@@ -53,12 +53,6 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   func setDefinedCharacterSet (_ inSet : Set <Int>) {
     self.mDefinedCharacterSet = inSet
     var definedLineSet = Set <Int> ()

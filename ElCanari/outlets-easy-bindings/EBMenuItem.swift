@@ -17,12 +17,6 @@ class EBMenuItem : NSMenuItem, EBUserClassNameProtocol, EnabledMultipleBindingPr
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   func enableFromEnableBinding (_ inValue : Bool) {
     self.isEnabled = inValue
   }

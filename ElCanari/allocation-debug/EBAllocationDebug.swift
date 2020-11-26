@@ -38,24 +38,10 @@ func reuseTableViewCells () -> Bool {
 
 func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
-    let className = String (describing:type (of: inObject))
     if Thread.isMainThread {
-      pmNoteObjectAllocation (className)
+      pmNoteObjectAllocation (inObject)
     }else{
-      DispatchQueue.main.async { pmNoteObjectAllocation (className) }
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) { // NOT ALWAYS IN MAIN THREAD
-  if gEnableObjectAllocationDebug {
-    let className = String (describing: type (of: inObject))
-    if Thread.isMainThread {
-      pmNoteObjectDeallocation (className)
-    }else{
-      DispatchQueue.main.async { pmNoteObjectDeallocation (className) }
+      DispatchQueue.main.async { pmNoteObjectAllocation (inObject) }
     }
   }
 }
@@ -90,7 +76,14 @@ func buildDebugObject () {
 //    Allocation private routines
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate var gLiveObjectCountByClass = [String : Int] ()
+private class EBWeakObject {
+  weak var mWeakReference : EBUserClassNameProtocol? = nil
+  var mNextObject : EBWeakObject? = nil
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate var gLiveObjectList : EBWeakObject? = nil
 fileprivate var gTotalAllocatedObjectCountByClass = [String : Int] ()
 fileprivate var gSnapShotDictionary = [String : Int] ()
 fileprivate var gRefreshDisplay = false
@@ -99,25 +92,17 @@ fileprivate var gRefreshDisplay = false
 //    pmNoteObjectAllocation:
 //······················································································································
 
-fileprivate func pmNoteObjectAllocation (_ inObjectClassName : String) {
-  let currentLiveCount = gLiveObjectCountByClass [inObjectClassName] ?? 0
-  gLiveObjectCountByClass [inObjectClassName] = currentLiveCount + 1
-  let currentCount = gTotalAllocatedObjectCountByClass [inObjectClassName] ?? 0
-  gTotalAllocatedObjectCountByClass [inObjectClassName] = currentCount + 1
-  gRefreshDisplay = true
-}
-
-//······················································································································
-//    pmNoteObjectDeallocation
-//······················································································································
-
-fileprivate func pmNoteObjectDeallocation (_ inObjectClassName : String) {
-  let currentCount = gLiveObjectCountByClass [inObjectClassName] ?? 0
-  if currentCount > 1 {
-    gLiveObjectCountByClass [inObjectClassName] = currentCount - 1
-  }else{
-    gLiveObjectCountByClass [inObjectClassName] = nil
-  }
+fileprivate func pmNoteObjectAllocation (_ inObject : EBUserClassNameProtocol) {
+//---
+  let weakObject = EBWeakObject ()
+  weakObject.mWeakReference = inObject
+  weakObject.mNextObject = gLiveObjectList
+  gLiveObjectList = weakObject
+//---
+  let className = String (describing:type (of: inObject))
+  let currentCount = gTotalAllocatedObjectCountByClass [className] ?? 0
+  gTotalAllocatedObjectCountByClass [className] = currentCount + 1
+//---
   gRefreshDisplay = true
 }
 
@@ -242,7 +227,6 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   override func awakeFromNib () {
-  // NSLog (@"%s %p %p", __PRETTY_FUNCTION__, self, mDebugMenu) ;
   //--- Allocation Window visibility
     let df = UserDefaults.standard
     self.mAllocationStatsWindowVisibleAtLaunch = df.bool (forKey: prefsEnableObjectAllocationStatsWindowVisible)
@@ -288,7 +272,7 @@ private var gDebugObject : EBAllocationDebug? = nil
       self.mStatsTableView!.sortDescriptors = NSArray (object:firstColumn.sortDescriptorPrototype!) as! [NSSortDescriptor]
     }
     self.mStatsTableView?.dataSource = self
-    self.installTimer ()
+//    self.installTimer ()
   }
 
   //····················································································································
@@ -338,6 +322,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   @objc func refreshDisplay (_ timer : Timer) {
+    gRefreshDisplay = true
     self.displayAllocation ()
   }
 
@@ -373,8 +358,48 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    performSnapShotAction:
   //····················································································································
 
+  func removeDeallocatedObjects () {
+    var newList : EBWeakObject? = nil
+    while let weakObject = gLiveObjectList {
+      gLiveObjectList = weakObject.mNextObject
+      if weakObject.mWeakReference != nil {
+        weakObject.mNextObject = newList
+        newList = weakObject
+      }
+    }
+    gLiveObjectList = newList
+//    let liveObjectCountByClass = gLiveObjectCountByClass
+//    gLiveObjectCountByClass = [:]
+//    for (className, weakRefArray) in liveObjectCountByClass {
+//      var wra = [EBWeakObject] ()
+//      for weakObject in weakRefArray {
+//        if weakObject.mWeakReference != nil {
+//          wra.append (weakObject)
+//        }
+//      }
+//      gLiveObjectCountByClass [className] = wra
+//    }
+  }
+
+  //····················································································································
+  //    performSnapShotAction:
+  //····················································································································
+
   @IBAction func performSnapShotAction (_: AnyObject) {
-    gSnapShotDictionary = gLiveObjectCountByClass
+    removeDeallocatedObjects ()
+    gSnapShotDictionary = [:]
+    var optionalList = gLiveObjectList
+    while let weakObject = optionalList {
+      optionalList = weakObject.mNextObject
+      if let object = weakObject.mWeakReference {
+        let className = String (describing:type (of: object))
+        let objectCount = gSnapShotDictionary [className] ?? 0
+        gSnapShotDictionary [className] = objectCount + 1
+      }
+    }
+//    for (className, weakRefArray) in gLiveObjectCountByClass {
+//      gSnapShotDictionary [className] = weakRefArray.count
+//    }
     gRefreshDisplay = true
   }
 
@@ -388,13 +413,25 @@ private var gDebugObject : EBAllocationDebug? = nil
     }
     if gRefreshDisplay {
       gRefreshDisplay = false
+      removeDeallocatedObjects ()
     //---
       var liveObjectCount = 0
       var totalObjectCount = 0
     //---
+     var liveObjectCountByClass = [String : Int] ()
+     var optionalList = gLiveObjectList
+      while let weakObject = optionalList {
+        optionalList = weakObject.mNextObject
+        if let object = weakObject.mWeakReference {
+          let className = String (describing:type (of: object))
+          let objectCount = liveObjectCountByClass [className] ?? 0
+          liveObjectCountByClass [className] = objectCount + 1
+        }
+      }
+    //---
       let array = NSMutableArray ()
       for (className, totalByClass) in gTotalAllocatedObjectCountByClass {
-        let liveByClass = gLiveObjectCountByClass [className] ?? 0
+        let liveByClass = liveObjectCountByClass [className] ?? 0
         let snapShotByClass = gSnapShotDictionary [className] ?? 0
         liveObjectCount += liveByClass
         totalObjectCount += totalByClass

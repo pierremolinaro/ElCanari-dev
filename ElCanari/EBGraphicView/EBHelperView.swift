@@ -35,12 +35,6 @@ final class EBHelperView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func awakeFromNib () {
     super.awakeFromNib ()
     for view in self.subviews {

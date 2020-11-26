@@ -26,12 +26,6 @@ class EBSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mDoubleValueController?.updateModel ()
     self.mIntValueController?.updateModel ()

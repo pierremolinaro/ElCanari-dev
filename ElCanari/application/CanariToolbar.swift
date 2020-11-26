@@ -52,12 +52,6 @@ let MERGER_PREFS_INDEX = 8
   
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func awakeFromNib () {
     if let masterView = mMasterView {
       mWindowDefaultTitle = masterView.window!.title

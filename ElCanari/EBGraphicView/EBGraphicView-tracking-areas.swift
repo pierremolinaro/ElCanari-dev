@@ -22,7 +22,6 @@ extension EBGraphicView {
       owner: self,
       userInfo: nil
     )
- //   self.window?.acceptsMouseMovedEvents = true
     self.addTrackingArea (trackingArea)
     self.mTrackingArea = trackingArea
   //---

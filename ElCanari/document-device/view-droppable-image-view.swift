@@ -48,12 +48,6 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   private func registerDraggedTypes () {
     self.registerForDraggedTypes (myPasteboardImageTypes ())
   }
