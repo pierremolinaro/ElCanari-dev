@@ -258,9 +258,26 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
   override public func onMouseUp (_ inUnalignedMouseUpLocation : NSPoint,
                                   _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress,
-          let scrollView = inGraphicView.superview?.superview as? NSScrollView,
-          let r = inGraphicView.mSelectionRectangle {
+          let scrollView = inGraphicView.enclosingScrollView,
+          let r = inGraphicView.mSelectionRectangle { //, r.size.width > 0.0, r.size.height > 0.0 {
+//      Swift.print ("r \(r)")
+//      Swift.print ("inGraphicView.bounds \(inGraphicView.bounds)")
+//      Swift.print ("inGraphicView.frame \(inGraphicView.frame)")
+//      Swift.print ("scrollView.contentView.frame \(scrollView.contentView.frame)")
+//      Swift.print ("scrollView.contentView.bounds \(scrollView.contentView.bounds)")
+//      Swift.print ("scrollView.allowsMagnification \(scrollView.allowsMagnification)")
+//      Swift.print ("scrollView.magnification \(scrollView.magnification)")
+//      Swift.print ("scrollView.minMagnification \(scrollView.minMagnification)")
+//      Swift.print ("scrollView.maxMagnification \(scrollView.maxMagnification)")
+//      let rr = scrollView.contentView.convert (r, from: inGraphicView)
+//      Swift.print ("rr \(rr)")
+//      let magX = inGraphicView.bounds.size.width / r.size.width
+//      let magY = inGraphicView.bounds.size.height / r.size.height
+//
       scrollView.magnify (toFit: r)
+
+      let zoomTitle = "\(Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))) %"
+      inGraphicView.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
     }
   }
 

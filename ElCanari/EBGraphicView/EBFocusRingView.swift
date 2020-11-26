@@ -47,9 +47,9 @@ final class EBFocusRingView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func viewIsLiveResing () {
-    self.needsDisplay = true
-  }
+//  final func viewIsLiveResing () {
+//    self.needsDisplay = true
+//  }
 
   //····················································································································
   //  FOCUS RING

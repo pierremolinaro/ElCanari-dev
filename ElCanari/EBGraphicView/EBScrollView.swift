@@ -51,15 +51,15 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  final override func tile () { // tile is called during live resizing
-    super.tile ()
-    if let graphicView = self.documentView as? EBGraphicView {
-      graphicView.scrollViewIsLiveResizing ()
-    }
-    if let focusView = self.superview as? EBFocusRingView {
-      focusView.viewIsLiveResing ()
-    }
-  }
+//  final override func tile () { // tile is called during live resizing
+//    super.tile ()
+//    if let graphicView = self.documentView as? EBGraphicView {
+//      graphicView.scrollViewIsLiveResizing ()
+//    }
+//    if let focusView = self.superview as? EBFocusRingView {
+//      focusView.viewIsLiveResing ()
+//    }
+//  }
 
   //····················································································································
   // MARK: -

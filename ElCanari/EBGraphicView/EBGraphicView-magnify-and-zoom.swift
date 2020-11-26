@@ -28,11 +28,7 @@ extension EBGraphicView {
   //····················································································································
 
   final var actualScale : CGFloat {
-    var result : CGFloat = 1.0
-    if let scrollView = self.enclosingScrollView {
-      result = scrollView.magnification
-    }
-    return result
+    return self.enclosingScrollView?.magnification ?? 1.0
   }
 
   //····················································································································
@@ -62,16 +58,16 @@ extension EBGraphicView {
   //  Live Resize
   //····················································································································
 
-  final internal func scrollViewIsLiveResizing () {
-    if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
-      let box = self.objectsAndIssueBoundingBox
-      if !box.isEmpty {
-        scrollView.magnify (toFit: box)
-      }
-      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
-      self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
-    }
-  }
+//  final internal func scrollViewIsLiveResizing () {
+//    if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
+//      let box = self.objectsAndIssueBoundingBox
+//      if !box.isEmpty {
+//        scrollView.magnify (toFit: box)
+//      }
+//      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
+//      self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
+//    }
+//  }
 
   //····················································································································
 
