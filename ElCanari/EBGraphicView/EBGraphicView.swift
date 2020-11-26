@@ -50,6 +50,14 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     self.installPlacards ()
     self.addEndLiveMagnificationObserver ()
     self.updateViewFrameAndBounds ()
+  //--- Track flags changed events, event if view is not first responder
+    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { inEvent in
+      let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+      if self.bounds.contains (unalignedLocationInView) {
+        self.flagsChanged (with: inEvent)
+      }
+      return inEvent
+    }
   }
 
   //····················································································································
@@ -89,6 +97,8 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   final var mDrawFrameIssue = true
+
+  private var mEventMonitor : Any? = nil // For tracking option key change
 
   //····················································································································
   // MARK: -
