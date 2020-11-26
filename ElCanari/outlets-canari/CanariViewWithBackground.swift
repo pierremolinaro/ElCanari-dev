@@ -17,8 +17,16 @@ class CanariViewWithBackground : NSView {
 
   //····················································································································
 
+  var mBackgroundColor = NSColor.windowBackgroundColor {
+    didSet {
+      self.needsDisplay = true
+    }
+  }
+
+  //····················································································································
+
   override func draw (_ inDirtyRect : NSRect) {
-    NSColor.windowBackgroundColor.setFill ()
+    self.mBackgroundColor.setFill ()
     NSBezierPath.fill (inDirtyRect)
   }
 

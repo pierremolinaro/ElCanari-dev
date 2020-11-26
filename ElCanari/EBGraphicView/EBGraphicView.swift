@@ -476,7 +476,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   final internal var mZoomPopUpButton : NSPopUpButton? = nil
   final internal var mZoomToFitButton : NSButton? = nil
-  final internal var mXYpopover : NSPopover? = nil
+  final internal var mXYwindow : NSWindow? = nil
 
   //····················································································································
   // MARK: -

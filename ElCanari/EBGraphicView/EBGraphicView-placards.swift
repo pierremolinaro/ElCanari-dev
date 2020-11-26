@@ -6,15 +6,17 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
+private let XY_WINDOW_MARGIN : CGFloat = 5.0
+private let XY_WINDOW_BACKGROUND_COLOR = NSColor.black
+private let XY_WINDOW_TEXT_COLOR = NSColor.white
+
+//----------------------------------------------------------------------------------------------------------------------
+
 extension EBGraphicView {
 
  //····················································································································
 
  final private func optionalHelperView () -> EBHelperView? {
-//   Swift.print ("super \(self.superview)")
-//   Swift.print ("super 2 \(self.superview?.superview)")
-//   Swift.print ("super 3 \(self.superview?.superview?.superview)")
-//   Swift.print ("super 4 \(self.superview?.superview?.superview?.superview)")
    return self.superview?.superview?.superview?.superview as? EBHelperView
  }
 
@@ -125,84 +127,86 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func buildXYPopover () -> NSPopover {
-    let view = NSView (frame: NSRect (x: 0.0, y: 0.0, width: 90.0, height: 40.0))
+  final private func buildXYHelperWindow () -> NSWindow {
+    let window = NSWindow (contentRect: NSRect (), styleMask: .borderless, backing: .buffered, defer: false)
+    window.backgroundColor = NSColor.clear
+    window.isOpaque = false
+    window.isExcludedFromWindowsMenu = true
+    window.orderFront (nil)
+    let view = EBHelperViewWithBackground (frame: NSRect ())
+    window.contentView = view
   //--- X
     let xPlacard = NSTextField (frame: NSRect ())
-    xPlacard.translatesAutoresizingMaskIntoConstraints = false
+
     xPlacard.isBezeled = false
     xPlacard.isBordered = false
     xPlacard.drawsBackground = true
-    xPlacard.backgroundColor = .white
+    xPlacard.textColor = XY_WINDOW_TEXT_COLOR
+    xPlacard.backgroundColor = XY_WINDOW_BACKGROUND_COLOR
     xPlacard.isEnabled = true
     xPlacard.isEditable = false
     xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     view.addSubview (xPlacard)
   //--- Y
     let yPlacard = NSTextField (frame: NSRect ())
-    yPlacard.translatesAutoresizingMaskIntoConstraints = false
     yPlacard.isBezeled = false
     yPlacard.isBordered = false
     yPlacard.drawsBackground = true
-    yPlacard.backgroundColor = .white
+    yPlacard.textColor = XY_WINDOW_TEXT_COLOR
+    yPlacard.backgroundColor = XY_WINDOW_BACKGROUND_COLOR
     yPlacard.isEnabled = true
     yPlacard.isEditable = false
     yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     view.addSubview (yPlacard)
-  //--- Add constraints
-    xPlacard.layout (.width, .greaterThanOrEqual, 0.0)
-    xPlacard.layout (.height, .greaterThanOrEqual, 0.0)
-    yPlacard.layout (.width, .greaterThanOrEqual, 0.0)
-    yPlacard.layout (.height, .greaterThanOrEqual, 0.0)
-    xPlacard.layout (.left, .equal, superview: .left)
-    yPlacard.layout (.left, .equal, superview: .left)
-    xPlacard.layout (.top, .equal, superview: .top)
-    xPlacard.layout (.bottom, .equal, to: yPlacard, .top)
-    yPlacard.layout (.bottom, .equal, superview: .bottom)
   //---
-    let viewController = NSViewController.init (nibName:nil, bundle:nil)
-    viewController.view = view
-    let popover = NSPopover ()
-    Swift.print ("popover.behavior \(popover.behavior.rawValue)")
-    popover.contentViewController = viewController
-    popover.animates = false
-    return popover
+    return window
   }
 
   //····················································································································
 
-  final internal func updateXYplacards (_ inLocationInView : NSPoint) {
+  final internal func updateXYHelperWindow (_ inLocationInView : NSPoint) {
     let commandKey = NSEvent.modifierFlags.contains (.command)
-    Swift.print ("commandKey \(commandKey)")
-    if commandKey {
-      let x = stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
-      let y = stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
-      let xyPopover : NSPopover
-      if let popover = self.mXYpopover {
-        xyPopover = popover
+  //  Swift.print ("commandKey \(commandKey)")
+    if commandKey, let myWindow = self.window {
+      let xyWindow : NSWindow
+      if let popover = self.mXYwindow {
+        xyWindow = popover
       }else{
-        xyPopover = buildXYPopover ()
-        self.mXYpopover = xyPopover
+        xyWindow = buildXYHelperWindow ()
+        self.mXYwindow = xyWindow
       }
-      if let view = xyPopover.contentViewController?.view, view.subviews.count == 2, let placardX = view.subviews [0] as? NSTextField, let placardY = view.subviews [1] as? NSTextField {
-        placardX.stringValue = "X = " + x
-        placardY.stringValue = "Y = " + y
-        placardX.invalidateIntrinsicContentSize ()
-        placardY.invalidateIntrinsicContentSize ()
-        let r = NSRect (x: inLocationInView.x, y: inLocationInView.y, width: 10.0, height: 10.0)
-        xyPopover.show (relativeTo: r, of: self, preferredEdge: NSRectEdge.minX)
+      if let view = xyWindow.contentView, view.subviews.count == 2, let placardX = view.subviews [0] as? NSTextField, let placardY = view.subviews [1] as? NSTextField {
+        placardX.stringValue = "X = " + stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
+        placardY.stringValue = "Y = " + stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
+        placardX.sizeToFit ()
+        placardY.sizeToFit ()
+        let w = max (placardX.frame.size.width, placardY.frame.size.width)
+        placardY.frame.origin.x = XY_WINDOW_MARGIN
+        placardY.frame.origin.y = XY_WINDOW_MARGIN
+        placardY.frame.size.width = w
+        placardX.frame.size.width = w
+        placardX.frame.origin.x = XY_WINDOW_MARGIN
+        placardX.frame.origin.y = placardY.frame.maxY
+        let s = NSSize (width: w + XY_WINDOW_MARGIN * 2.0, height: placardX.frame.maxY + XY_WINDOW_MARGIN)
+        view.frame.size = s
+        let locationInWindow = self.convert (inLocationInView, to: nil)
+        let rScreen = myWindow.convertToScreen (NSRect (origin: locationInWindow, size: NSSize ()))
+        var frameOrigin = rScreen.origin
+        frameOrigin.x -= view.frame.size.width + canariUnitToCocoa (self.mGridStepInCanariUnit) * self.actualScale + 5.0
+        frameOrigin.y -= view.frame.size.height / 2.0
+        xyWindow.setFrameOrigin (frameOrigin)
+        xyWindow.setContentSize (s)
       }
     }else{
-      clearXYpopover ()
+      removeXYHelperWindow ()
     }
   }
 
   //····················································································································
 
-  final internal func clearXYpopover () {
-    Swift.print ("clearXYpopover")
-    self.mXYpopover?.close ()
-    self.mXYpopover = nil
+  final internal func removeXYHelperWindow () {
+    self.mXYwindow?.orderOut (nil)
+    self.mXYwindow = nil
   }
 
   //····················································································································
@@ -232,9 +236,35 @@ extension EBGraphicView {
       let rectInWindow = myWindow.convertFromScreen (rectInScreen)
       let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
       let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
-      self.updateXYplacards (locationOnGridInView)
+      self.updateXYHelperWindow (locationOnGridInView)
     }
   }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//   EBHelperViewWithBackground
+//----------------------------------------------------------------------------------------------------------------------
+
+private class EBHelperViewWithBackground : NSView {
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    var bp = NSBezierPath (roundedRect: self.bounds, xRadius: XY_WINDOW_MARGIN, yRadius: XY_WINDOW_MARGIN)
+    XY_WINDOW_BACKGROUND_COLOR.setFill ()
+    bp.fill ()
+    bp = NSBezierPath (roundedRect: self.bounds.insetBy (dx: 0.5, dy: 0.5), xRadius: XY_WINDOW_MARGIN, yRadius: XY_WINDOW_MARGIN)
+    bp.lineWidth = 1.0
+    XY_WINDOW_TEXT_COLOR.setStroke ()
+    bp.stroke ()
+  }
+
+  //····················································································································
+
+  override var isOpaque : Bool { return false }
 
   //····················································································································
 
