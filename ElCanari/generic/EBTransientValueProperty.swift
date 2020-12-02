@@ -61,9 +61,9 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equat
 
   //····················································································································
 
-  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
-   inOperationQueue.addOperation { _ = self.selection }
-  }
+//  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
+//   inOperationQueue.addOperation { _ = self.selection }
+//  }
 
   //····················································································································
 

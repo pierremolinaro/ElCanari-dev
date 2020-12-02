@@ -77,8 +77,8 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
-  }
+//  func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
+//  }
 
   //····················································································································
 

@@ -39,9 +39,6 @@ class EBOutletEvent : EBEvent {
     }
     if !self.mEventIsPosted {
       self.mEventIsPosted = true
-//      if gPendingOutletEvents.count == 0 {
-//        DispatchQueue.main.async (flags: .barrier) { flushOutletEvents () }
-//      }
       gPendingOutletEvents.append (self)
     }
   }
@@ -65,8 +62,8 @@ class EBOutletEvent : EBEvent {
 
   //····················································································································
 
-  func computeAsynchronously (_ inOperationQueue : OperationQueue) {
-  }
+//  func computeAsynchronously (_ inOperationQueue : OperationQueue) {
+//  }
 
   //····················································································································
 
@@ -81,16 +78,16 @@ func flushOutletEvents () {
     if logEvents () {
       appendMessageString ("Flush outlet events\n", color: NSColor.blue)
     }
-    let startOperationQueue = Date ()
-    let operationQueue = OperationQueue ()
-    for event in gPendingOutletEvents {
-      event.computeAsynchronously (operationQueue)
-    }
-    operationQueue.waitUntilAllOperationsAreFinished ()
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (startOperationQueue) * 1000.0)
-      Swift.print ("Compute \(gPendingOutletEvents.count) transient properties: \(durationMS) ms")
-    }
+//    let startOperationQueue = Date ()
+//    let operationQueue = OperationQueue ()
+//    for event in gPendingOutletEvents {
+//      event.computeAsynchronously (operationQueue)
+//    }
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+//    if LOG_OPERATION_DURATION {
+//      let durationMS = Int (Date ().timeIntervalSince (startOperationQueue) * 1000.0)
+//      Swift.print ("Compute \(gPendingOutletEvents.count) transient properties: \(durationMS) ms")
+//    }
     let startFlushOutletEvent = Date ()
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents

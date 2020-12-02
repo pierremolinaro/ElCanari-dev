@@ -61,9 +61,9 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   //····················································································································
 
-  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
-    inOperationQueue.addOperation { _ = self.selection }
-  }
+//  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
+//    inOperationQueue.addOperation { _ = self.selection }
+//  }
 
   //····················································································································
 
