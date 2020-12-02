@@ -62,12 +62,6 @@ protocol EBGraphicViewControllerProtocol : class {
   func rotate90Clockwise ()
   func rotate90CounterClockwise ()
 
-//  var canGroup : Bool { get }
-//  func group ()
-//
-//  var canUngroup : Bool { get }
-//  func ungroup ()
-
   func setSelection (objectsWithIndexes inIndexes : [Int])
 
   func addToSelection (objectsWithIndex inIndexes : [Int])

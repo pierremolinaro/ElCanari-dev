@@ -121,6 +121,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
   final internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
   final internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
+  final internal var mHelperStringOptionMouseOperationCallback : Optional < (_ inModifierFlags : NSEvent.ModifierFlags) -> String? > = nil
   final internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
 
   //····················································································································
@@ -128,10 +129,12 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
                                       continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void,
                                       abort inAbortCallback : @escaping () -> Void,
+                                      helper inHelperCallback : @escaping (_ inModifierFlags : NSEvent.ModifierFlags) -> String?,
                                       stop inStopCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool) {
     self.mStartOptionMouseDownCallback = inStartCallback
     self.mContinueOptionMouseDraggedCallback = inContinueCallback
     self.mAbortOptionMouseOperationCallback = inAbortCallback
+    self.mHelperStringOptionMouseOperationCallback = inHelperCallback
     self.mStopOptionMouseUpCallback = inStopCallback
   }
 
@@ -202,6 +205,12 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   final func set (controller inController : EBGraphicViewControllerProtocol?) {
     self.mViewController = inController
+  }
+
+  //····················································································································
+
+  final func objectWithIndexIsSelected (_ inIndex : Int) -> Bool {
+    return self.mViewController?.selectedIndexesSet.contains (inIndex) ?? false
   }
 
   //····················································································································

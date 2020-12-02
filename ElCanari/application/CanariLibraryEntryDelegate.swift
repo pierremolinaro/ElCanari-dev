@@ -37,7 +37,7 @@ final class CanariLibraryEntryDelegate : EBEvent {
     //--- Use an FSEvent for tracking Canari System Library changes
       let pathsToWatch : [String] = [path]
     //--- Latency
-      let latency : CFTimeInterval = 1.0 /* Latency in seconds */
+      let latency : CFTimeInterval = 1.0 // Latency in seconds
     //--- Set self as context
       var context = FSEventStreamContext (version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
       context.info = UnsafeMutableRawPointer (mutating: Unmanaged.passUnretained (self).toOpaque ())

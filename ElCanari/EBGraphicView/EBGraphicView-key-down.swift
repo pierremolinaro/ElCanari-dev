@@ -18,7 +18,9 @@ extension EBGraphicView {
       for character in characters.unicodeScalars {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
-          self.mMouseDownBehaviour.abortOperation (self)
+          self.mMouseDownBehaviour.abortMouseOperation (self)
+          let mouseLocationInView = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
+          self.mHelperTextField?.stringValue = self.mMouseDownBehaviour.helperString (mouseLocationInView, inEvent.modifierFlags, self)
         case NSEvent.SpecialKey.upArrow.unicodeScalar :
           _ = self.wantsToTranslateSelection (byX: 0, byY: amount)
         case NSEvent.SpecialKey.downArrow.unicodeScalar :
@@ -30,8 +32,8 @@ extension EBGraphicView {
         case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
           self.deleteSelection ()
         default :  // Note: inEvent.locationInWindow undefined on non-mouse event
-          let mouseDownLocation = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
-          self.mKeyDownCallback? (mouseDownLocation, character)
+          let mouseLocationInView = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
+          self.mKeyDownCallback? (mouseLocationInView, character)
           break
         }
       }

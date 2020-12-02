@@ -45,11 +45,13 @@ extension BoardLine {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
     if inKnobIndex == BOARD_LINE_P1 {
-      return OCCanariPoint (x: inDx, y: inDy)
+      return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_LINE_P2 {
-      return OCCanariPoint (x: inDx, y: inDy)
+      return inProposedAlignedTranslation
     }else{
       return OCCanariPoint (x: 0, y: 0)
     }

@@ -68,6 +68,12 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
+  internal func helperStringForWireCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
+    return "Dragging defines new wire; SHIFT constraints octolinear direction"
+  }
+
+  //····················································································································
+
   internal func abortWireCreationOnOptionMouseUp () {
     self.mWireCreatedByOptionClick = nil
   }

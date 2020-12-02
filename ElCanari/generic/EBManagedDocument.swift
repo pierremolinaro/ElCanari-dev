@@ -524,7 +524,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //       The method should return a value that indicates which dragging operation the destination will perform.
   // ② While the image remains within the destination, a series of draggingUpdated: messages are sent.
   //       The method should return a value that indicates which dragging operation the destination will perform.
-  // ③ If the image is dragged out of the destination, draggingExited: is sent and the sequence of`
+  // ③ If the image is dragged out of the destination, draggingExited: is sent and the sequence of
   //       NSDraggingDestination messages stops. If it re-enters, the sequence begins again (with a new
   //       draggingEntered: message).
   // ④ When the image is released, it either slides back to its source (and breaks the sequence) or a
@@ -532,6 +532,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //       recent invocation of draggingEntered: or draggingUpdated:.
   // ⑤  If the prepareForDragOperation: message returned YES, a performDragOperation: message is sent.
   // ⑥  Finally, if performDragOperation: returned YES, concludeDragOperation: is sent.
+  //
   //····················································································································
 
   func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {

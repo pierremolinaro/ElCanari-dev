@@ -23,7 +23,7 @@ class EBStepper : NSStepper, EBUserClassNameProtocol {
     super.init (frame: frame)
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {

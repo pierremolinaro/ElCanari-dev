@@ -51,20 +51,22 @@ extension WireInSchematic {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
     if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
-      return OCCanariPoint (x: inDx, y: inDy)
+      return OCCanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
-      if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
+      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
         return OCCanariPoint (x: 0, y: 0)
       }else{
-        return OCCanariPoint (x: inDx, y: inDy)
+        return inProposedAlignedTranslation
       }
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
-      if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
+      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
         return OCCanariPoint (x: 0, y: 0)
       }else{
-        return OCCanariPoint (x: inDx, y: inDy)
+        return inProposedAlignedTranslation
       }
     }else{
       return OCCanariPoint (x: 0, y: 0)

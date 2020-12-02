@@ -17,7 +17,7 @@ class EBSimpleController : EBOutletEvent {
   //····················································································································
 
   init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
-    mPrivateObservedObjects = observedObjects
+    self.mPrivateObservedObjects = observedObjects
     super.init ()
     self.mEventCallBack = callBack
     for object in observedObjects {

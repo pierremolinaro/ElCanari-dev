@@ -16,20 +16,10 @@ private let prefsReuseTableViewCells                      = "EBAllocationDebug:r
 private var gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: prefsEnableObjectAllocationDebugString)
 
 //----------------------------------------------------------------------------------------------------------------------
-
-func reuseTableViewCells () -> Bool {
-  var result = !gEnableObjectAllocationDebug
-  if !result {
-    result = UserDefaults.standard.bool (forKey: prefsReuseTableViewCells)
-  }
-  return result
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //    EBUserClassNameProtocol protocol
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc protocol EBUserClassNameProtocol {
+protocol EBUserClassNameProtocol : class {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -44,6 +34,16 @@ func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAY
       DispatchQueue.main.async { pmNoteObjectAllocation (inObject) }
     }
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func reuseTableViewCells () -> Bool {
+  var result = !gEnableObjectAllocationDebug
+  if !result {
+    result = UserDefaults.standard.bool (forKey: prefsReuseTableViewCells)
+  }
+  return result
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ fileprivate var gSnapShotDictionary = [String : Int] ()
 fileprivate var gRefreshDisplay = false
 
 //······················································································································
-//    pmNoteObjectAllocation:
+//    pmNoteObjectAllocation
 //······················································································································
 
 fileprivate func pmNoteObjectAllocation (_ inObject : EBUserClassNameProtocol) {
@@ -99,7 +99,7 @@ fileprivate func pmNoteObjectAllocation (_ inObject : EBUserClassNameProtocol) {
   weakObject.mNextObject = gLiveObjectList
   gLiveObjectList = weakObject
 //---
-  let className = String (describing:type (of: inObject))
+  let className = String (describing: type (of: inObject))
   let currentCount = gTotalAllocatedObjectCountByClass [className] ?? 0
   gTotalAllocatedObjectCountByClass [className] = currentCount + 1
 //---
@@ -110,17 +110,17 @@ fileprivate func pmNoteObjectAllocation (_ inObject : EBUserClassNameProtocol) {
 //   EBAllocationItemDisplay class
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBAllocationItemDisplay : NSObject {
+fileprivate class EBAllocationItemDisplay : NSObject {
   @objc dynamic var mClassname : String
   @objc dynamic var mAllCount : Int
   @objc dynamic var mLive : Int
   @objc dynamic var mSnapshot : Int
 
   init (classname : String, allCount : Int, live : Int, snapshot : Int) {
-    mClassname = classname
-    mAllCount = allCount
-    mLive = live
-    mSnapshot = snapshot
+    self.mClassname = classname
+    self.mAllCount = allCount
+    self.mLive = live
+    self.mSnapshot = snapshot
     super.init ()
   }
 }
@@ -272,7 +272,6 @@ private var gDebugObject : EBAllocationDebug? = nil
       self.mStatsTableView!.sortDescriptors = NSArray (object:firstColumn.sortDescriptorPrototype!) as! [NSSortDescriptor]
     }
     self.mStatsTableView?.dataSource = self
-//    self.installTimer ()
   }
 
   //····················································································································
@@ -285,7 +284,7 @@ private var gDebugObject : EBAllocationDebug? = nil
     }
     if self.mRefreshTimer == nil {
       let timer = Timer (
-        timeInterval: 1.0,
+        timeInterval: 5.0,
         target: self,
         selector: #selector (EBAllocationDebug.refreshDisplay(_:)),
         userInfo: nil,
@@ -368,17 +367,6 @@ private var gDebugObject : EBAllocationDebug? = nil
       }
     }
     gLiveObjectList = newList
-//    let liveObjectCountByClass = gLiveObjectCountByClass
-//    gLiveObjectCountByClass = [:]
-//    for (className, weakRefArray) in liveObjectCountByClass {
-//      var wra = [EBWeakObject] ()
-//      for weakObject in weakRefArray {
-//        if weakObject.mWeakReference != nil {
-//          wra.append (weakObject)
-//        }
-//      }
-//      gLiveObjectCountByClass [className] = wra
-//    }
   }
 
   //····················································································································
@@ -397,9 +385,6 @@ private var gDebugObject : EBAllocationDebug? = nil
         gSnapShotDictionary [className] = objectCount + 1
       }
     }
-//    for (className, weakRefArray) in gLiveObjectCountByClass {
-//      gSnapShotDictionary [className] = weakRefArray.count
-//    }
     gRefreshDisplay = true
   }
 

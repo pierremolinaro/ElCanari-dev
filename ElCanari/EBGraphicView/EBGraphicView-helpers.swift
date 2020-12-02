@@ -262,7 +262,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func updateHelperString (with inUnalignedMouseLocationInView : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) {
+  final func defaultHelperString (with inUnalignedMouseLocationInView : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> String {
     let modifierFlagsContainsControl = inModifierFlags.contains (.control)
     let modifierFlagsContainsShift = inModifierFlags.contains (.shift)
     let modifierFlagsContainsOption = inModifierFlags.contains (.option)
@@ -279,13 +279,17 @@ extension EBGraphicView {
       helperString = "SHIFT: mouse down complements selection of objects intersecting selection rectangle"
     case (_, _, true) : // Option Key On
       if let _ = self.pasteboardType {
-        helperString = "OPTION: mouse down starts a duplication of selected objects"
+        helperString = "OPTION: mouse down starts duplication of selected objects"
       }else if let s = self.mHelperStringForOptionModifier {
         helperString = s
       }
     case (false, false, false) : // No Modifier Key
-      if let _ = possibleObjectIndex {
-        helperString = "Mouse down inside an object selects it"
+      if let objectIndex = possibleObjectIndex {
+       if self.objectWithIndexIsSelected (objectIndex) {
+         helperString = "Mouse down inside a selected object starts a drag operation"
+       }else{
+         helperString = "Mouse down inside an unselected object selects it"
+       }
       }else{
         helperString = "Mouse down outside any object starts a selection rectangle"
       }
@@ -293,7 +297,7 @@ extension EBGraphicView {
     if inModifierFlags.contains (.command) {
       helperString += ", COMMAND: displays XY location"
     }
-    self.mHelperTextField?.stringValue = helperString
+    return helperString
   }
 
   //····················································································································

@@ -55,21 +55,6 @@ extension EBGraphicView {
   }
 
   //····················································································································
-  //  Live Resize
-  //····················································································································
-
-//  final internal func scrollViewIsLiveResizing () {
-//    if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
-//      let box = self.objectsAndIssueBoundingBox
-//      if !box.isEmpty {
-//        scrollView.magnify (toFit: box)
-//      }
-//      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
-//      self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
-//    }
-//  }
-
-  //····················································································································
 
 }
 

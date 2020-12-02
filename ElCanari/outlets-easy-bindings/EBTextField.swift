@@ -25,7 +25,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
     self.delegate = self
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
   //  Call back
   //····················································································································
@@ -117,7 +117,7 @@ final class Controller_EBTextField_value : EBSimpleController {
   }
 
   //····················································································································
-  
+
   override func unregister () {
     super.unregister ()
     self.mOutlet.target = nil

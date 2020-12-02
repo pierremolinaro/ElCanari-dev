@@ -17,7 +17,7 @@ class EBWindow : NSWindow, EBUserClassNameProtocol {
     super.init (contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
 }

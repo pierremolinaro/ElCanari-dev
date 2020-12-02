@@ -108,39 +108,10 @@ extension SymbolBezierCurve {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-//    var dx = inDx
-//    var dy = inDy
-//    if inKnobIndex == SYMBOL_BEZIER_CURVE_ENDPOINT_1 {
-////      if (self.x1 + dx) < 0 {
-//        dx = -self.x1
-////      }
-////      if (self.y1 + dy) < 0 {
-//        dy = -self.y1
-////      }
-//    }else if inKnobIndex == SYMBOL_BEZIER_CURVE_ENDPOINT_2 {
-////      if (self.x2 + dx) < 0 {
-//        dx = -self.x2
-////      }
-////      if (self.y2 + dy) < 0 {
-//        dy = -self.y2
-////      }
-//    }else if inKnobIndex == SYMBOL_BEZIER_CURVE_CONTROL_1 {
-////      if (self.cpx1 + dx) < 0 {
-//        dx = -self.cpx1
-////      }
-////      if (self.cpy1 + dy) < 0 {
-//        dy = -self.cpy1
-////      }
-//    }else if inKnobIndex == SYMBOL_BEZIER_CURVE_CONTROL_2 {
-////      if (self.cpx2 + dx) < 0 {
-//        dx = -self.cpx2
-////      }
-////      if (self.cpy2 + dy) < 0 {
-//        dy = -self.cpy2
-////      }
-//    }
-    return OCCanariPoint (x: inDx, y: inDy)
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+    return inProposedAlignedTranslation
  }
 
   //····················································································································

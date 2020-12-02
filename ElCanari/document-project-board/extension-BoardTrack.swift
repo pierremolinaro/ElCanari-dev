@@ -50,13 +50,32 @@ extension BoardTrack {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    if inKnobIndex == BOARD_TRACK_P1 {
-      return OCCanariPoint (x: inDx, y: inDy)
-    }else if inKnobIndex == BOARD_TRACK_P2 {
-      return OCCanariPoint (x: inDx, y: inDy)
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+    if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
+      let shift = NSApp.currentEvent?.modifierFlags.contains (.shift) ?? false
+      if inKnobIndex == BOARD_TRACK_P1 {
+        if shift {
+          return inProposedAlignedTranslation
+        }else{
+          var p1 = inUnalignedMouseDraggedLocation.p
+          p1.quadrantAligned (from: CanariPoint (x: connectorP2.mX, y: connectorP2.mY))
+          return OCCanariPoint (x: p1.x - connectorP1.mX, y: p1.y - connectorP1.mY)
+        }
+      }else if inKnobIndex == BOARD_TRACK_P2 {
+        if shift {
+          return inProposedAlignedTranslation
+        }else{
+          var p2 = inUnalignedMouseDraggedLocation.p
+          p2.quadrantAligned (from: CanariPoint (x: connectorP1.mX, y: connectorP1.mY))
+          return OCCanariPoint (x: p2.x - connectorP2.mX, y: p2.y - connectorP2.mY)
+        }
+      }else{
+        return OCCanariPoint (x: 0, y:0)
+      }
     }else{
-      return OCCanariPoint (x: 0, y: 0)
+      return OCCanariPoint (x: 0, y:0)
     }
   }
 

@@ -73,25 +73,10 @@ extension SymbolSegment {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-//    var dx = inDx
-//    var dy = inDy
-//    if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
-// //     if (self.x1 + dx) < 0 {
-//        dx = -self.x1
-////      }
-////      if (self.y1 + dy) < 0 {
-//        dy = -self.y1
-////      }
-//    }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
-////      if (self.x2 + dx) < 0 {
-//        dx = -self.x2
-////      }
-////      if (self.y2 + dy) < 0 {
-//        dy = -self.y2
-////      }
-//    }
-    return OCCanariPoint (x: inDx, y: inDy)
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+    return inProposedAlignedTranslation
  }
 
   //····················································································································

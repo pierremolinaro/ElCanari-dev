@@ -93,8 +93,10 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    return OCCanariPoint (x: inDx, y: inDy)
+  @objc dynamic func canMove (knob inKnobIndex : Int,
+                              proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                              unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+    return inProposedAlignedTranslation
   }
 
   //····················································································································

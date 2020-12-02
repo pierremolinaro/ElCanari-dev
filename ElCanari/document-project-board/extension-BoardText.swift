@@ -50,11 +50,13 @@ extension BoardText {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
-      return OCCanariPoint (x: inDx, y: inDy)
+      return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {
-      return OCCanariPoint (x: inDx, y: inDy)
+      return inProposedAlignedTranslation
     }else{
       return OCCanariPoint (x: 0, y: 0)
     }

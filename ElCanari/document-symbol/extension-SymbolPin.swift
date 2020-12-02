@@ -24,59 +24,8 @@ extension SymbolPin {
 
   //····················································································································
 
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-//    var acceptedX = inDx
-//    do{
-//      let newX = self.xPin + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.xPin
-//      }
-//    }
-//    do{
-//      let newX = self.xName + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.xName
-//      }
-//    }
-//    do{
-//      let newX = self.xNumber + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.xNumber
-//      }
-//    }
-//    var acceptedY = inDy
-//    do{
-//      let newY = self.yPin + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.yPin
-//      }
-//    }
-//    do{
-//      let newY = self.yName + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.yName
-//      }
-//    }
-//    do{
-//      let newY = self.yNumber + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.yNumber
-//      }
-//    }
-//    return OCCanariPoint (x: acceptedX, y: acceptedY)
-//  }
-
-  //····················································································································
-
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
-//    let newX = self.xPin + inDx
-//    let newY = self.yPin + inDy
-//    let newXLabel = self.xName + inDx
-//    let newYLabel = self.yName + inDy
-//    let newXNumber = self.xNumber + inDx
-//    let newYNumber = self.yNumber + inDy
-//    return (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
   }
 
   //····················································································································
@@ -94,44 +43,10 @@ extension SymbolPin {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-//    var dx = inDx
-//    var dy = inDy
-//    if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-////      if (self.xPin + dx) < 0 {
-//        dx = -self.xPin
-////      }
-////      if (self.yPin + dy) < 0 {
-//        dy = -self.yPin
-////      }
-////      if (self.xName + dx) < 0 {
-//        dx = -self.xName
-////      }
-////      if (self.yName + dy) < 0 {
-//        dy = -self.yName
-////      }
-////      if (self.xNumber + dx) < 0 {
-//        dx = -self.xNumber
-////      }
-////      if (self.yNumber + dy) < 0 {
-//        dy = -self.yNumber
-////      }
-//    }else if inKnobIndex == SYMBOL_PIN_LABEL {
-////      if (self.xName + dx) < 0 {
-//        dx = -self.xName
-////      }
-////      if (self.yName + dy) < 0 {
-//        dy = -self.yName
-////      }
-//    }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-////      if (self.xNumber + dx) < 0 {
-//        dx = -self.xNumber
-////      }
-////      if (self.yNumber + dy) < 0 {
-//        dy = -self.yNumber
-////      }
-//    }
-    return OCCanariPoint (x: inDx, y: inDy)
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+    return inProposedAlignedTranslation
  }
 
   //····················································································································

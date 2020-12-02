@@ -94,11 +94,24 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
+  internal func helperStringForTrackCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
+    let side = self.rootObject.mBoardSideForNewTrack
+    var s : String
+    switch (side) {
+    case .back : s = "Track Creation on back layer"
+    case .front : s = "Track Creation on front layer"
+    }
+    s += "; SHIFT relaxes octolinear direction constraint"
+    return s
+  }
+
+  //····················································································································
+
   internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
                                                            _ inModifierFlags : NSEvent.ModifierFlags) {
      if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2 {
        var canariUnalignedMousePoint = inUnalignedMousePoint.canariPoint
-       if inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
+       if !inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
          canariUnalignedMousePoint.quadrantAligned (from: CanariPoint (x: p1.mX, y: p1.mY))
        }
        connector2.mX = canariUnalignedMousePoint.x

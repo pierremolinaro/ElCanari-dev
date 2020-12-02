@@ -149,7 +149,7 @@
                     <toolbarItem reference="1085"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="147" y="291"/>
+            <point key="canvasLocation" x="-87" y="-63"/>
         </window>
         <customView id="881" userLabel="Page : symbol" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>
@@ -168,7 +168,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" drawsBackground="NO" id="xCD-Dw-CrS">
                                         <rect key="frame" x="1" y="1" width="388" height="370"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -526,7 +526,7 @@ Cg
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BoS-Ea-B4W" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="100" y="127" width="130" height="17"/>
+                    <rect key="frame" x="100" y="124" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Font for pad number…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="hbx-ft-tNR">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -575,23 +575,6 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-ma-h5W" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="100" y="151" width="130" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="0.5 Point" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="5" inset="2" preferredEdge="maxY" selectedItem="d94-gP-xtP" id="MZm-LT-JSq">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="fQV-3o-rIE">
-                            <items>
-                                <menuItem title="0.5 Point" state="on" tag="5" id="d94-gP-xtP"/>
-                                <menuItem title="1 Point" tag="10" id="4Ug-Iu-kp6"/>
-                                <menuItem title="1.5 Point" tag="15" id="inK-sg-nRJ"/>
-                                <menuItem title="2 Points" tag="20" id="Ov4-R2-QO5"/>
-                                <menuItem title="2.5 Points" tag="25" id="FqF-z4-hYf"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iE-CT-rL2">
                     <rect key="frame" x="18" y="150" width="71" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -678,6 +661,23 @@ Cg
                                 <menuItem title="cm" tag="900000" id="qiO-Qo-Cas"/>
                                 <menuItem title="mil" tag="2286" id="nzN-Lj-IqO"/>
                                 <menuItem title="inch" state="on" tag="2286000" id="lrt-89-3vv"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-ma-h5W" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="100" y="151" width="126" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="0.5 Point" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="5" inset="2" preferredEdge="maxY" selectedItem="d94-gP-xtP" id="MZm-LT-JSq">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="fQV-3o-rIE">
+                            <items>
+                                <menuItem title="0.5 Point" state="on" tag="5" id="d94-gP-xtP"/>
+                                <menuItem title="1 Point" tag="10" id="4Ug-Iu-kp6"/>
+                                <menuItem title="1.5 Point" tag="15" id="inK-sg-nRJ"/>
+                                <menuItem title="2 Points" tag="20" id="Ov4-R2-QO5"/>
+                                <menuItem title="2.5 Points" tag="25" id="FqF-z4-hYf"/>
                             </items>
                         </menu>
                     </popUpButtonCell>

@@ -77,28 +77,30 @@ extension BorderCurve {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+  override func canMove (knob inKnobIndex : Int,
+                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
-        let dx = max (inDx, -self.mX)
-        let dy = max (inDy, -self.mY)
+        let dx = max (inProposedAlignedTranslation.x, -self.mX)
+        let dy = max (inProposedAlignedTranslation.y, -self.mY)
         if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
           return OCCanariPoint (x: 0, y: 0)
         }else{
           return OCCanariPoint (x: dx, y: dy)
         }
       }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
-        let dx = max (inDx, -next.mX)
-        let dy = max (inDy, -next.mY)
+        let dx = max (inProposedAlignedTranslation.x, -next.mX)
+        let dy = max (inProposedAlignedTranslation.y, -next.mY)
         if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
           return OCCanariPoint (x: 0, y: 0)
         }else{
           return OCCanariPoint (x: dx, y: dy)
         }
       }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
-        return OCCanariPoint (x: inDx, y: inDy)
+        return inProposedAlignedTranslation
       }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
-        return OCCanariPoint (x: inDx, y: inDy)
+        return inProposedAlignedTranslation
       }else{
         return OCCanariPoint (x: 0, y: 0)
       }
