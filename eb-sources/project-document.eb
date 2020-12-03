@@ -736,13 +736,21 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mAutoRouterRouteDirectionPopUp $selectedIndex root.mRouteDirection ;
   outlet EBPopUpButton mAutoRouterRouteOriginPopUp $selectedIndex root.mRouteOrigin ;
   
-  action launchFreeRouterAction ;
-  outlet EBButton mLaunchFreeRouterButton $run launchFreeRouterAction ;
+  action launchFreeRouterWithoutAnyDocument ;
+  outlet EBButton mLaunchFreeRouterWithoutDocumentButton $run launchFreeRouterWithoutAnyDocument ;
 
   outlet EBTextObserverField mViaCountTextField $valueObserver root.viaCountString ;
   outlet EBTextObserverField mTrackCountTextField $valueObserver root.trackCountString ;
   outlet EBTextObserverField mTrackLengthTextField $valueObserver root.trackLengthString ;
   outlet EBPopUpButton mTrackLengthUnitPopUp $selectedTag root.mTrackLengthUnit ;
+
+//--- Autorouter Interface
+  outlet CanariTabView mAutorouterInterfaceModeTabVView $selectedTabIndex root.mAutorouterInterfaceMode ;
+  outlet EBSwitch mExportExistingTracksAndViasSwitch $value root.mExportExistingTracksAndVias ;
+  action launchFreeRouterWithRouterDocument ;
+  outlet EBButton mLaunchFreeRouterWithDocumentButton $run launchFreeRouterWithRouterDocument ;
+  action importSESFromBasicTabAction ;
+  outlet EBButton mImportSESFromBasicTabButton $run importSESFromBasicTabAction ;
 
 //--- ERC Inspector
   outlet NSTextView mERCLogTextView ;

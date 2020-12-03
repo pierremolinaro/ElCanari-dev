@@ -2,6 +2,9 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariTabView $enabled ;
+binding CanariTabView $selectedTabIndex : property Int ;
+
 extern outlet class CanariOrientationSegmentedControl $enabled ;
 binding CanariOrientationSegmentedControl $angle : property Int ;
 

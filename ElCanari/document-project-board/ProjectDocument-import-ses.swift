@@ -42,10 +42,10 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  private func handleSESFileContents (_ inFileContents : String,
-                                      _ inPanel : NSPanel,
-                                      _ inTextField : NSTextField,
-                                      _ inProgressIndicator : EBProgressIndicator) {
+  internal func handleSESFileContents (_ inFileContents : String,
+                                       _ inPanel : NSPanel,
+                                       _ inTextField : NSTextField,
+                                       _ inProgressIndicator : EBProgressIndicator) {
   //--- Display sheet
     inTextField.stringValue = "Extracting Tracks…"
     inProgressIndicator.minValue = 0.0

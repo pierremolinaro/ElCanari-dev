@@ -83,7 +83,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  private func dsnContents (_ inExportTracks : Bool) -> String {
+  internal func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Selecting DSN Unit
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
     let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)

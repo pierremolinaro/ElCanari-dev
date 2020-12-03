@@ -28,10 +28,12 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.3"
+let VERSION_CANARI = "1.3.4"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = ["Changed \"Import Artwork…\" dialog in Merger"]
+let CHANGES : [String] = [
+  "Added Basic / Advanced Settings for Autorouter Interface"
+]
 let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------

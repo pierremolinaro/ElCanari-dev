@@ -697,6 +697,7 @@ import Cocoa
   @IBOutlet var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil
   @IBOutlet var mAutoRouterRouteDirectionPopUp : EBPopUpButton? = nil
   @IBOutlet var mAutoRouterRouteOriginPopUp : EBPopUpButton? = nil
+  @IBOutlet var mAutorouterInterfaceModeTabVView : CanariTabView? = nil
   @IBOutlet var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil
   @IBOutlet var mBackRestrictRectangleSwitch : EBSwitch? = nil
   @IBOutlet var mBaseBoardInspectorView : NSView? = nil
@@ -895,6 +896,7 @@ import Cocoa
   @IBOutlet var mExchangeSymbolPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mExchangeSymbolSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet var mExportDeviceButton : EBButton? = nil
+  @IBOutlet var mExportExistingTracksAndViasSwitch : EBSwitch? = nil
   @IBOutlet var mExportTrackAndViasToDSNSwitch : EBSwitch? = nil
   @IBOutlet var mExtensionTextField : EBTextObserverField? = nil
   @IBOutlet var mFontLibraryTableView : EBTableView? = nil
@@ -906,6 +908,7 @@ import Cocoa
   @IBOutlet var mHideERCIssueButton : EBButton? = nil
   @IBOutlet var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil
   @IBOutlet var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mImportSESFromBasicTabButton : EBButton? = nil
   @IBOutlet var mImportSESPanel : NSPanel? = nil
   @IBOutlet var mImportSESProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet var mImportSESTextField : NSTextField? = nil
@@ -913,7 +916,8 @@ import Cocoa
   @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView? = nil
   @IBOutlet var mIncorrectFileNameMessageView : NSView? = nil
   @IBOutlet var mIsPreservedByAutoRouterSwitch : EBSwitch? = nil
-  @IBOutlet var mLaunchFreeRouterButton : EBButton? = nil
+  @IBOutlet var mLaunchFreeRouterWithDocumentButton : EBButton? = nil
+  @IBOutlet var mLaunchFreeRouterWithoutDocumentButton : EBButton? = nil
   @IBOutlet var mLayoutClearancePopUp : EBPopUpButton? = nil
   @IBOutlet var mLayoutClearanceTextField : CanariDimensionTextField? = nil
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView? = nil
@@ -1281,6 +1285,7 @@ import Cocoa
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterRouteDirectionPopUp, "mAutoRouterRouteDirectionPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterRouteOriginPopUp, "mAutoRouterRouteOriginPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mAutorouterInterfaceModeTabVView, "mAutorouterInterfaceModeTabVView", CanariTabView.self, #file, #line)
     checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
@@ -1479,6 +1484,7 @@ import Cocoa
     checkOutletConnection (self.mExchangeSymbolPopUpButton, "mExchangeSymbolPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mExportExistingTracksAndViasSwitch, "mExportExistingTracksAndViasSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mExportTrackAndViasToDSNSwitch, "mExportTrackAndViasToDSNSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mExtensionTextField, "mExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
@@ -1490,6 +1496,7 @@ import Cocoa
     checkOutletConnection (self.mHideERCIssueButton, "mHideERCIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mHorizontalMirrorSwitch, "mHorizontalMirrorSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mImportSESFromBasicTabButton, "mImportSESFromBasicTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mImportSESPanel, "mImportSESPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mImportSESProgressIndicator, "mImportSESProgressIndicator", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mImportSESTextField, "mImportSESTextField", NSTextField.self, #file, #line)
@@ -1497,7 +1504,8 @@ import Cocoa
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
     checkOutletConnection (self.mIsPreservedByAutoRouterSwitch, "mIsPreservedByAutoRouterSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mLaunchFreeRouterButton, "mLaunchFreeRouterButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mLaunchFreeRouterWithDocumentButton, "mLaunchFreeRouterWithDocumentButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mLaunchFreeRouterWithoutDocumentButton, "mLaunchFreeRouterWithoutDocumentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
@@ -2569,6 +2577,8 @@ import Cocoa
     self.mTrackCountTextField?.bind_valueObserver (self.rootObject.trackCountString_property, file: #file, line: #line)
     self.mTrackLengthTextField?.bind_valueObserver (self.rootObject.trackLengthString_property, file: #file, line: #line)
     self.mTrackLengthUnitPopUp?.bind_selectedTag (self.rootObject.mTrackLengthUnit_property, file: #file, line: #line)
+    self.mAutorouterInterfaceModeTabVView?.bind_selectedTabIndex (self.rootObject.mAutorouterInterfaceMode_property, file: #file, line: #line)
+    self.mExportExistingTracksAndViasSwitch?.bind_value (self.rootObject.mExportExistingTracksAndVias_property, file: #file, line: #line)
     self.mIsPreservedByAutoRouterSwitch?.bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
@@ -3333,8 +3343,12 @@ import Cocoa
     self.mSetDateToNowButton?.action = #selector (ProjectDocument.setDateToNowAction (_:))
     self.mOpenSetDateDialogButton?.target = self
     self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
-    self.mLaunchFreeRouterButton?.target = self
-    self.mLaunchFreeRouterButton?.action = #selector (ProjectDocument.launchFreeRouterAction (_:))
+    self.mLaunchFreeRouterWithoutDocumentButton?.target = self
+    self.mLaunchFreeRouterWithoutDocumentButton?.action = #selector (ProjectDocument.launchFreeRouterWithoutAnyDocument (_:))
+    self.mLaunchFreeRouterWithDocumentButton?.target = self
+    self.mLaunchFreeRouterWithDocumentButton?.action = #selector (ProjectDocument.launchFreeRouterWithRouterDocument (_:))
+    self.mImportSESFromBasicTabButton?.target = self
+    self.mImportSESFromBasicTabButton?.action = #selector (ProjectDocument.importSESFromBasicTabAction (_:))
     self.mArtworlImportButton?.target = self
     self.mArtworlImportButton?.action = #selector (ProjectDocument.importArtworkAction (_:))
     self.mGenerateProductFilesActionButton?.target = self
@@ -3526,6 +3540,8 @@ import Cocoa
     self.mTrackCountTextField?.unbind_valueObserver ()
     self.mTrackLengthTextField?.unbind_valueObserver ()
     self.mTrackLengthUnitPopUp?.unbind_selectedTag ()
+    self.mAutorouterInterfaceModeTabVView?.unbind_selectedTabIndex ()
+    self.mExportExistingTracksAndViasSwitch?.unbind_value ()
     self.mIsPreservedByAutoRouterSwitch?.unbind_value ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
@@ -3877,7 +3893,9 @@ import Cocoa
     self.mRemoveSheetButton?.target = nil
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
-    self.mLaunchFreeRouterButton?.target = nil
+    self.mLaunchFreeRouterWithoutDocumentButton?.target = nil
+    self.mLaunchFreeRouterWithDocumentButton?.target = nil
+    self.mImportSESFromBasicTabButton?.target = nil
     self.mArtworlImportButton?.target = nil
     self.mGenerateProductFilesActionButton?.target = nil
   //--------------------------- Clean up outlets
@@ -3910,6 +3928,7 @@ import Cocoa
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
     self.mAutoRouterRouteDirectionPopUp?.ebCleanUp ()
     self.mAutoRouterRouteOriginPopUp?.ebCleanUp ()
+    self.mAutorouterInterfaceModeTabVView?.ebCleanUp ()
     self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
     self.mBaseBoardInspectorView?.ebCleanUp ()
@@ -4108,6 +4127,7 @@ import Cocoa
     self.mExchangeSymbolPopUpButton?.ebCleanUp ()
     self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
+    self.mExportExistingTracksAndViasSwitch?.ebCleanUp ()
     self.mExportTrackAndViasToDSNSwitch?.ebCleanUp ()
     self.mExtensionTextField?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
@@ -4119,6 +4139,7 @@ import Cocoa
     self.mHideERCIssueButton?.ebCleanUp ()
     self.mHorizontalMirrorSwitch?.ebCleanUp ()
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
+    self.mImportSESFromBasicTabButton?.ebCleanUp ()
     self.mImportSESPanel?.ebCleanUp ()
     self.mImportSESProgressIndicator?.ebCleanUp ()
     self.mImportSESTextField?.ebCleanUp ()
@@ -4126,7 +4147,8 @@ import Cocoa
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mIncorrectFileNameMessageView?.ebCleanUp ()
     self.mIsPreservedByAutoRouterSwitch?.ebCleanUp ()
-    self.mLaunchFreeRouterButton?.ebCleanUp ()
+    self.mLaunchFreeRouterWithDocumentButton?.ebCleanUp ()
+    self.mLaunchFreeRouterWithoutDocumentButton?.ebCleanUp ()
     self.mLayoutClearancePopUp?.ebCleanUp ()
     self.mLayoutClearanceTextField?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
@@ -4328,6 +4350,7 @@ import Cocoa
     self.mAutoRouterPreferredDirectionPopUp = nil
     self.mAutoRouterRouteDirectionPopUp = nil
     self.mAutoRouterRouteOriginPopUp = nil
+    self.mAutorouterInterfaceModeTabVView = nil
     self.mAutorouterSnapAnglePopUp = nil
     self.mBackRestrictRectangleSwitch = nil
     self.mBaseBoardInspectorView = nil
@@ -4526,6 +4549,7 @@ import Cocoa
     self.mExchangeSymbolPopUpButton = nil
     self.mExchangeSymbolSchematicHotKeyTextField = nil
     self.mExportDeviceButton = nil
+    self.mExportExistingTracksAndViasSwitch = nil
     self.mExportTrackAndViasToDSNSwitch = nil
     self.mExtensionTextField = nil
     self.mFontLibraryTableView = nil
@@ -4537,6 +4561,7 @@ import Cocoa
     self.mHideERCIssueButton = nil
     self.mHorizontalMirrorSwitch = nil
     self.mHotKeysSchematicInspectorView = nil
+    self.mImportSESFromBasicTabButton = nil
     self.mImportSESPanel = nil
     self.mImportSESProgressIndicator = nil
     self.mImportSESTextField = nil
@@ -4544,7 +4569,8 @@ import Cocoa
     self.mInconsistentSchematicErrorTextView = nil
     self.mIncorrectFileNameMessageView = nil
     self.mIsPreservedByAutoRouterSwitch = nil
-    self.mLaunchFreeRouterButton = nil
+    self.mLaunchFreeRouterWithDocumentButton = nil
+    self.mLaunchFreeRouterWithoutDocumentButton = nil
     self.mLayoutClearancePopUp = nil
     self.mLayoutClearanceTextField = nil
     self.mLibraryPageView = nil

@@ -26,6 +26,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mAutorouterSnapAngle_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
     inOldValue?.mRouteDirection_property.removeEBObserversFrom (&self.mObserversOf_mRouteDirection) // Stored property
     inOldValue?.mRouteOrigin_property.removeEBObserversFrom (&self.mObserversOf_mRouteOrigin) // Stored property
+    inOldValue?.mAutorouterInterfaceMode_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterInterfaceMode) // Stored property
+    inOldValue?.mExportExistingTracksAndVias_property.removeEBObserversFrom (&self.mObserversOf_mExportExistingTracksAndVias) // Stored property
     inOldValue?.mTrackLengthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
     inOldValue?.mLayoutClearance_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
     inOldValue?.mLayoutClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
@@ -136,6 +138,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mAutorouterSnapAngle_property.addEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
     self.mInternalValue?.mRouteDirection_property.addEBObserversFrom (&self.mObserversOf_mRouteDirection) // Stored property
     self.mInternalValue?.mRouteOrigin_property.addEBObserversFrom (&self.mObserversOf_mRouteOrigin) // Stored property
+    self.mInternalValue?.mAutorouterInterfaceMode_property.addEBObserversFrom (&self.mObserversOf_mAutorouterInterfaceMode) // Stored property
+    self.mInternalValue?.mExportExistingTracksAndVias_property.addEBObserversFrom (&self.mObserversOf_mExportExistingTracksAndVias) // Stored property
     self.mInternalValue?.mTrackLengthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
     self.mInternalValue?.mLayoutClearance_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
     self.mInternalValue?.mLayoutClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
@@ -1002,6 +1006,146 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mRouteOrigin_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAutorouterInterfaceMode' stored property
+  //····················································································································
+
+  private var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mAutorouterInterfaceMode_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mAutorouterInterfaceMode_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mAutorouterInterfaceMode (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAutorouterInterfaceMode.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mAutorouterInterfaceMode_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAutorouterInterfaceMode (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAutorouterInterfaceMode.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mAutorouterInterfaceMode_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAutorouterInterfaceMode_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBEvent) in
+        managedObject.mAutorouterInterfaceMode_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAutorouterInterfaceMode_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAutorouterInterfaceMode_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mExportExistingTracksAndVias' stored property
+  //····················································································································
+
+  private var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mExportExistingTracksAndVias_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mExportExistingTracksAndVias_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mExportExistingTracksAndVias (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mExportExistingTracksAndVias.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mExportExistingTracksAndVias_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mExportExistingTracksAndVias (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mExportExistingTracksAndVias.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mExportExistingTracksAndVias_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mExportExistingTracksAndVias_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBEvent) in
+        managedObject.mExportExistingTracksAndVias_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mExportExistingTracksAndVias_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mExportExistingTracksAndVias_property.removeEBObserver (observer)
       }
     }
   }

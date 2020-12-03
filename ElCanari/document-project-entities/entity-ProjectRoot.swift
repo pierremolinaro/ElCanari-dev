@@ -72,6 +72,18 @@ protocol ProjectRoot_mRouteOrigin : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol ProjectRoot_mAutorouterInterfaceMode : class {
+  var mAutorouterInterfaceMode : Int { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol ProjectRoot_mExportExistingTracksAndVias : class {
+  var mExportExistingTracksAndVias : Bool { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol ProjectRoot_mTrackLengthUnit : class {
   var mTrackLengthUnit : Int { get }
 }
@@ -740,6 +752,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mRouteDirection,
          ProjectRoot_mRouteOrigin,
+         ProjectRoot_mAutorouterInterfaceMode,
+         ProjectRoot_mExportExistingTracksAndVias,
          ProjectRoot_mTrackLengthUnit,
          ProjectRoot_mLayoutClearance,
          ProjectRoot_mLayoutClearanceUnit,
@@ -1102,6 +1116,52 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mRouteOrigin_property_selection : EBSelection <RouteOrigin> { return self.mRouteOrigin_property.selection }
+
+  //····················································································································
+  //   Atomic property: mAutorouterInterfaceMode
+  //····················································································································
+
+  final let mAutorouterInterfaceMode_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mAutorouterInterfaceMode_toDefaultValue () {
+    self.mAutorouterInterfaceMode = 0
+  }
+
+  //····················································································································
+
+  final var mAutorouterInterfaceMode : Int {
+    get { return self.mAutorouterInterfaceMode_property.propval }
+    set { self.mAutorouterInterfaceMode_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mAutorouterInterfaceMode_property_selection : EBSelection <Int> { return self.mAutorouterInterfaceMode_property.selection }
+
+  //····················································································································
+  //   Atomic property: mExportExistingTracksAndVias
+  //····················································································································
+
+  final let mExportExistingTracksAndVias_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mExportExistingTracksAndVias_toDefaultValue () {
+    self.mExportExistingTracksAndVias = false
+  }
+
+  //····················································································································
+
+  final var mExportExistingTracksAndVias : Bool {
+    get { return self.mExportExistingTracksAndVias_property.propval }
+    set { self.mExportExistingTracksAndVias_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mExportExistingTracksAndVias_property_selection : EBSelection <Bool> { return self.mExportExistingTracksAndVias_property.selection }
 
   //····················································································································
   //   Atomic property: mTrackLengthUnit
@@ -3950,6 +4010,8 @@ class ProjectRoot : EBManagedObject,
     self.mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear, undoManager: ebUndoManager)
     self.mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from, undoManager: ebUndoManager)
     self.mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center, undoManager: ebUndoManager)
+    self.mAutorouterInterfaceMode_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: ebUndoManager)
     self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
     self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
@@ -5593,6 +5655,22 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mRouteOrigin_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mAutorouterInterfaceMode",
+      idx: self.mAutorouterInterfaceMode_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAutorouterInterfaceMode_property.mObserverExplorer,
+      valueExplorer: &self.mAutorouterInterfaceMode_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mExportExistingTracksAndVias",
+      idx: self.mExportExistingTracksAndVias_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mExportExistingTracksAndVias_property.mObserverExplorer,
+      valueExplorer: &self.mExportExistingTracksAndVias_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mTrackLengthUnit",
       idx: self.mTrackLengthUnit_property.ebObjectIndex,
       y: &y,
@@ -6483,6 +6561,12 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mRouteOrigin
     self.mRouteOrigin_property.mObserverExplorer = nil
     self.mRouteOrigin_property.mValueExplorer = nil
+  //--- Atomic property: mAutorouterInterfaceMode
+    self.mAutorouterInterfaceMode_property.mObserverExplorer = nil
+    self.mAutorouterInterfaceMode_property.mValueExplorer = nil
+  //--- Atomic property: mExportExistingTracksAndVias
+    self.mExportExistingTracksAndVias_property.mObserverExplorer = nil
+    self.mExportExistingTracksAndVias_property.mValueExplorer = nil
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.mObserverExplorer = nil
     self.mTrackLengthUnit_property.mValueExplorer = nil
@@ -6761,6 +6845,10 @@ class ProjectRoot : EBManagedObject,
     self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey: "mRouteDirection")
   //--- Atomic property: mRouteOrigin
     self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey: "mRouteOrigin")
+  //--- Atomic property: mAutorouterInterfaceMode
+    self.mAutorouterInterfaceMode_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterInterfaceMode")
+  //--- Atomic property: mExportExistingTracksAndVias
+    self.mExportExistingTracksAndVias_property.storeIn (dictionary: ioDictionary, forKey: "mExportExistingTracksAndVias")
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
@@ -7022,6 +7110,10 @@ class ProjectRoot : EBManagedObject,
     self.mRouteDirection_property.readFrom (dictionary: inDictionary, forKey: "mRouteDirection")
   //--- Atomic property: mRouteOrigin
     self.mRouteOrigin_property.readFrom (dictionary: inDictionary, forKey: "mRouteOrigin")
+  //--- Atomic property: mAutorouterInterfaceMode
+    self.mAutorouterInterfaceMode_property.readFrom (dictionary: inDictionary, forKey: "mAutorouterInterfaceMode")
+  //--- Atomic property: mExportExistingTracksAndVias
+    self.mExportExistingTracksAndVias_property.readFrom (dictionary: inDictionary, forKey: "mExportExistingTracksAndVias")
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.readFrom (dictionary: inDictionary, forKey: "mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
@@ -7151,6 +7243,8 @@ class ProjectRoot : EBManagedObject,
     ioString += "mAutorouterSnapAngle\n"
     ioString += "mRouteDirection\n"
     ioString += "mRouteOrigin\n"
+    ioString += "mAutorouterInterfaceMode\n"
+    ioString += "mExportExistingTracksAndVias\n"
     ioString += "mTrackLengthUnit\n"
     ioString += "mLayoutClearance\n"
     ioString += "mLayoutClearanceUnit\n"
@@ -7246,6 +7340,10 @@ class ProjectRoot : EBManagedObject,
     self.mRouteDirection.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mRouteOrigin.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAutorouterInterfaceMode.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mExportExistingTracksAndVias.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mTrackLengthUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7627,6 +7725,12 @@ class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mRouteOrigin"], let value = RouteOrigin.unarchiveFromDataRange (inData, range) {
         self.mRouteOrigin = value
+      }
+      if let range = inDictionary ["mAutorouterInterfaceMode"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mAutorouterInterfaceMode = value
+      }
+      if let range = inDictionary ["mExportExistingTracksAndVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mExportExistingTracksAndVias = value
       }
       if let range = inDictionary ["mTrackLengthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mTrackLengthUnit = value
