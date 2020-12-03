@@ -468,6 +468,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
         let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
         candidateBounds = candidateBounds.union (transformedBP.bounds)
       }
+      if let ciImage = self.mForegroundImage {
+        let bp = NSBezierPath (rect: ciImage.extent)
+        let transformedBP = self.mForegroundImageAffineTransform.transform (bp)
+        candidateBounds = candidateBounds.union (transformedBP.bounds)
+      }
       if self.bounds != candidateBounds {
         self.mDeferredUpdateViewFrameAndBoundsRegistered = true
         DispatchQueue.main.async {
@@ -479,6 +484,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
             let bp = NSBezierPath (rect: ciImage.extent)
             let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
             newBounds = newBounds.union (transformedBP.bounds)
+          }
+          if let ciImage = self.mForegroundImage {
+            let bp = NSBezierPath (rect: ciImage.extent)
+            let transformedBP = self.mForegroundImageAffineTransform.transform (bp)
+            candidateBounds = candidateBounds.union (transformedBP.bounds)
           }
           self.frame.size = newBounds.size
           self.bounds = newBounds
@@ -734,7 +744,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   }
 
   //····················································································································
-  // MARK: -
+  // BACKGROUND IMAGE
   //····················································································································
 
   final var mBackgroundImage : CIImage? = nil {
@@ -750,6 +760,29 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final var mBackgroundImageOpacityController : EBSimpleController? = nil
 
   final var mBackgroundImageAffineTransform = NSAffineTransform () {
+    didSet {
+      self.updateViewFrameAndBounds ()
+      self.needsDisplay = true
+    }
+  }
+
+  //····················································································································
+  // FOREGROUND IMAGE
+  //····················································································································
+
+  final var mForegroundImage : CIImage? = nil {
+    didSet {
+      self.updateViewFrameAndBounds ()
+      self.needsDisplay = true
+    }
+  }
+
+  final var mForegroundImageDataController : EBSimpleController? = nil
+
+  final var mForegroundImageOpacity : CGFloat = 1.0
+  final var mForegroundImageOpacityController : EBSimpleController? = nil
+
+  final var mForegroundImageAffineTransform = NSAffineTransform () {
     didSet {
       self.updateViewFrameAndBounds ()
       self.needsDisplay = true

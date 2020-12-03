@@ -14,6 +14,7 @@ extension PackageDocument {
   @objc func loadDIL16ModelImageFromResourcesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let tiffData = NSImage (named: "model-image-dil16")?.tiffRepresentation {
+      self.mModelImageView?.mBackgroundImageAffineTransform = NSAffineTransform ()
       self.rootObject.mModelImageData = tiffData
       self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
       self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()

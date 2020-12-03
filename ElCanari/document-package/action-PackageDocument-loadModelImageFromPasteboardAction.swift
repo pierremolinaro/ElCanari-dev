@@ -14,6 +14,7 @@ extension PackageDocument {
   @objc func loadModelImageFromPasteboardAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     func buildFrom (data inData : Data) {
+      self.mModelImageView?.mBackgroundImageAffineTransform = NSAffineTransform ()
       self.rootObject.mModelImageData = inData
       self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
       self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()
