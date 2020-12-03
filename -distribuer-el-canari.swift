@@ -32,9 +32,13 @@ let VERSION_CANARI = "1.3.4"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Added Basic / Advanced Settings for Autorouter Interface"
+  "Added (Basic, Advanced) Settings for Autorouter Interface"
 ]
-let NEWS : [String] = []
+let NEWS : [String] = [
+  "New graphic view interface, with helper string",
+  "In graphic view, SHIFT + CONTROL + mouse down initiates a zoom region",
+  "In graphic view, COMMAND shows mouse location"
+]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
