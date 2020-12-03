@@ -22,7 +22,7 @@ extension PackageInDevice {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.mX += inDx
     self.mY += inDy
   }

@@ -1296,7 +1296,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final func reset_mBoardZoom_toDefaultValue () {
-    self.mBoardZoom = 200
+    self.mBoardZoom = 0
   }
 
   //····················································································································
@@ -1641,7 +1641,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final func reset_mBoardLimitsZoom_toDefaultValue () {
-    self.mBoardLimitsZoom = 200
+    self.mBoardLimitsZoom = 0
   }
 
   //····················································································································
@@ -2120,7 +2120,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final func reset_mSchematicZoom_toDefaultValue () {
-    self.mSchematicZoom = 100
+    self.mSchematicZoom = 0
   }
 
   //····················································································································
@@ -3958,7 +3958,7 @@ class ProjectRoot : EBManagedObject,
     self.mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
     self.mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
-    self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: ebUndoManager)
+    self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
     self.mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: ebUndoManager)
@@ -3973,7 +3973,7 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
     self.mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5, undoManager: ebUndoManager)
-    self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: ebUndoManager)
+    self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
@@ -3993,7 +3993,7 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date (), undoManager: ebUndoManager)
     self.mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 100, undoManager: ebUndoManager)
+    self.mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
     self.mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
     self.mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)

@@ -19,7 +19,7 @@ extension PackageModelImageDoublePoint {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.mFirstX += inDx
     self.mFirstY += inDy
   }
@@ -29,8 +29,9 @@ extension PackageModelImageDoublePoint {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
   }
 
@@ -56,8 +57,8 @@ extension PackageModelImageDoublePoint {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.mFirstX, y: self.mFirstY))
     return result
   }

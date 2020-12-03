@@ -187,7 +187,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
            let X = dataDictionary ["X"] as? Int,
            let Y = dataDictionary ["Y"] as? Int {
           var objetsToSelect = [PackageObject] ()
-          let userSet = OCObjectSet ()
+          let userSet = ObjcObjectSet ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
               newObject.operationAfterPasting ()

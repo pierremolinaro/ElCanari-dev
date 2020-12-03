@@ -26,7 +26,7 @@ extension PackagePad {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -36,8 +36,9 @@ extension PackagePad {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
  }
 
@@ -50,14 +51,14 @@ extension PackagePad {
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     accumulatedPoints.insert (x: self.xCenter, y: self.yCenter)
     return true
   }
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -67,7 +68,7 @@ extension PackagePad {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -110,8 +111,8 @@ extension PackagePad {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
     return result
   }

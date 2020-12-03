@@ -135,6 +135,7 @@ struct CanariPoint : Equatable, Hashable {
 
  mutating func quadrantAligned (from inOriginPoint : CanariPoint) {
    let angle = NSPoint.angleInDegrees (self.cocoaPoint, inOriginPoint.cocoaPoint)
+   // Swift.print ("angle \(angle)")
    let dx = self.x - inOriginPoint.x
    let dy = self.y - inOriginPoint.y
    if angle < (0.0 + 22.5) {

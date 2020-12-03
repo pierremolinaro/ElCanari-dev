@@ -61,7 +61,7 @@ extension EBGraphicView {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYHelperWindow (locationOnGridInView)
-    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, inEvent.modifierFlags, self)
+    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
     self.mHelperTextField?.stringValue = self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self)
   }
 
@@ -85,15 +85,17 @@ extension EBGraphicView {
 
   final func dragObject (possibleKnob inPossibleKnobIndex : Int?,
                          objectIndex : Int,
-                         _ inProposedAlignedTranslation: CanariPoint,
-                         _ inAlignedLastMouseDraggedLocation : CanariPoint,
-                         _ inUnalignedLastMouseDraggedLocation : CanariPoint) {
+                         proposedUnalignedTranslation inProposedUnalignedTranslation: CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation: CanariPoint,
+                         alignedLastMouseDraggedLocation inAlignedLastMouseDraggedLocation : CanariPoint,
+                         unalignedLastMouseDraggedLocation inUnalignedLastMouseDraggedLocation : CanariPoint) {
     let objects = self.viewController?.graphicObjectArray ?? []
     if let knobIndex = inPossibleKnobIndex { // Mode knob
       let p = objects [objectIndex].canMove (
         knob: knobIndex,
-        proposedAlignedTranslation: OCCanariPoint (inProposedAlignedTranslation),
-        unalignedMouseDraggedLocation: OCCanariPoint (inUnalignedLastMouseDraggedLocation)
+        proposedUnalignedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedUnalignedTranslation),
+        proposedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedAlignedTranslation),
+        unalignedMouseDraggedLocation: ObjcCanariPoint (canariPoint: inUnalignedLastMouseDraggedLocation)
       )
       if (p.x != 0) || (p.y != 0) {
         let mouseDraggedLocation = CanariPoint (
@@ -124,7 +126,7 @@ extension EBGraphicView {
       dy = p.y
     }
     if (dx != 0) || (dy != 0) {
-      let userSet = OCObjectSet ()
+      let userSet = ObjcObjectSet ()
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
         object.translate (xBy: dx, yBy: dy, userSet: userSet)
       }
@@ -194,7 +196,7 @@ extension EBGraphicView {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
   //---
     self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
-    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (unalignedLocationInView, inEvent.modifierFlags, self)
+    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
   //--- XY
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYHelperWindow (locationOnGridInView)

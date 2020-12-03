@@ -65,11 +65,11 @@ extension CustomizedProjectDocument {
   internal func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
     let side = self.rootObject.mBoardSideForNewTrack
     let p1 = inUnalignedMousePoint.canariPoint
-    let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
+    let connectorsAtP1 = self.rootObject.connectors (at: p1, trackSide: side)
   //--- Build connector at mouse click
     let connector1 : BoardConnector
-    if connectorsAt1.count == 1 {
-      connector1 = connectorsAt1 [0]
+    if connectorsAtP1.count == 1 {
+      connector1 = connectorsAtP1 [0]
     }else{
       connector1 = BoardConnector (self.ebUndoManager)
       connector1.mX = p1.x
@@ -107,17 +107,17 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
+  internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
                                                            _ inModifierFlags : NSEvent.ModifierFlags) {
-     if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2 {
-       var canariUnalignedMousePoint = inUnalignedMousePoint.canariPoint
-       if !inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
-         canariUnalignedMousePoint.quadrantAligned (from: CanariPoint (x: p1.mX, y: p1.mY))
-       }
-       connector2.mX = canariUnalignedMousePoint.x
-       connector2.mY = canariUnalignedMousePoint.y
-     //--- Update hilite
-       self.updateHiliteDuringTrackCreation (inUnalignedMousePoint)
+    if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2 {
+      var canariUnalignedMouseLocation = inUnalignedMouseLocation.canariPoint
+      if !inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location{
+        canariUnalignedMouseLocation.quadrantAligned (from: p1)
+      }
+      connector2.mX = canariUnalignedMouseLocation.x
+      connector2.mY = canariUnalignedMouseLocation.y
+    //--- Update hilite
+      self.updateHiliteDuringTrackCreation (inUnalignedMouseLocation)
     }
   }
 

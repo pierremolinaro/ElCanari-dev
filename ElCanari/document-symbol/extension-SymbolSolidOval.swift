@@ -25,7 +25,7 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
 //    var acceptedX = inDx
 //    let newX = self.x + acceptedX
 //    if newX < 0 {
@@ -36,7 +36,7 @@ extension SymbolSolidOval {
 //    if newY < 0 {
 //      acceptedY = -self.y
 //    }
-//    return OCCanariPoint (x: acceptedX, y: acceptedY)
+//    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
 //  }
 
   //····················································································································
@@ -50,7 +50,7 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x += inDx
     self.y += inDy
   }
@@ -60,8 +60,9 @@ extension SymbolSolidOval {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == SYMBOL_SOLID_OVAL_LEFT {
@@ -87,7 +88,7 @@ extension SymbolSolidOval {
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
       }
     }
-    return OCCanariPoint (x: dx, y: dy)
+    return ObjcCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -143,8 +144,8 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.x, y: self.y))
     result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

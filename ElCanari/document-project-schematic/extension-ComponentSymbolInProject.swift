@@ -45,7 +45,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -124,7 +124,7 @@ extension ComponentSymbolInProject {
   //  ROTATE 90 CLOCKWISE
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
     accumulatedPoints.insert (p)
     return true
@@ -132,7 +132,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
@@ -145,7 +145,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
@@ -193,8 +193,8 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     if let symbolInfo = self.symbolInfo {
       for pin in symbolInfo.pins {
         result.insert (pin.pinLocation)

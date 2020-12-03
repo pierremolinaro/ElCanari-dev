@@ -36,7 +36,7 @@ extension PackageZone {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x += inDx
     self.y += inDy
     self.xName += inDx
@@ -48,8 +48,9 @@ extension PackageZone {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_ZONE_LEFT {
@@ -76,7 +77,7 @@ extension PackageZone {
         dy = -self.yName
       }
     }
-    return OCCanariPoint (x: dx, y: dy)
+    return ObjcCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -143,8 +144,8 @@ extension PackageZone {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.x, y: self.y))
     result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     result.insert (CanariPoint (x: self.xName, y: self.yName))

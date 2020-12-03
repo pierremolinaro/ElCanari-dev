@@ -21,7 +21,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
 //    var acceptedX = inDx
 //    do{
 //      let newX = self.x1 + acceptedX
@@ -72,7 +72,7 @@ extension SymbolBezierCurve {
 //        acceptedY = -self.cpy2
 //      }
 //    }
-//    return OCCanariPoint (x: acceptedX, y: acceptedY)
+//    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
 //  }
 
   //····················································································································
@@ -93,7 +93,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -109,8 +109,9 @@ extension SymbolBezierCurve {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
  }
 
@@ -172,7 +173,7 @@ extension SymbolBezierCurve {
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     let p1  = CanariPoint (x: self.x1, y: self.y1)
     let p2  = CanariPoint (x: self.x2, y: self.y2)
     let cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
@@ -186,7 +187,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
@@ -203,7 +204,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)
@@ -271,8 +272,8 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.x1, y: self.y1))
     result.insert (CanariPoint (x: self.x2, y: self.y2))
     result.insert (CanariPoint (x: self.cpx1, y: self.cpy1))

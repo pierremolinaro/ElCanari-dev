@@ -593,7 +593,7 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
       var newObjects = [SymbolInstanceInDevice] ()
-      let userSet = OCObjectSet ()
+      let userSet = ObjcObjectSet ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolInstanceInDevice {
           object.operationAfterPasting ()
@@ -876,7 +876,7 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
   //····················································································································
 
   var canRotate90_property = EBTransientProperty_Bool ()
-  private var mRotate90PointSet = OCCanariPointSet ()
+  private var mRotate90PointSet = ObjcCanariPointSet ()
 
  //····················································································································
 
@@ -898,9 +898,9 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    let userSet = OCObjectSet ()
+    let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: OCCanariPoint (r.center), userSet: userSet)
+      object.rotate90Clockwise (from: ObjcCanariPoint (canariPoint: r.center), userSet: userSet)
     }
   }
 
@@ -908,9 +908,9 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    let userSet = OCObjectSet ()
+    let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: OCCanariPoint (r.center), userSet: userSet)
+      object.rotate90CounterClockwise (from: ObjcCanariPoint (canariPoint: r.center), userSet: userSet)
     }
   }
 

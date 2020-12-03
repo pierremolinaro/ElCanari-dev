@@ -19,7 +19,7 @@ extension SymbolSegment {
 
   //····················································································································
 
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
 //    var acceptedX = inDx
 //    do{
 //      let newX = self.x1 + acceptedX
@@ -46,7 +46,7 @@ extension SymbolSegment {
 //        acceptedY = -self.y2
 //      }
 //    }
-//    return OCCanariPoint (x: acceptedX, y: acceptedY)
+//    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
 //  }
 
   //····················································································································
@@ -62,7 +62,7 @@ extension SymbolSegment {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -74,8 +74,9 @@ extension SymbolSegment {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
  }
 
@@ -157,8 +158,8 @@ extension SymbolSegment {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.x1, y: self.y1))
     result.insert (CanariPoint (x: self.x2, y: self.y2))
     return result

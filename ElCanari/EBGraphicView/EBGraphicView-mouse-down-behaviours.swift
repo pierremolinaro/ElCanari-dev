@@ -10,7 +10,7 @@ class DefaultBehaviourOnMouseDown {
 
   //····················································································································
 
-  func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+  func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : NSPoint,
                                              _ inModifierFlags : NSEvent.ModifierFlags,
                                              _ inGraphicView : EBGraphicView) {
   }
@@ -56,7 +56,7 @@ final class MouseDownOutsideAnyObjectBehaviour : DefaultBehaviourOnMouseDown { /
 
   //····················································································································
 
-  override func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+  override func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : NSPoint,
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {
@@ -97,6 +97,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
 
   //····················································································································
 
+  private var mLastMouseDraggedUnalignedLocation : NSPoint
   private var mLastMouseDraggedAlignedLocation : CanariPoint
   private let mObjectIndex : Int
   private let mPossibleKnobIndex : Int? //  knob index
@@ -109,6 +110,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
         possibleKnobIndex inPossibleKnobIndex : Int?,
         _ inGraphicView : EBGraphicView,
         _ inViewController : EBGraphicViewControllerProtocol) {
+    self.mLastMouseDraggedUnalignedLocation = inUnalignedLocation
     self.mLastMouseDraggedAlignedLocation = inUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mouseGridInCanariUnit)
     self.mObjectIndex = inObjectIndex
     let objectWasSelected = inViewController.selectedIndexesSet.contains (inObjectIndex)
@@ -122,11 +124,15 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
 
   //····················································································································
 
-  override func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+  override func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : NSPoint,
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
+    let proposedUnalignedTranslation = NSPoint (
+      x: inMouseDraggedUnalignedLocation.x - self.mLastMouseDraggedUnalignedLocation.x,
+      y: inMouseDraggedUnalignedLocation.y - self.mLastMouseDraggedUnalignedLocation.y
+    )
     let mouseDraggedCanariAlignedLocation = inMouseDraggedUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mouseGridInCanariUnit)
-    let proposedTranslation = CanariPoint (
+    let proposedAlignedTranslation = CanariPoint (
       x: mouseDraggedCanariAlignedLocation.x - self.mLastMouseDraggedAlignedLocation.x,
       y: mouseDraggedCanariAlignedLocation.y - self.mLastMouseDraggedAlignedLocation.y
     )
@@ -138,9 +144,10 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
     inGraphicView.dragObject (
       possibleKnob: inModifierFlags.contains (.command) ? nil : self.mPossibleKnobIndex,
       objectIndex: self.mObjectIndex,
-      proposedTranslation,
-      self.mLastMouseDraggedAlignedLocation,
-      inMouseDraggedUnalignedLocation.canariPoint
+      proposedUnalignedTranslation: proposedUnalignedTranslation.canariPoint,
+      proposedAlignedTranslation: proposedAlignedTranslation,
+      alignedLastMouseDraggedLocation: self.mLastMouseDraggedAlignedLocation,
+      unalignedLastMouseDraggedLocation: inMouseDraggedUnalignedLocation.canariPoint
     )
     self.mLastMouseDraggedAlignedLocation = mouseDraggedCanariAlignedLocation
   }
@@ -189,7 +196,7 @@ final class ShiftMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse dow
 
   //····················································································································
 
-  override func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+  override func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : NSPoint,
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
     let r = NSRect (point: self.mMouseDownUnalignedLocation, point: inMouseDraggedUnalignedLocation)
@@ -230,7 +237,7 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
 
   //····················································································································
 
-  override func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+  override func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : NSPoint,
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {
@@ -298,7 +305,7 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
 
   //····················································································································
 
-  override func onMouseDraggedOrModifierFlagsChanged (_ inMouseDraggedUnalignedLocation : NSPoint,
+  override func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : NSPoint,
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {

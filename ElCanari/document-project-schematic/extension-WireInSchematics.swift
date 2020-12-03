@@ -34,7 +34,7 @@ extension WireInSchematic {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     if let p1 = self.mP1, !ioSet.contains (p1) {
       ioSet.insert (p1)
       p1.mX += inDx
@@ -52,24 +52,25 @@ extension WireInSchematic {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
-      return OCCanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
+      return ObjcCanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
       if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
-        return OCCanariPoint (x: 0, y: 0)
+        return ObjcCanariPoint (x: 0, y: 0)
       }else{
         return inProposedAlignedTranslation
       }
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
       if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
-        return OCCanariPoint (x: 0, y: 0)
+        return ObjcCanariPoint (x: 0, y: 0)
       }else{
         return inProposedAlignedTranslation
       }
     }else{
-      return OCCanariPoint (x: 0, y: 0)
+      return ObjcCanariPoint (x: 0, y: 0)
     }
   }
 

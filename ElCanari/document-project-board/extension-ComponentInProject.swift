@@ -49,7 +49,7 @@ extension ComponentInProject {
 
   //····················································································································
 
-  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -59,8 +59,9 @@ extension ComponentInProject {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
@@ -70,7 +71,7 @@ extension ComponentInProject {
     }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
       return inProposedAlignedTranslation
     }else{
-      return OCCanariPoint (x: 0, y: 0)
+      return ObjcCanariPoint (x: 0, y: 0)
     }
   }
 
@@ -117,7 +118,7 @@ extension ComponentInProject {
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     if let padRect = self.selectedPackagePadsRect () {
       accumulatedPoints.insert (padRect.center.canariPoint)
       return true
@@ -128,7 +129,7 @@ extension ComponentInProject {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
@@ -138,7 +139,7 @@ extension ComponentInProject {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y

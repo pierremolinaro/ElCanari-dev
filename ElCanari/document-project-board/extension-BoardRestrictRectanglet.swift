@@ -33,7 +33,7 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
     var acceptedX = inDx
     let newX = self.mX + acceptedX
     if newX < 0 {
@@ -44,7 +44,7 @@ extension BoardRestrictRectangle {
     if newY < 0 {
       acceptedY = -self.mY
     }
-    return OCCanariPoint (x: acceptedX, y: acceptedY)
+    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -57,7 +57,7 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -67,8 +67,9 @@ extension BoardRestrictRectangle {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
@@ -94,7 +95,7 @@ extension BoardRestrictRectangle {
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
       }
     }
-    return OCCanariPoint (x: dx, y: dy)
+    return ObjcCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -150,8 +151,8 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.mX, y: self.mY))
     result.insert (CanariPoint (x: self.mX + self.mWidth, y: self.mY + self.mHeight))
     return result
@@ -161,14 +162,14 @@ extension BoardRestrictRectangle {
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     accumulatedPoints.insert (CanariPoint (x: self.mX + self.mWidth / 2, y: self.mY + self.mHeight / 2))
     return true
   }
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
@@ -178,7 +179,7 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y

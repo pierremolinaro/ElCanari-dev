@@ -524,7 +524,6 @@ document ProjectDocument root ProjectRoot {
     $horizontalFlip root.mBoardLimitsHorizontalFlip
     $verticalFlip root.mBoardLimitsVerticalFlip
     $graphicController #boardCurveObjectsController
-//    $objectsAreHidden root.boardShapeIsRectangular
     $gridStyle root.mBoardLimitsGridStyle
     $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
     $gridLineColor prefs.lineColorGridForBoard

@@ -72,8 +72,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    return OCCanariPoint (x: inDx, y: inDy)
+  @objc dynamic func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+    return ObjcCanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
@@ -84,7 +84,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  @objc dynamic func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  @objc dynamic func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
@@ -94,8 +94,9 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   @objc dynamic func canMove (knob inKnobIndex : Int,
-                              proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                              unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                              proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                              proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                              unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
   }
 
@@ -155,18 +156,18 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  @objc dynamic func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     return false
   }
 
   //····················································································································
 
-  @objc dynamic func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  @objc dynamic func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
 
-  @objc dynamic func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  @objc dynamic func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
@@ -190,8 +191,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func alignmentPoints () -> OCCanariPointSet {
-    return OCCanariPointSet ()
+  @objc dynamic func alignmentPoints () -> ObjcCanariPointSet {
+    return ObjcCanariPointSet ()
   }
 
   //····················································································································
@@ -215,7 +216,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc class OCCanariPoint : EBObject {
+@objc class ObjcCanariPoint : EBObject {
 
   //····················································································································
 
@@ -228,15 +229,22 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  init (x inX : Int, y inY : Int) {
-    p = CanariPoint (x: inX, y: inY)
+  override init () {
+    self.p = CanariPoint ()
     super.init ()
   }
 
   //····················································································································
 
-  init (_ inPoint : CanariPoint) {
-    p = inPoint
+  init (x inX : Int, y inY : Int) {
+    self.p = CanariPoint (x: inX, y: inY)
+    super.init ()
+  }
+
+  //····················································································································
+
+  init (canariPoint inPoint : CanariPoint) {
+    self.p = inPoint
     super.init ()
   }
 
@@ -270,7 +278,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc class OCCanariPointSet : EBObject {
+@objc class ObjcCanariPointSet : EBObject {
 
   //····················································································································
 
@@ -310,7 +318,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc class OCObjectSet : EBObject {
+@objc class ObjcObjectSet : EBObject {
 
   //····················································································································
 

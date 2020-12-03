@@ -17,7 +17,7 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
     var acceptedX = inDx
     let newX = self.x + acceptedX
     if newX < 0 {
@@ -28,7 +28,7 @@ extension MergerBoardInstance {
     if newY < 0 {
       acceptedY = -self.y
     }
-    return OCCanariPoint (x: acceptedX, y: acceptedY)
+    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -41,7 +41,7 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x += inDx
     self.y += inDy
   }

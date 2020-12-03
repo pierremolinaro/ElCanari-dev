@@ -31,7 +31,7 @@ extension SymbolSolidRect {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x += inDx
     self.y += inDy
   }
@@ -41,8 +41,9 @@ extension SymbolSolidRect {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
@@ -62,7 +63,7 @@ extension SymbolSolidRect {
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
       }
     }
-    return OCCanariPoint (x: dx, y: dy)
+    return ObjcCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -118,8 +119,8 @@ extension SymbolSolidRect {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.x, y: self.y))
     result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

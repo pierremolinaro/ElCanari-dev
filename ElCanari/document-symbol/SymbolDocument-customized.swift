@@ -154,7 +154,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
            let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
            let X = dataDictionary ["X"] as? Int,
            let Y = dataDictionary ["Y"] as? Int {
-          let userSet = OCObjectSet ()
+          let userSet = ObjcObjectSet ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
               newObject.translate (

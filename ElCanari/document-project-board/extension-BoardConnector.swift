@@ -26,7 +26,7 @@ extension BoardConnector {
 
   //····················································································································
 
-  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
     if !ioSet.contains (self) {
       ioSet.insert (self)
       self.mX += inDx
@@ -39,12 +39,13 @@ extension BoardConnector {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     if (inKnobIndex == BOARD_CONNECTOR_KNOB) && !(self.connectedToComponent ?? true) {
       return inProposedAlignedTranslation
     }else{
-      return OCCanariPoint (x: 0, y: 0)
+      return ObjcCanariPoint (x: 0, y: 0)
     }
   }
 

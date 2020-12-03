@@ -51,7 +51,7 @@ extension BorderCurve {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     if let next = self.mNext, let previous = self.mPrevious, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       let dx = max (inDx, -self.mX, -next.mX)
       let dy = max (inDy, -self.mY, -next.mY)
@@ -78,34 +78,35 @@ extension BorderCurve {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
         let dx = max (inProposedAlignedTranslation.x, -self.mX)
         let dy = max (inProposedAlignedTranslation.y, -self.mY)
         if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
-          return OCCanariPoint (x: 0, y: 0)
+          return ObjcCanariPoint (x: 0, y: 0)
         }else{
-          return OCCanariPoint (x: dx, y: dy)
+          return ObjcCanariPoint (x: dx, y: dy)
         }
       }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
         let dx = max (inProposedAlignedTranslation.x, -next.mX)
         let dy = max (inProposedAlignedTranslation.y, -next.mY)
         if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
-          return OCCanariPoint (x: 0, y: 0)
+          return ObjcCanariPoint (x: 0, y: 0)
         }else{
-          return OCCanariPoint (x: dx, y: dy)
+          return ObjcCanariPoint (x: dx, y: dy)
         }
       }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
         return inProposedAlignedTranslation
       }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
         return inProposedAlignedTranslation
       }else{
-        return OCCanariPoint (x: 0, y: 0)
+        return ObjcCanariPoint (x: 0, y: 0)
       }
     }else{
-      return OCCanariPoint (x: 0, y: 0)
+      return ObjcCanariPoint (x: 0, y: 0)
     }
   }
 

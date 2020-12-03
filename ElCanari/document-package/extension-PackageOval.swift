@@ -33,7 +33,7 @@ extension PackageOval {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     self.x += inDx
     self.y += inDy
   }
@@ -43,8 +43,9 @@ extension PackageOval {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_OVAL_LEFT {
@@ -64,7 +65,7 @@ extension PackageOval {
         dy = -self.height
       }
     }
-    return OCCanariPoint (x: dx, y: dy)
+    return ObjcCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -87,7 +88,7 @@ extension PackageOval {
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     accumulatedPoints.insert (x: self.x, y: self.y)
     accumulatedPoints.insert (x: self.x + self.width, y: self.y + self.height)
     return true
@@ -95,7 +96,7 @@ extension PackageOval {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
     self.x = newCenter.x - self.width / 2
@@ -104,7 +105,7 @@ extension PackageOval {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
     self.x = newCenter.x - self.width / 2
@@ -148,8 +149,8 @@ extension PackageOval {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointSet {
-    let result = OCCanariPointSet ()
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
     result.insert (CanariPoint (x: self.x, y: self.y))
     result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

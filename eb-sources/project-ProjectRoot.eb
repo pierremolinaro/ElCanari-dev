@@ -62,7 +62,7 @@ entity ProjectRoot {
   property Bool mBoardVerticalFlip default no ;
   property GridStyle mBoardGridStyle default line ;
   property Int mBoardGridDisplayFactor default 4 ;
-  property Int mBoardZoom default 200 ;
+  property Int mBoardZoom default 0 ;
   property Int mBoardGridStep default 57_150 ; // 25 mils
   property Int mBoardGridStepUnit default 2_286 ; // mil
 
@@ -108,7 +108,7 @@ entity ProjectRoot {
   property Bool mBoardLimitsVerticalFlip default no ;
   property GridStyle mBoardLimitsGridStyle default line ;
   property Int mBoardLimitsGridDisplayFactor default 5 ;
-  property Int mBoardLimitsZoom default 200 ;
+  property Int mBoardLimitsZoom default 0 ;
 
   property Int mBoardLimitsGridStep default 90_000 ; // mm
   property Int mBoardLimitsGridStepUnit default 90_000 ; // mm
@@ -187,7 +187,7 @@ entity ProjectRoot {
   property Date mSchematicDate default now ;
   property Bool mSchematicHorizontalFlip default no ;
   property Bool mSchematicVerticalFlip default no ;
-  property Int mSchematicZoom default 100 ;
+  property Int mSchematicZoom default 0 ;
   property GridStyle mSchematicGridStyle default line ;
   property Int mSchematicGridDisplayFactor default 4 ;
 

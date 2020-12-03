@@ -39,7 +39,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     if let point = self.mPoint, point.mSymbol == nil, !ioSet.contains (point) {
       ioSet.insert (point)
       point.mX += inDx
@@ -79,7 +79,7 @@ extension LabelInSchematic {
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     let p = CanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
     accumulatedPoints.insert (p)
     return true
@@ -87,7 +87,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -102,7 +102,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90

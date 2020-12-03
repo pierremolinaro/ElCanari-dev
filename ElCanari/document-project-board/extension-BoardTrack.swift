@@ -33,7 +33,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : OCObjectSet) {
+  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
     if let connectorP1 = self.mConnectorP1, !ioSet.contains (connectorP1) {
       ioSet.insert (connectorP1)
       connectorP1.mX += inDx
@@ -51,31 +51,32 @@ extension BoardTrack {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedAlignedTranslation inProposedAlignedTranslation : OCCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : OCCanariPoint) -> OCCanariPoint {
-    if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+    if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
       let shift = NSApp.currentEvent?.modifierFlags.contains (.shift) ?? false
       if inKnobIndex == BOARD_TRACK_P1 {
         if shift {
-          return inProposedAlignedTranslation
+          return inProposedUnalignedTranslation
         }else{
-          var p1 = inUnalignedMouseDraggedLocation.p
-          p1.quadrantAligned (from: CanariPoint (x: connectorP2.mX, y: connectorP2.mY))
-          return OCCanariPoint (x: p1.x - connectorP1.mX, y: p1.y - connectorP1.mY)
+          var p = inUnalignedMouseDraggedLocation.p
+          p.quadrantAligned (from: p2)
+          return ObjcCanariPoint (x: p.x - p1.x, y: p.y - p1.y)
         }
       }else if inKnobIndex == BOARD_TRACK_P2 {
         if shift {
-          return inProposedAlignedTranslation
+          return inProposedUnalignedTranslation
         }else{
-          var p2 = inUnalignedMouseDraggedLocation.p
-          p2.quadrantAligned (from: CanariPoint (x: connectorP1.mX, y: connectorP1.mY))
-          return OCCanariPoint (x: p2.x - connectorP2.mX, y: p2.y - connectorP2.mY)
+          var p = inUnalignedMouseDraggedLocation.p
+          p.quadrantAligned (from: p1)
+          return ObjcCanariPoint (x: p.x - p2.x, y: p.y - p2.y)
         }
       }else{
-        return OCCanariPoint (x: 0, y:0)
+        return ObjcCanariPoint ()
       }
     }else{
-      return OCCanariPoint (x: 0, y:0)
+      return ObjcCanariPoint ()
     }
   }
 
@@ -95,7 +96,7 @@ extension BoardTrack {
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
       accumulatedPoints.insert (CanariPoint (x: p1.x, y: p1.y))
       accumulatedPoints.insert (CanariPoint (x: p2.x, y: p2.y))
@@ -107,7 +108,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90Clockwise (x: connectorP1.mX, y: connectorP1.mY)
@@ -126,7 +127,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90CounterClockwise (x: connectorP1.mX, y: connectorP1.mY)
