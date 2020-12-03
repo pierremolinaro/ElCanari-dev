@@ -462,7 +462,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     if !self.mDeferredUpdateViewFrameAndBoundsRegistered && (NSEvent.pressedMouseButtons == 0) {
       var candidateBounds = NSRect () // For including point (0, 0)
       candidateBounds = candidateBounds.union (self.objectsAndIssueBoundingBox)
-      candidateBounds = candidateBounds.union (self.mMinimumRectangle)
+//      candidateBounds = candidateBounds.union (self.mMinimumRectangle)
       if let ciImage = self.mBackgroundImage {
         let bp = NSBezierPath (rect: ciImage.extent)
         let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
@@ -474,7 +474,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
           self.mDeferredUpdateViewFrameAndBoundsRegistered = false
           var newBounds = NSRect () // For including point (0, 0)
           newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
-          newBounds = newBounds.union (self.mMinimumRectangle)
+//          newBounds = newBounds.union (self.mMinimumRectangle)
           if let ciImage = self.mBackgroundImage {
             let bp = NSBezierPath (rect: ciImage.extent)
             let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
@@ -535,16 +535,16 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final private var mMinimumRectangle = NSRect ()
+//  final private var mMinimumRectangle = NSRect ()
 
   //····················································································································
 
-  final func set (minimumRectangle inRect : NSRect) {
-    if self.mMinimumRectangle != inRect {
-      self.mMinimumRectangle = inRect
-      self.updateViewFrameAndBounds ()
-    }
-  }
+//  final func set (minimumRectangle inRect : NSRect) {
+//    if self.mMinimumRectangle != inRect {
+//      self.mMinimumRectangle = inRect
+//      self.updateViewFrameAndBounds ()
+//    }
+//  }
 
   //····················································································································
   // MARK: -
@@ -755,14 +755,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
       self.needsDisplay = true
     }
   }
-
-  //····················································································································
-
-//  final func set (backgroundImageAffineTransform inAffineTransform : NSAffineTransform) {
-//    self.mBackgroundImageAffineTransform = inAffineTransform
-//    self.updateViewFrameAndBounds ()
-//    self.needsDisplay = true
-//  }
 
   //····················································································································
 

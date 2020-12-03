@@ -110,8 +110,8 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mComposedSymbolView?.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT * 4)
 //    self.mComposedSymbolView?.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
     self.mComposedSymbolView?.register (pasteboardType: symbolPasteboardType)
-    let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
-    self.mComposedSymbolView?.set (minimumRectangle: r)
+//    let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
+//    self.mComposedSymbolView?.set (minimumRectangle: r)
     self.mComposedSymbolView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorReceivingView: self.mSymbolBaseInspectorView)

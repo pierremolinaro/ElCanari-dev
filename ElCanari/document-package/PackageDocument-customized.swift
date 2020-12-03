@@ -125,8 +125,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
  //--- Register scroll view
     self.mComposedPackageScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
     self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
-    let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
-    self.mComposedPackageView?.set (minimumRectangle: r)
+//    let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
+//    self.mComposedPackageView?.set (minimumRectangle: r)
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, for: PackageSegment.self)
