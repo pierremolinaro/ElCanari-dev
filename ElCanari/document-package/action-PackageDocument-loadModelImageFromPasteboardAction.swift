@@ -26,6 +26,7 @@ extension PackageDocument {
       let pp = PackageModelImageDoublePoint (self.ebUndoManager)
       self.rootObject.mModelImageDoublePoint = pp
       self.rootObject.mModelImageObjects = [pp]
+      self.rootObject.mModelImagePageZoom = 0
     }
 
     // NSLog ("\(NSPasteboard.general.types ?? [])")

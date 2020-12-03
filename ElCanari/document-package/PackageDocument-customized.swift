@@ -450,8 +450,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
         by: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
         yBy: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
       )
-      self.mModelImageView?.set (backgroundImageAffineTransform: af)
-      self.mComposedPackageView?.set (backgroundImageAffineTransform: af)
+      self.mModelImageView?.mBackgroundImageAffineTransform = af
+      self.mComposedPackageView?.mBackgroundImageAffineTransform = af
     }
   }
 

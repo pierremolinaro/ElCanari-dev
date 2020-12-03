@@ -482,7 +482,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
           }
           self.frame.size = newBounds.size
           self.bounds = newBounds
-          self.setNeedsDisplay (self.frame)
+          self.needsDisplay = true
           self.applyZoom ()
         }
       }
@@ -737,21 +737,32 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final var mBackgroundImage : CIImage? = nil
+  final var mBackgroundImage : CIImage? = nil {
+    didSet {
+      self.updateViewFrameAndBounds ()
+      self.needsDisplay = true
+    }
+  }
+
   final var mBackgroundImageDataController : EBSimpleController? = nil
 
   final var mBackgroundImageOpacity : CGFloat = 1.0
   final var mBackgroundImageOpacityController : EBSimpleController? = nil
 
-  final var mBackgroundImageAffineTransform = NSAffineTransform ()
+  final var mBackgroundImageAffineTransform = NSAffineTransform () {
+    didSet {
+      self.updateViewFrameAndBounds ()
+      self.needsDisplay = true
+    }
+  }
 
   //····················································································································
 
-  final func set (backgroundImageAffineTransform inAffineTransform : NSAffineTransform) {
-    self.mBackgroundImageAffineTransform = inAffineTransform
-    self.updateViewFrameAndBounds ()
-    self.needsDisplay = true
-  }
+//  final func set (backgroundImageAffineTransform inAffineTransform : NSAffineTransform) {
+//    self.mBackgroundImageAffineTransform = inAffineTransform
+//    self.updateViewFrameAndBounds ()
+//    self.needsDisplay = true
+//  }
 
   //····················································································································
 
