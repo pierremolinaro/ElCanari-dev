@@ -21,7 +21,7 @@ extension CustomizedProjectDocument {
     if let d = self.mFreerouterTemporaryBaseFilePath {
       freerouterTemporaryBaseFilePath = d
     }else{
-      let h = Date ().hashValue
+      let h = UInt (bitPattern: Date ().hashValue)
       freerouterTemporaryBaseFilePath = NSTemporaryDirectory () + "\(h)/"
       do {
         try fm.createDirectory (at: URL (fileURLWithPath: freerouterTemporaryBaseFilePath), withIntermediateDirectories: false, attributes: nil)
@@ -34,8 +34,13 @@ extension CustomizedProjectDocument {
       }
       self.mFreerouterTemporaryBaseFilePath = freerouterTemporaryBaseFilePath
     }
+    // Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
   //---------- Write gui_default.par
-
+    if prefs_mFreeRouterGuiDefaultFileContents != "" {
+      let guiDefaultPath = freerouterTemporaryBaseFilePath + "gui_defaults.par"
+      try? prefs_mFreeRouterGuiDefaultFileContents.write (to: URL (fileURLWithPath: guiDefaultPath), atomically: true, encoding: .utf8)
+      // Swift.print ("WRITE PATH \(guiDefaultPath)")
+    }
   //---------- Build freerouter document
     let exportTracks : Bool = self.rootObject.mExportExistingTracksAndVias
     let s = self.dsnContents (exportTracks)

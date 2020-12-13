@@ -303,6 +303,8 @@ prefs {
   outlet EBPopUpButton mBoardPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultpliedByTenForBoard ;
 //--- Show rotation knob in board
   property Bool mShowRotationKnobInBoard default yes ;
+//--- Freerouter "gui_default.par" file contents
+  property String mFreeRouterGuiDefaultFileContents default "" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------*

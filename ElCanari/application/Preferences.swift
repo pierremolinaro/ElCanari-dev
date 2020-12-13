@@ -89,6 +89,7 @@ let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
 let Preferences_mShowRotationKnobInBoard = "Preferences:mShowRotationKnobInBoard"
+let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
 let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
@@ -165,7 +166,7 @@ let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
 let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
-let Preferences_sampleString = "Preferences:sampleString"
+let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
 
@@ -1513,6 +1514,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var prefs_mShowRotationKnobInBoard_property_selection : EBSelection <Bool> { return prefs_mShowRotationKnobInBoard_property.selection }
 
 //····················································································································
+//   Atomic property: sampleString
+//····················································································································
+
+  let prefs_sampleString_property = EBPreferencesProperty_String (defaultValue: "The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
+
+//····················································································································
+
+  var prefs_sampleString : String {
+    get { return prefs_sampleString_property.propval }
+    set { prefs_sampleString_property.setProp (newValue) }
+  }
+
+//····················································································································
+
+  var prefs_sampleString_property_selection : EBSelection <String> { return prefs_sampleString_property.selection }
+
+//····················································································································
 //   Atomic property: showGerberDrawingFlow
 //····················································································································
 
@@ -2807,21 +2825,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var prefs_displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return prefs_displayPackageFrontSidePads_property.selection }
 
 //····················································································································
-//   Atomic property: sampleString
+//   Atomic property: mFreeRouterGuiDefaultFileContents
 //····················································································································
 
-  let prefs_sampleString_property = EBPreferencesProperty_String (defaultValue: "The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
+  let prefs_mFreeRouterGuiDefaultFileContents_property = EBPreferencesProperty_String (defaultValue: "", prefKey: Preferences_mFreeRouterGuiDefaultFileContents)
 
 //····················································································································
 
-  var prefs_sampleString : String {
-    get { return prefs_sampleString_property.propval }
-    set { prefs_sampleString_property.setProp (newValue) }
+  var prefs_mFreeRouterGuiDefaultFileContents : String {
+    get { return prefs_mFreeRouterGuiDefaultFileContents_property.propval }
+    set { prefs_mFreeRouterGuiDefaultFileContents_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_sampleString_property_selection : EBSelection <String> { return prefs_sampleString_property.selection }
+  var prefs_mFreeRouterGuiDefaultFileContents_property_selection : EBSelection <String> { return prefs_mFreeRouterGuiDefaultFileContents_property.selection }
 
 //····················································································································
 //   Atomic property: sampleStringSize
