@@ -31,7 +31,7 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   override func tile () {
     super.tile ()
     if let graphicView = self.documentView as? EBGraphicView {
-      graphicView.applyZoom ()
+      graphicView.scrollViewIsLiveResizing ()
     }
 //    if let focusView = self.superview as? EBFocusRingView {
 //      focusView.viewIsLiveResing ()
