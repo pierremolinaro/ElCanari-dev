@@ -26,7 +26,7 @@ extension EBGraphicView {
       graphicContext?.saveGraphicsState ()
       self.mBackgroundImageAffineTransform.concat ()
       let rImage = ciImage.extent
-      ciImage.draw (at: rImage.origin, from: rImage, operation: .copy, fraction: self.mBackgroundImageOpacity)
+      ciImage.draw (at: rImage.origin, from: rImage, operation: .sourceOver, fraction: self.mBackgroundImageOpacity)
       graphicContext?.restoreGraphicsState ()
     }
     self.drawGrid (inDirtyRect)
@@ -44,7 +44,7 @@ extension EBGraphicView {
       graphicContext?.saveGraphicsState ()
       self.mForegroundImageAffineTransform.concat ()
       let rImage = ciImage.extent
-      ciImage.draw (at: rImage.origin, from: rImage, operation: .copy, fraction: self.mForegroundImageOpacity)
+      ciImage.draw (at: rImage.origin, from: rImage, operation: .sourceOver, fraction: self.mForegroundImageOpacity)
       graphicContext?.restoreGraphicsState ()
     }
     self.drawGuideBezierPath (inDirtyRect)

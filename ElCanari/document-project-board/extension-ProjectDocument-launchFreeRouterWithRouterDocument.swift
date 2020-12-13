@@ -15,21 +15,32 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   override func launchFreeRouterWithRouterDocument (_ sender : NSObject?) {
-  //--- Get freerouter temporary directory
+    let fm =  FileManager ()
+  //---------- Get freerouter temporary directory
     let freerouterTemporaryBaseFilePath : String
     if let d = self.mFreerouterTemporaryBaseFilePath {
       freerouterTemporaryBaseFilePath = d
     }else{
       let h = Date ().hashValue
-      freerouterTemporaryBaseFilePath = NSTemporaryDirectory () + "\(h)"
+      freerouterTemporaryBaseFilePath = NSTemporaryDirectory () + "\(h)/"
+      do {
+        try fm.createDirectory (at: URL (fileURLWithPath: freerouterTemporaryBaseFilePath), withIntermediateDirectories: false, attributes: nil)
+      }catch (_) {
+        let alert = NSAlert ()
+        alert.messageText = "Cannot launch FreeRouting application"
+        alert.informativeText = "Cannot create \"\(freerouterTemporaryBaseFilePath)\" directory"
+        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+        return
+      }
       self.mFreerouterTemporaryBaseFilePath = freerouterTemporaryBaseFilePath
     }
-//    Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
-  //--- Build freerouter document
+  //---------- Write gui_default.par
+
+  //---------- Build freerouter document
     let exportTracks : Bool = self.rootObject.mExportExistingTracksAndVias
     let s = self.dsnContents (exportTracks)
-  //--- Write DSN file
-    let dsnFilePath = freerouterTemporaryBaseFilePath + ".dsn"
+  //---------- Write DSN file
+    let dsnFilePath = freerouterTemporaryBaseFilePath + "design.dsn"
     do{
       try s.write (to: URL (fileURLWithPath: dsnFilePath), atomically: true, encoding: .utf8)
     //--- Launch free router with document

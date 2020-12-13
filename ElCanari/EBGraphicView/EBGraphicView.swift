@@ -488,7 +488,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
           if let ciImage = self.mForegroundImage {
             let bp = NSBezierPath (rect: ciImage.extent)
             let transformedBP = self.mForegroundImageAffineTransform.transform (bp)
-            candidateBounds = candidateBounds.union (transformedBP.bounds)
+            newBounds = newBounds.union (transformedBP.bounds)
           }
           self.frame.size = newBounds.size
           self.bounds = newBounds

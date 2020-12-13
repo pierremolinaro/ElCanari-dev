@@ -22,7 +22,7 @@ extension PackageDocument {
       self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
       self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
       self.mModelImageView?.mBackgroundImageAffineTransform =  NSAffineTransform ()
-      self.mComposedPackageView?.mBackgroundImageAffineTransform = NSAffineTransform ()
+      self.mComposedPackageView?.mForegroundImageAffineTransform = NSAffineTransform ()
     //---
       self.buildGreenAndBluePoints ()
 //--- END OF USER ZONE 2

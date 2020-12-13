@@ -450,8 +450,8 @@ document PackageDocument root PackageRoot {
   arrayController #mPackageObjectsController : root.packageObjects ;
 
   outlet EBGraphicView mComposedPackageView
-    $backgroundImageData root.mModelImageData
-    $backgroundImageOpacity root.mModelImageOpacity
+    $foregroundImageData root.mModelImageData
+    $foregroundImageOpacity root.mModelImageOpacity
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController #mPackageObjectsController

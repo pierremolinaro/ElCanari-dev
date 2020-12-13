@@ -28,7 +28,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   fileprivate func importSESFile (fileBasePath inFileBasePath : String) {
-    let filePath = inFileBasePath + ".ses"
+    let filePath = inFileBasePath + "design.ses"
     do{
       let sesContents = try String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8)
       if let panel = self.mImportSESPanel,

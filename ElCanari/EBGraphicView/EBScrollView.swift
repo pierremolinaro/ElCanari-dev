@@ -28,6 +28,20 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
+  override func tile () {
+    super.tile ()
+    if let graphicView = self.documentView as? EBGraphicView {
+      graphicView.applyZoom ()
+    }
+//    if let focusView = self.superview as? EBFocusRingView {
+//      focusView.viewIsLiveResing ()
+//    }
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
   fileprivate weak var mDocument : EBManagedDocument? = nil // For handling drag destination
 
   //····················································································································
