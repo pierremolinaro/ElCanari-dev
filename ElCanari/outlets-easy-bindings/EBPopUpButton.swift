@@ -35,7 +35,7 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   override func keyDown (with event: NSEvent) {
-    if let s : String = event.charactersIgnoringModifiers?.uppercased () {
+    if let s = event.charactersIgnoringModifiers?.uppercased () {
       let unicodeScalars = s.unicodeScalars
       let unicodeChar = unicodeScalars [unicodeScalars.startIndex].value
       switch Int (unicodeChar) {

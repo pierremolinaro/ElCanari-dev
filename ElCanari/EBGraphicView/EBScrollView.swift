@@ -33,9 +33,6 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
     if let graphicView = self.documentView as? EBGraphicView {
       graphicView.scrollViewIsLiveResizing ()
     }
-//    if let focusView = self.superview as? EBFocusRingView {
-//      focusView.viewIsLiveResing ()
-//    }
   }
 
   //····················································································································
@@ -54,20 +51,6 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
     self.mDocument = document
     self.registerForDraggedTypes (draggedTypes)
   }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
-//  final override func tile () { // tile is called during live resizing
-//    super.tile ()
-//    if let graphicView = self.documentView as? EBGraphicView {
-//      graphicView.scrollViewIsLiveResizing ()
-//    }
-//    if let focusView = self.superview as? EBFocusRingView {
-//      focusView.viewIsLiveResing ()
-//    }
-//  }
 
   //····················································································································
   // MARK: -

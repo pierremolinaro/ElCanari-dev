@@ -341,8 +341,13 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
                            _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress,
           let scrollView = inGraphicView.enclosingScrollView,
-          let r = inGraphicView.mSelectionRectangle { //, r.size.width > 0.0, r.size.height > 0.0 {
+          let r = inGraphicView.mSelectionRectangle {
+    //--- Set mZoomPropertyCache property: if zoomToFit has been selected, mZoomPropertyCache is equal to 0,
+    //    preventing magnify action
+      inGraphicView.mZoomPropertyCache = Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))
+    //--- Perform magnify action
       scrollView.magnify (toFit: r)
+    //--- set zoom up button title to actual zoom
       let zoomTitle = "\(Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))) %"
       inGraphicView.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
     }
