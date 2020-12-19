@@ -187,18 +187,20 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func updateXYHelperWindow (_ inLocationInView : NSPoint) {
+  final internal func updateXYHelperWindow (mouseLocationInView inLocationInView : NSPoint) {
     let commandKey = NSEvent.modifierFlags.contains (.command)
-  //  Swift.print ("commandKey \(commandKey)")
-    if commandKey, let myWindow = self.window {
+    if commandKey, let myWindow = self.window, self.visibleRect.contains (inLocationInView) {
       let xyWindow : NSWindow
-      if let popover = self.mXYwindow {
-        xyWindow = popover
+      if let window = self.mXYwindow {
+        xyWindow = window
       }else{
         xyWindow = buildXYHelperWindow ()
         self.mXYwindow = xyWindow
       }
-      if let view = xyWindow.contentView, view.subviews.count == 2, let placardX = view.subviews [0] as? NSTextField, let placardY = view.subviews [1] as? NSTextField {
+      if let view = xyWindow.contentView,
+         view.subviews.count == 2,
+         let placardX = view.subviews [0] as? NSTextField,
+         let placardY = view.subviews [1] as? NSTextField {
         placardX.stringValue = "X = " + stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
         placardY.stringValue = "Y = " + stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
         placardX.sizeToFit ()
@@ -219,9 +221,11 @@ extension EBGraphicView {
         frameOrigin.y -= view.frame.size.height / 2.0
         xyWindow.setFrameOrigin (frameOrigin)
         xyWindow.setContentSize (s)
+      }else{
+        self.removeXYHelperWindow ()
       }
     }else{
-      removeXYHelperWindow ()
+      self.removeXYHelperWindow ()
     }
   }
 
@@ -259,7 +263,7 @@ extension EBGraphicView {
       let rectInWindow = myWindow.convertFromScreen (rectInScreen)
       let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
       let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
-      self.updateXYHelperWindow (locationOnGridInView)
+      self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     }
   }
 

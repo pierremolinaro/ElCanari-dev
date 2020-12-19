@@ -15,7 +15,7 @@ extension EBGraphicView {
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
     self.mHelperTextField?.stringValue = self.defaultHelperString (with: locationInView, inEvent.modifierFlags)
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
-    self.updateXYHelperWindow (locationOnGridInView)
+    self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
       self.mMouseMovedOrFlagsChangedCallback? (locationInView)
     }else{

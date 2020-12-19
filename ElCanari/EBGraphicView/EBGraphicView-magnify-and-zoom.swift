@@ -40,7 +40,7 @@ extension EBGraphicView {
       let nc = NotificationCenter.default
       nc.addObserver (
         self,
-        selector: #selector(EBGraphicView.didEndLiveScroll (_:)),
+        selector: #selector (EBGraphicView.didEndLiveScroll (_:)),
         name: NSScrollView.didEndLiveMagnifyNotification,
         object: scrollView
       )
