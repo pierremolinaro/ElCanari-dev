@@ -50,7 +50,8 @@ extension PackageZone {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_ZONE_LEFT {
@@ -82,7 +83,14 @@ extension PackageZone {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     if inKnobIndex == PACKAGE_ZONE_RIGHT {
       self.width += inDx
     }else if inKnobIndex == PACKAGE_ZONE_LEFT {

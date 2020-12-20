@@ -54,7 +54,14 @@ extension ComponentSymbolInProject {
   //  Knob
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
       self.mCenterX += inDx
       self.mCenterY += inDy
@@ -65,7 +72,7 @@ extension ComponentSymbolInProject {
       self.mDisplayComponentValueOffsetX += inDx
       self.mDisplayComponentValueOffsetY += inDy
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
-      let newKnobLocation = CanariPoint (x: inNewX, y: inNewY)
+      let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
       let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
       let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
       if angleInDegrees <= 45.0 {

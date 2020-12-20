@@ -53,7 +53,8 @@ extension BoardText {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {
@@ -65,7 +66,14 @@ extension BoardText {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       self.mX += inDx
       self.mY += inDy
@@ -84,7 +92,7 @@ extension BoardText {
         oblique: self.mOblique,
         extraWidth: 0.0
       )
-      let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
       let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }

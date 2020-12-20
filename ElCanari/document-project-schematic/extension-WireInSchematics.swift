@@ -54,7 +54,8 @@ extension WireInSchematic {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
       return ObjcCanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
@@ -76,7 +77,14 @@ extension WireInSchematic {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
       p1.mX += inDx
       p1.mY += inDy

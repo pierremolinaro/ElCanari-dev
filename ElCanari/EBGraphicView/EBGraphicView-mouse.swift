@@ -90,24 +90,30 @@ extension EBGraphicView {
                          alignedLastMouseDraggedLocation inAlignedLastMouseDraggedLocation : CanariPoint,
                          unalignedLastMouseDraggedLocation inUnalignedLastMouseDraggedLocation : CanariPoint) {
     let objects = self.viewController?.graphicObjectArray ?? []
+//    let shift = NSApp.currentEvent?.modifierFlags.contains (.shift) ?? false
+    let shift = NSEvent.modifierFlags.contains (.shift)
     if let knobIndex = inPossibleKnobIndex { // Mode knob
-      let p = objects [objectIndex].canMove (
+      let translation = objects [objectIndex].canMove (
         knob: knobIndex,
         proposedUnalignedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedUnalignedTranslation),
         proposedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedAlignedTranslation),
-        unalignedMouseDraggedLocation: ObjcCanariPoint (canariPoint: inUnalignedLastMouseDraggedLocation)
+        unalignedMouseDraggedLocation: ObjcCanariPoint (canariPoint: inUnalignedLastMouseDraggedLocation),
+        shift: shift
       )
-      if (p.x != 0) || (p.y != 0) {
+      if (translation.x != 0) || (translation.y != 0) {
         let mouseDraggedLocation = CanariPoint (
-          x: p.x + inAlignedLastMouseDraggedLocation.x,
-          y: p.y + inAlignedLastMouseDraggedLocation.y
+          x: translation.x + inAlignedLastMouseDraggedLocation.x,
+          y: translation.y + inAlignedLastMouseDraggedLocation.y
         )
         objects [objectIndex].move (
           knob: knobIndex,
-          xBy: p.x,
-          yBy: p.y,
-          newX: mouseDraggedLocation.x,
-          newY: mouseDraggedLocation.y
+          proposedDx: translation.x,
+          proposedDy: translation.y,
+          unalignedMouseLocationX: inUnalignedLastMouseDraggedLocation.x,
+          unalignedMouseLocationY: inUnalignedLastMouseDraggedLocation.y,
+          alignedMouseLocationX: mouseDraggedLocation.x,
+          alignedMouseLocationY: mouseDraggedLocation.y,
+          shift: shift
         )
       }
     }else{ // Move selected objects

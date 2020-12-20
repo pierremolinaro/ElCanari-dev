@@ -51,13 +51,20 @@ extension LabelInSchematic {
   //  Knob
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     if let point = self.mPoint, point.mSymbol == nil {
       if inKnobIndex == LABEL_IN_SCHEMATICS_TRANSLATION_KNOB {
         point.mX += inDx
         point.mY += inDy
       }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
-        let newKnobLocation = CanariPoint (x: inNewX, y: inNewY)
+        let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
         let p = CanariPoint (x: point.mX, y: point.mY)
         let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
         if angleInDegrees <= 45.0 {

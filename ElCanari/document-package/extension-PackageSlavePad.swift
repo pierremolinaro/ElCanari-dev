@@ -63,7 +63,8 @@ extension PackageSlavePad {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
   }
 

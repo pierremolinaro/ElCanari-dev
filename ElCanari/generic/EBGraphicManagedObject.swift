@@ -96,13 +96,21 @@ class EBGraphicManagedObject : EBManagedObject {
   @objc dynamic func canMove (knob inKnobIndex : Int,
                               proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                               proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                              unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                              unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                              shift inShift : Bool) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  @objc dynamic func move (knob inKnobIndex: Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  @objc dynamic func move (knob inKnobIndex: Int,
+                           proposedDx inDx: Int,
+                           proposedDy inDy: Int,
+                           unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                           unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                           alignedMouseLocationX inAlignedMouseLocationX : Int,
+                           alignedMouseLocationY inAlignedMouseLocationY : Int,
+                           shift inShift : Bool) {
   }
 
   //····················································································································

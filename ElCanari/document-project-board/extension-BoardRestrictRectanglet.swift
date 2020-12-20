@@ -69,7 +69,8 @@ extension BoardRestrictRectangle {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
@@ -100,7 +101,14 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
       self.mWidth += inDx
     }else if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {

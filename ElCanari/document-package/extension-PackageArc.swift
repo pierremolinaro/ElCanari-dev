@@ -55,13 +55,21 @@ extension PackageArc {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
  }
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
     let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint
     let radius = canariUnitToCocoa (self.radius)
     let startAngle = CGFloat (self.startAngle) / 1000.0
@@ -84,16 +92,16 @@ extension PackageArc {
       self.radius = cocoaToCanariUnit (newRadius)
     }else if inKnobIndex == PACKAGE_ARC_START_ANGLE {
       let newStartAngleKnob = NSPoint (
-        x: canariUnitToCocoa (inNewX),
-        y: canariUnitToCocoa (inNewY)
+        x: canariUnitToCocoa (inAlignedMouseLocationX),
+        y: canariUnitToCocoa (inAlignedMouseLocationY)
       )
       let newStartAngle = NSPoint.angleInDegrees (center, newStartAngleKnob)
       let newCanariStartAngle = Int ((newStartAngle * 1000.0).rounded (.toNearestOrEven))
       self.startAngle = newCanariStartAngle
     }else if inKnobIndex == PACKAGE_ARC_END_ANGLE {
       let newEndAngleKnob = NSPoint (
-        x: canariUnitToCocoa (inNewX),
-        y: canariUnitToCocoa (inNewY)
+        x: canariUnitToCocoa (inAlignedMouseLocationX),
+        y: canariUnitToCocoa (inAlignedMouseLocationY)
       )
       var newArcAngle = NSPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
       if newArcAngle < 0.0 {

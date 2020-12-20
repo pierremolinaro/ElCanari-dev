@@ -53,11 +53,11 @@ extension BoardTrack {
   override func canMove (knob inKnobIndex : Int,
                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint) -> ObjcCanariPoint {
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
     if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
-      let shift = NSApp.currentEvent?.modifierFlags.contains (.shift) ?? false
       if inKnobIndex == BOARD_TRACK_P1 {
-        if shift {
+        if inShift {
           return inProposedUnalignedTranslation
         }else{
           var p = inUnalignedMouseDraggedLocation.p
@@ -65,7 +65,7 @@ extension BoardTrack {
           return ObjcCanariPoint (x: p.x - p1.x, y: p.y - p1.y)
         }
       }else if inKnobIndex == BOARD_TRACK_P2 {
-        if shift {
+        if inShift {
           return inProposedUnalignedTranslation
         }else{
           var p = inUnalignedMouseDraggedLocation.p
@@ -82,13 +82,30 @@ extension BoardTrack {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
-    if inKnobIndex == BOARD_TRACK_P1 {
-      self.mConnectorP1?.mX += inDx
-      self.mConnectorP1?.mY += inDy
-    }else if inKnobIndex == BOARD_TRACK_P2 {
-      self.mConnectorP2?.mX += inDx
-      self.mConnectorP2?.mY += inDy
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
+    if inShift {
+      if inKnobIndex == BOARD_TRACK_P1 {
+        self.mConnectorP1?.mX = inUnlignedMouseLocationX
+        self.mConnectorP1?.mY = inUnlignedMouseLocationY
+      }else if inKnobIndex == BOARD_TRACK_P2 {
+        self.mConnectorP2?.mX = inUnlignedMouseLocationX
+        self.mConnectorP2?.mY = inUnlignedMouseLocationY
+      }
+    }else{
+      if inKnobIndex == BOARD_TRACK_P1 {
+        self.mConnectorP1?.mX += inDx
+        self.mConnectorP1?.mY += inDy
+      }else if inKnobIndex == BOARD_TRACK_P2 {
+        self.mConnectorP2?.mX += inDx
+        self.mConnectorP2?.mY += inDy
+      }
     }
   }
 
