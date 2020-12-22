@@ -347,9 +347,13 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
       inGraphicView.mZoomPropertyCache = Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))
     //--- Perform magnify action
       scrollView.magnify (toFit: r)
-    //--- set zoom up button title to actual zoom
-      let zoomTitle = "\(Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))) %"
-      inGraphicView.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
+    //--- Update zoom value
+      inGraphicView.mZoomPropertyCache = Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))
+  //    inGraphicView.mZoomController?.updateModel (inGraphicView, inGraphicView.mZoomPropertyCache)
+//      Swift.print ("ZOOM \(inGraphicView.mZoomPropertyCache)")
+   //--- set zoom up button title to actual zoom
+//      let zoomTitle = "\(inGraphicView.mZoomPropertyCache) %"
+//      inGraphicView.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
     }
   }
 

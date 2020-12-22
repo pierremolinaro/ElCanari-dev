@@ -57,8 +57,6 @@ func transient_ComponentSymbolInProject_selectionDisplay (
           bp.lineJoinStyle = .round
           shape.add (stroke: [bp], .cyan)
         }
-      //--- Center knob
-        shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Component value knob
         if self_mDisplayComponentValue {
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
@@ -91,6 +89,8 @@ func transient_ComponentSymbolInProject_selectionDisplay (
         }
       //--- symbol rotation knob
         let symbolRotationInRadians = CGFloat (self_mRotation.rawValue) * .pi / 2.0
+      //--- Center knob
+        shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Line from center to rotation knob
         let d = milsToCocoaUnit (200.0)
         let rotationKnobCenter = NSPoint (

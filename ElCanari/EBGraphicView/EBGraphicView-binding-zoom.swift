@@ -52,8 +52,8 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
   //····················································································································
 
   init (zoom : EBReadWriteProperty_Int, outlet : EBGraphicView) {
-    mZoomProperty = zoom
-    mOutlet = outlet
+    self.mZoomProperty = zoom
+    self.mOutlet = outlet
     super.init (observedObjects:[zoom], callBack: { outlet.updateOutlet (zoom) })
   }
 
