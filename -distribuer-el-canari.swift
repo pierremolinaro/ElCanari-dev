@@ -28,17 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.4"
+let VERSION_CANARI = "1.3.5"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let BUGFIXES : [String] = [
+  "Drag Track Fixed",
+  "Zoom to fit, Zoom region fixed"
+]
 let CHANGES : [String] = [
-  "Added (Basic, Advanced) Settings for Autorouter Interface"
+  "Autorouter GUI settings are stored in ElCanari Preferences"
 ]
-let NEWS : [String] = [
-  "New graphic view interface, with helper string",
-  "In graphic view, SHIFT + CONTROL + mouse down initiates a zoom region",
-  "In graphic view, COMMAND shows mouse location"
-]
+let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
