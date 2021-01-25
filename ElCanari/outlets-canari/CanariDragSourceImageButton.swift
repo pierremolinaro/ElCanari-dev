@@ -9,10 +9,18 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let PULL_DOWN_ARROW_SIZE : CGFloat = 8.0
+
+//----------------------------------------------------------------------------------------------------------------------
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //----------------------------------------------------------------------------------------------------------------------
 
 class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
+
+  //····················································································································
+
+  @IBOutlet var mContextualMenu : CanariChoiceMenu? = nil
 
   //····················································································································
 
@@ -73,7 +81,10 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let dragType = self.mDragType,
+    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+    if let menu = self.mContextualMenu, pullDownMenuRect ().contains (mouseDownLocation) {
+      NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
+    }else if let dragType = self.mDragType,
        self.isEnabled,
        let temporaryObjectShape = self.mDraggedObjectImageShape? () {
       let pasteboardItem = NSPasteboardItem ()
@@ -88,7 +99,6 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
       let rect = displayShape.boundingBox
       let image = buildPDFimage (frame: rect, shape: displayShape)
     //--- Move image rect origin to mouse click location
-      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       var r = rect
       r.origin.x += mouseDownLocation.x
       r.origin.y += mouseDownLocation.y
@@ -158,7 +168,35 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
       myGray.setFill ()
       NSBezierPath.fill (inDirtyRect)
     }
+    if self.mContextualMenu != nil {
+      var path = EBBezierPath ()
+      path.move (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
+      path.line (to: NSPoint (x: self.bounds.maxX, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
+      path.line (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE / 2.0, y: self.bounds.minY))
+      path.close ()
+      NSColor.black.setFill ()
+      path.fill ()
+    }
     super.draw (inDirtyRect)
+  }
+
+  //····················································································································
+  //   PULL DOWN MENU DETECTION RECTANGLE
+  //····················································································································
+
+  fileprivate func pullDownMenuRect () -> NSRect {
+    let r : NSRect
+    if self.mContextualMenu != nil {
+      r = NSRect (
+        x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE,
+        y: self.bounds.minY,
+        width: PULL_DOWN_ARROW_SIZE,
+        height: PULL_DOWN_ARROW_SIZE / 2.0
+      )
+    }else{
+      r = NSRect ()
+    }
+    return r
   }
 
   //····················································································································

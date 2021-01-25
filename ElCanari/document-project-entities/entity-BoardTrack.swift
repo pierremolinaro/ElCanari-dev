@@ -42,6 +42,30 @@ protocol BoardTrack_mIsPreservedByAutoRouter : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol BoardTrack_mP1XUnit : class {
+  var mP1XUnit : Int { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_mP1YUnit : class {
+  var mP1YUnit : Int { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_mP2XUnit : class {
+  var mP2XUnit : Int { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_mP2YUnit : class {
+  var mP2YUnit : Int { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol BoardTrack_actualTrackWidth : class {
   var actualTrackWidth : Int? { get }
 }
@@ -96,6 +120,12 @@ protocol BoardTrack_endPointsLocation : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol BoardTrack_trackDirectionInDegrees : class {
+  var trackDirectionInDegrees : Int? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol BoardTrack_signatureForERCChecking : class {
   var signatureForERCChecking : UInt32? { get }
 }
@@ -117,6 +147,10 @@ class BoardTrack : BoardObject,
          BoardTrack_mCustomTrackWidthUnit,
          BoardTrack_mUsesCustomTrackWidth,
          BoardTrack_mIsPreservedByAutoRouter,
+         BoardTrack_mP1XUnit,
+         BoardTrack_mP1YUnit,
+         BoardTrack_mP2XUnit,
+         BoardTrack_mP2YUnit,
          BoardTrack_actualTrackWidth,
          BoardTrack_selectionDisplay,
          BoardTrack_netName,
@@ -126,6 +160,7 @@ class BoardTrack : BoardObject,
          BoardTrack_netClassViaPadDiameter,
          BoardTrack_trackLength,
          BoardTrack_endPointsLocation,
+         BoardTrack_trackDirectionInDegrees,
          BoardTrack_signatureForERCChecking,
          BoardTrack_objectDisplay {
 
@@ -266,6 +301,98 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.selection }
+
+  //····················································································································
+  //   Atomic property: mP1XUnit
+  //····················································································································
+
+  final let mP1XUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mP1XUnit_toDefaultValue () {
+    self.mP1XUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mP1XUnit : Int {
+    get { return self.mP1XUnit_property.propval }
+    set { self.mP1XUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mP1XUnit_property_selection : EBSelection <Int> { return self.mP1XUnit_property.selection }
+
+  //····················································································································
+  //   Atomic property: mP1YUnit
+  //····················································································································
+
+  final let mP1YUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mP1YUnit_toDefaultValue () {
+    self.mP1YUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mP1YUnit : Int {
+    get { return self.mP1YUnit_property.propval }
+    set { self.mP1YUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mP1YUnit_property_selection : EBSelection <Int> { return self.mP1YUnit_property.selection }
+
+  //····················································································································
+  //   Atomic property: mP2XUnit
+  //····················································································································
+
+  final let mP2XUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mP2XUnit_toDefaultValue () {
+    self.mP2XUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mP2XUnit : Int {
+    get { return self.mP2XUnit_property.propval }
+    set { self.mP2XUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mP2XUnit_property_selection : EBSelection <Int> { return self.mP2XUnit_property.selection }
+
+  //····················································································································
+  //   Atomic property: mP2YUnit
+  //····················································································································
+
+  final let mP2YUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mP2YUnit_toDefaultValue () {
+    self.mP2YUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mP2YUnit : Int {
+    get { return self.mP2YUnit_property.propval }
+    set { self.mP2YUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mP2YUnit_property_selection : EBSelection <Int> { return self.mP2YUnit_property.selection }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -543,6 +670,29 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: trackDirectionInDegrees
+  //····················································································································
+
+  final let trackDirectionInDegrees_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var trackDirectionInDegrees_property_selection : EBSelection <Int> {
+    return self.trackDirectionInDegrees_property.selection
+  }
+
+  //····················································································································
+
+  final var trackDirectionInDegrees : Int? {
+    switch self.trackDirectionInDegrees_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -553,6 +703,10 @@ class BoardTrack : BoardObject,
     self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mP1XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
@@ -792,6 +946,30 @@ class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property)
+  //--- Atomic property: trackDirectionInDegrees
+    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_trackDirectionInDegrees (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -881,6 +1059,8 @@ class BoardTrack : BoardObject,
     // self.mConnectorP2_property.location_property.removeEBObserver (self.trackLength_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.endPointsLocation_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.endPointsLocation_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
     // self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.objectDisplay_property)
@@ -952,6 +1132,38 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
       valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mP1XUnit",
+      idx: self.mP1XUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mP1XUnit_property.mObserverExplorer,
+      valueExplorer: &self.mP1XUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mP1YUnit",
+      idx: self.mP1YUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mP1YUnit_property.mObserverExplorer,
+      valueExplorer: &self.mP1YUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mP2XUnit",
+      idx: self.mP2XUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mP2XUnit_property.mObserverExplorer,
+      valueExplorer: &self.mP2XUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mP2YUnit",
+      idx: self.mP2YUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
+      valueExplorer: &self.mP2YUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -1027,6 +1239,14 @@ class BoardTrack : BoardObject,
       valueExplorer: &self.endPointsLocation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "trackDirectionInDegrees",
+      idx: self.trackDirectionInDegrees_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackDirectionInDegrees_property.mObserverExplorer,
+      valueExplorer: &self.trackDirectionInDegrees_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "signatureForERCChecking",
       idx: self.signatureForERCChecking_property.ebObjectIndex,
       y: &y,
@@ -1091,6 +1311,18 @@ class BoardTrack : BoardObject,
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.mObserverExplorer = nil
     self.mIsPreservedByAutoRouter_property.mValueExplorer = nil
+  //--- Atomic property: mP1XUnit
+    self.mP1XUnit_property.mObserverExplorer = nil
+    self.mP1XUnit_property.mValueExplorer = nil
+  //--- Atomic property: mP1YUnit
+    self.mP1YUnit_property.mObserverExplorer = nil
+    self.mP1YUnit_property.mValueExplorer = nil
+  //--- Atomic property: mP2XUnit
+    self.mP2XUnit_property.mObserverExplorer = nil
+    self.mP2XUnit_property.mValueExplorer = nil
+  //--- Atomic property: mP2YUnit
+    self.mP2YUnit_property.mObserverExplorer = nil
+    self.mP2YUnit_property.mValueExplorer = nil
   //--- To one property: mConnectorP1
     self.mConnectorP1_property.mObserverExplorer = nil
     self.mConnectorP1_property.mValueExplorer = nil
@@ -1143,6 +1375,14 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomTrackWidth")
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey: "mIsPreservedByAutoRouter")
+  //--- Atomic property: mP1XUnit
+    self.mP1XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1XUnit")
+  //--- Atomic property: mP1YUnit
+    self.mP1YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1YUnit")
+  //--- Atomic property: mP2XUnit
+    self.mP2XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2XUnit")
+  //--- Atomic property: mP2YUnit
+    self.mP2YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2YUnit")
   }
 
   //····················································································································
@@ -1205,6 +1445,14 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey: "mUsesCustomTrackWidth")
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.readFrom (dictionary: inDictionary, forKey: "mIsPreservedByAutoRouter")
+  //--- Atomic property: mP1XUnit
+    self.mP1XUnit_property.readFrom (dictionary: inDictionary, forKey: "mP1XUnit")
+  //--- Atomic property: mP1YUnit
+    self.mP1YUnit_property.readFrom (dictionary: inDictionary, forKey: "mP1YUnit")
+  //--- Atomic property: mP2XUnit
+    self.mP2XUnit_property.readFrom (dictionary: inDictionary, forKey: "mP2XUnit")
+  //--- Atomic property: mP2YUnit
+    self.mP2YUnit_property.readFrom (dictionary: inDictionary, forKey: "mP2YUnit")
   }
 
 
@@ -1221,6 +1469,10 @@ class BoardTrack : BoardObject,
     ioString += "mCustomTrackWidthUnit\n"
     ioString += "mUsesCustomTrackWidth\n"
     ioString += "mIsPreservedByAutoRouter\n"
+    ioString += "mP1XUnit\n"
+    ioString += "mP1YUnit\n"
+    ioString += "mP2XUnit\n"
+    ioString += "mP2YUnit\n"
   //--- To one relationships
     ioString += "mConnectorP1\n"
     ioString += "mConnectorP2\n"
@@ -1246,6 +1498,14 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mIsPreservedByAutoRouter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mP1XUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mP1YUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mP2XUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mP2YUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mConnectorP1 {
@@ -1291,6 +1551,18 @@ class BoardTrack : BoardObject,
       }
       if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mIsPreservedByAutoRouter = value
+      }
+      if let range = inDictionary ["mP1XUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mP1XUnit = value
+      }
+      if let range = inDictionary ["mP1YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mP1YUnit = value
+      }
+      if let range = inDictionary ["mP2XUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mP2XUnit = value
+      }
+      if let range = inDictionary ["mP2YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mP2YUnit = value
       }
     //--- To one relationships
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {

@@ -770,6 +770,7 @@ import Cocoa
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardScrollView : EBScrollView? = nil
   @IBOutlet var mBoardShapePopUp : CanariEnumSegmentedControl? = nil
+  @IBOutlet var mBoardSideForNewTrackMenu : CanariChoiceMenu? = nil
   @IBOutlet var mBoardSideForNewTrackPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mBoardTextFontPopUpButton : CanariBoardTextFontPopUpButton? = nil
@@ -1358,6 +1359,7 @@ import Cocoa
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mBoardShapePopUp, "mBoardShapePopUp", CanariEnumSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mBoardSideForNewTrackMenu, "mBoardSideForNewTrackMenu", CanariChoiceMenu.self, #file, #line)
     checkOutletConnection (self.mBoardSideForNewTrackPopUp, "mBoardSideForNewTrackPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardStatusImageViewInToolbar, "mBoardStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontPopUpButton, "mBoardTextFontPopUpButton", CanariBoardTextFontPopUpButton.self, #file, #line)
@@ -2539,6 +2541,7 @@ import Cocoa
     self.mRectangularBoardHeightTextField?.bind_dimensionAndUnit (self.rootObject.mRectangularBoardHeight_property, self.rootObject.mRectangularBoardHeightUnit_property, file: #file, line: #line)
     self.mBoardShapePopUp?.bind_selectedSegment (self.rootObject.mBoardShape_property, file: #file, line: #line)
     self.mBoardInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardSelectedInspector_property, file: #file, line: #line)
+    self.mBoardSideForNewTrackMenu?.bind_selectedIndex (self.rootObject.mBoardSideForNewTrack_property, file: #file, line: #line)
     self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
     self.mBoardView?.bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property, file: #file, line: #line)
@@ -3502,6 +3505,7 @@ import Cocoa
     self.mRectangularBoardHeightTextField?.unbind_dimensionAndUnit ()
     self.mBoardShapePopUp?.unbind_selectedSegment ()
     self.mBoardInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mBoardSideForNewTrackMenu?.unbind_selectedIndex ()
     self.mUnplacedPackageTableView?.unbind_models ()
     self.mUnplacedPackagesCountTextField?.unbind_valueObserver ()
     self.mBoardView?.unbind_underObjectsDisplay ()
@@ -4001,6 +4005,7 @@ import Cocoa
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardScrollView?.ebCleanUp ()
     self.mBoardShapePopUp?.ebCleanUp ()
+    self.mBoardSideForNewTrackMenu?.ebCleanUp ()
     self.mBoardSideForNewTrackPopUp?.ebCleanUp ()
     self.mBoardStatusImageViewInToolbar?.ebCleanUp ()
     self.mBoardTextFontPopUpButton?.ebCleanUp ()
@@ -4423,6 +4428,7 @@ import Cocoa
     self.mBoardPointsBoundingBoxUnitPopUp = nil
     self.mBoardScrollView = nil
     self.mBoardShapePopUp = nil
+    self.mBoardSideForNewTrackMenu = nil
     self.mBoardSideForNewTrackPopUp = nil
     self.mBoardStatusImageViewInToolbar = nil
     self.mBoardTextFontPopUpButton = nil

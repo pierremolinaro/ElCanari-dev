@@ -663,7 +663,8 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDragSourceImageButton mAddTextInBoardButton ;
   outlet CanariDragSourceButton mAddLineInBoardButton ;
   outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
-
+  outlet CanariChoiceMenu mBoardSideForNewTrackMenu $selectedIndex root.mBoardSideForNewTrack ;
+  
   outlet NSPanel mImportSESPanel ;
   outlet NSTextField mImportSESTextField ;
   outlet EBProgressIndicator mImportSESProgressIndicator ;
@@ -781,6 +782,14 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBSwitch mUsesCustomTrackWidthSwitch $value #boardTrackSelectionController.mUsesCustomTrackWidth ;
 
+//  outlet CanariAngleTextField mTrackInBoardRotationTextField
+//    $angle #boardTrackSelectionController.trackDirectionInDegrees
+// //   $enabled #boardTrackSelectionController.mNameIsVisibleInBoard
+//  ;
+//  outlet CanariAngleSlider mTrackInBoardRotationSlider
+//    $angle #boardTrackSelectionController.trackDirectionInDegrees
+// //   $enabled #boardTrackSelectionController.mNameIsVisibleInBoard
+//  ;
 
 
 

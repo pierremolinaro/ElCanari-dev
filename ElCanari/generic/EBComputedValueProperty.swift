@@ -5,78 +5,72 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBAbstractProperty (abstract class)
+//   EBComputedValueProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBAbstractProperty : EBEvent {
-
-  private final var mObservers = EBWeakEventSet ()
+class EBComputedValueProperty <T : EBPropertyProtocol> : EBReadWriteValueProperty <T> {
 
   //····················································································································
 
-  final func addEBObserver (_ inObserver : EBEvent) {
-    self.mObservers.insert (inObserver)
-    self.updateObserverExplorer ()
-    inObserver.postEvent ()
-  }
+  private var mValueCache : EBSelection <T>? = nil
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
 
   //····················································································································
 
-  final func addEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
-    inObserverSet.apply { (_ observer : EBEvent) in
-      self.mObservers.insert (observer)
-      observer.postEvent ()
+  var mValueExplorer : NSTextField? {
+    didSet {
+      if let valueCache = self.mValueCache {
+        self.mValueExplorer?.stringValue = "\(valueCache)"
+      }else{
+        self.mValueExplorer?.stringValue = "nil"
+      }
     }
-    self.updateObserverExplorer ()
   }
 
   //····················································································································
 
-  final func removeEBObserver (_ inObserver : EBEvent) {
-    self.mObservers.remove (inObserver)
-    self.updateObserverExplorer ()
-  }
-
-  //····················································································································
-
-  final func removeEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
-    inObserverSet.apply {(_ observer : EBEvent) in
-      self.mObservers.remove (observer)
+  override var selection : EBSelection <T> {
+    if self.mValueCache == nil {
+      self.mValueCache = self.mReadModelFunction? ()
+      if self.mValueCache == nil {
+        self.mValueCache = .empty
+      }
+      self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
     }
-    self.updateObserverExplorer ()
+    return self.mValueCache!
   }
 
   //····················································································································
 
   override func postEvent () {
-    self.mObservers.apply ( {(_ observer : EBEvent) in observer.postEvent () })
-  }
-
-  //····················································································································
-
-  final var mObserverExplorer : NSPopUpButton? {
-    didSet {
-      self.updateObserverExplorer ()
+    if self.mValueCache != nil {
+      self.mValueCache = nil
+      self.mValueExplorer?.stringValue = "nil"
+      if logEvents () {
+        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
+      }
+      super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
   //····················································································································
 
-  final func updateObserverExplorer () {
-    if let observerExplorer = self.mObserverExplorer {
-      observerExplorer.removeAllItems ()
-      let observerCount = self.mObservers.count
-      observerExplorer.addItem (withTitle: String (observerCount))
-      observerExplorer.isEnabled = observerCount > 0
-      self.mObservers.apply ( {(_ observer : EBEvent) in
-        let stringValue = explorerIndexString (observer.ebObjectIndex) + " - " + observer.className
-        observerExplorer.addItem (withTitle: stringValue)
-      })
+  var mStoreFunction : Optional < (_ candidateValue : T, _ inWindow : NSWindow?) -> Bool > = nil
+
+   //····················································································································
+
+  override func validateAndSetProp (_ inCandidateValue : T,
+                                    windowForSheet inWindow : NSWindow?) -> Bool {
+    var result = true
+    if let storeFunction = self.mStoreFunction {
+      result = storeFunction (inCandidateValue, inWindow)
     }
+    return result
   }
 
   //····················································································································
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------

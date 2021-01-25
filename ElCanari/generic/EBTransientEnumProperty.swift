@@ -29,10 +29,7 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   //····················································································································
 
-  private var mMutex = DispatchSemaphore (value: 1)
-
   override var selection : EBSelection <T> {
-    self.mMutex.wait ()
     if self.mValueCache == nil {
       self.mValueCache = self.mReadModelFunction? ()
       if self.mValueCache == nil {
@@ -40,7 +37,6 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
       }
       self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
     }
-    self.mMutex.signal ()
     return self.mValueCache!
   }
 
@@ -58,12 +54,6 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
       appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
-
-  //····················································································································
-
-//  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
-//    inOperationQueue.addOperation { _ = self.selection }
-//  }
 
   //····················································································································
 

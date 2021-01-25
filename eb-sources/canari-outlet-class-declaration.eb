@@ -2,6 +2,10 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariChoiceMenu ;
+binding CanariChoiceMenu $selectedIndex : property enum ;
+binding CanariChoiceMenu $selectedTag : property Int ;
+
 extern outlet class CanariTabView $enabled ;
 binding CanariTabView $selectedTabIndex : property Int ;
 

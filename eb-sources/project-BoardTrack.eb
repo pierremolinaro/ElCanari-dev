@@ -21,6 +21,11 @@ graphic entity BoardTrack : BoardObject {
   property Bool mUsesCustomTrackWidth default no ;
   property Bool mIsPreservedByAutoRouter default no ;
 
+  property Int mP1XUnit default 2_286 ; // mil
+  property Int mP1YUnit default 2_286 ; // mil
+  property Int mP2XUnit default 2_286 ; // mil
+  property Int mP2YUnit default 2_286 ; // mil
+
   override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location,
     self.mConnectorP2.one.location,
@@ -54,8 +59,10 @@ graphic entity BoardTrack : BoardObject {
   override transient Double trackLength // In Canari Unit
     dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
 
-  
   transient CanariPointArray endPointsLocation
+    dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
+
+  transient Int trackDirectionInDegrees
     dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
 
   override transient UInt32 signatureForERCChecking dependsFrom self.mSide, self.actualTrackWidth ;

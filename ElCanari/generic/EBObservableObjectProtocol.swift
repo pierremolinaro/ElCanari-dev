@@ -9,7 +9,6 @@ import Cocoa
 protocol EBObservableObjectProtocol {
   func addEBObserver (_ inObserver : EBEvent)
   func removeEBObserver (_ inObserver : EBEvent)
-//  func computePropertyAsynchronously (_ inOperationQueue : OperationQueue)
 }
 
 //----------------------------------------------------------------------------------------------------------------------

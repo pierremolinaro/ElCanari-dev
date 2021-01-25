@@ -21,6 +21,10 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.removeEBObserversOf_mCustomTrackWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mUsesCustomTrackWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mIsPreservedByAutoRouter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mP1XUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mP1YUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mP2XUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mP2YUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_actualTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -30,6 +34,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackLength_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_endPointsLocation_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_trackDirectionInDegrees_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -39,6 +44,10 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.addEBObserversOf_mCustomTrackWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mUsesCustomTrackWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mIsPreservedByAutoRouter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mP1XUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mP1YUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mP2XUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mP2YUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_actualTrackWidth_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
@@ -48,6 +57,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackLength_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_endPointsLocation_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_trackDirectionInDegrees_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -390,6 +400,234 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mIsPreservedByAutoRouter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mP1XUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mP1XUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mP1XUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mP1XUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP1XUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mP1XUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mP1XUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP1XUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mP1XUnit_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mP1XUnit.apply { (_ observer : EBEvent) in
+        managedObject.mP1XUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mP1XUnit_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mP1XUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mP1XUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mP1YUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mP1YUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mP1YUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mP1YUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP1YUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mP1YUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mP1YUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP1YUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mP1YUnit_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mP1YUnit.apply { (_ observer : EBEvent) in
+        managedObject.mP1YUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mP1YUnit_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mP1YUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mP1YUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mP2XUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mP2XUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mP2XUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mP2XUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP2XUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mP2XUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mP2XUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP2XUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mP2XUnit_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mP2XUnit.apply { (_ observer : EBEvent) in
+        managedObject.mP2XUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mP2XUnit_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mP2XUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mP2XUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mP2YUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mP2YUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mP2YUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mP2YUnit.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP2YUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mP2YUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mP2YUnit.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mP2YUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mP2YUnit_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mP2YUnit.apply { (_ observer : EBEvent) in
+        managedObject.mP2YUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mP2YUnit_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mP2YUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mP2YUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -894,6 +1132,62 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     for managedObject in inSet {
       self.mObserversOf_endPointsLocation.apply { (_ observer : EBEvent) in
         managedObject.endPointsLocation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'trackDirectionInDegrees' transient property
+  //····················································································································
+
+  private var mObserversOf_trackDirectionInDegrees = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_trackDirectionInDegrees (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_trackDirectionInDegrees.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.trackDirectionInDegrees_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_trackDirectionInDegrees (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_trackDirectionInDegrees.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.trackDirectionInDegrees_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_trackDirectionInDegrees_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackDirectionInDegrees.apply { (_ observer : EBEvent) in
+        managedObject.trackDirectionInDegrees_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_trackDirectionInDegrees_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackDirectionInDegrees.apply { (_ observer : EBEvent) in
+        managedObject.trackDirectionInDegrees_property.removeEBObserver (observer)
       }
     }
   }
@@ -1585,6 +1879,10 @@ final class PreferencesArrayOf_BoardTrack : StoredArrayOf_BoardTrack {
     self.addEBObserverOf_mCustomTrackWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mUsesCustomTrackWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mIsPreservedByAutoRouter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mP1XUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mP1YUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mP2XUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mP2YUnit (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
