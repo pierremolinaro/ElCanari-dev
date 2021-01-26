@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBTransientValueProperty <T>
+//   EBGenericTransientProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equatable {
+class EBGenericTransientProperty <T> : EBGenericReadOnlyProperty <T> where T : Equatable {
 
   //····················································································································
 

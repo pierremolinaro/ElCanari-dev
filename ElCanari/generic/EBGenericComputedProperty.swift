@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBComputedValueProperty <T>
+//   EBGenericComputedProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBComputedValueProperty <T : EBPropertyProtocol> : EBReadWriteValueProperty <T> {
+class EBGenericComputedProperty <T : EBPropertyProtocol> : EBGenericReadWriteProperty <T> {
 
   //····················································································································
 

@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBReadOnlyValueProperty <T>
+//   EBGenericReadOnlyProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBReadOnlyValueProperty <T> : EBAbstractProperty, EBObservableObjectProtocol where T : Equatable {
+class EBGenericReadOnlyProperty <T> : EBAbstractProperty, EBObservableObjectProtocol where T : Equatable {
 
   //····················································································································
 

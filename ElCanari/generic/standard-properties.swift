@@ -8,13 +8,13 @@ import Cocoa
 //   Scalar property UInt32
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_UInt32    = EBReadOnlyValueProperty <UInt32>
-typealias EBTransientProperty_UInt32   = EBTransientValueProperty <UInt32>
-typealias EBReadWriteProperty_UInt32   = EBReadWriteValueProperty <UInt32>
-typealias EBPropertyProxy_UInt32       = EBPropertyValueProxy <UInt32>
-typealias EBComputedProperty_UInt32    = EBComputedValueProperty <UInt32>
-typealias EBStoredProperty_UInt32      = EBStoredValueProperty <UInt32>
-typealias EBPreferencesProperty_UInt32 = EBPreferencesValueProperty <UInt32>
+typealias EBReadOnlyProperty_UInt32    = EBGenericReadOnlyProperty <UInt32>
+typealias EBTransientProperty_UInt32   = EBGenericTransientProperty <UInt32>
+typealias EBReadWriteProperty_UInt32   = EBGenericReadWriteProperty <UInt32>
+typealias EBPropertyProxy_UInt32       = EBGenericPropertyProxy <UInt32>
+typealias EBComputedProperty_UInt32    = EBGenericComputedProperty <UInt32>
+typealias EBStoredProperty_UInt32      = EBGenericStoredProperty <UInt32>
+typealias EBPreferencesProperty_UInt32 = EBGenericPreferenceProperty <UInt32>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -56,13 +56,13 @@ func compare_UInt32_properties (_ left : EBReadOnlyProperty_UInt32, _ right : EB
 //   Scalar property Int
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_Int    = EBReadOnlyValueProperty <Int>
-typealias EBTransientProperty_Int   = EBTransientValueProperty <Int>
-typealias EBReadWriteProperty_Int   = EBReadWriteValueProperty <Int>
-typealias EBPropertyProxy_Int       = EBPropertyValueProxy <Int>
-typealias EBComputedProperty_Int    = EBComputedValueProperty <Int>
-typealias EBStoredProperty_Int      = EBStoredValueProperty <Int>
-typealias EBPreferencesProperty_Int = EBPreferencesValueProperty <Int>
+typealias EBReadOnlyProperty_Int    = EBGenericReadOnlyProperty <Int>
+typealias EBTransientProperty_Int   = EBGenericTransientProperty <Int>
+typealias EBReadWriteProperty_Int   = EBGenericReadWriteProperty <Int>
+typealias EBPropertyProxy_Int       = EBGenericPropertyProxy <Int>
+typealias EBComputedProperty_Int    = EBGenericComputedProperty <Int>
+typealias EBStoredProperty_Int      = EBGenericStoredProperty <Int>
+typealias EBPreferencesProperty_Int = EBGenericPreferenceProperty <Int>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -104,13 +104,13 @@ func compare_Int_properties (_ left : EBReadOnlyProperty_Int, _ right : EBReadOn
 //   Scalar property Bool
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_Bool    = EBReadOnlyValueProperty <Bool>
-typealias EBTransientProperty_Bool   = EBTransientValueProperty <Bool>
-typealias EBReadWriteProperty_Bool   = EBReadWriteValueProperty <Bool>
-typealias EBPropertyProxy_Bool       = EBPropertyValueProxy <Bool>
-typealias EBComputedProperty_Bool    = EBComputedValueProperty <Bool>
-typealias EBStoredProperty_Bool      = EBStoredValueProperty <Bool>
-typealias EBPreferencesProperty_Bool = EBPreferencesValueProperty <Bool>
+typealias EBReadOnlyProperty_Bool    = EBGenericReadOnlyProperty <Bool>
+typealias EBTransientProperty_Bool   = EBGenericTransientProperty <Bool>
+typealias EBReadWriteProperty_Bool   = EBGenericReadWriteProperty <Bool>
+typealias EBPropertyProxy_Bool       = EBGenericPropertyProxy <Bool>
+typealias EBComputedProperty_Bool    = EBGenericComputedProperty <Bool>
+typealias EBStoredProperty_Bool      = EBGenericStoredProperty <Bool>
+typealias EBPreferencesProperty_Bool = EBGenericPreferenceProperty <Bool>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -152,13 +152,13 @@ func compare_Bool_properties (_ left : EBReadOnlyProperty_Bool, _ right : EBRead
 //   Scalar property Double
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_Double    = EBReadOnlyValueProperty <Double>
-typealias EBTransientProperty_Double   = EBTransientValueProperty <Double>
-typealias EBReadWriteProperty_Double   = EBReadWriteValueProperty <Double>
-typealias EBPropertyProxy_Double       = EBPropertyValueProxy <Double>
-typealias EBComputedProperty_Double    = EBComputedValueProperty <Double>
-typealias EBStoredProperty_Double      = EBStoredValueProperty <Double>
-typealias EBPreferencesProperty_Double = EBPreferencesValueProperty <Double>
+typealias EBReadOnlyProperty_Double    = EBGenericReadOnlyProperty <Double>
+typealias EBTransientProperty_Double   = EBGenericTransientProperty <Double>
+typealias EBReadWriteProperty_Double   = EBGenericReadWriteProperty <Double>
+typealias EBPropertyProxy_Double       = EBGenericPropertyProxy <Double>
+typealias EBComputedProperty_Double    = EBGenericComputedProperty <Double>
+typealias EBStoredProperty_Double      = EBGenericStoredProperty <Double>
+typealias EBPreferencesProperty_Double = EBGenericPreferenceProperty <Double>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -200,13 +200,13 @@ func compare_Double_properties (_ left : EBReadOnlyProperty_Double, _ right : EB
 //   Scalar property String
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_String    = EBReadOnlyValueProperty <String>
-typealias EBTransientProperty_String   = EBTransientValueProperty <String>
-typealias EBReadWriteProperty_String   = EBReadWriteValueProperty <String>
-typealias EBPropertyProxy_String       = EBPropertyValueProxy <String>
-typealias EBComputedProperty_String    = EBComputedValueProperty <String>
-typealias EBStoredProperty_String      = EBStoredValueProperty <String>
-typealias EBPreferencesProperty_String = EBPreferencesValueProperty <String>
+typealias EBReadOnlyProperty_String    = EBGenericReadOnlyProperty <String>
+typealias EBTransientProperty_String   = EBGenericTransientProperty <String>
+typealias EBReadWriteProperty_String   = EBGenericReadWriteProperty <String>
+typealias EBPropertyProxy_String       = EBGenericPropertyProxy <String>
+typealias EBComputedProperty_String    = EBGenericComputedProperty <String>
+typealias EBStoredProperty_String      = EBGenericStoredProperty <String>
+typealias EBPreferencesProperty_String = EBGenericPreferenceProperty <String>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -242,13 +242,13 @@ func compare_String_properties (_ left : EBReadOnlyProperty_String, _ right : EB
 //   Scalar property Data
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_Data    = EBReadOnlyValueProperty <Data>
-typealias EBTransientProperty_Data   = EBTransientValueProperty <Data>
-typealias EBReadWriteProperty_Data   = EBReadWriteValueProperty <Data>
-typealias EBPropertyProxy_Data       = EBPropertyValueProxy <Data>
-typealias EBComputedProperty_Data    = EBComputedValueProperty <Data>
-typealias EBStoredProperty_Data      = EBStoredValueProperty <Data>
-typealias EBPreferencesProperty_Data = EBPreferencesValueProperty <Data>
+typealias EBReadOnlyProperty_Data    = EBGenericReadOnlyProperty <Data>
+typealias EBTransientProperty_Data   = EBGenericTransientProperty <Data>
+typealias EBReadWriteProperty_Data   = EBGenericReadWriteProperty <Data>
+typealias EBPropertyProxy_Data       = EBGenericPropertyProxy <Data>
+typealias EBComputedProperty_Data    = EBGenericComputedProperty <Data>
+typealias EBStoredProperty_Data      = EBGenericStoredProperty <Data>
+typealias EBPreferencesProperty_Data = EBGenericPreferenceProperty <Data>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -290,13 +290,13 @@ func compare_Data_properties (_ left : EBReadOnlyProperty_Data, _ right : EBRead
 //   Scalar property Date
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_Date    = EBReadOnlyValueProperty <Date>
-typealias EBTransientProperty_Date   = EBTransientValueProperty <Date>
-typealias EBReadWriteProperty_Date   = EBReadWriteValueProperty <Date>
-typealias EBPropertyProxy_Date       = EBPropertyValueProxy <Date>
-typealias EBComputedProperty_Date    = EBComputedValueProperty <Date>
-typealias EBStoredProperty_Date      = EBStoredValueProperty <Date>
-typealias EBPreferencesProperty_Date = EBPreferencesValueProperty <Date>
+typealias EBReadOnlyProperty_Date    = EBGenericReadOnlyProperty <Date>
+typealias EBTransientProperty_Date   = EBGenericTransientProperty <Date>
+typealias EBReadWriteProperty_Date   = EBGenericReadWriteProperty <Date>
+typealias EBPropertyProxy_Date       = EBGenericPropertyProxy <Date>
+typealias EBComputedProperty_Date    = EBGenericComputedProperty <Date>
+typealias EBStoredProperty_Date      = EBGenericStoredProperty <Date>
+typealias EBPreferencesProperty_Date = EBGenericPreferenceProperty <Date>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -338,13 +338,13 @@ func compare_Date_properties (_ left : EBReadOnlyProperty_Date, _ right : EBRead
 //   Scalar property BezierPathArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_BezierPathArray    = EBReadOnlyValueProperty <BezierPathArray>
-typealias EBTransientProperty_BezierPathArray   = EBTransientValueProperty <BezierPathArray>
-typealias EBReadWriteProperty_BezierPathArray   = EBReadWriteValueProperty <BezierPathArray>
-typealias EBPropertyProxy_BezierPathArray       = EBPropertyValueProxy <BezierPathArray>
-typealias EBComputedProperty_BezierPathArray    = EBComputedValueProperty <BezierPathArray>
-typealias EBStoredProperty_BezierPathArray      = EBStoredValueProperty <BezierPathArray>
-typealias EBPreferencesProperty_BezierPathArray = EBPreferencesValueProperty <BezierPathArray>
+typealias EBReadOnlyProperty_BezierPathArray    = EBGenericReadOnlyProperty <BezierPathArray>
+typealias EBTransientProperty_BezierPathArray   = EBGenericTransientProperty <BezierPathArray>
+typealias EBReadWriteProperty_BezierPathArray   = EBGenericReadWriteProperty <BezierPathArray>
+typealias EBPropertyProxy_BezierPathArray       = EBGenericPropertyProxy <BezierPathArray>
+typealias EBComputedProperty_BezierPathArray    = EBGenericComputedProperty <BezierPathArray>
+typealias EBStoredProperty_BezierPathArray      = EBGenericStoredProperty <BezierPathArray>
+typealias EBPreferencesProperty_BezierPathArray = EBGenericPreferenceProperty <BezierPathArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -386,403 +386,403 @@ func compare_BezierPathArray_properties (_ left : EBReadOnlyProperty_BezierPathA
 //   Scalar property CGFloat
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CGFloat    = EBReadOnlyValueProperty <CGFloat>
-typealias EBTransientProperty_CGFloat   = EBTransientValueProperty <CGFloat>
+typealias EBReadOnlyProperty_CGFloat    = EBGenericReadOnlyProperty <CGFloat>
+typealias EBTransientProperty_CGFloat   = EBGenericTransientProperty <CGFloat>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class NSImage
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSImage       = EBReadOnlyValueProperty <NSImage>
-typealias EBTransientProperty_NSImage      = EBTransientValueProperty <NSImage>
-typealias EBReadOnlyPropertyArray_NSImage  = EBReadOnlyValueProperty <[NSImage]>
-typealias EBTransientPropertyArray_NSImage = EBTransientValueProperty <[NSImage]>
+typealias EBReadOnlyProperty_NSImage       = EBGenericReadOnlyProperty <NSImage>
+typealias EBTransientProperty_NSImage      = EBGenericTransientProperty <NSImage>
+typealias EBReadOnlyPropertyArray_NSImage  = EBGenericReadOnlyProperty <[NSImage]>
+typealias EBTransientPropertyArray_NSImage = EBGenericTransientProperty <[NSImage]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class EBShape
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_EBShape       = EBReadOnlyValueProperty <EBShape>
-typealias EBTransientProperty_EBShape      = EBTransientValueProperty <EBShape>
-typealias EBReadOnlyPropertyArray_EBShape  = EBReadOnlyValueProperty <[EBShape]>
-typealias EBTransientPropertyArray_EBShape = EBTransientValueProperty <[EBShape]>
+typealias EBReadOnlyProperty_EBShape       = EBGenericReadOnlyProperty <EBShape>
+typealias EBTransientProperty_EBShape      = EBGenericTransientProperty <EBShape>
+typealias EBReadOnlyPropertyArray_EBShape  = EBGenericReadOnlyProperty <[EBShape]>
+typealias EBTransientPropertyArray_EBShape = EBGenericTransientProperty <[EBShape]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class CanariMenuItemListClass
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CanariMenuItemListClass       = EBReadOnlyValueProperty <CanariMenuItemListClass>
-typealias EBTransientProperty_CanariMenuItemListClass      = EBTransientValueProperty <CanariMenuItemListClass>
-typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyValueProperty <[CanariMenuItemListClass]>
-typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientValueProperty <[CanariMenuItemListClass]>
+typealias EBReadOnlyProperty_CanariMenuItemListClass       = EBGenericReadOnlyProperty <CanariMenuItemListClass>
+typealias EBTransientProperty_CanariMenuItemListClass      = EBGenericTransientProperty <CanariMenuItemListClass>
+typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBGenericReadOnlyProperty <[CanariMenuItemListClass]>
+typealias EBTransientPropertyArray_CanariMenuItemListClass = EBGenericTransientProperty <[CanariMenuItemListClass]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property CanariRect
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CanariRect    = EBReadOnlyValueProperty <CanariRect>
-typealias EBTransientProperty_CanariRect   = EBTransientValueProperty <CanariRect>
+typealias EBReadOnlyProperty_CanariRect    = EBGenericReadOnlyProperty <CanariRect>
+typealias EBTransientProperty_CanariRect   = EBGenericTransientProperty <CanariRect>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property EBBezierPath
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_EBBezierPath    = EBReadOnlyValueProperty <EBBezierPath>
-typealias EBTransientProperty_EBBezierPath   = EBTransientValueProperty <EBBezierPath>
+typealias EBReadOnlyProperty_EBBezierPath    = EBGenericReadOnlyProperty <EBBezierPath>
+typealias EBTransientProperty_EBBezierPath   = EBGenericTransientProperty <EBBezierPath>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property BoardFontDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_BoardFontDescriptor    = EBReadOnlyValueProperty <BoardFontDescriptor>
-typealias EBTransientProperty_BoardFontDescriptor   = EBTransientValueProperty <BoardFontDescriptor>
+typealias EBReadOnlyProperty_BoardFontDescriptor    = EBGenericReadOnlyProperty <BoardFontDescriptor>
+typealias EBTransientProperty_BoardFontDescriptor   = EBGenericTransientProperty <BoardFontDescriptor>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property BorderCurveDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_BorderCurveDescriptor    = EBReadOnlyValueProperty <BorderCurveDescriptor>
-typealias EBTransientProperty_BorderCurveDescriptor   = EBTransientValueProperty <BorderCurveDescriptor>
+typealias EBReadOnlyProperty_BorderCurveDescriptor    = EBGenericReadOnlyProperty <BorderCurveDescriptor>
+typealias EBTransientProperty_BorderCurveDescriptor   = EBGenericTransientProperty <BorderCurveDescriptor>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property NetInfoPoint
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NetInfoPoint    = EBReadOnlyValueProperty <NetInfoPoint>
-typealias EBTransientProperty_NetInfoPoint   = EBTransientValueProperty <NetInfoPoint>
+typealias EBReadOnlyProperty_NetInfoPoint    = EBGenericReadOnlyProperty <NetInfoPoint>
+typealias EBTransientProperty_NetInfoPoint   = EBGenericTransientProperty <NetInfoPoint>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property NetInfoPointArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NetInfoPointArray    = EBReadOnlyValueProperty <NetInfoPointArray>
-typealias EBTransientProperty_NetInfoPointArray   = EBTransientValueProperty <NetInfoPointArray>
+typealias EBReadOnlyProperty_NetInfoPointArray    = EBGenericReadOnlyProperty <NetInfoPointArray>
+typealias EBTransientProperty_NetInfoPointArray   = EBGenericTransientProperty <NetInfoPointArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property StatusStringArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_StatusStringArray    = EBReadOnlyValueProperty <StatusStringArray>
-typealias EBTransientProperty_StatusStringArray   = EBTransientValueProperty <StatusStringArray>
+typealias EBReadOnlyProperty_StatusStringArray    = EBGenericReadOnlyProperty <StatusStringArray>
+typealias EBTransientProperty_StatusStringArray   = EBGenericTransientProperty <StatusStringArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property NetInfo
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NetInfo    = EBReadOnlyValueProperty <NetInfo>
-typealias EBTransientProperty_NetInfo   = EBTransientValueProperty <NetInfo>
+typealias EBReadOnlyProperty_NetInfo    = EBGenericReadOnlyProperty <NetInfo>
+typealias EBTransientProperty_NetInfo   = EBGenericTransientProperty <NetInfo>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property SchematicSheetDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_SchematicSheetDescriptor    = EBReadOnlyValueProperty <SchematicSheetDescriptor>
-typealias EBTransientProperty_SchematicSheetDescriptor   = EBTransientValueProperty <SchematicSheetDescriptor>
+typealias EBReadOnlyProperty_SchematicSheetDescriptor    = EBGenericReadOnlyProperty <SchematicSheetDescriptor>
+typealias EBTransientProperty_SchematicSheetDescriptor   = EBGenericTransientProperty <SchematicSheetDescriptor>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property SchematicSheetGeometry
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_SchematicSheetGeometry    = EBReadOnlyValueProperty <SchematicSheetGeometry>
-typealias EBTransientProperty_SchematicSheetGeometry   = EBTransientValueProperty <SchematicSheetGeometry>
+typealias EBReadOnlyProperty_SchematicSheetGeometry    = EBGenericReadOnlyProperty <SchematicSheetGeometry>
+typealias EBTransientProperty_SchematicSheetGeometry   = EBGenericTransientProperty <SchematicSheetGeometry>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property SchematicPointStatus
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_SchematicPointStatus    = EBReadOnlyValueProperty <SchematicPointStatus>
-typealias EBTransientProperty_SchematicPointStatus   = EBTransientValueProperty <SchematicPointStatus>
+typealias EBReadOnlyProperty_SchematicPointStatus    = EBGenericReadOnlyProperty <SchematicPointStatus>
+typealias EBTransientProperty_SchematicPointStatus   = EBGenericTransientProperty <SchematicPointStatus>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property NetInfoArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NetInfoArray    = EBReadOnlyValueProperty <NetInfoArray>
-typealias EBTransientProperty_NetInfoArray   = EBTransientValueProperty <NetInfoArray>
+typealias EBReadOnlyProperty_NetInfoArray    = EBGenericReadOnlyProperty <NetInfoArray>
+typealias EBTransientProperty_NetInfoArray   = EBGenericTransientProperty <NetInfoArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property CanariPoint
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CanariPoint    = EBReadOnlyValueProperty <CanariPoint>
-typealias EBTransientProperty_CanariPoint   = EBTransientValueProperty <CanariPoint>
+typealias EBReadOnlyProperty_CanariPoint    = EBGenericReadOnlyProperty <CanariPoint>
+typealias EBTransientProperty_CanariPoint   = EBGenericTransientProperty <CanariPoint>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property CanariPointArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CanariPointArray    = EBReadOnlyValueProperty <CanariPointArray>
-typealias EBTransientProperty_CanariPointArray   = EBTransientValueProperty <CanariPointArray>
+typealias EBReadOnlyProperty_CanariPointArray    = EBGenericReadOnlyProperty <CanariPointArray>
+typealias EBTransientProperty_CanariPointArray   = EBGenericTransientProperty <CanariPointArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property ComponentSymbolInfo
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_ComponentSymbolInfo    = EBReadOnlyValueProperty <ComponentSymbolInfo>
-typealias EBTransientProperty_ComponentSymbolInfo   = EBTransientValueProperty <ComponentSymbolInfo>
+typealias EBReadOnlyProperty_ComponentSymbolInfo    = EBGenericReadOnlyProperty <ComponentSymbolInfo>
+typealias EBTransientProperty_ComponentSymbolInfo   = EBGenericTransientProperty <ComponentSymbolInfo>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property SymbolInProjectIdentifier
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_SymbolInProjectIdentifier    = EBReadOnlyValueProperty <SymbolInProjectIdentifier>
-typealias EBTransientProperty_SymbolInProjectIdentifier   = EBTransientValueProperty <SymbolInProjectIdentifier>
+typealias EBReadOnlyProperty_SymbolInProjectIdentifier    = EBGenericReadOnlyProperty <SymbolInProjectIdentifier>
+typealias EBTransientProperty_SymbolInProjectIdentifier   = EBGenericTransientProperty <SymbolInProjectIdentifier>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property SymbolInProjectIdentifierArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_SymbolInProjectIdentifierArray    = EBReadOnlyValueProperty <SymbolInProjectIdentifierArray>
-typealias EBTransientProperty_SymbolInProjectIdentifierArray   = EBTransientValueProperty <SymbolInProjectIdentifierArray>
+typealias EBReadOnlyProperty_SymbolInProjectIdentifierArray    = EBGenericReadOnlyProperty <SymbolInProjectIdentifierArray>
+typealias EBTransientProperty_SymbolInProjectIdentifierArray   = EBGenericTransientProperty <SymbolInProjectIdentifierArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property PinInProjectDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_PinInProjectDescriptor    = EBReadOnlyValueProperty <PinInProjectDescriptor>
-typealias EBTransientProperty_PinInProjectDescriptor   = EBTransientValueProperty <PinInProjectDescriptor>
+typealias EBReadOnlyProperty_PinInProjectDescriptor    = EBGenericReadOnlyProperty <PinInProjectDescriptor>
+typealias EBTransientProperty_PinInProjectDescriptor   = EBGenericTransientProperty <PinInProjectDescriptor>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property PinPadAssignmentInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_PinPadAssignmentInProject    = EBReadOnlyValueProperty <PinPadAssignmentInProject>
-typealias EBTransientProperty_PinPadAssignmentInProject   = EBTransientValueProperty <PinPadAssignmentInProject>
+typealias EBReadOnlyProperty_PinPadAssignmentInProject    = EBGenericReadOnlyProperty <PinPadAssignmentInProject>
+typealias EBTransientProperty_PinPadAssignmentInProject   = EBGenericTransientProperty <PinPadAssignmentInProject>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property SlavePadDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_SlavePadDescriptor    = EBReadOnlyValueProperty <SlavePadDescriptor>
-typealias EBTransientProperty_SlavePadDescriptor   = EBTransientValueProperty <SlavePadDescriptor>
+typealias EBReadOnlyProperty_SlavePadDescriptor    = EBGenericReadOnlyProperty <SlavePadDescriptor>
+typealias EBTransientProperty_SlavePadDescriptor   = EBGenericTransientProperty <SlavePadDescriptor>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property MasterPadDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_MasterPadDescriptor    = EBReadOnlyValueProperty <MasterPadDescriptor>
-typealias EBTransientProperty_MasterPadDescriptor   = EBTransientValueProperty <MasterPadDescriptor>
+typealias EBReadOnlyProperty_MasterPadDescriptor    = EBGenericReadOnlyProperty <MasterPadDescriptor>
+typealias EBTransientProperty_MasterPadDescriptor   = EBGenericTransientProperty <MasterPadDescriptor>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property PackageMasterPadDictionary
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_PackageMasterPadDictionary    = EBReadOnlyValueProperty <PackageMasterPadDictionary>
-typealias EBTransientProperty_PackageMasterPadDictionary   = EBTransientValueProperty <PackageMasterPadDictionary>
+typealias EBReadOnlyProperty_PackageMasterPadDictionary    = EBGenericReadOnlyProperty <PackageMasterPadDictionary>
+typealias EBTransientProperty_PackageMasterPadDictionary   = EBGenericTransientProperty <PackageMasterPadDictionary>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property ComponentPadDescriptorDictionary
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_ComponentPadDescriptorDictionary    = EBReadOnlyValueProperty <ComponentPadDescriptorDictionary>
-typealias EBTransientProperty_ComponentPadDescriptorDictionary   = EBTransientValueProperty <ComponentPadDescriptorDictionary>
+typealias EBReadOnlyProperty_ComponentPadDescriptorDictionary    = EBGenericReadOnlyProperty <ComponentPadDescriptorDictionary>
+typealias EBTransientProperty_ComponentPadDescriptorDictionary   = EBGenericTransientProperty <ComponentPadDescriptorDictionary>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property RastnetInfoArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_RastnetInfoArray    = EBReadOnlyValueProperty <RastnetInfoArray>
-typealias EBTransientProperty_RastnetInfoArray   = EBTransientValueProperty <RastnetInfoArray>
+typealias EBReadOnlyProperty_RastnetInfoArray    = EBGenericReadOnlyProperty <RastnetInfoArray>
+typealias EBTransientProperty_RastnetInfoArray   = EBGenericTransientProperty <RastnetInfoArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property DeviceSymbolDictionary
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_DeviceSymbolDictionary    = EBReadOnlyValueProperty <DeviceSymbolDictionary>
-typealias EBTransientProperty_DeviceSymbolDictionary   = EBTransientValueProperty <DeviceSymbolDictionary>
+typealias EBReadOnlyProperty_DeviceSymbolDictionary    = EBGenericReadOnlyProperty <DeviceSymbolDictionary>
+typealias EBTransientProperty_DeviceSymbolDictionary   = EBGenericTransientProperty <DeviceSymbolDictionary>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property IntArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_IntArray    = EBReadOnlyValueProperty <IntArray>
-typealias EBTransientProperty_IntArray   = EBTransientValueProperty <IntArray>
+typealias EBReadOnlyProperty_IntArray    = EBGenericReadOnlyProperty <IntArray>
+typealias EBTransientProperty_IntArray   = EBGenericTransientProperty <IntArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property StringArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_StringArray    = EBReadOnlyValueProperty <StringArray>
-typealias EBTransientProperty_StringArray   = EBTransientValueProperty <StringArray>
+typealias EBReadOnlyProperty_StringArray    = EBGenericReadOnlyProperty <StringArray>
+typealias EBTransientProperty_StringArray   = EBGenericTransientProperty <StringArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property StringSet
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_StringSet    = EBReadOnlyValueProperty <StringSet>
-typealias EBTransientProperty_StringSet   = EBTransientValueProperty <StringSet>
+typealias EBReadOnlyProperty_StringSet    = EBGenericReadOnlyProperty <StringSet>
+typealias EBTransientProperty_StringSet   = EBGenericTransientProperty <StringSet>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property StringTagArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_StringTagArray    = EBReadOnlyValueProperty <StringTagArray>
-typealias EBTransientProperty_StringTagArray   = EBTransientValueProperty <StringTagArray>
+typealias EBReadOnlyProperty_StringTagArray    = EBGenericReadOnlyProperty <StringTagArray>
+typealias EBTransientProperty_StringTagArray   = EBGenericTransientProperty <StringTagArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property TwoStrings
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_TwoStrings    = EBReadOnlyValueProperty <TwoStrings>
-typealias EBTransientProperty_TwoStrings   = EBTransientValueProperty <TwoStrings>
+typealias EBReadOnlyProperty_TwoStrings    = EBGenericReadOnlyProperty <TwoStrings>
+typealias EBTransientProperty_TwoStrings   = EBGenericTransientProperty <TwoStrings>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property ThreeStrings
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_ThreeStrings    = EBReadOnlyValueProperty <ThreeStrings>
-typealias EBTransientProperty_ThreeStrings   = EBTransientValueProperty <ThreeStrings>
+typealias EBReadOnlyProperty_ThreeStrings    = EBGenericReadOnlyProperty <ThreeStrings>
+typealias EBTransientProperty_ThreeStrings   = EBGenericTransientProperty <ThreeStrings>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property TwoStringArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_TwoStringArray    = EBReadOnlyValueProperty <TwoStringArray>
-typealias EBTransientProperty_TwoStringArray   = EBTransientValueProperty <TwoStringArray>
+typealias EBReadOnlyProperty_TwoStringArray    = EBGenericReadOnlyProperty <TwoStringArray>
+typealias EBTransientProperty_TwoStringArray   = EBGenericTransientProperty <TwoStringArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property ThreeStringArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_ThreeStringArray    = EBReadOnlyValueProperty <ThreeStringArray>
-typealias EBTransientProperty_ThreeStringArray   = EBTransientValueProperty <ThreeStringArray>
+typealias EBReadOnlyProperty_ThreeStringArray    = EBGenericReadOnlyProperty <ThreeStringArray>
+typealias EBTransientProperty_ThreeStringArray   = EBGenericTransientProperty <ThreeStringArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property PinQualifiedNameStruct
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_PinQualifiedNameStruct    = EBReadOnlyValueProperty <PinQualifiedNameStruct>
-typealias EBTransientProperty_PinQualifiedNameStruct   = EBTransientValueProperty <PinQualifiedNameStruct>
+typealias EBReadOnlyProperty_PinQualifiedNameStruct    = EBGenericReadOnlyProperty <PinQualifiedNameStruct>
+typealias EBTransientProperty_PinQualifiedNameStruct   = EBGenericTransientProperty <PinQualifiedNameStruct>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class MergerViaShapeArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_MergerViaShapeArray       = EBReadOnlyValueProperty <MergerViaShapeArray>
-typealias EBTransientProperty_MergerViaShapeArray      = EBTransientValueProperty <MergerViaShapeArray>
-typealias EBReadOnlyPropertyArray_MergerViaShapeArray  = EBReadOnlyValueProperty <[MergerViaShapeArray]>
-typealias EBTransientPropertyArray_MergerViaShapeArray = EBTransientValueProperty <[MergerViaShapeArray]>
+typealias EBReadOnlyProperty_MergerViaShapeArray       = EBGenericReadOnlyProperty <MergerViaShapeArray>
+typealias EBTransientProperty_MergerViaShapeArray      = EBGenericTransientProperty <MergerViaShapeArray>
+typealias EBReadOnlyPropertyArray_MergerViaShapeArray  = EBGenericReadOnlyProperty <[MergerViaShapeArray]>
+typealias EBTransientPropertyArray_MergerViaShapeArray = EBGenericTransientProperty <[MergerViaShapeArray]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class MergerSegmentArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_MergerSegmentArray       = EBReadOnlyValueProperty <MergerSegmentArray>
-typealias EBTransientProperty_MergerSegmentArray      = EBTransientValueProperty <MergerSegmentArray>
-typealias EBReadOnlyPropertyArray_MergerSegmentArray  = EBReadOnlyValueProperty <[MergerSegmentArray]>
-typealias EBTransientPropertyArray_MergerSegmentArray = EBTransientValueProperty <[MergerSegmentArray]>
+typealias EBReadOnlyProperty_MergerSegmentArray       = EBGenericReadOnlyProperty <MergerSegmentArray>
+typealias EBTransientProperty_MergerSegmentArray      = EBGenericTransientProperty <MergerSegmentArray>
+typealias EBReadOnlyPropertyArray_MergerSegmentArray  = EBGenericReadOnlyProperty <[MergerSegmentArray]>
+typealias EBTransientPropertyArray_MergerSegmentArray = EBGenericTransientProperty <[MergerSegmentArray]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class MergerBoardLimits
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_MergerBoardLimits       = EBReadOnlyValueProperty <MergerBoardLimits>
-typealias EBTransientProperty_MergerBoardLimits      = EBTransientValueProperty <MergerBoardLimits>
-typealias EBReadOnlyPropertyArray_MergerBoardLimits  = EBReadOnlyValueProperty <[MergerBoardLimits]>
-typealias EBTransientPropertyArray_MergerBoardLimits = EBTransientValueProperty <[MergerBoardLimits]>
+typealias EBReadOnlyProperty_MergerBoardLimits       = EBGenericReadOnlyProperty <MergerBoardLimits>
+typealias EBTransientProperty_MergerBoardLimits      = EBGenericTransientProperty <MergerBoardLimits>
+typealias EBReadOnlyPropertyArray_MergerBoardLimits  = EBGenericReadOnlyProperty <[MergerBoardLimits]>
+typealias EBTransientPropertyArray_MergerBoardLimits = EBGenericTransientProperty <[MergerBoardLimits]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class MergerPadArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_MergerPadArray       = EBReadOnlyValueProperty <MergerPadArray>
-typealias EBTransientProperty_MergerPadArray      = EBTransientValueProperty <MergerPadArray>
-typealias EBReadOnlyPropertyArray_MergerPadArray  = EBReadOnlyValueProperty <[MergerPadArray]>
-typealias EBTransientPropertyArray_MergerPadArray = EBTransientValueProperty <[MergerPadArray]>
+typealias EBReadOnlyProperty_MergerPadArray       = EBGenericReadOnlyProperty <MergerPadArray>
+typealias EBTransientProperty_MergerPadArray      = EBGenericTransientProperty <MergerPadArray>
+typealias EBReadOnlyPropertyArray_MergerPadArray  = EBGenericReadOnlyProperty <[MergerPadArray]>
+typealias EBTransientPropertyArray_MergerPadArray = EBGenericTransientProperty <[MergerPadArray]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property CanariIssueArray
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CanariIssueArray    = EBReadOnlyValueProperty <CanariIssueArray>
-typealias EBTransientProperty_CanariIssueArray   = EBTransientValueProperty <CanariIssueArray>
+typealias EBReadOnlyProperty_CanariIssueArray    = EBGenericReadOnlyProperty <CanariIssueArray>
+typealias EBTransientProperty_CanariIssueArray   = EBGenericTransientProperty <CanariIssueArray>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property NSRect
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSRect    = EBReadOnlyValueProperty <NSRect>
-typealias EBTransientProperty_NSRect   = EBTransientValueProperty <NSRect>
+typealias EBReadOnlyProperty_NSRect    = EBGenericReadOnlyProperty <NSRect>
+typealias EBTransientProperty_NSRect   = EBGenericTransientProperty <NSRect>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property UnconnectedSymbolPinsInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice    = EBReadOnlyValueProperty <UnconnectedSymbolPinsInDevice>
-typealias EBTransientProperty_UnconnectedSymbolPinsInDevice   = EBTransientValueProperty <UnconnectedSymbolPinsInDevice>
+typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice    = EBGenericReadOnlyProperty <UnconnectedSymbolPinsInDevice>
+typealias EBTransientProperty_UnconnectedSymbolPinsInDevice   = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property AssignedPadProxiesInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_AssignedPadProxiesInDevice    = EBReadOnlyValueProperty <AssignedPadProxiesInDevice>
-typealias EBTransientProperty_AssignedPadProxiesInDevice   = EBTransientValueProperty <AssignedPadProxiesInDevice>
+typealias EBReadOnlyProperty_AssignedPadProxiesInDevice    = EBGenericReadOnlyProperty <AssignedPadProxiesInDevice>
+typealias EBTransientProperty_AssignedPadProxiesInDevice   = EBGenericTransientProperty <AssignedPadProxiesInDevice>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property DefinedCharactersInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_DefinedCharactersInDevice    = EBReadOnlyValueProperty <DefinedCharactersInDevice>
-typealias EBTransientProperty_DefinedCharactersInDevice   = EBTransientValueProperty <DefinedCharactersInDevice>
+typealias EBReadOnlyProperty_DefinedCharactersInDevice    = EBGenericReadOnlyProperty <DefinedCharactersInDevice>
+typealias EBTransientProperty_DefinedCharactersInDevice   = EBGenericTransientProperty <DefinedCharactersInDevice>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Scalar property PadNetDictionary
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_PadNetDictionary    = EBReadOnlyValueProperty <PadNetDictionary>
-typealias EBTransientProperty_PadNetDictionary   = EBTransientValueProperty <PadNetDictionary>
+typealias EBReadOnlyProperty_PadNetDictionary    = EBGenericReadOnlyProperty <PadNetDictionary>
+typealias EBTransientProperty_PadNetDictionary   = EBGenericTransientProperty <PadNetDictionary>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class CharacterSegmentListClass
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CharacterSegmentListClass       = EBReadOnlyValueProperty <CharacterSegmentListClass>
-typealias EBTransientProperty_CharacterSegmentListClass      = EBTransientValueProperty <CharacterSegmentListClass>
-typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBReadOnlyValueProperty <[CharacterSegmentListClass]>
-typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientValueProperty <[CharacterSegmentListClass]>
+typealias EBReadOnlyProperty_CharacterSegmentListClass       = EBGenericReadOnlyProperty <CharacterSegmentListClass>
+typealias EBTransientProperty_CharacterSegmentListClass      = EBGenericTransientProperty <CharacterSegmentListClass>
+typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBGenericReadOnlyProperty <[CharacterSegmentListClass]>
+typealias EBTransientPropertyArray_CharacterSegmentListClass = EBGenericTransientProperty <[CharacterSegmentListClass]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Transient property class CharacterGerberCodeClass
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_CharacterGerberCodeClass       = EBReadOnlyValueProperty <CharacterGerberCodeClass>
-typealias EBTransientProperty_CharacterGerberCodeClass      = EBTransientValueProperty <CharacterGerberCodeClass>
-typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyValueProperty <[CharacterGerberCodeClass]>
-typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientValueProperty <[CharacterGerberCodeClass]>
+typealias EBReadOnlyProperty_CharacterGerberCodeClass       = EBGenericReadOnlyProperty <CharacterGerberCodeClass>
+typealias EBTransientProperty_CharacterGerberCodeClass      = EBGenericTransientProperty <CharacterGerberCodeClass>
+typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBGenericReadOnlyProperty <[CharacterGerberCodeClass]>
+typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBGenericTransientProperty <[CharacterGerberCodeClass]>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Property class NSBezierPath
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSBezierPath       = EBReadOnlyValueProperty <NSBezierPath>
-typealias EBTransientProperty_NSBezierPath      = EBTransientValueProperty <NSBezierPath>
-typealias EBReadWriteProperty_NSBezierPath   = EBReadWriteValueProperty <NSBezierPath>
-typealias EBPropertyProxy_NSBezierPath       = EBPropertyValueProxy <NSBezierPath>
-typealias EBComputedProperty_NSBezierPath    = EBComputedValueProperty <NSBezierPath>
-typealias EBStoredProperty_NSBezierPath      = EBStoredValueProperty <NSBezierPath>
-typealias EBPreferencesProperty_NSBezierPath = EBPreferencesValueProperty <NSBezierPath>
+typealias EBReadOnlyProperty_NSBezierPath       = EBGenericReadOnlyProperty <NSBezierPath>
+typealias EBTransientProperty_NSBezierPath      = EBGenericTransientProperty <NSBezierPath>
+typealias EBReadWriteProperty_NSBezierPath   = EBGenericReadWriteProperty <NSBezierPath>
+typealias EBPropertyProxy_NSBezierPath       = EBGenericPropertyProxy <NSBezierPath>
+typealias EBComputedProperty_NSBezierPath    = EBGenericComputedProperty <NSBezierPath>
+typealias EBStoredProperty_NSBezierPath      = EBGenericStoredProperty <NSBezierPath>
+typealias EBPreferencesProperty_NSBezierPath = EBGenericPreferenceProperty <NSBezierPath>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Property class NSFont
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSFont       = EBReadOnlyValueProperty <NSFont>
-typealias EBTransientProperty_NSFont      = EBTransientValueProperty <NSFont>
-typealias EBReadWriteProperty_NSFont   = EBReadWriteValueProperty <NSFont>
-typealias EBPropertyProxy_NSFont       = EBPropertyValueProxy <NSFont>
-typealias EBComputedProperty_NSFont    = EBComputedValueProperty <NSFont>
-typealias EBStoredProperty_NSFont      = EBStoredValueProperty <NSFont>
-typealias EBPreferencesProperty_NSFont = EBPreferencesValueProperty <NSFont>
+typealias EBReadOnlyProperty_NSFont       = EBGenericReadOnlyProperty <NSFont>
+typealias EBTransientProperty_NSFont      = EBGenericTransientProperty <NSFont>
+typealias EBReadWriteProperty_NSFont   = EBGenericReadWriteProperty <NSFont>
+typealias EBPropertyProxy_NSFont       = EBGenericPropertyProxy <NSFont>
+typealias EBComputedProperty_NSFont    = EBGenericComputedProperty <NSFont>
+typealias EBStoredProperty_NSFont      = EBGenericStoredProperty <NSFont>
+typealias EBPreferencesProperty_NSFont = EBGenericPreferenceProperty <NSFont>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Property class NSColor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSColor       = EBReadOnlyValueProperty <NSColor>
-typealias EBTransientProperty_NSColor      = EBTransientValueProperty <NSColor>
-typealias EBReadWriteProperty_NSColor   = EBReadWriteValueProperty <NSColor>
-typealias EBPropertyProxy_NSColor       = EBPropertyValueProxy <NSColor>
-typealias EBComputedProperty_NSColor    = EBComputedValueProperty <NSColor>
-typealias EBStoredProperty_NSColor      = EBStoredValueProperty <NSColor>
-typealias EBPreferencesProperty_NSColor = EBPreferencesValueProperty <NSColor>
+typealias EBReadOnlyProperty_NSColor       = EBGenericReadOnlyProperty <NSColor>
+typealias EBTransientProperty_NSColor      = EBGenericTransientProperty <NSColor>
+typealias EBReadWriteProperty_NSColor   = EBGenericReadWriteProperty <NSColor>
+typealias EBPropertyProxy_NSColor       = EBGenericPropertyProxy <NSColor>
+typealias EBComputedProperty_NSColor    = EBGenericComputedProperty <NSColor>
+typealias EBStoredProperty_NSColor      = EBGenericStoredProperty <NSColor>
+typealias EBPreferencesProperty_NSColor = EBGenericPreferenceProperty <NSColor>
 

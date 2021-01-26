@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBReadWriteValueProperty <T> (abstract class)
+//   EBGenericReadWriteProperty <T> (abstract class)
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equatable {
+class EBGenericReadWriteProperty <T> : EBGenericReadOnlyProperty <T> where T : Equatable {
 
   //····················································································································
 

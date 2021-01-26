@@ -8,7 +8,7 @@ import Cocoa
 //   EBReadOnlyEnumProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBReadOnlyValueProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
+class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBGenericReadOnlyProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
 
   func setFrom (rawValue : Int) {}  // Abstract method
 

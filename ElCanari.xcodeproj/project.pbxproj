@@ -120,8 +120,8 @@
 		CF0777EC235216F800F56EAB /* EBEnumReadWriteProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777E5235216F800F56EAB /* EBEnumReadWriteProperty.swift */; };
 		CF0777ED235216F800F56EAB /* EBEnumStoredProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777E6235216F800F56EAB /* EBEnumStoredProperty.swift */; };
 		CF0777EE235216F800F56EAB /* EBEnumStoredProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777E6235216F800F56EAB /* EBEnumStoredProperty.swift */; };
-		CF0777F923521A4E00F56EAB /* EBPreferencesValueProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777EF23521A4D00F56EAB /* EBPreferencesValueProperty.swift */; };
-		CF0777FA23521A4E00F56EAB /* EBPreferencesValueProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777EF23521A4D00F56EAB /* EBPreferencesValueProperty.swift */; };
+		CF0777F923521A4E00F56EAB /* EBGenericPreferenceProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */; };
+		CF0777FA23521A4E00F56EAB /* EBGenericPreferenceProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */; };
 		CF0777FB23521A4E00F56EAB /* EBEnumProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */; };
 		CF0777FC23521A4E00F56EAB /* EBEnumProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */; };
 		CF0777FD23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */; };
@@ -2544,8 +2544,8 @@
 		CFF4684222F0791600AEC761 /* ProjectDocument-generate-product-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */; };
 		CFF4894B25BDF1D6005A58CD /* computed-BoardTrack-trackDirectionInDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4894A25BDF1D6005A58CD /* computed-BoardTrack-trackDirectionInDegrees.swift */; };
 		CFF4894C25BDF1D6005A58CD /* computed-BoardTrack-trackDirectionInDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4894A25BDF1D6005A58CD /* computed-BoardTrack-trackDirectionInDegrees.swift */; };
-		CFF4894E25BDFC07005A58CD /* EBComputedValueProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4894D25BDFC07005A58CD /* EBComputedValueProperty.swift */; };
-		CFF4894F25BDFC07005A58CD /* EBComputedValueProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4894D25BDFC07005A58CD /* EBComputedValueProperty.swift */; };
+		CFF4894E25BDFC07005A58CD /* EBGenericComputedProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4894D25BDFC07005A58CD /* EBGenericComputedProperty.swift */; };
+		CFF4894F25BDFC07005A58CD /* EBGenericComputedProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4894D25BDFC07005A58CD /* EBGenericComputedProperty.swift */; };
 		CFF5C19522DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C19422DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift */; };
 		CFF5C19622DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C19422DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift */; };
 		CFF5EF03222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */; };
@@ -2685,7 +2685,7 @@
 		CF0777E4235216F700F56EAB /* EBEnumReadOnlyProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumReadOnlyProperty.swift; sourceTree = "<group>"; };
 		CF0777E5235216F800F56EAB /* EBEnumReadWriteProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumReadWriteProperty.swift; sourceTree = "<group>"; };
 		CF0777E6235216F800F56EAB /* EBEnumStoredProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumStoredProperty.swift; sourceTree = "<group>"; };
-		CF0777EF23521A4D00F56EAB /* EBPreferencesValueProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBPreferencesValueProperty.swift; sourceTree = "<group>"; };
+		CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericPreferenceProperty.swift; sourceTree = "<group>"; };
 		CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumProtocol.swift; sourceTree = "<group>"; };
 		CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericReadWriteProperty.swift; sourceTree = "<group>"; };
 		CF0777F223521A4D00F56EAB /* extension-Data-Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-Data-Comparable.swift"; sourceTree = "<group>"; };
@@ -3902,7 +3902,7 @@
 		CFF3DD92229DADA000ABA043 /* view-StatusStringArrayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-StatusStringArrayTableView.swift"; sourceTree = "<group>"; };
 		CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-generate-product-files.swift"; sourceTree = "<group>"; };
 		CFF4894A25BDF1D6005A58CD /* computed-BoardTrack-trackDirectionInDegrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "computed-BoardTrack-trackDirectionInDegrees.swift"; sourceTree = "<group>"; };
-		CFF4894D25BDFC07005A58CD /* EBComputedValueProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBComputedValueProperty.swift; sourceTree = "<group>"; };
+		CFF4894D25BDFC07005A58CD /* EBGenericComputedProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBGenericComputedProperty.swift; sourceTree = "<group>"; };
 		CFF5C19422DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-boardConnectorSelectionController.swift"; sourceTree = "<group>"; };
 		CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DeviceDocumentation.swift"; sourceTree = "<group>"; };
 		CFF5EF0522269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceDocumentation-fileSize.swift"; sourceTree = "<group>"; };
@@ -4519,7 +4519,7 @@
 				CF0777A62352100D00F56EAB /* BezierPathArray.swift */,
 				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
 				CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */,
-				CFF4894D25BDFC07005A58CD /* EBComputedValueProperty.swift */,
+				CFF4894D25BDFC07005A58CD /* EBGenericComputedProperty.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CF0777E3235216F700F56EAB /* EBEnumPropertyProxy.swift */,
 				CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */,
@@ -4527,6 +4527,7 @@
 				CF0777E5235216F800F56EAB /* EBEnumReadWriteProperty.swift */,
 				CF0777E6235216F800F56EAB /* EBEnumStoredProperty.swift */,
 				CF0777D02352152F00F56EAB /* EBEnumTransientProperty.swift */,
+				CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */,
 				CF0777F423521A4E00F56EAB /* EBGenericPropertyProxy.swift */,
 				CF0777F723521A4E00F56EAB /* EBGenericReadOnlyProperty.swift */,
 				CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */,
@@ -4541,7 +4542,6 @@
 				CF0777D22352152F00F56EAB /* EBObject.swift */,
 				CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */,
 				CF8BE745235112CB00F95B3A /* EBObserver.swift */,
-				CF0777EF23521A4D00F56EAB /* EBPreferencesValueProperty.swift */,
 				CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */,
 				CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */,
 				CF07781123521CB800F56EAB /* EBSelection.swift */,
@@ -6141,7 +6141,7 @@
 				CF6B32E821C8F75000E3B985 /* transient-PackageGuide-selectionDisplay.swift in Sources */,
 				CFEB7BA2233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
 				CFA42F99229AEACF000AA8C8 /* toone-SymbolPinTypeInDevice.swift in Sources */,
-				CF0777F923521A4E00F56EAB /* EBPreferencesValueProperty.swift in Sources */,
+				CF0777F923521A4E00F56EAB /* EBGenericPreferenceProperty.swift in Sources */,
 				CFBFEF9B25BF20DE0012C630 /* CanariChoiceMenu.swift in Sources */,
 				CF33B8E822DB38AE00161A58 /* extension-NSColor.swift in Sources */,
 				CF12885820FF5147007B808C /* transient-BoardModel-boardLimitsBezierPaths.swift in Sources */,
@@ -7208,7 +7208,7 @@
 				CFEAAD6D2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
 				CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF644E1122E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */,
-				CFF4894E25BDFC07005A58CD /* EBComputedValueProperty.swift in Sources */,
+				CFF4894E25BDFC07005A58CD /* EBGenericComputedProperty.swift in Sources */,
 				CF4C8F3925262ADC0046F831 /* EBObservableObjectProtocol.swift in Sources */,
 				CF2FF0D7242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift in Sources */,
 				CFA42FA8229AEAEC000AA8C8 /* toone-SegmentForFontCharacter.swift in Sources */,
@@ -7383,7 +7383,7 @@
 				CFEB7BA3233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
 				CF5C4CD5219F04D600EAC52A /* CanariSegmentedControl.swift in Sources */,
 				CFBFEF9C25BF20DE0012C630 /* CanariChoiceMenu.swift in Sources */,
-				CF0777FA23521A4E00F56EAB /* EBPreferencesValueProperty.swift in Sources */,
+				CF0777FA23521A4E00F56EAB /* EBGenericPreferenceProperty.swift in Sources */,
 				CF69ABD421A6C08100F5E49A /* entity-SymbolPin.swift in Sources */,
 				CF5C4CD6219F04D600EAC52A /* action-Preferences-addLibraryEntryAction.swift in Sources */,
 				CFA430AC229AEC41000AA8C8 /* tomany-SymbolSegment.swift in Sources */,
@@ -8448,7 +8448,7 @@
 				CF30CDE421C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF35A54D21A825BC00A0E500 /* extension-String.swift in Sources */,
 				CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */,
-				CFF4894F25BDFC07005A58CD /* EBComputedValueProperty.swift in Sources */,
+				CFF4894F25BDFC07005A58CD /* EBGenericComputedProperty.swift in Sources */,
 				CF4C8F3A25262ADC0046F831 /* EBObservableObjectProtocol.swift in Sources */,
 				CF2FF0D8242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift in Sources */,
 				CFF5EF0722269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,

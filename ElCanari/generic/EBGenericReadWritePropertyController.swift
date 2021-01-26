@@ -10,11 +10,11 @@ class EBGenericReadWritePropertyController <T> : EBReadOnlyPropertyController wh
 
   //····················································································································
 
-  private let mObject : EBReadWriteValueProperty <T>
+  private let mObject : EBGenericReadWriteProperty <T>
 
   //····················································································································
 
-  init (observedObject inObject : EBReadWriteValueProperty <T>, callBack inCallBack : @escaping () -> Void) {
+  init (observedObject inObject : EBGenericReadWriteProperty <T>, callBack inCallBack : @escaping () -> Void) {
     self.mObject = inObject
     super.init (observedObjects : [inObject], callBack : inCallBack)
   }

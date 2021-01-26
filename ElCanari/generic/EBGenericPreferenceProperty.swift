@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBPreferencesValueProperty <T>
+//   EBGenericPreferenceProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EBPreferencesValueProperty <T : EBPropertyProtocol> : EBStoredValueProperty <T> {
+final class EBGenericPreferenceProperty <T : EBPropertyProtocol> : EBGenericStoredProperty <T> {
 
   //····················································································································
 
