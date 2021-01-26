@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_xPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mXPlacardUnitController = EBSimpleController (
+    self.mXPlacardUnitController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateXPlacardUnit (from: model) }
     )

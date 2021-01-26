@@ -118,7 +118,7 @@ class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate 
 //   Controller_EBDoubleField_value
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBDoubleField_value : EBSimpleController {
+final class Controller_EBDoubleField_value : EBReadOnlyPropertyController {
 
   private let mObject : EBReadWriteProperty_Double
   private let mOutlet : EBDoubleField

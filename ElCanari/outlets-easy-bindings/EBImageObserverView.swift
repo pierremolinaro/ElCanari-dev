@@ -44,12 +44,12 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate var mImageController : EBSimpleController? = nil
+  fileprivate var mImageController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_image (_ object : EBReadOnlyProperty_NSImage, file : String, line : Int) {
-    self.mImageController = EBSimpleController (observedObjects: [object], callBack: { self.updateImage (object) } )
+    self.mImageController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { self.updateImage (object) } )
   }
 
   //····················································································································
@@ -79,12 +79,12 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mTooltipController : EBSimpleController? = nil
+  private var mTooltipController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_tooltip (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mTooltipController = EBSimpleController (observedObjects: [object], callBack : { self.updateTooltip (object) })
+    self.mTooltipController = EBReadOnlyPropertyController (observedObjects: [object], callBack : { self.updateTooltip (object) })
   }
 
   //····················································································································

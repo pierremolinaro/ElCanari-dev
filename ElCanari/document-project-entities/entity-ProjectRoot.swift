@@ -2850,8 +2850,8 @@ class ProjectRoot : EBManagedObject,
   //   ToMany proxy: selectedSheetObjects
   //····················································································································
 
-  var selectedSheetObjects_modelDidChangeController : EBSimpleController? = nil
-  // var selectedSheetObjects_boundObjectDidChangeController : EBSimpleController? = nil
+  var selectedSheetObjects_modelDidChangeController : EBReadOnlyPropertyController? = nil
+  // var selectedSheetObjects_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
   let selectedSheetObjects_property = ProxyArrayOf_SchematicObject ()
 
   //····················································································································
@@ -2880,8 +2880,8 @@ class ProjectRoot : EBManagedObject,
   //   ToMany proxy: fileGenerationParameterArray
   //····················································································································
 
-  var fileGenerationParameterArray_modelDidChangeController : EBSimpleController? = nil
-  // var fileGenerationParameterArray_boundObjectDidChangeController : EBSimpleController? = nil
+  var fileGenerationParameterArray_modelDidChangeController : EBReadOnlyPropertyController? = nil
+  // var fileGenerationParameterArray_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
   let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
@@ -4260,7 +4260,7 @@ class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
     do{
-      let controller = EBSimpleController (
+      let controller = EBReadOnlyPropertyController (
         observedObjects: [self.mSelectedSheet_property],
         callBack: { [weak self] in
           if let me = self, let model = me.mSelectedSheet {
@@ -4273,7 +4273,7 @@ class ProjectRoot : EBManagedObject,
     }
   //--- ToMany proxy: fileGenerationParameterArray
     do{
-      let controller = EBSimpleController (
+      let controller = EBReadOnlyPropertyController (
         observedObjects: [self.mArtwork_property],
         callBack: { [weak self] in
           if let me = self, let model = me.mArtwork {
@@ -4633,7 +4633,7 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackCountString_property)
+    self.mBoardObjects_property.addEBObserverOf_trackLengthInCanariUnit (self.trackCountString_property)
   //--- Atomic property: trackLengthString
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4656,7 +4656,7 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackLengthString_property)
+    self.mBoardObjects_property.addEBObserverOf_trackLengthInCanariUnit (self.trackLengthString_property)
     self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property)
   //--- Atomic property: boardStatusImage
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
@@ -5474,8 +5474,8 @@ class ProjectRoot : EBManagedObject,
     // self.mLastERCCheckingSignature_property.removeEBObserver (self.ercStatusMessage_property)
     // self.signatureForERCChecking_property.removeEBObserver (self.ercStatusMessage_property)
     // self.mBoardObjects_property.removeEBObserverOf_isVia (self.viaCountString_property)
-    // self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackCountString_property)
-    // self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackLengthString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackLengthString_property)
     // self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
     // self.boardIssues_property.removeEBObserver (self.boardStatusImage_property)
     // self.boardIssues_property.removeEBObserver (self.boardStatusMessage_property)

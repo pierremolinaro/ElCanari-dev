@@ -227,7 +227,6 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //---
   }
 
   //····················································································································

@@ -183,12 +183,12 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
   //  $netInfo binding
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray, file : String, line : Int) {
-    self.mController = EBSimpleController (
+    self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )

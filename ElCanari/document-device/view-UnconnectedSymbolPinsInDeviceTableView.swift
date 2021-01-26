@@ -135,12 +135,12 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //  $imageData binding
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_unconnectedPins (_ model : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice, file : String, line : Int) {
-    self.mController = EBSimpleController (
+    self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedSymbolPinsList (from: model) }
     )

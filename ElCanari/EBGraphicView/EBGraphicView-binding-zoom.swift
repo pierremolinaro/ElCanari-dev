@@ -44,7 +44,7 @@ extension EBGraphicView {
 //   MARK: -
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
+final class Controller_CanariViewWithZoomAndFlip_zoom : EBReadOnlyPropertyController {
 
   private let mZoomProperty : EBReadWriteProperty_Int
   private let mOutlet : EBGraphicView

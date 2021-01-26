@@ -95,7 +95,7 @@ class EBFontButton : NSButton, EBUserClassNameProtocol {
 //   Controller_EBFontButton_fontValue
 //----------------------------------------------------------------------------------------------------------------------
 
-class Controller_EBFontButton_fontValue : EBSimpleController {
+class Controller_EBFontButton_fontValue : EBReadOnlyPropertyController {
 
   fileprivate let mObject : EBReadWriteProperty_NSFont
   private let mOutlet : EBFontButton

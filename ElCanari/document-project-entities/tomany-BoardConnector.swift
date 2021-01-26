@@ -27,6 +27,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     self.removeEBObserversOf_mCustomPadDiameter_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCustomPadDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_isConnectedToSomePad_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netNameFromComponentPad_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (inRemovedSet) // Transient property
@@ -56,6 +57,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     self.addEBObserversOf_mCustomPadDiameter_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCustomPadDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mUsesCustomPadDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_isConnectedToSomePad_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netNameFromComponentPad_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netNameAndPadLocation_toElementsOfSet (inAddedSet) // Transient property
@@ -754,6 +756,62 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUsesCustomPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isConnectedToSomePad' transient property
+  //····················································································································
+
+  private var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isConnectedToSomePad.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isConnectedToSomePad_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isConnectedToSomePad.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isConnectedToSomePad_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isConnectedToSomePad_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isConnectedToSomePad.apply { (_ observer : EBEvent) in
+        managedObject.isConnectedToSomePad_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isConnectedToSomePad_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isConnectedToSomePad.apply { (_ observer : EBEvent) in
+        managedObject.isConnectedToSomePad_property.removeEBObserver (observer)
       }
     }
   }

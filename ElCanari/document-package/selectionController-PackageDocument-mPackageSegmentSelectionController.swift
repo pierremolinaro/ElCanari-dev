@@ -239,7 +239,6 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //--- lengthInCanariUnit
     self.lengthInCanariUnit_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
-  //---
   }
 
   //····················································································································

@@ -47,12 +47,12 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mValueController : EBSimpleController? = nil
+  private var mValueController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass, file : String, line : Int) {
-    self.mValueController = EBSimpleController (
+    self.mValueController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }
     )

@@ -79,7 +79,7 @@ class CanariSelectionPopUpButton : EBPopUpButton {
 //   Controller_CanariSelectionPopUpButton_selectedNameInArray
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBSimpleController {
+final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBReadOnlyPropertyController {
 
   //····················································································································
 

@@ -157,7 +157,7 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 //   Controller Controller_DeviceDroppableImageView_imageData
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_DeviceDroppableImageView_imageData : EBSimpleController {
+final class Controller_DeviceDroppableImageView_imageData : EBReadOnlyPropertyController {
 
   private let mOutlet : DeviceDroppableImageView
   private let mObject : EBStoredProperty_Data

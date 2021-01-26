@@ -51,7 +51,7 @@ private let DEBUG_EVENT = false
 //----------------------------------------------------------------------------------------------------------------------
 
 final class Controller_CanariCharacterGerberCodeTableView_characterGerberCode :
-EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
+EBReadOnlyPropertyController, NSTableViewDataSource, NSTableViewDelegate {
 
   private let mObject : EBReadOnlyProperty_CharacterGerberCodeClass
   private let mTableView : CanariCharacterGerberCodeTableView

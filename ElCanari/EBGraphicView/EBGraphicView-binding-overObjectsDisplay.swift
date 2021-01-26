@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_overObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file:String, line:Int) {
-    self.mOverObjectsDisplayController = EBSimpleController (
+    self.mOverObjectsDisplayController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateOverObjectsDisplay (from: model) }
     )

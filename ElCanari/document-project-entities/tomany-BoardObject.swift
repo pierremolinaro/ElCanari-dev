@@ -18,7 +18,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_isVia_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_trackLength_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -29,7 +29,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.addEBObserversOf_isPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_isVia_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_trackLength_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netNameAndPadLocation_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
@@ -207,57 +207,57 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   }
 
   //····················································································································
-  //   Observers of 'trackLength' transient property
+  //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_trackLength = EBWeakEventSet ()
+  private var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_trackLength (_ inObserver : EBEvent) {
+  final func addEBObserverOf_trackLengthInCanariUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_trackLength.insert (inObserver)
+    self.mObserversOf_trackLengthInCanariUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackLength_property.addEBObserver (inObserver)
+        managedObject.trackLengthInCanariUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_trackLength (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_trackLengthInCanariUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_trackLength.remove (inObserver)
+    self.mObserversOf_trackLengthInCanariUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackLength_property.removeEBObserver (inObserver)
+        managedObject.trackLengthInCanariUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_trackLength_toElementsOfSet (_ inSet : Set<BoardObject>) {
+  final func addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (_ inSet : Set<BoardObject>) {
     for managedObject in inSet {
-      self.mObserversOf_trackLength.apply { (_ observer : EBEvent) in
-        managedObject.trackLength_property.addEBObserver (observer)
+      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
+        managedObject.trackLengthInCanariUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_trackLength_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+  final func removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (_ inSet : Set<BoardObject>) {
     for managedObject in inSet {
-      self.mObserversOf_trackLength.apply { (_ observer : EBEvent) in
-        managedObject.trackLength_property.removeEBObserver (observer)
+      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
+        managedObject.trackLengthInCanariUnit_property.removeEBObserver (observer)
       }
     }
   }

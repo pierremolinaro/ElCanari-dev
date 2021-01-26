@@ -12,6 +12,7 @@ typealias EBReadOnlyProperty_UInt32    = EBReadOnlyValueProperty <UInt32>
 typealias EBTransientProperty_UInt32   = EBTransientValueProperty <UInt32>
 typealias EBReadWriteProperty_UInt32   = EBReadWriteValueProperty <UInt32>
 typealias EBPropertyProxy_UInt32       = EBPropertyValueProxy <UInt32>
+typealias EBComputedProperty_UInt32    = EBComputedValueProperty <UInt32>
 typealias EBStoredProperty_UInt32      = EBStoredValueProperty <UInt32>
 typealias EBPreferencesProperty_UInt32 = EBPreferencesValueProperty <UInt32>
 
@@ -59,6 +60,7 @@ typealias EBReadOnlyProperty_Int    = EBReadOnlyValueProperty <Int>
 typealias EBTransientProperty_Int   = EBTransientValueProperty <Int>
 typealias EBReadWriteProperty_Int   = EBReadWriteValueProperty <Int>
 typealias EBPropertyProxy_Int       = EBPropertyValueProxy <Int>
+typealias EBComputedProperty_Int    = EBComputedValueProperty <Int>
 typealias EBStoredProperty_Int      = EBStoredValueProperty <Int>
 typealias EBPreferencesProperty_Int = EBPreferencesValueProperty <Int>
 
@@ -106,6 +108,7 @@ typealias EBReadOnlyProperty_Bool    = EBReadOnlyValueProperty <Bool>
 typealias EBTransientProperty_Bool   = EBTransientValueProperty <Bool>
 typealias EBReadWriteProperty_Bool   = EBReadWriteValueProperty <Bool>
 typealias EBPropertyProxy_Bool       = EBPropertyValueProxy <Bool>
+typealias EBComputedProperty_Bool    = EBComputedValueProperty <Bool>
 typealias EBStoredProperty_Bool      = EBStoredValueProperty <Bool>
 typealias EBPreferencesProperty_Bool = EBPreferencesValueProperty <Bool>
 
@@ -153,6 +156,7 @@ typealias EBReadOnlyProperty_Double    = EBReadOnlyValueProperty <Double>
 typealias EBTransientProperty_Double   = EBTransientValueProperty <Double>
 typealias EBReadWriteProperty_Double   = EBReadWriteValueProperty <Double>
 typealias EBPropertyProxy_Double       = EBPropertyValueProxy <Double>
+typealias EBComputedProperty_Double    = EBComputedValueProperty <Double>
 typealias EBStoredProperty_Double      = EBStoredValueProperty <Double>
 typealias EBPreferencesProperty_Double = EBPreferencesValueProperty <Double>
 
@@ -200,6 +204,7 @@ typealias EBReadOnlyProperty_String    = EBReadOnlyValueProperty <String>
 typealias EBTransientProperty_String   = EBTransientValueProperty <String>
 typealias EBReadWriteProperty_String   = EBReadWriteValueProperty <String>
 typealias EBPropertyProxy_String       = EBPropertyValueProxy <String>
+typealias EBComputedProperty_String    = EBComputedValueProperty <String>
 typealias EBStoredProperty_String      = EBStoredValueProperty <String>
 typealias EBPreferencesProperty_String = EBPreferencesValueProperty <String>
 
@@ -241,6 +246,7 @@ typealias EBReadOnlyProperty_Data    = EBReadOnlyValueProperty <Data>
 typealias EBTransientProperty_Data   = EBTransientValueProperty <Data>
 typealias EBReadWriteProperty_Data   = EBReadWriteValueProperty <Data>
 typealias EBPropertyProxy_Data       = EBPropertyValueProxy <Data>
+typealias EBComputedProperty_Data    = EBComputedValueProperty <Data>
 typealias EBStoredProperty_Data      = EBStoredValueProperty <Data>
 typealias EBPreferencesProperty_Data = EBPreferencesValueProperty <Data>
 
@@ -288,6 +294,7 @@ typealias EBReadOnlyProperty_Date    = EBReadOnlyValueProperty <Date>
 typealias EBTransientProperty_Date   = EBTransientValueProperty <Date>
 typealias EBReadWriteProperty_Date   = EBReadWriteValueProperty <Date>
 typealias EBPropertyProxy_Date       = EBPropertyValueProxy <Date>
+typealias EBComputedProperty_Date    = EBComputedValueProperty <Date>
 typealias EBStoredProperty_Date      = EBStoredValueProperty <Date>
 typealias EBPreferencesProperty_Date = EBPreferencesValueProperty <Date>
 
@@ -335,6 +342,7 @@ typealias EBReadOnlyProperty_BezierPathArray    = EBReadOnlyValueProperty <Bezie
 typealias EBTransientProperty_BezierPathArray   = EBTransientValueProperty <BezierPathArray>
 typealias EBReadWriteProperty_BezierPathArray   = EBReadWriteValueProperty <BezierPathArray>
 typealias EBPropertyProxy_BezierPathArray       = EBPropertyValueProxy <BezierPathArray>
+typealias EBComputedProperty_BezierPathArray    = EBComputedValueProperty <BezierPathArray>
 typealias EBStoredProperty_BezierPathArray      = EBStoredValueProperty <BezierPathArray>
 typealias EBPreferencesProperty_BezierPathArray = EBPreferencesValueProperty <BezierPathArray>
 
@@ -750,6 +758,7 @@ typealias EBReadOnlyProperty_NSBezierPath       = EBReadOnlyValueProperty <NSBez
 typealias EBTransientProperty_NSBezierPath      = EBTransientValueProperty <NSBezierPath>
 typealias EBReadWriteProperty_NSBezierPath   = EBReadWriteValueProperty <NSBezierPath>
 typealias EBPropertyProxy_NSBezierPath       = EBPropertyValueProxy <NSBezierPath>
+typealias EBComputedProperty_NSBezierPath    = EBComputedValueProperty <NSBezierPath>
 typealias EBStoredProperty_NSBezierPath      = EBStoredValueProperty <NSBezierPath>
 typealias EBPreferencesProperty_NSBezierPath = EBPreferencesValueProperty <NSBezierPath>
 
@@ -761,6 +770,7 @@ typealias EBReadOnlyProperty_NSFont       = EBReadOnlyValueProperty <NSFont>
 typealias EBTransientProperty_NSFont      = EBTransientValueProperty <NSFont>
 typealias EBReadWriteProperty_NSFont   = EBReadWriteValueProperty <NSFont>
 typealias EBPropertyProxy_NSFont       = EBPropertyValueProxy <NSFont>
+typealias EBComputedProperty_NSFont    = EBComputedValueProperty <NSFont>
 typealias EBStoredProperty_NSFont      = EBStoredValueProperty <NSFont>
 typealias EBPreferencesProperty_NSFont = EBPreferencesValueProperty <NSFont>
 
@@ -772,6 +782,7 @@ typealias EBReadOnlyProperty_NSColor       = EBReadOnlyValueProperty <NSColor>
 typealias EBTransientProperty_NSColor      = EBTransientValueProperty <NSColor>
 typealias EBReadWriteProperty_NSColor   = EBReadWriteValueProperty <NSColor>
 typealias EBPropertyProxy_NSColor       = EBPropertyValueProxy <NSColor>
+typealias EBComputedProperty_NSColor    = EBComputedValueProperty <NSColor>
 typealias EBStoredProperty_NSColor      = EBStoredValueProperty <NSColor>
 typealias EBPreferencesProperty_NSColor = EBPreferencesValueProperty <NSColor>
 

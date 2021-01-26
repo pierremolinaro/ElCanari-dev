@@ -98,7 +98,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 //   Controller Controller_EBTextField_value
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBTextField_value : EBSimpleController {
+final class Controller_EBTextField_value : EBReadOnlyPropertyController {
 
   private let mOutlet : EBTextField
   private let mObject : EBReadWriteProperty_String

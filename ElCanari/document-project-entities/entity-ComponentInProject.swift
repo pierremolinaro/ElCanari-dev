@@ -791,8 +791,8 @@ class ComponentInProject : BoardObject,
   //   ToMany proxy: mPackages
   //····················································································································
 
-  var mPackages_modelDidChangeController : EBSimpleController? = nil
-  // var mPackages_boundObjectDidChangeController : EBSimpleController? = nil
+  var mPackages_modelDidChangeController : EBReadOnlyPropertyController? = nil
+  // var mPackages_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
   let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
 
   //····················································································································
@@ -1356,7 +1356,7 @@ class ComponentInProject : BoardObject,
     self.componentAvailablePackagesController.bind_model (self.mPackages_property, self.ebUndoManager)
   //--- ToMany proxy: mPackages
     do{
-      let controller = EBSimpleController (
+      let controller = EBReadOnlyPropertyController (
         observedObjects: [self.mDevice_property],
         callBack: { [weak self] in
           if let me = self, let model = me.mDevice {

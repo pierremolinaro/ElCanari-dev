@@ -78,6 +78,13 @@ extension NSPoint : Hashable {
   }
 
   //····················································································································
+
+  static func point (fromCenter inCenter : NSPoint, atDistance inDistance : CGFloat, angleInDegrees inRotationInDegrees : CGFloat) -> NSPoint {
+    let angleInRadian = inRotationInDegrees * .pi / 180.0
+    return NSPoint (x: inCenter.x + inDistance * cos (angleInRadian), y: inCenter.y + inDistance * sin (angleInRadian))
+  }
+
+  //····················································································································
   /// The hash value.
   ///
   /// Hash values are not guaranteed to be equal across different executions of

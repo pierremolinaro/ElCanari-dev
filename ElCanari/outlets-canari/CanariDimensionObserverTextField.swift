@@ -68,7 +68,7 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 
   //····················································································································
 
-  private var mController : EBSimpleController?
+  private var mController : EBReadOnlyPropertyController?
 
   //····················································································································
 
@@ -76,7 +76,7 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
                               _ unit : EBReadOnlyProperty_Int,
                               file : String,
                               line : Int) {
-    self.mController = EBSimpleController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
+    self.mController = EBReadOnlyPropertyController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
   }
 
   //····················································································································
@@ -94,7 +94,7 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 //   Controller Controller_CanariDimensionObserverTextField_dimensionAndUnit
 //----------------------------------------------------------------------------------------------------------------------
 
-//final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSimpleController {
+//final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBReadOnlyPropertyController {
 //
 //  //····················································································································
 //

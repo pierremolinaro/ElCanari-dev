@@ -254,7 +254,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //--- nameRect
     self.nameRect_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_nameRect (self.nameRect_property)
-  //---
   }
 
   //····················································································································

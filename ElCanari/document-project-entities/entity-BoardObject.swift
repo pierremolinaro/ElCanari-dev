@@ -24,8 +24,8 @@ protocol BoardObject_isVia : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_trackLength : class {
-  var trackLength : Double? { get }
+protocol BoardObject_trackLengthInCanariUnit : class {
+  var trackLengthInCanariUnit : Double? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_isPlacedInBoard,
          BoardObject_issues,
          BoardObject_isVia,
-         BoardObject_trackLength,
+         BoardObject_trackLengthInCanariUnit,
          BoardObject_signatureForERCChecking,
          BoardObject_netNameAndPadLocation,
          BoardObject_componentName,
@@ -188,21 +188,21 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: trackLength
+  //   Transient property: trackLengthInCanariUnit
   //····················································································································
 
-  final let trackLength_property = EBTransientProperty_Double ()
+  final let trackLengthInCanariUnit_property = EBTransientProperty_Double ()
 
   //····················································································································
 
-  final var trackLength_property_selection : EBSelection <Double> {
-    return self.trackLength_property.selection
+  final var trackLengthInCanariUnit_property_selection : EBSelection <Double> {
+    return self.trackLengthInCanariUnit_property.selection
   }
 
   //····················································································································
 
-  final var trackLength : Double? {
-    switch self.trackLength_property_selection {
+  final var trackLengthInCanariUnit : Double? {
+    switch self.trackLengthInCanariUnit_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -409,12 +409,12 @@ class BoardObject : EBGraphicManagedObject,
       valueExplorer: &self.isVia_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "trackLength",
-      idx: self.trackLength_property.ebObjectIndex,
+      "trackLengthInCanariUnit",
+      idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.trackLength_property.mObserverExplorer,
-      valueExplorer: &self.trackLength_property.mValueExplorer
+      observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
+      valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "signatureForERCChecking",

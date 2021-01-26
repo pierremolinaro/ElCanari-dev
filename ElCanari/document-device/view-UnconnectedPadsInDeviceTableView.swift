@@ -133,12 +133,12 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NST
   //  $imageData binding
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_unconnectedPads (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
-    self.mController = EBSimpleController (
+    self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
     )

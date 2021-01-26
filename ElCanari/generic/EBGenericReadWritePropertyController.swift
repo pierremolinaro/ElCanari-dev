@@ -5,33 +5,24 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   EBSimpleController
-//----------------------------------------------------------------------------------------------------------------------
 
-class EBSimpleController : EBOutletEvent {
+class EBGenericReadWritePropertyController <T> : EBReadOnlyPropertyController where T : Equatable {
 
   //····················································································································
 
-  private let mPrivateObservedObjects : [EBObservableObjectProtocol]
+  private let mObject : EBReadWriteValueProperty <T>
 
   //····················································································································
 
-  init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
-    self.mPrivateObservedObjects = observedObjects
-    super.init ()
-    self.mEventCallBack = callBack
-    for object in observedObjects {
-      object.addEBObserver (self)
-    }
+  init (observedObject inObject : EBReadWriteValueProperty <T>, callBack inCallBack : @escaping () -> Void) {
+    self.mObject = inObject
+    super.init (observedObjects : [inObject], callBack : inCallBack)
   }
 
   //····················································································································
 
-  override func unregister () {
-    super.unregister ()
-    for object in self.mPrivateObservedObjects {
-      object.removeEBObserver (self)
-    }
+  func updateModel (withCandidateValue inValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
+    return mObject.validateAndSetProp (inValue, windowForSheet: inWindow)
   }
 
   //····················································································································

@@ -251,7 +251,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mUnderObjectsDisplayController : EBSimpleController?
+  final internal var mUnderObjectsDisplayController : EBReadOnlyPropertyController?
 
   //····················································································································
   // MARK: -
@@ -268,7 +268,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mOverObjectsDisplayController : EBSimpleController? = nil
+  final internal var mOverObjectsDisplayController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -301,7 +301,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mArrowKeyMagnitudeController : EBSimpleController? = nil
+  final internal var mArrowKeyMagnitudeController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -321,7 +321,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
  //····················································································································
 
-  final internal var mShiftArrowKeyMagnitudeController : EBSimpleController? = nil
+  final internal var mShiftArrowKeyMagnitudeController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -338,7 +338,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mBackColorController : EBSimpleController? = nil
+  final internal var mBackColorController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -396,7 +396,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mMouseGridController : EBSimpleController? = nil
+  final internal var mMouseGridController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -531,7 +531,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mXPlacardUnitController : EBSimpleController? = nil
+  final internal var mXPlacardUnitController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -547,7 +547,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mYPlacardUnitController : EBSimpleController? = nil
+  final internal var mYPlacardUnitController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -566,7 +566,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mControlKeyHiliteDiameterController : EBSimpleController? = nil
+  final internal var mControlKeyHiliteDiameterController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -613,11 +613,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mHorizontalFlipController : EBSimpleController? = nil
+  final internal var mHorizontalFlipController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
-  final internal var mVerticalFlipController : EBSimpleController? = nil
+  final internal var mVerticalFlipController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // Grid Style
@@ -634,7 +634,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mGridStyleController : EBSimpleController? = nil
+  final internal var mGridStyleController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -650,7 +650,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mGridStepController : EBSimpleController? = nil
+  final internal var mGridStepController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -666,7 +666,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mGridDisplayFactorController : EBSimpleController? = nil
+  final internal var mGridDisplayFactorController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -682,7 +682,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mGridLineColorController : EBSimpleController? = nil
+  final internal var mGridLineColorController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -698,7 +698,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final internal var mGridCrossColorController : EBSimpleController? = nil
+  final internal var mGridCrossColorController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -747,10 +747,10 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     }
   }
 
-  final var mBackgroundImageDataController : EBSimpleController? = nil
+  final var mBackgroundImageDataController : EBReadOnlyPropertyController? = nil
 
   final var mBackgroundImageOpacity : CGFloat = 1.0
-  final var mBackgroundImageOpacityController : EBSimpleController? = nil
+  final var mBackgroundImageOpacityController : EBReadOnlyPropertyController? = nil
 
   final var mBackgroundImageAffineTransform = NSAffineTransform () {
     didSet {
@@ -770,10 +770,10 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     }
   }
 
-  final var mForegroundImageDataController : EBSimpleController? = nil
+  final var mForegroundImageDataController : EBReadOnlyPropertyController? = nil
 
   final var mForegroundImageOpacity : CGFloat = 1.0
-  final var mForegroundImageOpacityController : EBSimpleController? = nil
+  final var mForegroundImageOpacityController : EBReadOnlyPropertyController? = nil
 
   final var mForegroundImageAffineTransform = NSAffineTransform () {
     didSet {

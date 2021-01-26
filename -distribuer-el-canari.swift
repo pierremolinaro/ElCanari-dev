@@ -28,14 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.5"
+let VERSION_CANARI = "1.3.6"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "Drag Track Fixed",
-  "Zoom to fit, Zoom region fixed"
-]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Autorouter GUI settings are stored in ElCanari Preferences"
+  "Improved manual track routing"
 ]
 let NEWS : [String] = []
 

@@ -343,7 +343,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //--- emptyForbiddenPadArray
     self.emptyForbiddenPadArray_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_emptyForbiddenPadArray (self.emptyForbiddenPadArray_property)
-  //---
   }
 
   //····················································································································

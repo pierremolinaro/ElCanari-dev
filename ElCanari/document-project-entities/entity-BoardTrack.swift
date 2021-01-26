@@ -66,14 +66,26 @@ protocol BoardTrack_mP2YUnit : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_actualTrackWidth : class {
-  var actualTrackWidth : Int? { get }
+protocol BoardTrack_mManualLockP1 : class {
+  var mManualLockP1 : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
+protocol BoardTrack_mManualLockP2 : class {
+  var mManualLockP2 : Bool { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_mDirectionLockOnKnobDragging : class {
+  var mDirectionLockOnKnobDragging : TrackLockDirection { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_actualTrackWidth : class {
+  var actualTrackWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -108,20 +120,8 @@ protocol BoardTrack_netClassViaPadDiameter : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_trackLength : class {
-  var trackLength : Double? { get }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-protocol BoardTrack_endPointsLocation : class {
-  var endPointsLocation : CanariPointArray? { get }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-protocol BoardTrack_trackDirectionInDegrees : class {
-  var trackDirectionInDegrees : Int? { get }
+protocol BoardTrack_trackLengthInCanariUnit : class {
+  var trackLengthInCanariUnit : Double? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -132,8 +132,44 @@ protocol BoardTrack_signatureForERCChecking : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol BoardTrack_p1ConnectedToSomePad : class {
+  var p1ConnectedToSomePad : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_p2ConnectedToSomePad : class {
+  var p2ConnectedToSomePad : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol BoardTrack_objectDisplay : class {
   var objectDisplay : EBShape? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_p1CanMove : class {
+  var p1CanMove : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_p2CanMove : class {
+  var p2CanMove : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_trackCanRotate : class {
+  var trackCanRotate : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol BoardTrack_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -151,18 +187,24 @@ class BoardTrack : BoardObject,
          BoardTrack_mP1YUnit,
          BoardTrack_mP2XUnit,
          BoardTrack_mP2YUnit,
+         BoardTrack_mManualLockP1,
+         BoardTrack_mManualLockP2,
+         BoardTrack_mDirectionLockOnKnobDragging,
          BoardTrack_actualTrackWidth,
-         BoardTrack_selectionDisplay,
          BoardTrack_netName,
          BoardTrack_netClassName,
          BoardTrack_netClassTrackWidth,
          BoardTrack_netClassViaHoleDiameter,
          BoardTrack_netClassViaPadDiameter,
-         BoardTrack_trackLength,
-         BoardTrack_endPointsLocation,
-         BoardTrack_trackDirectionInDegrees,
+         BoardTrack_trackLengthInCanariUnit,
          BoardTrack_signatureForERCChecking,
-         BoardTrack_objectDisplay {
+         BoardTrack_p1ConnectedToSomePad,
+         BoardTrack_p2ConnectedToSomePad,
+         BoardTrack_objectDisplay,
+         BoardTrack_p1CanMove,
+         BoardTrack_p2CanMove,
+         BoardTrack_trackCanRotate,
+         BoardTrack_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mSide
@@ -393,6 +435,75 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   final var mP2YUnit_property_selection : EBSelection <Int> { return self.mP2YUnit_property.selection }
+
+  //····················································································································
+  //   Atomic property: mManualLockP1
+  //····················································································································
+
+  final let mManualLockP1_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mManualLockP1_toDefaultValue () {
+    self.mManualLockP1 = false
+  }
+
+  //····················································································································
+
+  final var mManualLockP1 : Bool {
+    get { return self.mManualLockP1_property.propval }
+    set { self.mManualLockP1_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mManualLockP1_property_selection : EBSelection <Bool> { return self.mManualLockP1_property.selection }
+
+  //····················································································································
+  //   Atomic property: mManualLockP2
+  //····················································································································
+
+  final let mManualLockP2_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mManualLockP2_toDefaultValue () {
+    self.mManualLockP2 = false
+  }
+
+  //····················································································································
+
+  final var mManualLockP2 : Bool {
+    get { return self.mManualLockP2_property.propval }
+    set { self.mManualLockP2_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mManualLockP2_property_selection : EBSelection <Bool> { return self.mManualLockP2_property.selection }
+
+  //····················································································································
+  //   Atomic property: mDirectionLockOnKnobDragging
+  //····················································································································
+
+  final let mDirectionLockOnKnobDragging_property : EBStoredProperty_TrackLockDirection
+
+  //····················································································································
+
+  final func reset_mDirectionLockOnKnobDragging_toDefaultValue () {
+    self.mDirectionLockOnKnobDragging = TrackLockDirection.unlocked
+  }
+
+  //····················································································································
+
+  final var mDirectionLockOnKnobDragging : TrackLockDirection {
+    get { return self.mDirectionLockOnKnobDragging_property.propval }
+    set { self.mDirectionLockOnKnobDragging_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mDirectionLockOnKnobDragging_property_selection : EBSelection <TrackLockDirection> { return self.mDirectionLockOnKnobDragging_property.selection }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -647,33 +758,10 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: endPointsLocation
-  //····················································································································
-
-  final let endPointsLocation_property = EBTransientProperty_CanariPointArray ()
-
-  //····················································································································
-
-  final var endPointsLocation_property_selection : EBSelection <CanariPointArray> {
-    return self.endPointsLocation_property.selection
-  }
-
-  //····················································································································
-
-  final var endPointsLocation : CanariPointArray? {
-    switch self.endPointsLocation_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: trackDirectionInDegrees
   //····················································································································
 
-  final let trackDirectionInDegrees_property = EBTransientProperty_Int ()
+  final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -685,6 +773,213 @@ class BoardTrack : BoardObject,
 
   final var trackDirectionInDegrees : Int? {
     switch self.trackDirectionInDegrees_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p1ConnectedToSomePad
+  //····················································································································
+
+  final let p1ConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var p1ConnectedToSomePad_property_selection : EBSelection <Bool> {
+    return self.p1ConnectedToSomePad_property.selection
+  }
+
+  //····················································································································
+
+  final var p1ConnectedToSomePad : Bool? {
+    switch self.p1ConnectedToSomePad_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p2ConnectedToSomePad
+  //····················································································································
+
+  final let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var p2ConnectedToSomePad_property_selection : EBSelection <Bool> {
+    return self.p2ConnectedToSomePad_property.selection
+  }
+
+  //····················································································································
+
+  final var p2ConnectedToSomePad : Bool? {
+    switch self.p2ConnectedToSomePad_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: computedP1X
+  //····················································································································
+
+  final let computedP1X_property = EBComputedProperty_Int ()
+
+  //····················································································································
+
+  final var computedP1X_property_selection : EBSelection <Int> {
+    return self.computedP1X_property.selection
+  }
+
+  //····················································································································
+
+  final var computedP1X : Int? {
+    switch self.computedP1X_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: computedP1Y
+  //····················································································································
+
+  final let computedP1Y_property = EBComputedProperty_Int ()
+
+  //····················································································································
+
+  final var computedP1Y_property_selection : EBSelection <Int> {
+    return self.computedP1Y_property.selection
+  }
+
+  //····················································································································
+
+  final var computedP1Y : Int? {
+    switch self.computedP1Y_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: computedP2X
+  //····················································································································
+
+  final let computedP2X_property = EBComputedProperty_Int ()
+
+  //····················································································································
+
+  final var computedP2X_property_selection : EBSelection <Int> {
+    return self.computedP2X_property.selection
+  }
+
+  //····················································································································
+
+  final var computedP2X : Int? {
+    switch self.computedP2X_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: computedP2Y
+  //····················································································································
+
+  final let computedP2Y_property = EBComputedProperty_Int ()
+
+  //····················································································································
+
+  final var computedP2Y_property_selection : EBSelection <Int> {
+    return self.computedP2Y_property.selection
+  }
+
+  //····················································································································
+
+  final var computedP2Y : Int? {
+    switch self.computedP2Y_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p1CanMove
+  //····················································································································
+
+  final let p1CanMove_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var p1CanMove_property_selection : EBSelection <Bool> {
+    return self.p1CanMove_property.selection
+  }
+
+  //····················································································································
+
+  final var p1CanMove : Bool? {
+    switch self.p1CanMove_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p2CanMove
+  //····················································································································
+
+  final let p2CanMove_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var p2CanMove_property_selection : EBSelection <Bool> {
+    return self.p2CanMove_property.selection
+  }
+
+  //····················································································································
+
+  final var p2CanMove : Bool? {
+    switch self.p2CanMove_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: trackCanRotate
+  //····················································································································
+
+  final let trackCanRotate_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var trackCanRotate_property_selection : EBSelection <Bool> {
+    return self.trackCanRotate_property.selection
+  }
+
+  //····················································································································
+
+  final var trackCanRotate : Bool? {
+    switch self.trackCanRotate_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -707,6 +1002,9 @@ class BoardTrack : BoardObject,
     self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
@@ -752,42 +1050,6 @@ class BoardTrack : BoardObject,
     self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
     self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
     self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP1_property.connectedToComponent_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.connectedToComponent_property_selection.kind ()
-        kind &= prefs_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= prefs_backSideLayoutColorForBoard_property_selection.kind ()
-        kind &= unwSelf.mSide_property_selection.kind ()
-        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP1_property.connectedToComponent_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mConnectorP2_property.connectedToComponent_property_selection, prefs_frontSideLayoutColorForBoard_property_selection, prefs_backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
-    prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
-    prefs_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
-    self.mSide_property.addEBObserver (self.selectionDisplay_property)
-    self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -898,8 +1160,8 @@ class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
-  //--- Atomic property: trackLength
-    self.trackLength_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: trackLengthInCanariUnit
+    self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
@@ -911,7 +1173,7 @@ class BoardTrack : BoardObject,
         case .single :
           switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_trackLength (v0, v1))
+            return .single (transient_BoardTrack_trackLengthInCanariUnit (v0, v1))
           default :
             return .empty
           }
@@ -920,56 +1182,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
-  //--- Atomic property: endPointsLocation
-    self.endPointsLocation_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_endPointsLocation (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property)
-  //--- Atomic property: trackDirectionInDegrees
-    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_trackDirectionInDegrees (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mConnectorP1_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.trackLengthInCanariUnit_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.trackLengthInCanariUnit_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -994,6 +1208,167 @@ class BoardTrack : BoardObject,
     }
     self.mSide_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property)
+  //--- Computed property: trackDirectionInDegrees
+    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (computed_BoardTrack_trackDirectionInDegrees (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.trackDirectionInDegrees_property.mStoreFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0, $1) ?? false }
+    self.mConnectorP1_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
+  //--- Atomic property: p1ConnectedToSomePad
+    self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mConnectorP1_property.isConnectedToSomePad_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.isConnectedToSomePad_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_p1ConnectedToSomePad (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_isConnectedToSomePad (self.p1ConnectedToSomePad_property)
+  //--- Atomic property: p2ConnectedToSomePad
+    self.p2ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mConnectorP2_property.isConnectedToSomePad_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP2_property.isConnectedToSomePad_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_p2ConnectedToSomePad (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP2_property.addEBObserverOf_isConnectedToSomePad (self.p2ConnectedToSomePad_property)
+  //--- Computed property: computedP1X
+    self.computedP1X_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection) {
+          case (.single (let v0)) :
+            return .single (computed_BoardTrack_computedP1X (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP1X_property.mStoreFunction = { [weak self] in self?.compute_computedP1X_property ($0, $1) ?? false }
+    self.mConnectorP1_property.addEBObserverOf_location (self.computedP1X_property)
+  //--- Computed property: computedP1Y
+    self.computedP1Y_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection) {
+          case (.single (let v0)) :
+            return .single (computed_BoardTrack_computedP1Y (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP1Y_property.mStoreFunction = { [weak self] in self?.compute_computedP1Y_property ($0, $1) ?? false }
+    self.mConnectorP1_property.addEBObserverOf_location (self.computedP1Y_property)
+  //--- Computed property: computedP2X
+    self.computedP2X_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0)) :
+            return .single (computed_BoardTrack_computedP2X (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP2X_property.mStoreFunction = { [weak self] in self?.compute_computedP2X_property ($0, $1) ?? false }
+    self.mConnectorP2_property.addEBObserverOf_location (self.computedP2X_property)
+  //--- Computed property: computedP2Y
+    self.computedP2Y_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0)) :
+            return .single (computed_BoardTrack_computedP2Y (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP2Y_property.mStoreFunction = { [weak self] in self?.compute_computedP2Y_property ($0, $1) ?? false }
+    self.mConnectorP2_property.addEBObserverOf_location (self.computedP2Y_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1030,6 +1405,114 @@ class BoardTrack : BoardObject,
     prefs_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
     self.mSide_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: p1CanMove
+    self.p1CanMove_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mManualLockP1_property_selection.kind ()
+        kind &= unwSelf.p1ConnectedToSomePad_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mManualLockP1_property_selection, unwSelf.p1ConnectedToSomePad_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_p1CanMove (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mManualLockP1_property.addEBObserver (self.p1CanMove_property)
+    self.p1ConnectedToSomePad_property.addEBObserver (self.p1CanMove_property)
+  //--- Atomic property: p2CanMove
+    self.p2CanMove_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mManualLockP2_property_selection.kind ()
+        kind &= unwSelf.p2ConnectedToSomePad_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mManualLockP2_property_selection, unwSelf.p2ConnectedToSomePad_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_p2CanMove (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mManualLockP2_property.addEBObserver (self.p2CanMove_property)
+    self.p2ConnectedToSomePad_property.addEBObserver (self.p2CanMove_property)
+  //--- Atomic property: trackCanRotate
+    self.trackCanRotate_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.p1CanMove_property_selection.kind ()
+        kind &= unwSelf.p2CanMove_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.p1CanMove_property_selection, unwSelf.p2CanMove_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_trackCanRotate (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.p1CanMove_property.addEBObserver (self.trackCanRotate_property)
+    self.p2CanMove_property.addEBObserver (self.trackCanRotate_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.p1CanMove_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        kind &= unwSelf.p2CanMove_property_selection.kind ()
+        kind &= prefs_frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= prefs_backSideLayoutColorForBoard_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
+        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.p1CanMove_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.p2CanMove_property_selection, prefs_frontSideLayoutColorForBoard_property_selection, prefs_backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.p1CanMove_property.addEBObserver (self.selectionDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.p2CanMove_property.addEBObserver (self.selectionDisplay_property)
+    prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    prefs_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    self.mSide_property.addEBObserver (self.selectionDisplay_property)
+    self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1042,27 +1525,23 @@ class BoardTrack : BoardObject,
     // self.mNet_property.netClassTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     // self.mUsesCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     // self.mCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
-    // self.mConnectorP1_property.location_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mConnectorP1_property.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mConnectorP2_property.location_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mConnectorP2_property.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
-    // prefs_frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
-    // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mSide_property.removeEBObserver (self.selectionDisplay_property)
-    // self.actualTrackWidth_property.removeEBObserver (self.selectionDisplay_property)
     // self.mNet_property.mNetName_property.removeEBObserver (self.netName_property)
     // self.mNet_property.netClassName_property.removeEBObserver (self.netClassName_property)
     // self.mNet_property.netClassTrackWidth_property.removeEBObserver (self.netClassTrackWidth_property)
     // self.mNet_property.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property)
     // self.mNet_property.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property)
-    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackLength_property)
-    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackLength_property)
-    // self.mConnectorP1_property.location_property.removeEBObserver (self.endPointsLocation_property)
-    // self.mConnectorP2_property.location_property.removeEBObserver (self.endPointsLocation_property)
-    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
-    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackLengthInCanariUnit_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackLengthInCanariUnit_property)
     // self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
+    // self.mConnectorP1_property.isConnectedToSomePad_property.removeEBObserver (self.p1ConnectedToSomePad_property)
+    // self.mConnectorP2_property.isConnectedToSomePad_property.removeEBObserver (self.p2ConnectedToSomePad_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.computedP1X_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.computedP1Y_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.computedP2X_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.computedP2Y_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.objectDisplay_property)
     // prefs_displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -1071,6 +1550,20 @@ class BoardTrack : BoardObject,
     // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.actualTrackWidth_property.removeEBObserver (self.objectDisplay_property)
     // self.mSide_property.removeEBObserver (self.objectDisplay_property)
+    // self.mManualLockP1_property.removeEBObserver (self.p1CanMove_property)
+    // self.p1ConnectedToSomePad_property.removeEBObserver (self.p1CanMove_property)
+    // self.mManualLockP2_property.removeEBObserver (self.p2CanMove_property)
+    // self.p2ConnectedToSomePad_property.removeEBObserver (self.p2CanMove_property)
+    // self.p1CanMove_property.removeEBObserver (self.trackCanRotate_property)
+    // self.p2CanMove_property.removeEBObserver (self.trackCanRotate_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.selectionDisplay_property)
+    // self.p1CanMove_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.selectionDisplay_property)
+    // self.p2CanMove_property.removeEBObserver (self.selectionDisplay_property)
+    // prefs_frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mSide_property.removeEBObserver (self.selectionDisplay_property)
+    // self.actualTrackWidth_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1165,6 +1658,30 @@ class BoardTrack : BoardObject,
       observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
       valueExplorer: &self.mP2YUnit_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mManualLockP1",
+      idx: self.mManualLockP1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
+      valueExplorer: &self.mManualLockP1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mManualLockP2",
+      idx: self.mManualLockP2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
+      valueExplorer: &self.mManualLockP2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDirectionLockOnKnobDragging",
+      idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
+      valueExplorer: &self.mDirectionLockOnKnobDragging_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "actualTrackWidth",
@@ -1173,14 +1690,6 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.actualTrackWidth_property.mObserverExplorer,
       valueExplorer: &self.actualTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "netName",
@@ -1223,28 +1732,12 @@ class BoardTrack : BoardObject,
       valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "trackLength",
-      idx: self.trackLength_property.ebObjectIndex,
+      "trackLengthInCanariUnit",
+      idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.trackLength_property.mObserverExplorer,
-      valueExplorer: &self.trackLength_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "endPointsLocation",
-      idx: self.endPointsLocation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.endPointsLocation_property.mObserverExplorer,
-      valueExplorer: &self.endPointsLocation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackDirectionInDegrees",
-      idx: self.trackDirectionInDegrees_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackDirectionInDegrees_property.mObserverExplorer,
-      valueExplorer: &self.trackDirectionInDegrees_property.mValueExplorer
+      observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
+      valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "signatureForERCChecking",
@@ -1255,12 +1748,60 @@ class BoardTrack : BoardObject,
       valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "p1ConnectedToSomePad",
+      idx: self.p1ConnectedToSomePad_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p1ConnectedToSomePad_property.mObserverExplorer,
+      valueExplorer: &self.p1ConnectedToSomePad_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p2ConnectedToSomePad",
+      idx: self.p2ConnectedToSomePad_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p2ConnectedToSomePad_property.mObserverExplorer,
+      valueExplorer: &self.p2ConnectedToSomePad_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "objectDisplay",
       idx: self.objectDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.objectDisplay_property.mObserverExplorer,
       valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p1CanMove",
+      idx: self.p1CanMove_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p1CanMove_property.mObserverExplorer,
+      valueExplorer: &self.p1CanMove_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p2CanMove",
+      idx: self.p2CanMove_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p2CanMove_property.mObserverExplorer,
+      valueExplorer: &self.p2CanMove_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackCanRotate",
+      idx: self.trackCanRotate_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackCanRotate_property.mObserverExplorer,
+      valueExplorer: &self.trackCanRotate_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
@@ -1323,6 +1864,15 @@ class BoardTrack : BoardObject,
   //--- Atomic property: mP2YUnit
     self.mP2YUnit_property.mObserverExplorer = nil
     self.mP2YUnit_property.mValueExplorer = nil
+  //--- Atomic property: mManualLockP1
+    self.mManualLockP1_property.mObserverExplorer = nil
+    self.mManualLockP1_property.mValueExplorer = nil
+  //--- Atomic property: mManualLockP2
+    self.mManualLockP2_property.mObserverExplorer = nil
+    self.mManualLockP2_property.mValueExplorer = nil
+  //--- Atomic property: mDirectionLockOnKnobDragging
+    self.mDirectionLockOnKnobDragging_property.mObserverExplorer = nil
+    self.mDirectionLockOnKnobDragging_property.mValueExplorer = nil
   //--- To one property: mConnectorP1
     self.mConnectorP1_property.mObserverExplorer = nil
     self.mConnectorP1_property.mValueExplorer = nil
@@ -1383,6 +1933,12 @@ class BoardTrack : BoardObject,
     self.mP2XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2XUnit")
   //--- Atomic property: mP2YUnit
     self.mP2YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2YUnit")
+  //--- Atomic property: mManualLockP1
+    self.mManualLockP1_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP1")
+  //--- Atomic property: mManualLockP2
+    self.mManualLockP2_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP2")
+  //--- Atomic property: mDirectionLockOnKnobDragging
+    self.mDirectionLockOnKnobDragging_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionLockOnKnobDragging")
   }
 
   //····················································································································
@@ -1453,6 +2009,12 @@ class BoardTrack : BoardObject,
     self.mP2XUnit_property.readFrom (dictionary: inDictionary, forKey: "mP2XUnit")
   //--- Atomic property: mP2YUnit
     self.mP2YUnit_property.readFrom (dictionary: inDictionary, forKey: "mP2YUnit")
+  //--- Atomic property: mManualLockP1
+    self.mManualLockP1_property.readFrom (dictionary: inDictionary, forKey: "mManualLockP1")
+  //--- Atomic property: mManualLockP2
+    self.mManualLockP2_property.readFrom (dictionary: inDictionary, forKey: "mManualLockP2")
+  //--- Atomic property: mDirectionLockOnKnobDragging
+    self.mDirectionLockOnKnobDragging_property.readFrom (dictionary: inDictionary, forKey: "mDirectionLockOnKnobDragging")
   }
 
 
@@ -1473,6 +2035,9 @@ class BoardTrack : BoardObject,
     ioString += "mP1YUnit\n"
     ioString += "mP2XUnit\n"
     ioString += "mP2YUnit\n"
+    ioString += "mManualLockP1\n"
+    ioString += "mManualLockP2\n"
+    ioString += "mDirectionLockOnKnobDragging\n"
   //--- To one relationships
     ioString += "mConnectorP1\n"
     ioString += "mConnectorP2\n"
@@ -1506,6 +2071,12 @@ class BoardTrack : BoardObject,
     self.mP2XUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mP2YUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mManualLockP1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mManualLockP2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDirectionLockOnKnobDragging.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mConnectorP1 {
@@ -1563,6 +2134,15 @@ class BoardTrack : BoardObject,
       }
       if let range = inDictionary ["mP2YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mP2YUnit = value
+      }
+      if let range = inDictionary ["mManualLockP1"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mManualLockP1 = value
+      }
+      if let range = inDictionary ["mManualLockP2"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mManualLockP2 = value
+      }
+      if let range = inDictionary ["mDirectionLockOnKnobDragging"], let value = TrackLockDirection.unarchiveFromDataRange (inData, range) {
+        self.mDirectionLockOnKnobDragging = value
       }
     //--- To one relationships
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {

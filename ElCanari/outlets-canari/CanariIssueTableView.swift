@@ -181,12 +181,12 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //    $issues binding
   //····················································································································
 
-  private var mIssueController : EBSimpleController? = nil
+  private var mIssueController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray, file : String, line : Int) {
-    self.mIssueController = EBSimpleController (
+    self.mIssueController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
     )

@@ -349,8 +349,6 @@ document ProjectDocument root ProjectRoot {
     $gridCrossColor prefs.crossColorOfSymbolGrid
     $zoom root.mSchematicZoom
     $backColor prefs.schematicBackColor
-//    $xPlacardUnit root.xPlacardUnit
-//    $yPlacardUnit root.yPlacardUnit
   ;
 
   outlet EBScrollView mSchematicsScrollView ;
@@ -782,15 +780,51 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBSwitch mUsesCustomTrackWidthSwitch $value #boardTrackSelectionController.mUsesCustomTrackWidth ;
 
-//  outlet CanariAngleTextField mTrackInBoardRotationTextField
-//    $angle #boardTrackSelectionController.trackDirectionInDegrees
-// //   $enabled #boardTrackSelectionController.mNameIsVisibleInBoard
-//  ;
-//  outlet CanariAngleSlider mTrackInBoardRotationSlider
-//    $angle #boardTrackSelectionController.trackDirectionInDegrees
-// //   $enabled #boardTrackSelectionController.mNameIsVisibleInBoard
-//  ;
+  outlet CanariAngleTextField mTrackInBoardRotationTextField
+    $angle #boardTrackSelectionController.trackDirectionInDegrees
+    $enabled #boardTrackSelectionController.trackCanRotate
+  ;
 
+  outlet CanariAngleSlider mTrackInBoardRotationSlider
+    $angle #boardTrackSelectionController.trackDirectionInDegrees
+    $enabled #boardTrackSelectionController.trackCanRotate
+  ;
+
+  outlet CanariTrackLockView mTrackLockView
+    $angle #boardTrackSelectionController.trackDirectionInDegrees
+    $manualLockP1 #boardTrackSelectionController.mManualLockP1
+    $manualLockP2 #boardTrackSelectionController.mManualLockP2
+    $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
+    $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
+  ;
+
+  outlet EBPopUpButton mDirectionLockOnKnobDraggingPopUpButton
+    $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
+  ;
+  
+  outlet CanariDimensionTextField mBoardTrackP1xTextField
+     $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
+    $enabled #boardTrackSelectionController.p1CanMove
+  ;
+  outlet EBPopUpButton mBoardTrackP1xUnitPopUp $selectedTag #boardTrackSelectionController.mP1XUnit ;
+
+  outlet CanariDimensionTextField mBoardTrackP1yTextField
+    $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
+    $enabled #boardTrackSelectionController.p1CanMove
+  ;
+  outlet EBPopUpButton mBoardTrackP1yUnitPopUp $selectedTag #boardTrackSelectionController.mP1YUnit ;
+
+  outlet CanariDimensionTextField mBoardTrackP2xTextField
+    $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
+    $enabled #boardTrackSelectionController.p2CanMove
+  ;
+  outlet EBPopUpButton mBoardTrackP2xUnitPopUp $selectedTag #boardTrackSelectionController.mP2XUnit ;
+
+ outlet CanariDimensionTextField mBoardTrackP2yTextField
+    $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
+    $enabled #boardTrackSelectionController.p2CanMove
+  ;
+  outlet EBPopUpButton mBoardTrackP2yUnitPopUp $selectedTag #boardTrackSelectionController.mP2YUnit ;
 
 
 

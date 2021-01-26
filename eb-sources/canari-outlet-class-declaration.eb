@@ -2,6 +2,13 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariTrackLockView ;
+binding CanariTrackLockView $angle : transient Int ;
+binding CanariTrackLockView $manualLockP1 : property Bool ;
+binding CanariTrackLockView $manualLockP2 : property Bool ;
+binding CanariTrackLockView $p1ConnectedToSomePad : transient Bool ;
+binding CanariTrackLockView $p2ConnectedToSomePad : transient Bool ;
+
 extern outlet class CanariChoiceMenu ;
 binding CanariChoiceMenu $selectedIndex : property enum ;
 binding CanariChoiceMenu $selectedTag : property Int ;
@@ -93,7 +100,7 @@ binding CanariIssueTableView $issues : transient CanariIssueArray ;
 
 extern outlet class EBScrollView ;
 
-extern outlet class CanariDimensionTextField ;
+extern outlet class CanariDimensionTextField $enabled ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
 
 extern outlet class CanariDimensionObserverTextField ;

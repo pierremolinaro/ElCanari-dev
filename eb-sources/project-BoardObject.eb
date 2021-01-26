@@ -13,7 +13,7 @@ abstract graphic entity BoardObject {
   
   abstract transient Bool isVia ;
   
-  abstract transient Double trackLength ; // In Canari Unit
+  abstract transient Double trackLengthInCanariUnit ;
   
   abstract transient UInt32 signatureForERCChecking ;
   

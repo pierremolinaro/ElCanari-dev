@@ -128,7 +128,7 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 //   Controller_EBPopUpButton_selectedTag
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
+final class Controller_EBPopUpButton_selectedTag : EBReadOnlyPropertyController {
 
   //····················································································································
 
@@ -156,7 +156,7 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
 //   Controller_EBPopUpButton_Index
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBPopUpButton_Index : EBSimpleController {
+final class Controller_EBPopUpButton_Index : EBReadOnlyPropertyController {
 
   //····················································································································
 

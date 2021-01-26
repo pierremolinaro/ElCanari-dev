@@ -371,7 +371,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //---
   }
 
   //····················································································································

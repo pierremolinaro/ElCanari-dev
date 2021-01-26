@@ -258,10 +258,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mAdvanceController : EBSimpleController? = nil
+  private var mAdvanceController : EBReadOnlyPropertyController? = nil
 
   final func bind_advance (_ object : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mAdvanceController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateAdvance (object) })
+    self.mAdvanceController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { [weak self] in self?.updateAdvance (object) })
   }
 
   //····················································································································
@@ -286,10 +286,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  characterSegmentList binding
   //····················································································································
 
-  private var mCharacterSegmentListController : EBSimpleController? = nil
+  private var mCharacterSegmentListController : EBReadOnlyPropertyController? = nil
 
   final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentListClass, file:String, line:Int) {
-    self.mCharacterSegmentListController = EBSimpleController (
+    self.mCharacterSegmentListController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateSegmentDrawingsFromCharacterSegmentListController (object) }
     )
@@ -340,10 +340,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mTransparencyController : EBSimpleController? = nil
+  private var mTransparencyController : EBReadOnlyPropertyController? = nil
 
   final func bind_transparency (_ object : EBReadOnlyProperty_Double, file : String, line : Int) {
-    mTransparencyController = EBSimpleController (
+    mTransparencyController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTransparency (object) })
   }
@@ -381,10 +381,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mDisplayFlowController : EBSimpleController? = nil
+  private var mDisplayFlowController : EBReadOnlyPropertyController? = nil
 
   final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    mDisplayFlowController = EBSimpleController (
+    mDisplayFlowController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateDisplayFlow (object) }
     )
@@ -423,10 +423,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mDisplayDrawingIndexesController : EBSimpleController? = nil
+  private var mDisplayDrawingIndexesController : EBReadOnlyPropertyController? = nil
 
   final func bind_displayDrawingIndexes (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    self.mDisplayDrawingIndexesController = EBSimpleController (
+    self.mDisplayDrawingIndexesController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateIndexDrawing (object) }
     )

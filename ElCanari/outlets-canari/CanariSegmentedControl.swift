@@ -138,7 +138,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 //   Controller_CanariSegmentedControl_selectedPage
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController {
+final class Controller_CanariSegmentedControl_selectedPage : EBReadOnlyPropertyController {
 
   private let mObject : EBReadWriteProperty_Int
   private let mOutlet : CanariSegmentedControl

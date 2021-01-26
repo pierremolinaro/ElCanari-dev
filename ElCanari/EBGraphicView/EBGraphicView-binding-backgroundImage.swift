@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_backgroundImageData (_ model : EBReadOnlyProperty_Data, file : String, line : Int) {
-    self.mBackgroundImageDataController = EBSimpleController (
+    self.mBackgroundImageDataController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackgroundImageData (from: model) }
     )
@@ -51,7 +51,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
-    self.mBackgroundImageOpacityController = EBSimpleController (
+    self.mBackgroundImageOpacityController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackgroundImageOpacity (from: model) }
     )

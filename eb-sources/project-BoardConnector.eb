@@ -34,6 +34,8 @@ graphic entity BoardConnector : BoardObject {
     self.mX, self.mY
   ;
 
+  transient Bool isConnectedToSomePad dependsFrom self.mComponentPadName  ;
+
   transient String netNameFromComponentPad dependsFrom
     self.mComponent.one.padNetDictionary, self.mComponentPadName
   ;

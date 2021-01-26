@@ -134,7 +134,7 @@ class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 //   Controller_EBIntField_value
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBIntField_value : EBSimpleController {
+final class Controller_EBIntField_value : EBReadOnlyPropertyController {
 
   private let mObject : EBReadWriteProperty_Int
   private let mOutlet : EBIntField

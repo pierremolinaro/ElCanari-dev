@@ -41,10 +41,10 @@ class EBTextObserverView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mValueController : EBSimpleController? = nil
+  private var mValueController : EBReadOnlyPropertyController? = nil
 
   func bind_valueObserver (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mValueController = EBSimpleController (
+    self.mValueController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateTextValue (object) }
     )

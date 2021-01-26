@@ -101,6 +101,33 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: mManualLockP1
+  //····················································································································
+
+  let mManualLockP1_property = EBPropertyProxy_Bool ()
+  var mManualLockP1_property_selection : EBSelection <Bool> {
+    return self.mManualLockP1_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: mManualLockP2
+  //····················································································································
+
+  let mManualLockP2_property = EBPropertyProxy_Bool ()
+  var mManualLockP2_property_selection : EBSelection <Bool> {
+    return self.mManualLockP2_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: mDirectionLockOnKnobDragging
+  //····················································································································
+
+  let mDirectionLockOnKnobDragging_property = EBPropertyProxy_TrackLockDirection ()
+  var mDirectionLockOnKnobDragging_property_selection : EBSelection <TrackLockDirection> {
+    return self.mDirectionLockOnKnobDragging_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: actualTrackWidth
   //····················································································································
 
@@ -108,16 +135,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   var actualTrackWidth_property_selection : EBSelection <Int> {
     return self.actualTrackWidth_property.selection
-  }
-
-  //····················································································································
-  //   Selection observable property: selectionDisplay
-  //····················································································································
-
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -171,33 +188,13 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
-  //   Selection observable property: trackLength
+  //   Selection observable property: trackLengthInCanariUnit
   //····················································································································
 
-  let trackLength_property = EBTransientProperty_Double ()
+  let trackLengthInCanariUnit_property = EBTransientProperty_Double ()
 
-  var trackLength_property_selection : EBSelection <Double> {
-    return self.trackLength_property.selection
-  }
-
-  //····················································································································
-  //   Selection observable property: endPointsLocation
-  //····················································································································
-
-  let endPointsLocation_property = EBTransientProperty_CanariPointArray ()
-
-  var endPointsLocation_property_selection : EBSelection <CanariPointArray> {
-    return self.endPointsLocation_property.selection
-  }
-
-  //····················································································································
-  //   Selection observable property: trackDirectionInDegrees
-  //····················································································································
-
-  let trackDirectionInDegrees_property = EBTransientProperty_Int ()
-
-  var trackDirectionInDegrees_property_selection : EBSelection <Int> {
-    return self.trackDirectionInDegrees_property.selection
+  var trackLengthInCanariUnit_property_selection : EBSelection <Double> {
+    return self.trackLengthInCanariUnit_property.selection
   }
 
   //····················································································································
@@ -211,6 +208,76 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: trackDirectionInDegrees
+  //····················································································································
+
+  let trackDirectionInDegrees_property = EBPropertyProxy_Int ()
+
+  var trackDirectionInDegrees_property_selection : EBSelection <Int> {
+    return self.trackDirectionInDegrees_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: p1ConnectedToSomePad
+  //····················································································································
+
+  let p1ConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  var p1ConnectedToSomePad_property_selection : EBSelection <Bool> {
+    return self.p1ConnectedToSomePad_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: p2ConnectedToSomePad
+  //····················································································································
+
+  let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  var p2ConnectedToSomePad_property_selection : EBSelection <Bool> {
+    return self.p2ConnectedToSomePad_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: computedP1X
+  //····················································································································
+
+  let computedP1X_property = EBPropertyProxy_Int ()
+
+  var computedP1X_property_selection : EBSelection <Int> {
+    return self.computedP1X_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: computedP1Y
+  //····················································································································
+
+  let computedP1Y_property = EBPropertyProxy_Int ()
+
+  var computedP1Y_property_selection : EBSelection <Int> {
+    return self.computedP1Y_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: computedP2X
+  //····················································································································
+
+  let computedP2X_property = EBPropertyProxy_Int ()
+
+  var computedP2X_property_selection : EBSelection <Int> {
+    return self.computedP2X_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: computedP2Y
+  //····················································································································
+
+  let computedP2Y_property = EBPropertyProxy_Int ()
+
+  var computedP2Y_property_selection : EBSelection <Int> {
+    return self.computedP2Y_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -218,6 +285,46 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
     return self.objectDisplay_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: p1CanMove
+  //····················································································································
+
+  let p1CanMove_property = EBTransientProperty_Bool ()
+
+  var p1CanMove_property_selection : EBSelection <Bool> {
+    return self.p1CanMove_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: p2CanMove
+  //····················································································································
+
+  let p2CanMove_property = EBTransientProperty_Bool ()
+
+  var p2CanMove_property_selection : EBSelection <Bool> {
+    return self.p2CanMove_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: trackCanRotate
+  //····················································································································
+
+  let trackCanRotate_property = EBTransientProperty_Bool ()
+
+  var trackCanRotate_property_selection : EBSelection <Bool> {
+    return self.trackCanRotate_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: selectionDisplay
+  //····················································································································
+
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
+
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    return self.selectionDisplay_property.selection
   }
 
   //····················································································································
@@ -246,18 +353,29 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.bind_property_mP1YUnit ()
     self.bind_property_mP2XUnit ()
     self.bind_property_mP2YUnit ()
+    self.bind_property_mManualLockP1 ()
+    self.bind_property_mManualLockP2 ()
+    self.bind_property_mDirectionLockOnKnobDragging ()
     self.bind_property_actualTrackWidth ()
-    self.bind_property_selectionDisplay ()
     self.bind_property_netName ()
     self.bind_property_netClassName ()
     self.bind_property_netClassTrackWidth ()
     self.bind_property_netClassViaHoleDiameter ()
     self.bind_property_netClassViaPadDiameter ()
-    self.bind_property_trackLength ()
-    self.bind_property_endPointsLocation ()
-    self.bind_property_trackDirectionInDegrees ()
+    self.bind_property_trackLengthInCanariUnit ()
     self.bind_property_signatureForERCChecking ()
+    self.bind_property_trackDirectionInDegrees ()
+    self.bind_property_p1ConnectedToSomePad ()
+    self.bind_property_p2ConnectedToSomePad ()
+    self.bind_property_computedP1X ()
+    self.bind_property_computedP1Y ()
+    self.bind_property_computedP2X ()
+    self.bind_property_computedP2Y ()
     self.bind_property_objectDisplay ()
+    self.bind_property_p1CanMove ()
+    self.bind_property_p2CanMove ()
+    self.bind_property_trackCanRotate ()
+    self.bind_property_selectionDisplay ()
   }
 
   //····················································································································
@@ -316,12 +434,24 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.mP2YUnit_property.mWriteModelFunction = nil 
     self.mP2YUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mP2YUnit (self.mP2YUnit_property)
+  //--- mManualLockP1
+    self.mManualLockP1_property.mReadModelFunction = nil 
+    self.mManualLockP1_property.mWriteModelFunction = nil 
+    self.mManualLockP1_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mManualLockP1 (self.mManualLockP1_property)
+  //--- mManualLockP2
+    self.mManualLockP2_property.mReadModelFunction = nil 
+    self.mManualLockP2_property.mWriteModelFunction = nil 
+    self.mManualLockP2_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mManualLockP2 (self.mManualLockP2_property)
+  //--- mDirectionLockOnKnobDragging
+    self.mDirectionLockOnKnobDragging_property.mReadModelFunction = nil 
+    self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = nil 
+    self.mDirectionLockOnKnobDragging_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mDirectionLockOnKnobDragging (self.mDirectionLockOnKnobDragging_property)
   //--- actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- netName
     self.netName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
@@ -337,22 +467,58 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //--- netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
-  //--- trackLength
-    self.trackLength_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackLength (self.trackLength_property)
-  //--- endPointsLocation
-    self.endPointsLocation_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_endPointsLocation (self.endPointsLocation_property)
-  //--- trackDirectionInDegrees
-    self.trackDirectionInDegrees_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
+  //--- trackLengthInCanariUnit
+    self.trackLengthInCanariUnit_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackLengthInCanariUnit_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+  //--- trackDirectionInDegrees
+    self.trackDirectionInDegrees_property.mReadModelFunction = nil 
+    self.trackDirectionInDegrees_property.mWriteModelFunction = nil 
+    self.trackDirectionInDegrees_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
+  //--- p1ConnectedToSomePad
+    self.p1ConnectedToSomePad_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_p1ConnectedToSomePad (self.p1ConnectedToSomePad_property)
+  //--- p2ConnectedToSomePad
+    self.p2ConnectedToSomePad_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_p2ConnectedToSomePad (self.p2ConnectedToSomePad_property)
+  //--- computedP1X
+    self.computedP1X_property.mReadModelFunction = nil 
+    self.computedP1X_property.mWriteModelFunction = nil 
+    self.computedP1X_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_computedP1X (self.computedP1X_property)
+  //--- computedP1Y
+    self.computedP1Y_property.mReadModelFunction = nil 
+    self.computedP1Y_property.mWriteModelFunction = nil 
+    self.computedP1Y_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_computedP1Y (self.computedP1Y_property)
+  //--- computedP2X
+    self.computedP2X_property.mReadModelFunction = nil 
+    self.computedP2X_property.mWriteModelFunction = nil 
+    self.computedP2X_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_computedP2X (self.computedP2X_property)
+  //--- computedP2Y
+    self.computedP2Y_property.mReadModelFunction = nil 
+    self.computedP2Y_property.mWriteModelFunction = nil 
+    self.computedP2Y_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_computedP2Y (self.computedP2Y_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //---
+  //--- p1CanMove
+    self.p1CanMove_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_p1CanMove (self.p1CanMove_property)
+  //--- p2CanMove
+    self.p2CanMove_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_p2CanMove (self.p2CanMove_property)
+  //--- trackCanRotate
+    self.trackCanRotate_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_trackCanRotate (self.trackCanRotate_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   }
 
   //····················································································································
@@ -470,6 +636,30 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
       view: view,
       observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
       valueExplorer: &self.mP2YUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mManualLockP1",
+      idx: self.mManualLockP1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
+      valueExplorer: &self.mManualLockP1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mManualLockP2",
+      idx: self.mManualLockP2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
+      valueExplorer: &self.mManualLockP2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDirectionLockOnKnobDragging",
+      idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
+      valueExplorer: &self.mDirectionLockOnKnobDragging_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -1215,9 +1405,9 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_actualTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
-    self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mManualLockP1 () {
+    self.selectedArray_property.addEBObserverOf_mManualLockP1 (self.mManualLockP1_property)
+    self.mManualLockP1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -1225,10 +1415,10 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.actualTrackWidth_property_selection {
+            switch object.mManualLockP1_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1251,12 +1441,42 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
         return .empty
       }
     }
+    self.mManualLockP1_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mManualLockP1_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mManualLockP1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mManualLockP1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mManualLockP2 () {
+    self.selectedArray_property.addEBObserverOf_mManualLockP2 (self.mManualLockP2_property)
+    self.mManualLockP2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -1264,10 +1484,148 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <EBShape> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.mManualLockP2_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mManualLockP2_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mManualLockP2_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mManualLockP2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mManualLockP2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mDirectionLockOnKnobDragging () {
+    self.selectedArray_property.addEBObserverOf_mDirectionLockOnKnobDragging (self.mDirectionLockOnKnobDragging_property)
+    self.mDirectionLockOnKnobDragging_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <TrackLockDirection> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mDirectionLockOnKnobDragging_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = { [weak self] (inValue : TrackLockDirection) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mDirectionLockOnKnobDragging_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mDirectionLockOnKnobDragging_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : TrackLockDirection, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mDirectionLockOnKnobDragging_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_actualTrackWidth () {
+    self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
+    self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.actualTrackWidth_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1488,9 +1846,9 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_trackLength () {
-    self.selectedArray_property.addEBObserverOf_trackLength (self.trackLength_property)
-    self.trackLength_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_trackLengthInCanariUnit () {
+    self.selectedArray_property.addEBObserverOf_trackLengthInCanariUnit (self.trackLengthInCanariUnit_property)
+    self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -1501,85 +1859,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.trackLength_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_endPointsLocation () {
-    self.selectedArray_property.addEBObserverOf_endPointsLocation (self.endPointsLocation_property)
-    self.endPointsLocation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariPointArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.endPointsLocation_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_trackDirectionInDegrees () {
-    self.selectedArray_property.addEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
-    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.trackDirectionInDegrees_property_selection {
+            switch object.trackLengthInCanariUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1644,6 +1924,429 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
   //····················································································································
 
+  private final func bind_property_trackDirectionInDegrees () {
+    self.selectedArray_property.addEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
+    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.trackDirectionInDegrees_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.trackDirectionInDegrees_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.trackDirectionInDegrees_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.trackDirectionInDegrees_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_p1ConnectedToSomePad () {
+    self.selectedArray_property.addEBObserverOf_p1ConnectedToSomePad (self.p1ConnectedToSomePad_property)
+    self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.p1ConnectedToSomePad_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_p2ConnectedToSomePad () {
+    self.selectedArray_property.addEBObserverOf_p2ConnectedToSomePad (self.p2ConnectedToSomePad_property)
+    self.p2ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.p2ConnectedToSomePad_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_computedP1X () {
+    self.selectedArray_property.addEBObserverOf_computedP1X (self.computedP1X_property)
+    self.computedP1X_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.computedP1X_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP1X_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.computedP1X_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.computedP1X_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.computedP1X_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_computedP1Y () {
+    self.selectedArray_property.addEBObserverOf_computedP1Y (self.computedP1Y_property)
+    self.computedP1Y_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.computedP1Y_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP1Y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.computedP1Y_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.computedP1Y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.computedP1Y_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_computedP2X () {
+    self.selectedArray_property.addEBObserverOf_computedP2X (self.computedP2X_property)
+    self.computedP2X_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.computedP2X_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP2X_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.computedP2X_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.computedP2X_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.computedP2X_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_computedP2Y () {
+    self.selectedArray_property.addEBObserverOf_computedP2Y (self.computedP2Y_property)
+    self.computedP2Y_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.computedP2Y_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedP2Y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.computedP2Y_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.computedP2Y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.computedP2Y_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_objectDisplay () {
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -1658,6 +2361,162 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_p1CanMove () {
+    self.selectedArray_property.addEBObserverOf_p1CanMove (self.p1CanMove_property)
+    self.p1CanMove_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.p1CanMove_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_p2CanMove () {
+    self.selectedArray_property.addEBObserverOf_p2CanMove (self.p2CanMove_property)
+    self.p2CanMove_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.p2CanMove_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_trackCanRotate () {
+    self.selectedArray_property.addEBObserverOf_trackCanRotate (self.trackCanRotate_property)
+    self.trackCanRotate_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.trackCanRotate_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

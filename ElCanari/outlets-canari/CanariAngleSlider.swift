@@ -76,7 +76,7 @@ class CanariAngleSlider : NSSlider, EBUserClassNameProtocol {
 //   Controller Controller_CanariAngleSlider_angle
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariAngleSlider_angle : EBSimpleController {
+final class Controller_CanariAngleSlider_angle : EBReadOnlyPropertyController {
 
   private var mOutlet : CanariAngleSlider
   private var mAngle  : EBReadWriteProperty_Int

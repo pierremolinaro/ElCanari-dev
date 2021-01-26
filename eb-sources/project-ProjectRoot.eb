@@ -80,8 +80,8 @@ entity ProjectRoot {
   ;
 
   transient String viaCountString dependsFrom self.mBoardObjects.all.isVia ;
-  transient String trackCountString dependsFrom self.mBoardObjects.all.trackLength ;
-  transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLength, self.mTrackLengthUnit ;
+  transient String trackCountString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit ;
+  transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit, self.mTrackLengthUnit ;
   
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
   transient NSImage boardStatusImage dependsFrom self.boardIssues ;

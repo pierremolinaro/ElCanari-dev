@@ -119,6 +119,16 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
 
   //····················································································································
+  //   Selection observable property: isConnectedToSomePad
+  //····················································································································
+
+  let isConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  var isConnectedToSomePad_property_selection : EBSelection <Bool> {
+    return self.isConnectedToSomePad_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: location
   //····················································································································
 
@@ -306,6 +316,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.bind_property_mCustomPadDiameter ()
     self.bind_property_mCustomPadDiameterUnit ()
     self.bind_property_mUsesCustomPadDiameter ()
+    self.bind_property_isConnectedToSomePad ()
     self.bind_property_location ()
     self.bind_property_netNameFromComponentPad ()
     self.bind_property_netNameAndPadLocation ()
@@ -390,6 +401,9 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.mUsesCustomPadDiameter_property.mWriteModelFunction = nil 
     self.mUsesCustomPadDiameter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property)
+  //--- isConnectedToSomePad
+    self.isConnectedToSomePad_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_isConnectedToSomePad (self.isConnectedToSomePad_property)
   //--- location
     self.location_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_location (self.location_property)
@@ -438,7 +452,6 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-  //---
   }
 
   //····················································································································
@@ -1450,6 +1463,45 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
         }
       }else{
         return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_isConnectedToSomePad () {
+    self.selectedArray_property.addEBObserverOf_isConnectedToSomePad (self.isConnectedToSomePad_property)
+    self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.isConnectedToSomePad_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }

@@ -13,7 +13,7 @@ extension EBGraphicView {
  //····················································································································
 
   final func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_Int, file:String, line:Int) {
-    self.mShiftArrowKeyMagnitudeController = EBSimpleController (
+    self.mShiftArrowKeyMagnitudeController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
     )

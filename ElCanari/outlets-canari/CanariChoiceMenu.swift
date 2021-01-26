@@ -137,7 +137,7 @@ class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 //   Controller_CanariChoiceMenu_selectedTag
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariChoiceMenu_selectedTag : EBSimpleController {
+final class Controller_CanariChoiceMenu_selectedTag : EBReadOnlyPropertyController {
 
   //····················································································································
 
@@ -169,7 +169,7 @@ final class Controller_CanariChoiceMenu_selectedTag : EBSimpleController {
 //   Controller_CanariChoiceMenu_selectedIndex
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariChoiceMenu_selectedIndex : EBSimpleController {
+final class Controller_CanariChoiceMenu_selectedIndex : EBReadOnlyPropertyController {
 
   //····················································································································
 

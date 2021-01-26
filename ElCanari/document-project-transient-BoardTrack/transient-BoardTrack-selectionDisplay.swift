@@ -15,9 +15,9 @@ import Cocoa
 
 func transient_BoardTrack_selectionDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
-       _ self_mConnectorP1_connectedToComponent : Bool?,
+       _ self_p1CanMove : Bool,             
        _ self_mConnectorP2_location : CanariPoint?,
-       _ self_mConnectorP2_connectedToComponent : Bool?,
+       _ self_p2CanMove : Bool,             
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_mSide : TrackSide,            
@@ -44,10 +44,10 @@ func transient_BoardTrack_selectionDisplay (
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth)
         shape.add (stroke: [bp], color)
       //--- Knobs
-        if let connected = self_mConnectorP1_connectedToComponent, !connected {
+        if self_p1CanMove {
           shape.add (knobAt: p1, knobIndex: BOARD_TRACK_P1, .diamond, 2.0)
         }
-        if let connected = self_mConnectorP2_connectedToComponent, !connected {
+        if self_p2CanMove {
           shape.add (knobAt: p2, knobIndex: BOARD_TRACK_P2, .diamond, 2.0)
         }
       }

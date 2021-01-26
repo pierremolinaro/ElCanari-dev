@@ -77,7 +77,6 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //---
   }
 
   //····················································································································

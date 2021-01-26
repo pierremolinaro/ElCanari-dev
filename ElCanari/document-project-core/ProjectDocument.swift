@@ -785,6 +785,14 @@ import Cocoa
   @IBOutlet var mBoardTextVerticalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mBoardTextWeightTextField : EBDoubleField? = nil
   @IBOutlet var mBoardTrackInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mBoardTrackP1xTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardTrackP1xUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mBoardTrackP1yTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardTrackP1yUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mBoardTrackP2xTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardTrackP2xUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mBoardTrackP2yTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mBoardTrackP2yUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardTrackSidePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet var mBoardView : EBGraphicView? = nil
@@ -841,6 +849,7 @@ import Cocoa
   @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView? = nil
   @IBOutlet var mDeviceSymbolTypePinsTableView : StringArrayTableView? = nil
   @IBOutlet var mDeviceSymbolTypeTableView : DeviceSymbolTypesTableView? = nil
+  @IBOutlet var mDirectionLockOnKnobDraggingPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mDisconnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet var mDisconnectSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet var mDisplayBackLayoutColorWell : EBColorWell? = nil
@@ -1058,8 +1067,11 @@ import Cocoa
   @IBOutlet var mTrackCustomWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mTrackDefaultWidthTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mTrackDefaultWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mTrackInBoardRotationSlider : CanariAngleSlider? = nil
+  @IBOutlet var mTrackInBoardRotationTextField : CanariAngleTextField? = nil
   @IBOutlet var mTrackLengthTextField : EBTextObserverField? = nil
   @IBOutlet var mTrackLengthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mTrackLockView : CanariTrackLockView? = nil
   @IBOutlet var mTrackNetClassNameTextField : EBTextObserverField? = nil
   @IBOutlet var mTrackNetNameTextField : EBTextObserverField? = nil
   @IBOutlet var mUnplacedPackageTableView : CanariDragSourceTableView? = nil
@@ -1133,6 +1145,12 @@ import Cocoa
   var mController_mMessageBoardIsRectangularView_hidden : MultipleBindingController_hidden? = nil
   var mController_mRectangularBoardWidthHeighView_hidden : MultipleBindingController_hidden? = nil
   var mController_mBezierPathBoardHelperView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mTrackInBoardRotationTextField_enabled : MultipleBindingController_enabled? = nil
+  var mController_mTrackInBoardRotationSlider_enabled : MultipleBindingController_enabled? = nil
+  var mController_mBoardTrackP1xTextField_enabled : MultipleBindingController_enabled? = nil
+  var mController_mBoardTrackP1yTextField_enabled : MultipleBindingController_enabled? = nil
+  var mController_mBoardTrackP2xTextField_enabled : MultipleBindingController_enabled? = nil
+  var mController_mBoardTrackP2yTextField_enabled : MultipleBindingController_enabled? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameFontSizeField_enabled : MultipleBindingController_enabled? = nil
@@ -1374,6 +1392,14 @@ import Cocoa
     checkOutletConnection (self.mBoardTextVerticalAlignmentSegmentedControl, "mBoardTextVerticalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardTextWeightTextField, "mBoardTextWeightTextField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mBoardTrackInspectorView, "mBoardTrackInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP1xTextField, "mBoardTrackP1xTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP1xUnitPopUp, "mBoardTrackP1xUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP1yTextField, "mBoardTrackP1yTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP1yUnitPopUp, "mBoardTrackP1yUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP2xTextField, "mBoardTrackP2xTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP2xUnitPopUp, "mBoardTrackP2xUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP2yTextField, "mBoardTrackP2yTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackP2yUnitPopUp, "mBoardTrackP2yUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTrackSidePopUpButton, "mBoardTrackSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
@@ -1430,6 +1456,7 @@ import Cocoa
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTypePinsTableView, "mDeviceSymbolTypePinsTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTypeTableView, "mDeviceSymbolTypeTableView", DeviceSymbolTypesTableView.self, #file, #line)
+    checkOutletConnection (self.mDirectionLockOnKnobDraggingPopUpButton, "mDirectionLockOnKnobDraggingPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mDisconnectAllSymbolPinsSchematicHotKeyTextField, "mDisconnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisconnectSchematicHotKeyTextField, "mDisconnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisplayBackLayoutColorWell, "mDisplayBackLayoutColorWell", EBColorWell.self, #file, #line)
@@ -1647,8 +1674,11 @@ import Cocoa
     checkOutletConnection (self.mTrackCustomWidthUnitPopUp, "mTrackCustomWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mTrackDefaultWidthTextField, "mTrackDefaultWidthTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mTrackDefaultWidthUnitPopUp, "mTrackDefaultWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mTrackInBoardRotationSlider, "mTrackInBoardRotationSlider", CanariAngleSlider.self, #file, #line)
+    checkOutletConnection (self.mTrackInBoardRotationTextField, "mTrackInBoardRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mTrackLengthTextField, "mTrackLengthTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackLengthUnitPopUp, "mTrackLengthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mTrackLockView, "mTrackLockView", CanariTrackLockView.self, #file, #line)
     checkOutletConnection (self.mTrackNetClassNameTextField, "mTrackNetClassNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackNetNameTextField, "mTrackNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
@@ -2591,6 +2621,22 @@ import Cocoa
     self.mTrackCustomWidthUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mCustomTrackWidthUnit_property, file: #file, line: #line)
     self.mTrackCustomWidthTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property, file: #file, line: #line)
     self.mUsesCustomTrackWidthSwitch?.bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property, file: #file, line: #line)
+    self.mTrackInBoardRotationTextField?.bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property, file: #file, line: #line)
+    self.mTrackInBoardRotationSlider?.bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property, file: #file, line: #line)
+    self.mTrackLockView?.bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property, file: #file, line: #line)
+    self.mTrackLockView?.bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property, file: #file, line: #line)
+    self.mTrackLockView?.bind_manualLockP2 (self.boardTrackSelectionController.mManualLockP2_property, file: #file, line: #line)
+    self.mTrackLockView?.bind_p1ConnectedToSomePad (self.boardTrackSelectionController.p1ConnectedToSomePad_property, file: #file, line: #line)
+    self.mTrackLockView?.bind_p2ConnectedToSomePad (self.boardTrackSelectionController.p2ConnectedToSomePad_property, file: #file, line: #line)
+    self.mDirectionLockOnKnobDraggingPopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property, file: #file, line: #line)
+    self.mBoardTrackP1xTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1X_property, self.boardTrackSelectionController.mP1XUnit_property, file: #file, line: #line)
+    self.mBoardTrackP1xUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mP1XUnit_property, file: #file, line: #line)
+    self.mBoardTrackP1yTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1Y_property, self.boardTrackSelectionController.mP1YUnit_property, file: #file, line: #line)
+    self.mBoardTrackP1yUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mP1YUnit_property, file: #file, line: #line)
+    self.mBoardTrackP2xTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2X_property, self.boardTrackSelectionController.mP2XUnit_property, file: #file, line: #line)
+    self.mBoardTrackP2xUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mP2XUnit_property, file: #file, line: #line)
+    self.mBoardTrackP2yTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property, file: #file, line: #line)
+    self.mBoardTrackP2yUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mP2YUnit_property, file: #file, line: #line)
     self.mViaNetNameTextField?.bind_valueObserver (self.boardConnectorSelectionController.netNameFromTracks_property, file: #file, line: #line)
     self.mViaNetClassNameTextField?.bind_valueObserver (self.boardConnectorSelectionController.netClassName_property, file: #file, line: #line)
     self.mViaDefaultHoleDiameterUnitPopUp?.bind_selectedTag (self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property, file: #file, line: #line)
@@ -3096,6 +3142,66 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return self.boardTrackSelectionController.trackCanRotate_property_selection
+        },
+        outlet: self.mTrackInBoardRotationTextField
+      )
+      self.boardTrackSelectionController.trackCanRotate_property.addEBObserver (controller)
+      self.mController_mTrackInBoardRotationTextField_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.boardTrackSelectionController.trackCanRotate_property_selection
+        },
+        outlet: self.mTrackInBoardRotationSlider
+      )
+      self.boardTrackSelectionController.trackCanRotate_property.addEBObserver (controller)
+      self.mController_mTrackInBoardRotationSlider_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.boardTrackSelectionController.p1CanMove_property_selection
+        },
+        outlet: self.mBoardTrackP1xTextField
+      )
+      self.boardTrackSelectionController.p1CanMove_property.addEBObserver (controller)
+      self.mController_mBoardTrackP1xTextField_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.boardTrackSelectionController.p1CanMove_property_selection
+        },
+        outlet: self.mBoardTrackP1yTextField
+      )
+      self.boardTrackSelectionController.p1CanMove_property.addEBObserver (controller)
+      self.mController_mBoardTrackP1yTextField_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.boardTrackSelectionController.p2CanMove_property_selection
+        },
+        outlet: self.mBoardTrackP2xTextField
+      )
+      self.boardTrackSelectionController.p2CanMove_property.addEBObserver (controller)
+      self.mController_mBoardTrackP2xTextField_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.boardTrackSelectionController.p2CanMove_property_selection
+        },
+        outlet: self.mBoardTrackP2yTextField
+      )
+      self.boardTrackSelectionController.p2CanMove_property.addEBObserver (controller)
+      self.mController_mBoardTrackP2yTextField_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return self.restrictRectangleSelectionController.mIsInBackLayer_property_selection
         },
         outlet: self.mFrontRestrictRectangleSwitch
@@ -3555,6 +3661,22 @@ import Cocoa
     self.mTrackCustomWidthUnitPopUp?.unbind_selectedTag ()
     self.mTrackCustomWidthTextField?.unbind_dimensionAndUnit ()
     self.mUsesCustomTrackWidthSwitch?.unbind_value ()
+    self.mTrackInBoardRotationTextField?.unbind_angle ()
+    self.mTrackInBoardRotationSlider?.unbind_angle ()
+    self.mTrackLockView?.unbind_angle ()
+    self.mTrackLockView?.unbind_manualLockP1 ()
+    self.mTrackLockView?.unbind_manualLockP2 ()
+    self.mTrackLockView?.unbind_p1ConnectedToSomePad ()
+    self.mTrackLockView?.unbind_p2ConnectedToSomePad ()
+    self.mDirectionLockOnKnobDraggingPopUpButton?.unbind_selectedIndex ()
+    self.mBoardTrackP1xTextField?.unbind_dimensionAndUnit ()
+    self.mBoardTrackP1xUnitPopUp?.unbind_selectedTag ()
+    self.mBoardTrackP1yTextField?.unbind_dimensionAndUnit ()
+    self.mBoardTrackP1yUnitPopUp?.unbind_selectedTag ()
+    self.mBoardTrackP2xTextField?.unbind_dimensionAndUnit ()
+    self.mBoardTrackP2xUnitPopUp?.unbind_selectedTag ()
+    self.mBoardTrackP2yTextField?.unbind_dimensionAndUnit ()
+    self.mBoardTrackP2yUnitPopUp?.unbind_selectedTag ()
     self.mViaNetNameTextField?.unbind_valueObserver ()
     self.mViaNetClassNameTextField?.unbind_valueObserver ()
     self.mViaDefaultHoleDiameterUnitPopUp?.unbind_selectedTag ()
@@ -3753,6 +3875,18 @@ import Cocoa
     self.mController_mRectangularBoardWidthHeighView_hidden = nil
     self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mBezierPathBoardHelperView_hidden!)
     self.mController_mBezierPathBoardHelperView_hidden = nil
+    self.boardTrackSelectionController.trackCanRotate_property.removeEBObserver (self.mController_mTrackInBoardRotationTextField_enabled!)
+    self.mController_mTrackInBoardRotationTextField_enabled = nil
+    self.boardTrackSelectionController.trackCanRotate_property.removeEBObserver (self.mController_mTrackInBoardRotationSlider_enabled!)
+    self.mController_mTrackInBoardRotationSlider_enabled = nil
+    self.boardTrackSelectionController.p1CanMove_property.removeEBObserver (self.mController_mBoardTrackP1xTextField_enabled!)
+    self.mController_mBoardTrackP1xTextField_enabled = nil
+    self.boardTrackSelectionController.p1CanMove_property.removeEBObserver (self.mController_mBoardTrackP1yTextField_enabled!)
+    self.mController_mBoardTrackP1yTextField_enabled = nil
+    self.boardTrackSelectionController.p2CanMove_property.removeEBObserver (self.mController_mBoardTrackP2xTextField_enabled!)
+    self.mController_mBoardTrackP2xTextField_enabled = nil
+    self.boardTrackSelectionController.p2CanMove_property.removeEBObserver (self.mController_mBoardTrackP2yTextField_enabled!)
+    self.mController_mBoardTrackP2yTextField_enabled = nil
     self.restrictRectangleSelectionController.mIsInBackLayer_property.removeEBObserver (self.mController_mFrontRestrictRectangleSwitch_enabled!)
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
     self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
@@ -4020,6 +4154,14 @@ import Cocoa
     self.mBoardTextVerticalAlignmentSegmentedControl?.ebCleanUp ()
     self.mBoardTextWeightTextField?.ebCleanUp ()
     self.mBoardTrackInspectorView?.ebCleanUp ()
+    self.mBoardTrackP1xTextField?.ebCleanUp ()
+    self.mBoardTrackP1xUnitPopUp?.ebCleanUp ()
+    self.mBoardTrackP1yTextField?.ebCleanUp ()
+    self.mBoardTrackP1yUnitPopUp?.ebCleanUp ()
+    self.mBoardTrackP2xTextField?.ebCleanUp ()
+    self.mBoardTrackP2xUnitPopUp?.ebCleanUp ()
+    self.mBoardTrackP2yTextField?.ebCleanUp ()
+    self.mBoardTrackP2yUnitPopUp?.ebCleanUp ()
     self.mBoardTrackSidePopUpButton?.ebCleanUp ()
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
@@ -4076,6 +4218,7 @@ import Cocoa
     self.mDeviceSymbolTableView?.ebCleanUp ()
     self.mDeviceSymbolTypePinsTableView?.ebCleanUp ()
     self.mDeviceSymbolTypeTableView?.ebCleanUp ()
+    self.mDirectionLockOnKnobDraggingPopUpButton?.ebCleanUp ()
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisconnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisplayBackLayoutColorWell?.ebCleanUp ()
@@ -4293,8 +4436,11 @@ import Cocoa
     self.mTrackCustomWidthUnitPopUp?.ebCleanUp ()
     self.mTrackDefaultWidthTextField?.ebCleanUp ()
     self.mTrackDefaultWidthUnitPopUp?.ebCleanUp ()
+    self.mTrackInBoardRotationSlider?.ebCleanUp ()
+    self.mTrackInBoardRotationTextField?.ebCleanUp ()
     self.mTrackLengthTextField?.ebCleanUp ()
     self.mTrackLengthUnitPopUp?.ebCleanUp ()
+    self.mTrackLockView?.ebCleanUp ()
     self.mTrackNetClassNameTextField?.ebCleanUp ()
     self.mTrackNetNameTextField?.ebCleanUp ()
     self.mUnplacedPackageTableView?.ebCleanUp ()
@@ -4443,6 +4589,14 @@ import Cocoa
     self.mBoardTextVerticalAlignmentSegmentedControl = nil
     self.mBoardTextWeightTextField = nil
     self.mBoardTrackInspectorView = nil
+    self.mBoardTrackP1xTextField = nil
+    self.mBoardTrackP1xUnitPopUp = nil
+    self.mBoardTrackP1yTextField = nil
+    self.mBoardTrackP1yUnitPopUp = nil
+    self.mBoardTrackP2xTextField = nil
+    self.mBoardTrackP2xUnitPopUp = nil
+    self.mBoardTrackP2yTextField = nil
+    self.mBoardTrackP2yUnitPopUp = nil
     self.mBoardTrackSidePopUpButton = nil
     self.mBoardVerticalFlipSwitch = nil
     self.mBoardView = nil
@@ -4499,6 +4653,7 @@ import Cocoa
     self.mDeviceSymbolTableView = nil
     self.mDeviceSymbolTypePinsTableView = nil
     self.mDeviceSymbolTypeTableView = nil
+    self.mDirectionLockOnKnobDraggingPopUpButton = nil
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = nil
     self.mDisconnectSchematicHotKeyTextField = nil
     self.mDisplayBackLayoutColorWell = nil
@@ -4716,8 +4871,11 @@ import Cocoa
     self.mTrackCustomWidthUnitPopUp = nil
     self.mTrackDefaultWidthTextField = nil
     self.mTrackDefaultWidthUnitPopUp = nil
+    self.mTrackInBoardRotationSlider = nil
+    self.mTrackInBoardRotationTextField = nil
     self.mTrackLengthTextField = nil
     self.mTrackLengthUnitPopUp = nil
+    self.mTrackLockView = nil
     self.mTrackNetClassNameTextField = nil
     self.mTrackNetNameTextField = nil
     self.mUnplacedPackageTableView = nil

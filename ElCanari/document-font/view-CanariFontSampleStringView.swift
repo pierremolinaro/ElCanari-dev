@@ -85,10 +85,10 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mBezierPathBindingController : EBSimpleController?
+  private var mBezierPathBindingController : EBReadOnlyPropertyController?
 
   final func bind_bezierPath (_ object : EBReadOnlyProperty_NSBezierPath, file : String, line : Int) {
-    self.mBezierPathBindingController = EBSimpleController (
+    self.mBezierPathBindingController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateBezierPath (object) }
     )

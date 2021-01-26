@@ -78,6 +78,12 @@ protocol BoardConnector_mUsesCustomPadDiameter : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol BoardConnector_isConnectedToSomePad : class {
+  var isConnectedToSomePad : Bool? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol BoardConnector_location : class {
   var location : CanariPoint? { get }
 }
@@ -189,6 +195,7 @@ class BoardConnector : BoardObject,
          BoardConnector_mCustomPadDiameter,
          BoardConnector_mCustomPadDiameterUnit,
          BoardConnector_mUsesCustomPadDiameter,
+         BoardConnector_isConnectedToSomePad,
          BoardConnector_location,
          BoardConnector_netNameFromComponentPad,
          BoardConnector_netNameAndPadLocation,
@@ -521,6 +528,29 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: isConnectedToSomePad
+  //····················································································································
+
+  final let isConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var isConnectedToSomePad_property_selection : EBSelection <Bool> {
+    return self.isConnectedToSomePad_property.selection
+  }
+
+  //····················································································································
+
+  final var isConnectedToSomePad : Bool? {
+    switch self.isConnectedToSomePad_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mComponent
   //····················································································································
 
@@ -818,6 +848,28 @@ class BoardConnector : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP1_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP1_property.setProp (nil) }
     )
+  //--- Atomic property: isConnectedToSomePad
+    self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponentPadName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponentPadName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardConnector_isConnectedToSomePad (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponentPadName_property.addEBObserver (self.isConnectedToSomePad_property)
   //--- To one property: mComponent (has opposite to many relationship: mConnectors)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -1267,6 +1319,7 @@ class BoardConnector : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    // self.mComponentPadName_property.removeEBObserver (self.isConnectedToSomePad_property)
     // self.mComponent_property.componentPadDictionary_property.removeEBObserver (self.location_property)
     // self.mComponentPadName_property.removeEBObserver (self.location_property)
     // self.mPadIndex_property.removeEBObserver (self.location_property)
@@ -1431,6 +1484,14 @@ class BoardConnector : BoardObject,
       valueExplorer: &self.mUsesCustomPadDiameter_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "isConnectedToSomePad",
+      idx: self.isConnectedToSomePad_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isConnectedToSomePad_property.mObserverExplorer,
+      valueExplorer: &self.isConnectedToSomePad_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "location",
       idx: self.location_property.ebObjectIndex,

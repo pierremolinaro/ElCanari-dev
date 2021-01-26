@@ -67,7 +67,7 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
 //   Controller Controller_CanariDimensionTextField_dimensionAndUnit
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleController {
+final class Controller_CanariDimensionTextField_dimensionAndUnit : EBReadOnlyPropertyController {
 
   private var mOutlet: CanariDimensionTextField
   private var mDimension : EBReadWriteProperty_Int

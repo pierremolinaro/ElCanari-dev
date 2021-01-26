@@ -30,12 +30,12 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
   //  signatureObserver binding
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_signature (_ model : EBReadOnlyProperty_UInt32, file : String, line : Int) {
-    self.mController = EBSimpleController (
+    self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: {
         self.update (from: model)
@@ -70,7 +70,7 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//class EBMySimpleController : EBSimpleController {
+//class EBMySimpleController : EBReadOnlyPropertyController {
 //
 //  //····················································································································
 //

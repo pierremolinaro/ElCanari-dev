@@ -123,10 +123,10 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mCharactersController : EBSimpleController? = nil
+  private var mCharactersController : EBReadOnlyPropertyController? = nil
 
   func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice, file : String, line : Int) {
-    self.mCharactersController = EBSimpleController (
+    self.mCharactersController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in
         switch model.selection {
@@ -152,7 +152,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 //   Controller_CanariFontCharacterSelectButton_codePoint
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleController {
+final class Controller_CanariFontCharacterSelectButton_codePoint : EBReadOnlyPropertyController {
 
   private let mObject : EBReadWriteProperty_Int
   private let mOutlet : FontCharacterSelectButton

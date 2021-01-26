@@ -104,7 +104,6 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
   //--- hasNet
     self.hasNet_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_hasNet (self.hasNet_property)
-  //---
   }
 
   //····················································································································

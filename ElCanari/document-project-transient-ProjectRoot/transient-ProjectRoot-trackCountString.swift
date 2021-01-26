@@ -14,12 +14,12 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 func transient_ProjectRoot_trackCountString (
-       _ self_mBoardObjects_trackLength : [BoardObject_trackLength]
+       _ self_mBoardObjects_trackLengthInCanariUnit : [BoardObject_trackLengthInCanariUnit]
 ) -> String {
 //--- START OF USER ZONE 2
         var trackCount = 0
-        for object in self_mBoardObjects_trackLength {
-          if object.trackLength != nil {
+        for object in self_mBoardObjects_trackLengthInCanariUnit {
+          if object.trackLengthInCanariUnit != nil {
             trackCount += 1
           }
         }

@@ -240,7 +240,6 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-  //---
   }
 
   //····················································································································

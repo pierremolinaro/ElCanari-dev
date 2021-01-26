@@ -59,7 +59,7 @@ class EBTextView : NSTextView, EBUserClassNameProtocol {
 //   Controller Controller_EBTextView_value
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBTextView_value : EBSimpleController, NSTextViewDelegate {
+final class Controller_EBTextView_value : EBReadOnlyPropertyController, NSTextViewDelegate {
 
   private let mOutlet : EBTextView
   private let mObject : EBReadWriteProperty_String

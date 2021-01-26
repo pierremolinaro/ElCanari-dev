@@ -40,12 +40,12 @@ class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
   //  $components binding
   //····················································································································
 
-  private var mComponentsController : EBSimpleController? = nil
+  private var mComponentsController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_components (_ model : EBReadOnlyProperty_StringTagArray, file : String, line : Int) {
-    self.mComponentsController = EBSimpleController (
+    self.mComponentsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
     )

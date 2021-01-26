@@ -55,29 +55,30 @@ extension BoardTrack {
                          proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
                          shift inShift : Bool) -> ObjcCanariPoint {
-    if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
-      if inKnobIndex == BOARD_TRACK_P1 {
-        if inShift {
-          return inProposedUnalignedTranslation
-        }else{
-          var p = inUnalignedMouseDraggedLocation.p
-          p.quadrantAligned (from: p2)
-          return ObjcCanariPoint (x: p.x - p1.x, y: p.y - p1.y)
-        }
-      }else if inKnobIndex == BOARD_TRACK_P2 {
-        if inShift {
-          return inProposedUnalignedTranslation
-        }else{
-          var p = inUnalignedMouseDraggedLocation.p
-          p.quadrantAligned (from: p1)
-          return ObjcCanariPoint (x: p.x - p2.x, y: p.y - p2.y)
-        }
-      }else{
-        return ObjcCanariPoint ()
-      }
-    }else{
-      return ObjcCanariPoint ()
-    }
+    return inProposedUnalignedTranslation
+//    if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
+//      if inKnobIndex == BOARD_TRACK_P1 {
+//        if inShift {
+//          return inProposedUnalignedTranslation
+//        }else{
+//          var p = inUnalignedMouseDraggedLocation.p
+//          p.quadrantAligned (from: p2)
+//          return ObjcCanariPoint (x: p.x - p1.x, y: p.y - p1.y)
+//        }
+//      }else if inKnobIndex == BOARD_TRACK_P2 {
+//        if inShift {
+//          return inProposedUnalignedTranslation
+//        }else{
+//          var p = inUnalignedMouseDraggedLocation.p
+//          p.quadrantAligned (from: p1)
+//          return ObjcCanariPoint (x: p.x - p2.x, y: p.y - p2.y)
+//        }
+//      }else{
+//        return ObjcCanariPoint ()
+//      }
+//    }else{
+//      return ObjcCanariPoint ()
+//    }
   }
 
   //····················································································································
@@ -85,26 +86,75 @@ extension BoardTrack {
   override func move (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      unalignedMouseLocationX inUnalignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnalignedMouseLocationY : Int,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    if inShift {
-      if inKnobIndex == BOARD_TRACK_P1 {
-        self.mConnectorP1?.mX = inUnlignedMouseLocationX
-        self.mConnectorP1?.mY = inUnlignedMouseLocationY
-      }else if inKnobIndex == BOARD_TRACK_P2 {
-        self.mConnectorP2?.mX = inUnlignedMouseLocationX
-        self.mConnectorP2?.mY = inUnlignedMouseLocationY
-      }
-    }else{
-      if inKnobIndex == BOARD_TRACK_P1 {
-        self.mConnectorP1?.mX += inDx
-        self.mConnectorP1?.mY += inDy
-      }else if inKnobIndex == BOARD_TRACK_P2 {
-        self.mConnectorP2?.mX += inDx
-        self.mConnectorP2?.mY += inDy
+    if inKnobIndex == BOARD_TRACK_P1 {
+      switch self.mDirectionLockOnKnobDragging {
+      case .unlocked :
+        self.mConnectorP1?.mX = inUnalignedMouseLocationX
+        self.mConnectorP1?.mY = inUnalignedMouseLocationY
+      case .locked :
+        let p1 = self.mConnectorP1!.location!
+        let p2 = self.mConnectorP2!.location!
+        let angle = Double (CanariPoint.angleInRadian (p1, p2))
+        let newLength : Double = Double (inUnalignedMouseLocationX - p2.x) * cos (angle) + Double (inUnalignedMouseLocationY - p2.y) * sin (angle)
+        let newP1X = p2.x + Int ((newLength * cos (angle)).rounded ())
+        let newP1Y = p2.y + Int ((newLength * sin (angle)).rounded ())
+        self.mConnectorP1?.mX = newP1X
+        self.mConnectorP1?.mY = newP1Y
+      case .octolinear :
+        let p2 = self.mConnectorP2!.location!
+        let inUnalignedMouseLocation = CanariPoint (x: inUnalignedMouseLocationX, y: inUnalignedMouseLocationY)
+        let angle = Double (CanariPoint.octolinearNearestAngleInDegrees (inUnalignedMouseLocation, p2)) * .pi / 180.0
+        let newLength : Double = Double (inUnalignedMouseLocationX - p2.x) * cos (angle) + Double (inUnalignedMouseLocationY - p2.y) * sin (angle)
+        let newP1X = p2.x + Int ((newLength * cos (angle)).rounded ())
+        let newP1Y = p2.y + Int ((newLength * sin (angle)).rounded ())
+        self.mConnectorP1?.mX = newP1X
+        self.mConnectorP1?.mY = newP1Y
+      case .rectilinear :
+        let p2 = self.mConnectorP2!.location!
+        let inUnalignedMouseLocation = CanariPoint (x: inUnalignedMouseLocationX, y: inUnalignedMouseLocationY)
+        let angle = Double (CanariPoint.rectilinearNearestAngleInDegrees (inUnalignedMouseLocation, p2)) * .pi / 180.0
+        let newLength : Double = Double (inUnalignedMouseLocationX - p2.x) * cos (angle) + Double (inUnalignedMouseLocationY - p2.y) * sin (angle)
+        let newP1X = p2.x + Int ((newLength * cos (angle)).rounded ())
+        let newP1Y = p2.y + Int ((newLength * sin (angle)).rounded ())
+        self.mConnectorP1?.mX = newP1X
+        self.mConnectorP1?.mY = newP1Y      }
+    }else if inKnobIndex == BOARD_TRACK_P2 {
+      switch self.mDirectionLockOnKnobDragging {
+      case .unlocked :
+        self.mConnectorP2?.mX = inUnalignedMouseLocationX
+        self.mConnectorP2?.mY = inUnalignedMouseLocationY
+      case .locked :
+        let p1 = self.mConnectorP1!.location!
+        let p2 = self.mConnectorP2!.location!
+        let angle = Double (CanariPoint.angleInRadian (p1, p2))
+        let newLength : Double = Double (inUnalignedMouseLocationX - p1.x) * cos (angle) + Double (inUnalignedMouseLocationY - p1.y) * sin (angle)
+        let newP2X = p1.x + Int ((newLength * cos (angle)).rounded ())
+        let newP2Y = p1.y + Int ((newLength * sin (angle)).rounded ())
+        self.mConnectorP2?.mX = newP2X
+        self.mConnectorP2?.mY = newP2Y
+      case .octolinear :
+        let p1 = self.mConnectorP1!.location!
+        let inUnalignedMouseLocation = CanariPoint (x: inUnalignedMouseLocationX, y: inUnalignedMouseLocationY)
+        let angle = Double (CanariPoint.octolinearNearestAngleInDegrees (p1, inUnalignedMouseLocation)) * .pi / 180.0
+        let newLength : Double = Double (inUnalignedMouseLocationX - p1.x) * cos (angle) + Double (inUnalignedMouseLocationY - p1.y) * sin (angle)
+        let newP2X = p1.x + Int ((newLength * cos (angle)).rounded ())
+        let newP2Y = p1.y + Int ((newLength * sin (angle)).rounded ())
+        self.mConnectorP2?.mX = newP2X
+        self.mConnectorP2?.mY = newP2Y
+      case .rectilinear :
+        let p1 = self.mConnectorP1!.location!
+        let inUnalignedMouseLocation = CanariPoint (x: inUnalignedMouseLocationX, y: inUnalignedMouseLocationY)
+        let angle = Double (CanariPoint.rectilinearNearestAngleInDegrees (p1, inUnalignedMouseLocation)) * .pi / 180.0
+        let newLength : Double = Double (inUnalignedMouseLocationX - p1.x) * cos (angle) + Double (inUnalignedMouseLocationY - p1.y) * sin (angle)
+        let newP2X = p1.x + Int ((newLength * cos (angle)).rounded ())
+        let newP2Y = p1.y + Int ((newLength * sin (angle)).rounded ())
+        self.mConnectorP2?.mX = newP2X
+        self.mConnectorP2?.mY = newP2Y
       }
     }
   }

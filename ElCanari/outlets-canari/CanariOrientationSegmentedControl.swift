@@ -80,7 +80,7 @@ class CanariOrientationSegmentedControl : NSSegmentedControl, EBUserClassNamePro
 //   Controller_CanariOrientationSegmentedControl_angle
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariOrientationSegmentedControl_angle : EBSimpleController {
+final class Controller_CanariOrientationSegmentedControl_angle : EBReadOnlyPropertyController {
 
   private let mObject : EBReadWriteProperty_Int
   private let mOutlet : CanariOrientationSegmentedControl

@@ -308,7 +308,6 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //--- symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_symbolInSchematic (self.symbolInSchematic_property)
-  //---
   }
 
   //····················································································································

@@ -225,10 +225,10 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //    $models binding
   //····················································································································
 
-  private var mModelsController : EBSimpleController? = nil
+  private var mModelsController : EBReadOnlyPropertyController? = nil
 
   func bind_models (_ model : EBReadOnlyProperty_StringTagArray, file : String, line : Int) {
-    self.mModelsController = EBSimpleController (
+    self.mModelsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: {self.update (from: model) }
     )

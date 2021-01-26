@@ -97,7 +97,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //  Property needed for handling "symbol count" to insert in segmented control title
   //····················································································································
 
-  fileprivate var mSymbolCountToInsertController : EBSimpleController? = nil
+  fileprivate var mSymbolCountToInsertController : EBReadOnlyPropertyController? = nil
   private var mSheetController = ProjectSheetController ()
   internal var mPrintOperation : NSPrintOperation? = nil
 
@@ -105,7 +105,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //  Property needed for handling "package count" to insert in segmented control title
   //····················································································································
 
-  fileprivate var mPackageCountToInsertController : EBSimpleController? = nil
+  fileprivate var mPackageCountToInsertController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
   //  Properties needed for renaming a component
@@ -263,7 +263,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mBoardInspectorSegmentedControl?.register (masterView: self.mBaseBoardInspectorView, boardInspectors)
   //---
     self.mUnplacedPackageTableView?.register (document: self, draggedType: kDragAndDropBoardPackage)
-    self.mPackageCountToInsertController = EBSimpleController (
+    self.mPackageCountToInsertController = EBReadOnlyPropertyController (
       observedObjects: [self.unplacedPackageCount_property],
       callBack: {
         let title : String
@@ -312,7 +312,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---
-    self.mSymbolCountToInsertController = EBSimpleController (
+    self.mSymbolCountToInsertController = EBReadOnlyPropertyController (
       observedObjects: [self.unplacedSymbolsCount_property],
       callBack: {
         let title : String

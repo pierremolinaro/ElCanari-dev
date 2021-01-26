@@ -442,7 +442,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   //--- padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
-  //---
   }
 
   //····················································································································

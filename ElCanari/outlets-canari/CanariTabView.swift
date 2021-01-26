@@ -82,7 +82,7 @@ class CanariTabView : NSTabView, NSTabViewDelegate, EBUserClassNameProtocol {
 //   Controller Controller_CanariTabView_selectedTabIndex
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariTabView_selectedTabIndex : EBSimpleController {
+final class Controller_CanariTabView_selectedTabIndex : EBReadOnlyPropertyController {
 
   private var mOutlet : CanariTabView
   private var mSelectedTabIndex  : EBReadWriteProperty_Int
@@ -95,14 +95,6 @@ final class Controller_CanariTabView_selectedTabIndex : EBSimpleController {
     self.mOutlet = outlet
     super.init (observedObjects: [selectedTabIndex], callBack: { outlet.update (from: selectedTabIndex) } )
   }
-
-  //····················································································································
-
-//  override func unregister () {
-//    super.unregister ()
-//    self.mOutlet.target = nil
-//    self.mOutlet.action = nil
-//  }
 
   //····················································································································
 

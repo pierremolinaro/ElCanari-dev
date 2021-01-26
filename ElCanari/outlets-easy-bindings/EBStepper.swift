@@ -70,7 +70,7 @@ class EBStepper : NSStepper, EBUserClassNameProtocol {
 //   Controller Controller_EBStepper_value
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_EBStepper_value : EBSimpleController {
+final class Controller_EBStepper_value : EBReadOnlyPropertyController {
 
   private let mOutlet : EBStepper
   private let mObject : EBReadWriteProperty_Int

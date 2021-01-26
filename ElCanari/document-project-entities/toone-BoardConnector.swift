@@ -27,6 +27,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     inOldValue?.mCustomPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mCustomPadDiameter) // Stored property
     inOldValue?.mCustomPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomPadDiameterUnit) // Stored property
     inOldValue?.mUsesCustomPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomPadDiameter) // Stored property
+    inOldValue?.isConnectedToSomePad_property.removeEBObserversFrom (&self.mObserversOf_isConnectedToSomePad) // Transient property
     inOldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
     inOldValue?.netNameFromComponentPad_property.removeEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
     inOldValue?.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
@@ -56,6 +57,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     self.mInternalValue?.mCustomPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mCustomPadDiameter) // Stored property
     self.mInternalValue?.mCustomPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomPadDiameterUnit) // Stored property
     self.mInternalValue?.mUsesCustomPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomPadDiameter) // Stored property
+    self.mInternalValue?.isConnectedToSomePad_property.addEBObserversFrom (&self.mObserversOf_isConnectedToSomePad) // Transient property
     self.mInternalValue?.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
     self.mInternalValue?.netNameFromComponentPad_property.addEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
     self.mInternalValue?.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
@@ -910,6 +912,75 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUsesCustomPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isConnectedToSomePad' transient property
+  //····················································································································
+
+  private var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isConnectedToSomePad_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnectedToSomePad_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isConnectedToSomePad.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isConnectedToSomePad_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isConnectedToSomePad.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isConnectedToSomePad_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isConnectedToSomePad_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isConnectedToSomePad.apply { (_ observer : EBEvent) in
+        managedObject.isConnectedToSomePad_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isConnectedToSomePad_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isConnectedToSomePad.apply { (_ observer : EBEvent) in
+        managedObject.isConnectedToSomePad_property.removeEBObserver (observer)
       }
     }
   }

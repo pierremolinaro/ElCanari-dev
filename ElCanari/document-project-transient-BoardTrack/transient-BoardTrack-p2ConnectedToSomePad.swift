@@ -13,13 +13,11 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func transient_BoardTrack_endPointsLocation (
-       _ self_mConnectorP1_location : CanariPoint?,
-       _ self_mConnectorP2_location : CanariPoint?
-) -> CanariPointArray {
+func transient_BoardTrack_p2ConnectedToSomePad (
+       _ self_mConnectorP2_isConnectedToSomePad : Bool?
+) -> Bool {
 //--- START OF USER ZONE 2
-        let array = [self_mConnectorP1_location!, self_mConnectorP2_location!]
-        return array
+       return self_mConnectorP2_isConnectedToSomePad ?? false
 //--- END OF USER ZONE 2
 }
 

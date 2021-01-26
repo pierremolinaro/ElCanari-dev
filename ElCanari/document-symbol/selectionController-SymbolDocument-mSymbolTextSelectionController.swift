@@ -136,7 +136,6 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
-  //---
   }
 
   //····················································································································

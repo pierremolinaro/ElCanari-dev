@@ -330,7 +330,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
-  //---
   }
 
   //····················································································································

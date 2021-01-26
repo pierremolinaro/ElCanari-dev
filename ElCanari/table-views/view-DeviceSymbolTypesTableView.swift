@@ -132,12 +132,12 @@ class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableVi
   //  $array binding
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_symbolDictionary (_ model : EBReadOnlyProperty_DeviceSymbolDictionary, file : String, line : Int) {
-    self.mController = EBSimpleController (
+    self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )

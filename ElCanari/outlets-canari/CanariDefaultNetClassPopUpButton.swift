@@ -40,7 +40,7 @@ class CanariDefaultNetClassPopUpButton : EBPopUpButton {
 //   Controller_CanariDefaultNetClassPopUpButton
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_CanariDefaultNetClassPopUpButton : EBSimpleController {
+final class Controller_CanariDefaultNetClassPopUpButton : EBReadOnlyPropertyController {
 
   private let mObject : EBReadWriteProperty_String
   private let mOutlet : EBPopUpButton

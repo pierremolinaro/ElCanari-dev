@@ -610,7 +610,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //---
   }
 
   //····················································································································

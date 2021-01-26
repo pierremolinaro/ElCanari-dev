@@ -164,12 +164,12 @@ class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVi
   //  $array binding
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
   func bind_array (_ model : EBReadOnlyProperty_StatusStringArray, file : String, line : Int) {
-    self.mController = EBSimpleController (
+    self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )
