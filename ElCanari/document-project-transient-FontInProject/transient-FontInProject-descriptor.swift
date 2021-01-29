@@ -39,6 +39,7 @@ func transient_FontInProject_descriptor (
         singlePoint = false
         let newX = Int8 (scanner.myScanInt (&ok))
         let newY = Int8 (scanner.myScanInt (&ok))
+        assert (ok)
         segments.append (BoardCharSegment (x1: x, y1: y, x2: newX, y2: newY))
         x = newX
         y = newY

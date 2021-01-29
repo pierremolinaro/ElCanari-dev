@@ -52,7 +52,7 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   init () {
-    mPath = NSBezierPath ()
+    self.mPath = NSBezierPath ()
   }
 
   //····················································································································
@@ -638,18 +638,18 @@ private func pathByStrokingCallback (_ info : UnsafeMutableRawPointer?, _ elemen
     case .addLineToPoint:
       bezierPath.line (to: points [0])
     case .addQuadCurveToPoint:
-        let qp0 = bezierPath.currentPoint
-        let qp1 = points [0]
-        let qp2 = points [1]
-      //  NSPoint qp0 = bezierPath.currentPoint, qp1 = points[0], qp2 = points[1], cp1, cp2;
-        let m : CGFloat = 2.0 / 3.0
-        let cp1 = NSPoint (x: qp0.x + ((qp1.x - qp0.x) * m), y: qp0.y + ((qp1.y - qp0.y) * m))
+      let qp0 = bezierPath.currentPoint
+      let qp1 = points [0]
+      let qp2 = points [1]
+    //  NSPoint qp0 = bezierPath.currentPoint, qp1 = points[0], qp2 = points[1], cp1, cp2;
+      let m : CGFloat = 2.0 / 3.0
+      let cp1 = NSPoint (x: qp0.x + ((qp1.x - qp0.x) * m), y: qp0.y + ((qp1.y - qp0.y) * m))
 //        cp1.x = (qp0.x + ((qp1.x - qp0.x) * m));
 //        cp1.y = (qp0.y + ((qp1.y - qp0.y) * m));
-        let cp2 = NSPoint (x: qp2.x + ((qp1.x - qp2.x) * m), y: qp2.y + ((qp1.y - qp2.y) * m))
+      let cp2 = NSPoint (x: qp2.x + ((qp1.x - qp2.x) * m), y: qp2.y + ((qp1.y - qp2.y) * m))
 //        cp2.x = (qp2.x + ((qp1.x - qp2.x) * m));
 //        cp2.y = (qp2.y + ((qp1.y - qp2.y) * m));
-        bezierPath.curve (to: qp2, controlPoint1: cp1, controlPoint2: cp2)
+      bezierPath.curve (to: qp2, controlPoint1: cp1, controlPoint2: cp2)
     case .addCurveToPoint:
       bezierPath.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
     case .closeSubpath:

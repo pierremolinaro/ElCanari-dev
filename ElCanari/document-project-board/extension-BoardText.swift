@@ -194,9 +194,9 @@ func boardText_displayInfos (
   var stringWidth : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
-  let lineWidth = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth
+  let lineThickness = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth
   var bp = EBBezierPath ()
-  bp.lineWidth = lineWidth
+  bp.lineWidth = lineThickness
   bp.lineCapStyle = .round
   bp.lineJoinStyle = .round
   var oblongs = [GeometricOblong] ()
@@ -211,12 +211,15 @@ func boardText_displayInfos (
         let p2 = NSPoint (x: stringWidth + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (from: p1, to: p2, width: lineWidth))
+        oblongs.append (GeometricOblong (from: p1, to: p2, width: lineThickness))
       }
       stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
     }
   }
-  var frameBP = EBBezierPath (rect: bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+  var frameBP = EBBezierPath ()
+  if !bp.isEmpty {
+    frameBP.appendRect (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+  }
   var tr = AffineTransform ()
   let startX = canariUnitToCocoa (self_mX)
   let startY = canariUnitToCocoa (self_mY)
@@ -247,6 +250,7 @@ func boardText_displayInfos (
     tr.translate (x: 0.0, y: -bp.bounds.maxY)
   }
   bp.transform (using: tr)
+
   var transformedOblongs = [GeometricOblong] ()
   for ob in oblongs {
     transformedOblongs.append (ob.transformed (by: tr))

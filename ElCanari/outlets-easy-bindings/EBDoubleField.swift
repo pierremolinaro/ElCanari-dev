@@ -80,12 +80,15 @@ class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate 
     switch object.selection {
     case .empty :
       self.enableFromValueBinding (false)
-      self.stringValue = "-"
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
     case .single (let v) :
       self.enableFromValueBinding (true)
+      self.placeholderString = nil
       self.doubleValue = v
     case .multiple :
-      self.stringValue = "multiple"
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
       self.enableFromValueBinding (true)
     }
   }

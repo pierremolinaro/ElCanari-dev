@@ -29,12 +29,15 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
   fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
     switch combine (dimension.selection, unit: unit.selection) {
     case .empty :
-      self.stringValue = "—"
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
       self.enableFromValueBinding (false)
     case .multiple :
-      self.stringValue = "multiple"
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
       self.enableFromValueBinding (true)
     case .single (let propertyValue) :
+      self.placeholderString = nil
       self.doubleValue = propertyValue
       self.enableFromValueBinding (true)
     }

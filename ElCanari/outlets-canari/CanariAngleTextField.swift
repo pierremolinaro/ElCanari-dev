@@ -37,12 +37,15 @@ class CanariAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDe
   fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
     switch object.selection {
     case .empty :
-      self.stringValue = "—"
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
       self.enableFromValueBinding (false)
     case .multiple :
-      self.stringValue = "multiple"
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
       self.enableFromValueBinding (true)
     case .single (let propertyValue) :
+      self.placeholderString = nil
       self.doubleValue = Double (propertyValue) / 1000.0
       self.enableFromValueBinding (true)
     }
