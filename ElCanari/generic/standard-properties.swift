@@ -754,8 +754,8 @@ typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBGenericTransient
 //   Property class NSBezierPath
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSBezierPath       = EBGenericReadOnlyProperty <NSBezierPath>
-typealias EBTransientProperty_NSBezierPath      = EBGenericTransientProperty <NSBezierPath>
+typealias EBReadOnlyProperty_NSBezierPath    = EBGenericReadOnlyProperty <NSBezierPath>
+typealias EBTransientProperty_NSBezierPath   = EBGenericTransientProperty <NSBezierPath>
 typealias EBReadWriteProperty_NSBezierPath   = EBGenericReadWriteProperty <NSBezierPath>
 typealias EBPropertyProxy_NSBezierPath       = EBGenericPropertyProxy <NSBezierPath>
 typealias EBComputedProperty_NSBezierPath    = EBGenericComputedProperty <NSBezierPath>
@@ -766,8 +766,8 @@ typealias EBPreferencesProperty_NSBezierPath = EBGenericPreferenceProperty <NSBe
 //   Property class NSFont
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSFont       = EBGenericReadOnlyProperty <NSFont>
-typealias EBTransientProperty_NSFont      = EBGenericTransientProperty <NSFont>
+typealias EBReadOnlyProperty_NSFont    = EBGenericReadOnlyProperty <NSFont>
+typealias EBTransientProperty_NSFont   = EBGenericTransientProperty <NSFont>
 typealias EBReadWriteProperty_NSFont   = EBGenericReadWriteProperty <NSFont>
 typealias EBPropertyProxy_NSFont       = EBGenericPropertyProxy <NSFont>
 typealias EBComputedProperty_NSFont    = EBGenericComputedProperty <NSFont>
@@ -778,8 +778,8 @@ typealias EBPreferencesProperty_NSFont = EBGenericPreferenceProperty <NSFont>
 //   Property class NSColor
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_NSColor       = EBGenericReadOnlyProperty <NSColor>
-typealias EBTransientProperty_NSColor      = EBGenericTransientProperty <NSColor>
+typealias EBReadOnlyProperty_NSColor    = EBGenericReadOnlyProperty <NSColor>
+typealias EBTransientProperty_NSColor   = EBGenericTransientProperty <NSColor>
 typealias EBReadWriteProperty_NSColor   = EBGenericReadWriteProperty <NSColor>
 typealias EBPropertyProxy_NSColor       = EBGenericPropertyProxy <NSColor>
 typealias EBComputedProperty_NSColor    = EBGenericComputedProperty <NSColor>
