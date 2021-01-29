@@ -16,6 +16,8 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
     super.init (coder: coder)
     self.delegate = self
     noteObjectAllocation (self)
+    self.target = self
+    self.action = #selector (EBTextField.ebAction(_:))
   }
 
   //····················································································································
@@ -24,6 +26,17 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
     super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
+    self.target = self
+    self.action = #selector (EBTextField.ebAction(_:))
+  }
+
+  //····················································································································
+
+  override func awakeFromNib () {
+    self.cell?.allowsUndo = true
+    if self.formatter != nil {
+      presentErrorWindow (#file, #line, "the EBTextField outlet has a formatter")
+    }
   }
 
   //····················································································································
@@ -36,7 +49,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
   //  User information
   //····················································································································
 
-  var mUserInfo : Any? = nil // Not used, available for user
+  var mTextFieldUserInfo : Any? = nil // Not used, freely available for user
 
   //····················································································································
   //  $value binding
@@ -45,12 +58,15 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
   fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
     switch object.selection {
     case .empty :
-      self.stringValue = "-"
+      self.placeholderString = "No selection"
+      self.stringValue = ""
       self.enableFromValueBinding (false)
     case .multiple :
-      self.stringValue = "multiple"
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
       self.enableFromValueBinding (true)
     case .single (let propertyValue) :
+      self.placeholderString = nil
       self.stringValue = propertyValue
       self.enableFromValueBinding (true)
     }
@@ -64,14 +80,17 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
-  fileprivate var mValueController : Controller_EBTextField_value? = nil
+  fileprivate var mValueController : EBGenericReadWritePropertyController <String>? = nil
   private var mSendContinously : Bool = false
 
   //····················································································································
 
-  func bind_value (_ object : EBReadWriteProperty_String, file : String, line : Int, sendContinously : Bool) {
+  func bind_value (_ inObject : EBReadWriteProperty_String, file : String, line : Int, sendContinously : Bool) {
     self.mSendContinously = sendContinously
-    self.mValueController = Controller_EBTextField_value (object:object, outlet:self, file:file, line:line, sendContinously:sendContinously)
+    self.mValueController = EBGenericReadWritePropertyController <String> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateValue (inObject) }
+    )
   }
 
   //····················································································································
@@ -84,52 +103,20 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
   //····················································································································
 
   func controlTextDidChange (_ inNotification : Notification) {
-    self.mControlTextDidChangeCallBack? ()
     if self.mSendContinously {
-      NSApp.sendAction (self.action!, to: self.target, from: self)
+      self.ebAction (nil)
     }
   }
 
   //····················································································································
 
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Controller Controller_EBTextField_value
-//----------------------------------------------------------------------------------------------------------------------
-
-final class Controller_EBTextField_value : EBReadOnlyPropertyController {
-
-  private let mOutlet : EBTextField
-  private let mObject : EBReadWriteProperty_String
-
-  //····················································································································
-
-  init (object : EBReadWriteProperty_String, outlet : EBTextField, file : String, line : Int, sendContinously : Bool) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects: [object], callBack : { outlet.updateValue (object) } )
-    self.mOutlet.target = self
-    self.mOutlet.action = #selector(Controller_EBTextField_value.action(_:))
-    if self.mOutlet.formatter != nil {
-      presentErrorWindow (file, line, "the EBTextField outlet has a formatter")
-    }
+  @objc func ebAction (_ inUnusedSender : Any?) {
+    self.mControlTextDidChangeCallBack? ()
+    _ = self.mValueController?.updateModel(withCandidateValue: self.stringValue, windowForSheet: self.window)
   }
 
   //····················································································································
 
-  override func unregister () {
-    super.unregister ()
-    self.mOutlet.target = nil
-    self.mOutlet.action = nil
-    self.mOutlet.ebCleanUp ()
-  }
-
-  //····················································································································
-
-  @objc func action (_ sender : EBTextField) {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.stringValue, windowForSheet: sender.window)
-  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------

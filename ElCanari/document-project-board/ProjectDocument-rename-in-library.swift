@@ -36,7 +36,7 @@ extension ProjectDocument {
       self.mRenameDeviceNameTextField?.stringValue = selectedPinName
       self.mRenameDeviceNameTextField?.mControlTextDidChangeCallBack = self.proposedNameDidChange
       self.mRenameDeviceNameTextField?.isContinuous = true
-      self.mRenameDeviceNameTextField?.mUserInfo = (selectedPinName, deviceSymbolPinNameSet, false)
+      self.mRenameDeviceNameTextField?.mTextFieldUserInfo = (selectedPinName, deviceSymbolPinNameSet, false)
       self.mRenameDeviceErrorMessageTextField?.stringValue = ""
       self.mRenameDeviceValidationButton?.title = "Keep \"\(selectedPinName)\" name"
       self.mRenameDeviceValidationButton?.isEnabled = true
@@ -74,7 +74,7 @@ extension ProjectDocument {
       self.mRenameDeviceNameTextField?.stringValue = selectedSymbolInstanceName
       self.mRenameDeviceNameTextField?.mControlTextDidChangeCallBack = self.proposedNameDidChange
       self.mRenameDeviceNameTextField?.isContinuous = true
-      self.mRenameDeviceNameTextField?.mUserInfo = (selectedSymbolInstanceName, deviceSymbolInstanceNameSet, true)
+      self.mRenameDeviceNameTextField?.mTextFieldUserInfo = (selectedSymbolInstanceName, deviceSymbolInstanceNameSet, true)
       self.mRenameDeviceErrorMessageTextField?.stringValue = ""
       self.mRenameDeviceValidationButton?.title = "Keep \"\(selectedSymbolInstanceName)\" name"
       self.mRenameDeviceValidationButton?.isEnabled = true
@@ -116,7 +116,7 @@ extension ProjectDocument {
       self.mRenameDeviceNameTextField?.stringValue = selectedSymbolTypeName
       self.mRenameDeviceNameTextField?.mControlTextDidChangeCallBack = self.proposedNameDidChange
       self.mRenameDeviceNameTextField?.isContinuous = true
-      self.mRenameDeviceNameTextField?.mUserInfo = (selectedSymbolTypeName, deviceSymbolTypeNameSet, false)
+      self.mRenameDeviceNameTextField?.mTextFieldUserInfo = (selectedSymbolTypeName, deviceSymbolTypeNameSet, false)
       self.mRenameDeviceErrorMessageTextField?.stringValue = ""
       self.mRenameDeviceValidationButton?.title = "Keep \"\(selectedSymbolTypeName)\" name"
       self.mRenameDeviceValidationButton?.isEnabled = true
@@ -148,7 +148,7 @@ extension ProjectDocument {
       self.mRenameDeviceNameTextField?.stringValue = selectedPackageName
       self.mRenameDeviceNameTextField?.mControlTextDidChangeCallBack = self.proposedNameDidChange
       self.mRenameDeviceNameTextField?.isContinuous = true
-      self.mRenameDeviceNameTextField?.mUserInfo = (selectedPackageName, devicePackageNameSet, false)
+      self.mRenameDeviceNameTextField?.mTextFieldUserInfo = (selectedPackageName, devicePackageNameSet, false)
       self.mRenameDeviceErrorMessageTextField?.stringValue = ""
       self.mRenameDeviceValidationButton?.title = "Keep \"\(selectedPackageName)\" name"
       self.mRenameDeviceValidationButton?.isEnabled = true
@@ -179,7 +179,7 @@ extension ProjectDocument {
       self.mRenameDeviceNameTextField?.stringValue = selectedDeviceName
       self.mRenameDeviceNameTextField?.mControlTextDidChangeCallBack = self.proposedNameDidChange
       self.mRenameDeviceNameTextField?.isContinuous = true
-      self.mRenameDeviceNameTextField?.mUserInfo = (selectedDeviceName, deviceNameSet, false)
+      self.mRenameDeviceNameTextField?.mTextFieldUserInfo = (selectedDeviceName, deviceNameSet, false)
       self.mRenameDeviceErrorMessageTextField?.stringValue = ""
       self.mRenameDeviceValidationButton?.title = "Keep \"\(selectedDeviceName)\" name"
       self.mRenameDeviceValidationButton?.isEnabled = true
@@ -195,7 +195,7 @@ extension ProjectDocument {
 
   @objc private func proposedNameDidChange () {
     if let proposedName = self.mRenameDeviceNameTextField?.stringValue,
-       let (selectedName, nameSet, allowEmptyName) = self.mRenameDeviceNameTextField?.mUserInfo as? (String, Set <String>, Bool) {
+       let (selectedName, nameSet, allowEmptyName) = self.mRenameDeviceNameTextField?.mTextFieldUserInfo as? (String, Set <String>, Bool) {
       if (proposedName == "") && !allowEmptyName {
         self.mRenameDeviceErrorMessageTextField?.stringValue = "Proposed Name is empty"
         self.mRenameDeviceValidationButton?.title = "Cannot rename"

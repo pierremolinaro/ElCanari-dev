@@ -204,7 +204,7 @@ extension CustomizedProjectDocument {
       self.mRenameNetTextField?.stringValue = inNet.mNetName
       self.mRenameNetErrorTextField?.stringValue = ""
     //---
-      self.mRenameNetTextField?.mUserInfo = inNet
+      self.mRenameNetTextField?.mTextFieldUserInfo = inNet
       self.mRenameNetTextField?.target = self
       self.mRenameNetTextField?.action = #selector (CustomizedProjectDocument.newNameDidChange (_:))
       self.mRenameNetTextField?.setSendContinously (true)
@@ -212,7 +212,7 @@ extension CustomizedProjectDocument {
       self.mRenameNetOkButton?.title = "Rename as '\(inNet.mNetName)'"
     //--- Dialog
       window.beginSheet (panel) { inResponse in
-        self.mRenameNetTextField?.mUserInfo = nil
+        self.mRenameNetTextField?.mTextFieldUserInfo = nil
         if inResponse == .stop {
           self.performRenameNet (inNet)
         }
@@ -223,7 +223,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc internal func newNameDidChange (_ inSender : NSTextField) {
-    if let netForRenamingOperation = self.mRenameNetTextField?.mUserInfo as? NetInProject {
+    if let netForRenamingOperation = self.mRenameNetTextField?.mTextFieldUserInfo as? NetInProject {
       let newNetName = inSender.stringValue
       if newNetName == "" {
         self.mRenameNetOkButton?.isEnabled = false
