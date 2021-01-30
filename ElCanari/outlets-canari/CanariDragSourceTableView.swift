@@ -69,11 +69,11 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   fileprivate var mDraggedType : NSPasteboard.PasteboardType? = nil
-  fileprivate weak var mDocument : EBManagedDocument? = nil
+  fileprivate weak var mDocument : EBManagedXibDocument? = nil
 
   //····················································································································
 
-  func register (document : EBManagedDocument, draggedType : NSPasteboard.PasteboardType) {
+  func register (document : EBManagedXibDocument, draggedType : NSPasteboard.PasteboardType) {
     self.mDraggedType = draggedType
     self.mDocument = document
   }

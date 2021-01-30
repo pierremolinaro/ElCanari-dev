@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(FontDocument) class FontDocument : EBManagedDocument {
+@objc(FontDocument) class FontDocument : EBManagedXibDocument {
 
   //····················································································································
   //   Array controller: mSelectedCharacterController

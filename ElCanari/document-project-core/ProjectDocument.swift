@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(ProjectDocument) class ProjectDocument : EBManagedDocument {
+@objc(ProjectDocument) class ProjectDocument : EBManagedXibDocument {
 
   //····················································································································
   //   Array controller: netClassController

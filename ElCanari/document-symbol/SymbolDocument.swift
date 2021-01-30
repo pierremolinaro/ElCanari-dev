@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(SymbolDocument) class SymbolDocument : EBManagedDocument {
+@objc(SymbolDocument) class SymbolDocument : EBManagedXibDocument {
 
   //····················································································································
   //   Array controller: mSymbolObjectsController

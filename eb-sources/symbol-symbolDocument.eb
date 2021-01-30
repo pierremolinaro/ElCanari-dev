@@ -1,6 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document SymbolDocument root SymbolRoot {
+xibdocument SymbolDocument root SymbolRoot {
 //--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;

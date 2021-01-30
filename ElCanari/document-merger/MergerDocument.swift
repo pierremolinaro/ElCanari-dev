@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(MergerDocument) class MergerDocument : EBManagedDocument {
+@objc(MergerDocument) class MergerDocument : EBManagedXibDocument {
 
   //····················································································································
   //   Array controller: mBoardModelController

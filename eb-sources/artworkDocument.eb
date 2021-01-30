@@ -29,7 +29,7 @@ entity ArtworkRoot {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document ArtworkDocument root ArtworkRoot {
+xibdocument ArtworkDocument root ArtworkRoot {
 //--- Selected Tab
   outlet CanariSegmentedControl mSegmentedControl $selectedPage root.selectedTab ;
   outlet NSView mMasterView ;

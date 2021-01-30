@@ -2,7 +2,7 @@
 //     P R O J E C T    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-document ProjectDocument root ProjectRoot {
+xibdocument ProjectDocument root ProjectRoot {
 //--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
   outlet NSView mMasterView ;

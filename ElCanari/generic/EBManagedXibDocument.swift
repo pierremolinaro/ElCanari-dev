@@ -19,10 +19,10 @@ private var gDebugMenuItemsAdded = false
 private let kLogReadFileDuration = false
 
 //----------------------------------------------------------------------------------------------------------------------
-//  EBManagedDocument
+//  EBManagedXibDocument
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
+class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -256,7 +256,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Set close button as 'remove window' button
     let closeButton = self.mDocumentExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(EBManagedDocument.deleteDocumentWindowAction(_:))
+    closeButton?.action = #selector(EBManagedXibDocument.deleteDocumentWindowAction(_:))
   //--- Set window title
     self.mDocumentExplorerWindow?.title = "Document " + className
   //--- Add Scroll view
@@ -351,7 +351,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       gDebugMenuItemsAdded = true
       let menuItem = NSMenuItem (
         title: "Explore document",
-        action: #selector (EBManagedDocument.showObjectExplorerWindow (_:)),
+        action: #selector (EBManagedXibDocument.showObjectExplorerWindow (_:)),
         keyEquivalent: ""
       )
       addItemToDebugMenu (menuItem)
@@ -461,12 +461,12 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
-    if action == #selector (EBManagedDocument.printDocument(_:)) {
+    if action == #selector (EBManagedXibDocument.printDocument(_:)) {
       validate = self.windowForSheet?.firstResponder is EBGraphicView
-    }else if action == #selector (EBManagedDocument.setBinaryFormatAction(_:)) {
+    }else if action == #selector (EBManagedXibDocument.setBinaryFormatAction(_:)) {
       validate = true
       inMenuItem.state = (self.mManagedDocumentFileFormat == .binary) ? .on : .off
-    }else if action == #selector (EBManagedDocument.setTextualFormatAction(_:)) {
+    }else if action == #selector (EBManagedXibDocument.setTextualFormatAction(_:)) {
       validate = true
       inMenuItem.state = (self.mManagedDocumentFileFormat == .textual) ? .on : .off
     }else{

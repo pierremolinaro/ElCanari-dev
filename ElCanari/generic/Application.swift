@@ -65,7 +65,7 @@ class EBEvent : EBObject {
     super.sendEvent (event)
     flushModelEvents ()
     for doc in NSDocumentController.shared.documents {
-      if let document = doc as? EBManagedDocument {
+      if let document = doc as? EBManagedXibDocument {
         document.updateReachableEntitiesPopUpButton ()
       }
     }

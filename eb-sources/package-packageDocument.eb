@@ -2,7 +2,7 @@
 //     P A C K A G E    D O C U M E N T                                       *
 //----------------------------------------------------------------------------*
 
-document PackageDocument root PackageRoot {
+xibdocument PackageDocument root PackageRoot {
 //--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;

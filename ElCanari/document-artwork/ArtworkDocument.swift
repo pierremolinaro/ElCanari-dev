@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(ArtworkDocument) class ArtworkDocument : EBManagedDocument {
+@objc(ArtworkDocument) class ArtworkDocument : EBManagedXibDocument {
 
   //····················································································································
   //   Array controller: mDataController

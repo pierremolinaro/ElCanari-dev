@@ -39,15 +39,15 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  fileprivate weak var mDocument : EBManagedDocument? = nil // For handling drag destination
+  fileprivate weak var mDocument : EBManagedXibDocument? = nil // For handling drag destination
 
   //····················································································································
 
-  var document : EBManagedDocument? { return self.mDocument }
+  var document : EBManagedXibDocument? { return self.mDocument }
 
   //····················································································································
 
-  func register (document : EBManagedDocument, draggedTypes : [NSPasteboard.PasteboardType]) {
+  func register (document : EBManagedXibDocument, draggedTypes : [NSPasteboard.PasteboardType]) {
     self.mDocument = document
     self.registerForDraggedTypes (draggedTypes)
   }

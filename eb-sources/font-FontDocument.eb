@@ -31,7 +31,7 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document FontDocument root FontRoot {
+xibdocument FontDocument root FontRoot {
 //--- Toolbar
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
   outlet NSView mMasterView ;

@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(PackageDocument) class PackageDocument : EBManagedDocument {
+@objc(PackageDocument) class PackageDocument : EBManagedXibDocument {
 
   //····················································································································
   //   Array controller: mPackageObjectsController

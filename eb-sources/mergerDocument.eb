@@ -1,6 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document MergerDocument root MergerRoot {
+xibdocument MergerDocument root MergerRoot {
 //--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;

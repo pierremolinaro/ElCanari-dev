@@ -2,7 +2,7 @@
 //     D E V I C E    D O C U M E N T                                         *
 //----------------------------------------------------------------------------*
 
-document DeviceDocument root DeviceRoot {
+xibdocument DeviceDocument root DeviceRoot {
 //--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
   outlet NSView mMasterView ;
