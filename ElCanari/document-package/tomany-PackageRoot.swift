@@ -66,6 +66,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_backgroundImagePageBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_modelImageSizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_hasModelImage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_masterPadObjectIndexArray_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_noIssue_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -120,6 +121,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_backgroundImagePageBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_modelImageSizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_hasModelImage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_masterPadObjectIndexArray_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_noIssue_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -3245,6 +3247,62 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
         managedObject.hasModelImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'masterPadObjectIndexArray' transient property
+  //····················································································································
+
+  private var mObserversOf_masterPadObjectIndexArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_masterPadObjectIndexArray (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_masterPadObjectIndexArray.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.masterPadObjectIndexArray_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_masterPadObjectIndexArray (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_masterPadObjectIndexArray.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.masterPadObjectIndexArray_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_masterPadObjectIndexArray_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
+        managedObject.masterPadObjectIndexArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_masterPadObjectIndexArray_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
+        managedObject.masterPadObjectIndexArray_property.removeEBObserver (observer)
       }
     }
   }

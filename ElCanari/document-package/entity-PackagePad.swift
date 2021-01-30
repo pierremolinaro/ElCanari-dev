@@ -162,6 +162,12 @@ protocol PackagePad_slavePadCount : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol PackagePad_masterPadObjectIndex : class {
+  var masterPadObjectIndex : Int? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol PackagePad_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -203,6 +209,7 @@ class PackagePad : PackageObject,
          PackagePad_noZone,
          PackagePad_zoneAllowsManualRenumbering,
          PackagePad_slavePadCount,
+         PackagePad_masterPadObjectIndex,
          PackagePad_objectDisplay,
          PackagePad_padNumberDisplay {
 
@@ -816,6 +823,29 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
+  //   Transient property: masterPadObjectIndex
+  //····················································································································
+
+  final let masterPadObjectIndex_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var masterPadObjectIndex_property_selection : EBSelection <Int> {
+    return self.masterPadObjectIndex_property.selection
+  }
+
+  //····················································································································
+
+  final var masterPadObjectIndex : Int? {
+    switch self.masterPadObjectIndex_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: padNumberDisplay
   //····················································································································
 
@@ -1118,6 +1148,27 @@ class PackagePad : PackageObject,
       }
     }
     self.slaves_property.addEBObserver (self.slavePadCount_property)
+  //--- Atomic property: masterPadObjectIndex
+    self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.ebObjectIndex_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.ebObjectIndex_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackagePad_masterPadObjectIndex (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1503,6 +1554,14 @@ class PackagePad : PackageObject,
       view: view,
       observerExplorer: &self.slavePadCount_property.mObserverExplorer,
       valueExplorer: &self.slavePadCount_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "masterPadObjectIndex",
+      idx: self.masterPadObjectIndex_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.masterPadObjectIndex_property.mObserverExplorer,
+      valueExplorer: &self.masterPadObjectIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",

@@ -41,6 +41,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
     self.removeEBObserversOf_noZone_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_zoneAllowsManualRenumbering_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_slavePadCount_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_masterPadObjectIndex_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -70,6 +71,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
     self.addEBObserversOf_noZone_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_zoneAllowsManualRenumbering_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_slavePadCount_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_masterPadObjectIndex_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -1542,6 +1544,62 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
     for managedObject in inSet {
       self.mObserversOf_slavePadCount.apply { (_ observer : EBEvent) in
         managedObject.slavePadCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'masterPadObjectIndex' transient property
+  //····················································································································
+
+  private var mObserversOf_masterPadObjectIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_masterPadObjectIndex (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_masterPadObjectIndex.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.masterPadObjectIndex_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_masterPadObjectIndex (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_masterPadObjectIndex.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.masterPadObjectIndex_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_masterPadObjectIndex_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadObjectIndex.apply { (_ observer : EBEvent) in
+        managedObject.masterPadObjectIndex_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_masterPadObjectIndex_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadObjectIndex.apply { (_ observer : EBEvent) in
+        managedObject.masterPadObjectIndex_property.removeEBObserver (observer)
       }
     }
   }

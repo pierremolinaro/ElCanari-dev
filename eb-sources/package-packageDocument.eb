@@ -268,12 +268,11 @@ xibdocument PackageDocument root PackageRoot {
   outlet CanariDimensionObserverTextField mSlavePadAnnularRingTextField
      $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
   ;
-//--- Master Pad
+//--- Master Pad pop up button
   outlet CanariSlavePadAssignmentPopUpButton mSlavePadAssignmentPopUpButton
-    $masterPadName #mPackageSlavePadSelectionController.padNameWithZoneName
+    $masterPadName #mPackageSlavePadSelectionController.masterPadNameWithZoneName
+    $masterPadObjectIndexArray root.masterPadObjectIndexArray
   ;
-
-
 
 
 //------- Guide inspector
@@ -533,7 +532,6 @@ xibdocument PackageDocument root PackageRoot {
     $mouseGrid root.mModelImagePageGridStep
     $gridStep root.mModelImagePageGridStep
     $arrowKeyMagnitude root.mModelImagePageGridStep
-//    $shiftArrowKeyMagnitude root.mModelImagePageGridStepMultipliedByDisplayFactor
     $gridStyle root.mModelImagePageGridStyle
     $gridDisplayFactor root.mModelImagePageGridDisplayFactor
     $gridLineColor prefs.lineColorOfPackageGrid

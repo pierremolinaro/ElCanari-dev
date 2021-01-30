@@ -66,6 +66,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.backgroundImagePageBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_backgroundImagePageBackgroundDisplay) // Transient property
     inOldValue?.modelImageSizeString_property.removeEBObserversFrom (&self.mObserversOf_modelImageSizeString) // Transient property
     inOldValue?.hasModelImage_property.removeEBObserversFrom (&self.mObserversOf_hasModelImage) // Transient property
+    inOldValue?.masterPadObjectIndexArray_property.removeEBObserversFrom (&self.mObserversOf_masterPadObjectIndexArray) // Transient property
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.noIssue_property.removeEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
   //--- Add observers to added objects
@@ -120,6 +121,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.backgroundImagePageBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_backgroundImagePageBackgroundDisplay) // Transient property
     self.mInternalValue?.modelImageSizeString_property.addEBObserversFrom (&self.mObserversOf_modelImageSizeString) // Transient property
     self.mInternalValue?.hasModelImage_property.addEBObserversFrom (&self.mObserversOf_hasModelImage) // Transient property
+    self.mInternalValue?.masterPadObjectIndexArray_property.addEBObserversFrom (&self.mObserversOf_masterPadObjectIndexArray) // Transient property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.noIssue_property.addEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
   }
@@ -3960,6 +3962,75 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
         managedObject.hasModelImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'masterPadObjectIndexArray' transient property
+  //····················································································································
+
+  private var mObserversOf_masterPadObjectIndexArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  var masterPadObjectIndexArray_property_selection : EBSelection <IntArray?> {
+    if let model = self.propval {
+      switch (model.masterPadObjectIndexArray_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_masterPadObjectIndexArray (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_masterPadObjectIndexArray.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.masterPadObjectIndexArray_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_masterPadObjectIndexArray (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_masterPadObjectIndexArray.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.masterPadObjectIndexArray_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_masterPadObjectIndexArray_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
+        managedObject.masterPadObjectIndexArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_masterPadObjectIndexArray_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
+        managedObject.masterPadObjectIndexArray_property.removeEBObserver (observer)
       }
     }
   }

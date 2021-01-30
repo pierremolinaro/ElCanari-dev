@@ -35,6 +35,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
     self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_annularRing_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_padNameWithZoneName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_masterPadNameWithZoneName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_padNameForDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
@@ -59,6 +60,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
     self.addEBObserversOf_padIsTraversing_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_annularRing_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_padNameWithZoneName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_masterPadNameWithZoneName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_padNameForDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -1195,6 +1197,62 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
     for managedObject in inSet {
       self.mObserversOf_padNameWithZoneName.apply { (_ observer : EBEvent) in
         managedObject.padNameWithZoneName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'masterPadNameWithZoneName' transient property
+  //····················································································································
+
+  private var mObserversOf_masterPadNameWithZoneName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_masterPadNameWithZoneName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_masterPadNameWithZoneName.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.masterPadNameWithZoneName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_masterPadNameWithZoneName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_masterPadNameWithZoneName.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.masterPadNameWithZoneName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_masterPadNameWithZoneName_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadNameWithZoneName.apply { (_ observer : EBEvent) in
+        managedObject.masterPadNameWithZoneName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_masterPadNameWithZoneName_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_masterPadNameWithZoneName.apply { (_ observer : EBEvent) in
+        managedObject.masterPadNameWithZoneName_property.removeEBObserver (observer)
       }
     }
   }

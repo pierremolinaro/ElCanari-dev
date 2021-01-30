@@ -336,6 +336,12 @@ protocol PackageRoot_hasModelImage : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol PackageRoot_masterPadObjectIndexArray : class {
+  var masterPadObjectIndexArray : IntArray? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol PackageRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -406,6 +412,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_backgroundImagePageBackgroundDisplay,
          PackageRoot_modelImageSizeString,
          PackageRoot_hasModelImage,
+         PackageRoot_masterPadObjectIndexArray,
          PackageRoot_issues,
          PackageRoot_noIssue {
 
@@ -1825,6 +1832,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: masterPadObjectIndexArray
+  //····················································································································
+
+  final let masterPadObjectIndexArray_property = EBTransientProperty_IntArray ()
+
+  //····················································································································
+
+  final var masterPadObjectIndexArray_property_selection : EBSelection <IntArray> {
+    return self.masterPadObjectIndexArray_property.selection
+  }
+
+  //····················································································································
+
+  final var masterPadObjectIndexArray : IntArray? {
+    switch self.masterPadObjectIndexArray_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -2223,6 +2253,28 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.mModelImageData_property.addEBObserver (self.hasModelImage_property)
+  //--- Atomic property: masterPadObjectIndexArray
+    self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.packagePads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.packagePads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_masterPadObjectIndexArray (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.packagePads_property.addEBObserverOf_masterPadObjectIndex (self.masterPadObjectIndexArray_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2345,6 +2397,7 @@ class PackageRoot : EBGraphicManagedObject,
     // self.mModelImageData_property.removeEBObserver (self.backgroundImagePageBackgroundDisplay_property)
     // self.mModelImageData_property.removeEBObserver (self.modelImageSizeString_property)
     // self.mModelImageData_property.removeEBObserver (self.hasModelImage_property)
+    // self.packagePads_property.removeEBObserverOf_masterPadObjectIndex (self.masterPadObjectIndexArray_property)
     // self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
     // self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
     // self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
@@ -2783,6 +2836,14 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.hasModelImage_property.mObserverExplorer,
       valueExplorer: &self.hasModelImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "masterPadObjectIndexArray",
+      idx: self.masterPadObjectIndexArray_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.masterPadObjectIndexArray_property.mObserverExplorer,
+      valueExplorer: &self.masterPadObjectIndexArray_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",

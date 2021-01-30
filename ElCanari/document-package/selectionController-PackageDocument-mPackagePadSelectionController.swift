@@ -255,6 +255,16 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
+  //   Selection observable property: masterPadObjectIndex
+  //····················································································································
+
+  let masterPadObjectIndex_property = EBTransientProperty_Int ()
+
+  var masterPadObjectIndex_property_selection : EBSelection <Int> {
+    return self.masterPadObjectIndex_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -316,6 +326,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_noZone ()
     self.bind_property_zoneAllowsManualRenumbering ()
     self.bind_property_slavePadCount ()
+    self.bind_property_masterPadObjectIndex ()
     self.bind_property_objectDisplay ()
     self.bind_property_padNumberDisplay ()
   }
@@ -436,6 +447,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   //--- slavePadCount
     self.slavePadCount_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_slavePadCount (self.slavePadCount_property)
+  //--- masterPadObjectIndex
+    self.masterPadObjectIndex_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_masterPadObjectIndex (self.masterPadObjectIndex_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -2131,6 +2145,45 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
           var isMultipleSelection = false
           for object in v {
             switch object.slavePadCount_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_masterPadObjectIndex () {
+    self.selectedArray_property.addEBObserverOf_masterPadObjectIndex (self.masterPadObjectIndex_property)
+    self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.masterPadObjectIndex_property_selection {
             case .empty :
               return .empty
             case .multiple :

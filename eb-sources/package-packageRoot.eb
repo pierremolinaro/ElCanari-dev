@@ -140,6 +140,8 @@ graphic entity PackageRoot {
   transient Bool hasModelImage dependsFrom self.mModelImageData ;
   
   transient NSImage lockImageView dependsFrom self.mPointsAreLocked ;
+  
+  transient IntArray masterPadObjectIndexArray dependsFrom self.packagePads.all.masterPadObjectIndex ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -342,6 +344,8 @@ graphic entity PackagePad : PackageObject {
   transient Bool zoneAllowsManualRenumbering dependsFrom self.zone.one.zoneNumbering ;
 
   transient Int slavePadCount dependsFrom self.slaves.count ;
+  
+  transient Int masterPadObjectIndex dependsFrom self ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -386,13 +390,14 @@ graphic entity PackageSlavePad : PackageObject {
 
   transient String padNameWithZoneName dependsFrom self.master.one.padNameWithZoneName ;
 
+  transient String masterPadNameWithZoneName dependsFrom self.master.one.padNameWithZoneName ;
+
   transient String padNameForDisplay dependsFrom self.master.one.padNameForDisplay ;
 
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter,
      prefs.padNumberFont, prefs.padNumberColor, self.padNameForDisplay
   ;
-
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

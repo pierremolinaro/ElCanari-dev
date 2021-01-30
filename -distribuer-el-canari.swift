@@ -31,7 +31,9 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.3.6"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Package: attribution of master pad on slave pad creation"]
+  "Package: attribution of master pad on slave pad creation"
+  "Package: selection of master pad in slave pad inspector"
+]
 let CHANGES : [String] = [
   "Project: improved manual track routing"
 ]

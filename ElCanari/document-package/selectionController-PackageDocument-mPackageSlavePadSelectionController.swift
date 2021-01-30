@@ -196,6 +196,16 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: masterPadNameWithZoneName
+  //····················································································································
+
+  let masterPadNameWithZoneName_property = EBTransientProperty_String ()
+
+  var masterPadNameWithZoneName_property_selection : EBSelection <String> {
+    return self.masterPadNameWithZoneName_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: padNameForDisplay
   //····················································································································
 
@@ -261,6 +271,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     self.bind_property_padIsTraversing ()
     self.bind_property_annularRing ()
     self.bind_property_padNameWithZoneName ()
+    self.bind_property_masterPadNameWithZoneName ()
     self.bind_property_padNameForDisplay ()
     self.bind_property_padNumberDisplay ()
     self.bind_property_objectDisplay ()
@@ -362,6 +373,9 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //--- padNameWithZoneName
     self.padNameWithZoneName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+  //--- masterPadNameWithZoneName
+    self.masterPadNameWithZoneName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_masterPadNameWithZoneName (self.masterPadNameWithZoneName_property)
   //--- padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
@@ -1788,6 +1802,45 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.padNameWithZoneName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_masterPadNameWithZoneName () {
+    self.selectedArray_property.addEBObserverOf_masterPadNameWithZoneName (self.masterPadNameWithZoneName_property)
+    self.masterPadNameWithZoneName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.masterPadNameWithZoneName_property_selection {
             case .empty :
               return .empty
             case .multiple :
