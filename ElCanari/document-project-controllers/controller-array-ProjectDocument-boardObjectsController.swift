@@ -790,12 +790,15 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   func sendToBack () {
     var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    var newObjectArray = [BoardObject] ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
-      objects.insert (object, at: 0)
+      newObjectArray.append (object)
     }
-    self.mModel?.setProp (objects)
+    newObjectArray.reverse ()
+    newObjectArray += objects
+    self.mModel?.setProp (newObjectArray)
   }
 
   //····················································································································

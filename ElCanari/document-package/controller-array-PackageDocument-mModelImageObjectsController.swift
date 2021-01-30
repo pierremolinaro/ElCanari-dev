@@ -790,12 +790,15 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
   func sendToBack () {
     var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    var newObjectArray = [PackageModelImageDoublePoint] ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
-      objects.insert (object, at: 0)
+      newObjectArray.append (object)
     }
-    self.mModel?.setProp (objects)
+    newObjectArray.reverse ()
+    newObjectArray += objects
+    self.mModel?.setProp (newObjectArray)
   }
 
   //····················································································································
