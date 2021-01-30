@@ -5,6 +5,15 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+//  Dictionary keys for drag and drop, copy / paste
+//----------------------------------------------------------------------------------------------------------------------
+
+let OBJECT_DICTIONARY_KEY = "OBJECTS_DICTIONARY_KEY"
+let OBJECT_ADDITIONAL_DICTIONARY_KEY = "OBJECTS_ADDITIONAL_DICTIONARY_KEY"
+let X_KEY = "X"
+let Y_KEY = "Y"
+
+//----------------------------------------------------------------------------------------------------------------------
 //  EBGraphicManagedObject
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -179,6 +188,15 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
+  //  Save into additional dictionary
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+  @objc dynamic func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
   //  COPY AND PASTE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //  Only types that can be represented in Objective-C are accepted
@@ -190,7 +208,9 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  @objc dynamic func operationAfterPasting () {
+  @objc dynamic func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                            objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
   }
 
   //····················································································································

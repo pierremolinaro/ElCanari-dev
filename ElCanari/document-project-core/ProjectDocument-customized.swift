@@ -345,18 +345,18 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropComment,
-      draggedObjectFactory: { return CommentInSchematic (nil) },
+      draggedObjectFactory: { return (CommentInSchematic (nil), NSDictionary ()) },
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
       draggedType: kDragAndDropWire,
-      draggedObjectFactory: { return WireInSchematic (nil) },
+      draggedObjectFactory: { return (WireInSchematic (nil), NSDictionary ()) },
       scaleProvider: self.mSchematicsView
     )
   //---
     self.mAddRestrictRectangleButton?.register (
       draggedType: kDragAndDropRestrictRectangle,
-      draggedObjectFactory: { return BoardRestrictRectangle (nil) },
+      draggedObjectFactory: { return (BoardRestrictRectangle (nil), NSDictionary ()) },
       scaleProvider: self.mBoardView
     )
     self.mAddTextInBoardButton?.register (
@@ -366,7 +366,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     )
     self.mAddLineInBoardButton?.register (
       draggedType: kDragAndDropBoardLine,
-      draggedObjectFactory: { return BoardLine (nil) },
+      draggedObjectFactory: { return (BoardLine (nil), NSDictionary ()) },
       scaleProvider: self.mBoardView
     )
     self.mAddTrackInBoardButton?.register (

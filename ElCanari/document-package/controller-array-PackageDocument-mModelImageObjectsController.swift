@@ -553,17 +553,22 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
       pb.setData (pdfData, forType: .pdf)
    //--- Build private representation
       var objectDictionaryArray = [NSDictionary] ()
+      var objectAdditionalDictionaryArray = [NSDictionary] ()
       for idx in indexArray {
         let object = objects [idx]
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        objectDictionaryArray.append (d)
+        let dict = NSMutableDictionary ()
+        object.saveIntoDictionary (dict)
+        objectDictionaryArray.append (dict)
+        let additionalDict = NSMutableDictionary ()
+        object.saveIntoAdditionalDictionary (additionalDict)
+        objectAdditionalDictionaryArray.append (additionalDict)
       }
     //--- Copy private representation(s)
       let dataDictionary : NSDictionary = [
-        "OBJECTS" : objectDictionaryArray,
-        "X" : pasteOffset.x,
-        "Y" : pasteOffset.y
+        OBJECT_DICTIONARY_KEY : objectDictionaryArray,
+        OBJECT_ADDITIONAL_DICTIONARY_KEY : objectAdditionalDictionaryArray,
+        X_KEY : pasteOffset.x,
+        Y_KEY : pasteOffset.y
       ]
       pb.setPropertyList (dataDictionary, forType: pasteboardType)
     }
@@ -584,27 +589,42 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
   //····················································································································
 
-   func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+   func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, _ inWindow : NSWindow) {
     let pb = NSPasteboard.general
     if let pasteboardType = inPasteboardType,
        pb.availableType (from: [pasteboardType]) != nil,
        let dataDictionary = pb.propertyList (forType: pasteboardType) as? NSDictionary,
-       let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
-       let X = dataDictionary ["X"] as? Int,
-       let Y = dataDictionary ["Y"] as? Int {
+       let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
+       let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
+       let X = dataDictionary [X_KEY] as? Int,
+       let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [PackageModelImageDoublePoint] ()
       let userSet = ObjcObjectSet ()
-      for dictionary in array {
+      var idx = 0
+      var errorMessage = ""
+      for dictionary in dictionaryArray {
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageModelImageDoublePoint {
-          object.operationAfterPasting ()
-          object.translate (xBy: X, yBy: Y, userSet: userSet)
-          newObjects.append (object)
+          if errorMessage == "" {
+            errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.objectArray)
+          }
+          idx += 1
+          if errorMessage == "" {
+            object.translate (xBy: X, yBy: Y, userSet: userSet)
+            newObjects.append (object)
+          }
         }
       }
-      var objects = self.objectArray
-      objects += newObjects
-      self.mModel?.setProp (objects)
-      self.selectedSet = Set (newObjects)
+      if errorMessage == "" {
+        var objects = self.objectArray
+        objects += newObjects
+        self.mModel?.setProp (objects)
+        self.selectedSet = Set (newObjects)
+      }else{
+         let alert = NSAlert ()
+         alert.messageText = errorMessage
+         alert.addButton (withTitle: "Ok")
+         alert.beginSheetModal (for: inWindow) { (inReturnCode : NSApplication.ModalResponse) in }
+      }
     }
   }
 

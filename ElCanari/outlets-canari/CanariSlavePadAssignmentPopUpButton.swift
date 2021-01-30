@@ -114,7 +114,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
     if let document = self.mDocument {
       let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName! } )
       let idx = inSender.tag
-      self.mCurrentSlavePad?.master_property.setProp (allPads [idx])
+      self.mCurrentSlavePad?.master = allPads [idx]
     }
   }
 

@@ -31,13 +31,13 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectFactory : Optional < () -> EBGraphicManagedObject? > = nil
+  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? > = nil
   private var mScaleProvider : EBGraphicViewScaleProvider? = nil
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 draggedObjectFactory : Optional < () -> EBGraphicManagedObject? >,
+                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? >,
                  scaleProvider : EBGraphicViewScaleProvider?) {
     self.mDragType = draggedType
     self.mDraggedObjectFactory = draggedObjectFactory
@@ -47,7 +47,7 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   func buildButtonImageFromDraggedObjectTypeName () {
-    if let temporaryObject = self.mDraggedObjectFactory? () {
+    if let (temporaryObject, _) = self.mDraggedObjectFactory? () {
       let displayShape = temporaryObject.objectDisplay!
       let rect = displayShape.boundingBox
       if !rect.isEmpty {
@@ -72,7 +72,7 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
-      if let temporaryObject = self.mDraggedObjectFactory? () {
+      if let (temporaryObject, additionalDict) = self.mDraggedObjectFactory? () {
         var transform = AffineTransform ()
         let scale = self.mScaleProvider?.actualScale ?? 1.0
         let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0
@@ -87,9 +87,14 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
         r.origin.x += mouseDownLocation.x
         r.origin.y += mouseDownLocation.y
       //--- Associated data
-        let d = NSMutableDictionary ()
-        temporaryObject.saveIntoDictionary (d)
-        let dataDictionary : NSDictionary = ["OBJECTS" : [d], "X" : 0, "Y" : 0]
+        let dict = NSMutableDictionary ()
+        temporaryObject.saveIntoDictionary (dict)
+        let dataDictionary : NSDictionary = [
+          OBJECT_DICTIONARY_KEY : [dict],
+          OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],
+          X_KEY : 0,
+          Y_KEY : 0
+        ]
         pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
       //--- Set dragged image
         draggingItem.setDraggingFrame (r, contents: image)

@@ -32,7 +32,7 @@ protocol EBGraphicViewControllerProtocol : class {
   func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : CanariPoint)
 
   func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
-  func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
+  func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, _ inWindow : NSWindow)
 
   func canDelete () -> Bool
   func deleteSelectedObjects ()

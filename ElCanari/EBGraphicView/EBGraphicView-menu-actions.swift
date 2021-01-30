@@ -66,7 +66,9 @@ extension EBGraphicView {
   //····················································································································
 
   @objc final func paste (_ : Any?) {
-    self.viewController?.pasteFromPasteboard (self.pasteboardType)
+    if let windowForSheet = self.window {
+      self.viewController?.pasteFromPasteboard (self.pasteboardType, windowForSheet)
+    }
   }
 
   //····················································································································

@@ -78,55 +78,53 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageSegment (nil) },
+      draggedObjectFactory: { return (PackageSegment (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddBezierButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageBezier (nil) },
+      draggedObjectFactory: { return (PackageBezier (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddOvalButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageOval (nil) },
+      draggedObjectFactory: { return (PackageOval (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddArcButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageArc (nil) },
+      draggedObjectFactory: { return (PackageArc (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddPadButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackagePad (nil) },
+      draggedObjectFactory: { return (PackagePad (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddSlavePadButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageSlavePad (nil) },
+      draggedObjectFactory: { [weak self] in return self?.makeSlavePad () },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageGuide (nil) },
+      draggedObjectFactory: { return (PackageGuide (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.image = self.imageForAddGuideButton ()
     self.mAddDimensionButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageDimension (nil) },
+      draggedObjectFactory: { return (PackageDimension (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddZoneButton?.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return PackageZone (nil) },
+      draggedObjectFactory: { return (PackageZone (nil), NSDictionary ()) },
       scaleProvider: self.mComposedPackageView
     )
  //--- Register scroll view
     self.mComposedPackageScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
     self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
-//    let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
-//    self.mComposedPackageView?.set (minimumRectangle: r)
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, for: PackageSegment.self)
@@ -146,6 +144,25 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     if let view = self.mComposedPackageView {
       DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
     }
+  }
+
+  //····················································································································
+
+  fileprivate func makeSlavePad () -> (PackageSlavePad, NSDictionary) {
+     let additionalDictionary = NSMutableDictionary ()
+     for object in self.mPackageObjectsController.selectedArray {
+       if let masterPad = object as? PackagePad {
+         additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+       }
+     }
+     if additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] == nil {
+       for object in self.rootObject.packageObjects {
+         if let masterPad = object as? PackagePad {
+           additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+         }
+       }
+     }
+    return (PackageSlavePad (nil), additionalDictionary)
   }
 
   //····················································································································
@@ -183,24 +200,41 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [packagePasteboardType]) != nil {
         if let dataDictionary = pasteboard.propertyList (forType: packagePasteboardType) as? NSDictionary,
-           let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
-           let X = dataDictionary ["X"] as? Int,
-           let Y = dataDictionary ["Y"] as? Int {
-          var objetsToSelect = [PackageObject] ()
+           let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
+           let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
+           let X = dataDictionary [X_KEY] as? Int,
+           let Y = dataDictionary [Y_KEY] as? Int {
+          var newObjectArray = [PackageObject] ()
           let userSet = ObjcObjectSet ()
+          var idx = 0
+          var errorMessage = ""
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
-              newObject.operationAfterPasting ()
-              newObject.translate (
-                xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
-                userSet: userSet
-              )
-              self.rootObject.packageObjects_property.add (newObject)
-              objetsToSelect.append (newObject)
+              if errorMessage == "" {
+                errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.rootObject.packageObjects)
+              }
+              idx += 1
+              if errorMessage == "" {
+                newObject.translate (
+                  xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
+                  yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
+                  userSet: userSet
+                )
+                newObjectArray.append (newObject)
+              }
             }
           }
-          self.mPackageObjectsController.setSelection (objetsToSelect)
+          if errorMessage == "" {
+            for newObject in newObjectArray {
+              self.rootObject.packageObjects_property.add (newObject)
+            }
+            self.mPackageObjectsController.setSelection (newObjectArray)
+          }else{
+             let alert = NSAlert ()
+             alert.messageText = errorMessage
+             alert.addButton (withTitle: "Ok")
+             alert.beginSheetModal (for: self.windowForSheet!) { (inReturnCode : NSApplication.ModalResponse) in }
+          }
           ok = true
         }
       }

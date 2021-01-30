@@ -65,43 +65,43 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolSegment (nil) },
+      draggedObjectFactory: { return (SymbolSegment (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddBezierButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolBezierCurve (nil) },
+      draggedObjectFactory: { return (SymbolBezierCurve (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddSolidOvalButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolSolidOval (nil) },
+      draggedObjectFactory: { return (SymbolSolidOval (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddOvalButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolOval (nil) },
+      draggedObjectFactory: { return (SymbolOval (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddSolidRectButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolSolidRect (nil) },
+      draggedObjectFactory: { return (SymbolSolidRect (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddTextButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolText (nil) },
+      draggedObjectFactory: { return (SymbolText (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddPinButton?.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return SymbolPin (nil) },
+      draggedObjectFactory: { return (SymbolPin (nil), NSDictionary ()) },
       scaleProvider: self.mComposedSymbolView
     )
 
@@ -151,9 +151,9 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
         if let dataDictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary,
-           let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
-           let X = dataDictionary ["X"] as? Int,
-           let Y = dataDictionary ["Y"] as? Int {
+           let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
+           let X = dataDictionary [X_KEY] as? Int,
+           let Y = dataDictionary [Y_KEY] as? Int {
           let userSet = ObjcObjectSet ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {

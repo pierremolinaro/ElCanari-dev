@@ -94,8 +94,9 @@ extension PackagePad {
 
   //····················································································································
 
-  override func operationAfterPasting () {
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary, objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     self.padNumber += VERY_LARGE_PAD_NUMBER // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
+    return "" // Means ok
   }
 
   //····················································································································

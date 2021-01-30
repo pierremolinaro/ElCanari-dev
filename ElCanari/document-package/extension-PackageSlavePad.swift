@@ -9,6 +9,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+
+let ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY = "MASTER_PAD_ID_KEY"
+
+//----------------------------------------------------------------------------------------------------------------------
 //   EXTENSION PackagePad
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -107,7 +111,30 @@ extension PackageSlavePad {
 
   override func operationBeforeRemoving () {
     super.operationBeforeRemoving ()
-    self.master_property.setProp (nil)
+    self.master = nil
+  }
+
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    if let masterPadObjectIndex = self.master?.ebObjectIndex {
+      ioDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPadObjectIndex
+    }
+  }
+
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary, objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    if let masterPadIndex = inDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] as? Int {
+      for object in inObjectArray {
+        if object.ebObjectIndex == masterPadIndex, let masterPad = object as? PackagePad {
+          self.master = masterPad
+        }
+      }
+    }
+    return (self.master != nil)
+      ? "" // Ok, no error
+      : "Cannot perform operation, the master pad does not exist any more." // Error message
   }
 
   //····················································································································

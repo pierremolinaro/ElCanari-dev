@@ -17,7 +17,7 @@ func transient_PackageSlavePad_padNameForDisplay (
        _ self_master_padNameForDisplay : String?
 ) -> String {
 //--- START OF USER ZONE 2
-  return "(" + (self_master_padNameForDisplay ?? "") + ")"
+  return "(" + (self_master_padNameForDisplay ?? "?") + ")"
 //--- END OF USER ZONE 2
 }
 

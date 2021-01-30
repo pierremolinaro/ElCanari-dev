@@ -50,21 +50,26 @@ extension EBGraphicView : NSDraggingSource {
     let objectArray = self.viewController?.graphicObjectArray ?? []
     var displayShape = EBShape ()
     var objectDictionaryArray = [NSDictionary] ()
+    var objectAdditionalDictionaryArray = [NSDictionary] ()
     for object in objectArray {
       if draggedObjectSet.contains (object), let objectShape = object.objectDisplay {
         displayShape.add (objectShape)
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        objectDictionaryArray.append (d)
+        let dict = NSMutableDictionary ()
+        object.saveIntoDictionary (dict)
+        objectDictionaryArray.append (dict)
+        let additionalDict = NSMutableDictionary ()
+        object.saveIntoAdditionalDictionary (additionalDict)
+        objectAdditionalDictionaryArray.append (additionalDict)
       }
     }
   //--- Associated data
     let mouseDownCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
     let mouseDownCanariLocation = mouseDownCocoaLocation.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     let dataDictionary : NSDictionary = [
-      "OBJECTS" : objectDictionaryArray,
-      "X" : mouseDownCanariLocation.x,
-      "Y" : mouseDownCanariLocation.y
+      OBJECT_DICTIONARY_KEY : objectDictionaryArray,
+      OBJECT_ADDITIONAL_DICTIONARY_KEY : objectAdditionalDictionaryArray,
+      X_KEY : mouseDownCanariLocation.x,
+      Y_KEY : mouseDownCanariLocation.y
     ]
     pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
   //--- Transform image by scaling and translating
