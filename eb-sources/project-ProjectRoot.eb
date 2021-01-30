@@ -46,6 +46,9 @@ entity ProjectRoot {
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
   property TrackSide mBoardSideForNewTrack default front ;
+  property BoardTextLayer mBoardLayerForNewText default legendFront ;
+  property BoardLineLayer mBoardLayerForNewLine default legendFront ;
+  property RestrictRectangleLayer mBoardSideForNewRestrictRectangle default frontSide ;
   
   property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
   property AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
@@ -57,7 +60,7 @@ entity ProjectRoot {
   
   property Int mTrackLengthUnit default 90_000_000 ; // meter
   
-  property Int mLayoutClearance default 45_720 ; // 20 mil
+  property Int mLayoutClearance default 22_660 ; // 10 mil
   property Int mLayoutClearanceUnit default 2_286 ; // mil
 
   property Int mBoardSelectedInspector default 1 ;

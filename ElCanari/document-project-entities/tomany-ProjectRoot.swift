@@ -22,6 +22,9 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSideForNewTrack_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mBoardLayerForNewLine_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mBoardSideForNewRestrictRectangle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRouteDirection_fromElementsOfSet (inRemovedSet) // Stored property
@@ -136,6 +139,9 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSideForNewTrack_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mBoardLayerForNewLine_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mBoardSideForNewRestrictRectangle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRouteDirection_toElementsOfSet (inAddedSet) // Stored property
@@ -639,6 +645,177 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardSideForNewTrack_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardLayerForNewText' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardLayerForNewText (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardLayerForNewText.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardLayerForNewText_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardLayerForNewText (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardLayerForNewText.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardLayerForNewText_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBEvent) in
+        managedObject.mBoardLayerForNewText_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardLayerForNewText_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardLayerForNewLine' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardLayerForNewLine (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardLayerForNewLine.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardLayerForNewLine_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardLayerForNewLine (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardLayerForNewLine.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardLayerForNewLine_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardLayerForNewLine_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBEvent) in
+        managedObject.mBoardLayerForNewLine_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardLayerForNewLine_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardLayerForNewLine_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardSideForNewRestrictRectangle' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardSideForNewRestrictRectangle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardSideForNewRestrictRectangle.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardSideForNewRestrictRectangle_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardSideForNewRestrictRectangle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardSideForNewRestrictRectangle.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardSideForNewRestrictRectangle_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardSideForNewRestrictRectangle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBEvent) in
+        managedObject.mBoardSideForNewRestrictRectangle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardSideForNewRestrictRectangle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardSideForNewRestrictRectangle_property.removeEBObserver (observer)
       }
     }
   }
@@ -7844,6 +8021,9 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSideForNewTrack (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLayerForNewText (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLayerForNewLine (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardSideForNewRestrictRectangle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRouteDirection (self.mObserverForWritingPreferences)

@@ -659,6 +659,9 @@ xibdocument ProjectDocument root ProjectRoot {
 
   outlet CanariDragSourceButton mAddRestrictRectangleButton ;
   outlet CanariDragSourceImageButton mAddTextInBoardButton ;
+  outlet CanariChoiceMenu mLayerForNewTextMenu $selectedIndex root.mBoardLayerForNewText ;
+  outlet CanariChoiceMenu mLayerForNewLineMenu $selectedIndex root.mBoardLayerForNewLine ;
+  outlet CanariChoiceMenu mBoardSideForNewRestrictRectangleMenu $selectedIndex root.mBoardSideForNewRestrictRectangle ;
   outlet CanariDragSourceButton mAddLineInBoardButton ;
   outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
   outlet CanariChoiceMenu mBoardSideForNewTrackMenu $selectedIndex root.mBoardSideForNewTrack ;
@@ -720,7 +723,7 @@ xibdocument ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
   ;
 
-  outlet EBPopUpButton mBoardSideForNewTrackPopUp $selectedIndex root.mBoardSideForNewTrack ;
+//  outlet EBPopUpButton mBoardSideForNewTrackPopUp $selectedIndex root.mBoardSideForNewTrack ;
 
   outlet EBSwitch mCheckClearanceBetweenPadsOfSameNetSwitch $value root.mCheckClearanceBetweenPadsOfSameNet ;
 

@@ -3,10 +3,18 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let PULL_DOWN_ARROW_SIZE : CGFloat = 8.0
+
+//----------------------------------------------------------------------------------------------------------------------
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //----------------------------------------------------------------------------------------------------------------------
 
 class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
+
+  //····················································································································
+
+  @IBOutlet var mContextualMenu : CanariChoiceMenu? = nil
 
   //····················································································································
 
@@ -68,7 +76,10 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let dragType = self.mDragType, self.isEnabled {
+    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+    if let menu = self.mContextualMenu, pullDownMenuRect ().contains (mouseDownLocation) {
+      NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
+    }else if let dragType = self.mDragType, self.isEnabled {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
@@ -174,7 +185,35 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
       myGray.setFill ()
       NSBezierPath.fill (inDirtyRect)
     }
+    if self.mContextualMenu != nil {
+      var path = EBBezierPath ()
+      path.move (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
+      path.line (to: NSPoint (x: self.bounds.maxX, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
+      path.line (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE / 2.0, y: self.bounds.minY))
+      path.close ()
+      NSColor.black.setFill ()
+      path.fill ()
+    }
     super.draw (inDirtyRect)
+  }
+
+  //····················································································································
+  //   PULL DOWN MENU DETECTION RECTANGLE
+  //····················································································································
+
+  fileprivate func pullDownMenuRect () -> NSRect {
+    let r : NSRect
+    if self.mContextualMenu != nil {
+      r = NSRect (
+        x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE,
+        y: self.bounds.minY,
+        width: PULL_DOWN_ARROW_SIZE,
+        height: PULL_DOWN_ARROW_SIZE / 2.0
+      )
+    }else{
+      r = NSRect ()
+    }
+    return r
   }
 
   //····················································································································

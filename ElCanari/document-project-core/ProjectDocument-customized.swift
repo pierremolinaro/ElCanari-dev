@@ -684,6 +684,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   private func performAddBoardLineDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
     let newLine = BoardLine (self.ebUndoManager)
+    newLine.mLayer = self.rootObject.mBoardLayerForNewLine
     newLine.mX1 += p.x
     newLine.mY1 += p.y
     newLine.mX2 += p.x
@@ -698,6 +699,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   private func performAddBoardTextDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
     let boardText = BoardText (self.ebUndoManager)
+    boardText.mLayer = self.rootObject.mBoardLayerForNewText
     boardText.mX = p.x
     boardText.mY = p.y
     boardText.mFont = self.rootObject.mFonts.first!
@@ -711,6 +713,17 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
     let restrictRectangle = BoardRestrictRectangle (self.ebUndoManager)
+    switch self.rootObject.mBoardSideForNewRestrictRectangle {
+    case .frontSide :
+      restrictRectangle.mIsInFrontLayer = true
+      restrictRectangle.mIsInBackLayer = false
+    case .backSide :
+      restrictRectangle.mIsInFrontLayer = false
+      restrictRectangle.mIsInBackLayer = true
+    case .bothSides :
+      restrictRectangle.mIsInFrontLayer = true
+      restrictRectangle.mIsInBackLayer = true
+    }
     restrictRectangle.mX = p.x
     restrictRectangle.mY = p.y
     self.rootObject.mBoardObjects.append (restrictRectangle)
