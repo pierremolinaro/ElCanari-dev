@@ -207,18 +207,21 @@ extension EBBezierPath {
 //----------------------------------------------------------------------------------------------------------------------
 
 class PadGeometryForERC {
+  let id : Int
   let circles : [GeometricCircle]
   let rectangles : [GeometricRect]
   let bezierPath : EBBezierPath
 
   //····················································································································
 
-  init (centerX inCenterX : Int,
+  init (id inID : Int,
+        centerX inCenterX : Int,
         centerY inCenterY : Int,
         width inWidth : Int,
         height inHeight : Int,
         clearance inClearance : Int,
         shape inShape : PadShape) {
+    self.id = inID
     let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
     let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
     let clearance = canariUnitToCocoa (inClearance)
@@ -305,9 +308,11 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  private init (_ inCircles : [GeometricCircle],
+  private init (_ inID : Int,
+                _ inCircles : [GeometricCircle],
                 _ inRectangles : [GeometricRect],
                 _ inBezierPath : EBBezierPath) {
+    self.id = inID
     self.circles = inCircles
     self.rectangles = inRectangles
     self.bezierPath = inBezierPath
@@ -324,7 +329,7 @@ class PadGeometryForERC {
     for r in self.rectangles {
       rects.append (GeometricRect (inAffineTransform.transform (r.p1), inAffineTransform.transform (r.p2), r.width))
     }
-    return PadGeometryForERC (c, rects, self.bezierPath.transformed (by: inAffineTransform))
+    return PadGeometryForERC (self.id, c, rects, self.bezierPath.transformed (by: inAffineTransform))
   }
 
   //····················································································································

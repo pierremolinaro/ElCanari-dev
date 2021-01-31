@@ -55,7 +55,8 @@ extension ProjectDocument {
     self.checkVersusArtwork (&issues)
     if let artwork = self.rootObject.mArtwork {
       var padNetDictionary = [SideAndNetName : [PadGeometryForERC]] ()
-      self.checkPadInsulation (&issues, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      var padID = 0
+      self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
       self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkNetConnectivity (&issues, netConnectorsDictionary)
@@ -234,15 +235,17 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func checkPadInsulation (_ ioIssues : inout [CanariIssue],
-                                       _ ioPadNetDictionary : inout [SideAndNetName : [PadGeometryForERC]],
-                                       artworkClearance inArtworkClearance : Int) {
+  fileprivate func buildPadNetDictionary (_ ioIssues : inout [CanariIssue],
+                                          _ ioPadID : inout Int,
+                                          _ ioPadNetDictionary : inout [SideAndNetName : [PadGeometryForERC]],
+                                          artworkClearance inArtworkClearance : Int) {
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Is on board
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
         let af = component.affineTransformFromPackage ()
         for (_, padDescriptor) in component.packagePadDictionary! {
           let padGeometry = PadGeometryForERC (
+            id: ioPadID,
             centerX: padDescriptor.center.x,
             centerY: padDescriptor.center.y,
             width: padDescriptor.padSize.width,
@@ -250,14 +253,13 @@ extension ProjectDocument {
             clearance: inArtworkClearance,
             shape: padDescriptor.shape
           )
+          ioPadID += 1
           var optionalComponentSidePadGeometry : PadGeometryForERC? = nil
           var optionalOppositeSidePadGeometry : PadGeometryForERC? = nil
           var optionalInnerLayersPadGeometry  : PadGeometryForERC? = nil
           switch padDescriptor.style {
           case .surface :
             optionalComponentSidePadGeometry = padGeometry
-//            oppositeSidePadGeometry = PadGeometryForERC ()
-//            innerLayersPadGeometry = PadGeometryForERC ()
           case .traversing :
             optionalComponentSidePadGeometry = padGeometry
             optionalOppositeSidePadGeometry = padGeometry
@@ -268,6 +270,7 @@ extension ProjectDocument {
           var innerLayersSlavePadGeometryArray  = [PadGeometryForERC] ()
           for slavePad in padDescriptor.slavePads {
             let slavePadGeometry = PadGeometryForERC (
+              id: ioPadID,
               centerX: slavePad.center.x,
               centerY: slavePad.center.y,
               width: slavePad.padSize.width,
@@ -286,6 +289,7 @@ extension ProjectDocument {
               innerLayersSlavePadGeometryArray.append (slavePadGeometry)
             }
           }
+          ioPadID += 1
           let netName = padNetDictionary [padDescriptor.name] ?? ""
           if let componentSidePadGeometry = optionalComponentSidePadGeometry {
             let componentSideTransformedGeometry = componentSidePadGeometry.transformed (by: af)
@@ -414,7 +418,7 @@ extension ProjectDocument {
         let padX = inPadArray [idx]
         for idy in 0 ..< idx {
           let padY = inPadArray [idy]
-          if padX.intersects (pad: padY) {
+          if (padX.id != padY.id) && padX.intersects (pad: padY) {
             ioCollisionCount += 1
             let bp = [padX.bezierPath, padY.bezierPath]
             let issue = CanariIssue (kind: .error, message: "pad collision in \(inLayerName) layer", pathes: bp)

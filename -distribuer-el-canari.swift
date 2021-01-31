@@ -38,7 +38,9 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
   "Project: improved manual track routing"
 ]
-let NEWS : [String] = []
+let NEWS : [String] = [
+  "Project: added a checkbox to determine if slave pads should be routed or insulated" 
+]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
