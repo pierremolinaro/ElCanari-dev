@@ -2092,6 +2092,8 @@
 		CFE85AAE21A5D76600991A66 /* entity-SymbolText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85AA621A5D76600991A66 /* entity-SymbolText.swift */; };
 		CFE85AB021A6014F00991A66 /* extension-SymbolText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85AAF21A6014F00991A66 /* extension-SymbolText.swift */; };
 		CFE85AB121A6014F00991A66 /* extension-SymbolText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85AAF21A6014F00991A66 /* extension-SymbolText.swift */; };
+		CFE9226725C6ED4100797ECA /* CanariBoolPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9226625C6ED4100797ECA /* CanariBoolPopUpButton.swift */; };
+		CFE9226825C6ED4100797ECA /* CanariBoolPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9226625C6ED4100797ECA /* CanariBoolPopUpButton.swift */; };
 		CFE979F121ABFC3A002E5716 /* CanariDragSourceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE979F021ABFC3A002E5716 /* CanariDragSourceTableView.swift */; };
 		CFE979F221ABFC3A002E5716 /* CanariDragSourceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE979F021ABFC3A002E5716 /* CanariDragSourceTableView.swift */; };
 		CFE9B7E821A81533005990D1 /* transient-SymbolRoot-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9B7E721A81533005990D1 /* transient-SymbolRoot-issues.swift */; };
@@ -3678,6 +3680,7 @@
 		CFE85AA521A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolText-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CFE85AA621A5D76600991A66 /* entity-SymbolText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolText.swift"; sourceTree = "<group>"; };
 		CFE85AAF21A6014F00991A66 /* extension-SymbolText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SymbolText.swift"; sourceTree = "<group>"; };
+		CFE9226625C6ED4100797ECA /* CanariBoolPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariBoolPopUpButton.swift; sourceTree = "<group>"; };
 		CFE979F021ABFC3A002E5716 /* CanariDragSourceTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariDragSourceTableView.swift; sourceTree = "<group>"; };
 		CFE9B7E721A81533005990D1 /* transient-SymbolRoot-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolRoot-issues.swift"; sourceTree = "<group>"; };
 		CFEAAD45223175CE00F69A12 /* entity-SymbolTypeInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolTypeInDevice.swift"; sourceTree = "<group>"; };
@@ -4695,6 +4698,7 @@
 				CF41CCA22360CA2A0025D7BC /* CanariBoardComponentPackagePopUpButton.swift */,
 				CF41CCA32360CA2A0025D7BC /* CanariBoardComponentValueFontPopUpButton.swift */,
 				CF41CCA12360CA2A0025D7BC /* CanariBoardTextFontPopUpButton.swift */,
+				CFE9226625C6ED4100797ECA /* CanariBoolPopUpButton.swift */,
 				CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */,
 				CFBFEF9A25BF20DE0012C630 /* CanariChoiceMenu.swift */,
 				CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */,
@@ -7109,6 +7113,7 @@
 				CF05FDD524237EFF00A4D28D /* CanariSelectionPopUpButton.swift in Sources */,
 				CFDD8868223420C0008D3781 /* action-DeviceDocument-performBindAction.swift in Sources */,
 				CF9D4B2C227F796C006E2035 /* action-ProjectDocument-updateDeviceAction.swift in Sources */,
+				CFE9226725C6ED4100797ECA /* CanariBoolPopUpButton.swift in Sources */,
 				CF85859421C5124300082CE3 /* transient-PackageArc-objectDisplay.swift in Sources */,
 				CF323C2920E2DD9E00F8FD8D /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */,
@@ -8355,6 +8360,7 @@
 				CF5C4D89219F04D600EAC52A /* EBFontButton.swift in Sources */,
 				CFA42F56229AEA98000AA8C8 /* tomany-SegmentEntity.swift in Sources */,
 				CF9D4B2B227F796C006E2035 /* action-ProjectDocument-updateFontAction.swift in Sources */,
+				CFE9226825C6ED4100797ECA /* CanariBoolPopUpButton.swift in Sources */,
 				CFA43048229AEB96000AA8C8 /* tomany-NetClassInProject.swift in Sources */,
 				CF00846321C4363E003627E9 /* transient-PackageDocument-statusMessage.swift in Sources */,
 				CF5C4D8B219F04D600EAC52A /* entity-ArtworkFileGenerationParameters.swift in Sources */,

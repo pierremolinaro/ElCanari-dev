@@ -959,10 +959,14 @@ xibdocument ProjectDocument root ProjectRoot {
     #boardObjectsController.selectedArray
   ;
 
-  outlet EBSwitch mSlavePadsShouldBeRoutedSwitch
-    $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
+  outlet CanariBoolPopUpButton mSlavePadsShouldBeRoutedPopUpButton
+    $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted {
+      item0: "should be insulated",
+      item1: "should be routed"
+    }
     $enabled #componentInBoardSelectionController.hasSlavePads
   ;
+
 
   outlet EBSwitch mDisplayLegendSwitch $value #componentInBoardSelectionController.mDisplayLegend ;
 

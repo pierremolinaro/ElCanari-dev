@@ -39,7 +39,7 @@ let CHANGES : [String] = [
   "Project: improved manual track routing"
 ]
 let NEWS : [String] = [
-  "Project: added a checkbox to determine if slave pads should be routed or insulated" 
+  "Project: added a popup button to determine if slave pads should be routed or insulated" 
 ]
 
 //--------------------------------------------------------------------------------------------------
