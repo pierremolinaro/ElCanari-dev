@@ -13,8 +13,15 @@ graphic entity ComponentInProject : BoardObject {
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
 
 //--- Package
+  property Bool mSlavePadsShouldBeRouted default yes ;
+ 
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.mSlavePadsShouldBeRouted ;
+
   toOne DevicePackageInProject mSelectedPackage ;
+  
   arrayController #componentAvailablePackagesController : self.mPackages ;
+  
   toMany proxy DevicePackageInProject mPackages : mDevice.mPackages ;
 
   transient ComponentPadDescriptorDictionary componentPadDictionary dependsFrom 
@@ -84,6 +91,8 @@ graphic entity ComponentInProject : BoardObject {
     prefs.mShowRotationKnobInBoard
   ;
 
+  transient Bool hasSlavePads dependsFrom self.packagePadDictionary ;
+  
 //--- Symbols
   toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
 

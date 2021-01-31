@@ -250,19 +250,22 @@ extension ProjectDocument {
             clearance: inArtworkClearance,
             shape: padDescriptor.shape
           )
-          var componentSidePadGeometry : PadGeometryForERC
-          var oppositeSidePadGeometry : PadGeometryForERC
-          var innerLayersPadGeometry  : PadGeometryForERC
+          var optionalComponentSidePadGeometry : PadGeometryForERC? = nil
+          var optionalOppositeSidePadGeometry : PadGeometryForERC? = nil
+          var optionalInnerLayersPadGeometry  : PadGeometryForERC? = nil
           switch padDescriptor.style {
           case .surface :
-            componentSidePadGeometry = padGeometry
-            oppositeSidePadGeometry = PadGeometryForERC ()
-            innerLayersPadGeometry = PadGeometryForERC ()
+            optionalComponentSidePadGeometry = padGeometry
+//            oppositeSidePadGeometry = PadGeometryForERC ()
+//            innerLayersPadGeometry = PadGeometryForERC ()
           case .traversing :
-            componentSidePadGeometry = padGeometry
-            oppositeSidePadGeometry = padGeometry
-            innerLayersPadGeometry = padGeometry
+            optionalComponentSidePadGeometry = padGeometry
+            optionalOppositeSidePadGeometry = padGeometry
+            optionalInnerLayersPadGeometry = padGeometry
           }
+          var componentSideSlavePadGeometryArray = [PadGeometryForERC] ()
+          var oppositeSideSlavePadGeometryArray = [PadGeometryForERC] ()
+          var innerLayersSlavePadGeometryArray  = [PadGeometryForERC] ()
           for slavePad in padDescriptor.slavePads {
             let slavePadGeometry = PadGeometryForERC (
               centerX: slavePad.center.x,
@@ -274,17 +277,17 @@ extension ProjectDocument {
             )
             switch slavePad.style {
             case .oppositeSide :
-              oppositeSidePadGeometry = oppositeSidePadGeometry + slavePadGeometry
+              oppositeSideSlavePadGeometryArray.append (slavePadGeometry)
             case .componentSide :
-              componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
+              componentSideSlavePadGeometryArray.append (slavePadGeometry)
             case .traversing :
-              oppositeSidePadGeometry = oppositeSidePadGeometry + slavePadGeometry
-              componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
-              innerLayersPadGeometry = innerLayersPadGeometry + slavePadGeometry
+              oppositeSideSlavePadGeometryArray.append (slavePadGeometry)
+              componentSideSlavePadGeometryArray.append (slavePadGeometry)
+              innerLayersSlavePadGeometryArray.append (slavePadGeometry)
             }
           }
           let netName = padNetDictionary [padDescriptor.name] ?? ""
-          if !componentSidePadGeometry.isEmpty {
+          if let componentSidePadGeometry = optionalComponentSidePadGeometry {
             let componentSideTransformedGeometry = componentSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
@@ -295,7 +298,7 @@ extension ProjectDocument {
               ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
             }
           }
-          if !oppositeSidePadGeometry.isEmpty {
+          if let oppositeSidePadGeometry = optionalOppositeSidePadGeometry{
             let oppositeSideTransformedGeometry = oppositeSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
@@ -306,11 +309,43 @@ extension ProjectDocument {
               ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
             }
           }
-          if !innerLayersPadGeometry.isEmpty {
+          if let innerLayersPadGeometry = optionalInnerLayersPadGeometry {
             let innerLayersTransformedGeometry = innerLayersPadGeometry.transformed (by: af)
             for side in TrackSide.allCases {
               if (side != .front) && (side != .back) {
                 let key = SideAndNetName (side: side, netName: netName)
+                ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [innerLayersTransformedGeometry]
+              }
+            }
+          }
+          let slavePadNetName = component.mSlavePadsShouldBeRouted ? netName : ""
+          for slavePadGeometry in componentSideSlavePadGeometryArray {
+            let componentSideTransformedGeometry = slavePadGeometry.transformed (by: af)
+            switch component.mSide {
+            case .front :
+              let key = SideAndNetName (side: .front, netName: slavePadNetName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+            case .back :
+              let key = SideAndNetName (side: .back, netName: slavePadNetName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+            }
+          }
+          for slavePadGeometry in oppositeSideSlavePadGeometryArray {
+            let oppositeSideTransformedGeometry = slavePadGeometry.transformed (by: af)
+            switch component.mSide {
+            case .front :
+              let key = SideAndNetName (side: .back, netName: slavePadNetName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+            case .back :
+              let key = SideAndNetName (side: .front, netName: slavePadNetName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+            }
+          }
+          for slavePadGeometry in innerLayersSlavePadGeometryArray {
+            let innerLayersTransformedGeometry = slavePadGeometry.transformed (by: af)
+            for side in TrackSide.allCases {
+              if (side != .front) && (side != .back) {
+                let key = SideAndNetName (side: side, netName: slavePadNetName)
                 ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [innerLayersTransformedGeometry]
               }
             }
@@ -401,10 +436,12 @@ extension ProjectDocument {
       if component.mRoot != nil { // Placed on board
         let af = component.affineTransformFromPackage ()
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
+        let slavePadsShouldBeRouted = component.mSlavePadsShouldBeRouted
         for connector in component.mConnectors {
           let masterPadName = connector.mComponentPadName
           let padDescriptor = component.packagePadDictionary! [masterPadName]!
-          if let netName = padNetDictionary [masterPadName] {  // Pad should be connected
+          let padShouldBeConnected = (connector.mPadIndex == 0) || slavePadsShouldBeRouted
+          if let netName = padNetDictionary [masterPadName], padShouldBeConnected {  // Pad should be connected
             let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
             if (connector.mTracksP1.count + connector.mTracksP2.count) == 0 {
               let issue = CanariIssue (kind: .error, message: "Pad should be connected", pathes: [bp])
@@ -414,7 +451,7 @@ extension ProjectDocument {
               ioNetConnectorsDictionary [netName] = (ioNetConnectorsDictionary [netName] ?? []) + [(connector, bp)]
               self.checkPadSizeVersusConnectedTracksSide (&ioIssues, connector, af, &connectionErrorCount, artworkClearance: inArtworkClearance)
             }
-          }else if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 { // Pad without connection
+          }else if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 { // NC Pad with connection
             let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
             let issue = CanariIssue (kind: .error, message: "Pad should be nc", pathes: [bp])
             ioIssues.append (issue)

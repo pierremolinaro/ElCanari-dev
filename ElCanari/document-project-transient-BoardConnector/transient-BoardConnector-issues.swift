@@ -20,18 +20,22 @@ func transient_BoardConnector_issues (
        _ self_mTracksP1_count : Int,  
        _ self_mTracksP2_count : Int,  
        _ self_BoardObject_errorOrWarningIssueSize : Double,
+       _ self_mPadIndex : Int,        
+       _ self_mComponent_mSlavePadsShouldBeRouted : Bool?,
        _ self_mComponent_padNetDictionary : PadNetDictionary?
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
+      //--- self_mPadIndex: // 0 -> master pad, > 0 : slave pad
+        let shouldBeConnected = (self_mPadIndex == 0) || (self_mComponent_mSlavePadsShouldBeRouted ?? false)
         let trackCount = self_mTracksP1_count + self_mTracksP2_count
         var issues = CanariIssueArray ()
         let noConnectionWarning : Bool
         if self_mComponent_none {
           noConnectionWarning = trackCount < 2
-        }else if let padNetDictionary = self_mComponent_padNetDictionary {
+        }else if let padNetDictionary = self_mComponent_padNetDictionary, shouldBeConnected {
           noConnectionWarning = (padNetDictionary [self_mComponentPadName] != nil) && (trackCount == 0)
         }else{
-          noConnectionWarning = false // Temp
+          noConnectionWarning = false
         }
         if noConnectionWarning {
           let location = self_location.cocoaPoint

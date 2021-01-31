@@ -1062,6 +1062,7 @@ import Cocoa
   @IBOutlet var mSheetPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mSheetUpButton : EBButton? = nil
   @IBOutlet var mShowRotationKnobInBoardSwitch : EBSwitch? = nil
+  @IBOutlet var mSlavePadsShouldBeRoutedSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolMirrorSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet var mTrackCountTextField : EBTextObserverField? = nil
@@ -1155,6 +1156,7 @@ import Cocoa
   var mController_mBoardTrackP2yTextField_enabled : MultipleBindingController_enabled? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSlavePadsShouldBeRoutedSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameFontSizeField_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameRotationTextField_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameRotationSlider_enabled : MultipleBindingController_enabled? = nil
@@ -1671,6 +1673,7 @@ import Cocoa
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mShowRotationKnobInBoardSwitch, "mShowRotationKnobInBoardSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSlavePadsShouldBeRoutedSwitch, "mSlavePadsShouldBeRoutedSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mTrackCountTextField, "mTrackCountTextField", EBTextObserverField.self, #file, #line)
@@ -2677,6 +2680,7 @@ import Cocoa
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
+    self.mSlavePadsShouldBeRoutedSwitch?.bind_value (self.componentInBoardSelectionController.mSlavePadsShouldBeRouted_property, file: #file, line: #line)
     self.mDisplayLegendSwitch?.bind_value (self.componentInBoardSelectionController.mDisplayLegend_property, file: #file, line: #line)
     self.mShowRotationKnobInBoardSwitch?.bind_value (prefs_mShowRotationKnobInBoard_property, file: #file, line: #line)
     self.mComponentInBoardCenterXPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
@@ -3228,6 +3232,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return self.componentInBoardSelectionController.hasSlavePads_property_selection
+        },
+        outlet: self.mSlavePadsShouldBeRoutedSwitch
+      )
+      self.componentInBoardSelectionController.hasSlavePads_property.addEBObserver (controller)
+      self.mController_mSlavePadsShouldBeRoutedSwitch_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
         },
         outlet: self.mComponentNameFontSizeField
@@ -3719,6 +3733,7 @@ import Cocoa
     self.mBoardTextRotationSlider?.unbind_angle ()
     self.mBoardTextWeightTextField?.unbind_value ()
     self.mBoardTextObliqueSwitch?.unbind_value ()
+    self.mSlavePadsShouldBeRoutedSwitch?.unbind_value ()
     self.mDisplayLegendSwitch?.unbind_value ()
     self.mShowRotationKnobInBoardSwitch?.unbind_value ()
     self.mComponentInBoardCenterXPopUp?.unbind_selectedTag ()
@@ -3899,6 +3914,8 @@ import Cocoa
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
     self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
     self.mController_mBackRestrictRectangleSwitch_enabled = nil
+    self.componentInBoardSelectionController.hasSlavePads_property.removeEBObserver (self.mController_mSlavePadsShouldBeRoutedSwitch_enabled!)
+    self.mController_mSlavePadsShouldBeRoutedSwitch_enabled = nil
     self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameFontSizeField_enabled!)
     self.mController_mComponentNameFontSizeField_enabled = nil
     self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameRotationTextField_enabled!)
@@ -4439,6 +4456,7 @@ import Cocoa
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()
     self.mShowRotationKnobInBoardSwitch?.ebCleanUp ()
+    self.mSlavePadsShouldBeRoutedSwitch?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mTrackCountTextField?.ebCleanUp ()
@@ -4876,6 +4894,7 @@ import Cocoa
     self.mSheetPopUpButton = nil
     self.mSheetUpButton = nil
     self.mShowRotationKnobInBoardSwitch = nil
+    self.mSlavePadsShouldBeRoutedSwitch = nil
     self.mSymbolMirrorSwitch = nil
     self.mSymbolRotationSegmentedControl = nil
     self.mTrackCountTextField = nil

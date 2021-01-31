@@ -6,6 +6,12 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol ComponentInProject_mSlavePadsShouldBeRouted : class {
+  var mSlavePadsShouldBeRouted : Bool { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol ComponentInProject_mX : class {
   var mX : Int { get }
 }
@@ -132,6 +138,12 @@ protocol ComponentInProject_deviceName : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol ComponentInProject_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol ComponentInProject_packagePadDictionary : class {
   var packagePadDictionary : PackageMasterPadDictionary? { get }
 }
@@ -176,6 +188,12 @@ protocol ComponentInProject_strokeBezierPath : class {
 
 protocol ComponentInProject_pinPadAssignments : class {
   var pinPadAssignments : ThreeStringArray? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol ComponentInProject_hasSlavePads : class {
+  var hasSlavePads : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -243,6 +261,7 @@ protocol ComponentInProject_objectDisplay : class {
 //----------------------------------------------------------------------------------------------------------------------
 
 class ComponentInProject : BoardObject,
+         ComponentInProject_mSlavePadsShouldBeRouted,
          ComponentInProject_mX,
          ComponentInProject_mY,
          ComponentInProject_mRotation,
@@ -264,6 +283,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mXUnit,
          ComponentInProject_mYUnit,
          ComponentInProject_deviceName,
+         ComponentInProject_signatureForERCChecking,
          ComponentInProject_packagePadDictionary,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
@@ -272,6 +292,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_componentIsPlacedInBoardString,
          ComponentInProject_strokeBezierPath,
          ComponentInProject_pinPadAssignments,
+         ComponentInProject_hasSlavePads,
          ComponentInProject_placementInSchematic,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_componentNameFontName,
@@ -282,6 +303,29 @@ class ComponentInProject : BoardObject,
          ComponentInProject_selectionDisplay,
          ComponentInProject_unplacedSymbols,
          ComponentInProject_objectDisplay {
+
+  //····················································································································
+  //   Atomic property: mSlavePadsShouldBeRouted
+  //····················································································································
+
+  final let mSlavePadsShouldBeRouted_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mSlavePadsShouldBeRouted_toDefaultValue () {
+    self.mSlavePadsShouldBeRouted = true
+  }
+
+  //····················································································································
+
+  final var mSlavePadsShouldBeRouted : Bool {
+    get { return self.mSlavePadsShouldBeRouted_property.propval }
+    set { self.mSlavePadsShouldBeRouted_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool> { return self.mSlavePadsShouldBeRouted_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -1154,6 +1198,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: hasSlavePads
+  //····················································································································
+
+  final let hasSlavePads_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasSlavePads_property_selection : EBSelection <Bool> {
+    return self.hasSlavePads_property.selection
+  }
+
+  //····················································································································
+
+  final var hasSlavePads : Bool? {
+    switch self.hasSlavePads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: placementInSchematic
   //····················································································································
 
@@ -1319,6 +1386,7 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
@@ -1395,6 +1463,28 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mDevice_property.addEBObserverOf_mDeviceName (self.deviceName_property)
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSlavePadsShouldBeRouted_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSlavePadsShouldBeRouted_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_signatureForERCChecking (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSlavePadsShouldBeRouted_property.addEBObserver (self.signatureForERCChecking_property)
   //--- To one property: mSelectedPackage
     self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
@@ -1585,6 +1675,28 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mDevice_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+  //--- Atomic property: hasSlavePads
+    self.hasSlavePads_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.packagePadDictionary_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.packagePadDictionary_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_hasSlavePads (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.packagePadDictionary_property.addEBObserver (self.hasSlavePads_property)
   //--- Atomic property: placementInSchematic
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1963,6 +2075,7 @@ class ComponentInProject : BoardObject,
     self.mPackages_modelDidChangeController?.unregister ()
     self.mPackages_modelDidChangeController = nil
     // self.mDevice_property.mDeviceName_property.removeEBObserver (self.deviceName_property)
+    // self.mSlavePadsShouldBeRouted_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mSelectedPackage_property.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property)
     // self.mSelectedPackage_property.mPackageName_property.removeEBObserver (self.selectedPackageName_property)
     // self.mDevice_property.packageNames_property.removeEBObserver (self.availablePackages_property)
@@ -1971,6 +2084,7 @@ class ComponentInProject : BoardObject,
     // self.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoardString_property)
     // self.mSelectedPackage_property.mStrokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property)
     // self.mDevice_property.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property)
+    // self.packagePadDictionary_property.removeEBObserver (self.hasSlavePads_property)
     // self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
     // self.mDevice_property.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property)
     // self.mNameFont_property.mFontName_property.removeEBObserver (self.componentNameFontName_property)
@@ -2062,6 +2176,14 @@ class ComponentInProject : BoardObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mSlavePadsShouldBeRouted",
+      idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
+      valueExplorer: &self.mSlavePadsShouldBeRouted_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mX",
       idx: self.mX_property.ebObjectIndex,
@@ -2232,6 +2354,14 @@ class ComponentInProject : BoardObject,
       valueExplorer: &self.deviceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "packagePadDictionary",
       idx: self.packagePadDictionary_property.ebObjectIndex,
       y: &y,
@@ -2294,6 +2424,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
       valueExplorer: &self.pinPadAssignments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "hasSlavePads",
+      idx: self.hasSlavePads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasSlavePads_property.mObserverExplorer,
+      valueExplorer: &self.hasSlavePads_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "placementInSchematic",
@@ -2427,6 +2565,9 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mSlavePadsShouldBeRouted
+    self.mSlavePadsShouldBeRouted_property.mObserverExplorer = nil
+    self.mSlavePadsShouldBeRouted_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -2539,6 +2680,8 @@ class ComponentInProject : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mSlavePadsShouldBeRouted
+    self.mSlavePadsShouldBeRouted_property.storeIn (dictionary: ioDictionary, forKey: "mSlavePadsShouldBeRouted")
   //--- Atomic property: mX
     self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   //--- Atomic property: mY
@@ -2668,6 +2811,8 @@ class ComponentInProject : BoardObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mSlavePadsShouldBeRouted
+    self.mSlavePadsShouldBeRouted_property.readFrom (dictionary: inDictionary, forKey: "mSlavePadsShouldBeRouted")
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
@@ -2718,6 +2863,7 @@ class ComponentInProject : BoardObject,
   override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
+    ioString += "mSlavePadsShouldBeRouted\n"
     ioString += "mX\n"
     ioString += "mY\n"
     ioString += "mRotation\n"
@@ -2755,6 +2901,8 @@ class ComponentInProject : BoardObject,
   override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
+    self.mSlavePadsShouldBeRouted.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
     self.mX.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mY.appendPropertyValueTo (&ioData)
@@ -2888,6 +3036,9 @@ class ComponentInProject : BoardObject,
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.mOperationQueue.addOperation {
     //--- Atomic properties
+      if let range = inDictionary ["mSlavePadsShouldBeRouted"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mSlavePadsShouldBeRouted = value
+      }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
       }

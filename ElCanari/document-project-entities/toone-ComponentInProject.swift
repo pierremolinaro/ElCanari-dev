@@ -15,6 +15,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ComponentInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    inOldValue?.mSlavePadsShouldBeRouted_property.removeEBObserversFrom (&self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
     inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
     inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
     inOldValue?.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
@@ -36,6 +37,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.mXUnit_property.removeEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
     inOldValue?.mYUnit_property.removeEBObserversFrom (&self.mObserversOf_mYUnit) // Stored property
     inOldValue?.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
+    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
     inOldValue?.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
     inOldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
     inOldValue?.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
@@ -44,6 +46,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.componentIsPlacedInBoardString_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
     inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
     inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+    inOldValue?.hasSlavePads_property.removeEBObserversFrom (&self.mObserversOf_hasSlavePads) // Transient property
     inOldValue?.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     inOldValue?.componentNameFontName_property.removeEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
@@ -55,6 +58,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   //--- Add observers to added objects
+    self.mInternalValue?.mSlavePadsShouldBeRouted_property.addEBObserversFrom (&self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
     self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
     self.mInternalValue?.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
@@ -76,6 +80,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.mXUnit_property.addEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
     self.mInternalValue?.mYUnit_property.addEBObserversFrom (&self.mObserversOf_mYUnit) // Stored property
     self.mInternalValue?.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
+    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
     self.mInternalValue?.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
     self.mInternalValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
     self.mInternalValue?.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
@@ -84,6 +89,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.componentIsPlacedInBoardString_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
     self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
     self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+    self.mInternalValue?.hasSlavePads_property.addEBObserversFrom (&self.mObserversOf_hasSlavePads) // Transient property
     self.mInternalValue?.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     self.mInternalValue?.componentNameFontName_property.addEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
@@ -94,6 +100,76 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mSlavePadsShouldBeRouted' stored property
+  //····················································································································
+
+  private var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mSlavePadsShouldBeRouted_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSlavePadsShouldBeRouted (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSlavePadsShouldBeRouted.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mSlavePadsShouldBeRouted_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSlavePadsShouldBeRouted (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSlavePadsShouldBeRouted.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mSlavePadsShouldBeRouted_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSlavePadsShouldBeRouted_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSlavePadsShouldBeRouted.apply { (_ observer : EBEvent) in
+        managedObject.mSlavePadsShouldBeRouted_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSlavePadsShouldBeRouted_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mSlavePadsShouldBeRouted.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSlavePadsShouldBeRouted_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -1566,6 +1642,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+    if let model = self.propval {
+      switch (model.signatureForERCChecking_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
@@ -2113,6 +2258,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
         managedObject.pinPadAssignments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasSlavePads' transient property
+  //····················································································································
+
+  private var mObserversOf_hasSlavePads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var hasSlavePads_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.hasSlavePads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_hasSlavePads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasSlavePads.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.hasSlavePads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasSlavePads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasSlavePads.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.hasSlavePads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasSlavePads_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasSlavePads.apply { (_ observer : EBEvent) in
+        managedObject.hasSlavePads_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasSlavePads_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasSlavePads.apply { (_ observer : EBEvent) in
+        managedObject.hasSlavePads_property.removeEBObserver (observer)
       }
     }
   }

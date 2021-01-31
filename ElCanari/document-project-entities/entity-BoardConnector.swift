@@ -1023,6 +1023,8 @@ class BoardConnector : BoardObject,
         kind &= unwSelf.mTracksP1_property.count_property_selection.kind ()
         kind &= unwSelf.mTracksP2_property.count_property_selection.kind ()
         kind &= unwSelf.errorOrWarningIssueSize_property_selection.kind ()
+        kind &= unwSelf.mPadIndex_property_selection.kind ()
+        kind &= unwSelf.mComponent_property.mSlavePadsShouldBeRouted_property_selection.kind ()
         kind &= unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
         switch kind {
         case .empty :
@@ -1030,9 +1032,9 @@ class BoardConnector : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mComponent_property.mSlavePadsShouldBeRouted_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -1047,6 +1049,8 @@ class BoardConnector : BoardObject,
     self.mTracksP1_property.addEBObserver (self.issues_property)
     self.mTracksP2_property.addEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
+    self.mPadIndex_property.addEBObserver (self.issues_property)
+    self.mComponent_property.addEBObserverOf_mSlavePadsShouldBeRouted (self.issues_property)
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Atomic property: viaDefaultHoleDiameter
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
@@ -1345,6 +1349,8 @@ class BoardConnector : BoardObject,
     // self.mTracksP1_property.removeEBObserver (self.issues_property)
     // self.mTracksP2_property.removeEBObserver (self.issues_property)
     // self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)
+    // self.mPadIndex_property.removeEBObserver (self.issues_property)
+    // self.mComponent_property.mSlavePadsShouldBeRouted_property.removeEBObserver (self.issues_property)
     // self.mComponent_property.padNetDictionary_property.removeEBObserver (self.issues_property)
     // self.mTracksP1_property.removeEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
     // self.mTracksP2_property.removeEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)

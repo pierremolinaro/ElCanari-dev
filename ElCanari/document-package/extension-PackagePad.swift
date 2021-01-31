@@ -213,14 +213,6 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  init () {
-    self.circles = []
-    self.rectangles = []
-    self.bezierPath = EBBezierPath ()
-  }
-
-  //····················································································································
-
   init (centerX inCenterX : Int,
         centerY inCenterY : Int,
         width inWidth : Int,
@@ -455,20 +447,6 @@ class PadGeometryForERC {
       }
       return false
     }
-  }
-
-  //····················································································································
-
-  var isEmpty : Bool {
-    return (self.circles.count + self.rectangles.count) == 0
-  }
-
-  //····················································································································
-
-  static func + (_ left : PadGeometryForERC, _ right : PadGeometryForERC) -> PadGeometryForERC {
-    var bp = left.bezierPath
-    bp.append (right.bezierPath)
-    return PadGeometryForERC (left.circles + right.circles, left.rectangles + right.rectangles, bp)
   }
 
   //····················································································································

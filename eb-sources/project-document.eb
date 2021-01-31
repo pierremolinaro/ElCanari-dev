@@ -723,8 +723,6 @@ xibdocument ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
   ;
 
-//  outlet EBPopUpButton mBoardSideForNewTrackPopUp $selectedIndex root.mBoardSideForNewTrack ;
-
   outlet EBSwitch mCheckClearanceBetweenPadsOfSameNetSwitch $value root.mCheckClearanceBetweenPadsOfSameNet ;
 
   outlet NSView mSaveDSNFileAuxiliaryView ;
@@ -959,6 +957,11 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
   selectionController ComponentInProject #componentInBoardSelectionController :
     #boardObjectsController.selectedArray
+  ;
+
+  outlet EBSwitch mSlavePadsShouldBeRoutedSwitch
+    $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
+    $enabled #componentInBoardSelectionController.hasSlavePads
   ;
 
   outlet EBSwitch mDisplayLegendSwitch $value #componentInBoardSelectionController.mDisplayLegend ;

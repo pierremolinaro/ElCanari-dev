@@ -136,6 +136,7 @@ extension CustomizedProjectDocument {
         let device = component.mDevice!
         let packageIndex = indexForPackage (
           device,
+          component.mSlavePadsShouldBeRouted,
           component.mSelectedPackage!,
           &packageDictionary,
           &packageArrayForRouting,
@@ -158,7 +159,7 @@ extension CustomizedProjectDocument {
           placed: component.mRoot != nil,
           originX: component.mX,
           originY: component.mY,
-          rotation: Double (component.mRotation) / 1000.0,
+          rotationInDegrees: Double (component.mRotation) / 1000.0,
           side: component.mSide,
           netList: padNetArray.sorted { $0.padString < $1.padString }
         )
@@ -367,12 +368,13 @@ struct CanariUnitToDSNUnitConverter {
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate func indexForPackage (_ inDevice : DeviceInProject,
+                                  _ inRouteSlavePads : Bool,
                                   _ inSelectedPackage : DevicePackageInProject,
                                   _ ioPackageDictionary : inout [PackageDictionaryKeyForDSNExport : Int],
                                   _ ioPackageArrayForRouting : inout [PackageTypeForDSNExport],
                                   _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport],
                                   _ inConverter : CanariUnitToDSNUnitConverter) -> Int {
-  let key = PackageDictionaryKeyForDSNExport (device: inDevice, package: inSelectedPackage)
+  let key = PackageDictionaryKeyForDSNExport (device: inDevice, routeSlavePads: inRouteSlavePads, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx
   }else{
@@ -395,7 +397,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
       )
       let psr = PadInstanceForDSNExport (
         name: masterPad.name,
-        masterPad: masterPadForRouting,
+        pad: masterPadForRouting,
         centerX: inConverter.dsnUnitFromCanariUnit (masterPad.center.x - deviceCenter.x),
         centerY: inConverter.dsnUnitFromCanariUnit (masterPad.center.y - deviceCenter.y)
       )
@@ -409,7 +411,6 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
         case .componentSide : onComponentSide = true  ; onOppositeSide = false
         case .traversing : onComponentSide = true  ; onOppositeSide = true
         }
-      //--- Enter slave pad
         let slavePadForRouting = findOrAddPadType (
           canariWidth: slavePad.padSize.width,
           canariHeight: slavePad.padSize.height,
@@ -419,8 +420,8 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
           &ioPadTypeArrayForRouting
         )
         let pir = PadInstanceForDSNExport (
-          name: masterPad.name, // + ":\(slavePadIndex)",
-          masterPad: slavePadForRouting,
+          name: inRouteSlavePads ? masterPad.name : "nc::\(masterPad.name)",
+          pad: slavePadForRouting,
           centerX: inConverter.dsnUnitFromCanariUnit (slavePad.center.x - deviceCenter.x),
           centerY: inConverter.dsnUnitFromCanariUnit (slavePad.center.y - deviceCenter.y)
         )
@@ -429,7 +430,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
     }
   //--- Enter in package array
     let pfr = PackageTypeForDSNExport (
-      typeName: inDevice.mDeviceName + ":" + inSelectedPackage.mPackageName,
+      typeName: inDevice.mDeviceName + ":" + (inRouteSlavePads ? "Y" : "N") + ":" + inSelectedPackage.mPackageName,
       padArray: padArrayForRouting.sorted { $0.name < $1.name }
     )
     ioPackageArrayForRouting.append (pfr)
@@ -476,6 +477,7 @@ fileprivate struct PadNetDescriptorForDSNExport {
 
 fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   let device : DeviceInProject
+  let routeSlavePads : Bool
   let package : DevicePackageInProject
 }
 
@@ -506,7 +508,7 @@ fileprivate struct ComponentForDSNExport {
   let placed : Bool
   let originX : Int
   let originY : Int
-  let rotation : Double
+  let rotationInDegrees : Double
   let side : ComponentSide
   let netList : [PadNetDescriptorForDSNExport]
 }
@@ -522,7 +524,7 @@ fileprivate struct PackageTypeForDSNExport {
 
 fileprivate struct PadInstanceForDSNExport {
   let name : String
-  let masterPad : PadTypeForDSNExport
+  let pad : PadTypeForDSNExport
   let centerX : Double // In DSN Unit
   let centerY : Double // In DSN Unit
 }
@@ -665,8 +667,8 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
                                    _ inPackageArrayForRouting : [PackageTypeForDSNExport]) {
   for package in inPackageArrayForRouting {
     ioString += "    (image \"\(package.typeName)\"\n"
-    for pad in package.padArray {
-      ioString += "      (pin \(pad.masterPad.name) \(pad.name) \(pad.centerX) \(pad.centerY))\n"
+    for padType in package.padArray {
+      ioString += "      (pin \(padType.pad.name) \(padType.name) \(padType.centerX) \(padType.centerY))\n"
     }
     ioString += "    )\n"
   }
@@ -678,13 +680,7 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
                                    _ inSignalPolygonVertices : EBLinePath, // In DSN Unit
                                    _ inConverter : CanariUnitToDSNUnitConverter) {
-//  let bbLeft = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.x)
-//  let bbBottom = inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.origin.y)
-//  let bbRight = bbLeft + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.width)
-//  let bbTop = bbBottom + inConverter.dsnUnitFromCanariUnit (inBoardBoundBox.size.height)
-//  ioString += "    (boundary\n"
-//  ioString += "      (rect pcb \(bbLeft) \(bbBottom) \(bbRight) \(bbTop))\n"
-//  ioString += "    )\n"
+
   ioString += "    (boundary\n"
   ioString += "      (path pcb 0\n"
   ioString += "        \(inSignalPolygonVertices.origin.x) \(inSignalPolygonVertices.origin.y)\n"
@@ -832,7 +828,6 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
                                          _ inBoardRect : CanariRect,
                                          _ inConverter : CanariUnitToDSNUnitConverter) {
 //--- Sort components
-
   let origin : CanariPoint
   switch inRouteOrigin {
   case .center:
@@ -873,7 +868,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
     }
     ioString += "    (component \"\(inPackageArrayForRouting [component.packageIndex].typeName)\"\n"
     ioString += "      (place\n"
-    ioString += "        \(component.componentName) \(x) \(y) \(side) \(component.rotation)\n"
+    ioString += "        \(component.componentName) \(x) \(y) \(side) \(component.rotationInDegrees)\n"
     var idx = 1
     for padDescriptor in component.netList {
       ioString += "        (pin \(padDescriptor.padString) (clearance_class default))\n"

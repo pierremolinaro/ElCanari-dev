@@ -11,6 +11,15 @@ import Cocoa
 final class SelectionController_ProjectDocument_componentInBoardSelectionController : EBObject {
 
   //····················································································································
+  //   Selection observable property: mSlavePadsShouldBeRouted
+  //····················································································································
+
+  let mSlavePadsShouldBeRouted_property = EBPropertyProxy_Bool ()
+  var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool> {
+    return self.mSlavePadsShouldBeRouted_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
@@ -211,6 +220,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: signatureForERCChecking
+  //····················································································································
+
+  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+    return self.signatureForERCChecking_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: packagePadDictionary
   //····················································································································
 
@@ -288,6 +307,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
     return self.pinPadAssignments_property.selection
+  }
+
+  //····················································································································
+  //   Selection observable property: hasSlavePads
+  //····················································································································
+
+  let hasSlavePads_property = EBTransientProperty_Bool ()
+
+  var hasSlavePads_property_selection : EBSelection <Bool> {
+    return self.hasSlavePads_property.selection
   }
 
   //····················································································································
@@ -406,6 +435,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   func bind_selection (model : ReadOnlyArrayOf_BoardObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
+    self.bind_property_mSlavePadsShouldBeRouted ()
     self.bind_property_mX ()
     self.bind_property_mY ()
     self.bind_property_mRotation ()
@@ -427,6 +457,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_mXUnit ()
     self.bind_property_mYUnit ()
     self.bind_property_deviceName ()
+    self.bind_property_signatureForERCChecking ()
     self.bind_property_packagePadDictionary ()
     self.bind_property_selectedPackageName ()
     self.bind_property_availablePackages ()
@@ -435,6 +466,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_componentIsPlacedInBoardString ()
     self.bind_property_strokeBezierPath ()
     self.bind_property_pinPadAssignments ()
+    self.bind_property_hasSlavePads ()
     self.bind_property_placementInSchematic ()
     self.bind_property_deviceSymbolDictionary ()
     self.bind_property_componentNameFontName ()
@@ -453,6 +485,11 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
+  //--- mSlavePadsShouldBeRouted
+    self.mSlavePadsShouldBeRouted_property.mReadModelFunction = nil 
+    self.mSlavePadsShouldBeRouted_property.mWriteModelFunction = nil 
+    self.mSlavePadsShouldBeRouted_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mSlavePadsShouldBeRouted (self.mSlavePadsShouldBeRouted_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -556,6 +593,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- deviceName
     self.deviceName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_deviceName (self.deviceName_property)
+  //--- signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
   //--- packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
@@ -580,6 +620,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+  //--- hasSlavePads
+    self.hasSlavePads_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_hasSlavePads (self.hasSlavePads_property)
   //--- placementInSchematic
     self.placementInSchematic_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_placementInSchematic (self.placementInSchematic_property)
@@ -648,6 +691,14 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //-------------------------------------------------- Adding properties
     let view = NSView (frame: r)
     var y : CGFloat = 0.0
+    createEntryForPropertyNamed (
+      "mSlavePadsShouldBeRouted",
+      idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
+      valueExplorer: &self.mSlavePadsShouldBeRouted_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mX",
       idx: self.mX_property.ebObjectIndex,
@@ -860,6 +911,75 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.mExplorerWindow = nil
   }
 
+  //····················································································································
+
+  private final func bind_property_mSlavePadsShouldBeRouted () {
+    self.selectedArray_property.addEBObserverOf_mSlavePadsShouldBeRouted (self.mSlavePadsShouldBeRouted_property)
+    self.mSlavePadsShouldBeRouted_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mSlavePadsShouldBeRouted_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSlavePadsShouldBeRouted_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mSlavePadsShouldBeRouted_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mSlavePadsShouldBeRouted_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mSlavePadsShouldBeRouted_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
   //····················································································································
 
   private final func bind_property_mX () {
@@ -2281,6 +2401,45 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
   //····················································································································
 
+  private final func bind_property_signatureForERCChecking () {
+    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <UInt32> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.signatureForERCChecking_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_packagePadDictionary () {
     self.selectedArray_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
@@ -2568,6 +2727,45 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.pinPadAssignments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_hasSlavePads () {
+    self.selectedArray_property.addEBObserverOf_hasSlavePads (self.hasSlavePads_property)
+    self.hasSlavePads_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.hasSlavePads_property_selection {
             case .empty :
               return .empty
             case .multiple :
