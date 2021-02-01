@@ -68,6 +68,7 @@
                 <outlet property="mBoardCurvePointY2TextField" destination="7VL-hF-MDB" id="meZ-fP-dex"/>
                 <outlet property="mBoardCurveX2TextField" destination="FK6-VZ-PnJ" id="SYv-zz-d49"/>
                 <outlet property="mBoardCurveY2TextField" destination="ZbB-fW-WWe" id="yGa-yz-sVZ"/>
+                <outlet property="mBoardDirectionForNewTrackMenu" destination="xvT-M0-7LD" id="J65-QO-SKJ"/>
                 <outlet property="mBoardGridDisplayFactorPopUpButton" destination="1271" id="ZvN-0K-rCU"/>
                 <outlet property="mBoardGridStylePopUpButton" destination="1284" id="0YX-dd-Q5v"/>
                 <outlet property="mBoardGridTextField" destination="1266" id="f1k-bc-Wrm"/>
@@ -2660,7 +2661,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="197.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="198" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2673,11 +2674,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="197.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="198" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="197.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="198" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2693,7 +2694,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="130" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="129.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2706,11 +2707,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="669" y="1" width="130" height="17"/>
+                                                <rect key="frame" x="669.5" y="1" width="129.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="129.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -4671,7 +4672,7 @@ Gw
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" drawsBackground="NO" id="vjz-46-hdV">
                                         <rect key="frame" x="1" y="1" width="580" height="597"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
@@ -4720,7 +4721,7 @@ Gw
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <button toolTip="Add Restrict Rectangle" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15550" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
+                <button toolTip="Add Restrict Rectangle;  the layer is set by the contextual menu." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15550" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="68" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="restrict-rect-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15551">
@@ -4728,10 +4729,10 @@ Gw
                         <font key="font" metaFont="menu" size="9"/>
                     </buttonCell>
                     <connections>
-                        <outlet property="mContextualMenu" destination="jZm-hZ-0gW" id="sBK-gA-Edn"/>
+                        <outlet property="mRightContextualMenu" destination="jZm-hZ-0gW" id="zgF-OD-gGz"/>
                     </connections>
                 </button>
-                <button toolTip="Add Line in Board" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15553" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
+                <button toolTip="Add Line in Board;  the layer is set by the contextual menu." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15553" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="106" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="line-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="15554">
@@ -4739,7 +4740,7 @@ Gw
                         <font key="font" metaFont="menu" size="9"/>
                     </buttonCell>
                     <connections>
-                        <outlet property="mContextualMenu" destination="9VA-YS-c1j" id="WEg-QX-MNs"/>
+                        <outlet property="mRightContextualMenu" destination="9VA-YS-c1j" id="Udw-46-F54"/>
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15556" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
@@ -4748,16 +4749,17 @@ Gw
                     <string key="toolTip">Add Front Track, Back Track if shift pressed; hint:
   - option + click starts a new track.
 
-The track side is set by "New Track Side" pop up button, in the Router Inspector.</string>
+The new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.</string>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15557">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu" size="9"/>
                     </buttonCell>
                     <connections>
-                        <outlet property="mContextualMenu" destination="Z83-QN-bg4" id="naU-D5-gxj"/>
+                        <outlet property="mLeftContextualMenu" destination="xvT-M0-7LD" id="tWf-QM-1fu"/>
+                        <outlet property="mRightContextualMenu" destination="Z83-QN-bg4" id="5kY-MB-lJm"/>
                     </connections>
                 </button>
-                <button toolTip="Add Text in Board" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4y-0f-E9J" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
+                <button toolTip="Add Text in Board; the layer is set by the contextual menu." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4y-0f-E9J" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="144" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="SSR-Im-lHO">
@@ -4765,7 +4767,7 @@ The track side is set by "New Track Side" pop up button, in the Router Inspector
                         <font key="font" metaFont="menu" size="9"/>
                     </buttonCell>
                     <connections>
-                        <outlet property="mContextualMenu" destination="1cb-35-u9h" id="vAy-gu-vw5"/>
+                        <outlet property="mRightContextualMenu" destination="1cb-35-u9h" id="mRb-WO-1fc"/>
                     </connections>
                 </button>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7046">
@@ -4873,7 +4875,7 @@ The track side is set by "New Track Side" pop up button, in the Router Inspector
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="75" y="-146"/>
+            <point key="canvasLocation" x="51" y="-550"/>
         </customView>
         <customView id="3140" userLabel="Page : Product" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="812" height="649"/>
@@ -6256,7 +6258,7 @@ of the same Net</string>
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="218" y="839" width="420" height="208"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="-1004" y="900" width="2560" height="1417"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="15140">
                 <rect key="frame" x="0.0" y="0.0" width="420" height="208"/>
@@ -8819,7 +8821,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="218" y="839" width="420" height="208"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="-1004" y="900" width="2560" height="1417"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="Qqc-PB-MlX">
                 <rect key="frame" x="0.0" y="0.0" width="420" height="208"/>
@@ -9678,6 +9680,20 @@ Locking</string>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="-235" y="-580"/>
+        </menu>
+        <menu id="xvT-M0-7LD" userLabel="New Track Direction Menu" customClass="CanariChoiceMenu" customModule="ElCanari" customModuleProvider="target">
+            <items>
+                <menuItem title="Any Direction" id="gen-kM-5uT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Octolinear" id="3Aq-5S-fSL">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Rectilinear" id="nAs-AA-yNv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-191.5" y="-1019"/>
         </menu>
     </objects>
     <resources>

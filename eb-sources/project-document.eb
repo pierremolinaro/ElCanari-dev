@@ -665,6 +665,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariDragSourceButton mAddLineInBoardButton ;
   outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
   outlet CanariChoiceMenu mBoardSideForNewTrackMenu $selectedIndex root.mBoardSideForNewTrack ;
+  outlet CanariChoiceMenu mBoardDirectionForNewTrackMenu $selectedIndex root.mDirectionForNewTrack ;
   
   outlet NSPanel mImportSESPanel ;
   outlet NSTextField mImportSESTextField ;

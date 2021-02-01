@@ -11,6 +11,7 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate let PULL_DOWN_ARROW_SIZE : CGFloat = 8.0
+fileprivate let PULL_DOWN_ARROW_TOP_MARGIN : CGFloat = 4.0
 
 //----------------------------------------------------------------------------------------------------------------------
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
@@ -20,7 +21,8 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
 
   //····················································································································
 
-  @IBOutlet var mContextualMenu : CanariChoiceMenu? = nil
+  @IBOutlet var mRightContextualMenu : CanariChoiceMenu? = nil
+  @IBOutlet var mLeftContextualMenu : CanariChoiceMenu? = nil
 
   //····················································································································
 
@@ -82,7 +84,9 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
 
   override func mouseDown (with inEvent : NSEvent) {
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    if let menu = self.mContextualMenu, pullDownMenuRect ().contains (mouseDownLocation) {
+    if let menu = self.mRightContextualMenu, self.pullDownRightMenuRect ().contains (mouseDownLocation) {
+      NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
+    }else if let menu = self.mLeftContextualMenu, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
       NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
     }else if let dragType = self.mDragType,
        self.isEnabled,
@@ -127,7 +131,7 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
   //--- Add Updated tracking area
     let trackingArea = NSTrackingArea (
       rect: self.bounds,
-      options: [.mouseEnteredAndExited, .activeInKeyWindow],
+      options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
       owner: self,
       userInfo: nil
     )
@@ -139,21 +143,59 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
 
   //····················································································································
 
-  private var mMouseWithin = false { didSet { self.needsDisplay = true } }
+  private enum MouseZone {
+    case outside
+    case insideRightPullDown
+    case insideLeftPullDown
+    case insideDrag
+  }
+
+  //····················································································································
+
+  private var mMouseZone = MouseZone.outside {
+    didSet {
+      if self.mMouseZone != oldValue {
+        self.needsDisplay = true
+      }
+    }
+  }
 
   //····················································································································
 
   override func mouseEntered (with inEvent : NSEvent) {
     if self.isEnabled {
-      self.mMouseWithin = true
+      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      if self.mRightContextualMenu != nil, self.pullDownRightMenuRect ().contains (mouseDownLocation) {
+        self.mMouseZone = .insideRightPullDown
+      }else if self.mLeftContextualMenu != nil, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
+        self.mMouseZone = .insideLeftPullDown
+      }else{
+        self.mMouseZone = .insideDrag
+      }
     }
     super.mouseEntered (with: inEvent)
   }
 
   //····················································································································
 
+  override func mouseMoved (with inEvent : NSEvent) {
+    if self.isEnabled {
+      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      if self.mRightContextualMenu != nil, self.pullDownRightMenuRect ().contains (mouseDownLocation) {
+        self.mMouseZone = .insideRightPullDown
+      }else if self.mLeftContextualMenu != nil, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
+        self.mMouseZone = .insideLeftPullDown
+      }else{
+        self.mMouseZone = .insideDrag
+      }
+    }
+    super.mouseMoved (with: inEvent)
+  }
+
+  //····················································································································
+
   override func mouseExited (with inEvent : NSEvent) {
-    self.mMouseWithin = false
+    self.mMouseZone = .outside
     super.mouseExited (with: inEvent)
   }
 
@@ -162,17 +204,56 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-    if self.mMouseWithin {
-      let x : CGFloat = 0.75
-      let myGray = NSColor (red: x, green: x, blue: x, alpha: 1.0)
-      myGray.setFill ()
-      NSBezierPath.fill (inDirtyRect)
+    let x : CGFloat = 0.75
+    let myGray = NSColor (red: x, green: x, blue: x, alpha: 1.0)
+    myGray.setFill ()
+    switch self.mMouseZone {
+    case .outside :
+      ()
+    case .insideRightPullDown :
+      NSBezierPath.fill (self.pullDownRightMenuRect ())
+    case .insideLeftPullDown :
+      NSBezierPath.fill (self.pullDownLeftMenuRect ())
+    case .insideDrag :
+      let bp = NSBezierPath ()
+      let b = self.bounds
+      bp.move (to: NSPoint (x: b.minX, y: b.maxY))
+      let v = PULL_DOWN_ARROW_TOP_MARGIN + PULL_DOWN_ARROW_SIZE / 2.0
+      if self.mLeftContextualMenu != nil, self.mRightContextualMenu != nil {
+        bp.line (to: NSPoint (x: b.minX, y: b.minY + v))
+        bp.line (to: NSPoint (x: b.maxX, y: b.minY + v))
+      }else if self.mLeftContextualMenu != nil { // Only left contextual menu
+        bp.line (to: NSPoint (x: b.minX, y: b.minY + v))
+        bp.line (to: NSPoint (x: b.midX, y: b.minY + v))
+        bp.line (to: NSPoint (x: b.midX, y: b.minY))
+        bp.line (to: NSPoint (x: b.maxX, y: b.minY))
+      }else if self.mRightContextualMenu != nil { // Only right contextual menu
+        bp.line (to: NSPoint (x: b.minX, y: b.minY))
+        bp.line (to: NSPoint (x: b.midX, y: b.minY))
+        bp.line (to: NSPoint (x: b.midX, y: b.minY + v))
+        bp.line (to: NSPoint (x: b.maxX, y: b.minY + v))
+      }else{ // No contextual menu
+        bp.line (to: NSPoint (x: b.minX, y: b.minY))
+        bp.line (to: NSPoint (x: b.maxX, y: b.minY))
+      }
+      bp.line (to: NSPoint (x: b.maxX, y: b.maxY))
+      bp.close ()
+      bp.fill ()
     }
-    if self.mContextualMenu != nil {
+    if self.mRightContextualMenu != nil {
       var path = EBBezierPath ()
       path.move (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
       path.line (to: NSPoint (x: self.bounds.maxX, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
       path.line (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE / 2.0, y: self.bounds.minY))
+      path.close ()
+      NSColor.black.setFill ()
+      path.fill ()
+    }
+    if self.mLeftContextualMenu != nil {
+      var path = EBBezierPath ()
+      path.move (to: NSPoint (x: 0.0, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
+      path.line (to: NSPoint (x: PULL_DOWN_ARROW_SIZE, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
+      path.line (to: NSPoint (x: PULL_DOWN_ARROW_SIZE / 2.0, y: self.bounds.minY))
       path.close ()
       NSColor.black.setFill ()
       path.fill ()
@@ -184,14 +265,31 @@ class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggin
   //   PULL DOWN MENU DETECTION RECTANGLE
   //····················································································································
 
-  fileprivate func pullDownMenuRect () -> NSRect {
+  fileprivate func pullDownRightMenuRect () -> NSRect {
     let r : NSRect
-    if self.mContextualMenu != nil {
+    if self.mRightContextualMenu != nil {
       r = NSRect (
-        x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE,
+        x: self.bounds.midX,
         y: self.bounds.minY,
-        width: PULL_DOWN_ARROW_SIZE,
-        height: PULL_DOWN_ARROW_SIZE / 2.0
+        width: self.bounds.size.width / 2.0,
+        height: PULL_DOWN_ARROW_TOP_MARGIN + PULL_DOWN_ARROW_SIZE / 2.0
+      )
+    }else{
+      r = NSRect ()
+    }
+    return r
+  }
+
+  //····················································································································
+
+  fileprivate func pullDownLeftMenuRect () -> NSRect {
+    let r : NSRect
+    if self.mLeftContextualMenu != nil {
+      r = NSRect (
+        x: 0.0,
+        y: 0.0,
+        width: self.bounds.size.width / 2.0,
+        height: PULL_DOWN_ARROW_TOP_MARGIN + PULL_DOWN_ARROW_SIZE / 2.0
       )
     }else{
       r = NSRect ()

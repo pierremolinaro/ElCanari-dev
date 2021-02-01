@@ -728,6 +728,7 @@ import Cocoa
   @IBOutlet var mBoardCurvePointY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mBoardCurveX2TextField : EBTextObserverField? = nil
   @IBOutlet var mBoardCurveY2TextField : EBTextObserverField? = nil
+  @IBOutlet var mBoardDirectionForNewTrackMenu : CanariChoiceMenu? = nil
   @IBOutlet var mBoardGridDisplayFactorPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardGridStylePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardGridTextField : CanariDimensionTextField? = nil
@@ -1339,6 +1340,7 @@ import Cocoa
     checkOutletConnection (self.mBoardCurvePointY2TextField, "mBoardCurvePointY2TextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveX2TextField, "mBoardCurveX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveY2TextField, "mBoardCurveY2TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardDirectionForNewTrackMenu, "mBoardDirectionForNewTrackMenu", CanariChoiceMenu.self, #file, #line)
     checkOutletConnection (self.mBoardGridDisplayFactorPopUpButton, "mBoardGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardGridStylePopUpButton, "mBoardGridStylePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardGridTextField, "mBoardGridTextField", CanariDimensionTextField.self, #file, #line)
@@ -2582,6 +2584,7 @@ import Cocoa
     self.mLayerForNewLineMenu?.bind_selectedIndex (self.rootObject.mBoardLayerForNewLine_property, file: #file, line: #line)
     self.mBoardSideForNewRestrictRectangleMenu?.bind_selectedIndex (self.rootObject.mBoardSideForNewRestrictRectangle_property, file: #file, line: #line)
     self.mBoardSideForNewTrackMenu?.bind_selectedIndex (self.rootObject.mBoardSideForNewTrack_property, file: #file, line: #line)
+    self.mBoardDirectionForNewTrackMenu?.bind_selectedIndex (self.rootObject.mDirectionForNewTrack_property, file: #file, line: #line)
     self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
     self.mBoardView?.bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property, file: #file, line: #line)
@@ -3635,6 +3638,7 @@ import Cocoa
     self.mLayerForNewLineMenu?.unbind_selectedIndex ()
     self.mBoardSideForNewRestrictRectangleMenu?.unbind_selectedIndex ()
     self.mBoardSideForNewTrackMenu?.unbind_selectedIndex ()
+    self.mBoardDirectionForNewTrackMenu?.unbind_selectedIndex ()
     self.mUnplacedPackageTableView?.unbind_models ()
     self.mUnplacedPackagesCountTextField?.unbind_valueObserver ()
     self.mBoardView?.unbind_underObjectsDisplay ()
@@ -4122,6 +4126,7 @@ import Cocoa
     self.mBoardCurvePointY2TextField?.ebCleanUp ()
     self.mBoardCurveX2TextField?.ebCleanUp ()
     self.mBoardCurveY2TextField?.ebCleanUp ()
+    self.mBoardDirectionForNewTrackMenu?.ebCleanUp ()
     self.mBoardGridDisplayFactorPopUpButton?.ebCleanUp ()
     self.mBoardGridStylePopUpButton?.ebCleanUp ()
     self.mBoardGridTextField?.ebCleanUp ()
@@ -4560,6 +4565,7 @@ import Cocoa
     self.mBoardCurvePointY2TextField = nil
     self.mBoardCurveX2TextField = nil
     self.mBoardCurveY2TextField = nil
+    self.mBoardDirectionForNewTrackMenu = nil
     self.mBoardGridDisplayFactorPopUpButton = nil
     self.mBoardGridStylePopUpButton = nil
     self.mBoardGridTextField = nil

@@ -1,6 +1,12 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //     P R O J E C T    R O O T
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum TrackCreationDirection {
+  anyAngle, octolinear, rectilinear
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ProjectRoot {
 //--- Artwork
@@ -46,6 +52,7 @@ entity ProjectRoot {
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
   property TrackSide mBoardSideForNewTrack default front ;
+  property TrackCreationDirection mDirectionForNewTrack default anyAngle ;
   property BoardTextLayer mBoardLayerForNewText default legendFront ;
   property BoardLineLayer mBoardLayerForNewLine default legendFront ;
   property RestrictRectangleLayer mBoardSideForNewRestrictRectangle default frontSide ;

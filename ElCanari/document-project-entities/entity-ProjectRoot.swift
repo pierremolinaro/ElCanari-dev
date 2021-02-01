@@ -48,6 +48,12 @@ protocol ProjectRoot_mBoardSideForNewTrack : class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol ProjectRoot_mDirectionForNewTrack : class {
+  var mDirectionForNewTrack : TrackCreationDirection { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol ProjectRoot_mBoardLayerForNewText : class {
   var mBoardLayerForNewText : BoardTextLayer { get }
 }
@@ -766,6 +772,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mLastERCCheckingIsSuccess,
          ProjectRoot_mLastERCCheckingSignature,
          ProjectRoot_mBoardSideForNewTrack,
+         ProjectRoot_mDirectionForNewTrack,
          ProjectRoot_mBoardLayerForNewText,
          ProjectRoot_mBoardLayerForNewLine,
          ProjectRoot_mBoardSideForNewRestrictRectangle,
@@ -1045,6 +1052,29 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide> { return self.mBoardSideForNewTrack_property.selection }
+
+  //····················································································································
+  //   Atomic property: mDirectionForNewTrack
+  //····················································································································
+
+  final let mDirectionForNewTrack_property : EBStoredProperty_TrackCreationDirection
+
+  //····················································································································
+
+  final func reset_mDirectionForNewTrack_toDefaultValue () {
+    self.mDirectionForNewTrack = TrackCreationDirection.anyAngle
+  }
+
+  //····················································································································
+
+  final var mDirectionForNewTrack : TrackCreationDirection {
+    get { return self.mDirectionForNewTrack_property.propval }
+    set { self.mDirectionForNewTrack_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var mDirectionForNewTrack_property_selection : EBSelection <TrackCreationDirection> { return self.mDirectionForNewTrack_property.selection }
 
   //····················································································································
   //   Atomic property: mBoardLayerForNewText
@@ -4096,6 +4126,7 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: ebUndoManager)
     self.mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: ebUndoManager)
+    self.mDirectionForNewTrack_property = EBStoredProperty_TrackCreationDirection (defaultValue: TrackCreationDirection.anyAngle, undoManager: ebUndoManager)
     self.mBoardLayerForNewText_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: ebUndoManager)
     self.mBoardLayerForNewLine_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: ebUndoManager)
     self.mBoardSideForNewRestrictRectangle_property = EBStoredProperty_RestrictRectangleLayer (defaultValue: RestrictRectangleLayer.frontSide, undoManager: ebUndoManager)
@@ -5716,6 +5747,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardSideForNewTrack_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mDirectionForNewTrack",
+      idx: self.mDirectionForNewTrack_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDirectionForNewTrack_property.mObserverExplorer,
+      valueExplorer: &self.mDirectionForNewTrack_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardLayerForNewText",
       idx: self.mBoardLayerForNewText_property.ebObjectIndex,
       y: &y,
@@ -6666,6 +6705,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardSideForNewTrack
     self.mBoardSideForNewTrack_property.mObserverExplorer = nil
     self.mBoardSideForNewTrack_property.mValueExplorer = nil
+  //--- Atomic property: mDirectionForNewTrack
+    self.mDirectionForNewTrack_property.mObserverExplorer = nil
+    self.mDirectionForNewTrack_property.mValueExplorer = nil
   //--- Atomic property: mBoardLayerForNewText
     self.mBoardLayerForNewText_property.mObserverExplorer = nil
     self.mBoardLayerForNewText_property.mValueExplorer = nil
@@ -6963,6 +7005,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
   //--- Atomic property: mBoardSideForNewTrack
     self.mBoardSideForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewTrack")
+  //--- Atomic property: mDirectionForNewTrack
+    self.mDirectionForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionForNewTrack")
   //--- Atomic property: mBoardLayerForNewText
     self.mBoardLayerForNewText_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewText")
   //--- Atomic property: mBoardLayerForNewLine
@@ -7234,6 +7278,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingSignature_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingSignature")
   //--- Atomic property: mBoardSideForNewTrack
     self.mBoardSideForNewTrack_property.readFrom (dictionary: inDictionary, forKey: "mBoardSideForNewTrack")
+  //--- Atomic property: mDirectionForNewTrack
+    self.mDirectionForNewTrack_property.readFrom (dictionary: inDictionary, forKey: "mDirectionForNewTrack")
   //--- Atomic property: mBoardLayerForNewText
     self.mBoardLayerForNewText_property.readFrom (dictionary: inDictionary, forKey: "mBoardLayerForNewText")
   //--- Atomic property: mBoardLayerForNewLine
@@ -7377,6 +7423,7 @@ class ProjectRoot : EBManagedObject,
     ioString += "mLastERCCheckingIsSuccess\n"
     ioString += "mLastERCCheckingSignature\n"
     ioString += "mBoardSideForNewTrack\n"
+    ioString += "mDirectionForNewTrack\n"
     ioString += "mBoardLayerForNewText\n"
     ioString += "mBoardLayerForNewLine\n"
     ioString += "mBoardSideForNewRestrictRectangle\n"
@@ -7473,6 +7520,8 @@ class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingSignature.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardSideForNewTrack.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDirectionForNewTrack.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardLayerForNewText.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7860,6 +7909,9 @@ class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mBoardSideForNewTrack"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
         self.mBoardSideForNewTrack = value
+      }
+      if let range = inDictionary ["mDirectionForNewTrack"], let value = TrackCreationDirection.unarchiveFromDataRange (inData, range) {
+        self.mDirectionForNewTrack = value
       }
       if let range = inDictionary ["mBoardLayerForNewText"], let value = BoardTextLayer.unarchiveFromDataRange (inData, range) {
         self.mBoardLayerForNewText = value

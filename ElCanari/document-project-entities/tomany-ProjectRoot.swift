@@ -22,6 +22,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSideForNewTrack_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDirectionForNewTrack_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLayerForNewLine_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSideForNewRestrictRectangle_fromElementsOfSet (inRemovedSet) // Stored property
@@ -139,6 +140,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSideForNewTrack_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDirectionForNewTrack_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLayerForNewLine_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSideForNewRestrictRectangle_toElementsOfSet (inAddedSet) // Stored property
@@ -645,6 +647,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardSideForNewTrack_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDirectionForNewTrack' stored property
+  //····················································································································
+
+  private var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDirectionForNewTrack (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDirectionForNewTrack.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDirectionForNewTrack_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDirectionForNewTrack (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDirectionForNewTrack.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDirectionForNewTrack_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDirectionForNewTrack_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBEvent) in
+        managedObject.mDirectionForNewTrack_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDirectionForNewTrack_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDirectionForNewTrack_property.removeEBObserver (observer)
       }
     }
   }
@@ -8021,6 +8080,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSideForNewTrack (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mDirectionForNewTrack (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLayerForNewText (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLayerForNewLine (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSideForNewRestrictRectangle (self.mObserverForWritingPreferences)

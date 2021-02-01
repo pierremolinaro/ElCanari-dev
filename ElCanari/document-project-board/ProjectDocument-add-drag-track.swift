@@ -101,7 +101,6 @@ extension CustomizedProjectDocument {
     case .back : s = "Track Creation on back layer"
     case .front : s = "Track Creation on front layer"
     }
-    s += "; SHIFT relaxes octolinear direction constraint"
     return s
   }
 
@@ -109,11 +108,19 @@ extension CustomizedProjectDocument {
 
   internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
                                                            _ inModifierFlags : NSEvent.ModifierFlags) {
-    if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2 {
+    if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2, let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
       var canariUnalignedMouseLocation = inUnalignedMouseLocation.canariPoint
-      if !inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location{
-        canariUnalignedMouseLocation.quadrantAligned (from: p1)
+      switch self.rootObject.mDirectionForNewTrack {
+      case .anyAngle :
+        ()
+      case .octolinear :
+        canariUnalignedMouseLocation.constraintToOctolinearDirection (from: p1)
+      case .rectilinear :
+        canariUnalignedMouseLocation.constraintToRectilinearDirection (from: p1)
       }
+//      if !inModifierFlags.contains (.shift), let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
+//        canariUnalignedMouseLocation.quadrantAligned (from: p1)
+//      }
       connector2.mX = canariUnalignedMouseLocation.x
       connector2.mY = canariUnalignedMouseLocation.y
     //--- Update hilite

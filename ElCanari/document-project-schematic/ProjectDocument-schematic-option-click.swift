@@ -59,7 +59,7 @@ extension CustomizedProjectDocument {
     if let p2 = self.mWireCreatedByOptionClick?.mP2 {
       var alignedMouseLocation = inUnalignedMousePoint.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       if inModifierFlags.contains (.shift), let p1 = self.mWireCreatedByOptionClick?.mP1 {
-        alignedMouseLocation.quadrantAligned(from: CanariPoint (x: p1.mX, y: p1.mY))
+        alignedMouseLocation.constraintToOctolinearDirection (from: CanariPoint (x: p1.mX, y: p1.mY))
       }
       p2.mX = alignedMouseLocation.x
       p2.mY = alignedMouseLocation.y

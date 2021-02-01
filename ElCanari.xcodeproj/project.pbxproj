@@ -200,6 +200,8 @@
 		CF1361FF220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
 		CF144832227AF4240004E7ED /* extension-QuadrantRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF144831227AF4240004E7ED /* extension-QuadrantRotation.swift */; };
 		CF144833227AF4240004E7ED /* extension-QuadrantRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF144831227AF4240004E7ED /* extension-QuadrantRotation.swift */; };
+		CF154D6225C80D35004CEDB6 /* enum-TrackCreationDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */; };
+		CF154D6325C80D35004CEDB6 /* enum-TrackCreationDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */; };
 		CF15D7632273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */; };
 		CF15D7642273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */; };
 		CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */; };
@@ -2743,6 +2745,7 @@
 		CF12885B20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-viasBezierPaths.swift"; sourceTree = "<group>"; };
 		CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ftp-read-write.swift"; sourceTree = "<group>"; };
 		CF144831227AF4240004E7ED /* extension-QuadrantRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-QuadrantRotation.swift"; sourceTree = "<group>"; };
+		CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackCreationDirection.swift"; sourceTree = "<group>"; };
 		CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-edit-net-class.swift"; sourceTree = "<group>"; };
 		CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-addLibraryEntryAction.swift"; sourceTree = "<group>"; };
 		CF1893A72202EEC600EF2308 /* library-repository-status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-status.swift"; sourceTree = "<group>"; };
@@ -4788,6 +4791,7 @@
 				CF87F3E120F0CE4500918586 /* enum-PadSide.swift */,
 				CF5B06F7213EC3C9005D6B37 /* enum-QuadrantRotation.swift */,
 				CF8DC24425C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift */,
+				CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */,
 				CFA80DEE25C078D100966D91 /* enum-TrackLockDirection.swift */,
 				CF7034CA2353ACFB00F4D2C7 /* enum-VerticalAlignment.swift */,
 				CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */,
@@ -6188,6 +6192,7 @@
 				CFEAAD5522317AB700F69A12 /* transient-SymbolSolidRect-filledBezierPath.swift in Sources */,
 				CFEB7B88233A26330060A97A /* transient-DeviceInProject-symbolAndTypesNames.swift in Sources */,
 				CF4B39B721D3F1C5001217C6 /* transient-PackageSlavePad-annularRing.swift in Sources */,
+				CF154D6225C80D35004CEDB6 /* enum-TrackCreationDirection.swift in Sources */,
 				CF9D4B3C227F796C006E2035 /* action-ProjectDocument-removeNetClassAction.swift in Sources */,
 				CFA42F89229AEACF000AA8C8 /* tomany-PadProxyInDevice.swift in Sources */,
 				CFD7FFEF22A7B8E50039DB80 /* tomany-BorderCurve.swift in Sources */,
@@ -7435,6 +7440,7 @@
 				CF9D4B41227F796C006E2035 /* action-ProjectDocument-removeSheetAction.swift in Sources */,
 				CF5C4CD8219F04D600EAC52A /* transient-BoardModel-boardLimitsBezierPaths.swift in Sources */,
 				CFEB7B89233A26330060A97A /* transient-DeviceInProject-symbolAndTypesNames.swift in Sources */,
+				CF154D6325C80D35004CEDB6 /* enum-TrackCreationDirection.swift in Sources */,
 				CF5C4CD9219F04D600EAC52A /* enum-PadShape.swift in Sources */,
 				CF5C4CDA219F04D600EAC52A /* CanariDimensionTextField.swift in Sources */,
 				CFA43082229AEB96000AA8C8 /* toone-DeviceMasterPadInProject.swift in Sources */,
