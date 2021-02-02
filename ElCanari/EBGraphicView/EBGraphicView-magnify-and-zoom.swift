@@ -13,7 +13,7 @@ extension EBGraphicView {
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
       if self.mZoomPropertyCache == 0 {
-        let box = self.bounds
+        let box = self.objectsAndIssueBoundingBox
         if !box.isEmpty {
           scrollView.magnify (toFit: box)
         }

@@ -367,7 +367,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   final var objectsAndIssueBoundingBox : NSRect {
-    var r = NSRect.null
+    var r = NSRect ()
     for shape in self.mObjectDisplayArray {
       r = r.union (shape.boundingBox)
     }

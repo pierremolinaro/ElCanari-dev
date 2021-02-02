@@ -54,13 +54,13 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBReadOnlyPropertyContro
   init (zoom : EBReadWriteProperty_Int, outlet : EBGraphicView) {
     self.mZoomProperty = zoom
     self.mOutlet = outlet
-    super.init (observedObjects:[zoom], callBack: { outlet.updateOutlet (zoom) })
+    super.init (observedObjects: [zoom], callBack: { outlet.updateOutlet (zoom) })
   }
 
   //····················································································································
 
   func updateModel (_ sender : EBGraphicView, _ inNewZoom : Int) {
-    _ = self.mZoomProperty.validateAndSetProp (inNewZoom, windowForSheet:sender.window)
+    _ = self.mZoomProperty.validateAndSetProp (inNewZoom, windowForSheet: sender.window)
   }
 
   //····················································································································
