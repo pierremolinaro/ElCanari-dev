@@ -215,6 +215,15 @@
 		CF1A10FF2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */; };
 		CF1A11012108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */; };
 		CF1A11072108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */; };
+		CF1AA7B425CC98B700C1F9EE /* AutoLayoutSignatureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7B325CC98B700C1F9EE /* AutoLayoutSignatureField.swift */; };
+		CF1AA7B525CC98B700C1F9EE /* AutoLayoutSignatureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7B325CC98B700C1F9EE /* AutoLayoutSignatureField.swift */; };
+		CF1AA7B625CC98B700C1F9EE /* AutoLayoutSignatureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7B325CC98B700C1F9EE /* AutoLayoutSignatureField.swift */; };
+		CF1AA7B825CC9CD800C1F9EE /* AutoLayoutVersionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */; };
+		CF1AA7B925CC9CD800C1F9EE /* AutoLayoutVersionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */; };
+		CF1AA7BA25CC9CD800C1F9EE /* AutoLayoutVersionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */; };
+		CF1AA7BC25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7BB25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift */; };
+		CF1AA7BD25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7BB25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift */; };
+		CF1AA7BE25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA7BB25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift */; };
 		CF1B6ED0226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */; };
 		CF1B6ED1226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */; };
 		CF1B6ED3226CEE9800BE4C75 /* CanariComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */; };
@@ -1321,8 +1330,6 @@
 		CF9C604225CAB4FB00A00D5C /* ALButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602E25CAB4FA00A00D5C /* ALButton.swift */; };
 		CF9C604325CAB4FB00A00D5C /* AutoLayoutHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */; };
 		CF9C604425CAB4FB00A00D5C /* AutoLayoutHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */; };
-		CF9C604525CAB4FB00A00D5C /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C603025CAB4FA00A00D5C /* extension-NSView-layout.swift */; };
-		CF9C604625CAB4FB00A00D5C /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C603025CAB4FA00A00D5C /* extension-NSView-layout.swift */; };
 		CF9C604725CAB4FB00A00D5C /* AutoLayoutFlexibleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpaceView.swift */; };
 		CF9C604825CAB4FB00A00D5C /* AutoLayoutFlexibleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpaceView.swift */; };
 		CF9C604925CAB4FB00A00D5C /* ALLabelledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C603225CAB4FB00A00D5C /* ALLabelledTextField.swift */; };
@@ -2004,7 +2011,6 @@
 		CF9C62F325CABE5C00A00D5C /* ProjectDocument-erc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3414D922DFBDE800D0CEB6 /* ProjectDocument-erc.swift */; };
 		CF9C62F425CABE5C00A00D5C /* tomany-SymbolInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA42F6B229AEACC000AA8C8 /* tomany-SymbolInstanceInDevice.swift */; };
 		CF9C62F525CABE5C00A00D5C /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */; };
-		CF9C62F625CABE5C00A00D5C /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C603025CAB4FA00A00D5C /* extension-NSView-layout.swift */; };
 		CF9C62F725CABE5C00A00D5C /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7AE9233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift */; };
 		CF9C62F825CABE5C00A00D5C /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */; };
 		CF9C62F925CABE5C00A00D5C /* action-ArtworkDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58A3B61DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift */; };
@@ -4218,6 +4224,9 @@
 		CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerRoot-boardDisplayRect.swift"; sourceTree = "<group>"; };
+		CF1AA7B325CC98B700C1F9EE /* AutoLayoutSignatureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSignatureField.swift; sourceTree = "<group>"; };
+		CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutVersionField.swift; sourceTree = "<group>"; };
+		CF1AA7BB25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutPackageDocument-customized.swift"; sourceTree = "<group>"; };
 		CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-rename-component.swift"; sourceTree = "<group>"; };
 		CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariComboBox.swift; sourceTree = "<group>"; };
 		CF1C8F4B2364DB4800A36E44 /* danger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = danger.png; sourceTree = "<group>"; };
@@ -4721,7 +4730,6 @@
 		CF9C602D25CAB4FA00A00D5C /* AutoLayoutSpinningProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutSpinningProgressIndicator.swift; sourceTree = "<group>"; };
 		CF9C602E25CAB4FA00A00D5C /* ALButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALButton.swift; sourceTree = "<group>"; };
 		CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutHorizontalStackView.swift; sourceTree = "<group>"; };
-		CF9C603025CAB4FA00A00D5C /* extension-NSView-layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSView-layout.swift"; sourceTree = "<group>"; };
 		CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutFlexibleSpaceView.swift; sourceTree = "<group>"; };
 		CF9C603225CAB4FB00A00D5C /* ALLabelledTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALLabelledTextField.swift; sourceTree = "<group>"; };
 		CF9C603325CAB4FB00A00D5C /* ALLabelledSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALLabelledSeparator.swift; sourceTree = "<group>"; };
@@ -6517,11 +6525,12 @@
 				CF57922725CB0977009E9EF7 /* AutoLayoutLabel.swift */,
 				CF57931C25CB3A0B009E9EF7 /* AutoLayoutSegmentedControlWithPages.swift */,
 				CF57931825CB277A009E9EF7 /* AutoLayoutSeparator.swift */,
+				CF1AA7B325CC98B700C1F9EE /* AutoLayoutSignatureField.swift */,
 				CF9C602D25CAB4FA00A00D5C /* AutoLayoutSpinningProgressIndicator.swift */,
 				CF9C602A25CAB4FA00A00D5C /* AutoLayoutStackView.swift */,
 				CF57922B25CB199A009E9EF7 /* AutoLayoutStaticLabel.swift */,
+				CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */,
 				CF9C602925CAB4FA00A00D5C /* AutoLayoutVerticalStackView.swift */,
-				CF9C603025CAB4FA00A00D5C /* extension-NSView-layout.swift */,
 			);
 			name = "Auto Layout";
 			path = "ElCanari/auto-layout";
@@ -6530,8 +6539,6 @@
 		CF9C675025CAC80300A00D5C /* Auto Layout Document — Package */ = {
 			isa = PBXGroup;
 			children = (
-				CF9C67C925CACB6300A00D5C /* AutoLayoutPackageDocument-extension.swift */,
-				CF9C67C525CACAD900A00D5C /* AutoLayoutPackageDocument-run-program.swift */,
 				CF9C675525CAC83600A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift */,
 				CF9C676525CAC83700A00D5C /* action-AutoLayoutPackageDocument-clearProgramErrorAction.swift */,
 				CF9C676725CAC83800A00D5C /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift */,
@@ -6546,6 +6553,9 @@
 				CF9C675225CAC83500A00D5C /* action-AutoLayoutPackageDocument-runProgramAction.swift */,
 				CF9C676D25CAC83800A00D5C /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidXAction.swift */,
 				CF9C675B25CAC83600A00D5C /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidYAction.swift */,
+				CF1AA7BB25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift */,
+				CF9C67C925CACB6300A00D5C /* AutoLayoutPackageDocument-extension.swift */,
+				CF9C67C525CACAD900A00D5C /* AutoLayoutPackageDocument-run-program.swift */,
 				CF9C675825CAC83600A00D5C /* AutoLayoutPackageDocument.swift */,
 				CF9C676325CAC83700A00D5C /* controller-array-AutoLayoutPackageDocument-mModelImageObjectsController.swift */,
 				CF9C676025CAC83700A00D5C /* controller-array-AutoLayoutPackageDocument-mPackageObjectsController.swift */,
@@ -7933,6 +7943,7 @@
 				CFB1DB192282D31F005F9811 /* entity-DevicePackageInProject.swift in Sources */,
 				CF7EF46C22CA39510043DF60 /* controller-array-ComponentInProject-componentAvailablePackagesController.swift in Sources */,
 				CF78DE93222D65CA00E89DCA /* entity-SlavePadInDevice.swift in Sources */,
+				CF1AA7B425CC98B700C1F9EE /* AutoLayoutSignatureField.swift in Sources */,
 				CF29563722324C4C004100D6 /* transient-SymbolInstanceInDevice-symbolQualifiedName.swift in Sources */,
 				CFA42F79229AEACF000AA8C8 /* toone-SymbolTypeInDevice.swift in Sources */,
 				CF0432C122B649A70016EDE0 /* toone-BoardText.swift in Sources */,
@@ -8004,6 +8015,7 @@
 				CF07780123521A4E00F56EAB /* EBGenericStoredProperty.swift in Sources */,
 				CFEB7CBB233A28860060A97A /* transient-ProjectRoot-boardLimitBorderTop.swift in Sources */,
 				CF5B06FC213EC703005D6B37 /* CanariSegment.swift in Sources */,
+				CF1AA7B825CC9CD800C1F9EE /* AutoLayoutVersionField.swift in Sources */,
 				CFD7EA2520E7D42900D53B87 /* transient-MergerRoot-modelNames.swift in Sources */,
 				CFEB7C52233A28670060A97A /* transient-ProjectDocument-pinPadAssignments.swift in Sources */,
 				CFA430AB229AEC41000AA8C8 /* tomany-SymbolSegment.swift in Sources */,
@@ -8198,6 +8210,7 @@
 				CFEB7C4E233A28670060A97A /* transient-ProjectDocument-documentFilePathOk.swift in Sources */,
 				CF644E1422E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */,
 				CFA43015229AEB69000AA8C8 /* tomany-PackageSegment.swift in Sources */,
+				CF1AA7BC25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift in Sources */,
 				CF71F92A1B3EA3DF00FB5049 /* EBTextField.swift in Sources */,
 				CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */,
 				CF0777B02352100F00F56EAB /* extension-Date-EBPropertyProtocol.swift in Sources */,
@@ -8386,7 +8399,6 @@
 				CF3414DA22DFBDE800D0CEB6 /* ProjectDocument-erc.swift in Sources */,
 				CFA42F87229AEACF000AA8C8 /* tomany-SymbolInstanceInDevice.swift in Sources */,
 				CF67AC7723E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
-				CF9C604525CAB4FB00A00D5C /* extension-NSView-layout.swift in Sources */,
 				CFEB7AEC233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */,
 				CF52DF5121501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */,
 				CF58A3B71DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,
@@ -9230,6 +9242,7 @@
 				CF9D4B1B227F796C006E2035 /* action-ProjectDocument-addComponentAction.swift in Sources */,
 				CFA1AA1522325FA60023928C /* selectionController-DeviceDocument-symbolInstanceSelection.swift in Sources */,
 				CFA430A2229AEC41000AA8C8 /* toone-SymbolSegment.swift in Sources */,
+				CF1AA7B525CC98B700C1F9EE /* AutoLayoutSignatureField.swift in Sources */,
 				CF577BC02229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift in Sources */,
 				CFDCA18321AAFF78007B090C /* CanariDragSourceButton.swift in Sources */,
 				CFA42FEE229AEB68000AA8C8 /* tomany-PackagePad.swift in Sources */,
@@ -9301,6 +9314,7 @@
 				CFA43068229AEB96000AA8C8 /* tomany-DeviceSymbolTypeInProject.swift in Sources */,
 				CF07780223521A4E00F56EAB /* EBGenericStoredProperty.swift in Sources */,
 				CFEB7CBC233A28860060A97A /* transient-ProjectRoot-boardLimitBorderTop.swift in Sources */,
+				CF1AA7B925CC9CD800C1F9EE /* AutoLayoutVersionField.swift in Sources */,
 				CFE85AA821A5D76600991A66 /* transient-SymbolText-objectDisplay.swift in Sources */,
 				CF518E1E2282CFAE002BCEE5 /* controller-table-view-ProjectDocument-projectFontController.swift in Sources */,
 				CFEB7C53233A28670060A97A /* transient-ProjectDocument-pinPadAssignments.swift in Sources */,
@@ -9495,6 +9509,7 @@
 				CF644E1522E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */,
 				CF358EED22296F5100EDE173 /* extension-DeviceDocument.swift in Sources */,
 				CFEB7BBC233A27940060A97A /* transient-DeviceSymbolInstanceInProject-filledBezierPath.swift in Sources */,
+				CF1AA7BD25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift in Sources */,
 				CFEB7C4F233A28670060A97A /* transient-ProjectDocument-documentFilePathOk.swift in Sources */,
 				CFBCE78922D3ACA300DC3505 /* extension-BoardText.swift in Sources */,
 				CF740E9422F301DA00C11B1C /* selectionController-ProjectDocument-mDataSelection.swift in Sources */,
@@ -9683,7 +9698,6 @@
 				CFA43012229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CF4B39D421D4E5DD001217C6 /* transient-PackagePad-noZone.swift in Sources */,
 				CF67AC7823E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
-				CF9C604625CAB4FB00A00D5C /* extension-NSView-layout.swift in Sources */,
 				CFEB7AED233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */,
 				CFA4D55B22D36B6A007992CD /* enum-BoardLineLayer.swift in Sources */,
 				CFB1DB382282D31F005F9811 /* entity-WireInSchematic.swift in Sources */,
@@ -10527,6 +10541,7 @@
 				CF9C613B25CABE5C00A00D5C /* entity-DevicePackageInProject.swift in Sources */,
 				CF9C613C25CABE5C00A00D5C /* controller-array-ComponentInProject-componentAvailablePackagesController.swift in Sources */,
 				CF9C613D25CABE5C00A00D5C /* entity-SlavePadInDevice.swift in Sources */,
+				CF1AA7B625CC98B700C1F9EE /* AutoLayoutSignatureField.swift in Sources */,
 				CF9C613E25CABE5C00A00D5C /* transient-SymbolInstanceInDevice-symbolQualifiedName.swift in Sources */,
 				CF9C613F25CABE5C00A00D5C /* toone-SymbolTypeInDevice.swift in Sources */,
 				CF9C614025CABE5C00A00D5C /* toone-BoardText.swift in Sources */,
@@ -10598,6 +10613,7 @@
 				CF9C618225CABE5C00A00D5C /* EBGenericStoredProperty.swift in Sources */,
 				CF9C618325CABE5C00A00D5C /* transient-ProjectRoot-boardLimitBorderTop.swift in Sources */,
 				CF9C618425CABE5C00A00D5C /* CanariSegment.swift in Sources */,
+				CF1AA7BA25CC9CD800C1F9EE /* AutoLayoutVersionField.swift in Sources */,
 				CF9C618525CABE5C00A00D5C /* transient-MergerRoot-modelNames.swift in Sources */,
 				CF9C618625CABE5C00A00D5C /* transient-ProjectDocument-pinPadAssignments.swift in Sources */,
 				CF9C618725CABE5C00A00D5C /* tomany-SymbolSegment.swift in Sources */,
@@ -10792,6 +10808,7 @@
 				CF9C623C25CABE5C00A00D5C /* transient-ProjectDocument-documentFilePathOk.swift in Sources */,
 				CF9C623D25CABE5C00A00D5C /* enum-AutorouterSnapAngle.swift in Sources */,
 				CF9C623E25CABE5C00A00D5C /* tomany-PackageSegment.swift in Sources */,
+				CF1AA7BE25CCA5D100C1F9EE /* AutoLayoutPackageDocument-customized.swift in Sources */,
 				CF9C623F25CABE5C00A00D5C /* EBTextField.swift in Sources */,
 				CF9C624025CABE5C00A00D5C /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */,
 				CF9C624125CABE5C00A00D5C /* extension-Date-EBPropertyProtocol.swift in Sources */,
@@ -10980,7 +10997,6 @@
 				CF9C62F325CABE5C00A00D5C /* ProjectDocument-erc.swift in Sources */,
 				CF9C62F425CABE5C00A00D5C /* tomany-SymbolInstanceInDevice.swift in Sources */,
 				CF9C62F525CABE5C00A00D5C /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
-				CF9C62F625CABE5C00A00D5C /* extension-NSView-layout.swift in Sources */,
 				CF9C62F725CABE5C00A00D5C /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */,
 				CF9C62F825CABE5C00A00D5C /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */,
 				CF9C62F925CABE5C00A00D5C /* action-ArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,

@@ -4,101 +4,115 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameProtocol {
+class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mDocumentView : AutoLayoutStackView
-  private var mPages = [AutoLayoutStackView] ()
-
-  //····················································································································
-
-  init (documentView inDocumentView : AutoLayoutStackView) {
-    self.mDocumentView = inDocumentView
+  init () {
     super.init (frame: NSRect ())
+    self.isEditable = false
+    self.drawsBackground = false
+    self.isBordered = false
     noteObjectAllocation (self)
-    self.target = self
-    self.action = #selector (Self.selectedSegmentDidChange (_:))
   }
 
   //····················································································································
 
-  required init?(coder inCoder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  @discardableResult static func make (documentView inDocumentView : AutoLayoutStackView) -> AutoLayoutSegmentedControlWithPages {
-    let b = AutoLayoutSegmentedControlWithPages (documentView: inDocumentView)
+  @discardableResult static func make () -> AutoLayoutVersionField {
+    let b = AutoLayoutVersionField ()
     gCurrentStack?.addView (b, in: .leading)
     return b
   }
 
   //····················································································································
-  // ADD PAGE
+  //  version binding
   //····················································································································
 
-  @discardableResult func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
-    self.segmentCount += 1
-    self.setLabel (inTitle, forSegment: self.segmentCount - 1)
-    self.mPages.append (inPageView)
-//    if self.segmentCount == 1 {
-//      self.selectedSegment = 0
-//      DispatchQueue.main.async (qos: .userInteractive) { self.selectedSegmentDidChange (nil) }
-//  //    self.selectedSegmentDidChange (nil)
-//    }
-    return self
-  }
-
-  //····················································································································
-  // SELECTED TAB DID CHANGE
-  //····················································································································
-
-  @objc func selectedSegmentDidChange (_ inSender : Any?) {
-    let newPage = self.mPages [self.selectedSegment]
-    let allSubViews = self.mDocumentView.subviews
-    for view in allSubViews {
-      self.mDocumentView.removeView (view) // Do not use view.removeFromSuperview ()
-    }
-    self.mDocumentView.addView (newPage, in: .leading)
-    _ = self.mSelectedTabIndexController?.updateModel (withCandidateValue: self.selectedSegment, windowForSheet: self.window)
-  }
-
-  //····················································································································
-  //  $selectedPage binding
-  //····················································································································
-
-  private var mSelectedTabIndexController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mVersionController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
-  @discardableResult func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
-    self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
-      observedObject: inObject,
-      callBack: { [weak self] in self?.update (from: inObject) }
+  @discardableResult func bind_version (_ inObject : EBReadOnlyProperty_Int) -> Self {
+    self.mVersionController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateVersion (from: inObject) }
     )
-    return self
+     return self
   }
 
   //····················································································································
 
-//  func unbind_selectedPage () {
-//    self.mSelectedTabIndexController?.unregister ()
-//    self.mSelectedTabIndexController = nil
+//  func unbind_version () {
+//    self.mVersionController?.unregister ()
+//    self.mVersionController = nil
 //  }
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBGenericReadWriteProperty <Int>) {
+  private func updateVersion (from inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
     case .empty :
-      ()
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
     case .single (let v) :
-      self.selectedSegment = v
-      self.selectedSegmentDidChange (nil)
+      self.enableFromValueBinding (true)
+      self.stringValue = String (v)
     case .multiple :
-      ()
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
+  //  versionShouldChange binding
+  //····················································································································
+
+  private var mVersionShouldChangeController : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  @discardableResult func bind_versionShouldChange (_ inObject : EBReadOnlyProperty_Bool) -> Self {
+    self.mVersionShouldChangeController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateVersionShouldChange (from: inObject) }
+     )
+     return self
+  }
+
+  //····················································································································
+
+//  func unbind_versionShouldChange () {
+//    self.mVersionShouldChangeController?.unregister ()
+//    self.mVersionShouldChangeController = nil
+//  }
+
+  //····················································································································
+  // NSColor.systemBlue is not defined in 10.9
+  // We use 10.10 setting for getting systemBlue RGB components:
+  //      let c = NSColor.systemBlue.usingColorSpace (.sRGB)!
+  //      Swift.print ("RGB \(c.redComponent) \(c.greenComponent) \(c.blueComponent)")
+
+  private func updateVersionShouldChange (from inObject : EBReadOnlyProperty_Bool) {
+    switch inObject.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      if v {
+        self.textColor = NSColor (
+          calibratedRed: 0.10588235294117647,
+          green: 0.6784313725490196,
+          blue: 0.9725490196078431,
+          alpha: 1.0
+        )
+      }else{
+        self.textColor = NSColor.black
+      }
     }
   }
 

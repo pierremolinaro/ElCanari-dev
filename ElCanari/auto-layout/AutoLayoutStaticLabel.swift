@@ -10,8 +10,7 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
   // INIT
   //····················································································································
 
-  init (title inTitle : String) {
-    let inBold = true
+  init (title inTitle : String, bold inBold : Bool, small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.stringValue = inTitle
@@ -22,7 +21,8 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
-    self.font = inBold ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize) : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    let size = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
+    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
   }
 
   //····················································································································
@@ -31,10 +31,10 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //----------------------------------------------------------------------------------------------------------------------
+  //····················································································································
 
-  @discardableResult static func make (title inTitle : String) -> AutoLayoutStaticLabel {
-    let b = AutoLayoutStaticLabel (title: inTitle)
+  @discardableResult static func make (title inTitle : String, bold inBold : Bool, small inSmall : Bool) -> AutoLayoutStaticLabel {
+    let b = AutoLayoutStaticLabel (title: inTitle, bold: inBold, small: inSmall)
     gCurrentStack?.addView (b, in: .leading)
     return b
   }

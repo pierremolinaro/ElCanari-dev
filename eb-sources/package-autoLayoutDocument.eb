@@ -10,27 +10,68 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mMainView {
     hStack (margin: 5) {
       vStack {
         AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
-        .addPage (title: "First", pageView: mFirstPage)
-        .addPage (title: "Second", pageView: mSecondPage)
-        AutoLayoutStaticLabel (title: "Page")
+        addPage (title: "Model Image", pageView: mModelImagePage)
+        addPage (title: "Package", pageView: mPackagePage)
+        addPage (title: "Program", pageView: mProgramPage)
+        addPage (title: "Infos", pageView: mInfosPage)
+        $selectedPage root.selectedPageIndex
+        ;
+        AutoLayoutStaticLabel (title: "Page", bold: no, small: yes) ;
       }
-      space
-      AutoLayoutStaticLabel (title: "Temporaire !")
+      vStack {
+        AutoLayoutSignatureField $signature signature ;
+        AutoLayoutStaticLabel (title: "Signature", bold: no, small: yes) ;
+     }
+      vStack {
+        AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
+        AutoLayoutStaticLabel (title: "Version", bold: no, small: yes) ;
+     }
+     space ;
     }
-    AutoLayoutSeparator
-    view mPageMasterView
+    AutoLayoutSeparator ;
+    view mPageMasterView ;
   }
 
-  view mFirstPage vStack {
-    space
-    AutoLayoutStaticLabel (title: "First Page")
-    space
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE    MODEL IMAGE
+//----------------------------------------------------------------------------------------------------------------------
+
+  view mModelImagePage vStack {
+    space ;
+    hStack { space ; AutoLayoutStaticLabel (title: "Model Image", bold: yes, small: no) ; space ; }
+    space ;
   }
 
-  view mSecondPage vStack {
-    space
-    AutoLayoutStaticLabel (title: "Second Page")
-    space
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   PACKAGE
+//----------------------------------------------------------------------------------------------------------------------
+
+  view mPackagePage hStack {
+    space ;
+    vStack { space ; AutoLayoutStaticLabel (title: "Package", bold: yes, small: no) ; space ; }
+    space ;
+  }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   PROGRAM
+//----------------------------------------------------------------------------------------------------------------------
+
+  view mProgramPage vStack {
+    space ;
+    hStack { space ; AutoLayoutStaticLabel (title: "Program", bold: yes, small: no) ; space ; }
+    space ;
+  }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   INFOS
+//----------------------------------------------------------------------------------------------------------------------
+
+  view mInfosPage vStack {
+    space ;
+    hStack { space ; AutoLayoutStaticLabel (title: "Infos", bold: yes, small: no) ; space ; }
+    space ;
   }
 
 
@@ -44,18 +85,18 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mMainView {
 
 
 //--- Selected Page
-  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
-  outlet NSView mMasterView ;
-  outlet CanariViewWithKeyView mPackagePageView ;
-  outlet CanariViewWithKeyView mProgramPageView ;
-  outlet CanariViewWithKeyView mModelImagePageView ;
-  outlet CanariViewWithKeyView mInfosPageView ;
+//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
+//  outlet NSView mMasterView ;
+//  outlet CanariViewWithKeyView mPackagePageView ;
+//  outlet CanariViewWithKeyView mProgramPageView ;
+//  outlet CanariViewWithKeyView mModelImagePageView ;
+//  outlet CanariViewWithKeyView mInfosPageView ;
 
 //--- Signature
-  outlet CanariSignatureField mSignatureTextField $signature signature ;
+//  outlet CanariSignatureField mSignatureTextField $signature signature ;
 
 //--- Version
-  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
+//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 //-------------------------- Page : Package
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;

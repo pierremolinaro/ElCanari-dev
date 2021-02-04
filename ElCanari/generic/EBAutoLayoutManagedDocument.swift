@@ -171,6 +171,22 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   override func makeWindowControllers () {
+  //--- Signature observer
+    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
+    self.mSignatureObserver.setRootObject (self.mRootObject!)
+  //--- Version did change observer
+    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
+    self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
+  //--- Add Debug menu items ?
+    if !gDebugMenuItemsAdded {
+      gDebugMenuItemsAdded = true
+      let menuItem = NSMenuItem (
+        title: "Explore document",
+        action: #selector (Self.showObjectExplorerWindow (_:)),
+        keyEquivalent: ""
+      )
+      addItemToDebugMenu (menuItem)
+    }
   //--- Create the window and set the content view.
     let windowWidth = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? 480.0
     let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat ?? 300.0
@@ -185,6 +201,13 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //---
     let windowController = NSWindowController (window: window)
     self.addWindowController (windowController)
+  //--- Build temporary view
+    let view = vStack (margin: 0) {
+      space ()
+      hStack (margin: 0) { space () ; AutoLayoutSpinningProgressIndicator.make () ; space () }
+      space ()
+    }
+    window.contentView = view
   //--- Build user interface
 //    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
 //    DispatchQueue.main.asyncAfter (deadline: deadline) {
@@ -193,14 +216,9 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 //    }
     DispatchQueue.main.async {
       let view = self.ebBuildUserInterface ()
+      // DispatchQueue.main.async { window.contentView = view }
       window.contentView = view
     }
-    let view = vStack (margin: 0) {
-      space ()
-      hStack (margin: 0) { space () ; AutoLayoutSpinningProgressIndicator.make () ; space () }
-      space ()
-    }
-    window.contentView = view
   }
 
   //····················································································································
@@ -334,25 +352,25 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //    windowControllerDidLoadNib
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--- Signature observer
-    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
-    self.mSignatureObserver.setRootObject (self.mRootObject!)
-  //--- Version did change observer
-    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
-    self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
-  //--- Add Debug menu items ?
-    if !gDebugMenuItemsAdded {
-      gDebugMenuItemsAdded = true
-      let menuItem = NSMenuItem (
-        title: "Explore document",
-        action: #selector (Self.showObjectExplorerWindow (_:)),
-        keyEquivalent: ""
-      )
-      addItemToDebugMenu (menuItem)
-    }
-  }
+//  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
+//    super.windowControllerDidLoadNib (aController)
+//  //--- Signature observer
+//    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
+//    self.mSignatureObserver.setRootObject (self.mRootObject!)
+//  //--- Version did change observer
+//    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
+//    self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
+//  //--- Add Debug menu items ?
+//    if !gDebugMenuItemsAdded {
+//      gDebugMenuItemsAdded = true
+//      let menuItem = NSMenuItem (
+//        title: "Explore document",
+//        action: #selector (Self.showObjectExplorerWindow (_:)),
+//        keyEquivalent: ""
+//      )
+//      addItemToDebugMenu (menuItem)
+//    }
+//  }
 
   //····················································································································
   //   removeWindowController

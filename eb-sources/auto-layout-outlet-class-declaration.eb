@@ -2,18 +2,28 @@
 //   Canari Auto Layout classes
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern autolayout class AutoLayoutStaticLabel (title : String) {
+extern autolayout class AutoLayoutStaticLabel (title : String, bold: Bool, small: Bool) {
 }
 
 extern autolayout class AutoLayoutSeparator {
 }
 
 extern autolayout class AutoLayoutLabel {
-  $title : transient String ;
+  $title transient String
 }
 
 extern autolayout class AutoLayoutSegmentedControlWithPages (documentView: view) {
   func addPage (title: String, pageView : view)
+  $selectedPage property Int
+}
+
+extern autolayout class AutoLayoutSignatureField {
+  $signature transient Int
+}
+
+extern autolayout class AutoLayoutVersionField {
+  $version transient Int
+  $versionShouldChange transient Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

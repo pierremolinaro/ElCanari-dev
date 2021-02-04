@@ -262,7 +262,6 @@ import Cocoa
   @IBOutlet var mGuideY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mGuideY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mHorizontalFlip : EBSwitch? = nil
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mIssueInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mIssueScrollView : NSScrollView? = nil
@@ -276,7 +275,6 @@ import Cocoa
   @IBOutlet var mLoadModelImageFromPasteboardMenuItem : EBMenuItem? = nil
   @IBOutlet var mLockImagePointsButton : EBButton? = nil
   @IBOutlet var mLockImageView : EBImageObserverView? = nil
-  @IBOutlet var mMasterView : NSView? = nil
   @IBOutlet var mModelImageFirstPointXDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageFirstPointXTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageFirstPointYDimensionUnitPopUp : EBPopUpButton? = nil
@@ -288,7 +286,6 @@ import Cocoa
   @IBOutlet var mModelImagePageGridUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageHorizontalFlip : EBSwitch? = nil
   @IBOutlet var mModelImagePageVerticalFlip : EBSwitch? = nil
-  @IBOutlet var mModelImagePageView : CanariViewWithKeyView? = nil
   @IBOutlet var mModelImagePageXPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageYPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePointDxTextField : CanariDimensionTextField? = nil
@@ -317,7 +314,6 @@ import Cocoa
   @IBOutlet var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
   @IBOutlet var mPackagePadShapePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mPackagePadStylePopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mPackagePageView : CanariViewWithKeyView? = nil
   @IBOutlet var mPackageSlavePadShapePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mPackageSlavePadStylePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mPadAnnularRingTextField : CanariDimensionObserverTextField? = nil
@@ -343,11 +339,9 @@ import Cocoa
   @IBOutlet var mPadYCenterTextField : CanariDimensionTextField? = nil
   @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mPadZoneNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mProgramErrorTextField : EBTextField? = nil
   @IBOutlet var mProgramHelpButton : EBButton? = nil
   @IBOutlet var mProgramHelpSheet : NSPanel? = nil
-  @IBOutlet var mProgramPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mProgramTextView : EBTextView? = nil
   @IBOutlet var mRemoveModelImageMenuItem : EBMenuItem? = nil
   @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
@@ -369,7 +363,6 @@ import Cocoa
   @IBOutlet var mSetDimensionTextOriginAtMidX : EBButton? = nil
   @IBOutlet var mSetDimensionTextOriginAtMidY : EBButton? = nil
   @IBOutlet var mShowPadNumberSwitch : EBSwitch? = nil
-  @IBOutlet var mSignatureTextField : CanariSignatureField? = nil
   @IBOutlet var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mSlavePadAnnularRingUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? = nil
@@ -389,7 +382,6 @@ import Cocoa
   @IBOutlet var mSlavePadYCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mTopSidePadColorWell : EBColorWell? = nil
-  @IBOutlet var mVersionField : CanariVersionField? = nil
   @IBOutlet var mVerticalFlip : EBSwitch? = nil
   @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mYPlacardUnitPopUpButton : EBPopUpButton? = nil
@@ -517,12 +509,25 @@ import Cocoa
       hStack (margin: 5) {
         vStack (margin: 0) {
           AutoLayoutSegmentedControlWithPages.make (documentView: self.mPageMasterView)
-            .addPage (title: "First", pageView: self.mFirstPage)
-            .addPage (title: "Second", pageView: self.mSecondPage)
-          AutoLayoutStaticLabel.make (title: "Page")
+            .addPage (title: "Model Image", pageView: self.mModelImagePage)
+            .addPage (title: "Package", pageView: self.mPackagePage)
+            .addPage (title: "Program", pageView: self.mProgramPage)
+            .addPage (title: "Infos", pageView: self.mInfosPage)
+            .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+          AutoLayoutStaticLabel.make (title: "Page", bold: false, small: true)
+        }
+        vStack (margin: 0) {
+          AutoLayoutSignatureField.make ()
+            .bind_signature (self.signatureObserver_property)
+          AutoLayoutStaticLabel.make (title: "Signature", bold: false, small: true)
+        }
+        vStack (margin: 0) {
+          AutoLayoutVersionField.make ()
+            .bind_version (self.versionObserver_property)
+            .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+          AutoLayoutStaticLabel.make (title: "Version", bold: false, small: true)
         }
         space ()
-        AutoLayoutStaticLabel.make (title: "Temporaire !")
       }
       AutoLayoutSeparator.make ()
       addAutoLayoutView (self.mPageMasterView)
@@ -531,30 +536,76 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW mFirstPage
+  //    VIEW mModelImagePage
   //····················································································································
 
-  lazy var mFirstPage = self.mFirstPage_make ()
+  lazy var mModelImagePage = self.mModelImagePage_make ()
 
-  fileprivate final func mFirstPage_make () -> AutoLayoutStackView {
+  fileprivate final func mModelImagePage_make () -> AutoLayoutStackView {
     let view = AutoLayoutVerticalStackView (margin: 0) {
       space ()
-      AutoLayoutStaticLabel.make (title: "First Page")
+      hStack (margin: 0) {
+        space ()
+        AutoLayoutStaticLabel.make (title: "Model Image", bold: true, small: false)
+        space ()
+      }
       space ()
     }
     return view
   }
 
   //····················································································································
-  //    VIEW mSecondPage
+  //    VIEW mPackagePage
   //····················································································································
 
-  lazy var mSecondPage = self.mSecondPage_make ()
+  lazy var mPackagePage = self.mPackagePage_make ()
 
-  fileprivate final func mSecondPage_make () -> AutoLayoutStackView {
+  fileprivate final func mPackagePage_make () -> AutoLayoutStackView {
+    let view = AutoLayoutHorizontalStackView (margin: 0) {
+      space ()
+      vStack (margin: 0) {
+        space ()
+        AutoLayoutStaticLabel.make (title: "Package", bold: true, small: false)
+        space ()
+      }
+      space ()
+    }
+    return view
+  }
+
+  //····················································································································
+  //    VIEW mProgramPage
+  //····················································································································
+
+  lazy var mProgramPage = self.mProgramPage_make ()
+
+  fileprivate final func mProgramPage_make () -> AutoLayoutStackView {
     let view = AutoLayoutVerticalStackView (margin: 0) {
       space ()
-      AutoLayoutStaticLabel.make (title: "Second Page")
+      hStack (margin: 0) {
+        space ()
+        AutoLayoutStaticLabel.make (title: "Program", bold: true, small: false)
+        space ()
+      }
+      space ()
+    }
+    return view
+  }
+
+  //····················································································································
+  //    VIEW mInfosPage
+  //····················································································································
+
+  lazy var mInfosPage = self.mInfosPage_make ()
+
+  fileprivate final func mInfosPage_make () -> AutoLayoutStackView {
+    let view = AutoLayoutVerticalStackView (margin: 0) {
+      space ()
+      hStack (margin: 0) {
+        space ()
+        AutoLayoutStaticLabel.make (title: "Infos", bold: true, small: false)
+        space ()
+      }
       space ()
     }
     return view
@@ -666,7 +717,6 @@ import Cocoa
 //    checkOutletConnection (self.mGuideY2TextField, "mGuideY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGuideY2UnitPopUp, "mGuideY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mHorizontalFlip, "mHorizontalFlip", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
 //    checkOutletConnection (self.mIssueInspectorView, "mIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
@@ -680,7 +730,6 @@ import Cocoa
 //    checkOutletConnection (self.mLoadModelImageFromPasteboardMenuItem, "mLoadModelImageFromPasteboardMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mLockImagePointsButton, "mLockImagePointsButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mLockImageView, "mLockImageView", EBImageObserverView.self, #file, #line)
-//    checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
 //    checkOutletConnection (self.mModelImageFirstPointXDimensionUnitPopUp, "mModelImageFirstPointXDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImageFirstPointXTextField, "mModelImageFirstPointXTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mModelImageFirstPointYDimensionUnitPopUp, "mModelImageFirstPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -692,7 +741,6 @@ import Cocoa
 //    checkOutletConnection (self.mModelImagePageGridUnitPopUp, "mModelImagePageGridUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageHorizontalFlip, "mModelImagePageHorizontalFlip", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageVerticalFlip, "mModelImagePageVerticalFlip", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mModelImagePageView, "mModelImagePageView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageXPlacardUnitPopUpButton, "mModelImagePageXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageYPlacardUnitPopUpButton, "mModelImagePageYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePointDxTextField, "mModelImagePointDxTextField", CanariDimensionTextField.self, #file, #line)
@@ -721,7 +769,6 @@ import Cocoa
 //    checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenPopupButton, "mPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPackagePadShapePopUpButton, "mPackagePadShapePopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPackagePadStylePopUpButton, "mPackagePadStylePopUpButton", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mPackagePageView, "mPackagePageView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mPackageSlavePadShapePopUpButton, "mPackageSlavePadShapePopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPackageSlavePadStylePopUpButton, "mPackageSlavePadStylePopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadAnnularRingTextField, "mPadAnnularRingTextField", CanariDimensionObserverTextField.self, #file, #line)
@@ -747,11 +794,9 @@ import Cocoa
 //    checkOutletConnection (self.mPadYCenterTextField, "mPadYCenterTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mPadYCenterUnitPopUp, "mPadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadZoneNameTextField, "mPadZoneNameTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
 //    checkOutletConnection (self.mProgramErrorTextField, "mProgramErrorTextField", EBTextField.self, #file, #line)
 //    checkOutletConnection (self.mProgramHelpButton, "mProgramHelpButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
-//    checkOutletConnection (self.mProgramPageView, "mProgramPageView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
 //    checkOutletConnection (self.mRemoveModelImageMenuItem, "mRemoveModelImageMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
@@ -773,7 +818,6 @@ import Cocoa
 //    checkOutletConnection (self.mSetDimensionTextOriginAtMidX, "mSetDimensionTextOriginAtMidX", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mSetDimensionTextOriginAtMidY, "mSetDimensionTextOriginAtMidY", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mShowPadNumberSwitch, "mShowPadNumberSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mSignatureTextField, "mSignatureTextField", CanariSignatureField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadAnnularRingTextField, "mSlavePadAnnularRingTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadAnnularRingUnitPopUp, "mSlavePadAnnularRingUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadAssignmentPopUpButton, "mSlavePadAssignmentPopUpButton", CanariSlavePadAssignmentPopUpButton.self, #file, #line)
@@ -793,7 +837,6 @@ import Cocoa
 //    checkOutletConnection (self.mSlavePadYCenterUnitPopUp, "mSlavePadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
 //    checkOutletConnection (self.mTopSidePadColorWell, "mTopSidePadColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mVersionField, "mVersionField", CanariVersionField.self, #file, #line)
 //    checkOutletConnection (self.mVerticalFlip, "mVerticalFlip", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mXPlacardUnitPopUpButton, "mXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mYPlacardUnitPopUpButton, "mYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
@@ -987,10 +1030,6 @@ import Cocoa
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
     self.mModelImageObjectsController.bind_ebView (self.mModelImageView)
   //--------------------------- Install regular bindings
-    self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
-    self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
-    self.mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
-    self.mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
@@ -1428,10 +1467,6 @@ import Cocoa
 /*  override func removeUserInterface () {
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
-    self.mPageSegmentedControl?.unbind_selectedPage ()
-    self.mSignatureTextField?.unbind_signature ()
-    self.mVersionField?.unbind_version ()
-    self.mVersionField?.unbind_versionShouldChange ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
     self.mModelImageOpacitySlider?.unbind_doubleValue ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
@@ -1812,7 +1847,6 @@ import Cocoa
     self.mGuideY2TextField?.ebCleanUp ()
     self.mGuideY2UnitPopUp?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
-    self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mIssueInspectorView?.ebCleanUp ()
     self.mIssueScrollView?.ebCleanUp ()
@@ -1826,7 +1860,6 @@ import Cocoa
     self.mLoadModelImageFromPasteboardMenuItem?.ebCleanUp ()
     self.mLockImagePointsButton?.ebCleanUp ()
     self.mLockImageView?.ebCleanUp ()
-    self.mMasterView?.ebCleanUp ()
     self.mModelImageFirstPointXDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageFirstPointXTextField?.ebCleanUp ()
     self.mModelImageFirstPointYDimensionUnitPopUp?.ebCleanUp ()
@@ -1838,7 +1871,6 @@ import Cocoa
     self.mModelImagePageGridUnitPopUp?.ebCleanUp ()
     self.mModelImagePageHorizontalFlip?.ebCleanUp ()
     self.mModelImagePageVerticalFlip?.ebCleanUp ()
-    self.mModelImagePageView?.ebCleanUp ()
     self.mModelImagePageXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mModelImagePageYPlacardUnitPopUpButton?.ebCleanUp ()
     self.mModelImagePointDxTextField?.ebCleanUp ()
@@ -1867,7 +1899,6 @@ import Cocoa
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
     self.mPackagePadShapePopUpButton?.ebCleanUp ()
     self.mPackagePadStylePopUpButton?.ebCleanUp ()
-    self.mPackagePageView?.ebCleanUp ()
     self.mPackageSlavePadShapePopUpButton?.ebCleanUp ()
     self.mPackageSlavePadStylePopUpButton?.ebCleanUp ()
     self.mPadAnnularRingTextField?.ebCleanUp ()
@@ -1893,11 +1924,9 @@ import Cocoa
     self.mPadYCenterTextField?.ebCleanUp ()
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPadZoneNameTextField?.ebCleanUp ()
-    self.mPageSegmentedControl?.ebCleanUp ()
     self.mProgramErrorTextField?.ebCleanUp ()
     self.mProgramHelpButton?.ebCleanUp ()
     self.mProgramHelpSheet?.ebCleanUp ()
-    self.mProgramPageView?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
     self.mRemoveModelImageMenuItem?.ebCleanUp ()
     self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
@@ -1919,7 +1948,6 @@ import Cocoa
     self.mSetDimensionTextOriginAtMidX?.ebCleanUp ()
     self.mSetDimensionTextOriginAtMidY?.ebCleanUp ()
     self.mShowPadNumberSwitch?.ebCleanUp ()
-    self.mSignatureTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingUnitPopUp?.ebCleanUp ()
     self.mSlavePadAssignmentPopUpButton?.ebCleanUp ()
@@ -1939,7 +1967,6 @@ import Cocoa
     self.mSlavePadYCenterUnitPopUp?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mTopSidePadColorWell?.ebCleanUp ()
-    self.mVersionField?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mYPlacardUnitPopUpButton?.ebCleanUp ()
@@ -2051,7 +2078,6 @@ import Cocoa
     self.mGuideY2TextField = nil
     self.mGuideY2UnitPopUp = nil
     self.mHorizontalFlip = nil
-    self.mInfosPageView = nil
     self.mInspectorSegmentedControl = nil
     self.mIssueInspectorView = nil
     self.mIssueScrollView = nil
@@ -2065,7 +2091,6 @@ import Cocoa
     self.mLoadModelImageFromPasteboardMenuItem = nil
     self.mLockImagePointsButton = nil
     self.mLockImageView = nil
-    self.mMasterView = nil
     self.mModelImageFirstPointXDimensionUnitPopUp = nil
     self.mModelImageFirstPointXTextField = nil
     self.mModelImageFirstPointYDimensionUnitPopUp = nil
@@ -2077,7 +2102,6 @@ import Cocoa
     self.mModelImagePageGridUnitPopUp = nil
     self.mModelImagePageHorizontalFlip = nil
     self.mModelImagePageVerticalFlip = nil
-    self.mModelImagePageView = nil
     self.mModelImagePageXPlacardUnitPopUpButton = nil
     self.mModelImagePageYPlacardUnitPopUpButton = nil
     self.mModelImagePointDxTextField = nil
@@ -2106,7 +2130,6 @@ import Cocoa
     self.mPackageDrawingWidthMultipliedByTenPopupButton = nil
     self.mPackagePadShapePopUpButton = nil
     self.mPackagePadStylePopUpButton = nil
-    self.mPackagePageView = nil
     self.mPackageSlavePadShapePopUpButton = nil
     self.mPackageSlavePadStylePopUpButton = nil
     self.mPadAnnularRingTextField = nil
@@ -2132,11 +2155,9 @@ import Cocoa
     self.mPadYCenterTextField = nil
     self.mPadYCenterUnitPopUp = nil
     self.mPadZoneNameTextField = nil
-    self.mPageSegmentedControl = nil
     self.mProgramErrorTextField = nil
     self.mProgramHelpButton = nil
     self.mProgramHelpSheet = nil
-    self.mProgramPageView = nil
     self.mProgramTextView = nil
     self.mRemoveModelImageMenuItem = nil
     self.mRemoveZoneForbiddenPadNumberButton = nil
@@ -2158,7 +2179,6 @@ import Cocoa
     self.mSetDimensionTextOriginAtMidX = nil
     self.mSetDimensionTextOriginAtMidY = nil
     self.mShowPadNumberSwitch = nil
-    self.mSignatureTextField = nil
     self.mSlavePadAnnularRingTextField = nil
     self.mSlavePadAnnularRingUnitPopUp = nil
     self.mSlavePadAssignmentPopUpButton = nil
@@ -2178,7 +2198,6 @@ import Cocoa
     self.mSlavePadYCenterUnitPopUp = nil
     self.mStatusImageViewInToolbar = nil
     self.mTopSidePadColorWell = nil
-    self.mVersionField = nil
     self.mVerticalFlip = nil
     self.mXPlacardUnitPopUpButton = nil
     self.mYPlacardUnitPopUpButton = nil

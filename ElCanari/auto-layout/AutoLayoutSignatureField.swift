@@ -4,26 +4,17 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
+class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
-  //····················································································································
-  // INIT
   //····················································································································
 
   init () {
-    let inTitle = "ESSAI"
-    let inBold = true
     super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.stringValue = inTitle
-    self.isBezeled = false
-    self.isBordered = false
-    self.backgroundColor = debugBackgroundColor ()
-    self.drawsBackground = self.backgroundColor != nil
-    self.textColor = .black
-    self.isEnabled = true
     self.isEditable = false
-    self.font = inBold ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize) : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    self.drawsBackground = false
+    self.isBordered = false
+    self.font = NSFont.userFixedPitchFont (ofSize: NSFont.systemFontSize)
+    noteObjectAllocation (self)
   }
 
   //····················································································································
@@ -34,28 +25,46 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  @discardableResult static func make () -> AutoLayoutLabel {
-    let b = AutoLayoutLabel ()
+  @discardableResult static func make () -> AutoLayoutSignatureField {
+    let b = AutoLayoutSignatureField ()
     gCurrentStack?.addView (b, in: .leading)
     return b
   }
 
   //····················································································································
-  // SET TEXT color
+  //  signatureObserver binding
   //····················································································································
 
-  @discardableResult func setTextColor (_ inTextColor : NSColor) -> Self {
-    self.textColor = inTextColor
-    return self
+  private var mController : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  func bind_signature (_ model : EBReadOnlyProperty_UInt32) {
+    self.mController = EBReadOnlyPropertyController (
+      observedObjects: [model],
+      callBack: { [weak self] in self?.update (from: model) }
+    )
   }
 
   //····················································································································
-  // SET TITLE ALIGNMENT
+
+//  func unbind_signature () {
+//    self.mController?.unregister ()
+//    self.mController = nil
+//  }
+
   //····················································································································
 
-  @discardableResult func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
-    self.alignment = inAlignment
-    return self
+  private func update (from model : EBReadOnlyProperty_UInt32) {
+    switch model.selection {
+    case .empty :
+      self.stringValue = "—"
+    case .single (let v) :
+      self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
+//      Swift.print ("Signature Display -- \(self.stringValue)")
+    case .multiple :
+      self.stringValue = "—"
+    }
   }
 
   //····················································································································
@@ -63,4 +72,3 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
