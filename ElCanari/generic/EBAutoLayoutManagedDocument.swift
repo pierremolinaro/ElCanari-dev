@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//  EBManagedXibDocument
+//  EBAutoLayoutManagedDocument
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
+class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -167,43 +167,53 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //   showWindows
+  //   makeWindowControllers
   //····················································································································
 
-  override final func showWindows () {
-    super.showWindows ()
-    if let unwrappedWindowForSheet = self.windowForSheet, // Document has been opened in the user interface
-          unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
-          let windowWidth = self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat,
-          let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat {
-      let newSize = NSSize (width: windowWidth, height: windowHeight)
-      var windowFrame : NSRect = unwrappedWindowForSheet.frame
-      windowFrame.size = newSize
-      if let visibleFrame = unwrappedWindowForSheet.screen?.visibleFrame {
-        if windowFrame.size.width > visibleFrame.size.width {
-          windowFrame.size.width = visibleFrame.size.width
-        }
-        if windowFrame.size.height > visibleFrame.size.height {
-          windowFrame.size.height = visibleFrame.size.height
-        }
-        if windowFrame.origin.x < visibleFrame.origin.x {
-          windowFrame.origin.x = visibleFrame.origin.x
-        }
-        if windowFrame.origin.y < visibleFrame.origin.y {
-          windowFrame.origin.y = visibleFrame.origin.y
-        }
-        if windowFrame.maxX > visibleFrame.maxX {
-          windowFrame.origin.x -= windowFrame.maxX - visibleFrame.maxX
-        }
-        if windowFrame.maxY > visibleFrame.maxY {
-          windowFrame.origin.y -= windowFrame.maxY - visibleFrame.maxY
-        }
-      }
-      unwrappedWindowForSheet.setFrame (windowFrame, display: true)
+  override func makeWindowControllers () {
+  //--- Create the window and set the content view.
+    let windowWidth = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? 480.0
+    let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat ?? 300.0
+    let window = NSWindow (
+      contentRect: NSRect(x: 0.0, y: 0.0, width: windowWidth, height: windowHeight),
+      styleMask: [.titled, .closable, .miniaturizable, .resizable],
+      backing: .buffered,
+      defer: false
+    )
+    window.isReleasedWhenClosed = false
+    window.center ()
+  //---
+    let windowController = NSWindowController (window: window)
+    self.addWindowController (windowController)
+  //--- Build user interface
+//    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
+//    DispatchQueue.main.asyncAfter (deadline: deadline) {
+//      let view = self.ebBuildUserInterface ()
+//      window.contentView = view
+//    }
+    DispatchQueue.main.async {
+      let view = self.ebBuildUserInterface ()
+      window.contentView = view
     }
-    flushOutletEvents ()
+    let view = vStack (margin: 0) {
+      space ()
+      hStack (margin: 0) { space () ; AutoLayoutSpinningProgressIndicator.make () ; space () }
+      space ()
+    }
+    window.contentView = view
   }
 
+  //····················································································································
+
+  func ebBuildUserInterface () -> NSView {
+    let view = vStack (margin: 0) {
+      space ()
+      hStack (margin: 0) { space () ; ALLabel.make ("Undefined User Interface") ; space () }
+      space ()
+    }
+    return view
+  }
+  
   //····················································································································
   //   showObjectExplorerWindow:
   //····················································································································
@@ -242,7 +252,7 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   //--- Set close button as 'remove window' button
     let closeButton = self.mDocumentExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(EBManagedXibDocument.deleteDocumentWindowAction(_:))
+    closeButton?.action = #selector(Self.deleteDocumentWindowAction(_:))
   //--- Set window title
     self.mDocumentExplorerWindow?.title = "Document " + className
   //--- Add Scroll view
@@ -337,7 +347,7 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
       gDebugMenuItemsAdded = true
       let menuItem = NSMenuItem (
         title: "Explore document",
-        action: #selector (EBManagedXibDocument.showObjectExplorerWindow (_:)),
+        action: #selector (Self.showObjectExplorerWindow (_:)),
         keyEquivalent: ""
       )
       addItemToDebugMenu (menuItem)
@@ -348,16 +358,18 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   //   removeWindowController
   //····················································································································
 
-  func removeUserInterface () {
-    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-    self.clearObjectExplorer ()
-  }
+//  func removeUserInterface () {
+//    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
+//    self.clearObjectExplorer ()
+//  }
 
   //····················································································································
 
   override final func removeWindowController (_ inWindowController : NSWindowController) {
   //--- Remove user interface
-    self.removeUserInterface ()
+    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
+    self.clearObjectExplorer ()
+//    self.removeUserInterface ()
   //--- Remove all entities
     let start = Date ()
     let allEntities = self.reachableObjectsFromRootObject ()
@@ -422,7 +434,7 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   func resetVersionAndSignature () {
     self.ebUndoManager.registerUndo (
       withTarget: self,
-      selector: #selector (performUndoVersionNumber(_:)),
+      selector: #selector (Self.performUndoVersionNumber(_:)),
       object: NSNumber (value: self.mVersion.propval)
     )
     self.mVersion.setProp (0)
@@ -434,7 +446,7 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   @objc func performUndoVersionNumber (_ oldValue : NSNumber) {
     self.ebUndoManager.registerUndo (
       withTarget: self,
-      selector: #selector (performUndoVersionNumber(_:)),
+      selector: #selector (Self.performUndoVersionNumber(_:)),
       object: NSNumber (value: self.mVersion.propval)
     )
     self.mVersion.setProp (oldValue.intValue)
@@ -447,12 +459,12 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
-    if action == #selector (EBManagedXibDocument.printDocument(_:)) {
+    if action == #selector (Self.printDocument(_:)) {
       validate = self.windowForSheet?.firstResponder is EBGraphicView
-    }else if action == #selector (EBManagedXibDocument.setBinaryFormatAction(_:)) {
+    }else if action == #selector (Self.setBinaryFormatAction(_:)) {
       validate = true
       inMenuItem.state = (self.mManagedDocumentFileFormat == .binary) ? .on : .off
-    }else if action == #selector (EBManagedXibDocument.setTextualFormatAction(_:)) {
+    }else if action == #selector (Self.setTextualFormatAction(_:)) {
       validate = true
       inMenuItem.state = (self.mManagedDocumentFileFormat == .textual) ? .on : .off
     }else{
@@ -556,136 +568,6 @@ class EBManagedXibDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func concludeDragOperation (_ inSender: NSDraggingInfo?, _ destinationScrollView : NSScrollView) {
-  }
-
-  //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//  EBVersionShouldChangeObserver
-//----------------------------------------------------------------------------------------------------------------------
-
-class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
-
-  //····················································································································
-
-  private weak var mUndoManager : EBUndoManager? = nil // SOULD BE WEAK
-  private weak var mSignatureObserver : EBSignatureObserverEvent? = nil // SOULD BE WEAK
-  private var mSignatureAtStartUp : UInt32 = 0
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        return .single (unwSelf.mSignatureAtStartUp != unwSelf.signature ())
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent, _ ebUndoManager : EBUndoManager?) {
-    self.mUndoManager = ebUndoManager
-    self.mSignatureObserver = signatureObserver
-    self.mSignatureAtStartUp = signatureObserver.signature ()
-  }
-
-  //····················································································································
-
-  final func updateStartUpSignature () {
-    if let signatureObserver = self.mSignatureObserver {
-      self.mSignatureAtStartUp = signatureObserver.signature ()
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  func signature () -> UInt32 {
-    if let signatureObserver = self.mSignatureObserver {
-      return signatureObserver.signature ()
-    }else{
-      return 0
-    }
-  }
-
-  //····················································································································
-
-  func clearSignatureCache () {
-    self.postEvent ()
-  }
-
-  //····················································································································
-  // clearStartUpSignature
-  //····················································································································
-
-  func clearStartUpSignature () {
-    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
-    self.mSignatureAtStartUp = 0
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : NSNumber) {
-    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
-    self.mSignatureAtStartUp = oldValue.uint32Value
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//  EBSignatureObserverEvent
-//----------------------------------------------------------------------------------------------------------------------
-
-class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureObserverProtocol {
-
-  //····················································································································
-
-  private weak var mRootObject : EBSignatureObserverProtocol? // SOULD BE WEAK
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        return .single (unwSelf.signature ())
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func setRootObject (_ rootObject : EBSignatureObserverProtocol) {
-    self.mRootObject = rootObject
-  }
-
-  //····················································································································
-
-  func signature () -> UInt32 {
-    if let rootObject = self.mRootObject {
-      return rootObject.signature ()
-    }else{
-      return 0
-    }
-  }
-
-  //····················································································································
-
-  func clearSignatureCache () {
-    self.postEvent ()
   }
 
   //····················································································································

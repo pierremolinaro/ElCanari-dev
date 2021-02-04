@@ -10,12 +10,18 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension PackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutPackageDocument {
+  @objc func removeModelImageAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let sheet = self.mProgramHelpSheet {
-      window.beginSheet (sheet, completionHandler: nil)
-    }
+    self.rootObject.mModelImageData = Data ()
+    self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
+    self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()
+    self.rootObject.reset_mModelImageScale_toDefaultValue ()
+    self.rootObject.reset_mModelImageRotationInRadians_toDefaultValue ()
+    self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
+    self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
+    self.rootObject.mModelImageDoublePoint = nil
+    self.rootObject.mModelImageObjects = []
 //--- END OF USER ZONE 2
   }
 }

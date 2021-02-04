@@ -1,4 +1,5 @@
 include "eb-sources/canari-outlet-class-declaration.eb" ;
+include "eb-sources/auto-layout-outlet-class-declaration.eb" ;
 include "eb-sources/transient-property-classes-structs.eb" ;
 include "eb-sources/common-entities.eb" ;
 include "eb-sources/preferences.eb" ;
@@ -22,6 +23,7 @@ include "eb-sources/symbol-symbolRoot.eb" ;
 include "eb-sources/symbol-symbolDocument.eb" ;
 //--- Package
 include "eb-sources/package-packageDocument.eb" ;
+include "eb-sources/package-autoLayoutDocument.eb" ;
 include "eb-sources/package-packageRoot.eb" ;
 //--- Device
 include "eb-sources/device-deviceDocument.eb" ;

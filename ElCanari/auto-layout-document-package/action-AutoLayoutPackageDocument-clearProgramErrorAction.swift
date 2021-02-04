@@ -10,12 +10,10 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension PackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutPackageDocument {
+  @objc func clearProgramErrorAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let sheet = self.mProgramHelpSheet {
-      window.beginSheet (sheet, completionHandler: nil)
-    }
+    self.clearError ()
 //--- END OF USER ZONE 2
   }
 }

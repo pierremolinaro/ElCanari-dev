@@ -10,11 +10,13 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension PackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutPackageDocument {
+  @objc func setDimensionTextOriginAtMidYAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let sheet = self.mProgramHelpSheet {
-      window.beginSheet (sheet, completionHandler: nil)
+    for object in self.mPackageObjectsController.selectedGraphicObjectSet {
+      if let dim = object as? PackageDimension {
+        dim.yDimension = 0
+      }
     }
 //--- END OF USER ZONE 2
   }

@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension PackageDocument {
+extension AutoLayoutPackageDocument {
   @objc func programHelpAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let window = self.windowForSheet, let sheet = self.mProgramHelpSheet {

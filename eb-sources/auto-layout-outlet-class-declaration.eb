@@ -1,0 +1,188 @@
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Canari Auto Layout classes
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extern autolayout class AutoLayoutStaticLabel (title : String) {
+}
+
+extern autolayout class AutoLayoutSeparator {
+}
+
+extern autolayout class AutoLayoutLabel {
+  $title : transient String ;
+}
+
+extern autolayout class AutoLayoutSegmentedControlWithPages (documentView: view) {
+  func addPage (title: String, pageView : view)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//extern autolayout class AutoLayoutCanariBoolPopUpButton $enabled ;
+//binding autolayout AutoLayoutCanariBoolPopUpButton $value : property Bool {item0 : String, item1 : String} ;
+//
+//extern autolayout class AutoLayoutCanariTrackLockView ;
+//binding autolayout AutoLayoutCanariTrackLockView $angle : transient Int ;
+//binding autolayout AutoLayoutCanariTrackLockView $manualLockP1 : property Bool ;
+//binding autolayout AutoLayoutCanariTrackLockView $manualLockP2 : property Bool ;
+//binding autolayout AutoLayoutCanariTrackLockView $p1ConnectedToSomePad : transient Bool ;
+//binding autolayout AutoLayoutCanariTrackLockView $p2ConnectedToSomePad : transient Bool ;
+//
+//extern autolayout class AutoLayoutCanariChoiceMenu ;
+//binding autolayout AutoLayoutCanariChoiceMenu $selectedIndex : property enum ;
+//binding autolayout AutoLayoutCanariChoiceMenu $selectedTag : property Int ;
+//
+//extern autolayout class AutoLayoutCanariTabView $enabled ;
+//binding autolayout AutoLayoutCanariTabView $selectedTabIndex : property Int ;
+//
+//extern autolayout class AutoLayoutCanariOrientationSegmentedControl $enabled ;
+//binding autolayout AutoLayoutCanariOrientationSegmentedControl $angle : property Int ;
+//
+//extern autolayout class AutoLayoutCanariDefaultNetClassPopUpButton ;
+//binding autolayout AutoLayoutCanariDefaultNetClassPopUpButton $netClasses : property String, transient StringArray ; // Net class names
+//
+//extern autolayout class AutoLayoutCanariComponentsMenuItem ;
+//binding autolayout AutoLayoutCanariComponentsMenuItem $components : transient StringTagArray ; // Prefix, index
+//
+//extern autolayout class AutoLayoutCanariNetsMenuItem ;
+//binding autolayout AutoLayoutCanariNetsMenuItem $nets : transient StringArray ;
+//
+//extern autolayout class AutoLayoutCanariSelectionPopUpButton $hidden ;
+//binding autolayout AutoLayoutCanariSelectionPopUpButton $selectedNameInArray : property String, transient StringArray ;
+//
+//extern autolayout class AutoLayoutCanariObserverSwitch ;
+//binding autolayout AutoLayoutCanariObserverSwitch $valueObserver : transient Bool ;
+//
+////extern autolayout class NSDatePicker ;
+//
+////extern autolayout class AutoLayoutCanariDeviceSymbolTypesTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariDeviceSymbolTypesTableView $symbolDictionary : transient DeviceSymbolDictionary ;
+////
+////extern autolayout class AutoLayoutCanariStringArrayTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariStringArrayTableView $array : transient StringArray ;
+////
+////extern autolayout class AutoLayoutCanariTwoStringArrayTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariTwoStringArrayTableView $array : transient TwoStringArray ;
+////
+////extern autolayout class AutoLayoutCanariThreeStringArrayTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariThreeStringArrayTableView $array : transient ThreeStringArray ;
+//
+//extern autolayout class AutoLayoutCanariToolbar ;
+//
+////extern autolayout class NSTabView : NSControl ;
+////
+////extern autolayout class NSTableView ;
+////
+////extern autolayout class NSClipView ;
+//
+//extern autolayout class AutoLayoutCanariComboBox ;
+//
+//extern autolayout class AutoLayoutCanariNewComponentFromDevicePullDownButton ;
+//binding autolayout AutoLayoutCanariNewComponentFromDevicePullDownButton $deviceNames : transient StringArray ;
+//
+//extern autolayout class AutoLayoutCanariBoardTextFontPopUpButton ;
+////extern autolayout class AutoLayoutCanariBoardComponentNameFontPopUpButton : NSControl ;
+////extern autolayout class AutoLayoutCanariBoardComponentValueFontPopUpButton : NSControl ;
+//extern autolayout class AutoLayoutCanariBoardComponentPackagePopUpButton ;
+//
+////extern autolayout class NSPanel ;
+////
+////extern autolayout class NSImageView $hidden ;
+////
+////extern autolayout class NSButton ;
+////
+////extern autolayout class NSScrollView : NSView ;
+////
+////extern autolayout class NSTextField : NSControl ;
+////
+////extern autolayout class NSSegmentedControl ;
+//
+////extern autolayout class AutoLayoutCanariUnconnectedPadsInDeviceTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariUnconnectedPadsInDeviceTableView $unconnectedPads : transient StringArray ;
+//
+////extern autolayout class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView $unconnectedPins : transient UnconnectedSymbolPinsInDevice ;
+//
+////extern autolayout class AutoLayoutCanariAssignedPadProxysInDeviceTableView : EBTableView ;
+////binding autolayout AutoLayoutCanariAssignedPadProxysInDeviceTableView $assignedPadProxies : transient AssignedPadProxiesInDevice ;
+//
+////extern autolayout class AutoLayoutCanariDragSourceButton : NSControl ;
+////extern autolayout class AutoLayoutCanariDragSourceImageButton : NSControl ;
+//
+////extern autolayout class AutoLayoutCanariAddSymbolInstancePullDownButton : EBPopUpButton ;
+////binding autolayout AutoLayoutCanariAddSymbolInstancePullDownButton $symbolTypeNames : transient StringArray ;
+//
+////extern autolayout class AutoLayoutCanariDeviceDocumentationTableView : EBTableView ;
+//
+////extern autolayout class AutoLayoutCanariIssueTableView : NSView ;
+////binding autolayout AutoLayoutCanariIssueTableView $issues : transient CanariIssueArray ;
+//
+////extern autolayout class EBScrollView ;
+//
+//extern autolayout class AutoLayoutCanariDimensionTextField $enabled ;
+//binding autolayout AutoLayoutCanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
+//
+//extern autolayout class AutoLayoutCanariDimensionObserverTextField ;
+//binding autolayout AutoLayoutCanariDimensionObserverTextField $dimensionAndUnit : transient Int, property Int ;
+//
+////extern autolayout class AutoLayoutCanariPadRenumberingPullDownButton : NSControl ;
+////binding autolayout AutoLayoutCanariPadRenumberingPullDownButton $currentNumber : transient Int ;
+////binding autolayout AutoLayoutCanariPadRenumberingPullDownButton $currentZoneName : transient String ;
+//
+//extern autolayout class AutoLayoutCanariSlavePadAssignmentPopUpButton ;
+//binding autolayout AutoLayoutCanariSlavePadAssignmentPopUpButton $masterPadName : transient String ;
+//binding autolayout AutoLayoutCanariSlavePadAssignmentPopUpButton $masterPadObjectIndexArray : transient IntArray ;
+//
+//extern autolayout class AutoLayoutCanariFontCharacterSelectButton $enabled ;
+//binding autolayout AutoLayoutCanariFontCharacterSelectButton $codePoint : property Int ;
+//binding autolayout AutoLayoutCanariFontCharacterSelectButton $characters : transient DefinedCharactersInDevice ;
+//
+//extern autolayout class AutoLayoutCanariSegmentedControl ;
+//binding autolayout AutoLayoutCanariSegmentedControl $selectedPage : property Int ;
+//
+//extern autolayout class AutoLayoutCanariEnumSegmentedControl ;
+//binding autolayout AutoLayoutCanariEnumSegmentedControl $selectedSegment : property enum ;
+//
+//extern autolayout class AutoLayoutCanariAngleTextField $enabled ;
+//binding autolayout AutoLayoutCanariAngleTextField $angle : property Int ;
+//
+//
+////extern autolayout class AutoLayoutCanariAngleSlider : NSControl ;
+////binding autolayout AutoLayoutCanariAngleSlider $angle : property Int ;
+//
+////extern autolayout class AutoLayoutCanariQuadrantSegmentedControl : NSView ;
+////binding autolayout AutoLayoutCanariQuadrantSegmentedControl $quadrant : property QuadrantRotation ;
+//
+//extern autolayout class AutoLayoutCanariSignatureField ;
+//binding autolayout AutoLayoutCanariSignatureField $signature : transient Int ;
+//
+//
+//extern autolayout class AutoLayoutCanariVersionField ;
+//binding autolayout AutoLayoutCanariVersionField $version : transient Int ;
+//
+//binding autolayout AutoLayoutCanariVersionField $versionShouldChange : transient Bool ;
+//
+////extern autolayout class AutoLayoutCanariViewWithKeyView : NSView ;
+//
+////extern autolayout class NSSplitView : NSView ;
+//
+//extern autolayout class AutoLayoutCanariMenu ;
+//binding autolayout AutoLayoutCanariMenu $populateSubmenus : transient CanariMenuItemListClass ;
+//
+////extern autolayout class AutoLayoutCanariDateObserverField : NSTextField ;
+////binding autolayout CanariDateObserverField $dateObserver : transient Date ;
+//
+//extern autolayout class AutoLayoutCanariDeviceDroppableImageView ;
+//binding autolayout AutoLayoutCanariDeviceDroppableImageView $imageData : property Data ;
+//
+//extern autolayout class AutoLayoutCanariNetInfoTableView ;
+//binding autolayout AutoLayoutCanariNetInfoTableView $netInfo : transient NetInfoArray ;
+//
+//extern autolayout class AutoLayoutCanariCanariDragSourceTableView ;
+//binding autolayout AutoLayoutCanariCanariDragSourceTableView $models : transient StringTagArray ;
+//
+//extern autolayout class AutoLayoutCanariCanariBoardInsertMenu ;
+//binding autolayout AutoLayoutCanariCanariBoardInsertMenu $names : transient StringTagArray ;
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

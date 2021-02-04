@@ -10,11 +10,17 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension PackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutPackageDocument {
+  @objc func removeZoneForbiddenPadNumberAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let sheet = self.mProgramHelpSheet {
-      window.beginSheet (sheet, completionHandler: nil)
+    if self.mPackageZoneSelectionController.selectedArray.count == 1,
+       let selecedItemTitle = self.mZoneForbiddenPadNumberTableView?.selectedItemTitle {
+      let selectedPadZone = self.mPackageZoneSelectionController.selectedArray [0]
+      for f in selectedPadZone.forbiddenPadNumbers {
+        if selecedItemTitle == "\(f.padNumber)" {
+          selectedPadZone.forbiddenPadNumbers_property.remove (f)
+        }
+      }
     }
 //--- END OF USER ZONE 2
   }
