@@ -211,25 +211,24 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Build user interface
 //    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
 //    DispatchQueue.main.asyncAfter (deadline: deadline) {
-//      let view = self.ebBuildUserInterface ()
-//      window.contentView = view
+//      self.ebBuildUserInterface ()
+//      flushOutletEvents ()
 //    }
     DispatchQueue.main.async {
-      let view = self.ebBuildUserInterface ()
-      // DispatchQueue.main.async { window.contentView = view }
-      window.contentView = view
+      self.ebBuildUserInterface ()
+      flushOutletEvents ()
     }
   }
 
   //····················································································································
 
-  func ebBuildUserInterface () -> NSView {
+  func ebBuildUserInterface () {
     let view = vStack (margin: 0) {
       space ()
       hStack (margin: 0) { space () ; ALLabel.make ("Undefined User Interface") ; space () }
       space ()
     }
-    return view
+    self.windowForSheet?.contentView = view
   }
   
   //····················································································································

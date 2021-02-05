@@ -2,35 +2,57 @@
 //     P A C K A G E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mMainView {
+autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterView {
 
-  view mPageMasterView : vStack ;
+//----------------------------------------------------------------------------------------------------------------------
+//   TOOL BAR
+//----------------------------------------------------------------------------------------------------------------------
 
-  view mMainView vStack {
-    hStack (margin: 5) {
-      vStack {
-        AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
+  toolbarItem "Page" : AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
         addPage (title: "Model Image", pageView: mModelImagePage)
         addPage (title: "Package", pageView: mPackagePage)
         addPage (title: "Program", pageView: mProgramPage)
         addPage (title: "Infos", pageView: mInfosPage)
         $selectedPage root.selectedPageIndex
-        ;
-        AutoLayoutStaticLabel (title: "Page", bold: no, small: yes) ;
-      }
-      vStack {
-        AutoLayoutSignatureField $signature signature ;
-        AutoLayoutStaticLabel (title: "Signature", bold: no, small: yes) ;
-     }
-      vStack {
-        AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
-        AutoLayoutStaticLabel (title: "Version", bold: no, small: yes) ;
-     }
-     space ;
-    }
-    AutoLayoutSeparator ;
-    view mPageMasterView ;
-  }
+  ;
+
+ // toolbarItem "Space" : space ;
+
+  toolbarItem "Signature" : AutoLayoutSignatureField $signature signature ;
+  
+  toolbarItem "Version" : AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+//   MAIN VIEW
+//----------------------------------------------------------------------------------------------------------------------
+ 
+  view mPageMasterView : vStack ;
+
+//  view mMainView vStack {
+//    hStack (margin: 5) {
+//      vStack {
+//        AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
+//        addPage (title: "Model Image", pageView: mModelImagePage)
+//        addPage (title: "Package", pageView: mPackagePage)
+//        addPage (title: "Program", pageView: mProgramPage)
+//        addPage (title: "Infos", pageView: mInfosPage)
+//        $selectedPage root.selectedPageIndex
+//        ;
+//        AutoLayoutStaticLabel (title: "Page", bold: no, small: yes) ;
+//      }
+//      vStack {
+//        AutoLayoutSignatureField $signature signature ;
+//        AutoLayoutStaticLabel (title: "Signature", bold: no, small: yes) ;
+//     }
+//      vStack {
+//        AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
+//        AutoLayoutStaticLabel (title: "Version", bold: no, small: yes) ;
+//     }
+//     space ;
+//    }
+//    AutoLayoutSeparator ;
+//    view mPageMasterView ;
+//  }
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE    MODEL IMAGE

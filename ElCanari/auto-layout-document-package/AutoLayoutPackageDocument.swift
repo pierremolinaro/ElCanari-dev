@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument {
+@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
   //   Array controller: mPackageObjectsController
@@ -499,43 +499,6 @@ import Cocoa
   let mPageMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView (margin: 0)
 
   //····················································································································
-  //    VIEW mMainView
-  //····················································································································
-
-  lazy var mMainView = self.mMainView_make ()
-
-  fileprivate final func mMainView_make () -> AutoLayoutStackView {
-    let view = AutoLayoutVerticalStackView (margin: 0) {
-      hStack (margin: 5) {
-        vStack (margin: 0) {
-          AutoLayoutSegmentedControlWithPages.make (documentView: self.mPageMasterView)
-            .addPage (title: "Model Image", pageView: self.mModelImagePage)
-            .addPage (title: "Package", pageView: self.mPackagePage)
-            .addPage (title: "Program", pageView: self.mProgramPage)
-            .addPage (title: "Infos", pageView: self.mInfosPage)
-            .bind_selectedPage (self.rootObject.selectedPageIndex_property)
-          AutoLayoutStaticLabel.make (title: "Page", bold: false, small: true)
-        }
-        vStack (margin: 0) {
-          AutoLayoutSignatureField.make ()
-            .bind_signature (self.signatureObserver_property)
-          AutoLayoutStaticLabel.make (title: "Signature", bold: false, small: true)
-        }
-        vStack (margin: 0) {
-          AutoLayoutVersionField.make ()
-            .bind_version (self.versionObserver_property)
-            .bind_versionShouldChange (self.versionShouldChangeObserver_property)
-          AutoLayoutStaticLabel.make (title: "Version", bold: false, small: true)
-        }
-        space ()
-      }
-      AutoLayoutSeparator.make ()
-      addAutoLayoutView (self.mPageMasterView)
-    }
-    return view
-  }
-
-  //····················································································································
   //    VIEW mModelImagePage
   //····················································································································
 
@@ -615,11 +578,84 @@ import Cocoa
   //    Build User Interface
   //····················································································································
 
-  override func ebBuildUserInterface () -> NSView {
+  override func ebBuildUserInterface () {
+  //--- Build tool bar
+    let toolbar = NSToolbar (identifier: NSToolbar.Identifier ("AutoLayoutPackageDocument"))
+    toolbar.allowsUserCustomization = false
+    toolbar.displayMode = .default
+    toolbar.delegate = self
+    self.windowForSheet?.toolbar = toolbar
+  //--- Build window content view
     // showDebugBackground ()
-    return self.mMainView
+    self.windowForSheet?.contentView = self.mPageMasterView
   }
   
+  //····················································································································
+  //    Toolbar
+  //····················································································································
+  
+  func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+    return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2")]
+  }
+
+  //····················································································································
+
+  func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+    return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2")]
+  }
+
+  //····················································································································
+
+  func toolbar(_ toolbar: NSToolbar,
+               itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
+               willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+    switch itemIdentifier.rawValue {
+    case "0" :
+      let itemId = NSToolbarItem.Identifier ("0")
+      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
+      toolbarItem.label = "Page"
+      // toolbarItem.paletteLabel = String("Open File")
+      // toolbarItem.toolTip = String("Open file to be handled")
+      toolbarItem.isEnabled = true
+      //toolbarItem.view = AutoLayoutSignatureField ().bind_signature (self.signatureObserver_property)
+      toolbarItem.view = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView)
+      .addPage (title: "Model Image", pageView: self.mModelImagePage)
+      .addPage (title: "Package", pageView: self.mPackagePage)
+      .addPage (title: "Program", pageView: self.mProgramPage)
+      .addPage (title: "Infos", pageView: self.mInfosPage)
+      .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+
+      return toolbarItem
+    case "1" :
+      let itemId = NSToolbarItem.Identifier ("1")
+      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
+      toolbarItem.label = "Signature"
+      // toolbarItem.paletteLabel = String("Open File")
+      // toolbarItem.toolTip = String("Open file to be handled")
+      toolbarItem.isEnabled = true
+      //toolbarItem.view = AutoLayoutSignatureField ().bind_signature (self.signatureObserver_property)
+      toolbarItem.view = AutoLayoutSignatureField ()
+      .bind_signature (self.signatureObserver_property)
+
+      return toolbarItem
+    case "2" :
+      let itemId = NSToolbarItem.Identifier ("2")
+      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
+      toolbarItem.label = "Version"
+      // toolbarItem.paletteLabel = String("Open File")
+      // toolbarItem.toolTip = String("Open file to be handled")
+      toolbarItem.isEnabled = true
+      //toolbarItem.view = AutoLayoutSignatureField ().bind_signature (self.signatureObserver_property)
+      toolbarItem.view = AutoLayoutVersionField ()
+      .bind_version (self.versionObserver_property)
+      .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+
+      return toolbarItem
+    default :
+      return nil
+    }
+  }
+
   //····················································································································
   //    check outlet connections
   //····················································································································
