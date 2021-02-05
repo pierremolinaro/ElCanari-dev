@@ -23,14 +23,6 @@ class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserClassName
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //----------------------------------------------------------------------------------------------------------------------
-
-  @discardableResult static func make () -> AutoLayoutSpinningProgressIndicator {
-    let b = AutoLayoutSpinningProgressIndicator ()
-    gCurrentStack?.addView (b, in: .leading)
-    return b
-  }
-
   //····················································································································
 
 }

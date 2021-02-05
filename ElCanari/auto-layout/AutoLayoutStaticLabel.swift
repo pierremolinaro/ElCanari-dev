@@ -32,18 +32,10 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
-
-  @discardableResult static func make (title inTitle : String, bold inBold : Bool, small inSmall : Bool) -> AutoLayoutStaticLabel {
-    let b = AutoLayoutStaticLabel (title: inTitle, bold: inBold, small: inSmall)
-    gCurrentStack?.addView (b, in: .leading)
-    return b
-  }
-
-  //····················································································································
   // SET TEXT color
   //····················································································································
 
-  @discardableResult func setTextColor (_ inTextColor : NSColor) -> Self {
+  func setTextColor (_ inTextColor : NSColor) -> Self {
     self.textColor = inTextColor
     return self
   }
@@ -52,7 +44,7 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
   // SET TITLE ALIGNMENT
   //····················································································································
 
-  @discardableResult func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
+  func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
     self.alignment = inAlignment
     return self
   }

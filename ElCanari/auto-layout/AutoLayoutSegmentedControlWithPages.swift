@@ -28,26 +28,13 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   }
 
   //····················································································································
-
-  @discardableResult static func make (documentView inDocumentView : AutoLayoutStackView) -> AutoLayoutSegmentedControlWithPages {
-    let b = AutoLayoutSegmentedControlWithPages (documentView: inDocumentView)
-    gCurrentStack?.addView (b, in: .leading)
-    return b
-  }
-
-  //····················································································································
   // ADD PAGE
   //····················································································································
 
-  @discardableResult func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
+  func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
     self.mPages.append (inPageView)
-//    if self.segmentCount == 1 {
-//      self.selectedSegment = 0
-//      DispatchQueue.main.async (qos: .userInteractive) { self.selectedSegmentDidChange (nil) }
-//  //    self.selectedSegmentDidChange (nil)
-//    }
     return self
   }
 
@@ -61,7 +48,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
     for view in allSubViews {
       self.mDocumentView.removeView (view) // Do not use view.removeFromSuperview ()
     }
-    self.mDocumentView.addView (newPage, in: .leading)
+    self.mDocumentView.appendView (newPage)
     _ = self.mSelectedTabIndexController?.updateModel (withCandidateValue: self.selectedSegment, windowForSheet: self.window)
   }
 
@@ -73,7 +60,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  @discardableResult func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }

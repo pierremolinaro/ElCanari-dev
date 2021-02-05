@@ -2,6 +2,19 @@
 //   Canari Auto Layout classes
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+vStack func set (margins: Int) ;
+vStack func set (leftMargin: Int) ;
+vStack func set (rightMargin: Int) ;
+vStack func set (topMargin: Int) ;
+vStack func set (bottomMargin: Int) ;
+vStack func set (width: Int) ;
+
+hStack func set (margins: Int) ;
+hStack func set (leftMargin: Int) ;
+hStack func set (rightMargin: Int) ;
+hStack func set (topMargin: Int) ;
+hStack func set (bottomMargin: Int) ;
+
 extern autolayout class AutoLayoutStaticLabel (title : String, bold: Bool, small: Bool) {
 }
 
@@ -24,6 +37,19 @@ extern autolayout class AutoLayoutSignatureField {
 extern autolayout class AutoLayoutVersionField {
   $version transient Int
   $versionShouldChange transient Bool
+}
+
+extern autolayout class AutoLayoutImageObserverView {
+  $image transient NSImage
+  $tooltip transient String
+}
+
+extern autolayout class AutoLayoutFixedWidthView (width: Int) {
+}
+
+extern autolayout class AutoLayoutPopUpButton {
+  $selectedIndex property enum
+  func add (title: String)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

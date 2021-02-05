@@ -4,36 +4,14 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@discardableResult func hStack (margin inMargin : UInt, _ inContents : () -> Void) -> AutoLayoutHorizontalStackView {
-  let h = AutoLayoutHorizontalStackView (margin: inMargin)
-  gCurrentStack?.addView (h, in: .leading)
-  let savedCurrentStack = gCurrentStack
-  gCurrentStack = h
-  inContents ()
-  gCurrentStack = savedCurrentStack
-  return h
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class AutoLayoutHorizontalStackView : AutoLayoutStackView {
 
   //····················································································································
   //   INIT
   //····················································································································
 
-  init (margin inMargin : UInt) {
-    super.init (orientation: .horizontal, margin: inMargin)
-  }
-
-  //····················································································································
-
-  init (margin inMargin : UInt, _ inContents : () -> Void) {
-    super.init (orientation: .horizontal, margin: inMargin)
-    let savedCurrentStack = gCurrentStack
-    gCurrentStack = self
-    inContents ()
-    gCurrentStack = savedCurrentStack
+  init () {
+    super.init (orientation: .horizontal)
   }
 
   //····················································································································
@@ -46,7 +24,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutStackView {
   // SET FLEXIBLE WIDTH
   //····················································································································
 
-  @discardableResult func fillEqualy () -> Self {
+  func fillEqualy () -> Self {
     self.distribution = .fillEqually
     return self
   }

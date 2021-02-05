@@ -16,12 +16,18 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
         $selectedPage root.selectedPageIndex
   ;
 
-  toolbarItem space ;
-
   toolbarItem "Signature" : AutoLayoutSignatureField $signature signature ;
   
   toolbarItem "Version" : AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
+
+  toolbarItem space ;
+
+  transient NSImage statusImage dependsFrom root.issues ;
+  transient String statusMessage dependsFrom root.issues ;
+  transient MetadataStatus metadataStatus dependsFrom root.issues ;
  
+  toolbarItem "Status" : AutoLayoutImageObserverView $image self.statusImage $tooltip self.statusMessage ;
+
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
@@ -29,8 +35,8 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   view mPageMasterView : vStack ;
 
 //  view mMainView vStack {
-//    hStack (margin: 5) {
-//      vStack {
+//    hStack set (margins: 5) {
+//      vStack set (margins: 5) {
 //        AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
 //        addPage (title: "Model Image", pageView: mModelImagePage)
 //        addPage (title: "Package", pageView: mPackagePage)
@@ -58,11 +64,126 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   PAGE    MODEL IMAGE
 //----------------------------------------------------------------------------------------------------------------------
 
-  view mModelImagePage vStack {
-    space ;
-    hStack { space ; AutoLayoutStaticLabel (title: "Model Image", bold: yes, small: no) ; space ; }
-    space ;
+  view mModelImagePage hStack {
+    vStack set (width: 250) set (margins: 5) {
+      hStack {
+        space ;
+        AutoLayoutStaticLabel (title: "Grid Style", bold: no, small: yes) ;
+        AutoLayoutPopUpButton
+          add (title: "No Grid")
+          add (title: "Cross Grid")
+          add (title: "Line Grid")
+          $selectedIndex root.mModelImagePageGridStyle
+        ;
+      }
+      space ;
+    }
+    vStack {
+      space ;
+      hStack { AutoLayoutStaticLabel (title: "Model Image", bold: yes, small: no) ; space ; }
+      space ;
+    }
   }
+
+//--------------- Model Image Tab
+  outlet EBScrollView mModelImageScrollView ;
+
+  arrayController #mModelImageObjectsController : root.mModelImageObjects ;
+
+  outlet EBGraphicView mModelImageView
+    $backgroundImageData root.mModelImageData
+    $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
+    $horizontalFlip root.mModelImagePageHorizontalFlip
+    $verticalFlip root.mModelImagePageVerticalFlip
+    $graphicController #mModelImageObjectsController
+    $mouseGrid root.mModelImagePageGridStep
+    $gridStep root.mModelImagePageGridStep
+    $arrowKeyMagnitude root.mModelImagePageGridStep
+    $gridStyle root.mModelImagePageGridStyle
+    $gridDisplayFactor root.mModelImagePageGridDisplayFactor
+    $gridLineColor prefs.lineColorOfPackageGrid
+    $gridCrossColor prefs.crossColorOfPackageGrid
+    $zoom root.mModelImagePageZoom
+    $backColor prefs.packageBackgroundColor
+    $xPlacardUnit root.mModelImagePageXPlacardUnit
+    $yPlacardUnit root.mModelImagePageYPlacardUnit
+  ;
+
+  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
+  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
+//  outlet EBPopUpButton mModelImagePageGridStyle $selectedIndex root.mModelImagePageGridStyle ;
+  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
+    root.mModelImagePageGridDisplayFactor
+  ;
+  outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
+  outlet CanariDimensionTextField mModelImagePageGridTextField
+     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
+  ;
+  outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
+    $selectedTag root.mModelImagePageXPlacardUnit
+  ;
+  outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
+    $selectedTag root.mModelImagePageYPlacardUnit
+  ;
+  
+  outlet EBSlider mModelPointsCircleRadiusSlider
+    $intValue root.mModelPointsCircleRadius {sendContinously : yes}
+    $enabled root.hasModelImage ;
+  
+  outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
+  
+  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
+  outlet CanariDimensionTextField mModelImageFirstPointXTextField
+     $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
+  ;
+  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointY ;
+  outlet CanariDimensionTextField mModelImageFirstPointYTextField
+     $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
+  ;
+
+
+  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDx ;
+  outlet CanariDimensionTextField mModelImagePointDxTextField
+     $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
+  ;
+  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDy ;
+  outlet CanariDimensionTextField mModelImagePointDyTextField
+     $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
+  ;
+ 
+  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+  outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
+     $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
+  ;
+  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+  outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
+     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
+  ;
+
+  action loadModelImageFromPasteboardAction ;
+  outlet EBMenuItem mLoadModelImageFromPasteboardMenuItem
+    $run loadModelImageFromPasteboardAction
+    $enabled !root.hasModelImage ;
+  
+  action loadDIL16ModelImageFromResourcesAction ;
+  outlet EBMenuItem mLoadDIL16ModelImageFromResourcesdMenuItem
+    $run loadDIL16ModelImageFromResourcesAction
+    $enabled !root.hasModelImage ;
+  
+  action removeModelImageAction ;
+  outlet EBMenuItem mRemoveModelImageMenuItem
+    $run removeModelImageAction
+    $enabled root.hasModelImage ;
+  
+  action resetModelImagePointsAction ;
+  outlet EBMenuItem mResetModelImagePointsMenuItem
+    $run resetModelImagePointsAction
+    $enabled root.hasModelImage ;
+  
+  action lockImagePointsAction ;
+  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
+  outlet EBImageObserverView mLockImageView $image root.lockImageView ;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   PACKAGE
@@ -524,10 +645,10 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
 
 //------- Issues
-  outlet EBImageObserverView mStatusImageViewInToolbar $image self.statusImage $tooltip self.statusMessage ;
-  transient NSImage statusImage dependsFrom root.issues ;
-  transient String statusMessage dependsFrom root.issues ;
-  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+//  outlet EBImageObserverView mStatusImageViewInToolbar $image self.statusImage $tooltip self.statusMessage ;
+//  transient NSImage statusImage dependsFrom root.issues ;
+//  transient String statusMessage dependsFrom root.issues ;
+//  transient MetadataStatus metadataStatus dependsFrom root.issues ;
 
   outlet CanariViewWithKeyView mIssueInspectorView ;
 
@@ -620,105 +741,6 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   outlet EBButton mClearProgramErrorButton $run clearProgramErrorAction ;
 
   outlet EBTextField mProgramErrorTextField ;
-
-//--------------- Model Image Tab
-  outlet EBScrollView mModelImageScrollView ;
-
-  arrayController #mModelImageObjectsController : root.mModelImageObjects ;
-
-  outlet EBGraphicView mModelImageView
-    $backgroundImageData root.mModelImageData
-    $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
-    $horizontalFlip root.mModelImagePageHorizontalFlip
-    $verticalFlip root.mModelImagePageVerticalFlip
-    $graphicController #mModelImageObjectsController
-    $mouseGrid root.mModelImagePageGridStep
-    $gridStep root.mModelImagePageGridStep
-    $arrowKeyMagnitude root.mModelImagePageGridStep
-    $gridStyle root.mModelImagePageGridStyle
-    $gridDisplayFactor root.mModelImagePageGridDisplayFactor
-    $gridLineColor prefs.lineColorOfPackageGrid
-    $gridCrossColor prefs.crossColorOfPackageGrid
-    $zoom root.mModelImagePageZoom
-    $backColor prefs.packageBackgroundColor
-    $xPlacardUnit root.mModelImagePageXPlacardUnit
-    $yPlacardUnit root.mModelImagePageYPlacardUnit
-  ;
-
-  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
-  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
-  outlet EBPopUpButton mModelImagePageGridStyle $selectedIndex root.mModelImagePageGridStyle ;
-  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
-    root.mModelImagePageGridDisplayFactor
-  ;
-  outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
-  outlet CanariDimensionTextField mModelImagePageGridTextField
-     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
-  ;
-  outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
-    $selectedTag root.mModelImagePageXPlacardUnit
-  ;
-  outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
-    $selectedTag root.mModelImagePageYPlacardUnit
-  ;
-  
-  outlet EBSlider mModelPointsCircleRadiusSlider
-    $intValue root.mModelPointsCircleRadius {sendContinously : yes}
-    $enabled root.hasModelImage ;
-  
-  outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
-  
-  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
-  outlet CanariDimensionTextField mModelImageFirstPointXTextField
-     $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
-  ;
-  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointY ;
-  outlet CanariDimensionTextField mModelImageFirstPointYTextField
-     $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
-  ;
-
-
-  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDx ;
-  outlet CanariDimensionTextField mModelImagePointDxTextField
-     $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
-  ;
-  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDy ;
-  outlet CanariDimensionTextField mModelImagePointDyTextField
-     $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
-  ;
- 
-  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
-  outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
-     $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
-  ;
-  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
-  outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
-     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
-  ;
-
-  action loadModelImageFromPasteboardAction ;
-  outlet EBMenuItem mLoadModelImageFromPasteboardMenuItem
-    $run loadModelImageFromPasteboardAction
-    $enabled !root.hasModelImage ;
-  
-  action loadDIL16ModelImageFromResourcesAction ;
-  outlet EBMenuItem mLoadDIL16ModelImageFromResourcesdMenuItem
-    $run loadDIL16ModelImageFromResourcesAction
-    $enabled !root.hasModelImage ;
-  
-  action removeModelImageAction ;
-  outlet EBMenuItem mRemoveModelImageMenuItem
-    $run removeModelImageAction
-    $enabled root.hasModelImage ;
-  
-  action resetModelImagePointsAction ;
-  outlet EBMenuItem mResetModelImagePointsMenuItem
-    $run resetModelImagePointsAction
-    $enabled root.hasModelImage ;
-  
-  action lockImagePointsAction ;
-  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
-  outlet EBImageObserverView mLockImageView $image root.lockImageView ;
 
 //--------------- Infos Tab
 //--- Comments

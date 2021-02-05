@@ -3,22 +3,16 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-
-func space () {
-  let v = AutoLayoutFlexibleSpaceView ()
-  gCurrentStack?.addView (v, in: .leading)
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //   AutoLayoutFlexibleSpaceView
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutFlexibleSpaceView : NSView {
+class AutoLayoutFlexibleSpaceView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
   init () {
     super.init (frame: NSRect ())
+    noteObjectAllocation (self)
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }

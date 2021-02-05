@@ -4,42 +4,40 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@discardableResult func vStack (margin inMargin : UInt, _ inContents : () -> Void) -> AutoLayoutVerticalStackView {
-  let savedCurrentStack = gCurrentStack
-  let v = AutoLayoutVerticalStackView (margin: inMargin)
-  savedCurrentStack?.addView (v, in: .leading)
-  gCurrentStack = v
-  inContents ()
-  gCurrentStack = savedCurrentStack
-  return v
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class AutoLayoutVerticalStackView : AutoLayoutStackView {
 
   //····················································································································
   //   INIT
   //····················································································································
 
-  init (margin inMargin : UInt) {
-    super.init (orientation: .vertical, margin: inMargin)
-  }
-
-  //····················································································································
-
-  init (margin inMargin : UInt, _ inContents : () -> Void) {
-    super.init (orientation: .vertical, margin: inMargin)
-    let savedCurrentStack = gCurrentStack
-    gCurrentStack = self
-    inContents ()
-    gCurrentStack = savedCurrentStack
+  init () {
+    super.init (orientation: .vertical)
   }
 
   //····················································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+  // SET WIDTH
+  //····················································································································
+
+  private var mWidth = NSView.noIntrinsicMetric
+
+  //····················································································································
+
+  func set (width inWidth : Int) -> Self {
+    self.mWidth = CGFloat (inWidth)
+    self.needsUpdateConstraints = true
+    return self
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    return NSSize (width: self.mWidth, height: NSView.noIntrinsicMetric)
   }
 
   //····················································································································

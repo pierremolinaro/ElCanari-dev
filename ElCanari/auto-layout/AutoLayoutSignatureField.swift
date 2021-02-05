@@ -24,14 +24,6 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
-
-  @discardableResult static func make () -> AutoLayoutSignatureField {
-    let b = AutoLayoutSignatureField ()
-    gCurrentStack?.addView (b, in: .leading)
-    return b
-  }
-
-  //····················································································································
   //  signatureObserver binding
   //····················································································································
 
@@ -39,7 +31,7 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  @discardableResult func bind_signature (_ model : EBReadOnlyProperty_UInt32) -> Self {
+  func bind_signature (_ model : EBReadOnlyProperty_UInt32) -> Self {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

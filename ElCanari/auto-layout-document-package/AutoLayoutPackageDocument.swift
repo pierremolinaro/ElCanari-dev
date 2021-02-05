@@ -9,6 +9,12 @@ import Cocoa
 @objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
+  //   Array controller: mModelImageObjectsController
+  //····················································································································
+
+  var mModelImageObjectsController = Controller_AutoLayoutPackageDocument_mModelImageObjectsController ()
+
+  //····················································································································
   //   Array controller: mPackageObjectsController
   //····················································································································
 
@@ -61,12 +67,6 @@ import Cocoa
   //····················································································································
 
   var mPackageZoneSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController ()
-
-  //····················································································································
-  //   Array controller: mModelImageObjectsController
-  //····················································································································
-
-  var mModelImageObjectsController = Controller_AutoLayoutPackageDocument_mModelImageObjectsController ()
 
   //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
@@ -281,7 +281,6 @@ import Cocoa
   @IBOutlet var mModelImageFirstPointYTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
   @IBOutlet var mModelImagePageGridDisplayPopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mModelImagePageGridStyle : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageGridTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImagePageGridUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageHorizontalFlip : EBSwitch? = nil
@@ -380,7 +379,6 @@ import Cocoa
   @IBOutlet var mSlavePadXCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSlavePadYCenterTextField : CanariDimensionTextField? = nil
   @IBOutlet var mSlavePadYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mTopSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mVerticalFlip : EBSwitch? = nil
   @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton? = nil
@@ -406,6 +404,12 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+//  var mController_mModelPointsCircleRadiusSlider_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mResetModelImagePointsMenuItem_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mLockImagePointsButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mModelImageOpacitySlider_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
@@ -415,12 +419,6 @@ import Cocoa
 //  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mModelPointsCircleRadiusSlider_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mResetModelImagePointsMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mLockImagePointsButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -452,6 +450,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+  //--- Array controller property: mModelImageObjectsController
+    self.mModelImageObjectsController.addExplorer (name: "mModelImageObjectsController", y:&y, view:view)
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
   //--- Selection controller property: mPackageBezierCurveSelectionController
@@ -470,8 +470,6 @@ import Cocoa
     self.mPackageDimensionSelectionController.addExplorer (name: "mPackageDimensionSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.addExplorer (name: "mPackageZoneSelectionController", y:&y, view:view)
-  //--- Array controller property: mModelImageObjectsController
-    self.mModelImageObjectsController.addExplorer (name: "mModelImageObjectsController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -496,8 +494,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  let mPageMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView (margin: 0)
-
+  let mPageMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView ()
   //····················································································································
   //    VIEW mModelImagePage
   //····················································································································
@@ -505,22 +502,46 @@ import Cocoa
   lazy var mModelImagePage = self.mModelImagePage_make ()
 
   fileprivate final func mModelImagePage_make () -> AutoLayoutStackView {
-    let vStackView = AutoLayoutVerticalStackView (margin: 0)
-    let view_0 = AutoLayoutFlexibleSpaceView ()
-    vStackView.addView (view_0, in: .leading)
-    let view_1 = AutoLayoutHorizontalStackView (margin: 0)
+    let hStackView = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutVerticalStackView ()
+      .set (width: 250)
+      .set (margins: 5)
+    do{
+      let view_0_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutFlexibleSpaceView ()
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutStaticLabel (title: "Grid Style", bold: false, small: true)
+        view_0_0.appendView (view_0_0_1)
+        let view_0_0_2 = AutoLayoutPopUpButton ()
+          .add (title: "No Grid")
+          .add (title: "Cross Grid")
+          .add (title: "Line Grid")
+            .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
+        view_0_0.appendView (view_0_0_2)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpaceView ()
+      view_0.appendView (view_0_1)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView ()
     do{
       let view_1_0 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_0, in: .leading)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Model Image", bold: true, small: false)
-      view_1.addView (view_1_1, in: .leading)
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutStaticLabel (title: "Model Image", bold: true, small: false)
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutFlexibleSpaceView ()
+        view_1_1.appendView (view_1_1_1)
+      }
+      view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_2, in: .leading)
+      view_1.appendView (view_1_2)
     }
-    vStackView.addView (view_1, in: .leading)
-    let view_2 = AutoLayoutFlexibleSpaceView ()
-    vStackView.addView (view_2, in: .leading)
-    return vStackView
+    hStackView.appendView (view_1)
+    return hStackView
   }
 
   //····················································································································
@@ -530,21 +551,21 @@ import Cocoa
   lazy var mPackagePage = self.mPackagePage_make ()
 
   fileprivate final func mPackagePage_make () -> AutoLayoutStackView {
-    let hStackView = AutoLayoutHorizontalStackView (margin: 0)
+    let hStackView = AutoLayoutHorizontalStackView ()
     let view_0 = AutoLayoutFlexibleSpaceView ()
-    hStackView.addView (view_0, in: .leading)
-    let view_1 = AutoLayoutVerticalStackView (margin: 0)
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView ()
     do{
       let view_1_0 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_0, in: .leading)
+      view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutStaticLabel (title: "Package", bold: true, small: false)
-      view_1.addView (view_1_1, in: .leading)
+      view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_2, in: .leading)
+      view_1.appendView (view_1_2)
     }
-    hStackView.addView (view_1, in: .leading)
+    hStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpaceView ()
-    hStackView.addView (view_2, in: .leading)
+    hStackView.appendView (view_2)
     return hStackView
   }
 
@@ -555,21 +576,21 @@ import Cocoa
   lazy var mProgramPage = self.mProgramPage_make ()
 
   fileprivate final func mProgramPage_make () -> AutoLayoutStackView {
-    let vStackView = AutoLayoutVerticalStackView (margin: 0)
+    let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutFlexibleSpaceView ()
-    vStackView.addView (view_0, in: .leading)
-    let view_1 = AutoLayoutHorizontalStackView (margin: 0)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
     do{
       let view_1_0 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_0, in: .leading)
+      view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutStaticLabel (title: "Program", bold: true, small: false)
-      view_1.addView (view_1_1, in: .leading)
+      view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_2, in: .leading)
+      view_1.appendView (view_1_2)
     }
-    vStackView.addView (view_1, in: .leading)
+    vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpaceView ()
-    vStackView.addView (view_2, in: .leading)
+    vStackView.appendView (view_2)
     return vStackView
   }
 
@@ -580,21 +601,21 @@ import Cocoa
   lazy var mInfosPage = self.mInfosPage_make ()
 
   fileprivate final func mInfosPage_make () -> AutoLayoutStackView {
-    let vStackView = AutoLayoutVerticalStackView (margin: 0)
+    let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutFlexibleSpaceView ()
-    vStackView.addView (view_0, in: .leading)
-    let view_1 = AutoLayoutHorizontalStackView (margin: 0)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
     do{
       let view_1_0 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_0, in: .leading)
+      view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutStaticLabel (title: "Infos", bold: true, small: false)
-      view_1.addView (view_1_1, in: .leading)
+      view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpaceView ()
-      view_1.addView (view_1_2, in: .leading)
+      view_1.appendView (view_1_2)
     }
-    vStackView.addView (view_1, in: .leading)
+    vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpaceView ()
-    vStackView.addView (view_2, in: .leading)
+    vStackView.appendView (view_2)
     return vStackView
   }
 
@@ -611,6 +632,7 @@ import Cocoa
     self.windowForSheet?.toolbar = toolbar
   //--- Build window content view
     // showDebugBackground ()
+    self.configureProperties ()
     self.windowForSheet?.contentView = self.mPageMasterView
   }
   
@@ -625,7 +647,7 @@ import Cocoa
   //····················································································································
 
   func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return [NSToolbarItem.Identifier ("0"), .flexibleSpace, NSToolbarItem.Identifier ("2"), NSToolbarItem.Identifier ("3")]
+    return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2"), .flexibleSpace, NSToolbarItem.Identifier ("4")]
   }
 
   //····················································································································
@@ -640,17 +662,15 @@ import Cocoa
       toolbarItem.label = "Page"
       toolbarItem.isEnabled = true
       let view = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView)
-          .addPage (title: "Model Image", pageView: self.mModelImagePage)
-          .addPage (title: "Package", pageView: self.mPackagePage)
-          .addPage (title: "Program", pageView: self.mProgramPage)
-          .addPage (title: "Infos", pageView: self.mInfosPage)
+        .addPage (title: "Model Image", pageView: self.mModelImagePage)
+        .addPage (title: "Package", pageView: self.mPackagePage)
+        .addPage (title: "Program", pageView: self.mProgramPage)
+        .addPage (title: "Infos", pageView: self.mInfosPage)
           .bind_selectedPage (self.rootObject.selectedPageIndex_property)
       toolbarItem.view = view
       return toolbarItem
-    case NSToolbarItem.Identifier.flexibleSpace.rawValue :
-      return NSToolbarItem (itemIdentifier: .flexibleSpace)
-    case "2" :
-      let itemId = NSToolbarItem.Identifier ("2")
+    case "1" :
+      let itemId = NSToolbarItem.Identifier ("1")
       let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
       toolbarItem.label = "Signature"
       toolbarItem.isEnabled = true
@@ -658,14 +678,26 @@ import Cocoa
           .bind_signature (self.signatureObserver_property)
       toolbarItem.view = view
       return toolbarItem
-    case "3" :
-      let itemId = NSToolbarItem.Identifier ("3")
+    case "2" :
+      let itemId = NSToolbarItem.Identifier ("2")
       let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
       toolbarItem.label = "Version"
       toolbarItem.isEnabled = true
       let view = AutoLayoutVersionField ()
           .bind_version (self.versionObserver_property)
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+      toolbarItem.view = view
+      return toolbarItem
+    case NSToolbarItem.Identifier.flexibleSpace.rawValue :
+      return NSToolbarItem (itemIdentifier: .flexibleSpace)
+    case "4" :
+      let itemId = NSToolbarItem.Identifier ("4")
+      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
+      toolbarItem.label = "Status"
+      toolbarItem.isEnabled = true
+      let view = AutoLayoutImageObserverView ()
+          .bind_image (self.statusImage_property)
+          .bind_tooltip (self.statusMessage_property)
       toolbarItem.view = view
       return toolbarItem
     default :
@@ -789,7 +821,6 @@ import Cocoa
 //    checkOutletConnection (self.mModelImageFirstPointYTextField, "mModelImageFirstPointYTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageGridDisplayPopUpButton, "mModelImagePageGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mModelImagePageGridStyle, "mModelImagePageGridStyle", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageGridTextField, "mModelImagePageGridTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageGridUnitPopUp, "mModelImagePageGridUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageHorizontalFlip, "mModelImagePageHorizontalFlip", EBSwitch.self, #file, #line)
@@ -888,7 +919,6 @@ import Cocoa
 //    checkOutletConnection (self.mSlavePadXCenterUnitPopUp, "mSlavePadXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadYCenterTextField, "mSlavePadYCenterTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadYCenterUnitPopUp, "mSlavePadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
 //    checkOutletConnection (self.mTopSidePadColorWell, "mTopSidePadColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mVerticalFlip, "mVerticalFlip", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mXPlacardUnitPopUpButton, "mXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
@@ -917,9 +947,15 @@ import Cocoa
   
   //····················································································································
   
-/*  final private func configureProperties () {
+  final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: mModelImageObjectsController
+    self.mModelImageObjectsController.bind_model (self.rootObject.mModelImageObjects_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -970,12 +1006,6 @@ import Cocoa
     }
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: mModelImageObjectsController
-    self.mModelImageObjectsController.bind_model (self.rootObject.mModelImageObjects_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1072,7 +1102,7 @@ import Cocoa
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Configure properties \(durationMS) ms")
     }
-  } */
+  }
 
   //····················································································································
   
@@ -1080,9 +1110,46 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
     self.mModelImageObjectsController.bind_ebView (self.mModelImageView)
+    self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
+    self.mModelImageView?.bind_backgroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
+    self.mModelImageView?.bind_underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property, file: #file, line: #line)
+    self.mModelImageView?.bind_horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
+    self.mModelImageView?.bind_verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
+    self.mModelImageView?.bind_mouseGrid (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
+    self.mModelImageView?.bind_gridStep (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
+    self.mModelImageView?.bind_arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
+    self.mModelImageView?.bind_gridStyle (self.rootObject.mModelImagePageGridStyle_property, file: #file, line: #line)
+    self.mModelImageView?.bind_gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property, file: #file, line: #line)
+    self.mModelImageView?.bind_gridLineColor (prefs_lineColorOfPackageGrid_property, file: #file, line: #line)
+    self.mModelImageView?.bind_gridCrossColor (prefs_crossColorOfPackageGrid_property, file: #file, line: #line)
+    self.mModelImageView?.bind_zoom (self.rootObject.mModelImagePageZoom_property, file: #file, line: #line)
+    self.mModelImageView?.bind_backColor (prefs_packageBackgroundColor_property, file: #file, line: #line)
+    self.mModelImageView?.bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
+    self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
+    self.mModelImagePageHorizontalFlip?.bind_value (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
+    self.mModelImagePageVerticalFlip?.bind_value (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
+    self.mModelImagePageGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property, file: #file, line: #line)
+    self.mModelImagePageGridUnitPopUp?.bind_selectedTag (self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
+    self.mModelImagePageGridTextField?.bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
+    self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
+    self.mModelImagePageYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
+    self.mModelPointsCircleRadiusSlider?.bind_intValue (self.rootObject.mModelPointsCircleRadius_property, file: #file, line: #line, sendContinously:true)
+    self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
+    self.mModelImageFirstPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
+    self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
+    self.mModelImageFirstPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointY_property, file: #file, line: #line)
+    self.mModelImageFirstPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property, file: #file, line: #line)
+    self.mModelImagePointsDxDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitSecondModelPointDx_property, file: #file, line: #line)
+    self.mModelImagePointDxTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, file: #file, line: #line)
+    self.mModelImagePointsDyDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitSecondModelPointDy_property, file: #file, line: #line)
+    self.mModelImagePointDyTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, file: #file, line: #line)
+    self.mModelImageSecondPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
+    self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
+    self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
+    self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
+    self.mLockImageView?.bind_image (self.rootObject.lockImageView_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
@@ -1212,8 +1279,6 @@ import Cocoa
     self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
     self.mPadNumberingPopUpButton?.bind_selectedIndex (self.rootObject.padNumbering_property, file: #file, line: #line)
     self.mCounterClockNumberingStartAngleIntField?.bind_value (self.rootObject.counterClockNumberingStartAngle_property, file: #file, line: #line, sendContinously:true, autoFormatter:false)
-    self.mStatusImageViewInToolbar?.bind_image (self.statusImage_property, file: #file, line: #line)
-    self.mStatusImageViewInToolbar?.bind_tooltip (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_foregroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
@@ -1255,46 +1320,69 @@ import Cocoa
     self.mGridUnitPopUp?.bind_selectedTag (self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mGridTextField?.bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
-    self.mModelImageView?.bind_backgroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
-    self.mModelImageView?.bind_underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property, file: #file, line: #line)
-    self.mModelImageView?.bind_horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
-    self.mModelImageView?.bind_verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
-    self.mModelImageView?.bind_mouseGrid (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridStep (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
-    self.mModelImageView?.bind_arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridStyle (self.rootObject.mModelImagePageGridStyle_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridLineColor (prefs_lineColorOfPackageGrid_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridCrossColor (prefs_crossColorOfPackageGrid_property, file: #file, line: #line)
-    self.mModelImageView?.bind_zoom (self.rootObject.mModelImagePageZoom_property, file: #file, line: #line)
-    self.mModelImageView?.bind_backColor (prefs_packageBackgroundColor_property, file: #file, line: #line)
-    self.mModelImageView?.bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
-    self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
-    self.mModelImagePageHorizontalFlip?.bind_value (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
-    self.mModelImagePageVerticalFlip?.bind_value (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
-    self.mModelImagePageGridStyle?.bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property, file: #file, line: #line)
-    self.mModelImagePageGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property, file: #file, line: #line)
-    self.mModelImagePageGridUnitPopUp?.bind_selectedTag (self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
-    self.mModelImagePageGridTextField?.bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
-    self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
-    self.mModelImagePageYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
-    self.mModelPointsCircleRadiusSlider?.bind_intValue (self.rootObject.mModelPointsCircleRadius_property, file: #file, line: #line, sendContinously:true)
-    self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
-    self.mModelImageFirstPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
-    self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
-    self.mModelImageFirstPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointY_property, file: #file, line: #line)
-    self.mModelImageFirstPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property, file: #file, line: #line)
-    self.mModelImagePointsDxDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitSecondModelPointDx_property, file: #file, line: #line)
-    self.mModelImagePointDxTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, file: #file, line: #line)
-    self.mModelImagePointsDyDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitSecondModelPointDy_property, file: #file, line: #line)
-    self.mModelImagePointDyTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, file: #file, line: #line)
-    self.mModelImageSecondPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
-    self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
-    self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
-    self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
-    self.mLockImageView?.bind_image (self.rootObject.lockImageView_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mModelPointsCircleRadiusSlider
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mModelPointsCircleRadiusSlider_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return !self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mLoadModelImageFromPasteboardMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return !self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mLoadDIL16ModelImageFromResourcesdMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mRemoveModelImageMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mRemoveModelImageMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mResetModelImagePointsMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mResetModelImagePointsMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection)
+        },
+        outlet: self.mLockImagePointsButton
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.rootObject.mPointsAreLocked_property.addEBObserver (controller)
+      self.mController_mLockImagePointsButton_enabled = controller
+    }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
@@ -1387,67 +1475,6 @@ import Cocoa
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
       self.mController_mAddSlavePadButton_enabled = controller
     }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mModelPointsCircleRadiusSlider
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mModelPointsCircleRadiusSlider_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mLoadModelImageFromPasteboardMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mLoadDIL16ModelImageFromResourcesdMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mRemoveModelImageMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mRemoveModelImageMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mResetModelImagePointsMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mResetModelImagePointsMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection)
-        },
-        outlet: self.mLockImagePointsButton
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.rootObject.mPointsAreLocked_property.addEBObserver (controller)
-      self.mController_mLockImagePointsButton_enabled = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -1459,6 +1486,16 @@ import Cocoa
 /*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
+    self.mLoadModelImageFromPasteboardMenuItem?.target = self
+    self.mLoadModelImageFromPasteboardMenuItem?.action = #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:))
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = self
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.action = #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:))
+    self.mRemoveModelImageMenuItem?.target = self
+    self.mRemoveModelImageMenuItem?.action = #selector (AutoLayoutPackageDocument.removeModelImageAction (_:))
+    self.mResetModelImagePointsMenuItem?.target = self
+    self.mResetModelImagePointsMenuItem?.action = #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:))
+    self.mLockImagePointsButton?.target = self
+    self.mLockImagePointsButton?.action = #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
     self.mSetDimensionTextOriginAtMidX?.target = self
     self.mSetDimensionTextOriginAtMidX?.action = #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidXAction (_:))
     self.mSetDimensionTextOriginAtMidY?.target = self
@@ -1475,16 +1512,6 @@ import Cocoa
     self.mRunProgramButton?.action = #selector (AutoLayoutPackageDocument.runProgramAction (_:))
     self.mClearProgramErrorButton?.target = self
     self.mClearProgramErrorButton?.action = #selector (AutoLayoutPackageDocument.clearProgramErrorAction (_:))
-    self.mLoadModelImageFromPasteboardMenuItem?.target = self
-    self.mLoadModelImageFromPasteboardMenuItem?.action = #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:))
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = self
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.action = #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:))
-    self.mRemoveModelImageMenuItem?.target = self
-    self.mRemoveModelImageMenuItem?.action = #selector (AutoLayoutPackageDocument.removeModelImageAction (_:))
-    self.mResetModelImagePointsMenuItem?.target = self
-    self.mResetModelImagePointsMenuItem?.action = #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:))
-    self.mLockImagePointsButton?.target = self
-    self.mLockImagePointsButton?.action = #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (AutoLayoutPackageDocument.resetVersionAction (_:))
     if LOG_OPERATION_DURATION {
@@ -1520,6 +1547,43 @@ import Cocoa
 /*  override func removeUserInterface () {
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
+    self.mModelImageView?.unbind_backgroundImageData ()
+    self.mModelImageView?.unbind_underObjectsDisplay ()
+    self.mModelImageView?.unbind_horizontalFlip ()
+    self.mModelImageView?.unbind_verticalFlip ()
+    self.mModelImageView?.unbind_mouseGrid ()
+    self.mModelImageView?.unbind_gridStep ()
+    self.mModelImageView?.unbind_arrowKeyMagnitude ()
+    self.mModelImageView?.unbind_gridStyle ()
+    self.mModelImageView?.unbind_gridDisplayFactor ()
+    self.mModelImageView?.unbind_gridLineColor ()
+    self.mModelImageView?.unbind_gridCrossColor ()
+    self.mModelImageView?.unbind_zoom ()
+    self.mModelImageView?.unbind_backColor ()
+    self.mModelImageView?.unbind_xPlacardUnit ()
+    self.mModelImageView?.unbind_yPlacardUnit ()
+    self.mModelImagePageHorizontalFlip?.unbind_value ()
+    self.mModelImagePageVerticalFlip?.unbind_value ()
+    self.mModelImagePageGridDisplayPopUpButton?.unbind_selectedTag ()
+    self.mModelImagePageGridUnitPopUp?.unbind_selectedTag ()
+    self.mModelImagePageGridTextField?.unbind_dimensionAndUnit ()
+    self.mModelImagePageXPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mModelImagePageYPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mModelPointsCircleRadiusSlider?.unbind_intValue ()
+    self.mModelImageSizeTextField?.unbind_valueObserver ()
+    self.mModelImageFirstPointXDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImageFirstPointXTextField?.unbind_dimensionAndUnit ()
+    self.mModelImageFirstPointYDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImageFirstPointYTextField?.unbind_dimensionAndUnit ()
+    self.mModelImagePointsDxDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImagePointDxTextField?.unbind_dimensionAndUnit ()
+    self.mModelImagePointsDyDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImagePointDyTextField?.unbind_dimensionAndUnit ()
+    self.mModelImageSecondPointXDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImageSecondPointXTextField?.unbind_dimensionAndUnit ()
+    self.mModelImageSecondPointYDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImageSecondPointYTextField?.unbind_dimensionAndUnit ()
+    self.mLockImageView?.unbind_image ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
     self.mModelImageOpacitySlider?.unbind_doubleValue ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
@@ -1649,8 +1713,6 @@ import Cocoa
     self.mZoneForbiddenPadNumberTableView?.unbind_array ()
     self.mPadNumberingPopUpButton?.unbind_selectedIndex ()
     self.mCounterClockNumberingStartAngleIntField?.unbind_value ()
-    self.mStatusImageViewInToolbar?.unbind_image ()
-    self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
     self.mIssueTableView?.unbind_issues ()
     self.mComposedPackageView?.unbind_foregroundImageData ()
@@ -1692,46 +1754,21 @@ import Cocoa
     self.mGridUnitPopUp?.unbind_selectedTag ()
     self.mGridTextField?.unbind_dimensionAndUnit ()
     self.mProgramTextView?.unbind_value ()
-    self.mModelImageView?.unbind_backgroundImageData ()
-    self.mModelImageView?.unbind_underObjectsDisplay ()
-    self.mModelImageView?.unbind_horizontalFlip ()
-    self.mModelImageView?.unbind_verticalFlip ()
-    self.mModelImageView?.unbind_mouseGrid ()
-    self.mModelImageView?.unbind_gridStep ()
-    self.mModelImageView?.unbind_arrowKeyMagnitude ()
-    self.mModelImageView?.unbind_gridStyle ()
-    self.mModelImageView?.unbind_gridDisplayFactor ()
-    self.mModelImageView?.unbind_gridLineColor ()
-    self.mModelImageView?.unbind_gridCrossColor ()
-    self.mModelImageView?.unbind_zoom ()
-    self.mModelImageView?.unbind_backColor ()
-    self.mModelImageView?.unbind_xPlacardUnit ()
-    self.mModelImageView?.unbind_yPlacardUnit ()
-    self.mModelImagePageHorizontalFlip?.unbind_value ()
-    self.mModelImagePageVerticalFlip?.unbind_value ()
-    self.mModelImagePageGridStyle?.unbind_selectedIndex ()
-    self.mModelImagePageGridDisplayPopUpButton?.unbind_selectedTag ()
-    self.mModelImagePageGridUnitPopUp?.unbind_selectedTag ()
-    self.mModelImagePageGridTextField?.unbind_dimensionAndUnit ()
-    self.mModelImagePageXPlacardUnitPopUpButton?.unbind_selectedTag ()
-    self.mModelImagePageYPlacardUnitPopUpButton?.unbind_selectedTag ()
-    self.mModelPointsCircleRadiusSlider?.unbind_intValue ()
-    self.mModelImageSizeTextField?.unbind_valueObserver ()
-    self.mModelImageFirstPointXDimensionUnitPopUp?.unbind_selectedTag ()
-    self.mModelImageFirstPointXTextField?.unbind_dimensionAndUnit ()
-    self.mModelImageFirstPointYDimensionUnitPopUp?.unbind_selectedTag ()
-    self.mModelImageFirstPointYTextField?.unbind_dimensionAndUnit ()
-    self.mModelImagePointsDxDimensionUnitPopUp?.unbind_selectedTag ()
-    self.mModelImagePointDxTextField?.unbind_dimensionAndUnit ()
-    self.mModelImagePointsDyDimensionUnitPopUp?.unbind_selectedTag ()
-    self.mModelImagePointDyTextField?.unbind_dimensionAndUnit ()
-    self.mModelImageSecondPointXDimensionUnitPopUp?.unbind_selectedTag ()
-    self.mModelImageSecondPointXTextField?.unbind_dimensionAndUnit ()
-    self.mModelImageSecondPointYDimensionUnitPopUp?.unbind_selectedTag ()
-    self.mModelImageSecondPointYTextField?.unbind_dimensionAndUnit ()
-    self.mLockImageView?.unbind_image ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelPointsCircleRadiusSlider_enabled!)
+    self.mController_mModelPointsCircleRadiusSlider_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
+    self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
+    self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mRemoveModelImageMenuItem_enabled!)
+    self.mController_mRemoveModelImageMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
+    self.mController_mResetModelImagePointsMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
+    self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
+    self.mController_mLockImagePointsButton_enabled = nil
     self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
     self.mController_mModelImageOpacitySlider_enabled = nil
     self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
@@ -1752,22 +1789,11 @@ import Cocoa
     self.mController_mIssueScrollView_hidden = nil
     self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelPointsCircleRadiusSlider_enabled!)
-    self.mController_mModelPointsCircleRadiusSlider_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
-    self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
-    self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mRemoveModelImageMenuItem_enabled!)
-    self.mController_mRemoveModelImageMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
-    self.mController_mResetModelImagePointsMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
-    self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
-    self.mController_mLockImagePointsButton_enabled = nil
   //--------------------------- Unbind array controllers
-    self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
     self.mModelImageObjectsController.unbind_ebView (self.mModelImageView)
+    self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
+  //--- Array controller property: mModelImageObjectsController
+    self.mModelImageObjectsController.unbind_model ()
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.unbind_model ()
   //--- Selection controller property: mPackageBezierCurveSelectionController
@@ -1786,14 +1812,17 @@ import Cocoa
     self.mPackageDimensionSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.unbind_selection ()
-  //--- Array controller property: mModelImageObjectsController
-    self.mModelImageObjectsController.unbind_model ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
     // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
   //--------------------------- Remove targets / actions
+    self.mLoadModelImageFromPasteboardMenuItem?.target = nil
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = nil
+    self.mRemoveModelImageMenuItem?.target = nil
+    self.mResetModelImagePointsMenuItem?.target = nil
+    self.mLockImagePointsButton?.target = nil
     self.mSetDimensionTextOriginAtMidX?.target = nil
     self.mSetDimensionTextOriginAtMidY?.target = nil
     self.mAddZoneForbiddenPadNumberButton?.target = nil
@@ -1802,11 +1831,6 @@ import Cocoa
     self.mLoadFromDesignButton?.target = nil
     self.mRunProgramButton?.target = nil
     self.mClearProgramErrorButton?.target = nil
-    self.mLoadModelImageFromPasteboardMenuItem?.target = nil
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = nil
-    self.mRemoveModelImageMenuItem?.target = nil
-    self.mResetModelImagePointsMenuItem?.target = nil
-    self.mLockImagePointsButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
@@ -1919,7 +1943,6 @@ import Cocoa
     self.mModelImageFirstPointYTextField?.ebCleanUp ()
     self.mModelImageOpacitySlider?.ebCleanUp ()
     self.mModelImagePageGridDisplayPopUpButton?.ebCleanUp ()
-    self.mModelImagePageGridStyle?.ebCleanUp ()
     self.mModelImagePageGridTextField?.ebCleanUp ()
     self.mModelImagePageGridUnitPopUp?.ebCleanUp ()
     self.mModelImagePageHorizontalFlip?.ebCleanUp ()
@@ -2018,7 +2041,6 @@ import Cocoa
     self.mSlavePadXCenterUnitPopUp?.ebCleanUp ()
     self.mSlavePadYCenterTextField?.ebCleanUp ()
     self.mSlavePadYCenterUnitPopUp?.ebCleanUp ()
-    self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mTopSidePadColorWell?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()
@@ -2150,7 +2172,6 @@ import Cocoa
     self.mModelImageFirstPointYTextField = nil
     self.mModelImageOpacitySlider = nil
     self.mModelImagePageGridDisplayPopUpButton = nil
-    self.mModelImagePageGridStyle = nil
     self.mModelImagePageGridTextField = nil
     self.mModelImagePageGridUnitPopUp = nil
     self.mModelImagePageHorizontalFlip = nil
@@ -2249,7 +2270,6 @@ import Cocoa
     self.mSlavePadXCenterUnitPopUp = nil
     self.mSlavePadYCenterTextField = nil
     self.mSlavePadYCenterUnitPopUp = nil
-    self.mStatusImageViewInToolbar = nil
     self.mTopSidePadColorWell = nil
     self.mVerticalFlip = nil
     self.mXPlacardUnitPopUpButton = nil

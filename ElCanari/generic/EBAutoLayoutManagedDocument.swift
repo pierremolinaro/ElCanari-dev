@@ -202,12 +202,14 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
     let windowController = NSWindowController (window: window)
     self.addWindowController (windowController)
   //--- Build temporary view
-    let view = vStack (margin: 0) {
-      space ()
-      hStack (margin: 0) { space () ; AutoLayoutSpinningProgressIndicator.make () ; space () }
-      space ()
-    }
-    window.contentView = view
+    let vStackView = AutoLayoutVerticalStackView ()
+    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    let hStackView = AutoLayoutHorizontalStackView ()
+    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
+    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    window.contentView = vStackView
   //--- Build user interface
 //    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
 //    DispatchQueue.main.asyncAfter (deadline: deadline) {
@@ -223,12 +225,14 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func ebBuildUserInterface () {
-    let view = vStack (margin: 0) {
-      space ()
-      hStack (margin: 0) { space () ; ALLabel.make ("Undefined User Interface") ; space () }
-      space ()
-    }
-    self.windowForSheet?.contentView = view
+    let vStackView = AutoLayoutVerticalStackView ()
+    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    let hStackView = AutoLayoutHorizontalStackView ()
+    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    hStackView.appendView (AutoLayoutStaticLabel (title: "Undefined User Interface", bold: true, small: false))
+    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    self.windowForSheet?.contentView = vStackView
   }
   
   //····················································································································
