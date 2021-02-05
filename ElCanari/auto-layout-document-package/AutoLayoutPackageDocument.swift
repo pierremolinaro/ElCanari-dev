@@ -505,16 +505,22 @@ import Cocoa
   lazy var mModelImagePage = self.mModelImagePage_make ()
 
   fileprivate final func mModelImagePage_make () -> AutoLayoutStackView {
-    let view = AutoLayoutVerticalStackView (margin: 0) {
-      space ()
-      hStack (margin: 0) {
-        space ()
-        AutoLayoutStaticLabel.make (title: "Model Image", bold: true, small: false)
-        space ()
-      }
-      space ()
+    let vStackView = AutoLayoutVerticalStackView (margin: 0)
+    let view_0 = AutoLayoutFlexibleSpaceView ()
+    vStackView.addView (view_0, in: .leading)
+    let view_1 = AutoLayoutHorizontalStackView (margin: 0)
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_0, in: .leading)
+      let view_1_1 = AutoLayoutStaticLabel (title: "Model Image", bold: true, small: false)
+      view_1.addView (view_1_1, in: .leading)
+      let view_1_2 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_2, in: .leading)
     }
-    return view
+    vStackView.addView (view_1, in: .leading)
+    let view_2 = AutoLayoutFlexibleSpaceView ()
+    vStackView.addView (view_2, in: .leading)
+    return vStackView
   }
 
   //····················································································································
@@ -524,16 +530,22 @@ import Cocoa
   lazy var mPackagePage = self.mPackagePage_make ()
 
   fileprivate final func mPackagePage_make () -> AutoLayoutStackView {
-    let view = AutoLayoutHorizontalStackView (margin: 0) {
-      space ()
-      vStack (margin: 0) {
-        space ()
-        AutoLayoutStaticLabel.make (title: "Package", bold: true, small: false)
-        space ()
-      }
-      space ()
+    let hStackView = AutoLayoutHorizontalStackView (margin: 0)
+    let view_0 = AutoLayoutFlexibleSpaceView ()
+    hStackView.addView (view_0, in: .leading)
+    let view_1 = AutoLayoutVerticalStackView (margin: 0)
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_0, in: .leading)
+      let view_1_1 = AutoLayoutStaticLabel (title: "Package", bold: true, small: false)
+      view_1.addView (view_1_1, in: .leading)
+      let view_1_2 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_2, in: .leading)
     }
-    return view
+    hStackView.addView (view_1, in: .leading)
+    let view_2 = AutoLayoutFlexibleSpaceView ()
+    hStackView.addView (view_2, in: .leading)
+    return hStackView
   }
 
   //····················································································································
@@ -543,16 +555,22 @@ import Cocoa
   lazy var mProgramPage = self.mProgramPage_make ()
 
   fileprivate final func mProgramPage_make () -> AutoLayoutStackView {
-    let view = AutoLayoutVerticalStackView (margin: 0) {
-      space ()
-      hStack (margin: 0) {
-        space ()
-        AutoLayoutStaticLabel.make (title: "Program", bold: true, small: false)
-        space ()
-      }
-      space ()
+    let vStackView = AutoLayoutVerticalStackView (margin: 0)
+    let view_0 = AutoLayoutFlexibleSpaceView ()
+    vStackView.addView (view_0, in: .leading)
+    let view_1 = AutoLayoutHorizontalStackView (margin: 0)
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_0, in: .leading)
+      let view_1_1 = AutoLayoutStaticLabel (title: "Program", bold: true, small: false)
+      view_1.addView (view_1_1, in: .leading)
+      let view_1_2 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_2, in: .leading)
     }
-    return view
+    vStackView.addView (view_1, in: .leading)
+    let view_2 = AutoLayoutFlexibleSpaceView ()
+    vStackView.addView (view_2, in: .leading)
+    return vStackView
   }
 
   //····················································································································
@@ -562,16 +580,22 @@ import Cocoa
   lazy var mInfosPage = self.mInfosPage_make ()
 
   fileprivate final func mInfosPage_make () -> AutoLayoutStackView {
-    let view = AutoLayoutVerticalStackView (margin: 0) {
-      space ()
-      hStack (margin: 0) {
-        space ()
-        AutoLayoutStaticLabel.make (title: "Infos", bold: true, small: false)
-        space ()
-      }
-      space ()
+    let vStackView = AutoLayoutVerticalStackView (margin: 0)
+    let view_0 = AutoLayoutFlexibleSpaceView ()
+    vStackView.addView (view_0, in: .leading)
+    let view_1 = AutoLayoutHorizontalStackView (margin: 0)
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_0, in: .leading)
+      let view_1_1 = AutoLayoutStaticLabel (title: "Infos", bold: true, small: false)
+      view_1.addView (view_1_1, in: .leading)
+      let view_1_2 = AutoLayoutFlexibleSpaceView ()
+      view_1.addView (view_1_2, in: .leading)
     }
-    return view
+    vStackView.addView (view_1, in: .leading)
+    let view_2 = AutoLayoutFlexibleSpaceView ()
+    vStackView.addView (view_2, in: .leading)
+    return vStackView
   }
 
   //····················································································································
@@ -617,14 +641,13 @@ import Cocoa
       // toolbarItem.paletteLabel = String("Open File")
       // toolbarItem.toolTip = String("Open file to be handled")
       toolbarItem.isEnabled = true
-      //toolbarItem.view = AutoLayoutSignatureField ().bind_signature (self.signatureObserver_property)
-      toolbarItem.view = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView)
-      .addPage (title: "Model Image", pageView: self.mModelImagePage)
-      .addPage (title: "Package", pageView: self.mPackagePage)
-      .addPage (title: "Program", pageView: self.mProgramPage)
-      .addPage (title: "Infos", pageView: self.mInfosPage)
-      .bind_selectedPage (self.rootObject.selectedPageIndex_property)
-
+      let view = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView)
+        .addPage (title: "Model Image", pageView: self.mModelImagePage)
+        .addPage (title: "Package", pageView: self.mPackagePage)
+        .addPage (title: "Program", pageView: self.mProgramPage)
+        .addPage (title: "Infos", pageView: self.mInfosPage)
+        .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+      toolbarItem.view = view
       return toolbarItem
     case "1" :
       let itemId = NSToolbarItem.Identifier ("1")
@@ -633,10 +656,9 @@ import Cocoa
       // toolbarItem.paletteLabel = String("Open File")
       // toolbarItem.toolTip = String("Open file to be handled")
       toolbarItem.isEnabled = true
-      //toolbarItem.view = AutoLayoutSignatureField ().bind_signature (self.signatureObserver_property)
-      toolbarItem.view = AutoLayoutSignatureField ()
-      .bind_signature (self.signatureObserver_property)
-
+      let view = AutoLayoutSignatureField ()
+        .bind_signature (self.signatureObserver_property)
+      toolbarItem.view = view
       return toolbarItem
     case "2" :
       let itemId = NSToolbarItem.Identifier ("2")
@@ -645,11 +667,10 @@ import Cocoa
       // toolbarItem.paletteLabel = String("Open File")
       // toolbarItem.toolTip = String("Open file to be handled")
       toolbarItem.isEnabled = true
-      //toolbarItem.view = AutoLayoutSignatureField ().bind_signature (self.signatureObserver_property)
-      toolbarItem.view = AutoLayoutVersionField ()
-      .bind_version (self.versionObserver_property)
-      .bind_versionShouldChange (self.versionShouldChangeObserver_property)
-
+      let view = AutoLayoutVersionField ()
+        .bind_version (self.versionObserver_property)
+        .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+      toolbarItem.view = view
       return toolbarItem
     default :
       return nil
