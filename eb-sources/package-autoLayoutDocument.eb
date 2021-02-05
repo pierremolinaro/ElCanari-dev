@@ -16,7 +16,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
         $selectedPage root.selectedPageIndex
   ;
 
- // toolbarItem "Space" : space ;
+  toolbarItem space ;
 
   toolbarItem "Signature" : AutoLayoutSignatureField $signature signature ;
   

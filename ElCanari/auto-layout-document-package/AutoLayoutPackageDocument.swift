@@ -619,13 +619,13 @@ import Cocoa
   //····················································································································
   
   func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2")]
+    return self.toolbarDefaultItemIdentifiers (toolbar)
   }
 
   //····················································································································
 
   func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2")]
+    return [NSToolbarItem.Identifier ("0"), .flexibleSpace, NSToolbarItem.Identifier ("2"), NSToolbarItem.Identifier ("3")]
   }
 
   //····················································································································
@@ -638,38 +638,34 @@ import Cocoa
       let itemId = NSToolbarItem.Identifier ("0")
       let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
       toolbarItem.label = "Page"
-      // toolbarItem.paletteLabel = String("Open File")
-      // toolbarItem.toolTip = String("Open file to be handled")
       toolbarItem.isEnabled = true
       let view = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView)
-        .addPage (title: "Model Image", pageView: self.mModelImagePage)
-        .addPage (title: "Package", pageView: self.mPackagePage)
-        .addPage (title: "Program", pageView: self.mProgramPage)
-        .addPage (title: "Infos", pageView: self.mInfosPage)
-        .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+          .addPage (title: "Model Image", pageView: self.mModelImagePage)
+          .addPage (title: "Package", pageView: self.mPackagePage)
+          .addPage (title: "Program", pageView: self.mProgramPage)
+          .addPage (title: "Infos", pageView: self.mInfosPage)
+          .bind_selectedPage (self.rootObject.selectedPageIndex_property)
       toolbarItem.view = view
       return toolbarItem
-    case "1" :
-      let itemId = NSToolbarItem.Identifier ("1")
-      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
-      toolbarItem.label = "Signature"
-      // toolbarItem.paletteLabel = String("Open File")
-      // toolbarItem.toolTip = String("Open file to be handled")
-      toolbarItem.isEnabled = true
-      let view = AutoLayoutSignatureField ()
-        .bind_signature (self.signatureObserver_property)
-      toolbarItem.view = view
-      return toolbarItem
+    case NSToolbarItem.Identifier.flexibleSpace.rawValue :
+      return NSToolbarItem (itemIdentifier: .flexibleSpace)
     case "2" :
       let itemId = NSToolbarItem.Identifier ("2")
       let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
+      toolbarItem.label = "Signature"
+      toolbarItem.isEnabled = true
+      let view = AutoLayoutSignatureField ()
+          .bind_signature (self.signatureObserver_property)
+      toolbarItem.view = view
+      return toolbarItem
+    case "3" :
+      let itemId = NSToolbarItem.Identifier ("3")
+      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
       toolbarItem.label = "Version"
-      // toolbarItem.paletteLabel = String("Open File")
-      // toolbarItem.toolTip = String("Open file to be handled")
       toolbarItem.isEnabled = true
       let view = AutoLayoutVersionField ()
-        .bind_version (self.versionObserver_property)
-        .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+          .bind_version (self.versionObserver_property)
+          .bind_versionShouldChange (self.versionShouldChangeObserver_property)
       toolbarItem.view = view
       return toolbarItem
     default :
