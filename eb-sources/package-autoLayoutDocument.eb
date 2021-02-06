@@ -8,11 +8,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   TOOL BAR
 //----------------------------------------------------------------------------------------------------------------------
 
-  toolbarItem "Page" : AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
-        addPage (title: "Model Image", pageView: mModelImagePage)
-        addPage (title: "Package", pageView: mPackagePage)
-        addPage (title: "Program", pageView: mProgramPage)
-        addPage (title: "Infos", pageView: mInfosPage)
+  toolbarItem "Page" : AutoLayoutSegmentedControlWithPages (documentView: view mPageMasterView)
+        addPage (title: "Model Image", pageView: view mModelImagePage)
+        addPage (title: "Package", pageView: view mPackagePage)
+        addPage (title: "Program", pageView: view mProgramPage)
+        addPage (title: "Infos", pageView: view mInfosPage)
         $selectedPage root.selectedPageIndex
   ;
 
@@ -64,8 +64,22 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   PAGE    MODEL IMAGE
 //----------------------------------------------------------------------------------------------------------------------
 
+  view mTemp0 hStack {
+    AutoLayoutStaticLabel (title: "Grid Style", bold: no, small: yes) ;
+  }
+  view mTemp1 hStack {
+    AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles)
+          $selectedIndex root.mModelImagePageGridStyle
+        ;
+  }
+  
   view mModelImagePage hStack {
-    vStack set (width: 250) set (margins: 5) {
+    vStack set (width: 250) set (margins: 19) {
+      AutoLayoutTwoColumnsGridView set (width: 250) set (margins: 19)
+      separator
+      add (left: view mTemp0, right: view mTemp1)
+      separator (withTitle: "Grid")
+      ;
       hStack {
         space ;
         AutoLayoutStaticLabel (title: "Grid Style", bold: no, small: yes) ;
@@ -91,6 +105,12 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
           add (title: "200 Steps", withTag: 200)
           $selectedTag root.mModelImagePageGridDisplayFactor
         ;
+      }
+      hStack {
+        space ;
+        AutoLayoutStaticLabel (title: "Grid Step", bold: no, small: yes) ;
+        AutoLayoutCanariDimensionTextField $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit ;
+        AutoLayoutCanariUnitPopUpButton $selectedUnit root.mModelImagePageGridStepUnit ;
       }
       space ;
     }
@@ -131,10 +151,10 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
 //    root.mModelImagePageGridDisplayFactor
 //  ;
-  outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
-  outlet CanariDimensionTextField mModelImagePageGridTextField
-     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
-  ;
+//  outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
+//  outlet CanariDimensionTextField mModelImagePageGridTextField
+//     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
+//  ;
   outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
     $selectedTag root.mModelImagePageXPlacardUnit
   ;

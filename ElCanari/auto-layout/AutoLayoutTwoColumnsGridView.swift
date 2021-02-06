@@ -1,8 +1,8 @@
 //
-//  ALLabelledSeparator.swift
-//  essai-contraintes-sans-ib
+//  AutoLayoutTwoColumnsGridView.swift
+//  ElCanari
 //
-//  Created by Pierre Molinaro on 29/11/2020.
+//  Created by Pierre Molinaro on 06/02/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10,41 +10,63 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class ALLabelledSeparator : AutoLayoutHorizontalStackView {
+class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
+
+  private var mLastRightView : NSView? = nil
 
   //····················································································································
+  //   INIT
+  //····················································································································
 
-  init (_ inTitle : String) {
-    super.init (margin: 0)
-    let label = ALLabel (inTitle, bold: true)
-    self.addView (label, in: .leading)
-    let box = NSBox (frame: NSRect ())
-    box.boxType = .separator
-    self.addView (box, in: .leading)
+  override init () {
+    super.init ()
+   // self.addView (AutoLayoutFlexibleSpaceView (), in: .trailing)
   }
 
   //····················································································································
 
-  required init?(coder inCoder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  @discardableResult static func make (_ title : String) -> ALLabelledSeparator {
-    let b = ALLabelledSeparator (title)
-    gCurrentStack?.addView (b, in: .leading)
-    return b
+  func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
+    if let lastRightView = self.mLastRightView {
+      let c = NSLayoutConstraint (
+        item: inRightView,
+        attribute: .width,
+        relatedBy: .equal,
+        toItem: lastRightView,
+        attribute: .width,
+        multiplier: 1.0,
+        constant: 0.0
+      )
+      self.addConstraint (c)
+    }
+    let hStack = AutoLayoutHorizontalStackView ()
+    hStack.appendView (AutoLayoutFlexibleSpaceView ())
+    hStack.appendView (inLeftView)
+    hStack.appendView (inRightView)
+    self.appendView (hStack)
+    self.mLastRightView = inRightView
+    return self
   }
 
   //····················································································································
-  // SET TEXT color
+
+  func separator () -> Self {
+    self.appendView (AutoLayoutSeparator ())
+    return self
+  }
+
   //····················································································································
 
-  @discardableResult func setTextColor (_ inTextColor : NSColor) -> Self {
-    if self.subviews.count > 0, let textfield = self.subviews [0] as? ALLabel {
-      textfield.textColor = inTextColor
-    }
+  func separator (withTitle inTitle : String) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+    hStack.appendView (AutoLayoutStaticLabel (title: inTitle, bold: true, small: true))
+    hStack.appendView (AutoLayoutSeparator ())
+    self.appendView (hStack)
     return self
   }
 
@@ -52,4 +74,3 @@ class ALLabelledSeparator : AutoLayoutHorizontalStackView {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------

@@ -12,7 +12,6 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   init () {
     let inTitle = "ESSAI"
-//    let inBold = true
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.stringValue = inTitle
@@ -23,7 +22,6 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
     self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
-    //self.font = inBold ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize) : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
   }
 

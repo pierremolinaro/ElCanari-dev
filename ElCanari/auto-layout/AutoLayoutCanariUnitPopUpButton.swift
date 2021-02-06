@@ -1,13 +1,8 @@
 //
-//  ALTextField.swift
-//  essai-custom-stack-view
+//  AutoLayoutCanariUnitPopUpButton.swift
+//  ElCanari
 //
-//  Created by Pierre Molinaro on 20/10/2019.
-//  Copyright © 2019 Pierre Molinaro. All rights reserved.
-//
-// https://stackoverflow.com/questions/14643180/nstextfield-width-and-autolayout
-// https://stackoverflow.com/questions/1992950/nsstring-sizewithattributes-content-rect/1993376#1993376
-// https://stackoverflow.com/questions/35356225/nstextfieldcells-cellsizeforbounds-doesnt-match-wrapping-behavior
+//  Created by Pierre Molinaro on 06/02/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15,74 +10,96 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class ALTextField : NSTextField, NSTextFieldDelegate {
+class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mWidth : CGFloat
-
-  //····················································································································
-
-  init (_ inWidth : CGFloat) {
-    self.mWidth = inWidth
-    super.init (frame: NSRect ())
-    self.delegate = self
-    self.stringValue = "textfield"
-    self.usesSingleLineMode =  false
-    self.lineBreakMode = .byCharWrapping
-    self.cell?.wraps = true
-    self.cell?.isScrollable = false
-    self.maximumNumberOfLines = 10
+  init () {
+    super.init (frame: NSRect (), pullsDown: false)
+    noteObjectAllocation (self)
+    self.bezelStyle = .roundRect
+    self.add (title: "inch", withTag: 2_286_000)
+    self.add (title: "mil", withTag: 2_286)
+    self.add (title: "pt", withTag: 31_750)
+    self.add (title: "cm", withTag: 900_000)
+    self.add (title: "mm", withTag: 90_000)
+    self.add (title: "µm", withTag: 90)
+    self.add (title: "pc", withTag: 381_000)
+    self.add (title: "m", withTag: 90_000_000)
   }
 
   //····················································································································
 
-  required init? (coder : NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
-  // INTRINSIC CONTENT SIZE
-  //····················································································································
 
-   override var intrinsicContentSize : NSSize {
-   //--- Forces updating from the field editor
-     self.validateEditing ()
-   //--- Compute size that fits
-     let preferredSize = NSSize (width: 10_000.0, height: 10_000.0)
-     var s = self.sizeThatFits (preferredSize)
-     s.width = self.mWidth
-   //---
-     return s
-   }
-
-  //····················································································································
-
-  func controlTextDidChange (_ inNotification : Notification) {
-    // Swift.print ("controlTextDidChange")
-    self.invalidateIntrinsicContentSize ()
+  override func ebCleanUp () {
+    self.mSelectedUnitController?.unregister ()
+    self.mSelectedUnitController = nil
+    super.ebCleanUp ()
   }
 
   //····················································································································
-  // VERTICAL ALIGNMENT
-  //····················································································································
 
-//  fileprivate var mVerticalAlignment = VerticalAlignment.lastBaseline
-//
-//  //····················································································································
-//
-//  @discardableResult func setVerticalAlignment (_ inAlignment : VerticalAlignment) -> Self {
-//    self.mVerticalAlignment = inAlignment
-//    return self
-//  }
+  override var intrinsicContentSize : NSSize {
+    let s = super.intrinsicContentSize
+    return NSSize (width: 60.0, height: s.height)
+  }
 
   //····················································································································
 
-//  override func verticalAlignment () -> VerticalAlignment { return self.mVerticalAlignment }
+  fileprivate func add (title inTitle : String, withTag inTag : Int) {
+    self.addItem (withTitle: "")
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
+    self.lastItem?.attributedTitle = attributedTitle
+    self.lastItem?.tag = inTag
+  }
+
+  //····················································································································
+
+  func updateTag (from inObject : EBGenericReadWriteProperty <Int>) {
+    switch inObject.selection {
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.selectItem (withTag: v)
+    case .empty :
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.enableFromValueBinding (false)
+    }
+  }
+
+  //····················································································································
+
+  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
+    _ = self.mSelectedUnitController?.updateModel (withCandidateValue: self.selectedTag (), windowForSheet: self.window)
+    return super.sendAction (action, to: to)
+  }
+
+  //····················································································································
+  //  $selectedUnit binding
+  //····················································································································
+
+  private var mSelectedUnitController : EBGenericReadWritePropertyController <Int>? = nil
+
+  //····················································································································
+
+  func bind_selectedUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+    self.mSelectedUnitController = EBGenericReadWritePropertyController <Int> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateTag (from: inObject) }
+    )
+    return self
+  }
 
   //····················································································································
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-

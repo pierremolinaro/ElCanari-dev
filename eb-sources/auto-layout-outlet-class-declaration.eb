@@ -21,6 +21,18 @@ func enum GridStyle.popupTitles {
   line : "Line Grid" ;
 }
 
+extern autolayout class AutoLayoutTwoColumnsGridView {
+  func set (margins: Int)
+  func set (leftMargin: Int)
+  func set (rightMargin: Int)
+  func set (topMargin: Int)
+  func set (bottomMargin: Int)
+  func set (width: Int)
+  func separator
+  func separator (withTitle : String)
+  func add (left : view, right: view)
+}
+
 extern autolayout class AutoLayoutStaticLabel (title : String, bold: Bool, small: Bool) {
 }
 
@@ -55,12 +67,18 @@ extern autolayout class AutoLayoutFixedWidthView (width: Int) {
 
 extern autolayout class AutoLayoutEnumPopUpButton (titles: StringArray) {
   $selectedIndex property enum
-//  func add (title: String)
 }
 
 extern autolayout class AutoLayoutTaggedPopUpButton {
   $selectedTag property Int
   func add (title: String, withTag: Int)
+}
+
+extern autolayout class AutoLayoutCanariUnitPopUpButton {
+  $selectedUnit property Int
+}
+extern autolayout class AutoLayoutCanariDimensionTextField {
+  $dimensionAndUnit property Int, property Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -280,8 +280,6 @@ import Cocoa
   @IBOutlet var mModelImageFirstPointYDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageFirstPointYTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
-  @IBOutlet var mModelImagePageGridTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mModelImagePageGridUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageHorizontalFlip : EBSwitch? = nil
   @IBOutlet var mModelImagePageVerticalFlip : EBSwitch? = nil
   @IBOutlet var mModelImagePageXPlacardUnitPopUpButton : EBPopUpButton? = nil
@@ -494,6 +492,34 @@ import Cocoa
   //····················································································································
 
   let mPageMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView ()
+
+  //····················································································································
+  //    VIEW mTemp0
+  //····················································································································
+
+  lazy var mTemp0 = self.mTemp0_make ()
+
+  fileprivate final func mTemp0_make () -> AutoLayoutStackView {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutStaticLabel (title: "Grid Style", bold: false, small: true)
+    hStackView.appendView (view_0)
+    return hStackView
+  }
+
+  //····················································································································
+  //    VIEW mTemp1
+  //····················································································································
+
+  lazy var mTemp1 = self.mTemp1_make ()
+
+  fileprivate final func mTemp1_make () -> AutoLayoutStackView {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
+        .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
+    hStackView.appendView (view_0)
+    return hStackView
+  }
+
   //····················································································································
   //    VIEW mModelImagePage
   //····················································································································
@@ -504,26 +530,33 @@ import Cocoa
     let hStackView = AutoLayoutHorizontalStackView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (margins: 5)
+      .set (margins: 19)
     do{
-      let view_0_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0_0 = AutoLayoutFlexibleSpaceView ()
-        view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutStaticLabel (title: "Grid Style", bold: false, small: true)
-        view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
-            .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
-        view_0_0.appendView (view_0_0_2)
-      }
+      let view_0_0 = AutoLayoutTwoColumnsGridView ()
+        .set (width: 250)
+        .set (margins: 19)
+        .separator ()
+        .add (left: self.mTemp0, right: self.mTemp1)
+        .separator (withTitle: "Grid")
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutHorizontalStackView ()
       do{
         let view_0_1_0 = AutoLayoutFlexibleSpaceView ()
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "Grid Display", bold: false, small: true)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "Grid Style", bold: false, small: true)
         view_0_1.appendView (view_0_1_1)
-        let view_0_1_2 = AutoLayoutTaggedPopUpButton ()
+        let view_0_1_2 = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
+            .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
+        view_0_1.appendView (view_0_1_2)
+      }
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutFlexibleSpaceView ()
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Grid Display", bold: false, small: true)
+        view_0_2.appendView (view_0_2_1)
+        let view_0_2_2 = AutoLayoutTaggedPopUpButton ()
           .add (title: "1 Step", withTag: 1)
           .add (title: "2 Steps", withTag: 2)
           .add (title: "5 Steps", withTag: 5)
@@ -537,11 +570,25 @@ import Cocoa
           .add (title: "100 Steps", withTag: 100)
           .add (title: "200 Steps", withTag: 200)
             .bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
-        view_0_1.appendView (view_0_1_2)
+        view_0_2.appendView (view_0_2_2)
       }
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpaceView ()
       view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_3_0 = AutoLayoutFlexibleSpaceView ()
+        view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutStaticLabel (title: "Grid Step", bold: false, small: true)
+        view_0_3.appendView (view_0_3_1)
+        let view_0_3_2 = AutoLayoutCanariDimensionTextField ()
+            .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
+        view_0_3.appendView (view_0_3_2)
+        let view_0_3_3 = AutoLayoutCanariUnitPopUpButton ()
+            .bind_selectedUnit (self.rootObject.mModelImagePageGridStepUnit_property)
+        view_0_3.appendView (view_0_3_3)
+      }
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpaceView ()
+      view_0.appendView (view_0_4)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
@@ -839,8 +886,6 @@ import Cocoa
 //    checkOutletConnection (self.mModelImageFirstPointYDimensionUnitPopUp, "mModelImageFirstPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImageFirstPointYTextField, "mModelImageFirstPointYTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
-//    checkOutletConnection (self.mModelImagePageGridTextField, "mModelImagePageGridTextField", CanariDimensionTextField.self, #file, #line)
-//    checkOutletConnection (self.mModelImagePageGridUnitPopUp, "mModelImagePageGridUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageHorizontalFlip, "mModelImagePageHorizontalFlip", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageVerticalFlip, "mModelImagePageVerticalFlip", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageXPlacardUnitPopUpButton, "mModelImagePageXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
@@ -1148,8 +1193,6 @@ import Cocoa
     self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
     self.mModelImagePageHorizontalFlip?.bind_value (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
     self.mModelImagePageVerticalFlip?.bind_value (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
-    self.mModelImagePageGridUnitPopUp?.bind_selectedTag (self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
-    self.mModelImagePageGridTextField?.bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
     self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
     self.mModelImagePageYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
     self.mModelPointsCircleRadiusSlider?.bind_intValue (self.rootObject.mModelPointsCircleRadius_property, file: #file, line: #line, sendContinously:true)
@@ -1565,6 +1608,8 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Clean up auto layout views
     self.mPageMasterView.ebCleanUp ()
+    self.mTemp0.ebCleanUp ()
+    self.mTemp1.ebCleanUp ()
     self.mModelImagePage.ebCleanUp ()
     self.mPackagePage.ebCleanUp ()
     self.mProgramPage.ebCleanUp ()
@@ -1591,8 +1636,6 @@ import Cocoa
     self.mModelImageView?.unbind_yPlacardUnit ()
     self.mModelImagePageHorizontalFlip?.unbind_value ()
     self.mModelImagePageVerticalFlip?.unbind_value ()
-    self.mModelImagePageGridUnitPopUp?.unbind_selectedTag ()
-    self.mModelImagePageGridTextField?.unbind_dimensionAndUnit ()
     self.mModelImagePageXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mModelImagePageYPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mModelPointsCircleRadiusSlider?.unbind_intValue ()
@@ -1968,8 +2011,6 @@ import Cocoa
     self.mModelImageFirstPointYDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageFirstPointYTextField?.ebCleanUp ()
     self.mModelImageOpacitySlider?.ebCleanUp ()
-    self.mModelImagePageGridTextField?.ebCleanUp ()
-    self.mModelImagePageGridUnitPopUp?.ebCleanUp ()
     self.mModelImagePageHorizontalFlip?.ebCleanUp ()
     self.mModelImagePageVerticalFlip?.ebCleanUp ()
     self.mModelImagePageXPlacardUnitPopUpButton?.ebCleanUp ()
@@ -2196,8 +2237,6 @@ import Cocoa
     self.mModelImageFirstPointYDimensionUnitPopUp = nil
     self.mModelImageFirstPointYTextField = nil
     self.mModelImageOpacitySlider = nil
-    self.mModelImagePageGridTextField = nil
-    self.mModelImagePageGridUnitPopUp = nil
     self.mModelImagePageHorizontalFlip = nil
     self.mModelImagePageVerticalFlip = nil
     self.mModelImagePageXPlacardUnitPopUpButton = nil
