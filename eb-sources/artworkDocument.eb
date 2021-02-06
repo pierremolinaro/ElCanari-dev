@@ -59,13 +59,13 @@ xibdocument ArtworkDocument root ArtworkRoot {
 
 //--- Drill Page
   outlet CanariViewWithKeyView mDrillPageView ;
-  outlet EBTextField mDrillDataFileExtensionTextField $value root.drillDataFileExtension {sendContinously:no} ;
+  outlet EBTextField mDrillDataFileExtensionTextField $value root.drillDataFileExtension (sendContinously:no) ;
 
 //--- Data Tab
   outlet CanariViewWithKeyView mDataPageView ;
   outlet EBTableView mDataTableView $tableValue #mDataController ;
   tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
-     column "name" sort name EBTextField $value self.name {sendContinously:no}
+     column "name" sort name EBTextField $value self.name (sendContinously:no)
   }
 
   outlet EBButton mAddGenerationFileButton $run #mDataController.add ;
@@ -73,7 +73,7 @@ xibdocument ArtworkDocument root ArtworkRoot {
 
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
 
-  outlet EBTextField mExtensionTextField $value #mDataSelection.fileExtension {sendContinously:no} ;
+  outlet EBTextField mExtensionTextField $value #mDataSelection.fileExtension (sendContinously:no) ;
   outlet EBSwitch mDrawBoardInternalLimitsSwitch $value #mDataSelection.drawInternalBoardLimits ;
   outlet EBSwitch mDrawBoardLimitsSwitch $value #mDataSelection.drawBoardLimits ;
   outlet EBSwitch mDrawComponentValuesTopSideSwitch $value #mDataSelection.drawComponentValuesTopSide ;

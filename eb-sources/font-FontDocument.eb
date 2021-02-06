@@ -51,12 +51,12 @@ xibdocument FontDocument root FontRoot {
   selectionController FontCharacter #mCharacterSelection : #mSelectedCharacterController.selectedArray ;
 
 //--- Advancement
-  outlet EBIntField advancementTextField $value #mCharacterSelection.advance {sendContinously:yes, autoFormatter:yes} ;
-  outlet EBSlider advancementSlider $intValue #mCharacterSelection.advance {sendContinously:yes} ;
+  outlet EBIntField advancementTextField $value #mCharacterSelection.advance (sendContinously:yes, autoFormatter:yes) ;
+  outlet EBSlider advancementSlider $intValue #mCharacterSelection.advance (sendContinously:yes) ;
 
 //--- Transparency
-  outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
-  outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
+  outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency (sendContinously:no, autoFormatter:no) ;
+  outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency (sendContinously:yes) ;
 
 //--- Warning checkboxes
   outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value #mCharacterSelection.mWarnsWhenNoSegment ;
@@ -69,7 +69,7 @@ xibdocument FontDocument root FontRoot {
   outlet NSPanel mNewCharacterPanel ;
   outlet NewCharacterView mNewCharacterView ;
 
-  outlet EBIntField mFontNominalSizeTextField $value root.nominalSize {sendContinously:no, autoFormatter:no} ;
+  outlet EBIntField mFontNominalSizeTextField $value root.nominalSize (sendContinously:no, autoFormatter:no) ;
 
 //--- Current Character
   outlet FontCharacterSelectButton mFontCharacterSelectButton
@@ -80,7 +80,7 @@ xibdocument FontDocument root FontRoot {
   outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
 
   outlet EBStepper currentCharacterStepper
-    $value root .currentCharacterCodePoint {sendContinously:yes}
+    $value root .currentCharacterCodePoint (sendContinously:yes)
   ;
 
   transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;
@@ -106,7 +106,7 @@ xibdocument FontDocument root FontRoot {
   outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode #mCharacterSelection.gerberCode ;
 
 //--- Sample String
-  outlet EBTextField mSampleStringField $value prefs.sampleString {sendContinously:yes};
+  outlet EBTextField mSampleStringField $value prefs.sampleString (sendContinously:yes);
 
 //--- Sample string display
   outlet CanariFontSampleStringView mFontSampleStringView
@@ -114,7 +114,7 @@ xibdocument FontDocument root FontRoot {
   ;
 
 //--- Sample String Display
-  outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize {sendContinously:no, autoFormatter:no};
+  outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize (sendContinously:no, autoFormatter:no);
   outlet EBTextObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth ;
   outlet EBTextObserverField mSampleStringAscentTextField $valueObserver root.sampleStringBezierPathAscent;
   outlet EBTextObserverField mSampleStringDescentTextField $valueObserver root.sampleStringBezierPathDescent ;

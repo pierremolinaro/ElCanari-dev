@@ -28,10 +28,10 @@ xibdocument SymbolDocument root SymbolRoot {
   outlet EBPopUpButton mGridDisplayFactorPopUpButton $selectedTag root.gridDisplay ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
-  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color prefs.crossColorOfSymbolGrid {sendContinously:no} ;
-  outlet EBColorWell mLineColorOfSymbolGridColorWell $color prefs.lineColorOfSymbolGrid {sendContinously:no} ;
-  outlet EBColorWell mSymbolColorColorWell $color prefs.symbolColor {sendContinously:no} ;
-  outlet EBColorWell mSymbolBackgroundColorColorWell $color prefs.symbolBackgroundColor {sendContinously:no} ;
+  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color prefs.crossColorOfSymbolGrid (sendContinously:no) ;
+  outlet EBColorWell mLineColorOfSymbolGridColorWell $color prefs.lineColorOfSymbolGrid (sendContinously:no) ;
+  outlet EBColorWell mSymbolColorColorWell $color prefs.symbolColor (sendContinously:no) ;
+  outlet EBColorWell mSymbolBackgroundColorColorWell $color prefs.symbolBackgroundColor (sendContinously:no) ;
   outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.symbolDrawingWidthMultipliedByTen ;
   outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
 
@@ -71,7 +71,7 @@ xibdocument SymbolDocument root SymbolRoot {
   outlet CanariViewWithKeyView mTextInspectorView ;
   selectionController SymbolText #mSymbolTextSelectionController : #mSymbolObjectsController.selectedArray ;
   outlet EBTextField mSymbolTextValueTextField
-    $value #mSymbolTextSelectionController.text {sendContinously : yes}
+    $value #mSymbolTextSelectionController.text (sendContinously : yes)
   ;
   outlet CanariEnumSegmentedControl mSymbolTextHorizontalAlignmentSegmentedControl
     $selectedSegment #mSymbolTextSelectionController.horizontalAlignment
@@ -89,7 +89,7 @@ xibdocument SymbolDocument root SymbolRoot {
     $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
   ;
   outlet EBTextField mSymbolPinLabelNameTextField
-    $value #mSymbolPinSelectionController.name {sendContinously : yes}
+    $value #mSymbolPinSelectionController.name (sendContinously : yes)
   ;
 
 //--- Issues

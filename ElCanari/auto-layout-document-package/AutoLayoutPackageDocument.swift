@@ -279,7 +279,6 @@ import Cocoa
   @IBOutlet var mModelImageScrollView : EBScrollView? = nil
   @IBOutlet var mModelImageSizeTextField : EBTextObserverField? = nil
   @IBOutlet var mModelImageView : EBGraphicView? = nil
-  @IBOutlet var mModelPointsCircleRadiusSlider : EBSlider? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mOvalInspectorView : CanariViewWithKeyView? = nil
@@ -385,7 +384,6 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mModelPointsCircleRadiusSlider_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
@@ -501,6 +499,7 @@ import Cocoa
       .add (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
       .add (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
       .add (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
+      .add (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
       .flexibleSpace ()
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
@@ -857,6 +856,25 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 26
+  //····················································································································
+
+  fileprivate final func computeImplicitView_26 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "PointSize", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 27
+  //····················································································································
+
+  fileprivate final func computeImplicitView_27 () -> NSView {
+    let view = AutoLayoutSlider (min: 1, max: 61, ticks: 19)
+        .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -1056,7 +1074,6 @@ import Cocoa
 //    checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
 //    checkOutletConnection (self.mModelImageSizeTextField, "mModelImageSizeTextField", EBTextObserverField.self, #file, #line)
 //    checkOutletConnection (self.mModelImageView, "mModelImageView", EBGraphicView.self, #file, #line)
-//    checkOutletConnection (self.mModelPointsCircleRadiusSlider, "mModelPointsCircleRadiusSlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalInspectorView, "mOvalInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1346,7 +1363,6 @@ import Cocoa
     self.mModelImageView?.bind_backColor (prefs_packageBackgroundColor_property, file: #file, line: #line)
     self.mModelImageView?.bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
     self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
-    self.mModelPointsCircleRadiusSlider?.bind_intValue (self.rootObject.mModelPointsCircleRadius_property, file: #file, line: #line, sendContinously:true)
     self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
     self.mLockImageView?.bind_image (self.rootObject.lockImageView_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
@@ -1521,16 +1537,6 @@ import Cocoa
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mModelPointsCircleRadiusSlider
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mModelPointsCircleRadiusSlider_enabled = controller
-    }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
@@ -1771,7 +1777,6 @@ import Cocoa
     self.mModelImageView?.unbind_backColor ()
     self.mModelImageView?.unbind_xPlacardUnit ()
     self.mModelImageView?.unbind_yPlacardUnit ()
-    self.mModelPointsCircleRadiusSlider?.unbind_intValue ()
     self.mModelImageSizeTextField?.unbind_valueObserver ()
     self.mLockImageView?.unbind_image ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
@@ -1946,8 +1951,6 @@ import Cocoa
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelPointsCircleRadiusSlider_enabled!)
- //   self.mController_mModelPointsCircleRadiusSlider_enabled = nil
  //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
  //   self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
  //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
@@ -2131,7 +2134,6 @@ import Cocoa
     self.mModelImageScrollView?.ebCleanUp ()
     self.mModelImageSizeTextField?.ebCleanUp ()
     self.mModelImageView?.ebCleanUp ()
-    self.mModelPointsCircleRadiusSlider?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
     self.mOvalInspectorView?.ebCleanUp ()
@@ -2341,7 +2343,6 @@ import Cocoa
     self.mModelImageScrollView = nil
     self.mModelImageSizeTextField = nil
     self.mModelImageView = nil
-    self.mModelPointsCircleRadiusSlider = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil
     self.mOvalInspectorView = nil

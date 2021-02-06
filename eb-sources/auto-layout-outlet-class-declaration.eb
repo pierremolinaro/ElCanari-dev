@@ -120,8 +120,13 @@ extern autolayout class CanariDimensionAndPopUp {
 extern autolayout class CanariObservedDimensionAndPopUp {
   $dimensionAndUnit transient Int, property Int
 }
+
 extern autolayout class Switch (title: String) {
   $value property Bool
+}
+
+extern autolayout class Slider (min: Int, max: Int, ticks: Int) {
+  $intValue property Int (sendContinously : Bool)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

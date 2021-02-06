@@ -28,7 +28,7 @@ xibdocument DeviceDocument root DeviceRoot {
   outlet EBTextObserverView mIssueTextView $valueObserver self.mStatusMessage ;
 
 //-------------------------- Page : Description
-  outlet EBTextField mTitleTextField $value root.mTitle {sendContinously: yes} ;
+  outlet EBTextField mTitleTextField $value root.mTitle (sendContinously: yes) ;
 
   outlet DeviceDroppableImageView mRepresentationImageView $imageData root.mImageData ;
 
@@ -43,7 +43,7 @@ xibdocument DeviceDocument root DeviceRoot {
 
   tableViewController #documentationController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDocs {
      column "name" EBTextObserverField $valueObserver self.mFileName
-     column "size" EBIntObserverField $valueObserver self.fileSize {autoFormatter : yes}
+     column "size" EBIntObserverField $valueObserver self.fileSize (autoFormatter : yes)
   }
 
 
@@ -106,7 +106,7 @@ xibdocument DeviceDocument root DeviceRoot {
      $valueObserver #symbolInstanceSelection.symbolTypeName
    ;
 
-  outlet EBTextField mSymbolNameTextField $value #symbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
+  outlet EBTextField mSymbolNameTextField $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes) ;
 
 //-------------------------- Page : Packages
   action addPackageFromLibraryAction ;
@@ -125,16 +125,16 @@ xibdocument DeviceDocument root DeviceRoot {
   outlet EBSwitch mPackageDisplayVerticalFlipSwitch $value root.mPackageDisplayVerticalFlip ;
 
   outlet EBSwitch mShowPackagesSwitch $value root.mShowPackages ;
-  outlet EBColorWell mPackagesColorWell $color prefs.packageColor {sendContinously:no} ;
+  outlet EBColorWell mPackagesColorWell $color prefs.packageColor (sendContinously:no) ;
 
   outlet EBSwitch mShowPackagePadNumbersSwitch $value root.mShowPackagePadNumbers ;
-  outlet EBColorWell mPackageNumbersColorWell $color prefs.padNumberColor {sendContinously:no} ;
+  outlet EBColorWell mPackageNumbersColorWell $color prefs.padNumberColor (sendContinously:no) ;
 
   outlet EBSwitch mShowPackageFrontPadsSwitch $value root.mShowPackageFrontPads ;
-  outlet EBColorWell mPackageFrontPadsColorWell $color prefs.frontSidePadColor {sendContinously:no} ;
+  outlet EBColorWell mPackageFrontPadsColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
 
   outlet EBSwitch mShowPackageBackPadsSwitch $value root.mShowPackageBackPads ;
-  outlet EBColorWell mPackageBackPadsColorWell $color prefs.backSidePadColor {sendContinously:no} ;
+  outlet EBColorWell mPackageBackPadsColorWell $color prefs.backSidePadColor (sendContinously:no) ;
 
   outlet EBTextObserverView mInconsistentPackagePadNameSetsMessageTextView
     $valueObserver root.inconsistentPackagePadNameSetsMessage
@@ -161,7 +161,7 @@ xibdocument DeviceDocument root DeviceRoot {
   tableViewController #symbolTypeController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mSymbolTypes {
      column "symbol" EBTextObserverField $valueObserver self.mTypeName
      column "version" EBTextObserverField $valueObserver self.versionString
-     column "count" EBIntObserverField $valueObserver self.instanceCount {autoFormatter : yes}
+     column "count" EBIntObserverField $valueObserver self.instanceCount (autoFormatter : yes)
      column "size" EBTextObserverField $valueObserver self.documentSizeString
   }
   outlet EBTableView mSymbolTableView $tableValue #symbolTypeController ;
@@ -274,7 +274,7 @@ xibdocument DeviceDocument root DeviceRoot {
 
 //--------------- Page : Infos
 //--- Prefix
-  outlet EBTextField mPrefixTextField $value root.mPrefix {sendContinously : yes} ;
+  outlet EBTextField mPrefixTextField $value root.mPrefix (sendContinously : yes) ;
 
 //--- Prefix
   outlet EBTextView mCommentTextView $value root.mComments ;

@@ -82,7 +82,7 @@ xibdocument ProjectDocument root ProjectRoot {
      column "name" sort componentName EBTextObserverField $valueObserver self.componentName
      column "device" sort deviceName EBTextObserverField $valueObserver self.deviceName
      column "package" sort selectedPackageName EBTextObserverField $valueObserver self.selectedPackageName
-     column "value" sort mComponentValue EBTextField $value self.mComponentValue { sendContinously : no }
+     column "value" sort mComponentValue EBTextField $value self.mComponentValue (sendContinously : no)
      column "inSchematics" sort placementInSchematic EBTextObserverField $valueObserver self.placementInSchematic
      column "inBoard" sort componentIsPlacedInBoardString EBTextObserverField $valueObserver self.componentIsPlacedInBoardString
   }
@@ -168,9 +168,9 @@ xibdocument ProjectDocument root ProjectRoot {
      column "name" EBTextObserverField $valueObserver self.mFontName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
-     column "texts" EBIntObserverField $valueObserver self.mTexts.count {autoFormatter : yes}
-     column "names" EBIntObserverField $valueObserver self.mComponentNames.count {autoFormatter : yes}
-     column "values" EBIntObserverField $valueObserver self.mComponentValues.count {autoFormatter : yes}
+     column "texts" EBIntObserverField $valueObserver self.mTexts.count (autoFormatter : yes)
+     column "names" EBIntObserverField $valueObserver self.mComponentNames.count (autoFormatter : yes)
+     column "values" EBIntObserverField $valueObserver self.mComponentValues.count (autoFormatter : yes)
   }
   outlet EBTableView mFontLibraryTableView $tableValue #projectFontController ;
 
@@ -294,8 +294,8 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicGridDisplayFactor ;
 
 //--- Sheet inspector
-  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle {sendContinously : yes} ;
-  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicVersion {sendContinously : yes} ;
+  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle (sendContinously : yes) ;
+  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicVersion (sendContinously : yes) ;
   outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl
     $selectedSegment root.mSchematicSheetOrientation
   ;
@@ -313,7 +313,7 @@ xibdocument ProjectDocument root ProjectRoot {
   transient Bool schematicSheetOrientationIsCustom dependsFrom root.mSchematicSheetOrientation ;
   outlet NSView mSchematicCustomSizeView $hidden !self.schematicSheetOrientationIsCustom ;
   
-  outlet EBTextField mSelectedSheetTitleTextField $value root.selectedSheetTitle {sendContinously : yes} ;
+  outlet EBTextField mSelectedSheetTitleTextField $value root.selectedSheetTitle (sendContinously : yes) ;
 
   outlet EBPopUpButton mSheetPopUpButton ; // All bindings done programmatically
   outlet EBButton mSheetUpButton ; // All bindings done programmatically
@@ -397,19 +397,19 @@ xibdocument ProjectDocument root ProjectRoot {
   ;
 
   outlet EBTextField mCommentInSchematicsTextField
-    $value #commentInSchematicSelectionController.mComment {sendContinously : yes}
+    $value #commentInSchematicSelectionController.mComment (sendContinously : yes)
   ;
 
   outlet EBDoubleField mCommentSizeInSchematicsTextField
-    $value #commentInSchematicSelectionController.mSize {sendContinously : no, autoFormatter : no}
+    $value #commentInSchematicSelectionController.mSize (sendContinously : no, autoFormatter : no)
   ;
 
   outlet EBSlider mCommentSizeInSchematicsSlider
-    $doubleValue #commentInSchematicSelectionController.mSize {sendContinously : yes}
+    $doubleValue #commentInSchematicSelectionController.mSize (sendContinously : yes)
   ;
 
   outlet EBColorWell mCommentColorInSchematicsTextField
-    $color #commentInSchematicSelectionController.mColor {sendContinously : yes}
+    $color #commentInSchematicSelectionController.mColor (sendContinously : yes)
   ;
 
   outlet CanariEnumSegmentedControl mCommentInSchematicsHorizontalAlignmentSegmentedControl
@@ -467,7 +467,7 @@ xibdocument ProjectDocument root ProjectRoot {
   ;
 
   outlet EBTextField mComponentSymbolValueTextField
-    $value #componentSymbolSelectionController.componentValueProxy {sendContinously : yes}
+    $value #componentSymbolSelectionController.componentValueProxy (sendContinously : yes)
   ;
 
   outlet EBTextObserverField mComponentSymbolDeviceNameTextField
@@ -510,7 +510,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet NSImageView mNetWarningImageView $hidden root.netWarningCount == 0 ;
   
   outlet EBIntObserverField mNetWarningTextField
-    $valueObserver root.netWarningCount {autoFormatter: yes}
+    $valueObserver root.netWarningCount (autoFormatter: yes)
     $hidden root.netWarningCount == 0
   ;
 
@@ -927,10 +927,10 @@ xibdocument ProjectDocument root ProjectRoot {
     #boardObjectsController.selectedArray
   ;
 
-  outlet EBTextField mBoardTextTextField $value #boardTextSelectionController.mText {sendContinously : yes} ;
+  outlet EBTextField mBoardTextTextField $value #boardTextSelectionController.mText (sendContinously : yes) ;
 
   outlet EBDoubleField mBoardTextFontSizeField
-    $value #boardTextSelectionController.mFontSize {sendContinously : no, autoFormatter : no}
+    $value #boardTextSelectionController.mFontSize (sendContinously : no, autoFormatter : no)
   ;
 
   outlet EBPopUpButton mBoardTextLayerPopUpButton $selectedIndex #boardTextSelectionController.mLayer ;
@@ -949,7 +949,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariBoardTextFontPopUpButton mBoardTextFontPopUpButton ;
   
   outlet EBDoubleField mBoardTextWeightTextField
-    $value #boardTextSelectionController.mWeight { sendContinously : no, autoFormatter: no}
+    $value #boardTextSelectionController.mWeight ( sendContinously : no, autoFormatter: no)
   ;
   
   outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
@@ -961,10 +961,10 @@ xibdocument ProjectDocument root ProjectRoot {
   ;
 
   outlet CanariBoolPopUpButton mSlavePadsShouldBeRoutedPopUpButton
-    $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted {
+    $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted (
       item0: "should be insulated",
       item1: "should be routed"
-    }
+    )
     $enabled #componentInBoardSelectionController.hasSlavePads
   ;
 
@@ -997,7 +997,7 @@ xibdocument ProjectDocument root ProjectRoot {
     $value #componentInBoardSelectionController.mNameIsVisibleInBoard
   ;
   outlet EBDoubleField mComponentNameFontSizeField
-    $value #componentInBoardSelectionController.mNameFontSize {sendContinously : no, autoFormatter : no}
+    $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no, autoFormatter : no)
     $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
   ;
   
@@ -1025,7 +1025,7 @@ xibdocument ProjectDocument root ProjectRoot {
 
   outlet EBSwitch mDisplayComponentValueSwitch $value #componentInBoardSelectionController.mValueIsVisibleInBoard ;
   outlet EBDoubleField mComponentValueFontSizeField
-    $value #componentInBoardSelectionController.mValueFontSize {sendContinously : no, autoFormatter : no}
+    $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no, autoFormatter : no)
     $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
   ;
 
@@ -1043,7 +1043,7 @@ xibdocument ProjectDocument root ProjectRoot {
   ;
 
   outlet EBTextField mBoardComponentValueTextField
-    $value #componentInBoardSelectionController.mComponentValue {sendContinously : yes}
+    $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
     $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
   ;
 
@@ -1053,41 +1053,41 @@ xibdocument ProjectDocument root ProjectRoot {
   
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value prefs.displayFrontPadsForBoard ;
-  outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayBackPadsSwitch $value prefs.displayBackPadsForBoard ;
-  outlet EBColorWell mDisplayBackPadsColorWell $color prefs.backSidePadColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayBackPadsColorWell $color prefs.backSidePadColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayPadNumbersSwitch $value prefs.displayPadNumbersForBoard ;
-  outlet EBColorWell mDisplayPadNumbersColorWell $color prefs.padNumberColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayPadNumbersColorWell $color prefs.padNumberColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayFrontLegendSwitch $value prefs.displayFrontLegendForBoard ;
-  outlet EBColorWell mDisplayFrontLegendColorWell $color prefs.frontSideLegendColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayFrontLegendColorWell $color prefs.frontSideLegendColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayBackLegendSwitch $value prefs.displayBackLegendForBoard ;
-  outlet EBColorWell mDisplayBackLegendColorWell $color prefs.backSideLegendColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayBackLegendColorWell $color prefs.backSideLegendColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayFrontLayoutSwitch $value prefs.displayFrontLayoutForBoard ;
-  outlet EBColorWell mDisplayFrontLayoutColorWell $color prefs.frontSideLayoutColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayFrontLayoutColorWell $color prefs.frontSideLayoutColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayBackLayoutSwitch $value prefs.displayBackLayoutForBoard ;
-  outlet EBColorWell mDisplayBackLayoutColorWell $color prefs.backSideLayoutColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayBackLayoutColorWell $color prefs.backSideLayoutColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayFrontRestrictRectanglesSwitch $value prefs.displayFrontRestrictRectangles ;
-  outlet EBColorWell mDisplayFrontRestrictRectanglesColorWell $color prefs.frontSideRestrictRectangleColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayFrontRestrictRectanglesColorWell $color prefs.frontSideRestrictRectangleColorForBoard (sendContinously:yes) ;
 
   outlet EBSwitch mDisplayBackRestrictRectanglesSwitch $value prefs.displayBackRestrictRectangles ;
-  outlet EBColorWell mDisplayBackRestrictRectanglesColorWell $color prefs.backSideRestrictRectangleColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayBackRestrictRectanglesColorWell $color prefs.backSideRestrictRectangleColorForBoard (sendContinously:yes) ;
 
-  outlet EBColorWell mDisplayBoardLimitsColorWell $color prefs.boardLimitsColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayBoardLimitsColorWell $color prefs.boardLimitsColorForBoard (sendContinously:yes) ;
 
-  outlet EBColorWell mDisplayBoardClearanceColorWell $color prefs.boardClearanceColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mDisplayBoardClearanceColorWell $color prefs.boardClearanceColorForBoard (sendContinously:yes) ;
 
-  outlet EBColorWell mBoardBackgroundColorWell $color prefs.boardBackgroundColorForBoard {sendContinously:yes} ;
+  outlet EBColorWell mBoardBackgroundColorWell $color prefs.boardBackgroundColorForBoard (sendContinously:yes) ;
   
-  outlet EBSlider mErrorOrWarningIssueSlider $doubleValue root.mErrorOrWarningIssueSize {sendContinously : yes} ;
+  outlet EBSlider mErrorOrWarningIssueSlider $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes) ;
   
-  outlet EBSlider mControlKeyHiliteDiameterSlider $doubleValue root.mControlKeyHiliteDiameter {sendContinously : yes} ;
+  outlet EBSlider mControlKeyHiliteDiameterSlider $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) ;
   
   outlet EBPopUpButton mRastnetDisplayPopUpButton $selectedIndex root.mRastnetDisplay ;
   transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
@@ -1126,7 +1126,7 @@ xibdocument ProjectDocument root ProjectRoot {
   transient Bool documentFilePathOk dependsFrom self.documentFilePath ;
   outlet NSView mIncorrectFileNameMessageView $hidden self.documentFilePathOk ;
 
-  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor {sendContinously : no} ;
+  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor (sendContinously : no) ;
 
 //---------------- Minima Page
   outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
@@ -1189,7 +1189,7 @@ xibdocument ProjectDocument root ProjectRoot {
 //  outlet EBTextObserverField mGeneratedFileCountTextField $valueObserver self.mGeneratedFileCountString ;
 
   outlet EBTextObserverView mCommentTextView $valueObserver root.comments ;
-  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion {autoFormatter: no} ;
+  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion (autoFormatter: no) ;
 //  outlet CanariSignatureField mArtworkSignatureTextField $signature root.artworkSignature ;
 
 }

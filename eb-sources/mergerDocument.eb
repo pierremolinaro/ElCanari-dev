@@ -78,47 +78,47 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBSwitch mBoardViewDisplayBackLegendLinesCheckbox $value prefs.mergerBoardViewDisplayBackLegendLines ;
 
   outlet EBColorWell mergerViewDisplayHolesColorWell
-    $color prefs.mergerColorHoles {sendContinously:no} ;
+    $color prefs.mergerColorHoles (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayViasColorWell
-    $color prefs.mergerColorVias {sendContinously:no} ;
+    $color prefs.mergerColorVias (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontPadsColorWell
-    $color prefs.mergerColorFrontPads {sendContinously:no} ;
+    $color prefs.mergerColorFrontPads (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBoardLimitsColorWell
-    $color prefs.mergerColorBoardLimits {sendContinously:no} ;
+    $color prefs.mergerColorBoardLimits (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayInternalBoardsLimitsColorWell
-    $color prefs.mergerColorInternalBoardsLimits {sendContinously:no} ;
+    $color prefs.mergerColorInternalBoardsLimits (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontComponentNamesColorWell
-    $color prefs.mergerColorFrontComponentNames {sendContinously:no} ;
+    $color prefs.mergerColorFrontComponentNames (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontComponentValuesColorWell
-    $color prefs.mergerColorFrontComponentValues {sendContinously:no} ;
+    $color prefs.mergerColorFrontComponentValues (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontPackagesColorWell
-    $color prefs.mergerColorFrontPackages {sendContinously:no} ;
+    $color prefs.mergerColorFrontPackages (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontLegendTextsColorWell
-    $color prefs.mergerColorFrontLegendTexts {sendContinously:no} ;
+    $color prefs.mergerColorFrontLegendTexts (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontTracksColorWell
-    $color prefs.mergerColorFrontTracks {sendContinously:no} ;
+    $color prefs.mergerColorFrontTracks (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayFrontLayoutTextsColorWell
-    $color prefs.mergerColorFrontLayoutTexts {sendContinously:no} ;
+    $color prefs.mergerColorFrontLayoutTexts (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackPadsColorWell
-    $color prefs.mergerColorBackPads {sendContinously:no} ;
+    $color prefs.mergerColorBackPads (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackComponentNamesColorWell
-    $color prefs.mergerColorBackComponentNames {sendContinously:no} ;
+    $color prefs.mergerColorBackComponentNames (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackComponentValuesColorWell
-    $color prefs.mergerColorBackComponentValues {sendContinously:no} ;
+    $color prefs.mergerColorBackComponentValues (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackLegendTextsColorWell
-    $color prefs.mergerColorBackLegendTexts {sendContinously:no} ;
+    $color prefs.mergerColorBackLegendTexts (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackPackagesColorWell
-    $color prefs.mergerColorBackPackages {sendContinously:no} ;
+    $color prefs.mergerColorBackPackages (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackTracksColorWell
-    $color prefs.mergerColorBackTracks {sendContinously:no} ;
+    $color prefs.mergerColorBackTracks (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBackLayoutTextsColorWell
-    $color prefs.mergerColorBackLayoutTexts {sendContinously:no} ;
+    $color prefs.mergerColorBackLayoutTexts (sendContinously:no) ;
   outlet EBColorWell mergerViewBackgroundColorWell
-    $color prefs.mergerColorBackground {sendContinously:no} ;
+    $color prefs.mergerColorBackground (sendContinously:no) ;
   outlet EBColorWell mergerViewFrontLegendLinesColorWell
-    $color prefs.mergerColorFrontLegendLines {sendContinously:no} ;
+    $color prefs.mergerColorFrontLegendLines (sendContinously:no) ;
   outlet EBColorWell mergerViewBackLegendLinesColorWell
-    $color prefs.mergerColorBackLegendLines {sendContinously:no} ;
+    $color prefs.mergerColorBackLegendLines (sendContinously:no) ;
 
 
 //------------------------------------- Model Page
@@ -146,7 +146,7 @@ xibdocument MergerDocument root MergerRoot {
 
 //--- Model table view
   tableViewController #mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
-     column "name" sort name EBTextField $value self.name {sendContinously:no}
+     column "name" sort name EBTextField $value self.name (sendContinously:no)
   }
 
   outlet EBTableView mBoardModelTableView $tableValue #mBoardModelController ;
@@ -165,7 +165,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBTextObserverField mArtworkNameTextField $valueObserver #mBoardModelSelection.artworkName ;
 
 //--- Model Instance count
-  outlet EBIntObserverField mInstanceCountTextField $valueObserver #mBoardModelSelection.instanceCount {autoFormatter:yes} ;
+  outlet EBIntObserverField mInstanceCountTextField $valueObserver #mBoardModelSelection.instanceCount (autoFormatter:yes) ;
 
 //--- Model width display
   outlet EBPopUpButton mModelWidthUnitPopUp $selectedTag #mBoardModelSelection.modelWidthUnit ;
@@ -338,7 +338,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet NSTabView mProductGenerationTabView ;
   outlet NSTabView mArtworkSettingsTabView $hidden root.mArtwork.none ;
   outlet NSTextView mLogTextView ;
-  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor {sendContinously : no} ;
+  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor (sendContinously : no);
 
 //---------------- Minima Page
   outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
@@ -394,7 +394,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
 //--- Artwork info tab
   outlet EBTextObserverView mCommentTextView $valueObserver root.comments ;
-  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion {autoFormatter: no} ;
+  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion (autoFormatter: no) ;
 
 }
 

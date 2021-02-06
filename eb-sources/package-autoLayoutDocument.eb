@@ -110,6 +110,14 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
         left: { StaticLabel (title: "Y", bold: no, small: yes) },
         right: { CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit } }
       )
+      add (
+        left: { StaticLabel (title: "PointSize", bold: no, small: yes) },
+        right: { Slider (min:1, max:61, ticks: 19) {$intValue root.mModelPointsCircleRadius (sendContinously : yes) } }
+      )
+
+//  outlet EBSlider mModelPointsCircleRadiusSlider
+//    $intValue root.mModelPointsCircleRadius (sendContinously : yes)
+//    $enabled root.hasModelImage ;
 
       flexibleSpace () 
     }
@@ -161,9 +169,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //    $selectedTag root.mModelImagePageYPlacardUnit
 //  ;
   
-  outlet EBSlider mModelPointsCircleRadiusSlider
-    $intValue root.mModelPointsCircleRadius {sendContinously : yes}
-    $enabled root.hasModelImage ;
+//  outlet EBSlider mModelPointsCircleRadiusSlider
+//    $intValue root.mModelPointsCircleRadius (sendContinously : yes)
+//    $enabled root.hasModelImage ;
   
   outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
   
@@ -284,7 +292,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
   outlet EBSlider mModelImageOpacitySlider
-    $doubleValue root.mModelImageOpacity {sendContinously:yes}
+    $doubleValue root.mModelImageOpacity (sendContinously:yes)
     $enabled root.hasModelImage
   ;
 
@@ -473,14 +481,14 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //--- Pad zone
   outlet EBTextObserverField mPadZoneNameTextField $valueObserver #mPackagePadSelectionController.zoneName ;
 //--- Pad Number
-  outlet EBIntObserverField mPadNumberTextField $valueObserver #mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
+  outlet EBIntObserverField mPadNumberTextField $valueObserver #mPackagePadSelectionController.padNumber (autoFormatter : yes) ;
   outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton
     $currentNumber #mPackagePadSelectionController.padNumber
     $currentZoneName #mPackagePadSelectionController.zoneName
     $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
   ;
 //--- Slave Pad count
-  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount {autoFormatter : yes};
+  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount (autoFormatter : yes);
 
 
 
@@ -632,7 +640,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
      $dimensionAndUnit #mPackageZoneSelectionController.height, #mPackageZoneSelectionController.heightUnit
   ;
 //--- Name
-  outlet EBTextField mZoneNameTextField $value #mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
+  outlet EBTextField mZoneNameTextField $value #mPackageZoneSelectionController.zoneName (sendContinously : yes) ;
 
 //--- Display Zone Name
   outlet EBSwitch mDisplayZoneNameSwitch $value #mPackageZoneSelectionController.displayZoneName ;
@@ -675,7 +683,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //----------------- Pad numbering inspector
   outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
   outlet EBIntField mCounterClockNumberingStartAngleIntField
-     $value root.counterClockNumberingStartAngle {sendContinously : yes, autoFormatter : no}
+     $value root.counterClockNumberingStartAngle (sendContinously : yes, autoFormatter : no)
   ;
   outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
 
@@ -738,17 +746,17 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
-  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen {sendContinously:yes} ;
+  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen (sendContinously:yes) ;
 
 //--- Display inspector
-  outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid {sendContinously:no} ;
-  outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid {sendContinously:no} ;
-  outlet EBColorWell mPackageColorColorWell $color prefs.packageColor {sendContinously:no} ;
-  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor {sendContinously:no} ;
-  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor {sendContinously:no} ;
-  outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor {sendContinously:no} ;
+  outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid (sendContinously:no) ;
+  outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid (sendContinously:no) ;
+  outlet EBColorWell mPackageColorColorWell $color prefs.packageColor (sendContinously:no) ;
+  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
+  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor (sendContinously:no) ;
+  outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor (sendContinously:no) ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
-  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor {sendContinously:no} ;
+  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor (sendContinously:no) ;
   outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageFrontSidePads ;
   outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
   outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
