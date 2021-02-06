@@ -45,6 +45,15 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  override func ebCleanUp () {
+    for view in self.subviews {
+      view.ebCleanUp ()
+    }
+    super.ebCleanUp ()
+  }
+
+  //····················································································································
+
   final func appendView (_ inView : NSView) {
     self.addView (inView, in: .leading)
   }

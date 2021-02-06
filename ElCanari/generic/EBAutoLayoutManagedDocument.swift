@@ -376,13 +376,13 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 //  }
 
   //····················································································································
-  //   removeWindowController
+  //   removeUserInterface
   //····················································································································
 
-//  func removeUserInterface () {
-//    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-//    self.clearObjectExplorer ()
-//  }
+  func removeUserInterface () {
+    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
+    self.clearObjectExplorer ()
+  }
 
   //····················································································································
 
@@ -390,7 +390,7 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Remove user interface
     self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
     self.clearObjectExplorer ()
-//    self.removeUserInterface ()
+    self.removeUserInterface ()
   //--- Remove all entities
     let start = Date ()
     let allEntities = self.reachableObjectsFromRootObject ()

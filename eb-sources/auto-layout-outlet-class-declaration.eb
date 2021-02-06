@@ -15,6 +15,12 @@ hStack func set (rightMargin: Int) ;
 hStack func set (topMargin: Int) ;
 hStack func set (bottomMargin: Int) ;
 
+func enum GridStyle.popupTitles {
+  cross : "Cross Grid" ;
+  noGrid : "No Grid" ;
+  line : "Line Grid" ;
+}
+
 extern autolayout class AutoLayoutStaticLabel (title : String, bold: Bool, small: Bool) {
 }
 
@@ -47,9 +53,14 @@ extern autolayout class AutoLayoutImageObserverView {
 extern autolayout class AutoLayoutFixedWidthView (width: Int) {
 }
 
-extern autolayout class AutoLayoutPopUpButton {
+extern autolayout class AutoLayoutEnumPopUpButton (titles: StringArray) {
   $selectedIndex property enum
-  func add (title: String)
+//  func add (title: String)
+}
+
+extern autolayout class AutoLayoutTaggedPopUpButton {
+  $selectedTag property Int
+  func add (title: String, withTag: Int)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

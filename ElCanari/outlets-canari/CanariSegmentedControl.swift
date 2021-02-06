@@ -31,10 +31,10 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   //····················································································································
 
   override func ebCleanUp () {
-    super.ebCleanUp ()
     self.mPageViews.removeAll ()
     self.mAttachedView = nil
     self.mMasterView = nil
+    super.ebCleanUp ()
   }
 
   //····················································································································

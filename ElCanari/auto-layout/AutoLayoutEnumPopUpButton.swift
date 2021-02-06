@@ -1,8 +1,8 @@
 //
-//  AutoLayoutPopUpButton.swift
+//  AutoLayoutEnumPopUpButton.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 05/02/2021.
+//  Created by Pierre Molinaro on 06/02/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10,12 +10,22 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutPopUpButton : NSPopUpButton {
+class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (titles inTitles : [String]) {
     super.init (frame: NSRect (), pullsDown: false)
+    noteObjectAllocation (self)
+    self.bezelStyle = .roundRect
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+    for title in inTitles {
+      self.addItem (withTitle: "")
+      let attributedTitle = NSAttributedString (string: title, attributes: textAttributes)
+      self.lastItem?.attributedTitle = attributedTitle
+    }
   }
 
   //····················································································································
@@ -26,15 +36,12 @@ class AutoLayoutPopUpButton : NSPopUpButton {
 
   //····················································································································
 
-  func add (title inTitle : String) -> Self {
-    self.addItem (withTitle: "")
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
-    self.lastItem?.attributedTitle = attributedTitle
-    return self
+  override func ebCleanUp () {
+    self.mSelectedIndexController?.unregister ()
+    self.mSelectedIndexController = nil
+    super.ebCleanUp ()
   }
+
 
   //····················································································································
 
@@ -50,7 +57,7 @@ class AutoLayoutPopUpButton : NSPopUpButton {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    self.mSelectedIndexController?.updateModel ()
+    self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
     return super.sendAction (action, to:to)
   }
 
@@ -58,12 +65,12 @@ class AutoLayoutPopUpButton : NSPopUpButton {
   //  $selectedIndex binding
   //····················································································································
 
-  private var mSelectedIndexController : Controller_AutoLayoutPopUpButton_Index? = nil
+  private var mSelectedIndexController : Controller_AutoLayoutEnumPopUpButton_Index? = nil
 
   //····················································································································
 
   func bind_selectedIndex (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
-    self.mSelectedIndexController = Controller_AutoLayoutPopUpButton_Index (
+    self.mSelectedIndexController = Controller_AutoLayoutEnumPopUpButton_Index (
       object: inObject,
       outlet: self
 //      callBack: { [weak self] in self?.update (from: inObject) }
@@ -79,25 +86,23 @@ class AutoLayoutPopUpButton : NSPopUpButton {
 //   Controller_EBPopUpButton_Index
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_AutoLayoutPopUpButton_Index : EBReadOnlyPropertyController {
+fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBReadOnlyPropertyController {
 
   //····················································································································
 
   private let mObject : EBReadWriteObservableEnumProtocol
-  private let mOutlet : AutoLayoutPopUpButton
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet : AutoLayoutPopUpButton) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateIndex (object) } )
+  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutEnumPopUpButton) {
+    self.mObject = object
+    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateIndex (object) } )
   }
 
   //····················································································································
 
-  func updateModel () {
-    self.mObject.setFrom (rawValue: self.mOutlet.indexOfSelectedItem)
+  func updateModel (_ inValue : Int) {
+    self.mObject.setFrom (rawValue: inValue)
   }
 
   //····················································································································

@@ -67,7 +67,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   override func ebCleanUp () {
-    super.ebCleanUp ()
     self.mViewController = nil
     self.removeXYHelperWindow ()
     NotificationCenter.default.removeObserver (
@@ -75,6 +74,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
       name: NSView.frameDidChangeNotification,
       object: self
     )
+    super.ebCleanUp ()
   }
 
   //····················································································································

@@ -32,9 +32,9 @@ extension NSControl : EnabledMultipleBindingProtocol {
   //····················································································································
 
   override func ebCleanUp () {
-    super.ebCleanUp ()
     gEnabledFromValueBindingDictionary [self] = nil
     gEnabledBindingValueDictionary [self] = nil
+    super.ebCleanUp ()
   }
 
   //····················································································································

@@ -4,68 +4,78 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
+class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
-    self.isEditable = false
-    self.drawsBackground = false
-    self.isBordered = false
-    self.font = NSFont.userFixedPitchFont (ofSize: NSFont.systemFontSize)
+    super.init (frame: NSRect (), pullsDown: false)
     noteObjectAllocation (self)
+    self.bezelStyle = .roundRect
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
   override func ebCleanUp () {
-    self.mController?.unregister ()
-    self.mController = nil
+    self.mSelectedTagController?.unregister ()
+    self.mSelectedTagController = nil
     super.ebCleanUp ()
   }
 
   //····················································································································
-  //  signatureObserver binding
-  //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
-
-  //····················································································································
-
-  func bind_signature (_ model : EBReadOnlyProperty_UInt32) -> Self {
-    self.mController = EBReadOnlyPropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
-    )
+  func add (title inTitle : String, withTag inTag : Int) -> Self {
+    self.addItem (withTitle: "")
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
+    self.lastItem?.attributedTitle = attributedTitle
+    self.lastItem?.tag = inTag
     return self
   }
 
   //····················································································································
 
-//  func unbind_signature () {
-//    self.mController?.unregister ()
-//    self.mController = nil
-//  }
+  func updateTag (from inObject : EBGenericReadWriteProperty <Int>) {
+    switch inObject.selection {
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.selectItem (withTag: v)
+    case .empty :
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.enableFromValueBinding (false)
+    }
+  }
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_UInt32) {
-    switch model.selection {
-    case .empty :
-      self.stringValue = "—"
-    case .single (let v) :
-      self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
-//      Swift.print ("Signature Display -- \(self.stringValue)")
-    case .multiple :
-      self.stringValue = "—"
-    }
+  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
+    _ = self.mSelectedTagController?.updateModel (withCandidateValue: self.selectedTag (), windowForSheet: self.window)
+    return super.sendAction (action, to: to)
+  }
+
+  //····················································································································
+  //  $selectedTag binding
+  //····················································································································
+
+  private var mSelectedTagController : EBGenericReadWritePropertyController <Int>? = nil
+
+  //····················································································································
+
+  func bind_selectedTag (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+    self.mSelectedTagController = EBGenericReadWritePropertyController <Int> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateTag (from: inObject) }
+    )
+    return self
   }
 
   //····················································································································

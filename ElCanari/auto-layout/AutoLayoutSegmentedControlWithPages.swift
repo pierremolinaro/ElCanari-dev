@@ -17,6 +17,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
     self.mDocumentView = inDocumentView
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.segmentStyle = .roundRect
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
   }
@@ -25,6 +26,14 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    self.mSelectedTabIndexController?.unregister ()
+    self.mSelectedTabIndexController = nil
+    super.ebCleanUp ()
   }
 
   //····················································································································

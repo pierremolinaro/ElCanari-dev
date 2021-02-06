@@ -280,7 +280,6 @@ import Cocoa
   @IBOutlet var mModelImageFirstPointYDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageFirstPointYTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
-  @IBOutlet var mModelImagePageGridDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageGridTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImagePageGridUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageHorizontalFlip : EBSwitch? = nil
@@ -513,16 +512,36 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Grid Style", bold: false, small: true)
         view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutPopUpButton ()
-          .add (title: "No Grid")
-          .add (title: "Cross Grid")
-          .add (title: "Line Grid")
+        let view_0_0_2 = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
             .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
         view_0_0.appendView (view_0_0_2)
       }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpaceView ()
+      let view_0_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_1_0 = AutoLayoutFlexibleSpaceView ()
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "Grid Display", bold: false, small: true)
+        view_0_1.appendView (view_0_1_1)
+        let view_0_1_2 = AutoLayoutTaggedPopUpButton ()
+          .add (title: "1 Step", withTag: 1)
+          .add (title: "2 Steps", withTag: 2)
+          .add (title: "5 Steps", withTag: 5)
+          .add (title: "8 Steps", withTag: 8)
+          .add (title: "10 Steps", withTag: 10)
+          .add (title: "12 Steps", withTag: 12)
+          .add (title: "15 Steps", withTag: 15)
+          .add (title: "20 Steps", withTag: 20)
+          .add (title: "25 Steps", withTag: 25)
+          .add (title: "50 Steps", withTag: 50)
+          .add (title: "100 Steps", withTag: 100)
+          .add (title: "200 Steps", withTag: 200)
+            .bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
+        view_0_1.appendView (view_0_1_2)
+      }
       view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpaceView ()
+      view_0.appendView (view_0_2)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
@@ -820,7 +839,6 @@ import Cocoa
 //    checkOutletConnection (self.mModelImageFirstPointYDimensionUnitPopUp, "mModelImageFirstPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImageFirstPointYTextField, "mModelImageFirstPointYTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
-//    checkOutletConnection (self.mModelImagePageGridDisplayPopUpButton, "mModelImagePageGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageGridTextField, "mModelImagePageGridTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageGridUnitPopUp, "mModelImagePageGridUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImagePageHorizontalFlip, "mModelImagePageHorizontalFlip", EBSwitch.self, #file, #line)
@@ -1130,7 +1148,6 @@ import Cocoa
     self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
     self.mModelImagePageHorizontalFlip?.bind_value (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
     self.mModelImagePageVerticalFlip?.bind_value (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
-    self.mModelImagePageGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property, file: #file, line: #line)
     self.mModelImagePageGridUnitPopUp?.bind_selectedTag (self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
     self.mModelImagePageGridTextField?.bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
     self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
@@ -1544,8 +1561,18 @@ import Cocoa
   //   removeUserInterface
   //····················································································································
 
-/*  override func removeUserInterface () {
+  override func removeUserInterface () {
     super.removeUserInterface ()
+  //--------------------------- Clean up auto layout views
+    self.mPageMasterView.ebCleanUp ()
+    self.mModelImagePage.ebCleanUp ()
+    self.mPackagePage.ebCleanUp ()
+    self.mProgramPage.ebCleanUp ()
+    self.mInfosPage.ebCleanUp ()
+    let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
+    for item in toolbarItems {
+      item.view?.ebCleanUp ()
+    }
   //--------------------------- Unbind regular bindings
     self.mModelImageView?.unbind_backgroundImageData ()
     self.mModelImageView?.unbind_underObjectsDisplay ()
@@ -1564,7 +1591,6 @@ import Cocoa
     self.mModelImageView?.unbind_yPlacardUnit ()
     self.mModelImagePageHorizontalFlip?.unbind_value ()
     self.mModelImagePageVerticalFlip?.unbind_value ()
-    self.mModelImagePageGridDisplayPopUpButton?.unbind_selectedTag ()
     self.mModelImagePageGridUnitPopUp?.unbind_selectedTag ()
     self.mModelImagePageGridTextField?.unbind_dimensionAndUnit ()
     self.mModelImagePageXPlacardUnitPopUpButton?.unbind_selectedTag ()
@@ -1756,39 +1782,39 @@ import Cocoa
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelPointsCircleRadiusSlider_enabled!)
-    self.mController_mModelPointsCircleRadiusSlider_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
-    self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
-    self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mRemoveModelImageMenuItem_enabled!)
-    self.mController_mRemoveModelImageMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
-    self.mController_mResetModelImagePointsMenuItem_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
-    self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
-    self.mController_mLockImagePointsButton_enabled = nil
-    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
-    self.mController_mModelImageOpacitySlider_enabled = nil
-    self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
-    self.mController_mPadStyleView_hidden = nil
-    self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
-    self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
-    self.rootObject.freePadNumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
-    self.mController_mPadRenumberingPullDownButton_enabled = nil
-    self.mPackageSlavePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mSlavePadStyleView_hidden!)
-    self.mController_mSlavePadStyleView_hidden = nil
-    self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.removeEBObserver (self.mController_mRemoveZoneForbiddenPadNumberButton_enabled!)
-    self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
-    self.rootObject.counterClockNumbering_property.removeEBObserver (self.mController_mCounterClockNumberingStartAngleView_hidden!)
-    self.mController_mCounterClockNumberingStartAngleView_hidden = nil
-    self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
-    self.mController_mDeselectIssueButton_hidden = nil
-    self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
-    self.mController_mIssueScrollView_hidden = nil
-    self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
-    self.mController_mAddSlavePadButton_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelPointsCircleRadiusSlider_enabled!)
+ //   self.mController_mModelPointsCircleRadiusSlider_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
+ //   self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
+ //   self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mRemoveModelImageMenuItem_enabled!)
+ //   self.mController_mRemoveModelImageMenuItem_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
+ //   self.mController_mResetModelImagePointsMenuItem_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
+ //   self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
+ //   self.mController_mLockImagePointsButton_enabled = nil
+ //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
+ //   self.mController_mModelImageOpacitySlider_enabled = nil
+ //   self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
+ //   self.mController_mPadStyleView_hidden = nil
+ //   self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
+ //   self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
+ //   self.rootObject.freePadNumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
+ //   self.mController_mPadRenumberingPullDownButton_enabled = nil
+ //   self.mPackageSlavePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mSlavePadStyleView_hidden!)
+ //   self.mController_mSlavePadStyleView_hidden = nil
+ //   self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.removeEBObserver (self.mController_mRemoveZoneForbiddenPadNumberButton_enabled!)
+ //   self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
+ //   self.rootObject.counterClockNumbering_property.removeEBObserver (self.mController_mCounterClockNumberingStartAngleView_hidden!)
+ //   self.mController_mCounterClockNumberingStartAngleView_hidden = nil
+ //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
+ //   self.mController_mDeselectIssueButton_hidden = nil
+ //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
+ //   self.mController_mIssueScrollView_hidden = nil
+ //   self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
+ //   self.mController_mAddSlavePadButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mModelImageObjectsController.unbind_ebView (self.mModelImageView)
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
@@ -1942,7 +1968,6 @@ import Cocoa
     self.mModelImageFirstPointYDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageFirstPointYTextField?.ebCleanUp ()
     self.mModelImageOpacitySlider?.ebCleanUp ()
-    self.mModelImagePageGridDisplayPopUpButton?.ebCleanUp ()
     self.mModelImagePageGridTextField?.ebCleanUp ()
     self.mModelImagePageGridUnitPopUp?.ebCleanUp ()
     self.mModelImagePageHorizontalFlip?.ebCleanUp ()
@@ -2171,7 +2196,6 @@ import Cocoa
     self.mModelImageFirstPointYDimensionUnitPopUp = nil
     self.mModelImageFirstPointYTextField = nil
     self.mModelImageOpacitySlider = nil
-    self.mModelImagePageGridDisplayPopUpButton = nil
     self.mModelImagePageGridTextField = nil
     self.mModelImagePageGridUnitPopUp = nil
     self.mModelImagePageHorizontalFlip = nil
@@ -2290,7 +2314,7 @@ import Cocoa
     self.mZoneYLabelUnitPopUp = nil
     self.mZoneYTextField = nil
     self.mZoneYUnitPopUp = nil
-  } */
+  }
 
   //····················································································································
 

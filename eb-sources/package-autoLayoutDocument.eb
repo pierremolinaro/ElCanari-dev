@@ -21,12 +21,12 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   toolbarItem "Version" : AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
 
   toolbarItem space ;
+ 
+  toolbarItem "Status" : AutoLayoutImageObserverView $image self.statusImage $tooltip self.statusMessage ;
 
   transient NSImage statusImage dependsFrom root.issues ;
   transient String statusMessage dependsFrom root.issues ;
   transient MetadataStatus metadataStatus dependsFrom root.issues ;
- 
-  toolbarItem "Status" : AutoLayoutImageObserverView $image self.statusImage $tooltip self.statusMessage ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
@@ -69,11 +69,27 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
       hStack {
         space ;
         AutoLayoutStaticLabel (title: "Grid Style", bold: no, small: yes) ;
-        AutoLayoutPopUpButton
-          add (title: "No Grid")
-          add (title: "Cross Grid")
-          add (title: "Line Grid")
+        AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles)
           $selectedIndex root.mModelImagePageGridStyle
+        ;
+      }
+      hStack {
+        space ;
+        AutoLayoutStaticLabel (title: "Grid Display", bold: no, small: yes) ;
+        AutoLayoutTaggedPopUpButton
+          add (title: "1 Step", withTag: 1)
+          add (title: "2 Steps", withTag: 2)
+          add (title: "5 Steps", withTag: 5)
+          add (title: "8 Steps", withTag: 8)
+          add (title: "10 Steps", withTag: 10)
+          add (title: "12 Steps", withTag: 12)
+          add (title: "15 Steps", withTag: 15)
+          add (title: "20 Steps", withTag: 20)
+          add (title: "25 Steps", withTag: 25)
+          add (title: "50 Steps", withTag: 50)
+          add (title: "100 Steps", withTag: 100)
+          add (title: "200 Steps", withTag: 200)
+          $selectedTag root.mModelImagePageGridDisplayFactor
         ;
       }
       space ;
@@ -112,9 +128,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
   outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
 //  outlet EBPopUpButton mModelImagePageGridStyle $selectedIndex root.mModelImagePageGridStyle ;
-  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
-    root.mModelImagePageGridDisplayFactor
-  ;
+//  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
+//    root.mModelImagePageGridDisplayFactor
+//  ;
   outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
   outlet CanariDimensionTextField mModelImagePageGridTextField
      $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit

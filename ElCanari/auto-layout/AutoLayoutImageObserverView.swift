@@ -33,6 +33,16 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  override func ebCleanUp () {
+    self.mImageController?.unregister ()
+    self.mImageController = nil
+    self.mTooltipController?.unregister ()
+    self.mTooltipController = nil
+    super.ebCleanUp ()
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 24.0, height: 24.0)
   }
