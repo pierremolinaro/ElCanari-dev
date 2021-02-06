@@ -8,21 +8,21 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   TOOL BAR
 //----------------------------------------------------------------------------------------------------------------------
 
-  toolbarItem "Page" : AutoLayoutSegmentedControlWithPages (documentView: view mPageMasterView)
-        addPage (title: "Model Image", pageView: view mModelImagePage)
-        addPage (title: "Package", pageView: view mPackagePage)
-        addPage (title: "Program", pageView: view mProgramPage)
-        addPage (title: "Infos", pageView: view mInfosPage)
-        $selectedPage root.selectedPageIndex
-  ;
+  toolbarItem "Page" : SegmentedControlWithPages (documentView: view mPageMasterView) {
+    addPage (title: "Model Image", pageView: view mModelImagePage)
+    addPage (title: "Package", pageView: view mPackagePage)
+    addPage (title: "Program", pageView: view mProgramPage)
+    addPage (title: "Infos", pageView: view mInfosPage)
+    $selectedPage root.selectedPageIndex
+  }
 
-  toolbarItem "Signature" : AutoLayoutSignatureField $signature signature ;
+  toolbarItem "Signature" : SignatureField { $signature signature }
   
-  toolbarItem "Version" : AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
+  toolbarItem "Version" : VersionField { $version version $versionShouldChange versionShouldChange }
 
   toolbarItem space ;
  
-  toolbarItem "Status" : AutoLayoutImageObserverView $image self.statusImage $tooltip self.statusMessage ;
+  toolbarItem "Status" : ImageObserverView { $image self.statusImage $tooltip self.statusMessage }
 
   transient NSImage statusImage dependsFrom root.issues ;
   transient String statusMessage dependsFrom root.issues ;
@@ -34,90 +34,89 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
  
   view mPageMasterView : vStack ;
 
-//  view mMainView vStack {
-//    hStack set (margins: 5) {
-//      vStack set (margins: 5) {
-//        AutoLayoutSegmentedControlWithPages (documentView: mPageMasterView)
-//        addPage (title: "Model Image", pageView: mModelImagePage)
-//        addPage (title: "Package", pageView: mPackagePage)
-//        addPage (title: "Program", pageView: mProgramPage)
-//        addPage (title: "Infos", pageView: mInfosPage)
-//        $selectedPage root.selectedPageIndex
-//        ;
-//        AutoLayoutStaticLabel (title: "Page", bold: no, small: yes) ;
-//      }
-//      vStack {
-//        AutoLayoutSignatureField $signature signature ;
-//        AutoLayoutStaticLabel (title: "Signature", bold: no, small: yes) ;
-//     }
-//      vStack {
-//        AutoLayoutVersionField $version version $versionShouldChange versionShouldChange ;
-//        AutoLayoutStaticLabel (title: "Version", bold: no, small: yes) ;
-//     }
-//     space ;
-//    }
-//    AutoLayoutSeparator ;
-//    view mPageMasterView ;
-//  }
-
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE    MODEL IMAGE
 //----------------------------------------------------------------------------------------------------------------------
-
-  view mTemp0 hStack {
-    AutoLayoutStaticLabel (title: "Grid Style", bold: no, small: yes) ;
-  }
-  view mTemp1 hStack {
-    AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles)
-          $selectedIndex root.mModelImagePageGridStyle
-        ;
-  }
   
   view mModelImagePage hStack {
-    vStack set (width: 250) set (margins: 19) {
-      AutoLayoutTwoColumnsGridView set (width: 250) set (margins: 19)
-      separator
-      add (left: view mTemp0, right: view mTemp1)
-      separator (withTitle: "Grid")
-      ;
-      hStack {
-        space ;
-        AutoLayoutStaticLabel (title: "Grid Style", bold: no, small: yes) ;
-        AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles)
-          $selectedIndex root.mModelImagePageGridStyle
-        ;
-      }
-      hStack {
-        space ;
-        AutoLayoutStaticLabel (title: "Grid Display", bold: no, small: yes) ;
-        AutoLayoutTaggedPopUpButton
-          add (title: "1 Step", withTag: 1)
-          add (title: "2 Steps", withTag: 2)
-          add (title: "5 Steps", withTag: 5)
-          add (title: "8 Steps", withTag: 8)
-          add (title: "10 Steps", withTag: 10)
-          add (title: "12 Steps", withTag: 12)
-          add (title: "15 Steps", withTag: 15)
-          add (title: "20 Steps", withTag: 20)
-          add (title: "25 Steps", withTag: 25)
-          add (title: "50 Steps", withTag: 50)
-          add (title: "100 Steps", withTag: 100)
-          add (title: "200 Steps", withTag: 200)
-          $selectedTag root.mModelImagePageGridDisplayFactor
-        ;
-      }
-      hStack {
-        space ;
-        AutoLayoutStaticLabel (title: "Grid Step", bold: no, small: yes) ;
-        AutoLayoutCanariDimensionTextField $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit ;
-        AutoLayoutCanariUnitPopUpButton $selectedUnit root.mModelImagePageGridStepUnit ;
-      }
-      space ;
+    TwoColumnsGridView {
+      set (width: 250) 
+      set (margins: 19)
+      add (
+        left: { StaticLabel (title: "Grid Style", bold: no, small: yes) },
+        right: { EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle} }
+      )
+      add (
+        left: { StaticLabel (title: "Grid Display", bold: no, small: yes) },
+        right: {
+          TaggedPopUpButton {
+            add (title: "1 Step", withTag: 1)
+            add (title: "2 Steps", withTag: 2)
+            add (title: "5 Steps", withTag: 5)
+            add (title: "8 Steps", withTag: 8)
+            add (title: "10 Steps", withTag: 10)
+            add (title: "12 Steps", withTag: 12)
+            add (title: "15 Steps", withTag: 15)
+            add (title: "20 Steps", withTag: 20)
+            add (title: "25 Steps", withTag: 25)
+            add (title: "50 Steps", withTag: 50)
+            add (title: "100 Steps", withTag: 100)
+            add (title: "200 Steps", withTag: 200)
+            $selectedTag root.mModelImagePageGridDisplayFactor
+          }
+        }
+      )
+      add (
+        left: { StaticLabel (title: "Grid Step", bold: no, small: yes) },
+        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit } }
+      )
+      add (
+        left: { StaticLabel (title: "Flip", bold: no, small: yes) },
+        right: { Switch (title: "Horizontal") { $value root.mModelImagePageHorizontalFlip } }
+      )
+      add (
+        left: { FlexibleSpace },
+        right: { Switch (title: "Vertical") { $value root.mModelImagePageVerticalFlip } }
+      )
+      add (
+        left: { StaticLabels (left: "Placard", right: "X", bold: no, small: yes) },
+        right: { CanariUnitPopUpButton { $unit root.mModelImagePageXPlacardUnit } }
+      )
+      add (
+        left: { StaticLabel (title: "Y", bold: no, small: yes) },
+        right: { CanariUnitPopUpButton { $unit root.mModelImagePageYPlacardUnit } }
+      )
+      add (
+        left: { StaticLabels (left: "Green", right: "X", bold: no, small: yes) },
+        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX } }
+      )
+      add (
+        left: { StaticLabel (title: "Y", bold: no, small: yes) },
+        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY } }
+      )
+      add (
+        left: { StaticLabel (title: "∆X", bold: no, small: yes) },
+        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx } }
+      )
+      add (
+        left: { StaticLabel (title: "∆Y", bold: no, small: yes) },
+        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy } }
+      )
+      add (
+        left: { StaticLabels (left: "Brown", right: "X", bold: no, small: yes) },
+        right: { CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit } }
+      )
+      add (
+        left: { StaticLabel (title: "Y", bold: no, small: yes) },
+        right: { CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit } }
+      )
+
+      flexibleSpace () 
     }
     vStack {
-      space ;
-      hStack { AutoLayoutStaticLabel (title: "Model Image", bold: yes, small: no) ; space ; }
-      space ;
+      space
+      hStack { StaticLabel (title: "Model Image", bold: yes, small: no) space }
+      space
     }
   }
 
@@ -145,8 +144,8 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
     $yPlacardUnit root.mModelImagePageYPlacardUnit
   ;
 
-  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
-  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
+//  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
+//  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
 //  outlet EBPopUpButton mModelImagePageGridStyle $selectedIndex root.mModelImagePageGridStyle ;
 //  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
 //    root.mModelImagePageGridDisplayFactor
@@ -155,12 +154,12 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //  outlet CanariDimensionTextField mModelImagePageGridTextField
 //     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
 //  ;
-  outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
-    $selectedTag root.mModelImagePageXPlacardUnit
-  ;
-  outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
-    $selectedTag root.mModelImagePageYPlacardUnit
-  ;
+//  outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
+//    $selectedTag root.mModelImagePageXPlacardUnit
+//  ;
+//  outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
+//    $selectedTag root.mModelImagePageYPlacardUnit
+//  ;
   
   outlet EBSlider mModelPointsCircleRadiusSlider
     $intValue root.mModelPointsCircleRadius {sendContinously : yes}
@@ -168,33 +167,33 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
   
   outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
   
-  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
-  outlet CanariDimensionTextField mModelImageFirstPointXTextField
-     $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
-  ;
-  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointY ;
-  outlet CanariDimensionTextField mModelImageFirstPointYTextField
-     $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
-  ;
+//  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
+//  outlet CanariDimensionTextField mModelImageFirstPointXTextField
+//     $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
+//  ;
+//  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointY ;
+//  outlet CanariDimensionTextField mModelImageFirstPointYTextField
+//     $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
+//  ;
 
 
-  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDx ;
-  outlet CanariDimensionTextField mModelImagePointDxTextField
-     $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
-  ;
-  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDy ;
-  outlet CanariDimensionTextField mModelImagePointDyTextField
-     $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
-  ;
+//  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDx ;
+//  outlet CanariDimensionTextField mModelImagePointDxTextField
+//     $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
+//  ;
+//  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDy ;
+//  outlet CanariDimensionTextField mModelImagePointDyTextField
+//     $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
+//  ;
  
-  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
-  outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
-     $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
-  ;
-  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
-  outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
-     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
-  ;
+//  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+//  outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
+//     $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
+//  ;
+//  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+//  outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
+//     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
+//  ;
 
   action loadModelImageFromPasteboardAction ;
   outlet EBMenuItem mLoadModelImageFromPasteboardMenuItem
@@ -226,9 +225,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //----------------------------------------------------------------------------------------------------------------------
 
   view mPackagePage hStack {
-    space ;
-    vStack { space ; AutoLayoutStaticLabel (title: "Package", bold: yes, small: no) ; space ; }
-    space ;
+    space
+    vStack { space StaticLabel (title: "Package", bold: yes, small: no) space }
+    space
   }
 
 
@@ -237,9 +236,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //----------------------------------------------------------------------------------------------------------------------
 
   view mProgramPage vStack {
-    space ;
-    hStack { space ; AutoLayoutStaticLabel (title: "Program", bold: yes, small: no) ; space ; }
-    space ;
+    space
+    hStack { space StaticLabel (title: "Program", bold: yes, small: no) space }
+    space
   }
 
 
@@ -248,9 +247,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //----------------------------------------------------------------------------------------------------------------------
 
   view mInfosPage vStack {
-    space ;
-    hStack { space ; AutoLayoutStaticLabel (title: "Infos", bold: yes, small: no) ; space ; }
-    space ;
+    space
+    hStack { space StaticLabel (title: "Infos", bold: yes, small: no) space }
+    space
   }
 
 

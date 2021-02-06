@@ -203,12 +203,12 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
     self.addWindowController (windowController)
   //--- Build temporary view
     let vStackView = AutoLayoutVerticalStackView ()
-    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    vStackView.appendView (AutoLayoutFlexibleSpace ())
     let hStackView = AutoLayoutHorizontalStackView ()
-    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    hStackView.appendView (AutoLayoutFlexibleSpace ())
     hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
-    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
-    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    hStackView.appendView (AutoLayoutFlexibleSpace ())
+    vStackView.appendView (AutoLayoutFlexibleSpace ())
     window.contentView = vStackView
   //--- Build user interface
 //    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
@@ -226,12 +226,12 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   func ebBuildUserInterface () {
     let vStackView = AutoLayoutVerticalStackView ()
-    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    vStackView.appendView (AutoLayoutFlexibleSpace ())
     let hStackView = AutoLayoutHorizontalStackView ()
-    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    hStackView.appendView (AutoLayoutFlexibleSpace ())
     hStackView.appendView (AutoLayoutStaticLabel (title: "Undefined User Interface", bold: true, small: false))
-    hStackView.appendView (AutoLayoutFlexibleSpaceView ())
-    vStackView.appendView (AutoLayoutFlexibleSpaceView ())
+    hStackView.appendView (AutoLayoutFlexibleSpace ())
+    vStackView.appendView (AutoLayoutFlexibleSpace ())
     self.windowForSheet?.contentView = vStackView
   }
   

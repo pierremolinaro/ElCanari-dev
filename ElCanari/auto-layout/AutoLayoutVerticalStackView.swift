@@ -48,9 +48,9 @@ class AutoLayoutVerticalStackView : AutoLayoutStackView {
 //    Swift.print ("V STACK \(self)")
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpaceView] ()
+    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
     for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpaceView {
+      if let spaceView = view as? AutoLayoutFlexibleSpace {
         spaceViewArray.append (spaceView)
       }
     }

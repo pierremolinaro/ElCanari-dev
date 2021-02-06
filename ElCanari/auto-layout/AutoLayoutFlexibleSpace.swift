@@ -3,10 +3,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   AutoLayoutFlexibleSpaceView
+//   AutoLayoutFlexibleSpace
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutFlexibleSpaceView : NSView, EBUserClassNameProtocol {
+class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 

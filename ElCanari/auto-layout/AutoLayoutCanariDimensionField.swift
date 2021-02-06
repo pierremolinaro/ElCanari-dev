@@ -1,16 +1,18 @@
 //
-//  AutoLayoutCanariDimensionTextField.swift
+//  AutoLayoutCanariDimensionField.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
 //
+//----------------------------------------------------------------------------------------------------------------------
+
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   AutoLayoutCanariDimensionTextField
+//   AutoLayoutCanariDimensionField
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutCanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -65,13 +67,13 @@ class AutoLayoutCanariDimensionTextField : NSTextField, EBUserClassNameProtocol,
 
   //····················································································································
 
-  private var mController : Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit? = nil
+  private var mController : Controller_AutoLayoutCanariDimensionField_dimensionAndUnit? = nil
 
   //····················································································································
 
   func bind_dimensionAndUnit (_ object : EBReadWriteProperty_Int,
                               _ unit : EBReadOnlyProperty_Int) -> Self {
-    self.mController = Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
+    self.mController = Controller_AutoLayoutCanariDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
   }
 
@@ -87,12 +89,12 @@ class AutoLayoutCanariDimensionTextField : NSTextField, EBUserClassNameProtocol,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//   Controller Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit
+//   Controller Controller_AutoLayoutCanariDimensionField_dimensionAndUnit
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit : EBReadOnlyPropertyController {
+final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBReadOnlyPropertyController {
 
-  private var mOutlet: AutoLayoutCanariDimensionTextField
+  private var mOutlet: AutoLayoutCanariDimensionField
   private var mDimension : EBReadWriteProperty_Int
   private var mUnit : EBReadOnlyProperty_Int
 
@@ -100,7 +102,7 @@ final class Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit : EBR
 
   init (dimension : EBReadWriteProperty_Int,
         unit : EBReadOnlyProperty_Int,
-        outlet : AutoLayoutCanariDimensionTextField) {
+        outlet : AutoLayoutCanariDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit
     self.mOutlet = outlet
@@ -110,7 +112,7 @@ final class Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit : EBR
     )
   //--- Target
     self.mOutlet.target = self
-    self.mOutlet.action = #selector(Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit.action(_:))
+    self.mOutlet.action = #selector(Controller_AutoLayoutCanariDimensionField_dimensionAndUnit.action(_:))
   //--- Number formatter
     let numberFormatter = NumberFormatter ()
     numberFormatter.formatterBehavior = .behavior10_4
@@ -132,7 +134,7 @@ final class Controller_AutoLayoutCanariDimensionTextField_dimensionAndUnit : EBR
 
   //····················································································································
 
-  @objc func action (_ sender : AutoLayoutCanariDimensionTextField) {
+  @objc func action (_ sender : AutoLayoutCanariDimensionField) {
     switch self.mUnit.selection {
     case .empty, .multiple :
       break

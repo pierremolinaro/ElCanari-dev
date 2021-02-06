@@ -1,5 +1,5 @@
 //
-//  AutoLayoutTwoColumnsGridView.swift
+//  AutoLayoutCanariObservedDimensionAndPopUp.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
@@ -9,17 +9,22 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+//   AutoLayoutCanariObservedDimensionAndPopUp
+//----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
-
-  private var mLastRightView : NSView? = nil
+class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   //····················································································································
-  //   INIT
+
+  fileprivate let mDimensionField = AutoLayoutCanariObservedDimensionField ()
+  fileprivate let mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton ()
+
   //····················································································································
 
   override init () {
     super.init ()
+    self.appendView (self.mDimensionField)
+    self.appendView (self.mUnitPopUpButton)
   }
 
   //····················································································································
@@ -30,42 +35,10 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
-    if let lastRightView = self.mLastRightView {
-      let c = NSLayoutConstraint (
-        item: inRightView,
-        attribute: .width,
-        relatedBy: .equal,
-        toItem: lastRightView,
-        attribute: .width,
-        multiplier: 1.0,
-        constant: 0.0
-      )
-      self.addConstraint (c)
-    }
-    let hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (AutoLayoutFlexibleSpace ())
-    hStack.appendView (inLeftView)
-    hStack.appendView (inRightView)
-    self.appendView (hStack)
-    self.mLastRightView = inRightView
-    return self
-  }
-
-  //····················································································································
-
-  func separator () -> Self {
-    self.appendView (AutoLayoutSeparator ())
-    return self
-  }
-
-  //····················································································································
-
-  func separator (withTitle inTitle : String) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (AutoLayoutStaticLabel (title: inTitle, bold: true, small: true))
-    hStack.appendView (AutoLayoutSeparator ())
-    self.appendView (hStack)
+  func bind_dimensionAndUnit (_ inDimension : EBReadOnlyProperty_Int,
+                              _ inUnit : EBReadWriteProperty_Int) -> Self {
+    _ = self.mDimensionField.bind_dimensionAndUnit (inDimension, inUnit)
+    _ = self.mUnitPopUpButton.bind_unit (inUnit)
     return self
   }
 

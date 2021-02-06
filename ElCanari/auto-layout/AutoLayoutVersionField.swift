@@ -48,13 +48,6 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  func unbind_version () {
-//    self.mVersionController?.unregister ()
-//    self.mVersionController = nil
-//  }
-
-  //····················································································································
-
   private func updateVersion (from inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
     case .empty :
