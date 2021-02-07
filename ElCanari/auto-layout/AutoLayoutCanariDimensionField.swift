@@ -53,15 +53,15 @@ class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtocol, NST
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.doubleValue = propertyValue
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 
@@ -77,13 +77,6 @@ class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtocol, NST
     return self
   }
 
-//  //····················································································································
-//
-//  func unbind_dimensionAndUnit () {
-//    self.mController?.unregister ()
-//    self.mController = nil
-//  }
-//
   //····················································································································
 
 }

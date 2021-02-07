@@ -32,7 +32,7 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  signatureObserver binding
+  //  $signature binding
   //····················································································································
 
   private var mController : EBReadOnlyPropertyController? = nil
@@ -46,13 +46,6 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
     )
     return self
   }
-
-  //····················································································································
-
-//  func unbind_signature () {
-//    self.mController?.unregister ()
-//    self.mController = nil
-//  }
 
   //····················································································································
 

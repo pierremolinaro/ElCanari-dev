@@ -54,6 +54,13 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
+  func add (single inView : NSView) -> Self {
+    self.appendView (inView)
+    return self
+  }
+
+  //····················································································································
+
   func separator () -> Self {
     self.appendView (AutoLayoutSeparator ())
     return self

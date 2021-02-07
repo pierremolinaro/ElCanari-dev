@@ -273,11 +273,8 @@ import Cocoa
   @IBOutlet var mLoadDIL16ModelImageFromResourcesdMenuItem : EBMenuItem? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mLoadModelImageFromPasteboardMenuItem : EBMenuItem? = nil
-  @IBOutlet var mLockImagePointsButton : EBButton? = nil
-  @IBOutlet var mLockImageView : EBImageObserverView? = nil
   @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
   @IBOutlet var mModelImageScrollView : EBScrollView? = nil
-  @IBOutlet var mModelImageSizeTextField : EBTextObserverField? = nil
   @IBOutlet var mModelImageView : EBGraphicView? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
@@ -388,7 +385,6 @@ import Cocoa
 //  var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mResetModelImagePointsMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mLockImagePointsButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mModelImageOpacitySlider_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
@@ -500,6 +496,8 @@ import Cocoa
       .add (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
       .add (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
       .add (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
+      .add (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
+      .add (single: self.computeImplicitView_30 ())
       .flexibleSpace ()
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
@@ -611,7 +609,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_1 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
-        .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
+      .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
     return view
   }
 
@@ -642,7 +640,7 @@ import Cocoa
       .add (title: "50 Steps", withTag: 50)
       .add (title: "100 Steps", withTag: 100)
       .add (title: "200 Steps", withTag: 200)
-        .bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
+      .bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
     return view
   }
 
@@ -661,7 +659,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
     return view
   }
 
@@ -680,7 +678,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_7 () -> NSView {
     let view = AutoLayoutSwitch (title: "Horizontal")
-        .bind_value (self.rootObject.mModelImagePageHorizontalFlip_property)
+      .bind_value (self.rootObject.mModelImagePageHorizontalFlip_property)
     return view
   }
 
@@ -699,7 +697,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_9 () -> NSView {
     let view = AutoLayoutSwitch (title: "Vertical")
-        .bind_value (self.rootObject.mModelImagePageVerticalFlip_property)
+      .bind_value (self.rootObject.mModelImagePageVerticalFlip_property)
     return view
   }
 
@@ -718,7 +716,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_11 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton ()
-        .bind_unit (self.rootObject.mModelImagePageXPlacardUnit_property)
+      .bind_unit (self.rootObject.mModelImagePageXPlacardUnit_property)
     return view
   }
 
@@ -737,7 +735,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_13 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton ()
-        .bind_unit (self.rootObject.mModelImagePageYPlacardUnit_property)
+      .bind_unit (self.rootObject.mModelImagePageYPlacardUnit_property)
     return view
   }
 
@@ -746,7 +744,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Green", right: "X", bold: false, small: true)
+    let view = AutoLayoutButton (title: "Temp", small: true)
     return view
   }
 
@@ -755,8 +753,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
+    let view = AutoLayoutLabel (small: true)
+      .bind_title (self.rootObject.modelImageSizeString_property)
     return view
   }
 
@@ -765,7 +763,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_16 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
+    let view = AutoLayoutStaticLabels (left: "Green", right: "X", bold: false, small: true)
     return view
   }
 
@@ -775,7 +773,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_17 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
     return view
   }
 
@@ -784,7 +782,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_18 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆X", bold: false, small: true)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
     return view
   }
 
@@ -794,7 +792,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_19 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
     return view
   }
 
@@ -803,7 +801,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_20 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, small: true)
+    let view = AutoLayoutStaticLabel (title: "∆X", bold: false, small: true)
     return view
   }
 
@@ -813,7 +811,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_21 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
     return view
   }
 
@@ -822,7 +820,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_22 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Brown", right: "X", bold: false, small: true)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, small: true)
     return view
   }
 
@@ -831,8 +829,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_23 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp ()
+      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
     return view
   }
 
@@ -841,7 +839,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_24 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
+    let view = AutoLayoutStaticLabels (left: "Brown", right: "X", bold: false, small: true)
     return view
   }
 
@@ -851,7 +849,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_25 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp ()
-        .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
     return view
   }
 
@@ -860,7 +858,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_26 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "PointSize", bold: false, small: true)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
     return view
   }
 
@@ -869,8 +867,57 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_27 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+      .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 28
+  //····················································································································
+
+  fileprivate final func computeImplicitView_28 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "PointSize", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 29
+  //····················································································································
+
+  fileprivate final func computeImplicitView_29 () -> NSView {
     let view = AutoLayoutSlider (min: 1, max: 61, ticks: 19)
-        .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
+      .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
+      .bind_enabled (
+        observedObjects: [self.rootObject.hasModelImage_property],
+        computeFunction: { return self.rootObject.hasModelImage_property_selection }
+      )
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 30
+  //····················································································································
+
+  fileprivate final func computeImplicitView_30 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutButton (title: "Lock Points to Model Image", small: true)
+        .bind_enabled (
+          observedObjects: [self.rootObject.hasModelImage_property, self.rootObject.mPointsAreLocked_property],
+          computeFunction: { return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection) }
+        )
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
+        )
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+      let view_2 = AutoLayoutImageObserverView (small: true)
+        .bind_image (self.rootObject.lockImageView_property)
+      view.appendView (view_2)
+    }
     return view
   }
 
@@ -921,7 +968,7 @@ import Cocoa
         .addPage (title: "Package", pageView: self.mPackagePage)
         .addPage (title: "Program", pageView: self.mProgramPage)
         .addPage (title: "Infos", pageView: self.mInfosPage)
-          .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+        .bind_selectedPage (self.rootObject.selectedPageIndex_property)
       toolbarItem.view = view
       return toolbarItem
     case "1" :
@@ -930,7 +977,7 @@ import Cocoa
       toolbarItem.label = "Signature"
       toolbarItem.isEnabled = true
       let view = AutoLayoutSignatureField ()
-          .bind_signature (self.signatureObserver_property)
+        .bind_signature (self.signatureObserver_property)
       toolbarItem.view = view
       return toolbarItem
     case "2" :
@@ -939,8 +986,8 @@ import Cocoa
       toolbarItem.label = "Version"
       toolbarItem.isEnabled = true
       let view = AutoLayoutVersionField ()
-          .bind_version (self.versionObserver_property)
-          .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+        .bind_version (self.versionObserver_property)
+        .bind_versionShouldChange (self.versionShouldChangeObserver_property)
       toolbarItem.view = view
       return toolbarItem
     case NSToolbarItem.Identifier.flexibleSpace.rawValue :
@@ -950,9 +997,9 @@ import Cocoa
       let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
       toolbarItem.label = "Status"
       toolbarItem.isEnabled = true
-      let view = AutoLayoutImageObserverView ()
-          .bind_image (self.statusImage_property)
-          .bind_tooltip (self.statusMessage_property)
+      let view = AutoLayoutImageObserverView (small: false)
+        .bind_image (self.statusImage_property)
+        .bind_tooltip (self.statusMessage_property)
       toolbarItem.view = view
       return toolbarItem
     default :
@@ -1068,11 +1115,8 @@ import Cocoa
 //    checkOutletConnection (self.mLoadDIL16ModelImageFromResourcesdMenuItem, "mLoadDIL16ModelImageFromResourcesdMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mLoadModelImageFromPasteboardMenuItem, "mLoadModelImageFromPasteboardMenuItem", EBMenuItem.self, #file, #line)
-//    checkOutletConnection (self.mLockImagePointsButton, "mLockImagePointsButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mLockImageView, "mLockImageView", EBImageObserverView.self, #file, #line)
 //    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
-//    checkOutletConnection (self.mModelImageSizeTextField, "mModelImageSizeTextField", EBTextObserverField.self, #file, #line)
 //    checkOutletConnection (self.mModelImageView, "mModelImageView", EBGraphicView.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1363,8 +1407,6 @@ import Cocoa
     self.mModelImageView?.bind_backColor (prefs_packageBackgroundColor_property, file: #file, line: #line)
     self.mModelImageView?.bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
     self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
-    self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
-    self.mLockImageView?.bind_image (self.rootObject.lockImageView_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
@@ -1580,17 +1622,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection)
-        },
-        outlet: self.mLockImagePointsButton
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.rootObject.mPointsAreLocked_property.addEBObserver (controller)
-      self.mController_mLockImagePointsButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
           return self.rootObject.hasModelImage_property_selection
         },
         outlet: self.mModelImageOpacitySlider
@@ -1699,8 +1730,6 @@ import Cocoa
     self.mRemoveModelImageMenuItem?.action = #selector (AutoLayoutPackageDocument.removeModelImageAction (_:))
     self.mResetModelImagePointsMenuItem?.target = self
     self.mResetModelImagePointsMenuItem?.action = #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:))
-    self.mLockImagePointsButton?.target = self
-    self.mLockImagePointsButton?.action = #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
     self.mSetDimensionTextOriginAtMidX?.target = self
     self.mSetDimensionTextOriginAtMidX?.action = #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidXAction (_:))
     self.mSetDimensionTextOriginAtMidY?.target = self
@@ -1777,8 +1806,6 @@ import Cocoa
     self.mModelImageView?.unbind_backColor ()
     self.mModelImageView?.unbind_xPlacardUnit ()
     self.mModelImageView?.unbind_yPlacardUnit ()
-    self.mModelImageSizeTextField?.unbind_valueObserver ()
-    self.mLockImageView?.unbind_image ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
     self.mModelImageOpacitySlider?.unbind_doubleValue ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
@@ -1959,9 +1986,6 @@ import Cocoa
  //   self.mController_mRemoveModelImageMenuItem_enabled = nil
  //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
  //   self.mController_mResetModelImagePointsMenuItem_enabled = nil
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
- //   self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
- //   self.mController_mLockImagePointsButton_enabled = nil
  //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
  //   self.mController_mModelImageOpacitySlider_enabled = nil
  //   self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
@@ -2015,7 +2039,6 @@ import Cocoa
     self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = nil
     self.mRemoveModelImageMenuItem?.target = nil
     self.mResetModelImagePointsMenuItem?.target = nil
-    self.mLockImagePointsButton?.target = nil
     self.mSetDimensionTextOriginAtMidX?.target = nil
     self.mSetDimensionTextOriginAtMidY?.target = nil
     self.mAddZoneForbiddenPadNumberButton?.target = nil
@@ -2128,11 +2151,8 @@ import Cocoa
     self.mLoadDIL16ModelImageFromResourcesdMenuItem?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
     self.mLoadModelImageFromPasteboardMenuItem?.ebCleanUp ()
-    self.mLockImagePointsButton?.ebCleanUp ()
-    self.mLockImageView?.ebCleanUp ()
     self.mModelImageOpacitySlider?.ebCleanUp ()
     self.mModelImageScrollView?.ebCleanUp ()
-    self.mModelImageSizeTextField?.ebCleanUp ()
     self.mModelImageView?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
@@ -2337,11 +2357,8 @@ import Cocoa
     self.mLoadDIL16ModelImageFromResourcesdMenuItem = nil
     self.mLoadFromDesignButton = nil
     self.mLoadModelImageFromPasteboardMenuItem = nil
-    self.mLockImagePointsButton = nil
-    self.mLockImageView = nil
     self.mModelImageOpacitySlider = nil
     self.mModelImageScrollView = nil
-    self.mModelImageSizeTextField = nil
     self.mModelImageView = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil

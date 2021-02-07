@@ -66,10 +66,10 @@ class AutoLayoutSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .single (let propertyValue) :
       self.doubleValue = propertyValue
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 
@@ -96,10 +96,10 @@ class AutoLayoutSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .single (let propertyValue) :
       self.doubleValue = Double (propertyValue)
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 

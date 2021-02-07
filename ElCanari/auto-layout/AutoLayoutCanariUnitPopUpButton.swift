@@ -66,12 +66,12 @@ class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   func updateTag (from inObject : EBGenericReadWriteProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
       self.selectItem (withTag: v)
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     }
   }
 

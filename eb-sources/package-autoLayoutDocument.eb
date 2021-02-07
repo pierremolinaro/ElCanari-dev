@@ -2,17 +2,17 @@
 //     P A C K A G E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterView {
+autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMasterView {
 
 //----------------------------------------------------------------------------------------------------------------------
 //   TOOL BAR
 //----------------------------------------------------------------------------------------------------------------------
 
-  toolbarItem "Page" : SegmentedControlWithPages (documentView: view mPageMasterView) {
-    addPage (title: "Model Image", pageView: view mModelImagePage)
-    addPage (title: "Package", pageView: view mPackagePage)
-    addPage (title: "Program", pageView: view mProgramPage)
-    addPage (title: "Infos", pageView: view mInfosPage)
+  toolbarItem "Page" : SegmentedControlWithPages (documentView: stackView mPageMasterView) {
+    addPage (title: "Model Image", pageView: stackView mModelImagePage)
+    addPage (title: "Package", pageView: stackView mPackagePage)
+    addPage (title: "Program", pageView: stackView mProgramPage)
+    addPage (title: "Infos", pageView: stackView mInfosPage)
     $selectedPage root.selectedPageIndex
   }
 
@@ -22,7 +22,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 
   toolbarItem space ;
  
-  toolbarItem "Status" : ImageObserverView { $image self.statusImage $tooltip self.statusMessage }
+  toolbarItem "Status" : ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage }
 
   transient NSImage statusImage dependsFrom root.issues ;
   transient String statusMessage dependsFrom root.issues ;
@@ -32,23 +32,25 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
  
-  view mPageMasterView : vStack ;
+  stackView mPageMasterView : vStack ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE    MODEL IMAGE
 //----------------------------------------------------------------------------------------------------------------------
   
-  view mModelImagePage hStack {
+  action lockImagePointsAction ;
+
+  stackView mModelImagePage hStack {
     TwoColumnsGridView {
       set (width: 250) 
       set (margins: 19)
       add (
-        left: { StaticLabel (title: "Grid Style", bold: no, small: yes) },
-        right: { EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle} }
+        left: StaticLabel (title: "Grid Style", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle}
       )
       add (
-        left: { StaticLabel (title: "Grid Display", bold: no, small: yes) },
-        right: {
+        left: StaticLabel (title: "Grid Display", bold: no, small: yes),
+        right:
           TaggedPopUpButton {
             add (title: "1 Step", withTag: 1)
             add (title: "2 Steps", withTag: 2)
@@ -64,61 +66,72 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
             add (title: "200 Steps", withTag: 200)
             $selectedTag root.mModelImagePageGridDisplayFactor
           }
+      )
+      add (
+        left: StaticLabel (title: "Grid Step", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
+      )
+      add (
+        left: StaticLabel (title: "Flip", bold: no, small: yes),
+        right: Switch (title: "Horizontal") { $value root.mModelImagePageHorizontalFlip }
+      )
+      add (
+        left: FlexibleSpace,
+        right: Switch (title: "Vertical") { $value root.mModelImagePageVerticalFlip }
+      )
+      add (
+        left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
+        right: CanariUnitPopUpButton { $unit root.mModelImagePageXPlacardUnit }
+      )
+      add (
+        left: StaticLabel (title: "Y", bold: no, small: yes),
+        right: CanariUnitPopUpButton { $unit root.mModelImagePageYPlacardUnit }
+      )
+      add (
+        left: Button (title: "Temp", small: yes),
+        right: Label (small: yes) { $title root.modelImageSizeString }
+      )
+      add (
+        left: StaticLabels (left: "Green", right: "X", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
+      )
+      add (
+        left: StaticLabel (title: "Y", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
+      )
+      add (
+        left: StaticLabel (title: "∆X", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
+      )
+      add (
+        left: StaticLabel (title: "∆Y", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
+      )
+      add (
+        left: StaticLabels (left: "Brown", right: "X", bold: no, small: yes),
+        right: CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
+      )
+      add (
+        left: StaticLabel (title: "Y", bold: no, small: yes),
+        right: CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit }
+      )
+      add (
+        left: StaticLabel (title: "PointSize", bold: no, small: yes),
+        right: Slider (min:1, max:61, ticks: 19) {
+          $intValue root.mModelPointsCircleRadius (sendContinously : yes)
+          $enabled root.hasModelImage
         }
       )
-      add (
-        left: { StaticLabel (title: "Grid Step", bold: no, small: yes) },
-        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit } }
+      add (single:
+        hStack {
+          Button (title: "Lock Points to Model Image", small: yes) {
+            $enabled !root.mPointsAreLocked & root.hasModelImage
+            $run lockImagePointsAction
+          }
+          space
+          ImageObserverView (small: yes) { $image root.lockImageView }
+        }
       )
-      add (
-        left: { StaticLabel (title: "Flip", bold: no, small: yes) },
-        right: { Switch (title: "Horizontal") { $value root.mModelImagePageHorizontalFlip } }
-      )
-      add (
-        left: { FlexibleSpace },
-        right: { Switch (title: "Vertical") { $value root.mModelImagePageVerticalFlip } }
-      )
-      add (
-        left: { StaticLabels (left: "Placard", right: "X", bold: no, small: yes) },
-        right: { CanariUnitPopUpButton { $unit root.mModelImagePageXPlacardUnit } }
-      )
-      add (
-        left: { StaticLabel (title: "Y", bold: no, small: yes) },
-        right: { CanariUnitPopUpButton { $unit root.mModelImagePageYPlacardUnit } }
-      )
-      add (
-        left: { StaticLabels (left: "Green", right: "X", bold: no, small: yes) },
-        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX } }
-      )
-      add (
-        left: { StaticLabel (title: "Y", bold: no, small: yes) },
-        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY } }
-      )
-      add (
-        left: { StaticLabel (title: "∆X", bold: no, small: yes) },
-        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx } }
-      )
-      add (
-        left: { StaticLabel (title: "∆Y", bold: no, small: yes) },
-        right: { CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy } }
-      )
-      add (
-        left: { StaticLabels (left: "Brown", right: "X", bold: no, small: yes) },
-        right: { CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit } }
-      )
-      add (
-        left: { StaticLabel (title: "Y", bold: no, small: yes) },
-        right: { CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit } }
-      )
-      add (
-        left: { StaticLabel (title: "PointSize", bold: no, small: yes) },
-        right: { Slider (min:1, max:61, ticks: 19) {$intValue root.mModelPointsCircleRadius (sendContinously : yes) } }
-      )
-
-//  outlet EBSlider mModelPointsCircleRadiusSlider
-//    $intValue root.mModelPointsCircleRadius (sendContinously : yes)
-//    $enabled root.hasModelImage ;
-
       flexibleSpace () 
     }
     vStack {
@@ -173,7 +186,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //    $intValue root.mModelPointsCircleRadius (sendContinously : yes)
 //    $enabled root.hasModelImage ;
   
-  outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
+//  outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
   
 //  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
 //  outlet CanariDimensionTextField mModelImageFirstPointXTextField
@@ -223,16 +236,16 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
     $run resetModelImagePointsAction
     $enabled root.hasModelImage ;
   
-  action lockImagePointsAction ;
-  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
-  outlet EBImageObserverView mLockImageView $image root.lockImageView ;
+//  action lockImagePointsAction ;
+//  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
+//  outlet EBImageObserverView mLockImageView $image root.lockImageView ;
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   PACKAGE
 //----------------------------------------------------------------------------------------------------------------------
 
-  view mPackagePage hStack {
+  stackView mPackagePage hStack {
     space
     vStack { space StaticLabel (title: "Package", bold: yes, small: no) space }
     space
@@ -243,7 +256,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   PAGE   PROGRAM
 //----------------------------------------------------------------------------------------------------------------------
 
-  view mProgramPage vStack {
+  stackView mProgramPage vStack {
     space
     hStack { space StaticLabel (title: "Program", bold: yes, small: no) space }
     space
@@ -254,7 +267,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot view mPageMasterVi
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
-  view mInfosPage vStack {
+  stackView mInfosPage vStack {
     space
     hStack { space StaticLabel (title: "Infos", bold: yes, small: no) space }
     space

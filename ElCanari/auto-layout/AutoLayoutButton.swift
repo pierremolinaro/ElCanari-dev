@@ -11,14 +11,16 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class ALButton : NSButton {
+class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (_ inTitle : String) {
+  init (title inTitle : String, small inSmall : Bool) {
     super.init (frame: NSRect ())
+    noteObjectAllocation (self)
     self.title = inTitle
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize)
+    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
+    self.font = NSFont.systemFont (ofSize: fontSize)
     self.bezelStyle = .regularSquare
   }
 
@@ -29,23 +31,15 @@ class ALButton : NSButton {
   }
 
   //····················································································································
-
-  static func make (_ title : String) -> ALButton {
-    let b = ALButton (title)
-    gCurrentStack?.addView (b, in: .leading)
-    return b
-  }
-
-  //····················································································································
   // SET FLEXIBLE WIDTH
   //····················································································································
 
-  func setFlexibleWidth () -> Self {
-    // Swift.print ("\(self.contentHuggingPriority (for: .horizontal))")
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    self.needsUpdateConstraints = true
-    return self
-  }
+//  func setFlexibleWidth () -> Self {
+//    // Swift.print ("\(self.contentHuggingPriority (for: .horizontal))")
+//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+//    self.needsUpdateConstraints = true
+//    return self
+//  }
 
   //····················································································································
 

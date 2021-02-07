@@ -51,13 +51,13 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   private func updateVersion (from inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.stringValue = "—"
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
       self.stringValue = String (v)
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.stringValue = "—"
     }
   }

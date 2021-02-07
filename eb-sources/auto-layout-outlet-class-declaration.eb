@@ -58,6 +58,7 @@ extern autolayout class TwoColumnsGridView {
   func separator ()
   func separator (withTitle : String)
   func add (left : view, right: view)
+  func add (single : view)
   func flexibleSpace ()
 }
 
@@ -70,7 +71,7 @@ extern autolayout class StaticLabels (left : String, right : String, bold: Bool,
 extern autolayout class Separator {
 }
 
-extern autolayout class Label {
+extern autolayout class Label (small: Bool) {
   $title transient String
 }
 
@@ -88,7 +89,7 @@ extern autolayout class VersionField {
   $versionShouldChange transient Bool
 }
 
-extern autolayout class ImageObserverView {
+extern autolayout class ImageObserverView (small: Bool) {
   $image transient NSImage
   $tooltip transient String
 }
@@ -125,8 +126,11 @@ extern autolayout class Switch (title: String) {
   $value property Bool
 }
 
-extern autolayout class Slider (min: Int, max: Int, ticks: Int) {
+extern autolayout class Slider (min: Int, max: Int, ticks: Int) $enabled {
   $intValue property Int (sendContinously : Bool)
+}
+
+extern autolayout class Button (title: String, small: Bool) $enabled $run {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

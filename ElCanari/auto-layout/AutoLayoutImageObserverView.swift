@@ -18,7 +18,12 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  private let mSmall : Bool
+
+  //····················································································································
+
+  init (small inSmall : Bool) {
+    self.mSmall = inSmall
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.imageScaling = .scaleProportionallyUpOrDown
@@ -44,7 +49,8 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: 24.0, height: 24.0)
+    let s = self.mSmall ? 17.0 : 24.0
+    return NSSize (width: s, height: s)
   }
 
   //····················································································································
@@ -55,13 +61,13 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     switch object.selection {
     case .empty :
       self.image = nil
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .multiple :
       self.image = nil
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .single (let propertyValue) :
       self.image = propertyValue
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 
@@ -80,13 +86,6 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-
-//  func unbind_image () {
-//    self.mImageController?.unregister ()
-//    self.mImageController = nil
-//  }
-
-  //····················································································································
   //  tooltip binding
   //····················································································································
 
@@ -94,13 +93,13 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     switch object.selection {
     case .empty :
       self.toolTip = nil
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .multiple :
       self.toolTip = nil
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .single (let propertyValue) :
       self.toolTip = propertyValue
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 
@@ -113,17 +112,10 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   func bind_tooltip (_ object : EBReadOnlyProperty_String) -> Self {
     self.mTooltipController = EBReadOnlyPropertyController (
       observedObjects: [object],
-      callBack : { [weak self] in self?.updateTooltip (object) }
+      callBack: { [weak self] in self?.updateTooltip (object) }
     )
     return self
   }
-
-  //····················································································································
-
-//  func unbind_tooltip () {
-//    self.mTooltipController?.unregister ()
-//    self.mTooltipController = nil
-//  }
 
   //····················································································································
 

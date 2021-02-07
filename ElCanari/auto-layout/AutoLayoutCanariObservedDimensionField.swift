@@ -54,15 +54,15 @@ class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNameProto
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.doubleValue = propertyValue
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 
@@ -104,9 +104,6 @@ final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit :
       observedObjects: [dimension, unit],
       callBack: { outlet.updateOutlet (dimension: dimension, unit: unit) }
     )
-  //--- Target
-//    self.mOutlet.target = self
-//    self.mOutlet.action = #selector(Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit.action(_:))
   //--- Number formatter
     let numberFormatter = NumberFormatter ()
     numberFormatter.formatterBehavior = .behavior10_4
@@ -117,30 +114,6 @@ final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit :
     numberFormatter.isLenient = true
     self.mOutlet.formatter = numberFormatter
   }
-
-  //····················································································································
-
-//  override func unregister () {
-//    super.unregister ()
-//    self.mOutlet.target = nil
-//    self.mOutlet.action = nil
-//  }
-
-  //····················································································································
-
-//  @objc func action (_ sender : AutoLayoutCanariObservedDimensionField) {
-//    switch self.mUnit.selection {
-//    case .empty, .multiple :
-//      break
-//    case .single (let unit) :
-//      if let formatter = self.mOutlet.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.mOutlet.stringValue) {
-//        let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
-//        _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
-//      }else{
-//        __NSBeep ()
-//      }
-//    }
-//  }
 
   //····················································································································
 

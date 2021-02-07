@@ -10,11 +10,10 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   // INIT
   //····················································································································
 
-  init () {
-    let inTitle = "ESSAI"
+  init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
-    self.stringValue = inTitle
+//    self.stringValue = inTitle
     self.isBezeled = false
     self.isBordered = false
     self.backgroundColor = debugBackgroundColor ()
@@ -22,13 +21,22 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
     self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
+    self.font = NSFont.systemFont (ofSize: fontSize)
   }
 
   //····················································································································
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    self.mTitleController?.unregister ()
+    self.mTitleController = nil
+    super.ebCleanUp ()
   }
 
   //····················································································································
@@ -47,6 +55,35 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
     self.alignment = inAlignment
     return self
+  }
+
+  //····················································································································
+  //  $title binding
+  //····················································································································
+
+  private var mTitleController : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  func bind_title (_ model : EBReadOnlyProperty_String) -> Self {
+    self.mTitleController = EBReadOnlyPropertyController (
+      observedObjects: [model],
+      callBack: { [weak self] in self?.update (from: model) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  private func update (from model : EBReadOnlyProperty_String) {
+    switch model.selection {
+    case .empty :
+      self.stringValue = "—"
+    case .single (let v) :
+      self.stringValue = v
+    case .multiple :
+      self.stringValue = "—"
+    }
   }
 
   //····················································································································
