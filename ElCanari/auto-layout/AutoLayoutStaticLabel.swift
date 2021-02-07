@@ -21,6 +21,7 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
+    self.alignment = .right
     let size = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
     self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
   }
@@ -44,10 +45,10 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
   // SET TITLE ALIGNMENT
   //····················································································································
 
-  func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
-    self.alignment = inAlignment
-    return self
-  }
+//  func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
+//    self.alignment = inAlignment
+//    return self
+//  }
 
   //····················································································································
 

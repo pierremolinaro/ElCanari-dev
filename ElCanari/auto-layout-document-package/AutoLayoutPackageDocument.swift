@@ -270,9 +270,7 @@ import Cocoa
   @IBOutlet var mIssuesInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mKnobSizeSlider : EBSlider? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
-  @IBOutlet var mLoadDIL16ModelImageFromResourcesdMenuItem : EBMenuItem? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
-  @IBOutlet var mLoadModelImageFromPasteboardMenuItem : EBMenuItem? = nil
   @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
   @IBOutlet var mModelImageScrollView : EBScrollView? = nil
   @IBOutlet var mModelImageView : EBGraphicView? = nil
@@ -319,9 +317,7 @@ import Cocoa
   @IBOutlet var mProgramHelpButton : EBButton? = nil
   @IBOutlet var mProgramHelpSheet : NSPanel? = nil
   @IBOutlet var mProgramTextView : EBTextView? = nil
-  @IBOutlet var mRemoveModelImageMenuItem : EBMenuItem? = nil
   @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
-  @IBOutlet var mResetModelImagePointsMenuItem : EBMenuItem? = nil
   @IBOutlet var mResetVersionButton : EBButton? = nil
   @IBOutlet var mRunProgramButton : EBButton? = nil
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView? = nil
@@ -381,10 +377,6 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mResetModelImagePointsMenuItem_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mModelImageOpacitySlider_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
@@ -745,10 +737,10 @@ import Cocoa
 
   fileprivate final func computeImplicitView_14 () -> NSView {
     let view = AutoLayoutPullDownButton (title: "Action", small: true)
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:))))
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:))))
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:))))
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return !self.rootObject.hasModelImage_property_selection }))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return !self.rootObject.hasModelImage_property_selection }))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return self.rootObject.hasModelImage_property_selection }))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return self.rootObject.hasModelImage_property_selection }))
     return view
   }
 
@@ -1116,9 +1108,7 @@ import Cocoa
 //    checkOutletConnection (self.mIssuesInspectorView, "mIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mLoadDIL16ModelImageFromResourcesdMenuItem, "mLoadDIL16ModelImageFromResourcesdMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mLoadModelImageFromPasteboardMenuItem, "mLoadModelImageFromPasteboardMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
 //    checkOutletConnection (self.mModelImageView, "mModelImageView", EBGraphicView.self, #file, #line)
@@ -1165,9 +1155,7 @@ import Cocoa
 //    checkOutletConnection (self.mProgramHelpButton, "mProgramHelpButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
 //    checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
-//    checkOutletConnection (self.mRemoveModelImageMenuItem, "mRemoveModelImageMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mResetModelImagePointsMenuItem, "mResetModelImagePointsMenuItem", EBMenuItem.self, #file, #line)
 //    checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1586,46 +1574,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return !self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mLoadModelImageFromPasteboardMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mLoadDIL16ModelImageFromResourcesdMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mRemoveModelImageMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mRemoveModelImageMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
-        outlet: self.mResetModelImagePointsMenuItem
-      )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mResetModelImagePointsMenuItem_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
           return self.rootObject.hasModelImage_property_selection
         },
         outlet: self.mModelImageOpacitySlider
@@ -1974,14 +1922,6 @@ import Cocoa
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
- //   self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
- //   self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = nil
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mRemoveModelImageMenuItem_enabled!)
- //   self.mController_mRemoveModelImageMenuItem_enabled = nil
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
- //   self.mController_mResetModelImagePointsMenuItem_enabled = nil
  //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
  //   self.mController_mModelImageOpacitySlider_enabled = nil
  //   self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
@@ -2140,9 +2080,7 @@ import Cocoa
     self.mIssuesInspectorView?.ebCleanUp ()
     self.mKnobSizeSlider?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
-    self.mLoadModelImageFromPasteboardMenuItem?.ebCleanUp ()
     self.mModelImageOpacitySlider?.ebCleanUp ()
     self.mModelImageScrollView?.ebCleanUp ()
     self.mModelImageView?.ebCleanUp ()
@@ -2189,9 +2127,7 @@ import Cocoa
     self.mProgramHelpButton?.ebCleanUp ()
     self.mProgramHelpSheet?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
-    self.mRemoveModelImageMenuItem?.ebCleanUp ()
     self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
-    self.mResetModelImagePointsMenuItem?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mRunProgramButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
@@ -2346,9 +2282,7 @@ import Cocoa
     self.mIssuesInspectorView = nil
     self.mKnobSizeSlider = nil
     self.mLineColorOfPackageGridColorWell = nil
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem = nil
     self.mLoadFromDesignButton = nil
-    self.mLoadModelImageFromPasteboardMenuItem = nil
     self.mModelImageOpacitySlider = nil
     self.mModelImageScrollView = nil
     self.mModelImageView = nil
@@ -2395,9 +2329,7 @@ import Cocoa
     self.mProgramHelpButton = nil
     self.mProgramHelpSheet = nil
     self.mProgramTextView = nil
-    self.mRemoveModelImageMenuItem = nil
     self.mRemoveZoneForbiddenPadNumberButton = nil
-    self.mResetModelImagePointsMenuItem = nil
     self.mResetVersionButton = nil
     self.mRunProgramButton = nil
     self.mSegmentInspectorView = nil

@@ -13,6 +13,7 @@ import Cocoa
 class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   private var mLastRightView : NSView? = nil
+  private var mLastLeftView : NSView? = nil
 
   //····················································································································
   //   INIT
@@ -31,6 +32,18 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
   //····················································································································
 
   func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
+    if let lastLeftView = self.mLastLeftView {
+      let c = NSLayoutConstraint (
+        item: inLeftView,
+        attribute: .width,
+        relatedBy: .equal,
+        toItem: lastLeftView,
+        attribute: .width,
+        multiplier: 1.0,
+        constant: 0.0
+      )
+      self.addConstraint (c)
+    }
     if let lastRightView = self.mLastRightView {
       let c = NSLayoutConstraint (
         item: inRightView,
@@ -44,10 +57,10 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
       self.addConstraint (c)
     }
     let hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (AutoLayoutFlexibleSpace ())
     hStack.appendView (inLeftView)
     hStack.appendView (inRightView)
     self.appendView (hStack)
+    self.mLastLeftView = inLeftView
     self.mLastRightView = inRightView
     return self
   }
