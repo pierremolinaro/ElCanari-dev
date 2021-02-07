@@ -744,7 +744,11 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutButton (title: "Temp", small: true)
+    let view = AutoLayoutPullDownButton (title: "Action", small: true)
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:))))
     return view
   }
 
@@ -1722,14 +1726,6 @@ import Cocoa
 /*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
-    self.mLoadModelImageFromPasteboardMenuItem?.target = self
-    self.mLoadModelImageFromPasteboardMenuItem?.action = #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:))
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = self
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.action = #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:))
-    self.mRemoveModelImageMenuItem?.target = self
-    self.mRemoveModelImageMenuItem?.action = #selector (AutoLayoutPackageDocument.removeModelImageAction (_:))
-    self.mResetModelImagePointsMenuItem?.target = self
-    self.mResetModelImagePointsMenuItem?.action = #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:))
     self.mSetDimensionTextOriginAtMidX?.target = self
     self.mSetDimensionTextOriginAtMidX?.action = #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidXAction (_:))
     self.mSetDimensionTextOriginAtMidY?.target = self
@@ -2035,10 +2031,6 @@ import Cocoa
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
   //--------------------------- Remove targets / actions
-    self.mLoadModelImageFromPasteboardMenuItem?.target = nil
-    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = nil
-    self.mRemoveModelImageMenuItem?.target = nil
-    self.mResetModelImagePointsMenuItem?.target = nil
     self.mSetDimensionTextOriginAtMidX?.target = nil
     self.mSetDimensionTextOriginAtMidY?.target = nil
     self.mAddZoneForbiddenPadNumberButton?.target = nil

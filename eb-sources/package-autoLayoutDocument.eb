@@ -39,6 +39,10 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
 //----------------------------------------------------------------------------------------------------------------------
   
   action lockImagePointsAction ;
+  action loadModelImageFromPasteboardAction ;
+  action loadDIL16ModelImageFromResourcesAction ;
+  action removeModelImageAction ;
+  action resetModelImagePointsAction ;
 
   stackView mModelImagePage hStack {
     TwoColumnsGridView {
@@ -88,7 +92,12 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
         right: CanariUnitPopUpButton { $unit root.mModelImagePageYPlacardUnit }
       )
       add (
-        left: Button (title: "Temp", small: yes),
+        left: PullDownButton (title: "Action", small: yes) {
+          add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction)
+          add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction)
+          add (item: menuItem "Remove Model Image" $run removeModelImageAction)
+          add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction)
+        },
         right: Label (small: yes) { $title root.modelImageSizeString }
       )
       add (
@@ -216,24 +225,24 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
 //     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
 //  ;
 
-  action loadModelImageFromPasteboardAction ;
+//  action loadModelImageFromPasteboardAction ;
   outlet EBMenuItem mLoadModelImageFromPasteboardMenuItem
-    $run loadModelImageFromPasteboardAction
+//    $run loadModelImageFromPasteboardAction
     $enabled !root.hasModelImage ;
   
-  action loadDIL16ModelImageFromResourcesAction ;
+//  action loadDIL16ModelImageFromResourcesAction ;
   outlet EBMenuItem mLoadDIL16ModelImageFromResourcesdMenuItem
-    $run loadDIL16ModelImageFromResourcesAction
+//    $run loadDIL16ModelImageFromResourcesAction
     $enabled !root.hasModelImage ;
   
-  action removeModelImageAction ;
+//  action removeModelImageAction ;
   outlet EBMenuItem mRemoveModelImageMenuItem
-    $run removeModelImageAction
+//    $run removeModelImageAction
     $enabled root.hasModelImage ;
   
-  action resetModelImagePointsAction ;
+//  action resetModelImagePointsAction ;
   outlet EBMenuItem mResetModelImagePointsMenuItem
-    $run resetModelImagePointsAction
+//    $run resetModelImagePointsAction
     $enabled root.hasModelImage ;
   
 //  action lockImagePointsAction ;

@@ -952,6 +952,12 @@
 		CF625BBD25D0197900072462 /* AutoLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602E25CAB4FA00A00D5C /* AutoLayoutButton.swift */; };
 		CF625BBE25D0197900072462 /* AutoLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602E25CAB4FA00A00D5C /* AutoLayoutButton.swift */; };
 		CF625BBF25D0197A00072462 /* AutoLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602E25CAB4FA00A00D5C /* AutoLayoutButton.swift */; };
+		CF625BC125D0294D00072462 /* AutoLayoutPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */; };
+		CF625BC225D0294D00072462 /* AutoLayoutPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */; };
+		CF625BC325D0294D00072462 /* AutoLayoutPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */; };
+		CF625CB425D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625CB325D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift */; };
+		CF625CB525D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625CB325D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift */; };
+		CF625CB625D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625CB325D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift */; };
 		CF64331A23620D8B00FD8D93 /* NSControl-extension-enable-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */; };
 		CF64331B23620D8B00FD8D93 /* NSControl-extension-enable-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */; };
 		CF6436162104ED960020988A /* transient-BoardModel-imageForModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */; };
@@ -4539,6 +4545,8 @@
 		CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-programHelpAction.swift"; sourceTree = "<group>"; };
 		CF625ACF25CFFF2700072462 /* AutoLayout-extension-NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayout-extension-NSView.swift"; sourceTree = "<group>"; };
 		CF625BB925D003EF00072462 /* AutoLayout-extension-NSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayout-extension-NSControl.swift"; sourceTree = "<group>"; };
+		CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutPullDownButton.swift; sourceTree = "<group>"; };
+		CF625CB325D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutMenuItemDescriptor.swift; sourceTree = "<group>"; };
 		CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSControl-extension-enable-binding.swift"; sourceTree = "<group>"; };
 		CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-imageForModel.swift"; sourceTree = "<group>"; };
 		CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterPreferredDirections.swift"; sourceTree = "<group>"; };
@@ -6558,6 +6566,8 @@
 				CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */,
 				CF8FCA3F25CD8C030036764B /* AutoLayoutImageObserverView.swift */,
 				CF57922725CB0977009E9EF7 /* AutoLayoutLabel.swift */,
+				CF625CB325D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift */,
+				CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */,
 				CF57931C25CB3A0B009E9EF7 /* AutoLayoutSegmentedControlWithPages.swift */,
 				CF57931825CB277A009E9EF7 /* AutoLayoutSeparator.swift */,
 				CF1AA7B325CC98B700C1F9EE /* AutoLayoutSignatureField.swift */,
@@ -8611,6 +8621,7 @@
 				CFF2A1F121B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */,
 				CF1A10FD2108A1EC00987BFD /* transient-MergerDocument-issues.swift in Sources */,
 				CF92E1F51DDB1C9E0019691C /* GeometricRect.swift in Sources */,
+				CF625BC125D0294D00072462 /* AutoLayoutPullDownButton.swift in Sources */,
 				CFEB7B90233A26540060A97A /* transient-DeviceMasterPadInProject-descriptor.swift in Sources */,
 				CF9C677A25CAC83800A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
 				CFCCB35422B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift in Sources */,
@@ -8709,6 +8720,7 @@
 				CFEB7AAF233A23270060A97A /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */,
 				CFFBEEC522A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift in Sources */,
 				CFB1BAD82304954C00D32F36 /* ProjectDocument-rename-in-library.swift in Sources */,
+				CF625CB425D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift in Sources */,
 				CFDB1DA525CEFDF50098C56C /* AutoLayoutSwitch.swift in Sources */,
 				CFF2620A20EF824700E8F453 /* extension-MergerDocument-insert-array-of-boards.swift in Sources */,
 				CFCD3ACD21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
@@ -9918,6 +9930,7 @@
 				CF5C4D4D219F04D600EAC52A /* transient-MergerDocument-issues.swift in Sources */,
 				CFA4D55722D36B6A007992CD /* toone-BoardLine.swift in Sources */,
 				CFF2A1F221B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */,
+				CF625BC225D0294D00072462 /* AutoLayoutPullDownButton.swift in Sources */,
 				CF9D4B3D227F796C006E2035 /* action-ProjectDocument-removeNetClassAction.swift in Sources */,
 				CF9C677B25CAC83800A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
 				CFEB7B91233A26540060A97A /* transient-DeviceMasterPadInProject-descriptor.swift in Sources */,
@@ -10016,6 +10029,7 @@
 				CFEB7AB0233A23270060A97A /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */,
 				CF4D084121C2F18000380ACA /* entity-PackageSegment.swift in Sources */,
 				CF7EF0BA22D3679F0047FDE4 /* entity-BoardTrack.swift in Sources */,
+				CF625CB525D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift in Sources */,
 				CFDB1DA625CEFDF50098C56C /* AutoLayoutSwitch.swift in Sources */,
 				CF5C4D63219F04D600EAC52A /* action-MergerDocument-moveRightAction.swift in Sources */,
 				CFCD3ACE21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
@@ -11225,6 +11239,7 @@
 				CF9C639A25CABE5C00A00D5C /* transient-SymbolSolidOval-issues.swift in Sources */,
 				CF9C639B25CABE5C00A00D5C /* transient-MergerDocument-issues.swift in Sources */,
 				CF9C639C25CABE5C00A00D5C /* GeometricRect.swift in Sources */,
+				CF625BC325D0294D00072462 /* AutoLayoutPullDownButton.swift in Sources */,
 				CF9C639D25CABE5C00A00D5C /* transient-DeviceMasterPadInProject-descriptor.swift in Sources */,
 				CF9C677C25CAC83800A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
 				CF9C639E25CABE5C00A00D5C /* enum-BoardTextVerticalAlignment.swift in Sources */,
@@ -11323,6 +11338,7 @@
 				CF9C63F925CABE5C00A00D5C /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */,
 				CF9C63FA25CABE5C00A00D5C /* ProjectDocument-board-limits-contextual-click.swift in Sources */,
 				CF9C63FB25CABE5C00A00D5C /* ProjectDocument-rename-in-library.swift in Sources */,
+				CF625CB625D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift in Sources */,
 				CFDB1DA725CEFDF50098C56C /* AutoLayoutSwitch.swift in Sources */,
 				CF9C63FC25CABE5C00A00D5C /* extension-MergerDocument-insert-array-of-boards.swift in Sources */,
 				CF9C63FD25CABE5C00A00D5C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,

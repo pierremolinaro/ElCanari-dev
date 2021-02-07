@@ -133,6 +133,10 @@ extern autolayout class Slider (min: Int, max: Int, ticks: Int) $enabled {
 extern autolayout class Button (title: String, small: Bool) $enabled $run {
 }
 
+extern autolayout class PullDownButton (title: String, small: Bool) {
+  func add (item: menuItem)
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 //extern autolayout class AutoLayoutCanariBoolPopUpButton $enabled ;
