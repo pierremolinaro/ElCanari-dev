@@ -532,7 +532,15 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final internal var mZoomToFitButton : NSButton? = nil
   final internal var mHelperTextField : NSTextField? = nil
   final var mHelperStringForOptionModifier : String? = nil
+  final internal var mHelperStringDidChangeCallback : Optional <(_ inString : String) -> Void> = nil
   final internal var mXYwindow : NSWindow? = nil
+
+  //····················································································································
+
+  final func setHelperTextField (_ inString : String) {
+    self.mHelperTextField?.stringValue = inString
+    self.mHelperStringDidChangeCallback? (inString)
+  }
 
   //····················································································································
   // MARK: -

@@ -18,20 +18,31 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   let mGraphicView = EBGraphicView (frame: NSRect ())
   var mZoomPopUpButton : NSPopUpButton? = nil
+  var mHelperTextField : AutoLayoutStaticLabel? = nil
 
   //····················································································································
 
   init (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) {
     super.init ()
-    let hStack = AutoLayoutHorizontalStackView ().setTopMargin (8.0)
+
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)
     self.mZoomPopUpButton = zoomPopUp
+
+    self.mGraphicView.mZoomDidChangeCallback = {
+      [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
+    }
+    self.mGraphicView.mHelperStringDidChangeCallback = {
+      [weak self] (_ inString : String) in self?.mHelperTextField?.stringValue = inString
+    }
+
+    let hStack = AutoLayoutHorizontalStackView ().setTopMargin (8.0)
     hStack.appendView (zoomPopUp)
     let zoomToFitButton = AutoLayoutButton (title: "Zoom to Fit", small: true)
     zoomToFitButton.target = self
     zoomToFitButton.action = #selector (Self.setZoomToFitButton (_:))
     hStack.appendView (zoomToFitButton)
-    let helperTextField = AutoLayoutStaticLabel (title: "helper...", bold: false, small: true)
+    let helperTextField = AutoLayoutStaticLabel (title: "", bold: false, small: true)
+    self.mHelperTextField = helperTextField
     hStack.appendView (helperTextField)
     hStack.appendView (AutoLayoutFlexibleSpace ())
     self.appendView (hStack)
@@ -47,10 +58,6 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     scrollView.documentView = self.mGraphicView
     enclosingView.appendView (scrollView)
     self.appendView (enclosingView)
-
-    self.mGraphicView.mZoomDidChangeCallback = {
-      [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
-    }
   }
 
   //····················································································································
@@ -134,8 +141,29 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //  BINDINGS
   //····················································································································
 
+  func bind_foregroundImageOpacity (_ inObject : EBGenericReadOnlyProperty <Double>) -> Self {
+    self.mGraphicView.bind_foregroundImageOpacity (inObject, file: #file, line: #line)
+    return self
+  }
+
+  //····················································································································
+
+  func bind_foregroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) -> Self {
+    self.mGraphicView.bind_foregroundImageData (inObject, file: #file, line: #line)
+    return self
+  }
+
+  //····················································································································
+
   func bind_backgroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) -> Self {
     self.mGraphicView.bind_backgroundImageData (inObject, file: #file, line: #line)
+    return self
+  }
+
+  //····················································································································
+
+  func bind_overObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) -> Self {
+    self.mGraphicView.bind_overObjectsDisplay (inObject, file: #file, line: #line)
     return self
   }
 
@@ -147,7 +175,6 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   }
 
   //····················································································································
-
 
   func bind_horizontalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) -> Self {
     self.mGraphicView.bind_horizontalFlip (inObject, file: #file, line: #line)
@@ -180,9 +207,15 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_arrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_arrowKeyMagnitude (inObject, file: #file, line: #line)
+    return self
+  }
+
+  //····················································································································
+
+  func bind_shiftArrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
+    self.mGraphicView.bind_shiftArrowKeyMagnitude (inObject, file: #file, line: #line)
     return self
   }
 
@@ -244,9 +277,15 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_yPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mGraphicView.bind_yPlacardUnit (inObject, file: #file, line: #line)
+    return self
+  }
+
+  //····················································································································
+
+  func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
+    inController.bind_ebView (self.mGraphicView)
     return self
   }
 

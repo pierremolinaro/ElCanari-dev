@@ -50,7 +50,7 @@ extension EBGraphicView {
         }
       }
     //--- Update helper string
-      self.mHelperTextField?.stringValue = self.mMouseDownBehaviour.helperString (unalignedMouseDownLocationInView, inEvent.modifierFlags, self)
+      self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedMouseDownLocationInView, inEvent.modifierFlags, self))
     }
   }
 
@@ -62,7 +62,7 @@ extension EBGraphicView {
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
-    self.mHelperTextField?.stringValue = self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self)
+    self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
   }
 
     //····················································································································
@@ -72,7 +72,7 @@ extension EBGraphicView {
       let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
       self.mMouseDownBehaviour.onMouseUp (unalignedLocationInView, self)
       self.mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
-      self.mHelperTextField?.stringValue = self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self)
+      self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
       self.mSelectionRectangle = nil
       self.mGuideBezierPath = nil
     //--- Set cursor
@@ -207,7 +207,7 @@ extension EBGraphicView {
     let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
   //--- Helper string
-    self.mHelperTextField?.stringValue = self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self)
+    self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
   //---
     super.flagsChanged (with: inEvent)
   }

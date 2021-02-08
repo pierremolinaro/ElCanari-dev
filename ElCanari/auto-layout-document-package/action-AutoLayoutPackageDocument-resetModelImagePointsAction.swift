@@ -23,7 +23,8 @@ extension AutoLayoutPackageDocument {
       self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
       //self.mModelImageView?.mBackgroundImageAffineTransform =  NSAffineTransform ()
-      self.mComposedPackageView?.mForegroundImageAffineTransform = NSAffineTransform ()
+      self.mPackageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
+//      self.mComposedPackageView?.mForegroundImageAffineTransform = NSAffineTransform ()
     //---
       self.buildGreenAndBluePoints ()
 //--- END OF USER ZONE 2

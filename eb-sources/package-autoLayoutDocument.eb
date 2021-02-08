@@ -164,162 +164,45 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
     }
   }
 
-//--------------- Model Image Tab
-//  outlet EBScrollView mModelImageScrollView ;
-
-//
-//  outlet EBGraphicView mModelImageView
-//    $backgroundImageData root.mModelImageData
-//    $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
-//    $horizontalFlip root.mModelImagePageHorizontalFlip
-//    $verticalFlip root.mModelImagePageVerticalFlip
-//    $graphicController #mModelImageObjectsController
-//    $mouseGrid root.mModelImagePageGridStep
-//    $gridStep root.mModelImagePageGridStep
-//    $arrowKeyMagnitude root.mModelImagePageGridStep
-//    $gridStyle root.mModelImagePageGridStyle
-//    $gridDisplayFactor root.mModelImagePageGridDisplayFactor
-//    $gridLineColor prefs.lineColorOfPackageGrid
-//    $gridCrossColor prefs.crossColorOfPackageGrid
-//    $zoom root.mModelImagePageZoom
-//    $backColor prefs.packageBackgroundColor
-//    $xPlacardUnit root.mModelImagePageXPlacardUnit
-//    $yPlacardUnit root.mModelImagePageYPlacardUnit
-//  ;
-
-//  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
-//  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
-//  outlet EBPopUpButton mModelImagePageGridStyle $selectedIndex root.mModelImagePageGridStyle ;
-//  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
-//    root.mModelImagePageGridDisplayFactor
-//  ;
-//  outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
-//  outlet CanariDimensionTextField mModelImagePageGridTextField
-//     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
-//  ;
-//  outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
-//    $selectedTag root.mModelImagePageXPlacardUnit
-//  ;
-//  outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
-//    $selectedTag root.mModelImagePageYPlacardUnit
-//  ;
-  
-//  outlet EBSlider mModelPointsCircleRadiusSlider
-//    $intValue root.mModelPointsCircleRadius (sendContinously : yes)
-//    $enabled root.hasModelImage ;
-  
-//  outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
-  
-//  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
-//  outlet CanariDimensionTextField mModelImageFirstPointXTextField
-//     $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
-//  ;
-//  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointY ;
-//  outlet CanariDimensionTextField mModelImageFirstPointYTextField
-//     $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
-//  ;
-
-
-//  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDx ;
-//  outlet CanariDimensionTextField mModelImagePointDxTextField
-//     $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
-//  ;
-//  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDy ;
-//  outlet CanariDimensionTextField mModelImagePointDyTextField
-//     $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
-//  ;
- 
-//  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
-//  outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
-//     $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
-//  ;
-//  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
-//  outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
-//     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
-//  ;
-
-//  action loadModelImageFromPasteboardAction ;
-//  outlet EBMenuItem mLoadModelImageFromPasteboardMenuItem
-//    $run loadModelImageFromPasteboardAction
-//    $enabled !root.hasModelImage ;
-//  
-//  action loadDIL16ModelImageFromResourcesAction ;
-//  outlet EBMenuItem mLoadDIL16ModelImageFromResourcesdMenuItem
-//    $run loadDIL16ModelImageFromResourcesAction
-//    $enabled !root.hasModelImage ;
-//  
-//  action removeModelImageAction ;
-//  outlet EBMenuItem mRemoveModelImageMenuItem
-//    $run removeModelImageAction
-//    $enabled root.hasModelImage ;
-//  
-//  action resetModelImagePointsAction ;
-//  outlet EBMenuItem mResetModelImagePointsMenuItem
-//    $run resetModelImagePointsAction
-//    $enabled root.hasModelImage ;
-  
-//  action lockImagePointsAction ;
-//  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
-//  outlet EBImageObserverView mLockImageView $image root.lockImageView ;
-
-
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   PACKAGE
 //----------------------------------------------------------------------------------------------------------------------
 
+  arrayController #mPackageObjectsController : root.packageObjects ;
+
   stackView mPackagePage hStack {
-    space
-    vStack { space StaticLabel (title: "Package", bold: yes, small: no) space }
-    space
+    vStack set (width: 250) {
+      space
+    }
+    GraphicView (minZoom: 10, maxZoom: 4000) {
+      $foregroundImageData root.mModelImageData
+      $foregroundImageOpacity root.mModelImageOpacity
+      $horizontalFlip root.horizontalFlip
+      $verticalFlip root.verticalFlip
+      $graphicController #mPackageObjectsController
+      $overObjectsDisplay root.padNumberDisplay
+      $mouseGrid root.gridStep
+      $gridStep root.gridStep
+      $arrowKeyMagnitude root.gridStep
+      $shiftArrowKeyMagnitude root.gridStepMultipliedByDisplayFactor
+      $gridStyle root.gridStyle
+      $gridDisplayFactor root.gridDisplayFactor
+      $gridLineColor prefs.lineColorOfPackageGrid
+      $gridCrossColor prefs.crossColorOfPackageGrid
+      $zoom root.zoom
+      $backColor prefs.packageBackgroundColor
+      $xPlacardUnit root.xPlacardUnit
+      $yPlacardUnit root.yPlacardUnit
+    }
   }
 
 
-//----------------------------------------------------------------------------------------------------------------------
-//   PAGE   PROGRAM
-//----------------------------------------------------------------------------------------------------------------------
-
-  stackView mProgramPage vStack {
-    space
-    hStack { space StaticLabel (title: "Program", bold: yes, small: no) space }
-    space
-  }
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//   PAGE   INFOS
-//----------------------------------------------------------------------------------------------------------------------
-
-  stackView mInfosPage vStack {
-    space
-    hStack { space StaticLabel (title: "Infos", bold: yes, small: no) space }
-    space
-  }
 
 
 
 
 
 
-
-
-
-
-
-//--- Selected Page
-//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
-//  outlet NSView mMasterView ;
-//  outlet CanariViewWithKeyView mPackagePageView ;
-//  outlet CanariViewWithKeyView mProgramPageView ;
-//  outlet CanariViewWithKeyView mModelImagePageView ;
-//  outlet CanariViewWithKeyView mInfosPageView ;
-
-//--- Signature
-//  outlet CanariSignatureField mSignatureTextField $signature signature ;
-
-//--- Version
-//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
-
-//-------------------------- Page : Package
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
   outlet NSView mBaseInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
@@ -723,11 +606,6 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
   outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
 
 //------- Issues
-//  outlet EBImageObserverView mStatusImageViewInToolbar $image self.statusImage $tooltip self.statusMessage ;
-//  transient NSImage statusImage dependsFrom root.issues ;
-//  transient String statusMessage dependsFrom root.issues ;
-//  transient MetadataStatus metadataStatus dependsFrom root.issues ;
-
   outlet CanariViewWithKeyView mIssueInspectorView ;
 
   outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
@@ -748,30 +626,30 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
   outlet CanariDragSourceButton mAddZoneButton ;
 
 //--- Package display
-  arrayController #mPackageObjectsController : root.packageObjects ;
-
-  outlet EBGraphicView mComposedPackageView
-    $foregroundImageData root.mModelImageData
-    $foregroundImageOpacity root.mModelImageOpacity
-    $horizontalFlip root.horizontalFlip
-    $verticalFlip root.verticalFlip
-    $graphicController #mPackageObjectsController
-    $overObjectsDisplay root.padNumberDisplay
-    $mouseGrid root.gridStep
-    $gridStep root.gridStep
-    $arrowKeyMagnitude root.gridStep
-    $shiftArrowKeyMagnitude root.gridStepMultipliedByDisplayFactor
-    $gridStyle root.gridStyle
-    $gridDisplayFactor root.gridDisplayFactor
-    $gridLineColor prefs.lineColorOfPackageGrid
-    $gridCrossColor prefs.crossColorOfPackageGrid
-    $zoom root.zoom
-    $backColor prefs.packageBackgroundColor
-    $xPlacardUnit root.xPlacardUnit
-    $yPlacardUnit root.yPlacardUnit
-  ;
-
-  outlet EBScrollView mComposedPackageScrollView ;
+//  arrayController #mPackageObjectsController : root.packageObjects ;
+//
+//  outlet EBGraphicView mComposedPackageView
+//    $foregroundImageData root.mModelImageData
+//    $foregroundImageOpacity root.mModelImageOpacity
+//    $horizontalFlip root.horizontalFlip
+//    $verticalFlip root.verticalFlip
+//    $graphicController #mPackageObjectsController
+//    $overObjectsDisplay root.padNumberDisplay
+//    $mouseGrid root.gridStep
+//    $gridStep root.gridStep
+//    $arrowKeyMagnitude root.gridStep
+//    $shiftArrowKeyMagnitude root.gridStepMultipliedByDisplayFactor
+//    $gridStyle root.gridStyle
+//    $gridDisplayFactor root.gridDisplayFactor
+//    $gridLineColor prefs.lineColorOfPackageGrid
+//    $gridCrossColor prefs.crossColorOfPackageGrid
+//    $zoom root.zoom
+//    $backColor prefs.packageBackgroundColor
+//    $xPlacardUnit root.xPlacardUnit
+//    $yPlacardUnit root.yPlacardUnit
+//  ;
+//
+//  outlet EBScrollView mComposedPackageScrollView ;
 
 //--- Zoom and flip inspector
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
@@ -802,6 +680,40 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
      $dimensionAndUnit root.gridStep, root.gridStepUnit
   ;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   PROGRAM
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mProgramPage vStack {
+    space
+    hStack { space StaticLabel (title: "Program", bold: yes, small: no) space }
+    space
+  }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   INFOS
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mInfosPage vStack {
+    space
+    hStack { space StaticLabel (title: "Infos", bold: yes, small: no) space }
+    space
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------- Page : Package
 //--------------- Program Tab
   outlet NSPanel mProgramHelpSheet ;
   action programHelpAction ;

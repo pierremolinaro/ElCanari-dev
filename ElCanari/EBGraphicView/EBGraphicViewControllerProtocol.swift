@@ -10,6 +10,8 @@ import Cocoa
 
 protocol EBGraphicViewControllerProtocol : class {
 
+  func bind_ebView (_ inGraphicView : EBGraphicView?)
+  
   var objectCount : Int { get }
   var graphicObjectArray : [EBGraphicManagedObject] { get }
 

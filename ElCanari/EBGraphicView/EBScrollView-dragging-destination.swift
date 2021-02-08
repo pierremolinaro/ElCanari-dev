@@ -30,7 +30,7 @@ extension EBScrollView {
 
   final override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
     if let graphicView = self.documentView as? EBGraphicView {
-      graphicView.mHelperTextField?.stringValue = "Dragging moves duplicated objects; ESC cancels operation"
+      graphicView.setHelperTextField ("Dragging moves duplicated objects; ESC cancels operation")
     }
     return self.document?.draggingEntered (inSender, self) ?? .generic
   }
@@ -69,7 +69,7 @@ extension EBScrollView {
 
   final override func draggingEnded (_ inSender : NSDraggingInfo) {
     if let graphicView = self.documentView as? EBGraphicView {
-      graphicView.mHelperTextField?.stringValue = "Drag and drop ended"
+      graphicView.setHelperTextField ("Drag and drop ended")
     }
   }
 

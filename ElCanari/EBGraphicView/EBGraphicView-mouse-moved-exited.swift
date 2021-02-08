@@ -13,7 +13,7 @@ extension EBGraphicView {
   final override func mouseMoved (with inEvent : NSEvent) {
     super.mouseMoved (with: inEvent)
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-    self.mHelperTextField?.stringValue = self.defaultHelperString (with: locationInView, inEvent.modifierFlags)
+    self.setHelperTextField (self.defaultHelperString (with: locationInView, inEvent.modifierFlags))
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
@@ -30,7 +30,7 @@ extension EBGraphicView {
   final override func mouseExited (with inEvent : NSEvent) {
     super.mouseExited (with: inEvent)
     self.removeXYHelperWindow ()
-    self.mHelperTextField?.stringValue = DEFAULT_HELPER_TEXT
+    self.setHelperTextField (DEFAULT_HELPER_TEXT)
     self.mMouseExitCallback? ()
     self.mOptionalFrontShape = nil
     NSCursor.arrow.set ()

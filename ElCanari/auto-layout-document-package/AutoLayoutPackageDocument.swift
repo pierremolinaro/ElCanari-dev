@@ -21,6 +21,12 @@ import Cocoa
   var mPackageObjectsController = Controller_AutoLayoutPackageDocument_mPackageObjectsController ()
 
   //····················································································································
+  //   Selection controller: mPackageSegmentSelectionController
+  //····················································································································
+
+  var mPackageSegmentSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageSegmentSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageBezierCurveSelectionController
   //····················································································································
 
@@ -67,12 +73,6 @@ import Cocoa
   //····················································································································
 
   var mPackageZoneSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController ()
-
-  //····················································································································
-  //   Selection controller: mPackageSegmentSelectionController
-  //····················································································································
-
-  var mPackageSegmentSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageSegmentSelectionController ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -222,8 +222,6 @@ import Cocoa
   @IBOutlet var mBottomSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mClearProgramErrorButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mComposedPackageScrollView : EBScrollView? = nil
-  @IBOutlet var mComposedPackageView : EBGraphicView? = nil
   @IBOutlet var mCounterClockNumberingStartAngleIntField : EBIntField? = nil
   @IBOutlet var mCounterClockNumberingStartAngleView : NSView? = nil
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell? = nil
@@ -419,6 +417,8 @@ import Cocoa
     self.mModelImageObjectsController.addExplorer (name: "mModelImageObjectsController", y:&y, view:view)
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
+  //--- Selection controller property: mPackageSegmentSelectionController
+    self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.addExplorer (name: "mPackageBezierCurveSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageOvalSelectionController
@@ -435,8 +435,6 @@ import Cocoa
     self.mPackageDimensionSelectionController.addExplorer (name: "mPackageDimensionSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.addExplorer (name: "mPackageZoneSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageSegmentSelectionController
-    self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -506,6 +504,7 @@ import Cocoa
       .bind_backColor (prefs_packageBackgroundColor_property)
       .bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property)
+      .bind_graphic_controller (self.mModelImageObjectsController)
     hStackView.appendView (view_1)
     return hStackView
   }
@@ -518,20 +517,33 @@ import Cocoa
 
   fileprivate final func mPackagePage_make () -> AutoLayoutStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
-    hStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutVerticalStackView ()
+      .set (width: 250)
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Package", bold: true, small: false)
-      view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_2)
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
     }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
+      .bind_foregroundImageData (self.rootObject.mModelImageData_property)
+      .bind_foregroundImageOpacity (self.rootObject.mModelImageOpacity_property)
+      .bind_horizontalFlip (self.rootObject.horizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.verticalFlip_property)
+      .bind_overObjectsDisplay (self.rootObject.padNumberDisplay_property)
+      .bind_mouseGrid (self.rootObject.gridStep_property)
+      .bind_gridStep (self.rootObject.gridStep_property)
+      .bind_arrowKeyMagnitude (self.rootObject.gridStep_property)
+      .bind_shiftArrowKeyMagnitude (self.rootObject.gridStepMultipliedByDisplayFactor_property)
+      .bind_gridStyle (self.rootObject.gridStyle_property)
+      .bind_gridDisplayFactor (self.rootObject.gridDisplayFactor_property)
+      .bind_gridLineColor (prefs_lineColorOfPackageGrid_property)
+      .bind_gridCrossColor (prefs_crossColorOfPackageGrid_property)
+      .bind_zoom (self.rootObject.zoom_property)
+      .bind_backColor (prefs_packageBackgroundColor_property)
+      .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
+      .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
+      .bind_graphic_controller (self.mPackageObjectsController)
     hStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    hStackView.appendView (view_2)
     return hStackView
   }
 
@@ -1059,8 +1071,6 @@ import Cocoa
 //    checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-//    checkOutletConnection (self.mComposedPackageScrollView, "mComposedPackageScrollView", EBScrollView.self, #file, #line)
-//    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBGraphicView.self, #file, #line)
 //    checkOutletConnection (self.mCounterClockNumberingStartAngleIntField, "mCounterClockNumberingStartAngleIntField", EBIntField.self, #file, #line)
 //    checkOutletConnection (self.mCounterClockNumberingStartAngleView, "mCounterClockNumberingStartAngleView", NSView.self, #file, #line)
 //    checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
@@ -1230,6 +1240,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Selection controller property: mPackageSegmentSelectionController
+    self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
     if LOG_OPERATION_DURATION {
@@ -1274,12 +1290,6 @@ import Cocoa
     }
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: mPackageSegmentSelectionController
-    self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1378,7 +1388,6 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
@@ -1511,23 +1520,6 @@ import Cocoa
     self.mCounterClockNumberingStartAngleIntField?.bind_value (self.rootObject.counterClockNumberingStartAngle_property, file: #file, line: #line, sendContinously:true, autoFormatter:false)
     self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_foregroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_foregroundImageOpacity (self.rootObject.mModelImageOpacity_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_overObjectsDisplay (self.rootObject.padNumberDisplay_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_mouseGrid (self.rootObject.gridStep_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_gridStep (self.rootObject.gridStep_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_arrowKeyMagnitude (self.rootObject.gridStep_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_shiftArrowKeyMagnitude (self.rootObject.gridStepMultipliedByDisplayFactor_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_gridDisplayFactor (self.rootObject.gridDisplayFactor_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_gridLineColor (prefs_lineColorOfPackageGrid_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_gridCrossColor (prefs_crossColorOfPackageGrid_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_backColor (prefs_packageBackgroundColor_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_xPlacardUnit (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_yPlacardUnit (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mShowPadNumberSwitch?.bind_value (prefs_showPadNumber_property, file: #file, line: #line)
@@ -1847,23 +1839,6 @@ import Cocoa
     self.mCounterClockNumberingStartAngleIntField?.unbind_value ()
     self.mIssueTextField?.unbind_valueObserver ()
     self.mIssueTableView?.unbind_issues ()
-    self.mComposedPackageView?.unbind_foregroundImageData ()
-    self.mComposedPackageView?.unbind_foregroundImageOpacity ()
-    self.mComposedPackageView?.unbind_horizontalFlip ()
-    self.mComposedPackageView?.unbind_verticalFlip ()
-    self.mComposedPackageView?.unbind_overObjectsDisplay ()
-    self.mComposedPackageView?.unbind_mouseGrid ()
-    self.mComposedPackageView?.unbind_gridStep ()
-    self.mComposedPackageView?.unbind_arrowKeyMagnitude ()
-    self.mComposedPackageView?.unbind_shiftArrowKeyMagnitude ()
-    self.mComposedPackageView?.unbind_gridStyle ()
-    self.mComposedPackageView?.unbind_gridDisplayFactor ()
-    self.mComposedPackageView?.unbind_gridLineColor ()
-    self.mComposedPackageView?.unbind_gridCrossColor ()
-    self.mComposedPackageView?.unbind_zoom ()
-    self.mComposedPackageView?.unbind_backColor ()
-    self.mComposedPackageView?.unbind_xPlacardUnit ()
-    self.mComposedPackageView?.unbind_yPlacardUnit ()
     self.mHorizontalFlip?.unbind_value ()
     self.mVerticalFlip?.unbind_value ()
     self.mShowPadNumberSwitch?.unbind_value ()
@@ -1909,11 +1884,12 @@ import Cocoa
  //   self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
  //   self.mController_mAddSlavePadButton_enabled = nil
   //--------------------------- Unbind array controllers
-    self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.unbind_model ()
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.unbind_model ()
+  //--- Selection controller property: mPackageSegmentSelectionController
+    self.mPackageSegmentSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageOvalSelectionController
@@ -1930,8 +1906,6 @@ import Cocoa
     self.mPackageDimensionSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageSegmentSelectionController
-    self.mPackageSegmentSelectionController.unbind_selection ()
     // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
@@ -1997,8 +1971,6 @@ import Cocoa
     self.mBottomSidePadColorWell?.ebCleanUp ()
     self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mComposedPackageScrollView?.ebCleanUp ()
-    self.mComposedPackageView?.ebCleanUp ()
     self.mCounterClockNumberingStartAngleIntField?.ebCleanUp ()
     self.mCounterClockNumberingStartAngleView?.ebCleanUp ()
     self.mCrossColorOfPackageGridColorWell?.ebCleanUp ()
@@ -2197,8 +2169,6 @@ import Cocoa
     self.mBottomSidePadColorWell = nil
     self.mClearProgramErrorButton = nil
     self.mCommentTextView = nil
-    self.mComposedPackageScrollView = nil
-    self.mComposedPackageView = nil
     self.mCounterClockNumberingStartAngleIntField = nil
     self.mCounterClockNumberingStartAngleView = nil
     self.mCrossColorOfPackageGridColorWell = nil
