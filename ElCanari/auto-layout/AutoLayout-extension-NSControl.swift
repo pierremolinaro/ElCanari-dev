@@ -36,7 +36,7 @@ extension NSControl {
   //  $enabled binding
   //····················································································································
 
-  final func bind__enabled (observedObjects inObjects : [EBObservableObjectProtocol],
+  final func bind_enabled (observedObjects inObjects : [EBObservableObjectProtocol],
                             computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
     let controller = EBReadOnlyPropertyController (
       observedObjects: inObjects,
@@ -73,7 +73,7 @@ extension NSControl {
 
   //····················································································································
 
-  func bind__run (target inTarget : NSObject, selector inSelector : Selector) -> Self {
+  func bind_run (target inTarget : NSObject, selector inSelector : Selector) -> Self {
     self.target = inTarget
     self.action = inSelector
     return self

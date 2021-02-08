@@ -69,7 +69,7 @@ class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind__selectedIndex (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
+  func bind_selectedIndex (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
     self.mSelectedIndexController = Controller_AutoLayoutEnumPopUpButton_Index (
       object: inObject,
       outlet: self

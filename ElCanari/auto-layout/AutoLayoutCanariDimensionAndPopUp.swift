@@ -35,10 +35,10 @@ class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   //····················································································································
 
-  func bind__dimensionAndUnit (_ inDimension : EBReadWriteProperty_Int,
+  func bind_dimensionAndUnit (_ inDimension : EBReadWriteProperty_Int,
                                _ inUnit : EBReadWriteProperty_Int) -> Self {
-    _ = self.mDimensionField.bind__dimensionAndUnit (inDimension, inUnit)
-    _ = self.mUnitPopUpButton.bind__unit (inUnit)
+    _ = self.mDimensionField.bind_dimensionAndUnit (inDimension, inUnit)
+    _ = self.mUnitPopUpButton.bind_unit (inUnit)
     return self
   }
 

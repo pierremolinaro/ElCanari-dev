@@ -79,7 +79,7 @@ class AutoLayoutSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind__doubleValue (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
+  func bind_doubleValue (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
     self.mDoubleValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateDoubleValue (inObject) }
@@ -109,7 +109,7 @@ class AutoLayoutSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind__intValue (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
+  func bind_intValue (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
     self.mIntValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateIntValue (inObject) }

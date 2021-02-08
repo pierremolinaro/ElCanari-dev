@@ -69,7 +69,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  func bind__selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }

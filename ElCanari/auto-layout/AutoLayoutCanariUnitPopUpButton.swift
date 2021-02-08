@@ -90,7 +90,7 @@ class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind__unit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  func bind_unit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mSelectedUnitController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }

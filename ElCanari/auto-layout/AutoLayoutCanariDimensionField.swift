@@ -71,7 +71,7 @@ class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtocol, NST
 
   //····················································································································
 
-  func bind__dimensionAndUnit (_ object : EBReadWriteProperty_Int,
+  func bind_dimensionAndUnit (_ object : EBReadWriteProperty_Int,
                                _ unit : EBReadOnlyProperty_Int) -> Self {
     self.mController = Controller_AutoLayoutCanariDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self

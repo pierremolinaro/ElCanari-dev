@@ -9,6 +9,8 @@ import Cocoa
 class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
+  // Temporary, for IB interface
+  //····················································································································
 
   @IBInspectable var minZoom : Int = 100
   @IBInspectable var maxZoom : Int = 100
@@ -79,6 +81,7 @@ class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
     self.mScrollView = scrollView
 
 
+
     self.mGraphicView.mZoomDidChangeCallback = {
       [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
     }
@@ -90,7 +93,7 @@ class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func buildScrollView (_ inEnclosingBounds : NSRect) -> EBScrollView {
-    let view = EBScrollView (frame: inEnclosingBounds.insetBy (dx: FOCUS_RING_MARGIN, dy: FOCUS_RING_MARGIN))
+    let view = EBScrollView (frame: inEnclosingBounds.insetBy(dx: FOCUS_RING_MARGIN, dy: FOCUS_RING_MARGIN))
     view.autoresizingMask = [.height, .width]
     view.minMagnification = CGFloat (self.minZoom) / 100.0
     view.maxMagnification = CGFloat (self.maxZoom) / 100.0

@@ -489,22 +489,22 @@ import Cocoa
       .flexibleSpace ()
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
-      .bind__backgroundImageData (self.rootObject.mModelImageData_property)
-      .bind__underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property)
-      .bind__horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property)
-      .bind__verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property)
-      .bind__mouseGrid (self.rootObject.mModelImagePageGridStep_property)
-      .bind__gridStep (self.rootObject.mModelImagePageGridStep_property)
-      .bind__arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property)
-      .bind__gridStyle (self.rootObject.mModelImagePageGridStyle_property)
-      .bind__gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property)
-      .bind__gridLineColor (prefs_lineColorOfPackageGrid_property)
-      .bind__gridCrossColor (prefs_crossColorOfPackageGrid_property)
-      .bind__zoom (self.rootObject.mModelImagePageZoom_property)
-      .bind__backColor (prefs_packageBackgroundColor_property)
-      .bind__xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property)
-      .bind__yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property)
-      .bind__graphic_controller (self.mModelImageObjectsController)
+      .bind_backgroundImageData (self.rootObject.mModelImageData_property)
+      .bind_underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property)
+      .bind_horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property)
+      .bind_mouseGrid (self.rootObject.mModelImagePageGridStep_property)
+      .bind_gridStep (self.rootObject.mModelImagePageGridStep_property)
+      .bind_arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property)
+      .bind_gridStyle (self.rootObject.mModelImagePageGridStyle_property)
+      .bind_gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property)
+      .bind_gridLineColor (prefs_lineColorOfPackageGrid_property)
+      .bind_gridCrossColor (prefs_crossColorOfPackageGrid_property)
+      .bind_zoom (self.rootObject.mModelImagePageZoom_property)
+      .bind_backColor (prefs_packageBackgroundColor_property)
+      .bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property)
+      .bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property)
+      .bind_graphic_controller (self.mModelImageObjectsController)
     hStackView.appendView (view_1)
     return hStackView
   }
@@ -525,24 +525,24 @@ import Cocoa
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
-      .bind__foregroundImageData (self.rootObject.mModelImageData_property)
-      .bind__foregroundImageOpacity (self.rootObject.mModelImageOpacity_property)
-      .bind__horizontalFlip (self.rootObject.horizontalFlip_property)
-      .bind__verticalFlip (self.rootObject.verticalFlip_property)
-      .bind__overObjectsDisplay (self.rootObject.padNumberDisplay_property)
-      .bind__mouseGrid (self.rootObject.gridStep_property)
-      .bind__gridStep (self.rootObject.gridStep_property)
-      .bind__arrowKeyMagnitude (self.rootObject.gridStep_property)
-      .bind__shiftArrowKeyMagnitude (self.rootObject.gridStepMultipliedByDisplayFactor_property)
-      .bind__gridStyle (self.rootObject.gridStyle_property)
-      .bind__gridDisplayFactor (self.rootObject.gridDisplayFactor_property)
-      .bind__gridLineColor (prefs_lineColorOfPackageGrid_property)
-      .bind__gridCrossColor (prefs_crossColorOfPackageGrid_property)
-      .bind__zoom (self.rootObject.zoom_property)
-      .bind__backColor (prefs_packageBackgroundColor_property)
-      .bind__xPlacardUnit (self.rootObject.xPlacardUnit_property)
-      .bind__yPlacardUnit (self.rootObject.yPlacardUnit_property)
-      .bind__graphic_controller (self.mPackageObjectsController)
+      .bind_foregroundImageData (self.rootObject.mModelImageData_property)
+      .bind_foregroundImageOpacity (self.rootObject.mModelImageOpacity_property)
+      .bind_horizontalFlip (self.rootObject.horizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.verticalFlip_property)
+      .bind_overObjectsDisplay (self.rootObject.padNumberDisplay_property)
+      .bind_mouseGrid (self.rootObject.gridStep_property)
+      .bind_gridStep (self.rootObject.gridStep_property)
+      .bind_arrowKeyMagnitude (self.rootObject.gridStep_property)
+      .bind_shiftArrowKeyMagnitude (self.rootObject.gridStepMultipliedByDisplayFactor_property)
+      .bind_gridStyle (self.rootObject.gridStyle_property)
+      .bind_gridDisplayFactor (self.rootObject.gridDisplayFactor_property)
+      .bind_gridLineColor (prefs_lineColorOfPackageGrid_property)
+      .bind_gridCrossColor (prefs_crossColorOfPackageGrid_property)
+      .bind_zoom (self.rootObject.zoom_property)
+      .bind_backColor (prefs_packageBackgroundColor_property)
+      .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
+      .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
+      .bind_graphic_controller (self.mPackageObjectsController)
     hStackView.appendView (view_1)
     return hStackView
   }
@@ -612,7 +612,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_1 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
-      .bind__selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
+      .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
     return view
   }
 
@@ -643,7 +643,7 @@ import Cocoa
       .add (title: "50 Steps", withTag: 50)
       .add (title: "100 Steps", withTag: 100)
       .add (title: "200 Steps", withTag: 200)
-      .bind__selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
+      .bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
     return view
   }
 
@@ -662,7 +662,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
     return view
   }
 
@@ -681,7 +681,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_7 () -> NSView {
     let view = AutoLayoutSwitch (title: "Horizontal")
-      .bind__value (self.rootObject.mModelImagePageHorizontalFlip_property)
+      .bind_value (self.rootObject.mModelImagePageHorizontalFlip_property)
     return view
   }
 
@@ -700,7 +700,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_9 () -> NSView {
     let view = AutoLayoutSwitch (title: "Vertical")
-      .bind__value (self.rootObject.mModelImagePageVerticalFlip_property)
+      .bind_value (self.rootObject.mModelImagePageVerticalFlip_property)
     return view
   }
 
@@ -719,7 +719,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_11 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton ()
-      .bind__unit (self.rootObject.mModelImagePageXPlacardUnit_property)
+      .bind_unit (self.rootObject.mModelImagePageXPlacardUnit_property)
     return view
   }
 
@@ -738,7 +738,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_13 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton ()
-      .bind__unit (self.rootObject.mModelImagePageYPlacardUnit_property)
+      .bind_unit (self.rootObject.mModelImagePageYPlacardUnit_property)
     return view
   }
 
@@ -761,7 +761,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_15 () -> NSView {
     let view = AutoLayoutLabel (small: true)
-      .bind__title (self.rootObject.modelImageSizeString_property)
+      .bind_title (self.rootObject.modelImageSizeString_property)
     return view
   }
 
@@ -780,7 +780,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_17 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
     return view
   }
 
@@ -799,7 +799,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_19 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
     return view
   }
 
@@ -818,7 +818,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_21 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
     return view
   }
 
@@ -837,7 +837,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_23 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
     return view
   }
 
@@ -856,7 +856,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_25 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
     return view
   }
 
@@ -875,7 +875,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_27 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp ()
-      .bind__dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property)
     return view
   }
 
@@ -894,8 +894,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_29 () -> NSView {
     let view = AutoLayoutSlider (min: 1, max: 61, ticks: 19)
-      .bind__intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
-      .bind__enabled (
+      .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
+      .bind_enabled (
         observedObjects: [self.rootObject.hasModelImage_property],
         computeFunction: { return self.rootObject.hasModelImage_property_selection }
       )
@@ -910,11 +910,11 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutButton (title: "Lock Points to Model Image", small: true)
-        .bind__enabled (
+        .bind_enabled (
           observedObjects: [self.rootObject.hasModelImage_property, self.rootObject.mPointsAreLocked_property],
           computeFunction: { return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection) }
         )
-        .bind__run (
+        .bind_run (
           target: self,
           selector: #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
         )
@@ -922,7 +922,7 @@ import Cocoa
       let view_1 = AutoLayoutFlexibleSpace ()
       view.appendView (view_1)
       let view_2 = AutoLayoutImageObserverView (small: true)
-        .bind__image (self.rootObject.lockImageView_property)
+        .bind_image (self.rootObject.lockImageView_property)
       view.appendView (view_2)
     }
     return view
@@ -975,7 +975,7 @@ import Cocoa
         .addPage (title: "Package", pageView: self.mPackagePage)
         .addPage (title: "Program", pageView: self.mProgramPage)
         .addPage (title: "Infos", pageView: self.mInfosPage)
-        .bind__selectedPage (self.rootObject.selectedPageIndex_property)
+        .bind_selectedPage (self.rootObject.selectedPageIndex_property)
       toolbarItem.view = view
       return toolbarItem
     case "1" :
@@ -984,7 +984,7 @@ import Cocoa
       toolbarItem.label = "Signature"
       toolbarItem.isEnabled = true
       let view = AutoLayoutSignatureField ()
-        .bind__signature (self.signatureObserver_property)
+        .bind_signature (self.signatureObserver_property)
       toolbarItem.view = view
       return toolbarItem
     case "2" :
@@ -993,8 +993,8 @@ import Cocoa
       toolbarItem.label = "Version"
       toolbarItem.isEnabled = true
       let view = AutoLayoutVersionField ()
-        .bind__version (self.versionObserver_property)
-        .bind__versionShouldChange (self.versionShouldChangeObserver_property)
+        .bind_version (self.versionObserver_property)
+        .bind_versionShouldChange (self.versionShouldChangeObserver_property)
       toolbarItem.view = view
       return toolbarItem
     case NSToolbarItem.Identifier.flexibleSpace.rawValue :
@@ -1005,8 +1005,8 @@ import Cocoa
       toolbarItem.label = "Status"
       toolbarItem.isEnabled = true
       let view = AutoLayoutImageObserverView (small: false)
-        .bind__image (self.statusImage_property)
-        .bind__tooltip (self.statusMessage_property)
+        .bind_image (self.statusImage_property)
+        .bind_tooltip (self.statusMessage_property)
       toolbarItem.view = view
       return toolbarItem
     default :
