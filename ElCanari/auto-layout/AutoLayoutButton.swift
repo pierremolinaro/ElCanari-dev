@@ -31,17 +31,6 @@ class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  // SET FLEXIBLE WIDTH
-  //····················································································································
-
-//  func setFlexibleWidth () -> Self {
-//    // Swift.print ("\(self.contentHuggingPriority (for: .horizontal))")
-//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-//    self.needsUpdateConstraints = true
-//    return self
-//  }
-
-  //····················································································································
 
 }
 

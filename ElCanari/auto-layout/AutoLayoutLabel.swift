@@ -74,7 +74,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_title (_ model : EBReadOnlyProperty_String) -> Self {
+  func bind__title (_ model : EBReadOnlyProperty_String) -> Self {
     self.mTitleController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

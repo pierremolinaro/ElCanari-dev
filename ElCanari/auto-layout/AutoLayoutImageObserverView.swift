@@ -77,7 +77,7 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_image (_ object : EBReadOnlyProperty_NSImage) -> Self {
+  func bind__image (_ object : EBReadOnlyProperty_NSImage) -> Self {
     self.mImageController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateImage (object) ; }
@@ -109,7 +109,7 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_tooltip (_ object : EBReadOnlyProperty_String) -> Self {
+  func bind__tooltip (_ object : EBReadOnlyProperty_String) -> Self {
     self.mTooltipController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTooltip (object) }
@@ -120,30 +120,5 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-//   EBImageObserverView_TableViewCell
-//----------------------------------------------------------------------------------------------------------------------
-
-//@objc(EBImageObserverView_TableViewCell) class EBImageObserverView_TableViewCell : EBTableCellView {
-//
-//  //····················································································································
-//
-//  @IBOutlet var mCellOutlet : EBImageObserverView? = nil
-//
-//  //····················································································································
-//
-//  func checkOutlet (columnName : String, file : String, line : Int) {
-//    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBImageObserverView.self, file, line)
-//  }
-//
-//  //····················································································································
-//
-//  func update () {
-//    self.mCellOutlet?.mImageController?.mEventCallBack? ()
-//  }
-//
-//  //····················································································································
-//}
 
 //----------------------------------------------------------------------------------------------------------------------

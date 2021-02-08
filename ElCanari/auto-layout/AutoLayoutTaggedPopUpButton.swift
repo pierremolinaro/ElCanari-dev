@@ -70,7 +70,7 @@ class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedTag (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  func bind__selectedTag (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mSelectedTagController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
