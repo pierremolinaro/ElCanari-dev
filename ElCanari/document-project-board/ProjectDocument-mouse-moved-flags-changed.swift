@@ -48,7 +48,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), !NSEvent.modifierFlags.contains (.shift), d > 0.0, let boardView = self.mBoardView {
+    if NSEvent.modifierFlags.contains (.control), !NSEvent.modifierFlags.contains (.shift), d > 0.0, let boardView = self.mBoardView?.mGraphicView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
           x: inUnalignedMouseLocation.x - d / 2.0,
@@ -63,11 +63,10 @@ extension CustomizedProjectDocument {
         }
         shape?.add (filled: [bp], NSColor.lightGray.withAlphaComponent (0.2))
         shape?.add (stroke: [bp], NSColor.green)
-//        ioHelperString = "Control: perform operation at mouse location"
       }
     }
   //---
-    self.mBoardView?.mOptionalFrontShape = shape
+    self.mBoardView?.mGraphicView.mOptionalFrontShape = shape
   }
 
   //····················································································································

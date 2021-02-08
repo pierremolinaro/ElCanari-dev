@@ -69,7 +69,11 @@ class EBEvent : EBObject {
   //····················································································································
 
   func logEvents () -> Bool {
-    return self.mTransientEventExplorerWindow?.isVisible ?? false
+    if Thread.isMainThread {
+      return self.mTransientEventExplorerWindow?.isVisible ?? false
+    }else{
+      return false
+    }
   }
 
   //····················································································································

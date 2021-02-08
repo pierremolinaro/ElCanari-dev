@@ -336,7 +336,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   //····················································································································
 
-  func setBackgroundImageAffineTransform (_ inAffineTransform : NSAffineTransform) {
+  final func setBackgroundImageAffineTransform (_ inAffineTransform : NSAffineTransform) {
      for ebView in self.mEBGraphicViews {
        ebView.mBackgroundImageAffineTransform = inAffineTransform
      }
@@ -344,7 +344,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   
   //····················································································································
 
-  func bind_ebView (_ inEBView : EBGraphicView?) {
+  final func bind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
       self.mEBGraphicViews.insert (ebView)
       ebView.set (controller: self)
@@ -353,8 +353,26 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   //····················································································································
 
-  func unbind_ebView (_ inEBView : EBGraphicView?) {
+  final func bind_ebView (_ inView : EBEnclosingGraphicView?) {
+    if let ebView = inView?.mGraphicView {
+      self.mEBGraphicViews.insert (ebView)
+      ebView.set (controller: self)
+    }
+  }
+
+  //····················································································································
+
+  final func unbind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
+      ebView.updateObjectDisplay ([])
+      ebView.updateSelectionShape ([])
+      self.mEBGraphicViews.remove (ebView)
+    }
+  }
+  //····················································································································
+
+  final func unbind_ebView (_ inView : EBEnclosingGraphicView?) {
+    if let ebView = inView?.mGraphicView {
       ebView.updateObjectDisplay ([])
       ebView.updateSelectionShape ([])
       self.mEBGraphicViews.remove (ebView)

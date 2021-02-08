@@ -154,7 +154,7 @@ xibdocument MergerDocument root MergerRoot {
   selectionController BoardModel #mBoardModelSelection : #mBoardModelController.selectedArray ;
 
 //--- Model view
-  outlet EBGraphicView mBoardModelView
+  outlet EBEnclosingGraphicView mBoardModelView
     $zoom #mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
     $verticalFlip prefs.mergerModelViewVerticalFlip
@@ -188,7 +188,6 @@ xibdocument MergerDocument root MergerRoot {
 //------------------------------------- Board Page
   outlet CanariViewWithKeyView mBoardPageView ;
 
-  outlet NSClipView mBoardClipView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; // Called directly by selecting an item of mBoardInsertMenu
   outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
@@ -267,7 +266,7 @@ xibdocument MergerDocument root MergerRoot {
 //--- Composed Board View
   arrayController #mBoardInstanceController : root.boardInstances ;
   selectionController MergerBoardInstance #mBoardInstanceSelection : #mBoardInstanceController.selectedArray ;
-  outlet EBGraphicView mComposedBoardView
+  outlet EBEnclosingGraphicView mComposedBoardView
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
@@ -277,7 +276,7 @@ xibdocument MergerDocument root MergerRoot {
     $shiftArrowKeyMagnitude root.shiftArrowMagnitude
   ;
 
-  outlet EBScrollView mComposedBoardScrollView ;
+//  outlet EBScrollView mComposedBoardScrollView ;
 
   outlet CanariSegmentedControl mBoardInspectorSegmentedControl ;
   outlet NSView mBoardInspectorMasterView ;

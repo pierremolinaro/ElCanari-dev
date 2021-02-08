@@ -206,7 +206,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.boardCurveObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardLimitsInspectorView)
     self.boardCurveObjectsController.register (inspectorView: self.mSelectedBoardLimitInspectorView, for: BorderCurve.self)
   //--- Option click for creating wire
-     self.mSchematicsView?.setOptionMouseCallbacks (
+     self.mSchematicsView?.mGraphicView.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
        continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
        abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
@@ -214,15 +214,15 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
   //--- Option click for creating track
-     self.mBoardView?.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
-     self.mBoardView?.setOptionMouseCallbacks (
+     self.mBoardView?.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
+     self.mBoardView?.mGraphicView.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
        continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
        abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
        helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
-     self.mBoardView?.mDrawFrameIssue = false
+     self.mBoardView?.mGraphicView.mDrawFrameIssue = false
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.bind_model (
       self.rootObject.mNetClasses_property,
@@ -247,7 +247,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mBoardScrollView?.register (
+    self.mBoardView?.mScrollView?.register (
       document: self,
       draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack]
     )
@@ -284,7 +284,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.boardObjectsController.register (inspectorView: self.mBoardLineInspectorView, for: BoardLine.self)
     self.boardObjectsController.register (inspectorView: self.mBoardTrackInspectorView, for: BoardTrack.self)
     self.boardObjectsController.register (inspectorView: self.mBoardConnectorInspectorView, for: BoardConnector.self)
-    self.mBoardView?.mPopulateContextualMenuClosure = self.populateContextualClickOnBoard
+    self.mBoardView?.mGraphicView.mPopulateContextualMenuClosure = self.populateContextualClickOnBoard
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
@@ -292,7 +292,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       self.mOperationBoardLimitsInspectorView
     ]
     self.mBoardLimitsInspectorSegmentedControl?.register (masterView: self.mBaseBoardLimitsInspectorView, boardLimitsInspectors)
-    self.mBoardLimitsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnBoardLimits
+    self.mBoardLimitsView?.mGraphicView.mPopulateContextualMenuClosure = self.populateContextualClickOnBoardLimits
   //--- Set schematics inspector segmented control
     let schematicsInspectors = [
       self.mSelectedObjectsSchematicsInspectorView,
@@ -333,55 +333,55 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       sheetDown: self.mSheetDownButton
     )
   //---
-    self.mSchematicsView?.mGridStepInCanariUnit = SCHEMATIC_GRID_IN_CANARI_UNIT
-    self.mSchematicsView?.set (mouseGridInCanariUnit: SCHEMATIC_GRID_IN_CANARI_UNIT)
-    self.mSchematicsView?.set (arrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT)
-    self.mSchematicsView?.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
-    self.mSchematicsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
-    self.mSchematicsView?.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
+    self.mSchematicsView?.mGraphicView.mGridStepInCanariUnit = SCHEMATIC_GRID_IN_CANARI_UNIT
+    self.mSchematicsView?.mGraphicView.set (mouseGridInCanariUnit: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.mGraphicView.set (arrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.mGraphicView.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
+    self.mSchematicsView?.mGraphicView.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
+    self.mSchematicsView?.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
+    self.mSchematicsView?.mScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
     self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbol)
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropComment,
       draggedObjectFactory: { return (CommentInSchematic (nil), NSDictionary ()) },
-      scaleProvider: self.mSchematicsView
+      scaleProvider: self.mSchematicsView?.mGraphicView
     )
     self.mAddWireButton?.register (
       draggedType: kDragAndDropWire,
       draggedObjectFactory: { return (WireInSchematic (nil), NSDictionary ()) },
-      scaleProvider: self.mSchematicsView
+      scaleProvider: self.mSchematicsView?.mGraphicView
     )
   //---
     self.mAddRestrictRectangleButton?.register (
       draggedType: kDragAndDropRestrictRectangle,
       draggedObjectFactory: { return (BoardRestrictRectangle (nil), NSDictionary ()) },
-      scaleProvider: self.mBoardView
+      scaleProvider: self.mBoardView?.mGraphicView
     )
     self.mAddTextInBoardButton?.register (
       draggedType: kDragAndDropBoardText,
       shapeFactory: { [weak self] in return self?.boardTextImageFactory () },
-      scaleProvider: self.mBoardView
+      scaleProvider: self.mBoardView?.mGraphicView
     )
     self.mAddLineInBoardButton?.register (
       draggedType: kDragAndDropBoardLine,
       draggedObjectFactory: { return (BoardLine (nil), NSDictionary ()) },
-      scaleProvider: self.mBoardView
+      scaleProvider: self.mBoardView?.mGraphicView
     )
     self.mAddTrackInBoardButton?.register (
       draggedType: kDragAndDropBoardTrack,
       shapeFactory: { [weak self] in return self?.boardTrackImageFactory () },
-      scaleProvider: self.mBoardView
+      scaleProvider: self.mBoardView?.mGraphicView
     )
   //---
     self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicPointsAndNets
-    self.mSchematicsView?.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+    self.mSchematicsView?.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
       self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
     }
-    self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
+    self.mSchematicsView?.mGraphicView.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()
-    self.mSchematicsView?.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
+    self.mSchematicsView?.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
   //---
     self.mBoardTextFontPopUpButton?.register (
       fontsModel: self.rootObject.mFonts_property,
@@ -400,9 +400,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     )
     self.boardObjectsController.mAfterObjectRemovingCallback = self.updateBoardConnectors
 
-    self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView)
+    self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView?.mGraphicView)
     self.mERCIssueTableView?.register (hideIssueButton: self.mHideERCIssueButton)
-    self.mBoardView?.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+    self.mBoardView?.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
       self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
     }
   }
@@ -417,9 +417,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mSheetController.unregister ()
     self.mPackageCountToInsertController?.unregister ()
     self.mPackageCountToInsertController = nil
-    self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
-    self.mBoardLimitsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
-    self.mBoardView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
+    self.mSchematicsView?.mGraphicView.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
+    self.mBoardLimitsView?.mGraphicView.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
+    self.mBoardView?.mGraphicView.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
     self.boardObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
   //--- Pop up button controllers
@@ -519,7 +519,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     var result = NSImage (named: NSImage.Name ("exclamation"))!
     if inSourceTableView == self.mUnplacedSymbolsTableView,
-      let schematicsView = self.mSchematicsView,
+      let schematicsView = self.mSchematicsView?.mGraphicView,
       dragRows.count == 1,
       let idx = dragRows.first {
     //--- Find symbol to insert in schematics
@@ -547,7 +547,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
         result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       }
     }else if inSourceTableView == self.mUnplacedPackageTableView,
-           let boardView = self.mBoardView,
+           let boardView = self.mBoardView?.mGraphicView,
            dragRows.count == 1,
            let idx = dragRows.first {
       let componentTag = inSourceTableView.tag (atIndex: idx)
@@ -659,7 +659,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
   private func performAddBoardPackageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     if let component = self.mPossibleDraggedComponent {
-      let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+      let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
       component.mX = p.x
       component.mY = p.y
       self.rootObject.mBoardObjects.append (component)
@@ -682,7 +682,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //····················································································································
 
   private func performAddBoardLineDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let newLine = BoardLine (self.ebUndoManager)
     newLine.mLayer = self.rootObject.mBoardLayerForNewLine
     newLine.mX1 += p.x
@@ -697,7 +697,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //····················································································································
 
   private func performAddBoardTextDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let boardText = BoardText (self.ebUndoManager)
     boardText.mLayer = self.rootObject.mBoardLayerForNewText
     boardText.mX = p.x
@@ -711,7 +711,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //····················································································································
 
   private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let restrictRectangle = BoardRestrictRectangle (self.ebUndoManager)
     switch self.rootObject.mBoardSideForNewRestrictRectangle {
     case .frontSide :

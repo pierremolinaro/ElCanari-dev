@@ -448,7 +448,7 @@ xibdocument PackageDocument root PackageRoot {
 //--- Package display
   arrayController #mPackageObjectsController : root.packageObjects ;
 
-  outlet EBGraphicView mComposedPackageView
+  outlet EBEnclosingGraphicView mComposedPackageView
     $foregroundImageData root.mModelImageData
     $foregroundImageOpacity root.mModelImageOpacity
     $horizontalFlip root.horizontalFlip
@@ -469,7 +469,7 @@ xibdocument PackageDocument root PackageRoot {
     $yPlacardUnit root.yPlacardUnit
   ;
 
-  outlet EBScrollView mComposedPackageScrollView ;
+//  outlet EBScrollView mComposedPackageScrollView ;
 
 //--- Zoom and flip inspector
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
@@ -519,11 +519,11 @@ xibdocument PackageDocument root PackageRoot {
   outlet EBTextField mProgramErrorTextField ;
 
 //--------------- Model Image Tab
-  outlet EBScrollView mModelImageScrollView ;
+//  outlet EBScrollView mModelImageScrollView ;
 
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
-  outlet EBGraphicView mModelImageView
+  outlet EBEnclosingGraphicView mModelImageView
     $backgroundImageData root.mModelImageData
     $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
     $horizontalFlip root.mModelImagePageHorizontalFlip

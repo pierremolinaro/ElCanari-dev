@@ -59,8 +59,7 @@
                 <outlet property="mBottomSidePadColorWell" destination="0wU-kk-tL1" id="qj7-PO-9gi"/>
                 <outlet property="mClearProgramErrorButton" destination="2516" id="uix-b6-yP2"/>
                 <outlet property="mCommentTextView" destination="2519" id="Hka-c2-v35"/>
-                <outlet property="mComposedPackageScrollView" destination="2476" id="coe-P2-hj3"/>
-                <outlet property="mComposedPackageView" destination="2477" id="SeZ-59-Job"/>
+                <outlet property="mComposedPackageView" destination="Jqs-oY-lML" id="155-FY-dux"/>
                 <outlet property="mCounterClockNumberingStartAngleIntField" destination="59F-tJ-cKZ" id="gdG-b9-dHu"/>
                 <outlet property="mCounterClockNumberingStartAngleView" destination="R5b-R8-9KE" id="5R2-Dj-psV"/>
                 <outlet property="mCrossColorOfPackageGridColorWell" destination="sLd-L6-DKb" id="0Pe-Vl-8gh"/>
@@ -132,13 +131,12 @@
                 <outlet property="mModelImagePointDyTextField" destination="YsA-s8-m7w" id="h6h-iy-PsW"/>
                 <outlet property="mModelImagePointsDxDimensionUnitPopUp" destination="iWi-f5-zQH" id="nq7-Kv-q3P"/>
                 <outlet property="mModelImagePointsDyDimensionUnitPopUp" destination="nQs-uR-u0S" id="aUh-Ku-WVg"/>
-                <outlet property="mModelImageScrollView" destination="N7h-H4-Lu6" id="zBn-X2-QP2"/>
                 <outlet property="mModelImageSecondPointXDimensionUnitPopUp" destination="Rnj-5Z-ANb" id="R7y-YP-JVH"/>
                 <outlet property="mModelImageSecondPointXTextField" destination="oUJ-5J-LU1" id="6M4-oh-k1d"/>
                 <outlet property="mModelImageSecondPointYDimensionUnitPopUp" destination="Gvv-bF-Dwq" id="kTU-7P-cHW"/>
                 <outlet property="mModelImageSecondPointYTextField" destination="KE8-09-wPC" id="Kkh-Df-sOF"/>
                 <outlet property="mModelImageSizeTextField" destination="Om9-bO-FIz" id="hP8-dG-j0X"/>
-                <outlet property="mModelImageView" destination="LMg-aa-bds" id="lQu-2e-62X"/>
+                <outlet property="mModelImageView" destination="y1o-8u-JKa" id="A4W-GR-U3D"/>
                 <outlet property="mModelPointsCircleRadiusSlider" destination="Dvr-Ad-tf8" id="Sba-dK-iD4"/>
                 <outlet property="mOvalHeightTextField" destination="1708" id="dYV-7F-px1"/>
                 <outlet property="mOvalHeightUnitPopUp" destination="1699" id="mda-b5-C6B"/>
@@ -2314,39 +2312,17 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqs-oY-lML" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqs-oY-lML" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-ub-L1B" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
-                                        <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </customView>
-                                        </subviews>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="2828">
-                                        <rect key="frame" x="1" y="485" width="412" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2827">
-                                        <rect key="frame" x="413" y="1" width="15" height="484"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="4000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2923">
                     <rect key="frame" x="4" y="0.0" width="250" height="390"/>
@@ -5689,52 +5665,17 @@ DQ
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1o-8u-JKa" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1o-8u-JKa" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-oO-DML" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="0.10000000000000001" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" drawsBackground="NO" id="a7R-xu-Y3w">
-                                        <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-aa-bds" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <animations>
-                                                    <caTransition key="subviews">
-                                                        <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
-S2V5ZWRBcmNoaXZlctEICVRyb290gAGnCwwTFA0ZH1UkbnVsbNMNDg8QERJUdHlwZVYkY2xhc3NfEBJf
-X0NBQ29kaW5nQ29udGVudHOAAoAGgANUZmFkZdIVDhYYWk5TLm9iamVjdHOhF4AEgAXSGhscHVokY2xh
-c3NuYW1lWCRjbGFzc2VzV05TQXJyYXmiHB5YTlNPYmplY3TSGhsgIVxDQVRyYW5zaXRpb26jIiMeXENB
-VHJhbnNpdGlvbltDQUFuaW1hdGlvbgAIABEAGgAkACkAMgA3AEkATABRAFMAWwBhAGgAbQB0AIkAiwCN
-AI8AlACZAKQApgCoAKoArwC6AMMAywDOANcA3ADpAO0A+gAAAAAAAAIBAAAAAAAAACQAAAAAAAAAAAAA
-AAAAAAEGA
-</mutableData>
-                                                    </caTransition>
-                                                </animations>
-                                            </customView>
-                                        </subviews>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Tan-dm-BXz">
-                                        <rect key="frame" x="1" y="485" width="412" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Dho-Fx-Tig">
-                                        <rect key="frame" x="413" y="1" width="15" height="484"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="4000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-1c-m3H" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="98" y="373" width="135" height="18"/>

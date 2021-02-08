@@ -49,7 +49,7 @@ extension CustomizedProjectDocument {
       self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
     }
   //---
-    self.mBoardView?.mOptionalFrontShape = nil
+    self.mBoardView?.mGraphicView.mOptionalFrontShape = nil
   }
 
   //····················································································································

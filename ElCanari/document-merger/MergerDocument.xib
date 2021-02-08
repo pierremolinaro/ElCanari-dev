@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17700" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17700"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +20,6 @@
                 <outlet property="mAutomaticBoardSizeSwitch" destination="FGl-Od-SnG" id="Kni-UN-4x9"/>
                 <outlet property="mAutomaticBoardSizeView" destination="ICD-CO-qWn" id="rxL-wa-aa6"/>
                 <outlet property="mBoardBoardLimitTextField" destination="sRW-Ca-N8E" id="jKe-CV-F6o"/>
-                <outlet property="mBoardClipView" destination="nFP-mw-Omh" id="VEQ-jL-583"/>
                 <outlet property="mBoardHeightTextField" destination="7dt-7v-ArC" id="779-cB-9W3"/>
                 <outlet property="mBoardHeightUnitPopUp" destination="wB7-F3-Dvt" id="SaL-Vz-UJE"/>
                 <outlet property="mBoardInsertMenu" destination="3Qt-fi-qrc" id="eEB-l8-4Bg"/>
@@ -29,7 +28,7 @@
                 <outlet property="mBoardIssueInspectorView" destination="Olt-z2-VJY" id="3uB-Cl-XwG"/>
                 <outlet property="mBoardLimitWidthUnitPopUp" destination="ZCR-WG-cQm" id="fqb-Sa-GFQ"/>
                 <outlet property="mBoardModelTableView" destination="xkX-ID-Qcd" id="Dth-Vm-y44"/>
-                <outlet property="mBoardModelView" destination="RA9-Ej-gEF" id="tQE-lb-V7H"/>
+                <outlet property="mBoardModelView" destination="Qcf-dv-pAk" id="X8z-CG-xBd"/>
                 <outlet property="mBoardOperationInspectorView" destination="Duh-Dr-VhI" id="106-98-qdc"/>
                 <outlet property="mBoardPageView" destination="r18-cj-dWP" id="9gS-FV-8A0"/>
                 <outlet property="mBoardViewDisplayBackComponenValuesCheckbox" destination="x0k-XF-xQ7" id="zPX-QS-lid"/>
@@ -57,8 +56,7 @@
                 <outlet property="mBoardWidthTextField" destination="Lat-bY-8XF" id="pkw-Gr-UOy"/>
                 <outlet property="mBoardWidthUnitPopUp" destination="q7P-l7-CAx" id="egY-a6-hbR"/>
                 <outlet property="mCommentTextView" destination="NFC-gP-IoM" id="Alu-DT-e13"/>
-                <outlet property="mComposedBoardScrollView" destination="P6R-Ak-MaY" id="oTr-ww-3HN"/>
-                <outlet property="mComposedBoardView" destination="nao-E9-sci" id="Yej-gD-6Hg"/>
+                <outlet property="mComposedBoardView" destination="W8c-15-2W5" id="vbi-RD-1ML"/>
                 <outlet property="mDangerView" destination="kZQ-iy-L4Z" id="040-fK-ZgE"/>
                 <outlet property="mDataTableView" destination="1lk-LW-8RJ" id="2j5-PL-jQx"/>
                 <outlet property="mDeselectIssueButton" destination="XUR-ya-7kL" id="jgu-DJ-XSj"/>
@@ -343,40 +341,17 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qcf-dv-pAk" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qcf-dv-pAk" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="260" y="0.0" width="440" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-iN-81O" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="440" height="500"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tch-UL-HLT" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="440" height="500"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" drawsBackground="NO" id="PpI-BL-fb0">
-                                        <rect key="frame" x="1" y="1" width="423" height="483"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RA9-Ej-gEF" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="387" width="163" height="96"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            </customView>
-                                        </subviews>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QLG-wP-sOW">
-                                        <rect key="frame" x="1" y="484" width="423" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DhN-Ed-ipm">
-                                        <rect key="frame" x="424" y="1" width="15" height="483"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="2000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9BP-El-GfJ" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="192" y="457" width="40" height="19"/>
@@ -562,46 +537,17 @@ AAAAAAEGA
             <rect key="frame" x="0.0" y="0.0" width="700" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W8c-15-2W5" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W8c-15-2W5" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="260" y="0.0" width="440" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-fz-Fjn" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="440" height="667"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView focusRingType="none" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="100" verticalLineScroll="10" verticalPageScroll="100" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6R-Ak-MaY" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="440" height="667"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" focusRingType="none" drawsBackground="NO" id="nFP-mw-Omh">
-                                        <rect key="frame" x="1" y="1" width="423" height="650"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nao-E9-sci" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="554" width="452" height="417"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <connections>
-                                                    <outlet property="nextKeyView" destination="sRW-Ca-N8E" id="hKv-5h-DVF"/>
-                                                </connections>
-                                            </customView>
-                                        </subviews>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kxP-eD-0bt">
-                                        <rect key="frame" x="1" y="651" width="423" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ffk-v2-YEc">
-                                        <rect key="frame" x="424" y="1" width="15" height="650"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <connections>
-                                        <outlet property="menu" destination="3Qt-fi-qrc" id="zgF-Xj-rpA"/>
-                                    </connections>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="2000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TY5-Zu-VN8" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="262" y="308" width="436" height="52"/>
@@ -2393,9 +2339,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <outlet property="nextKeyView" destination="nao-E9-sci" id="QK7-AD-UYr"/>
-                                        </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I2-Md-UHL" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="111" y="223" width="51" height="20"/>
@@ -2406,9 +2349,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <outlet property="nextKeyView" destination="nao-E9-sci" id="WNL-nw-Hhp"/>
-                                        </connections>
                                     </textField>
                                     <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vEq-FZ-5D6" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="168" y="250" width="62" height="17"/>
@@ -2583,9 +2523,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <outlet property="nextKeyView" destination="nao-E9-sci" id="aIO-Ob-qdD"/>
-                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCs-M2-5wO">
                                         <rect key="frame" x="45" y="123" width="60" height="17"/>
@@ -2623,9 +2560,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <outlet property="nextKeyView" destination="nao-E9-sci" id="g52-Bq-3fl"/>
-                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aNU-VY-dQY" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="107" y="173" width="121" height="19"/>
@@ -2843,9 +2777,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <outlet property="nextKeyView" destination="nao-E9-sci" id="49O-VE-EeV"/>
-                                        </connections>
                                     </textField>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGl-Od-SnG" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="46" y="395" width="101" height="24"/>

@@ -247,8 +247,8 @@ import Cocoa
   @IBOutlet var mAssignmentSplitView : NSSplitView? = nil
   @IBOutlet var mBindButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mComposedPackageView : EBGraphicView? = nil
-  @IBOutlet var mComposedSymbolView : EBGraphicView? = nil
+  @IBOutlet var mComposedPackageView : EBEnclosingGraphicView? = nil
+  @IBOutlet var mComposedSymbolView : EBEnclosingGraphicView? = nil
   @IBOutlet var mCopyImageButton : EBButton? = nil
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView? = nil
@@ -425,8 +425,8 @@ import Cocoa
     checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
     checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBGraphicView.self, #file, #line)
-    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBEnclosingGraphicView.self, #file, #line)
+    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDescriptionPageView, "mDescriptionPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDocumentationTableView, "mDocumentationTableView", DeviceDocumentationTableView.self, #file, #line)

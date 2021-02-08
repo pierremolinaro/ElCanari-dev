@@ -337,7 +337,7 @@ xibdocument ProjectDocument root ProjectRoot {
 //--- Schematics view
   arrayController #schematicObjectsController : root.selectedSheetObjects ;
 
-  outlet EBGraphicView mSchematicsView
+  outlet EBEnclosingGraphicView mSchematicsView
     $underObjectsDisplay root.schematicBackgroundDisplay
     $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mSchematicHorizontalFlip
@@ -351,7 +351,7 @@ xibdocument ProjectDocument root ProjectRoot {
     $backColor prefs.schematicBackColor
   ;
 
-  outlet EBScrollView mSchematicsScrollView ;
+//  outlet EBScrollView mSchematicsScrollView ;
 
 //--- Selected Wire In schematics
   outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
@@ -517,7 +517,7 @@ xibdocument ProjectDocument root ProjectRoot {
 //----------------- Board limits tab
   arrayController #boardCurveObjectsController : root.mBorderCurves ; // $hidden root.boardShapeIsRectangular ;
 
-  outlet EBGraphicView mBoardLimitsView
+  outlet EBEnclosingGraphicView mBoardLimitsView
     $underObjectsDisplay root.borderViewBackground
     $horizontalFlip root.mBoardLimitsHorizontalFlip
     $verticalFlip root.mBoardLimitsVerticalFlip
@@ -678,12 +678,12 @@ xibdocument ProjectDocument root ProjectRoot {
 
   arrayController #boardObjectsController : root.mBoardObjects ;
 
-  outlet EBScrollView mBoardScrollView ;
+//  outlet EBScrollView mBoardScrollView ;
 
   
   transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
 
-  outlet EBGraphicView mBoardView
+  outlet EBEnclosingGraphicView mBoardView
     $underObjectsDisplay root.borderOutlineBackground
     $overObjectsDisplay self.overDisplay
     $horizontalFlip root.mBoardHorizontalFlip

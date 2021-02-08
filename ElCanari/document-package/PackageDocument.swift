@@ -222,8 +222,7 @@ import Cocoa
   @IBOutlet var mBottomSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mClearProgramErrorButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mComposedPackageScrollView : EBScrollView? = nil
-  @IBOutlet var mComposedPackageView : EBGraphicView? = nil
+  @IBOutlet var mComposedPackageView : EBEnclosingGraphicView? = nil
   @IBOutlet var mCounterClockNumberingStartAngleIntField : EBIntField? = nil
   @IBOutlet var mCounterClockNumberingStartAngleView : NSView? = nil
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell? = nil
@@ -295,13 +294,12 @@ import Cocoa
   @IBOutlet var mModelImagePointDyTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImagePointsDxDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImagePointsDyDimensionUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mModelImageScrollView : EBScrollView? = nil
   @IBOutlet var mModelImageSecondPointXDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageSecondPointXTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mModelImageSecondPointYDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageSecondPointYTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mModelImageSizeTextField : EBTextObserverField? = nil
-  @IBOutlet var mModelImageView : EBGraphicView? = nil
+  @IBOutlet var mModelImageView : EBEnclosingGraphicView? = nil
   @IBOutlet var mModelPointsCircleRadiusSlider : EBSlider? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
@@ -565,8 +563,7 @@ import Cocoa
     checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-    checkOutletConnection (self.mComposedPackageScrollView, "mComposedPackageScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mCounterClockNumberingStartAngleIntField, "mCounterClockNumberingStartAngleIntField", EBIntField.self, #file, #line)
     checkOutletConnection (self.mCounterClockNumberingStartAngleView, "mCounterClockNumberingStartAngleView", NSView.self, #file, #line)
     checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
@@ -638,13 +635,12 @@ import Cocoa
     checkOutletConnection (self.mModelImagePointDyTextField, "mModelImagePointDyTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mModelImagePointsDxDimensionUnitPopUp, "mModelImagePointsDxDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePointsDyDimensionUnitPopUp, "mModelImagePointsDyDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointXDimensionUnitPopUp, "mModelImageSecondPointXDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointXTextField, "mModelImageSecondPointXTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointYDimensionUnitPopUp, "mModelImageSecondPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointYTextField, "mModelImageSecondPointYTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mModelImageSizeTextField, "mModelImageSizeTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mModelImageView, "mModelImageView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mModelImageView, "mModelImageView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mModelPointsCircleRadiusSlider, "mModelPointsCircleRadiusSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1711,7 +1707,6 @@ import Cocoa
     self.mBottomSidePadColorWell?.ebCleanUp ()
     self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mComposedPackageScrollView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
     self.mCounterClockNumberingStartAngleIntField?.ebCleanUp ()
     self.mCounterClockNumberingStartAngleView?.ebCleanUp ()
@@ -1784,7 +1779,6 @@ import Cocoa
     self.mModelImagePointDyTextField?.ebCleanUp ()
     self.mModelImagePointsDxDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImagePointsDyDimensionUnitPopUp?.ebCleanUp ()
-    self.mModelImageScrollView?.ebCleanUp ()
     self.mModelImageSecondPointXDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageSecondPointXTextField?.ebCleanUp ()
     self.mModelImageSecondPointYDimensionUnitPopUp?.ebCleanUp ()
@@ -1950,7 +1944,6 @@ import Cocoa
     self.mBottomSidePadColorWell = nil
     self.mClearProgramErrorButton = nil
     self.mCommentTextView = nil
-    self.mComposedPackageScrollView = nil
     self.mComposedPackageView = nil
     self.mCounterClockNumberingStartAngleIntField = nil
     self.mCounterClockNumberingStartAngleView = nil
@@ -2023,7 +2016,6 @@ import Cocoa
     self.mModelImagePointDyTextField = nil
     self.mModelImagePointsDxDimensionUnitPopUp = nil
     self.mModelImagePointsDyDimensionUnitPopUp = nil
-    self.mModelImageScrollView = nil
     self.mModelImageSecondPointXDimensionUnitPopUp = nil
     self.mModelImageSecondPointXTextField = nil
     self.mModelImageSecondPointYDimensionUnitPopUp = nil

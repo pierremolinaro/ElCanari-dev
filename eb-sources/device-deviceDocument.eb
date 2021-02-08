@@ -74,7 +74,7 @@ xibdocument DeviceDocument root DeviceRoot {
   arrayController #symbolDisplayController : root.mSymbolInstances ;
   selectionController SymbolInstanceInDevice #symbolInstanceSelection : #symbolDisplayController.selectedArray ;
 
-  outlet EBGraphicView mComposedSymbolView
+  outlet EBEnclosingGraphicView mComposedSymbolView
     $horizontalFlip root.mSymbolDisplayHorizontalFlip
     $verticalFlip root.mSymbolDisplayVerticalFlip
     $graphicController #symbolDisplayController
@@ -114,7 +114,7 @@ xibdocument DeviceDocument root DeviceRoot {
 
   arrayController #packageDisplayController : root.mPackages ;
 
-  outlet EBGraphicView mComposedPackageView
+  outlet EBEnclosingGraphicView mComposedPackageView
     $horizontalFlip root.mPackageDisplayHorizontalFlip
     $verticalFlip root.mPackageDisplayVerticalFlip
     $graphicController #packageDisplayController

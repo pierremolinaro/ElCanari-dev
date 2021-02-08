@@ -752,7 +752,7 @@ import Cocoa
   @IBOutlet var mBoardLimitsHorizontalFlipSwitch : EBSwitch? = nil
   @IBOutlet var mBoardLimitsInspectorSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mBoardLimitsVerticalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mBoardLimitsView : EBGraphicView? = nil
+  @IBOutlet var mBoardLimitsView : EBEnclosingGraphicView? = nil
   @IBOutlet var mBoardLimitsWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet var mBoardLimitsWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardLineInspectorView : CanariViewWithKeyView? = nil
@@ -769,7 +769,6 @@ import Cocoa
   @IBOutlet var mBoardLineY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBoardScrollView : EBScrollView? = nil
   @IBOutlet var mBoardShapePopUp : CanariEnumSegmentedControl? = nil
   @IBOutlet var mBoardSideForNewRestrictRectangleMenu : CanariChoiceMenu? = nil
   @IBOutlet var mBoardSideForNewTrackMenu : CanariChoiceMenu? = nil
@@ -796,7 +795,7 @@ import Cocoa
   @IBOutlet var mBoardTrackP2yUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardTrackSidePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardVerticalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mBoardView : EBGraphicView? = nil
+  @IBOutlet var mBoardView : EBEnclosingGraphicView? = nil
   @IBOutlet var mCanariDefaultNetClassPopUpButton : CanariDefaultNetClassPopUpButton? = nil
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox? = nil
   @IBOutlet var mChangePackageComponentListTextField : NSTextField? = nil
@@ -1037,13 +1036,12 @@ import Cocoa
   @IBOutlet var mSchematicsLabelRenameNetButton : EBButton? = nil
   @IBOutlet var mSchematicsLabelRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSchematicsScrollView : EBScrollView? = nil
   @IBOutlet var mSchematicsSheetOrientationSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSchematicsTitleTextField : EBTextField? = nil
   @IBOutlet var mSchematicsVersionTextField : EBTextField? = nil
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mSchematicsView : EBGraphicView? = nil
+  @IBOutlet var mSchematicsView : EBEnclosingGraphicView? = nil
   @IBOutlet var mSchematicsWireInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSelectComponentsMenuItem : CanariComponentsMenuItem? = nil
   @IBOutlet var mSelectNetClassInNetTabButton : EBButton? = nil
@@ -1364,7 +1362,7 @@ import Cocoa
     checkOutletConnection (self.mBoardLimitsHorizontalFlipSwitch, "mBoardLimitsHorizontalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsInspectorSegmentedControl, "mBoardLimitsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsVerticalFlipSwitch, "mBoardLimitsVerticalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mBoardLimitsView, "mBoardLimitsView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsView, "mBoardLimitsView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsWidthTextField, "mBoardLimitsWidthTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsWidthUnitPopUp, "mBoardLimitsWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardLineInspectorView, "mBoardLineInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1381,7 +1379,6 @@ import Cocoa
     checkOutletConnection (self.mBoardLineY2UnitPopUp, "mBoardLineY2UnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mBoardShapePopUp, "mBoardShapePopUp", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardSideForNewRestrictRectangleMenu, "mBoardSideForNewRestrictRectangleMenu", CanariChoiceMenu.self, #file, #line)
     checkOutletConnection (self.mBoardSideForNewTrackMenu, "mBoardSideForNewTrackMenu", CanariChoiceMenu.self, #file, #line)
@@ -1408,7 +1405,7 @@ import Cocoa
     checkOutletConnection (self.mBoardTrackP2yUnitPopUp, "mBoardTrackP2yUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTrackSidePopUpButton, "mBoardTrackSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mBoardView, "mBoardView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mCanariDefaultNetClassPopUpButton, "mCanariDefaultNetClassPopUpButton", CanariDefaultNetClassPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
@@ -1649,13 +1646,12 @@ import Cocoa
     checkOutletConnection (self.mSchematicsLabelRenameNetButton, "mSchematicsLabelRenameNetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsLabelRotationSegmentedControl, "mSchematicsLabelRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mSchematicsScrollView, "mSchematicsScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetOrientationSegmentedControl, "mSchematicsSheetOrientationSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mSchematicsWireInspectorView, "mSchematicsWireInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectComponentsMenuItem, "mSelectComponentsMenuItem", CanariComponentsMenuItem.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
@@ -4167,7 +4163,6 @@ import Cocoa
     self.mBoardLineY2UnitPopUp?.ebCleanUp ()
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
-    self.mBoardScrollView?.ebCleanUp ()
     self.mBoardShapePopUp?.ebCleanUp ()
     self.mBoardSideForNewRestrictRectangleMenu?.ebCleanUp ()
     self.mBoardSideForNewTrackMenu?.ebCleanUp ()
@@ -4435,7 +4430,6 @@ import Cocoa
     self.mSchematicsLabelRenameNetButton?.ebCleanUp ()
     self.mSchematicsLabelRotationSegmentedControl?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
-    self.mSchematicsScrollView?.ebCleanUp ()
     self.mSchematicsSheetOrientationSegmentedControl?.ebCleanUp ()
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
     self.mSchematicsTitleTextField?.ebCleanUp ()
@@ -4606,7 +4600,6 @@ import Cocoa
     self.mBoardLineY2UnitPopUp = nil
     self.mBoardObjectsPageView = nil
     self.mBoardPointsBoundingBoxUnitPopUp = nil
-    self.mBoardScrollView = nil
     self.mBoardShapePopUp = nil
     self.mBoardSideForNewRestrictRectangleMenu = nil
     self.mBoardSideForNewTrackMenu = nil
@@ -4874,7 +4867,6 @@ import Cocoa
     self.mSchematicsLabelRenameNetButton = nil
     self.mSchematicsLabelRotationSegmentedControl = nil
     self.mSchematicsPageView = nil
-    self.mSchematicsScrollView = nil
     self.mSchematicsSheetOrientationSegmentedControl = nil
     self.mSchematicsSheetsInspectorView = nil
     self.mSchematicsTitleTextField = nil

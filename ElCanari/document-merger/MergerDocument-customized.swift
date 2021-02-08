@@ -29,10 +29,10 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
     let boardInspectors = [self.mBoardOperationInspectorView, self.mBoardIssueInspectorView]
     self.mBoardInspectorSegmentedControl?.register (masterView: self.mBoardInspectorMasterView, boardInspectors)
   //--- Set document to scroll view for enabling drag and drop
-    self.mComposedBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
+    self.mComposedBoardView?.mScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
     self.mModelDragSourceTableView?.register (document: self, draggedType: kDragAndDropModelType)
   //--- Set issue display view
-    self.mIssueTableView?.register (issueDisplayView: self.mComposedBoardView)
+    self.mIssueTableView?.register (issueDisplayView: self.mComposedBoardView?.mGraphicView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mBoardInspectorSegmentedControl, segment: 1)
   //--- Has unused instance(s) ?
@@ -107,7 +107,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
-    if let boardView = self.mComposedBoardView,
+    if let boardView = self.mComposedBoardView?.mGraphicView,
        dragRows.count == 1,
       let idx = dragRows.first,
       let boardModelTag = self.mModelDragSourceTableView?.tag (atIndex: idx) {

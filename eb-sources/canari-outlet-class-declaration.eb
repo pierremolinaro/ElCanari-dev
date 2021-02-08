@@ -57,8 +57,6 @@ extern outlet class NSTabView : NSControl ;
 
 extern outlet class NSTableView ;
 
-extern outlet class NSClipView ;
-
 extern outlet class CanariComboBox ;
 
 extern outlet class CanariNewComponentFromDevicePullDownButton ;

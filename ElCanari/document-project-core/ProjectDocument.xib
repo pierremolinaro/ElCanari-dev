@@ -92,7 +92,7 @@
                 <outlet property="mBoardLimitsHorizontalFlipSwitch" destination="5xj-0U-0Dz" id="Opd-eu-nm1"/>
                 <outlet property="mBoardLimitsInspectorSegmentedControl" destination="qtl-Uc-7hF" id="Xmv-G1-5Pp"/>
                 <outlet property="mBoardLimitsVerticalFlipSwitch" destination="mk6-qc-fTe" id="dAr-su-hHs"/>
-                <outlet property="mBoardLimitsView" destination="Qcf-ie-EQi" id="Lf9-b5-71j"/>
+                <outlet property="mBoardLimitsView" destination="X5S-uE-TuU" id="8KF-M8-pAk"/>
                 <outlet property="mBoardLimitsWidthTextField" destination="cjp-Vq-y5s" id="6d0-H1-Uvl"/>
                 <outlet property="mBoardLimitsWidthUnitPopUp" destination="MJJ-7P-hAD" id="GjH-jI-QDy"/>
                 <outlet property="mBoardLineInspectorView" destination="15079" id="Dwl-Zp-DZQ"/>
@@ -109,7 +109,6 @@
                 <outlet property="mBoardLineY2UnitPopUp" destination="16452" id="kcH-yW-tnt"/>
                 <outlet property="mBoardObjectsPageView" destination="3080" id="ZoI-T2-ES9"/>
                 <outlet property="mBoardPointsBoundingBoxUnitPopUp" destination="Nyb-FS-6hn" id="exL-lw-31a"/>
-                <outlet property="mBoardScrollView" destination="3081" id="upJ-2D-qri"/>
                 <outlet property="mBoardShapePopUp" destination="vwN-AC-2Tj" id="yVj-lB-Tet"/>
                 <outlet property="mBoardSideForNewRestrictRectangleMenu" destination="jZm-hZ-0gW" id="fed-W3-QsP"/>
                 <outlet property="mBoardSideForNewTrackMenu" destination="Z83-QN-bg4" id="RHy-Sy-06w"/>
@@ -136,7 +135,7 @@
                 <outlet property="mBoardTrackP2yUnitPopUp" destination="oUe-37-MCz" id="ICL-W4-FUI"/>
                 <outlet property="mBoardTrackSidePopUpButton" destination="2223" id="8Rr-9a-F2F"/>
                 <outlet property="mBoardVerticalFlipSwitch" destination="15404" id="BFc-8I-lC4"/>
-                <outlet property="mBoardView" destination="3082" id="Mst-ED-2Vk"/>
+                <outlet property="mBoardView" destination="dul-q2-4Tj" id="tn6-NA-94A"/>
                 <outlet property="mCanariDefaultNetClassPopUpButton" destination="QjI-Bc-9oe" id="MWP-H5-t0K"/>
                 <outlet property="mChangeComponentValueComboxBox" destination="3xd-rQ-uBf" id="VhK-oZ-Qs4"/>
                 <outlet property="mChangePackageComponentListTextField" destination="592" id="CST-gg-8YF"/>
@@ -377,13 +376,12 @@
                 <outlet property="mSchematicsLabelRenameNetButton" destination="DSM-Fw-ljM" id="Zxw-Ag-mGk"/>
                 <outlet property="mSchematicsLabelRotationSegmentedControl" destination="YxY-JJ-Hrb" id="mbl-hv-Hc8"/>
                 <outlet property="mSchematicsPageView" destination="3003" id="gdt-lN-O3d"/>
-                <outlet property="mSchematicsScrollView" destination="3012" id="jfW-DZ-Cam"/>
                 <outlet property="mSchematicsSheetOrientationSegmentedControl" destination="7wK-un-j2g" id="l66-IA-39r"/>
                 <outlet property="mSchematicsSheetsInspectorView" destination="15297" id="RL7-7Y-t38"/>
                 <outlet property="mSchematicsTitleTextField" destination="15314" id="lHz-Cw-7y5"/>
                 <outlet property="mSchematicsVersionTextField" destination="15313" id="pnO-CQ-g0E"/>
                 <outlet property="mSchematicsVerticalFlipSwitch" destination="15253" id="T0g-kp-mW0"/>
-                <outlet property="mSchematicsView" destination="3013" id="JHC-ji-qbQ"/>
+                <outlet property="mSchematicsView" destination="3Aj-aW-WuZ" id="D6x-P3-4Zb"/>
                 <outlet property="mSchematicsWireInspectorView" destination="15762" id="GWE-9G-fnI"/>
                 <outlet property="mSelectComponentsMenuItem" destination="15856" id="VNx-Bn-oBZ"/>
                 <outlet property="mSelectNetClassInNetTabButton" destination="nDf-F4-dfT" id="Kva-8Y-EEU"/>
@@ -2661,7 +2659,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="198.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="199" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2674,11 +2672,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="198.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="199" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="198.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2694,7 +2692,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="129" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="128.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2707,11 +2705,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="670" y="1" width="129" height="17"/>
+                                                <rect key="frame" x="670.5" y="1" width="128.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="129" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -3862,40 +3860,17 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="840" height="612"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Aj-aW-WuZ" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Aj-aW-WuZ" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="590" height="613"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XdK-xU-qSr" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="590" height="613"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3012" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="590" height="613"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="TJO-lq-ns5">
-                                        <rect key="frame" x="1" y="1" width="573" height="596"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3013" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </customView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="14843">
-                                        <rect key="frame" x="1" y="597" width="573" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="14842">
-                                        <rect key="frame" x="574" y="1" width="15" height="596"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="2000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15192">
                     <rect key="frame" x="0.0" y="0.0" width="251" height="547"/>
@@ -4659,40 +4634,17 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="847" height="614"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dul-q2-4Tj" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dul-q2-4Tj" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="597" height="614"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-29-tPE" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="597" height="614"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3081" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="597" height="614"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" drawsBackground="NO" id="vjz-46-hdV">
-                                        <rect key="frame" x="1" y="1" width="580" height="597"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </customView>
-                                        </subviews>
-                                        <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="14851">
-                                        <rect key="frame" x="1" y="598" width="580" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="14850">
-                                        <rect key="frame" x="581" y="1" width="15" height="597"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="2000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15368">
                     <rect key="frame" x="0.0" y="0.0" width="250" height="543"/>
@@ -8019,40 +7971,17 @@ DQ
             <rect key="frame" x="0.0" y="0.0" width="847" height="614"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-uE-TuU" customClass="EBHelperView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-uE-TuU" customClass="EBEnclosingGraphicView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="597" height="614"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wM3-dw-ptK" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="597" height="614"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abT-KY-0in" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="597" height="614"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="c9v-RA-cje">
-                                        <rect key="frame" x="1" y="1" width="580" height="597"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qcf-ie-EQi" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </customView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </clipView>
-                                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="N61-Vm-Hu7">
-                                        <rect key="frame" x="1" y="598" width="580" height="15"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="T4D-MR-NZM">
-                                        <rect key="frame" x="581" y="1" width="15" height="597"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </scroller>
-                                </scrollView>
-                            </subviews>
-                        </customView>
-                    </subviews>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minZoom">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxZoom">
+                            <integer key="value" value="2000"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLm-rs-Pgv">
                     <rect key="frame" x="0.0" y="0.0" width="250" height="574"/>

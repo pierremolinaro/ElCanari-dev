@@ -79,52 +79,52 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddSegmentButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageSegment (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddBezierButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageBezier (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddOvalButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageOval (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddArcButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageArc (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddPadButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackagePad (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddSlavePadButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { [weak self] in return self?.makeSlavePad () },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddGuideButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageGuide (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddGuideButton?.image = self.imageForAddGuideButton ()
     self.mAddDimensionButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageDimension (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
     self.mAddZoneButton?.register (
       draggedType: packagePasteboardType,
       draggedObjectFactory: { return (PackageZone (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView
+      scaleProvider: self.mComposedPackageView?.mGraphicView
     )
  //--- Register scroll view
-    self.mComposedPackageScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
-    self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
+    self.mComposedPackageView?.mScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
+    self.mComposedPackageView?.mGraphicView.register (pasteboardType: packagePasteboardType)
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, for: PackageSegment.self)
@@ -137,11 +137,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, for: PackageDimension.self)
     self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, for: PackageZone.self)
   //--- Set issue display view
-    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
+    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView?.mGraphicView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
   //--- Update display
-    if let view = self.mComposedPackageView {
+    if let view = self.mComposedPackageView?.mGraphicView {
       DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
     }
   }
@@ -484,8 +484,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
         by: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
         yBy: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
       )
-      self.mModelImageView?.mBackgroundImageAffineTransform = af
-      self.mComposedPackageView?.mForegroundImageAffineTransform = af
+//      self.mModelImageView?.mBackgroundImageAffineTransform = af
+//      self.mComposedPackageView?.mForegroundImageAffineTransform = af
+      self.mModelImageObjectsController.setBackgroundImageAffineTransform (af)
+      self.mPackageObjectsController.setBackgroundImageAffineTransform (af)
     }
   }
 

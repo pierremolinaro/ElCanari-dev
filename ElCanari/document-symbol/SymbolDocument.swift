@@ -414,7 +414,7 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView?.mGraphicView)
+    self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property)
@@ -565,7 +565,7 @@ import Cocoa
     self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
     self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
-    self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView?.mGraphicView)
+    self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.unbind_model ()
   //--- Selection controller property: mSymbolTextSelectionController

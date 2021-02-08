@@ -245,7 +245,6 @@ import Cocoa
   @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch? = nil
   @IBOutlet var mAutomaticBoardSizeView : NSView? = nil
   @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBoardClipView : NSClipView? = nil
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu? = nil
@@ -254,7 +253,7 @@ import Cocoa
   @IBOutlet var mBoardIssueInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardModelTableView : EBTableView? = nil
-  @IBOutlet var mBoardModelView : EBGraphicView? = nil
+  @IBOutlet var mBoardModelView : EBEnclosingGraphicView? = nil
   @IBOutlet var mBoardOperationInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil
@@ -282,8 +281,7 @@ import Cocoa
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mCommentTextView : EBTextObserverView? = nil
-  @IBOutlet var mComposedBoardScrollView : EBScrollView? = nil
-  @IBOutlet var mComposedBoardView : EBGraphicView? = nil
+  @IBOutlet var mComposedBoardView : EBEnclosingGraphicView? = nil
   @IBOutlet var mDangerView : NSView? = nil
   @IBOutlet var mDataTableView : EBTableView? = nil
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
@@ -519,7 +517,6 @@ import Cocoa
     checkOutletConnection (self.mAutomaticBoardSizeSwitch, "mAutomaticBoardSizeSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeView, "mAutomaticBoardSizeView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBoardLimitTextField, "mBoardBoardLimitTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mBoardClipView, "mBoardClipView", NSClipView.self, #file, #line)
     checkOutletConnection (self.mBoardHeightTextField, "mBoardHeightTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mBoardHeightUnitPopUp, "mBoardHeightUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardInsertMenu, "mBoardInsertMenu", CanariBoardInsertMenu.self, #file, #line)
@@ -528,7 +525,7 @@ import Cocoa
     checkOutletConnection (self.mBoardIssueInspectorView, "mBoardIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardLimitWidthUnitPopUp, "mBoardLimitWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardModelTableView, "mBoardModelTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mBoardModelView, "mBoardModelView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mBoardModelView, "mBoardModelView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mBoardOperationInspectorView, "mBoardOperationInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardViewDisplayBackComponenValuesCheckbox, "mBoardViewDisplayBackComponenValuesCheckbox", EBSwitch.self, #file, #line)
@@ -556,8 +553,7 @@ import Cocoa
     checkOutletConnection (self.mBoardWidthTextField, "mBoardWidthTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mBoardWidthUnitPopUp, "mBoardWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
-    checkOutletConnection (self.mComposedBoardScrollView, "mComposedBoardScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mComposedBoardView, "mComposedBoardView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mComposedBoardView, "mComposedBoardView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mDangerView, "mDangerView", NSView.self, #file, #line)
     checkOutletConnection (self.mDataTableView, "mDataTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
@@ -1564,7 +1560,6 @@ import Cocoa
     self.mAutomaticBoardSizeSwitch?.ebCleanUp ()
     self.mAutomaticBoardSizeView?.ebCleanUp ()
     self.mBoardBoardLimitTextField?.ebCleanUp ()
-    self.mBoardClipView?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
     self.mBoardHeightUnitPopUp?.ebCleanUp ()
     self.mBoardInsertMenu?.ebCleanUp ()
@@ -1601,7 +1596,6 @@ import Cocoa
     self.mBoardWidthTextField?.ebCleanUp ()
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mComposedBoardScrollView?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDangerView?.ebCleanUp ()
     self.mDataTableView?.ebCleanUp ()
@@ -1742,7 +1736,6 @@ import Cocoa
     self.mAutomaticBoardSizeSwitch = nil
     self.mAutomaticBoardSizeView = nil
     self.mBoardBoardLimitTextField = nil
-    self.mBoardClipView = nil
     self.mBoardHeightTextField = nil
     self.mBoardHeightUnitPopUp = nil
     self.mBoardInsertMenu = nil
@@ -1779,7 +1772,6 @@ import Cocoa
     self.mBoardWidthTextField = nil
     self.mBoardWidthUnitPopUp = nil
     self.mCommentTextView = nil
-    self.mComposedBoardScrollView = nil
     self.mComposedBoardView = nil
     self.mDangerView = nil
     self.mDataTableView = nil
