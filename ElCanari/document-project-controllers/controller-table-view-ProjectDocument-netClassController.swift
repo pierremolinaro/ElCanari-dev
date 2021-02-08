@@ -183,7 +183,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
+  func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -201,49 +201,49 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (#file, #line, "\"name\" column view unknown")
       }
     //--- Check 'netcolor' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "netcolor")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"netcolor\" column view unknown")
+        presentErrorWindow (#file, #line, "\"netcolor\" column view unknown")
       }
     //--- Check 'width' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "width")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"width\" column view unknown")
+        presentErrorWindow (#file, #line, "\"width\" column view unknown")
       }
     //--- Check 'hole' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "hole")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"hole\" column view unknown")
+        presentErrorWindow (#file, #line, "\"hole\" column view unknown")
       }
     //--- Check 'pad' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "pad")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"pad\" column view unknown")
+        presentErrorWindow (#file, #line, "\"pad\" column view unknown")
       }
     //--- Check 'used' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "used")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"used\" column view unknown")
+        presentErrorWindow (#file, #line, "\"used\" column view unknown")
       }
     //--- Check 'onFront' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onFront")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"onFront\" column view unknown")
+        presentErrorWindow (#file, #line, "\"onFront\" column view unknown")
       }
     //--- Check 'onBack' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onBack")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"onBack\" column view unknown")
+        presentErrorWindow (#file, #line, "\"onBack\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -359,56 +359,56 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_backColor ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.trackWidthString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.trackWidthString_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "pad", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "used", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.netUsage_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.netUsage_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "onFront", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnFrontSideString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnFrontSideString_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "onBack", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnBackSideString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnBackSideString_property)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

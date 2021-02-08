@@ -25,43 +25,37 @@ extension ProjectDocument {
       self.newClassNameTextFieldDidChange (nil)
     //---  Allow Back track
       let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property, file: #file, line: #line)
+      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
     //---  Allow front track
       let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property, file: #file, line: #line)
+      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
     //---  Width
       let width_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
       let widthUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
       self.mNetClassWidthDimensionTextField?.bind_dimensionAndUnit (
         width_property,
-        widthUnit_property,
-        file: #file,
-        line: #line
+        widthUnit_property
       )
-      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property, file: #file, line: #line)
+      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property)
     //--- Hole Diameter
       let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
       let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
       self.mNetClassHoleDiameterDimensionTextField?.bind_dimensionAndUnit (
         viaHoleDiameter_property,
-        viaHoleDiameterUnit_property,
-        file: #file,
-        line: #line
+        viaHoleDiameterUnit_property
       )
-      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property, file: #file, line: #line)
+      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property)
     //--- Pad Diameter
       let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91_440, undoManager: nil) // 40 mils
       let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
       self.mNetClassPadDiameterDimensionTextField?.bind_dimensionAndUnit (
         viaPadDiameter_property,
-        viaPadDiameterUnit_property,
-        file: #file,
-        line: #line
+        viaPadDiameterUnit_property
       )
-      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property, file: #file, line: #line)
+      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property)
     //--- Color
       let netColor_property = EBStoredProperty_NSColor (defaultValue: .brown, undoManager: nil)
-      self.mNetClassColorWell?.bind_color (netColor_property, file: #file, line: #line, sendContinously: true)
+      self.mNetClassColorWell?.bind_color (netColor_property, sendContinously: true)
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
@@ -128,43 +122,37 @@ extension ProjectDocument {
       self.classNameTextFieldEditionDidChange (nil)
     //---  Allow Back track
       let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnBackSide, undoManager: nil)
-      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property, file: #file, line: #line)
+      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
     //---  Allow front track
       let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnFrontSide, undoManager: nil)
-      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property, file: #file, line: #line)
+      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
     //---  Width
       let width_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidth, undoManager: nil)
       let widthUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidthUnit, undoManager: nil)
       self.mNetClassWidthDimensionTextField?.bind_dimensionAndUnit (
         width_property,
-        widthUnit_property,
-        file: #file,
-        line: #line
+        widthUnit_property
       )
-      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property, file: #file, line: #line)
+      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property)
     //--- Hole Diameter
       let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaHoleDiameter, undoManager: nil)
       let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaHoleDiameterUnit, undoManager: nil)
       self.mNetClassHoleDiameterDimensionTextField?.bind_dimensionAndUnit (
         viaHoleDiameter_property,
-        viaHoleDiameterUnit_property,
-        file: #file,
-        line: #line
+        viaHoleDiameterUnit_property
       )
-      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property, file: #file, line: #line)
+      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property)
     //--- Pad Diameter
       let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaPadDiameter, undoManager: nil)
       let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaPadDiameterUnit, undoManager: nil)
       self.mNetClassPadDiameterDimensionTextField?.bind_dimensionAndUnit (
         viaPadDiameter_property,
-        viaPadDiameterUnit_property,
-        file: #file,
-        line: #line
+        viaPadDiameterUnit_property
       )
-      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property, file: #file, line: #line)
+      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property)
     //--- Color
       let netColor_property = EBStoredProperty_NSColor (defaultValue: editedNetClass.mNetClassColor, undoManager: nil)
-      self.mNetClassColorWell?.bind_color (netColor_property, file: #file, line: #line, sendContinously: true)
+      self.mNetClassColorWell?.bind_color (netColor_property, sendContinously: true)
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {

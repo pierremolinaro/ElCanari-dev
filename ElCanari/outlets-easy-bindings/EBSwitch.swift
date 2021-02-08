@@ -57,7 +57,7 @@ class EBSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_value (_ inObject : EBReadWriteProperty_Bool, file : String, line : Int) {
+  func bind_value (_ inObject : EBReadWriteProperty_Bool) {
     self.mValueController = Controller_EBSwitch_value (object: inObject, outlet: self)
   }
 

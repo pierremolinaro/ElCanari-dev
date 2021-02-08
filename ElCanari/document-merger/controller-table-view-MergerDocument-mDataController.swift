@@ -209,7 +209,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
+  func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -227,7 +227,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (#file, #line, "\"name\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -343,7 +343,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.name_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.name_property)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

@@ -44,7 +44,7 @@ class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_nets (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
+  func bind_nets (_ model : EBReadOnlyProperty_StringArray) {
     self.mComponentsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }

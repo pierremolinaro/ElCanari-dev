@@ -102,7 +102,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_FontCharacter, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_FontCharacter) {
     self.mModel = model
     self.bind_property_advance (model: model)
     self.bind_property_codePoint (model: model)

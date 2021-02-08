@@ -46,7 +46,7 @@ class EBButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_title (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+  func bind_title (_ object : EBReadOnlyProperty_String) {
     self.mTitleController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateTitle (object) }

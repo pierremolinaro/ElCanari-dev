@@ -183,7 +183,7 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
+  func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -201,13 +201,13 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (#file, #line, "\"name\" column view unknown")
       }
     //--- Check 'size' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"size\" column view unknown")
+        presentErrorWindow (#file, #line, "\"size\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -323,14 +323,14 @@ final class Controller_DeviceDocument_documentationController : ReadOnlyAbstract
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mFileName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mFileName_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.fileSize_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.fileSize_property, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

@@ -61,7 +61,7 @@ class CanariOrientationSegmentedControl : NSSegmentedControl, EBUserClassNamePro
 
   //····················································································································
 
-  func bind_angle (_ object : EBReadWriteProperty_Int, file : String, line : Int) {
+  func bind_angle (_ object : EBReadWriteProperty_Int) {
     self.mController = Controller_CanariOrientationSegmentedControl_angle (object: object, outlet: self)
   }
 

@@ -134,7 +134,7 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_imageData (_ model : EBStoredProperty_Data, file : String, line : Int) {
+  func bind_imageData (_ model : EBStoredProperty_Data) {
     self.mImageDataController = Controller_DeviceDroppableImageView_imageData (
       object: model,
       outlet: self

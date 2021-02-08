@@ -234,7 +234,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
+  func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -252,37 +252,37 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (#file, #line, "\"name\" column view unknown")
       }
     //--- Check 'device' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "device")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"device\" column view unknown")
+        presentErrorWindow (#file, #line, "\"device\" column view unknown")
       }
     //--- Check 'package' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "package")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"package\" column view unknown")
+        presentErrorWindow (#file, #line, "\"package\" column view unknown")
       }
     //--- Check 'value' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "value")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"value\" column view unknown")
+        presentErrorWindow (#file, #line, "\"value\" column view unknown")
       }
     //--- Check 'inSchematics' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "inSchematics")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"inSchematics\" column view unknown")
+        presentErrorWindow (#file, #line, "\"inSchematics\" column view unknown")
       }
     //--- Check 'inBoard' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "inBoard")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"inBoard\" column view unknown")
+        presentErrorWindow (#file, #line, "\"inBoard\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -398,42 +398,42 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.componentName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.componentName_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "device", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.deviceName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.deviceName_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "package", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.selectedPackageName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.selectedPackageName_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "value", let cell = result as? EBTextField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.mComponentValue_property, file: #file, line: #line, sendContinously:false)
+          cell.mCellOutlet?.bind_value (object.mComponentValue_property, sendContinously:false)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "inSchematics", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.placementInSchematic_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.placementInSchematic_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "inBoard", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.componentIsPlacedInBoardString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.componentIsPlacedInBoardString_property)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

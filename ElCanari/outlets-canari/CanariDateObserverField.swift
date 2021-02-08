@@ -54,7 +54,7 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
 
   //····················································································································
 
-  func bind_dateObserver (_ object : EBReadOnlyProperty_Date, file : String, line : Int) {
+  func bind_dateObserver (_ object : EBReadOnlyProperty_Date) {
     self.mValueController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }

@@ -181,7 +181,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_y1 ()
     self.bind_property_x2 ()

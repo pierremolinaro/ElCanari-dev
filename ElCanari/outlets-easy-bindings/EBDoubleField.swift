@@ -98,13 +98,11 @@ class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate 
   private var mValueController : Controller_EBDoubleField_value?
   private var mSendContinously : Bool = false
 
-  func bind_value (_ object:EBReadWriteProperty_Double, file:String, line:Int, sendContinously:Bool, autoFormatter:Bool) {
+  func bind_value (_ object : EBReadWriteProperty_Double, sendContinously : Bool, autoFormatter : Bool) {
     mSendContinously = sendContinously
     mValueController = Controller_EBDoubleField_value (
       object:object,
       outlet:self,
-      file:file,
-      line:line,
       sendContinously:sendContinously,
       autoFormatter:autoFormatter
     )
@@ -130,8 +128,6 @@ final class Controller_EBDoubleField_value : EBReadOnlyPropertyController {
 
   init (object : EBReadWriteProperty_Double,
         outlet : EBDoubleField,
-        file : String,
-        line : Int,
         sendContinously : Bool,
         autoFormatter : Bool) {
     mObject = object
@@ -143,9 +139,9 @@ final class Controller_EBDoubleField_value : EBReadOnlyPropertyController {
       let formatter = NumberFormatter ()
       self.mOutlet.formatter = formatter
     }else if self.mOutlet.formatter == nil {
-      presentErrorWindow (file, line, "the outlet has no formatter")
+      presentErrorWindow (#file, #line, "the outlet has no formatter")
     }else if !(mOutlet.formatter is NumberFormatter) {
-      presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
+      presentErrorWindow (#file, #line, "the formatter should be an NSNumberFormatter")
     }
   }
 

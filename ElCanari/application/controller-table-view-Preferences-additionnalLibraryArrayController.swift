@@ -183,7 +183,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
+  func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -201,19 +201,19 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "uses")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"uses\" column view unknown")
+        presentErrorWindow (#file, #line, "\"uses\" column view unknown")
       }
     //--- Check 'status' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "status")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"status\" column view unknown")
+        presentErrorWindow (#file, #line, "\"status\" column view unknown")
       }
     //--- Check 'path' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "path")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"path\" column view unknown")
+        presentErrorWindow (#file, #line, "\"path\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -329,14 +329,14 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_value (object.mUses_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "status", let cell = result as? EBImageObserverView_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_image ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_image (object.mStatusImage_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "path", let cell = result as? EBButton_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
@@ -347,7 +347,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.target = object
           cell.mCellOutlet?.action = #selector (CanariLibraryEntry.revealLibraryInFinderAction(_:))
-          cell.mCellOutlet?.bind_title (object.mPath_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_title (object.mPath_property)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

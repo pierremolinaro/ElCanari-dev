@@ -47,7 +47,7 @@ class CanariTabView : NSTabView, NSTabViewDelegate, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedTabIndex (_ model : EBReadWriteProperty_Int, file : String, line : Int) {
+  func bind_selectedTabIndex (_ model : EBReadWriteProperty_Int) {
     self.mSelectedTabIndexController = Controller_CanariTabView_selectedTabIndex (
       selectedTabIndex: model,
       outlet: self

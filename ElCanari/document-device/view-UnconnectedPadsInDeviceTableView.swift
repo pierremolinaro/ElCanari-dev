@@ -137,7 +137,7 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NST
 
   //····················································································································
 
-  func bind_unconnectedPads (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
+  func bind_unconnectedPads (_ model : EBReadOnlyProperty_StringArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }

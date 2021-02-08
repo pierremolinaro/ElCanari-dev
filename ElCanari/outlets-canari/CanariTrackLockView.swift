@@ -293,9 +293,7 @@ class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_angle (_ inObject : EBReadOnlyProperty_Int,
-                   file : String,
-                   line : Int) {
+  func bind_angle (_ inObject : EBReadOnlyProperty_Int) {
     self.mAngleController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateAngle (inObject) }
@@ -328,9 +326,7 @@ class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_manualLockP1 (_ inObject : EBReadWriteProperty_Bool,
-                          file : String,
-                          line : Int) {
+  func bind_manualLockP1 (_ inObject : EBReadWriteProperty_Bool) {
     self.mManualLockP1Controller = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP1 (inObject) }
@@ -363,9 +359,7 @@ class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_manualLockP2 (_ inObject : EBReadWriteProperty_Bool,
-                          file : String,
-                          line : Int) {
+  func bind_manualLockP2 (_ inObject : EBReadWriteProperty_Bool) {
     self.mManualLockP2Controller = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP2 (inObject) }
@@ -398,9 +392,7 @@ class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_p1ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool,
-                   file : String,
-                   line : Int) {
+  func bind_p1ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
     self.mP1ConnectedToPadController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateP1ConnectedToSomePad (inObject) }
@@ -433,9 +425,7 @@ class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_p2ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool,
-                   file : String,
-                   line : Int) {
+  func bind_p2ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
     self.mP2ConnectedToPadController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateP2ConnectedToSomePad (inObject) }

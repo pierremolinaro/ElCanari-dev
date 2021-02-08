@@ -260,7 +260,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   private var mAdvanceController : EBReadOnlyPropertyController? = nil
 
-  final func bind_advance (_ object : EBReadOnlyProperty_Int, file : String, line : Int) {
+  final func bind_advance (_ object : EBReadOnlyProperty_Int) {
     self.mAdvanceController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { [weak self] in self?.updateAdvance (object) })
   }
 
@@ -288,7 +288,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   private var mCharacterSegmentListController : EBReadOnlyPropertyController? = nil
 
-  final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentListClass, file:String, line:Int) {
+  final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentListClass) {
     self.mCharacterSegmentListController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateSegmentDrawingsFromCharacterSegmentListController (object) }
@@ -342,7 +342,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   private var mTransparencyController : EBReadOnlyPropertyController? = nil
 
-  final func bind_transparency (_ object : EBReadOnlyProperty_Double, file : String, line : Int) {
+  final func bind_transparency (_ object : EBReadOnlyProperty_Double) {
     mTransparencyController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTransparency (object) })
@@ -383,7 +383,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   private var mDisplayFlowController : EBReadOnlyPropertyController? = nil
 
-  final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
+  final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool) {
     mDisplayFlowController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateDisplayFlow (object) }
@@ -425,7 +425,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   private var mDisplayDrawingIndexesController : EBReadOnlyPropertyController? = nil
 
-  final func bind_displayDrawingIndexes (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
+  final func bind_displayDrawingIndexes (_ object : EBReadOnlyProperty_Bool) {
     self.mDisplayDrawingIndexesController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateIndexDrawing (object) }

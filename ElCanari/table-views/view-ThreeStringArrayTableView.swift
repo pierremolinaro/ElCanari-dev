@@ -157,7 +157,7 @@ class ThreeStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVie
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_ThreeStringArray, file : String, line : Int) {
+  func bind_array (_ model : EBReadOnlyProperty_ThreeStringArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

@@ -50,9 +50,8 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //····················································································································
 
   func bind_dimensionAndUnit (_ object:EBReadWriteProperty_Int,
-                              _ unit:EBReadOnlyProperty_Int,
-                              file:String, line:Int) {
-    self.mController = Controller_CanariDimensionTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
+                              _ unit:EBReadOnlyProperty_Int) {
+    self.mController = Controller_CanariDimensionTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self)
   }
 
   //····················································································································
@@ -80,9 +79,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBReadOnlyPro
 
   init (dimension : EBReadWriteProperty_Int,
         unit : EBReadOnlyProperty_Int,
-        outlet : CanariDimensionTextField,
-        file : String,
-        line : Int) {
+        outlet : CanariDimensionTextField) {
     mDimension = dimension
     mUnit = unit
     mOutlet = outlet

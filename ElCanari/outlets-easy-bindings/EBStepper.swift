@@ -53,7 +53,7 @@ class EBStepper : NSStepper, EBUserClassNameProtocol {
 
   private var mIntValueController : Controller_EBStepper_value?
 
-  func bind_value (_ object:EBReadWriteProperty_Int, file:String, line:Int, sendContinously:Bool) {
+  func bind_value (_ object:EBReadWriteProperty_Int, sendContinously:Bool) {
     self.mIntValueController = Controller_EBStepper_value (object: object, outlet: self)
     self.isContinuous = sendContinously
   }

@@ -106,7 +106,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolInstanceInDevice, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     self.mModel = model
     self.bind_property_mInstanceName (model: model)
     self.bind_property_mX (model: model)

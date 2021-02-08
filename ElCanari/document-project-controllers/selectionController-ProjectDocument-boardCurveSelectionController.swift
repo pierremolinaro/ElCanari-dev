@@ -180,7 +180,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BorderCurve, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_BorderCurve) {
     self.mModel = model
     self.bind_property_descriptor (model: model)
     self.bind_property_isLine (model: model)

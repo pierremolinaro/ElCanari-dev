@@ -203,7 +203,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mCenterX ()
     self.bind_property_mCenterY ()

@@ -60,7 +60,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_names (_ names : EBReadOnlyProperty_StringTagArray, file : String, line : Int) {
+  func bind_names (_ names : EBReadOnlyProperty_StringTagArray) {
     self.mNamesController = EBReadOnlyPropertyController (
       observedObjects: [names],
       callBack: { [weak self] in self?.updateOutlet (names) }

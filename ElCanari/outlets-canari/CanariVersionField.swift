@@ -34,7 +34,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_version (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+  func bind_version (_ model : EBReadOnlyProperty_Int) {
     self.mVersionController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -72,7 +72,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+  func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool) {
     self.mVersionShouldChangeController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }

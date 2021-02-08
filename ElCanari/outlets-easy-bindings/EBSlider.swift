@@ -55,7 +55,7 @@ class EBSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_doubleValue (_ object : EBReadWriteProperty_Double, file : String, line : Int, sendContinously : Bool) {
+  func bind_doubleValue (_ object : EBReadWriteProperty_Double, sendContinously : Bool) {
     self.mDoubleValueController = Controller_EBSlider_doubleValue (object: object, outlet: self)
     self.isContinuous = sendContinously
   }
@@ -88,7 +88,7 @@ class EBSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_intValue (_ object : EBReadWriteProperty_Int, file : String, line : Int, sendContinously : Bool) {
+  func bind_intValue (_ object : EBReadWriteProperty_Int, sendContinously : Bool) {
     self.mIntValueController = Controller_EBSlider_intValue (object:object, outlet:self)
     self.isContinuous = sendContinously
   }

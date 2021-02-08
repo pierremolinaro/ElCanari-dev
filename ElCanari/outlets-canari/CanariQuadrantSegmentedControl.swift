@@ -57,7 +57,7 @@ class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtoc
 
   //····················································································································
 
-  func bind_quadrant (_ object : EBReadWriteProperty_QuadrantRotation, file : String, line : Int) {
+  func bind_quadrant (_ object : EBReadWriteProperty_QuadrantRotation) {
     self.mController = Controller_CanariQuadrantSegmentedControl_quadrant (object: object, outlet: self)
   }
 

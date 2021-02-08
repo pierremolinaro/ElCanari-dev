@@ -54,9 +54,7 @@ class CanariAngleSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_angle (_ object : EBReadWriteProperty_Int,
-                   file : String,
-                   line : Int) {
+  func bind_angle (_ object : EBReadWriteProperty_Int) {
     self.mController = Controller_CanariAngleSlider_angle (angle: object, outlet: self)
     self.isContinuous = true
   }

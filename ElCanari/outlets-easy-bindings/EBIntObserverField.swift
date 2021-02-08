@@ -54,12 +54,10 @@ class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_valueObserver (_ object : EBReadOnlyProperty_Int, file : String, line : Int, autoFormatter : Bool) {
+  func bind_valueObserver (_ object : EBReadOnlyProperty_Int, autoFormatter : Bool) {
     self.mValueController = Controller_EBIntObserverField_readOnlyValue (
       object: object,
       outlet: self,
-      file: file,
-      line: line,
       autoFormatter: autoFormatter
     )
   }
@@ -87,16 +85,16 @@ final class Controller_EBIntObserverField_readOnlyValue : EBReadOnlyPropertyCont
 
   //····················································································································
 
-  init (object : EBReadOnlyProperty_Int, outlet : EBIntObserverField, file : String, line : Int, autoFormatter : Bool) {
+  init (object : EBReadOnlyProperty_Int, outlet : EBIntObserverField, autoFormatter : Bool) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
     if autoFormatter {
       self.mOutlet.formatter = NumberFormatter ()
     }else if self.mOutlet.formatter == nil {
-      presentErrorWindow (file, line, "the outlet has no formatter")
+      presentErrorWindow (#file, #line, "the outlet has no formatter")
     }else if !(self.mOutlet.formatter is NumberFormatter) {
-      presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
+      presentErrorWindow (#file, #line, "the formatter should be an NSNumberFormatter")
     }
   }
 

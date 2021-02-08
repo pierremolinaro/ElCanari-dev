@@ -136,12 +136,12 @@ class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableVi
 
   //····················································································································
 
-  func bind_symbolDictionary (_ model : EBReadOnlyProperty_DeviceSymbolDictionary, file : String, line : Int) {
+  func bind_symbolDictionary (_ model : EBReadOnlyProperty_DeviceSymbolDictionary) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )
-    self.mDeviceSymbolTypePinsTableView?.bind_array (self.mPinNameArray, file: #file, line: #line)
+    self.mDeviceSymbolTypePinsTableView?.bind_array (self.mPinNameArray)
     self.mPinNameArray.mReadModelFunction = { EBSelection.single (self.pinNames ()) }
   }
 

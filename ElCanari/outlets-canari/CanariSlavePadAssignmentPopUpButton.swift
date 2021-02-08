@@ -95,7 +95,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
  //····················································································································
 
-  func bind_masterPadName (_ inObject : EBGenericReadOnlyProperty <String>, file : String, line : Int) {
+  func bind_masterPadName (_ inObject : EBGenericReadOnlyProperty <String>) {
     self.mSlavePadIndexController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadName: inObject) }
@@ -141,7 +141,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
  //····················································································································
 
-  func bind_masterPadObjectIndexArray (_ inObject : EBGenericReadOnlyProperty <IntArray>, file : String, line : Int) {
+  func bind_masterPadObjectIndexArray (_ inObject : EBGenericReadOnlyProperty <IntArray>) {
     self.mMasterPadIndexArrayIndexController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadIndexArray: inObject) }

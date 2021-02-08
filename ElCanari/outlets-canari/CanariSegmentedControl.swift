@@ -119,7 +119,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedPage (_ object : EBReadWriteProperty_Int, file : String, line : Int) {
+  func bind_selectedPage (_ object : EBReadWriteProperty_Int) {
     self.mController = Controller_CanariSegmentedControl_selectedPage (object: object, outlet: self)
   }
 

@@ -88,7 +88,7 @@ class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedTag (_ object : EBReadWriteProperty_Int, file : String, line : Int) {
+  func bind_selectedTag (_ object : EBReadWriteProperty_Int) {
     self.mSelectedTagController = Controller_CanariChoiceMenu_selectedTag (object: object, outlet: self)
   }
 
@@ -118,7 +118,7 @@ class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol, file : String, line : Int) {
+  func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol) {
     self.mSelectedIndexController = Controller_CanariChoiceMenu_selectedIndex (object: object, outlet: self)
   }
 

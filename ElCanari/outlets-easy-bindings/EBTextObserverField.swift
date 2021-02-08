@@ -53,9 +53,9 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 
   //····················································································································
 
-  func bind_valueObserver (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+  func bind_valueObserver (_ object : EBReadOnlyProperty_String) {
     if self.formatter != nil {
-      presentErrorWindow (file, line, "the EBTextObserverField outlet has a formatter")
+      presentErrorWindow (#file, #line, "the EBTextObserverField outlet has a formatter")
     }
     self.mValueController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { self.updateValue (object) } )
   }
@@ -87,7 +87,7 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 
   //····················································································································
 
-  func bind_backColor (_ object : EBReadOnlyProperty_NSColor, file : String, line : Int) {
+  func bind_backColor (_ object : EBReadOnlyProperty_NSColor) {
     self.mBackColorController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { [weak self] in self?.updateBackColor (object) } )
   }
 

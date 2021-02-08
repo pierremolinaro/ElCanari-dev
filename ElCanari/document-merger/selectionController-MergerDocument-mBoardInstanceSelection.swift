@@ -106,7 +106,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_MergerBoardInstance, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_MergerBoardInstance) {
     self.mModel = model
     self.bind_property_boardLimitWidth (model: model)
     self.bind_property_instanceRect (model: model)

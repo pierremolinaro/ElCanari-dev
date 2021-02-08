@@ -43,7 +43,7 @@ class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedSegment (_ object : EBReadWriteObservableEnumProtocol, file : String, line : Int) {
+  func bind_selectedSegment (_ object : EBReadWriteObservableEnumProtocol) {
     self.mController = Controller_CanariEnumSegmentedControl_selectedSegment (object:object, outlet:self)
   }
 

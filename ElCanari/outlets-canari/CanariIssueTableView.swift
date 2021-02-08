@@ -185,7 +185,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   //····················································································································
 
-  func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray, file : String, line : Int) {
+  func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray) {
     self.mIssueController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }

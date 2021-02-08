@@ -298,7 +298,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_xCenter ()
     self.bind_property_yCenter ()

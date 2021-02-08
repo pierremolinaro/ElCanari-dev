@@ -48,7 +48,7 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_image (_ object : EBReadOnlyProperty_NSImage, file : String, line : Int) {
+  func bind_image (_ object : EBReadOnlyProperty_NSImage) {
     self.mImageController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { self.updateImage (object) } )
   }
 
@@ -83,7 +83,7 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_tooltip (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+  func bind_tooltip (_ object : EBReadOnlyProperty_String) {
     self.mTooltipController = EBReadOnlyPropertyController (observedObjects: [object], callBack : { self.updateTooltip (object) })
   }
 

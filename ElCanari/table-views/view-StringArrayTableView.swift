@@ -131,7 +131,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
+  func bind_array (_ model : EBReadOnlyProperty_StringArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

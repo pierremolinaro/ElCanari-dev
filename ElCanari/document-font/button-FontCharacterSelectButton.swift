@@ -94,8 +94,8 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   private var mCodePointController : Controller_CanariFontCharacterSelectButton_codePoint?
 
-  func bind_codePoint (_ object:EBReadWriteProperty_Int, file:String, line:Int) {
-    self.mCodePointController = Controller_CanariFontCharacterSelectButton_codePoint (object:object, outlet:self, file:file, line:line)
+  func bind_codePoint (_ object:EBReadWriteProperty_Int) {
+    self.mCodePointController = Controller_CanariFontCharacterSelectButton_codePoint (object:object, outlet:self)
   }
 
   func unbind_codePoint () {
@@ -125,7 +125,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   private var mCharactersController : EBReadOnlyPropertyController? = nil
 
-  func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice, file : String, line : Int) {
+  func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice) {
     self.mCharactersController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in
@@ -159,7 +159,7 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBReadOnlyPro
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_Int, outlet : FontCharacterSelectButton, file : String, line : Int) {
+  init (object : EBReadWriteProperty_Int, outlet : FontCharacterSelectButton) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateCodePoint (object) })

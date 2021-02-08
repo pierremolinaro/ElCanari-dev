@@ -183,7 +183,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
+  func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -201,37 +201,37 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (#file, #line, "\"name\" column view unknown")
       }
     //--- Check 'version' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"version\" column view unknown")
+        presentErrorWindow (#file, #line, "\"version\" column view unknown")
       }
     //--- Check 'size' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"size\" column view unknown")
+        presentErrorWindow (#file, #line, "\"size\" column view unknown")
       }
     //--- Check 'texts' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "texts")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"texts\" column view unknown")
+        presentErrorWindow (#file, #line, "\"texts\" column view unknown")
       }
     //--- Check 'names' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "names")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"names\" column view unknown")
+        presentErrorWindow (#file, #line, "\"names\" column view unknown")
       }
     //--- Check 'values' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "values")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"values\" column view unknown")
+        presentErrorWindow (#file, #line, "\"values\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -347,42 +347,42 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mFontName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mFontName_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.versionString_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "texts", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mTexts_property.count_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.mTexts_property.count_property, autoFormatter:true)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "names", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mComponentNames_property.count_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.mComponentNames_property.count_property, autoFormatter:true)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "values", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mComponentValues_property.count_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.mComponentValues_property.count_property, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

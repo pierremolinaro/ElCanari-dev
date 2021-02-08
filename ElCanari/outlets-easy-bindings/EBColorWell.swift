@@ -45,7 +45,7 @@ class EBColorWell : NSColorWell, EBUserClassNameProtocol {
   private var mValueController : Controller_EBColorWell_color? = nil
   var mSendContinously = false
 
-  func bind_color (_ object : EBReadWriteProperty_NSColor, file : String, line : Int, sendContinously : Bool) {
+  func bind_color (_ object : EBReadWriteProperty_NSColor, sendContinously : Bool) {
     NSColorPanel.shared.showsAlpha = true
     self.mSendContinously = sendContinously
     self.mValueController = Controller_EBColorWell_color (object:object, outlet:self)

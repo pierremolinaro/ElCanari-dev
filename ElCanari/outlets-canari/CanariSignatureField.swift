@@ -34,7 +34,7 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_signature (_ model : EBReadOnlyProperty_UInt32, file : String, line : Int) {
+  func bind_signature (_ model : EBReadOnlyProperty_UInt32) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: {

@@ -248,7 +248,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     self.mModel = model
     self.bind_property_drawBoardLimits (model: model)
     self.bind_property_drawComponentNamesBottomSide (model: model)

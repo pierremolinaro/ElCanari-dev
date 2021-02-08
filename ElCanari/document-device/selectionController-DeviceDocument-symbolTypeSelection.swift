@@ -116,7 +116,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolTypeInDevice, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     self.mModel = model
     self.bind_property_documentSizeString (model: model)
     self.bind_property_instanceCount (model: model)

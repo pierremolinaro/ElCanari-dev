@@ -618,7 +618,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardModel, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_BoardModel) {
     self.mModel = model
     self.bind_property_artworkName (model: model)
     self.bind_property_backComponentNameSegments (model: model)

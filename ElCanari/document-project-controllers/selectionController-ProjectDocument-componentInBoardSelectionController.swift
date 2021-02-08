@@ -433,7 +433,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mSlavePadsShouldBeRouted ()
     self.bind_property_mX ()

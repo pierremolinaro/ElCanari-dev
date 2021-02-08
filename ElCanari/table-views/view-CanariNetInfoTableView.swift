@@ -187,7 +187,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   //····················································································································
 
-  func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray, file : String, line : Int) {
+  func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

@@ -219,7 +219,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_x ()
     self.bind_property_y ()

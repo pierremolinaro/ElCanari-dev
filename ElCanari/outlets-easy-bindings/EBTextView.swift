@@ -40,7 +40,7 @@ class EBTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_value (_ object : EBReadWriteProperty_String, file : String, line : Int) {
+  func bind_value (_ object : EBReadWriteProperty_String) {
     self.mValueController = Controller_EBTextView_value (object: object, outlet: self)
   }
 

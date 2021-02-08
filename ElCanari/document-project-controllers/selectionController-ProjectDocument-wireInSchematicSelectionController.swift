@@ -74,7 +74,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()

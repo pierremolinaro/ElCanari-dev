@@ -53,7 +53,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mOrientation ()
     self.bind_property_objectDisplay ()

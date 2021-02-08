@@ -60,7 +60,7 @@ class CanariSelectionPopUpButton : EBPopUpButton {
 
   //····················································································································
 
-  func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray, file : String, line : Int) {
+  func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray) {
     self.mController = Controller_CanariSelectionPopUpButton_selectedNameInArray (inSelectedName, inNameArray, outlet: self)
   }
 

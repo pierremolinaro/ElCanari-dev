@@ -103,20 +103,16 @@ class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
   //····················································································································
 
   func bind_value (_ object : EBReadWriteProperty_Int,
-                   file : String,
-                   line : Int,
                    sendContinously : Bool,
                    autoFormatter : Bool) {
     if self.cell?.sendsActionOnEndEditing ?? true {
-      presentErrorWindow (file, line, "In IB, \"Action\" should be set to \"Send On Enter Only\"")
+      presentErrorWindow (#file, #line, "In IB, \"Action\" should be set to \"Send On Enter Only\"")
     }
     self.cell?.sendsActionOnEndEditing = false
     self.mSendContinously = sendContinously
     self.mValueController = Controller_EBIntField_value (
       object: object,
       outlet: self,
-      file: file,
-      line: line,
       sendContinously: sendContinously,
       autoFormatter: autoFormatter
     )
@@ -146,8 +142,6 @@ final class Controller_EBIntField_value : EBReadOnlyPropertyController {
 
   init (object : EBReadWriteProperty_Int,
         outlet : EBIntField,
-        file : String,
-        line : Int,
         sendContinously : Bool,
         autoFormatter : Bool) {
     self.mObject = object
@@ -159,9 +153,9 @@ final class Controller_EBIntField_value : EBReadOnlyPropertyController {
       let formatter = NumberFormatter ()
       self.mOutlet.formatter = formatter
     }else if self.mOutlet.formatter == nil {
-      presentErrorWindow (file, line, "the outlet has no formatter")
+      presentErrorWindow (#file, #line, "the outlet has no formatter")
     }else if !(mOutlet.formatter is NumberFormatter) {
-      presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
+      presentErrorWindow (#file, #line, "the formatter should be an NSNumberFormatter")
     }
   }
 

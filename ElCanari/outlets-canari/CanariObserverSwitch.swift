@@ -51,7 +51,7 @@ class CanariObserverSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_valueObserver (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
+  func bind_valueObserver (_ object : EBReadOnlyProperty_Bool) {
     self.mValueController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { self.updateValue (object) } )
   }
 
