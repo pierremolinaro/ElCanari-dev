@@ -16,8 +16,9 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.stringValue = inTitle
     self.isBezeled = false
     self.isBordered = false
-    self.backgroundColor = debugBackgroundColor ()
-    self.drawsBackground = self.backgroundColor != nil
+//    self.backgroundColor = debugBackgroundColor ()
+//    self.drawsBackground = self.backgroundColor != nil
+    self.drawsBackground = false
     self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
@@ -30,6 +31,16 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    if let color = debugBackgroundColor () {
+      color.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+    }
+    super.draw (inDirtyRect)
   }
 
   //····················································································································

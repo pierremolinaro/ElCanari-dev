@@ -20,8 +20,9 @@ extension EBGraphicView {
       }else{
         scrollView.magnification = CGFloat (self.mZoomPropertyCache) / 100.0
       }
-      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
-      self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
+      let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
+      self.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(newZoom) %"
+      self.mZoomDidChangeCallback? (newZoom)
     }
   }
 
@@ -51,7 +52,7 @@ extension EBGraphicView {
 
   @objc final internal func didEndLiveScroll (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
-    self.mZoomController?.updateModel (self, newZoom)
+    _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
   }
 
   //····················································································································

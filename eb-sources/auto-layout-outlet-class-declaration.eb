@@ -137,6 +137,30 @@ extern autolayout class PullDownButton (title: String, small: Bool) {
   func add (item: menuItem)
 }
 
+
+extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicController {
+  $underObjectsDisplay transient EBShape
+  $overObjectsDisplay transient EBShape
+  $arrowKeyMagnitude transient Int
+  $shiftArrowKeyMagnitude transient Int
+  $backColor transient NSColor
+  $mouseGrid transient Int
+  $gridStep transient Int
+  $gridStyle transient GridStyle
+  $gridDisplayFactor transient Int
+  $gridLineColor transient NSColor
+  $gridCrossColor transient NSColor
+  $zoom property Int
+  $horizontalFlip transient Bool
+  $verticalFlip transient Bool
+  $xPlacardUnit transient Int
+  $yPlacardUnit transient Int
+  $backgroundImageData transient Data
+  $backgroundImageOpacity transient Double
+  $foregroundImageData transient Data
+  $foregroundImageOpacity transient Double
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 //extern autolayout class AutoLayoutCanariBoolPopUpButton $enabled ;

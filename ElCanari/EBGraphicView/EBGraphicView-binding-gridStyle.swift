@@ -22,8 +22,8 @@ extension EBGraphicView {
   //····················································································································
 
   final func unbind_gridStyle () {
-    mGridStyleController?.unregister ()
-    mGridStyleController = nil
+    self.mGridStyleController?.unregister ()
+    self.mGridStyleController = nil
   }
 
   //····················································································································

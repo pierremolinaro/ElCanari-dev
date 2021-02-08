@@ -43,6 +43,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
   action loadDIL16ModelImageFromResourcesAction ;
   action removeModelImageAction ;
   action resetModelImagePointsAction ;
+  arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
   stackView mModelImagePage hStack {
     TwoColumnsGridView {
@@ -143,36 +144,48 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
       )
       flexibleSpace () 
     }
-    vStack {
-      space
-      hStack { StaticLabel (title: "Model Image", bold: yes, small: no) space }
-      space
+    GraphicView (minZoom: 10, maxZoom: 4000) {
+      $backgroundImageData root.mModelImageData
+      $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
+      $horizontalFlip root.mModelImagePageHorizontalFlip
+      $verticalFlip root.mModelImagePageVerticalFlip
+      $graphicController #mModelImageObjectsController
+      $mouseGrid root.mModelImagePageGridStep
+      $gridStep root.mModelImagePageGridStep
+      $arrowKeyMagnitude root.mModelImagePageGridStep
+      $gridStyle root.mModelImagePageGridStyle
+      $gridDisplayFactor root.mModelImagePageGridDisplayFactor
+      $gridLineColor prefs.lineColorOfPackageGrid
+      $gridCrossColor prefs.crossColorOfPackageGrid
+      $zoom root.mModelImagePageZoom
+      $backColor prefs.packageBackgroundColor
+      $xPlacardUnit root.mModelImagePageXPlacardUnit
+      $yPlacardUnit root.mModelImagePageYPlacardUnit
     }
   }
 
 //--------------- Model Image Tab
-  outlet EBScrollView mModelImageScrollView ;
+//  outlet EBScrollView mModelImageScrollView ;
 
-  arrayController #mModelImageObjectsController : root.mModelImageObjects ;
-
-  outlet EBGraphicView mModelImageView
-    $backgroundImageData root.mModelImageData
-    $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
-    $horizontalFlip root.mModelImagePageHorizontalFlip
-    $verticalFlip root.mModelImagePageVerticalFlip
-    $graphicController #mModelImageObjectsController
-    $mouseGrid root.mModelImagePageGridStep
-    $gridStep root.mModelImagePageGridStep
-    $arrowKeyMagnitude root.mModelImagePageGridStep
-    $gridStyle root.mModelImagePageGridStyle
-    $gridDisplayFactor root.mModelImagePageGridDisplayFactor
-    $gridLineColor prefs.lineColorOfPackageGrid
-    $gridCrossColor prefs.crossColorOfPackageGrid
-    $zoom root.mModelImagePageZoom
-    $backColor prefs.packageBackgroundColor
-    $xPlacardUnit root.mModelImagePageXPlacardUnit
-    $yPlacardUnit root.mModelImagePageYPlacardUnit
-  ;
+//
+//  outlet EBGraphicView mModelImageView
+//    $backgroundImageData root.mModelImageData
+//    $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
+//    $horizontalFlip root.mModelImagePageHorizontalFlip
+//    $verticalFlip root.mModelImagePageVerticalFlip
+//    $graphicController #mModelImageObjectsController
+//    $mouseGrid root.mModelImagePageGridStep
+//    $gridStep root.mModelImagePageGridStep
+//    $arrowKeyMagnitude root.mModelImagePageGridStep
+//    $gridStyle root.mModelImagePageGridStyle
+//    $gridDisplayFactor root.mModelImagePageGridDisplayFactor
+//    $gridLineColor prefs.lineColorOfPackageGrid
+//    $gridCrossColor prefs.crossColorOfPackageGrid
+//    $zoom root.mModelImagePageZoom
+//    $backColor prefs.packageBackgroundColor
+//    $xPlacardUnit root.mModelImagePageXPlacardUnit
+//    $yPlacardUnit root.mModelImagePageYPlacardUnit
+//  ;
 
 //  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
 //  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;

@@ -336,6 +336,14 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   //····················································································································
 
+  func setBackgroundImageAffineTransform (_ inAffineTransform : NSAffineTransform) {
+     for ebView in self.mEBGraphicViews {
+       ebView.mBackgroundImageAffineTransform = inAffineTransform
+     }
+  }
+  
+  //····················································································································
+
   func bind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
       self.mEBGraphicViews.insert (ebView)

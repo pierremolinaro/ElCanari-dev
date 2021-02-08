@@ -16,8 +16,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 //    self.stringValue = inTitle
     self.isBezeled = false
     self.isBordered = false
-    self.backgroundColor = debugBackgroundColor ()
-    self.drawsBackground = self.backgroundColor != nil
+    self.drawsBackground = false
     self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
@@ -37,6 +36,16 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
     self.mTitleController?.unregister ()
     self.mTitleController = nil
     super.ebCleanUp ()
+  }
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    if let color = debugBackgroundColor () {
+      color.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+    }
+    super.draw (inDirtyRect)
   }
 
   //····················································································································

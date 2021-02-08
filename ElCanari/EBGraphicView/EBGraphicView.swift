@@ -67,6 +67,24 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   override func ebCleanUp () {
+    self.unbind_arrowKeyMagnitude ()
+    self.unbind_backColor ()
+    self.unbind_backgroundImageOpacity ()
+    self.unbind_foregroundImageData ()
+    self.unbind_gridCrossColor ()
+    self.unbind_gridDisplayFactor ()
+    self.unbind_gridLineColor ()
+    self.unbind_gridStep ()
+    self.unbind_gridStyle ()
+    self.unbind_horizontalFlip ()
+    self.unbind_mouseGrid ()
+    self.unbind_overObjectsDisplay ()
+    self.unbind_shiftArrowKeyMagnitude ()
+    self.unbind_underObjectsDisplay ()
+    self.unbind_verticalFlip ()
+    self.unbind_xPlacardUnit ()
+    self.unbind_yPlacardUnit ()
+    self.unbind_zoom ()
     self.mViewController = nil
     self.removeXYHelperWindow ()
     NotificationCenter.default.removeObserver (
@@ -94,7 +112,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final internal var mZoomPropertyCache = 0 { // Used in EBGraphicView-magnify-and-zoom.swift
     didSet {
       if self.mZoomPropertyCache != oldValue {
-        self.mZoomController?.updateModel (self, self.mZoomPropertyCache)
+        _ = self.mZoomController?.updateModel (withCandidateValue: self.mZoomPropertyCache, windowForSheet: self.window)
         self.applyZoom ()
       }
     }
@@ -470,7 +488,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     if !self.mDeferredUpdateViewFrameAndBoundsRegistered && (NSEvent.pressedMouseButtons == 0) {
       var candidateBounds = NSRect () // For including point (0, 0)
       candidateBounds = candidateBounds.union (self.objectsAndIssueBoundingBox)
-//      candidateBounds = candidateBounds.union (self.mMinimumRectangle)
       if let ciImage = self.mBackgroundImage {
         let bp = NSBezierPath (rect: ciImage.extent)
         let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
@@ -487,7 +504,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
           self.mDeferredUpdateViewFrameAndBoundsRegistered = false
           var newBounds = NSRect () // For including point (0, 0)
           newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
-//          newBounds = newBounds.union (self.mMinimumRectangle)
           if let ciImage = self.mBackgroundImage {
             let bp = NSBezierPath (rect: ciImage.extent)
             let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
@@ -512,6 +528,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   final internal var mZoomPopUpButton : NSPopUpButton? = nil
+  final internal var mZoomDidChangeCallback : Optional <(_ inZoom : Int) -> Void> = nil
   final internal var mZoomToFitButton : NSButton? = nil
   final internal var mHelperTextField : NSTextField? = nil
   final var mHelperStringForOptionModifier : String? = nil
@@ -560,7 +577,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  final internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom? = nil
+  final internal var mZoomController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
   // MARK: -

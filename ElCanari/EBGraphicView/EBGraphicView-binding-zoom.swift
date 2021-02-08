@@ -24,8 +24,11 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_zoom (_ zoom : EBReadWriteProperty_Int, file : String, line : Int) {
-    self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom: zoom, outlet: self)
+  final func bind_zoom (_ inObject : EBReadWriteProperty_Int, file : String, line : Int) {
+    self.mZoomController = EBGenericReadWritePropertyController <Int> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateOutlet (inObject) }
+    )
   }
 
   //····················································································································
@@ -33,34 +36,6 @@ extension EBGraphicView {
   final func unbind_zoom () {
     self.mZoomController?.unregister ()
     self.mZoomController = nil
-  }
-
-  //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Controller_CanariViewWithZoomAndFlip_zoom
-//   MARK: -
-//----------------------------------------------------------------------------------------------------------------------
-
-final class Controller_CanariViewWithZoomAndFlip_zoom : EBReadOnlyPropertyController {
-
-  private let mZoomProperty : EBReadWriteProperty_Int
-  private let mOutlet : EBGraphicView
-
-  //····················································································································
-
-  init (zoom : EBReadWriteProperty_Int, outlet : EBGraphicView) {
-    self.mZoomProperty = zoom
-    self.mOutlet = outlet
-    super.init (observedObjects: [zoom], callBack: { outlet.updateOutlet (zoom) })
-  }
-
-  //····················································································································
-
-  func updateModel (_ sender : EBGraphicView, _ inNewZoom : Int) {
-    _ = self.mZoomProperty.validateAndSetProp (inNewZoom, windowForSheet: sender.window)
   }
 
   //····················································································································

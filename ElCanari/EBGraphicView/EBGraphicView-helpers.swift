@@ -38,18 +38,16 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc final fileprivate func setZoomToFitButton (_ inSender : NSButton) {
+  @objc final func setZoomToFitButton (_ inSender : Any?) {
     let actualZoom = 0 // Means zoom to fit
- //   self.mZoomController?.updateModel (self, actualZoom)
     self.mZoomPropertyCache = actualZoom
     self.applyZoom ()
   }
 
   //····················································································································
 
-  @objc final fileprivate func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
+  @objc final func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
     let actualZoom = inSender.tag
- //   self.mZoomController?.updateModel (self, actualZoom)
     self.mZoomPropertyCache = actualZoom
     self.applyZoom ()
   }

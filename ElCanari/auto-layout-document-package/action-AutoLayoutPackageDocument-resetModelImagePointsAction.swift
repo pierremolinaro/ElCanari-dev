@@ -21,7 +21,8 @@ extension AutoLayoutPackageDocument {
       self.rootObject.reset_mModelImageRotationInRadians_toDefaultValue ()
       self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
       self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
-      self.mModelImageView?.mBackgroundImageAffineTransform =  NSAffineTransform ()
+      self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
+      //self.mModelImageView?.mBackgroundImageAffineTransform =  NSAffineTransform ()
       self.mComposedPackageView?.mForegroundImageAffineTransform = NSAffineTransform ()
     //---
       self.buildGreenAndBluePoints ()

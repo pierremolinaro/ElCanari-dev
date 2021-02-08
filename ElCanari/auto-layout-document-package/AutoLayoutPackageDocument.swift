@@ -272,8 +272,6 @@ import Cocoa
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
-  @IBOutlet var mModelImageScrollView : EBScrollView? = nil
-  @IBOutlet var mModelImageView : EBGraphicView? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mOvalInspectorView : CanariViewWithKeyView? = nil
@@ -492,21 +490,22 @@ import Cocoa
       .add (single: self.computeImplicitView_30 ())
       .flexibleSpace ()
     hStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView ()
-    do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_1_1_0 = AutoLayoutStaticLabel (title: "Model Image", bold: true, small: false)
-        view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_1)
-      }
-      view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_2)
-    }
+    let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
+      .bind_backgroundImageData (self.rootObject.mModelImageData_property)
+      .bind_underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property)
+      .bind_horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property)
+      .bind_mouseGrid (self.rootObject.mModelImagePageGridStep_property)
+      .bind_gridStep (self.rootObject.mModelImagePageGridStep_property)
+      .bind_arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property)
+      .bind_gridStyle (self.rootObject.mModelImagePageGridStyle_property)
+      .bind_gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property)
+      .bind_gridLineColor (prefs_lineColorOfPackageGrid_property)
+      .bind_gridCrossColor (prefs_crossColorOfPackageGrid_property)
+      .bind_zoom (self.rootObject.mModelImagePageZoom_property)
+      .bind_backColor (prefs_packageBackgroundColor_property)
+      .bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property)
+      .bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property)
     hStackView.appendView (view_1)
     return hStackView
   }
@@ -1110,8 +1109,6 @@ import Cocoa
 //    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
-//    checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
-//    checkOutletConnection (self.mModelImageView, "mModelImageView", EBGraphicView.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalInspectorView, "mOvalInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1381,24 +1378,8 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.mModelImageObjectsController.bind_ebView (self.mModelImageView)
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
-    self.mModelImageView?.bind_backgroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
-    self.mModelImageView?.bind_underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property, file: #file, line: #line)
-    self.mModelImageView?.bind_horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
-    self.mModelImageView?.bind_verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
-    self.mModelImageView?.bind_mouseGrid (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridStep (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
-    self.mModelImageView?.bind_arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridStyle (self.rootObject.mModelImagePageGridStyle_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridLineColor (prefs_lineColorOfPackageGrid_property, file: #file, line: #line)
-    self.mModelImageView?.bind_gridCrossColor (prefs_crossColorOfPackageGrid_property, file: #file, line: #line)
-    self.mModelImageView?.bind_zoom (self.rootObject.mModelImagePageZoom_property, file: #file, line: #line)
-    self.mModelImageView?.bind_backColor (prefs_packageBackgroundColor_property, file: #file, line: #line)
-    self.mModelImageView?.bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
-    self.mModelImageView?.bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
@@ -1735,21 +1716,6 @@ import Cocoa
       item.view?.ebCleanUp ()
     }
   //--------------------------- Unbind regular bindings
-    self.mModelImageView?.unbind_backgroundImageData ()
-    self.mModelImageView?.unbind_underObjectsDisplay ()
-    self.mModelImageView?.unbind_horizontalFlip ()
-    self.mModelImageView?.unbind_verticalFlip ()
-    self.mModelImageView?.unbind_mouseGrid ()
-    self.mModelImageView?.unbind_gridStep ()
-    self.mModelImageView?.unbind_arrowKeyMagnitude ()
-    self.mModelImageView?.unbind_gridStyle ()
-    self.mModelImageView?.unbind_gridDisplayFactor ()
-    self.mModelImageView?.unbind_gridLineColor ()
-    self.mModelImageView?.unbind_gridCrossColor ()
-    self.mModelImageView?.unbind_zoom ()
-    self.mModelImageView?.unbind_backColor ()
-    self.mModelImageView?.unbind_xPlacardUnit ()
-    self.mModelImageView?.unbind_yPlacardUnit ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
     self.mModelImageOpacitySlider?.unbind_doubleValue ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
@@ -1943,7 +1909,6 @@ import Cocoa
  //   self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
  //   self.mController_mAddSlavePadButton_enabled = nil
   //--------------------------- Unbind array controllers
-    self.mModelImageObjectsController.unbind_ebView (self.mModelImageView)
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.unbind_model ()
@@ -2082,8 +2047,6 @@ import Cocoa
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
     self.mModelImageOpacitySlider?.ebCleanUp ()
-    self.mModelImageScrollView?.ebCleanUp ()
-    self.mModelImageView?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
     self.mOvalInspectorView?.ebCleanUp ()
@@ -2284,8 +2247,6 @@ import Cocoa
     self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
     self.mModelImageOpacitySlider = nil
-    self.mModelImageScrollView = nil
-    self.mModelImageView = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil
     self.mOvalInspectorView = nil
