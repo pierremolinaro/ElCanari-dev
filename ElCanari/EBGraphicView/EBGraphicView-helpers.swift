@@ -15,30 +15,9 @@ let DEFAULT_HELPER_TEXT = "SHIFT, CONTROL, OPTION and COMMAND modifier keys help
 
 extension EBGraphicView {
 
- //····················································································································
-
- final private func optionalHelperView () -> EBHelperView? {
-   return self.superview?.superview?.superview?.superview as? EBHelperView
- }
-
- //····················································································································
-
-  final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inScrollView : NSScrollView) {
-    if let zoomPopUpButton = self.mZoomPopUpButton {
-      let minMagnification = inScrollView.minMagnification
-      let maxMagnification = inScrollView.maxMagnification
-      let proposedMagnification = CGFloat (inZoom) / 100.0
-      if (proposedMagnification >= minMagnification) && (proposedMagnification <= maxMagnification) {
-        zoomPopUpButton.menu?.addItem (withTitle: ("\(inZoom) %"), action:#selector (EBGraphicView.setZoomFromPopUpButton(_:)), keyEquivalent: "")
-        zoomPopUpButton.lastItem?.target = self
-        zoomPopUpButton.lastItem?.tag = inZoom
-      }
-    }
-  }
-
   //····················································································································
 
-  @objc final func setZoomToFitButton (_ inSender : Any?) {
+  final func performZoomToFit () {
     let actualZoom = 0 // Means zoom to fit
     self.mZoomPropertyCache = actualZoom
     self.applyZoom ()
@@ -46,105 +25,9 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc final func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
-    let actualZoom = inSender.tag
-    self.mZoomPropertyCache = actualZoom
+  final func set (zoom inNewZoom : Int) {
+    self.mZoomPropertyCache = inNewZoom
     self.applyZoom ()
-  }
-
-  //····················································································································
-
-  final internal func installPlacards () {
-    if let scrollView = self.enclosingScrollView as? EBScrollView {
-      self.installZoomPopUpButton (scrollView)
-      self.installZoomToFitButton ()
-      self.installHelperTextField ()
-      self.installLiveScrollingNotification ()
-    }
-  }
-
-  //····················································································································
-
-  final internal func installHelperTextField () {
-    if self.mHelperTextField == nil, let helperView = optionalHelperView () {
-      let r = NSRect (x: 0.0, y: 0.0, width: 100.0, height: 20.0)
-      let helperTextField = NSTextField (frame: r)
-      self.mHelperTextField = helperTextField
-      helperTextField.isBezeled = false
-      helperTextField.isBordered = false
-      helperTextField.drawsBackground = false
-      helperTextField.textColor = .black
-      helperTextField.isEnabled = true
-      helperTextField.isEditable = false
-      helperTextField.stringValue = DEFAULT_HELPER_TEXT
-      helperTextField.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-      helperView.addLastHelperView (helperTextField)
-    }
-  }
-
-  //····················································································································
-
-  final internal func installZoomToFitButton () {
-    if self.mZoomToFitButton == nil, let helperView = optionalHelperView () {
-      let r = NSRect (x: 0.0, y: 0.0, width: 100.0, height: 20.0)
-      let zoomToFitButton = NSButton (frame: r)
-      self.mZoomToFitButton = zoomToFitButton
-      zoomToFitButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-      zoomToFitButton.title = "Zoom to Fit"
-      zoomToFitButton.bezelStyle = .roundRect
-      zoomToFitButton.action = #selector (EBGraphicView.setZoomToFitButton(_:))
-      zoomToFitButton.target = self
-      helperView.addHelperView (zoomToFitButton)
-    }
-  }
-
-  //····················································································································
-
-  final internal func installZoomPopUpButton (_ inScrollView : EBScrollView) {
-    if self.mZoomPopUpButton == nil, let helperView = optionalHelperView () {
-      let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
-      let zoomPopUpButton = NSPopUpButton (frame: r, pullsDown: true)
-      self.mZoomPopUpButton = zoomPopUpButton
-      zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-      zoomPopUpButton.autoenablesItems = false
-      zoomPopUpButton.bezelStyle = .roundRect
-      if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
-        popUpButtonCell.arrowPosition = .arrowAtBottom
-      }
-      zoomPopUpButton.isBordered = true
-      zoomPopUpButton.menu?.addItem (
-        withTitle:"\(Int (self.actualScale * 100.0)) %",
-        action:nil,
-        keyEquivalent:""
-      )
-      self.addPopupButtonItemForZoom (10, inScrollView)
-      self.addPopupButtonItemForZoom (25, inScrollView)
-      self.addPopupButtonItemForZoom (50, inScrollView)
-      self.addPopupButtonItemForZoom (75, inScrollView)
-      self.addPopupButtonItemForZoom (100, inScrollView)
-      self.addPopupButtonItemForZoom (150, inScrollView)
-      self.addPopupButtonItemForZoom (200, inScrollView)
-      self.addPopupButtonItemForZoom (250, inScrollView)
-      self.addPopupButtonItemForZoom (400, inScrollView)
-      self.addPopupButtonItemForZoom (500, inScrollView)
-      self.addPopupButtonItemForZoom (600, inScrollView)
-      self.addPopupButtonItemForZoom (800, inScrollView)
-      self.addPopupButtonItemForZoom (1_000, inScrollView)
-      self.addPopupButtonItemForZoom (1_200, inScrollView)
-      self.addPopupButtonItemForZoom (1_500, inScrollView)
-      self.addPopupButtonItemForZoom (1_700, inScrollView)
-      self.addPopupButtonItemForZoom (2_000, inScrollView)
-      self.addPopupButtonItemForZoom (2_500, inScrollView)
-      self.addPopupButtonItemForZoom (3_000, inScrollView)
-      self.addPopupButtonItemForZoom (3_500, inScrollView)
-      self.addPopupButtonItemForZoom (4_000, inScrollView)
-      self.addPopupButtonItemForZoom (5_000, inScrollView)
-      self.addPopupButtonItemForZoom (8_000, inScrollView)
-      self.addPopupButtonItemForZoom (10_000, inScrollView)
-      self.addPopupButtonItemForZoom (15_000, inScrollView)
-      self.addPopupButtonItemForZoom (20_000, inScrollView)
-      helperView.addHelperView (zoomPopUpButton)
-    }
   }
 
   //····················································································································
@@ -238,7 +121,7 @@ extension EBGraphicView {
   // Live scrolling notification is used for updating XY placards
   //····················································································································
 
-  final private func installLiveScrollingNotification () {
+  final func installLiveScrollingNotification () {
     if let scrollView = self.enclosingScrollView {
       let nc = NotificationCenter.default
       nc.addObserver (

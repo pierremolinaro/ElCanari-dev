@@ -72,11 +72,11 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func setFocusRing (_ inValue : Bool) {
-    if let focusView = self.superview as? EBFocusRingView {
-      focusView.setFocusRing (inValue)
-    }
-  }
+//  func setFocusRing (_ inValue : Bool) {
+//    if let focusView = self.superview as? EBFocusRingView {
+//      focusView.setFocusRing (inValue)
+//    }
+//  }
 
   //····················································································································
 

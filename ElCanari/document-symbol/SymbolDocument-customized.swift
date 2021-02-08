@@ -66,63 +66,63 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mAddSegmentButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolSegment (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
     self.mAddBezierButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolBezierCurve (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
     self.mAddSolidOvalButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolSolidOval (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
     self.mAddOvalButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolOval (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
     self.mAddSolidRectButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolSolidRect (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
     self.mAddTextButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolText (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
     self.mAddPinButton?.register (
       draggedType: symbolPasteboardType,
       draggedObjectFactory: { return (SymbolPin (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedSymbolView
+      scaleProvider: self.mComposedSymbolView?.mGraphicView
     )
 
-    self.mComposedSymbolScrollView?.register (document: self, draggedTypes: [symbolPasteboardType])
-    self.mComposedSymbolView?.set (arrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT)
-    self.mComposedSymbolView?.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT * 4)
+    self.mComposedSymbolView?.mScrollView?.register (document: self, draggedTypes: [symbolPasteboardType])
+    self.mComposedSymbolView?.mGraphicView.set (arrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT)
+    self.mComposedSymbolView?.mGraphicView.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT * 4)
 //    self.mComposedSymbolView?.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
-    self.mComposedSymbolView?.register (pasteboardType: symbolPasteboardType)
+    self.mComposedSymbolView?.mGraphicView.register (pasteboardType: symbolPasteboardType)
 //    let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
 //    self.mComposedSymbolView?.set (minimumRectangle: r)
-    self.mComposedSymbolView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
+    self.mComposedSymbolView?.mGraphicView.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorReceivingView: self.mSymbolBaseInspectorView)
     self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, for: SymbolPin.self)
     self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, for: SymbolText.self)
   //--- Set issue display view
-    self.mIssueTableView?.register (issueDisplayView: self.mComposedSymbolView)
+    self.mIssueTableView?.register (issueDisplayView: self.mComposedSymbolView?.mGraphicView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 2)
   //--- Update display
-    if let view = self.mComposedSymbolView {
+    if let view = self.mComposedSymbolView?.mGraphicView {
       DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
     }
   }

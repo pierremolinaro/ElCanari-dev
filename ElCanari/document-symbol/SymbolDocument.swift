@@ -131,8 +131,7 @@ import Cocoa
   @IBOutlet var mAddSolidRectButton : CanariDragSourceButton? = nil
   @IBOutlet var mAddTextButton : CanariDragSourceButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mComposedSymbolScrollView : EBScrollView? = nil
-  @IBOutlet var mComposedSymbolView : EBGraphicView? = nil
+  @IBOutlet var mComposedSymbolView : EBEnclosingGraphicView? = nil
   @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mGridDisplayFactorPopUpButton : EBPopUpButton? = nil
@@ -254,8 +253,7 @@ import Cocoa
     checkOutletConnection (self.mAddSolidRectButton, "mAddSolidRectButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddTextButton, "mAddTextButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-    checkOutletConnection (self.mComposedSymbolScrollView, "mComposedSymbolScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mCrossColorOfSymbolGridColorWell, "mCrossColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mGridDisplayFactorPopUpButton, "mGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
@@ -416,7 +414,7 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
+    self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView?.mGraphicView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property)
@@ -567,7 +565,7 @@ import Cocoa
     self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
     self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
-    self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
+    self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView?.mGraphicView)
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.unbind_model ()
   //--- Selection controller property: mSymbolTextSelectionController
@@ -588,7 +586,6 @@ import Cocoa
     self.mAddSolidRectButton?.ebCleanUp ()
     self.mAddTextButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mComposedSymbolScrollView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mCrossColorOfSymbolGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
@@ -636,7 +633,6 @@ import Cocoa
     self.mAddSolidRectButton = nil
     self.mAddTextButton = nil
     self.mCommentTextView = nil
-    self.mComposedSymbolScrollView = nil
     self.mComposedSymbolView = nil
     self.mCrossColorOfSymbolGridColorWell = nil
     self.mDeselectIssueButton = nil

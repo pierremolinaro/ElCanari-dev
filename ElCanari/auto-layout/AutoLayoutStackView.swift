@@ -30,11 +30,6 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.orientation = inOrientation
-//    let margin = CGFloat (inMargin)
-//    self.edgeInsets.left   = margin
-//    self.edgeInsets.top    = margin
-//    self.edgeInsets.right  = margin
-//    self.edgeInsets.bottom = margin
   }
 
   //····················································································································

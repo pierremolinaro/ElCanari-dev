@@ -47,7 +47,7 @@ xibdocument SymbolDocument root SymbolRoot {
 //--- Symbol display
   arrayController #mSymbolObjectsController : root.symbolObjects ;
 
-  outlet EBGraphicView mComposedSymbolView
+  outlet EBEnclosingGraphicView mComposedSymbolView
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController #mSymbolObjectsController
@@ -61,7 +61,7 @@ xibdocument SymbolDocument root SymbolRoot {
     $yPlacardUnit root.yPlacardUnit
   ;
 
-  outlet EBScrollView mComposedSymbolScrollView ;
+//  outlet EBScrollView mComposedSymbolScrollView ;
 
 //--- Inspector views
   outlet NSView mSymbolRootInspectorView ;

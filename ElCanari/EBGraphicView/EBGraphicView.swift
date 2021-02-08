@@ -47,7 +47,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     if !self.wantsLayer {
       presentErrorWindow (#file, #line, "EBGraphicView requires layer")
     }
-    self.installPlacards ()
+    self.installLiveScrollingNotification ()
     self.addEndLiveMagnificationObserver ()
     self.updateViewFrameAndBounds ()
   //--- Track flags changed events, event if view is not first responder
@@ -93,6 +93,23 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
       object: self
     )
     super.ebCleanUp ()
+  }
+
+  //····················································································································
+
+  final internal var mZoomDidChangeCallback : Optional <(_ inZoom : Int) -> Void> = nil
+  final var mHelperStringForOptionModifier : String? = nil
+  final internal var mHelperStringDidChangeCallback : Optional <(_ inString : String) -> Void> = nil
+  final internal var mXYwindow : NSWindow? = nil
+
+  //····················································································································
+
+  final weak var mFocusRingView : EBFocusRingView? = nil // SHOULD be weak
+
+  //····················································································································
+
+  final func set (focusRingView inView : EBFocusRingView) {
+    self.mFocusRingView = inView
   }
 
   //····················································································································
@@ -527,18 +544,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //  MARK: -
   //····················································································································
 
-  final internal var mZoomPopUpButton : NSPopUpButton? = nil
-  final internal var mZoomDidChangeCallback : Optional <(_ inZoom : Int) -> Void> = nil
-  final internal var mZoomToFitButton : NSButton? = nil
-  final internal var mHelperTextField : NSTextField? = nil
-  final var mHelperStringForOptionModifier : String? = nil
-  final internal var mHelperStringDidChangeCallback : Optional <(_ inString : String) -> Void> = nil
-  final internal var mXYwindow : NSWindow? = nil
-
-  //····················································································································
-
   final func setHelperTextField (_ inString : String) {
-    self.mHelperTextField?.stringValue = inString
     self.mHelperStringDidChangeCallback? (inString)
   }
 
@@ -741,9 +747,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   final private var mIsFirstResponder = false {
     didSet {
-       if self.mIsFirstResponder != oldValue, let scrollView = self.superview?.superview as? EBScrollView {
-         scrollView.setFocusRing (self.mIsFirstResponder)
-       }
+      if self.mIsFirstResponder != oldValue {
+        self.mFocusRingView?.setFocusRing (self.mIsFirstResponder)
+      }
     }
   }
 

@@ -21,7 +21,7 @@ extension EBGraphicView {
         scrollView.magnification = CGFloat (self.mZoomPropertyCache) / 100.0
       }
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
-      self.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(newZoom) %"
+//      self.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(newZoom) %"
       self.mZoomDidChangeCallback? (newZoom)
     }
   }
@@ -65,8 +65,10 @@ extension EBGraphicView {
       if !box.isEmpty {
         scrollView.magnify (toFit: box)
       }
-      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
-      self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
+//      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
+  //    self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
+      let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
+      self.mZoomDidChangeCallback? (newZoom)
     }
   }
 

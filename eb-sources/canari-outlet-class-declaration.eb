@@ -181,4 +181,3 @@ extern outlet class CanariBoardInsertMenu ;
 binding CanariBoardInsertMenu $names : transient StringTagArray ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
