@@ -174,2729 +174,2729 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Atomic property: warningMessageColor
 //····················································································································
 
-  let prefs_warningMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_warningMessageColor)
+  let preferences_warningMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_warningMessageColor)
 
 //····················································································································
 
-  var prefs_warningMessageColor : NSColor {
-    get { return prefs_warningMessageColor_property.propval }
-    set { prefs_warningMessageColor_property.setProp (newValue) }
+  var preferences_warningMessageColor : NSColor {
+    get { return preferences_warningMessageColor_property.propval }
+    set { preferences_warningMessageColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_warningMessageColor_property_selection : EBSelection <NSColor> { return prefs_warningMessageColor_property.selection }
+  var preferences_warningMessageColor_property_selection : EBSelection <NSColor> { return preferences_warningMessageColor_property.selection }
 
 //····················································································································
 //   Atomic property: successMessageColor
 //····················································································································
 
-  let prefs_successMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_successMessageColor)
+  let preferences_successMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_successMessageColor)
 
 //····················································································································
 
-  var prefs_successMessageColor : NSColor {
-    get { return prefs_successMessageColor_property.propval }
-    set { prefs_successMessageColor_property.setProp (newValue) }
+  var preferences_successMessageColor : NSColor {
+    get { return preferences_successMessageColor_property.propval }
+    set { preferences_successMessageColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_successMessageColor_property_selection : EBSelection <NSColor> { return prefs_successMessageColor_property.selection }
+  var preferences_successMessageColor_property_selection : EBSelection <NSColor> { return preferences_successMessageColor_property.selection }
 
 //····················································································································
 //   Atomic property: selectionHiliteColor
 //····················································································································
 
-  let prefs_selectionHiliteColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
+  let preferences_selectionHiliteColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
 
 //····················································································································
 
-  var prefs_selectionHiliteColor : NSColor {
-    get { return prefs_selectionHiliteColor_property.propval }
-    set { prefs_selectionHiliteColor_property.setProp (newValue) }
+  var preferences_selectionHiliteColor : NSColor {
+    get { return preferences_selectionHiliteColor_property.propval }
+    set { preferences_selectionHiliteColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_selectionHiliteColor_property_selection : EBSelection <NSColor> { return prefs_selectionHiliteColor_property.selection }
+  var preferences_selectionHiliteColor_property_selection : EBSelection <NSColor> { return preferences_selectionHiliteColor_property.selection }
 
 //····················································································································
 //   Atomic property: symbolColor
 //····················································································································
 
-  let prefs_symbolColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_symbolColor)
+  let preferences_symbolColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_symbolColor)
 
 //····················································································································
 
-  var prefs_symbolColor : NSColor {
-    get { return prefs_symbolColor_property.propval }
-    set { prefs_symbolColor_property.setProp (newValue) }
+  var preferences_symbolColor : NSColor {
+    get { return preferences_symbolColor_property.propval }
+    set { preferences_symbolColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolColor_property_selection : EBSelection <NSColor> { return prefs_symbolColor_property.selection }
+  var preferences_symbolColor_property_selection : EBSelection <NSColor> { return preferences_symbolColor_property.selection }
 
 //····················································································································
 //   Atomic property: crossColorOfSymbolGrid
 //····················································································································
 
-  let prefs_crossColorOfSymbolGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_crossColorOfSymbolGrid)
+  let preferences_crossColorOfSymbolGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_crossColorOfSymbolGrid)
 
 //····················································································································
 
-  var prefs_crossColorOfSymbolGrid : NSColor {
-    get { return prefs_crossColorOfSymbolGrid_property.propval }
-    set { prefs_crossColorOfSymbolGrid_property.setProp (newValue) }
+  var preferences_crossColorOfSymbolGrid : NSColor {
+    get { return preferences_crossColorOfSymbolGrid_property.propval }
+    set { preferences_crossColorOfSymbolGrid_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_crossColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return prefs_crossColorOfSymbolGrid_property.selection }
+  var preferences_crossColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return preferences_crossColorOfSymbolGrid_property.selection }
 
 //····················································································································
 //   Atomic property: lineColorOfSymbolGrid
 //····················································································································
 
-  let prefs_lineColorOfSymbolGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorOfSymbolGrid)
+  let preferences_lineColorOfSymbolGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorOfSymbolGrid)
 
 //····················································································································
 
-  var prefs_lineColorOfSymbolGrid : NSColor {
-    get { return prefs_lineColorOfSymbolGrid_property.propval }
-    set { prefs_lineColorOfSymbolGrid_property.setProp (newValue) }
+  var preferences_lineColorOfSymbolGrid : NSColor {
+    get { return preferences_lineColorOfSymbolGrid_property.propval }
+    set { preferences_lineColorOfSymbolGrid_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return prefs_lineColorOfSymbolGrid_property.selection }
+  var preferences_lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> { return preferences_lineColorOfSymbolGrid_property.selection }
 
 //····················································································································
 //   Atomic property: symbolBackgroundColor
 //····················································································································
 
-  let prefs_symbolBackgroundColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_symbolBackgroundColor)
+  let preferences_symbolBackgroundColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_symbolBackgroundColor)
 
 //····················································································································
 
-  var prefs_symbolBackgroundColor : NSColor {
-    get { return prefs_symbolBackgroundColor_property.propval }
-    set { prefs_symbolBackgroundColor_property.setProp (newValue) }
+  var preferences_symbolBackgroundColor : NSColor {
+    get { return preferences_symbolBackgroundColor_property.propval }
+    set { preferences_symbolBackgroundColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolBackgroundColor_property_selection : EBSelection <NSColor> { return prefs_symbolBackgroundColor_property.selection }
+  var preferences_symbolBackgroundColor_property_selection : EBSelection <NSColor> { return preferences_symbolBackgroundColor_property.selection }
 
 //····················································································································
 //   Atomic property: symbolDrawingWidthMultipliedByTen
 //····················································································································
 
-  let prefs_symbolDrawingWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_symbolDrawingWidthMultipliedByTen)
+  let preferences_symbolDrawingWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_symbolDrawingWidthMultipliedByTen)
 
 //····················································································································
 
-  var prefs_symbolDrawingWidthMultipliedByTen : Int {
-    get { return prefs_symbolDrawingWidthMultipliedByTen_property.propval }
-    set { prefs_symbolDrawingWidthMultipliedByTen_property.setProp (newValue) }
+  var preferences_symbolDrawingWidthMultipliedByTen : Int {
+    get { return preferences_symbolDrawingWidthMultipliedByTen_property.propval }
+    set { preferences_symbolDrawingWidthMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return prefs_symbolDrawingWidthMultipliedByTen_property.selection }
+  var preferences_symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return preferences_symbolDrawingWidthMultipliedByTen_property.selection }
 
 //····················································································································
 //   Atomic property: crossColorOfPackageGrid
 //····················································································································
 
-  let prefs_crossColorOfPackageGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorOfPackageGrid)
+  let preferences_crossColorOfPackageGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorOfPackageGrid)
 
 //····················································································································
 
-  var prefs_crossColorOfPackageGrid : NSColor {
-    get { return prefs_crossColorOfPackageGrid_property.propval }
-    set { prefs_crossColorOfPackageGrid_property.setProp (newValue) }
+  var preferences_crossColorOfPackageGrid : NSColor {
+    get { return preferences_crossColorOfPackageGrid_property.propval }
+    set { preferences_crossColorOfPackageGrid_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_crossColorOfPackageGrid_property_selection : EBSelection <NSColor> { return prefs_crossColorOfPackageGrid_property.selection }
+  var preferences_crossColorOfPackageGrid_property_selection : EBSelection <NSColor> { return preferences_crossColorOfPackageGrid_property.selection }
 
 //····················································································································
 //   Atomic property: lineColorOfPackageGrid
 //····················································································································
 
-  let prefs_lineColorOfPackageGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorOfPackageGrid)
+  let preferences_lineColorOfPackageGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorOfPackageGrid)
 
 //····················································································································
 
-  var prefs_lineColorOfPackageGrid : NSColor {
-    get { return prefs_lineColorOfPackageGrid_property.propval }
-    set { prefs_lineColorOfPackageGrid_property.setProp (newValue) }
+  var preferences_lineColorOfPackageGrid : NSColor {
+    get { return preferences_lineColorOfPackageGrid_property.propval }
+    set { preferences_lineColorOfPackageGrid_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_lineColorOfPackageGrid_property_selection : EBSelection <NSColor> { return prefs_lineColorOfPackageGrid_property.selection }
+  var preferences_lineColorOfPackageGrid_property_selection : EBSelection <NSColor> { return preferences_lineColorOfPackageGrid_property.selection }
 
 //····················································································································
 //   Atomic property: packageBackgroundColor
 //····················································································································
 
-  let prefs_packageBackgroundColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_packageBackgroundColor)
+  let preferences_packageBackgroundColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_packageBackgroundColor)
 
 //····················································································································
 
-  var prefs_packageBackgroundColor : NSColor {
-    get { return prefs_packageBackgroundColor_property.propval }
-    set { prefs_packageBackgroundColor_property.setProp (newValue) }
+  var preferences_packageBackgroundColor : NSColor {
+    get { return preferences_packageBackgroundColor_property.propval }
+    set { preferences_packageBackgroundColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageBackgroundColor_property_selection : EBSelection <NSColor> { return prefs_packageBackgroundColor_property.selection }
+  var preferences_packageBackgroundColor_property_selection : EBSelection <NSColor> { return preferences_packageBackgroundColor_property.selection }
 
 //····················································································································
 //   Atomic property: packageColor
 //····················································································································
 
-  let prefs_packageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_packageColor)
+  let preferences_packageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_packageColor)
 
 //····················································································································
 
-  var prefs_packageColor : NSColor {
-    get { return prefs_packageColor_property.propval }
-    set { prefs_packageColor_property.setProp (newValue) }
+  var preferences_packageColor : NSColor {
+    get { return preferences_packageColor_property.propval }
+    set { preferences_packageColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageColor_property_selection : EBSelection <NSColor> { return prefs_packageColor_property.selection }
+  var preferences_packageColor_property_selection : EBSelection <NSColor> { return preferences_packageColor_property.selection }
 
 //····················································································································
 //   Atomic property: frontSidePadColor
 //····················································································································
 
-  let prefs_frontSidePadColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColor)
+  let preferences_frontSidePadColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColor)
 
 //····················································································································
 
-  var prefs_frontSidePadColor : NSColor {
-    get { return prefs_frontSidePadColor_property.propval }
-    set { prefs_frontSidePadColor_property.setProp (newValue) }
+  var preferences_frontSidePadColor : NSColor {
+    get { return preferences_frontSidePadColor_property.propval }
+    set { preferences_frontSidePadColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_frontSidePadColor_property_selection : EBSelection <NSColor> { return prefs_frontSidePadColor_property.selection }
+  var preferences_frontSidePadColor_property_selection : EBSelection <NSColor> { return preferences_frontSidePadColor_property.selection }
 
 //····················································································································
 //   Atomic property: backSidePadColor
 //····················································································································
 
-  let prefs_backSidePadColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColor)
+  let preferences_backSidePadColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColor)
 
 //····················································································································
 
-  var prefs_backSidePadColor : NSColor {
-    get { return prefs_backSidePadColor_property.propval }
-    set { prefs_backSidePadColor_property.setProp (newValue) }
+  var preferences_backSidePadColor : NSColor {
+    get { return preferences_backSidePadColor_property.propval }
+    set { preferences_backSidePadColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_backSidePadColor_property_selection : EBSelection <NSColor> { return prefs_backSidePadColor_property.selection }
+  var preferences_backSidePadColor_property_selection : EBSelection <NSColor> { return preferences_backSidePadColor_property.selection }
 
 //····················································································································
 //   Atomic property: displayPackageBackSidePads
 //····················································································································
 
-  let prefs_displayPackageBackSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageBackSidePads)
+  let preferences_displayPackageBackSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageBackSidePads)
 
 //····················································································································
 
-  var prefs_displayPackageBackSidePads : Bool {
-    get { return prefs_displayPackageBackSidePads_property.propval }
-    set { prefs_displayPackageBackSidePads_property.setProp (newValue) }
+  var preferences_displayPackageBackSidePads : Bool {
+    get { return preferences_displayPackageBackSidePads_property.propval }
+    set { preferences_displayPackageBackSidePads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayPackageBackSidePads_property_selection : EBSelection <Bool> { return prefs_displayPackageBackSidePads_property.selection }
+  var preferences_displayPackageBackSidePads_property_selection : EBSelection <Bool> { return preferences_displayPackageBackSidePads_property.selection }
 
 //····················································································································
 //   Atomic property: padNumberColor
 //····················································································································
 
-  let prefs_padNumberColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_padNumberColor)
+  let preferences_padNumberColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_padNumberColor)
 
 //····················································································································
 
-  var prefs_padNumberColor : NSColor {
-    get { return prefs_padNumberColor_property.propval }
-    set { prefs_padNumberColor_property.setProp (newValue) }
+  var preferences_padNumberColor : NSColor {
+    get { return preferences_padNumberColor_property.propval }
+    set { preferences_padNumberColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_padNumberColor_property_selection : EBSelection <NSColor> { return prefs_padNumberColor_property.selection }
+  var preferences_padNumberColor_property_selection : EBSelection <NSColor> { return preferences_padNumberColor_property.selection }
 
 //····················································································································
 //   Atomic property: padNumberFont
 //····················································································································
 
-  let prefs_padNumberFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFont)
+  let preferences_padNumberFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFont)
 
 //····················································································································
 
-  var prefs_padNumberFont : NSFont {
-    get { return prefs_padNumberFont_property.propval }
-    set { prefs_padNumberFont_property.setProp (newValue) }
+  var preferences_padNumberFont : NSFont {
+    get { return preferences_padNumberFont_property.propval }
+    set { preferences_padNumberFont_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_padNumberFont_property_selection : EBSelection <NSFont> { return prefs_padNumberFont_property.selection }
+  var preferences_padNumberFont_property_selection : EBSelection <NSFont> { return preferences_padNumberFont_property.selection }
 
 //····················································································································
 //   Atomic property: showPadNumber
 //····················································································································
 
-  let prefs_showPadNumber_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showPadNumber)
+  let preferences_showPadNumber_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showPadNumber)
 
 //····················································································································
 
-  var prefs_showPadNumber : Bool {
-    get { return prefs_showPadNumber_property.propval }
-    set { prefs_showPadNumber_property.setProp (newValue) }
+  var preferences_showPadNumber : Bool {
+    get { return preferences_showPadNumber_property.propval }
+    set { preferences_showPadNumber_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_showPadNumber_property_selection : EBSelection <Bool> { return prefs_showPadNumber_property.selection }
+  var preferences_showPadNumber_property_selection : EBSelection <Bool> { return preferences_showPadNumber_property.selection }
 
 //····················································································································
 //   Atomic property: packageGuideColor
 //····················································································································
 
-  let prefs_packageGuideColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_packageGuideColor)
+  let preferences_packageGuideColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_packageGuideColor)
 
 //····················································································································
 
-  var prefs_packageGuideColor : NSColor {
-    get { return prefs_packageGuideColor_property.propval }
-    set { prefs_packageGuideColor_property.setProp (newValue) }
+  var preferences_packageGuideColor : NSColor {
+    get { return preferences_packageGuideColor_property.propval }
+    set { preferences_packageGuideColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageGuideColor_property_selection : EBSelection <NSColor> { return prefs_packageGuideColor_property.selection }
+  var preferences_packageGuideColor_property_selection : EBSelection <NSColor> { return preferences_packageGuideColor_property.selection }
 
 //····················································································································
 //   Atomic property: packageDimensionColor
 //····················································································································
 
-  let prefs_packageDimensionColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_packageDimensionColor)
+  let preferences_packageDimensionColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_packageDimensionColor)
 
 //····················································································································
 
-  var prefs_packageDimensionColor : NSColor {
-    get { return prefs_packageDimensionColor_property.propval }
-    set { prefs_packageDimensionColor_property.setProp (newValue) }
+  var preferences_packageDimensionColor : NSColor {
+    get { return preferences_packageDimensionColor_property.propval }
+    set { preferences_packageDimensionColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageDimensionColor_property_selection : EBSelection <NSColor> { return prefs_packageDimensionColor_property.selection }
+  var preferences_packageDimensionColor_property_selection : EBSelection <NSColor> { return preferences_packageDimensionColor_property.selection }
 
 //····················································································································
 //   Atomic property: dimensionFont
 //····················································································································
 
-  let prefs_dimensionFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 2.0), prefKey: Preferences_dimensionFont)
+  let preferences_dimensionFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 2.0), prefKey: Preferences_dimensionFont)
 
 //····················································································································
 
-  var prefs_dimensionFont : NSFont {
-    get { return prefs_dimensionFont_property.propval }
-    set { prefs_dimensionFont_property.setProp (newValue) }
+  var preferences_dimensionFont : NSFont {
+    get { return preferences_dimensionFont_property.propval }
+    set { preferences_dimensionFont_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_dimensionFont_property_selection : EBSelection <NSFont> { return prefs_dimensionFont_property.selection }
+  var preferences_dimensionFont_property_selection : EBSelection <NSFont> { return preferences_dimensionFont_property.selection }
 
 //····················································································································
 //   Atomic property: padZoneColor
 //····················································································································
 
-  let prefs_padZoneColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.magenta, prefKey: Preferences_padZoneColor)
+  let preferences_padZoneColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.magenta, prefKey: Preferences_padZoneColor)
 
 //····················································································································
 
-  var prefs_padZoneColor : NSColor {
-    get { return prefs_padZoneColor_property.propval }
-    set { prefs_padZoneColor_property.setProp (newValue) }
+  var preferences_padZoneColor : NSColor {
+    get { return preferences_padZoneColor_property.propval }
+    set { preferences_padZoneColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_padZoneColor_property_selection : EBSelection <NSColor> { return prefs_padZoneColor_property.selection }
+  var preferences_padZoneColor_property_selection : EBSelection <NSColor> { return preferences_padZoneColor_property.selection }
 
 //····················································································································
 //   Atomic property: padZoneFont
 //····················································································································
 
-  let prefs_padZoneFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padZoneFont)
+  let preferences_padZoneFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padZoneFont)
 
 //····················································································································
 
-  var prefs_padZoneFont : NSFont {
-    get { return prefs_padZoneFont_property.propval }
-    set { prefs_padZoneFont_property.setProp (newValue) }
+  var preferences_padZoneFont : NSFont {
+    get { return preferences_padZoneFont_property.propval }
+    set { preferences_padZoneFont_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_padZoneFont_property_selection : EBSelection <NSFont> { return prefs_padZoneFont_property.selection }
+  var preferences_padZoneFont_property_selection : EBSelection <NSFont> { return preferences_padZoneFont_property.selection }
 
 //····················································································································
 //   Atomic property: packageDrawingWidthMultipliedByTen
 //····················································································································
 
-  let prefs_packageDrawingWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_packageDrawingWidthMultipliedByTen)
+  let preferences_packageDrawingWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_packageDrawingWidthMultipliedByTen)
 
 //····················································································································
 
-  var prefs_packageDrawingWidthMultipliedByTen : Int {
-    get { return prefs_packageDrawingWidthMultipliedByTen_property.propval }
-    set { prefs_packageDrawingWidthMultipliedByTen_property.setProp (newValue) }
+  var preferences_packageDrawingWidthMultipliedByTen : Int {
+    get { return preferences_packageDrawingWidthMultipliedByTen_property.propval }
+    set { preferences_packageDrawingWidthMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return prefs_packageDrawingWidthMultipliedByTen_property.selection }
+  var preferences_packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> { return preferences_packageDrawingWidthMultipliedByTen_property.selection }
 
 //····················································································································
 //   Atomic property: mSymbolAndPackageGridDotColorForDevice
 //····················································································································
 
-  let prefs_mSymbolAndPackageGridDotColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
+  let preferences_mSymbolAndPackageGridDotColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
 
 //····················································································································
 
-  var prefs_mSymbolAndPackageGridDotColorForDevice : NSColor {
-    get { return prefs_mSymbolAndPackageGridDotColorForDevice_property.propval }
-    set { prefs_mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue) }
+  var preferences_mSymbolAndPackageGridDotColorForDevice : NSColor {
+    get { return preferences_mSymbolAndPackageGridDotColorForDevice_property.propval }
+    set { preferences_mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mSymbolAndPackageGridDotColorForDevice_property.selection }
+  var preferences_mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mSymbolAndPackageGridDotColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mSymbolAndPackageGridLineColorForDevice
 //····················································································································
 
-  let prefs_mSymbolAndPackageGridLineColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
+  let preferences_mSymbolAndPackageGridLineColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
 
 //····················································································································
 
-  var prefs_mSymbolAndPackageGridLineColorForDevice : NSColor {
-    get { return prefs_mSymbolAndPackageGridLineColorForDevice_property.propval }
-    set { prefs_mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue) }
+  var preferences_mSymbolAndPackageGridLineColorForDevice : NSColor {
+    get { return preferences_mSymbolAndPackageGridLineColorForDevice_property.propval }
+    set { preferences_mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mSymbolAndPackageGridLineColorForDevice_property.selection }
+  var preferences_mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mSymbolAndPackageGridLineColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mSymbolAndPackageBackgroundColorForDevice
 //····················································································································
 
-  let prefs_mSymbolAndPackageBackgroundColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mSymbolAndPackageBackgroundColorForDevice)
+  let preferences_mSymbolAndPackageBackgroundColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mSymbolAndPackageBackgroundColorForDevice)
 
 //····················································································································
 
-  var prefs_mSymbolAndPackageBackgroundColorForDevice : NSColor {
-    get { return prefs_mSymbolAndPackageBackgroundColorForDevice_property.propval }
-    set { prefs_mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue) }
+  var preferences_mSymbolAndPackageBackgroundColorForDevice : NSColor {
+    get { return preferences_mSymbolAndPackageBackgroundColorForDevice_property.propval }
+    set { preferences_mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mSymbolAndPackageBackgroundColorForDevice_property.selection }
+  var preferences_mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mSymbolAndPackageBackgroundColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mPackageColorForDevice
 //····················································································································
 
-  let prefs_mPackageColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mPackageColorForDevice)
+  let preferences_mPackageColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mPackageColorForDevice)
 
 //····················································································································
 
-  var prefs_mPackageColorForDevice : NSColor {
-    get { return prefs_mPackageColorForDevice_property.propval }
-    set { prefs_mPackageColorForDevice_property.setProp (newValue) }
+  var preferences_mPackageColorForDevice : NSColor {
+    get { return preferences_mPackageColorForDevice_property.propval }
+    set { preferences_mPackageColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mPackageColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mPackageColorForDevice_property.selection }
+  var preferences_mPackageColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mPackageColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mFrontSidePadColorForDevice
 //····················································································································
 
-  let prefs_mFrontSidePadColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mFrontSidePadColorForDevice)
+  let preferences_mFrontSidePadColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mFrontSidePadColorForDevice)
 
 //····················································································································
 
-  var prefs_mFrontSidePadColorForDevice : NSColor {
-    get { return prefs_mFrontSidePadColorForDevice_property.propval }
-    set { prefs_mFrontSidePadColorForDevice_property.setProp (newValue) }
+  var preferences_mFrontSidePadColorForDevice : NSColor {
+    get { return preferences_mFrontSidePadColorForDevice_property.propval }
+    set { preferences_mFrontSidePadColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mFrontSidePadColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mFrontSidePadColorForDevice_property.selection }
+  var preferences_mFrontSidePadColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mFrontSidePadColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mBottomSidePadColorForDevice
 //····················································································································
 
-  let prefs_mBottomSidePadColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mBottomSidePadColorForDevice)
+  let preferences_mBottomSidePadColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mBottomSidePadColorForDevice)
 
 //····················································································································
 
-  var prefs_mBottomSidePadColorForDevice : NSColor {
-    get { return prefs_mBottomSidePadColorForDevice_property.propval }
-    set { prefs_mBottomSidePadColorForDevice_property.setProp (newValue) }
+  var preferences_mBottomSidePadColorForDevice : NSColor {
+    get { return preferences_mBottomSidePadColorForDevice_property.propval }
+    set { preferences_mBottomSidePadColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mBottomSidePadColorForDevice_property.selection }
+  var preferences_mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mBottomSidePadColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mPadNumberColorForDevice
 //····················································································································
 
-  let prefs_mPadNumberColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_mPadNumberColorForDevice)
+  let preferences_mPadNumberColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_mPadNumberColorForDevice)
 
 //····················································································································
 
-  var prefs_mPadNumberColorForDevice : NSColor {
-    get { return prefs_mPadNumberColorForDevice_property.propval }
-    set { prefs_mPadNumberColorForDevice_property.setProp (newValue) }
+  var preferences_mPadNumberColorForDevice : NSColor {
+    get { return preferences_mPadNumberColorForDevice_property.propval }
+    set { preferences_mPadNumberColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mPadNumberColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mPadNumberColorForDevice_property.selection }
+  var preferences_mPadNumberColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mPadNumberColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mPackageNameFontForDevice
 //····················································································································
 
-  let prefs_mPackageNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mPackageNameFontForDevice)
+  let preferences_mPackageNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mPackageNameFontForDevice)
 
 //····················································································································
 
-  var prefs_mPackageNameFontForDevice : NSFont {
-    get { return prefs_mPackageNameFontForDevice_property.propval }
-    set { prefs_mPackageNameFontForDevice_property.setProp (newValue) }
+  var preferences_mPackageNameFontForDevice : NSFont {
+    get { return preferences_mPackageNameFontForDevice_property.propval }
+    set { preferences_mPackageNameFontForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mPackageNameFontForDevice_property_selection : EBSelection <NSFont> { return prefs_mPackageNameFontForDevice_property.selection }
+  var preferences_mPackageNameFontForDevice_property_selection : EBSelection <NSFont> { return preferences_mPackageNameFontForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mPadNumberFontForDevice
 //····················································································································
 
-  let prefs_mPadNumberFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 5.0), prefKey: Preferences_mPadNumberFontForDevice)
+  let preferences_mPadNumberFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 5.0), prefKey: Preferences_mPadNumberFontForDevice)
 
 //····················································································································
 
-  var prefs_mPadNumberFontForDevice : NSFont {
-    get { return prefs_mPadNumberFontForDevice_property.propval }
-    set { prefs_mPadNumberFontForDevice_property.setProp (newValue) }
+  var preferences_mPadNumberFontForDevice : NSFont {
+    get { return preferences_mPadNumberFontForDevice_property.propval }
+    set { preferences_mPadNumberFontForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mPadNumberFontForDevice_property_selection : EBSelection <NSFont> { return prefs_mPadNumberFontForDevice_property.selection }
+  var preferences_mPadNumberFontForDevice_property_selection : EBSelection <NSFont> { return preferences_mPadNumberFontForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mSymbolColorForDevice
 //····················································································································
 
-  let prefs_mSymbolColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mSymbolColorForDevice)
+  let preferences_mSymbolColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mSymbolColorForDevice)
 
 //····················································································································
 
-  var prefs_mSymbolColorForDevice : NSColor {
-    get { return prefs_mSymbolColorForDevice_property.propval }
-    set { prefs_mSymbolColorForDevice_property.setProp (newValue) }
+  var preferences_mSymbolColorForDevice : NSColor {
+    get { return preferences_mSymbolColorForDevice_property.propval }
+    set { preferences_mSymbolColorForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mSymbolColorForDevice_property_selection : EBSelection <NSColor> { return prefs_mSymbolColorForDevice_property.selection }
+  var preferences_mSymbolColorForDevice_property_selection : EBSelection <NSColor> { return preferences_mSymbolColorForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mSymbolNameFontForDevice
 //····················································································································
 
-  let prefs_mSymbolNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mSymbolNameFontForDevice)
+  let preferences_mSymbolNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mSymbolNameFontForDevice)
 
 //····················································································································
 
-  var prefs_mSymbolNameFontForDevice : NSFont {
-    get { return prefs_mSymbolNameFontForDevice_property.propval }
-    set { prefs_mSymbolNameFontForDevice_property.setProp (newValue) }
+  var preferences_mSymbolNameFontForDevice : NSFont {
+    get { return preferences_mSymbolNameFontForDevice_property.propval }
+    set { preferences_mSymbolNameFontForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> { return prefs_mSymbolNameFontForDevice_property.selection }
+  var preferences_mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> { return preferences_mSymbolNameFontForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: mPinNameFontForDevice
 //····················································································································
 
-  let prefs_mPinNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_mPinNameFontForDevice)
+  let preferences_mPinNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_mPinNameFontForDevice)
 
 //····················································································································
 
-  var prefs_mPinNameFontForDevice : NSFont {
-    get { return prefs_mPinNameFontForDevice_property.propval }
-    set { prefs_mPinNameFontForDevice_property.setProp (newValue) }
+  var preferences_mPinNameFontForDevice : NSFont {
+    get { return preferences_mPinNameFontForDevice_property.propval }
+    set { preferences_mPinNameFontForDevice_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mPinNameFontForDevice_property_selection : EBSelection <NSFont> { return prefs_mPinNameFontForDevice_property.selection }
+  var preferences_mPinNameFontForDevice_property_selection : EBSelection <NSFont> { return preferences_mPinNameFontForDevice_property.selection }
 
 //····················································································································
 //   Atomic property: symbolDrawingWidthForDeviceMultipliedByTen
 //····················································································································
 
-  let prefs_symbolDrawingWidthForDeviceMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
+  let preferences_symbolDrawingWidthForDeviceMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
 
 //····················································································································
 
-  var prefs_symbolDrawingWidthForDeviceMultipliedByTen : Int {
-    get { return prefs_symbolDrawingWidthForDeviceMultipliedByTen_property.propval }
-    set { prefs_symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
+  var preferences_symbolDrawingWidthForDeviceMultipliedByTen : Int {
+    get { return preferences_symbolDrawingWidthForDeviceMultipliedByTen_property.propval }
+    set { preferences_symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return prefs_symbolDrawingWidthForDeviceMultipliedByTen_property.selection }
+  var preferences_symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return preferences_symbolDrawingWidthForDeviceMultipliedByTen_property.selection }
 
 //····················································································································
 //   Atomic property: packageDrawingWidthForDeviceMultipliedByTen
 //····················································································································
 
-  let prefs_packageDrawingWidthForDeviceMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
+  let preferences_packageDrawingWidthForDeviceMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
 
 //····················································································································
 
-  var prefs_packageDrawingWidthForDeviceMultipliedByTen : Int {
-    get { return prefs_packageDrawingWidthForDeviceMultipliedByTen_property.propval }
-    set { prefs_packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
+  var preferences_packageDrawingWidthForDeviceMultipliedByTen : Int {
+    get { return preferences_packageDrawingWidthForDeviceMultipliedByTen_property.propval }
+    set { preferences_packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return prefs_packageDrawingWidthForDeviceMultipliedByTen_property.selection }
+  var preferences_packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return preferences_packageDrawingWidthForDeviceMultipliedByTen_property.selection }
 
 //····················································································································
 //   Atomic property: schematicBackColor
 //····················································································································
 
-  let prefs_schematicBackColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_schematicBackColor)
+  let preferences_schematicBackColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_schematicBackColor)
 
 //····················································································································
 
-  var prefs_schematicBackColor : NSColor {
-    get { return prefs_schematicBackColor_property.propval }
-    set { prefs_schematicBackColor_property.setProp (newValue) }
+  var preferences_schematicBackColor : NSColor {
+    get { return preferences_schematicBackColor_property.propval }
+    set { preferences_schematicBackColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_schematicBackColor_property_selection : EBSelection <NSColor> { return prefs_schematicBackColor_property.selection }
+  var preferences_schematicBackColor_property_selection : EBSelection <NSColor> { return preferences_schematicBackColor_property.selection }
 
 //····················································································································
 //   Atomic property: dotColorGridForSchematic
 //····················································································································
 
-  let prefs_dotColorGridForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_dotColorGridForSchematic)
+  let preferences_dotColorGridForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_dotColorGridForSchematic)
 
 //····················································································································
 
-  var prefs_dotColorGridForSchematic : NSColor {
-    get { return prefs_dotColorGridForSchematic_property.propval }
-    set { prefs_dotColorGridForSchematic_property.setProp (newValue) }
+  var preferences_dotColorGridForSchematic : NSColor {
+    get { return preferences_dotColorGridForSchematic_property.propval }
+    set { preferences_dotColorGridForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_dotColorGridForSchematic_property_selection : EBSelection <NSColor> { return prefs_dotColorGridForSchematic_property.selection }
+  var preferences_dotColorGridForSchematic_property_selection : EBSelection <NSColor> { return preferences_dotColorGridForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: lineColorGridForSchematic
 //····················································································································
 
-  let prefs_lineColorGridForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorGridForSchematic)
+  let preferences_lineColorGridForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorGridForSchematic)
 
 //····················································································································
 
-  var prefs_lineColorGridForSchematic : NSColor {
-    get { return prefs_lineColorGridForSchematic_property.propval }
-    set { prefs_lineColorGridForSchematic_property.setProp (newValue) }
+  var preferences_lineColorGridForSchematic : NSColor {
+    get { return preferences_lineColorGridForSchematic_property.propval }
+    set { preferences_lineColorGridForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_lineColorGridForSchematic_property_selection : EBSelection <NSColor> { return prefs_lineColorGridForSchematic_property.selection }
+  var preferences_lineColorGridForSchematic_property_selection : EBSelection <NSColor> { return preferences_lineColorGridForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: symbolColorForUnplacedComponentsForSchematic
 //····················································································································
 
-  let prefs_symbolColorForUnplacedComponentsForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.darkGray, prefKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
+  let preferences_symbolColorForUnplacedComponentsForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.darkGray, prefKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
 
 //····················································································································
 
-  var prefs_symbolColorForUnplacedComponentsForSchematic : NSColor {
-    get { return prefs_symbolColorForUnplacedComponentsForSchematic_property.propval }
-    set { prefs_symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue) }
+  var preferences_symbolColorForUnplacedComponentsForSchematic : NSColor {
+    get { return preferences_symbolColorForUnplacedComponentsForSchematic_property.propval }
+    set { preferences_symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> { return prefs_symbolColorForUnplacedComponentsForSchematic_property.selection }
+  var preferences_symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> { return preferences_symbolColorForUnplacedComponentsForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: symbolColorForSchematic
 //····················································································································
 
-  let prefs_symbolColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_symbolColorForSchematic)
+  let preferences_symbolColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_symbolColorForSchematic)
 
 //····················································································································
 
-  var prefs_symbolColorForSchematic : NSColor {
-    get { return prefs_symbolColorForSchematic_property.propval }
-    set { prefs_symbolColorForSchematic_property.setProp (newValue) }
+  var preferences_symbolColorForSchematic : NSColor {
+    get { return preferences_symbolColorForSchematic_property.propval }
+    set { preferences_symbolColorForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolColorForSchematic_property_selection : EBSelection <NSColor> { return prefs_symbolColorForSchematic_property.selection }
+  var preferences_symbolColorForSchematic_property_selection : EBSelection <NSColor> { return preferences_symbolColorForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: pinNameFontForSchematic
 //····················································································································
 
-  let prefs_pinNameFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFontForSchematic)
+  let preferences_pinNameFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFontForSchematic)
 
 //····················································································································
 
-  var prefs_pinNameFontForSchematic : NSFont {
-    get { return prefs_pinNameFontForSchematic_property.propval }
-    set { prefs_pinNameFontForSchematic_property.setProp (newValue) }
+  var preferences_pinNameFontForSchematic : NSFont {
+    get { return preferences_pinNameFontForSchematic_property.propval }
+    set { preferences_pinNameFontForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_pinNameFontForSchematic_property_selection : EBSelection <NSFont> { return prefs_pinNameFontForSchematic_property.selection }
+  var preferences_pinNameFontForSchematic_property_selection : EBSelection <NSFont> { return preferences_pinNameFontForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: pinNameColorForSchematic
 //····················································································································
 
-  let prefs_pinNameColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_pinNameColorForSchematic)
+  let preferences_pinNameColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_pinNameColorForSchematic)
 
 //····················································································································
 
-  var prefs_pinNameColorForSchematic : NSColor {
-    get { return prefs_pinNameColorForSchematic_property.propval }
-    set { prefs_pinNameColorForSchematic_property.setProp (newValue) }
+  var preferences_pinNameColorForSchematic : NSColor {
+    get { return preferences_pinNameColorForSchematic_property.propval }
+    set { preferences_pinNameColorForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_pinNameColorForSchematic_property_selection : EBSelection <NSColor> { return prefs_pinNameColorForSchematic_property.selection }
+  var preferences_pinNameColorForSchematic_property_selection : EBSelection <NSColor> { return preferences_pinNameColorForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: pinNumberFontForSchematic
 //····················································································································
 
-  let prefs_pinNumberFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNumberFontForSchematic)
+  let preferences_pinNumberFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNumberFontForSchematic)
 
 //····················································································································
 
-  var prefs_pinNumberFontForSchematic : NSFont {
-    get { return prefs_pinNumberFontForSchematic_property.propval }
-    set { prefs_pinNumberFontForSchematic_property.setProp (newValue) }
+  var preferences_pinNumberFontForSchematic : NSFont {
+    get { return preferences_pinNumberFontForSchematic_property.propval }
+    set { preferences_pinNumberFontForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_pinNumberFontForSchematic_property_selection : EBSelection <NSFont> { return prefs_pinNumberFontForSchematic_property.selection }
+  var preferences_pinNumberFontForSchematic_property_selection : EBSelection <NSFont> { return preferences_pinNumberFontForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: pinNumberColorForSchematic
 //····················································································································
 
-  let prefs_pinNumberColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.darkGray, prefKey: Preferences_pinNumberColorForSchematic)
+  let preferences_pinNumberColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.darkGray, prefKey: Preferences_pinNumberColorForSchematic)
 
 //····················································································································
 
-  var prefs_pinNumberColorForSchematic : NSColor {
-    get { return prefs_pinNumberColorForSchematic_property.propval }
-    set { prefs_pinNumberColorForSchematic_property.setProp (newValue) }
+  var preferences_pinNumberColorForSchematic : NSColor {
+    get { return preferences_pinNumberColorForSchematic_property.propval }
+    set { preferences_pinNumberColorForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_pinNumberColorForSchematic_property_selection : EBSelection <NSColor> { return prefs_pinNumberColorForSchematic_property.selection }
+  var preferences_pinNumberColorForSchematic_property_selection : EBSelection <NSColor> { return preferences_pinNumberColorForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: connectionColorForSchematic
 //····················································································································
 
-  let prefs_connectionColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_connectionColorForSchematic)
+  let preferences_connectionColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_connectionColorForSchematic)
 
 //····················································································································
 
-  var prefs_connectionColorForSchematic : NSColor {
-    get { return prefs_connectionColorForSchematic_property.propval }
-    set { prefs_connectionColorForSchematic_property.setProp (newValue) }
+  var preferences_connectionColorForSchematic : NSColor {
+    get { return preferences_connectionColorForSchematic_property.propval }
+    set { preferences_connectionColorForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_connectionColorForSchematic_property_selection : EBSelection <NSColor> { return prefs_connectionColorForSchematic_property.selection }
+  var preferences_connectionColorForSchematic_property_selection : EBSelection <NSColor> { return preferences_connectionColorForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: symbolDrawingWidthMultipliedByTenForSchematic
 //····················································································································
 
-  let prefs_symbolDrawingWidthMultipliedByTenForSchematic_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
+  let preferences_symbolDrawingWidthMultipliedByTenForSchematic_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
 
 //····················································································································
 
-  var prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int {
-    get { return prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.propval }
-    set { prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue) }
+  var preferences_symbolDrawingWidthMultipliedByTenForSchematic : Int {
+    get { return preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.propval }
+    set { preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> { return prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.selection }
+  var preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> { return preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection }
 
 //····················································································································
 //   Atomic property: crossColorGridForBoard
 //····················································································································
 
-  let prefs_crossColorGridForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorGridForBoard)
+  let preferences_crossColorGridForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorGridForBoard)
 
 //····················································································································
 
-  var prefs_crossColorGridForBoard : NSColor {
-    get { return prefs_crossColorGridForBoard_property.propval }
-    set { prefs_crossColorGridForBoard_property.setProp (newValue) }
+  var preferences_crossColorGridForBoard : NSColor {
+    get { return preferences_crossColorGridForBoard_property.propval }
+    set { preferences_crossColorGridForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_crossColorGridForBoard_property_selection : EBSelection <NSColor> { return prefs_crossColorGridForBoard_property.selection }
+  var preferences_crossColorGridForBoard_property_selection : EBSelection <NSColor> { return preferences_crossColorGridForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: lineColorGridForBoard
 //····················································································································
 
-  let prefs_lineColorGridForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_lineColorGridForBoard)
+  let preferences_lineColorGridForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_lineColorGridForBoard)
 
 //····················································································································
 
-  var prefs_lineColorGridForBoard : NSColor {
-    get { return prefs_lineColorGridForBoard_property.propval }
-    set { prefs_lineColorGridForBoard_property.setProp (newValue) }
+  var preferences_lineColorGridForBoard : NSColor {
+    get { return preferences_lineColorGridForBoard_property.propval }
+    set { preferences_lineColorGridForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_lineColorGridForBoard_property_selection : EBSelection <NSColor> { return prefs_lineColorGridForBoard_property.selection }
+  var preferences_lineColorGridForBoard_property_selection : EBSelection <NSColor> { return preferences_lineColorGridForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: boardBackgroundColorForBoard
 //····················································································································
 
-  let prefs_boardBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_boardBackgroundColorForBoard)
+  let preferences_boardBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_boardBackgroundColorForBoard)
 
 //····················································································································
 
-  var prefs_boardBackgroundColorForBoard : NSColor {
-    get { return prefs_boardBackgroundColorForBoard_property.propval }
-    set { prefs_boardBackgroundColorForBoard_property.setProp (newValue) }
+  var preferences_boardBackgroundColorForBoard : NSColor {
+    get { return preferences_boardBackgroundColorForBoard_property.propval }
+    set { preferences_boardBackgroundColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return prefs_boardBackgroundColorForBoard_property.selection }
+  var preferences_boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return preferences_boardBackgroundColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: errorBackgroundColorForBoard
 //····················································································································
 
-  let prefs_errorBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_errorBackgroundColorForBoard)
+  let preferences_errorBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_errorBackgroundColorForBoard)
 
 //····················································································································
 
-  var prefs_errorBackgroundColorForBoard : NSColor {
-    get { return prefs_errorBackgroundColorForBoard_property.propval }
-    set { prefs_errorBackgroundColorForBoard_property.setProp (newValue) }
+  var preferences_errorBackgroundColorForBoard : NSColor {
+    get { return preferences_errorBackgroundColorForBoard_property.propval }
+    set { preferences_errorBackgroundColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return prefs_errorBackgroundColorForBoard_property.selection }
+  var preferences_errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return preferences_errorBackgroundColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: drawErrorBackgroundForBoard
 //····················································································································
 
-  let prefs_drawErrorBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawErrorBackgroundForBoard)
+  let preferences_drawErrorBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawErrorBackgroundForBoard)
 
 //····················································································································
 
-  var prefs_drawErrorBackgroundForBoard : Bool {
-    get { return prefs_drawErrorBackgroundForBoard_property.propval }
-    set { prefs_drawErrorBackgroundForBoard_property.setProp (newValue) }
+  var preferences_drawErrorBackgroundForBoard : Bool {
+    get { return preferences_drawErrorBackgroundForBoard_property.propval }
+    set { preferences_drawErrorBackgroundForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> { return prefs_drawErrorBackgroundForBoard_property.selection }
+  var preferences_drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> { return preferences_drawErrorBackgroundForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: warningBackgroundColorForBoard
 //····················································································································
 
-  let prefs_warningBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_warningBackgroundColorForBoard)
+  let preferences_warningBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_warningBackgroundColorForBoard)
 
 //····················································································································
 
-  var prefs_warningBackgroundColorForBoard : NSColor {
-    get { return prefs_warningBackgroundColorForBoard_property.propval }
-    set { prefs_warningBackgroundColorForBoard_property.setProp (newValue) }
+  var preferences_warningBackgroundColorForBoard : NSColor {
+    get { return preferences_warningBackgroundColorForBoard_property.propval }
+    set { preferences_warningBackgroundColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return prefs_warningBackgroundColorForBoard_property.selection }
+  var preferences_warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return preferences_warningBackgroundColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: drawWarningBackgroundForBoard
 //····················································································································
 
-  let prefs_drawWarningBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawWarningBackgroundForBoard)
+  let preferences_drawWarningBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawWarningBackgroundForBoard)
 
 //····················································································································
 
-  var prefs_drawWarningBackgroundForBoard : Bool {
-    get { return prefs_drawWarningBackgroundForBoard_property.propval }
-    set { prefs_drawWarningBackgroundForBoard_property.setProp (newValue) }
+  var preferences_drawWarningBackgroundForBoard : Bool {
+    get { return preferences_drawWarningBackgroundForBoard_property.propval }
+    set { preferences_drawWarningBackgroundForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_drawWarningBackgroundForBoard_property_selection : EBSelection <Bool> { return prefs_drawWarningBackgroundForBoard_property.selection }
+  var preferences_drawWarningBackgroundForBoard_property_selection : EBSelection <Bool> { return preferences_drawWarningBackgroundForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: boardLimitsColorForBoard
 //····················································································································
 
-  let prefs_boardLimitsColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_boardLimitsColorForBoard)
+  let preferences_boardLimitsColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_boardLimitsColorForBoard)
 
 //····················································································································
 
-  var prefs_boardLimitsColorForBoard : NSColor {
-    get { return prefs_boardLimitsColorForBoard_property.propval }
-    set { prefs_boardLimitsColorForBoard_property.setProp (newValue) }
+  var preferences_boardLimitsColorForBoard : NSColor {
+    get { return preferences_boardLimitsColorForBoard_property.propval }
+    set { preferences_boardLimitsColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_boardLimitsColorForBoard_property_selection : EBSelection <NSColor> { return prefs_boardLimitsColorForBoard_property.selection }
+  var preferences_boardLimitsColorForBoard_property_selection : EBSelection <NSColor> { return preferences_boardLimitsColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: boardClearanceColorForBoard
 //····················································································································
 
-  let prefs_boardClearanceColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_boardClearanceColorForBoard)
+  let preferences_boardClearanceColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_boardClearanceColorForBoard)
 
 //····················································································································
 
-  var prefs_boardClearanceColorForBoard : NSColor {
-    get { return prefs_boardClearanceColorForBoard_property.propval }
-    set { prefs_boardClearanceColorForBoard_property.setProp (newValue) }
+  var preferences_boardClearanceColorForBoard : NSColor {
+    get { return preferences_boardClearanceColorForBoard_property.propval }
+    set { preferences_boardClearanceColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_boardClearanceColorForBoard_property_selection : EBSelection <NSColor> { return prefs_boardClearanceColorForBoard_property.selection }
+  var preferences_boardClearanceColorForBoard_property_selection : EBSelection <NSColor> { return preferences_boardClearanceColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayFrontRestrictRectangles
 //····················································································································
 
-  let prefs_displayFrontRestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontRestrictRectangles)
+  let preferences_displayFrontRestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontRestrictRectangles)
 
 //····················································································································
 
-  var prefs_displayFrontRestrictRectangles : Bool {
-    get { return prefs_displayFrontRestrictRectangles_property.propval }
-    set { prefs_displayFrontRestrictRectangles_property.setProp (newValue) }
+  var preferences_displayFrontRestrictRectangles : Bool {
+    get { return preferences_displayFrontRestrictRectangles_property.propval }
+    set { preferences_displayFrontRestrictRectangles_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayFrontRestrictRectangles_property_selection : EBSelection <Bool> { return prefs_displayFrontRestrictRectangles_property.selection }
+  var preferences_displayFrontRestrictRectangles_property_selection : EBSelection <Bool> { return preferences_displayFrontRestrictRectangles_property.selection }
 
 //····················································································································
 //   Atomic property: frontSideRestrictRectangleColorForBoard
 //····················································································································
 
-  let prefs_frontSideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideRestrictRectangleColorForBoard)
+  let preferences_frontSideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideRestrictRectangleColorForBoard)
 
 //····················································································································
 
-  var prefs_frontSideRestrictRectangleColorForBoard : NSColor {
-    get { return prefs_frontSideRestrictRectangleColorForBoard_property.propval }
-    set { prefs_frontSideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  var preferences_frontSideRestrictRectangleColorForBoard : NSColor {
+    get { return preferences_frontSideRestrictRectangleColorForBoard_property.propval }
+    set { preferences_frontSideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_frontSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return prefs_frontSideRestrictRectangleColorForBoard_property.selection }
+  var preferences_frontSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return preferences_frontSideRestrictRectangleColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayBackRestrictRectangles
 //····················································································································
 
-  let prefs_displayBackRestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackRestrictRectangles)
+  let preferences_displayBackRestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackRestrictRectangles)
 
 //····················································································································
 
-  var prefs_displayBackRestrictRectangles : Bool {
-    get { return prefs_displayBackRestrictRectangles_property.propval }
-    set { prefs_displayBackRestrictRectangles_property.setProp (newValue) }
+  var preferences_displayBackRestrictRectangles : Bool {
+    get { return preferences_displayBackRestrictRectangles_property.propval }
+    set { preferences_displayBackRestrictRectangles_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayBackRestrictRectangles_property_selection : EBSelection <Bool> { return prefs_displayBackRestrictRectangles_property.selection }
+  var preferences_displayBackRestrictRectangles_property_selection : EBSelection <Bool> { return preferences_displayBackRestrictRectangles_property.selection }
 
 //····················································································································
 //   Atomic property: backSideRestrictRectangleColorForBoard
 //····················································································································
 
-  let prefs_backSideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideRestrictRectangleColorForBoard)
+  let preferences_backSideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideRestrictRectangleColorForBoard)
 
 //····················································································································
 
-  var prefs_backSideRestrictRectangleColorForBoard : NSColor {
-    get { return prefs_backSideRestrictRectangleColorForBoard_property.propval }
-    set { prefs_backSideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  var preferences_backSideRestrictRectangleColorForBoard : NSColor {
+    get { return preferences_backSideRestrictRectangleColorForBoard_property.propval }
+    set { preferences_backSideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_backSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return prefs_backSideRestrictRectangleColorForBoard_property.selection }
+  var preferences_backSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return preferences_backSideRestrictRectangleColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayFrontLegendForBoard
 //····················································································································
 
-  let prefs_displayFrontLegendForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontLegendForBoard)
+  let preferences_displayFrontLegendForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontLegendForBoard)
 
 //····················································································································
 
-  var prefs_displayFrontLegendForBoard : Bool {
-    get { return prefs_displayFrontLegendForBoard_property.propval }
-    set { prefs_displayFrontLegendForBoard_property.setProp (newValue) }
+  var preferences_displayFrontLegendForBoard : Bool {
+    get { return preferences_displayFrontLegendForBoard_property.propval }
+    set { preferences_displayFrontLegendForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayFrontLegendForBoard_property_selection : EBSelection <Bool> { return prefs_displayFrontLegendForBoard_property.selection }
+  var preferences_displayFrontLegendForBoard_property_selection : EBSelection <Bool> { return preferences_displayFrontLegendForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: frontSideLegendColorForBoard
 //····················································································································
 
-  let prefs_frontSideLegendColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_frontSideLegendColorForBoard)
+  let preferences_frontSideLegendColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_frontSideLegendColorForBoard)
 
 //····················································································································
 
-  var prefs_frontSideLegendColorForBoard : NSColor {
-    get { return prefs_frontSideLegendColorForBoard_property.propval }
-    set { prefs_frontSideLegendColorForBoard_property.setProp (newValue) }
+  var preferences_frontSideLegendColorForBoard : NSColor {
+    get { return preferences_frontSideLegendColorForBoard_property.propval }
+    set { preferences_frontSideLegendColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_frontSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return prefs_frontSideLegendColorForBoard_property.selection }
+  var preferences_frontSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return preferences_frontSideLegendColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayFrontLayoutForBoard
 //····················································································································
 
-  let prefs_displayFrontLayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontLayoutForBoard)
+  let preferences_displayFrontLayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontLayoutForBoard)
 
 //····················································································································
 
-  var prefs_displayFrontLayoutForBoard : Bool {
-    get { return prefs_displayFrontLayoutForBoard_property.propval }
-    set { prefs_displayFrontLayoutForBoard_property.setProp (newValue) }
+  var preferences_displayFrontLayoutForBoard : Bool {
+    get { return preferences_displayFrontLayoutForBoard_property.propval }
+    set { preferences_displayFrontLayoutForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayFrontLayoutForBoard_property_selection : EBSelection <Bool> { return prefs_displayFrontLayoutForBoard_property.selection }
+  var preferences_displayFrontLayoutForBoard_property_selection : EBSelection <Bool> { return preferences_displayFrontLayoutForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: frontSideLayoutColorForBoard
 //····················································································································
 
-  let prefs_frontSideLayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideLayoutColorForBoard)
+  let preferences_frontSideLayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideLayoutColorForBoard)
 
 //····················································································································
 
-  var prefs_frontSideLayoutColorForBoard : NSColor {
-    get { return prefs_frontSideLayoutColorForBoard_property.propval }
-    set { prefs_frontSideLayoutColorForBoard_property.setProp (newValue) }
+  var preferences_frontSideLayoutColorForBoard : NSColor {
+    get { return preferences_frontSideLayoutColorForBoard_property.propval }
+    set { preferences_frontSideLayoutColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_frontSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return prefs_frontSideLayoutColorForBoard_property.selection }
+  var preferences_frontSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return preferences_frontSideLayoutColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayBackLayoutForBoard
 //····················································································································
 
-  let prefs_displayBackLayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackLayoutForBoard)
+  let preferences_displayBackLayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackLayoutForBoard)
 
 //····················································································································
 
-  var prefs_displayBackLayoutForBoard : Bool {
-    get { return prefs_displayBackLayoutForBoard_property.propval }
-    set { prefs_displayBackLayoutForBoard_property.setProp (newValue) }
+  var preferences_displayBackLayoutForBoard : Bool {
+    get { return preferences_displayBackLayoutForBoard_property.propval }
+    set { preferences_displayBackLayoutForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayBackLayoutForBoard_property_selection : EBSelection <Bool> { return prefs_displayBackLayoutForBoard_property.selection }
+  var preferences_displayBackLayoutForBoard_property_selection : EBSelection <Bool> { return preferences_displayBackLayoutForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: backSideLayoutColorForBoard
 //····················································································································
 
-  let prefs_backSideLayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideLayoutColorForBoard)
+  let preferences_backSideLayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideLayoutColorForBoard)
 
 //····················································································································
 
-  var prefs_backSideLayoutColorForBoard : NSColor {
-    get { return prefs_backSideLayoutColorForBoard_property.propval }
-    set { prefs_backSideLayoutColorForBoard_property.setProp (newValue) }
+  var preferences_backSideLayoutColorForBoard : NSColor {
+    get { return preferences_backSideLayoutColorForBoard_property.propval }
+    set { preferences_backSideLayoutColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_backSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return prefs_backSideLayoutColorForBoard_property.selection }
+  var preferences_backSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return preferences_backSideLayoutColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayBackLegendForBoard
 //····················································································································
 
-  let prefs_displayBackLegendForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackLegendForBoard)
+  let preferences_displayBackLegendForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackLegendForBoard)
 
 //····················································································································
 
-  var prefs_displayBackLegendForBoard : Bool {
-    get { return prefs_displayBackLegendForBoard_property.propval }
-    set { prefs_displayBackLegendForBoard_property.setProp (newValue) }
+  var preferences_displayBackLegendForBoard : Bool {
+    get { return preferences_displayBackLegendForBoard_property.propval }
+    set { preferences_displayBackLegendForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayBackLegendForBoard_property_selection : EBSelection <Bool> { return prefs_displayBackLegendForBoard_property.selection }
+  var preferences_displayBackLegendForBoard_property_selection : EBSelection <Bool> { return preferences_displayBackLegendForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: backSideLegendColorForBoard
 //····················································································································
 
-  let prefs_backSideLegendColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_backSideLegendColorForBoard)
+  let preferences_backSideLegendColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_backSideLegendColorForBoard)
 
 //····················································································································
 
-  var prefs_backSideLegendColorForBoard : NSColor {
-    get { return prefs_backSideLegendColorForBoard_property.propval }
-    set { prefs_backSideLegendColorForBoard_property.setProp (newValue) }
+  var preferences_backSideLegendColorForBoard : NSColor {
+    get { return preferences_backSideLegendColorForBoard_property.propval }
+    set { preferences_backSideLegendColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_backSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return prefs_backSideLegendColorForBoard_property.selection }
+  var preferences_backSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return preferences_backSideLegendColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayFrontPadsForBoard
 //····················································································································
 
-  let prefs_displayFrontPadsForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontPadsForBoard)
+  let preferences_displayFrontPadsForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontPadsForBoard)
 
 //····················································································································
 
-  var prefs_displayFrontPadsForBoard : Bool {
-    get { return prefs_displayFrontPadsForBoard_property.propval }
-    set { prefs_displayFrontPadsForBoard_property.setProp (newValue) }
+  var preferences_displayFrontPadsForBoard : Bool {
+    get { return preferences_displayFrontPadsForBoard_property.propval }
+    set { preferences_displayFrontPadsForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayFrontPadsForBoard_property_selection : EBSelection <Bool> { return prefs_displayFrontPadsForBoard_property.selection }
+  var preferences_displayFrontPadsForBoard_property_selection : EBSelection <Bool> { return preferences_displayFrontPadsForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: frontSidePadColorForBoard
 //····················································································································
 
-  let prefs_frontSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColorForBoard)
+  let preferences_frontSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColorForBoard)
 
 //····················································································································
 
-  var prefs_frontSidePadColorForBoard : NSColor {
-    get { return prefs_frontSidePadColorForBoard_property.propval }
-    set { prefs_frontSidePadColorForBoard_property.setProp (newValue) }
+  var preferences_frontSidePadColorForBoard : NSColor {
+    get { return preferences_frontSidePadColorForBoard_property.propval }
+    set { preferences_frontSidePadColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_frontSidePadColorForBoard_property_selection : EBSelection <NSColor> { return prefs_frontSidePadColorForBoard_property.selection }
+  var preferences_frontSidePadColorForBoard_property_selection : EBSelection <NSColor> { return preferences_frontSidePadColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayBackPadsForBoard
 //····················································································································
 
-  let prefs_displayBackPadsForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackPadsForBoard)
+  let preferences_displayBackPadsForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackPadsForBoard)
 
 //····················································································································
 
-  var prefs_displayBackPadsForBoard : Bool {
-    get { return prefs_displayBackPadsForBoard_property.propval }
-    set { prefs_displayBackPadsForBoard_property.setProp (newValue) }
+  var preferences_displayBackPadsForBoard : Bool {
+    get { return preferences_displayBackPadsForBoard_property.propval }
+    set { preferences_displayBackPadsForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayBackPadsForBoard_property_selection : EBSelection <Bool> { return prefs_displayBackPadsForBoard_property.selection }
+  var preferences_displayBackPadsForBoard_property_selection : EBSelection <Bool> { return preferences_displayBackPadsForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: backSidePadColorForBoard
 //····················································································································
 
-  let prefs_backSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColorForBoard)
+  let preferences_backSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColorForBoard)
 
 //····················································································································
 
-  var prefs_backSidePadColorForBoard : NSColor {
-    get { return prefs_backSidePadColorForBoard_property.propval }
-    set { prefs_backSidePadColorForBoard_property.setProp (newValue) }
+  var preferences_backSidePadColorForBoard : NSColor {
+    get { return preferences_backSidePadColorForBoard_property.propval }
+    set { preferences_backSidePadColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_backSidePadColorForBoard_property_selection : EBSelection <NSColor> { return prefs_backSidePadColorForBoard_property.selection }
+  var preferences_backSidePadColorForBoard_property_selection : EBSelection <NSColor> { return preferences_backSidePadColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: displayPadNumbersForBoard
 //····················································································································
 
-  let prefs_displayPadNumbersForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPadNumbersForBoard)
+  let preferences_displayPadNumbersForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPadNumbersForBoard)
 
 //····················································································································
 
-  var prefs_displayPadNumbersForBoard : Bool {
-    get { return prefs_displayPadNumbersForBoard_property.propval }
-    set { prefs_displayPadNumbersForBoard_property.setProp (newValue) }
+  var preferences_displayPadNumbersForBoard : Bool {
+    get { return preferences_displayPadNumbersForBoard_property.propval }
+    set { preferences_displayPadNumbersForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayPadNumbersForBoard_property_selection : EBSelection <Bool> { return prefs_displayPadNumbersForBoard_property.selection }
+  var preferences_displayPadNumbersForBoard_property_selection : EBSelection <Bool> { return preferences_displayPadNumbersForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: padNumberFontForBoard
 //····················································································································
 
-  let prefs_padNumberFontForBoard_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFontForBoard)
+  let preferences_padNumberFontForBoard_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFontForBoard)
 
 //····················································································································
 
-  var prefs_padNumberFontForBoard : NSFont {
-    get { return prefs_padNumberFontForBoard_property.propval }
-    set { prefs_padNumberFontForBoard_property.setProp (newValue) }
+  var preferences_padNumberFontForBoard : NSFont {
+    get { return preferences_padNumberFontForBoard_property.propval }
+    set { preferences_padNumberFontForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_padNumberFontForBoard_property_selection : EBSelection <NSFont> { return prefs_padNumberFontForBoard_property.selection }
+  var preferences_padNumberFontForBoard_property_selection : EBSelection <NSFont> { return preferences_padNumberFontForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: padNumberColorForBoard
 //····················································································································
 
-  let prefs_padNumberColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_padNumberColorForBoard)
+  let preferences_padNumberColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_padNumberColorForBoard)
 
 //····················································································································
 
-  var prefs_padNumberColorForBoard : NSColor {
-    get { return prefs_padNumberColorForBoard_property.propval }
-    set { prefs_padNumberColorForBoard_property.setProp (newValue) }
+  var preferences_padNumberColorForBoard : NSColor {
+    get { return preferences_padNumberColorForBoard_property.propval }
+    set { preferences_padNumberColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_padNumberColorForBoard_property_selection : EBSelection <NSColor> { return prefs_padNumberColorForBoard_property.selection }
+  var preferences_padNumberColorForBoard_property_selection : EBSelection <NSColor> { return preferences_padNumberColorForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: packageDrawingWidthMultpliedByTenForBoard
 //····················································································································
 
-  let prefs_packageDrawingWidthMultpliedByTenForBoard_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_packageDrawingWidthMultpliedByTenForBoard)
+  let preferences_packageDrawingWidthMultpliedByTenForBoard_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_packageDrawingWidthMultpliedByTenForBoard)
 
 //····················································································································
 
-  var prefs_packageDrawingWidthMultpliedByTenForBoard : Int {
-    get { return prefs_packageDrawingWidthMultpliedByTenForBoard_property.propval }
-    set { prefs_packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue) }
+  var preferences_packageDrawingWidthMultpliedByTenForBoard : Int {
+    get { return preferences_packageDrawingWidthMultpliedByTenForBoard_property.propval }
+    set { preferences_packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> { return prefs_packageDrawingWidthMultpliedByTenForBoard_property.selection }
+  var preferences_packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> { return preferences_packageDrawingWidthMultpliedByTenForBoard_property.selection }
 
 //····················································································································
 //   Atomic property: mShowRotationKnobInBoard
 //····················································································································
 
-  let prefs_mShowRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowRotationKnobInBoard)
+  let preferences_mShowRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowRotationKnobInBoard)
 
 //····················································································································
 
-  var prefs_mShowRotationKnobInBoard : Bool {
-    get { return prefs_mShowRotationKnobInBoard_property.propval }
-    set { prefs_mShowRotationKnobInBoard_property.setProp (newValue) }
+  var preferences_mShowRotationKnobInBoard : Bool {
+    get { return preferences_mShowRotationKnobInBoard_property.propval }
+    set { preferences_mShowRotationKnobInBoard_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mShowRotationKnobInBoard_property_selection : EBSelection <Bool> { return prefs_mShowRotationKnobInBoard_property.selection }
+  var preferences_mShowRotationKnobInBoard_property_selection : EBSelection <Bool> { return preferences_mShowRotationKnobInBoard_property.selection }
 
 //····················································································································
 //   Atomic property: sampleString
 //····················································································································
 
-  let prefs_sampleString_property = EBPreferencesProperty_String (defaultValue: "The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
+  let preferences_sampleString_property = EBPreferencesProperty_String (defaultValue: "The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
 
 //····················································································································
 
-  var prefs_sampleString : String {
-    get { return prefs_sampleString_property.propval }
-    set { prefs_sampleString_property.setProp (newValue) }
+  var preferences_sampleString : String {
+    get { return preferences_sampleString_property.propval }
+    set { preferences_sampleString_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_sampleString_property_selection : EBSelection <String> { return prefs_sampleString_property.selection }
+  var preferences_sampleString_property_selection : EBSelection <String> { return preferences_sampleString_property.selection }
 
 //····················································································································
 //   Atomic property: showGerberDrawingFlow
 //····················································································································
 
-  let prefs_showGerberDrawingFlow_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showGerberDrawingFlow)
+  let preferences_showGerberDrawingFlow_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showGerberDrawingFlow)
 
 //····················································································································
 
-  var prefs_showGerberDrawingFlow : Bool {
-    get { return prefs_showGerberDrawingFlow_property.propval }
-    set { prefs_showGerberDrawingFlow_property.setProp (newValue) }
+  var preferences_showGerberDrawingFlow : Bool {
+    get { return preferences_showGerberDrawingFlow_property.propval }
+    set { preferences_showGerberDrawingFlow_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_showGerberDrawingFlow_property_selection : EBSelection <Bool> { return prefs_showGerberDrawingFlow_property.selection }
+  var preferences_showGerberDrawingFlow_property_selection : EBSelection <Bool> { return preferences_showGerberDrawingFlow_property.selection }
 
 //····················································································································
 //   Atomic property: showGerberDrawingIndexes
 //····················································································································
 
-  let prefs_showGerberDrawingIndexes_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showGerberDrawingIndexes)
+  let preferences_showGerberDrawingIndexes_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showGerberDrawingIndexes)
 
 //····················································································································
 
-  var prefs_showGerberDrawingIndexes : Bool {
-    get { return prefs_showGerberDrawingIndexes_property.propval }
-    set { prefs_showGerberDrawingIndexes_property.setProp (newValue) }
+  var preferences_showGerberDrawingIndexes : Bool {
+    get { return preferences_showGerberDrawingIndexes_property.propval }
+    set { preferences_showGerberDrawingIndexes_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_showGerberDrawingIndexes_property_selection : EBSelection <Bool> { return prefs_showGerberDrawingIndexes_property.selection }
+  var preferences_showGerberDrawingIndexes_property_selection : EBSelection <Bool> { return preferences_showGerberDrawingIndexes_property.selection }
 
 //····················································································································
 //   Atomic property: fontEditionTransparency
 //····················································································································
 
-  let prefs_fontEditionTransparency_property = EBPreferencesProperty_Double (defaultValue: 0.5, prefKey: Preferences_fontEditionTransparency)
+  let preferences_fontEditionTransparency_property = EBPreferencesProperty_Double (defaultValue: 0.5, prefKey: Preferences_fontEditionTransparency)
 
 //····················································································································
 
-  var prefs_fontEditionTransparency : Double {
-    get { return prefs_fontEditionTransparency_property.propval }
-    set { prefs_fontEditionTransparency_property.setProp (newValue) }
+  var preferences_fontEditionTransparency : Double {
+    get { return preferences_fontEditionTransparency_property.propval }
+    set { preferences_fontEditionTransparency_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_fontEditionTransparency_property_selection : EBSelection <Double> { return prefs_fontEditionTransparency_property.selection }
+  var preferences_fontEditionTransparency_property_selection : EBSelection <Double> { return preferences_fontEditionTransparency_property.selection }
 
 //····················································································································
 //   Atomic property: checkForSystemLibraryAtStartUp
 //····················································································································
 
-  let prefs_checkForSystemLibraryAtStartUp_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_checkForSystemLibraryAtStartUp)
+  let preferences_checkForSystemLibraryAtStartUp_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_checkForSystemLibraryAtStartUp)
 
 //····················································································································
 
-  var prefs_checkForSystemLibraryAtStartUp : Bool {
-    get { return prefs_checkForSystemLibraryAtStartUp_property.propval }
-    set { prefs_checkForSystemLibraryAtStartUp_property.setProp (newValue) }
+  var preferences_checkForSystemLibraryAtStartUp : Bool {
+    get { return preferences_checkForSystemLibraryAtStartUp_property.propval }
+    set { preferences_checkForSystemLibraryAtStartUp_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> { return prefs_checkForSystemLibraryAtStartUp_property.selection }
+  var preferences_checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> { return preferences_checkForSystemLibraryAtStartUp_property.selection }
 
 //····················································································································
 //   Atomic property: systemLibraryCheckTimeInterval
 //····················································································································
 
-  let prefs_systemLibraryCheckTimeInterval_property = EBPreferencesProperty_Int (defaultValue: 0, prefKey: Preferences_systemLibraryCheckTimeInterval)
+  let preferences_systemLibraryCheckTimeInterval_property = EBPreferencesProperty_Int (defaultValue: 0, prefKey: Preferences_systemLibraryCheckTimeInterval)
 
 //····················································································································
 
-  var prefs_systemLibraryCheckTimeInterval : Int {
-    get { return prefs_systemLibraryCheckTimeInterval_property.propval }
-    set { prefs_systemLibraryCheckTimeInterval_property.setProp (newValue) }
+  var preferences_systemLibraryCheckTimeInterval : Int {
+    get { return preferences_systemLibraryCheckTimeInterval_property.propval }
+    set { preferences_systemLibraryCheckTimeInterval_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> { return prefs_systemLibraryCheckTimeInterval_property.selection }
+  var preferences_systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> { return preferences_systemLibraryCheckTimeInterval_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewHorizontalFlip
 //····················································································································
 
-  let prefs_mergerModelViewHorizontalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewHorizontalFlip)
+  let preferences_mergerModelViewHorizontalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewHorizontalFlip)
 
 //····················································································································
 
-  var prefs_mergerModelViewHorizontalFlip : Bool {
-    get { return prefs_mergerModelViewHorizontalFlip_property.propval }
-    set { prefs_mergerModelViewHorizontalFlip_property.setProp (newValue) }
+  var preferences_mergerModelViewHorizontalFlip : Bool {
+    get { return preferences_mergerModelViewHorizontalFlip_property.propval }
+    set { preferences_mergerModelViewHorizontalFlip_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> { return prefs_mergerModelViewHorizontalFlip_property.selection }
+  var preferences_mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> { return preferences_mergerModelViewHorizontalFlip_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewVerticalFlip
 //····················································································································
 
-  let prefs_mergerModelViewVerticalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewVerticalFlip)
+  let preferences_mergerModelViewVerticalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewVerticalFlip)
 
 //····················································································································
 
-  var prefs_mergerModelViewVerticalFlip : Bool {
-    get { return prefs_mergerModelViewVerticalFlip_property.propval }
-    set { prefs_mergerModelViewVerticalFlip_property.setProp (newValue) }
+  var preferences_mergerModelViewVerticalFlip : Bool {
+    get { return preferences_mergerModelViewVerticalFlip_property.propval }
+    set { preferences_mergerModelViewVerticalFlip_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> { return prefs_mergerModelViewVerticalFlip_property.selection }
+  var preferences_mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> { return preferences_mergerModelViewVerticalFlip_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayHoles
 //····················································································································
 
-  let prefs_mergerModelViewDisplayHoles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayHoles)
+  let preferences_mergerModelViewDisplayHoles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayHoles)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayHoles : Bool {
-    get { return prefs_mergerModelViewDisplayHoles_property.propval }
-    set { prefs_mergerModelViewDisplayHoles_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayHoles : Bool {
+    get { return preferences_mergerModelViewDisplayHoles_property.propval }
+    set { preferences_mergerModelViewDisplayHoles_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayHoles_property.selection }
+  var preferences_mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayHoles_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayVias
 //····················································································································
 
-  let prefs_mergerModelViewDisplayVias_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayVias)
+  let preferences_mergerModelViewDisplayVias_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayVias)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayVias : Bool {
-    get { return prefs_mergerModelViewDisplayVias_property.propval }
-    set { prefs_mergerModelViewDisplayVias_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayVias : Bool {
+    get { return preferences_mergerModelViewDisplayVias_property.propval }
+    set { preferences_mergerModelViewDisplayVias_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayVias_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayVias_property.selection }
+  var preferences_mergerModelViewDisplayVias_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayVias_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontPads
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayFrontPads)
+  let preferences_mergerModelViewDisplayFrontPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayFrontPads)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontPads : Bool {
-    get { return prefs_mergerModelViewDisplayFrontPads_property.propval }
-    set { prefs_mergerModelViewDisplayFrontPads_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontPads : Bool {
+    get { return preferences_mergerModelViewDisplayFrontPads_property.propval }
+    set { preferences_mergerModelViewDisplayFrontPads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontPads_property.selection }
+  var preferences_mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontPads_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayInternalBoardsLimits
 //····················································································································
 
-  let prefs_mergerModelViewDisplayInternalBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
+  let preferences_mergerModelViewDisplayInternalBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayInternalBoardsLimits : Bool {
-    get { return prefs_mergerModelViewDisplayInternalBoardsLimits_property.propval }
-    set { prefs_mergerModelViewDisplayInternalBoardsLimits_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayInternalBoardsLimits : Bool {
+    get { return preferences_mergerModelViewDisplayInternalBoardsLimits_property.propval }
+    set { preferences_mergerModelViewDisplayInternalBoardsLimits_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayInternalBoardsLimits_property.selection }
+  var preferences_mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayInternalBoardsLimits_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBoardLimits
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBoardLimits)
+  let preferences_mergerModelViewDisplayBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBoardLimits)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBoardLimits : Bool {
-    get { return prefs_mergerModelViewDisplayBoardLimits_property.propval }
-    set { prefs_mergerModelViewDisplayBoardLimits_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBoardLimits : Bool {
+    get { return preferences_mergerModelViewDisplayBoardLimits_property.propval }
+    set { preferences_mergerModelViewDisplayBoardLimits_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBoardLimits_property.selection }
+  var preferences_mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBoardLimits_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontComponentNames
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontComponentNames)
+  let preferences_mergerModelViewDisplayFrontComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontComponentNames)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontComponentNames : Bool {
-    get { return prefs_mergerModelViewDisplayFrontComponentNames_property.propval }
-    set { prefs_mergerModelViewDisplayFrontComponentNames_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontComponentNames : Bool {
+    get { return preferences_mergerModelViewDisplayFrontComponentNames_property.propval }
+    set { preferences_mergerModelViewDisplayFrontComponentNames_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontComponentNames_property.selection }
+  var preferences_mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontComponentNames_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontComponentValues
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontComponentValues)
+  let preferences_mergerModelViewDisplayFrontComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontComponentValues)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontComponentValues : Bool {
-    get { return prefs_mergerModelViewDisplayFrontComponentValues_property.propval }
-    set { prefs_mergerModelViewDisplayFrontComponentValues_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontComponentValues : Bool {
+    get { return preferences_mergerModelViewDisplayFrontComponentValues_property.propval }
+    set { preferences_mergerModelViewDisplayFrontComponentValues_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontComponentValues_property.selection }
+  var preferences_mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontComponentValues_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontPackages
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontPackages)
+  let preferences_mergerModelViewDisplayFrontPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontPackages)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontPackages : Bool {
-    get { return prefs_mergerModelViewDisplayFrontPackages_property.propval }
-    set { prefs_mergerModelViewDisplayFrontPackages_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontPackages : Bool {
+    get { return preferences_mergerModelViewDisplayFrontPackages_property.propval }
+    set { preferences_mergerModelViewDisplayFrontPackages_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontPackages_property.selection }
+  var preferences_mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontPackages_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLegendTexts
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
+  let preferences_mergerModelViewDisplayFrontLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontLegendTexts : Bool {
-    get { return prefs_mergerModelViewDisplayFrontLegendTexts_property.propval }
-    set { prefs_mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontLegendTexts : Bool {
+    get { return preferences_mergerModelViewDisplayFrontLegendTexts_property.propval }
+    set { preferences_mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontLegendTexts_property.selection }
+  var preferences_mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontLegendTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontTracks
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontTracks)
+  let preferences_mergerModelViewDisplayFrontTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontTracks)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontTracks : Bool {
-    get { return prefs_mergerModelViewDisplayFrontTracks_property.propval }
-    set { prefs_mergerModelViewDisplayFrontTracks_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontTracks : Bool {
+    get { return preferences_mergerModelViewDisplayFrontTracks_property.propval }
+    set { preferences_mergerModelViewDisplayFrontTracks_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontTracks_property.selection }
+  var preferences_mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontTracks_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLayoutTexts
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
+  let preferences_mergerModelViewDisplayFrontLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontLayoutTexts : Bool {
-    get { return prefs_mergerModelViewDisplayFrontLayoutTexts_property.propval }
-    set { prefs_mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontLayoutTexts : Bool {
+    get { return preferences_mergerModelViewDisplayFrontLayoutTexts_property.propval }
+    set { preferences_mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontLayoutTexts_property.selection }
+  var preferences_mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackPads
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBackPads)
+  let preferences_mergerModelViewDisplayBackPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBackPads)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackPads : Bool {
-    get { return prefs_mergerModelViewDisplayBackPads_property.propval }
-    set { prefs_mergerModelViewDisplayBackPads_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackPads : Bool {
+    get { return preferences_mergerModelViewDisplayBackPads_property.propval }
+    set { preferences_mergerModelViewDisplayBackPads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackPads_property.selection }
+  var preferences_mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackPads_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackComponentNames
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackComponentNames)
+  let preferences_mergerModelViewDisplayBackComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackComponentNames)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackComponentNames : Bool {
-    get { return prefs_mergerModelViewDisplayBackComponentNames_property.propval }
-    set { prefs_mergerModelViewDisplayBackComponentNames_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackComponentNames : Bool {
+    get { return preferences_mergerModelViewDisplayBackComponentNames_property.propval }
+    set { preferences_mergerModelViewDisplayBackComponentNames_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackComponentNames_property.selection }
+  var preferences_mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackComponentNames_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackComponentValues
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackComponentValues)
+  let preferences_mergerModelViewDisplayBackComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackComponentValues)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackComponentValues : Bool {
-    get { return prefs_mergerModelViewDisplayBackComponentValues_property.propval }
-    set { prefs_mergerModelViewDisplayBackComponentValues_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackComponentValues : Bool {
+    get { return preferences_mergerModelViewDisplayBackComponentValues_property.propval }
+    set { preferences_mergerModelViewDisplayBackComponentValues_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackComponentValues_property.selection }
+  var preferences_mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackComponentValues_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackLegendTexts
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackLegendTexts)
+  let preferences_mergerModelViewDisplayBackLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackLegendTexts)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackLegendTexts : Bool {
-    get { return prefs_mergerModelViewDisplayBackLegendTexts_property.propval }
-    set { prefs_mergerModelViewDisplayBackLegendTexts_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackLegendTexts : Bool {
+    get { return preferences_mergerModelViewDisplayBackLegendTexts_property.propval }
+    set { preferences_mergerModelViewDisplayBackLegendTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackLegendTexts_property.selection }
+  var preferences_mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackLegendTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackPackages
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackPackages)
+  let preferences_mergerModelViewDisplayBackPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackPackages)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackPackages : Bool {
-    get { return prefs_mergerModelViewDisplayBackPackages_property.propval }
-    set { prefs_mergerModelViewDisplayBackPackages_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackPackages : Bool {
+    get { return preferences_mergerModelViewDisplayBackPackages_property.propval }
+    set { preferences_mergerModelViewDisplayBackPackages_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackPackages_property.selection }
+  var preferences_mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackPackages_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackTracks
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackTracks)
+  let preferences_mergerModelViewDisplayBackTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackTracks)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackTracks : Bool {
-    get { return prefs_mergerModelViewDisplayBackTracks_property.propval }
-    set { prefs_mergerModelViewDisplayBackTracks_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackTracks : Bool {
+    get { return preferences_mergerModelViewDisplayBackTracks_property.propval }
+    set { preferences_mergerModelViewDisplayBackTracks_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackTracks_property.selection }
+  var preferences_mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackTracks_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackLayoutTexts
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
+  let preferences_mergerModelViewDisplayBackLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackLayoutTexts : Bool {
-    get { return prefs_mergerModelViewDisplayBackLayoutTexts_property.propval }
-    set { prefs_mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackLayoutTexts : Bool {
+    get { return preferences_mergerModelViewDisplayBackLayoutTexts_property.propval }
+    set { preferences_mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackLayoutTexts_property.selection }
+  var preferences_mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackLayoutTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLegendLines
 //····················································································································
 
-  let prefs_mergerModelViewDisplayFrontLegendLines_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLegendLines)
+  let preferences_mergerModelViewDisplayFrontLegendLines_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLegendLines)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontLegendLines : Bool {
-    get { return prefs_mergerModelViewDisplayFrontLegendLines_property.propval }
-    set { prefs_mergerModelViewDisplayFrontLegendLines_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayFrontLegendLines : Bool {
+    get { return preferences_mergerModelViewDisplayFrontLegendLines_property.propval }
+    set { preferences_mergerModelViewDisplayFrontLegendLines_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayFrontLegendLines_property.selection }
+  var preferences_mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayFrontLegendLines_property.selection }
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackLegendLines
 //····················································································································
 
-  let prefs_mergerModelViewDisplayBackLegendLines_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBackLegendLines)
+  let preferences_mergerModelViewDisplayBackLegendLines_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBackLegendLines)
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackLegendLines : Bool {
-    get { return prefs_mergerModelViewDisplayBackLegendLines_property.propval }
-    set { prefs_mergerModelViewDisplayBackLegendLines_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayBackLegendLines : Bool {
+    get { return preferences_mergerModelViewDisplayBackLegendLines_property.propval }
+    set { preferences_mergerModelViewDisplayBackLegendLines_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return prefs_mergerModelViewDisplayBackLegendLines_property.selection }
+  var preferences_mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return preferences_mergerModelViewDisplayBackLegendLines_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewHorizontalFlip
 //····················································································································
 
-  let prefs_mergerBoardViewHorizontalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewHorizontalFlip)
+  let preferences_mergerBoardViewHorizontalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewHorizontalFlip)
 
 //····················································································································
 
-  var prefs_mergerBoardViewHorizontalFlip : Bool {
-    get { return prefs_mergerBoardViewHorizontalFlip_property.propval }
-    set { prefs_mergerBoardViewHorizontalFlip_property.setProp (newValue) }
+  var preferences_mergerBoardViewHorizontalFlip : Bool {
+    get { return preferences_mergerBoardViewHorizontalFlip_property.propval }
+    set { preferences_mergerBoardViewHorizontalFlip_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewHorizontalFlip_property.selection }
+  var preferences_mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewHorizontalFlip_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewVerticalFlip
 //····················································································································
 
-  let prefs_mergerBoardViewVerticalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewVerticalFlip)
+  let preferences_mergerBoardViewVerticalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewVerticalFlip)
 
 //····················································································································
 
-  var prefs_mergerBoardViewVerticalFlip : Bool {
-    get { return prefs_mergerBoardViewVerticalFlip_property.propval }
-    set { prefs_mergerBoardViewVerticalFlip_property.setProp (newValue) }
+  var preferences_mergerBoardViewVerticalFlip : Bool {
+    get { return preferences_mergerBoardViewVerticalFlip_property.propval }
+    set { preferences_mergerBoardViewVerticalFlip_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewVerticalFlip_property.selection }
+  var preferences_mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewVerticalFlip_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayHoles
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayHoles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayHoles)
+  let preferences_mergerBoardViewDisplayHoles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayHoles)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayHoles : Bool {
-    get { return prefs_mergerBoardViewDisplayHoles_property.propval }
-    set { prefs_mergerBoardViewDisplayHoles_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayHoles : Bool {
+    get { return preferences_mergerBoardViewDisplayHoles_property.propval }
+    set { preferences_mergerBoardViewDisplayHoles_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayHoles_property.selection }
+  var preferences_mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayHoles_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayVias
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayVias_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayVias)
+  let preferences_mergerBoardViewDisplayVias_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayVias)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayVias : Bool {
-    get { return prefs_mergerBoardViewDisplayVias_property.propval }
-    set { prefs_mergerBoardViewDisplayVias_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayVias : Bool {
+    get { return preferences_mergerBoardViewDisplayVias_property.propval }
+    set { preferences_mergerBoardViewDisplayVias_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayVias_property.selection }
+  var preferences_mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayVias_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontPads
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayFrontPads)
+  let preferences_mergerBoardViewDisplayFrontPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayFrontPads)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontPads : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontPads_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontPads_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontPads : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontPads_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontPads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontPads_property.selection }
+  var preferences_mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontPads_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayInternalBoardsLimits
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayInternalBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
+  let preferences_mergerBoardViewDisplayInternalBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayInternalBoardsLimits : Bool {
-    get { return prefs_mergerBoardViewDisplayInternalBoardsLimits_property.propval }
-    set { prefs_mergerBoardViewDisplayInternalBoardsLimits_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayInternalBoardsLimits : Bool {
+    get { return preferences_mergerBoardViewDisplayInternalBoardsLimits_property.propval }
+    set { preferences_mergerBoardViewDisplayInternalBoardsLimits_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayInternalBoardsLimits_property.selection }
+  var preferences_mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayInternalBoardsLimits_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBoardLimits
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBoardLimits)
+  let preferences_mergerBoardViewDisplayBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBoardLimits)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBoardLimits : Bool {
-    get { return prefs_mergerBoardViewDisplayBoardLimits_property.propval }
-    set { prefs_mergerBoardViewDisplayBoardLimits_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBoardLimits : Bool {
+    get { return preferences_mergerBoardViewDisplayBoardLimits_property.propval }
+    set { preferences_mergerBoardViewDisplayBoardLimits_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBoardLimits_property.selection }
+  var preferences_mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBoardLimits_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontComponentNames
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
+  let preferences_mergerBoardViewDisplayFrontComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontComponentNames : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontComponentNames_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontComponentNames : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontComponentNames_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontComponentNames_property.selection }
+  var preferences_mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontComponentNames_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontComponentValues
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
+  let preferences_mergerBoardViewDisplayFrontComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontComponentValues : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontComponentValues_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontComponentValues : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontComponentValues_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontComponentValues_property.selection }
+  var preferences_mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontComponentValues_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontPackages
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontPackages)
+  let preferences_mergerBoardViewDisplayFrontPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontPackages)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontPackages : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontPackages_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontPackages_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontPackages : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontPackages_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontPackages_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontPackages_property.selection }
+  var preferences_mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontPackages_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontLegendTexts
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
+  let preferences_mergerBoardViewDisplayFrontLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontLegendTexts : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontLegendTexts_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontLegendTexts : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontLegendTexts_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontLegendTexts_property.selection }
+  var preferences_mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontTracks
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontTracks)
+  let preferences_mergerBoardViewDisplayFrontTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontTracks)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontTracks : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontTracks_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontTracks_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontTracks : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontTracks_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontTracks_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontTracks_property.selection }
+  var preferences_mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontTracks_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontLayoutTexts
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
+  let preferences_mergerBoardViewDisplayFrontLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontLayoutTexts : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontLayoutTexts_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontLayoutTexts : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontLayoutTexts_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontLayoutTexts_property.selection }
+  var preferences_mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackPads
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBackPads)
+  let preferences_mergerBoardViewDisplayBackPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBackPads)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackPads : Bool {
-    get { return prefs_mergerBoardViewDisplayBackPads_property.propval }
-    set { prefs_mergerBoardViewDisplayBackPads_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackPads : Bool {
+    get { return preferences_mergerBoardViewDisplayBackPads_property.propval }
+    set { preferences_mergerBoardViewDisplayBackPads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackPads_property.selection }
+  var preferences_mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackPads_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackComponentNames
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackComponentNames)
+  let preferences_mergerBoardViewDisplayBackComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackComponentNames)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackComponentNames : Bool {
-    get { return prefs_mergerBoardViewDisplayBackComponentNames_property.propval }
-    set { prefs_mergerBoardViewDisplayBackComponentNames_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackComponentNames : Bool {
+    get { return preferences_mergerBoardViewDisplayBackComponentNames_property.propval }
+    set { preferences_mergerBoardViewDisplayBackComponentNames_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackComponentNames_property.selection }
+  var preferences_mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackComponentNames_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackComponentValues
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackComponentValues)
+  let preferences_mergerBoardViewDisplayBackComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackComponentValues)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackComponentValues : Bool {
-    get { return prefs_mergerBoardViewDisplayBackComponentValues_property.propval }
-    set { prefs_mergerBoardViewDisplayBackComponentValues_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackComponentValues : Bool {
+    get { return preferences_mergerBoardViewDisplayBackComponentValues_property.propval }
+    set { preferences_mergerBoardViewDisplayBackComponentValues_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackComponentValues_property.selection }
+  var preferences_mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackComponentValues_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackLegendTexts
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
+  let preferences_mergerBoardViewDisplayBackLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackLegendTexts : Bool {
-    get { return prefs_mergerBoardViewDisplayBackLegendTexts_property.propval }
-    set { prefs_mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackLegendTexts : Bool {
+    get { return preferences_mergerBoardViewDisplayBackLegendTexts_property.propval }
+    set { preferences_mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackLegendTexts_property.selection }
+  var preferences_mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackLegendTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackPackages
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackPackages)
+  let preferences_mergerBoardViewDisplayBackPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackPackages)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackPackages : Bool {
-    get { return prefs_mergerBoardViewDisplayBackPackages_property.propval }
-    set { prefs_mergerBoardViewDisplayBackPackages_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackPackages : Bool {
+    get { return preferences_mergerBoardViewDisplayBackPackages_property.propval }
+    set { preferences_mergerBoardViewDisplayBackPackages_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackPackages_property.selection }
+  var preferences_mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackPackages_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackTracks
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackTracks)
+  let preferences_mergerBoardViewDisplayBackTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackTracks)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackTracks : Bool {
-    get { return prefs_mergerBoardViewDisplayBackTracks_property.propval }
-    set { prefs_mergerBoardViewDisplayBackTracks_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackTracks : Bool {
+    get { return preferences_mergerBoardViewDisplayBackTracks_property.propval }
+    set { preferences_mergerBoardViewDisplayBackTracks_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackTracks_property.selection }
+  var preferences_mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackTracks_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackLayoutTexts
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
+  let preferences_mergerBoardViewDisplayBackLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackLayoutTexts : Bool {
-    get { return prefs_mergerBoardViewDisplayBackLayoutTexts_property.propval }
-    set { prefs_mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackLayoutTexts : Bool {
+    get { return preferences_mergerBoardViewDisplayBackLayoutTexts_property.propval }
+    set { preferences_mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackLayoutTexts_property.selection }
+  var preferences_mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontLegendLines
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayFrontLegendLines_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
+  let preferences_mergerBoardViewDisplayFrontLegendLines_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontLegendLines : Bool {
-    get { return prefs_mergerBoardViewDisplayFrontLegendLines_property.propval }
-    set { prefs_mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayFrontLegendLines : Bool {
+    get { return preferences_mergerBoardViewDisplayFrontLegendLines_property.propval }
+    set { preferences_mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayFrontLegendLines_property.selection }
+  var preferences_mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayFrontLegendLines_property.selection }
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackLegendLines
 //····················································································································
 
-  let prefs_mergerBoardViewDisplayBackLegendLines_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBackLegendLines)
+  let preferences_mergerBoardViewDisplayBackLegendLines_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBackLegendLines)
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackLegendLines : Bool {
-    get { return prefs_mergerBoardViewDisplayBackLegendLines_property.propval }
-    set { prefs_mergerBoardViewDisplayBackLegendLines_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayBackLegendLines : Bool {
+    get { return preferences_mergerBoardViewDisplayBackLegendLines_property.propval }
+    set { preferences_mergerBoardViewDisplayBackLegendLines_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return prefs_mergerBoardViewDisplayBackLegendLines_property.selection }
+  var preferences_mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> { return preferences_mergerBoardViewDisplayBackLegendLines_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorHoles
 //····················································································································
 
-  let prefs_mergerColorHoles_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mergerColorHoles)
+  let preferences_mergerColorHoles_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mergerColorHoles)
 
 //····················································································································
 
-  var prefs_mergerColorHoles : NSColor {
-    get { return prefs_mergerColorHoles_property.propval }
-    set { prefs_mergerColorHoles_property.setProp (newValue) }
+  var preferences_mergerColorHoles : NSColor {
+    get { return preferences_mergerColorHoles_property.propval }
+    set { preferences_mergerColorHoles_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorHoles_property_selection : EBSelection <NSColor> { return prefs_mergerColorHoles_property.selection }
+  var preferences_mergerColorHoles_property_selection : EBSelection <NSColor> { return preferences_mergerColorHoles_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorVias
 //····················································································································
 
-  let prefs_mergerColorVias_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_mergerColorVias)
+  let preferences_mergerColorVias_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_mergerColorVias)
 
 //····················································································································
 
-  var prefs_mergerColorVias : NSColor {
-    get { return prefs_mergerColorVias_property.propval }
-    set { prefs_mergerColorVias_property.setProp (newValue) }
+  var preferences_mergerColorVias : NSColor {
+    get { return preferences_mergerColorVias_property.propval }
+    set { preferences_mergerColorVias_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorVias_property_selection : EBSelection <NSColor> { return prefs_mergerColorVias_property.selection }
+  var preferences_mergerColorVias_property_selection : EBSelection <NSColor> { return preferences_mergerColorVias_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontPads
 //····················································································································
 
-  let prefs_mergerColorFrontPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontPads)
+  let preferences_mergerColorFrontPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontPads)
 
 //····················································································································
 
-  var prefs_mergerColorFrontPads : NSColor {
-    get { return prefs_mergerColorFrontPads_property.propval }
-    set { prefs_mergerColorFrontPads_property.setProp (newValue) }
+  var preferences_mergerColorFrontPads : NSColor {
+    get { return preferences_mergerColorFrontPads_property.propval }
+    set { preferences_mergerColorFrontPads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontPads_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontPads_property.selection }
+  var preferences_mergerColorFrontPads_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontPads_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBoardLimits
 //····················································································································
 
-  let prefs_mergerColorBoardLimits_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorBoardLimits)
+  let preferences_mergerColorBoardLimits_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorBoardLimits)
 
 //····················································································································
 
-  var prefs_mergerColorBoardLimits : NSColor {
-    get { return prefs_mergerColorBoardLimits_property.propval }
-    set { prefs_mergerColorBoardLimits_property.setProp (newValue) }
+  var preferences_mergerColorBoardLimits : NSColor {
+    get { return preferences_mergerColorBoardLimits_property.propval }
+    set { preferences_mergerColorBoardLimits_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBoardLimits_property_selection : EBSelection <NSColor> { return prefs_mergerColorBoardLimits_property.selection }
+  var preferences_mergerColorBoardLimits_property_selection : EBSelection <NSColor> { return preferences_mergerColorBoardLimits_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorInternalBoardsLimits
 //····················································································································
 
-  let prefs_mergerColorInternalBoardsLimits_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_mergerColorInternalBoardsLimits)
+  let preferences_mergerColorInternalBoardsLimits_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_mergerColorInternalBoardsLimits)
 
 //····················································································································
 
-  var prefs_mergerColorInternalBoardsLimits : NSColor {
-    get { return prefs_mergerColorInternalBoardsLimits_property.propval }
-    set { prefs_mergerColorInternalBoardsLimits_property.setProp (newValue) }
+  var preferences_mergerColorInternalBoardsLimits : NSColor {
+    get { return preferences_mergerColorInternalBoardsLimits_property.propval }
+    set { preferences_mergerColorInternalBoardsLimits_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> { return prefs_mergerColorInternalBoardsLimits_property.selection }
+  var preferences_mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> { return preferences_mergerColorInternalBoardsLimits_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontComponentNames
 //····················································································································
 
-  let prefs_mergerColorFrontComponentNames_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontComponentNames)
+  let preferences_mergerColorFrontComponentNames_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontComponentNames)
 
 //····················································································································
 
-  var prefs_mergerColorFrontComponentNames : NSColor {
-    get { return prefs_mergerColorFrontComponentNames_property.propval }
-    set { prefs_mergerColorFrontComponentNames_property.setProp (newValue) }
+  var preferences_mergerColorFrontComponentNames : NSColor {
+    get { return preferences_mergerColorFrontComponentNames_property.propval }
+    set { preferences_mergerColorFrontComponentNames_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontComponentNames_property.selection }
+  var preferences_mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontComponentNames_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontComponentValues
 //····················································································································
 
-  let prefs_mergerColorFrontComponentValues_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontComponentValues)
+  let preferences_mergerColorFrontComponentValues_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontComponentValues)
 
 //····················································································································
 
-  var prefs_mergerColorFrontComponentValues : NSColor {
-    get { return prefs_mergerColorFrontComponentValues_property.propval }
-    set { prefs_mergerColorFrontComponentValues_property.setProp (newValue) }
+  var preferences_mergerColorFrontComponentValues : NSColor {
+    get { return preferences_mergerColorFrontComponentValues_property.propval }
+    set { preferences_mergerColorFrontComponentValues_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontComponentValues_property.selection }
+  var preferences_mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontComponentValues_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontPackages
 //····················································································································
 
-  let prefs_mergerColorFrontPackages_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontPackages)
+  let preferences_mergerColorFrontPackages_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontPackages)
 
 //····················································································································
 
-  var prefs_mergerColorFrontPackages : NSColor {
-    get { return prefs_mergerColorFrontPackages_property.propval }
-    set { prefs_mergerColorFrontPackages_property.setProp (newValue) }
+  var preferences_mergerColorFrontPackages : NSColor {
+    get { return preferences_mergerColorFrontPackages_property.propval }
+    set { preferences_mergerColorFrontPackages_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontPackages_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontPackages_property.selection }
+  var preferences_mergerColorFrontPackages_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontPackages_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontLegendTexts
 //····················································································································
 
-  let prefs_mergerColorFrontLegendTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontLegendTexts)
+  let preferences_mergerColorFrontLegendTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontLegendTexts)
 
 //····················································································································
 
-  var prefs_mergerColorFrontLegendTexts : NSColor {
-    get { return prefs_mergerColorFrontLegendTexts_property.propval }
-    set { prefs_mergerColorFrontLegendTexts_property.setProp (newValue) }
+  var preferences_mergerColorFrontLegendTexts : NSColor {
+    get { return preferences_mergerColorFrontLegendTexts_property.propval }
+    set { preferences_mergerColorFrontLegendTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontLegendTexts_property.selection }
+  var preferences_mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontLegendTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontTracks
 //····················································································································
 
-  let prefs_mergerColorFrontTracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mergerColorFrontTracks)
+  let preferences_mergerColorFrontTracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mergerColorFrontTracks)
 
 //····················································································································
 
-  var prefs_mergerColorFrontTracks : NSColor {
-    get { return prefs_mergerColorFrontTracks_property.propval }
-    set { prefs_mergerColorFrontTracks_property.setProp (newValue) }
+  var preferences_mergerColorFrontTracks : NSColor {
+    get { return preferences_mergerColorFrontTracks_property.propval }
+    set { preferences_mergerColorFrontTracks_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontTracks_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontTracks_property.selection }
+  var preferences_mergerColorFrontTracks_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontTracks_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontLayoutTexts
 //····················································································································
 
-  let prefs_mergerColorFrontLayoutTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mergerColorFrontLayoutTexts)
+  let preferences_mergerColorFrontLayoutTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mergerColorFrontLayoutTexts)
 
 //····················································································································
 
-  var prefs_mergerColorFrontLayoutTexts : NSColor {
-    get { return prefs_mergerColorFrontLayoutTexts_property.propval }
-    set { prefs_mergerColorFrontLayoutTexts_property.setProp (newValue) }
+  var preferences_mergerColorFrontLayoutTexts : NSColor {
+    get { return preferences_mergerColorFrontLayoutTexts_property.propval }
+    set { preferences_mergerColorFrontLayoutTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontLayoutTexts_property.selection }
+  var preferences_mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontLayoutTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackPads
 //····················································································································
 
-  let prefs_mergerColorBackPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_mergerColorBackPads)
+  let preferences_mergerColorBackPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_mergerColorBackPads)
 
 //····················································································································
 
-  var prefs_mergerColorBackPads : NSColor {
-    get { return prefs_mergerColorBackPads_property.propval }
-    set { prefs_mergerColorBackPads_property.setProp (newValue) }
+  var preferences_mergerColorBackPads : NSColor {
+    get { return preferences_mergerColorBackPads_property.propval }
+    set { preferences_mergerColorBackPads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackPads_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackPads_property.selection }
+  var preferences_mergerColorBackPads_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackPads_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackComponentNames
 //····················································································································
 
-  let prefs_mergerColorBackComponentNames_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackComponentNames)
+  let preferences_mergerColorBackComponentNames_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackComponentNames)
 
 //····················································································································
 
-  var prefs_mergerColorBackComponentNames : NSColor {
-    get { return prefs_mergerColorBackComponentNames_property.propval }
-    set { prefs_mergerColorBackComponentNames_property.setProp (newValue) }
+  var preferences_mergerColorBackComponentNames : NSColor {
+    get { return preferences_mergerColorBackComponentNames_property.propval }
+    set { preferences_mergerColorBackComponentNames_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackComponentNames_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackComponentNames_property.selection }
+  var preferences_mergerColorBackComponentNames_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackComponentNames_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackComponentValues
 //····················································································································
 
-  let prefs_mergerColorBackComponentValues_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackComponentValues)
+  let preferences_mergerColorBackComponentValues_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackComponentValues)
 
 //····················································································································
 
-  var prefs_mergerColorBackComponentValues : NSColor {
-    get { return prefs_mergerColorBackComponentValues_property.propval }
-    set { prefs_mergerColorBackComponentValues_property.setProp (newValue) }
+  var preferences_mergerColorBackComponentValues : NSColor {
+    get { return preferences_mergerColorBackComponentValues_property.propval }
+    set { preferences_mergerColorBackComponentValues_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackComponentValues_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackComponentValues_property.selection }
+  var preferences_mergerColorBackComponentValues_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackComponentValues_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackLegendTexts
 //····················································································································
 
-  let prefs_mergerColorBackLegendTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackLegendTexts)
+  let preferences_mergerColorBackLegendTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackLegendTexts)
 
 //····················································································································
 
-  var prefs_mergerColorBackLegendTexts : NSColor {
-    get { return prefs_mergerColorBackLegendTexts_property.propval }
-    set { prefs_mergerColorBackLegendTexts_property.setProp (newValue) }
+  var preferences_mergerColorBackLegendTexts : NSColor {
+    get { return preferences_mergerColorBackLegendTexts_property.propval }
+    set { preferences_mergerColorBackLegendTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackLegendTexts_property.selection }
+  var preferences_mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackLegendTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackPackages
 //····················································································································
 
-  let prefs_mergerColorBackPackages_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackPackages)
+  let preferences_mergerColorBackPackages_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackPackages)
 
 //····················································································································
 
-  var prefs_mergerColorBackPackages : NSColor {
-    get { return prefs_mergerColorBackPackages_property.propval }
-    set { prefs_mergerColorBackPackages_property.setProp (newValue) }
+  var preferences_mergerColorBackPackages : NSColor {
+    get { return preferences_mergerColorBackPackages_property.propval }
+    set { preferences_mergerColorBackPackages_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackPackages_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackPackages_property.selection }
+  var preferences_mergerColorBackPackages_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackPackages_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackTracks
 //····················································································································
 
-  let prefs_mergerColorBackTracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackTracks)
+  let preferences_mergerColorBackTracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackTracks)
 
 //····················································································································
 
-  var prefs_mergerColorBackTracks : NSColor {
-    get { return prefs_mergerColorBackTracks_property.propval }
-    set { prefs_mergerColorBackTracks_property.setProp (newValue) }
+  var preferences_mergerColorBackTracks : NSColor {
+    get { return preferences_mergerColorBackTracks_property.propval }
+    set { preferences_mergerColorBackTracks_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackTracks_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackTracks_property.selection }
+  var preferences_mergerColorBackTracks_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackTracks_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackLayoutTexts
 //····················································································································
 
-  let prefs_mergerColorBackLayoutTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackLayoutTexts)
+  let preferences_mergerColorBackLayoutTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackLayoutTexts)
 
 //····················································································································
 
-  var prefs_mergerColorBackLayoutTexts : NSColor {
-    get { return prefs_mergerColorBackLayoutTexts_property.propval }
-    set { prefs_mergerColorBackLayoutTexts_property.setProp (newValue) }
+  var preferences_mergerColorBackLayoutTexts : NSColor {
+    get { return preferences_mergerColorBackLayoutTexts_property.propval }
+    set { preferences_mergerColorBackLayoutTexts_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackLayoutTexts_property.selection }
+  var preferences_mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackLayoutTexts_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorFrontLegendLines
 //····················································································································
 
-  let prefs_mergerColorFrontLegendLines_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorFrontLegendLines)
+  let preferences_mergerColorFrontLegendLines_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorFrontLegendLines)
 
 //····················································································································
 
-  var prefs_mergerColorFrontLegendLines : NSColor {
-    get { return prefs_mergerColorFrontLegendLines_property.propval }
-    set { prefs_mergerColorFrontLegendLines_property.setProp (newValue) }
+  var preferences_mergerColorFrontLegendLines : NSColor {
+    get { return preferences_mergerColorFrontLegendLines_property.propval }
+    set { preferences_mergerColorFrontLegendLines_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> { return prefs_mergerColorFrontLegendLines_property.selection }
+  var preferences_mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> { return preferences_mergerColorFrontLegendLines_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackLegendLines
 //····················································································································
 
-  let prefs_mergerColorBackLegendLines_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackLegendLines)
+  let preferences_mergerColorBackLegendLines_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackLegendLines)
 
 //····················································································································
 
-  var prefs_mergerColorBackLegendLines : NSColor {
-    get { return prefs_mergerColorBackLegendLines_property.propval }
-    set { prefs_mergerColorBackLegendLines_property.setProp (newValue) }
+  var preferences_mergerColorBackLegendLines : NSColor {
+    get { return preferences_mergerColorBackLegendLines_property.propval }
+    set { preferences_mergerColorBackLegendLines_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackLegendLines_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackLegendLines_property.selection }
+  var preferences_mergerColorBackLegendLines_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackLegendLines_property.selection }
 
 //····················································································································
 //   Atomic property: mergerColorBackground
 //····················································································································
 
-  let prefs_mergerColorBackground_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_mergerColorBackground)
+  let preferences_mergerColorBackground_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_mergerColorBackground)
 
 //····················································································································
 
-  var prefs_mergerColorBackground : NSColor {
-    get { return prefs_mergerColorBackground_property.propval }
-    set { prefs_mergerColorBackground_property.setProp (newValue) }
+  var preferences_mergerColorBackground : NSColor {
+    get { return preferences_mergerColorBackground_property.propval }
+    set { preferences_mergerColorBackground_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mergerColorBackground_property_selection : EBSelection <NSColor> { return prefs_mergerColorBackground_property.selection }
+  var preferences_mergerColorBackground_property_selection : EBSelection <NSColor> { return preferences_mergerColorBackground_property.selection }
 
 //····················································································································
 //   Atomic property: errorMessageColor
 //····················································································································
 
-  let prefs_errorMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_errorMessageColor)
+  let preferences_errorMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_errorMessageColor)
 
 //····················································································································
 
-  var prefs_errorMessageColor : NSColor {
-    get { return prefs_errorMessageColor_property.propval }
-    set { prefs_errorMessageColor_property.setProp (newValue) }
+  var preferences_errorMessageColor : NSColor {
+    get { return preferences_errorMessageColor_property.propval }
+    set { preferences_errorMessageColor_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_errorMessageColor_property_selection : EBSelection <NSColor> { return prefs_errorMessageColor_property.selection }
+  var preferences_errorMessageColor_property_selection : EBSelection <NSColor> { return preferences_errorMessageColor_property.selection }
 
 //····················································································································
 //   Atomic property: hiliteWidthMultipliedByTen
 //····················································································································
 
-  let prefs_hiliteWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_hiliteWidthMultipliedByTen)
+  let preferences_hiliteWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_hiliteWidthMultipliedByTen)
 
 //····················································································································
 
-  var prefs_hiliteWidthMultipliedByTen : Int {
-    get { return prefs_hiliteWidthMultipliedByTen_property.propval }
-    set { prefs_hiliteWidthMultipliedByTen_property.setProp (newValue) }
+  var preferences_hiliteWidthMultipliedByTen : Int {
+    get { return preferences_hiliteWidthMultipliedByTen_property.propval }
+    set { preferences_hiliteWidthMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> { return prefs_hiliteWidthMultipliedByTen_property.selection }
+  var preferences_hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> { return preferences_hiliteWidthMultipliedByTen_property.selection }
 
 //····················································································································
 //   Atomic property: usesUserLibrary
 //····················································································································
 
-  let prefs_usesUserLibrary_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_usesUserLibrary)
+  let preferences_usesUserLibrary_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_usesUserLibrary)
 
 //····················································································································
 
-  var prefs_usesUserLibrary : Bool {
-    get { return prefs_usesUserLibrary_property.propval }
-    set { prefs_usesUserLibrary_property.setProp (newValue) }
+  var preferences_usesUserLibrary : Bool {
+    get { return preferences_usesUserLibrary_property.propval }
+    set { preferences_usesUserLibrary_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_usesUserLibrary_property_selection : EBSelection <Bool> { return prefs_usesUserLibrary_property.selection }
+  var preferences_usesUserLibrary_property_selection : EBSelection <Bool> { return preferences_usesUserLibrary_property.selection }
 
 //····················································································································
 //   To many property: additionnalLibraryArray
 //····················································································································
 
-  let prefs_additionnalLibraryArray_property = PreferencesArrayOf_CanariLibraryEntry (prefKey: Preferences_additionnalLibraryArray)
+  let preferences_additionnalLibraryArray_property = PreferencesArrayOf_CanariLibraryEntry (prefKey: Preferences_additionnalLibraryArray)
 
 //····················································································································
 
-  var prefs_additionnalLibraryArray_property_selection : EBSelection < [CanariLibraryEntry] > {
-    return prefs_additionnalLibraryArray_property.selection
+  var preferences_additionnalLibraryArray_property_selection : EBSelection < [CanariLibraryEntry] > {
+    return preferences_additionnalLibraryArray_property.selection
   }
 
 //····················································································································
 
-  var prefs_additionnalLibraryArray : [CanariLibraryEntry] {
-    get { return prefs_additionnalLibraryArray_property.propval }
-    set { prefs_additionnalLibraryArray_property.setProp (newValue) }
+  var preferences_additionnalLibraryArray : [CanariLibraryEntry] {
+    get { return preferences_additionnalLibraryArray_property.propval }
+    set { preferences_additionnalLibraryArray_property.setProp (newValue) }
   }
 
 //····················································································································
 //   Atomic property: pinNameFont
 //····················································································································
 
-  let prefs_pinNameFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFont)
+  let preferences_pinNameFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFont)
 
 //····················································································································
 
-  var prefs_pinNameFont : NSFont {
-    get { return prefs_pinNameFont_property.propval }
-    set { prefs_pinNameFont_property.setProp (newValue) }
+  var preferences_pinNameFont : NSFont {
+    get { return preferences_pinNameFont_property.propval }
+    set { preferences_pinNameFont_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_pinNameFont_property_selection : EBSelection <NSFont> { return prefs_pinNameFont_property.selection }
+  var preferences_pinNameFont_property_selection : EBSelection <NSFont> { return preferences_pinNameFont_property.selection }
 
 //····················································································································
 //   Atomic property: displayPackageFrontSidePads
 //····················································································································
 
-  let prefs_displayPackageFrontSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
+  let preferences_displayPackageFrontSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
 
 //····················································································································
 
-  var prefs_displayPackageFrontSidePads : Bool {
-    get { return prefs_displayPackageFrontSidePads_property.propval }
-    set { prefs_displayPackageFrontSidePads_property.setProp (newValue) }
+  var preferences_displayPackageFrontSidePads : Bool {
+    get { return preferences_displayPackageFrontSidePads_property.propval }
+    set { preferences_displayPackageFrontSidePads_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return prefs_displayPackageFrontSidePads_property.selection }
+  var preferences_displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return preferences_displayPackageFrontSidePads_property.selection }
 
 //····················································································································
 //   Atomic property: mFreeRouterGuiDefaultFileContents
 //····················································································································
 
-  let prefs_mFreeRouterGuiDefaultFileContents_property = EBPreferencesProperty_String (defaultValue: "", prefKey: Preferences_mFreeRouterGuiDefaultFileContents)
+  let preferences_mFreeRouterGuiDefaultFileContents_property = EBPreferencesProperty_String (defaultValue: "", prefKey: Preferences_mFreeRouterGuiDefaultFileContents)
 
 //····················································································································
 
-  var prefs_mFreeRouterGuiDefaultFileContents : String {
-    get { return prefs_mFreeRouterGuiDefaultFileContents_property.propval }
-    set { prefs_mFreeRouterGuiDefaultFileContents_property.setProp (newValue) }
+  var preferences_mFreeRouterGuiDefaultFileContents : String {
+    get { return preferences_mFreeRouterGuiDefaultFileContents_property.propval }
+    set { preferences_mFreeRouterGuiDefaultFileContents_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mFreeRouterGuiDefaultFileContents_property_selection : EBSelection <String> { return prefs_mFreeRouterGuiDefaultFileContents_property.selection }
+  var preferences_mFreeRouterGuiDefaultFileContents_property_selection : EBSelection <String> { return preferences_mFreeRouterGuiDefaultFileContents_property.selection }
 
 //····················································································································
 //   Atomic property: sampleStringSize
 //····················································································································
 
-  let prefs_sampleStringSize_property = EBPreferencesProperty_Double (defaultValue: 24, prefKey: Preferences_sampleStringSize)
+  let preferences_sampleStringSize_property = EBPreferencesProperty_Double (defaultValue: 24, prefKey: Preferences_sampleStringSize)
 
 //····················································································································
 
-  var prefs_sampleStringSize : Double {
-    get { return prefs_sampleStringSize_property.propval }
-    set { prefs_sampleStringSize_property.setProp (newValue) }
+  var preferences_sampleStringSize : Double {
+    get { return preferences_sampleStringSize_property.propval }
+    set { preferences_sampleStringSize_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_sampleStringSize_property_selection : EBSelection <Double> { return prefs_sampleStringSize_property.selection }
+  var preferences_sampleStringSize_property_selection : EBSelection <Double> { return preferences_sampleStringSize_property.selection }
 
 //····················································································································
 //   Atomic property: mLastSystemLibraryCheckTime
 //····················································································································
 
-  let prefs_mLastSystemLibraryCheckTime_property = EBPreferencesProperty_Date (defaultValue: Date.distantPast, prefKey: Preferences_mLastSystemLibraryCheckTime)
+  let preferences_mLastSystemLibraryCheckTime_property = EBPreferencesProperty_Date (defaultValue: Date.distantPast, prefKey: Preferences_mLastSystemLibraryCheckTime)
 
 //····················································································································
 
-  var prefs_mLastSystemLibraryCheckTime : Date {
-    get { return prefs_mLastSystemLibraryCheckTime_property.propval }
-    set { prefs_mLastSystemLibraryCheckTime_property.setProp (newValue) }
+  var preferences_mLastSystemLibraryCheckTime : Date {
+    get { return preferences_mLastSystemLibraryCheckTime_property.propval }
+    set { preferences_mLastSystemLibraryCheckTime_property.setProp (newValue) }
   }
 
 //····················································································································
 
-  var prefs_mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> { return prefs_mLastSystemLibraryCheckTime_property.selection }
+  var preferences_mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> { return preferences_mLastSystemLibraryCheckTime_property.selection }
 
 //····················································································································
 //   Array controller: additionnalLibraryArrayController
 //····················································································································
 
-  var prefs_additionnalLibraryArrayController = Controller_Preferences_additionnalLibraryArrayController ()
+  var preferences_additionnalLibraryArrayController = Controller_Preferences_additionnalLibraryArrayController ()
 
 //····················································································································
 //   Transient property: mValueRevealInFinder_packages
 //····················································································································
 
-  let prefs_mValueRevealInFinder_packages_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_packages_property = EBTransientProperty_CanariMenuItemListClass ()
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_packages_property_selection : EBSelection <CanariMenuItemListClass> {
-    return prefs_mValueRevealInFinder_packages_property.selection
+  var preferences_mValueRevealInFinder_packages_property_selection : EBSelection <CanariMenuItemListClass> {
+    return preferences_mValueRevealInFinder_packages_property.selection
   }
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_packages : CanariMenuItemListClass? {
-    switch prefs_mValueRevealInFinder_packages_property_selection {
+  var preferences_mValueRevealInFinder_packages : CanariMenuItemListClass? {
+    switch preferences_mValueRevealInFinder_packages_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2908,18 +2908,18 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_devices
 //····················································································································
 
-  let prefs_mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_devices_property_selection : EBSelection <CanariMenuItemListClass> {
-    return prefs_mValueRevealInFinder_devices_property.selection
+  var preferences_mValueRevealInFinder_devices_property_selection : EBSelection <CanariMenuItemListClass> {
+    return preferences_mValueRevealInFinder_devices_property.selection
   }
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_devices : CanariMenuItemListClass? {
-    switch prefs_mValueRevealInFinder_devices_property_selection {
+  var preferences_mValueRevealInFinder_devices : CanariMenuItemListClass? {
+    switch preferences_mValueRevealInFinder_devices_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2931,18 +2931,18 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_fonts
 //····················································································································
 
-  let prefs_mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_fonts_property_selection : EBSelection <CanariMenuItemListClass> {
-    return prefs_mValueRevealInFinder_fonts_property.selection
+  var preferences_mValueRevealInFinder_fonts_property_selection : EBSelection <CanariMenuItemListClass> {
+    return preferences_mValueRevealInFinder_fonts_property.selection
   }
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_fonts : CanariMenuItemListClass? {
-    switch prefs_mValueRevealInFinder_fonts_property_selection {
+  var preferences_mValueRevealInFinder_fonts : CanariMenuItemListClass? {
+    switch preferences_mValueRevealInFinder_fonts_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2954,18 +2954,18 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_artworks
 //····················································································································
 
-  let prefs_mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_artworks_property_selection : EBSelection <CanariMenuItemListClass> {
-    return prefs_mValueRevealInFinder_artworks_property.selection
+  var preferences_mValueRevealInFinder_artworks_property_selection : EBSelection <CanariMenuItemListClass> {
+    return preferences_mValueRevealInFinder_artworks_property.selection
   }
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_artworks : CanariMenuItemListClass? {
-    switch prefs_mValueRevealInFinder_artworks_property_selection {
+  var preferences_mValueRevealInFinder_artworks : CanariMenuItemListClass? {
+    switch preferences_mValueRevealInFinder_artworks_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2977,18 +2977,18 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_symbols
 //····················································································································
 
-  let prefs_mValueRevealInFinder_symbols_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_symbols_property = EBTransientProperty_CanariMenuItemListClass ()
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_symbols_property_selection : EBSelection <CanariMenuItemListClass> {
-    return prefs_mValueRevealInFinder_symbols_property.selection
+  var preferences_mValueRevealInFinder_symbols_property_selection : EBSelection <CanariMenuItemListClass> {
+    return preferences_mValueRevealInFinder_symbols_property.selection
   }
 
 //····················································································································
 
-  var prefs_mValueRevealInFinder_symbols : CanariMenuItemListClass? {
-    switch prefs_mValueRevealInFinder_symbols_property_selection {
+  var preferences_mValueRevealInFinder_symbols : CanariMenuItemListClass? {
+    switch preferences_mValueRevealInFinder_symbols_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3157,21 +3157,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     g_Preferences = self ;
   //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
-    prefs_additionnalLibraryArray_property.ebUndoManager = self.ebUndoManager
+    preferences_additionnalLibraryArray_property.ebUndoManager = self.ebUndoManager
   //--- Array controller property: additionnalLibraryArrayController
-    prefs_additionnalLibraryArrayController.bind_model (prefs_additionnalLibraryArray_property, self.ebUndoManager)
+    preferences_additionnalLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
-    prefs_mValueRevealInFinder_packages_property.mReadModelFunction = {
-        var kind = prefs_usesUserLibrary_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
+    preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
+        var kind = preferences_usesUserLibrary_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_usesUserLibrary_property_selection, prefs_additionnalLibraryArray_property_selection, prefs_additionnalLibraryArray_property_selection) {
+          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
           default :
@@ -3179,21 +3179,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
           }
         }
     }
-    prefs_usesUserLibrary_property.addEBObserver (prefs_mValueRevealInFinder_packages_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_packages_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_packages_property)
+    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_packages_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_packages_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
-    prefs_mValueRevealInFinder_devices_property.mReadModelFunction = {
-        var kind = prefs_usesUserLibrary_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
+    preferences_mValueRevealInFinder_devices_property.mReadModelFunction = {
+        var kind = preferences_usesUserLibrary_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_usesUserLibrary_property_selection, prefs_additionnalLibraryArray_property_selection, prefs_additionnalLibraryArray_property_selection) {
+          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
           default :
@@ -3201,21 +3201,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
           }
         }
     }
-    prefs_usesUserLibrary_property.addEBObserver (prefs_mValueRevealInFinder_devices_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_devices_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_devices_property)
+    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_devices_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_devices_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
-    prefs_mValueRevealInFinder_fonts_property.mReadModelFunction = {
-        var kind = prefs_usesUserLibrary_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
+    preferences_mValueRevealInFinder_fonts_property.mReadModelFunction = {
+        var kind = preferences_usesUserLibrary_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_usesUserLibrary_property_selection, prefs_additionnalLibraryArray_property_selection, prefs_additionnalLibraryArray_property_selection) {
+          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
           default :
@@ -3223,21 +3223,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
           }
         }
     }
-    prefs_usesUserLibrary_property.addEBObserver (prefs_mValueRevealInFinder_fonts_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_fonts_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_fonts_property)
+    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_fonts_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_fonts_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
-    prefs_mValueRevealInFinder_artworks_property.mReadModelFunction = {
-        var kind = prefs_usesUserLibrary_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
+    preferences_mValueRevealInFinder_artworks_property.mReadModelFunction = {
+        var kind = preferences_usesUserLibrary_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_usesUserLibrary_property_selection, prefs_additionnalLibraryArray_property_selection, prefs_additionnalLibraryArray_property_selection) {
+          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
           default :
@@ -3245,21 +3245,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
           }
         }
     }
-    prefs_usesUserLibrary_property.addEBObserver (prefs_mValueRevealInFinder_artworks_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_artworks_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_artworks_property)
+    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_artworks_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_artworks_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
-    prefs_mValueRevealInFinder_symbols_property.mReadModelFunction = {
-        var kind = prefs_usesUserLibrary_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
-        kind &= prefs_additionnalLibraryArray_property_selection.kind ()
+    preferences_mValueRevealInFinder_symbols_property.mReadModelFunction = {
+        var kind = preferences_usesUserLibrary_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
+        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_usesUserLibrary_property_selection, prefs_additionnalLibraryArray_property_selection, prefs_additionnalLibraryArray_property_selection) {
+          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
           default :
@@ -3267,9 +3267,9 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
           }
         }
     }
-    prefs_usesUserLibrary_property.addEBObserver (prefs_mValueRevealInFinder_symbols_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mUses (prefs_mValueRevealInFinder_symbols_property)
-    prefs_additionnalLibraryArray_property.addEBObserverOf_mPath (prefs_mValueRevealInFinder_symbols_property)
+    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_symbols_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_symbols_property)
+    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_symbols_property)
   //--- Notify application will terminate
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
@@ -3401,138 +3401,138 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.systemLibraryCheckTimeIntervalPopupButton, "systemLibraryCheckTimeIntervalPopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.systemLibraryCheckTimeIntervalTitleTextField, "systemLibraryCheckTimeIntervalTitleTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
-    mErrorMessageColorColorWell?.bind_color (prefs_errorMessageColor_property, sendContinously:false)
-    mWarningMessageColorColorWell?.bind_color (prefs_warningMessageColor_property, sendContinously:false)
-    mSuccessMessageColorColorWell?.bind_color (prefs_successMessageColor_property, sendContinously:false)
-    mSelectionHiliteColorColorWell?.bind_color (prefs_selectionHiliteColor_property, sendContinously:false)
-    selectionHilitePopupButton?.bind_selectedTag (prefs_hiliteWidthMultipliedByTen_property)
-    mMenuRevealInFinder_symbols?.bind_populateSubmenus (prefs_mValueRevealInFinder_symbols_property)
-    mMenuRevealInFinder_packages?.bind_populateSubmenus (prefs_mValueRevealInFinder_packages_property)
-    mMenuRevealInFinder_devices?.bind_populateSubmenus (prefs_mValueRevealInFinder_devices_property)
-    mMenuRevealInFinder_fonts?.bind_populateSubmenus (prefs_mValueRevealInFinder_fonts_property)
-    mMenuRevealInFinder_artworks?.bind_populateSubmenus (prefs_mValueRevealInFinder_artworks_property)
-    mSymbolColorColorWell?.bind_color (prefs_symbolColor_property, sendContinously:false)
-    mCrossColorOfSymbolGridColorWell?.bind_color (prefs_crossColorOfSymbolGrid_property, sendContinously:false)
-    mLineColorOfSymbolGridColorWell?.bind_color (prefs_lineColorOfSymbolGrid_property, sendContinously:false)
-    mSymbolBackgroundColorColorWell?.bind_color (prefs_symbolBackgroundColor_property, sendContinously:false)
-    mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (prefs_symbolDrawingWidthMultipliedByTen_property)
-    mPinNameFontButton?.bind_fontValue (prefs_pinNameFont_property)
-    mDotColorOfPackageGridColorWell?.bind_color (prefs_crossColorOfPackageGrid_property, sendContinously:false)
-    mLineColorOfPackageGridColorWell?.bind_color (prefs_lineColorOfPackageGrid_property, sendContinously:false)
-    mPackageBackgroundColorColorWell?.bind_color (prefs_packageBackgroundColor_property, sendContinously:false)
-    mPackageColorColorWell?.bind_color (prefs_packageColor_property, sendContinously:false)
-    mTopSidePadColorWell?.bind_color (prefs_frontSidePadColor_property, sendContinously:false)
-    mBottomSidePadColorWell?.bind_color (prefs_backSidePadColor_property, sendContinously:false)
-    mPadNumberColorColorWell?.bind_color (prefs_padNumberColor_property, sendContinously:false)
-    mPadFontButton?.bind_fontValue (prefs_padNumberFont_property)
-    mPackageGuideColorWell?.bind_color (prefs_packageGuideColor_property, sendContinously:false)
-    mPackageDimensionColorWell?.bind_color (prefs_packageDimensionColor_property, sendContinously:false)
-    mDimensionFontButton?.bind_fontValue (prefs_dimensionFont_property)
-    mPadZoneColorColorWell?.bind_color (prefs_padZoneColor_property, sendContinously:false)
-    mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (prefs_packageDrawingWidthMultipliedByTen_property)
-    mSymbolAndPackageGridDotColorForDeviceColorWell?.bind_color (prefs_mSymbolAndPackageGridDotColorForDevice_property, sendContinously:false)
-    mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (prefs_mSymbolAndPackageGridLineColorForDevice_property, sendContinously:false)
-    mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (prefs_mSymbolAndPackageBackgroundColorForDevice_property, sendContinously:false)
-    mPackageColorForDeviceColorWell?.bind_color (prefs_mPackageColorForDevice_property, sendContinously:false)
-    mTopSidePadColorForDeviceColorWell?.bind_color (prefs_mFrontSidePadColorForDevice_property, sendContinously:false)
-    mBottomSidePadColorDorDeviveColorWell?.bind_color (prefs_mBottomSidePadColorForDevice_property, sendContinously:false)
-    mPadNumberColorForDeviceColorWell?.bind_color (prefs_mPadNumberColorForDevice_property, sendContinously:false)
-    mPackageNameFontForDeviceFontButton?.bind_fontValue (prefs_mPadNumberFontForDevice_property)
-    mPadNumberFontForDeviceFontButton?.bind_fontValue (prefs_mPadNumberFontForDevice_property)
-    mSymbolColorForDeviceColorWell?.bind_color (prefs_mSymbolColorForDevice_property, sendContinously:false)
-    mSymbolNameFontForDeviceFontButton?.bind_fontValue (prefs_mSymbolNameFontForDevice_property)
-    mPinNameFontForDeviceFontButton?.bind_fontValue (prefs_mPinNameFontForDevice_property)
-    mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (prefs_symbolDrawingWidthForDeviceMultipliedByTen_property)
-    mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (prefs_packageDrawingWidthForDeviceMultipliedByTen_property)
-    mDotColorGridForSchematicColorWell?.bind_color (prefs_dotColorGridForSchematic_property, sendContinously:false)
-    mLineColorGridForSchematicColorWell?.bind_color (prefs_lineColorGridForSchematic_property, sendContinously:false)
-    mUnplacedComponentsColorForSchematicColorWell?.bind_color (prefs_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:false)
-    mSymbolColorForSchematicColorWell?.bind_color (prefs_symbolColorForSchematic_property, sendContinously:false)
-    mPinNameFontForSchematicFontButton?.bind_fontValue (prefs_pinNameFontForSchematic_property)
-    mPinNameColorForSchematicColorWell?.bind_color (prefs_pinNameColorForSchematic_property, sendContinously:false)
-    mPinNumberFontForSchematicFontButton?.bind_fontValue (prefs_pinNumberFontForSchematic_property)
-    mPinNumberColorForSchematicColorWell?.bind_color (prefs_pinNumberColorForSchematic_property, sendContinously:false)
-    mConnectionColorForSchematicColorWell?.bind_color (prefs_connectionColorForSchematic_property, sendContinously:false)
-    mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (prefs_symbolDrawingWidthMultipliedByTenForSchematic_property)
-    mBoardDotColorGridColorWell?.bind_color (prefs_crossColorGridForBoard_property, sendContinously:false)
-    mBoardLineColorGridColorWell?.bind_color (prefs_lineColorGridForBoard_property, sendContinously:false)
-    mBoardBackgroundColorWell?.bind_color (prefs_boardBackgroundColorForBoard_property, sendContinously:false)
-    mBoardErrorBackgroundColorWell?.bind_color (prefs_errorBackgroundColorForBoard_property, sendContinously:false)
-    mBoardDrawErrorBackgroundCheckbox?.bind_value (prefs_drawErrorBackgroundForBoard_property)
-    mBoardWarningBackgroundColorWell?.bind_color (prefs_warningBackgroundColorForBoard_property, sendContinously:false)
-    mBoardDrawWarningBackgroundCheckbox?.bind_value (prefs_drawWarningBackgroundForBoard_property)
-    mBoardLimitsColorWell?.bind_color (prefs_boardLimitsColorForBoard_property, sendContinously:false)
-    mBoardClearanceColorWell?.bind_color (prefs_boardClearanceColorForBoard_property, sendContinously:false)
-    mBoardTopSideRestrictRectangleColorWell?.bind_color (prefs_frontSideRestrictRectangleColorForBoard_property, sendContinously:false)
-    mBoardBottomSideRestrictRectangleColorWell?.bind_color (prefs_backSideRestrictRectangleColorForBoard_property, sendContinously:false)
-    mBoardTopSideLegendColorWell?.bind_color (prefs_frontSideLegendColorForBoard_property, sendContinously:false)
-    mBoardTopSideLayoutColorWell?.bind_color (prefs_frontSideLayoutColorForBoard_property, sendContinously:false)
-    mBoardBottomSideLayoutColorWell?.bind_color (prefs_backSideLayoutColorForBoard_property, sendContinously:false)
-    mBoardBottomSideLegendColorWell?.bind_color (prefs_backSideLegendColorForBoard_property, sendContinously:false)
-    mBoardTopSidePadColorWell?.bind_color (prefs_frontSidePadColorForBoard_property, sendContinously:false)
-    mBoardBottomSidePadColorWell?.bind_color (prefs_backSidePadColorForBoard_property, sendContinously:false)
-    mBoardPadFontButton?.bind_fontValue (prefs_padNumberFontForBoard_property)
-    mBoardPadNumberColorWell?.bind_color (prefs_padNumberColorForBoard_property, sendContinously:false)
-    mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (prefs_packageDrawingWidthMultpliedByTenForBoard_property)
-    mSampleStringField?.bind_value (prefs_sampleString_property, sendContinously:true)
-    mSampleStringSizeField?.bind_value (prefs_sampleStringSize_property, sendContinously:false, autoFormatter:false)
-    mShowGerberDrawingFlowCheckbox?.bind_value (prefs_showGerberDrawingFlow_property)
-    mShowGerberDrawingIndexesCheckbox?.bind_value (prefs_showGerberDrawingIndexes_property)
-    mEditionTransparencySlider?.bind_doubleValue (prefs_fontEditionTransparency_property, sendContinously:true)
-    mEditionTransparencyTextField?.bind_value (prefs_fontEditionTransparency_property, sendContinously:false, autoFormatter:false)
-    mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (prefs_usesUserLibrary_property)
-    mCheckForSystemLibraryAtStartUpSwitch?.bind_value (prefs_checkForSystemLibraryAtStartUp_property)
-    nextSystemLibraryCheckDate?.bind_dateObserver (prefs_mLastSystemLibraryCheckTime_property)
-    systemLibraryCheckTimeIntervalPopupButton?.bind_selectedTag (prefs_systemLibraryCheckTimeInterval_property)
+    mErrorMessageColorColorWell?.bind_color (preferences_errorMessageColor_property, sendContinously:false)
+    mWarningMessageColorColorWell?.bind_color (preferences_warningMessageColor_property, sendContinously:false)
+    mSuccessMessageColorColorWell?.bind_color (preferences_successMessageColor_property, sendContinously:false)
+    mSelectionHiliteColorColorWell?.bind_color (preferences_selectionHiliteColor_property, sendContinously:false)
+    selectionHilitePopupButton?.bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
+    mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
+    mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
+    mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
+    mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
+    mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
+    mSymbolColorColorWell?.bind_color (preferences_symbolColor_property, sendContinously:false)
+    mCrossColorOfSymbolGridColorWell?.bind_color (preferences_crossColorOfSymbolGrid_property, sendContinously:false)
+    mLineColorOfSymbolGridColorWell?.bind_color (preferences_lineColorOfSymbolGrid_property, sendContinously:false)
+    mSymbolBackgroundColorColorWell?.bind_color (preferences_symbolBackgroundColor_property, sendContinously:false)
+    mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTen_property)
+    mPinNameFontButton?.bind_fontValue (preferences_pinNameFont_property)
+    mDotColorOfPackageGridColorWell?.bind_color (preferences_crossColorOfPackageGrid_property, sendContinously:false)
+    mLineColorOfPackageGridColorWell?.bind_color (preferences_lineColorOfPackageGrid_property, sendContinously:false)
+    mPackageBackgroundColorColorWell?.bind_color (preferences_packageBackgroundColor_property, sendContinously:false)
+    mPackageColorColorWell?.bind_color (preferences_packageColor_property, sendContinously:false)
+    mTopSidePadColorWell?.bind_color (preferences_frontSidePadColor_property, sendContinously:false)
+    mBottomSidePadColorWell?.bind_color (preferences_backSidePadColor_property, sendContinously:false)
+    mPadNumberColorColorWell?.bind_color (preferences_padNumberColor_property, sendContinously:false)
+    mPadFontButton?.bind_fontValue (preferences_padNumberFont_property)
+    mPackageGuideColorWell?.bind_color (preferences_packageGuideColor_property, sendContinously:false)
+    mPackageDimensionColorWell?.bind_color (preferences_packageDimensionColor_property, sendContinously:false)
+    mDimensionFontButton?.bind_fontValue (preferences_dimensionFont_property)
+    mPadZoneColorColorWell?.bind_color (preferences_padZoneColor_property, sendContinously:false)
+    mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultipliedByTen_property)
+    mSymbolAndPackageGridDotColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageGridDotColorForDevice_property, sendContinously:false)
+    mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageGridLineColorForDevice_property, sendContinously:false)
+    mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageBackgroundColorForDevice_property, sendContinously:false)
+    mPackageColorForDeviceColorWell?.bind_color (preferences_mPackageColorForDevice_property, sendContinously:false)
+    mTopSidePadColorForDeviceColorWell?.bind_color (preferences_mFrontSidePadColorForDevice_property, sendContinously:false)
+    mBottomSidePadColorDorDeviveColorWell?.bind_color (preferences_mBottomSidePadColorForDevice_property, sendContinously:false)
+    mPadNumberColorForDeviceColorWell?.bind_color (preferences_mPadNumberColorForDevice_property, sendContinously:false)
+    mPackageNameFontForDeviceFontButton?.bind_fontValue (preferences_mPadNumberFontForDevice_property)
+    mPadNumberFontForDeviceFontButton?.bind_fontValue (preferences_mPadNumberFontForDevice_property)
+    mSymbolColorForDeviceColorWell?.bind_color (preferences_mSymbolColorForDevice_property, sendContinously:false)
+    mSymbolNameFontForDeviceFontButton?.bind_fontValue (preferences_mSymbolNameFontForDevice_property)
+    mPinNameFontForDeviceFontButton?.bind_fontValue (preferences_mPinNameFontForDevice_property)
+    mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
+    mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
+    mDotColorGridForSchematicColorWell?.bind_color (preferences_dotColorGridForSchematic_property, sendContinously:false)
+    mLineColorGridForSchematicColorWell?.bind_color (preferences_lineColorGridForSchematic_property, sendContinously:false)
+    mUnplacedComponentsColorForSchematicColorWell?.bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:false)
+    mSymbolColorForSchematicColorWell?.bind_color (preferences_symbolColorForSchematic_property, sendContinously:false)
+    mPinNameFontForSchematicFontButton?.bind_fontValue (preferences_pinNameFontForSchematic_property)
+    mPinNameColorForSchematicColorWell?.bind_color (preferences_pinNameColorForSchematic_property, sendContinously:false)
+    mPinNumberFontForSchematicFontButton?.bind_fontValue (preferences_pinNumberFontForSchematic_property)
+    mPinNumberColorForSchematicColorWell?.bind_color (preferences_pinNumberColorForSchematic_property, sendContinously:false)
+    mConnectionColorForSchematicColorWell?.bind_color (preferences_connectionColorForSchematic_property, sendContinously:false)
+    mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTenForSchematic_property)
+    mBoardDotColorGridColorWell?.bind_color (preferences_crossColorGridForBoard_property, sendContinously:false)
+    mBoardLineColorGridColorWell?.bind_color (preferences_lineColorGridForBoard_property, sendContinously:false)
+    mBoardBackgroundColorWell?.bind_color (preferences_boardBackgroundColorForBoard_property, sendContinously:false)
+    mBoardErrorBackgroundColorWell?.bind_color (preferences_errorBackgroundColorForBoard_property, sendContinously:false)
+    mBoardDrawErrorBackgroundCheckbox?.bind_value (preferences_drawErrorBackgroundForBoard_property)
+    mBoardWarningBackgroundColorWell?.bind_color (preferences_warningBackgroundColorForBoard_property, sendContinously:false)
+    mBoardDrawWarningBackgroundCheckbox?.bind_value (preferences_drawWarningBackgroundForBoard_property)
+    mBoardLimitsColorWell?.bind_color (preferences_boardLimitsColorForBoard_property, sendContinously:false)
+    mBoardClearanceColorWell?.bind_color (preferences_boardClearanceColorForBoard_property, sendContinously:false)
+    mBoardTopSideRestrictRectangleColorWell?.bind_color (preferences_frontSideRestrictRectangleColorForBoard_property, sendContinously:false)
+    mBoardBottomSideRestrictRectangleColorWell?.bind_color (preferences_backSideRestrictRectangleColorForBoard_property, sendContinously:false)
+    mBoardTopSideLegendColorWell?.bind_color (preferences_frontSideLegendColorForBoard_property, sendContinously:false)
+    mBoardTopSideLayoutColorWell?.bind_color (preferences_frontSideLayoutColorForBoard_property, sendContinously:false)
+    mBoardBottomSideLayoutColorWell?.bind_color (preferences_backSideLayoutColorForBoard_property, sendContinously:false)
+    mBoardBottomSideLegendColorWell?.bind_color (preferences_backSideLegendColorForBoard_property, sendContinously:false)
+    mBoardTopSidePadColorWell?.bind_color (preferences_frontSidePadColorForBoard_property, sendContinously:false)
+    mBoardBottomSidePadColorWell?.bind_color (preferences_backSidePadColorForBoard_property, sendContinously:false)
+    mBoardPadFontButton?.bind_fontValue (preferences_padNumberFontForBoard_property)
+    mBoardPadNumberColorWell?.bind_color (preferences_padNumberColorForBoard_property, sendContinously:false)
+    mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultpliedByTenForBoard_property)
+    mSampleStringField?.bind_value (preferences_sampleString_property, sendContinously:true)
+    mSampleStringSizeField?.bind_value (preferences_sampleStringSize_property, sendContinously:false, autoFormatter:false)
+    mShowGerberDrawingFlowCheckbox?.bind_value (preferences_showGerberDrawingFlow_property)
+    mShowGerberDrawingIndexesCheckbox?.bind_value (preferences_showGerberDrawingIndexes_property)
+    mEditionTransparencySlider?.bind_doubleValue (preferences_fontEditionTransparency_property, sendContinously:true)
+    mEditionTransparencyTextField?.bind_value (preferences_fontEditionTransparency_property, sendContinously:false, autoFormatter:false)
+    mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (preferences_usesUserLibrary_property)
+    mCheckForSystemLibraryAtStartUpSwitch?.bind_value (preferences_checkForSystemLibraryAtStartUp_property)
+    nextSystemLibraryCheckDate?.bind_dateObserver (preferences_mLastSystemLibraryCheckTime_property)
+    systemLibraryCheckTimeIntervalPopupButton?.bind_selectedTag (preferences_systemLibraryCheckTimeInterval_property)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return !prefs_checkForSystemLibraryAtStartUp_property_selection
+          return !preferences_checkForSystemLibraryAtStartUp_property_selection
         },
         outlet: self.nextSystemLibraryCheckDate
       )
-      prefs_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
+      preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
       self.mController_nextSystemLibraryCheckDate_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return !prefs_checkForSystemLibraryAtStartUp_property_selection
+          return !preferences_checkForSystemLibraryAtStartUp_property_selection
         },
         outlet: self.systemLibraryCheckTimeIntervalPopupButton
       )
-      prefs_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
+      preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
       self.mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return !prefs_checkForSystemLibraryAtStartUp_property_selection
+          return !preferences_checkForSystemLibraryAtStartUp_property_selection
         },
         outlet: self.systemLibraryCheckTimeIntervalTitleTextField
       )
-      prefs_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
+      preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
       self.mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (prefs_additionnalLibraryArrayController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (preferences_additionnalLibraryArrayController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mRemoveLibraryEntryButton
       )
-      prefs_additionnalLibraryArrayController.selectedArray_property.count_property.addEBObserver (controller)
+      preferences_additionnalLibraryArrayController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveLibraryEntryButton_enabled = controller
     }
   //--------------------------- Array controller
-    prefs_additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView)
+    preferences_additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--------------------------- Set targets / actions
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
     self.mAddLibraryEntryButton?.target = self
     self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
-    self.mRemoveLibraryEntryButton?.target = prefs_additionnalLibraryArrayController
+    self.mRemoveLibraryEntryButton?.target = preferences_additionnalLibraryArrayController
     self.mRemoveLibraryEntryButton?.action = #selector (Controller_Preferences_additionnalLibraryArrayController.remove (_:))
     self.mCheckLibraryAction?.target = self
     self.mCheckLibraryAction?.action = #selector (Preferences.checkLibraryAction (_:))
@@ -3546,9 +3546,9 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   @objc func applicationWillTerminateAction (_ : NSNotification) {
   //--------------------------- Array controller
-    prefs_additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
+    preferences_additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--- Array controller property: additionnalLibraryArrayController
-    prefs_additionnalLibraryArrayController.unbind_model ()
+    preferences_additionnalLibraryArrayController.unbind_model ()
     // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_packages_property)
     // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
     // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)

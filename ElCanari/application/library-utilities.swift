@@ -24,14 +24,14 @@ func existingLibraryPathArray () -> [String] {
   let fm = FileManager ()
   var result = [String] ()
 //--- User library
-  if prefs_usesUserLibrary {
+  if preferences_usesUserLibrary {
     let ulp = userLibraryPath ()
     if fm.fileExists (atPath: ulp) {
       result.append (ulp)
     }
   }
 //--- Other libraries
-  for libraryEntry in prefs_additionnalLibraryArray {
+  for libraryEntry in preferences_additionnalLibraryArray {
     if libraryEntry.mUses {
       if fm.fileExists (atPath: libraryEntry.mPath) {
         result.append (libraryEntry.mPath)

@@ -1541,15 +1541,15 @@ class MergerRoot : EBManagedObject,
       if let unwSelf = self {
         var kind = unwSelf.boardRect_property_selection.kind ()
         kind &= unwSelf.boardLimitWidth_property_selection.kind ()
-        kind &= prefs_mergerBoardViewDisplayBoardLimits_property_selection.kind ()
-        kind &= prefs_mergerColorBoardLimits_property_selection.kind ()
+        kind &= preferences_mergerBoardViewDisplayBoardLimits_property_selection.kind ()
+        kind &= preferences_mergerColorBoardLimits_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, prefs_mergerBoardViewDisplayBoardLimits_property_selection, prefs_mergerColorBoardLimits_property_selection) {
+          switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, preferences_mergerBoardViewDisplayBoardLimits_property_selection, preferences_mergerColorBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
           default :
@@ -1562,8 +1562,8 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardOutlineRectDisplay_property)
     self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
-    prefs_mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
-    prefs_mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    preferences_mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    preferences_mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
@@ -1644,8 +1644,8 @@ class MergerRoot : EBManagedObject,
     // self.boardRect_property.removeEBObserver (self.boardHeight_property)
     // self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
-    // prefs_mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
-    // prefs_mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    // preferences_mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    // preferences_mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
   //--- Unregister properties for handling signature
   }
 

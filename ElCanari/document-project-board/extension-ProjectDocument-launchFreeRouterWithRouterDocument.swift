@@ -36,9 +36,9 @@ extension CustomizedProjectDocument {
     }
     // Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
   //---------- Write gui_default.par
-    if prefs_mFreeRouterGuiDefaultFileContents != "" {
+    if preferences_mFreeRouterGuiDefaultFileContents != "" {
       let guiDefaultPath = freerouterTemporaryBaseFilePath + "gui_defaults.par"
-      try? prefs_mFreeRouterGuiDefaultFileContents.write (to: URL (fileURLWithPath: guiDefaultPath), atomically: true, encoding: .utf8)
+      try? preferences_mFreeRouterGuiDefaultFileContents.write (to: URL (fileURLWithPath: guiDefaultPath), atomically: true, encoding: .utf8)
       // Swift.print ("WRITE PATH \(guiDefaultPath)")
     }
   //---------- Build freerouter document

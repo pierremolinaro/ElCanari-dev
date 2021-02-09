@@ -444,15 +444,15 @@ class SymbolPin : SymbolObject,
         kind &= unwSelf.pinNameIsDisplayedInSchematics_property_selection.kind ()
         kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
-        kind &= prefs_symbolColor_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_symbolColor_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsDisplayedInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, prefs_symbolColor_property_selection, prefs_pinNameFont_property_selection) {
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsDisplayedInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, preferences_symbolColor_property_selection, preferences_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
             return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
@@ -473,8 +473,8 @@ class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property.addEBObserver (self.objectDisplay_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -552,14 +552,14 @@ class SymbolPin : SymbolObject,
         kind &= unwSelf.yName_property_selection.kind ()
         kind &= unwSelf.name_property_selection.kind ()
         kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, prefs_pinNameFont_property_selection) {
+          switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, preferences_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SymbolPin_nameRect (v0, v1, v2, v3, v4))
           default :
@@ -574,7 +574,7 @@ class SymbolPin : SymbolObject,
     self.yName_property.addEBObserver (self.nameRect_property)
     self.name_property.addEBObserver (self.nameRect_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
-    prefs_pinNameFont_property.addEBObserver (self.nameRect_property)
+    preferences_pinNameFont_property.addEBObserver (self.nameRect_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.name_property.setSignatureObserver (observer: self)
@@ -606,8 +606,8 @@ class SymbolPin : SymbolObject,
     // self.pinNameIsDisplayedInSchematics_property.removeEBObserver (self.objectDisplay_property)
     // self.nameHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     // self.numberHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     // self.xPin_property.removeEBObserver (self.selectionDisplay_property)
     // self.yPin_property.removeEBObserver (self.selectionDisplay_property)
     // self.xName_property.removeEBObserver (self.selectionDisplay_property)
@@ -627,7 +627,7 @@ class SymbolPin : SymbolObject,
     // self.yName_property.removeEBObserver (self.nameRect_property)
     // self.name_property.removeEBObserver (self.nameRect_property)
     // self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.nameRect_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.nameRect_property)
   //--- Unregister properties for handling signature
     self.name_property.setSignatureObserver (observer: nil)
     self.nameHorizontalAlignment_property.setSignatureObserver (observer: nil)

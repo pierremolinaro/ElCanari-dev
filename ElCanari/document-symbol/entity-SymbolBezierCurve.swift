@@ -362,15 +362,15 @@ class SymbolBezierCurve : SymbolObject,
         kind &= unwSelf.cpy1_property_selection.kind ()
         kind &= unwSelf.cpx2_property_selection.kind ()
         kind &= unwSelf.cpy2_property_selection.kind ()
-        kind &= prefs_symbolColor_property_selection.kind ()
-        kind &= prefs_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= preferences_symbolColor_property_selection.kind ()
+        kind &= preferences_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection, prefs_symbolColor_property_selection, prefs_symbolDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection, preferences_symbolColor_property_selection, preferences_symbolDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
             return .single (transient_SymbolBezierCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
@@ -389,8 +389,8 @@ class SymbolBezierCurve : SymbolObject,
     self.cpy1_property.addEBObserver (self.objectDisplay_property)
     self.cpx2_property.addEBObserver (self.objectDisplay_property)
     self.cpy2_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -496,8 +496,8 @@ class SymbolBezierCurve : SymbolObject,
     // self.cpy1_property.removeEBObserver (self.objectDisplay_property)
     // self.cpx2_property.removeEBObserver (self.objectDisplay_property)
     // self.cpy2_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     // self.x1_property.removeEBObserver (self.selectionDisplay_property)
     // self.y1_property.removeEBObserver (self.selectionDisplay_property)
     // self.x2_property.removeEBObserver (self.selectionDisplay_property)

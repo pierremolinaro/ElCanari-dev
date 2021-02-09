@@ -25,9 +25,9 @@ extension Preferences {
           let pathToAdd = URLToAdd.path
           let newEntry = CanariLibraryEntry (self.ebUndoManager)
           newEntry.mPath = pathToAdd
-          var array = prefs_additionnalLibraryArray_property.propval
+          var array = preferences_additionnalLibraryArray_property.propval
           array.append (newEntry)
-          prefs_additionnalLibraryArray_property.setProp (array)
+          preferences_additionnalLibraryArray_property.setProp (array)
         }
       }
     )

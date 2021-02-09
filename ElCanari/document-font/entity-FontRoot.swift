@@ -440,15 +440,15 @@ class FontRoot : EBManagedObject,
         var kind = unwSelf.nominalSize_property_selection.kind ()
         kind &= unwSelf.characters_property_selection.kind ()
         kind &= unwSelf.characters_property_selection.kind ()
-        kind &= prefs_sampleString_property_selection.kind ()
-        kind &= prefs_sampleStringSize_property_selection.kind ()
+        kind &= preferences_sampleString_property_selection.kind ()
+        kind &= preferences_sampleStringSize_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.nominalSize_property_selection, unwSelf.characters_property_selection, unwSelf.characters_property_selection, prefs_sampleString_property_selection, prefs_sampleStringSize_property_selection) {
+          switch (unwSelf.nominalSize_property_selection, unwSelf.characters_property_selection, unwSelf.characters_property_selection, preferences_sampleString_property_selection, preferences_sampleStringSize_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_FontRoot_sampleStringBezierPath (v0, v1, v2, v3, v4))
           default :
@@ -462,8 +462,8 @@ class FontRoot : EBManagedObject,
     self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
-    prefs_sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
-    prefs_sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
+    preferences_sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
+    preferences_sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
   //--- Atomic property: sampleStringBezierPathWidth
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -590,8 +590,8 @@ class FontRoot : EBManagedObject,
     // self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     // self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     // self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
-    // prefs_sampleString_property.removeEBObserver (self.sampleStringBezierPath_property)
-    // prefs_sampleStringSize_property.removeEBObserver (self.sampleStringBezierPath_property)
+    // preferences_sampleString_property.removeEBObserver (self.sampleStringBezierPath_property)
+    // preferences_sampleStringSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     // self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathWidth_property)
     // self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
     // self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)

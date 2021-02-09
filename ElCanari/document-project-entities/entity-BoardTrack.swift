@@ -1374,10 +1374,10 @@ class BoardTrack : BoardObject,
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        kind &= prefs_displayFrontLayoutForBoard_property_selection.kind ()
-        kind &= prefs_displayBackLayoutForBoard_property_selection.kind ()
-        kind &= prefs_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= prefs_backSideLayoutColorForBoard_property_selection.kind ()
+        kind &= preferences_displayFrontLayoutForBoard_property_selection.kind ()
+        kind &= preferences_displayBackLayoutForBoard_property_selection.kind ()
+        kind &= preferences_frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= preferences_backSideLayoutColorForBoard_property_selection.kind ()
         kind &= unwSelf.actualTrackWidth_property_selection.kind ()
         kind &= unwSelf.mSide_property_selection.kind ()
         switch kind {
@@ -1386,7 +1386,7 @@ class BoardTrack : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, prefs_displayFrontLayoutForBoard_property_selection, prefs_displayBackLayoutForBoard_property_selection, prefs_frontSideLayoutColorForBoard_property_selection, prefs_backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection) {
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, preferences_displayFrontLayoutForBoard_property_selection, preferences_displayBackLayoutForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -1399,10 +1399,10 @@ class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
-    prefs_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
-    prefs_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
-    prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    prefs_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
     self.mSide_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: p1CanMove
@@ -1484,8 +1484,8 @@ class BoardTrack : BoardObject,
         kind &= unwSelf.p1CanMove_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
         kind &= unwSelf.p2CanMove_property_selection.kind ()
-        kind &= prefs_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= prefs_backSideLayoutColorForBoard_property_selection.kind ()
+        kind &= preferences_frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= preferences_backSideLayoutColorForBoard_property_selection.kind ()
         kind &= unwSelf.mSide_property_selection.kind ()
         kind &= unwSelf.actualTrackWidth_property_selection.kind ()
         switch kind {
@@ -1494,7 +1494,7 @@ class BoardTrack : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.p1CanMove_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.p2CanMove_property_selection, prefs_frontSideLayoutColorForBoard_property_selection, prefs_backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.p1CanMove_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.p2CanMove_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -1509,8 +1509,8 @@ class BoardTrack : BoardObject,
     self.p1CanMove_property.addEBObserver (self.selectionDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.p2CanMove_property.addEBObserver (self.selectionDisplay_property)
-    prefs_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
-    prefs_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
@@ -1544,10 +1544,10 @@ class BoardTrack : BoardObject,
     // self.mConnectorP2_property.location_property.removeEBObserver (self.computedP2Y_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.actualTrackWidth_property.removeEBObserver (self.objectDisplay_property)
     // self.mSide_property.removeEBObserver (self.objectDisplay_property)
     // self.mManualLockP1_property.removeEBObserver (self.p1CanMove_property)
@@ -1560,8 +1560,8 @@ class BoardTrack : BoardObject,
     // self.p1CanMove_property.removeEBObserver (self.selectionDisplay_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.selectionDisplay_property)
     // self.p2CanMove_property.removeEBObserver (self.selectionDisplay_property)
-    // prefs_frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
-    // prefs_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // self.mSide_property.removeEBObserver (self.selectionDisplay_property)
     // self.actualTrackWidth_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature

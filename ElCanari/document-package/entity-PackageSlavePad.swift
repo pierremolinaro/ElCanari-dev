@@ -909,8 +909,8 @@ class PackageSlavePad : PackageObject,
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
-        kind &= prefs_padNumberFont_property_selection.kind ()
-        kind &= prefs_padNumberColor_property_selection.kind ()
+        kind &= preferences_padNumberFont_property_selection.kind ()
+        kind &= preferences_padNumberColor_property_selection.kind ()
         kind &= unwSelf.padNameForDisplay_property_selection.kind ()
         switch kind {
         case .empty :
@@ -918,7 +918,7 @@ class PackageSlavePad : PackageObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, prefs_padNumberFont_property_selection, prefs_padNumberColor_property_selection, unwSelf.padNameForDisplay_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, preferences_padNumberFont_property_selection, preferences_padNumberColor_property_selection, unwSelf.padNameForDisplay_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_PackageSlavePad_padNumberDisplay (v0, v1, v2, v3, v4))
           default :
@@ -931,8 +931,8 @@ class PackageSlavePad : PackageObject,
     }
     self.xCenter_property.addEBObserver (self.padNumberDisplay_property)
     self.yCenter_property.addEBObserver (self.padNumberDisplay_property)
-    prefs_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
-    prefs_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
+    preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
+    preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -945,17 +945,17 @@ class PackageSlavePad : PackageObject,
         kind &= unwSelf.holeHeight_property_selection.kind ()
         kind &= unwSelf.padShape_property_selection.kind ()
         kind &= unwSelf.padStyle_property_selection.kind ()
-        kind &= prefs_frontSidePadColor_property_selection.kind ()
-        kind &= prefs_displayPackageFrontSidePads_property_selection.kind ()
-        kind &= prefs_backSidePadColor_property_selection.kind ()
-        kind &= prefs_displayPackageBackSidePads_property_selection.kind ()
+        kind &= preferences_frontSidePadColor_property_selection.kind ()
+        kind &= preferences_displayPackageFrontSidePads_property_selection.kind ()
+        kind &= preferences_backSidePadColor_property_selection.kind ()
+        kind &= preferences_displayPackageBackSidePads_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, prefs_frontSidePadColor_property_selection, prefs_displayPackageFrontSidePads_property_selection, prefs_backSidePadColor_property_selection, prefs_displayPackageBackSidePads_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, preferences_frontSidePadColor_property_selection, preferences_displayPackageFrontSidePads_property_selection, preferences_backSidePadColor_property_selection, preferences_displayPackageBackSidePads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
             return .single (transient_PackageSlavePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
@@ -974,10 +974,10 @@ class PackageSlavePad : PackageObject,
     self.holeHeight_property.addEBObserver (self.objectDisplay_property)
     self.padShape_property.addEBObserver (self.objectDisplay_property)
     self.padStyle_property.addEBObserver (self.objectDisplay_property)
-    prefs_frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
-    prefs_backSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
+    preferences_frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
+    preferences_backSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)
@@ -1023,8 +1023,8 @@ class PackageSlavePad : PackageObject,
     // self.master_property.padNameForDisplay_property.removeEBObserver (self.padNameForDisplay_property)
     // self.xCenter_property.removeEBObserver (self.padNumberDisplay_property)
     // self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
-    // prefs_padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
-    // prefs_padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
+    // preferences_padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
+    // preferences_padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
     // self.padNameForDisplay_property.removeEBObserver (self.padNumberDisplay_property)
     // self.xCenter_property.removeEBObserver (self.objectDisplay_property)
     // self.yCenter_property.removeEBObserver (self.objectDisplay_property)
@@ -1034,10 +1034,10 @@ class PackageSlavePad : PackageObject,
     // self.holeHeight_property.removeEBObserver (self.objectDisplay_property)
     // self.padShape_property.removeEBObserver (self.objectDisplay_property)
     // self.padStyle_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_displayPackageFrontSidePads_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_backSidePadColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_displayPackageBackSidePads_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayPackageFrontSidePads_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_backSidePadColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayPackageBackSidePads_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)

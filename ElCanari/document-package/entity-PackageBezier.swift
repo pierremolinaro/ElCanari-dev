@@ -603,15 +603,15 @@ class PackageBezier : PackageObject,
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
-        kind &= prefs_packageColor_property_selection.kind ()
-        kind &= prefs_packageDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= preferences_packageColor_property_selection.kind ()
+        kind &= preferences_packageDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.strokeBezierPath_property_selection, prefs_packageColor_property_selection, prefs_packageDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.strokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_PackageBezier_objectDisplay (v0, v1, v2))
           default :
@@ -623,8 +623,8 @@ class PackageBezier : PackageObject,
       }
     }
     self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    prefs_packageColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    preferences_packageColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -733,8 +733,8 @@ class PackageBezier : PackageObject,
     // self.cpx2_property.removeEBObserver (self.strokeBezierPath_property)
     // self.cpy2_property.removeEBObserver (self.strokeBezierPath_property)
     // self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_packageColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_packageColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     // self.x1_property.removeEBObserver (self.selectionDisplay_property)
     // self.y1_property.removeEBObserver (self.selectionDisplay_property)
     // self.x2_property.removeEBObserver (self.selectionDisplay_property)

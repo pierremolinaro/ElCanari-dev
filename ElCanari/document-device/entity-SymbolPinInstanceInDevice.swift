@@ -395,14 +395,14 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         kind &= unwSelf.mType_property.mYNumber_property_selection.kind ()
         kind &= unwSelf.mType_property.mNumberHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.mPadProxy_property.mPadName_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mType_property.mXNumber_property_selection, unwSelf.mType_property.mYNumber_property_selection, unwSelf.mType_property.mNumberHorizontalAlignment_property_selection, unwSelf.mPadProxy_property.mPadName_property_selection, prefs_pinNameFont_property_selection) {
+          switch (unwSelf.mType_property.mXNumber_property_selection, unwSelf.mType_property.mYNumber_property_selection, unwSelf.mType_property.mNumberHorizontalAlignment_property_selection, unwSelf.mPadProxy_property.mPadName_property_selection, preferences_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SymbolPinInstanceInDevice_numberShape (v0, v1, v2, v3, v4))
           default :
@@ -417,7 +417,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.addEBObserverOf_mYNumber (self.numberShape_property)
     self.mType_property.addEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
     self.mPadProxy_property.addEBObserverOf_mPadName (self.numberShape_property)
-    prefs_pinNameFont_property.addEBObserver (self.numberShape_property)
+    preferences_pinNameFont_property.addEBObserver (self.numberShape_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -436,7 +436,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     // self.mType_property.mYNumber_property.removeEBObserver (self.numberShape_property)
     // self.mType_property.mNumberHorizontalAlignment_property.removeEBObserver (self.numberShape_property)
     // self.mPadProxy_property.mPadName_property.removeEBObserver (self.numberShape_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.numberShape_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.numberShape_property)
   //--- Unregister properties for handling signature
   }
 

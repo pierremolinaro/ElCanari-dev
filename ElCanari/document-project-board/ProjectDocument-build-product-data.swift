@@ -203,7 +203,7 @@ extension ProjectDocument {
   private func buildPackageLegend () -> (PathApertureDictionary, PathApertureDictionary) {
     var frontPackageLegends = PathApertureDictionary () // Aperture, path
     var backPackageLegends = PathApertureDictionary () // Aperture, path
-    let aperture = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+    let aperture = CGFloat (preferences_packageDrawingWidthMultpliedByTenForBoard) / 10.0
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
         let strokeBezierPath = component.strokeBezierPath!

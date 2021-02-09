@@ -45,7 +45,7 @@ extension SymbolRoot {
         strokeBezierPathes.append (bp)
       }else if let object = symbolObject as? SymbolText {
         let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : prefs_pinNameFont
+          NSAttributedString.Key.font : preferences_pinNameFont
         ]
         let origin = CanariPoint (x: object.x, y: object.y).cocoaPoint
         let bp = EBBezierPath (

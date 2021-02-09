@@ -389,14 +389,14 @@ class SymbolPinTypeInDevice : EBManagedObject,
         kind &= unwSelf.mName_property_selection.kind ()
         kind &= unwSelf.mNameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.mPinNameIsDisplayedInSchematics_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, prefs_pinNameFont_property_selection) {
+          switch (unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, preferences_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_SymbolPinTypeInDevice_nameShape (v0, v1, v2, v3, v4, v5))
           default :
@@ -412,7 +412,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mName_property.addEBObserver (self.nameShape_property)
     self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property)
     self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
-    prefs_pinNameFont_property.addEBObserver (self.nameShape_property)
+    preferences_pinNameFont_property.addEBObserver (self.nameShape_property)
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
@@ -441,7 +441,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
     // self.mName_property.removeEBObserver (self.nameShape_property)
     // self.mNameHorizontalAlignment_property.removeEBObserver (self.nameShape_property)
     // self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.nameShape_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.nameShape_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.nameShape_property)
   //--- Unregister properties for handling signature
     self.mName_property.setSignatureObserver (observer: nil)
     self.mNameHorizontalAlignment_property.setSignatureObserver (observer: nil)

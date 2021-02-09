@@ -168,15 +168,15 @@ class SymbolText : SymbolObject,
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.text_property_selection.kind ()
         kind &= unwSelf.horizontalAlignment_property_selection.kind ()
-        kind &= prefs_symbolColor_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_symbolColor_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, prefs_symbolColor_property_selection, prefs_pinNameFont_property_selection) {
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, preferences_symbolColor_property_selection, preferences_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_SymbolText_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -191,8 +191,8 @@ class SymbolText : SymbolObject,
     self.y_property.addEBObserver (self.objectDisplay_property)
     self.text_property.addEBObserver (self.objectDisplay_property)
     self.horizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -200,14 +200,14 @@ class SymbolText : SymbolObject,
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.text_property_selection.kind ()
         kind &= unwSelf.horizontalAlignment_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, prefs_pinNameFont_property_selection) {
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, preferences_pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SymbolText_selectionDisplay (v0, v1, v2, v3, v4))
           default :
@@ -222,7 +222,7 @@ class SymbolText : SymbolObject,
     self.y_property.addEBObserver (self.selectionDisplay_property)
     self.text_property.addEBObserver (self.selectionDisplay_property)
     self.horizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
-    prefs_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -266,13 +266,13 @@ class SymbolText : SymbolObject,
     // self.y_property.removeEBObserver (self.objectDisplay_property)
     // self.text_property.removeEBObserver (self.objectDisplay_property)
     // self.horizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     // self.x_property.removeEBObserver (self.selectionDisplay_property)
     // self.y_property.removeEBObserver (self.selectionDisplay_property)
     // self.text_property.removeEBObserver (self.selectionDisplay_property)
     // self.horizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
     // self.x_property.removeEBObserver (self.issues_property)
     // self.y_property.removeEBObserver (self.issues_property)
     // self.text_property.removeEBObserver (self.issues_property)

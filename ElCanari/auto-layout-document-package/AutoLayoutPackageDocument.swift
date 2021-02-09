@@ -703,10 +703,10 @@ import Cocoa
       .bind_arrowKeyMagnitude (self.rootObject.mModelImagePageGridStep_property)
       .bind_gridStyle (self.rootObject.mModelImagePageGridStyle_property)
       .bind_gridDisplayFactor (self.rootObject.mModelImagePageGridDisplayFactor_property)
-      .bind_gridLineColor (prefs_lineColorOfPackageGrid_property)
-      .bind_gridCrossColor (prefs_crossColorOfPackageGrid_property)
+      .bind_gridLineColor (preferences_lineColorOfPackageGrid_property)
+      .bind_gridCrossColor (preferences_crossColorOfPackageGrid_property)
       .bind_zoom (self.rootObject.mModelImagePageZoom_property)
-      .bind_backColor (prefs_packageBackgroundColor_property)
+      .bind_backColor (preferences_packageBackgroundColor_property)
       .bind_xPlacardUnit (self.rootObject.mModelImagePageXPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property)
       .bind_graphic_controller (self.mModelImageObjectsController)
@@ -792,10 +792,10 @@ import Cocoa
       .bind_shiftArrowKeyMagnitude (self.rootObject.gridStepMultipliedByDisplayFactor_property)
       .bind_gridStyle (self.rootObject.gridStyle_property)
       .bind_gridDisplayFactor (self.rootObject.gridDisplayFactor_property)
-      .bind_gridLineColor (prefs_lineColorOfPackageGrid_property)
-      .bind_gridCrossColor (prefs_crossColorOfPackageGrid_property)
+      .bind_gridLineColor (preferences_lineColorOfPackageGrid_property)
+      .bind_gridCrossColor (preferences_crossColorOfPackageGrid_property)
       .bind_zoom (self.rootObject.zoom_property)
-      .bind_backColor (prefs_packageBackgroundColor_property)
+      .bind_backColor (preferences_packageBackgroundColor_property)
       .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
       .bind_graphic_controller (self.mPackageObjectsController)
@@ -1574,14 +1574,14 @@ import Cocoa
     }
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
-        let kind = prefs_packageColor_property_selection.kind ()
+        let kind = preferences_packageColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_packageColor_property_selection) {
+          switch (preferences_packageColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addSegmentButtonImage (v0))
           default :
@@ -1589,21 +1589,21 @@ import Cocoa
           }
         }
     }
-    prefs_packageColor_property.addEBObserver (self.addSegmentButtonImage_property)
+    preferences_packageColor_property.addEBObserver (self.addSegmentButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
-        let kind = prefs_packageColor_property_selection.kind ()
+        let kind = preferences_packageColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_packageColor_property_selection) {
+          switch (preferences_packageColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addBezierButtonImage (v0))
           default :
@@ -1611,21 +1611,21 @@ import Cocoa
           }
         }
     }
-    prefs_packageColor_property.addEBObserver (self.addBezierButtonImage_property)
+    preferences_packageColor_property.addEBObserver (self.addBezierButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
-        let kind = prefs_packageColor_property_selection.kind ()
+        let kind = preferences_packageColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_packageColor_property_selection) {
+          switch (preferences_packageColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addOvalButtonImage (v0))
           default :
@@ -1633,21 +1633,21 @@ import Cocoa
           }
         }
     }
-    prefs_packageColor_property.addEBObserver (self.addOvalButtonImage_property)
+    preferences_packageColor_property.addEBObserver (self.addOvalButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addArcButtonImage
     self.addArcButtonImage_property.mReadModelFunction = {
-        let kind = prefs_packageColor_property_selection.kind ()
+        let kind = preferences_packageColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_packageColor_property_selection) {
+          switch (preferences_packageColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addArcButtonImage (v0))
           default :
@@ -1655,21 +1655,21 @@ import Cocoa
           }
         }
     }
-    prefs_packageColor_property.addEBObserver (self.addArcButtonImage_property)
+    preferences_packageColor_property.addEBObserver (self.addArcButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addMasterPadButtonImage
     self.addMasterPadButtonImage_property.mReadModelFunction = {
-        let kind = prefs_frontSidePadColor_property_selection.kind ()
+        let kind = preferences_frontSidePadColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_frontSidePadColor_property_selection) {
+          switch (preferences_frontSidePadColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addMasterPadButtonImage (v0))
           default :
@@ -1677,21 +1677,21 @@ import Cocoa
           }
         }
     }
-    prefs_frontSidePadColor_property.addEBObserver (self.addMasterPadButtonImage_property)
+    preferences_frontSidePadColor_property.addEBObserver (self.addMasterPadButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addSlavePadButtonImage
     self.addSlavePadButtonImage_property.mReadModelFunction = {
-        let kind = prefs_frontSidePadColor_property_selection.kind ()
+        let kind = preferences_frontSidePadColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_frontSidePadColor_property_selection) {
+          switch (preferences_frontSidePadColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addSlavePadButtonImage (v0))
           default :
@@ -1699,21 +1699,21 @@ import Cocoa
           }
         }
     }
-    prefs_frontSidePadColor_property.addEBObserver (self.addSlavePadButtonImage_property)
+    preferences_frontSidePadColor_property.addEBObserver (self.addSlavePadButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addGuideButtonImage
     self.addGuideButtonImage_property.mReadModelFunction = {
-        let kind = prefs_packageGuideColor_property_selection.kind ()
+        let kind = preferences_packageGuideColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_packageGuideColor_property_selection) {
+          switch (preferences_packageGuideColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addGuideButtonImage (v0))
           default :
@@ -1721,21 +1721,21 @@ import Cocoa
           }
         }
     }
-    prefs_packageGuideColor_property.addEBObserver (self.addGuideButtonImage_property)
+    preferences_packageGuideColor_property.addEBObserver (self.addGuideButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addDimensionButtonImage
     self.addDimensionButtonImage_property.mReadModelFunction = {
-        let kind = prefs_packageDimensionColor_property_selection.kind ()
+        let kind = preferences_packageDimensionColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_packageDimensionColor_property_selection) {
+          switch (preferences_packageDimensionColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addDimensionButtonImage (v0))
           default :
@@ -1743,21 +1743,21 @@ import Cocoa
           }
         }
     }
-    prefs_packageDimensionColor_property.addEBObserver (self.addDimensionButtonImage_property)
+    preferences_packageDimensionColor_property.addEBObserver (self.addDimensionButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
   //--- Atomic property: addZoneButtonImage
     self.addZoneButtonImage_property.mReadModelFunction = {
-        let kind = prefs_padZoneColor_property_selection.kind ()
+        let kind = preferences_padZoneColor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_padZoneColor_property_selection) {
+          switch (preferences_padZoneColor_property_selection) {
           case (.single (let v0)) :
             return .single (transient_AutoLayoutPackageDocument_addZoneButtonImage (v0))
           default :
@@ -1765,7 +1765,7 @@ import Cocoa
           }
         }
     }
-    prefs_padZoneColor_property.addEBObserver (self.addZoneButtonImage_property)
+    preferences_padZoneColor_property.addEBObserver (self.addZoneButtonImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1997,23 +1997,23 @@ import Cocoa
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
-    self.mShowPadNumberSwitch?.bind_value (prefs_showPadNumber_property, file: #file, line: #line)
+    self.mShowPadNumberSwitch?.bind_value (preferences_showPadNumber_property, file: #file, line: #line)
     self.mGridStyle?.bind_selectedIndex (self.rootObject.gridStyle_property, file: #file, line: #line)
     self.mGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.gridDisplayFactor_property, file: #file, line: #line)
     self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
     self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mKnobSizeSlider?.bind_intValue (self.rootObject.knobSizeMultpliedByTen_property, file: #file, line: #line, sendContinously:true)
-    self.mCrossColorOfPackageGridColorWell?.bind_color (prefs_crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
-    self.mLineColorOfPackageGridColorWell?.bind_color (prefs_lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
-    self.mPackageColorColorWell?.bind_color (prefs_packageColor_property, file: #file, line: #line, sendContinously:false)
-    self.mTopSidePadColorWell?.bind_color (prefs_frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    self.mBottomSidePadColorWell?.bind_color (prefs_backSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    self.mPackageBackgroundColorColorWell?.bind_color (prefs_packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
-    self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (prefs_packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
-    self.mPadNumberColorWell?.bind_color (prefs_padNumberColor_property, file: #file, line: #line, sendContinously:false)
-    self.mDisplayTopSidePadSwitch?.bind_value (prefs_displayPackageFrontSidePads_property, file: #file, line: #line)
-    self.mDisplayBottomSidePadSwitch?.bind_value (prefs_displayPackageBackSidePads_property, file: #file, line: #line)
-    self.mPadNumberFontButton?.bind_fontValue (prefs_padNumberFont_property, file: #file, line: #line)
+    self.mCrossColorOfPackageGridColorWell?.bind_color (preferences_crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
+    self.mLineColorOfPackageGridColorWell?.bind_color (preferences_lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
+    self.mPackageColorColorWell?.bind_color (preferences_packageColor_property, file: #file, line: #line, sendContinously:false)
+    self.mTopSidePadColorWell?.bind_color (preferences_frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    self.mBottomSidePadColorWell?.bind_color (preferences_backSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    self.mPackageBackgroundColorColorWell?.bind_color (preferences_packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
+    self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
+    self.mPadNumberColorWell?.bind_color (preferences_padNumberColor_property, file: #file, line: #line, sendContinously:false)
+    self.mDisplayTopSidePadSwitch?.bind_value (preferences_displayPackageFrontSidePads_property, file: #file, line: #line)
+    self.mDisplayBottomSidePadSwitch?.bind_value (preferences_displayPackageBackSidePads_property, file: #file, line: #line)
+    self.mPadNumberFontButton?.bind_fontValue (preferences_padNumberFont_property, file: #file, line: #line)
     self.mGridUnitPopUp?.bind_selectedTag (self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mGridTextField?.bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
@@ -2368,15 +2368,15 @@ import Cocoa
     self.mPackageDimensionSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.unbind_selection ()
-    // prefs_packageColor_property.removeEBObserver (self.addSegmentButtonImage_property)
-    // prefs_packageColor_property.removeEBObserver (self.addBezierButtonImage_property)
-    // prefs_packageColor_property.removeEBObserver (self.addOvalButtonImage_property)
-    // prefs_packageColor_property.removeEBObserver (self.addArcButtonImage_property)
-    // prefs_frontSidePadColor_property.removeEBObserver (self.addMasterPadButtonImage_property)
-    // prefs_frontSidePadColor_property.removeEBObserver (self.addSlavePadButtonImage_property)
-    // prefs_packageGuideColor_property.removeEBObserver (self.addGuideButtonImage_property)
-    // prefs_packageDimensionColor_property.removeEBObserver (self.addDimensionButtonImage_property)
-    // prefs_padZoneColor_property.removeEBObserver (self.addZoneButtonImage_property)
+    // preferences_packageColor_property.removeEBObserver (self.addSegmentButtonImage_property)
+    // preferences_packageColor_property.removeEBObserver (self.addBezierButtonImage_property)
+    // preferences_packageColor_property.removeEBObserver (self.addOvalButtonImage_property)
+    // preferences_packageColor_property.removeEBObserver (self.addArcButtonImage_property)
+    // preferences_frontSidePadColor_property.removeEBObserver (self.addMasterPadButtonImage_property)
+    // preferences_frontSidePadColor_property.removeEBObserver (self.addSlavePadButtonImage_property)
+    // preferences_packageGuideColor_property.removeEBObserver (self.addGuideButtonImage_property)
+    // preferences_packageDimensionColor_property.removeEBObserver (self.addDimensionButtonImage_property)
+    // preferences_padZoneColor_property.removeEBObserver (self.addZoneButtonImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)

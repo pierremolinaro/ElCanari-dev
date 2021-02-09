@@ -29,7 +29,7 @@ extension CustomizedProjectDocument {
 
   fileprivate func importGuiDefaultFile (fileBasePath inFileBasePath : String) {
     let filePath = inFileBasePath + "gui_defaults.par"
-    if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), prefs_mFreeRouterGuiDefaultFileContents != fileContents {
+    if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), preferences_mFreeRouterGuiDefaultFileContents != fileContents {
       let alert = NSAlert ()
       alert.addButton (withTitle: "Import")
       alert.addButton (withTitle: "Do not Import")
@@ -37,7 +37,7 @@ extension CustomizedProjectDocument {
       alert.informativeText = "Import new contents into ElCanari preferences ?"
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .alertFirstButtonReturn {
-          prefs_mFreeRouterGuiDefaultFileContents = fileContents
+          preferences_mFreeRouterGuiDefaultFileContents = fileContents
           // Swift.print ("WRITE PREFS")
         }
         DispatchQueue.main.async { self.importSESFile (fileBasePath: inFileBasePath) }

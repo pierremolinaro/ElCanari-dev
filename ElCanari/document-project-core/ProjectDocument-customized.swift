@@ -541,8 +541,8 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
         var symbolShape = EBShape ()
-        symbolShape.add (filled: [EBBezierPath (filledBP)], prefs_symbolColorForSchematic)
-        symbolShape.add (stroke: [EBBezierPath (strokeBP)], prefs_symbolColorForSchematic)
+        symbolShape.add (filled: [EBBezierPath (filledBP)], preferences_symbolColorForSchematic)
+        symbolShape.add (stroke: [EBBezierPath (strokeBP)], preferences_symbolColorForSchematic)
         let scaledSymbolShape = symbolShape.transformed (by: af)
         result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       }

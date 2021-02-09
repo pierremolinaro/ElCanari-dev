@@ -1230,14 +1230,14 @@ class BoardConnector : BoardObject,
         kind &= unwSelf.location_property_selection.kind ()
         kind &= unwSelf.actualHoleDiameter_property_selection.kind ()
         kind &= unwSelf.actualPadDiameter_property_selection.kind ()
-        kind &= prefs_frontSidePadColorForBoard_property_selection.kind ()
+        kind &= preferences_frontSidePadColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection, unwSelf.actualHoleDiameter_property_selection, unwSelf.actualPadDiameter_property_selection, prefs_frontSidePadColorForBoard_property_selection) {
+          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection, unwSelf.actualHoleDiameter_property_selection, unwSelf.actualPadDiameter_property_selection, preferences_frontSidePadColorForBoard_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_BoardConnector_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -1253,7 +1253,7 @@ class BoardConnector : BoardObject,
     self.location_property.addEBObserver (self.objectDisplay_property)
     self.actualHoleDiameter_property.addEBObserver (self.objectDisplay_property)
     self.actualPadDiameter_property.addEBObserver (self.objectDisplay_property)
-    prefs_frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1372,7 +1372,7 @@ class BoardConnector : BoardObject,
     // self.location_property.removeEBObserver (self.objectDisplay_property)
     // self.actualHoleDiameter_property.removeEBObserver (self.objectDisplay_property)
     // self.actualPadDiameter_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_frontSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_frontSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
     // self.side_property.removeEBObserver (self.selectionDisplay_property)
     // self.location_property.removeEBObserver (self.selectionDisplay_property)

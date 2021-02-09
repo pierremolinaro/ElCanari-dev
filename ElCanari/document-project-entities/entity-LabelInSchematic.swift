@@ -244,7 +244,7 @@ class LabelInSchematic : SchematicObject,
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
         kind &= unwSelf.netName_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         kind &= unwSelf.mOrientation_property_selection.kind ()
         switch kind {
         case .empty :
@@ -252,7 +252,7 @@ class LabelInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, prefs_pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, preferences_pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
           default :
@@ -265,7 +265,7 @@ class LabelInSchematic : SchematicObject,
     }
     self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.netName_property.addEBObserver (self.selectionDisplay_property)
-    prefs_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
@@ -292,11 +292,11 @@ class LabelInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = prefs_symbolColorForSchematic_property_selection.kind ()
-        kind &= prefs_symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
+        var kind = preferences_symbolColorForSchematic_property_selection.kind ()
+        kind &= preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
         kind &= unwSelf.mPoint_property.location_property_selection.kind ()
         kind &= unwSelf.netName_property_selection.kind ()
-        kind &= prefs_pinNameFont_property_selection.kind ()
+        kind &= preferences_pinNameFont_property_selection.kind ()
         kind &= unwSelf.mOrientation_property_selection.kind ()
         switch kind {
         case .empty :
@@ -304,7 +304,7 @@ class LabelInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_symbolColorForSchematic_property_selection, prefs_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, prefs_pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          switch (preferences_symbolColorForSchematic_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, preferences_pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_LabelInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -315,11 +315,11 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    prefs_symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
     self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
     self.netName_property.addEBObserver (self.objectDisplay_property)
-    prefs_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
@@ -334,14 +334,14 @@ class LabelInSchematic : SchematicObject,
     // self.mPoint_property.netName_property.removeEBObserver (self.netName_property)
     // self.mPoint_property.location_property.removeEBObserver (self.selectionDisplay_property)
     // self.netName_property.removeEBObserver (self.selectionDisplay_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
     // self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
     // self.mPoint_property.netClassName_property.removeEBObserver (self.netClassName_property)
-    // prefs_symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
     // self.mPoint_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.netName_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     // self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
   }

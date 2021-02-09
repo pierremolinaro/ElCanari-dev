@@ -226,15 +226,15 @@ class SymbolSegment : SymbolObject,
         kind &= unwSelf.y1_property_selection.kind ()
         kind &= unwSelf.x2_property_selection.kind ()
         kind &= unwSelf.y2_property_selection.kind ()
-        kind &= prefs_symbolColor_property_selection.kind ()
-        kind &= prefs_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= preferences_symbolColor_property_selection.kind ()
+        kind &= preferences_symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, prefs_symbolColor_property_selection, prefs_symbolDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, preferences_symbolColor_property_selection, preferences_symbolDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_SymbolSegment_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -249,8 +249,8 @@ class SymbolSegment : SymbolObject,
     self.y1_property.addEBObserver (self.objectDisplay_property)
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    prefs_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -328,8 +328,8 @@ class SymbolSegment : SymbolObject,
     // self.y1_property.removeEBObserver (self.objectDisplay_property)
     // self.x2_property.removeEBObserver (self.objectDisplay_property)
     // self.y2_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    // prefs_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     // self.x1_property.removeEBObserver (self.selectionDisplay_property)
     // self.y1_property.removeEBObserver (self.selectionDisplay_property)
     // self.x2_property.removeEBObserver (self.selectionDisplay_property)

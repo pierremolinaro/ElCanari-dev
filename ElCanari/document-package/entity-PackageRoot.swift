@@ -2162,7 +2162,7 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = prefs_showPadNumber_property_selection.kind ()
+        var kind = preferences_showPadNumber_property_selection.kind ()
         kind &= unwSelf.packagePads_property_selection.kind ()
         kind &= unwSelf.packageSlavePads_property_selection.kind ()
         switch kind {
@@ -2171,7 +2171,7 @@ class PackageRoot : EBGraphicManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (prefs_showPadNumber_property_selection, unwSelf.packagePads_property_selection, unwSelf.packageSlavePads_property_selection) {
+          switch (preferences_showPadNumber_property_selection, unwSelf.packagePads_property_selection, unwSelf.packageSlavePads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_PackageRoot_padNumberDisplay (v0, v1, v2))
           default :
@@ -2182,7 +2182,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    prefs_showPadNumber_property.addEBObserver (self.padNumberDisplay_property)
+    preferences_showPadNumber_property.addEBObserver (self.padNumberDisplay_property)
     self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: backgroundImagePageBackgroundDisplay
@@ -2283,14 +2283,14 @@ class PackageRoot : EBGraphicManagedObject,
         kind &= unwSelf.packageZones_property_selection.kind ()
         kind &= unwSelf.packageZones_property_selection.kind ()
         kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= prefs_padZoneFont_property_selection.kind ()
+        kind &= preferences_padZoneFont_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.packageObjects_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, prefs_padZoneFont_property_selection) {
+          switch (unwSelf.packageObjects_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, preferences_padZoneFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_PackageRoot_issues (v0, v1, v2, v3, v4, v5))
           default :
@@ -2306,7 +2306,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.addEBObserverOf_zoneName (self.issues_property)
     self.packageZones_property.addEBObserverOf_xName (self.issues_property)
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
-    prefs_padZoneFont_property.addEBObserver (self.issues_property)
+    preferences_padZoneFont_property.addEBObserver (self.issues_property)
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2390,7 +2390,7 @@ class PackageRoot : EBGraphicManagedObject,
     // self.mModelImageFirstPointY_property.removeEBObserver (self.secondPointY_property)
     // self.mModelImageSecondPointDy_property.removeEBObserver (self.secondPointY_property)
     // self.mPointsAreLocked_property.removeEBObserver (self.lockImageView_property)
-    // prefs_showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
+    // preferences_showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
     // self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     // self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     // self.packageObjects_property.removeEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
@@ -2403,7 +2403,7 @@ class PackageRoot : EBGraphicManagedObject,
     // self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
     // self.packageZones_property.removeEBObserverOf_xName (self.issues_property)
     // self.packageZones_property.removeEBObserverOf_yName (self.issues_property)
-    // prefs_padZoneFont_property.removeEBObserver (self.issues_property)
+    // preferences_padZoneFont_property.removeEBObserver (self.issues_property)
     // self.issues_property.removeEBObserver (self.noIssue_property)
     self.packagePads_property.setDataProvider (nil)
     self.packageSlavePads_property.setDataProvider (nil)
