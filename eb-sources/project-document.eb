@@ -677,9 +677,6 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBTextObserverField mUnplacedPackagesCountTextField $valueObserver self.unplacedPackagesCountString ;
 
   arrayController #boardObjectsController : root.mBoardObjects ;
-
-//  outlet EBScrollView mBoardScrollView ;
-
   
   transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
 

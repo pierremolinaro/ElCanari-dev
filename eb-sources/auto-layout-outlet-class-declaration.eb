@@ -28,6 +28,7 @@
 //  func flexibleSpace ()
 //}
 
+vStack func set (spacing: Int) ;
 vStack func set (margins: Int) ;
 vStack func set (leftMargin: Int) ;
 vStack func set (rightMargin: Int) ;
@@ -35,6 +36,8 @@ vStack func set (topMargin: Int) ;
 vStack func set (bottomMargin: Int) ;
 vStack func set (width: Int) ;
 
+hStack func set (spacing: Int) ;
+hStack func equalSpacing () ;
 hStack func set (margins: Int) ;
 hStack func set (leftMargin: Int) ;
 hStack func set (rightMargin: Int) ;
@@ -49,6 +52,7 @@ func enum GridStyle.popupTitles {
 }
 
 extern autolayout class TwoColumnsGridView {
+  func set (spacing: Int)
   func set (margins: Int)
   func set (leftMargin: Int)
   func set (rightMargin: Int)
@@ -128,6 +132,7 @@ extern autolayout class Switch (title: String) {
 
 extern autolayout class Slider (min: Int, max: Int, ticks: Int) $enabled {
   $intValue property Int (sendContinously : Bool)
+  $doubleValue property Double (sendContinously : Bool)
 }
 
 extern autolayout class Button (title: String, small: Bool) $enabled $run {
@@ -136,7 +141,6 @@ extern autolayout class Button (title: String, small: Bool) $enabled $run {
 extern autolayout class PullDownButton (title: String, small: Bool) {
   func add (item: menuItem)
 }
-
 
 extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicController {
   $underObjectsDisplay transient EBShape
@@ -159,6 +163,10 @@ extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicContr
   $backgroundImageOpacity transient Double
   $foregroundImageData transient Data
   $foregroundImageOpacity transient Double
+}
+
+extern autolayout class DragSourceButton (tooltip: String) $enabled {
+  $image transient NSImage
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

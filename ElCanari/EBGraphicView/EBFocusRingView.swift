@@ -6,12 +6,18 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let FOCUS_RING_MARGIN : CGFloat = 5.0
-private let RING_COLOR = NSColor (calibratedRed: 130.0 / 255.0, green: 171.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
+protocol EBFocusRingViewProtocol : class {
+  func setFocusRing (_ inValue : Bool)
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EBFocusRingView : NSView, EBUserClassNameProtocol {
+let FOCUS_RING_MARGIN : CGFloat = 5.0
+let RING_COLOR = NSColor (calibratedRed: 130.0 / 255.0, green: 171.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
+
+//----------------------------------------------------------------------------------------------------------------------
+
+final class EBFocusRingView : NSView, EBUserClassNameProtocol, EBFocusRingViewProtocol {
 
   //····················································································································
   // MARK: -

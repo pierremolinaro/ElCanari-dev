@@ -57,6 +57,14 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
   //  MARGINS
   //····················································································································
 
+  func set (spacing inValue : Int) -> Self {
+    let v = CGFloat (inValue)
+    self.spacing = v
+    return self
+  }
+
+  //····················································································································
+
   func noMargin () -> Self {
     self.edgeInsets.left   = 0.0
     self.edgeInsets.top    = 0.0

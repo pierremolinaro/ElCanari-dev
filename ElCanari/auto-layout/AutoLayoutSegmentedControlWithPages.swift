@@ -17,7 +17,9 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
     self.mDocumentView = inDocumentView
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.controlSize = .small
     self.segmentStyle = .roundRect
+    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
   }
@@ -43,6 +45,10 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    ]
+//    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
     self.mPages.append (inPageView)
     return self
   }

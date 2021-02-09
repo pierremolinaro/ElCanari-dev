@@ -104,11 +104,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
-  final weak var mFocusRingView : EBFocusRingView? = nil // SHOULD be weak
+  final weak var mFocusRingView : EBFocusRingViewProtocol? = nil // SHOULD be weak
 
   //····················································································································
 
-  final func set (focusRingView inView : EBFocusRingView) {
+  final func set (focusRingView inView : EBFocusRingViewProtocol) {
     self.mFocusRingView = inView
   }
 

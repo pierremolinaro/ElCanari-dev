@@ -17,17 +17,45 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //····················································································································
 
   let mGraphicView = EBGraphicView (frame: NSRect ())
-  let mScrollView = EBScrollView (frame: NSRect ())
-  var mZoomPopUpButton : NSPopUpButton? = nil
-  var mHelperTextField : AutoLayoutStaticLabel? = nil
+  var mScrollView : EBScrollView? = nil
+  fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
+  fileprivate var mZoomToFitButton : NSButton? = nil
+  fileprivate var mHelperTextField : NSTextField? = nil
+  fileprivate var mFocusRing : AutoLayoutPrivateFocusRingView? = nil
 
   //····················································································································
 
   init (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) {
     super.init ()
-
+  //---
+    _ = self.set (spacing: 0)
+  //---
+    let MARGIN = Int (FOCUS_RING_MARGIN)
+    let hStack = AutoLayoutHorizontalStackView ().set (margins: MARGIN)
+    self.appendView (hStack)
+  //--- Build popup button
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)
+    hStack.appendView (zoomPopUp)
     self.mZoomPopUpButton = zoomPopUp
+  //--- Build zoom to fit button
+    let zoomToFitButton = buildZoomToFitButton ()
+    hStack.appendView (zoomToFitButton)
+    self.mZoomToFitButton = zoomToFitButton
+  //--- Build helper text
+    let helperTextField = buildHelperTextField ()
+    hStack.appendView (helperTextField)
+    self.mHelperTextField = helperTextField
+    hStack.appendView (AutoLayoutFlexibleSpace ())
+  //--- Build focus ring
+    let focusRingView = AutoLayoutPrivateFocusRingView ().set (margins: MARGIN)
+    self.appendView (focusRingView)
+    self.mFocusRing = focusRingView
+    // focusRingView.setFocusRing (true)
+    self.mGraphicView.set (focusRingView: focusRingView)
+  //--- Build scroll view
+    let scrollView = buildScrollView (minZoom: inMinZoom, maxZoom: inMaxZoom)
+    focusRingView.appendView (scrollView)
+    self.mScrollView = scrollView
 
     self.mGraphicView.mZoomDidChangeCallback = {
       [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
@@ -35,35 +63,65 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     self.mGraphicView.mHelperStringDidChangeCallback = {
       [weak self] (_ inString : String) in self?.mHelperTextField?.stringValue = inString
     }
-
-    let hStack = AutoLayoutHorizontalStackView ().setTopMargin (8.0)
-    hStack.appendView (zoomPopUp)
-    let zoomToFitButton = AutoLayoutButton (title: "Zoom to Fit", small: true)
-    zoomToFitButton.target = self
-    zoomToFitButton.action = #selector (Self.setZoomToFitButton (_:))
-    hStack.appendView (zoomToFitButton)
-    let helperTextField = AutoLayoutStaticLabel (title: "", bold: false, small: true)
-    self.mHelperTextField = helperTextField
-    hStack.appendView (helperTextField)
-    hStack.appendView (AutoLayoutFlexibleSpace ())
-    self.appendView (hStack)
-    let enclosingView = AutoLayoutHorizontalStackView ().set (margins: 8)
-    self.mScrollView.minMagnification = CGFloat (inMinZoom) / 100.0
-    self.mScrollView.maxMagnification = CGFloat (inMaxZoom) / 100.0
-    self.mScrollView.allowsMagnification = true
-    self.mScrollView.hasHorizontalScroller = true
-    self.mScrollView.hasVerticalScroller = true
-    self.mScrollView.autohidesScrollers = false
-    self.mScrollView.contentView = NSClipView (frame: NSRect ())
-    self.mScrollView.documentView = self.mGraphicView
-    enclosingView.appendView (self.mScrollView)
-    self.appendView (enclosingView)
   }
 
   //····················································································································
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+//  override func draw (_ inDirtyRect : NSRect) {
+//    NSColor.yellow.setFill ()
+//    NSBezierPath.fill (inDirtyRect)
+//    super.draw (inDirtyRect)
+//  }
+
+  //····················································································································
+
+  fileprivate func buildScrollView (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> EBScrollView {
+    let view = EBScrollView (frame: NSRect ())
+    view.minMagnification = CGFloat (inMinZoom) / 100.0
+    view.maxMagnification = CGFloat (inMaxZoom) / 100.0
+    view.allowsMagnification = true
+    view.hasHorizontalScroller = true
+    view.hasVerticalScroller = true
+    view.autohidesScrollers = false
+    view.contentView = NSClipView (frame: NSRect ())
+    view.documentView = self.mGraphicView
+    return view
+  }
+
+  //····················································································································
+
+  fileprivate func buildHelperTextField () -> NSTextField {
+    let tf = NSTextField (frame: NSRect ())
+    tf.isBezeled = false
+    tf.isBordered = false
+    tf.drawsBackground = false
+//      tf.stringValue = "Hello"
+//      tf.backgroundColor = NSColor.white
+//      tf.drawsBackground = true
+    tf.textColor = .black
+    tf.isEnabled = true
+    tf.isEditable = false
+    tf.alignment = .left
+    tf.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    return tf
+  }
+
+  //····················································································································
+
+  fileprivate func buildZoomToFitButton () -> NSButton {
+    let button = NSButton (frame: NSRect ())
+    button.title = "Zoom to Fit"
+    button.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    button.bezelStyle = .roundRect
+    button.target = self
+    button.action = #selector (Self.setZoomToFitButton (_:))
+    return button
   }
 
   //····················································································································
@@ -113,10 +171,7 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
  //····················································································································
 
-  final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int,
-                                                    _ inPopUp : NSPopUpButton,
-                                                    minZoom inMinZoom : Int,
-                                                    maxZoom inMaxZoom : Int) {
+  final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inPopUp : NSPopUpButton, minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) {
     if (inZoom >= inMinZoom) && (inZoom <= inMaxZoom) {
       inPopUp.addItem (withTitle: "\(inZoom) %")
       inPopUp.lastItem?.target = self
@@ -183,7 +238,6 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_verticalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) -> Self {
     self.mGraphicView.bind_verticalFlip (inObject)
     return self
@@ -191,14 +245,12 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_mouseGrid (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_mouseGrid (inObject)
     return self
   }
 
   //····················································································································
-
 
   func bind_gridStep (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_gridStep (inObject)
@@ -221,14 +273,12 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_gridStyle (_ inObject : EBReadOnlyProperty_GridStyle) -> Self {
     self.mGraphicView.bind_gridStyle (inObject)
     return self
   }
 
   //····················································································································
-
 
   func bind_gridDisplayFactor (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_gridDisplayFactor (inObject)
@@ -237,14 +287,12 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_gridLineColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
     self.mGraphicView.bind_gridLineColor (inObject)
     return self
   }
 
   //····················································································································
-
 
   func bind_gridCrossColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
     self.mGraphicView.bind_gridCrossColor (inObject)
@@ -253,7 +301,6 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_zoom (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mGraphicView.bind_zoom (inObject)
     return self
@@ -261,14 +308,12 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-
   func bind_backColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
     self.mGraphicView.bind_backColor (inObject)
     return self
   }
 
   //····················································································································
-
 
   func bind_xPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mGraphicView.bind_xPlacardUnit (inObject)
@@ -287,6 +332,44 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
     inController.bind_ebView (self.mGraphicView)
     return self
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate class AutoLayoutPrivateFocusRingView : AutoLayoutHorizontalStackView, EBFocusRingViewProtocol {
+
+  //····················································································································
+  //  FOCUS RING
+  //····················································································································
+
+  private var mHasFocusRing = false {
+    didSet {
+      self.needsDisplay = true
+    }
+  }
+
+  //····················································································································
+
+  func setFocusRing (_ inValue : Bool) {
+    self.mHasFocusRing = inValue
+  }
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if self.mHasFocusRing {
+      let w = (FOCUS_RING_MARGIN - 1.0) / 2.0
+      let r = self.bounds.insetBy (dx: w, dy: w)
+      let bp = NSBezierPath (roundedRect: r, xRadius: w / 2.0, yRadius: w / 2.0)
+      bp.lineWidth = w * 2.0
+      RING_COLOR.setStroke ()
+      bp.stroke ()
+    }
   }
 
   //····················································································································

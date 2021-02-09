@@ -75,6 +75,213 @@ import Cocoa
   var mPackageZoneSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController ()
 
   //····················································································································
+  //   Transient property: addSegmentButtonImage
+  //····················································································································
+
+  final let addSegmentButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addSegmentButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addSegmentButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addSegmentButtonImage : NSImage? {
+    switch self.addSegmentButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addBezierButtonImage
+  //····················································································································
+
+  final let addBezierButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addBezierButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addBezierButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addBezierButtonImage : NSImage? {
+    switch self.addBezierButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addOvalButtonImage
+  //····················································································································
+
+  final let addOvalButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addOvalButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addOvalButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addOvalButtonImage : NSImage? {
+    switch self.addOvalButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addArcButtonImage
+  //····················································································································
+
+  final let addArcButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addArcButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addArcButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addArcButtonImage : NSImage? {
+    switch self.addArcButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addMasterPadButtonImage
+  //····················································································································
+
+  final let addMasterPadButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addMasterPadButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addMasterPadButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addMasterPadButtonImage : NSImage? {
+    switch self.addMasterPadButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addSlavePadButtonImage
+  //····················································································································
+
+  final let addSlavePadButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addSlavePadButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addSlavePadButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addSlavePadButtonImage : NSImage? {
+    switch self.addSlavePadButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addGuideButtonImage
+  //····················································································································
+
+  final let addGuideButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addGuideButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addGuideButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addGuideButtonImage : NSImage? {
+    switch self.addGuideButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addDimensionButtonImage
+  //····················································································································
+
+  final let addDimensionButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addDimensionButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addDimensionButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addDimensionButtonImage : NSImage? {
+    switch self.addDimensionButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: addZoneButtonImage
+  //····················································································································
+
+  final let addZoneButtonImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var addZoneButtonImage_property_selection : EBSelection <NSImage> {
+    return self.addZoneButtonImage_property.selection
+  }
+
+  //····················································································································
+
+  final var addZoneButtonImage : NSImage? {
+    switch self.addZoneButtonImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -269,7 +476,6 @@ import Cocoa
   @IBOutlet var mKnobSizeSlider : EBSlider? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
-  @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mOvalInspectorView : CanariViewWithKeyView? = nil
@@ -373,7 +579,7 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mModelImageOpacitySlider_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
@@ -381,7 +587,6 @@ import Cocoa
 //  var mController_mCounterClockNumberingStartAngleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -520,8 +725,59 @@ import Cocoa
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
     do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
+      let view_0_0 = AutoLayoutHorizontalStackView ()
+        .set (margins: 8)
+        .equalSpacing ()
+      do{
+        let view_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
+          .bind_image (self.addSegmentButtonImage_property)
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
+          .bind_image (self.addBezierButtonImage_property)
+        view_0_0.appendView (view_0_0_1)
+        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Oval")
+          .bind_image (self.addOvalButtonImage_property)
+        view_0_0.appendView (view_0_0_2)
+        let view_0_0_3 = AutoLayoutDragSourceButton (tooltip: "Add Arc")
+          .bind_image (self.addArcButtonImage_property)
+        view_0_0.appendView (view_0_0_3)
+        let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Master Pad")
+          .bind_image (self.addMasterPadButtonImage_property)
+        view_0_0.appendView (view_0_0_4)
+        let view_0_0_5 = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
+          .bind_image (self.addSlavePadButtonImage_property)
+          .bind_enabled (
+            observedObjects: [self.rootObject.packagePads_property.count_property],
+            computeFunction: { return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0)) }
+          )
+        view_0_0.appendView (view_0_0_5)
+        let view_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Zone")
+          .bind_image (self.addZoneButtonImage_property)
+        view_0_0.appendView (view_0_0_6)
+        let view_0_0_7 = AutoLayoutDragSourceButton (tooltip: "Add Guide")
+          .bind_image (self.addGuideButtonImage_property)
+        view_0_0.appendView (view_0_0_7)
+        let view_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Dimension")
+          .bind_image (self.addDimensionButtonImage_property)
+        view_0_0.appendView (view_0_0_8)
+      }
       view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutTwoColumnsGridView ()
+        .set (margins: 8)
+        .add (left: self.computeImplicitView_31 (), right: self.computeImplicitView_32 ())
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Menus…", bold: true, small: false)
+        view_0_2.appendView (view_0_2_1)
+        let view_0_2_2 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_2)
+      }
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
@@ -929,6 +1185,29 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 31
+  //····················································································································
+
+  fileprivate final func computeImplicitView_31 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Model Image Opacity", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 32
+  //····················································································································
+
+  fileprivate final func computeImplicitView_32 () -> NSView {
+    let view = AutoLayoutSlider (min: 0, max: 1, ticks: 11)
+      .bind_doubleValue (self.rootObject.mModelImageOpacity_property, sendContinously:true)
+      .bind_enabled (
+        observedObjects: [self.rootObject.hasModelImage_property],
+        computeFunction: { return self.rootObject.hasModelImage_property_selection }
+      )
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -1118,7 +1397,6 @@ import Cocoa
 //    checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalInspectorView, "mOvalInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1294,6 +1572,204 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: addSegmentButtonImage
+    self.addSegmentButtonImage_property.mReadModelFunction = {
+        let kind = prefs_packageColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_packageColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addSegmentButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_packageColor_property.addEBObserver (self.addSegmentButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addBezierButtonImage
+    self.addBezierButtonImage_property.mReadModelFunction = {
+        let kind = prefs_packageColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_packageColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addBezierButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_packageColor_property.addEBObserver (self.addBezierButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addOvalButtonImage
+    self.addOvalButtonImage_property.mReadModelFunction = {
+        let kind = prefs_packageColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_packageColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addOvalButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_packageColor_property.addEBObserver (self.addOvalButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addArcButtonImage
+    self.addArcButtonImage_property.mReadModelFunction = {
+        let kind = prefs_packageColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_packageColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addArcButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_packageColor_property.addEBObserver (self.addArcButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addMasterPadButtonImage
+    self.addMasterPadButtonImage_property.mReadModelFunction = {
+        let kind = prefs_frontSidePadColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_frontSidePadColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addMasterPadButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_frontSidePadColor_property.addEBObserver (self.addMasterPadButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addSlavePadButtonImage
+    self.addSlavePadButtonImage_property.mReadModelFunction = {
+        let kind = prefs_frontSidePadColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_frontSidePadColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addSlavePadButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_frontSidePadColor_property.addEBObserver (self.addSlavePadButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addGuideButtonImage
+    self.addGuideButtonImage_property.mReadModelFunction = {
+        let kind = prefs_packageGuideColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_packageGuideColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addGuideButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_packageGuideColor_property.addEBObserver (self.addGuideButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addDimensionButtonImage
+    self.addDimensionButtonImage_property.mReadModelFunction = {
+        let kind = prefs_packageDimensionColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_packageDimensionColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addDimensionButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_packageDimensionColor_property.addEBObserver (self.addDimensionButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: addZoneButtonImage
+    self.addZoneButtonImage_property.mReadModelFunction = {
+        let kind = prefs_padZoneColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (prefs_padZoneColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_addZoneButtonImage (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    prefs_padZoneColor_property.addEBObserver (self.addZoneButtonImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1390,7 +1866,6 @@ import Cocoa
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
-    self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
     self.mSegmentX1TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
     self.mSegmentY1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y1Unit_property, file: #file, line: #line)
@@ -1547,12 +2022,12 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
+          return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0))
         },
-        outlet: self.mModelImageOpacitySlider
+        outlet: self.mAddSlavePadButton
       )
-      self.rootObject.hasModelImage_property.addEBObserver (controller)
-      self.mController_mModelImageOpacitySlider_enabled = controller
+      self.rootObject.packagePads_property.count_property.addEBObserver (controller)
+      self.mController_mAddSlavePadButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1625,16 +2100,6 @@ import Cocoa
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
       self.mController_mIssueScrollView_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0))
-        },
-        outlet: self.mAddSlavePadButton
-      )
-      self.rootObject.packagePads_property.count_property.addEBObserver (controller)
-      self.mController_mAddSlavePadButton_enabled = controller
     }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
@@ -1709,7 +2174,6 @@ import Cocoa
     }
   //--------------------------- Unbind regular bindings
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
-    self.mModelImageOpacitySlider?.unbind_doubleValue ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
     self.mSegmentX1TextField?.unbind_dimensionAndUnit ()
     self.mSegmentY1UnitPopUp?.unbind_selectedTag ()
@@ -1863,8 +2327,8 @@ import Cocoa
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
- //   self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
- //   self.mController_mModelImageOpacitySlider_enabled = nil
+ //   self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
+ //   self.mController_mAddSlavePadButton_enabled = nil
  //   self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
  //   self.mController_mPadStyleView_hidden = nil
  //   self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
@@ -1881,8 +2345,6 @@ import Cocoa
  //   self.mController_mDeselectIssueButton_hidden = nil
  //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
  //   self.mController_mIssueScrollView_hidden = nil
- //   self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
- //   self.mController_mAddSlavePadButton_enabled = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.unbind_model ()
@@ -1906,6 +2368,15 @@ import Cocoa
     self.mPackageDimensionSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.unbind_selection ()
+    // prefs_packageColor_property.removeEBObserver (self.addSegmentButtonImage_property)
+    // prefs_packageColor_property.removeEBObserver (self.addBezierButtonImage_property)
+    // prefs_packageColor_property.removeEBObserver (self.addOvalButtonImage_property)
+    // prefs_packageColor_property.removeEBObserver (self.addArcButtonImage_property)
+    // prefs_frontSidePadColor_property.removeEBObserver (self.addMasterPadButtonImage_property)
+    // prefs_frontSidePadColor_property.removeEBObserver (self.addSlavePadButtonImage_property)
+    // prefs_packageGuideColor_property.removeEBObserver (self.addGuideButtonImage_property)
+    // prefs_packageDimensionColor_property.removeEBObserver (self.addDimensionButtonImage_property)
+    // prefs_padZoneColor_property.removeEBObserver (self.addZoneButtonImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
@@ -2018,7 +2489,6 @@ import Cocoa
     self.mKnobSizeSlider?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
-    self.mModelImageOpacitySlider?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
     self.mOvalInspectorView?.ebCleanUp ()
@@ -2216,7 +2686,6 @@ import Cocoa
     self.mKnobSizeSlider = nil
     self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
-    self.mModelImageOpacitySlider = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil
     self.mOvalInspectorView = nil

@@ -169,9 +169,42 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
 //----------------------------------------------------------------------------------------------------------------------
 
   arrayController #mPackageObjectsController : root.packageObjects ;
-
+  transient NSImage addSegmentButtonImage dependsFrom prefs.packageColor ;
+  transient NSImage addBezierButtonImage dependsFrom prefs.packageColor ;
+  transient NSImage addOvalButtonImage dependsFrom prefs.packageColor ;
+  transient NSImage addArcButtonImage dependsFrom prefs.packageColor ;
+  transient NSImage addMasterPadButtonImage dependsFrom prefs.frontSidePadColor ;
+  transient NSImage addSlavePadButtonImage dependsFrom prefs.frontSidePadColor ;
+  transient NSImage addGuideButtonImage dependsFrom prefs.packageGuideColor ;
+  transient NSImage addDimensionButtonImage dependsFrom prefs.packageDimensionColor ;
+  transient NSImage addZoneButtonImage dependsFrom prefs.padZoneColor ;
+  
   stackView mPackagePage hStack {
     vStack set (width: 250) {
+      hStack set (margins: 8) equalSpacing () {
+        DragSourceButton (tooltip: "Add Segment") { $image self.addSegmentButtonImage }
+        DragSourceButton (tooltip: "Add Bezier") { $image self.addBezierButtonImage }
+        DragSourceButton (tooltip: "Add Oval") { $image self.addOvalButtonImage }
+        DragSourceButton (tooltip: "Add Arc") { $image self.addArcButtonImage }
+        DragSourceButton (tooltip: "Add Master Pad") { $image self.addMasterPadButtonImage }
+        DragSourceButton (tooltip: "Add Slave Pad") { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
+        DragSourceButton (tooltip: "Add Zone") { $image self.addZoneButtonImage }
+        DragSourceButton (tooltip: "Add Guide") { $image self.addGuideButtonImage }
+        DragSourceButton (tooltip: "Add Dimension") { $image self.addDimensionButtonImage }
+      }
+      TwoColumnsGridView {
+        set (margins: 8)
+        add (
+          left: StaticLabel (title: "Model Image Opacity", bold: no, small: yes),
+          right: Slider (min:0, max:1, ticks: 11) {
+            $doubleValue root.mModelImageOpacity (sendContinously:yes)
+            $enabled root.hasModelImage
+          }
+        )     
+      }
+      hStack {
+        space StaticLabel (title: "Menus…", bold: yes, small: no) space
+      }
       space
     }
     GraphicView (minZoom: 10, maxZoom: 4000) {
@@ -200,6 +233,17 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
 
 
 
+//--- Buttons for new elements
+  outlet CanariDragSourceButton mAddSegmentButton ;
+  outlet CanariDragSourceButton mAddBezierButton ;
+  outlet CanariDragSourceButton mAddOvalButton ;
+  outlet CanariDragSourceButton mAddArcButton ;
+  outlet CanariDragSourceButton mAddPadButton ;
+  outlet CanariDragSourceButton mAddSlavePadButton $enabled root.packagePads.count > 0 ;
+  outlet CanariDragSourceButton mAddGuideButton ;
+  outlet CanariDragSourceButton mAddDimensionButton ;
+  outlet CanariDragSourceButton mAddZoneButton ;
+
 
 
 
@@ -209,10 +253,10 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
   outlet CanariViewWithKeyView mGridZoomInspectorView ;
   outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
-  outlet EBSlider mModelImageOpacitySlider
-    $doubleValue root.mModelImageOpacity (sendContinously:yes)
-    $enabled root.hasModelImage
-  ;
+//  outlet EBSlider mModelImageOpacitySlider
+//    $doubleValue root.mModelImageOpacity (sendContinously:yes)
+//    $enabled root.hasModelImage
+//  ;
 
 //--- Segment inspector
   selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
@@ -613,17 +657,6 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
   outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
   outlet CanariIssueTableView mIssueTableView $issues root.issues ;
   outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
-
-//--- Buttons for new elements
-  outlet CanariDragSourceButton mAddSegmentButton ;
-  outlet CanariDragSourceButton mAddBezierButton ;
-  outlet CanariDragSourceButton mAddOvalButton ;
-  outlet CanariDragSourceButton mAddArcButton ;
-  outlet CanariDragSourceButton mAddPadButton ;
-  outlet CanariDragSourceButton mAddSlavePadButton $enabled root.packagePads.count > 0 ;
-  outlet CanariDragSourceButton mAddGuideButton ;
-  outlet CanariDragSourceButton mAddDimensionButton ;
-  outlet CanariDragSourceButton mAddZoneButton ;
 
 //--- Package display
 //  arrayController #mPackageObjectsController : root.packageObjects ;

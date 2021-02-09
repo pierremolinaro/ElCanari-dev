@@ -21,6 +21,7 @@ class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.setButtonType (.switch)
     self.title = inTitle
+    self.controlSize = .small
   }
 
   //····················································································································

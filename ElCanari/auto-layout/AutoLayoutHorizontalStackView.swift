@@ -21,10 +21,8 @@ class AutoLayoutHorizontalStackView : AutoLayoutStackView {
   }
 
   //····················································································································
-  // SET FLEXIBLE WIDTH
-  //····················································································································
 
-  func fillEqualy () -> Self {
+  func equalSpacing () -> Self {
     self.distribution = .fillEqually
     return self
   }
@@ -34,7 +32,6 @@ class AutoLayoutHorizontalStackView : AutoLayoutStackView {
   private var mConstraints = [NSLayoutConstraint] ()
 
   override func updateConstraints () {
-    // Swift.print ("H STACK \(self)")
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll ()
     var spaceViewArray = [AutoLayoutFlexibleSpace] ()

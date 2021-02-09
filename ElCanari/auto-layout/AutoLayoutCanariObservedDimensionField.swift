@@ -20,6 +20,7 @@ class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNameProto
     super.init (frame: NSRect ())
     self.delegate = self
     noteObjectAllocation (self)
+    self.controlSize = .small
     self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     self.alignment = .center
     self.isEditable = false

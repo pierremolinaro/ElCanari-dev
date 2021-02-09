@@ -17,15 +17,13 @@ class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
   init (title inTitle : String, small inSmall : Bool) {
     super.init (frame: NSRect (), pullsDown: true)
     noteObjectAllocation (self)
-//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
- //   self.setContentHuggingPriority (NSLayoutConstraint.Priority.defaultLow, for: .horizontal)
-//    self.invalidateIntrinsicContentSize ()
+    self.controlSize = inSmall ? .small : .regular
     self.bezelStyle = .roundRect
     self.autoenablesItems = false
-//    self.addItem (withTitle: inTitle)
-    self.addItem (withTitle: "")
+    self.addItem (withTitle: inTitle)
+    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
     let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: fontSize)
     ]
     let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
     self.lastItem?.attributedTitle = attributedTitle
@@ -54,7 +52,7 @@ class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
-    self.addItem (withTitle: "")
+    self.addItem (withTitle: inMenuItemDescriptor.title)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     ]

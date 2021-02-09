@@ -23,6 +23,7 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.isEnabled = true
     self.isEditable = false
     self.alignment = .right
+    self.controlSize = inSmall ? .small : .regular
     let size = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
     self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
   }

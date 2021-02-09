@@ -99,8 +99,6 @@ extern outlet class DeviceDocumentationTableView : EBTableView ;
 extern outlet class CanariIssueTableView : NSView ;
 binding CanariIssueTableView $issues : transient CanariIssueArray ;
 
-extern outlet class EBScrollView ;
-
 extern outlet class CanariDimensionTextField $enabled ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
 

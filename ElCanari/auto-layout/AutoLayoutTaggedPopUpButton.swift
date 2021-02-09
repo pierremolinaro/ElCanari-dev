@@ -12,6 +12,7 @@ class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
     super.init (frame: NSRect (), pullsDown: false)
     noteObjectAllocation (self)
     self.bezelStyle = .roundRect
+    self.controlSize = .small
   }
 
   //····················································································································

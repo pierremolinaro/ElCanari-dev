@@ -28,6 +28,7 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
+    self.controlSize = inSmall ? .small : .regular
   }
 
   //····················································································································

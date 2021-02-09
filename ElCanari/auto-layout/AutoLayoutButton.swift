@@ -19,8 +19,9 @@ class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.title = inTitle
-    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
-    self.font = NSFont.systemFont (ofSize: fontSize)
+    self.controlSize = inSmall ? .small : .regular
+//    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
+//    self.font = NSFont.systemFont (ofSize: fontSize)
     self.bezelStyle = .roundRect
   }
 

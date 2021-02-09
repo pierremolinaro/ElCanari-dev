@@ -13,6 +13,7 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
+    self.controlSize = .small
     noteObjectAllocation (self)
   }
 

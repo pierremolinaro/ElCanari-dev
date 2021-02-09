@@ -24,6 +24,7 @@ class AutoLayoutSlider : NSSlider, EBUserClassNameProtocol {
     self.minValue = Double (inMin)
     self.maxValue = Double (inMax)
     self.numberOfTickMarks = inMarkCount
+    self.controlSize = .small
   }
 
   //····················································································································
