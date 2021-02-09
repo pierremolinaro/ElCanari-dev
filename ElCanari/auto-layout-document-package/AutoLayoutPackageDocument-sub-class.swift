@@ -4,16 +4,16 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//let PMPackageVersion = "PMPackageVersion"
-//let PMPackageComment = "PMPackageComment"
+let PMPackageVersion = "PMPackageVersion"
+let PMPackageComment = "PMPackageComment"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
+let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedPackageDocument) class CustomizedPackageDocument : PackageDocument {
+@objc(AutoLayoutPackageDocumentSubClass)  class AutoLayoutPackageDocumentSubClass : AutoLayoutPackageDocument {
 
   //····················································································································
 
@@ -44,20 +44,18 @@ import Cocoa
 
   fileprivate var mPackageColorObserver = EBOutletEvent ()
   fileprivate var mPadColorObserver = EBOutletEvent ()
-  internal var mPadNumberingObserver = EBModelEvent () // Used in PackageDocument-pad-numbering.swift
 
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
+  override func ebBuildUserInterface () {
   //--- Model image points
     self.setupImagePointsAndTheirObservers ()
   //--- Handle pad number event
     self.addPadNumberingObservers ()
   //--- Register document for renumbering pads
-    self.mPadRenumberingPullDownButton?.register (document: self)
+// §    self.mPadRenumberingPullDownButton?.register (document: self)
   //--- Register document for slave pad assignment
-    self.mSlavePadAssignmentPopUpButton?.register (document: self)
+// §    self.mSlavePadAssignmentPopUpButton?.register (document: self)
   //--- Package color observer
     self.mPackageColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     preferences_packageColor_property.addEBObserver (self.mPackageColorObserver)
@@ -65,8 +63,8 @@ import Cocoa
     self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
     preferences_frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
-    let pages = [self.mModelImagePageView, self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
-    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+//    let pages = [self.mModelImagePageView, self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
+//    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set inspector segmented control
     let inspectors = [
       self.mSelectedObjectsInspectorView,
@@ -76,55 +74,55 @@ import Cocoa
     ]
     self.mInspectorSegmentedControl?.register (masterView: self.mBaseInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
-    self.mAddSegmentButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageSegment (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddBezierButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageBezier (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddOvalButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageOval (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddArcButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageArc (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddPadButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackagePad (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddSlavePadButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { [weak self] in return self?.makeSlavePad () },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddGuideButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageGuide (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddGuideButton?.image = self.imageForAddGuideButton ()
-    self.mAddDimensionButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageDimension (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
-    self.mAddZoneButton?.register (
-      draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageZone (nil), NSDictionary ()) },
-      scaleProvider: self.mComposedPackageView?.mGraphicView
-    )
+//    self.mAddSegmentButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageSegment (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddBezierButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageBezier (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddOvalButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageOval (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddArcButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageArc (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddPadButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackagePad (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddSlavePadButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { [weak self] in return self?.makeSlavePad () },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddGuideButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageGuide (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddGuideButton?.image = self.imageForAddGuideButton ()
+//    self.mAddDimensionButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageDimension (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
+//    self.mAddZoneButton?.register (
+//      draggedType: packagePasteboardType,
+//      draggedObjectFactory: { return (PackageZone (nil), NSDictionary ()) },
+//      scaleProvider: self.mComposedPackageView?.mGraphicView
+//    )
  //--- Register scroll view
-    self.mComposedPackageView?.mScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
-    self.mComposedPackageView?.mGraphicView.register (pasteboardType: packagePasteboardType)
+//     self.mComposedPackageView?.mScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
+//     self.mComposedPackageView?.mGraphicView.register (pasteboardType: packagePasteboardType)
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, for: PackageSegment.self)
@@ -137,13 +135,14 @@ import Cocoa
     self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, for: PackageDimension.self)
     self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, for: PackageZone.self)
   //--- Set issue display view
-    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView?.mGraphicView)
+// §    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView?.mGraphicView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
   //--- Update display
-    if let view = self.mComposedPackageView?.mGraphicView {
-      DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
-    }
+//    if let view = self.mComposedPackageView?.mGraphicView {
+//      DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
+//    }
+    super.ebBuildUserInterface () // Should be the last instruction
   }
 
   //····················································································································
@@ -198,45 +197,44 @@ import Cocoa
       let pointInWindow = sender.draggingLocation
       let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
       let pasteboard = sender.draggingPasteboard
-      if pasteboard.availableType (from: [packagePasteboardType]) != nil {
-        if let dataDictionary = pasteboard.propertyList (forType: packagePasteboardType) as? NSDictionary,
-           let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
-           let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
-           let X = dataDictionary [X_KEY] as? Int,
-           let Y = dataDictionary [Y_KEY] as? Int {
-          var newObjectArray = [PackageObject] ()
-          let userSet = ObjcObjectSet ()
-          var idx = 0
-          var errorMessage = ""
-          for dictionary in dictionaryArray {
-            if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
-              if errorMessage == "" {
-                errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.rootObject.packageObjects)
-              }
-              idx += 1
-              if errorMessage == "" {
-                newObject.translate (
-                  xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-                  yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
-                  userSet: userSet
-                )
-                newObjectArray.append (newObject)
-              }
+      if pasteboard.availableType (from: [packagePasteboardType]) != nil,
+         let dataDictionary = pasteboard.propertyList (forType: packagePasteboardType) as? NSDictionary,
+         let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
+         let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
+         let X = dataDictionary [X_KEY] as? Int,
+         let Y = dataDictionary [Y_KEY] as? Int {
+        var newObjectArray = [PackageObject] ()
+        let userSet = ObjcObjectSet ()
+        var idx = 0
+        var errorMessage = ""
+        for dictionary in dictionaryArray {
+          if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
+            if errorMessage == "" {
+              errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.rootObject.packageObjects)
+            }
+            idx += 1
+            if errorMessage == "" {
+              newObject.translate (
+                xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
+                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
+                userSet: userSet
+              )
+              newObjectArray.append (newObject)
             }
           }
-          if errorMessage == "" {
-            for newObject in newObjectArray {
-              self.rootObject.packageObjects_property.add (newObject)
-            }
-            self.mPackageObjectsController.setSelection (newObjectArray)
-          }else{
-             let alert = NSAlert ()
-             alert.messageText = errorMessage
-             alert.addButton (withTitle: "Ok")
-             alert.beginSheetModal (for: self.windowForSheet!) { (inReturnCode : NSApplication.ModalResponse) in }
-          }
-          ok = true
         }
+        if errorMessage == "" {
+          for newObject in newObjectArray {
+            self.rootObject.packageObjects_property.add (newObject)
+          }
+          self.mPackageObjectsController.setSelection (newObjectArray)
+        }else{
+           let alert = NSAlert ()
+           alert.messageText = errorMessage
+           alert.addButton (withTitle: "Ok")
+           alert.beginSheetModal (for: self.windowForSheet!) { (inReturnCode : NSApplication.ModalResponse) in }
+        }
+        ok = true
       }
     }
     return ok
@@ -488,6 +486,145 @@ import Cocoa
 //      self.mComposedPackageView?.mForegroundImageAffineTransform = af
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (af)
       self.mPackageObjectsController.setBackgroundImageAffineTransform (af)
+    }
+  }
+
+  //····················································································································
+
+  fileprivate var mPadNumberingObserver = EBModelEvent ()
+
+  //····················································································································
+
+  internal func addPadNumberingObservers () {
+    self.mPadNumberingObserver.mEventCallBack = { [weak self] in self?.handlePadNumbering () }
+    self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
+    self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
+    self.rootObject.padNumbering_property.addEBObserver (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserver (self.mPadNumberingObserver)
+    self.rootObject.counterClockNumberingStartAngle_property.addEBObserver (self.mPadNumberingObserver)
+  }
+
+  //····················································································································
+
+  private func handlePadNumbering () {
+    var allPads = self.rootObject.packagePads_property.propval
+    let aPad = allPads.first
+    var zoneDictionary = [PackageZone : [PackagePad]] ()
+    for zone in self.rootObject.packageZones_property.propval {
+      let zoneRect = zone.rect!
+      var idx = 0
+      while idx < allPads.count {
+        let pad = allPads [idx]
+        idx += 1
+        if zoneRect.contains (x: pad.xCenter, y: pad.yCenter) {
+          let a = zoneDictionary [zone] ?? []
+          zoneDictionary [zone] = a + [pad]
+          pad.zone_property.setProp (zone)
+          idx -= 1
+          allPads.remove(at: idx)
+        }
+      }
+    }
+  //---
+    for (zone, padArray) in zoneDictionary {
+      var forbiddenPadNumberSet = Set <Int> ()
+      for f in zone.forbiddenPadNumbers {
+        forbiddenPadNumberSet.insert (f.padNumber)
+      }
+      self.performPadNumbering (padArray, zone.zoneNumbering, forbiddenPadNumberSet)
+    }
+  //--- Handle pads outside zones
+    for pad in allPads {
+      pad.zone_property.setProp (nil)
+    }
+    self.performPadNumbering (allPads, self.rootObject.padNumbering, [])
+  //--- Link slave pads to any pad
+    let allSlavePads = self.rootObject.packageSlavePads_property.propval
+    for slavePad in allSlavePads {
+      if slavePad.master == nil {
+        slavePad.master = aPad
+      }
+    }
+  }
+
+  //····················································································································
+
+  private func performPadNumbering (_ inPadArray : [PackagePad],
+                                    _ inNumberingPolicy : PadNumbering,
+                                    _ inForbiddenPadNumberSet : Set <Int>) {
+    // Swift.print ("handlePadNumbering")
+  //--- Get all pads
+    var allPads = inPadArray
+  //--- Apply pad numbering
+    switch inNumberingPolicy {
+    case .noNumbering :
+    //--- Find max pad number
+      var maxPadNumber = 0
+      for pad in allPads {
+        if maxPadNumber < pad.padNumber {
+          maxPadNumber = pad.padNumber
+        }
+      }
+    //--- Set a number to pad with number equal to 0
+      for pad in allPads {
+        if pad.padNumber == 0 {
+          maxPadNumber += 1
+          pad.padNumber = maxPadNumber
+        }
+      }
+    //--- Sort pads by pad number
+      allPads.sort (by: { $0.padNumber < $1.padNumber } )
+    case .counterClock :
+      if allPads.count > 0 {
+        var xMin = Int.max
+        var yMin = Int.max
+        var xMax = Int.min
+        var yMax = Int.min
+        for pad in allPads {
+          if xMin > pad.xCenter {
+            xMin = pad.xCenter
+          }
+          if yMin > pad.yCenter {
+            yMin = pad.yCenter
+          }
+          if xMax < pad.xCenter {
+            xMax = pad.xCenter
+          }
+          if yMax < pad.yCenter {
+            yMax = pad.yCenter
+          }
+        }
+        let center = CanariPoint (x: (xMin + xMax) / 2, y: (yMin + yMax) / 2)
+        let startAngle = CGFloat (self.rootObject.counterClockNumberingStartAngle) * .pi / 180.0
+        allPads.sort (by: { $0.angleInRadian (from: center, from: startAngle) < $1.angleInRadian (from: center, from: startAngle) } )
+      }
+    case .upRight :
+      allPads.sort (by: { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) } )
+    case .upLeft :
+      allPads.sort (by: { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter < $1.xCenter)) } )
+    case .downRight :
+      allPads.sort (by: { ($0.yCenter < $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) } )
+    case .downLeft :
+      allPads.sort (by: { ($0.yCenter < $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter < $1.xCenter)) } )
+    case .rightUp :
+      allPads.sort (by: { ($0.xCenter > $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter < $1.yCenter)) } )
+    case .rightDown :
+      allPads.sort (by: { ($0.xCenter > $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter > $1.yCenter)) } )
+    case .leftUp :
+      allPads.sort (by: { ($0.xCenter < $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter < $1.yCenter)) } )
+    case .leftDown :
+      allPads.sort (by: { ($0.xCenter < $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter > $1.yCenter)) } )
+    }
+  //--- Set pad numbers from 1
+    var idx = 1
+    for pad in allPads {
+      while inForbiddenPadNumberSet.contains (idx) {
+        idx += 1
+      }
+      pad.padNumber = idx
+      idx += 1
     }
   }
 

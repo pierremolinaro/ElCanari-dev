@@ -814,6 +814,20 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   }
 
   //····················································································································
+  // REGISTER DRAGGED TYPES
+  // MARK: -
+  // https://stackoverflow.com/questions/4782636/nsview-subviews-interrupting-drag-operation
+  //····················································································································
+
+  func ebRegister (draggedTypes inPasteboardTypes : [NSPasteboard.PasteboardType]) {
+    if let scrollView = self.enclosingScrollView {
+      scrollView.registerForDraggedTypes (inPasteboardTypes)
+    }else{
+      self.registerForDraggedTypes (inPasteboardTypes)
+    }
+  }
+
+  //····················································································································
 
 }
 

@@ -2,7 +2,7 @@
 //     P A C K A G E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMasterView {
+autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperClass root PackageRoot stackView mPageMasterView {
 
 //----------------------------------------------------------------------------------------------------------------------
 //   TOOL BAR
@@ -183,14 +183,14 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
     vStack set (width: 250) {
       hStack set (margins: 8) equalSpacing () {
         DragSourceButton addPackageSegment (tooltip: "Add Segment") { $image self.addSegmentButtonImage }
-        DragSourceButton (tooltip: "Add Bezier") { $image self.addBezierButtonImage }
-        DragSourceButton (tooltip: "Add Oval") { $image self.addOvalButtonImage }
-        DragSourceButton (tooltip: "Add Arc") { $image self.addArcButtonImage }
-        DragSourceButton (tooltip: "Add Master Pad") { $image self.addMasterPadButtonImage }
-        DragSourceButton (tooltip: "Add Slave Pad") { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
-        DragSourceButton (tooltip: "Add Zone") { $image self.addZoneButtonImage }
-        DragSourceButton (tooltip: "Add Guide") { $image self.addGuideButtonImage }
-        DragSourceButton (tooltip: "Add Dimension") { $image self.addDimensionButtonImage }
+        DragSourceButton addPackageBezier (tooltip: "Add Bezier") { $image self.addBezierButtonImage }
+        DragSourceButton addPackageOval (tooltip: "Add Oval") { $image self.addOvalButtonImage }
+        DragSourceButton addPackageArc (tooltip: "Add Arc") { $image self.addArcButtonImage }
+        DragSourceButton addPackageMasterPad (tooltip: "Add Master Pad") { $image self.addMasterPadButtonImage }
+        DragSourceButton addPackageSlavePad (tooltip: "Add Slave Pad") { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
+        DragSourceButton addPackageZone (tooltip: "Add Zone") { $image self.addZoneButtonImage }
+        DragSourceButton addPackageGuide (tooltip: "Add Guide") { $image self.addGuideButtonImage }
+        DragSourceButton addPackageDimension (tooltip: "Add Dimension") { $image self.addDimensionButtonImage }
       }
       TwoColumnsGridView {
         set (margins: 8)
@@ -207,7 +207,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
       }
       space
     }
-    GraphicView (minZoom: 10, maxZoom: 4000) {
+    GraphicView packageGraphicView (minZoom: 10, maxZoom: 4000) {
       $foregroundImageData root.mModelImageData
       $foregroundImageOpacity root.mModelImageOpacity
       $horizontalFlip root.horizontalFlip

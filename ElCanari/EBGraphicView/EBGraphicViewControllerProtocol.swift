@@ -11,7 +11,11 @@ import Cocoa
 protocol EBGraphicViewControllerProtocol : class {
 
   func bind_ebView (_ inGraphicView : EBGraphicView?)
-  
+
+  func boundViews () -> [EBGraphicView]
+
+  func addPasteBoardType (_ inType : NSPasteboard.PasteboardType)
+
   var objectCount : Int { get }
   var graphicObjectArray : [EBGraphicManagedObject] { get }
 

@@ -58,6 +58,25 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
   }
 
   //····················································································································
+  //  Drag type and object type name
+  //····················································································································
+
+  private var mDragType : NSPasteboard.PasteboardType? = nil
+  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? > = nil
+  private var mScaleProvider : EBGraphicViewControllerProtocol? = nil
+
+  //····················································································································
+
+  func register (draggedType : NSPasteboard.PasteboardType,
+                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? >,
+                 scaleProvider : EBGraphicViewControllerProtocol) {
+    self.mDragType = draggedType
+    self.mDraggedObjectFactory = draggedObjectFactory
+    self.mScaleProvider = scaleProvider
+    scaleProvider.addPasteBoardType (draggedType)
+  }
+
+  //····················································································································
   //  image binding
   //····················································································································
 
@@ -90,14 +109,6 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
   }
 
   //····················································································································
-  //  Drag type and object type name
-  //····················································································································
-
-  private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? > = nil
-  private var mScaleProvider : EBGraphicViewScaleProvider? = nil
-
-  //····················································································································
   //  NSDraggingSource protocol implementation
   //····················································································································
 
@@ -120,10 +131,13 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
     //--- Get dragged image
       if let (temporaryObject, additionalDict) = self.mDraggedObjectFactory? () {
         var transform = AffineTransform ()
-        let scale = self.mScaleProvider?.actualScale ?? 1.0
-        let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0
-        let verticalFlip   : CGFloat = (self.mScaleProvider?.verticalFlip   ?? false) ? -1.0 : 1.0
-        transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
+        if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
+          let view = scaleProvider.boundViews() [0]
+          let scale = view.actualScale
+          let horizontalFlip : CGFloat = view.horizontalFlip ? -1.0 : 1.0
+          let verticalFlip   : CGFloat = view.verticalFlip   ? -1.0 : 1.0
+          transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
+       }
         let displayShape = temporaryObject.objectDisplay!.transformed (by: transform)
         let rect = displayShape.boundingBox
         let image = buildPDFimage (frame: rect, shape: displayShape)

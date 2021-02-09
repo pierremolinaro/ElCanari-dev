@@ -333,6 +333,24 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
   //····················································································································
 
   private var mEBGraphicViews = Set <EBGraphicView> ()
+  private var mPasteboardTypes = Set <NSPasteboard.PasteboardType> ()
+
+  //····················································································································
+
+  func addPasteBoardType (_ inType : NSPasteboard.PasteboardType) {
+    if !self.mPasteboardTypes.contains (inType) {
+      self.mPasteboardTypes.insert (inType)
+      for ebView in self.mEBGraphicViews {
+        ebView.ebRegister (draggedTypes: [inType])
+      }
+    }
+  }
+
+  //····················································································································
+
+  func boundViews () -> [EBGraphicView] {
+    return Array (self.mEBGraphicViews)
+  }
 
   //····················································································································
 
@@ -346,6 +364,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   final func bind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
+      ebView.ebRegister (draggedTypes: Array (self.mPasteboardTypes))
       self.mEBGraphicViews.insert (ebView)
       ebView.set (controller: self)
     }

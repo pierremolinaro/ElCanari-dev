@@ -20,7 +20,11 @@ import Cocoa
 extension AutoLayoutPackageDocument {
   final func configure_addPackageSegment (_ inOutlet : AutoLayoutDragSourceButton) {
 //--- START OF USER ZONE 2
-
+    inOutlet.register (
+      draggedType: packagePasteboardType,
+      draggedObjectFactory: { return (PackageSegment (nil), NSDictionary ()) },
+      scaleProvider: self.mPackageObjectsController
+    )
 //--- END OF USER ZONE 2
   }
 }

@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
+@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperClass, NSToolbarDelegate {
 
   //····················································································································
   //   Array controller: mModelImageObjectsController
@@ -735,15 +735,19 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
           .bind_image (self.addBezierButtonImage_property)
+        self.configure_addPackageBezier (view_0_0_1)
         view_0_0.appendView (view_0_0_1)
         let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Oval")
           .bind_image (self.addOvalButtonImage_property)
+        self.configure_addPackageOval (view_0_0_2)
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutDragSourceButton (tooltip: "Add Arc")
           .bind_image (self.addArcButtonImage_property)
+        self.configure_addPackageArc (view_0_0_3)
         view_0_0.appendView (view_0_0_3)
         let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Master Pad")
           .bind_image (self.addMasterPadButtonImage_property)
+        self.configure_addPackageMasterPad (view_0_0_4)
         view_0_0.appendView (view_0_0_4)
         let view_0_0_5 = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
           .bind_image (self.addSlavePadButtonImage_property)
@@ -751,15 +755,19 @@ import Cocoa
             observedObjects: [self.rootObject.packagePads_property.count_property],
             computeFunction: { return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0)) }
           )
+        self.configure_addPackageSlavePad (view_0_0_5)
         view_0_0.appendView (view_0_0_5)
         let view_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Zone")
           .bind_image (self.addZoneButtonImage_property)
+        self.configure_addPackageZone (view_0_0_6)
         view_0_0.appendView (view_0_0_6)
         let view_0_0_7 = AutoLayoutDragSourceButton (tooltip: "Add Guide")
           .bind_image (self.addGuideButtonImage_property)
+        self.configure_addPackageGuide (view_0_0_7)
         view_0_0.appendView (view_0_0_7)
         let view_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Dimension")
           .bind_image (self.addDimensionButtonImage_property)
+        self.configure_addPackageDimension (view_0_0_8)
         view_0_0.appendView (view_0_0_8)
       }
       view_0.appendView (view_0_0)
@@ -800,6 +808,7 @@ import Cocoa
       .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
       .bind_graphic_controller (self.mPackageObjectsController)
+    self.configure_packageGraphicView (view_1)
     hStackView.appendView (view_1)
     return hStackView
   }
