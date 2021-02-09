@@ -182,7 +182,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mPageMas
   stackView mPackagePage hStack {
     vStack set (width: 250) {
       hStack set (margins: 8) equalSpacing () {
-        DragSourceButton (tooltip: "Add Segment") { $image self.addSegmentButtonImage }
+        DragSourceButton addPackageSegment (tooltip: "Add Segment") { $image self.addSegmentButtonImage }
         DragSourceButton (tooltip: "Add Bezier") { $image self.addBezierButtonImage }
         DragSourceButton (tooltip: "Add Oval") { $image self.addOvalButtonImage }
         DragSourceButton (tooltip: "Add Arc") { $image self.addArcButtonImage }

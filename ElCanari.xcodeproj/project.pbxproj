@@ -3418,6 +3418,7 @@
 		CFE383BB25D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addGuideButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE383B925D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addGuideButtonImage.swift */; };
 		CFE383BC25D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE383BA25D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift */; };
 		CFE383BE25D1DBA5001E8BB1 /* transient-AutoLayoutPackageDocument-addZoneButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE383BD25D1DBA5001E8BB1 /* transient-AutoLayoutPackageDocument-addZoneButtonImage.swift */; };
+		CFE384A625D29EB3001E8BB1 /* AutoLayoutPackageDocument-configurator-addPackageSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE384A525D29EB3001E8BB1 /* AutoLayoutPackageDocument-configurator-addPackageSegment.swift */; };
 		CFE3CF152103793C00085921 /* transient-MergerBoardInstance-modelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3CF142103793C00085921 /* transient-MergerBoardInstance-modelName.swift */; };
 		CFE533C01B4307BA00F2E13A /* check-libraries.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE533BF1B4307BA00F2E13A /* check-libraries.swift */; };
 		CFE538C322A01890001150B2 /* ProjectDocument-schematic-hot-keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE538C222A01890001150B2 /* ProjectDocument-schematic-hot-keys.swift */; };
@@ -5114,6 +5115,7 @@
 		CFE383B925D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addGuideButtonImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-addGuideButtonImage.swift"; sourceTree = "<group>"; };
 		CFE383BA25D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift"; sourceTree = "<group>"; };
 		CFE383BD25D1DBA5001E8BB1 /* transient-AutoLayoutPackageDocument-addZoneButtonImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-addZoneButtonImage.swift"; sourceTree = "<group>"; };
+		CFE384A525D29EB3001E8BB1 /* AutoLayoutPackageDocument-configurator-addPackageSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLayoutPackageDocument-configurator-addPackageSegment.swift"; sourceTree = "<group>"; };
 		CFE3CF142103793C00085921 /* transient-MergerBoardInstance-modelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-modelName.swift"; sourceTree = "<group>"; };
 		CFE533BF1B4307BA00F2E13A /* check-libraries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "check-libraries.swift"; sourceTree = "<group>"; };
 		CFE538C222A01890001150B2 /* ProjectDocument-schematic-hot-keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-schematic-hot-keys.swift"; sourceTree = "<group>"; };
@@ -6491,6 +6493,7 @@
 		CF9C675025CAC80300A00D5C /* Auto Layout Document — Package */ = {
 			isa = PBXGroup;
 			children = (
+				CFE384A525D29EB3001E8BB1 /* AutoLayoutPackageDocument-configurator-addPackageSegment.swift */,
 				CFE383BD25D1DBA5001E8BB1 /* transient-AutoLayoutPackageDocument-addZoneButtonImage.swift */,
 				CFE383BA25D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift */,
 				CFE383B925D1D255001E8BB1 /* transient-AutoLayoutPackageDocument-addGuideButtonImage.swift */,
@@ -11108,6 +11111,7 @@
 				CF9C63E425CABE5C00A00D5C /* window-pdf-doc.swift in Sources */,
 				CF9C63E525CABE5C00A00D5C /* CanariLibraryEntryDelegate.swift in Sources */,
 				CF9C63E625CABE5C00A00D5C /* entity-FontInProject.swift in Sources */,
+				CFE384A625D29EB3001E8BB1 /* AutoLayoutPackageDocument-configurator-addPackageSegment.swift in Sources */,
 				CF9C63E725CABE5C00A00D5C /* action-ProjectDocument-resetDevicesAndFontsVersionAction.swift in Sources */,
 				CF9C63E825CABE5C00A00D5C /* transient-PadProxyInDevice-isConnected.swift in Sources */,
 				CF9C63E925CABE5C00A00D5C /* utilities-package-issues.swift in Sources */,

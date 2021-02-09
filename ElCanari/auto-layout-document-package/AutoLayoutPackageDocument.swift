@@ -731,6 +731,7 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
           .bind_image (self.addSegmentButtonImage_property)
+        self.configure_addPackageSegment (view_0_0_0)
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
           .bind_image (self.addBezierButtonImage_property)
