@@ -378,15 +378,6 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddArcButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddBezierButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddDimensionButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddGuideButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddOvalButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddPadButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddSegmentButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddSlavePadButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddZoneButton : CanariDragSourceButton? = nil
   @IBOutlet var mAddZoneForbiddenPadNumberButton : EBButton? = nil
   @IBOutlet var mAddZoneForbiddenPadNumberDialog : NSPanel? = nil
   @IBOutlet var mAddZoneForbiddenPadNumberErrorTextField : NSTextField? = nil
@@ -408,7 +399,6 @@ import Cocoa
   @IBOutlet var mArcXCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mArcYCenterTextField : CanariDimensionTextField? = nil
   @IBOutlet var mArcYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBaseInspectorView : NSView? = nil
   @IBOutlet var mBezierCurveCPX1TextField : CanariDimensionTextField? = nil
   @IBOutlet var mBezierCurveCPX1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBezierCurveCPX2TextField : CanariDimensionTextField? = nil
@@ -429,8 +419,6 @@ import Cocoa
   @IBOutlet var mBottomSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mClearProgramErrorButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mCounterClockNumberingStartAngleIntField : EBIntField? = nil
-  @IBOutlet var mCounterClockNumberingStartAngleView : NSView? = nil
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
@@ -449,14 +437,12 @@ import Cocoa
   @IBOutlet var mDimensionYLabelTextField : CanariDimensionTextField? = nil
   @IBOutlet var mDimensionYLabelUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mDisplayBottomSidePadSwitch : EBSwitch? = nil
-  @IBOutlet var mDisplayInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mDisplayTopSidePadSwitch : EBSwitch? = nil
   @IBOutlet var mDisplayZoneNameSwitch : EBSwitch? = nil
   @IBOutlet var mGridDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mGridStyle : EBPopUpButton? = nil
   @IBOutlet var mGridTextField : CanariDimensionTextField? = nil
   @IBOutlet var mGridUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mGridZoomInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mGuideInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mGuideX1TextField : CanariDimensionTextField? = nil
   @IBOutlet var mGuideX1UnitPopUp : EBPopUpButton? = nil
@@ -467,12 +453,10 @@ import Cocoa
   @IBOutlet var mGuideY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mGuideY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mHorizontalFlip : EBSwitch? = nil
-  @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mIssueInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mIssueScrollView : NSScrollView? = nil
   @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
-  @IBOutlet var mIssuesInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mKnobSizeSlider : EBSlider? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
@@ -504,7 +488,6 @@ import Cocoa
   @IBOutlet var mPadNumberColorWell : EBColorWell? = nil
   @IBOutlet var mPadNumberFontButton : EBFontButton? = nil
   @IBOutlet var mPadNumberTextField : EBIntObserverField? = nil
-  @IBOutlet var mPadNumberingPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? = nil
   @IBOutlet var mPadSlaveCountTextField : EBIntObserverField? = nil
   @IBOutlet var mPadStyleView : NSView? = nil
@@ -533,7 +516,6 @@ import Cocoa
   @IBOutlet var mSegmentY1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSegmentY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSelectedObjectsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSetDimensionTextOriginAtMidX : EBButton? = nil
   @IBOutlet var mSetDimensionTextOriginAtMidY : EBButton? = nil
   @IBOutlet var mShowPadNumberSwitch : EBSwitch? = nil
@@ -579,12 +561,10 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mRemoveZoneForbiddenPadNumberButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mCounterClockNumberingStartAngleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
@@ -715,6 +695,12 @@ import Cocoa
   }
 
   //····················································································································
+  //    VIEW mPackagePageInspectorMasterView
+  //····················································································································
+
+  let mPackagePageInspectorMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView ()
+
+  //····················································································································
   //    VIEW mPackagePage
   //····················································································································
 
@@ -722,12 +708,12 @@ import Cocoa
 
   fileprivate final func mPackagePage_make () -> AutoLayoutStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
+      .set (margins: 8)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
-        .set (margins: 8)
-        .equalSpacing ()
       do{
         let view_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
           .bind_image (self.addSegmentButtonImage_property)
@@ -772,21 +758,21 @@ import Cocoa
       }
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutTwoColumnsGridView ()
-        .set (margins: 8)
         .add (left: self.computeImplicitView_31 (), right: self.computeImplicitView_32 ())
+        .add (left: self.computeImplicitView_33 (), right: self.computeImplicitView_34 ())
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_2_0 = AutoLayoutFlexibleSpace ()
-        view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutStaticLabel (title: "Menus…", bold: true, small: false)
-        view_0_2.appendView (view_0_2_1)
-        let view_0_2_2 = AutoLayoutFlexibleSpace ()
-        view_0_2.appendView (view_0_2_2)
-      }
+      let view_0_2 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView)
+        .canHug ()
+        .addPage (title: "0", pageView: self.mSelectedObjectsInspectorView)
+        .addPage (title: "1", pageView: self.mGridZoomInspectorView)
+        .addPage (title: "2", pageView: self.mDisplayInspectorView)
+        .addPage (title: "3", pageView: self.mIssuesInspectorView)
+        .bind_selectedPage (self.rootObject.selectedInspector_property)
       view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
+      let view_0_3 = self.mPackagePageInspectorMasterView
       view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_4)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
@@ -811,6 +797,98 @@ import Cocoa
     self.configure_packageGraphicView (view_1)
     hStackView.appendView (view_1)
     return hStackView
+  }
+
+  //····················································································································
+  //    VIEW mSelectedObjectsInspectorView
+  //····················································································································
+
+  lazy var mSelectedObjectsInspectorView = self.mSelectedObjectsInspectorView_make ()
+
+  fileprivate final func mSelectedObjectsInspectorView_make () -> AutoLayoutStackView {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "0", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  }
+
+  //····················································································································
+  //    VIEW mGridZoomInspectorView
+  //····················································································································
+
+  lazy var mGridZoomInspectorView = self.mGridZoomInspectorView_make ()
+
+  fileprivate final func mGridZoomInspectorView_make () -> AutoLayoutStackView {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "1", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  }
+
+  //····················································································································
+  //    VIEW mDisplayInspectorView
+  //····················································································································
+
+  lazy var mDisplayInspectorView = self.mDisplayInspectorView_make ()
+
+  fileprivate final func mDisplayInspectorView_make () -> AutoLayoutStackView {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "2", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  }
+
+  //····················································································································
+  //    VIEW mIssuesInspectorView
+  //····················································································································
+
+  lazy var mIssuesInspectorView = self.mIssuesInspectorView_make ()
+
+  fileprivate final func mIssuesInspectorView_make () -> AutoLayoutStackView {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "3", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
   }
 
   //····················································································································
@@ -1218,6 +1296,42 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 33
+  //····················································································································
+
+  fileprivate final func computeImplicitView_33 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Auto Numbers", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 34
+  //····················································································································
+
+  fileprivate final func computeImplicitView_34 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles ())
+        .bind_selectedIndex (self.rootObject.padNumbering_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutStaticLabel (title: "From", bold: false, small: true)
+        .bind_enabled (
+          observedObjects: [self.rootObject.counterClockNumbering_property],
+          computeFunction: { return self.rootObject.counterClockNumbering_property_selection }
+        )
+      view.appendView (view_1)
+      let view_2 = AutoLayoutIntField (width: 45)
+        .bind_value (self.rootObject.counterClockNumberingStartAngle_property, sendContinously:true)
+        .bind_enabled (
+          observedObjects: [self.rootObject.counterClockNumbering_property],
+          computeFunction: { return self.rootObject.counterClockNumbering_property_selection }
+        )
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -1309,15 +1423,6 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAddArcButton, "mAddArcButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddBezierButton, "mAddBezierButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddDimensionButton, "mAddDimensionButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddGuideButton, "mAddGuideButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddOvalButton, "mAddOvalButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddPadButton, "mAddPadButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddSegmentButton, "mAddSegmentButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddSlavePadButton, "mAddSlavePadButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddZoneButton, "mAddZoneButton", CanariDragSourceButton.self, #file, #line)
 //    checkOutletConnection (self.mAddZoneForbiddenPadNumberButton, "mAddZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mAddZoneForbiddenPadNumberDialog, "mAddZoneForbiddenPadNumberDialog", NSPanel.self, #file, #line)
 //    checkOutletConnection (self.mAddZoneForbiddenPadNumberErrorTextField, "mAddZoneForbiddenPadNumberErrorTextField", NSTextField.self, #file, #line)
@@ -1339,7 +1444,6 @@ import Cocoa
 //    checkOutletConnection (self.mArcXCenterUnitPopUp, "mArcXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mArcYCenterTextField, "mArcYCenterTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mArcYCenterUnitPopUp, "mArcYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mBaseInspectorView, "mBaseInspectorView", NSView.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveCPX1TextField, "mBezierCurveCPX1TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveCPX1UnitPopUp, "mBezierCurveCPX1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveCPX2TextField, "mBezierCurveCPX2TextField", CanariDimensionTextField.self, #file, #line)
@@ -1360,8 +1464,6 @@ import Cocoa
 //    checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-//    checkOutletConnection (self.mCounterClockNumberingStartAngleIntField, "mCounterClockNumberingStartAngleIntField", EBIntField.self, #file, #line)
-//    checkOutletConnection (self.mCounterClockNumberingStartAngleView, "mCounterClockNumberingStartAngleView", NSView.self, #file, #line)
 //    checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
@@ -1380,14 +1482,12 @@ import Cocoa
 //    checkOutletConnection (self.mDimensionYLabelTextField, "mDimensionYLabelTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionYLabelUnitPopUp, "mDimensionYLabelUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mDisplayBottomSidePadSwitch, "mDisplayBottomSidePadSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mDisplayInspectorView, "mDisplayInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mDisplayTopSidePadSwitch, "mDisplayTopSidePadSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mDisplayZoneNameSwitch, "mDisplayZoneNameSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mGridDisplayPopUpButton, "mGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mGridStyle, "mGridStyle", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mGridTextField, "mGridTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGridUnitPopUp, "mGridUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mGridZoomInspectorView, "mGridZoomInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mGuideInspectorView, "mGuideInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mGuideX1TextField, "mGuideX1TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGuideX1UnitPopUp, "mGuideX1UnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1398,12 +1498,10 @@ import Cocoa
 //    checkOutletConnection (self.mGuideY2TextField, "mGuideY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGuideY2UnitPopUp, "mGuideY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mHorizontalFlip, "mHorizontalFlip", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
 //    checkOutletConnection (self.mIssueInspectorView, "mIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
 //    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
 //    checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mIssuesInspectorView, "mIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
 //    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
@@ -1435,7 +1533,6 @@ import Cocoa
 //    checkOutletConnection (self.mPadNumberColorWell, "mPadNumberColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mPadNumberFontButton, "mPadNumberFontButton", EBFontButton.self, #file, #line)
 //    checkOutletConnection (self.mPadNumberTextField, "mPadNumberTextField", EBIntObserverField.self, #file, #line)
-//    checkOutletConnection (self.mPadNumberingPopUpButton, "mPadNumberingPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadRenumberingPullDownButton, "mPadRenumberingPullDownButton", CanariPadRenumberingPullDownButton.self, #file, #line)
 //    checkOutletConnection (self.mPadSlaveCountTextField, "mPadSlaveCountTextField", EBIntObserverField.self, #file, #line)
 //    checkOutletConnection (self.mPadStyleView, "mPadStyleView", NSView.self, #file, #line)
@@ -1464,7 +1561,6 @@ import Cocoa
 //    checkOutletConnection (self.mSegmentY1UnitPopUp, "mSegmentY1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSegmentY2TextField, "mSegmentY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mSegmentY2UnitPopUp, "mSegmentY2UnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mSelectedObjectsInspectorView, "mSelectedObjectsInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mSetDimensionTextOriginAtMidX, "mSetDimensionTextOriginAtMidX", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mSetDimensionTextOriginAtMidY, "mSetDimensionTextOriginAtMidY", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mShowPadNumberSwitch, "mShowPadNumberSwitch", EBSwitch.self, #file, #line)
@@ -1875,7 +1971,6 @@ import Cocoa
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
-    self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
     self.mSegmentX1TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
     self.mSegmentY1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y1Unit_property, file: #file, line: #line)
@@ -2001,8 +2096,6 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneYLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
-    self.mPadNumberingPopUpButton?.bind_selectedIndex (self.rootObject.padNumbering_property, file: #file, line: #line)
-    self.mCounterClockNumberingStartAngleIntField?.bind_value (self.rootObject.counterClockNumberingStartAngle_property, file: #file, line: #line, sendContinously:true, autoFormatter:false)
     self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
@@ -2029,16 +2122,6 @@ import Cocoa
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0))
-        },
-        outlet: self.mAddSlavePadButton
-      )
-      self.rootObject.packagePads_property.count_property.addEBObserver (controller)
-      self.mController_mAddSlavePadButton_enabled = controller
-    }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
@@ -2080,16 +2163,6 @@ import Cocoa
       )
       self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.addEBObserver (controller)
       self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.counterClockNumbering_property_selection
-        },
-        outlet: self.mCounterClockNumberingStartAngleView
-      )
-      self.rootObject.counterClockNumbering_property.addEBObserver (controller)
-      self.mController_mCounterClockNumberingStartAngleView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -2175,7 +2248,12 @@ import Cocoa
   //--------------------------- Clean up auto layout views
     self.mPageMasterView.ebCleanUp ()
     self.mModelImagePage.ebCleanUp ()
+    self.mPackagePageInspectorMasterView.ebCleanUp ()
     self.mPackagePage.ebCleanUp ()
+    self.mSelectedObjectsInspectorView.ebCleanUp ()
+    self.mGridZoomInspectorView.ebCleanUp ()
+    self.mDisplayInspectorView.ebCleanUp ()
+    self.mIssuesInspectorView.ebCleanUp ()
     self.mProgramPage.ebCleanUp ()
     self.mInfosPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
@@ -2183,7 +2261,6 @@ import Cocoa
       item.view?.ebCleanUp ()
     }
   //--------------------------- Unbind regular bindings
-    self.mInspectorSegmentedControl?.unbind_selectedPage ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
     self.mSegmentX1TextField?.unbind_dimensionAndUnit ()
     self.mSegmentY1UnitPopUp?.unbind_selectedTag ()
@@ -2309,8 +2386,6 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.unbind_selectedTag ()
     self.mZoneYLabelTextField?.unbind_dimensionAndUnit ()
     self.mZoneForbiddenPadNumberTableView?.unbind_array ()
-    self.mPadNumberingPopUpButton?.unbind_selectedIndex ()
-    self.mCounterClockNumberingStartAngleIntField?.unbind_value ()
     self.mIssueTextField?.unbind_valueObserver ()
     self.mIssueTableView?.unbind_issues ()
     self.mHorizontalFlip?.unbind_value ()
@@ -2337,8 +2412,6 @@ import Cocoa
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
- //   self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
- //   self.mController_mAddSlavePadButton_enabled = nil
  //   self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
  //   self.mController_mPadStyleView_hidden = nil
  //   self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
@@ -2349,8 +2422,6 @@ import Cocoa
  //   self.mController_mSlavePadStyleView_hidden = nil
  //   self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.removeEBObserver (self.mController_mRemoveZoneForbiddenPadNumberButton_enabled!)
  //   self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
- //   self.rootObject.counterClockNumbering_property.removeEBObserver (self.mController_mCounterClockNumberingStartAngleView_hidden!)
- //   self.mController_mCounterClockNumberingStartAngleView_hidden = nil
  //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
  //   self.mController_mDeselectIssueButton_hidden = nil
  //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
@@ -2401,15 +2472,6 @@ import Cocoa
     self.mClearProgramErrorButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
-    self.mAddArcButton?.ebCleanUp ()
-    self.mAddBezierButton?.ebCleanUp ()
-    self.mAddDimensionButton?.ebCleanUp ()
-    self.mAddGuideButton?.ebCleanUp ()
-    self.mAddOvalButton?.ebCleanUp ()
-    self.mAddPadButton?.ebCleanUp ()
-    self.mAddSegmentButton?.ebCleanUp ()
-    self.mAddSlavePadButton?.ebCleanUp ()
-    self.mAddZoneButton?.ebCleanUp ()
     self.mAddZoneForbiddenPadNumberButton?.ebCleanUp ()
     self.mAddZoneForbiddenPadNumberDialog?.ebCleanUp ()
     self.mAddZoneForbiddenPadNumberErrorTextField?.ebCleanUp ()
@@ -2431,7 +2493,6 @@ import Cocoa
     self.mArcXCenterUnitPopUp?.ebCleanUp ()
     self.mArcYCenterTextField?.ebCleanUp ()
     self.mArcYCenterUnitPopUp?.ebCleanUp ()
-    self.mBaseInspectorView?.ebCleanUp ()
     self.mBezierCurveCPX1TextField?.ebCleanUp ()
     self.mBezierCurveCPX1UnitPopUp?.ebCleanUp ()
     self.mBezierCurveCPX2TextField?.ebCleanUp ()
@@ -2452,8 +2513,6 @@ import Cocoa
     self.mBottomSidePadColorWell?.ebCleanUp ()
     self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mCounterClockNumberingStartAngleIntField?.ebCleanUp ()
-    self.mCounterClockNumberingStartAngleView?.ebCleanUp ()
     self.mCrossColorOfPackageGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mDimensionDistanceTextField?.ebCleanUp ()
@@ -2472,14 +2531,12 @@ import Cocoa
     self.mDimensionYLabelTextField?.ebCleanUp ()
     self.mDimensionYLabelUnitPopUp?.ebCleanUp ()
     self.mDisplayBottomSidePadSwitch?.ebCleanUp ()
-    self.mDisplayInspectorView?.ebCleanUp ()
     self.mDisplayTopSidePadSwitch?.ebCleanUp ()
     self.mDisplayZoneNameSwitch?.ebCleanUp ()
     self.mGridDisplayPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mGridTextField?.ebCleanUp ()
     self.mGridUnitPopUp?.ebCleanUp ()
-    self.mGridZoomInspectorView?.ebCleanUp ()
     self.mGuideInspectorView?.ebCleanUp ()
     self.mGuideX1TextField?.ebCleanUp ()
     self.mGuideX1UnitPopUp?.ebCleanUp ()
@@ -2490,12 +2547,10 @@ import Cocoa
     self.mGuideY2TextField?.ebCleanUp ()
     self.mGuideY2UnitPopUp?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
-    self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mIssueInspectorView?.ebCleanUp ()
     self.mIssueScrollView?.ebCleanUp ()
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
-    self.mIssuesInspectorView?.ebCleanUp ()
     self.mKnobSizeSlider?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
@@ -2527,7 +2582,6 @@ import Cocoa
     self.mPadNumberColorWell?.ebCleanUp ()
     self.mPadNumberFontButton?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
-    self.mPadNumberingPopUpButton?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
     self.mPadSlaveCountTextField?.ebCleanUp ()
     self.mPadStyleView?.ebCleanUp ()
@@ -2556,7 +2610,6 @@ import Cocoa
     self.mSegmentY1UnitPopUp?.ebCleanUp ()
     self.mSegmentY2TextField?.ebCleanUp ()
     self.mSegmentY2UnitPopUp?.ebCleanUp ()
-    self.mSelectedObjectsInspectorView?.ebCleanUp ()
     self.mSetDimensionTextOriginAtMidX?.ebCleanUp ()
     self.mSetDimensionTextOriginAtMidY?.ebCleanUp ()
     self.mShowPadNumberSwitch?.ebCleanUp ()
@@ -2598,15 +2651,6 @@ import Cocoa
     self.mZoneYTextField?.ebCleanUp ()
     self.mZoneYUnitPopUp?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAddArcButton = nil
-    self.mAddBezierButton = nil
-    self.mAddDimensionButton = nil
-    self.mAddGuideButton = nil
-    self.mAddOvalButton = nil
-    self.mAddPadButton = nil
-    self.mAddSegmentButton = nil
-    self.mAddSlavePadButton = nil
-    self.mAddZoneButton = nil
     self.mAddZoneForbiddenPadNumberButton = nil
     self.mAddZoneForbiddenPadNumberDialog = nil
     self.mAddZoneForbiddenPadNumberErrorTextField = nil
@@ -2628,7 +2672,6 @@ import Cocoa
     self.mArcXCenterUnitPopUp = nil
     self.mArcYCenterTextField = nil
     self.mArcYCenterUnitPopUp = nil
-    self.mBaseInspectorView = nil
     self.mBezierCurveCPX1TextField = nil
     self.mBezierCurveCPX1UnitPopUp = nil
     self.mBezierCurveCPX2TextField = nil
@@ -2649,8 +2692,6 @@ import Cocoa
     self.mBottomSidePadColorWell = nil
     self.mClearProgramErrorButton = nil
     self.mCommentTextView = nil
-    self.mCounterClockNumberingStartAngleIntField = nil
-    self.mCounterClockNumberingStartAngleView = nil
     self.mCrossColorOfPackageGridColorWell = nil
     self.mDeselectIssueButton = nil
     self.mDimensionDistanceTextField = nil
@@ -2669,14 +2710,12 @@ import Cocoa
     self.mDimensionYLabelTextField = nil
     self.mDimensionYLabelUnitPopUp = nil
     self.mDisplayBottomSidePadSwitch = nil
-    self.mDisplayInspectorView = nil
     self.mDisplayTopSidePadSwitch = nil
     self.mDisplayZoneNameSwitch = nil
     self.mGridDisplayPopUpButton = nil
     self.mGridStyle = nil
     self.mGridTextField = nil
     self.mGridUnitPopUp = nil
-    self.mGridZoomInspectorView = nil
     self.mGuideInspectorView = nil
     self.mGuideX1TextField = nil
     self.mGuideX1UnitPopUp = nil
@@ -2687,12 +2726,10 @@ import Cocoa
     self.mGuideY2TextField = nil
     self.mGuideY2UnitPopUp = nil
     self.mHorizontalFlip = nil
-    self.mInspectorSegmentedControl = nil
     self.mIssueInspectorView = nil
     self.mIssueScrollView = nil
     self.mIssueTableView = nil
     self.mIssueTextField = nil
-    self.mIssuesInspectorView = nil
     self.mKnobSizeSlider = nil
     self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
@@ -2724,7 +2761,6 @@ import Cocoa
     self.mPadNumberColorWell = nil
     self.mPadNumberFontButton = nil
     self.mPadNumberTextField = nil
-    self.mPadNumberingPopUpButton = nil
     self.mPadRenumberingPullDownButton = nil
     self.mPadSlaveCountTextField = nil
     self.mPadStyleView = nil
@@ -2753,7 +2789,6 @@ import Cocoa
     self.mSegmentY1UnitPopUp = nil
     self.mSegmentY2TextField = nil
     self.mSegmentY2UnitPopUp = nil
-    self.mSelectedObjectsInspectorView = nil
     self.mSetDimensionTextOriginAtMidX = nil
     self.mSetDimensionTextOriginAtMidY = nil
     self.mShowPadNumberSwitch = nil

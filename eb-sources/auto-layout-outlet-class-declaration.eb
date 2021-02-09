@@ -66,7 +66,7 @@ extern autolayout class TwoColumnsGridView {
   func flexibleSpace ()
 }
 
-extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) {
+extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled {
 }
 
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) {
@@ -80,6 +80,7 @@ extern autolayout class Label (small: Bool) {
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view) {
+  func canHug ()
   func addPage (title: String, pageView : view)
   $selectedPage property Int
 }
@@ -167,6 +168,10 @@ extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicContr
 
 extern autolayout class DragSourceButton (tooltip: String) $enabled {
   $image transient NSImage
+}
+
+extern autolayout class IntField (width: Int) $enabled {
+  $value property Int (sendContinously: Bool)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -178,10 +178,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   transient NSImage addGuideButtonImage dependsFrom prefs.packageGuideColor ;
   transient NSImage addDimensionButtonImage dependsFrom prefs.packageDimensionColor ;
   transient NSImage addZoneButtonImage dependsFrom prefs.padZoneColor ;
+  stackView mPackagePageInspectorMasterView : vStack ;
   
-  stackView mPackagePage hStack {
-    vStack set (width: 250) {
-      hStack set (margins: 8) equalSpacing () {
+  stackView mPackagePage hStack set (spacing: 0) {
+    vStack set (width: 250) set (margins: 8) {
+      hStack { // set (spacing: 0) {
         DragSourceButton addPackageSegment (tooltip: "Add Segment") { $image self.addSegmentButtonImage }
         DragSourceButton addPackageBezier (tooltip: "Add Bezier") { $image self.addBezierButtonImage }
         DragSourceButton addPackageOval (tooltip: "Add Oval") { $image self.addOvalButtonImage }
@@ -193,18 +194,35 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         DragSourceButton addPackageDimension (tooltip: "Add Dimension") { $image self.addDimensionButtonImage }
       }
       TwoColumnsGridView {
-        set (margins: 8)
+    //    set (margins: 8)
         add (
           left: StaticLabel (title: "Model Image Opacity", bold: no, small: yes),
           right: Slider (min:0, max:1, ticks: 11) {
             $doubleValue root.mModelImageOpacity (sendContinously:yes)
             $enabled root.hasModelImage
           }
-        )     
+        )
+        add (
+          left: StaticLabel (title: "Auto Numbers", bold: no, small: yes),
+          right: hStack {
+             EnumPopUpButton (titles: enum PadNumbering.popupTitles) {$selectedIndex root.padNumbering}
+             StaticLabel (title: "From", bold: no, small: yes) {$enabled root.counterClockNumbering}
+             IntField (width: 45) {
+               $value root.counterClockNumberingStartAngle (sendContinously : yes)
+               $enabled root.counterClockNumbering
+             }
+          }
+        )   
       }
-      hStack {
-        space StaticLabel (title: "Menus…", bold: yes, small: no) space
+      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView) {
+        canHug ()
+        addPage (title: "0", pageView: stackView mSelectedObjectsInspectorView)
+        addPage (title: "1", pageView: stackView mGridZoomInspectorView)
+        addPage (title: "2", pageView: stackView mDisplayInspectorView)
+        addPage (title: "3", pageView: stackView mIssuesInspectorView)
+        $selectedPage root.selectedInspector
       }
+      view mPackagePageInspectorMasterView
       space
     }
     GraphicView packageGraphicView (minZoom: 10, maxZoom: 4000) {
@@ -229,30 +247,50 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     }
   }
 
+  stackView mSelectedObjectsInspectorView vStack {
+    hStack { space StaticLabel (title: "0", bold: no, small: yes) space }
+    space
+  }
+  
+  stackView mGridZoomInspectorView vStack {
+    hStack { space StaticLabel (title: "1", bold: no, small: yes) space }
+    space
+  }
+
+  stackView mDisplayInspectorView vStack {
+    hStack { space StaticLabel (title: "2", bold: no, small: yes) space }
+    space
+  }
+
+  stackView mIssuesInspectorView vStack {
+    hStack { space StaticLabel (title: "3", bold: no, small: yes) space }
+    space
+  }
+
 
 
 
 
 //--- Buttons for new elements
-  outlet CanariDragSourceButton mAddSegmentButton ;
-  outlet CanariDragSourceButton mAddBezierButton ;
-  outlet CanariDragSourceButton mAddOvalButton ;
-  outlet CanariDragSourceButton mAddArcButton ;
-  outlet CanariDragSourceButton mAddPadButton ;
-  outlet CanariDragSourceButton mAddSlavePadButton $enabled root.packagePads.count > 0 ;
-  outlet CanariDragSourceButton mAddGuideButton ;
-  outlet CanariDragSourceButton mAddDimensionButton ;
-  outlet CanariDragSourceButton mAddZoneButton ;
+//  outlet CanariDragSourceButton mAddSegmentButton ;
+//  outlet CanariDragSourceButton mAddBezierButton ;
+//  outlet CanariDragSourceButton mAddOvalButton ;
+//  outlet CanariDragSourceButton mAddArcButton ;
+//  outlet CanariDragSourceButton mAddPadButton ;
+//  outlet CanariDragSourceButton mAddSlavePadButton $enabled root.packagePads.count > 0 ;
+//  outlet CanariDragSourceButton mAddGuideButton ;
+//  outlet CanariDragSourceButton mAddDimensionButton ;
+//  outlet CanariDragSourceButton mAddZoneButton ;
 
 
 
 
-  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
-  outlet NSView mBaseInspectorView ;
-  outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
-  outlet CanariViewWithKeyView mGridZoomInspectorView ;
-  outlet CanariViewWithKeyView mDisplayInspectorView ;
-  outlet CanariViewWithKeyView mIssuesInspectorView ;
+//  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
+//  outlet NSView mBaseInspectorView ;
+//  outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
+//  outlet CanariViewWithKeyView mGridZoomInspectorView ;
+//  outlet CanariViewWithKeyView mDisplayInspectorView ;
+//  outlet CanariViewWithKeyView mIssuesInspectorView ;
 //  outlet EBSlider mModelImageOpacitySlider
 //    $doubleValue root.mModelImageOpacity (sendContinously:yes)
 //    $enabled root.hasModelImage
@@ -643,11 +681,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
 
 //----------------- Pad numbering inspector
-  outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
-  outlet EBIntField mCounterClockNumberingStartAngleIntField
-     $value root.counterClockNumberingStartAngle (sendContinously : yes, autoFormatter : no)
-  ;
-  outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
+//  outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
+//  outlet EBIntField mCounterClockNumberingStartAngleIntField
+//     $value root.counterClockNumberingStartAngle (sendContinously : yes, autoFormatter : no)
+//  ;
+//  outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
 
 //------- Issues
   outlet CanariViewWithKeyView mIssueInspectorView ;

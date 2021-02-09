@@ -4,22 +4,6 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func showDebugBackground () {
-  gDebugBackground = NSColor.black.withAlphaComponent (0.05)
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate var gDebugBackground : NSColor? = nil
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func debugBackgroundColor () -> NSColor? {
-  return gDebugBackground
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
@@ -53,6 +37,34 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
     self.addView (inView, in: .leading)
   }
 
+  //····················································································································
+  //   DRAW
+  //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    if DEBUG_AUTO_LAYOUT {
+      DEBUG_FILL_COLOR.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+      var r = self.bounds
+      r.origin.x += self.edgeInsets.left
+      r.origin.y += self.edgeInsets.bottom
+      r.size.width -= self.edgeInsets.left + self.edgeInsets.right
+      r.size.height -= self.edgeInsets.top + self.edgeInsets.bottom
+      var bp = NSBezierPath (rect: r)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      let array : [CGFloat] = [1.0, 1.0]
+      bp.setLineDash (array, count: array.count, phase: 0.0)
+      bp.stroke ()
+      bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      bp.stroke ()
+    }
+    super.draw (inDirtyRect)
+  }
+  
   //····················································································································
   //  MARGINS
   //····················································································································

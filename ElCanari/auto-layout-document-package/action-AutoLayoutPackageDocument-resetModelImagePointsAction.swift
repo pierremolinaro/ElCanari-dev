@@ -26,7 +26,7 @@ extension AutoLayoutPackageDocument {
       self.mPackageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
 //      self.mComposedPackageView?.mForegroundImageAffineTransform = NSAffineTransform ()
     //---
-      self.buildGreenAndBluePoints ()
+      self.buildModelPoints ()
 //--- END OF USER ZONE 2
   }
 }

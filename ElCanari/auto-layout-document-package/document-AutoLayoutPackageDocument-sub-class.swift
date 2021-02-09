@@ -4,16 +4,16 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let PMPackageVersion = "PMPackageVersion"
-let PMPackageComment = "PMPackageComment"
+//let PMPackageVersion = "PMPackageVersion"
+//let PMPackageComment = "PMPackageComment"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
+//let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutPackageDocumentSubClass)  class AutoLayoutPackageDocumentSubClass : AutoLayoutPackageDocument {
+@objc(AutoLayoutPackageDocumentSubClass) class AutoLayoutPackageDocumentSubClass : AutoLayoutPackageDocument {
 
   //····················································································································
 
@@ -42,8 +42,8 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //    buildUserInterface: customization of interface
   //····················································································································
 
-  fileprivate var mPackageColorObserver = EBOutletEvent ()
-  fileprivate var mPadColorObserver = EBOutletEvent ()
+//  fileprivate var mPackageColorObserver = EBOutletEvent ()
+//  fileprivate var mPadColorObserver = EBOutletEvent ()
 
   //····················································································································
 
@@ -57,22 +57,22 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //--- Register document for slave pad assignment
 // §    self.mSlavePadAssignmentPopUpButton?.register (document: self)
   //--- Package color observer
-    self.mPackageColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
-    preferences_packageColor_property.addEBObserver (self.mPackageColorObserver)
+//    self.mPackageColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
+//    preferences_packageColor_property.addEBObserver (self.mPackageColorObserver)
   //--- Pad color observer
-    self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
-    preferences_frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
+//    self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
+//    preferences_frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
 //    let pages = [self.mModelImagePageView, self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
 //    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set inspector segmented control
-    let inspectors = [
-      self.mSelectedObjectsInspectorView,
-      self.mGridZoomInspectorView,
-      self.mDisplayInspectorView,
-      self.mIssuesInspectorView
-    ]
-    self.mInspectorSegmentedControl?.register (masterView: self.mBaseInspectorView, inspectors)
+//    let inspectors = [
+//      self.mSelectedObjectsInspectorView,
+//      self.mGridZoomInspectorView,
+//      self.mDisplayInspectorView,
+//      self.mIssuesInspectorView
+//    ]
+//    self.mInspectorSegmentedControl?.register (masterView: self.mBaseInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
 //    self.mAddSegmentButton?.register (
 //      draggedType: packagePasteboardType,
@@ -124,20 +124,20 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 //     self.mComposedPackageView?.mScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
 //     self.mComposedPackageView?.mGraphicView.register (pasteboardType: packagePasteboardType)
   //--- Register inspector views
-    self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
-    self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, for: PackageSegment.self)
-    self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, for: PackageBezier.self)
-    self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, for: PackageOval.self)
-    self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, for: PackageArc.self)
-    self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, for: PackagePad.self)
-    self.mPackageObjectsController.register (inspectorView: self.mSlavePadInspectorView, for: PackageSlavePad.self)
-    self.mPackageObjectsController.register (inspectorView: self.mGuideInspectorView, for: PackageGuide.self)
-    self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, for: PackageDimension.self)
-    self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, for: PackageZone.self)
+// §   self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
+//    self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, for: PackageSegment.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, for: PackageBezier.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, for: PackageOval.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, for: PackageArc.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, for: PackagePad.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mSlavePadInspectorView, for: PackageSlavePad.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mGuideInspectorView, for: PackageGuide.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, for: PackageDimension.self)
+//    self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, for: PackageZone.self)
   //--- Set issue display view
 // §    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView?.mGraphicView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
-    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
+// §    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
   //--- Update display
 //    if let view = self.mComposedPackageView?.mGraphicView {
 //      DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
@@ -147,30 +147,30 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   //····················································································································
 
-  fileprivate func makeSlavePad () -> (PackageSlavePad, NSDictionary) {
-     let additionalDictionary = NSMutableDictionary ()
-     for object in self.mPackageObjectsController.selectedArray {
-       if let masterPad = object as? PackagePad {
-         additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
-       }
-     }
-     if additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] == nil {
-       for object in self.rootObject.packageObjects {
-         if let masterPad = object as? PackagePad {
-           additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
-         }
-       }
-     }
-    return (PackageSlavePad (nil), additionalDictionary)
-  }
+//  fileprivate func makeSlavePad () -> (PackageSlavePad, NSDictionary) {
+//     let additionalDictionary = NSMutableDictionary ()
+//     for object in self.mPackageObjectsController.selectedArray {
+//       if let masterPad = object as? PackagePad {
+//         additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+//       }
+//     }
+//     if additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] == nil {
+//       for object in self.rootObject.packageObjects {
+//         if let masterPad = object as? PackagePad {
+//           additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+//         }
+//       }
+//     }
+//    return (PackageSlavePad (nil), additionalDictionary)
+//  }
 
   //····················································································································
   //   removeUserInterface
   //····················································································································
 
   override func removeUserInterface () {
-    preferences_packageColor_property.removeEBObserver (self.mPackageColorObserver)
-    preferences_frontSidePadColor_property.removeEBObserver (self.mPadColorObserver)
+//    preferences_packageColor_property.removeEBObserver (self.mPackageColorObserver)
+//    preferences_frontSidePadColor_property.removeEBObserver (self.mPadColorObserver)
     self.removeImagePointsObservers ()
     super.removeUserInterface ()
   }
@@ -263,55 +263,55 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   //····················································································································
 
-  private func updateDragSourceButtons () {
-    self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddZoneButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
-  }
+//  private func updateDragSourceButtons () {
+//    self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
+//    self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
+//    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
+//    self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
+//    self.mAddZoneButton?.buildButtonImageFromDraggedObjectTypeName ()
+//    self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
+//  }
 
   //····················································································································
 
-  private func updateDragPadSourceButtons () {
-    self.mAddPadButton?.image = self.imageForAddMasterPadButton ()
-    self.mAddSlavePadButton?.image = self.imageForAddSlavePadButton ()
-  }
+//  private func updateDragPadSourceButtons () {
+//    self.mAddPadButton?.image = self.imageForAddMasterPadButton ()
+//    self.mAddSlavePadButton?.image = self.imageForAddSlavePadButton ()
+//  }
 
   //····················································································································
 
-  fileprivate func imageForAddMasterPadButton () ->  NSImage? {
-    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-    var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
-    bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
-    bp.windingRule = .evenOdd
-    let shape = EBShape (filled: [bp], preferences_frontSidePadColor)
-    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
-    return NSImage (data: imagePDFData)
-  }
+//  fileprivate func imageForAddMasterPadButton () ->  NSImage? {
+//    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+//    var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
+//    bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
+//    bp.windingRule = .evenOdd
+//    let shape = EBShape (filled: [bp], preferences_frontSidePadColor)
+//    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
+//    return NSImage (data: imagePDFData)
+//  }
 
   //····················································································································
 
-  fileprivate func imageForAddSlavePadButton () ->  NSImage? {
-    var shape = EBShape ()
-  //---
-    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-    var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
-    bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
-    bp.windingRule = .evenOdd
-    shape.add (filled: [bp], preferences_frontSidePadColor)
- //---
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
-      NSAttributedString.Key.foregroundColor : preferences_frontSidePadColor
-    ]
-    shape.add (text: "(", NSPoint (x:  2.0, y: 17.0), textAttributes, .onTheRight, .center)
-    shape.add (text: ")", NSPoint (x: 38.0, y: 17.0), textAttributes, .onTheLeft, .center)
- //---
-    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
-    return NSImage (data: imagePDFData)
-  }
+//  fileprivate func imageForAddSlavePadButton () ->  NSImage? {
+//    var shape = EBShape ()
+//  //---
+//    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+//    var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
+//    bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
+//    bp.windingRule = .evenOdd
+//    shape.add (filled: [bp], preferences_frontSidePadColor)
+// //---
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
+//      NSAttributedString.Key.foregroundColor : preferences_frontSidePadColor
+//    ]
+//    shape.add (text: "(", NSPoint (x:  2.0, y: 17.0), textAttributes, .onTheRight, .center)
+//    shape.add (text: ")", NSPoint (x: 38.0, y: 17.0), textAttributes, .onTheLeft, .center)
+// //---
+//    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
+//    return NSImage (data: imagePDFData)
+//  }
 
   //····················································································································
   //   MODEL IMAGE POINTS OBSERVERS
@@ -331,8 +331,8 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   //····················································································································
 
-  override func buildGreenAndBluePoints () {
-    super.buildGreenAndBluePoints ()
+  override func buildModelPoints () {
+    super.buildModelPoints ()
     self.mModelImageFirstPointLastX = self.rootObject.mModelImageFirstPointX!
     self.mModelImageFirstPointLastY = self.rootObject.mModelImageFirstPointY!
     self.mModelImagePointsLastDx = self.rootObject.mModelImageSecondPointDx!
@@ -343,7 +343,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   fileprivate func setupImagePointsAndTheirObservers () {
   //--- Model image points
-  //  self.buildGreenAndBluePoints ()
+  //  self.buildModelPoints ()
   //--- Add model observers
     do{
       let observer = EBModelEvent ()

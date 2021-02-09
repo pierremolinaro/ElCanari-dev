@@ -22,7 +22,7 @@ extension AutoLayoutPackageDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageSlavePad (nil), NSDictionary ()) },
+      draggedObjectFactory: { [weak self] in return self?.makeSlavePad () },
       scaleProvider: self.mPackageObjectsController
     )
 //--- END OF USER ZONE 2

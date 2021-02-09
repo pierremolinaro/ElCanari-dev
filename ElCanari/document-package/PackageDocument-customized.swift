@@ -4,12 +4,12 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//let PMPackageVersion = "PMPackageVersion"
-//let PMPackageComment = "PMPackageComment"
+let PMPackageVersion = "PMPackageVersion"
+let PMPackageComment = "PMPackageComment"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
+let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
 
 //----------------------------------------------------------------------------------------------------------------------
 

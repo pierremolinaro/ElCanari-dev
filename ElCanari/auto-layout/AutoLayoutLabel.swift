@@ -16,7 +16,6 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
-    self.textColor = .black
     self.isEnabled = true
     self.isEditable = false
     self.controlSize = inSmall ? .small : .regular
@@ -41,9 +40,14 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-    if let color = debugBackgroundColor () {
-      color.setFill ()
+    if DEBUG_AUTO_LAYOUT {
+      DEBUG_FILL_COLOR.setFill ()
       NSBezierPath.fill (inDirtyRect)
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
     }
     super.draw (inDirtyRect)
   }

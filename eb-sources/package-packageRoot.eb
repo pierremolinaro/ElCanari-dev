@@ -22,6 +22,20 @@ enum PadNumbering {
   leftDown
 }
 
+func enum PadNumbering.popupTitles {
+  noNumbering : "No" ;
+  counterClock : "Counterclock" ;
+  upRight : "Up, Right" ;
+  upLeft : "Up, Left" ;
+  downRight : "Down, Right" ;
+  downLeft  : "Down, Left" ;
+  rightUp : "Right, Up" ;
+  rightDown : "Right, Down" ;
+  leftUp : "Left, Up" ;
+  leftDown : "Left, Down" ;
+
+}
+
 //----------------------------------------------------------------------------*
 
 graphic entity PackageRoot {

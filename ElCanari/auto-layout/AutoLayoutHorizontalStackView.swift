@@ -12,6 +12,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutStackView {
 
   init () {
     super.init (orientation: .horizontal)
+    self.alignment = .height
   }
 
   //····················································································································

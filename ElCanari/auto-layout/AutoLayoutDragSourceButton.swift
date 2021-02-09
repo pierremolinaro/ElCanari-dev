@@ -45,6 +45,12 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
 
   //····················································································································
 
+  override var fittingSize : NSSize {
+    return NSSize (width: 28.0, height: 28.0)
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 28.0, height: 28.0)
   }
@@ -253,6 +259,15 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
+    if DEBUG_AUTO_LAYOUT {
+      DEBUG_FILL_COLOR.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
+    }
     let x : CGFloat = 0.75
     let myGray = NSColor (red: x, green: x, blue: x, alpha: 1.0)
     myGray.setFill ()

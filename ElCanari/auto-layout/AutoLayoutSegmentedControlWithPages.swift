@@ -54,6 +54,13 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   }
 
   //····················································································································
+
+  func canHug () -> Self {
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    return self
+  }
+
+  //····················································································································
   // SELECTED TAB DID CHANGE
   //····················································································································
 

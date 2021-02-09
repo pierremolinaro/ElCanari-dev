@@ -14,13 +14,21 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
-  @objc func buildGreenAndBluePoints () {
-    self.rootObject.mModelImageDoublePoint = nil
-    self.rootObject.mModelImageObjects = []
-    let pp = PackageModelImageDoublePoint (self.ebUndoManager)
-    self.rootObject.mModelImageDoublePoint = pp
-    self.rootObject.mModelImageObjects = []
-    self.rootObject.mModelImageObjects = [pp]
+  func makeSlavePad () -> (PackageSlavePad, NSDictionary) {
+     let additionalDictionary = NSMutableDictionary ()
+     for object in self.mPackageObjectsController.selectedArray {
+       if let masterPad = object as? PackagePad {
+         additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+       }
+     }
+     if additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] == nil {
+       for object in self.rootObject.packageObjects {
+         if let masterPad = object as? PackagePad {
+           additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+         }
+       }
+     }
+    return (PackageSlavePad (nil), additionalDictionary)
   }
 
   //····················································································································
