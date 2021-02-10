@@ -416,10 +416,8 @@ import Cocoa
   @IBOutlet var mBezierCurveY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mBezierCurveY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBezierInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mBottomSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mClearProgramErrorButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil
@@ -436,8 +434,6 @@ import Cocoa
   @IBOutlet var mDimensionY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mDimensionYLabelTextField : CanariDimensionTextField? = nil
   @IBOutlet var mDimensionYLabelUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDisplayBottomSidePadSwitch : EBSwitch? = nil
-  @IBOutlet var mDisplayTopSidePadSwitch : EBSwitch? = nil
   @IBOutlet var mDisplayZoneNameSwitch : EBSwitch? = nil
   @IBOutlet var mGuideInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mGuideX1TextField : CanariDimensionTextField? = nil
@@ -452,7 +448,6 @@ import Cocoa
   @IBOutlet var mIssueScrollView : NSScrollView? = nil
   @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
-  @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
@@ -463,8 +458,6 @@ import Cocoa
   @IBOutlet var mOvalXUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mOvalYTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalYUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPackageBackgroundColorColorWell : EBColorWell? = nil
-  @IBOutlet var mPackageColorColorWell : EBColorWell? = nil
   @IBOutlet var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
   @IBOutlet var mPackagePadShapePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mPackagePadStylePopUpButton : EBPopUpButton? = nil
@@ -479,7 +472,6 @@ import Cocoa
   @IBOutlet var mPadHoleWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet var mPadHoleWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mPadNumberColorWell : EBColorWell? = nil
   @IBOutlet var mPadNumberFontButton : EBFontButton? = nil
   @IBOutlet var mPadNumberTextField : EBIntObserverField? = nil
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? = nil
@@ -512,7 +504,6 @@ import Cocoa
   @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSetDimensionTextOriginAtMidX : EBButton? = nil
   @IBOutlet var mSetDimensionTextOriginAtMidY : EBButton? = nil
-  @IBOutlet var mShowPadNumberSwitch : EBSwitch? = nil
   @IBOutlet var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mSlavePadAnnularRingUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? = nil
@@ -530,7 +521,6 @@ import Cocoa
   @IBOutlet var mSlavePadXCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSlavePadYCenterTextField : CanariDimensionTextField? = nil
   @IBOutlet var mSlavePadYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mTopSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mZoneForbiddenPadNumberTableView : StringArrayTableView? = nil
   @IBOutlet var mZoneHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mZoneHeightUnitPopUp : EBPopUpButton? = nil
@@ -809,27 +799,6 @@ import Cocoa
   } ()
 
   //····················································································································
-  //    VIEW mDisplayInspectorView
-  //····················································································································
-
-  lazy var mDisplayInspectorView : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "2", bold: false, small: true)
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
-    }
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_1)
-    return vStackView
-  } ()
-
-  //····················································································································
   //    VIEW mIssuesInspectorView
   //····················································································································
 
@@ -871,6 +840,36 @@ import Cocoa
     let view_2 = AutoLayoutFlexibleSpace ()
     hStackView.appendView (view_2)
     return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mDisplayInspectorView
+  //····················································································································
+
+  lazy var mDisplayInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutTwoColumnsGridView ()
+        .add (left: self.computeImplicitView_51 (), right: self.computeImplicitView_52 ())
+        .add (left: self.computeImplicitView_53 (), right: self.computeImplicitView_54 ())
+        .add (left: self.computeImplicitView_55 (), right: self.computeImplicitView_56 ())
+        .add (left: self.computeImplicitView_57 (), right: self.computeImplicitView_58 ())
+        .add (left: self.computeImplicitView_59 (), right: self.computeImplicitView_60 ())
+        .add (left: self.computeImplicitView_61 (), right: self.computeImplicitView_62 ())
+        .add (left: self.computeImplicitView_63 (), right: self.computeImplicitView_64 ())
+        .add (left: self.computeImplicitView_65 (), right: self.computeImplicitView_66 ())
+        .add (left: self.computeImplicitView_67 (), right: self.computeImplicitView_68 ())
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
   } ()
 
   //····················································································································
@@ -1467,6 +1466,178 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 51
+  //····················································································································
+
+  fileprivate final func computeImplicitView_51 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 52
+  //····················································································································
+
+  fileprivate final func computeImplicitView_52 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_packageBackgroundColor_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 53
+  //····················································································································
+
+  fileprivate final func computeImplicitView_53 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 54
+  //····················································································································
+
+  fileprivate final func computeImplicitView_54 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_crossColorOfPackageGrid_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 55
+  //····················································································································
+
+  fileprivate final func computeImplicitView_55 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 56
+  //····················································································································
+
+  fileprivate final func computeImplicitView_56 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_lineColorOfPackageGrid_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 57
+  //····················································································································
+
+  fileprivate final func computeImplicitView_57 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Package", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 58
+  //····················································································································
+
+  fileprivate final func computeImplicitView_58 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_packageColor_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 59
+  //····················································································································
+
+  fileprivate final func computeImplicitView_59 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Line Width", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 60
+  //····················································································································
+
+  fileprivate final func computeImplicitView_60 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 61
+  //····················································································································
+
+  fileprivate final func computeImplicitView_61 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Pad Numbers")
+      .bind_value (preferences_showPadNumber_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 62
+  //····················································································································
+
+  fileprivate final func computeImplicitView_62 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_padNumberColor_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 63
+  //····················································································································
+
+  fileprivate final func computeImplicitView_63 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pad Font", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 64
+  //····················································································································
+
+  fileprivate final func computeImplicitView_64 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 65
+  //····················································································································
+
+  fileprivate final func computeImplicitView_65 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Top Side Pads")
+      .bind_value (preferences_displayPackageFrontSidePads_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 66
+  //····················································································································
+
+  fileprivate final func computeImplicitView_66 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 67
+  //····················································································································
+
+  fileprivate final func computeImplicitView_67 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Back Side Pads")
+      .bind_value (preferences_displayPackageFrontSidePads_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 68
+  //····················································································································
+
+  fileprivate final func computeImplicitView_68 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_backSidePadColor_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -1596,10 +1767,8 @@ import Cocoa
 //    checkOutletConnection (self.mBezierCurveY2TextField, "mBezierCurveY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveY2UnitPopUp, "mBezierCurveY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mBezierInspectorView, "mBezierInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-//    checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceUnitPopUp, "mDimensionDistanceUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1616,8 +1785,6 @@ import Cocoa
 //    checkOutletConnection (self.mDimensionY2UnitPopUp, "mDimensionY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mDimensionYLabelTextField, "mDimensionYLabelTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionYLabelUnitPopUp, "mDimensionYLabelUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mDisplayBottomSidePadSwitch, "mDisplayBottomSidePadSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mDisplayTopSidePadSwitch, "mDisplayTopSidePadSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mDisplayZoneNameSwitch, "mDisplayZoneNameSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mGuideInspectorView, "mGuideInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mGuideX1TextField, "mGuideX1TextField", CanariDimensionTextField.self, #file, #line)
@@ -1632,7 +1799,6 @@ import Cocoa
 //    checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
 //    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
 //    checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1643,8 +1809,6 @@ import Cocoa
 //    checkOutletConnection (self.mOvalXUnitPopUp, "mOvalXUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalYTextField, "mOvalYTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalYUnitPopUp, "mOvalYUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mPackageBackgroundColorColorWell, "mPackageBackgroundColorColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mPackageColorColorWell, "mPackageColorColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenPopupButton, "mPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPackagePadShapePopUpButton, "mPackagePadShapePopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPackagePadStylePopUpButton, "mPackagePadStylePopUpButton", EBPopUpButton.self, #file, #line)
@@ -1659,7 +1823,6 @@ import Cocoa
 //    checkOutletConnection (self.mPadHoleWidthTextField, "mPadHoleWidthTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mPadHoleWidthUnitPopUp, "mPadHoleWidthUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadInspectorView, "mPadInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mPadNumberColorWell, "mPadNumberColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mPadNumberFontButton, "mPadNumberFontButton", EBFontButton.self, #file, #line)
 //    checkOutletConnection (self.mPadNumberTextField, "mPadNumberTextField", EBIntObserverField.self, #file, #line)
 //    checkOutletConnection (self.mPadRenumberingPullDownButton, "mPadRenumberingPullDownButton", CanariPadRenumberingPullDownButton.self, #file, #line)
@@ -1692,7 +1855,6 @@ import Cocoa
 //    checkOutletConnection (self.mSegmentY2UnitPopUp, "mSegmentY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSetDimensionTextOriginAtMidX, "mSetDimensionTextOriginAtMidX", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mSetDimensionTextOriginAtMidY, "mSetDimensionTextOriginAtMidY", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mShowPadNumberSwitch, "mShowPadNumberSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadAnnularRingTextField, "mSlavePadAnnularRingTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadAnnularRingUnitPopUp, "mSlavePadAnnularRingUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadAssignmentPopUpButton, "mSlavePadAssignmentPopUpButton", CanariSlavePadAssignmentPopUpButton.self, #file, #line)
@@ -1710,7 +1872,6 @@ import Cocoa
 //    checkOutletConnection (self.mSlavePadXCenterUnitPopUp, "mSlavePadXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadYCenterTextField, "mSlavePadYCenterTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadYCenterUnitPopUp, "mSlavePadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mTopSidePadColorWell, "mTopSidePadColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mZoneForbiddenPadNumberTableView, "mZoneForbiddenPadNumberTableView", StringArrayTableView.self, #file, #line)
 //    checkOutletConnection (self.mZoneHeightTextField, "mZoneHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mZoneHeightUnitPopUp, "mZoneHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -2224,17 +2385,7 @@ import Cocoa
     self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
-    self.mShowPadNumberSwitch?.bind_value (preferences_showPadNumber_property, file: #file, line: #line)
-    self.mCrossColorOfPackageGridColorWell?.bind_color (preferences_crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
-    self.mLineColorOfPackageGridColorWell?.bind_color (preferences_lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
-    self.mPackageColorColorWell?.bind_color (preferences_packageColor_property, file: #file, line: #line, sendContinously:false)
-    self.mTopSidePadColorWell?.bind_color (preferences_frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    self.mBottomSidePadColorWell?.bind_color (preferences_backSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    self.mPackageBackgroundColorColorWell?.bind_color (preferences_packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
-    self.mPadNumberColorWell?.bind_color (preferences_padNumberColor_property, file: #file, line: #line, sendContinously:false)
-    self.mDisplayTopSidePadSwitch?.bind_value (preferences_displayPackageFrontSidePads_property, file: #file, line: #line)
-    self.mDisplayBottomSidePadSwitch?.bind_value (preferences_displayPackageBackSidePads_property, file: #file, line: #line)
     self.mPadNumberFontButton?.bind_fontValue (preferences_padNumberFont_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
@@ -2368,9 +2519,9 @@ import Cocoa
     self.mPackagePageInspectorMasterView.ebCleanUp ()
     self.mPackagePage.ebCleanUp ()
     self.mSelectedObjectsInspectorView.ebCleanUp ()
-    self.mDisplayInspectorView.ebCleanUp ()
     self.mIssuesInspectorView.ebCleanUp ()
     self.mGridZoomInspectorView.ebCleanUp ()
+    self.mDisplayInspectorView.ebCleanUp ()
     self.mProgramPage.ebCleanUp ()
     self.mInfosPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
@@ -2505,17 +2656,7 @@ import Cocoa
     self.mZoneForbiddenPadNumberTableView?.unbind_array ()
     self.mIssueTextField?.unbind_valueObserver ()
     self.mIssueTableView?.unbind_issues ()
-    self.mShowPadNumberSwitch?.unbind_value ()
-    self.mCrossColorOfPackageGridColorWell?.unbind_color ()
-    self.mLineColorOfPackageGridColorWell?.unbind_color ()
-    self.mPackageColorColorWell?.unbind_color ()
-    self.mTopSidePadColorWell?.unbind_color ()
-    self.mBottomSidePadColorWell?.unbind_color ()
-    self.mPackageBackgroundColorColorWell?.unbind_color ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
-    self.mPadNumberColorWell?.unbind_color ()
-    self.mDisplayTopSidePadSwitch?.unbind_value ()
-    self.mDisplayBottomSidePadSwitch?.unbind_value ()
     self.mPadNumberFontButton?.unbind_fontValue ()
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
@@ -2618,10 +2759,8 @@ import Cocoa
     self.mBezierCurveY2TextField?.ebCleanUp ()
     self.mBezierCurveY2UnitPopUp?.ebCleanUp ()
     self.mBezierInspectorView?.ebCleanUp ()
-    self.mBottomSidePadColorWell?.ebCleanUp ()
     self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mCrossColorOfPackageGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mDimensionDistanceTextField?.ebCleanUp ()
     self.mDimensionDistanceUnitPopUp?.ebCleanUp ()
@@ -2638,8 +2777,6 @@ import Cocoa
     self.mDimensionY2UnitPopUp?.ebCleanUp ()
     self.mDimensionYLabelTextField?.ebCleanUp ()
     self.mDimensionYLabelUnitPopUp?.ebCleanUp ()
-    self.mDisplayBottomSidePadSwitch?.ebCleanUp ()
-    self.mDisplayTopSidePadSwitch?.ebCleanUp ()
     self.mDisplayZoneNameSwitch?.ebCleanUp ()
     self.mGuideInspectorView?.ebCleanUp ()
     self.mGuideX1TextField?.ebCleanUp ()
@@ -2654,7 +2791,6 @@ import Cocoa
     self.mIssueScrollView?.ebCleanUp ()
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
-    self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
@@ -2665,8 +2801,6 @@ import Cocoa
     self.mOvalXUnitPopUp?.ebCleanUp ()
     self.mOvalYTextField?.ebCleanUp ()
     self.mOvalYUnitPopUp?.ebCleanUp ()
-    self.mPackageBackgroundColorColorWell?.ebCleanUp ()
-    self.mPackageColorColorWell?.ebCleanUp ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
     self.mPackagePadShapePopUpButton?.ebCleanUp ()
     self.mPackagePadStylePopUpButton?.ebCleanUp ()
@@ -2681,7 +2815,6 @@ import Cocoa
     self.mPadHoleWidthTextField?.ebCleanUp ()
     self.mPadHoleWidthUnitPopUp?.ebCleanUp ()
     self.mPadInspectorView?.ebCleanUp ()
-    self.mPadNumberColorWell?.ebCleanUp ()
     self.mPadNumberFontButton?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
@@ -2714,7 +2847,6 @@ import Cocoa
     self.mSegmentY2UnitPopUp?.ebCleanUp ()
     self.mSetDimensionTextOriginAtMidX?.ebCleanUp ()
     self.mSetDimensionTextOriginAtMidY?.ebCleanUp ()
-    self.mShowPadNumberSwitch?.ebCleanUp ()
     self.mSlavePadAnnularRingTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingUnitPopUp?.ebCleanUp ()
     self.mSlavePadAssignmentPopUpButton?.ebCleanUp ()
@@ -2732,7 +2864,6 @@ import Cocoa
     self.mSlavePadXCenterUnitPopUp?.ebCleanUp ()
     self.mSlavePadYCenterTextField?.ebCleanUp ()
     self.mSlavePadYCenterUnitPopUp?.ebCleanUp ()
-    self.mTopSidePadColorWell?.ebCleanUp ()
     self.mZoneForbiddenPadNumberTableView?.ebCleanUp ()
     self.mZoneHeightTextField?.ebCleanUp ()
     self.mZoneHeightUnitPopUp?.ebCleanUp ()
@@ -2788,10 +2919,8 @@ import Cocoa
     self.mBezierCurveY2TextField = nil
     self.mBezierCurveY2UnitPopUp = nil
     self.mBezierInspectorView = nil
-    self.mBottomSidePadColorWell = nil
     self.mClearProgramErrorButton = nil
     self.mCommentTextView = nil
-    self.mCrossColorOfPackageGridColorWell = nil
     self.mDeselectIssueButton = nil
     self.mDimensionDistanceTextField = nil
     self.mDimensionDistanceUnitPopUp = nil
@@ -2808,8 +2937,6 @@ import Cocoa
     self.mDimensionY2UnitPopUp = nil
     self.mDimensionYLabelTextField = nil
     self.mDimensionYLabelUnitPopUp = nil
-    self.mDisplayBottomSidePadSwitch = nil
-    self.mDisplayTopSidePadSwitch = nil
     self.mDisplayZoneNameSwitch = nil
     self.mGuideInspectorView = nil
     self.mGuideX1TextField = nil
@@ -2824,7 +2951,6 @@ import Cocoa
     self.mIssueScrollView = nil
     self.mIssueTableView = nil
     self.mIssueTextField = nil
-    self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil
@@ -2835,8 +2961,6 @@ import Cocoa
     self.mOvalXUnitPopUp = nil
     self.mOvalYTextField = nil
     self.mOvalYUnitPopUp = nil
-    self.mPackageBackgroundColorColorWell = nil
-    self.mPackageColorColorWell = nil
     self.mPackageDrawingWidthMultipliedByTenPopupButton = nil
     self.mPackagePadShapePopUpButton = nil
     self.mPackagePadStylePopUpButton = nil
@@ -2851,7 +2975,6 @@ import Cocoa
     self.mPadHoleWidthTextField = nil
     self.mPadHoleWidthUnitPopUp = nil
     self.mPadInspectorView = nil
-    self.mPadNumberColorWell = nil
     self.mPadNumberFontButton = nil
     self.mPadNumberTextField = nil
     self.mPadRenumberingPullDownButton = nil
@@ -2884,7 +3007,6 @@ import Cocoa
     self.mSegmentY2UnitPopUp = nil
     self.mSetDimensionTextOriginAtMidX = nil
     self.mSetDimensionTextOriginAtMidY = nil
-    self.mShowPadNumberSwitch = nil
     self.mSlavePadAnnularRingTextField = nil
     self.mSlavePadAnnularRingUnitPopUp = nil
     self.mSlavePadAssignmentPopUpButton = nil
@@ -2902,7 +3024,6 @@ import Cocoa
     self.mSlavePadXCenterUnitPopUp = nil
     self.mSlavePadYCenterTextField = nil
     self.mSlavePadYCenterUnitPopUp = nil
-    self.mTopSidePadColorWell = nil
     self.mZoneForbiddenPadNumberTableView = nil
     self.mZoneHeightTextField = nil
     self.mZoneHeightUnitPopUp = nil

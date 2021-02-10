@@ -9,13 +9,14 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: NSRect (x: 0, y: 14, width: 42, height: 19))  // Required by ElCapitan
     noteObjectAllocation (self)
     self.isEditable = false
     self.isEnabled = true
     self.drawsBackground = false
     self.isBordered = false
     self.controlSize = .small
+    self.alignment = .center
   }
 
   //····················································································································
@@ -28,6 +29,12 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize { // Required by ElCapitan
+    return NSSize (width: 42, height: 19)
   }
 
   //····················································································································
@@ -64,11 +71,6 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
     case .single (let v) :
       self.enable (fromValueBinding: true)
       self.stringValue = String (v)
-      self.needsUpdateConstraints = true
-      self.needsLayout = true
-      Swift.print ("self.intrinsicContentSize \(self.intrinsicContentSize)")
-      Swift.print ("self.fittingSize \(self.fittingSize)")
-      self.frame.size = self.intrinsicContentSize
     }
   }
 
@@ -84,8 +86,8 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
     self.mVersionShouldChangeController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersionShouldChange (from: inObject) }
-     )
-     return self
+    )
+    return self
   }
 
   //····················································································································
@@ -100,12 +102,7 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
       break
     case .single (let v) :
       if v {
-        self.textColor = NSColor (
-          calibratedRed: 0.10588235294117647,
-          green: 0.6784313725490196,
-          blue: 0.9725490196078431,
-          alpha: 1.0
-        )
+        self.textColor = NSColor.systemBlue
       }else{
         self.textColor = NSColor.black
       }

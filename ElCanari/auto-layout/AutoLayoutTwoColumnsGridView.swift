@@ -59,6 +59,7 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
     let hStack = AutoLayoutHorizontalStackView ()
     hStack.appendView (inLeftView)
     hStack.appendView (inRightView)
+    hStack.alignment = .centerY
     self.appendView (hStack)
     self.mLastLeftView = inLeftView
     self.mLastRightView = inRightView

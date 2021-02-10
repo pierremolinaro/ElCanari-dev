@@ -9,13 +9,15 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: NSRect (x: 0, y: 14, width: 83, height: 19))  // Required by ElCapitan
+//    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
     self.font = NSFont.userFixedPitchFont (ofSize: NSFont.systemFontSize)
     self.controlSize = .small
-    noteObjectAllocation (self)
+    self.alignment = .center
   }
 
   //····················································································································
@@ -28,6 +30,12 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {  // Required by ElCapitan
+    return NSSize (width: 83, height: 19)
   }
 
   //····················································································································
@@ -58,13 +66,11 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   private func update (from model : EBReadOnlyProperty_UInt32) {
     switch model.selection {
-    case .empty :
+    case .empty, .multiple :
       self.stringValue = "—"
     case .single (let v) :
       self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
 //      Swift.print ("Signature Display -- \(self.stringValue)")
-    case .multiple :
-      self.stringValue = "—"
     }
   }
 

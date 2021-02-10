@@ -228,8 +228,7 @@ private var gDebugObject : EBAllocationDebug? = nil
    override init () {
     super.init ()
     assert (gDebugObject == nil, "EBAllocationDebug already exists", file: #file, line: #line)
-    let nc = NotificationCenter.default
-    nc.addObserver (self,
+    NotificationCenter.default.addObserver (self,
       selector: #selector (EBAllocationDebug.applicationWillTerminateAction(_:)),
       name: NSApplication.willTerminateNotification,
       object: nil
@@ -318,9 +317,9 @@ private var gDebugObject : EBAllocationDebug? = nil
     }
     if self.mRefreshTimer == nil {
       let timer = Timer (
-        timeInterval: 5.0,
+        timeInterval: 1.0,
         target: self,
-        selector: #selector (EBAllocationDebug.refreshDisplay(_:)),
+        selector: #selector (Self.refreshDisplay(_:)),
         userInfo: nil,
         repeats: true
       )
@@ -386,22 +385,6 @@ private var gDebugObject : EBAllocationDebug? = nil
     ud.set (self.mAllocationStatsWindowVisibleAtLaunch, forKey: prefsEnableObjectAllocationStatsWindowVisible)
     ud.set (self.mDisplayFilter, forKey: prefsEnableObjectAllocationStatsDisplayFilter)
   }
-
-  //····················································································································
-  //    performSnapShotAction:
-  //····················································································································
-
-//  func removeDeallocatedObjects () {
-//    var newList : EBWeakObject? = nil
-//    while let weakObject = gLiveObjectList {
-//      gLiveObjectList = weakObject.mNextObject
-//      if weakObject.mWeakReference != nil {
-//        weakObject.mNextObject = newList
-//        newList = weakObject
-//      }
-//    }
-//    gLiveObjectList = newList
-//  }
 
   //····················································································································
   //    performSnapShotAction:

@@ -251,11 +251,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     space
   }
   
-  stackView mDisplayInspectorView vStack {
-    hStack { space StaticLabel (title: "2", bold: no, small: yes) space }
-    space
-  }
-
   stackView mIssuesInspectorView vStack {
     hStack { space StaticLabel (title: "3", bold: no, small: yes) space }
     space
@@ -769,7 +764,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 
 //  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
 //  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
-  outlet EBSwitch mShowPadNumberSwitch $value prefs.showPadNumber ;
 //  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
 //  outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
 //  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
@@ -777,16 +771,66 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen (sendContinously:yes) ;
 
 //--- Display inspector
-  outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid (sendContinously:no) ;
-  outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid (sendContinously:no) ;
-  outlet EBColorWell mPackageColorColorWell $color prefs.packageColor (sendContinously:no) ;
-  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
-  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor (sendContinously:no) ;
-  outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor (sendContinously:no) ;
+
+  stackView mDisplayInspectorView vStack {
+    hStack {
+      space
+      TwoColumnsGridView {
+        add (
+          left: StaticLabel (title: "Background", bold: no, small: yes),
+          right: ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) }
+        )
+        add (
+          left: StaticLabel (title: "Cross Grid", bold: no, small: yes),
+          right: ColorWell { $color prefs.crossColorOfPackageGrid (sendContinously:no) }
+        )
+        add (
+          left: StaticLabel (title: "Line Grid", bold: no, small: yes),
+          right: ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) }
+        )
+        add (
+          left: StaticLabel (title: "Package", bold: no, small: yes),
+          right: ColorWell { $color prefs.packageColor (sendContinously:no) }
+        )
+        add (
+          left: StaticLabel (title: "Line Width", bold: no, small: yes),
+          right: space
+        )
+        add (
+          left: Switch (title: "Pad Numbers") { $value prefs.showPadNumber },
+          right: ColorWell { $color prefs.padNumberColor (sendContinously:no) }
+        )
+        add (
+          left: StaticLabel (title: "Pad Font", bold: no, small: yes),
+          right: space
+        )
+        add (
+          left: Switch (title: "Top Side Pads") { $value prefs.displayPackageFrontSidePads },
+          right: ColorWell { $color prefs.frontSidePadColor (sendContinously:no) }
+        )
+        add (
+          left: Switch (title: "Back Side Pads") { $value prefs.displayPackageFrontSidePads },
+          right: ColorWell { $color prefs.backSidePadColor (sendContinously:no) }
+        )
+      }
+      space
+    }
+    space
+  }
+
+
+//  outlet EBSwitch mShowPadNumberSwitch $value prefs.showPadNumber ;
+
+//  outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid (sendContinously:no) ;
+//  outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid (sendContinously:no) ;
+//  outlet EBColorWell mPackageColorColorWell $color prefs.packageColor (sendContinously:no) ;
+//  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
+//  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor (sendContinously:no) ;
+//  outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor (sendContinously:no) ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
-  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor (sendContinously:no) ;
-  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageFrontSidePads ;
-  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
+//  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor (sendContinously:no) ;
+//  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageFrontSidePads ;
+//  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
   outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
 
 //--- Grid
