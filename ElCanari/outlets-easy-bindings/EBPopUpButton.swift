@@ -24,6 +24,12 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedTagController?.updateModel (sender: self)
     self.mSelectedIndexController?.updateModel (sender: self)

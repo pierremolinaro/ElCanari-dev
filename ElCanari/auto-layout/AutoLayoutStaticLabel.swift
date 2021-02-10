@@ -25,12 +25,19 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.controlSize = inSmall ? .small : .regular
 //    let size = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
 //    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
+    self.frame.size = self.intrinsicContentSize
   }
 
   //····················································································································
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

@@ -31,6 +31,11 @@ class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtocol, NST
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 56.0, height: 19.0)
   }

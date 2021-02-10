@@ -10,11 +10,13 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   private var mDocumentView : AutoLayoutStackView
   private var mPages = [AutoLayoutStackView] ()
+  private let mEqualWidth : Bool
 
   //····················································································································
 
-  init (documentView inDocumentView : AutoLayoutStackView) {
+  init (documentView inDocumentView : AutoLayoutStackView, equalWidth inEqualWidth : Bool) {
     self.mDocumentView = inDocumentView
+    self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.controlSize = .small
@@ -28,6 +30,12 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -50,6 +58,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 //    ]
 //    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
     self.mPages.append (inPageView)
+    self.frame.size = self.intrinsicContentSize
     return self
   }
 
@@ -58,6 +67,19 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   func canHug () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
+  }
+
+  //····················································································································
+
+  override func resizeSubviews (withOldSize oldSize : NSSize) {
+    super.resizeSubviews (withOldSize: oldSize)
+    //Swift.print ("\(self.bounds)")
+    if self.mEqualWidth, self.segmentCount > 1 {
+      let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
+      for i in 0 ..< self.segmentCount {
+        self.setWidth (width, forSegment: i)
+      }
+    }
   }
 
   //····················································································································

@@ -45,6 +45,12 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+  
+  //····················································································································
+
   override var fittingSize : NSSize {
     return NSSize (width: 28.0, height: 28.0)
   }

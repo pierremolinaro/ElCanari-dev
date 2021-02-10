@@ -25,6 +25,12 @@ class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+  
+  //····················································································································
+
   override func draw (_ inDirtyRect : NSRect) {
     if DEBUG_AUTO_LAYOUT {
       DEBUG_FILL_COLOR.setFill ()

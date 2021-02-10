@@ -37,6 +37,12 @@ class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+  
+  //····················································································································
+
   override func ebCleanUp () {
     self.mSelectedIndexController?.unregister ()
     self.mSelectedIndexController = nil

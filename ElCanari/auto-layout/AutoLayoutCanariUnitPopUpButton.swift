@@ -37,6 +37,12 @@ class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+  
+  //····················································································································
+
   override func ebCleanUp () {
     self.mSelectedUnitController?.unregister ()
     self.mSelectedUnitController = nil

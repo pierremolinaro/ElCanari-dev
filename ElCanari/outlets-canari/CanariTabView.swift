@@ -30,6 +30,12 @@ class CanariTabView : NSTabView, NSTabViewDelegate, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   func tabView (_ tabView : NSTabView, didSelect inOptionalTabViewItem : NSTabViewItem?) {
     if let tabViewItem = inOptionalTabViewItem {
       let index = self.indexOfTabViewItem (tabViewItem)

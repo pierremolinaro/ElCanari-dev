@@ -31,6 +31,12 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   internal func setDefinedCharacterSet (_ inSet : Set <Int>) {
     self.mDefinedCharacterSet = inSet
     self.isEnabled = inSet.count > 0

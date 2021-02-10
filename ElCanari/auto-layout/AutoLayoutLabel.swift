@@ -31,6 +31,12 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mTitleController?.unregister ()
     self.mTitleController = nil

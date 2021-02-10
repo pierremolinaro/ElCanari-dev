@@ -31,6 +31,12 @@ class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func awakeFromNib () {
     self.configure ()
     super.awakeFromNib ()

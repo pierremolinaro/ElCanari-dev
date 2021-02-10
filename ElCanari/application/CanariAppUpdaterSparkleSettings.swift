@@ -33,6 +33,12 @@ import Cocoa
   
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func awakeFromNib () {
     if let updater = self.mSparkleUpdater {
       self.mUpdateCheckbox?.bind (

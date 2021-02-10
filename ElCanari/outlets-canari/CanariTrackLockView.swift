@@ -101,6 +101,12 @@ class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   fileprivate func getPoints () -> (NSPoint, NSPoint) {
     let r = self.bounds
     let center = r.center

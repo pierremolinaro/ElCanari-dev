@@ -23,6 +23,12 @@ class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mSelectedTagController?.unregister ()
     self.mSelectedTagController = nil

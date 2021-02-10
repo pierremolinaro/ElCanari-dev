@@ -33,6 +33,12 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func removeFromSuperview() {
     super.removeFromSuperview ()
     if let timer = self.mScrollTimer {

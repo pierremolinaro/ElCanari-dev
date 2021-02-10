@@ -24,6 +24,12 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     for view in self.subviews {
       view.ebCleanUp ()

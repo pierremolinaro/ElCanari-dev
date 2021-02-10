@@ -29,12 +29,19 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
     self.controlSize = inSmall ? .small : .regular
+    self.frame.size = self.intrinsicContentSize
   }
 
   //····················································································································
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

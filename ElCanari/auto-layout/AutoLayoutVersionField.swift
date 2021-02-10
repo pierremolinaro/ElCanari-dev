@@ -10,17 +10,24 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   init () {
     super.init (frame: NSRect ())
+    noteObjectAllocation (self)
     self.isEditable = false
+    self.isEnabled = true
     self.drawsBackground = false
     self.isBordered = false
     self.controlSize = .small
-    noteObjectAllocation (self)
   }
 
   //····················································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -51,15 +58,17 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   private func updateVersion (from inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
-    case .empty :
+    case .empty, .multiple :
       self.enable (fromValueBinding: false)
       self.stringValue = "—"
     case .single (let v) :
       self.enable (fromValueBinding: true)
       self.stringValue = String (v)
-    case .multiple :
-      self.enable (fromValueBinding: false)
-      self.stringValue = "—"
+      self.needsUpdateConstraints = true
+      self.needsLayout = true
+      Swift.print ("self.intrinsicContentSize \(self.intrinsicContentSize)")
+      Swift.print ("self.fittingSize \(self.fittingSize)")
+      self.frame.size = self.intrinsicContentSize
     }
   }
 

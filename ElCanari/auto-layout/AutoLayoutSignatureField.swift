@@ -26,6 +26,12 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mController?.unregister ()
     self.mController = nil

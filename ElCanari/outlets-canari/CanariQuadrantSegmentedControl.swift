@@ -28,6 +28,12 @@ class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtoc
   
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
     self.mController?.updateModel (self)
     return super.sendAction (inAction, to:target)

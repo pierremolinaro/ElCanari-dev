@@ -33,6 +33,12 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   private func configureFormatter () {
     let numberFormatter = NumberFormatter ()
     numberFormatter.formatterBehavior = .behavior10_4

@@ -3246,6 +3246,7 @@
 		CFCC545025D2DE5B009C186D /* document-AutoLayoutPackageDocument-make-slave-pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC544F25D2DE5B009C186D /* document-AutoLayoutPackageDocument-make-slave-pad.swift */; };
 		CFCC545225D2E63E009C186D /* AutoLayoutIntField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC545125D2E63E009C186D /* AutoLayoutIntField.swift */; };
 		CFCC545425D2F937009C186D /* AutoLayout--debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC545325D2F937009C186D /* AutoLayout--debug.swift */; };
+		CFCC553C25D3286D009C186D /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC553B25D3286D009C186D /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift */; };
 		CFCC7F4A25CF211700E4F8FC /* AutoLayoutSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC7F4725CF211700E4F8FC /* AutoLayoutSlider.swift */; };
 		CFCCB35122B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */; };
 		CFCCB35222B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */; };
@@ -5022,6 +5023,7 @@
 		CFCC544F25D2DE5B009C186D /* document-AutoLayoutPackageDocument-make-slave-pad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "document-AutoLayoutPackageDocument-make-slave-pad.swift"; sourceTree = "<group>"; };
 		CFCC545125D2E63E009C186D /* AutoLayoutIntField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutIntField.swift; sourceTree = "<group>"; };
 		CFCC545325D2F937009C186D /* AutoLayout--debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayout--debug.swift"; sourceTree = "<group>"; };
+		CFCC553B25D3286D009C186D /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift"; sourceTree = "<group>"; };
 		CFCC7F4725CF211700E4F8FC /* AutoLayoutSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSlider.swift; sourceTree = "<group>"; };
 		CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-boardTextSelectionController.swift"; sourceTree = "<group>"; };
 		CFCCB35322B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-BoardTextVerticalAlignment.swift"; sourceTree = "<group>"; };
@@ -6522,6 +6524,7 @@
 		CF9C675025CAC80300A00D5C /* Auto Layout Document — Package */ = {
 			isa = PBXGroup;
 			children = (
+				CFCC553B25D3286D009C186D /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift */,
 				CF9C675525CAC83600A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift */,
 				CF9C676525CAC83700A00D5C /* action-AutoLayoutPackageDocument-clearProgramErrorAction.swift */,
 				CF9C676725CAC83800A00D5C /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift */,
@@ -11042,6 +11045,7 @@
 				CF9C637225CABE5C00A00D5C /* tomany-SymbolTypeInDevice.swift in Sources */,
 				CF9C637325CABE5C00A00D5C /* tomany-ComponentSymbolInProject.swift in Sources */,
 				CF9C637425CABE5C00A00D5C /* transient-WireInSchematic-objectDisplay.swift in Sources */,
+				CFCC553C25D3286D009C186D /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */,
 				CF9C637625CABE5C00A00D5C /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */,
 				CF625BBF25D0197A00072462 /* AutoLayoutButton.swift in Sources */,
 				CF9C637725CABE5C00A00D5C /* selectionController-PackageDocument-mPackageBezierCurveSelectionController.swift in Sources */,

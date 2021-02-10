@@ -30,6 +30,12 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mPageViews.removeAll ()
     self.mAttachedView = nil

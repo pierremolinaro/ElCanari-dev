@@ -48,6 +48,12 @@ class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDele
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     return NSSize (width: self.mWidth, height: 19.0)
   }

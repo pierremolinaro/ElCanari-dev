@@ -79,7 +79,7 @@ extern autolayout class Label (small: Bool) {
   $title transient String
 }
 
-extern autolayout class SegmentedControlWithPages (documentView: view) {
+extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool) {
   func canHug ()
   func addPage (title: String, pageView : view)
   $selectedPage property Int

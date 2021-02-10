@@ -25,6 +25,12 @@ class EBFontButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     showFontManager ()
     return super.sendAction (action, to: to)

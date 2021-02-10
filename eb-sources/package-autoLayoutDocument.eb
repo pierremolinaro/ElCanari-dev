@@ -8,7 +8,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //   TOOL BAR
 //----------------------------------------------------------------------------------------------------------------------
 
-  toolbarItem "Page" : SegmentedControlWithPages (documentView: stackView mPageMasterView) {
+  toolbarItem "Page" : SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no) {
     addPage (title: "Model Image", pageView: stackView mModelImagePage)
     addPage (title: "Package", pageView: stackView mPackagePage)
     addPage (title: "Program", pageView: stackView mProgramPage)
@@ -194,7 +194,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         DragSourceButton addPackageDimension (tooltip: "Add Dimension") { $image self.addDimensionButtonImage }
       }
       TwoColumnsGridView {
-    //    set (margins: 8)
         add (
           left: StaticLabel (title: "Model Image Opacity", bold: no, small: yes),
           right: Slider (min:0, max:1, ticks: 11) {
@@ -214,7 +213,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           }
         )   
       }
-      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView) {
+      SegmentedControlWithPages packagePageSegmentedControl (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes) {
         canHug ()
         addPage (title: "0", pageView: stackView mSelectedObjectsInspectorView)
         addPage (title: "1", pageView: stackView mGridZoomInspectorView)
@@ -252,11 +251,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     space
   }
   
-  stackView mGridZoomInspectorView vStack {
-    hStack { space StaticLabel (title: "1", bold: no, small: yes) space }
-    space
-  }
-
   stackView mDisplayInspectorView vStack {
     hStack { space StaticLabel (title: "2", bold: no, small: yes) space }
     space
@@ -723,14 +717,64 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //  outlet EBScrollView mComposedPackageScrollView ;
 
 //--- Zoom and flip inspector
-  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
-  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
+
+  stackView mGridZoomInspectorView hStack {
+    space
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "Grid Style", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.gridStyle}
+      )
+      add (
+        left: StaticLabel (title: "Grid Display", bold: no, small: yes),
+        right:  TaggedPopUpButton {
+          add (title: "1 Step", withTag: 1)
+          add (title: "2 Steps", withTag: 2)
+          add (title: "5 Steps", withTag: 5)
+          add (title: "8 Steps", withTag: 8)
+          add (title: "10 Steps", withTag: 10)
+          $selectedTag root.gridDisplayFactor
+        }
+      )
+      add (
+        left: StaticLabel (title: "Grid Step", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit root.gridStep, root.gridStepUnit }
+      )
+      add (
+        left: StaticLabel (title: "Flip", bold: no, small: yes),
+        right: Switch (title: "Horizontal") { $value root.horizontalFlip }
+      )
+      add (
+        left: FlexibleSpace,
+        right: Switch (title: "Vertical") { $value root.verticalFlip }
+      )
+      add (
+        left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
+        right: CanariUnitPopUpButton { $unit root.xPlacardUnit }
+      )
+      add (
+        left: StaticLabel (title: "Y", bold: no, small: yes),
+        right: CanariUnitPopUpButton { $unit root.yPlacardUnit }
+      )
+      add (
+        left: StaticLabel (title: "Knob Size", bold: no, small: yes),
+        right: Slider (min:7, max:41, ticks: 18) {
+          $intValue root.knobSizeMultpliedByTen (sendContinously : yes)
+        }
+      )
+    }
+    space
+  }
+
+
+//  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
+//  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
   outlet EBSwitch mShowPadNumberSwitch $value prefs.showPadNumber ;
-  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
-  outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
-  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
-  outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
-  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen (sendContinously:yes) ;
+//  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
+//  outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
+//  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
+//  outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
+//  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen (sendContinously:yes) ;
 
 //--- Display inspector
   outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid (sendContinously:no) ;
@@ -746,10 +790,10 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
 
 //--- Grid
-  outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
-  outlet CanariDimensionTextField mGridTextField
-     $dimensionAndUnit root.gridStep, root.gridStepUnit
-  ;
+//  outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
+//  outlet CanariDimensionTextField mGridTextField
+//     $dimensionAndUnit root.gridStep, root.gridStepUnit
+//  ;
 
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -20,6 +20,11 @@ func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAY
 
 //----------------------------------------------------------------------------------------------------------------------
 
+func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func reuseTableViewCells () -> Bool {
   return true
 }

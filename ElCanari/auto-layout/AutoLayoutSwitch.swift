@@ -32,6 +32,12 @@ class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mValueController?.unregister ()
     self.mValueController = nil

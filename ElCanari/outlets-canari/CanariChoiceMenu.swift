@@ -30,6 +30,12 @@ class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   fileprivate func performInit () {
     for item in self.items {
       item.target = self

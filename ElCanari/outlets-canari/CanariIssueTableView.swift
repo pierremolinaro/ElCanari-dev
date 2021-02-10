@@ -41,6 +41,12 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.dataSource = nil
     self.delegate = nil

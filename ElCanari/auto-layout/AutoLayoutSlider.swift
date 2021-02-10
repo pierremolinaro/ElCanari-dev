@@ -35,6 +35,12 @@ class AutoLayoutSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mDoubleValueController?.unregister ()
     self.mDoubleValueController = nil

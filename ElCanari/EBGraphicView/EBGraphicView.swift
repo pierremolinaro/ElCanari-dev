@@ -42,6 +42,12 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func awakeFromNib () {
     super.awakeFromNib ()
     if !self.wantsLayer {

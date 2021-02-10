@@ -32,6 +32,12 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func awakeFromNib () {
     self.cell?.allowsUndo = true
     if self.formatter != nil {

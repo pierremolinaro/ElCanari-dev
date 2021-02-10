@@ -37,6 +37,12 @@ final class EBFocusRingView : NSView, EBUserClassNameProtocol, EBFocusRingViewPr
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   override func awakeFromNib () {
     super.awakeFromNib ()
     if self.subviews.count == 1, let scrollView = self.subviews [0] as? EBScrollView {

@@ -26,6 +26,12 @@ class EBTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
   private final func customInit () {
     noteObjectAllocation (self)
     self.target = self
