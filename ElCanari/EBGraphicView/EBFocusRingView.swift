@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EBFocusRingViewProtocol : class {
+protocol EBFocusRingViewProtocol : AnyObject {
   func setFocusRing (_ inValue : Bool)
 }
 

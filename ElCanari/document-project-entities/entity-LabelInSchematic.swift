@@ -6,37 +6,37 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol LabelInSchematic_mOrientation : class {
+protocol LabelInSchematic_mOrientation : AnyObject {
   var mOrientation : QuadrantRotation { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol LabelInSchematic_location : class {
+protocol LabelInSchematic_location : AnyObject {
   var location : CanariPoint? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol LabelInSchematic_netName : class {
+protocol LabelInSchematic_netName : AnyObject {
   var netName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol LabelInSchematic_selectionDisplay : class {
+protocol LabelInSchematic_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol LabelInSchematic_netClassName : class {
+protocol LabelInSchematic_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol LabelInSchematic_objectDisplay : class {
+protocol LabelInSchematic_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

@@ -6,85 +6,85 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mX : class {
+protocol BoardText_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mY : class {
+protocol BoardText_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mFontSize : class {
+protocol BoardText_mFontSize : AnyObject {
   var mFontSize : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mLayer : class {
+protocol BoardText_mLayer : AnyObject {
   var mLayer : BoardTextLayer { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mText : class {
+protocol BoardText_mText : AnyObject {
   var mText : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mHorizontalAlignment : class {
+protocol BoardText_mHorizontalAlignment : AnyObject {
   var mHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mVerticalAlignment : class {
+protocol BoardText_mVerticalAlignment : AnyObject {
   var mVerticalAlignment : BoardTextVerticalAlignment { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mRotation : class {
+protocol BoardText_mRotation : AnyObject {
   var mRotation : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mWeight : class {
+protocol BoardText_mWeight : AnyObject {
   var mWeight : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_mOblique : class {
+protocol BoardText_mOblique : AnyObject {
   var mOblique : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_objectDisplay : class {
+protocol BoardText_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_selectionDisplay : class {
+protocol BoardText_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_fontName : class {
+protocol BoardText_fontName : AnyObject {
   var fontName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardText_signatureForERCChecking : class {
+protocol BoardText_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

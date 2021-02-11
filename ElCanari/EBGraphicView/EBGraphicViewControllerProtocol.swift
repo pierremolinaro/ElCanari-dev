@@ -8,7 +8,7 @@ import Cocoa
 //   EBGraphicViewControllerProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EBGraphicViewControllerProtocol : class {
+protocol EBGraphicViewControllerProtocol : AnyObject {
 
   func bind_ebView (_ inGraphicView : EBGraphicView?)
 

@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol HiddenEBProtocol : class {
+protocol HiddenEBProtocol : AnyObject {
   var isHidden : Bool { get set }
 }
 

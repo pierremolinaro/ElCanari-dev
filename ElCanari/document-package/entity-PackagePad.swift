@@ -6,175 +6,175 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_xCenter : class {
+protocol PackagePad_xCenter : AnyObject {
   var xCenter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_yCenter : class {
+protocol PackagePad_yCenter : AnyObject {
   var yCenter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_width : class {
+protocol PackagePad_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_height : class {
+protocol PackagePad_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_holeWidth : class {
+protocol PackagePad_holeWidth : AnyObject {
   var holeWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_holeHeight : class {
+protocol PackagePad_holeHeight : AnyObject {
   var holeHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padShape : class {
+protocol PackagePad_padShape : AnyObject {
   var padShape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padStyle : class {
+protocol PackagePad_padStyle : AnyObject {
   var padStyle : PadStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padNumber : class {
+protocol PackagePad_padNumber : AnyObject {
   var padNumber : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_xCenterUnit : class {
+protocol PackagePad_xCenterUnit : AnyObject {
   var xCenterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_yCenterUnit : class {
+protocol PackagePad_yCenterUnit : AnyObject {
   var yCenterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_widthUnit : class {
+protocol PackagePad_widthUnit : AnyObject {
   var widthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_heightUnit : class {
+protocol PackagePad_heightUnit : AnyObject {
   var heightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_holeWidthUnit : class {
+protocol PackagePad_holeWidthUnit : AnyObject {
   var holeWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_holeHeightUnit : class {
+protocol PackagePad_holeHeightUnit : AnyObject {
   var holeHeightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_annularRingUnit : class {
+protocol PackagePad_annularRingUnit : AnyObject {
   var annularRingUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_selectionDisplay : class {
+protocol PackagePad_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padNameForDisplay : class {
+protocol PackagePad_padNameForDisplay : AnyObject {
   var padNameForDisplay : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_issues : class {
+protocol PackagePad_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padIsTraversing : class {
+protocol PackagePad_padIsTraversing : AnyObject {
   var padIsTraversing : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_annularRing : class {
+protocol PackagePad_annularRing : AnyObject {
   var annularRing : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padNameWithZoneName : class {
+protocol PackagePad_padNameWithZoneName : AnyObject {
   var padNameWithZoneName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_zoneName : class {
+protocol PackagePad_zoneName : AnyObject {
   var zoneName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_noZone : class {
+protocol PackagePad_noZone : AnyObject {
   var noZone : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_zoneAllowsManualRenumbering : class {
+protocol PackagePad_zoneAllowsManualRenumbering : AnyObject {
   var zoneAllowsManualRenumbering : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_slavePadCount : class {
+protocol PackagePad_slavePadCount : AnyObject {
   var slavePadCount : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_masterPadObjectIndex : class {
+protocol PackagePad_masterPadObjectIndex : AnyObject {
   var masterPadObjectIndex : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_objectDisplay : class {
+protocol PackagePad_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_padNumberDisplay : class {
+protocol PackagePad_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 

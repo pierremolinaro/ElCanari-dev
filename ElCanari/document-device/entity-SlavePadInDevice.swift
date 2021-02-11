@@ -6,67 +6,67 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mCenterX : class {
+protocol SlavePadInDevice_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mCenterY : class {
+protocol SlavePadInDevice_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mWidth : class {
+protocol SlavePadInDevice_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mHeight : class {
+protocol SlavePadInDevice_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mHoleWidth : class {
+protocol SlavePadInDevice_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mHoleHeight : class {
+protocol SlavePadInDevice_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mShape : class {
+protocol SlavePadInDevice_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_mStyle : class {
+protocol SlavePadInDevice_mStyle : AnyObject {
   var mStyle : SlavePadStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_frontSideFilledBezierPath : class {
+protocol SlavePadInDevice_frontSideFilledBezierPath : AnyObject {
   var frontSideFilledBezierPath : EBBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_backSideFilledBezierPath : class {
+protocol SlavePadInDevice_backSideFilledBezierPath : AnyObject {
   var backSideFilledBezierPath : EBBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SlavePadInDevice_padNumberDisplay : class {
+protocol SlavePadInDevice_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 

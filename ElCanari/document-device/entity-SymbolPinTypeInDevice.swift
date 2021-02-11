@@ -6,67 +6,67 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mPinX : class {
+protocol SymbolPinTypeInDevice_mPinX : AnyObject {
   var mPinX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mPinY : class {
+protocol SymbolPinTypeInDevice_mPinY : AnyObject {
   var mPinY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mXName : class {
+protocol SymbolPinTypeInDevice_mXName : AnyObject {
   var mXName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mYName : class {
+protocol SymbolPinTypeInDevice_mYName : AnyObject {
   var mYName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mName : class {
+protocol SymbolPinTypeInDevice_mName : AnyObject {
   var mName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mNameHorizontalAlignment : class {
+protocol SymbolPinTypeInDevice_mNameHorizontalAlignment : AnyObject {
   var mNameHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics : class {
+protocol SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics : AnyObject {
   var mPinNameIsDisplayedInSchematics : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mXNumber : class {
+protocol SymbolPinTypeInDevice_mXNumber : AnyObject {
   var mXNumber : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mYNumber : class {
+protocol SymbolPinTypeInDevice_mYNumber : AnyObject {
   var mYNumber : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_mNumberHorizontalAlignment : class {
+protocol SymbolPinTypeInDevice_mNumberHorizontalAlignment : AnyObject {
   var mNumberHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinTypeInDevice_nameShape : class {
+protocol SymbolPinTypeInDevice_nameShape : AnyObject {
   var nameShape : EBShape? { get }
 }
 

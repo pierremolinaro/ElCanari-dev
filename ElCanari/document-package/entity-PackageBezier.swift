@@ -6,121 +6,121 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_y1 : class {
+protocol PackageBezier_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_x2 : class {
+protocol PackageBezier_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_y2 : class {
+protocol PackageBezier_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpx1 : class {
+protocol PackageBezier_cpx1 : AnyObject {
   var cpx1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpy1 : class {
+protocol PackageBezier_cpy1 : AnyObject {
   var cpy1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpx2 : class {
+protocol PackageBezier_cpx2 : AnyObject {
   var cpx2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpy2 : class {
+protocol PackageBezier_cpy2 : AnyObject {
   var cpy2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_x1Unit : class {
+protocol PackageBezier_x1Unit : AnyObject {
   var x1Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_y1Unit : class {
+protocol PackageBezier_y1Unit : AnyObject {
   var y1Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_x2Unit : class {
+protocol PackageBezier_x2Unit : AnyObject {
   var x2Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_y2Unit : class {
+protocol PackageBezier_y2Unit : AnyObject {
   var y2Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpx1Unit : class {
+protocol PackageBezier_cpx1Unit : AnyObject {
   var cpx1Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpy1Unit : class {
+protocol PackageBezier_cpy1Unit : AnyObject {
   var cpy1Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpx2Unit : class {
+protocol PackageBezier_cpx2Unit : AnyObject {
   var cpx2Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_cpy2Unit : class {
+protocol PackageBezier_cpy2Unit : AnyObject {
   var cpy2Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_x1 : class {
+protocol PackageBezier_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_strokeBezierPath : class {
+protocol PackageBezier_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_objectDisplay : class {
+protocol PackageBezier_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_selectionDisplay : class {
+protocol PackageBezier_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageBezier_issues : class {
+protocol PackageBezier_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

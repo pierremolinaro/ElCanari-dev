@@ -6,61 +6,61 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_isPlacedInBoard : class {
+protocol BoardObject_isPlacedInBoard : AnyObject {
   var isPlacedInBoard : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_issues : class {
+protocol BoardObject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_isVia : class {
+protocol BoardObject_isVia : AnyObject {
   var isVia : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_trackLengthInCanariUnit : class {
+protocol BoardObject_trackLengthInCanariUnit : AnyObject {
   var trackLengthInCanariUnit : Double? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_signatureForERCChecking : class {
+protocol BoardObject_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_netNameAndPadLocation : class {
+protocol BoardObject_netNameAndPadLocation : AnyObject {
   var netNameAndPadLocation : RastnetInfoArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_componentName : class {
+protocol BoardObject_componentName : AnyObject {
   var componentName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_selectionDisplay : class {
+protocol BoardObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_objectDisplay : class {
+protocol BoardObject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardObject_errorOrWarningIssueSize : class {
+protocol BoardObject_errorOrWarningIssueSize : AnyObject {
   var errorOrWarningIssueSize : Double? { get }
 }
 

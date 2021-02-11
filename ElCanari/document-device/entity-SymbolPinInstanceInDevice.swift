@@ -6,31 +6,31 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinInstanceInDevice_pinName : class {
+protocol SymbolPinInstanceInDevice_pinName : AnyObject {
   var pinName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinInstanceInDevice_symbolName : class {
+protocol SymbolPinInstanceInDevice_symbolName : AnyObject {
   var symbolName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinInstanceInDevice_pinQualifiedName : class {
+protocol SymbolPinInstanceInDevice_pinQualifiedName : AnyObject {
   var pinQualifiedName : PinQualifiedNameStruct? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinInstanceInDevice_isConnected : class {
+protocol SymbolPinInstanceInDevice_isConnected : AnyObject {
   var isConnected : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolPinInstanceInDevice_numberShape : class {
+protocol SymbolPinInstanceInDevice_numberShape : AnyObject {
   var numberShape : EBShape? { get }
 }
 

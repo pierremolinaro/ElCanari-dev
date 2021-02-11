@@ -8,7 +8,7 @@ import Cocoa
 //    EBUserClassNameProtocol protocol
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EBUserClassNameProtocol : class {
+protocol EBUserClassNameProtocol : AnyObject {
 }
 
 //----------------------------------------------------------------------------------------------------------------------

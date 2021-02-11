@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_x : class {
+protocol MergerBoardInstance_x : AnyObject {
   var x : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_y : class {
+protocol MergerBoardInstance_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_instanceRotation : class {
+protocol MergerBoardInstance_instanceRotation : AnyObject {
   var instanceRotation : QuadrantRotation { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_instanceRect : class {
+protocol MergerBoardInstance_instanceRect : AnyObject {
   var instanceRect : CanariRect? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_modelName : class {
+protocol MergerBoardInstance_modelName : AnyObject {
   var modelName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_boardLimitWidth : class {
+protocol MergerBoardInstance_boardLimitWidth : AnyObject {
   var boardLimitWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_selectionDisplay : class {
+protocol MergerBoardInstance_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerBoardInstance_objectDisplay : class {
+protocol MergerBoardInstance_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

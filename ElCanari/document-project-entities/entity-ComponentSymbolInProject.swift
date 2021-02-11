@@ -6,115 +6,115 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mCenterX : class {
+protocol ComponentSymbolInProject_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mCenterY : class {
+protocol ComponentSymbolInProject_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mRotation : class {
+protocol ComponentSymbolInProject_mRotation : AnyObject {
   var mRotation : QuadrantRotation { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mMirror : class {
+protocol ComponentSymbolInProject_mMirror : AnyObject {
   var mMirror : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mSymbolInstanceName : class {
+protocol ComponentSymbolInProject_mSymbolInstanceName : AnyObject {
   var mSymbolInstanceName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mSymbolTypeName : class {
+protocol ComponentSymbolInProject_mSymbolTypeName : AnyObject {
   var mSymbolTypeName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : class {
+protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : AnyObject {
   var mDisplayComponentNameOffsetX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : class {
+protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : AnyObject {
   var mDisplayComponentNameOffsetY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mDisplayComponentValue : class {
+protocol ComponentSymbolInProject_mDisplayComponentValue : AnyObject {
   var mDisplayComponentValue : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : class {
+protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : AnyObject {
   var mDisplayComponentValueOffsetX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : class {
+protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : AnyObject {
   var mDisplayComponentValueOffsetY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_componentValueProxy : class {
+protocol ComponentSymbolInProject_componentValueProxy : AnyObject {
   var componentValueProxy : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_componentName : class {
+protocol ComponentSymbolInProject_componentName : AnyObject {
   var componentName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_deviceName : class {
+protocol ComponentSymbolInProject_deviceName : AnyObject {
   var deviceName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_symbolInfo : class {
+protocol ComponentSymbolInProject_symbolInfo : AnyObject {
   var symbolInfo : ComponentSymbolInfo? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_pinPadAssignments : class {
+protocol ComponentSymbolInProject_pinPadAssignments : AnyObject {
   var pinPadAssignments : ThreeStringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_objectDisplay : class {
+protocol ComponentSymbolInProject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_selectionDisplay : class {
+protocol ComponentSymbolInProject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentSymbolInProject_symbolInSchematic : class {
+protocol ComponentSymbolInProject_symbolInSchematic : AnyObject {
   var symbolInSchematic : Bool? { get }
 }
 

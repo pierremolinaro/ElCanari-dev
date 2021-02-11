@@ -6,73 +6,73 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mCenterX : class {
+protocol MasterPadInDevice_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mCenterY : class {
+protocol MasterPadInDevice_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mWidth : class {
+protocol MasterPadInDevice_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mHeight : class {
+protocol MasterPadInDevice_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mHoleWidth : class {
+protocol MasterPadInDevice_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mHoleHeight : class {
+protocol MasterPadInDevice_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mShape : class {
+protocol MasterPadInDevice_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mStyle : class {
+protocol MasterPadInDevice_mStyle : AnyObject {
   var mStyle : PadStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_mName : class {
+protocol MasterPadInDevice_mName : AnyObject {
   var mName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_padNumberDisplay : class {
+protocol MasterPadInDevice_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_frontSideFilledBezierPathArray : class {
+protocol MasterPadInDevice_frontSideFilledBezierPathArray : AnyObject {
   var frontSideFilledBezierPathArray : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MasterPadInDevice_backSideFilledBezierPathArray : class {
+protocol MasterPadInDevice_backSideFilledBezierPathArray : AnyObject {
   var backSideFilledBezierPathArray : BezierPathArray? { get }
 }
 

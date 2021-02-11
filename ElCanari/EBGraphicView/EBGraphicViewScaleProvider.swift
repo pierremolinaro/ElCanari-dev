@@ -8,7 +8,7 @@ import Cocoa
 //   EBGraphicViewScaleProvider
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EBGraphicViewScaleProvider : class {
+protocol EBGraphicViewScaleProvider : AnyObject {
   var actualScale : CGFloat { get }
 
   var horizontalFlip : Bool { get }

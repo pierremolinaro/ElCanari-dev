@@ -33,7 +33,7 @@ func string (_ inManagedObjects : [EBManagedObject]) -> String {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EBManagedObject_alloc_index_protocol : class {
+protocol EBManagedObject_alloc_index_protocol : AnyObject {
   var ebObjectIndex : Int { get }
 }
 

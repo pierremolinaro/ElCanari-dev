@@ -6,55 +6,55 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_mY : class {
+protocol BoardRestrictRectangle_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_mWidth : class {
+protocol BoardRestrictRectangle_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_mHeight : class {
+protocol BoardRestrictRectangle_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_mIsInFrontLayer : class {
+protocol BoardRestrictRectangle_mIsInFrontLayer : AnyObject {
   var mIsInFrontLayer : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_mIsInBackLayer : class {
+protocol BoardRestrictRectangle_mIsInBackLayer : AnyObject {
   var mIsInBackLayer : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_mX : class {
+protocol BoardRestrictRectangle_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_objectDisplay : class {
+protocol BoardRestrictRectangle_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_selectionDisplay : class {
+protocol BoardRestrictRectangle_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardRestrictRectangle_signatureForERCChecking : class {
+protocol BoardRestrictRectangle_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

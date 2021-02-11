@@ -6,757 +6,757 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mArtworkName : class {
+protocol ProjectRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mArtworkVersion : class {
+protocol ProjectRoot_mArtworkVersion : AnyObject {
   var mArtworkVersion : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mPDFBoardBackgroundColor : class {
+protocol ProjectRoot_mPDFBoardBackgroundColor : AnyObject {
   var mPDFBoardBackgroundColor : NSColor { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNet : class {
+protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNet : AnyObject {
   var mCheckClearanceBetweenPadsOfSameNet : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mLastERCCheckingIsSuccess : class {
+protocol ProjectRoot_mLastERCCheckingIsSuccess : AnyObject {
   var mLastERCCheckingIsSuccess : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mLastERCCheckingSignature : class {
+protocol ProjectRoot_mLastERCCheckingSignature : AnyObject {
   var mLastERCCheckingSignature : UInt32 { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardSideForNewTrack : class {
+protocol ProjectRoot_mBoardSideForNewTrack : AnyObject {
   var mBoardSideForNewTrack : TrackSide { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mDirectionForNewTrack : class {
+protocol ProjectRoot_mDirectionForNewTrack : AnyObject {
   var mDirectionForNewTrack : TrackCreationDirection { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLayerForNewText : class {
+protocol ProjectRoot_mBoardLayerForNewText : AnyObject {
   var mBoardLayerForNewText : BoardTextLayer { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLayerForNewLine : class {
+protocol ProjectRoot_mBoardLayerForNewLine : AnyObject {
   var mBoardLayerForNewLine : BoardLineLayer { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardSideForNewRestrictRectangle : class {
+protocol ProjectRoot_mBoardSideForNewRestrictRectangle : AnyObject {
   var mBoardSideForNewRestrictRectangle : RestrictRectangleLayer { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mAutoRouterPreferredDirections : class {
+protocol ProjectRoot_mAutoRouterPreferredDirections : AnyObject {
   var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mAutorouterSnapAngle : class {
+protocol ProjectRoot_mAutorouterSnapAngle : AnyObject {
   var mAutorouterSnapAngle : AutorouterSnapAngle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRouteDirection : class {
+protocol ProjectRoot_mRouteDirection : AnyObject {
   var mRouteDirection : RouteDirection { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRouteOrigin : class {
+protocol ProjectRoot_mRouteOrigin : AnyObject {
   var mRouteOrigin : RouteOrigin { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mAutorouterInterfaceMode : class {
+protocol ProjectRoot_mAutorouterInterfaceMode : AnyObject {
   var mAutorouterInterfaceMode : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mExportExistingTracksAndVias : class {
+protocol ProjectRoot_mExportExistingTracksAndVias : AnyObject {
   var mExportExistingTracksAndVias : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mTrackLengthUnit : class {
+protocol ProjectRoot_mTrackLengthUnit : AnyObject {
   var mTrackLengthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mLayoutClearance : class {
+protocol ProjectRoot_mLayoutClearance : AnyObject {
   var mLayoutClearance : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mLayoutClearanceUnit : class {
+protocol ProjectRoot_mLayoutClearanceUnit : AnyObject {
   var mLayoutClearanceUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardSelectedInspector : class {
+protocol ProjectRoot_mBoardSelectedInspector : AnyObject {
   var mBoardSelectedInspector : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardHorizontalFlip : class {
+protocol ProjectRoot_mBoardHorizontalFlip : AnyObject {
   var mBoardHorizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardVerticalFlip : class {
+protocol ProjectRoot_mBoardVerticalFlip : AnyObject {
   var mBoardVerticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardGridStyle : class {
+protocol ProjectRoot_mBoardGridStyle : AnyObject {
   var mBoardGridStyle : GridStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardGridDisplayFactor : class {
+protocol ProjectRoot_mBoardGridDisplayFactor : AnyObject {
   var mBoardGridDisplayFactor : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardZoom : class {
+protocol ProjectRoot_mBoardZoom : AnyObject {
   var mBoardZoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardGridStep : class {
+protocol ProjectRoot_mBoardGridStep : AnyObject {
   var mBoardGridStep : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardGridStepUnit : class {
+protocol ProjectRoot_mBoardGridStepUnit : AnyObject {
   var mBoardGridStepUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mErrorOrWarningIssueSize : class {
+protocol ProjectRoot_mErrorOrWarningIssueSize : AnyObject {
   var mErrorOrWarningIssueSize : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mControlKeyHiliteDiameter : class {
+protocol ProjectRoot_mControlKeyHiliteDiameter : AnyObject {
   var mControlKeyHiliteDiameter : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mDSNFileProposedName : class {
+protocol ProjectRoot_mDSNFileProposedName : AnyObject {
   var mDSNFileProposedName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsWidth : class {
+protocol ProjectRoot_mBoardLimitsWidth : AnyObject {
   var mBoardLimitsWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsWidthUnit : class {
+protocol ProjectRoot_mBoardLimitsWidthUnit : AnyObject {
   var mBoardLimitsWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardClearance : class {
+protocol ProjectRoot_mBoardClearance : AnyObject {
   var mBoardClearance : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardClearanceUnit : class {
+protocol ProjectRoot_mBoardClearanceUnit : AnyObject {
   var mBoardClearanceUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsSelectedInspector : class {
+protocol ProjectRoot_mBoardLimitsSelectedInspector : AnyObject {
   var mBoardLimitsSelectedInspector : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsHorizontalFlip : class {
+protocol ProjectRoot_mBoardLimitsHorizontalFlip : AnyObject {
   var mBoardLimitsHorizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsVerticalFlip : class {
+protocol ProjectRoot_mBoardLimitsVerticalFlip : AnyObject {
   var mBoardLimitsVerticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsGridStyle : class {
+protocol ProjectRoot_mBoardLimitsGridStyle : AnyObject {
   var mBoardLimitsGridStyle : GridStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsGridDisplayFactor : class {
+protocol ProjectRoot_mBoardLimitsGridDisplayFactor : AnyObject {
   var mBoardLimitsGridDisplayFactor : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsZoom : class {
+protocol ProjectRoot_mBoardLimitsZoom : AnyObject {
   var mBoardLimitsZoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsGridStep : class {
+protocol ProjectRoot_mBoardLimitsGridStep : AnyObject {
   var mBoardLimitsGridStep : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsGridStepUnit : class {
+protocol ProjectRoot_mBoardLimitsGridStepUnit : AnyObject {
   var mBoardLimitsGridStepUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : class {
+protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : AnyObject {
   var mBoardLimitsBoundingBoxUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardPointsBoundingBoxUnit : class {
+protocol ProjectRoot_mBoardPointsBoundingBoxUnit : AnyObject {
   var mBoardPointsBoundingBoxUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : class {
+protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : AnyObject {
   var mBoardSelectedCurveDisplayUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardLimitControlPointsDisplayUnit : class {
+protocol ProjectRoot_mBoardLimitControlPointsDisplayUnit : AnyObject {
   var mBoardLimitControlPointsDisplayUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mBoardShape : class {
+protocol ProjectRoot_mBoardShape : AnyObject {
   var mBoardShape : BoardShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRectangularBoardWidth : class {
+protocol ProjectRoot_mRectangularBoardWidth : AnyObject {
   var mRectangularBoardWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRectangularBoardWidthUnit : class {
+protocol ProjectRoot_mRectangularBoardWidthUnit : AnyObject {
   var mRectangularBoardWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRectangularBoardHeight : class {
+protocol ProjectRoot_mRectangularBoardHeight : AnyObject {
   var mRectangularBoardHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRectangularBoardHeightUnit : class {
+protocol ProjectRoot_mRectangularBoardHeightUnit : AnyObject {
   var mRectangularBoardHeightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mDefaultNetClassName : class {
+protocol ProjectRoot_mDefaultNetClassName : AnyObject {
   var mDefaultNetClassName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSelectedPageIndex : class {
+protocol ProjectRoot_mSelectedPageIndex : AnyObject {
   var mSelectedPageIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSelectedSchematicInspector : class {
+protocol ProjectRoot_mSelectedSchematicInspector : AnyObject {
   var mSelectedSchematicInspector : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicTitle : class {
+protocol ProjectRoot_mSchematicTitle : AnyObject {
   var mSchematicTitle : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicVersion : class {
+protocol ProjectRoot_mSchematicVersion : AnyObject {
   var mSchematicVersion : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicDate : class {
+protocol ProjectRoot_mSchematicDate : AnyObject {
   var mSchematicDate : Date { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicHorizontalFlip : class {
+protocol ProjectRoot_mSchematicHorizontalFlip : AnyObject {
   var mSchematicHorizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicVerticalFlip : class {
+protocol ProjectRoot_mSchematicVerticalFlip : AnyObject {
   var mSchematicVerticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicZoom : class {
+protocol ProjectRoot_mSchematicZoom : AnyObject {
   var mSchematicZoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicGridStyle : class {
+protocol ProjectRoot_mSchematicGridStyle : AnyObject {
   var mSchematicGridStyle : GridStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicGridDisplayFactor : class {
+protocol ProjectRoot_mSchematicGridDisplayFactor : AnyObject {
   var mSchematicGridDisplayFactor : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicCustomWidth : class {
+protocol ProjectRoot_mSchematicCustomWidth : AnyObject {
   var mSchematicCustomWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicCustomWidthUnit : class {
+protocol ProjectRoot_mSchematicCustomWidthUnit : AnyObject {
   var mSchematicCustomWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicCustomHeight : class {
+protocol ProjectRoot_mSchematicCustomHeight : AnyObject {
   var mSchematicCustomHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicCustomHeightUnit : class {
+protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
   var mSchematicCustomHeightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mSchematicSheetOrientation : class {
+protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
   var mSchematicSheetOrientation : SchematicSheetOrientation { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRastnetDisplay : class {
+protocol ProjectRoot_mRastnetDisplay : AnyObject {
   var mRastnetDisplay : RastnetDisplay { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRastnetDisplayedNetName : class {
+protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
   var mRastnetDisplayedNetName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_mRastnetDisplayedComponentName : class {
+protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
   var mRastnetDisplayedComponentName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minPPTPTTTWdisplayUnit : class {
+protocol ProjectRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minPPTPTTTW : class {
+protocol ProjectRoot_minPPTPTTTW : AnyObject {
   var minPPTPTTTW : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minValueForOARdisplayUnit : class {
+protocol ProjectRoot_minValueForOARdisplayUnit : AnyObject {
   var minValueForOARdisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minValueForOARinEBUnit : class {
+protocol ProjectRoot_minValueForOARinEBUnit : AnyObject {
   var minValueForOARinEBUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minValueForPHDdisplayUnit : class {
+protocol ProjectRoot_minValueForPHDdisplayUnit : AnyObject {
   var minValueForPHDdisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minValueForPHDinEBUnit : class {
+protocol ProjectRoot_minValueForPHDinEBUnit : AnyObject {
   var minValueForPHDinEBUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minValueForBoardLimitWidth : class {
+protocol ProjectRoot_minValueForBoardLimitWidth : AnyObject {
   var minValueForBoardLimitWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_minValueForBoardLimitWidthDisplayUnit : class {
+protocol ProjectRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
   var minValueForBoardLimitWidthDisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_drillDataFileExtension : class {
+protocol ProjectRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_comments : class {
+protocol ProjectRoot_comments : AnyObject {
   var comments : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_selectedSheetTitle : class {
+protocol ProjectRoot_selectedSheetTitle : AnyObject {
   var selectedSheetTitle : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : class {
+protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : AnyObject {
   var boardGridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : class {
+protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : AnyObject {
   var boardLimitsGridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardShapeIsRectangular : class {
+protocol ProjectRoot_boardShapeIsRectangular : AnyObject {
   var boardShapeIsRectangular : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_selectedSheetIssues : class {
+protocol ProjectRoot_selectedSheetIssues : AnyObject {
   var selectedSheetIssues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_connectedPoints : class {
+protocol ProjectRoot_connectedPoints : AnyObject {
   var connectedPoints : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_connexionWarningString : class {
+protocol ProjectRoot_connexionWarningString : AnyObject {
   var connexionWarningString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_connexionErrorString : class {
+protocol ProjectRoot_connexionErrorString : AnyObject {
   var connexionErrorString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_sheetIndexes : class {
+protocol ProjectRoot_sheetIndexes : AnyObject {
   var sheetIndexes : IntArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_netsDescription : class {
+protocol ProjectRoot_netsDescription : AnyObject {
   var netsDescription : NetInfoArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardIssues : class {
+protocol ProjectRoot_boardIssues : AnyObject {
   var boardIssues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_signatureForERCChecking : class {
+protocol ProjectRoot_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_ercStatusImage : class {
+protocol ProjectRoot_ercStatusImage : AnyObject {
   var ercStatusImage : NSImage? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_ercStatusMessage : class {
+protocol ProjectRoot_ercStatusMessage : AnyObject {
   var ercStatusMessage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_viaCountString : class {
+protocol ProjectRoot_viaCountString : AnyObject {
   var viaCountString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_trackCountString : class {
+protocol ProjectRoot_trackCountString : AnyObject {
   var trackCountString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_trackLengthString : class {
+protocol ProjectRoot_trackLengthString : AnyObject {
   var trackLengthString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardStatusImage : class {
+protocol ProjectRoot_boardStatusImage : AnyObject {
   var boardStatusImage : NSImage? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardStatusMessage : class {
+protocol ProjectRoot_boardStatusMessage : AnyObject {
   var boardStatusMessage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_interiorBoundBox : class {
+protocol ProjectRoot_interiorBoundBox : AnyObject {
   var interiorBoundBox : CanariRect? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardBoundBox : class {
+protocol ProjectRoot_boardBoundBox : AnyObject {
   var boardBoundBox : CanariRect? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardInteriorTop : class {
+protocol ProjectRoot_boardInteriorTop : AnyObject {
   var boardInteriorTop : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardInteriorBottom : class {
+protocol ProjectRoot_boardInteriorBottom : AnyObject {
   var boardInteriorBottom : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardInteriorLeft : class {
+protocol ProjectRoot_boardInteriorLeft : AnyObject {
   var boardInteriorLeft : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardInteriorRight : class {
+protocol ProjectRoot_boardInteriorRight : AnyObject {
   var boardInteriorRight : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardLimitBorderTop : class {
+protocol ProjectRoot_boardLimitBorderTop : AnyObject {
   var boardLimitBorderTop : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardLimitBorderBottom : class {
+protocol ProjectRoot_boardLimitBorderBottom : AnyObject {
   var boardLimitBorderBottom : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardLimitBorderLeft : class {
+protocol ProjectRoot_boardLimitBorderLeft : AnyObject {
   var boardLimitBorderLeft : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_boardLimitBorderRight : class {
+protocol ProjectRoot_boardLimitBorderRight : AnyObject {
   var boardLimitBorderRight : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_borderElementCountString : class {
+protocol ProjectRoot_borderElementCountString : AnyObject {
   var borderElementCountString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_borderOutlineBackground : class {
+protocol ProjectRoot_borderOutlineBackground : AnyObject {
   var borderOutlineBackground : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_borderViewBackground : class {
+protocol ProjectRoot_borderViewBackground : AnyObject {
   var borderViewBackground : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_deviceNames : class {
+protocol ProjectRoot_deviceNames : AnyObject {
   var deviceNames : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_allClassNames : class {
+protocol ProjectRoot_allClassNames : AnyObject {
   var allClassNames : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_sheetGeometry : class {
+protocol ProjectRoot_sheetGeometry : AnyObject {
   var sheetGeometry : SchematicSheetGeometry? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_schematicBackgroundDisplay : class {
+protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
   var schematicBackgroundDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_netWarningCount : class {
+protocol ProjectRoot_netWarningCount : AnyObject {
   var netWarningCount : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_netNamesArray : class {
+protocol ProjectRoot_netNamesArray : AnyObject {
   var netNamesArray : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_unplacedSymbols : class {
+protocol ProjectRoot_unplacedSymbols : AnyObject {
   var unplacedSymbols : StringTagArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_unplacedPackages : class {
+protocol ProjectRoot_unplacedPackages : AnyObject {
   var unplacedPackages : StringTagArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_componentsPlacedInBoard : class {
+protocol ProjectRoot_componentsPlacedInBoard : AnyObject {
   var componentsPlacedInBoard : StringTagArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_placedComponentNameArray : class {
+protocol ProjectRoot_placedComponentNameArray : AnyObject {
   var placedComponentNameArray : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_schematicHasErrorOrWarning : class {
+protocol ProjectRoot_schematicHasErrorOrWarning : AnyObject {
   var schematicHasErrorOrWarning : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_schematicStatusMessage : class {
+protocol ProjectRoot_schematicStatusMessage : AnyObject {
   var schematicStatusMessage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ProjectRoot_schematicStatusImage : class {
+protocol ProjectRoot_schematicStatusImage : AnyObject {
   var schematicStatusImage : NSImage? { get }
 }
 

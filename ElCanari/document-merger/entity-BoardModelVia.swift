@@ -6,19 +6,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelVia_y : class {
+protocol BoardModelVia_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelVia_padDiameter : class {
+protocol BoardModelVia_padDiameter : AnyObject {
   var padDiameter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelVia_x : class {
+protocol BoardModelVia_x : AnyObject {
   var x : Int { get }
 }
 

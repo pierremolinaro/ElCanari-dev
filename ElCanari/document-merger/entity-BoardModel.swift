@@ -6,313 +6,313 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_name : class {
+protocol BoardModel_name : AnyObject {
   var name : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_modelWidth : class {
+protocol BoardModel_modelWidth : AnyObject {
   var modelWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_modelWidthUnit : class {
+protocol BoardModel_modelWidthUnit : AnyObject {
   var modelWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_modelHeight : class {
+protocol BoardModel_modelHeight : AnyObject {
   var modelHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_modelHeightUnit : class {
+protocol BoardModel_modelHeightUnit : AnyObject {
   var modelHeightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_zoom : class {
+protocol BoardModel_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_modelLimitWidth : class {
+protocol BoardModel_modelLimitWidth : AnyObject {
   var modelLimitWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_modelLimitWidthUnit : class {
+protocol BoardModel_modelLimitWidthUnit : AnyObject {
   var modelLimitWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_artworkName : class {
+protocol BoardModel_artworkName : AnyObject {
   var artworkName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontLegendLinesSegments : class {
+protocol BoardModel_frontLegendLinesSegments : AnyObject {
   var frontLegendLinesSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backLegendLinesSegments : class {
+protocol BoardModel_backLegendLinesSegments : AnyObject {
   var backLegendLinesSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backLegendLinesBezierPaths : class {
+protocol BoardModel_backLegendLinesBezierPaths : AnyObject {
   var backLegendLinesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontLegendTextsSegments : class {
+protocol BoardModel_frontLegendTextsSegments : AnyObject {
   var frontLegendTextsSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontLegendTextsBezierPaths : class {
+protocol BoardModel_frontLegendTextsBezierPaths : AnyObject {
   var frontLegendTextsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontLayoutTextsSegments : class {
+protocol BoardModel_frontLayoutTextsSegments : AnyObject {
   var frontLayoutTextsSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontLayoutTextsBezierPaths : class {
+protocol BoardModel_frontLayoutTextsBezierPaths : AnyObject {
   var frontLayoutTextsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backLegendTextsSegments : class {
+protocol BoardModel_backLegendTextsSegments : AnyObject {
   var backLegendTextsSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backLegendTextsBezierPaths : class {
+protocol BoardModel_backLegendTextsBezierPaths : AnyObject {
   var backLegendTextsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backLayoutTextsSegments : class {
+protocol BoardModel_backLayoutTextsSegments : AnyObject {
   var backLayoutTextsSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backLayoutTextsBezierPaths : class {
+protocol BoardModel_backLayoutTextsBezierPaths : AnyObject {
   var backLayoutTextsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_internalBoardsLimitsSegments : class {
+protocol BoardModel_internalBoardsLimitsSegments : AnyObject {
   var internalBoardsLimitsSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_internalBoardsLimitsBezierPaths : class {
+protocol BoardModel_internalBoardsLimitsBezierPaths : AnyObject {
   var internalBoardsLimitsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_drillSegments : class {
+protocol BoardModel_drillSegments : AnyObject {
   var drillSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_holesBezierPaths : class {
+protocol BoardModel_holesBezierPaths : AnyObject {
   var holesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_viaShapes : class {
+protocol BoardModel_viaShapes : AnyObject {
   var viaShapes : MergerViaShapeArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_viasBezierPaths : class {
+protocol BoardModel_viasBezierPaths : AnyObject {
   var viasBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontPadArray : class {
+protocol BoardModel_frontPadArray : AnyObject {
   var frontPadArray : MergerPadArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontPadsBezierPaths : class {
+protocol BoardModel_frontPadsBezierPaths : AnyObject {
   var frontPadsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backPadArray : class {
+protocol BoardModel_backPadArray : AnyObject {
   var backPadArray : MergerPadArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backPadsBezierPaths : class {
+protocol BoardModel_backPadsBezierPaths : AnyObject {
   var backPadsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_boardLimits : class {
+protocol BoardModel_boardLimits : AnyObject {
   var boardLimits : MergerBoardLimits? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_boardLimitsBezierPaths : class {
+protocol BoardModel_boardLimitsBezierPaths : AnyObject {
   var boardLimitsBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backComponentNameSegments : class {
+protocol BoardModel_backComponentNameSegments : AnyObject {
   var backComponentNameSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backComponentNamesBezierPaths : class {
+protocol BoardModel_backComponentNamesBezierPaths : AnyObject {
   var backComponentNamesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontComponentNameSegments : class {
+protocol BoardModel_frontComponentNameSegments : AnyObject {
   var frontComponentNameSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontComponentNamesBezierPaths : class {
+protocol BoardModel_frontComponentNamesBezierPaths : AnyObject {
   var frontComponentNamesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontComponentValueSegments : class {
+protocol BoardModel_frontComponentValueSegments : AnyObject {
   var frontComponentValueSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontComponentValuesBezierPaths : class {
+protocol BoardModel_frontComponentValuesBezierPaths : AnyObject {
   var frontComponentValuesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backComponentValueSegments : class {
+protocol BoardModel_backComponentValueSegments : AnyObject {
   var backComponentValueSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backComponentValuesBezierPaths : class {
+protocol BoardModel_backComponentValuesBezierPaths : AnyObject {
   var backComponentValuesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backTrackSegments : class {
+protocol BoardModel_backTrackSegments : AnyObject {
   var backTrackSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backTracksBezierPaths : class {
+protocol BoardModel_backTracksBezierPaths : AnyObject {
   var backTracksBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontTrackSegments : class {
+protocol BoardModel_frontTrackSegments : AnyObject {
   var frontTrackSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontTracksBezierPaths : class {
+protocol BoardModel_frontTracksBezierPaths : AnyObject {
   var frontTracksBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontPackagesSegments : class {
+protocol BoardModel_frontPackagesSegments : AnyObject {
   var frontPackagesSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontPackagesBezierPaths : class {
+protocol BoardModel_frontPackagesBezierPaths : AnyObject {
   var frontPackagesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backPackagesSegments : class {
+protocol BoardModel_backPackagesSegments : AnyObject {
   var backPackagesSegments : MergerSegmentArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_backPackagesBezierPaths : class {
+protocol BoardModel_backPackagesBezierPaths : AnyObject {
   var backPackagesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_instanceCount : class {
+protocol BoardModel_instanceCount : AnyObject {
   var instanceCount : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_frontLegendLinesBezierPaths : class {
+protocol BoardModel_frontLegendLinesBezierPaths : AnyObject {
   var frontLegendLinesBezierPaths : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_imageForModel : class {
+protocol BoardModel_imageForModel : AnyObject {
   var imageForModel : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModel_imageForInstances : class {
+protocol BoardModel_imageForInstances : AnyObject {
   var imageForInstances : EBShape? { get }
 }
 

@@ -6,73 +6,73 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_selectedTab : class {
+protocol ArtworkRoot_selectedTab : AnyObject {
   var selectedTab : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_comments : class {
+protocol ArtworkRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minPPTPTTTWdisplayUnit : class {
+protocol ArtworkRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minPPTPTTTW : class {
+protocol ArtworkRoot_minPPTPTTTW : AnyObject {
   var minPPTPTTTW : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minValueForOARdisplayUnit : class {
+protocol ArtworkRoot_minValueForOARdisplayUnit : AnyObject {
   var minValueForOARdisplayUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minValueForOARinEBUnit : class {
+protocol ArtworkRoot_minValueForOARinEBUnit : AnyObject {
   var minValueForOARinEBUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minValueForPHDdisplayUnit : class {
+protocol ArtworkRoot_minValueForPHDdisplayUnit : AnyObject {
   var minValueForPHDdisplayUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minValueForPHDinEBUnit : class {
+protocol ArtworkRoot_minValueForPHDinEBUnit : AnyObject {
   var minValueForPHDinEBUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : class {
+protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
   var minValueForBoardLimitWidthDisplayUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_minValueForBoardLimitWidth : class {
+protocol ArtworkRoot_minValueForBoardLimitWidth : AnyObject {
   var minValueForBoardLimitWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_drillDataFileExtension : class {
+protocol ArtworkRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkRoot_signatureForERCChecking : class {
+protocol ArtworkRoot_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

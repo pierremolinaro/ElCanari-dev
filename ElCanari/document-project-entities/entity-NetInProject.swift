@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_mNetName : class {
+protocol NetInProject_mNetName : AnyObject {
   var mNetName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_netClassName : class {
+protocol NetInProject_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_netClassTrackWidth : class {
+protocol NetInProject_netClassTrackWidth : AnyObject {
   var netClassTrackWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_netClassViaHoleDiameter : class {
+protocol NetInProject_netClassViaHoleDiameter : AnyObject {
   var netClassViaHoleDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_netClassViaPadDiameter : class {
+protocol NetInProject_netClassViaPadDiameter : AnyObject {
   var netClassViaPadDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_wireColor : class {
+protocol NetInProject_wireColor : AnyObject {
   var wireColor : NSColor? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_netSchematicPointsInfo : class {
+protocol NetInProject_netSchematicPointsInfo : AnyObject {
   var netSchematicPointsInfo : NetInfoPointArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetInProject_trackCount : class {
+protocol NetInProject_trackCount : AnyObject {
   var trackCount : Int? { get }
 }
 

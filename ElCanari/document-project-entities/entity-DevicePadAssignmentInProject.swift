@@ -6,19 +6,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePadAssignmentInProject_mPadName : class {
+protocol DevicePadAssignmentInProject_mPadName : AnyObject {
   var mPadName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePadAssignmentInProject_pinPadAssignment : class {
+protocol DevicePadAssignmentInProject_pinPadAssignment : AnyObject {
   var pinPadAssignment : ThreeStrings? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePadAssignmentInProject_descriptor : class {
+protocol DevicePadAssignmentInProject_descriptor : AnyObject {
   var descriptor : PinPadAssignmentInProject? { get }
 }
 

@@ -6,91 +6,91 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_mSymbolPinName : class {
+protocol PointInSchematic_mSymbolPinName : AnyObject {
   var mSymbolPinName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_mX : class {
+protocol PointInSchematic_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_mY : class {
+protocol PointInSchematic_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_location : class {
+protocol PointInSchematic_location : AnyObject {
   var location : CanariPoint? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_netName : class {
+protocol PointInSchematic_netName : AnyObject {
   var netName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_netClassName : class {
+protocol PointInSchematic_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_hasNet : class {
+protocol PointInSchematic_hasNet : AnyObject {
   var hasNet : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_canMove : class {
+protocol PointInSchematic_canMove : AnyObject {
   var canMove : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_wireColor : class {
+protocol PointInSchematic_wireColor : AnyObject {
   var wireColor : NSColor? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_symbolRotation : class {
+protocol PointInSchematic_symbolRotation : AnyObject {
   var symbolRotation : QuadrantRotation? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_symbolNameNetName : class {
+protocol PointInSchematic_symbolNameNetName : AnyObject {
   var symbolNameNetName : TwoStrings? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_isConnected : class {
+protocol PointInSchematic_isConnected : AnyObject {
   var isConnected : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_status : class {
+protocol PointInSchematic_status : AnyObject {
   var status : SchematicPointStatus? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_connectedPoints : class {
+protocol PointInSchematic_connectedPoints : AnyObject {
   var connectedPoints : CanariPointArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PointInSchematic_netInfoForPoint : class {
+protocol PointInSchematic_netInfoForPoint : AnyObject {
   var netInfoForPoint : NetInfoPoint? { get }
 }
 

@@ -6,85 +6,85 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_y1 : class {
+protocol PackageSegment_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_x2 : class {
+protocol PackageSegment_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_y2 : class {
+protocol PackageSegment_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_x1Unit : class {
+protocol PackageSegment_x1Unit : AnyObject {
   var x1Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_y1Unit : class {
+protocol PackageSegment_y1Unit : AnyObject {
   var y1Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_x2Unit : class {
+protocol PackageSegment_x2Unit : AnyObject {
   var x2Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_y2Unit : class {
+protocol PackageSegment_y2Unit : AnyObject {
   var y2Unit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_lengthUnit : class {
+protocol PackageSegment_lengthUnit : AnyObject {
   var lengthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_x1 : class {
+protocol PackageSegment_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_strokeBezierPath : class {
+protocol PackageSegment_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_objectDisplay : class {
+protocol PackageSegment_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_selectionDisplay : class {
+protocol PackageSegment_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_issues : class {
+protocol PackageSegment_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSegment_lengthInCanariUnit : class {
+protocol PackageSegment_lengthInCanariUnit : AnyObject {
   var lengthInCanariUnit : Int? { get }
 }
 

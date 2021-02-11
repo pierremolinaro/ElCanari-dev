@@ -6,349 +6,349 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_selectedPageIndex : class {
+protocol PackageRoot_selectedPageIndex : AnyObject {
   var selectedPageIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_selectedInspector : class {
+protocol PackageRoot_selectedInspector : AnyObject {
   var selectedInspector : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_comments : class {
+protocol PackageRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_program : class {
+protocol PackageRoot_program : AnyObject {
   var program : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_horizontalFlip : class {
+protocol PackageRoot_horizontalFlip : AnyObject {
   var horizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_verticalFlip : class {
+protocol PackageRoot_verticalFlip : AnyObject {
   var verticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_gridStyle : class {
+protocol PackageRoot_gridStyle : AnyObject {
   var gridStyle : GridStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_gridStep : class {
+protocol PackageRoot_gridStep : AnyObject {
   var gridStep : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_gridStepUnit : class {
+protocol PackageRoot_gridStepUnit : AnyObject {
   var gridStepUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_gridDisplayFactor : class {
+protocol PackageRoot_gridDisplayFactor : AnyObject {
   var gridDisplayFactor : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_zoom : class {
+protocol PackageRoot_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageOpacity : class {
+protocol PackageRoot_mModelImageOpacity : AnyObject {
   var mModelImageOpacity : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageHorizontalFlip : class {
+protocol PackageRoot_mModelImagePageHorizontalFlip : AnyObject {
   var mModelImagePageHorizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageVerticalFlip : class {
+protocol PackageRoot_mModelImagePageVerticalFlip : AnyObject {
   var mModelImagePageVerticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageGridStyle : class {
+protocol PackageRoot_mModelImagePageGridStyle : AnyObject {
   var mModelImagePageGridStyle : GridStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageGridStep : class {
+protocol PackageRoot_mModelImagePageGridStep : AnyObject {
   var mModelImagePageGridStep : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageGridStepUnit : class {
+protocol PackageRoot_mModelImagePageGridStepUnit : AnyObject {
   var mModelImagePageGridStepUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageGridDisplayFactor : class {
+protocol PackageRoot_mModelImagePageGridDisplayFactor : AnyObject {
   var mModelImagePageGridDisplayFactor : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageZoom : class {
+protocol PackageRoot_mModelImagePageZoom : AnyObject {
   var mModelImagePageZoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageXPlacardUnit : class {
+protocol PackageRoot_mModelImagePageXPlacardUnit : AnyObject {
   var mModelImagePageXPlacardUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePageYPlacardUnit : class {
+protocol PackageRoot_mModelImagePageYPlacardUnit : AnyObject {
   var mModelImagePageYPlacardUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageSecondPointXUnit : class {
+protocol PackageRoot_mModelImageSecondPointXUnit : AnyObject {
   var mModelImageSecondPointXUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePSecondointYUnit : class {
+protocol PackageRoot_mModelImagePSecondointYUnit : AnyObject {
   var mModelImagePSecondointYUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageFirstPointXOnLock : class {
+protocol PackageRoot_mModelImageFirstPointXOnLock : AnyObject {
   var mModelImageFirstPointXOnLock : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageFirstPointYOnLock : class {
+protocol PackageRoot_mModelImageFirstPointYOnLock : AnyObject {
   var mModelImageFirstPointYOnLock : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePointsDxOnLock : class {
+protocol PackageRoot_mModelImagePointsDxOnLock : AnyObject {
   var mModelImagePointsDxOnLock : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePointsDyOnLock : class {
+protocol PackageRoot_mModelImagePointsDyOnLock : AnyObject {
   var mModelImagePointsDyOnLock : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageScale : class {
+protocol PackageRoot_mModelImageScale : AnyObject {
   var mModelImageScale : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageRotationInRadians : class {
+protocol PackageRoot_mModelImageRotationInRadians : AnyObject {
   var mModelImageRotationInRadians : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mDimensionUnitFirstModelPointX : class {
+protocol PackageRoot_mDimensionUnitFirstModelPointX : AnyObject {
   var mDimensionUnitFirstModelPointX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mDimensionUnitFirstModelPointY : class {
+protocol PackageRoot_mDimensionUnitFirstModelPointY : AnyObject {
   var mDimensionUnitFirstModelPointY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mDimensionUnitSecondModelPointDx : class {
+protocol PackageRoot_mDimensionUnitSecondModelPointDx : AnyObject {
   var mDimensionUnitSecondModelPointDx : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mDimensionUnitSecondModelPointDy : class {
+protocol PackageRoot_mDimensionUnitSecondModelPointDy : AnyObject {
   var mDimensionUnitSecondModelPointDy : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelPointsCircleRadius : class {
+protocol PackageRoot_mModelPointsCircleRadius : AnyObject {
   var mModelPointsCircleRadius : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mPointsAreLocked : class {
+protocol PackageRoot_mPointsAreLocked : AnyObject {
   var mPointsAreLocked : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_knobSizeMultpliedByTen : class {
+protocol PackageRoot_knobSizeMultpliedByTen : AnyObject {
   var knobSizeMultpliedByTen : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_padNumbering : class {
+protocol PackageRoot_padNumbering : AnyObject {
   var padNumbering : PadNumbering { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_counterClockNumberingStartAngle : class {
+protocol PackageRoot_counterClockNumberingStartAngle : AnyObject {
   var counterClockNumberingStartAngle : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_xPlacardUnit : class {
+protocol PackageRoot_xPlacardUnit : AnyObject {
   var xPlacardUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_yPlacardUnit : class {
+protocol PackageRoot_yPlacardUnit : AnyObject {
   var yPlacardUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageData : class {
+protocol PackageRoot_mModelImageData : AnyObject {
   var mModelImageData : Data { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageFirstPointX : class {
+protocol PackageRoot_mModelImageFirstPointX : AnyObject {
   var mModelImageFirstPointX : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageFirstPointY : class {
+protocol PackageRoot_mModelImageFirstPointY : AnyObject {
   var mModelImageFirstPointY : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageSecondPointDx : class {
+protocol PackageRoot_mModelImageSecondPointDx : AnyObject {
   var mModelImageSecondPointDx : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImageSecondPointDy : class {
+protocol PackageRoot_mModelImageSecondPointDy : AnyObject {
   var mModelImageSecondPointDy : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_freePadNumbering : class {
+protocol PackageRoot_freePadNumbering : AnyObject {
   var freePadNumbering : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_counterClockNumbering : class {
+protocol PackageRoot_counterClockNumbering : AnyObject {
   var counterClockNumbering : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_gridStepMultipliedByDisplayFactor : class {
+protocol PackageRoot_gridStepMultipliedByDisplayFactor : AnyObject {
   var gridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_secondPointX : class {
+protocol PackageRoot_secondPointX : AnyObject {
   var secondPointX : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_secondPointY : class {
+protocol PackageRoot_secondPointY : AnyObject {
   var secondPointY : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_lockImageView : class {
+protocol PackageRoot_lockImageView : AnyObject {
   var lockImageView : NSImage? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_padNumberDisplay : class {
+protocol PackageRoot_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_backgroundImagePageBackgroundDisplay : class {
+protocol PackageRoot_backgroundImagePageBackgroundDisplay : AnyObject {
   var backgroundImagePageBackgroundDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_modelImageSizeString : class {
+protocol PackageRoot_modelImageSizeString : AnyObject {
   var modelImageSizeString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_hasModelImage : class {
+protocol PackageRoot_hasModelImage : AnyObject {
   var hasModelImage : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_masterPadObjectIndexArray : class {
+protocol PackageRoot_masterPadObjectIndexArray : AnyObject {
   var masterPadObjectIndexArray : IntArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_issues : class {
+protocol PackageRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_noIssue : class {
+protocol PackageRoot_noIssue : AnyObject {
   var noIssue : Bool? { get }
 }
 

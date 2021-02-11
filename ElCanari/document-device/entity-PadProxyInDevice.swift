@@ -6,31 +6,31 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PadProxyInDevice_mPinInstanceName : class {
+protocol PadProxyInDevice_mPinInstanceName : AnyObject {
   var mPinInstanceName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PadProxyInDevice_mPadName : class {
+protocol PadProxyInDevice_mPadName : AnyObject {
   var mPadName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PadProxyInDevice_mIsNC : class {
+protocol PadProxyInDevice_mIsNC : AnyObject {
   var mIsNC : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PadProxyInDevice_isConnected : class {
+protocol PadProxyInDevice_isConnected : AnyObject {
   var isConnected : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PadProxyInDevice_symbolName : class {
+protocol PadProxyInDevice_symbolName : AnyObject {
   var symbolName : String? { get }
 }
 

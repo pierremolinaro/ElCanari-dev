@@ -6,151 +6,151 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mSelectedPageIndex : class {
+protocol DeviceRoot_mSelectedPageIndex : AnyObject {
   var mSelectedPageIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mTitle : class {
+protocol DeviceRoot_mTitle : AnyObject {
   var mTitle : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mImageData : class {
+protocol DeviceRoot_mImageData : AnyObject {
   var mImageData : Data { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mPrefix : class {
+protocol DeviceRoot_mPrefix : AnyObject {
   var mPrefix : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mComments : class {
+protocol DeviceRoot_mComments : AnyObject {
   var mComments : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mPackageDisplayZoom : class {
+protocol DeviceRoot_mPackageDisplayZoom : AnyObject {
   var mPackageDisplayZoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mPackageDisplayHorizontalFlip : class {
+protocol DeviceRoot_mPackageDisplayHorizontalFlip : AnyObject {
   var mPackageDisplayHorizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mPackageDisplayVerticalFlip : class {
+protocol DeviceRoot_mPackageDisplayVerticalFlip : AnyObject {
   var mPackageDisplayVerticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mShowPackages : class {
+protocol DeviceRoot_mShowPackages : AnyObject {
   var mShowPackages : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mShowPackagePadNumbers : class {
+protocol DeviceRoot_mShowPackagePadNumbers : AnyObject {
   var mShowPackagePadNumbers : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mShowPackageFrontPads : class {
+protocol DeviceRoot_mShowPackageFrontPads : AnyObject {
   var mShowPackageFrontPads : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mShowPackageBackPads : class {
+protocol DeviceRoot_mShowPackageBackPads : AnyObject {
   var mShowPackageBackPads : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mSymbolDisplayZoom : class {
+protocol DeviceRoot_mSymbolDisplayZoom : AnyObject {
   var mSymbolDisplayZoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mSymbolDisplayHorizontalFlip : class {
+protocol DeviceRoot_mSymbolDisplayHorizontalFlip : AnyObject {
   var mSymbolDisplayHorizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_mSymbolDisplayVerticalFlip : class {
+protocol DeviceRoot_mSymbolDisplayVerticalFlip : AnyObject {
   var mSymbolDisplayVerticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_imageIsValid : class {
+protocol DeviceRoot_imageIsValid : AnyObject {
   var imageIsValid : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : class {
+protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : AnyObject {
   var inconsistentPackagePadNameSetsMessage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_inconsistentSymbolNameSetMessage : class {
+protocol DeviceRoot_inconsistentSymbolNameSetMessage : AnyObject {
   var inconsistentSymbolNameSetMessage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_unconnectedPins : class {
+protocol DeviceRoot_unconnectedPins : AnyObject {
   var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_packagePadNameSetsAreConsistent : class {
+protocol DeviceRoot_packagePadNameSetsAreConsistent : AnyObject {
   var packagePadNameSetsAreConsistent : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_symbolNameAreConsistent : class {
+protocol DeviceRoot_symbolNameAreConsistent : AnyObject {
   var symbolNameAreConsistent : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_symbolTypeNames : class {
+protocol DeviceRoot_symbolTypeNames : AnyObject {
   var symbolTypeNames : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_unconnectedPads : class {
+protocol DeviceRoot_unconnectedPads : AnyObject {
   var unconnectedPads : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_assignedPadProxies : class {
+protocol DeviceRoot_assignedPadProxies : AnyObject {
   var assignedPadProxies : AssignedPadProxiesInDevice? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceRoot_issues : class {
+protocol DeviceRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

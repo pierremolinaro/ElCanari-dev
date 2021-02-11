@@ -6,79 +6,79 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_mFileData : class {
+protocol PackageInDevice_mFileData : AnyObject {
   var mFileData : Data { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_mName : class {
+protocol PackageInDevice_mName : AnyObject {
   var mName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_mVersion : class {
+protocol PackageInDevice_mVersion : AnyObject {
   var mVersion : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_mStrokeBezierPath : class {
+protocol PackageInDevice_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_mX : class {
+protocol PackageInDevice_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_mY : class {
+protocol PackageInDevice_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_versionString : class {
+protocol PackageInDevice_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_documentSizeString : class {
+protocol PackageInDevice_documentSizeString : AnyObject {
   var documentSizeString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_frontSidePadFilledBezierPathArray : class {
+protocol PackageInDevice_frontSidePadFilledBezierPathArray : AnyObject {
   var frontSidePadFilledBezierPathArray : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_backSidePadFilledBezierPathArray : class {
+protocol PackageInDevice_backSidePadFilledBezierPathArray : AnyObject {
   var backSidePadFilledBezierPathArray : BezierPathArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_objectDisplay : class {
+protocol PackageInDevice_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_selectionDisplay : class {
+protocol PackageInDevice_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageInDevice_padNameSet : class {
+protocol PackageInDevice_padNameSet : AnyObject {
   var padNameSet : StringSet? { get }
 }
 

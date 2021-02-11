@@ -6,85 +6,85 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mPinName : class {
+protocol DevicePinInProject_mPinName : AnyObject {
   var mPinName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mSymbolInstanceName : class {
+protocol DevicePinInProject_mSymbolInstanceName : AnyObject {
   var mSymbolInstanceName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mSymbolTypeName : class {
+protocol DevicePinInProject_mSymbolTypeName : AnyObject {
   var mSymbolTypeName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mPinX : class {
+protocol DevicePinInProject_mPinX : AnyObject {
   var mPinX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mPinY : class {
+protocol DevicePinInProject_mPinY : AnyObject {
   var mPinY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mXName : class {
+protocol DevicePinInProject_mXName : AnyObject {
   var mXName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mYName : class {
+protocol DevicePinInProject_mYName : AnyObject {
   var mYName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mNameHorizontalAlignment : class {
+protocol DevicePinInProject_mNameHorizontalAlignment : AnyObject {
   var mNameHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mPinNameIsDisplayedInSchematic : class {
+protocol DevicePinInProject_mPinNameIsDisplayedInSchematic : AnyObject {
   var mPinNameIsDisplayedInSchematic : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mXNumber : class {
+protocol DevicePinInProject_mXNumber : AnyObject {
   var mXNumber : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mYNumber : class {
+protocol DevicePinInProject_mYNumber : AnyObject {
   var mYNumber : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_mNumberHorizontalAlignment : class {
+protocol DevicePinInProject_mNumberHorizontalAlignment : AnyObject {
   var mNumberHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_pinQualifiedName : class {
+protocol DevicePinInProject_pinQualifiedName : AnyObject {
   var pinQualifiedName : PinQualifiedNameStruct? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePinInProject_descriptor : class {
+protocol DevicePinInProject_descriptor : AnyObject {
   var descriptor : PinInProjectDescriptor? { get }
 }
 

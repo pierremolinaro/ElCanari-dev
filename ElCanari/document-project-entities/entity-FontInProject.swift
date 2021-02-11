@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_mNominalSize : class {
+protocol FontInProject_mNominalSize : AnyObject {
   var mNominalSize : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_mFontName : class {
+protocol FontInProject_mFontName : AnyObject {
   var mFontName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_mFontVersion : class {
+protocol FontInProject_mFontVersion : AnyObject {
   var mFontVersion : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_mDescriptiveString : class {
+protocol FontInProject_mDescriptiveString : AnyObject {
   var mDescriptiveString : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_versionString : class {
+protocol FontInProject_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_sizeString : class {
+protocol FontInProject_sizeString : AnyObject {
   var sizeString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_descriptor : class {
+protocol FontInProject_descriptor : AnyObject {
   var descriptor : BoardFontDescriptor? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontInProject_canRemoveFont : class {
+protocol FontInProject_canRemoveFont : AnyObject {
   var canRemoveFont : Bool? { get }
 }
 

@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_mFirstX : class {
+protocol PackageModelImageDoublePoint_mFirstX : AnyObject {
   var mFirstX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_mFirstY : class {
+protocol PackageModelImageDoublePoint_mFirstY : AnyObject {
   var mFirstY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_mFirstColor : class {
+protocol PackageModelImageDoublePoint_mFirstColor : AnyObject {
   var mFirstColor : NSColor { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_mSecondDx : class {
+protocol PackageModelImageDoublePoint_mSecondDx : AnyObject {
   var mSecondDx : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_mSecondDy : class {
+protocol PackageModelImageDoublePoint_mSecondDy : AnyObject {
   var mSecondDy : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_mSecondColor : class {
+protocol PackageModelImageDoublePoint_mSecondColor : AnyObject {
   var mSecondColor : NSColor { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_objectDisplay : class {
+protocol PackageModelImageDoublePoint_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageModelImageDoublePoint_selectionDisplay : class {
+protocol PackageModelImageDoublePoint_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

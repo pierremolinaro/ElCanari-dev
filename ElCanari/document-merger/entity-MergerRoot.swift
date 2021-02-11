@@ -6,211 +6,211 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_selectedPageIndex : class {
+protocol MergerRoot_selectedPageIndex : AnyObject {
   var selectedPageIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_zoom : class {
+protocol MergerRoot_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_automaticBoardSize : class {
+protocol MergerRoot_automaticBoardSize : AnyObject {
   var automaticBoardSize : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardManualWidth : class {
+protocol MergerRoot_boardManualWidth : AnyObject {
   var boardManualWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardManualHeight : class {
+protocol MergerRoot_boardManualHeight : AnyObject {
   var boardManualHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardWidthUnit : class {
+protocol MergerRoot_boardWidthUnit : AnyObject {
   var boardWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardHeightUnit : class {
+protocol MergerRoot_boardHeightUnit : AnyObject {
   var boardHeightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_overlapingArrangment : class {
+protocol MergerRoot_overlapingArrangment : AnyObject {
   var overlapingArrangment : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_selectedBoardXUnit : class {
+protocol MergerRoot_selectedBoardXUnit : AnyObject {
   var selectedBoardXUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_selectedBoardYUnit : class {
+protocol MergerRoot_selectedBoardYUnit : AnyObject {
   var selectedBoardYUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardLimitWidth : class {
+protocol MergerRoot_boardLimitWidth : AnyObject {
   var boardLimitWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardLimitWidthUnit : class {
+protocol MergerRoot_boardLimitWidthUnit : AnyObject {
   var boardLimitWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_arrowMagnitude : class {
+protocol MergerRoot_arrowMagnitude : AnyObject {
   var arrowMagnitude : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_arrowMagnitudeUnit : class {
+protocol MergerRoot_arrowMagnitudeUnit : AnyObject {
   var arrowMagnitudeUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_shiftArrowMagnitude : class {
+protocol MergerRoot_shiftArrowMagnitude : AnyObject {
   var shiftArrowMagnitude : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_shiftArrowMagnitudeUnit : class {
+protocol MergerRoot_shiftArrowMagnitudeUnit : AnyObject {
   var shiftArrowMagnitudeUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_mPDFBoardBackgroundColor : class {
+protocol MergerRoot_mPDFBoardBackgroundColor : AnyObject {
   var mPDFBoardBackgroundColor : NSColor { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_mArtworkName : class {
+protocol MergerRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_mArtworkVersion : class {
+protocol MergerRoot_mArtworkVersion : AnyObject {
   var mArtworkVersion : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minPPTPTTTWdisplayUnit : class {
+protocol MergerRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minPPTPTTTW : class {
+protocol MergerRoot_minPPTPTTTW : AnyObject {
   var minPPTPTTTW : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minValueForOARdisplayUnit : class {
+protocol MergerRoot_minValueForOARdisplayUnit : AnyObject {
   var minValueForOARdisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minValueForOARinEBUnit : class {
+protocol MergerRoot_minValueForOARinEBUnit : AnyObject {
   var minValueForOARinEBUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minValueForPHDdisplayUnit : class {
+protocol MergerRoot_minValueForPHDdisplayUnit : AnyObject {
   var minValueForPHDdisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minValueForPHDinEBUnit : class {
+protocol MergerRoot_minValueForPHDinEBUnit : AnyObject {
   var minValueForPHDinEBUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minValueForBoardLimitWidth : class {
+protocol MergerRoot_minValueForBoardLimitWidth : AnyObject {
   var minValueForBoardLimitWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_minValueForBoardLimitWidthDisplayUnit : class {
+protocol MergerRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
   var minValueForBoardLimitWidthDisplayUnit : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_drillDataFileExtension : class {
+protocol MergerRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_comments : class {
+protocol MergerRoot_comments : AnyObject {
   var comments : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_modelNames : class {
+protocol MergerRoot_modelNames : AnyObject {
   var modelNames : StringTagArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardRect : class {
+protocol MergerRoot_boardRect : AnyObject {
   var boardRect : CanariRect? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardDisplayRect : class {
+protocol MergerRoot_boardDisplayRect : AnyObject {
   var boardDisplayRect : CanariRect? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardWidth : class {
+protocol MergerRoot_boardWidth : AnyObject {
   var boardWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardHeight : class {
+protocol MergerRoot_boardHeight : AnyObject {
   var boardHeight : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol MergerRoot_boardOutlineRectDisplay : class {
+protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
   var boardOutlineRectDisplay : EBShape? { get }
 }
 

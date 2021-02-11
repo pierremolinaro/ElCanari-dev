@@ -6,55 +6,55 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_mTypeName : class {
+protocol SymbolTypeInDevice_mTypeName : AnyObject {
   var mTypeName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_mVersion : class {
+protocol SymbolTypeInDevice_mVersion : AnyObject {
   var mVersion : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_mFileData : class {
+protocol SymbolTypeInDevice_mFileData : AnyObject {
   var mFileData : Data { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_mStrokeBezierPath : class {
+protocol SymbolTypeInDevice_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_mFilledBezierPath : class {
+protocol SymbolTypeInDevice_mFilledBezierPath : AnyObject {
   var mFilledBezierPath : NSBezierPath { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_versionString : class {
+protocol SymbolTypeInDevice_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_instanceCount : class {
+protocol SymbolTypeInDevice_instanceCount : AnyObject {
   var instanceCount : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_documentSizeString : class {
+protocol SymbolTypeInDevice_documentSizeString : AnyObject {
   var documentSizeString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolTypeInDevice_pinNameShape : class {
+protocol SymbolTypeInDevice_pinNameShape : AnyObject {
   var pinNameShape : EBShape? { get }
 }
 

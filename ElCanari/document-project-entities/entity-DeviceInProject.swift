@@ -6,79 +6,79 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_mDeviceName : class {
+protocol DeviceInProject_mDeviceName : AnyObject {
   var mDeviceName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_mPrefix : class {
+protocol DeviceInProject_mPrefix : AnyObject {
   var mPrefix : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_mDeviceVersion : class {
+protocol DeviceInProject_mDeviceVersion : AnyObject {
   var mDeviceVersion : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_mDeviceFileData : class {
+protocol DeviceInProject_mDeviceFileData : AnyObject {
   var mDeviceFileData : Data { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_versionString : class {
+protocol DeviceInProject_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_sizeString : class {
+protocol DeviceInProject_sizeString : AnyObject {
   var sizeString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_canExport : class {
+protocol DeviceInProject_canExport : AnyObject {
   var canExport : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_packageNames : class {
+protocol DeviceInProject_packageNames : AnyObject {
   var packageNames : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_deviceComponentCountString : class {
+protocol DeviceInProject_deviceComponentCountString : AnyObject {
   var deviceComponentCountString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_canRemove : class {
+protocol DeviceInProject_canRemove : AnyObject {
   var canRemove : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_symbolAndTypesNames : class {
+protocol DeviceInProject_symbolAndTypesNames : AnyObject {
   var symbolAndTypesNames : SymbolInProjectIdentifierArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_pinPadAssignments : class {
+protocol DeviceInProject_pinPadAssignments : AnyObject {
   var pinPadAssignments : ThreeStringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceInProject_deviceSymbolDictionary : class {
+protocol DeviceInProject_deviceSymbolDictionary : AnyObject {
   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
 

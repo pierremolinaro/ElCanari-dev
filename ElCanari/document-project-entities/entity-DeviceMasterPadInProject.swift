@@ -6,61 +6,61 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mCenterX : class {
+protocol DeviceMasterPadInProject_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mCenterY : class {
+protocol DeviceMasterPadInProject_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mWidth : class {
+protocol DeviceMasterPadInProject_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mHeight : class {
+protocol DeviceMasterPadInProject_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mHoleWidth : class {
+protocol DeviceMasterPadInProject_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mHoleHeight : class {
+protocol DeviceMasterPadInProject_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mShape : class {
+protocol DeviceMasterPadInProject_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mStyle : class {
+protocol DeviceMasterPadInProject_mStyle : AnyObject {
   var mStyle : PadStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_mName : class {
+protocol DeviceMasterPadInProject_mName : AnyObject {
   var mName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceMasterPadInProject_descriptor : class {
+protocol DeviceMasterPadInProject_descriptor : AnyObject {
   var descriptor : MasterPadDescriptor? { get }
 }
 

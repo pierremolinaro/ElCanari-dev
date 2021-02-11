@@ -6,73 +6,73 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_y : class {
+protocol PackageOval_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_width : class {
+protocol PackageOval_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_height : class {
+protocol PackageOval_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_xUnit : class {
+protocol PackageOval_xUnit : AnyObject {
   var xUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_yUnit : class {
+protocol PackageOval_yUnit : AnyObject {
   var yUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_widthUnit : class {
+protocol PackageOval_widthUnit : AnyObject {
   var widthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_heightUnit : class {
+protocol PackageOval_heightUnit : AnyObject {
   var heightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_x : class {
+protocol PackageOval_x : AnyObject {
   var x : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_strokeBezierPath : class {
+protocol PackageOval_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_objectDisplay : class {
+protocol PackageOval_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_selectionDisplay : class {
+protocol PackageOval_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageOval_issues : class {
+protocol PackageOval_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

@@ -6,37 +6,37 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SchematicObject_issues : class {
+protocol SchematicObject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SchematicObject_connectedPoints : class {
+protocol SchematicObject_connectedPoints : AnyObject {
   var connectedPoints : CanariPointArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SchematicObject_sheetDescriptor : class {
+protocol SchematicObject_sheetDescriptor : AnyObject {
   var sheetDescriptor : SchematicSheetDescriptor? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SchematicObject_selectionDisplay : class {
+protocol SchematicObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SchematicObject_objectDisplay : class {
+protocol SchematicObject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SchematicObject_isPlacedInSchematic : class {
+protocol SchematicObject_isPlacedInSchematic : AnyObject {
   var isPlacedInSchematic : Bool? { get }
 }
 

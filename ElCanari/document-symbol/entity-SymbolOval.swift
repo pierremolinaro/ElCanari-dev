@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_y : class {
+protocol SymbolOval_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_width : class {
+protocol SymbolOval_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_height : class {
+protocol SymbolOval_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_x : class {
+protocol SymbolOval_x : AnyObject {
   var x : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_strokeBezierPath : class {
+protocol SymbolOval_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_objectDisplay : class {
+protocol SymbolOval_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_selectionDisplay : class {
+protocol SymbolOval_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolOval_issues : class {
+protocol SymbolOval_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

@@ -6,31 +6,31 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentEntity_y1 : class {
+protocol SegmentEntity_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentEntity_x2 : class {
+protocol SegmentEntity_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentEntity_y2 : class {
+protocol SegmentEntity_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentEntity_width : class {
+protocol SegmentEntity_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentEntity_x1 : class {
+protocol SegmentEntity_x1 : AnyObject {
   var x1 : Int { get }
 }
 

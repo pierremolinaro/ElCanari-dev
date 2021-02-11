@@ -6,139 +6,139 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawBoardLimits : class {
+protocol ArtworkFileGenerationParameters_drawBoardLimits : AnyObject {
   var drawBoardLimits : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : class {
+protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : AnyObject {
   var drawInternalBoardLimits : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : class {
+protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : AnyObject {
   var drawComponentNamesTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : AnyObject {
   var drawComponentNamesBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : class {
+protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : AnyObject {
   var drawComponentValuesTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : AnyObject {
   var drawComponentValuesBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : class {
+protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : AnyObject {
   var drawPackageLegendTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : AnyObject {
   var drawPackageLegendBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : class {
+protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : AnyObject {
   var drawPadHolesInPDF : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawPadsTopSide : class {
+protocol ArtworkFileGenerationParameters_drawPadsTopSide : AnyObject {
   var drawPadsTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawPadsBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawPadsBottomSide : AnyObject {
   var drawPadsBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : class {
+protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : AnyObject {
   var drawTextsLayoutTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : AnyObject {
   var drawTextsLayoutBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : class {
+protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : AnyObject {
   var drawTextsLegendTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : AnyObject {
   var drawTextsLegendBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawTracksTopSide : class {
+protocol ArtworkFileGenerationParameters_drawTracksTopSide : AnyObject {
   var drawTracksTopSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawTracksBottomSide : class {
+protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
   var drawTracksBottomSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_drawVias : class {
+protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
   var drawVias : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_fileExtension : class {
+protocol ArtworkFileGenerationParameters_fileExtension : AnyObject {
   var fileExtension : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_horizontalMirror : class {
+protocol ArtworkFileGenerationParameters_horizontalMirror : AnyObject {
   var horizontalMirror : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_name : class {
+protocol ArtworkFileGenerationParameters_name : AnyObject {
   var name : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : class {
+protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : AnyObject {
   var measurementUnitForPadHoleInPDF : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
+protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : AnyObject {
   var padHoleDiameterInPDF : Int { get }
 }
 

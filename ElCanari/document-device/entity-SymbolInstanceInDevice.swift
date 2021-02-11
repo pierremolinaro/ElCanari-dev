@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_mInstanceName : class {
+protocol SymbolInstanceInDevice_mInstanceName : AnyObject {
   var mInstanceName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_mX : class {
+protocol SymbolInstanceInDevice_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_mY : class {
+protocol SymbolInstanceInDevice_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_symbolQualifiedName : class {
+protocol SymbolInstanceInDevice_symbolQualifiedName : AnyObject {
   var symbolQualifiedName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_symbolTypeName : class {
+protocol SymbolInstanceInDevice_symbolTypeName : AnyObject {
   var symbolTypeName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_selectionDisplay : class {
+protocol SymbolInstanceInDevice_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_unconnectedPins : class {
+protocol SymbolInstanceInDevice_unconnectedPins : AnyObject {
   var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolInstanceInDevice_objectDisplay : class {
+protocol SymbolInstanceInDevice_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

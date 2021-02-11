@@ -6,127 +6,127 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_x : class {
+protocol PackageZone_x : AnyObject {
   var x : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_y : class {
+protocol PackageZone_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_width : class {
+protocol PackageZone_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_height : class {
+protocol PackageZone_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_xUnit : class {
+protocol PackageZone_xUnit : AnyObject {
   var xUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_yUnit : class {
+protocol PackageZone_yUnit : AnyObject {
   var yUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_widthUnit : class {
+protocol PackageZone_widthUnit : AnyObject {
   var widthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_heightUnit : class {
+protocol PackageZone_heightUnit : AnyObject {
   var heightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_zoneName : class {
+protocol PackageZone_zoneName : AnyObject {
   var zoneName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_displayZoneName : class {
+protocol PackageZone_displayZoneName : AnyObject {
   var displayZoneName : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_xName : class {
+protocol PackageZone_xName : AnyObject {
   var xName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_yName : class {
+protocol PackageZone_yName : AnyObject {
   var yName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_xNameUnit : class {
+protocol PackageZone_xNameUnit : AnyObject {
   var xNameUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_yNameUnit : class {
+protocol PackageZone_yNameUnit : AnyObject {
   var yNameUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_zoneNumbering : class {
+protocol PackageZone_zoneNumbering : AnyObject {
   var zoneNumbering : PadNumbering { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_objectDisplay : class {
+protocol PackageZone_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_issues : class {
+protocol PackageZone_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_rect : class {
+protocol PackageZone_rect : AnyObject {
   var rect : CanariRect? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_selectionDisplay : class {
+protocol PackageZone_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_forbiddenPadArray : class {
+protocol PackageZone_forbiddenPadArray : AnyObject {
   var forbiddenPadArray : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageZone_emptyForbiddenPadArray : class {
+protocol PackageZone_emptyForbiddenPadArray : AnyObject {
   var emptyForbiddenPadArray : Bool? { get }
 }
 

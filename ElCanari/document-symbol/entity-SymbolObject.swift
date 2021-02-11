@@ -6,19 +6,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolObject_selectionDisplay : class {
+protocol SymbolObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolObject_objectDisplay : class {
+protocol SymbolObject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolObject_issues : class {
+protocol SymbolObject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

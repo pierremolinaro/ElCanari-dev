@@ -6,55 +6,55 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mCenterX : class {
+protocol DeviceSlavePadInProject_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mCenterY : class {
+protocol DeviceSlavePadInProject_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mWidth : class {
+protocol DeviceSlavePadInProject_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mHeight : class {
+protocol DeviceSlavePadInProject_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mHoleWidth : class {
+protocol DeviceSlavePadInProject_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mHoleHeight : class {
+protocol DeviceSlavePadInProject_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mShape : class {
+protocol DeviceSlavePadInProject_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_mStyle : class {
+protocol DeviceSlavePadInProject_mStyle : AnyObject {
   var mStyle : SlavePadStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceSlavePadInProject_descriptor : class {
+protocol DeviceSlavePadInProject_descriptor : AnyObject {
   var descriptor : SlavePadDescriptor? { get }
 }
 

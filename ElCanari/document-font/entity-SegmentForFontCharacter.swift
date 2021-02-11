@@ -6,37 +6,37 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentForFontCharacter_x1 : class {
+protocol SegmentForFontCharacter_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentForFontCharacter_y1 : class {
+protocol SegmentForFontCharacter_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentForFontCharacter_x2 : class {
+protocol SegmentForFontCharacter_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentForFontCharacter_y2 : class {
+protocol SegmentForFontCharacter_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentForFontCharacter_selectionDisplay : class {
+protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SegmentForFontCharacter_objectDisplay : class {
+protocol SegmentForFontCharacter_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

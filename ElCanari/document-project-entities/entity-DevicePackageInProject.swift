@@ -6,19 +6,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePackageInProject_mPackageName : class {
+protocol DevicePackageInProject_mPackageName : AnyObject {
   var mPackageName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePackageInProject_mStrokeBezierPath : class {
+protocol DevicePackageInProject_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DevicePackageInProject_packagePadDictionary : class {
+protocol DevicePackageInProject_packagePadDictionary : AnyObject {
   var packagePadDictionary : PackageMasterPadDictionary? { get }
 }
 

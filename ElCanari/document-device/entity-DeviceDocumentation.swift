@@ -6,19 +6,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceDocumentation_mFileName : class {
+protocol DeviceDocumentation_mFileName : AnyObject {
   var mFileName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceDocumentation_mFileData : class {
+protocol DeviceDocumentation_mFileData : AnyObject {
   var mFileData : Data { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol DeviceDocumentation_fileSize : class {
+protocol DeviceDocumentation_fileSize : AnyObject {
   var fileSize : Int? { get }
 }
 

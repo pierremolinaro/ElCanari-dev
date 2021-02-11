@@ -6,73 +6,73 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_selectedInspector : class {
+protocol SymbolRoot_selectedInspector : AnyObject {
   var selectedInspector : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_comments : class {
+protocol SymbolRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_horizontalFlip : class {
+protocol SymbolRoot_horizontalFlip : AnyObject {
   var horizontalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_verticalFlip : class {
+protocol SymbolRoot_verticalFlip : AnyObject {
   var verticalFlip : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_gridStyle : class {
+protocol SymbolRoot_gridStyle : AnyObject {
   var gridStyle : GridStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_gridDisplay : class {
+protocol SymbolRoot_gridDisplay : AnyObject {
   var gridDisplay : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_zoom : class {
+protocol SymbolRoot_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_xPlacardUnit : class {
+protocol SymbolRoot_xPlacardUnit : AnyObject {
   var xPlacardUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_yPlacardUnit : class {
+protocol SymbolRoot_yPlacardUnit : AnyObject {
   var yPlacardUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_selectedPageIndex : class {
+protocol SymbolRoot_selectedPageIndex : AnyObject {
   var selectedPageIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_issues : class {
+protocol SymbolRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolRoot_noIssue : class {
+protocol SymbolRoot_noIssue : AnyObject {
   var noIssue : Bool? { get }
 }
 

@@ -4670,7 +4670,6 @@
 		CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutHorizontalStackView.swift; sourceTree = "<group>"; };
 		CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutFlexibleSpace.swift; sourceTree = "<group>"; };
 		CF9C658225CABE5C00A00D5C /* ElCanari-Debug-temporary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug-temporary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF9C658325CABE5C00A00D5C /* ElCanari-Debug copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ElCanari-Debug copy-Info.plist"; path = "/Volumes/dev-svn/ElCanari-dev/ElCanari-Debug copy-Info.plist"; sourceTree = "<absolute>"; };
 		CF9C675125CAC83500A00D5C /* action-AutoLayoutPackageDocument-resetVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutPackageDocument-resetVersionAction.swift"; sourceTree = "<group>"; };
 		CF9C675225CAC83500A00D5C /* action-AutoLayoutPackageDocument-runProgramAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutPackageDocument-runProgramAction.swift"; sourceTree = "<group>"; };
 		CF9C675325CAC83500A00D5C /* selectionController-AutoLayoutPackageDocument-mPackageOvalSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutPackageDocument-mPackageOvalSelectionController.swift"; sourceTree = "<group>"; };
@@ -5546,7 +5545,6 @@
 				CF35A54121A8257D00A0E500 /* Swift Extensions */,
 				CFFA7B46227481E000E2D69A /* Table Views */,
 				CF5CEFB81DD8C4E000A70419 /* utilities */,
-				CF9C658325CABE5C00A00D5C /* ElCanari-Debug copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

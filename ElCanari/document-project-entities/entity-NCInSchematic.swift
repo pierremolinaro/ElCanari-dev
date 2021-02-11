@@ -6,19 +6,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NCInSchematic_mOrientation : class {
+protocol NCInSchematic_mOrientation : AnyObject {
   var mOrientation : QuadrantRotation { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NCInSchematic_objectDisplay : class {
+protocol NCInSchematic_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NCInSchematic_selectionDisplay : class {
+protocol NCInSchematic_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

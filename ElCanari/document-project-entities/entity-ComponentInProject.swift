@@ -6,253 +6,253 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mSlavePadsShouldBeRouted : class {
+protocol ComponentInProject_mSlavePadsShouldBeRouted : AnyObject {
   var mSlavePadsShouldBeRouted : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mX : class {
+protocol ComponentInProject_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mY : class {
+protocol ComponentInProject_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mRotation : class {
+protocol ComponentInProject_mRotation : AnyObject {
   var mRotation : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mSide : class {
+protocol ComponentInProject_mSide : AnyObject {
   var mSide : ComponentSide { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mDisplayLegend : class {
+protocol ComponentInProject_mDisplayLegend : AnyObject {
   var mDisplayLegend : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mNameIsVisibleInBoard : class {
+protocol ComponentInProject_mNameIsVisibleInBoard : AnyObject {
   var mNameIsVisibleInBoard : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mXName : class {
+protocol ComponentInProject_mXName : AnyObject {
   var mXName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mYName : class {
+protocol ComponentInProject_mYName : AnyObject {
   var mYName : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mNameFontSize : class {
+protocol ComponentInProject_mNameFontSize : AnyObject {
   var mNameFontSize : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mNameRotation : class {
+protocol ComponentInProject_mNameRotation : AnyObject {
   var mNameRotation : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mValueIsVisibleInBoard : class {
+protocol ComponentInProject_mValueIsVisibleInBoard : AnyObject {
   var mValueIsVisibleInBoard : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mXValue : class {
+protocol ComponentInProject_mXValue : AnyObject {
   var mXValue : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mYValue : class {
+protocol ComponentInProject_mYValue : AnyObject {
   var mYValue : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mValueFontSize : class {
+protocol ComponentInProject_mValueFontSize : AnyObject {
   var mValueFontSize : Double { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mValueRotation : class {
+protocol ComponentInProject_mValueRotation : AnyObject {
   var mValueRotation : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mComponentValue : class {
+protocol ComponentInProject_mComponentValue : AnyObject {
   var mComponentValue : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mNamePrefix : class {
+protocol ComponentInProject_mNamePrefix : AnyObject {
   var mNamePrefix : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mNameIndex : class {
+protocol ComponentInProject_mNameIndex : AnyObject {
   var mNameIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mXUnit : class {
+protocol ComponentInProject_mXUnit : AnyObject {
   var mXUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_mYUnit : class {
+protocol ComponentInProject_mYUnit : AnyObject {
   var mYUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_deviceName : class {
+protocol ComponentInProject_deviceName : AnyObject {
   var deviceName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_signatureForERCChecking : class {
+protocol ComponentInProject_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_packagePadDictionary : class {
+protocol ComponentInProject_packagePadDictionary : AnyObject {
   var packagePadDictionary : PackageMasterPadDictionary? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_selectedPackageName : class {
+protocol ComponentInProject_selectedPackageName : AnyObject {
   var selectedPackageName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_availablePackages : class {
+protocol ComponentInProject_availablePackages : AnyObject {
   var availablePackages : StringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_issues : class {
+protocol ComponentInProject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_componentIsPlacedInBoard : class {
+protocol ComponentInProject_componentIsPlacedInBoard : AnyObject {
   var componentIsPlacedInBoard : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_componentIsPlacedInBoardString : class {
+protocol ComponentInProject_componentIsPlacedInBoardString : AnyObject {
   var componentIsPlacedInBoardString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_strokeBezierPath : class {
+protocol ComponentInProject_strokeBezierPath : AnyObject {
   var strokeBezierPath : EBBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_pinPadAssignments : class {
+protocol ComponentInProject_pinPadAssignments : AnyObject {
   var pinPadAssignments : ThreeStringArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_hasSlavePads : class {
+protocol ComponentInProject_hasSlavePads : AnyObject {
   var hasSlavePads : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_placementInSchematic : class {
+protocol ComponentInProject_placementInSchematic : AnyObject {
   var placementInSchematic : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_deviceSymbolDictionary : class {
+protocol ComponentInProject_deviceSymbolDictionary : AnyObject {
   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_componentNameFontName : class {
+protocol ComponentInProject_componentNameFontName : AnyObject {
   var componentNameFontName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_componentValueFontName : class {
+protocol ComponentInProject_componentValueFontName : AnyObject {
   var componentValueFontName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_componentPadDictionary : class {
+protocol ComponentInProject_componentPadDictionary : AnyObject {
   var componentPadDictionary : ComponentPadDescriptorDictionary? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_padNetDictionary : class {
+protocol ComponentInProject_padNetDictionary : AnyObject {
   var padNetDictionary : PadNetDictionary? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_componentName : class {
+protocol ComponentInProject_componentName : AnyObject {
   var componentName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_selectionDisplay : class {
+protocol ComponentInProject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_unplacedSymbols : class {
+protocol ComponentInProject_unplacedSymbols : AnyObject {
   var unplacedSymbols : StringTagArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol ComponentInProject_objectDisplay : class {
+protocol ComponentInProject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

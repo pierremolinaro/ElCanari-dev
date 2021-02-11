@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_y : class {
+protocol SymbolSolidRect_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_width : class {
+protocol SymbolSolidRect_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_height : class {
+protocol SymbolSolidRect_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_x : class {
+protocol SymbolSolidRect_x : AnyObject {
   var x : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_filledBezierPath : class {
+protocol SymbolSolidRect_filledBezierPath : AnyObject {
   var filledBezierPath : NSBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_objectDisplay : class {
+protocol SymbolSolidRect_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_selectionDisplay : class {
+protocol SymbolSolidRect_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSolidRect_issues : class {
+protocol SymbolSolidRect_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

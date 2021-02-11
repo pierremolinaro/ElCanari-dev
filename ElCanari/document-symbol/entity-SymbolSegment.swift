@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_y1 : class {
+protocol SymbolSegment_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_x2 : class {
+protocol SymbolSegment_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_y2 : class {
+protocol SymbolSegment_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_x1 : class {
+protocol SymbolSegment_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_strokeBezierPath : class {
+protocol SymbolSegment_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_objectDisplay : class {
+protocol SymbolSegment_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_selectionDisplay : class {
+protocol SymbolSegment_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SymbolSegment_issues : class {
+protocol SymbolSegment_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

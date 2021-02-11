@@ -6,145 +6,145 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_xCenter : class {
+protocol PackageSlavePad_xCenter : AnyObject {
   var xCenter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_yCenter : class {
+protocol PackageSlavePad_yCenter : AnyObject {
   var yCenter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_width : class {
+protocol PackageSlavePad_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_height : class {
+protocol PackageSlavePad_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_holeWidth : class {
+protocol PackageSlavePad_holeWidth : AnyObject {
   var holeWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_holeHeight : class {
+protocol PackageSlavePad_holeHeight : AnyObject {
   var holeHeight : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_padShape : class {
+protocol PackageSlavePad_padShape : AnyObject {
   var padShape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_padStyle : class {
+protocol PackageSlavePad_padStyle : AnyObject {
   var padStyle : SlavePadStyle { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_xCenterUnit : class {
+protocol PackageSlavePad_xCenterUnit : AnyObject {
   var xCenterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_yCenterUnit : class {
+protocol PackageSlavePad_yCenterUnit : AnyObject {
   var yCenterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_widthUnit : class {
+protocol PackageSlavePad_widthUnit : AnyObject {
   var widthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_heightUnit : class {
+protocol PackageSlavePad_heightUnit : AnyObject {
   var heightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_holeWidthUnit : class {
+protocol PackageSlavePad_holeWidthUnit : AnyObject {
   var holeWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_holeHeightUnit : class {
+protocol PackageSlavePad_holeHeightUnit : AnyObject {
   var holeHeightUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_annularRingUnit : class {
+protocol PackageSlavePad_annularRingUnit : AnyObject {
   var annularRingUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_selectionDisplay : class {
+protocol PackageSlavePad_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_issues : class {
+protocol PackageSlavePad_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_padIsTraversing : class {
+protocol PackageSlavePad_padIsTraversing : AnyObject {
   var padIsTraversing : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_annularRing : class {
+protocol PackageSlavePad_annularRing : AnyObject {
   var annularRing : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_padNameWithZoneName : class {
+protocol PackageSlavePad_padNameWithZoneName : AnyObject {
   var padNameWithZoneName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_masterPadNameWithZoneName : class {
+protocol PackageSlavePad_masterPadNameWithZoneName : AnyObject {
   var masterPadNameWithZoneName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_padNameForDisplay : class {
+protocol PackageSlavePad_padNameForDisplay : AnyObject {
   var padNameForDisplay : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_padNumberDisplay : class {
+protocol PackageSlavePad_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageSlavePad_objectDisplay : class {
+protocol PackageSlavePad_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

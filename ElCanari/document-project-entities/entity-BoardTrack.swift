@@ -6,169 +6,169 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mSide : class {
+protocol BoardTrack_mSide : AnyObject {
   var mSide : TrackSide { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mDefaultTrackWidthUnit : class {
+protocol BoardTrack_mDefaultTrackWidthUnit : AnyObject {
   var mDefaultTrackWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mCustomTrackWidth : class {
+protocol BoardTrack_mCustomTrackWidth : AnyObject {
   var mCustomTrackWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mCustomTrackWidthUnit : class {
+protocol BoardTrack_mCustomTrackWidthUnit : AnyObject {
   var mCustomTrackWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mUsesCustomTrackWidth : class {
+protocol BoardTrack_mUsesCustomTrackWidth : AnyObject {
   var mUsesCustomTrackWidth : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mIsPreservedByAutoRouter : class {
+protocol BoardTrack_mIsPreservedByAutoRouter : AnyObject {
   var mIsPreservedByAutoRouter : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mP1XUnit : class {
+protocol BoardTrack_mP1XUnit : AnyObject {
   var mP1XUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mP1YUnit : class {
+protocol BoardTrack_mP1YUnit : AnyObject {
   var mP1YUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mP2XUnit : class {
+protocol BoardTrack_mP2XUnit : AnyObject {
   var mP2XUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mP2YUnit : class {
+protocol BoardTrack_mP2YUnit : AnyObject {
   var mP2YUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mManualLockP1 : class {
+protocol BoardTrack_mManualLockP1 : AnyObject {
   var mManualLockP1 : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mManualLockP2 : class {
+protocol BoardTrack_mManualLockP2 : AnyObject {
   var mManualLockP2 : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_mDirectionLockOnKnobDragging : class {
+protocol BoardTrack_mDirectionLockOnKnobDragging : AnyObject {
   var mDirectionLockOnKnobDragging : TrackLockDirection { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_actualTrackWidth : class {
+protocol BoardTrack_actualTrackWidth : AnyObject {
   var actualTrackWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_netName : class {
+protocol BoardTrack_netName : AnyObject {
   var netName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_netClassName : class {
+protocol BoardTrack_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_netClassTrackWidth : class {
+protocol BoardTrack_netClassTrackWidth : AnyObject {
   var netClassTrackWidth : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_netClassViaHoleDiameter : class {
+protocol BoardTrack_netClassViaHoleDiameter : AnyObject {
   var netClassViaHoleDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_netClassViaPadDiameter : class {
+protocol BoardTrack_netClassViaPadDiameter : AnyObject {
   var netClassViaPadDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_trackLengthInCanariUnit : class {
+protocol BoardTrack_trackLengthInCanariUnit : AnyObject {
   var trackLengthInCanariUnit : Double? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_signatureForERCChecking : class {
+protocol BoardTrack_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_p1ConnectedToSomePad : class {
+protocol BoardTrack_p1ConnectedToSomePad : AnyObject {
   var p1ConnectedToSomePad : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_p2ConnectedToSomePad : class {
+protocol BoardTrack_p2ConnectedToSomePad : AnyObject {
   var p2ConnectedToSomePad : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_objectDisplay : class {
+protocol BoardTrack_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_p1CanMove : class {
+protocol BoardTrack_p1CanMove : AnyObject {
   var p1CanMove : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_p2CanMove : class {
+protocol BoardTrack_p2CanMove : AnyObject {
   var p2CanMove : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_trackCanRotate : class {
+protocol BoardTrack_trackCanRotate : AnyObject {
   var trackCanRotate : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardTrack_selectionDisplay : class {
+protocol BoardTrack_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

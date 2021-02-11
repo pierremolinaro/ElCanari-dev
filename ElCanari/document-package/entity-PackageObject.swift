@@ -6,25 +6,25 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageObject_issues : class {
+protocol PackageObject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageObject_selectionDisplay : class {
+protocol PackageObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageObject_objectDisplay : class {
+protocol PackageObject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageObject_knobSize : class {
+protocol PackageObject_knobSize : AnyObject {
   var knobSize : Double? { get }
 }
 

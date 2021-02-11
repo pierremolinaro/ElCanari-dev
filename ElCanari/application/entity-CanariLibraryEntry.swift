@@ -6,31 +6,31 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol CanariLibraryEntry_mPath : class {
+protocol CanariLibraryEntry_mPath : AnyObject {
   var mPath : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol CanariLibraryEntry_mUses : class {
+protocol CanariLibraryEntry_mUses : AnyObject {
   var mUses : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol CanariLibraryEntry_mLibraryRepositoryURL : class {
+protocol CanariLibraryEntry_mLibraryRepositoryURL : AnyObject {
   var mLibraryRepositoryURL : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol CanariLibraryEntry_mUserAndPasswordTag : class {
+protocol CanariLibraryEntry_mUserAndPasswordTag : AnyObject {
   var mUserAndPasswordTag : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol CanariLibraryEntry_mStatusImage : class {
+protocol CanariLibraryEntry_mStatusImage : AnyObject {
   var mStatusImage : NSImage? { get }
 }
 

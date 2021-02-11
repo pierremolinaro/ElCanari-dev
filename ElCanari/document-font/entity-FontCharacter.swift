@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_codePoint : class {
+protocol FontCharacter_codePoint : AnyObject {
   var codePoint : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_advance : class {
+protocol FontCharacter_advance : AnyObject {
   var advance : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_mWarnsWhenNoSegment : class {
+protocol FontCharacter_mWarnsWhenNoSegment : AnyObject {
   var mWarnsWhenNoSegment : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_mWarnsWhenAdvanceIsZero : class {
+protocol FontCharacter_mWarnsWhenAdvanceIsZero : AnyObject {
   var mWarnsWhenAdvanceIsZero : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_segmentArrayForDrawing : class {
+protocol FontCharacter_segmentArrayForDrawing : AnyObject {
   var segmentArrayForDrawing : CharacterSegmentListClass? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_gerberCode : class {
+protocol FontCharacter_gerberCode : AnyObject {
   var gerberCode : CharacterGerberCodeClass? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_gerberCodeInstructionCountMessage : class {
+protocol FontCharacter_gerberCodeInstructionCountMessage : AnyObject {
   var gerberCodeInstructionCountMessage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol FontCharacter_issues : class {
+protocol FontCharacter_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

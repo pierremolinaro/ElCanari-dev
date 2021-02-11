@@ -6,115 +6,115 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mNetClassName : class {
+protocol NetClassInProject_mNetClassName : AnyObject {
   var mNetClassName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mNetClassColor : class {
+protocol NetClassInProject_mNetClassColor : AnyObject {
   var mNetClassColor : NSColor { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mTrackWidth : class {
+protocol NetClassInProject_mTrackWidth : AnyObject {
   var mTrackWidth : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mTrackWidthUnit : class {
+protocol NetClassInProject_mTrackWidthUnit : AnyObject {
   var mTrackWidthUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mViaHoleDiameter : class {
+protocol NetClassInProject_mViaHoleDiameter : AnyObject {
   var mViaHoleDiameter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mViaHoleDiameterUnit : class {
+protocol NetClassInProject_mViaHoleDiameterUnit : AnyObject {
   var mViaHoleDiameterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mViaPadDiameter : class {
+protocol NetClassInProject_mViaPadDiameter : AnyObject {
   var mViaPadDiameter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mViaPadDiameterUnit : class {
+protocol NetClassInProject_mViaPadDiameterUnit : AnyObject {
   var mViaPadDiameterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mAllowTracksOnFrontSide : class {
+protocol NetClassInProject_mAllowTracksOnFrontSide : AnyObject {
   var mAllowTracksOnFrontSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_mAllowTracksOnBackSide : class {
+protocol NetClassInProject_mAllowTracksOnBackSide : AnyObject {
   var mAllowTracksOnBackSide : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_trackWidthString : class {
+protocol NetClassInProject_trackWidthString : AnyObject {
   var trackWidthString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_viaHoleDiameter : class {
+protocol NetClassInProject_viaHoleDiameter : AnyObject {
   var viaHoleDiameter : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_viaPadDiameter : class {
+protocol NetClassInProject_viaPadDiameter : AnyObject {
   var viaPadDiameter : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_allowTracksOnFrontSideString : class {
+protocol NetClassInProject_allowTracksOnFrontSideString : AnyObject {
   var allowTracksOnFrontSideString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_allowTracksOnBackSideString : class {
+protocol NetClassInProject_allowTracksOnBackSideString : AnyObject {
   var allowTracksOnBackSideString : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_canRemove : class {
+protocol NetClassInProject_canRemove : AnyObject {
   var canRemove : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_netUsage : class {
+protocol NetClassInProject_netUsage : AnyObject {
   var netUsage : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_netsDescription : class {
+protocol NetClassInProject_netsDescription : AnyObject {
   var netsDescription : NetInfoArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol NetClassInProject_netWarningCount : class {
+protocol NetClassInProject_netWarningCount : AnyObject {
   var netWarningCount : Int? { get }
 }
 

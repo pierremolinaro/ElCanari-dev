@@ -19,7 +19,7 @@ private var gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: p
 //    EBUserClassNameProtocol protocol
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol EBUserClassNameProtocol : class {
+protocol EBUserClassNameProtocol : AnyObject {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -228,7 +228,8 @@ private var gDebugObject : EBAllocationDebug? = nil
    override init () {
     super.init ()
     assert (gDebugObject == nil, "EBAllocationDebug already exists", file: #file, line: #line)
-    NotificationCenter.default.addObserver (self,
+    let nc = NotificationCenter.default
+    nc.addObserver (self,
       selector: #selector (EBAllocationDebug.applicationWillTerminateAction(_:)),
       name: NSApplication.willTerminateNotification,
       object: nil
@@ -317,9 +318,9 @@ private var gDebugObject : EBAllocationDebug? = nil
     }
     if self.mRefreshTimer == nil {
       let timer = Timer (
-        timeInterval: 1.0,
+        timeInterval: 5.0,
         target: self,
-        selector: #selector (Self.refreshDisplay(_:)),
+        selector: #selector (EBAllocationDebug.refreshDisplay(_:)),
         userInfo: nil,
         repeats: true
       )
@@ -385,6 +386,22 @@ private var gDebugObject : EBAllocationDebug? = nil
     ud.set (self.mAllocationStatsWindowVisibleAtLaunch, forKey: prefsEnableObjectAllocationStatsWindowVisible)
     ud.set (self.mDisplayFilter, forKey: prefsEnableObjectAllocationStatsDisplayFilter)
   }
+
+  //····················································································································
+  //    performSnapShotAction:
+  //····················································································································
+
+//  func removeDeallocatedObjects () {
+//    var newList : EBWeakObject? = nil
+//    while let weakObject = gLiveObjectList {
+//      gLiveObjectList = weakObject.mNextObject
+//      if weakObject.mWeakReference != nil {
+//        weakObject.mNextObject = newList
+//        newList = weakObject
+//      }
+//    }
+//    gLiveObjectList = newList
+//  }
 
   //····················································································································
   //    performSnapShotAction:

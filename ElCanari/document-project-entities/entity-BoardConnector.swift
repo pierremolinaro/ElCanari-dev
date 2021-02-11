@@ -6,175 +6,175 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mComponentPadName : class {
+protocol BoardConnector_mComponentPadName : AnyObject {
   var mComponentPadName : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mPadIndex : class {
+protocol BoardConnector_mPadIndex : AnyObject {
   var mPadIndex : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mX : class {
+protocol BoardConnector_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mY : class {
+protocol BoardConnector_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mDefaultHoleDiameterUnit : class {
+protocol BoardConnector_mDefaultHoleDiameterUnit : AnyObject {
   var mDefaultHoleDiameterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mCustomHoleDiameter : class {
+protocol BoardConnector_mCustomHoleDiameter : AnyObject {
   var mCustomHoleDiameter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mCustomHoleDiameterUnit : class {
+protocol BoardConnector_mCustomHoleDiameterUnit : AnyObject {
   var mCustomHoleDiameterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mUsesCustomHoleDiameter : class {
+protocol BoardConnector_mUsesCustomHoleDiameter : AnyObject {
   var mUsesCustomHoleDiameter : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mDefaultPadDiameterUnit : class {
+protocol BoardConnector_mDefaultPadDiameterUnit : AnyObject {
   var mDefaultPadDiameterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mCustomPadDiameter : class {
+protocol BoardConnector_mCustomPadDiameter : AnyObject {
   var mCustomPadDiameter : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mCustomPadDiameterUnit : class {
+protocol BoardConnector_mCustomPadDiameterUnit : AnyObject {
   var mCustomPadDiameterUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_mUsesCustomPadDiameter : class {
+protocol BoardConnector_mUsesCustomPadDiameter : AnyObject {
   var mUsesCustomPadDiameter : Bool { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_isConnectedToSomePad : class {
+protocol BoardConnector_isConnectedToSomePad : AnyObject {
   var isConnectedToSomePad : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_location : class {
+protocol BoardConnector_location : AnyObject {
   var location : CanariPoint? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_netNameFromComponentPad : class {
+protocol BoardConnector_netNameFromComponentPad : AnyObject {
   var netNameFromComponentPad : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_netNameAndPadLocation : class {
+protocol BoardConnector_netNameAndPadLocation : AnyObject {
   var netNameAndPadLocation : RastnetInfoArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_side : class {
+protocol BoardConnector_side : AnyObject {
   var side : ConnectorSide? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_isVia : class {
+protocol BoardConnector_isVia : AnyObject {
   var isVia : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_issues : class {
+protocol BoardConnector_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_viaDefaultHoleDiameter : class {
+protocol BoardConnector_viaDefaultHoleDiameter : AnyObject {
   var viaDefaultHoleDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_viaDefaultPadDiameter : class {
+protocol BoardConnector_viaDefaultPadDiameter : AnyObject {
   var viaDefaultPadDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_netNameFromTracks : class {
+protocol BoardConnector_netNameFromTracks : AnyObject {
   var netNameFromTracks : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_netClassName : class {
+protocol BoardConnector_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_connectedToComponent : class {
+protocol BoardConnector_connectedToComponent : AnyObject {
   var connectedToComponent : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_actualHoleDiameter : class {
+protocol BoardConnector_actualHoleDiameter : AnyObject {
   var actualHoleDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_actualPadDiameter : class {
+protocol BoardConnector_actualPadDiameter : AnyObject {
   var actualPadDiameter : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_objectDisplay : class {
+protocol BoardConnector_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_selectionDisplay : class {
+protocol BoardConnector_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardConnector_signatureForERCChecking : class {
+protocol BoardConnector_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

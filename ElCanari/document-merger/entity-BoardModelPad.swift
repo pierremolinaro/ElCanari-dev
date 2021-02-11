@@ -6,37 +6,37 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelPad_y : class {
+protocol BoardModelPad_y : AnyObject {
   var y : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelPad_width : class {
+protocol BoardModelPad_width : AnyObject {
   var width : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelPad_height : class {
+protocol BoardModelPad_height : AnyObject {
   var height : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelPad_shape : class {
+protocol BoardModelPad_shape : AnyObject {
   var shape : PadShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelPad_rotation : class {
+protocol BoardModelPad_rotation : AnyObject {
   var rotation : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BoardModelPad_x : class {
+protocol BoardModelPad_x : AnyObject {
   var x : Int { get }
 }
 

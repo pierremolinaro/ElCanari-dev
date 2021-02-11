@@ -6,37 +6,37 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SheetInProject_mSheetTitle : class {
+protocol SheetInProject_mSheetTitle : AnyObject {
   var mSheetTitle : String { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SheetInProject_issues : class {
+protocol SheetInProject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SheetInProject_connectedPoints : class {
+protocol SheetInProject_connectedPoints : AnyObject {
   var connectedPoints : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SheetInProject_connexionWarnings : class {
+protocol SheetInProject_connexionWarnings : AnyObject {
   var connexionWarnings : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SheetInProject_connexionErrors : class {
+protocol SheetInProject_connexionErrors : AnyObject {
   var connexionErrors : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol SheetInProject_sheetDescriptor : class {
+protocol SheetInProject_sheetDescriptor : AnyObject {
   var sheetDescriptor : SchematicSheetDescriptor? { get }
 }
 

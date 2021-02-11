@@ -6,91 +6,91 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mX : class {
+protocol BorderCurve_mX : AnyObject {
   var mX : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mY : class {
+protocol BorderCurve_mY : AnyObject {
   var mY : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mCPX1 : class {
+protocol BorderCurve_mCPX1 : AnyObject {
   var mCPX1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mCPY1 : class {
+protocol BorderCurve_mCPY1 : AnyObject {
   var mCPY1 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mCPX2 : class {
+protocol BorderCurve_mCPX2 : AnyObject {
   var mCPX2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mCPY2 : class {
+protocol BorderCurve_mCPY2 : AnyObject {
   var mCPY2 : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mShape : class {
+protocol BorderCurve_mShape : AnyObject {
   var mShape : BorderCurveShape { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mNextX : class {
+protocol BorderCurve_mNextX : AnyObject {
   var mNextX : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_mNextY : class {
+protocol BorderCurve_mNextY : AnyObject {
   var mNextY : Int? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_p2Xstring : class {
+protocol BorderCurve_p2Xstring : AnyObject {
   var p2Xstring : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_p2Ystring : class {
+protocol BorderCurve_p2Ystring : AnyObject {
   var p2Ystring : String? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_descriptor : class {
+protocol BorderCurve_descriptor : AnyObject {
   var descriptor : BorderCurveDescriptor? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_objectDisplay : class {
+protocol BorderCurve_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_isLine : class {
+protocol BorderCurve_isLine : AnyObject {
   var isLine : Bool? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol BorderCurve_selectionDisplay : class {
+protocol BorderCurve_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
