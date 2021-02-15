@@ -135,7 +135,7 @@ class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureObserver
 
   //····················································································································
 
-  private weak var mRootObject : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mRootObject : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 

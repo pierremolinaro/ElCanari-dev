@@ -189,8 +189,8 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
+  override func ebBuildUserInferface () {
+    super.ebBuildUserInferface ()
     self.performModelAdjustements ()
   //---
     self.mDeviceLibraryTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceDialog () })
