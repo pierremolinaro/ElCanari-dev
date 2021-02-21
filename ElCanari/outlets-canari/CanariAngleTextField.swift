@@ -92,9 +92,9 @@ final class Controller_CanariAngleTextField_angle : EBReadOnlyPropertyController
 
   init (angle : EBReadWriteProperty_Int,
         outlet : CanariAngleTextField) {
-    mAngle = angle
-    mOutlet = outlet
-    mNumberFormatter = NumberFormatter ()
+    self.mAngle = angle
+    self.mOutlet = outlet
+    self.mNumberFormatter = NumberFormatter ()
     super.init (observedObjects: [angle], callBack: { outlet.updateOutlet (angle) } )
   //--- Target
     self.mOutlet.target = self
