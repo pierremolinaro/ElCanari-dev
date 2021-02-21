@@ -17,6 +17,7 @@ class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
   init (title inTitle : String, small inSmall : Bool) {
     super.init (frame: NSRect (), pullsDown: true)
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.controlSize = inSmall ? .small : .regular
     self.bezelStyle = .roundRect
     self.autoenablesItems = false

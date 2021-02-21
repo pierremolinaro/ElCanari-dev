@@ -11,6 +11,7 @@ class AutoLayoutSeparator : NSBox, EBUserClassNameProtocol {
   init () {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.boxType = .separator
   }
 

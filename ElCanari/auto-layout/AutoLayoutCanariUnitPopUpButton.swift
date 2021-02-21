@@ -17,6 +17,7 @@ class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   init () {
     super.init (frame: NSRect (), pullsDown: false)
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.controlSize = .small
     self.bezelStyle = .roundRect
     self.add (title: "inch", withTag: 2_286_000)

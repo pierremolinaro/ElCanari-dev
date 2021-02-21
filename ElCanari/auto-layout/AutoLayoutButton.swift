@@ -18,6 +18,7 @@ class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
   init (title inTitle : String, small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.title = inTitle
     self.controlSize = inSmall ? .small : .regular
 //    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize

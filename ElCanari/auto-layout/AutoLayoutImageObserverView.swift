@@ -26,6 +26,7 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     self.mSmall = inSmall
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
     self.controlSize = inSmall ? .small : .regular

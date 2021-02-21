@@ -18,7 +18,7 @@ fileprivate let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
+let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -189,8 +189,8 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
   //····················································································································
 
-  override func ebBuildUserInferface () {
-    super.ebBuildUserInferface ()
+  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
     self.performModelAdjustements ()
   //---
     self.mDeviceLibraryTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceDialog () })
@@ -476,7 +476,6 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       }
     }
   }
-
 
   //····················································································································
   //    Update board connectors after object removing in board

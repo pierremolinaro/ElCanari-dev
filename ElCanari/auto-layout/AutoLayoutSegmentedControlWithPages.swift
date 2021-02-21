@@ -19,6 +19,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
     self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.controlSize = .small
     self.segmentStyle = .roundRect
     self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)

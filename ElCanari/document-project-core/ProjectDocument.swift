@@ -1270,12 +1270,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : ProjectRoot {
-    if self.mRootObject == nil {
-      self.loadData ()
-    }
-    return self.mRootObject as! ProjectRoot
-  }
+  var rootObject : ProjectRoot { return self.mRootObject as! ProjectRoot }
 
   //····················································································································
   //    check outlet connections
@@ -3493,10 +3488,11 @@ import Cocoa
   }
 
   //····················································································································
-  //    ebBuildUserInferface
+  //    windowControllerDidLoadNib
   //····················································································································
 
-  override func ebBuildUserInferface () {
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
     self.checkOutletConnections ()
     self.configureProperties ()
     self.installBindings ()
@@ -3509,7 +3505,6 @@ import Cocoa
         return .empty
       }
     }
-    super.ebBuildUserInferface ()
   }
 
   //····················································································································

@@ -11,6 +11,7 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   init () {
     super.init (frame: NSRect (x: 0, y: 14, width: 42, height: 19))  // Required by ElCapitan
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.isEditable = false
     self.isEnabled = true
     self.drawsBackground = false

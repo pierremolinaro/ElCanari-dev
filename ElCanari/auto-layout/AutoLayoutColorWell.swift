@@ -19,6 +19,7 @@ class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   init () {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.target = self
     self.action = #selector (Self.action(_:))
   }

@@ -105,31 +105,11 @@ class EBManagedXibDocument : EBManagedDocument {
   //    READ DOCUMENT FROM FILE
   //····················································································································
 
-  private var mReadData = Data ()
-
-  override func read (from inData : Data, ofType typeName : String) throws {
-    Swift.print ("READ")
-    self.ebUndoManager.disableUndoRegistration ()
-  //--- Remove current root object graph
-    for object in self.reachableObjectsFromRootObject () {
-      object.cleanUpRelationshipsAndRemoveAllObservers ()
-    }
-    self.mRootObject = nil
-    self.mReadData = inData
-  //---
-    self.ebUndoManager.enableUndoRegistration  ()
-    Swift.print ("READ END")
-  }
-
-  //····················································································································
-
- final func loadData () {
-    Swift.print ("LOAD DATA")
+  override func read (from data : Data, ofType typeName : String) throws {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
     let startLoadFile = Date ()
-    let documentData = try! loadEasyBindingFile (fromData: self.mReadData, undoManager: self.ebUndoManager)
-    self.mReadData.removeAll ()
+    let documentData = try loadEasyBindingFile (fromData: data, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
     if LOG_OPERATION_DURATION {
       Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat.string)")
@@ -140,11 +120,14 @@ class EBManagedXibDocument : EBManagedDocument {
     self.mMetadataDictionary = documentData.documentMetadataDictionary
   //--- Read version from file
     self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
+  //--- Remove current root object graph
+    for object in self.reachableObjectsFromRootObject () {
+      object.cleanUpRelationshipsAndRemoveAllObservers ()
+    }
   //--- Store root object
     self.mRootObject = documentData.documentRootObject
   //---
     self.ebUndoManager.enableUndoRegistration ()
-    Swift.print ("LOAD DATA END")
   }
 
   //····················································································································
@@ -158,19 +141,15 @@ class EBManagedXibDocument : EBManagedDocument {
   //····················································································································
 
   override final func showWindows () {
-    Swift.print ("showWindows super")
     super.showWindows ()
-    Swift.print ("showWindows")
     if let unwrappedWindowForSheet = self.windowForSheet, // Document has been opened in the user interface
           unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
           let windowWidth = self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat,
           let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat {
-      Swift.print ("showWindows A")
       let newSize = NSSize (width: windowWidth, height: windowHeight)
       var windowFrame : NSRect = unwrappedWindowForSheet.frame
       windowFrame.size = newSize
       if let visibleFrame = unwrappedWindowForSheet.screen?.visibleFrame {
-        Swift.print ("showWindows B")
         if windowFrame.size.width > visibleFrame.size.width {
           windowFrame.size.width = visibleFrame.size.width
         }
@@ -192,70 +171,7 @@ class EBManagedXibDocument : EBManagedDocument {
       }
       unwrappedWindowForSheet.setFrame (windowFrame, display: true)
     }
-//    RunLoop.current.run (until: Date ())
-//    DispatchQueue.main.async (qos: .background) {
-//      self.ebBuildUserInferface ()
-//      flushOutletEvents ()
-//    }
-    Swift.print ("showWindows END")
-  }
-
-  //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
-    Swift.print ("windowControllerDidLoadNib")
-    super.windowControllerDidLoadNib (aController)
-    let window = NSWindow (
-      contentRect: self.windowForSheet!.frame, // NSRect (x: 0.0, y: 0.0, width: 480.0, height: 300.0),
-      styleMask: [.titled, .closable, .miniaturizable, .resizable],
-      backing: .buffered,
-      defer: false
-    )
-  //--- Build temporary view
-    let hStackView = AutoLayoutHorizontalStackView ()
-    hStackView.appendView (AutoLayoutFlexibleSpace ())
-    hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
-    hStackView.appendView (AutoLayoutFlexibleSpace ())
-    let vStackView = AutoLayoutVerticalStackView ()
-    vStackView.appendView (AutoLayoutFlexibleSpace ())
-    vStackView.appendView (hStackView)
-    vStackView.appendView (AutoLayoutFlexibleSpace ())
-    window.contentView = vStackView
-    window.title = "Loading…"
-    window.isReleasedWhenClosed = false
-    window.makeKeyAndOrderFront (nil)
-    RunLoop.current.run (until: Date ())
-    DispatchQueue.main.async (qos: .background) {
-      self.ebBuildUserInferface ()
-      window.orderOut (nil)
-      flushOutletEvents ()
-    }
-    Swift.print ("windowControllerDidLoadNib END")
-  }
-
-  //····················································································································
-
-  func ebBuildUserInferface () {
-    Swift.print ("ebBuildUserInferface")
-  //--- Signature observer
-    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
-    self.mSignatureObserver.setRootObject (self.mRootObject!)
-  //--- Version did change observer
-    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
-    self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
-  //--- Add Debug menu items ?
-    if !gDebugMenuItemsAdded {
-      gDebugMenuItemsAdded = true
-      let menuItem = NSMenuItem (
-        title: "Explore document",
-        action: #selector (EBManagedXibDocument.showObjectExplorerWindow (_:)),
-        keyEquivalent: ""
-      )
-      addItemToDebugMenu (menuItem)
-    }
-    Swift.print ("ebBuildUserInferface END")
+    flushOutletEvents ()
   }
 
   //····················································································································
@@ -371,6 +287,30 @@ class EBManagedXibDocument : EBManagedDocument {
     if let accessibleObjectsExplorerPopUpButton = self.mAccessibleObjectsExplorerPopUpButton {
       let selectedObjects = reachableObjectsFromRootObject ()
       updateManagedObjectToManyRelationshipDisplay (objectArray: selectedObjects, popUpButton: accessibleObjectsExplorerPopUpButton)
+    }
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+  //--- Signature observer
+    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
+    self.mSignatureObserver.setRootObject (self.mRootObject!)
+  //--- Version did change observer
+    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
+    self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
+  //--- Add Debug menu items ?
+    if !gDebugMenuItemsAdded {
+      gDebugMenuItemsAdded = true
+      let menuItem = NSMenuItem (
+        title: "Explore document",
+        action: #selector (EBManagedXibDocument.showObjectExplorerWindow (_:)),
+        keyEquivalent: ""
+      )
+      addItemToDebugMenu (menuItem)
     }
   }
 

@@ -29,6 +29,7 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
   init (tooltip inToolTip : String) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.toolTip = inToolTip
     self.bezelStyle = .regularSquare
     self.isBordered = false

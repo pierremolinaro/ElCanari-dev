@@ -13,6 +13,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
