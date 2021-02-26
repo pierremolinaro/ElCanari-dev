@@ -204,6 +204,7 @@
 		CF154D6325C80D35004CEDB6 /* enum-TrackCreationDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */; };
 		CF15D7632273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */; };
 		CF15D7642273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */; };
+		CF15ED8225E907EC00DE99D3 /* AutoLayoutFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */; };
 		CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */; };
 		CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
 		CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
@@ -4152,6 +4153,7 @@
 		CF144831227AF4240004E7ED /* extension-QuadrantRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-QuadrantRotation.swift"; sourceTree = "<group>"; };
 		CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackCreationDirection.swift"; sourceTree = "<group>"; };
 		CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-edit-net-class.swift"; sourceTree = "<group>"; };
+		CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutFontButton.swift; sourceTree = "<group>"; };
 		CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-addLibraryEntryAction.swift"; sourceTree = "<group>"; };
 		CF1893A72202EEC600EF2308 /* library-repository-status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-status.swift"; sourceTree = "<group>"; };
 		CF18963521F9E9C000F94354 /* button-LibraryUpdateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "button-LibraryUpdateButton.swift"; sourceTree = "<group>"; };
@@ -6499,6 +6501,7 @@
 				CFE383AB25D1C223001E8BB1 /* AutoLayoutDragSourceButton.swift */,
 				CFDB1BC425CEB0EB0098C56C /* AutoLayoutEnumPopUpButton.swift */,
 				CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpace.swift */,
+				CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */,
 				CF03A85625D05C8A00630D7D /* AutoLayoutGraphicView.swift */,
 				CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */,
 				CF8FCA3F25CD8C030036764B /* AutoLayoutImageObserverView.swift */,
@@ -10957,6 +10960,7 @@
 				CF49C0CD25D139F00082271E /* kicad-class-KicadItem.swift in Sources */,
 				CF9C631B25CABE5C00A00D5C /* transient-PackageInDevice-documentSizeString.swift in Sources */,
 				CF9C631C25CABE5C00A00D5C /* EBGraphicView-binding-gridLineColor.swift in Sources */,
+				CF15ED8225E907EC00DE99D3 /* AutoLayoutFontButton.swift in Sources */,
 				CF9C631D25CABE5C00A00D5C /* extension-ComponentInProject.swift in Sources */,
 				CF9C631E25CABE5C00A00D5C /* transient-ProjectDocument-overDisplay.swift in Sources */,
 				CF9C631F25CABE5C00A00D5C /* action-Preferences-createUserLibraryAction.swift in Sources */,

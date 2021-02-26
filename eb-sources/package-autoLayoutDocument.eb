@@ -778,39 +778,46 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       TwoColumnsGridView {
         add (
           left: StaticLabel (title: "Background", bold: no, small: yes),
-          right: ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) } space }
         )
         add (
           left: StaticLabel (title: "Cross Grid", bold: no, small: yes),
-          right: ColorWell { $color prefs.crossColorOfPackageGrid (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.crossColorOfPackageGrid (sendContinously:no) } space }
         )
         add (
           left: StaticLabel (title: "Line Grid", bold: no, small: yes),
-          right: ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
         )
         add (
           left: StaticLabel (title: "Package", bold: no, small: yes),
-          right: ColorWell { $color prefs.packageColor (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.packageColor (sendContinously:no) } space }
         )
         add (
           left: StaticLabel (title: "Line Width", bold: no, small: yes),
-          right: space
+          right: TaggedPopUpButton {
+            add (title: "0.5 Point", withTag: 5)
+            add (title: "1.0 Point", withTag: 10)
+            add (title: "1.5 Point", withTag: 15)
+            add (title: "2.0 Points", withTag: 20)
+            add (title: "2.5 Points", withTag: 25)
+            $selectedTag prefs.packageDrawingWidthMultipliedByTen
+          }
         )
         add (
           left: Switch (title: "Pad Numbers") { $value prefs.showPadNumber },
-          right: ColorWell { $color prefs.padNumberColor (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.padNumberColor (sendContinously:no) } space }
         )
         add (
           left: StaticLabel (title: "Pad Font", bold: no, small: yes),
-          right: space
+          right: FontButton {$fontValue prefs.padNumberFont}
         )
         add (
           left: Switch (title: "Top Side Pads") { $value prefs.displayPackageFrontSidePads },
-          right: ColorWell { $color prefs.frontSidePadColor (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.frontSidePadColor (sendContinously:no) } space }
         )
         add (
           left: Switch (title: "Back Side Pads") { $value prefs.displayPackageFrontSidePads },
-          right: ColorWell { $color prefs.backSidePadColor (sendContinously:no) }
+          right: hStack { ColorWell { $color prefs.backSidePadColor (sendContinously:no) } space }
         )
       }
       space
@@ -827,11 +834,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
 //  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor (sendContinously:no) ;
 //  outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor (sendContinously:no) ;
-  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
+//  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
 //  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor (sendContinously:no) ;
 //  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageFrontSidePads ;
 //  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
-  outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
+//  outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
 
 //--- Grid
 //  outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
