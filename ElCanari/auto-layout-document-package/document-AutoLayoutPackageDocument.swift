@@ -795,7 +795,6 @@ import Cocoa
     let view_1 = AutoLayoutCanariPackageIssueTableView ()
       .bind_issues (self.rootObject.issues_property)
     self.mPackageIssueTableView = view_1 // Outlet
-    self.configure_packageIssueTableView (view_1) // Configurator
     vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -1702,7 +1701,11 @@ import Cocoa
   //--- Build window content view
     // showDebugBackground ()
     self.configureProperties ()
-    self.windowForSheet?.contentView = self.mPageMasterView
+    let mainView = self.mPageMasterView
+  //--- Call outlet linkers
+    self.linker_issueTableViewToGraphicView (self.mPackageIssueTableView, self.mPackageGraphicView)
+  //--- Assign main view to window
+    self.windowForSheet?.contentView = mainView
   }
   
   //····················································································································
@@ -2504,26 +2507,6 @@ import Cocoa
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Set target and actions \(durationMS) ms")
-    }
-  } */
-
-  //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-/*  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-    self.checkOutletConnections ()
-    self.configureProperties ()
-    self.installBindings ()
-    self.setTargetsAndActions ()
-  //--------------------------- Read documentFilePath model 
-    self.documentFilePath_property.mReadModelFunction = { [weak self] in
-      if let r = self?.computeTransient_documentFilePath () {
-        return .single (r)
-      }else{
-        return .empty
-      }
     }
   } */
 

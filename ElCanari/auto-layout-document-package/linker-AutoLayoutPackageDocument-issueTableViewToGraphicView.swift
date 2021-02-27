@@ -18,11 +18,9 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 extension AutoLayoutPackageDocument {
-  final func configure_packageIssueTableView (_ inOutlet : AutoLayoutCanariPackageIssueTableView) {
+  final func linker_issueTableViewToGraphicView (_ in_mPackageIssueTableView : AutoLayoutCanariPackageIssueTableView?, _ in_mPackageGraphicView : AutoLayoutGraphicView?) {
 //--- START OF USER ZONE 2
-          if let packageGraphicView = self.mPackageGraphicView {
-            inOutlet.register (issueDisplayView: packageGraphicView)
-          }
+        in_mPackageIssueTableView?.register (issueDisplayView: in_mPackageGraphicView)
 //--- END OF USER ZONE 2
   }
 }

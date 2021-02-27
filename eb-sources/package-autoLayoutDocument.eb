@@ -250,9 +250,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //------- Issues
   stackView mIssuesInspectorView vStack {
     hStack { space Label (small: yes) { $title self.statusMessage} space }
-    CanariPackageIssueTableView [outlet mPackageIssueTableView configurator packageIssueTableView] { $issues root.issues }
+    CanariPackageIssueTableView [outlet mPackageIssueTableView] { $issues root.issues }
   }
 
+  linker issueTableViewToGraphicView (mPackageIssueTableView, mPackageGraphicView)
+  
 //  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
 //
 //  outlet CanariViewWithKeyView mIssueInspectorView ;

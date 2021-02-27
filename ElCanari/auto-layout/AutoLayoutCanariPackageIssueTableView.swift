@@ -149,7 +149,7 @@ class AutoLayoutCanariPackageIssueTableView : AutoLayoutVerticalStackView, NSTab
 
   //····················································································································
 
-  func register (issueDisplayView : AutoLayoutGraphicView) {
+  func register (issueDisplayView : AutoLayoutGraphicView?) {
     self.mIssueDisplayView = issueDisplayView
     self.updateIssueDisplay ()
   }
