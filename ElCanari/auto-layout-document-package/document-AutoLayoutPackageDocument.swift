@@ -379,6 +379,8 @@ import Cocoa
 
   weak var mPackageGraphicView : AutoLayoutGraphicView? = nil
   weak var mPackageIssueTableView : AutoLayoutCanariPackageIssueTableView? = nil
+  weak var mProgramErrorTextField : AutoLayoutLabel? = nil
+  weak var mProgramTextView : AutoLayoutTextView? = nil
 
   //····················································································································
   //    Outlets
@@ -422,7 +424,6 @@ import Cocoa
   @IBOutlet var mBezierCurveY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mBezierCurveY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBezierInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mClearProgramErrorButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
   @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil
@@ -449,7 +450,6 @@ import Cocoa
   @IBOutlet var mGuideY1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mGuideY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mGuideY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mOvalInspectorView : CanariViewWithKeyView? = nil
@@ -483,13 +483,8 @@ import Cocoa
   @IBOutlet var mPadYCenterTextField : CanariDimensionTextField? = nil
   @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mPadZoneNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mProgramErrorTextField : EBTextField? = nil
-  @IBOutlet var mProgramHelpButton : EBButton? = nil
-  @IBOutlet var mProgramHelpSheet : NSPanel? = nil
-  @IBOutlet var mProgramTextView : EBTextView? = nil
   @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
   @IBOutlet var mResetVersionButton : EBButton? = nil
-  @IBOutlet var mRunProgramButton : EBButton? = nil
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSegmentLengthTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mSegmentLengthUnitPopUp : EBPopUpButton? = nil
@@ -748,6 +743,8 @@ import Cocoa
       view_0.appendView (view_0_2)
       let view_0_3 = self.mPackagePageInspectorMasterView
       view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_4)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
@@ -879,20 +876,45 @@ import Cocoa
 
   lazy var mProgramPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (margins: 20)
+    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Program", bold: true, small: false)
-      view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_2)
+      let view_0_0 = AutoLayoutButton (title: "Load from Design", small: true)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutPackageDocument.loadFromDesignAction (_:))
+        )
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutButton (title: "Run", small: true)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutPackageDocument.runProgramAction (_:))
+        )
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutButton (title: "Clear Error", small: true)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutPackageDocument.clearProgramErrorAction (_:))
+        )
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutLabel (small: true)
+        .setRedTextColor ()
+      self.mProgramErrorTextField = view_0_3 // Outlet
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutHelpButton (small: true)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutPackageDocument.programHelpAction (_:))
+        )
+      view_0.appendView (view_0_5)
     }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTextView ()
+      .bind_value (self.rootObject.program_property)
+    self.mProgramTextView = view_1 // Outlet
     vStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -1821,7 +1843,6 @@ import Cocoa
 //    checkOutletConnection (self.mBezierCurveY2TextField, "mBezierCurveY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveY2UnitPopUp, "mBezierCurveY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mBezierInspectorView, "mBezierInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceUnitPopUp, "mDimensionDistanceUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1848,7 +1869,6 @@ import Cocoa
 //    checkOutletConnection (self.mGuideY1UnitPopUp, "mGuideY1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mGuideY2TextField, "mGuideY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGuideY2UnitPopUp, "mGuideY2UnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalInspectorView, "mOvalInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1882,13 +1902,8 @@ import Cocoa
 //    checkOutletConnection (self.mPadYCenterTextField, "mPadYCenterTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mPadYCenterUnitPopUp, "mPadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadZoneNameTextField, "mPadZoneNameTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mProgramErrorTextField, "mProgramErrorTextField", EBTextField.self, #file, #line)
-//    checkOutletConnection (self.mProgramHelpButton, "mProgramHelpButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
-//    checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
 //    checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mSegmentLengthTextField, "mSegmentLengthTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mSegmentLengthUnitPopUp, "mSegmentLengthUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -2430,7 +2445,6 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneYLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
-    self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -2494,14 +2508,6 @@ import Cocoa
     self.mAddZoneForbiddenPadNumberButton?.action = #selector (AutoLayoutPackageDocument.addZoneForbiddenPadNumberAction (_:))
     self.mRemoveZoneForbiddenPadNumberButton?.target = self
     self.mRemoveZoneForbiddenPadNumberButton?.action = #selector (AutoLayoutPackageDocument.removeZoneForbiddenPadNumberAction (_:))
-    self.mProgramHelpButton?.target = self
-    self.mProgramHelpButton?.action = #selector (AutoLayoutPackageDocument.programHelpAction (_:))
-    self.mLoadFromDesignButton?.target = self
-    self.mLoadFromDesignButton?.action = #selector (AutoLayoutPackageDocument.loadFromDesignAction (_:))
-    self.mRunProgramButton?.target = self
-    self.mRunProgramButton?.action = #selector (AutoLayoutPackageDocument.runProgramAction (_:))
-    self.mClearProgramErrorButton?.target = self
-    self.mClearProgramErrorButton?.action = #selector (AutoLayoutPackageDocument.clearProgramErrorAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (AutoLayoutPackageDocument.resetVersionAction (_:))
     if LOG_OPERATION_DURATION {
@@ -2657,7 +2663,6 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.unbind_selectedTag ()
     self.mZoneYLabelTextField?.unbind_dimensionAndUnit ()
     self.mZoneForbiddenPadNumberTableView?.unbind_array ()
-    self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
  //   self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
@@ -2710,10 +2715,6 @@ import Cocoa
     self.mSetDimensionTextOriginAtMidY?.target = nil
     self.mAddZoneForbiddenPadNumberButton?.target = nil
     self.mRemoveZoneForbiddenPadNumberButton?.target = nil
-    self.mProgramHelpButton?.target = nil
-    self.mLoadFromDesignButton?.target = nil
-    self.mRunProgramButton?.target = nil
-    self.mClearProgramErrorButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddZoneForbiddenPadNumberButton?.ebCleanUp ()
@@ -2754,7 +2755,6 @@ import Cocoa
     self.mBezierCurveY2TextField?.ebCleanUp ()
     self.mBezierCurveY2UnitPopUp?.ebCleanUp ()
     self.mBezierInspectorView?.ebCleanUp ()
-    self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mDimensionDistanceTextField?.ebCleanUp ()
     self.mDimensionDistanceUnitPopUp?.ebCleanUp ()
@@ -2781,7 +2781,6 @@ import Cocoa
     self.mGuideY1UnitPopUp?.ebCleanUp ()
     self.mGuideY2TextField?.ebCleanUp ()
     self.mGuideY2UnitPopUp?.ebCleanUp ()
-    self.mLoadFromDesignButton?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
     self.mOvalInspectorView?.ebCleanUp ()
@@ -2815,13 +2814,8 @@ import Cocoa
     self.mPadYCenterTextField?.ebCleanUp ()
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPadZoneNameTextField?.ebCleanUp ()
-    self.mProgramErrorTextField?.ebCleanUp ()
-    self.mProgramHelpButton?.ebCleanUp ()
-    self.mProgramHelpSheet?.ebCleanUp ()
-    self.mProgramTextView?.ebCleanUp ()
     self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
-    self.mRunProgramButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
     self.mSegmentLengthTextField?.ebCleanUp ()
     self.mSegmentLengthUnitPopUp?.ebCleanUp ()
@@ -2907,7 +2901,6 @@ import Cocoa
     self.mBezierCurveY2TextField = nil
     self.mBezierCurveY2UnitPopUp = nil
     self.mBezierInspectorView = nil
-    self.mClearProgramErrorButton = nil
     self.mCommentTextView = nil
     self.mDimensionDistanceTextField = nil
     self.mDimensionDistanceUnitPopUp = nil
@@ -2934,7 +2927,6 @@ import Cocoa
     self.mGuideY1UnitPopUp = nil
     self.mGuideY2TextField = nil
     self.mGuideY2UnitPopUp = nil
-    self.mLoadFromDesignButton = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil
     self.mOvalInspectorView = nil
@@ -2968,13 +2960,8 @@ import Cocoa
     self.mPadYCenterTextField = nil
     self.mPadYCenterUnitPopUp = nil
     self.mPadZoneNameTextField = nil
-    self.mProgramErrorTextField = nil
-    self.mProgramHelpButton = nil
-    self.mProgramHelpSheet = nil
-    self.mProgramTextView = nil
     self.mRemoveZoneForbiddenPadNumberButton = nil
     self.mResetVersionButton = nil
-    self.mRunProgramButton = nil
     self.mSegmentInspectorView = nil
     self.mSegmentLengthTextField = nil
     self.mSegmentLengthUnitPopUp = nil

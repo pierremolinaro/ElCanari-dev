@@ -25,10 +25,10 @@ class AutoLayoutVerticalStackView : AutoLayoutStackView {
   // fillHorizontally
   //····················································································································
 
-  func fillHorizontally () -> Self {
-//    self.alignment = .width
-    return self
-  }
+//  func fillHorizontally () -> Self {
+////    self.alignment = .width
+//    return self
+//  }
 
   //····················································································································
   // SET WIDTH

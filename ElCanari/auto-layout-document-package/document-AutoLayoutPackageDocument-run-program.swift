@@ -569,7 +569,7 @@ extension AutoLayoutPackageDocument {
 
   internal func clearError () {
     self.mProgramErrorTextField?.stringValue = ""
-    if let programTextView = self.mProgramTextView, let textStorage = programTextView.textStorage {
+    if let textStorage = self.mProgramTextView?.textStorage {
       let r = NSRange (location: 0, length: textStorage.length)
       textStorage.removeAttribute (NSAttributedString.Key.foregroundColor, range: r)
     }
@@ -578,9 +578,9 @@ extension AutoLayoutPackageDocument {
   //····················································································································
 
   private func raiseError (_ inErrorLocation : Int, _ inMessage : String, _ line : Int) {
-    Swift.print ("\(line)")
+    // Swift.print ("\(line)")
     self.mProgramErrorTextField?.stringValue = inMessage
-    if let programTextView = self.mProgramTextView, let textStorage = programTextView.textStorage {
+    if let textStorage = self.mProgramTextView?.textStorage {
       let r = NSRange (location: 0, length: textStorage.length)
       textStorage.removeAttribute (NSAttributedString.Key.foregroundColor, range: r)
       if inErrorLocation < textStorage.length {
@@ -644,8 +644,8 @@ extension AutoLayoutPackageDocument {
       }
       if ok {
         self.clearError ()
-        self.rootObject.packageObjects_property.setProp (objects)
-        self.rootObject.selectedPageIndex = 0
+        self.rootObject.packageObjects = objects
+        self.rootObject.selectedPageIndex = 1
       }
     }
   }

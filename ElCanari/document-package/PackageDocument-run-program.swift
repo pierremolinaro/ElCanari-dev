@@ -584,7 +584,7 @@ extension PackageDocument {
   //····················································································································
 
   private func raiseError (_ inErrorLocation : Int, _ inMessage : String, _ line : Int) {
-    Swift.print ("\(line)")
+    // Swift.print ("\(line)")
     self.mProgramErrorTextField?.stringValue = inMessage
     if let programTextView = self.mProgramTextView, let textStorage = programTextView.textStorage {
       let r = NSRange (location: 0, length: textStorage.length)
@@ -651,7 +651,7 @@ extension PackageDocument {
       if ok {
         self.clearError ()
         self.rootObject.packageObjects_property.setProp (objects)
-        self.rootObject.selectedPageIndex = 0
+        self.rootObject.selectedPageIndex = 1
       }
     }
   }

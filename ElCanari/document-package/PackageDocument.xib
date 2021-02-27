@@ -3566,10 +3566,10 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ttk-9b-UM8">
                             <rect key="frame" x="0.0" y="0.0" width="685" height="443"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="-23.699999999981401" width="685" height="2237.4000000000005"/>
+                                    <rect key="frame" x="0.0" y="-22" width="685" height="2238"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5479,7 +5479,7 @@ The two first points are the two ends of the dimension segment, the third one is
                             <rect key="frame" x="-100" y="-100" width="685" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.00011145786891518099" horizontal="NO" id="Um2-vP-U4W">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Um2-vP-U4W">
                             <rect key="frame" x="685" y="0.0" width="15" height="443"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>

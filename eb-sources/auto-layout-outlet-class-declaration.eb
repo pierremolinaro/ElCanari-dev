@@ -77,6 +77,7 @@ extern autolayout class Separator {
 
 extern autolayout class Label (small: Bool) {
   $title transient String
+  func setRedTextColor ()
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool) {
@@ -142,6 +143,9 @@ extern autolayout class Button (title: String, small: Bool) $enabled $run {
   func makeWidthExpandable ()
 }
 
+extern autolayout class HelpButton (small: Bool) $enabled $run {
+}
+
 extern autolayout class PullDownButton (title: String, small: Bool) {
   func add (item: menuItem)
 }
@@ -187,6 +191,10 @@ extern autolayout class FontButton {
 
 extern autolayout class CanariPackageIssueTableView {
   $issues transient CanariIssueArray
+}
+
+extern autolayout class TextView {
+  $value property String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -211,7 +211,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
                $enabled root.counterClockNumbering
              }
           }
-        )   
+        ) 
       }
       SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes) [configurator packagePageSegmentedControl] {
         makeWidthExpandable ()
@@ -224,6 +224,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
       }
       view mPackagePageInspectorMasterView
+      space  
     }
     GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
       $foregroundImageData root.mModelImageData
@@ -254,15 +255,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   }
 
   linker issueTableViewToGraphicView (mPackageIssueTableView, mPackageGraphicView)
-  
-//  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
-//
-//  outlet CanariViewWithKeyView mIssueInspectorView ;
-
-//  outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
-
-//  outlet CanariIssueTableView mIssueTableView $issues root.issues ;
-//  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
 //--- Object inspector
   stackView mSelectedObjectsInspectorView vStack {
@@ -801,38 +793,28 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     space
   }
 
-
-//  outlet EBSwitch mShowPadNumberSwitch $value prefs.showPadNumber ;
-
-//  outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid (sendContinously:no) ;
-//  outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid (sendContinously:no) ;
-//  outlet EBColorWell mPackageColorColorWell $color prefs.packageColor (sendContinously:no) ;
-//  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
-//  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor (sendContinously:no) ;
-//  outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor (sendContinously:no) ;
-//  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
-//  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor (sendContinously:no) ;
-//  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageFrontSidePads ;
-//  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
-//  outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
-
-//--- Grid
-//  outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
-//  outlet CanariDimensionTextField mGridTextField
-//     $dimensionAndUnit root.gridStep, root.gridStepUnit
-//  ;
-
-
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   PROGRAM
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mProgramPage vStack {
-    space
-    hStack { space StaticLabel (title: "Program", bold: yes, small: no) space }
-    space
+  stackView mProgramPage vStack set (margins: 20) {
+    hStack {
+      Button (title: "Load from Design", small: yes) { $run loadFromDesignAction }
+      Button (title: "Run", small: yes) { $run runProgramAction }
+      Button (title: "Clear Error", small: yes) { $run clearProgramErrorAction  }
+      Label (small: yes) [outlet mProgramErrorTextField] { setRedTextColor () }
+      space
+      HelpButton (small: yes) { $run programHelpAction }
+    }
+    TextView [outlet mProgramTextView] { $value root.program }
   }
 
+//  outlet NSPanel mProgramHelpSheet ;
+
+  action programHelpAction ;
+  action loadFromDesignAction ;
+  action runProgramAction ;
+  action clearProgramErrorAction ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   INFOS
@@ -844,37 +826,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     space
   }
 
-
-
-
-
-
-
-
-
-
-
-
-//-------------------------- Page : Package
-//--------------- Program Tab
-  outlet NSPanel mProgramHelpSheet ;
-  action programHelpAction ;
-  outlet EBButton mProgramHelpButton $run programHelpAction ;
-
-  outlet EBTextView mProgramTextView $value root.program ;
-
-  action loadFromDesignAction ;
-  outlet EBButton mLoadFromDesignButton $run loadFromDesignAction ;
-
-  action runProgramAction ;
-  outlet EBButton mRunProgramButton $run runProgramAction ;
-
-  action clearProgramErrorAction ;
-  outlet EBButton mClearProgramErrorButton $run clearProgramErrorAction ;
-
-  outlet EBTextField mProgramErrorTextField ;
-
-//--------------- Infos Tab
 //--- Comments
   outlet EBTextView mCommentTextView  $value root.comments ;
 
@@ -883,4 +834,4 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   outlet EBButton mResetVersionButton $run resetVersionAction ;
 }
 
-//----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------

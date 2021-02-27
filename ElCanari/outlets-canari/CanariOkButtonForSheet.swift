@@ -22,10 +22,34 @@ class CanariOkButtonForSheet : EBButton {
 
   //····················································································································
 
+  init () {
+    super.init (frame: NSRect ())
+    self.setButtonType (.momentaryPushIn)
+    self.bezelStyle = .rounded
+    self.title = "Done"
+ //   self.keyEquivalent = "\r"
+    self.target = self
+    self.action = #selector (Self.dismissSheetAction (_:))
+  }
+
+  //····················································································································
+
+  override init (frame inFrame : NSRect) {
+    super.init (frame: inFrame)
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    super.init (coder: inCoder)
+  }
+
+  //····················································································································
+
   override func awakeFromNib () {
     super.awakeFromNib ()
     self.target = self
-    self.action = #selector (CanariOkButtonForSheet.dismissSheetAction (_:))
+    self.action = #selector (Self.dismissSheetAction (_:))
   }
 
   //····················································································································
@@ -33,7 +57,7 @@ class CanariOkButtonForSheet : EBButton {
   @objc func dismissSheetAction (_ sender : Any?) {
     if let mySheet = self.window, let parent = mySheet.sheetParent {
       mySheet.endEditing (for: nil)
-      parent.endSheet (mySheet, returnCode: NSApplication.ModalResponse.stop)
+      parent.endSheet (mySheet, returnCode: .stop)
     }
   }
 

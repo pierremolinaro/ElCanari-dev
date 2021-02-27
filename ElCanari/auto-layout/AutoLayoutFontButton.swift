@@ -32,11 +32,6 @@ class AutoLayoutFontButton : NSButton, EBUserClassNameProtocol {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
-
-  override var intrinsicContentSize: NSSize {
-    return NSSize (width: 150.0, height: super.intrinsicContentSize.height)
-  }
 
   //····················································································································
 
