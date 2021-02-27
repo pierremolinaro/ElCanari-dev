@@ -430,9 +430,9 @@ xibdocument PackageDocument root PackageRoot {
 
   outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
 
-  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
+  outlet EBButton mDeselectIssueButton $enabled !root.noIssue ; // $hidden root.noIssue ;
   outlet CanariIssueTableView mIssueTableView $issues root.issues ;
-  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
+  outlet NSScrollView mIssueScrollView ; // $hidden root.noIssue ;
 
 //--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;

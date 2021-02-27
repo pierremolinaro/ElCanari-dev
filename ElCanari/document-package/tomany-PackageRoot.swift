@@ -69,6 +69,8 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_masterPadObjectIndexArray_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_noIssue_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_segmentedControlSegmentIssueImage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_segmentedControlSegmentIssueString_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_selectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_selectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -124,6 +126,8 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_masterPadObjectIndexArray_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_noIssue_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_segmentedControlSegmentIssueImage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_segmentedControlSegmentIssueString_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -3415,6 +3419,118 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
         managedObject.noIssue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'segmentedControlSegmentIssueImage' transient property
+  //····················································································································
+
+  private var mObserversOf_segmentedControlSegmentIssueImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueImage.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.segmentedControlSegmentIssueImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueImage.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.segmentedControlSegmentIssueImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_segmentedControlSegmentIssueImage_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_segmentedControlSegmentIssueImage_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'segmentedControlSegmentIssueString' transient property
+  //····················································································································
+
+  private var mObserversOf_segmentedControlSegmentIssueString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.segmentedControlSegmentIssueString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_segmentedControlSegmentIssueString_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_segmentedControlSegmentIssueString_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueString_property.removeEBObserver (observer)
       }
     }
   }

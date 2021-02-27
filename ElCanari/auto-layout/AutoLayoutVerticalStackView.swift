@@ -22,6 +22,15 @@ class AutoLayoutVerticalStackView : AutoLayoutStackView {
   }
 
   //····················································································································
+  // fillHorizontally
+  //····················································································································
+
+  func fillHorizontally () -> Self {
+//    self.alignment = .width
+    return self
+  }
+
+  //····················································································································
   // SET WIDTH
   //····················································································································
 
@@ -46,7 +55,6 @@ class AutoLayoutVerticalStackView : AutoLayoutStackView {
   private var mConstraints = [NSLayoutConstraint] ()
 
   override func updateConstraints () {
-//    Swift.print ("V STACK \(self)")
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll ()
     var spaceViewArray = [AutoLayoutFlexibleSpace] ()

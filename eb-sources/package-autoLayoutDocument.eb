@@ -183,15 +183,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   stackView mPackagePage hStack set (spacing: 0) {
     vStack set (width: 250) set (margins: 8) {
       hStack { // set (spacing: 0) {
-        DragSourceButton addPackageSegment (tooltip: "Add Segment") { $image self.addSegmentButtonImage }
-        DragSourceButton addPackageBezier (tooltip: "Add Bezier") { $image self.addBezierButtonImage }
-        DragSourceButton addPackageOval (tooltip: "Add Oval") { $image self.addOvalButtonImage }
-        DragSourceButton addPackageArc (tooltip: "Add Arc") { $image self.addArcButtonImage }
-        DragSourceButton addPackageMasterPad (tooltip: "Add Master Pad") { $image self.addMasterPadButtonImage }
-        DragSourceButton addPackageSlavePad (tooltip: "Add Slave Pad") { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
-        DragSourceButton addPackageZone (tooltip: "Add Zone") { $image self.addZoneButtonImage }
-        DragSourceButton addPackageGuide (tooltip: "Add Guide") { $image self.addGuideButtonImage }
-        DragSourceButton addPackageDimension (tooltip: "Add Dimension") { $image self.addDimensionButtonImage }
+        DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
+        DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }
+        DragSourceButton (tooltip: "Add Oval") [configurator addPackageOval] { $image self.addOvalButtonImage }
+        DragSourceButton (tooltip: "Add Arc") [configurator addPackageArc] { $image self.addArcButtonImage }
+        DragSourceButton (tooltip: "Add Master Pad") [configurator addPackageMasterPad] { $image self.addMasterPadButtonImage }
+        DragSourceButton (tooltip: "Add Slave Pad") [configurator addPackageSlavePad] { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
+        DragSourceButton (tooltip: "Add Zone") [configurator addPackageZone] { $image self.addZoneButtonImage }
+        DragSourceButton (tooltip: "Add Guide") [configurator addPackageGuide] { $image self.addGuideButtonImage }
+        DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
       }
       TwoColumnsGridView {
         add (
@@ -213,18 +213,19 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           }
         )   
       }
-      SegmentedControlWithPages packagePageSegmentedControl (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes) {
-        canHug ()
+      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes) [configurator packagePageSegmentedControl] {
+        makeWidthExpandable ()
         addPage (title: "0", pageView: stackView mSelectedObjectsInspectorView)
         addPage (title: "1", pageView: stackView mGridZoomInspectorView)
         addPage (title: "2", pageView: stackView mDisplayInspectorView)
         addPage (title: "3", pageView: stackView mIssuesInspectorView)
         $selectedPage root.selectedInspector
+        $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
+        $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
       }
       view mPackagePageInspectorMasterView
-      space
     }
-    GraphicView packageGraphicView (minZoom: 10, maxZoom: 4000) {
+    GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
       $foregroundImageData root.mModelImageData
       $foregroundImageOpacity root.mModelImageOpacity
       $horizontalFlip root.horizontalFlip
@@ -246,44 +247,26 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     }
   }
 
+//------- Issues
+  stackView mIssuesInspectorView vStack {
+    hStack { space Label (small: yes) { $title self.statusMessage} space }
+    CanariPackageIssueTableView [outlet mPackageIssueTableView configurator packageIssueTableView] { $issues root.issues }
+  }
+
+//  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
+//
+//  outlet CanariViewWithKeyView mIssueInspectorView ;
+
+//  outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
+
+//  outlet CanariIssueTableView mIssueTableView $issues root.issues ;
+//  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
+
+//--- Object inspector
   stackView mSelectedObjectsInspectorView vStack {
     hStack { space StaticLabel (title: "0", bold: no, small: yes) space }
     space
   }
-  
-  stackView mIssuesInspectorView vStack {
-    hStack { space StaticLabel (title: "3", bold: no, small: yes) space }
-    space
-  }
-
-
-
-
-
-//--- Buttons for new elements
-//  outlet CanariDragSourceButton mAddSegmentButton ;
-//  outlet CanariDragSourceButton mAddBezierButton ;
-//  outlet CanariDragSourceButton mAddOvalButton ;
-//  outlet CanariDragSourceButton mAddArcButton ;
-//  outlet CanariDragSourceButton mAddPadButton ;
-//  outlet CanariDragSourceButton mAddSlavePadButton $enabled root.packagePads.count > 0 ;
-//  outlet CanariDragSourceButton mAddGuideButton ;
-//  outlet CanariDragSourceButton mAddDimensionButton ;
-//  outlet CanariDragSourceButton mAddZoneButton ;
-
-
-
-
-//  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
-//  outlet NSView mBaseInspectorView ;
-//  outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
-//  outlet CanariViewWithKeyView mGridZoomInspectorView ;
-//  outlet CanariViewWithKeyView mDisplayInspectorView ;
-//  outlet CanariViewWithKeyView mIssuesInspectorView ;
-//  outlet EBSlider mModelImageOpacitySlider
-//    $doubleValue root.mModelImageOpacity (sendContinously:yes)
-//    $enabled root.hasModelImage
-//  ;
 
 //--- Segment inspector
   selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
@@ -675,15 +658,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //     $value root.counterClockNumberingStartAngle (sendContinously : yes, autoFormatter : no)
 //  ;
 //  outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
-
-//------- Issues
-  outlet CanariViewWithKeyView mIssueInspectorView ;
-
-  outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
-
-  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
-  outlet CanariIssueTableView mIssueTableView $issues root.issues ;
-  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
 //--- Package display
 //  arrayController #mPackageObjectsController : root.packageObjects ;

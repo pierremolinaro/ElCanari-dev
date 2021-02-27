@@ -125,6 +125,8 @@ graphic entity PackageRoot {
     self.packageZones.all.zoneName, self.packageZones.all.xName, self.packageZones.all.yName, prefs.padZoneFont
   ;
   transient Bool noIssue dependsFrom self.issues ;
+  transient NSImage segmentedControlSegmentIssueImage dependsFrom self.issues ;
+  transient String segmentedControlSegmentIssueString dependsFrom self.issues ;
 
  //--- Mouse grid
   transient Int gridStepMultipliedByDisplayFactor dependsFrom self.gridStep, self.gridDisplayFactor ;

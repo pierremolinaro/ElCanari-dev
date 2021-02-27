@@ -373,6 +373,12 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //    Outlets
+  //····················································································································
+
+  weak var mPackageGraphicView : AutoLayoutGraphicView? = nil
+  weak var mPackageIssueTableView : AutoLayoutCanariPackageIssueTableView? = nil
 
   //····················································································································
   //    Outlets
@@ -418,7 +424,6 @@ import Cocoa
   @IBOutlet var mBezierInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mClearProgramErrorButton : EBButton? = nil
   @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mDimensionInspectorView : CanariViewWithKeyView? = nil
@@ -444,10 +449,6 @@ import Cocoa
   @IBOutlet var mGuideY1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mGuideY2TextField : CanariDimensionTextField? = nil
   @IBOutlet var mGuideY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mIssueInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mIssueScrollView : NSScrollView? = nil
-  @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
-  @IBOutlet var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
@@ -544,8 +545,6 @@ import Cocoa
 //  var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mRemoveZoneForbiddenPadNumberButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -692,23 +691,23 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
           .bind_image (self.addSegmentButtonImage_property)
-        self.configure_addPackageSegment (view_0_0_0)
+        self.configure_addPackageSegment (view_0_0_0) // Configurator
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
           .bind_image (self.addBezierButtonImage_property)
-        self.configure_addPackageBezier (view_0_0_1)
+        self.configure_addPackageBezier (view_0_0_1) // Configurator
         view_0_0.appendView (view_0_0_1)
         let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Oval")
           .bind_image (self.addOvalButtonImage_property)
-        self.configure_addPackageOval (view_0_0_2)
+        self.configure_addPackageOval (view_0_0_2) // Configurator
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutDragSourceButton (tooltip: "Add Arc")
           .bind_image (self.addArcButtonImage_property)
-        self.configure_addPackageArc (view_0_0_3)
+        self.configure_addPackageArc (view_0_0_3) // Configurator
         view_0_0.appendView (view_0_0_3)
         let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Master Pad")
           .bind_image (self.addMasterPadButtonImage_property)
-        self.configure_addPackageMasterPad (view_0_0_4)
+        self.configure_addPackageMasterPad (view_0_0_4) // Configurator
         view_0_0.appendView (view_0_0_4)
         let view_0_0_5 = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
           .bind_image (self.addSlavePadButtonImage_property)
@@ -716,19 +715,19 @@ import Cocoa
             observedObjects: [self.rootObject.packagePads_property.count_property],
             computeFunction: { return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0)) }
           )
-        self.configure_addPackageSlavePad (view_0_0_5)
+        self.configure_addPackageSlavePad (view_0_0_5) // Configurator
         view_0_0.appendView (view_0_0_5)
         let view_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Zone")
           .bind_image (self.addZoneButtonImage_property)
-        self.configure_addPackageZone (view_0_0_6)
+        self.configure_addPackageZone (view_0_0_6) // Configurator
         view_0_0.appendView (view_0_0_6)
         let view_0_0_7 = AutoLayoutDragSourceButton (tooltip: "Add Guide")
           .bind_image (self.addGuideButtonImage_property)
-        self.configure_addPackageGuide (view_0_0_7)
+        self.configure_addPackageGuide (view_0_0_7) // Configurator
         view_0_0.appendView (view_0_0_7)
         let view_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Dimension")
           .bind_image (self.addDimensionButtonImage_property)
-        self.configure_addPackageDimension (view_0_0_8)
+        self.configure_addPackageDimension (view_0_0_8) // Configurator
         view_0_0.appendView (view_0_0_8)
       }
       view_0.appendView (view_0_0)
@@ -737,18 +736,18 @@ import Cocoa
         .add (left: self.computeImplicitView_33 (), right: self.computeImplicitView_34 ())
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true)
-        .canHug ()
+        .makeWidthExpandable ()
         .addPage (title: "0", pageView: self.mSelectedObjectsInspectorView)
         .addPage (title: "1", pageView: self.mGridZoomInspectorView)
         .addPage (title: "2", pageView: self.mDisplayInspectorView)
         .addPage (title: "3", pageView: self.mIssuesInspectorView)
         .bind_selectedPage (self.rootObject.selectedInspector_property)
-      self.configure_packagePageSegmentedControl (view_0_2)
+        .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
+        .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
+      self.configure_packagePageSegmentedControl (view_0_2) // Configurator
       view_0.appendView (view_0_2)
       let view_0_3 = self.mPackagePageInspectorMasterView
       view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_4)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
@@ -770,9 +769,35 @@ import Cocoa
       .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
       .bind_graphic_controller (self.mPackageObjectsController)
-    self.configure_packageGraphicView (view_1)
+    self.mPackageGraphicView = view_1 // Outlet
+    self.configure_packageGraphicView (view_1) // Configurator
     hStackView.appendView (view_1)
     return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mIssuesInspectorView
+  //····················································································································
+
+  lazy var mIssuesInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutLabel (small: true)
+        .bind_title (self.statusMessage_property)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutCanariPackageIssueTableView ()
+      .bind_issues (self.rootObject.issues_property)
+    self.mPackageIssueTableView = view_1 // Outlet
+    self.configure_packageIssueTableView (view_1) // Configurator
+    vStackView.appendView (view_1)
+    return vStackView
   } ()
 
   //····················································································································
@@ -786,27 +811,6 @@ import Cocoa
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutStaticLabel (title: "0", bold: false, small: true)
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
-    }
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_1)
-    return vStackView
-  } ()
-
-  //····················································································································
-  //    VIEW mIssuesInspectorView
-  //····················································································································
-
-  lazy var mIssuesInspectorView : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "3", bold: false, small: true)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
@@ -1816,7 +1820,6 @@ import Cocoa
 //    checkOutletConnection (self.mBezierInspectorView, "mBezierInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-//    checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceUnitPopUp, "mDimensionDistanceUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mDimensionInspectorView, "mDimensionInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1842,10 +1845,6 @@ import Cocoa
 //    checkOutletConnection (self.mGuideY1UnitPopUp, "mGuideY1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mGuideY2TextField, "mGuideY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGuideY2UnitPopUp, "mGuideY2UnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mIssueInspectorView, "mIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
-//    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
-//    checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
 //    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -2428,8 +2427,6 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneYLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
-    self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
-    self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -2474,26 +2471,6 @@ import Cocoa
       )
       self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.addEBObserver (controller)
       self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
-        outlet: self.mDeselectIssueButton
-      )
-      self.rootObject.noIssue_property.addEBObserver (controller)
-      self.mController_mDeselectIssueButton_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
-        outlet: self.mIssueScrollView
-      )
-      self.rootObject.noIssue_property.addEBObserver (controller)
-      self.mController_mIssueScrollView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
@@ -2561,8 +2538,8 @@ import Cocoa
     self.mModelImagePage.ebCleanUp ()
     self.mPackagePageInspectorMasterView.ebCleanUp ()
     self.mPackagePage.ebCleanUp ()
-    self.mSelectedObjectsInspectorView.ebCleanUp ()
     self.mIssuesInspectorView.ebCleanUp ()
+    self.mSelectedObjectsInspectorView.ebCleanUp ()
     self.mGridZoomInspectorView.ebCleanUp ()
     self.mDisplayInspectorView.ebCleanUp ()
     self.mProgramPage.ebCleanUp ()
@@ -2697,8 +2674,6 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.unbind_selectedTag ()
     self.mZoneYLabelTextField?.unbind_dimensionAndUnit ()
     self.mZoneForbiddenPadNumberTableView?.unbind_array ()
-    self.mIssueTextField?.unbind_valueObserver ()
-    self.mIssueTableView?.unbind_issues ()
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -2712,10 +2687,6 @@ import Cocoa
  //   self.mController_mSlavePadStyleView_hidden = nil
  //   self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.removeEBObserver (self.mController_mRemoveZoneForbiddenPadNumberButton_enabled!)
  //   self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
- //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
- //   self.mController_mDeselectIssueButton_hidden = nil
- //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
- //   self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.unbind_model ()
@@ -2802,7 +2773,6 @@ import Cocoa
     self.mBezierInspectorView?.ebCleanUp ()
     self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
-    self.mDeselectIssueButton?.ebCleanUp ()
     self.mDimensionDistanceTextField?.ebCleanUp ()
     self.mDimensionDistanceUnitPopUp?.ebCleanUp ()
     self.mDimensionInspectorView?.ebCleanUp ()
@@ -2828,10 +2798,6 @@ import Cocoa
     self.mGuideY1UnitPopUp?.ebCleanUp ()
     self.mGuideY2TextField?.ebCleanUp ()
     self.mGuideY2UnitPopUp?.ebCleanUp ()
-    self.mIssueInspectorView?.ebCleanUp ()
-    self.mIssueScrollView?.ebCleanUp ()
-    self.mIssueTableView?.ebCleanUp ()
-    self.mIssueTextField?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
@@ -2960,7 +2926,6 @@ import Cocoa
     self.mBezierInspectorView = nil
     self.mClearProgramErrorButton = nil
     self.mCommentTextView = nil
-    self.mDeselectIssueButton = nil
     self.mDimensionDistanceTextField = nil
     self.mDimensionDistanceUnitPopUp = nil
     self.mDimensionInspectorView = nil
@@ -2986,10 +2951,6 @@ import Cocoa
     self.mGuideY1UnitPopUp = nil
     self.mGuideY2TextField = nil
     self.mGuideY2UnitPopUp = nil
-    self.mIssueInspectorView = nil
-    self.mIssueScrollView = nil
-    self.mIssueTableView = nil
-    self.mIssueTextField = nil
     self.mLoadFromDesignButton = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil

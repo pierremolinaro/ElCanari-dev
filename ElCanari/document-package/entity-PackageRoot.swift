@@ -353,6 +353,18 @@ protocol PackageRoot_noIssue : AnyObject {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+protocol PackageRoot_segmentedControlSegmentIssueImage : AnyObject {
+  var segmentedControlSegmentIssueImage : NSImage? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol PackageRoot_segmentedControlSegmentIssueString : AnyObject {
+  var segmentedControlSegmentIssueString : String? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //    Entity: PackageRoot
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -414,7 +426,9 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_hasModelImage,
          PackageRoot_masterPadObjectIndexArray,
          PackageRoot_issues,
-         PackageRoot_noIssue {
+         PackageRoot_noIssue,
+         PackageRoot_segmentedControlSegmentIssueImage,
+         PackageRoot_segmentedControlSegmentIssueString {
 
   //····················································································································
   //   Atomic property: selectedPageIndex
@@ -1901,6 +1915,52 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: segmentedControlSegmentIssueImage
+  //····················································································································
+
+  final let segmentedControlSegmentIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueImage_property_selection : EBSelection <NSImage> {
+    return self.segmentedControlSegmentIssueImage_property.selection
+  }
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueImage : NSImage? {
+    switch self.segmentedControlSegmentIssueImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlSegmentIssueString
+  //····················································································································
+
+  final let segmentedControlSegmentIssueString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueString_property_selection : EBSelection <String> {
+    return self.segmentedControlSegmentIssueString_property.selection
+  }
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueString : String? {
+    switch self.segmentedControlSegmentIssueString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -2329,6 +2389,50 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.issues_property.addEBObserver (self.noIssue_property)
+  //--- Atomic property: segmentedControlSegmentIssueImage
+    self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_segmentedControlSegmentIssueImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueImage_property)
+  //--- Atomic property: segmentedControlSegmentIssueString
+    self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_segmentedControlSegmentIssueString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
   //--- Install undoers and opposite setter for relationships
     self.packageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -2405,6 +2509,8 @@ class PackageRoot : EBGraphicManagedObject,
     // self.packageZones_property.removeEBObserverOf_yName (self.issues_property)
     // preferences_padZoneFont_property.removeEBObserver (self.issues_property)
     // self.issues_property.removeEBObserver (self.noIssue_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueString_property)
     self.packagePads_property.setDataProvider (nil)
     self.packageSlavePads_property.setDataProvider (nil)
     self.packageZones_property.setDataProvider (nil)
@@ -2860,6 +2966,22 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.noIssue_property.mObserverExplorer,
       valueExplorer: &self.noIssue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "segmentedControlSegmentIssueImage",
+      idx: self.segmentedControlSegmentIssueImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.segmentedControlSegmentIssueImage_property.mObserverExplorer,
+      valueExplorer: &self.segmentedControlSegmentIssueImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "segmentedControlSegmentIssueString",
+      idx: self.segmentedControlSegmentIssueString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.segmentedControlSegmentIssueString_property.mObserverExplorer,
+      valueExplorer: &self.segmentedControlSegmentIssueString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

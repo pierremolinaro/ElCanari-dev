@@ -418,8 +418,7 @@ import Cocoa
   var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mRemoveZoneForbiddenPadNumberButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mCounterClockNumberingStartAngleView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
-  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mDeselectIssueButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mModelPointsCircleRadiusSlider_enabled : MultipleBindingController_enabled? = nil
   var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
@@ -1201,24 +1200,14 @@ import Cocoa
       self.mController_mCounterClockNumberingStartAngleView_hidden = controller
     }
     do{
-      let controller = MultipleBindingController_hidden (
+      let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return self.rootObject.noIssue_property_selection
+          return !self.rootObject.noIssue_property_selection
         },
         outlet: self.mDeselectIssueButton
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
-      self.mController_mDeselectIssueButton_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
-        outlet: self.mIssueScrollView
-      )
-      self.rootObject.noIssue_property.addEBObserver (controller)
-      self.mController_mIssueScrollView_hidden = controller
+      self.mController_mDeselectIssueButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -1593,10 +1582,8 @@ import Cocoa
     self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
     self.rootObject.counterClockNumbering_property.removeEBObserver (self.mController_mCounterClockNumberingStartAngleView_hidden!)
     self.mController_mCounterClockNumberingStartAngleView_hidden = nil
-    self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
-    self.mController_mDeselectIssueButton_hidden = nil
-    self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
-    self.mController_mIssueScrollView_hidden = nil
+    self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_enabled!)
+    self.mController_mDeselectIssueButton_enabled = nil
     self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
     self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelPointsCircleRadiusSlider_enabled!)

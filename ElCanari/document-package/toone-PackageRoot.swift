@@ -69,6 +69,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.masterPadObjectIndexArray_property.removeEBObserversFrom (&self.mObserversOf_masterPadObjectIndexArray) // Transient property
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.noIssue_property.removeEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
+    inOldValue?.segmentedControlSegmentIssueImage_property.removeEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueImage) // Transient property
+    inOldValue?.segmentedControlSegmentIssueString_property.removeEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueString) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
     self.mInternalValue?.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
@@ -124,6 +126,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.masterPadObjectIndexArray_property.addEBObserversFrom (&self.mObserversOf_masterPadObjectIndexArray) // Transient property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.noIssue_property.addEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
+    self.mInternalValue?.segmentedControlSegmentIssueImage_property.addEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueImage) // Transient property
+    self.mInternalValue?.segmentedControlSegmentIssueString_property.addEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueString) // Transient property
   }
 
   //····················································································································
@@ -4169,6 +4173,144 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
         managedObject.noIssue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'segmentedControlSegmentIssueImage' transient property
+  //····················································································································
+
+  private var mObserversOf_segmentedControlSegmentIssueImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var segmentedControlSegmentIssueImage_property_selection : EBSelection <NSImage?> {
+    if let model = self.propval {
+      switch (model.segmentedControlSegmentIssueImage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueImage.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.segmentedControlSegmentIssueImage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueImage.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.segmentedControlSegmentIssueImage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_segmentedControlSegmentIssueImage_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_segmentedControlSegmentIssueImage_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'segmentedControlSegmentIssueString' transient property
+  //····················································································································
+
+  private var mObserversOf_segmentedControlSegmentIssueString = EBWeakEventSet ()
+
+  //····················································································································
+
+  var segmentedControlSegmentIssueString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.segmentedControlSegmentIssueString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.segmentedControlSegmentIssueString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_segmentedControlSegmentIssueString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_segmentedControlSegmentIssueString_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_segmentedControlSegmentIssueString_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
+        managedObject.segmentedControlSegmentIssueString_property.removeEBObserver (observer)
       }
     }
   }

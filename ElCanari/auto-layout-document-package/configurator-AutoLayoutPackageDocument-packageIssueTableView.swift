@@ -18,21 +18,11 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 extension AutoLayoutPackageDocument {
-  final func configure_packagePageSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+  final func configure_packageIssueTableView (_ inOutlet : AutoLayoutCanariPackageIssueTableView) {
 //--- START OF USER ZONE 2
-         inOutlet.setImage (NSImage (named: "editorInspector"), forSegment: 0)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 0)
-         inOutlet.setLabel ("", forSegment: 0)
-
-         inOutlet.setImage (NSImage (named: "magnifyingGlass"), forSegment: 1)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 1)
-         inOutlet.setLabel ("", forSegment: 1)
-
-         inOutlet.setLabel ("⚙️", forSegment: 2)
-
-         inOutlet.setImage (NSImage (named: "NSStatusAvailable"), forSegment: 3)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 3)
-         inOutlet.setLabel ("", forSegment: 3)
+          if let packageGraphicView = self.mPackageGraphicView {
+            inOutlet.register (issueDisplayView: packageGraphicView)
+          }
 //--- END OF USER ZONE 2
   }
 }

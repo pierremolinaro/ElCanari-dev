@@ -13,19 +13,28 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-import Cocoa
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extension AutoLayoutPackageDocument {
-  final func configure_packageGraphicView (_ inOutlet : AutoLayoutGraphicView) {
+func transient_PackageRoot_segmentedControlSegmentIssueImage (
+       _ self_issues : CanariIssueArray
+) -> NSImage {
 //--- START OF USER ZONE 2
-          inOutlet.mScrollView?.register (document: self)
-          if let packageIssueTableView = self.mPackageIssueTableView {
-            packageIssueTableView.register (issueDisplayView: inOutlet)
-          }
+    var errorCount = 0
+    var warningCount = 0
+    for issue in self_issues {
+      switch issue.kind {
+      case .error :
+        errorCount += 1
+      case .warning :
+        warningCount += 1
+      }
+    }
+    var image = NSImage (named: okStatusImageName)!
+    if errorCount > 0 {
+      image = NSImage (named: errorStatusImageName)!
+    }else if warningCount > 0 {
+      image = NSImage (named: warningStatusImageName)!
+    }
+    return image
 //--- END OF USER ZONE 2
-  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------

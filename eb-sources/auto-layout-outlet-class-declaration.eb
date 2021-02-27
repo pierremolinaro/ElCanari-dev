@@ -80,9 +80,11 @@ extern autolayout class Label (small: Bool) {
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool) {
-  func canHug ()
+  func makeWidthExpandable ()
   func addPage (title: String, pageView : view)
   $selectedPage property Int
+  $segmentImage transient NSImage (segmentIndex : Int)
+  $segmentTitle transient String (segmentIndex : Int)
 }
 
 extern autolayout class SignatureField {
@@ -137,6 +139,7 @@ extern autolayout class Slider (min: Int, max: Int, ticks: Int) $enabled {
 }
 
 extern autolayout class Button (title: String, small: Bool) $enabled $run {
+  func makeWidthExpandable ()
 }
 
 extern autolayout class PullDownButton (title: String, small: Bool) {
@@ -180,6 +183,10 @@ extern autolayout class  ColorWell {
 
 extern autolayout class FontButton {
   $fontValue property NSFont
+}
+
+extern autolayout class CanariPackageIssueTableView {
+  $issues transient CanariIssueArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -136,7 +136,7 @@ import Cocoa
 //    self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, for: PackageZone.self)
   //--- Set issue display view
 // §    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView?.mGraphicView)
-    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
+// §    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
 // §    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
   //--- Update display
 //    if let view = self.mComposedPackageView?.mGraphicView {
@@ -242,24 +242,24 @@ import Cocoa
 
   //····················································································································
 
-  fileprivate func imageForAddGuideButton () ->  NSImage? {
-    var shape = EBShape ()
-    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-    var bp1 = EBBezierPath ()
-    bp1.move (to: NSPoint (x: 5.0, y: 5.0))
-    bp1.line (to: NSPoint (x: 35.0, y: 35.0))
-    bp1.lineWidth = 3.0
-    bp1.lineCapStyle = .round
-    shape.add (stroke: [bp1], NSColor.lightGray)
-    var bp2 = EBBezierPath ()
-    bp2.move (to: NSPoint (x: 5.0, y: 5.0))
-    bp2.line (to: NSPoint (x: 55.0, y: 55.0))
-    bp2.lineWidth = 1.5
-    bp2.lineCapStyle = .round
-    shape.add (stroke: [bp2], NSColor.yellow)
-    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
-    return NSImage (data: imagePDFData)
-  }
+//  fileprivate func imageForAddGuideButton () ->  NSImage? {
+//    var shape = EBShape ()
+//    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+//    var bp1 = EBBezierPath ()
+//    bp1.move (to: NSPoint (x: 5.0, y: 5.0))
+//    bp1.line (to: NSPoint (x: 35.0, y: 35.0))
+//    bp1.lineWidth = 3.0
+//    bp1.lineCapStyle = .round
+//    shape.add (stroke: [bp1], NSColor.lightGray)
+//    var bp2 = EBBezierPath ()
+//    bp2.move (to: NSPoint (x: 5.0, y: 5.0))
+//    bp2.line (to: NSPoint (x: 55.0, y: 55.0))
+//    bp2.lineWidth = 1.5
+//    bp2.lineCapStyle = .round
+//    shape.add (stroke: [bp2], NSColor.yellow)
+//    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
+//    return NSImage (data: imagePDFData)
+//  }
 
   //····················································································································
 

@@ -44,6 +44,10 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   override func ebCleanUp () {
     self.mSelectedTabIndexController?.unregister ()
     self.mSelectedTabIndexController = nil
+    self.mSegmentImageController?.unregister ()
+    self.mSegmentImageController = nil
+    self.mSegmentTitleController?.unregister ()
+    self.mSegmentTitleController = nil
     super.ebCleanUp ()
   }
 
@@ -54,10 +58,6 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-//    ]
-//    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
     self.mPages.append (inPageView)
     self.frame.size = self.intrinsicContentSize
     return self
@@ -65,7 +65,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  func canHug () -> Self {
+  func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
   }
@@ -124,6 +124,65 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
       self.selectedSegmentDidChange (nil)
     case .multiple :
       ()
+    }
+  }
+
+
+  //····················································································································
+  //  $segmentImage binding
+  //····················································································································
+
+  private var mSegmentImageController : EBReadOnlyPropertyController? = nil
+  private var mSegmentImageIndex = 0
+
+  //····················································································································
+
+  func bind_segmentImage (_ inObject : EBGenericReadOnlyProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
+    self.mSegmentImageIndex = inSegmentIndex
+    self.mSegmentImageController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { self.updateImage (from: inObject) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  fileprivate func updateImage (from inObject : EBGenericReadOnlyProperty <NSImage>) {
+    switch inObject.selection {
+    case .empty, .multiple :
+      self.setImage (nil, forSegment: self.mSegmentImageIndex)
+    case .single (let v) :
+      self.setImage (v, forSegment: self.mSegmentImageIndex)
+    }
+  }
+
+  //····················································································································
+  //  $segmentTitle binding
+  //····················································································································
+
+  private var mSegmentTitleController : EBReadOnlyPropertyController? = nil
+  private var mSegmentTitleIndex = 0
+
+  //····················································································································
+
+  func bind_segmentTitle (_ inObject : EBGenericReadOnlyProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
+    self.mSegmentTitleIndex = inSegmentIndex
+    self.mSegmentTitleController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { self.updateTitle (from: inObject) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  fileprivate func updateTitle (from inObject : EBGenericReadOnlyProperty <String>) {
+    switch inObject.selection {
+    case .empty, .multiple :
+      self.setLabel ("", forSegment: self.mSegmentTitleIndex)
+    case .single (let v) :
+      self.setLabel (v, forSegment: self.mSegmentTitleIndex)
     }
   }
 
