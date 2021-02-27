@@ -181,7 +181,7 @@ extern autolayout class IntField (width: Int) $enabled {
   $value property Int (sendContinously: Bool)
 }
 
-extern autolayout class  ColorWell {
+extern autolayout class ColorWell {
   $color property NSColor (sendContinously: Bool)
 }
 
@@ -189,7 +189,7 @@ extern autolayout class FontButton {
   $fontValue property NSFont
 }
 
-extern autolayout class CanariPackageIssueTableView {
+extern autolayout class CanariIssueTableView {
   $issues transient CanariIssueArray
 }
 

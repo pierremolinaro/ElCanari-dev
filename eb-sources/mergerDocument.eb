@@ -26,7 +26,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
 
   outlet EBButton mDeselectIssueButton ;
-  outlet CanariIssueTableView mIssueTableView $issues self.issues ;
+  outlet IssueTableView mIssueTableView $issues self.issues ;
 
 //------------------------------------- Display setting panel
   outlet NSView mDisplaySettingView $hidden root.selectedPageIndex > 1  ;

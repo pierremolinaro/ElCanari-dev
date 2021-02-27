@@ -726,7 +726,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet NSView mSaveDSNFileAuxiliaryView ;
   outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
 
-  outlet CanariIssueTableView mERCIssueTableView ;
+  outlet IssueTableView mERCIssueTableView ;
   outlet EBButton mHideERCIssueButton ;
 
   outlet EBPopUpButton mAutoRouterPreferredDirectionPopUp $selectedIndex root.mAutoRouterPreferredDirections ;

@@ -130,7 +130,7 @@ xibdocument FontDocument root FontRoot {
 
 //--- Issues
   transient Bool noIssue dependsFrom root.issues ;
-  outlet CanariIssueTableView mIssueTableView $issues root.issues $hidden self.noIssue ;
+  outlet IssueTableView mIssueTableView $issues root.issues $hidden self.noIssue ;
 
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;

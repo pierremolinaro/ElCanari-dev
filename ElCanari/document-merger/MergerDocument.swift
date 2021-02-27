@@ -318,7 +318,7 @@ import Cocoa
   @IBOutlet var mInstanceCountTextField : EBIntObserverField? = nil
   @IBOutlet var mInstanceModelNameTextField : EBTextObserverField? = nil
   @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl? = nil
-  @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
+  @IBOutlet var mIssueTableView : IssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet var mLogTextView : NSTextView? = nil
   @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField? = nil
@@ -590,7 +590,7 @@ import Cocoa
     checkOutletConnection (self.mInstanceCountTextField, "mInstanceCountTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mInstanceModelNameTextField, "mInstanceModelNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mInstanceRotation, "mInstanceRotation", CanariQuadrantSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mIssueTableView, "mIssueTableView", IssueTableView.self, #file, #line)
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mLogTextView, "mLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mManualBoardHeightTextField, "mManualBoardHeightTextField", CanariDimensionTextField.self, #file, #line)

@@ -181,16 +181,24 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   stackView mPackagePageInspectorMasterView : vStack ;
   
   stackView mPackagePage hStack set (spacing: 0) {
-    vStack set (width: 250) set (margins: 8) {
-      hStack { // set (spacing: 0) {
+    vStack set (width: 250) set (margins: 20) set (spacing: 12) {
+      hStack set (spacing: 0) {
         DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
+        space
         DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }
+        space
         DragSourceButton (tooltip: "Add Oval") [configurator addPackageOval] { $image self.addOvalButtonImage }
+        space
         DragSourceButton (tooltip: "Add Arc") [configurator addPackageArc] { $image self.addArcButtonImage }
+        space
         DragSourceButton (tooltip: "Add Master Pad") [configurator addPackageMasterPad] { $image self.addMasterPadButtonImage }
+        space
         DragSourceButton (tooltip: "Add Slave Pad") [configurator addPackageSlavePad] { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
+        space
         DragSourceButton (tooltip: "Add Zone") [configurator addPackageZone] { $image self.addZoneButtonImage }
+        space
         DragSourceButton (tooltip: "Add Guide") [configurator addPackageGuide] { $image self.addGuideButtonImage }
+        space
         DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
       }
       TwoColumnsGridView {
@@ -203,8 +211,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         )
         add (
           left: StaticLabel (title: "Auto Numbers", bold: no, small: yes),
+          right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {$selectedIndex root.padNumbering}
+        ) 
+        add (
+          left: space,
           right: hStack {
-             EnumPopUpButton (titles: enum PadNumbering.popupTitles) {$selectedIndex root.padNumbering}
              StaticLabel (title: "From", bold: no, small: yes) {$enabled root.counterClockNumbering}
              IntField (width: 45) {
                $value root.counterClockNumberingStartAngle (sendContinously : yes)
@@ -248,15 +259,21 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     }
   }
 
-//------- Issues
+//----------------------------------------------------------------------------------------------------------------------
+//   Issues
+//----------------------------------------------------------------------------------------------------------------------
+
   stackView mIssuesInspectorView vStack {
     hStack { space Label (small: yes) { $title self.statusMessage} space }
-    CanariPackageIssueTableView [outlet mPackageIssueTableView] { $issues root.issues }
+    CanariIssueTableView [outlet mPackageIssueTableView] { $issues root.issues }
   }
 
   linker issueTableViewToGraphicView (mPackageIssueTableView, mPackageGraphicView)
 
-//--- Object inspector
+//----------------------------------------------------------------------------------------------------------------------
+//   Object inspector
+//----------------------------------------------------------------------------------------------------------------------
+
   stackView mSelectedObjectsInspectorView vStack {
     hStack { space StaticLabel (title: "0", bold: no, small: yes) space }
     space
@@ -646,39 +663,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
   outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
 
-//----------------- Pad numbering inspector
-//  outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
-//  outlet EBIntField mCounterClockNumberingStartAngleIntField
-//     $value root.counterClockNumberingStartAngle (sendContinously : yes, autoFormatter : no)
-//  ;
-//  outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
-
-//--- Package display
-//  arrayController #mPackageObjectsController : root.packageObjects ;
-//
-//  outlet EBGraphicView mComposedPackageView
-//    $foregroundImageData root.mModelImageData
-//    $foregroundImageOpacity root.mModelImageOpacity
-//    $horizontalFlip root.horizontalFlip
-//    $verticalFlip root.verticalFlip
-//    $graphicController #mPackageObjectsController
-//    $overObjectsDisplay root.padNumberDisplay
-//    $mouseGrid root.gridStep
-//    $gridStep root.gridStep
-//    $arrowKeyMagnitude root.gridStep
-//    $shiftArrowKeyMagnitude root.gridStepMultipliedByDisplayFactor
-//    $gridStyle root.gridStyle
-//    $gridDisplayFactor root.gridDisplayFactor
-//    $gridLineColor prefs.lineColorOfPackageGrid
-//    $gridCrossColor prefs.crossColorOfPackageGrid
-//    $zoom root.zoom
-//    $backColor prefs.packageBackgroundColor
-//    $xPlacardUnit root.xPlacardUnit
-//    $yPlacardUnit root.yPlacardUnit
-//  ;
-//
-//  outlet EBScrollView mComposedPackageScrollView ;
-
 //--- Zoom and flip inspector
 
   stackView mGridZoomInspectorView hStack {
@@ -728,15 +712,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     }
     space
   }
-
-
-//  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
-//  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
-//  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
-//  outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
-//  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
-//  outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
-//  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen (sendContinously:yes) ;
 
 //--- Display inspector
 
@@ -809,8 +784,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     TextView [outlet mProgramTextView] { $value root.program }
   }
 
-//  outlet NSPanel mProgramHelpSheet ;
-
   action programHelpAction ;
   action loadFromDesignAction ;
   action runProgramAction ;
@@ -820,18 +793,18 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mInfosPage vStack {
-    space
-    hStack { space StaticLabel (title: "Infos", bold: yes, small: no) space }
-    space
+  stackView mInfosPage vStack set (margins: 20) {
+    hStack {
+      Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAction }
+      space
+    }
+    hStack {
+      vStack { StaticLabel (title: "Comments", bold: yes, small: no) space }
+      TextView { $value root.comments }
+    }
   }
 
-//--- Comments
-  outlet EBTextView mCommentTextView  $value root.comments ;
-
-//--- Reset
   action resetVersionAction ;
-  outlet EBButton mResetVersionButton $run resetVersionAction ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

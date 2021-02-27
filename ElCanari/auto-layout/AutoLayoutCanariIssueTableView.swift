@@ -1,5 +1,5 @@
 //
-//  AutoLayoutCanariPackageIssueTableView.swift
+//  AutoLayoutCanariIssueTableView.swift
 //  ElCanari-Debug-temporary
 //
 //  Created by Pierre Molinaro on 26/02/2021.
@@ -16,10 +16,10 @@ fileprivate let RIGHT_COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValu
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   AutoLayoutCanariPackageIssueTableView
+//   AutoLayoutCanariIssueTableView
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutCanariPackageIssueTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
+class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

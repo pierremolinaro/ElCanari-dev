@@ -1,5 +1,5 @@
 //
-//  view-CanariIssueTableView.swift
+//  view-IssueTableView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 25/07/2018.
@@ -10,10 +10,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   CanariIssueTableView
+//   IssueTableView
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+class IssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   //   init
@@ -128,7 +128,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     self.mHideIssueButton = hideIssueButton
     if let button = self.mHideIssueButton {
       button.target = self
-      button.action = #selector (CanariIssueTableView.deselectAll(_:))
+      button.action = #selector (Self.deselectAll(_:))
     }
     self.updateIssueDisplay ()
   }

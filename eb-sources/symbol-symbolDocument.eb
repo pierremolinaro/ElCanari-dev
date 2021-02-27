@@ -103,7 +103,7 @@ xibdocument SymbolDocument root SymbolRoot {
   outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
 
   outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
-  outlet CanariIssueTableView mIssueTableView $issues root.issues ;
+  outlet IssueTableView mIssueTableView $issues root.issues ;
   outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
 //-------------------------- Page : Infos

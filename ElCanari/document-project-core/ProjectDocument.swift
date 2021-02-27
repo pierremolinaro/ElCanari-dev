@@ -895,7 +895,7 @@ import Cocoa
   @IBOutlet var mDrillDataFileExtensionTextField : EBTextObserverField? = nil
   @IBOutlet var mDuplicateSelectedComponentsActionButton : EBButton? = nil
   @IBOutlet var mERCBoardInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mERCIssueTableView : CanariIssueTableView? = nil
+  @IBOutlet var mERCIssueTableView : IssueTableView? = nil
   @IBOutlet var mERCLogTextView : NSTextView? = nil
   @IBOutlet var mERCStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mEditDeviceButton : EBButton? = nil
@@ -1505,7 +1505,7 @@ import Cocoa
     checkOutletConnection (self.mDrillDataFileExtensionTextField, "mDrillDataFileExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mERCIssueTableView, "mERCIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mERCIssueTableView, "mERCIssueTableView", IssueTableView.self, #file, #line)
     checkOutletConnection (self.mERCLogTextView, "mERCLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mERCStatusImageViewInToolbar, "mERCStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)

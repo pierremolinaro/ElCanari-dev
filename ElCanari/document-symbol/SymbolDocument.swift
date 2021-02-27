@@ -140,7 +140,7 @@ import Cocoa
   @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mIssueScrollView : NSScrollView? = nil
-  @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
+  @IBOutlet var mIssueTableView : IssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet var mLineColorOfSymbolGridColorWell : EBColorWell? = nil
   @IBOutlet var mMasterView : NSView? = nil
@@ -262,7 +262,7 @@ import Cocoa
     checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
-    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mIssueTableView, "mIssueTableView", IssueTableView.self, #file, #line)
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mLineColorOfSymbolGridColorWell, "mLineColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)

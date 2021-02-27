@@ -181,7 +181,7 @@ import Cocoa
   @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView? = nil
   @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
+  @IBOutlet var mIssueTableView : IssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet var mMasterFontPageView : NSView? = nil
   @IBOutlet var mMasterView : NSView? = nil
@@ -297,7 +297,7 @@ import Cocoa
     checkOutletConnection (self.mGerberCodeTableView, "mGerberCodeTableView", CanariCharacterGerberCodeTableView.self, #file, #line)
     checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mIssueTableView, "mIssueTableView", IssueTableView.self, #file, #line)
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mMasterFontPageView, "mMasterFontPageView", NSView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)

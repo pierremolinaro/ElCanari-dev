@@ -265,7 +265,7 @@ import Cocoa
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mIssueInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mIssueScrollView : NSScrollView? = nil
-  @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
+  @IBOutlet var mIssueTableView : IssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet var mIssuesInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mKnobSizeSlider : EBSlider? = nil
@@ -605,7 +605,7 @@ import Cocoa
     checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mIssueInspectorView, "mIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
-    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mIssueTableView, "mIssueTableView", IssueTableView.self, #file, #line)
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mIssuesInspectorView, "mIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
