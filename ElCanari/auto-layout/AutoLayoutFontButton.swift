@@ -104,7 +104,7 @@ class AutoLayoutFontButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_fontValue (_ inObject : EBReadWriteProperty_NSFont) -> Self {
+  final func bind_fontValue (_ inObject : EBReadWriteProperty_NSFont) -> Self {
     self.mValueController = EBGenericReadWritePropertyController (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateFont (inObject) }

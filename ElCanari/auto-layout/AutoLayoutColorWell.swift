@@ -79,10 +79,9 @@ class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_color (_ inObject : EBReadWriteProperty_NSColor, sendContinously : Bool) -> Self {
+  final func bind_color (_ inObject : EBReadWriteProperty_NSColor, sendContinously : Bool) -> Self {
     NSColorPanel.shared.showsAlpha = true
     self.mSendContinously = sendContinously
-//    self.mColorController = Controller_EBColorWell_color (object:object, outlet:self)
     self.mColorController = EBGenericReadWritePropertyController <NSColor> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateColor (from: inObject)  }
@@ -90,47 +89,8 @@ class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
     return self
   }
 
-//  func unbind_color () {
-//    self.mColorController?.unregister ()
-//    self.mColorController = nil
-//  }
+  //····················································································································
 
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Controller_EBColorWell_color
-//----------------------------------------------------------------------------------------------------------------------
-
-//final class Controller_EBColorWell_color : EBReadOnlyPropertyController {
-//
-//  private let mObject : EBReadWriteProperty_NSColor
-//  private let mOutlet : AutoLayoutColorWell
-//
-//  //····················································································································
-//
-//  init (object : EBReadWriteProperty_NSColor, outlet : AutoLayoutColorWell) {
-//    mObject = object
-//    mOutlet = outlet
-//    super.init (observedObjects:[object], callBack: { outlet.updateColor (object) } )
-//    self.mOutlet.target = self
-//    self.mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
-//  }
-//
-//  //····················································································································
-//
-//  override func unregister () {
-//    super.unregister ()
-//    self.mOutlet.target = nil
-//    self.mOutlet.action = nil
-//  }
-//
-//  //····················································································································
-//
-//  @objc func action (_ sender : AutoLayoutColorWell) {
-//    _ = self.mObject.validateAndSetProp (self.mOutlet.color, windowForSheet: sender.window)
-//  }
-//
-//  //····················································································································
-//}
 
 //----------------------------------------------------------------------------------------------------------------------

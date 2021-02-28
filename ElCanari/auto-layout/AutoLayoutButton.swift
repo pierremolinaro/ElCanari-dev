@@ -40,7 +40,7 @@ class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func makeWidthExpandable () -> Self {
+  final func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
   }

@@ -38,7 +38,7 @@ class AutoLayoutVerticalStackView : AutoLayoutStackView {
 
   //····················································································································
 
-  func set (width inWidth : Int) -> Self {
+  final func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
     self.needsUpdateConstraints = true
     return self

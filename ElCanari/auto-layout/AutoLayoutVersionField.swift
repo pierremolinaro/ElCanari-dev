@@ -54,7 +54,7 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_version (_ inObject : EBReadOnlyProperty_Int) -> Self {
+  final func bind_version (_ inObject : EBReadOnlyProperty_Int) -> Self {
     self.mVersionController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersion (from: inObject) }
@@ -83,7 +83,7 @@ class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_versionShouldChange (_ inObject : EBReadOnlyProperty_Bool) -> Self {
+  final func bind_versionShouldChange (_ inObject : EBReadOnlyProperty_Bool) -> Self {
     self.mVersionShouldChangeController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersionShouldChange (from: inObject) }

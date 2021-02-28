@@ -55,7 +55,7 @@ class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_signature (_ model : EBReadOnlyProperty_UInt32) -> Self {
+  final func bind_signature (_ model : EBReadOnlyProperty_UInt32) -> Self {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

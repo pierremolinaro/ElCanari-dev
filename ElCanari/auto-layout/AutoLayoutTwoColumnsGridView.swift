@@ -31,7 +31,7 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
+  final func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
     if let lastLeftView = self.mLastLeftView {
       let c = NSLayoutConstraint (
         item: inLeftView,
@@ -68,21 +68,21 @@ class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  func add (single inView : NSView) -> Self {
+  final func add (single inView : NSView) -> Self {
     self.appendView (inView)
     return self
   }
 
   //····················································································································
 
-  func separator () -> Self {
+  final func separator () -> Self {
     self.appendView (AutoLayoutSeparator ())
     return self
   }
 
   //····················································································································
 
-  func separator (withTitle inTitle : String) -> Self {
+  final func separator (withTitle inTitle : String) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
     hStack.appendView (AutoLayoutStaticLabel (title: inTitle, bold: true, small: true))
     hStack.appendView (AutoLayoutSeparator ())

@@ -60,7 +60,7 @@ class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
   // SET TEXT color
   //····················································································································
 
-  func setTextColor (_ inTextColor : NSColor) -> Self {
+  final func setTextColor (_ inTextColor : NSColor) -> Self {
     self.textColor = inTextColor
     return self
   }

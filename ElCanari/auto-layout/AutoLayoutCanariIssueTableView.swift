@@ -208,7 +208,7 @@ class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewD
 
   //····················································································································
 
-  func bind_issues (_ inModel : EBReadOnlyProperty_CanariIssueArray) -> Self {
+  final func bind_issues (_ inModel : EBReadOnlyProperty_CanariIssueArray) -> Self {
     self.mIssueController = EBReadOnlyPropertyController (
       observedObjects: [inModel],
       callBack: { self.update (from: inModel) }

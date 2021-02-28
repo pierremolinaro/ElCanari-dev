@@ -58,7 +58,7 @@ class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
+  final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
     self.addItem (withTitle: inMenuItemDescriptor.title)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)

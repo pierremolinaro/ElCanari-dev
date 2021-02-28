@@ -154,7 +154,7 @@ class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDele
 
   //····················································································································
 
-  func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
+  final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
     self.cell?.sendsActionOnEndEditing = false
     self.isContinuous = sendContinously
     self.mController = EBGenericReadWritePropertyController <Int> (

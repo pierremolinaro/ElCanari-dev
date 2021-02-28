@@ -23,10 +23,10 @@ class AutoLayoutHorizontalStackView : AutoLayoutStackView {
 
   //····················································································································
 
-  func equalSpacing () -> Self {
-    self.distribution = .fillEqually
-    return self
-  }
+//  func equalSpacing () -> Self {
+//    self.distribution = .fillEqually
+//    return self
+//  }
 
   //····················································································································
 

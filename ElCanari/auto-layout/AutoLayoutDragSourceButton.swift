@@ -113,7 +113,7 @@ class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDragging
 
   //····················································································································
 
-  func bind_image (_ inObject : EBReadOnlyProperty_NSImage) -> Self {
+  final func bind_image (_ inObject : EBReadOnlyProperty_NSImage) -> Self {
     self.mImageController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateValue (from: inObject) }

@@ -76,7 +76,7 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
   //  MARGINS
   //····················································································································
 
-  func set (spacing inValue : Int) -> Self {
+  final func set (spacing inValue : Int) -> Self {
     let v = CGFloat (inValue)
     self.spacing = v
     return self
@@ -84,7 +84,7 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func noMargin () -> Self {
+  final func noMargin () -> Self {
     self.edgeInsets.left   = 0.0
     self.edgeInsets.top    = 0.0
     self.edgeInsets.right  = 0.0
@@ -94,7 +94,7 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func set (margins inValue : Int) -> Self {
+  final func set (margins inValue : Int) -> Self {
     let v = CGFloat (inValue)
     self.edgeInsets.left   = v
     self.edgeInsets.top    = v
@@ -105,49 +105,49 @@ class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func setTopMargin (_ inValue : CGFloat) -> Self {
+  final func setTopMargin (_ inValue : CGFloat) -> Self {
     self.edgeInsets.top = inValue
     return self
   }
 
   //····················································································································
 
-  func setBottomMargin (_ inValue : CGFloat) -> Self {
+  final func setBottomMargin (_ inValue : CGFloat) -> Self {
     self.edgeInsets.bottom = inValue
     return self
   }
 
   //····················································································································
 
-  func setLeftMargin (_ inValue : CGFloat) -> Self {
+  final func setLeftMargin (_ inValue : CGFloat) -> Self {
     self.edgeInsets.left = inValue
     return self
   }
 
   //····················································································································
 
-  func setRightMargin (_ inValue : CGFloat) -> Self {
+  final func setRightMargin (_ inValue : CGFloat) -> Self {
     self.edgeInsets.right = inValue
     return self
   }
 
   //····················································································································
 
-  func setSpacing (_ inValue : CGFloat) -> Self {
+  final func setSpacing (_ inValue : CGFloat) -> Self {
     self.spacing = inValue
     return self
   }
 
   //····················································································································
 
-  func flexibleSpace () -> Self {
+  final func flexibleSpace () -> Self {
     self.appendView (AutoLayoutFlexibleSpace ())
     return self
   }
 
   //····················································································································
 
-  func add (item inView : NSView) -> Self {
+  final func add (item inView : NSView) -> Self {
     self.appendView (inView)
     return self
   }

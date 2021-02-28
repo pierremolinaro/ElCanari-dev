@@ -63,7 +63,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   // SET TEXT color
   //····················································································································
 
-  func setTextColor (_ inTextColor : NSColor) -> Self {
+  final func setTextColor (_ inTextColor : NSColor) -> Self {
     self.textColor = inTextColor
     return self
   }
@@ -72,7 +72,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   // setRedTextColor
   //····················································································································
 
-  func setRedTextColor () -> Self {
+  final func setRedTextColor () -> Self {
     self.textColor = .red
     return self
   }
@@ -81,7 +81,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   // SET TITLE ALIGNMENT
   //····················································································································
 
-  func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
+  final func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
     self.alignment = inAlignment
     return self
   }
@@ -94,7 +94,7 @@ class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_title (_ model : EBReadOnlyProperty_String) -> Self {
+  final func bind_title (_ model : EBReadOnlyProperty_String) -> Self {
     self.mTitleController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

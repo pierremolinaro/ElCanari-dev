@@ -196,140 +196,140 @@ class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //  BINDINGS
   //····················································································································
 
-  func bind_foregroundImageOpacity (_ inObject : EBGenericReadOnlyProperty <Double>) -> Self {
+  final func bind_foregroundImageOpacity (_ inObject : EBGenericReadOnlyProperty <Double>) -> Self {
     self.mGraphicView.bind_foregroundImageOpacity (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_foregroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) -> Self {
+  final func bind_foregroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) -> Self {
     self.mGraphicView.bind_foregroundImageData (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_backgroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) -> Self {
+  final func bind_backgroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) -> Self {
     self.mGraphicView.bind_backgroundImageData (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_overObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) -> Self {
+  final func bind_overObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) -> Self {
     self.mGraphicView.bind_overObjectsDisplay (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_underObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) -> Self {
+  final func bind_underObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) -> Self {
     self.mGraphicView.bind_underObjectsDisplay (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_horizontalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) -> Self {
+  final func bind_horizontalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) -> Self {
     self.mGraphicView.bind_horizontalFlip (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_verticalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) -> Self {
+  final func bind_verticalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) -> Self {
     self.mGraphicView.bind_verticalFlip (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_mouseGrid (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
+  final func bind_mouseGrid (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_mouseGrid (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_gridStep (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
+  final func bind_gridStep (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_gridStep (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_arrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
+  final func bind_arrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_arrowKeyMagnitude (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_shiftArrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
+  final func bind_shiftArrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_shiftArrowKeyMagnitude (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_gridStyle (_ inObject : EBReadOnlyProperty_GridStyle) -> Self {
+  final func bind_gridStyle (_ inObject : EBReadOnlyProperty_GridStyle) -> Self {
     self.mGraphicView.bind_gridStyle (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_gridDisplayFactor (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
+  final func bind_gridDisplayFactor (_ inObject : EBGenericReadOnlyProperty <Int>) -> Self {
     self.mGraphicView.bind_gridDisplayFactor (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_gridLineColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
+  final func bind_gridLineColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
     self.mGraphicView.bind_gridLineColor (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_gridCrossColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
+  final func bind_gridCrossColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
     self.mGraphicView.bind_gridCrossColor (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_zoom (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_zoom (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mGraphicView.bind_zoom (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_backColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
+  final func bind_backColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) -> Self {
     self.mGraphicView.bind_backColor (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_xPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_xPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mGraphicView.bind_xPlacardUnit (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_yPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_yPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mGraphicView.bind_yPlacardUnit (inObject)
     return self
   }
 
   //····················································································································
 
-  func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
+  final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
     inController.bind_ebView (self.mGraphicView)
     return self
   }

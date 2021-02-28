@@ -55,7 +55,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
   // ADD PAGE
   //····················································································································
 
-  func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
+  final func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
     self.mPages.append (inPageView)
@@ -65,7 +65,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  func makeWidthExpandable () -> Self {
+  final func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
   }
@@ -105,7 +105,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
@@ -137,7 +137,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  func bind_segmentImage (_ inObject : EBGenericReadOnlyProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
+  final func bind_segmentImage (_ inObject : EBGenericReadOnlyProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentImageIndex = inSegmentIndex
     self.mSegmentImageController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
@@ -166,7 +166,7 @@ class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameP
 
   //····················································································································
 
-  func bind_segmentTitle (_ inObject : EBGenericReadOnlyProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
+  final func bind_segmentTitle (_ inObject : EBGenericReadOnlyProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentTitleIndex = inSegmentIndex
     self.mSegmentTitleController = EBReadOnlyPropertyController (
       observedObjects: [inObject],

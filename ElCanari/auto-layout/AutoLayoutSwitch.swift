@@ -78,7 +78,7 @@ class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
+  final func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateValue (from: inObject) }

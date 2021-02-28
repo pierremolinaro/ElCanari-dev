@@ -86,7 +86,7 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_image (_ object : EBReadOnlyProperty_NSImage) -> Self {
+  final func bind_image (_ object : EBReadOnlyProperty_NSImage) -> Self {
     self.mImageController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateImage (object) ; }

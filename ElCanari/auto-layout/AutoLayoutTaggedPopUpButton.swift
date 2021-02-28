@@ -38,7 +38,7 @@ class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func add (title inTitle : String, withTag inTag : Int) -> Self {
+  final func add (title inTitle : String, withTag inTag : Int) -> Self {
     self.addItem (withTitle: "")
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
@@ -78,7 +78,7 @@ class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedTag (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_selectedTag (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
     self.mSelectedTagController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }

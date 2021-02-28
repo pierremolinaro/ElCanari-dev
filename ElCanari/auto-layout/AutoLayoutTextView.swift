@@ -88,7 +88,7 @@ class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_value (_ inObject : EBReadWriteProperty_String) -> Self {
+  final func bind_value (_ inObject : EBReadWriteProperty_String) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <String> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
