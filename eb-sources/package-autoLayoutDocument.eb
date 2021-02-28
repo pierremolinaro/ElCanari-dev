@@ -45,10 +45,10 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   action resetModelImagePointsAction ;
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
-  stackView mModelImagePage hStack {
+  stackView mModelImagePage hStack set (spacing: 0) {
     TwoColumnsGridView {
       set (width: 250) 
-      set (margins: 19)
+      set (margins: 20)
       add (
         left: StaticLabel (title: "Grid Style", bold: no, small: yes),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle}
@@ -142,7 +142,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           ImageObserverView (small: yes) { $image root.lockImageView }
         }
       )
-      flexibleSpace () 
+      flexibleSpace ()
     }
     GraphicView (minZoom: 10, maxZoom: 4000) {
       $backgroundImageData root.mModelImageData
@@ -218,6 +218,9 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           right: hStack {
              StaticLabel (title: "From", bold: no, small: yes) {$enabled root.counterClockNumbering}
              IntField (width: 45) {
+               set (min: 0)
+               set (max: 360)
+               set (format: "##0°")
                $value root.counterClockNumberingStartAngle (sendContinously : yes)
                $enabled root.counterClockNumbering
              }
@@ -235,7 +238,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
       }
       view mPackagePageInspectorMasterView
-      space  
     }
     GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
       $foregroundImageData root.mModelImageData
@@ -665,8 +667,8 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 
 //--- Zoom and flip inspector
 
-  stackView mGridZoomInspectorView hStack {
-    space
+  stackView mGridZoomInspectorView vStack {
+ //   space
     TwoColumnsGridView {
       add (
         left: StaticLabel (title: "Grid Style", bold: no, small: yes),

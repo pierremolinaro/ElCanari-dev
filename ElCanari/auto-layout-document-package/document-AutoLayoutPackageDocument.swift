@@ -621,9 +621,10 @@ import Cocoa
 
   lazy var mModelImagePage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
     let view_0 = AutoLayoutTwoColumnsGridView ()
       .set (width: 250)
-      .set (margins: 19)
+      .set (margins: 20)
       .add (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
       .add (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
       .add (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
@@ -760,8 +761,6 @@ import Cocoa
       view_0.appendView (view_0_2)
       let view_0_3 = self.mPackagePageInspectorMasterView
       view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_4)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
@@ -838,11 +837,9 @@ import Cocoa
   //    VIEW mGridZoomInspectorView
   //····················································································································
 
-  lazy var mGridZoomInspectorView : AutoLayoutHorizontalStackView = {
-    let hStackView = AutoLayoutHorizontalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
-    hStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+  lazy var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutTwoColumnsGridView ()
       .add (left: self.computeImplicitView_37 (), right: self.computeImplicitView_38 ())
       .add (left: self.computeImplicitView_39 (), right: self.computeImplicitView_40 ())
       .add (left: self.computeImplicitView_41 (), right: self.computeImplicitView_42 ())
@@ -851,10 +848,10 @@ import Cocoa
       .add (left: self.computeImplicitView_47 (), right: self.computeImplicitView_48 ())
       .add (left: self.computeImplicitView_49 (), right: self.computeImplicitView_50 ())
       .add (left: self.computeImplicitView_51 (), right: self.computeImplicitView_52 ())
-    hStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    hStackView.appendView (view_2)
-    return hStackView
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
   } ()
 
   //····················································································································
@@ -1368,6 +1365,9 @@ import Cocoa
         )
       view.appendView (view_0)
       let view_1 = AutoLayoutIntField (width: 45)
+        .set (min: 0)
+        .set (max: 360)
+        .set (format: "##0°")
         .bind_value (self.rootObject.counterClockNumberingStartAngle_property, sendContinously:true)
         .bind_enabled (
           observedObjects: [self.rootObject.counterClockNumbering_property],

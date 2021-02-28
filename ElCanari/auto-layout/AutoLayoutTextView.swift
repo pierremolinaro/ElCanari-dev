@@ -24,6 +24,7 @@ class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.isRichText = false
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
+    self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
 
     self.drawsBackground = false
     self.documentView = self.mTextView
@@ -57,6 +58,12 @@ class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
   var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
   //····················································································································
+
+  fileprivate func ebTextDidChange () {
+    _ = self.mValueController?.updateModel (withCandidateValue: self.string, windowForSheet: self.window)
+  }
+
+  //····················································································································
   //  value binding
   //····················································································································
 
@@ -86,64 +93,7 @@ class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
     )
-    self.mTextView.mValueController = self.mValueController
     return self
-  }
-
-  //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
-//----------------------------------------------------------------------------------------------------------------------
-
-class EmbbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
-
-  //····················································································································
-
-  fileprivate weak var mValueController : EBGenericReadWritePropertyController <String>? = nil
-
-  //····················································································································
-
-  init () {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  override init (frame : NSRect, textContainer : NSTextContainer?) { // Required, otherwise run time error
-    super.init (frame: frame, textContainer: textContainer)
-  }
-
-  //····················································································································
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  override var intrinsicContentSize : NSSize {
-    let textContainer = self.textContainer!
-    let layoutManager = self.layoutManager!
-    layoutManager.ensureLayout (for: textContainer)
-    return layoutManager.usedRect (for: textContainer).size
-  }
-
-  //····················································································································
-
-  override func didChangeText () {
-    super.didChangeText ()
-    self.invalidateIntrinsicContentSize ()
-    _ = self.mValueController?.updateModel (withCandidateValue: self.string, windowForSheet: self.window)
   }
 
   //····················································································································

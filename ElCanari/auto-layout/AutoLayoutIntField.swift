@@ -14,7 +14,8 @@ class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDele
 
   //····················································································································
 
-  let mWidth : CGFloat
+  private let mWidth : CGFloat
+  private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
 
@@ -31,14 +32,13 @@ class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDele
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))
   //--- Number formatter
-    let numberFormatter = NumberFormatter ()
-    numberFormatter.formatterBehavior = .behavior10_4
-    numberFormatter.numberStyle = .decimal
-    numberFormatter.localizesFormat = true
-    numberFormatter.minimumFractionDigits = 0
-    numberFormatter.maximumFractionDigits = 0
-    numberFormatter.isLenient = true
-    self.formatter = numberFormatter
+    self.mNumberFormatter.formatterBehavior = .behavior10_4
+    self.mNumberFormatter.numberStyle = .decimal
+    self.mNumberFormatter.localizesFormat = true
+    self.mNumberFormatter.minimumFractionDigits = 0
+    self.mNumberFormatter.maximumFractionDigits = 0
+    self.mNumberFormatter.isLenient = true
+    self.formatter = self.mNumberFormatter
   }
 
   //····················································································································
@@ -65,6 +65,27 @@ class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDele
     self.mController?.unregister ()
     self.mController = nil
     super.ebCleanUp ()
+  }
+
+  //····················································································································
+
+  final func set (min inMin : Int) -> Self {
+    self.mNumberFormatter.minimum = NSNumber (value: inMin)
+    return self
+  }
+
+  //····················································································································
+
+  final func set (max inMax : Int) -> Self {
+    self.mNumberFormatter.maximum = NSNumber (value: inMax)
+    return self
+  }
+
+  //····················································································································
+
+  final func set (format inFormatString : String) -> Self {
+    self.mNumberFormatter.format = inFormatString
+    return self
   }
 
   //····················································································································

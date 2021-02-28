@@ -47,12 +47,10 @@ extension AutoLayoutPackageDocument {
       vStack.appendView (okButton)
     //---
       sheet.contentView = vStack
-  //    sheet.contentView?.layoutSubtreeIfNeeded ()
       if let cell = okButton.cell as? NSButtonCell {
         sheet.defaultButtonCell = cell
       }
-    //  sheet.makeFirstResponder (okButton)
- //     sheet.enableKeyEquivalentForDefaultButtonCell ()
+      sheet.initialFirstResponder = okButton
       window.beginSheet (sheet, completionHandler: nil)
     }
 //--- END OF USER ZONE 2

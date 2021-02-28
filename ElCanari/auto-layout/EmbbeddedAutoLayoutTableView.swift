@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------------------------------------------------
 //
-//  AutoLayout-extension-NSView.swift
+//  EmbbeddedAutoLayoutTableView.swift
+//  ElCanari-Debug-temporary
 //
-//  Created by Pierre Molinaro on 07/02/2021.
+//  Created by Pierre Molinaro on 28/02/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10,18 +10,25 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension NSView {
+class EmbbeddedAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.autoLayoutCleanUp ()
-    super.ebCleanUp ()
+  init () {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  @objc func autoLayoutCleanUp () {
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

@@ -23,8 +23,8 @@ class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewD
 
   //····················································································································
 
-  private var mScrollView = NSScrollView (frame: NSRect ())
-  private var mTableView = NSTableView (frame: NSRect ())
+  private var mScrollView = EmbbeddedAutoLayoutScrollView ()
+  private var mTableView = EmbbeddedAutoLayoutTableView ()
   private var mHideIssueButton : AutoLayoutButton
 
   //····················································································································

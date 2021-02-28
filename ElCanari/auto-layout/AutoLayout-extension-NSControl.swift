@@ -1,6 +1,6 @@
+//----------------------------------------------------------------------------------------------------------------------
 //
 //  AutoLayout-extension-NSControl.swift
-//  ElCanari
 //
 //  Created by Pierre Molinaro on 07/02/2021.
 //
@@ -37,7 +37,7 @@ extension NSControl {
   //····················································································································
 
   final func bind_enabled (observedObjects inObjects : [EBObservableObjectProtocol],
-                            computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
+                           computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
     let controller = EBReadOnlyPropertyController (
       observedObjects: inObjects,
       callBack: { [weak self] in self?.update (from: inFunction ()) }
