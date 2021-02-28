@@ -18,14 +18,14 @@ class CanariDefaultNetClassPopUpButton : EBPopUpButton {
 
   //····················································································································
 
-  func bind_netClasses (_ inSelectedNetClassName : EBReadWriteProperty_String,
+  final func bind_netClasses (_ inSelectedNetClassName : EBReadWriteProperty_String,
                         _ inNetClassNames : EBReadOnlyProperty_StringArray) {
     self.mController = Controller_CanariDefaultNetClassPopUpButton (inSelectedNetClassName, inNetClassNames, self)
   }
 
   //····················································································································
 
-  func unbind_netClasses () {
+  final func unbind_netClasses () {
     self.mController?.unregister ()
     self.mController = nil
   }

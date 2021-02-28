@@ -248,7 +248,7 @@ final class SelectionController_MergerDocument_mDataSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+  final func bind_selection (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     self.mModel = model
     self.bind_property_drawBoardLimits (model: model)
     self.bind_property_drawComponentNamesBottomSide (model: model)
@@ -279,7 +279,7 @@ final class SelectionController_MergerDocument_mDataSelection : EBObject {
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
   //--- drawBoardLimits
     self.drawBoardLimits_property.mReadModelFunction = nil 
     self.drawBoardLimits_property.mWriteModelFunction = nil 

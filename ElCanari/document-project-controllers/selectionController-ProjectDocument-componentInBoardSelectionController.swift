@@ -433,7 +433,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mSlavePadsShouldBeRouted ()
     self.bind_property_mX ()
@@ -483,7 +483,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mSlavePadsShouldBeRouted
     self.mSlavePadsShouldBeRouted_property.mReadModelFunction = nil 

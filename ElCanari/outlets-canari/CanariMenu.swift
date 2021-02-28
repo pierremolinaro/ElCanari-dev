@@ -57,7 +57,7 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass) {
+  final func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass) {
     self.mValueController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }
@@ -66,7 +66,7 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_populateSubmenus () {
+  final func unbind_populateSubmenus () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

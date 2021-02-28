@@ -59,7 +59,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
     self.mSortDescriptorArray = []    
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
@@ -89,7 +89,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
 
   //····················································································································
 
-  func unbind_model () {
+  final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
     for tvc in self.mTableViewDataSourceControllerArray {
@@ -209,7 +209,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?) {
+  final func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -243,7 +243,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
 
   //····················································································································
  
-  func unbind_tableView (_ inTableView : EBTableView?) {
+  final func unbind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
       self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
       self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])

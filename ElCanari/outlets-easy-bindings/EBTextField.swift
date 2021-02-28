@@ -91,7 +91,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
-  func bind_value (_ inObject : EBReadWriteProperty_String, sendContinously : Bool) {
+  final func bind_value (_ inObject : EBReadWriteProperty_String, sendContinously : Bool) {
     self.mSendContinously = sendContinously
     self.mValueController = EBGenericReadWritePropertyController <String> (
       observedObject: inObject,
@@ -101,7 +101,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
-  func unbind_value () {
+  final func unbind_value () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

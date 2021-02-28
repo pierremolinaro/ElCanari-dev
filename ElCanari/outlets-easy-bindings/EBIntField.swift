@@ -108,7 +108,7 @@ class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
-  func bind_value (_ object : EBReadWriteProperty_Int,
+  final func bind_value (_ object : EBReadWriteProperty_Int,
                    sendContinously : Bool,
                    autoFormatter : Bool) {
     if self.cell?.sendsActionOnEndEditing ?? true {
@@ -126,7 +126,7 @@ class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
-  func unbind_value () {
+  final func unbind_value () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

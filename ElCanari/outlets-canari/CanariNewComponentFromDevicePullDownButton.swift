@@ -55,7 +55,7 @@ class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNam
 
   //····················································································································
 
-  func bind_deviceNames (_ model : EBReadOnlyProperty_StringArray) {
+  final func bind_deviceNames (_ model : EBReadOnlyProperty_StringArray) {
     self.mCurrentNumberController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (fromPadNumber: model) }
@@ -64,7 +64,7 @@ class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNam
 
   //····················································································································
 
-  func unbind_deviceNames () {
+  final func unbind_deviceNames () {
     self.mCurrentNumberController?.unregister ()
     self.mCurrentNumberController = nil
   }

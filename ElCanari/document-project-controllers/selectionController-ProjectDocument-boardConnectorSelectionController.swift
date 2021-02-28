@@ -302,7 +302,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mComponentPadName ()
     self.bind_property_mPadIndex ()
@@ -339,7 +339,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mComponentPadName
     self.mComponentPadName_property.mReadModelFunction = nil 

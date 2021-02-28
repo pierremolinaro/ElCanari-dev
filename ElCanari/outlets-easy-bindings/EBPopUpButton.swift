@@ -68,13 +68,13 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedTag (_ object : EBReadWriteProperty_Int) {
+  final func bind_selectedTag (_ object : EBReadWriteProperty_Int) {
     self.mSelectedTagController = Controller_EBPopUpButton_selectedTag (object: object, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_selectedTag () {
+  final func unbind_selectedTag () {
     self.mSelectedTagController?.unregister ()
     self.mSelectedTagController = nil
   }
@@ -115,13 +115,13 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol) {
+  final func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol) {
     self.mSelectedIndexController = Controller_EBPopUpButton_Index (object: object, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_selectedIndex () {
+  final func unbind_selectedIndex () {
     self.mSelectedIndexController?.unregister ()
     self.mSelectedIndexController = nil
   }

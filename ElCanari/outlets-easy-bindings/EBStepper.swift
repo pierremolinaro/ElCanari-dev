@@ -59,12 +59,12 @@ class EBStepper : NSStepper, EBUserClassNameProtocol {
 
   private var mIntValueController : Controller_EBStepper_value?
 
-  func bind_value (_ object:EBReadWriteProperty_Int, sendContinously:Bool) {
+  final func bind_value (_ object:EBReadWriteProperty_Int, sendContinously:Bool) {
     self.mIntValueController = Controller_EBStepper_value (object: object, outlet: self)
     self.isContinuous = sendContinously
   }
 
-  func unbind_value () {
+  final func unbind_value () {
     self.mIntValueController?.unregister ()
     self.mIntValueController = nil
   }

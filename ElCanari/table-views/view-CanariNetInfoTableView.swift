@@ -187,7 +187,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   //····················································································································
 
-  func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray) {
+  final func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -196,7 +196,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   //····················································································································
 
-  func unbind_netInfo () {
+  final func unbind_netInfo () {
     self.mController?.unregister ()
     self.mController = nil
   }

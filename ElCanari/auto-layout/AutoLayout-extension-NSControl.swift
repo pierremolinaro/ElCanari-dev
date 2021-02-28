@@ -73,7 +73,7 @@ extension NSControl {
 
   //····················································································································
 
-  func bind_run (target inTarget : NSObject, selector inSelector : Selector) -> Self {
+  final func bind_run (target inTarget : NSObject, selector inSelector : Selector) -> Self {
     self.target = inTarget
     self.action = inSelector
     return self

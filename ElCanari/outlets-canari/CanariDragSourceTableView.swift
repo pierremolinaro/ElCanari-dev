@@ -233,7 +233,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   private var mModelsController : EBReadOnlyPropertyController? = nil
 
-  func bind_models (_ model : EBReadOnlyProperty_StringTagArray) {
+  final func bind_models (_ model : EBReadOnlyProperty_StringTagArray) {
     self.mModelsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: {self.update (from: model) }
@@ -242,7 +242,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   //····················································································································
 
-  func unbind_models () {
+  final func unbind_models () {
     self.mModelsController?.unregister ()
     self.mModelsController = nil
   }

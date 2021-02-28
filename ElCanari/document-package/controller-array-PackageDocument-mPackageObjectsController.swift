@@ -150,7 +150,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_PackageObject, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_PackageObject, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -161,7 +161,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   //····················································································································
 
-  func unbind_model () {
+  final func unbind_model () {
     self.stopObservingObjectShape ()
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()

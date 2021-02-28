@@ -51,13 +51,13 @@ class EBColorWell : NSColorWell, EBUserClassNameProtocol {
   private var mValueController : Controller_EBColorWell_color? = nil
   var mSendContinously = false
 
-  func bind_color (_ object : EBReadWriteProperty_NSColor, sendContinously : Bool) {
+  final func bind_color (_ object : EBReadWriteProperty_NSColor, sendContinously : Bool) {
     NSColorPanel.shared.showsAlpha = true
     self.mSendContinously = sendContinously
     self.mValueController = Controller_EBColorWell_color (object:object, outlet:self)
   }
 
-  func unbind_color () {
+  final func unbind_color () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

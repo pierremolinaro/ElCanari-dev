@@ -150,7 +150,7 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_SymbolInstanceInDevice, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_SymbolInstanceInDevice, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -161,7 +161,7 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
 
   //····················································································································
 
-  func unbind_model () {
+  final func unbind_model () {
     self.stopObservingObjectShape ()
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()

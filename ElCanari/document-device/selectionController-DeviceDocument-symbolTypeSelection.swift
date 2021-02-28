@@ -116,7 +116,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
+  final func bind_selection (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     self.mModel = model
     self.bind_property_documentSizeString (model: model)
     self.bind_property_instanceCount (model: model)
@@ -133,7 +133,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
   //--- documentSizeString
     self.documentSizeString_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_documentSizeString (self.documentSizeString_property)

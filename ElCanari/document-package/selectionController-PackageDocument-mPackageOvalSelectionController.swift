@@ -136,7 +136,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_y ()
     self.bind_property_width ()
@@ -156,7 +156,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- y
     self.y_property.mReadModelFunction = nil 

@@ -208,7 +208,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_y1 ()
     self.bind_property_x2 ()
@@ -236,7 +236,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- y1
     self.y1_property.mReadModelFunction = nil 

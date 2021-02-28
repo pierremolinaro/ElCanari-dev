@@ -60,7 +60,7 @@ class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_valueObserver (_ object : EBReadOnlyProperty_Int, autoFormatter : Bool) {
+  final func bind_valueObserver (_ object : EBReadOnlyProperty_Int, autoFormatter : Bool) {
     self.mValueController = Controller_EBIntObserverField_readOnlyValue (
       object: object,
       outlet: self,
@@ -70,7 +70,7 @@ class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_valueObserver () {
+  final func unbind_valueObserver () {
     self.mValueController?.unregister ()
     self.mValueController = nil
     self.ebCleanUp ()

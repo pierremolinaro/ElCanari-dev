@@ -151,7 +151,7 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_TwoStringArray) {
+  final func bind_array (_ model : EBReadOnlyProperty_TwoStringArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -160,7 +160,7 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
 
   //····················································································································
 
-  func unbind_array () {
+  final func unbind_array () {
     self.mController?.unregister ()
     self.mController = nil
   }

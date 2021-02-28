@@ -108,7 +108,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mY ()
     self.bind_property_mWidth ()
@@ -125,7 +125,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mY
     self.mY_property.mReadModelFunction = nil 

@@ -118,7 +118,7 @@ class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_tooltip (_ object : EBReadOnlyProperty_String) -> Self {
+  final func bind_tooltip (_ object : EBReadOnlyProperty_String) -> Self {
     self.mTooltipController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTooltip (object) }

@@ -101,7 +101,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
  //····················································································································
 
-  func bind_masterPadName (_ inObject : EBGenericReadOnlyProperty <String>) {
+  final func bind_masterPadName (_ inObject : EBGenericReadOnlyProperty <String>) {
     self.mSlavePadIndexController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadName: inObject) }
@@ -110,7 +110,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
   //····················································································································
 
-  func unbind_masterPadName () {
+  final func unbind_masterPadName () {
     self.mSlavePadIndexController?.unregister ()
     self.mSlavePadIndexController = nil
     self.mSelectedSlavePadArray.removeAll ()
@@ -147,7 +147,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
  //····················································································································
 
-  func bind_masterPadObjectIndexArray (_ inObject : EBGenericReadOnlyProperty <IntArray>) {
+  final func bind_masterPadObjectIndexArray (_ inObject : EBGenericReadOnlyProperty <IntArray>) {
     self.mMasterPadIndexArrayIndexController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadIndexArray: inObject) }
@@ -156,7 +156,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
 
   //····················································································································
 
-  func unbind_masterPadObjectIndexArray () {
+  final func unbind_masterPadObjectIndexArray () {
     self.mMasterPadIndexArrayIndexController?.unregister ()
     self.mMasterPadIndexArrayIndexController = nil
     self.mMasterPadArray.removeAll ()

@@ -54,13 +54,13 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_image (_ object : EBReadOnlyProperty_NSImage) {
+  final func bind_image (_ object : EBReadOnlyProperty_NSImage) {
     self.mImageController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { self.updateImage (object) } )
   }
 
   //····················································································································
 
-  func unbind_image () {
+  final func unbind_image () {
     self.mImageController?.unregister ()
     self.mImageController = nil
   }
@@ -89,13 +89,13 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_tooltip (_ object : EBReadOnlyProperty_String) {
+  final func bind_tooltip (_ object : EBReadOnlyProperty_String) {
     self.mTooltipController = EBReadOnlyPropertyController (observedObjects: [object], callBack : { self.updateTooltip (object) })
   }
 
   //····················································································································
 
-  func unbind_tooltip () {
+  final func unbind_tooltip () {
     self.mTooltipController?.unregister ()
     self.mTooltipController = nil
   }

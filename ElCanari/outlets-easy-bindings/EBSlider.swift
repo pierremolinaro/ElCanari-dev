@@ -61,14 +61,14 @@ class EBSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_doubleValue (_ object : EBReadWriteProperty_Double, sendContinously : Bool) {
+  final func bind_doubleValue (_ object : EBReadWriteProperty_Double, sendContinously : Bool) {
     self.mDoubleValueController = Controller_EBSlider_doubleValue (object: object, outlet: self)
     self.isContinuous = sendContinously
   }
 
   //····················································································································
 
-  func unbind_doubleValue () {
+  final func unbind_doubleValue () {
     self.mDoubleValueController?.unregister ()
     self.mDoubleValueController = nil
   }
@@ -94,14 +94,14 @@ class EBSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_intValue (_ object : EBReadWriteProperty_Int, sendContinously : Bool) {
+  final func bind_intValue (_ object : EBReadWriteProperty_Int, sendContinously : Bool) {
     self.mIntValueController = Controller_EBSlider_intValue (object:object, outlet:self)
     self.isContinuous = sendContinously
   }
 
   //····················································································································
 
-  func unbind_intValue () {
+  final func unbind_intValue () {
     self.mIntValueController?.unregister ()
     self.mIntValueController = nil
   }

@@ -136,7 +136,7 @@ class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableVi
 
   //····················································································································
 
-  func bind_symbolDictionary (_ model : EBReadOnlyProperty_DeviceSymbolDictionary) {
+  final func bind_symbolDictionary (_ model : EBReadOnlyProperty_DeviceSymbolDictionary) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -147,7 +147,7 @@ class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableVi
 
   //····················································································································
 
-  func unbind_symbolDictionary () {
+  final func unbind_symbolDictionary () {
     self.mDeviceSymbolTypePinsTableView?.unbind_array ()
      self.mPinNameArray.mReadModelFunction = nil
     self.mController?.unregister ()

@@ -40,7 +40,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_version (_ model : EBReadOnlyProperty_Int) {
+  final func bind_version (_ model : EBReadOnlyProperty_Int) {
     self.mVersionController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -49,7 +49,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_version () {
+  final func unbind_version () {
     self.mVersionController?.unregister ()
     self.mVersionController = nil
   }
@@ -78,7 +78,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool) {
+  final func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool) {
     self.mVersionShouldChangeController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -87,7 +87,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_versionShouldChange () {
+  final func unbind_versionShouldChange () {
     self.mVersionShouldChangeController?.unregister ()
     self.mVersionShouldChangeController = nil
   }

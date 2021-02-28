@@ -150,7 +150,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_MergerBoardInstance, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_MergerBoardInstance, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -161,7 +161,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  func unbind_model () {
+  final func unbind_model () {
     self.stopObservingObjectShape ()
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()

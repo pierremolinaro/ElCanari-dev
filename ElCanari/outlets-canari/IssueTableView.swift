@@ -191,7 +191,7 @@ class IssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSour
 
   //····················································································································
 
-  func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray) {
+  final func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray) {
     self.mIssueController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -200,7 +200,7 @@ class IssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSour
 
   //····················································································································
 
-  func unbind_issues () {
+  final func unbind_issues () {
     self.mIssueController?.unregister ()
     self.mIssueController = nil
   }

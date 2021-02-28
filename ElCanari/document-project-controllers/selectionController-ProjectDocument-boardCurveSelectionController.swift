@@ -180,7 +180,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BorderCurve) {
+  final func bind_selection (model : ReadOnlyArrayOf_BorderCurve) {
     self.mModel = model
     self.bind_property_descriptor (model: model)
     self.bind_property_isLine (model: model)
@@ -203,7 +203,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
   //--- descriptor
     self.descriptor_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_descriptor (self.descriptor_property)

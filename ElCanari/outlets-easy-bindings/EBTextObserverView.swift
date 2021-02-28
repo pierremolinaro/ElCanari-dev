@@ -49,7 +49,7 @@ class EBTextObserverView : NSTextView, EBUserClassNameProtocol {
 
   private var mValueController : EBReadOnlyPropertyController? = nil
 
-  func bind_valueObserver (_ object : EBReadOnlyProperty_String) {
+  final func bind_valueObserver (_ object : EBReadOnlyProperty_String) {
     self.mValueController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateTextValue (object) }
@@ -58,7 +58,7 @@ class EBTextObserverView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_valueObserver () {
+  final func unbind_valueObserver () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

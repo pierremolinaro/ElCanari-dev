@@ -78,14 +78,14 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 
   //····················································································································
 
-  func bind_dimensionAndUnit (_ dimension : EBReadOnlyProperty_Int,
+  final func bind_dimensionAndUnit (_ dimension : EBReadOnlyProperty_Int,
                               _ unit : EBReadOnlyProperty_Int) {
     self.mController = EBReadOnlyPropertyController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
   }
 
   //····················································································································
 
-  func unbind_dimensionAndUnit () {
+  final func unbind_dimensionAndUnit () {
     self.mController?.unregister ()
     self.mController = nil
   }

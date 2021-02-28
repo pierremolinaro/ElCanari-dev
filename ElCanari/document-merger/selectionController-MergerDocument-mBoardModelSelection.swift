@@ -618,7 +618,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardModel) {
+  final func bind_selection (model : ReadOnlyArrayOf_BoardModel) {
     self.mModel = model
     self.bind_property_artworkName (model: model)
     self.bind_property_backComponentNameSegments (model: model)
@@ -678,7 +678,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
   //--- artworkName
     self.artworkName_property.mReadModelFunction = nil 
     self.artworkName_property.mWriteModelFunction = nil 

@@ -131,7 +131,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_StringArray) {
+  final func bind_array (_ model : EBReadOnlyProperty_StringArray) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -140,7 +140,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 
   //····················································································································
 
-  func unbind_array () {
+  final func unbind_array () {
     self.mController?.unregister ()
     self.mController = nil
   }

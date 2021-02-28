@@ -74,7 +74,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_DevicePackageInProject, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_DevicePackageInProject, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -82,7 +82,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  func unbind_model () {
+  final func unbind_model () {
     self.mModel?.detachClient (self)
     self.selectedSet = Set ()
     self.mModel = nil

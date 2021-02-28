@@ -63,13 +63,13 @@ class EBSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_value (_ inObject : EBReadWriteProperty_Bool) {
+  final func bind_value (_ inObject : EBReadWriteProperty_Bool) {
     self.mValueController = Controller_EBSwitch_value (object: inObject, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_value () {
+  final func unbind_value () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

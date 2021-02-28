@@ -140,7 +140,7 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_imageData (_ model : EBStoredProperty_Data) {
+  final func bind_imageData (_ model : EBStoredProperty_Data) {
     self.mImageDataController = Controller_DeviceDroppableImageView_imageData (
       object: model,
       outlet: self
@@ -149,7 +149,7 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_imageData () {
+  final func unbind_imageData () {
     self.mImageDataController?.unregister ()
     self.mImageDataController = nil
   }

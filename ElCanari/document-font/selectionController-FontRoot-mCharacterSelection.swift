@@ -56,7 +56,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //   BIND SELECTION
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_FontCharacter, file:String, line:Int) {
+  final func bind_selection (model : TransientArrayOf_FontCharacter, file:String, line:Int) {
     mModel = model
     bind_property_advance (model: model)
     bind_property_codePoint (model: model)
@@ -432,7 +432,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
   //--- advance
     self.advance_property.mReadModelFunction = nil
     self.advance_property.mWriteModelFunction = nil

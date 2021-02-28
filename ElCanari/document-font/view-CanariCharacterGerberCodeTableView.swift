@@ -40,11 +40,11 @@ private let DEBUG_EVENT = false
 
   private var mValueController : Controller_CanariCharacterGerberCodeTableView_characterGerberCode?
 
-  func bind_characterGerberCode (_ object:EBReadOnlyProperty_CharacterGerberCodeClass) {
+  final func bind_characterGerberCode (_ object:EBReadOnlyProperty_CharacterGerberCodeClass) {
     mValueController = Controller_CanariCharacterGerberCodeTableView_characterGerberCode (object:object, tableView:self)
   }
 
-  func unbind_characterGerberCode () {
+  final func unbind_characterGerberCode () {
     mValueController?.unregister ()
     mValueController = nil
   }

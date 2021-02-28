@@ -219,7 +219,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_x ()
     self.bind_property_y ()
@@ -248,7 +248,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- x
     self.x_property.mReadModelFunction = nil 

@@ -154,7 +154,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mX ()
     self.bind_property_mY ()
@@ -176,7 +176,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mX
     self.mX_property.mReadModelFunction = nil 

@@ -249,7 +249,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_xCenter ()
     self.bind_property_yCenter ()
@@ -281,7 +281,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 

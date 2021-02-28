@@ -100,11 +100,11 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   private var mCodePointController : Controller_CanariFontCharacterSelectButton_codePoint?
 
-  func bind_codePoint (_ object:EBReadWriteProperty_Int) {
+  final func bind_codePoint (_ object:EBReadWriteProperty_Int) {
     self.mCodePointController = Controller_CanariFontCharacterSelectButton_codePoint (object:object, outlet:self)
   }
 
-  func unbind_codePoint () {
+  final func unbind_codePoint () {
     self.mCodePointController?.unregister ()
     self.mCodePointController = nil
   }
@@ -131,7 +131,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   private var mCharactersController : EBReadOnlyPropertyController? = nil
 
-  func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice) {
+  final func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice) {
     self.mCharactersController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in
@@ -145,7 +145,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
     )
   }
 
-  func unbind_characters () {
+  final func unbind_characters () {
     self.mCharactersController?.unregister ()
     self.mCharactersController = nil
   }

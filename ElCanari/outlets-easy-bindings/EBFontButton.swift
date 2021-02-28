@@ -84,11 +84,11 @@ class EBFontButton : NSButton, EBUserClassNameProtocol {
 
   private var mValueController : Controller_EBFontButton_fontValue? = nil
 
-  func bind_fontValue (_ object : EBReadWriteProperty_NSFont) {
+  final func bind_fontValue (_ object : EBReadWriteProperty_NSFont) {
     self.mValueController = Controller_EBFontButton_fontValue (object: object, outlet: self)
   }
 
-  func unbind_fontValue () {
+  final func unbind_fontValue () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

@@ -59,7 +59,7 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 
   //····················································································································
 
-  func bind_valueObserver (_ object : EBReadOnlyProperty_String) {
+  final func bind_valueObserver (_ object : EBReadOnlyProperty_String) {
     if self.formatter != nil {
       presentErrorWindow (#file, #line, "the EBTextObserverField outlet has a formatter")
     }
@@ -68,7 +68,7 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 
   //····················································································································
 
-  func unbind_valueObserver () {
+  final func unbind_valueObserver () {
     self.mValueController?.unregister ()
     self.mValueController = nil
     self.ebCleanUp ()
@@ -93,13 +93,13 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 
   //····················································································································
 
-  func bind_backColor (_ object : EBReadOnlyProperty_NSColor) {
+  final func bind_backColor (_ object : EBReadOnlyProperty_NSColor) {
     self.mBackColorController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { [weak self] in self?.updateBackColor (object) } )
   }
 
   //····················································································································
 
-  func unbind_backColor () {
+  final func unbind_backColor () {
     self.mBackColorController?.unregister ()
     self.mBackColorController = nil
     self.ebCleanUp ()

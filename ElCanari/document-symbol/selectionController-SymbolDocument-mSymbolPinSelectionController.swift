@@ -164,7 +164,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_SymbolObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_yPin ()
     self.bind_property_xName ()
@@ -187,7 +187,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- yPin
     self.yPin_property.mReadModelFunction = nil 

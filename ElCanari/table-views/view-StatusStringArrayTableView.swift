@@ -168,7 +168,7 @@ class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVi
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_StatusStringArray, file : String, line : Int) {
+  final func bind_array (_ model : EBReadOnlyProperty_StatusStringArray, file : String, line : Int) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -177,7 +177,7 @@ class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVi
 
   //····················································································································
 
-  func unbind_array () {
+  final func unbind_array () {
     self.mController?.unregister ()
     self.mController = nil
   }

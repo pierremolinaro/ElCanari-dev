@@ -106,7 +106,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  final func bind_selection (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     self.mModel = model
     self.bind_property_mInstanceName (model: model)
     self.bind_property_mX (model: model)
@@ -122,7 +122,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
   //--- mInstanceName
     self.mInstanceName_property.mReadModelFunction = nil 
     self.mInstanceName_property.mWriteModelFunction = nil 

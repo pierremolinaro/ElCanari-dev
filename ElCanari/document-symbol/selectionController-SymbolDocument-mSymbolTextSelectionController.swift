@@ -90,7 +90,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_SymbolObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_y ()
     self.bind_property_text ()
@@ -105,7 +105,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- y
     self.y_property.mReadModelFunction = nil 

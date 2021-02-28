@@ -107,7 +107,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mColor ()
     self.bind_property_mSize ()
@@ -124,7 +124,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mColor
     self.mColor_property.mReadModelFunction = nil 

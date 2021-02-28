@@ -50,7 +50,7 @@ class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_nets (_ model : EBReadOnlyProperty_StringArray) {
+  final func bind_nets (_ model : EBReadOnlyProperty_StringArray) {
     self.mComponentsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -59,7 +59,7 @@ class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_nets () {
+  final func unbind_nets () {
     self.mComponentsController?.unregister ()
     self.mComponentsController = nil
   }

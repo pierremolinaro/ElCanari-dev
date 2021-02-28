@@ -104,7 +104,7 @@ class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate 
   private var mValueController : Controller_EBDoubleField_value?
   private var mSendContinously : Bool = false
 
-  func bind_value (_ object : EBReadWriteProperty_Double, sendContinously : Bool, autoFormatter : Bool) {
+  final func bind_value (_ object : EBReadWriteProperty_Double, sendContinously : Bool, autoFormatter : Bool) {
     mSendContinously = sendContinously
     mValueController = Controller_EBDoubleField_value (
       object:object,
@@ -114,7 +114,7 @@ class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate 
     )
   }
 
-  func unbind_value () {
+  final func unbind_value () {
     mValueController?.unregister ()
     mValueController = nil
   }

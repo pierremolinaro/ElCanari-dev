@@ -229,247 +229,241 @@ class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
   //  BINDINGS
   //····················································································································
 
-  func bind_foregroundImageOpacity (_ inObject : EBGenericReadOnlyProperty <Double>) {
+  final func bind_foregroundImageOpacity (_ inObject : EBGenericReadOnlyProperty <Double>) {
     self.mGraphicView.bind_foregroundImageOpacity (inObject)
   }
 
   //····················································································································
 
-  func bind_foregroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) {
+  final func bind_foregroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) {
     self.mGraphicView.bind_foregroundImageData (inObject)
   }
 
   //····················································································································
 
-  func bind_backgroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) {
+  final func bind_backgroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) {
     self.mGraphicView.bind_backgroundImageData (inObject)
   }
 
   //····················································································································
 
-  func bind_overObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) {
+  final func bind_overObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) {
     self.mGraphicView.bind_overObjectsDisplay (inObject)
   }
 
   //····················································································································
 
-  func bind_underObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) {
+  final func bind_underObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) {
     self.mGraphicView.bind_underObjectsDisplay (inObject)
   }
 
   //····················································································································
 
-  func bind_horizontalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) {
+  final func bind_horizontalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) {
     self.mGraphicView.bind_horizontalFlip (inObject)
   }
 
   //····················································································································
 
-  func bind_verticalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) {
+  final func bind_verticalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) {
     self.mGraphicView.bind_verticalFlip (inObject)
   }
 
   //····················································································································
 
-  func bind_mouseGrid (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_mouseGrid (_ inObject : EBGenericReadOnlyProperty <Int>) {
     self.mGraphicView.bind_mouseGrid (inObject)
   }
 
   //····················································································································
 
-  func bind_gridStep (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_gridStep (_ inObject : EBGenericReadOnlyProperty <Int>) {
     self.mGraphicView.bind_gridStep (inObject)
   }
 
   //····················································································································
 
-  func bind_arrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_arrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) {
     self.mGraphicView.bind_arrowKeyMagnitude (inObject)
   }
 
   //····················································································································
 
-  func bind_shiftArrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_shiftArrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) {
     self.mGraphicView.bind_shiftArrowKeyMagnitude (inObject)
   }
 
   //····················································································································
 
-  func bind_gridStyle (_ inObject : EBReadOnlyProperty_GridStyle) {
+  final func bind_gridStyle (_ inObject : EBReadOnlyProperty_GridStyle) {
     self.mGraphicView.bind_gridStyle (inObject)
   }
 
   //····················································································································
 
-  func bind_gridDisplayFactor (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_gridDisplayFactor (_ inObject : EBGenericReadOnlyProperty <Int>) {
     self.mGraphicView.bind_gridDisplayFactor (inObject)
   }
 
   //····················································································································
 
-  func bind_gridLineColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
+  final func bind_gridLineColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
     self.mGraphicView.bind_gridLineColor (inObject)
   }
 
   //····················································································································
 
-  func bind_gridCrossColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
+  final func bind_gridCrossColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
     self.mGraphicView.bind_gridCrossColor (inObject)
   }
 
   //····················································································································
 
-  func bind_zoom (_ inObject : EBGenericReadWriteProperty <Int>) {
+  final func bind_zoom (_ inObject : EBGenericReadWriteProperty <Int>) {
     self.mGraphicView.bind_zoom (inObject)
   }
 
   //····················································································································
 
-  func bind_backColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
+  final func bind_backColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
     self.mGraphicView.bind_backColor (inObject)
   }
 
   //····················································································································
 
-  func bind_xPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) {
+  final func bind_xPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) {
     self.mGraphicView.bind_xPlacardUnit (inObject)
   }
 
   //····················································································································
 
-  func bind_yPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) {
+  final func bind_yPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) {
     self.mGraphicView.bind_yPlacardUnit (inObject)
   }
 
   //····················································································································
 
-  func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) {
+  final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) {
     inController.bind_ebView (self.mGraphicView)
   }
 
   //····················································································································
 
-  func unbind_foregroundImageOpacity () {
+  final func unbind_foregroundImageOpacity () {
     self.mGraphicView.unbind_foregroundImageOpacity ()
   }
 
   //····················································································································
 
-  func unbind_foregroundImageData () {
+  final func unbind_foregroundImageData () {
     self.mGraphicView.unbind_foregroundImageData ()
   }
 
   //····················································································································
 
-  func unbind_backgroundImageData () {
+  final func unbind_backgroundImageData () {
     self.mGraphicView.unbind_backgroundImageData ()
   }
 
   //····················································································································
 
-  func unbind_overObjectsDisplay () {
+  final func unbind_overObjectsDisplay () {
     self.mGraphicView.unbind_overObjectsDisplay ()
   }
 
   //····················································································································
 
-  func unbind_underObjectsDisplay () {
+  final func unbind_underObjectsDisplay () {
     self.mGraphicView.unbind_underObjectsDisplay ()
   }
 
   //····················································································································
 
-  func unbind_horizontalFlip () {
+  final func unbind_horizontalFlip () {
     self.mGraphicView.unbind_horizontalFlip ()
   }
 
   //····················································································································
 
-  func unbind_verticalFlip () {
+  final func unbind_verticalFlip () {
     self.mGraphicView.unbind_verticalFlip ()
   }
 
   //····················································································································
 
-  func unbind_mouseGrid () {
+  final func unbind_mouseGrid () {
     self.mGraphicView.unbind_mouseGrid ()
   }
 
   //····················································································································
 
-  func unbind_gridStep () {
+  final func unbind_gridStep () {
     self.mGraphicView.unbind_gridStep ()
   }
 
   //····················································································································
 
-  func unbind_arrowKeyMagnitude () {
+  final func unbind_arrowKeyMagnitude () {
     self.mGraphicView.unbind_arrowKeyMagnitude ()
   }
 
   //····················································································································
 
-  func unbind_shiftArrowKeyMagnitude () {
+  final func unbind_shiftArrowKeyMagnitude () {
     self.mGraphicView.unbind_shiftArrowKeyMagnitude ()
   }
 
   //····················································································································
 
 
-  func unbind_gridStyle () {
+  final func unbind_gridStyle () {
     self.mGraphicView.unbind_gridStyle ()
   }
 
   //····················································································································
 
 
-  func unbind_gridDisplayFactor () {
+  final func unbind_gridDisplayFactor () {
     self.mGraphicView.unbind_gridDisplayFactor ()
   }
 
   //····················································································································
 
 
-  func unbind_gridLineColor () {
+  final func unbind_gridLineColor () {
     self.mGraphicView.unbind_gridLineColor ()
   }
 
   //····················································································································
 
 
-  func unbind_gridCrossColor () {
+  final func unbind_gridCrossColor () {
     self.mGraphicView.unbind_gridCrossColor ()
   }
 
   //····················································································································
 
-  func unbind_zoom () {
+  final func unbind_zoom () {
     self.mGraphicView.unbind_zoom ()
   }
 
   //····················································································································
 
-  func unbind_backColor () {
+  final func unbind_backColor () {
     self.mGraphicView.unbind_backColor ()
   }
 
   //····················································································································
 
-  func unbind_xPlacardUnit () {
+  final func unbind_xPlacardUnit () {
     self.mGraphicView.unbind_xPlacardUnit ()
   }
 
   //····················································································································
 
-  func unbind_yPlacardUnit () {
+  final func unbind_yPlacardUnit () {
     self.mGraphicView.unbind_yPlacardUnit ()
   }
-
-  //····················································································································
-
-//  func unbind_graphic_controller () {
-//    inController.unbind_ebView (self.mGraphicView)
-//  }
 
   //····················································································································
 

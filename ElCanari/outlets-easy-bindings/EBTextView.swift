@@ -53,13 +53,13 @@ class EBTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_value (_ object : EBReadWriteProperty_String) {
+  final func bind_value (_ object : EBReadWriteProperty_String) {
     self.mValueController = Controller_EBTextView_value (object: object, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_value () {
+  final func unbind_value () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }

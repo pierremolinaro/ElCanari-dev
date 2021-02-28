@@ -50,7 +50,7 @@ class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_components (_ model : EBReadOnlyProperty_StringTagArray) {
+  final func bind_components (_ model : EBReadOnlyProperty_StringTagArray) {
     self.mComponentsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -59,7 +59,7 @@ class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func unbind_components () {
+  final func unbind_components () {
     self.mComponentsController?.unregister ()
     self.mComponentsController = nil
   }

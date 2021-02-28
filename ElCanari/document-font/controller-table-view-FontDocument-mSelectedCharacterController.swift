@@ -59,7 +59,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
     self.mSortDescriptorArray = []    
     for tableView in self.mTableViewArray {
@@ -86,7 +86,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
 
-  func unbind_model () {
+  final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
     for tvc in self.mTableViewDataSourceControllerArray {
@@ -183,7 +183,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
 
-  func bind_tableView (_ inTableView : EBTableView?) {
+  final func bind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -211,7 +211,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
  
-  func unbind_tableView (_ inTableView : EBTableView?) {
+  final func unbind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
       self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
       self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])

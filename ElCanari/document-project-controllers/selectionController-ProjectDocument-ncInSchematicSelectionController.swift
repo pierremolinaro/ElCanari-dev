@@ -53,7 +53,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mOrientation ()
     self.bind_property_objectDisplay ()
@@ -64,7 +64,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 

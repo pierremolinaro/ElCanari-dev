@@ -55,14 +55,14 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  func bind_dimensionAndUnit (_ object:EBReadWriteProperty_Int,
+  final func bind_dimensionAndUnit (_ object:EBReadWriteProperty_Int,
                               _ unit:EBReadOnlyProperty_Int) {
     self.mController = Controller_CanariDimensionTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self)
   }
 
   //····················································································································
 
-  func unbind_dimensionAndUnit () {
+  final func unbind_dimensionAndUnit () {
     self.mController?.unregister ()
     self.mController = nil
   }

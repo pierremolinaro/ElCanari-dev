@@ -74,7 +74,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_SchematicObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
@@ -87,7 +87,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 

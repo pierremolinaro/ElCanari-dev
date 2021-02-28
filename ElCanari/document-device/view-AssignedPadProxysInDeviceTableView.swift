@@ -173,7 +173,7 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, N
 
   //····················································································································
 
-  func bind_assignedPadProxies (_ model : EBReadOnlyProperty_AssignedPadProxiesInDevice) {
+  final func bind_assignedPadProxies (_ model : EBReadOnlyProperty_AssignedPadProxiesInDevice) {
     self.mController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
@@ -182,7 +182,7 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, N
 
   //····················································································································
 
-  func unbind_assignedPadProxies () {
+  final func unbind_assignedPadProxies () {
     self.mController?.unregister ()
     self.mController = nil
   }

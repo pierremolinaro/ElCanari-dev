@@ -143,7 +143,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mWidthUnit ()
     self.bind_property_mX1 ()
@@ -164,7 +164,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mWidthUnit
     self.mWidthUnit_property.mReadModelFunction = nil 

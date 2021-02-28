@@ -181,7 +181,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
+  final func bind_selection (model : ReadOnlyArrayOf_PackageObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_yCenter ()
     self.bind_property_radius ()
@@ -206,7 +206,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //   UNBIND SELECTION
   //····················································································································
 
-  func unbind_selection () {
+  final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
