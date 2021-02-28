@@ -18,7 +18,7 @@ import Cocoa
 // If sheet has text field(s), their "Action" should be "Sent on End Editing"
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariOkButtonForSheet : EBButton {
+final class CanariOkButtonForSheet : EBButton {
 
   //····················································································································
 

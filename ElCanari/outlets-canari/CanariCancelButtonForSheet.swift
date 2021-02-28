@@ -15,7 +15,7 @@ import Cocoa
 // Key equivalent should be "escape" (set it in interface builder)
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariCancelButtonForSheet : EBButton {
+final class CanariCancelButtonForSheet : EBButton {
 
   //····················································································································
 

@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameProtocol {
+final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 

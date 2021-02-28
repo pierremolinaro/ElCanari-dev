@@ -23,13 +23,6 @@ class AutoLayoutHorizontalStackView : AutoLayoutStackView {
 
   //····················································································································
 
-//  func equalSpacing () -> Self {
-//    self.distribution = .fillEqually
-//    return self
-//  }
-
-  //····················································································································
-
   private var mConstraints = [NSLayoutConstraint] ()
 
   override func updateConstraints () {

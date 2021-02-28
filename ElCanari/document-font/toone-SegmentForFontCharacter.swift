@@ -453,10 +453,10 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SegmentForFontCharacter
+//   TransientObject SegmentForFontCharacter
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SegmentForFontCharacter : ReadOnlyObject_SegmentForFontCharacter {
+final class TransientObject_SegmentForFontCharacter : ReadOnlyObject_SegmentForFontCharacter {
 
   //····················································································································
   //   Data provider

@@ -783,10 +783,10 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceMasterPadInProject
+//   TransientObject DeviceMasterPadInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceMasterPadInProject : ReadOnlyObject_DeviceMasterPadInProject {
+final class TransientObject_DeviceMasterPadInProject : ReadOnlyObject_DeviceMasterPadInProject {
 
   //····················································································································
   //   Data provider

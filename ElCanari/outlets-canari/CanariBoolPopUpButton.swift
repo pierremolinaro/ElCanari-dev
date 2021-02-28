@@ -11,7 +11,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariBoolPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class CanariBoolPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

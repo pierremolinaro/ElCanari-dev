@@ -636,10 +636,10 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject FontCharacter
+//   TransientObject FontCharacter
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_FontCharacter : ReadOnlyObject_FontCharacter {
+final class TransientObject_FontCharacter : ReadOnlyObject_FontCharacter {
 
   //····················································································································
   //   Data provider

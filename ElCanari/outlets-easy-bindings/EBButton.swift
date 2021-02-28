@@ -74,7 +74,7 @@ class EBButton : NSButton, EBUserClassNameProtocol {
 //   EBButton_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBButton_TableViewCell) class EBButton_TableViewCell : EBTableCellView {
+@objc(EBButton_TableViewCell) final class EBButton_TableViewCell : EBTableCellView {
 
   //····················································································································
 

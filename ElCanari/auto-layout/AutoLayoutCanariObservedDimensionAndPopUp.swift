@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariObservedDimensionAndPopUp
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStackView {
+final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   //····················································································································
 

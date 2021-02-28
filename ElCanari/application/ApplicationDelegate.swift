@@ -25,7 +25,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc (ApplicationDelegate) class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
+@objc (ApplicationDelegate) final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
   //····················································································································
   //  init

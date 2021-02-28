@@ -749,10 +749,10 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolTypeInDevice
+//   TransientObject SymbolTypeInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice {
+final class TransientObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice {
 
   //····················································································································
   //   Data provider

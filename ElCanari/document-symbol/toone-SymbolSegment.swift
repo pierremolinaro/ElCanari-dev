@@ -595,10 +595,10 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolSegment
+//   TransientObject SymbolSegment
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolSegment : ReadOnlyObject_SymbolSegment {
+final class TransientObject_SymbolSegment : ReadOnlyObject_SymbolSegment {
 
   //····················································································································
   //   Data provider

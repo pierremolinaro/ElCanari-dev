@@ -449,10 +449,10 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SchematicObject
+//   TransientObject SchematicObject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SchematicObject : ReadOnlyObject_SchematicObject {
+final class TransientObject_SchematicObject : ReadOnlyObject_SchematicObject {
 
   //····················································································································
   //   Data provider

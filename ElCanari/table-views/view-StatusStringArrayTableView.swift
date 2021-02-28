@@ -37,7 +37,7 @@ typealias StatusStringArray = [StatusString]
 // NOTE: StatusStringArrayTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

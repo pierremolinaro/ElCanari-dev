@@ -12,7 +12,7 @@ import Cocoa
 // NOTE: CanariNetInfoTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

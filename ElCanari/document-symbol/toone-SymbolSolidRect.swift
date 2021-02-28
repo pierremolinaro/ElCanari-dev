@@ -595,10 +595,10 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolSolidRect
+//   TransientObject SymbolSolidRect
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolSolidRect : ReadOnlyObject_SymbolSolidRect {
+final class TransientObject_SymbolSolidRect : ReadOnlyObject_SymbolSolidRect {
 
   //····················································································································
   //   Data provider

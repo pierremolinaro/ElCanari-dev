@@ -1114,10 +1114,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceInProject
+//   TransientObject DeviceInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceInProject : ReadOnlyObject_DeviceInProject {
+final class TransientObject_DeviceInProject : ReadOnlyObject_DeviceInProject {
 
   //····················································································································
   //   Data provider

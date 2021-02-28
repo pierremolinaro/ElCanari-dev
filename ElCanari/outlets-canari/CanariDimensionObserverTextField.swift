@@ -11,7 +11,7 @@ import Cocoa
 //   CanariDimensionObserverTextField
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

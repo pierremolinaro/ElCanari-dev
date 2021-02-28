@@ -239,10 +239,10 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceSymbolTypeInProject
+//   TransientObject DeviceSymbolTypeInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTypeInProject {
+final class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTypeInProject {
 
   //····················································································································
   //   Data provider

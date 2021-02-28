@@ -8,7 +8,7 @@ import Cocoa
 //   EBTextField
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -129,7 +129,7 @@ class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 //   EBTextField_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBTextField_TableViewCell) class EBTextField_TableViewCell : EBTableCellView {
+@objc(EBTextField_TableViewCell) final class EBTextField_TableViewCell : EBTableCellView {
 
   //····················································································································
 

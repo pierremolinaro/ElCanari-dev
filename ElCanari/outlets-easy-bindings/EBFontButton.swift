@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBFontButton : NSButton, EBUserClassNameProtocol {
+final class EBFontButton : NSButton, EBUserClassNameProtocol {
   private var mFont : NSFont? = nil
 
   //····················································································································

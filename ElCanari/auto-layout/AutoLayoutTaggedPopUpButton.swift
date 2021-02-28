@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutTaggedPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

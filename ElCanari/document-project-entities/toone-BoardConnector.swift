@@ -2176,10 +2176,10 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardConnector
+//   TransientObject BoardConnector
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
+final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
 
   //····················································································································
   //   Data provider

@@ -1029,10 +1029,10 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DevicePinInProject
+//   TransientObject DevicePinInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
+final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
 
   //····················································································································
   //   Data provider

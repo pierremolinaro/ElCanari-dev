@@ -957,10 +957,10 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardLine
+//   TransientObject BoardLine
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardLine : ReadOnlyObject_BoardLine {
+final class TransientObject_BoardLine : ReadOnlyObject_BoardLine {
 
   //····················································································································
   //   Data provider

@@ -812,10 +812,10 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SlavePadInDevice
+//   TransientObject SlavePadInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SlavePadInDevice : ReadOnlyObject_SlavePadInDevice {
+final class TransientObject_SlavePadInDevice : ReadOnlyObject_SlavePadInDevice {
 
   //····················································································································
   //   Data provider

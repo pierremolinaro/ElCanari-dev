@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBScrollView : NSScrollView, EBUserClassNameProtocol {
+final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
   // MARK: -

@@ -674,10 +674,10 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject NetInProject
+//   TransientObject NetInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
+final class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
 
   //····················································································································
   //   Data provider

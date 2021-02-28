@@ -18,7 +18,7 @@ typealias StringArray = [String]
 // NOTE: StringArrayTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

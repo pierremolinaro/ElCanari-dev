@@ -1459,10 +1459,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageBezier
+//   TransientObject PackageBezier
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageBezier : ReadOnlyObject_PackageBezier {
+final class TransientObject_PackageBezier : ReadOnlyObject_PackageBezier {
 
   //····················································································································
   //   Data provider

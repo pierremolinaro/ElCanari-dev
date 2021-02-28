@@ -90,14 +90,6 @@ func buildDebugObject () {
 //    Allocation private routines
 //----------------------------------------------------------------------------------------------------------------------
 
-//private class EBWeakObject {
-//  weak var mWeakReference : EBUserClassNameProtocol? = nil
-//  var mNextObject : EBWeakObject? = nil
-//}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//fileprivate var gLiveObjectList : EBWeakObject? = nil
 fileprivate var gTotalAllocatedObjectCountByClass = [String : Int] ()
 fileprivate var gLiveObjectCountByClass = [String : Int] ()
 fileprivate var gSnapShotDictionary = [String : Int] ()
@@ -108,12 +100,6 @@ fileprivate var gRefreshDisplay = false
 //······················································································································
 
 fileprivate func pmNoteObjectAllocation (_ inClassName : String) {
-//---
-//  let weakObject = EBWeakObject ()
-//  weakObject.mWeakReference = inObject
-//  weakObject.mNextObject = gLiveObjectList
-//  gLiveObjectList = weakObject
-//  let className = String (describing: type (of: inObject))
 //---
   let currentCount = gTotalAllocatedObjectCountByClass [inClassName] ?? 0
   gTotalAllocatedObjectCountByClass [inClassName] = currentCount + 1
@@ -165,7 +151,7 @@ private var gDebugObject : EBAllocationDebug? = nil
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBAllocationDebug) class EBAllocationDebug : NSObject, NSTableViewDataSource, NSWindowDelegate {
+@objc(EBAllocationDebug) final class EBAllocationDebug : NSObject, NSTableViewDataSource, NSWindowDelegate {
   @IBOutlet var mPerformSnapShotButton : NSButton? = nil
   @IBOutlet var mAllocationStatsWindowVisibleAtLaunchCheckbox : NSButton? = nil
   @IBOutlet var mDisplayFilterPopUpButton : NSPopUpButton? = nil

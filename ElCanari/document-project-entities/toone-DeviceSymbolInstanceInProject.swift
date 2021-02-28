@@ -379,10 +379,10 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceSymbolInstanceInProject
+//   TransientObject DeviceSymbolInstanceInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceSymbolInstanceInProject : ReadOnlyObject_DeviceSymbolInstanceInProject {
+final class TransientObject_DeviceSymbolInstanceInProject : ReadOnlyObject_DeviceSymbolInstanceInProject {
 
   //····················································································································
   //   Data provider

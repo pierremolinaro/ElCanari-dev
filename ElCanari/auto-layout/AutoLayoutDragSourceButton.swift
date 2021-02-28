@@ -17,7 +17,7 @@ fileprivate let PULL_DOWN_ARROW_TOP_MARGIN : CGFloat = 4.0
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
+final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
 
   //····················································································································
 

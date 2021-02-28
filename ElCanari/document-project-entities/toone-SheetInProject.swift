@@ -532,10 +532,10 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SheetInProject
+//   TransientObject SheetInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
+final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
 
   //····················································································································
   //   Data provider

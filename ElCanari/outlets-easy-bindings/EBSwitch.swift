@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBSwitch : NSButton, EBUserClassNameProtocol {
+final class EBSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -111,7 +111,7 @@ final class Controller_EBSwitch_value : EBReadOnlyPropertyController {
 //   EBSwitch_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBSwitch_TableViewCell) class EBSwitch_TableViewCell : EBTableCellView {
+@objc(EBSwitch_TableViewCell) final class EBSwitch_TableViewCell : EBTableCellView {
 
   //····················································································································
 

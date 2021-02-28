@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -2,7 +2,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
+final class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 

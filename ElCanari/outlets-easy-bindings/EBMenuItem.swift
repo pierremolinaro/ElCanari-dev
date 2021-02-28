@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBMenuItem : NSMenuItem, EBUserClassNameProtocol, EnabledMultipleBindingProtocol {
+final class EBMenuItem : NSMenuItem, EBUserClassNameProtocol, EnabledMultipleBindingProtocol {
 
   //····················································································································
 

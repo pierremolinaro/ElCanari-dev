@@ -12,7 +12,7 @@ import Cocoa
 // https://stackoverflow.com/questions/36622263/programatically-changing-button-text-and-actions-when-a-modifier-key-is-pressed
 //----------------------------------------------------------------------------------------------------------------------
 
-class LibraryUpdateButton : NSButton {
+final class LibraryUpdateButton : NSButton {
 
   //····················································································································
   //  Properties

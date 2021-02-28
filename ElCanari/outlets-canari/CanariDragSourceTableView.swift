@@ -28,7 +28,7 @@ typealias StringTagArray = [StringTag]
 //   CanariDragSourceTableView
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   // INIT

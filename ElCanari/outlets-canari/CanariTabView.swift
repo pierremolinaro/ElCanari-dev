@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariTabView : NSTabView, NSTabViewDelegate, EBUserClassNameProtocol {
+final class CanariTabView : NSTabView, NSTabViewDelegate, EBUserClassNameProtocol {
 
   //····················································································································
 

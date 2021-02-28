@@ -8,7 +8,7 @@ import Cocoa
 // WARNING! In IB, Action should be set to "Send On Enter Only"
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -187,7 +187,7 @@ final class Controller_EBIntField_value : EBReadOnlyPropertyController {
 //   EBIntField_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBIntField_TableViewCell) class EBIntField_TableViewCell : EBTableCellView {
+@objc(EBIntField_TableViewCell) final class EBIntField_TableViewCell : EBTableCellView {
   @IBOutlet var mCellOutlet : EBIntField? = nil
 
   //····················································································································

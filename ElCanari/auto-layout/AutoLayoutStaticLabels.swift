@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutStaticLabels
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutStaticLabels : AutoLayoutHorizontalStackView {
+final class AutoLayoutStaticLabels : AutoLayoutHorizontalStackView {
 
   //····················································································································
 

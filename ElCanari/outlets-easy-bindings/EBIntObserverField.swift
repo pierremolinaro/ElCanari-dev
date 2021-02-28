@@ -8,7 +8,7 @@ import Cocoa
 //   EBIntObserverField
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
+final class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -111,7 +111,7 @@ final class Controller_EBIntObserverField_readOnlyValue : EBReadOnlyPropertyCont
 //   EBIntObserverField_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBIntObserverField_TableViewCell) class EBIntObserverField_TableViewCell : EBTableCellView {
+@objc(EBIntObserverField_TableViewCell) final class EBIntObserverField_TableViewCell : EBTableCellView {
 
   //····················································································································
 

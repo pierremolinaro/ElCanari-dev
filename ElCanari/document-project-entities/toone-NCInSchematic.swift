@@ -237,10 +237,10 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject NCInSchematic
+//   TransientObject NCInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
+final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 
   //····················································································································
   //   Data provider

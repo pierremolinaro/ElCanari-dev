@@ -467,7 +467,7 @@ class EBManagedXibDocument : EBManagedDocument {
 //  EBVersionShouldChangeObserver
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
+final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
 
   //····················································································································
 

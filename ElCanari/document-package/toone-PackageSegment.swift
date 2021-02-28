@@ -1026,10 +1026,10 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageSegment
+//   TransientObject PackageSegment
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageSegment : ReadOnlyObject_PackageSegment {
+final class TransientObject_PackageSegment : ReadOnlyObject_PackageSegment {
 
   //····················································································································
   //   Data provider

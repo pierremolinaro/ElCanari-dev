@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserClassNameProtocol {
+final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserClassNameProtocol {
 
   //····················································································································
 

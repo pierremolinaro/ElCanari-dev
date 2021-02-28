@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariSelectionPopUpButton : EBPopUpButton {
+final class CanariSelectionPopUpButton : EBPopUpButton {
 
   //····················································································································
   //  format binding

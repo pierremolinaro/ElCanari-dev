@@ -11,7 +11,7 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 
-class EmbbeddedAutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
+final class EmbbeddedAutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 

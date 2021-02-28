@@ -1243,10 +1243,10 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageDimension
+//   TransientObject PackageDimension
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageDimension : ReadOnlyObject_PackageDimension {
+final class TransientObject_PackageDimension : ReadOnlyObject_PackageDimension {
 
   //····················································································································
   //   Data provider

@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -112,7 +112,7 @@ class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 //   EBTextObserverField_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBTextObserverField_TableViewCell) class EBTextObserverField_TableViewCell : EBTableCellView {
+@objc(EBTextObserverField_TableViewCell) final class EBTextObserverField_TableViewCell : EBTableCellView {
 
   //····················································································································
 

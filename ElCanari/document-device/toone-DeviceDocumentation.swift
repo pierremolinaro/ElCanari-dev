@@ -238,10 +238,10 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceDocumentation
+//   TransientObject DeviceDocumentation
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceDocumentation : ReadOnlyObject_DeviceDocumentation {
+final class TransientObject_DeviceDocumentation : ReadOnlyObject_DeviceDocumentation {
 
   //····················································································································
   //   Data provider

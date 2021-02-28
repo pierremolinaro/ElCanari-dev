@@ -196,7 +196,7 @@ extension EBGraphicView {
 //   EBHelperViewWithBackground
 //----------------------------------------------------------------------------------------------------------------------
 
-private class EBHelperViewWithBackground : NSView {
+private final class EBHelperViewWithBackground : NSView {
 
   //····················································································································
 

@@ -594,10 +594,10 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject MergerBoardInstance
+//   TransientObject MergerBoardInstance
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_MergerBoardInstance : ReadOnlyObject_MergerBoardInstance {
+final class TransientObject_MergerBoardInstance : ReadOnlyObject_MergerBoardInstance {
 
   //····················································································································
   //   Data provider

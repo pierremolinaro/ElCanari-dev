@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSeparator : NSBox, EBUserClassNameProtocol {
+final class AutoLayoutSeparator : NSBox, EBUserClassNameProtocol {
 
   //····················································································································
 

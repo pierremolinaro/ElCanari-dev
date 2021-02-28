@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
+final class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
 
   //····················································································································
 

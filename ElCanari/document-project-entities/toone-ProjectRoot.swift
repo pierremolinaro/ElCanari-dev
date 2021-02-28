@@ -9316,10 +9316,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject ProjectRoot
+//   TransientObject ProjectRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
+final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
 
   //····················································································································
   //   Data provider

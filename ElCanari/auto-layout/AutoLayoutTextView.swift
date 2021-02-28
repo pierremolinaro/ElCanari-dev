@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 

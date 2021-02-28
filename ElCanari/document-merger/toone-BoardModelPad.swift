@@ -455,10 +455,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardModelPad
+//   TransientObject BoardModelPad
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardModelPad : ReadOnlyObject_BoardModelPad {
+final class TransientObject_BoardModelPad : ReadOnlyObject_BoardModelPad {
 
   //····················································································································
   //   Data provider

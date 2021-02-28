@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariDefaultNetClassPopUpButton : EBPopUpButton {
+final class CanariDefaultNetClassPopUpButton : EBPopUpButton {
 
   //····················································································································
 

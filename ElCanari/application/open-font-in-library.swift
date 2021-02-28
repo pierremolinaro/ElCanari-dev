@@ -16,7 +16,7 @@ var gOpenFontInLibrary : OpenFontInLibrary? = nil
 // This class is instancied as object in MainMenu.xib
 //----------------------------------------------------------------------------------------------------------------------
 
-class OpenFontInLibrary : OpenInLibrary {
+final class OpenFontInLibrary : OpenInLibrary {
 
   //····················································································································
   //   INIT

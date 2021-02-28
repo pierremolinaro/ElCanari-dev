@@ -921,10 +921,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject FontRoot
+//   TransientObject FontRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_FontRoot : ReadOnlyObject_FontRoot {
+final class TransientObject_FontRoot : ReadOnlyObject_FontRoot {
 
   //····················································································································
   //   Data provider

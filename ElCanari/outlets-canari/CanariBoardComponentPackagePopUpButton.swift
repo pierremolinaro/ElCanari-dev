@@ -12,7 +12,7 @@ import Cocoa
 //   CanariBoardComponentPackagePopUpButton
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

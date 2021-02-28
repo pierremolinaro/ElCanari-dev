@@ -12,7 +12,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 

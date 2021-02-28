@@ -1243,10 +1243,10 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageArc
+//   TransientObject PackageArc
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageArc : ReadOnlyObject_PackageArc {
+final class TransientObject_PackageArc : ReadOnlyObject_PackageArc {
 
   //····················································································································
   //   Data provider

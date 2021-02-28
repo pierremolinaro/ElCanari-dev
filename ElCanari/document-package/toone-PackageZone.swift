@@ -1570,10 +1570,10 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageZone
+//   TransientObject PackageZone
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
+final class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
 
   //····················································································································
   //   Data provider

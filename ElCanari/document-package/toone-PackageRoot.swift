@@ -4525,10 +4525,10 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageRoot
+//   TransientObject PackageRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
+final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
 
   //····················································································································
   //   Data provider

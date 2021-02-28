@@ -17,7 +17,7 @@ fileprivate let TEXT_OFFSET : CGFloat = 3.0
 //   CanariTrackLockView
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariTrackLockView : NSView, EBUserClassNameProtocol {
+final class CanariTrackLockView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -1742,10 +1742,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageSlavePad
+//   TransientObject PackageSlavePad
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageSlavePad : ReadOnlyObject_PackageSlavePad {
+final class TransientObject_PackageSlavePad : ReadOnlyObject_PackageSlavePad {
 
   //····················································································································
   //   Data provider

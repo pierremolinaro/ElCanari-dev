@@ -2599,10 +2599,10 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject MergerRoot
+//   TransientObject MergerRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
+final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
 
   //····················································································································
   //   Data provider

@@ -635,10 +635,10 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolInstanceInDevice
+//   TransientObject SymbolInstanceInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice {
+final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice {
 
   //····················································································································
   //   Data provider

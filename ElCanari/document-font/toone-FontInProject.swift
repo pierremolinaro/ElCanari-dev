@@ -718,10 +718,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject FontInProject
+//   TransientObject FontInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
+final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
 
   //····················································································································
   //   Data provider

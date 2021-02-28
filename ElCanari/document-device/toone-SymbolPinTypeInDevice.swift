@@ -855,10 +855,10 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolPinTypeInDevice
+//   TransientObject SymbolPinTypeInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInDevice {
+final class TransientObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInDevice {
 
   //····················································································································
   //   Data provider

@@ -19,7 +19,7 @@ import Cocoa
 //   AutoLayoutCanariIssueTableView
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import Cocoa
 //   EBTransientEnumProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> where T : Equatable {
+final class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> where T : Equatable {
 
   //····················································································································
 

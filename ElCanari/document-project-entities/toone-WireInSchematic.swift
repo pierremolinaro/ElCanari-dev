@@ -378,10 +378,10 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject WireInSchematic
+//   TransientObject WireInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_WireInSchematic : ReadOnlyObject_WireInSchematic {
+final class TransientObject_WireInSchematic : ReadOnlyObject_WireInSchematic {
 
   //····················································································································
   //   Data provider

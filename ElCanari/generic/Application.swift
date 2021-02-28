@@ -29,7 +29,7 @@ class EBEvent : EBObject {
 //    A P P L I C A T I O N    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBApplication) class EBApplication : NSApplication {
+@objc(EBApplication) final class EBApplication : NSApplication {
 
   @IBOutlet var mTransientEventExplorerWindow : NSWindow? = nil
   @IBOutlet var mTransientEventExplorerTextView : NSTextView? = nil

@@ -597,10 +597,10 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageModelImageDoublePoint
+//   TransientObject PackageModelImageDoublePoint
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
+final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
 
   //····················································································································
   //   Data provider

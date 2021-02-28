@@ -669,10 +669,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject CommentInSchematic
+//   TransientObject CommentInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_CommentInSchematic : ReadOnlyObject_CommentInSchematic {
+final class TransientObject_CommentInSchematic : ReadOnlyObject_CommentInSchematic {
 
   //····················································································································
   //   Data provider

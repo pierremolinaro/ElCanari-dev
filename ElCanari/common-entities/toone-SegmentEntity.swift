@@ -383,10 +383,10 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SegmentEntity
+//   TransientObject SegmentEntity
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SegmentEntity : ReadOnlyObject_SegmentEntity {
+final class TransientObject_SegmentEntity : ReadOnlyObject_SegmentEntity {
 
   //····················································································································
   //   Data provider

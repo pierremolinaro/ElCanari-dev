@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
   // INIT

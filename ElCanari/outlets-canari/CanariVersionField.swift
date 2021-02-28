@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariVersionField : NSTextField, EBUserClassNameProtocol {
+final class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -4,7 +4,7 @@ import Cocoa
 //   CanariDimensionTextField
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

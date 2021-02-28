@@ -8,7 +8,7 @@ import Cocoa
 //   EBSlider
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBSlider : NSSlider, EBUserClassNameProtocol {
+final class EBSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 

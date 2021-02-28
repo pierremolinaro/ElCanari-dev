@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

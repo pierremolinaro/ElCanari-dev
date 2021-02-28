@@ -812,10 +812,10 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageGuide
+//   TransientObject PackageGuide
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageGuide : ReadOnlyObject_PackageGuide {
+final class TransientObject_PackageGuide : ReadOnlyObject_PackageGuide {
 
   //····················································································································
   //   Data provider

@@ -1098,10 +1098,10 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolPin
+//   TransientObject SymbolPin
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolPin : ReadOnlyObject_SymbolPin {
+final class TransientObject_SymbolPin : ReadOnlyObject_SymbolPin {
 
   //····················································································································
   //   Data provider

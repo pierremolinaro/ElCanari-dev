@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutGraphicView
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
+final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 

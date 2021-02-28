@@ -6,7 +6,7 @@ import Cocoa
 //   AutoLayoutFlexibleSpace
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
+final class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 

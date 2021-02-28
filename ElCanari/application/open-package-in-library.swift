@@ -16,7 +16,7 @@ var gOpenPackageInLibrary : OpenPackageInLibrary? = nil
 // This class is instancied as object in MainMenu.xib
 //----------------------------------------------------------------------------------------------------------------------
 
-class OpenPackageInLibrary : OpenInLibrary {
+final class OpenPackageInLibrary : OpenInLibrary {
 
   //····················································································································
   //   INIT

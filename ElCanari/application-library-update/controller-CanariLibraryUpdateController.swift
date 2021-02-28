@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariLibraryUpdateController : EBObject {
+final class CanariLibraryUpdateController : EBObject {
 
   private let mArrayController = NSArrayController ()
 

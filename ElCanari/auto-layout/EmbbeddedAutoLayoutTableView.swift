@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class EmbbeddedAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
+final class EmbbeddedAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 

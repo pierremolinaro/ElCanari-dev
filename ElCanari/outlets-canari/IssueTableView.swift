@@ -13,7 +13,7 @@ import Cocoa
 //   IssueTableView
 //----------------------------------------------------------------------------------------------------------------------
 
-class IssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class IssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   //   init

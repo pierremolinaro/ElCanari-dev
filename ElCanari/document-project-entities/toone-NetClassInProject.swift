@@ -1423,10 +1423,10 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject NetClassInProject
+//   TransientObject NetClassInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
+final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
 
   //····················································································································
   //   Data provider

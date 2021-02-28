@@ -1093,10 +1093,10 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BorderCurve
+//   TransientObject BorderCurve
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
+final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
 
   //····················································································································
   //   Data provider

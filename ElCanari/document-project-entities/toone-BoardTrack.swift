@@ -2379,10 +2379,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardTrack
+//   TransientObject BoardTrack
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardTrack : ReadOnlyObject_BoardTrack {
+final class TransientObject_BoardTrack : ReadOnlyObject_BoardTrack {
 
   //····················································································································
   //   Data provider

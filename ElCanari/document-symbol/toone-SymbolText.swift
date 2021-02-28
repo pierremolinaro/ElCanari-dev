@@ -524,10 +524,10 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolText
+//   TransientObject SymbolText
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolText : ReadOnlyObject_SymbolText {
+final class TransientObject_SymbolText : ReadOnlyObject_SymbolText {
 
   //····················································································································
   //   Data provider

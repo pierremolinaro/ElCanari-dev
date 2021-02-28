@@ -883,10 +883,10 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolBezierCurve
+//   TransientObject SymbolBezierCurve
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolBezierCurve : ReadOnlyObject_SymbolBezierCurve {
+final class TransientObject_SymbolBezierCurve : ReadOnlyObject_SymbolBezierCurve {
 
   //····················································································································
   //   Data provider

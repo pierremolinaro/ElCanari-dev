@@ -967,10 +967,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolRoot
+//   TransientObject SymbolRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolRoot : ReadOnlyObject_SymbolRoot {
+final class TransientObject_SymbolRoot : ReadOnlyObject_SymbolRoot {
 
   //····················································································································
   //   Data provider

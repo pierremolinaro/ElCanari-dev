@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutHelpButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutHelpButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 

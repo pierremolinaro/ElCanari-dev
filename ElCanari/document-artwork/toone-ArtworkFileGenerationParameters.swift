@@ -1679,10 +1679,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject ArtworkFileGenerationParameters
+//   TransientObject ArtworkFileGenerationParameters
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_ArtworkFileGenerationParameters : ReadOnlyObject_ArtworkFileGenerationParameters {
+final class TransientObject_ArtworkFileGenerationParameters : ReadOnlyObject_ArtworkFileGenerationParameters {
 
   //····················································································································
   //   Data provider

@@ -4544,10 +4544,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardModel
+//   TransientObject BoardModel
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
+final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
 
   //····················································································································
   //   Data provider

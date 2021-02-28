@@ -8,7 +8,7 @@ import Cocoa
 //    EBObserver
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBObserver : EBAbstractProperty {
+final class EBObserver : EBAbstractProperty {
   private var mPostEventFunction : Optional < () -> Void > = nil
 
   //····················································································································

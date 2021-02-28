@@ -2,7 +2,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
+final class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
   //  properties

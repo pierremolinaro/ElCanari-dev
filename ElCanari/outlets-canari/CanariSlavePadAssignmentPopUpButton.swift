@@ -12,7 +12,7 @@ import Cocoa
 //   CanariSlavePadAssignmentPopUpButton
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

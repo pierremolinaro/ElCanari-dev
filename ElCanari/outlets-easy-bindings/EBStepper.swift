@@ -8,7 +8,7 @@ import Cocoa
 //   EBStepper
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBStepper : NSStepper, EBUserClassNameProtocol {
+final class EBStepper : NSStepper, EBUserClassNameProtocol {
 
   //····················································································································
 

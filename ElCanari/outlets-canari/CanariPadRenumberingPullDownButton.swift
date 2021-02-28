@@ -12,7 +12,7 @@ import Cocoa
 //   CanariPadRenumberingPullDownButton
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
+final class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -668,10 +668,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardRestrictRectangle
+//   TransientObject BoardRestrictRectangle
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardRestrictRectangle : ReadOnlyObject_BoardRestrictRectangle {
+final class TransientObject_BoardRestrictRectangle : ReadOnlyObject_BoardRestrictRectangle {
 
   //····················································································································
   //   Data provider

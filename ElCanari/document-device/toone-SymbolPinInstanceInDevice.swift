@@ -378,10 +378,10 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolPinInstanceInDevice
+//   TransientObject SymbolPinInstanceInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinInstanceInDevice {
+final class TransientObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinInstanceInDevice {
 
   //····················································································································
   //   Data provider

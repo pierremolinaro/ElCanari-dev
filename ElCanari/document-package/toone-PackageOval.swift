@@ -883,10 +883,10 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageOval
+//   TransientObject PackageOval
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageOval : ReadOnlyObject_PackageOval {
+final class TransientObject_PackageOval : ReadOnlyObject_PackageOval {
 
   //····················································································································
   //   Data provider

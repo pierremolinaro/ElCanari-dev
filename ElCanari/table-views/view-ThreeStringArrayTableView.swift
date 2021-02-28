@@ -34,7 +34,7 @@ typealias ThreeStringArray = [ThreeStrings]
 // NOTE: ThreeStringArrayTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class ThreeStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class ThreeStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

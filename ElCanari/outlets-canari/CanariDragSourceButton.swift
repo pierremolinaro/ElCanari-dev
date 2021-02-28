@@ -11,7 +11,7 @@ fileprivate let PULL_DOWN_ARROW_TOP_MARGIN : CGFloat = 4.0
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
+final class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
 
   //····················································································································
 

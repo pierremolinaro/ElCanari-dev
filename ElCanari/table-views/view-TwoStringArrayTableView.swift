@@ -32,7 +32,7 @@ typealias TwoStringArray = [TwoStrings]
 // NOTE: TwoStringArrayTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

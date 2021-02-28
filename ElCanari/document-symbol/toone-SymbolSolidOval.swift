@@ -595,10 +595,10 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject SymbolSolidOval
+//   TransientObject SymbolSolidOval
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_SymbolSolidOval : ReadOnlyObject_SymbolSolidOval {
+final class TransientObject_SymbolSolidOval : ReadOnlyObject_SymbolSolidOval {
 
   //····················································································································
   //   Data provider

@@ -993,10 +993,10 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageInDevice
+//   TransientObject PackageInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageInDevice : ReadOnlyObject_PackageInDevice {
+final class TransientObject_PackageInDevice : ReadOnlyObject_PackageInDevice {
 
   //····················································································································
   //   Data provider

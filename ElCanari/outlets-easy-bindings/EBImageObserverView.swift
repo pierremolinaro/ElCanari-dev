@@ -8,7 +8,7 @@ import Cocoa
 //   EBImageObserverView
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
+final class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -108,7 +108,7 @@ class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 //   EBImageObserverView_TableViewCell
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(EBImageObserverView_TableViewCell) class EBImageObserverView_TableViewCell : EBTableCellView {
+@objc(EBImageObserverView_TableViewCell) final class EBImageObserverView_TableViewCell : EBTableCellView {
 
   //····················································································································
 

@@ -11,7 +11,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 

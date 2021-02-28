@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariObserverSwitch : NSButton, EBUserClassNameProtocol {
+final class CanariObserverSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 

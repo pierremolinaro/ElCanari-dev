@@ -382,10 +382,10 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject CanariLibraryEntry
+//   TransientObject CanariLibraryEntry
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_CanariLibraryEntry : ReadOnlyObject_CanariLibraryEntry {
+final class TransientObject_CanariLibraryEntry : ReadOnlyObject_CanariLibraryEntry {
 
   //····················································································································
   //   Data provider

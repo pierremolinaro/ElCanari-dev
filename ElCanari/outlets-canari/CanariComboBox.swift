@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
+final class CanariComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
 
   //····················································································································
 

@@ -1214,10 +1214,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PointInSchematic
+//   TransientObject PointInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
+final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 
   //····················································································································
   //   Data provider

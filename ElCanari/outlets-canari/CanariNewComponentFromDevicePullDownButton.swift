@@ -12,7 +12,7 @@ import Cocoa
 //   CanariNewComponentFromDevicePullDownButton
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNameProtocol {
+final class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

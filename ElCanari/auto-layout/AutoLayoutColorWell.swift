@@ -12,7 +12,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
+final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
 
   //····················································································································
 

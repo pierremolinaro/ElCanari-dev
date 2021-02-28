@@ -1027,10 +1027,10 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardText
+//   TransientObject BoardText
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardText : ReadOnlyObject_BoardText {
+final class TransientObject_BoardText : ReadOnlyObject_BoardText {
 
   //····················································································································
   //   Data provider

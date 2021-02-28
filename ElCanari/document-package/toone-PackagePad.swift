@@ -2139,10 +2139,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackagePad
+//   TransientObject PackagePad
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
+final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
 
   //····················································································································
   //   Data provider

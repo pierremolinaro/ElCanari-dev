@@ -18,7 +18,7 @@ let MERGER_PREFS_INDEX = 8
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CanariToolbar) class CanariToolbar : NSToolbar, EBUserClassNameProtocol {
+@objc(CanariToolbar) final class CanariToolbar : NSToolbar, EBUserClassNameProtocol {
   @IBOutlet private var mMasterView : NSView?
   private var mCurrentView : NSView?
   private var mWindowDefaultTitle : String = ""

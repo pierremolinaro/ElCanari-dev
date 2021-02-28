@@ -12,7 +12,7 @@ import Cocoa
 //   CanariBoardComponentValueFontPopUpButton
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariBoardComponentValueFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class CanariBoardComponentValueFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

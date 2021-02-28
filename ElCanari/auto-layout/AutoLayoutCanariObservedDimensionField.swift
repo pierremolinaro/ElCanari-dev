@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariObservedDimensionField
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

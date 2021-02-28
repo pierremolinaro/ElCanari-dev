@@ -3108,10 +3108,10 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject ComponentInProject
+//   TransientObject ComponentInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_ComponentInProject : ReadOnlyObject_ComponentInProject {
+final class TransientObject_ComponentInProject : ReadOnlyObject_ComponentInProject {
 
   //····················································································································
   //   Data provider

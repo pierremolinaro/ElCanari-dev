@@ -450,10 +450,10 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject LabelInSchematic
+//   TransientObject LabelInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_LabelInSchematic : ReadOnlyObject_LabelInSchematic {
+final class TransientObject_LabelInSchematic : ReadOnlyObject_LabelInSchematic {
 
   //····················································································································
   //   Data provider

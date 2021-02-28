@@ -131,7 +131,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 //  EBSignatureObserverEvent
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureObserverProtocol {
+final class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureObserverProtocol {
 
   //····················································································································
 

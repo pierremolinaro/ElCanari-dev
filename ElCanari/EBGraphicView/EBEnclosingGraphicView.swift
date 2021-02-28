@@ -6,7 +6,7 @@ import Cocoa
 //   EBEnclosingGraphicView
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
+final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
   // Temporary, for IB interface

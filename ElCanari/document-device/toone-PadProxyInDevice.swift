@@ -381,10 +381,10 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PadProxyInDevice
+//   TransientObject PadProxyInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
+final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 
   //····················································································································
   //   Data provider

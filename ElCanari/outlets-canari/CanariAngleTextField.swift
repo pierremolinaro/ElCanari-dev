@@ -12,7 +12,7 @@ import Cocoa
 //   CanariAngleTextField
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class CanariAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

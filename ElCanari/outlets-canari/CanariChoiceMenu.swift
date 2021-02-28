@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
+final class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 

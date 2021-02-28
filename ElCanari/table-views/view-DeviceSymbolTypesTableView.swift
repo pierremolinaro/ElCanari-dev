@@ -12,7 +12,7 @@ import Cocoa
 // NOTE: DeviceSymbolTypesTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   @IBOutlet var mDeviceSymbolTypePinsTableView : StringArrayTableView? = nil
   

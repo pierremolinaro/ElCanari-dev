@@ -12,7 +12,7 @@ import Cocoa
 //   CanariAngleSlider
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariAngleSlider : NSSlider, EBUserClassNameProtocol {
+final class CanariAngleSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 

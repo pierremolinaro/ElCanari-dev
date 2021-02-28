@@ -733,10 +733,10 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardObject
+//   TransientObject BoardObject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardObject : ReadOnlyObject_BoardObject {
+final class TransientObject_BoardObject : ReadOnlyObject_BoardObject {
 
   //····················································································································
   //   Data provider

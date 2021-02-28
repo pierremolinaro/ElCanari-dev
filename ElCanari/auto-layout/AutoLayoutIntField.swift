@@ -10,7 +10,7 @@ import Cocoa
 //   AutoLayoutIntField
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

@@ -307,10 +307,10 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject PackageObject
+//   TransientObject PackageObject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_PackageObject : ReadOnlyObject_PackageObject {
+final class TransientObject_PackageObject : ReadOnlyObject_PackageObject {
 
   //····················································································································
   //   Data provider

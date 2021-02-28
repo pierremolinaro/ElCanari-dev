@@ -95,10 +95,10 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject ForbiddenPadNumber
+//   TransientObject ForbiddenPadNumber
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_ForbiddenPadNumber : ReadOnlyObject_ForbiddenPadNumber {
+final class TransientObject_ForbiddenPadNumber : ReadOnlyObject_ForbiddenPadNumber {
 
   //····················································································································
   //   Data provider

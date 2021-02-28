@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 

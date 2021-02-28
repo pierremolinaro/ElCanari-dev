@@ -239,10 +239,10 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject BoardModelVia
+//   TransientObject BoardModelVia
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_BoardModelVia : ReadOnlyObject_BoardModelVia {
+final class TransientObject_BoardModelVia : ReadOnlyObject_BoardModelVia {
 
   //····················································································································
   //   Data provider

@@ -925,10 +925,10 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject MasterPadInDevice
+//   TransientObject MasterPadInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
+final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
 
   //····················································································································
   //   Data provider

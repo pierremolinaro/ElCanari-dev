@@ -1423,10 +1423,10 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject ComponentSymbolInProject
+//   TransientObject ComponentSymbolInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject {
+final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject {
 
   //····················································································································
   //   Data provider

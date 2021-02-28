@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
+final class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   private var mLastRightView : NSView? = nil
   private var mLastLeftView : NSView? = nil

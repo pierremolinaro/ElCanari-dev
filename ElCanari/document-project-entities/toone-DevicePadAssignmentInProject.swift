@@ -237,10 +237,10 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DevicePadAssignmentInProject
+//   TransientObject DevicePadAssignmentInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DevicePadAssignmentInProject : ReadOnlyObject_DevicePadAssignmentInProject {
+final class TransientObject_DevicePadAssignmentInProject : ReadOnlyObject_DevicePadAssignmentInProject {
 
   //····················································································································
   //   Data provider

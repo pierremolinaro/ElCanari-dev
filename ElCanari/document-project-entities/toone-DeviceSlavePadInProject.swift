@@ -670,10 +670,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceSlavePadInProject
+//   TransientObject DeviceSlavePadInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceSlavePadInProject : ReadOnlyObject_DeviceSlavePadInProject {
+final class TransientObject_DeviceSlavePadInProject : ReadOnlyObject_DeviceSlavePadInProject {
 
   //····················································································································
   //   Data provider

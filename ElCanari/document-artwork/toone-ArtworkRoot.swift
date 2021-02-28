@@ -927,10 +927,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject ArtworkRoot
+//   TransientObject ArtworkRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
+final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
 
   //····················································································································
   //   Data provider

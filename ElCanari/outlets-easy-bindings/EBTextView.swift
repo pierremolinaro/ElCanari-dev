@@ -8,7 +8,7 @@ import Cocoa
 //   EBTextView
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBTextView : NSTextView, EBUserClassNameProtocol {
+final class EBTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 

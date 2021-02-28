@@ -2018,10 +2018,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    TransientObject DeviceRoot
+//   TransientObject DeviceRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
+final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
 
   //····················································································································
   //   Data provider
