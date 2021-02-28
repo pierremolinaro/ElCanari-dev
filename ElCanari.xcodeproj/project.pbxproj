@@ -5510,12 +5510,11 @@
 		4B5CE2FE28308FD9F2A7BAF3 = {
 			isa = PBXGroup;
 			children = (
-				CF9C675025CAC80300A00D5C /* Auto Layout Document — Package */,
-				CF9C602725CAB4C800A00D5C /* Auto Layout */,
 				CF1406D81B3C4A6F002A3B15 /* Allocation Debug */,
 				CF61725C1B3C4B5000F3CA82 /* Application */,
 				CF730B4221F87D7B00944B3E /* Application — Library Update */,
 				CF34A0AD2200CFC900DEA8EF /* Application — Library Upload */,
+				CF9C602725CAB4C800A00D5C /* Auto Layout */,
 				CFE979F321ABFCA3002E5716 /* Common Classes */,
 				CF76FB6F20F005F100EFD18D /* Common Entities */,
 				CFAFA53E24F26EB9002D48BE /* Cursors */,
@@ -5524,12 +5523,9 @@
 				CFDA57991BFA521A00EEF3CB /* document — font */,
 				CF55994D1FDF361000ED5EE6 /* document — merger */,
 				CF2B9CDE21C2A89200EE5683 /* document — package */,
+				CF9C675025CAC80300A00D5C /* Document — Package (Auto Layout) */,
 				CF770877227F7928004577BB /* document — project — actions */,
 				CFFBEEC322A55817001BF689 /* document — project — board */,
-				CF518E072282CF84002BCEE5 /* document — project — controllers */,
-				CF4A66222257EFB0003A7A7A /* document — project — core */,
-				CFB1DAFE2282D2FB005F9811 /* document — project — entities */,
-				CF4EC7272284929500902FBB /* document — project — schematic */,
 				CFEB7A84233A22FC0060A97A /* document — project — BoardConnector */,
 				CFEB7AB5233A233B0060A97A /* document — project — BoarderCurve */,
 				CFEB7ADA233A23770060A97A /* document — project — BoardLine */,
@@ -5540,6 +5536,8 @@
 				CFEB7B21233A25A70060A97A /* document — project — CommentInSchematic */,
 				CFEB7B28233A25CD0060A97A /* document — project — ComponentInProject */,
 				CFEB7B62233A25F60060A97A /* document — project — ComponentSymbolInProject */,
+				CF518E072282CF84002BCEE5 /* document — project — controllers */,
+				CF4A66222257EFB0003A7A7A /* document — project — core */,
 				CFEB7B75233A261A0060A97A /* document — project — DeviceInProject */,
 				CFEB7B8E233A263B0060A97A /* document — project — DeviceMasterPadInProject */,
 				CFEB7B92233A265E0060A97A /* document — project — DevicePackageInProject */,
@@ -5547,6 +5545,7 @@
 				CFEB7B9D233A26DA0060A97A /* document — project — DevicePinInProject */,
 				CFEB7BA4233A26FA0060A97A /* document — project — DeviceSlavePadInProject */,
 				CFEB7BA8233A27240060A97A /* document — project — DeviceSymbolInstanceInProject */,
+				CFB1DAFE2282D2FB005F9811 /* document — project — entities */,
 				CFEB7BA9233A272C0060A97A /* document — project — FontInProject */,
 				CFEB7BAA233A27320060A97A /* document — project — LabelInSchematic */,
 				CFEB7BAB233A27390060A97A /* document — project — NCInSchematic */,
@@ -5555,6 +5554,7 @@
 				CFEB7BAE233A274C0060A97A /* document — project — PointInSchematic */,
 				CFEB7BAF233A27530060A97A /* document — project — ProjectDocument */,
 				CFEB7BB0233A27580060A97A /* document — project — ProjectRoot */,
+				CF4EC7272284929500902FBB /* document — project — schematic */,
 				CFEB7BB2233A27650060A97A /* document — project — SchematicObject */,
 				CFEB7CF4233A29E70060A97A /* document — project — SheetInProject */,
 				CFEB7BB1233A275E0060A97A /* document — project — WireInSchematic */,
@@ -5564,10 +5564,10 @@
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
 				CFAA756022E77D31002F7F36 /* Free Router Embedded Application */,
 				CF61725D1B3C4B8A00F3CA82 /* Generic */,
-				CF61726E1B3C4CB600F3CA82 /* Resources */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
 				CF6172681B3C4BE000F3CA82 /* Outlets Easy Bindings */,
 				CF747FB01B3C3D8D00140C49 /* Products */,
+				CF61726E1B3C4CB600F3CA82 /* Resources */,
 				CFD1B75221B2E90400F6F9EA /* Shapes */,
 				CFDBEFF71BEA126C001CEA4B /* Sparkle */,
 				CF35A54121A8257D00A0E500 /* Swift Extensions */,
@@ -6560,7 +6560,7 @@
 			path = "ElCanari/auto-layout";
 			sourceTree = "<group>";
 		};
-		CF9C675025CAC80300A00D5C /* Auto Layout Document — Package */ = {
+		CF9C675025CAC80300A00D5C /* Document — Package (Auto Layout) */ = {
 			isa = PBXGroup;
 			children = (
 				CF9C675525CAC83600A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift */,
@@ -6621,7 +6621,7 @@
 				CFCEA59925E98BA4009E5284 /* transient-PackageRoot-segmentedControlSegmentIssueImage.swift */,
 				CFCEA59B25E99226009E5284 /* transient-PackageRoot-segmentedControlSegmentIssueString.swift */,
 			);
-			name = "Auto Layout Document — Package";
+			name = "Document — Package (Auto Layout)";
 			path = "ElCanari/auto-layout-document-package";
 			sourceTree = "<group>";
 		};
